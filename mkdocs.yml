@@ -1,0 +1,7 @@
+site_name: Aimeos documentation
+theme: readthedocs
+repo_url: https://github.com/aimeos/aimeos-docs
+extra_css:
+- css/version-select.css
+extra_javascript:
+- js/version-select.js
