@@ -12,7 +12,7 @@ Furthermore, the [Aimeos company](https://aimeos.com/extensions/) offers an exte
 
 ## Change site in backend
 
-![Site selector](/_assets/img/Admin-concepts-sites-selector.png)
+![Site selector](../_assets/img/Admin-concepts-sites-selector.png)
 
 For switching between the different available sites, the administration interface contains a site selector in the upper left corner. The icon is only shown, if there's more than one site you have access to with your user. Super users will see all sites, admin users only their own ones and editors can't switch between sites.
 

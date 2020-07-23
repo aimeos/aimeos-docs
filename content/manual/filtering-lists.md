@@ -4,7 +4,7 @@ One of the main principles of interaction in the Aimeos administration interface
 
 ## Global filter
 
-![Global filter on top of page](/_assets/img/Admin-concepts-filtering-lists.png)
+![Global filter on top of page](../_assets/img/Admin-concepts-filtering-lists.png)
 
 The global filter is located in the upper right corner of the page and is always visible even if you scroll down a long result list. By default, only the input field is shown and the most often used filter criteria is pre-selected. You can display the list of fields and the list of operators by clicking on the blue caret symbol left of the input field.
 
@@ -18,7 +18,7 @@ Located next to the input field is the "Search" button that starts filtering the
 
 ## Fields to filter by
 
-![Drop-down of filter options](/_assets/img/Admin-concepts-filtering-lists7.png)
+![Drop-down of filter options](../_assets/img/Admin-concepts-filtering-lists7.png)
 
 The drop-down containing the fields that you are able to filter depend on the panel which contains the filter toolbar (e.g. in the Product panel you can find product-related fields while in other panels different fields can be found).
 
@@ -27,7 +27,7 @@ There can be many fields in the list to filter, but the most important are alway
 
 ## Filter operators
 
-![Drop-down of filter operators](/_assets/img/Admin-concepts-filtering-lists8.png)
+![Drop-down of filter operators](../_assets/img/Admin-concepts-filtering-lists8.png)
 
 The operators for filtering are dependent on the selected field and it's type. The available operators are:
 
@@ -61,13 +61,13 @@ after
 
 ## Filter toolbar
 
-![Filter toolbar](/_assets/img/Admin-concepts-filtering-lists3.png)
+![Filter toolbar](../_assets/img/Admin-concepts-filtering-lists3.png)
 
 Additionally to the global filter at the top right of the page, you can also add or select a filter criterium for each colum directly. The filter criteria are applied as soon as you click on the magnifier symbol on the right side. The "X" symbol resets all filters to their default values.
 
 ## Paging toolbar
 
-![Paging toolbar](/_assets/img/Admin-concepts-filtering-lists6.png)
+![Paging toolbar](../_assets/img/Admin-concepts-filtering-lists6.png)
 
 By default, only the first 25 records are shown in the list view even if more records are available. The paging toolbar shown at the bottom of the panel provides an easy way to navigate through the search result.
 
@@ -81,7 +81,7 @@ The paging toolbar consists of the
 
 ## Changing columns shown
 
-![Changing columns shown](/_assets/img/Admin-concepts-filtering-lists5.png)
+![Changing columns shown](../_assets/img/Admin-concepts-filtering-lists5.png)
 
 The most important columns are shown by default in the list view, but often there are additional columns available. As the importance of certain information depends on how the application is used, it's not only possible to show additional columns but also to hide columns that are shown by default.
 
@@ -89,6 +89,6 @@ Each list header contains an icon in the upper right corner, where the shown col
 
 ## Sorting columns
 
-![Sorting columns](/_assets/img/Admin-concepts-filtering-lists4.png)
+![Sorting columns](../_assets/img/Admin-concepts-filtering-lists4.png)
 
 The columns in many list views are sortable by simply clicking on the column header. Reverse sorting is also possible by clicking on the column header again.
