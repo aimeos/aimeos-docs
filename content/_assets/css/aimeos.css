@@ -1,0 +1,127 @@
+:root {
+	--md-default-fg-color:               #103050;
+	--md-default-fg-color--light:        #103050b0;
+	--md-default-fg-color--lighter:      #10305080;
+	--md-default-fg-color--lightest:     #10305040;
+
+	--md-primary-fg-color:        #103050;
+	--md-primary-fg-color--light: #103050bb;
+	--md-primary-fg-color--dark:  #103050ff;
+
+	--md-accent-fg-color:                #ba9a5a;
+	--md-accent-fg-color--transparent:   #ba9a5a20;
+  }
+
+.md-header {
+	position: static;
+	box-shadow: none;
+	height: auto;
+}
+
+.md-header,
+.md-nav__title,
+.md-nav--primary .md-nav__title[for="__drawer"] {
+	background-color: var(--md-default-bg-color, #fff);
+	color: var(--md-default-fg-color, #103050);
+}
+
+.md-header-nav {
+    padding: 0.5rem .2rem;
+}
+
+.md-header-nav__button.md-logo {
+	margin: 0;
+}
+
+.md-logo {
+    width: 12.1rem;
+}
+
+.md-nav__title .md-nav__button.md-logo img,
+.md-header-nav__button.md-logo img {
+	height: 40px;
+	width: auto;
+}
+
+.md-search__inner, .md-search__scrollwrap {
+	width: 100% !important;
+}
+
+.md-search__icon {
+	color: var(--md-default-fg-color--light, #103050b0) !important;
+}
+
+.md-search__input {
+	background-color: #fff;
+	border-bottom: 1px solid #10305040;
+	border-bottom-color: var(--md-default-fg-color--lightest, #10305040);
+	border-radius: 0;
+}
+
+.md-search__input::placeholder {
+	color: var(--md-default-fg-color--light, #103050b0);
+}
+
+select.md-header-nav__button {
+	width: 75%;
+	margin: inherit auto;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid #10305040;
+	border-bottom-color: var(--md-default-fg-color--lightest, #10305040);
+	color: var(--md-default-fg-color, #103050);
+	background-color: #fff;
+	font-size: .8rem;
+	padding: .1rem 0;
+	height: 1.9rem;
+	-moz-appearance: none;
+}
+
+select.md-header-nav__button:focus {
+	outline: none;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid #103050;
+	border-bottom-color: var(--md-default-fg-color, #103050);
+}
+
+.md-sidebar__scrollwrap {
+	scrollbar-color: var(--md-default-fg-color--lightest, #10305040);
+}
+
+.md-sidebar__scrollwrap:hover {
+	scrollbar-color: var(--md-default-fg-color--light, #103050b0);
+}
+
+.md-nav {
+    font-size: .75rem;
+}
+
+.md-nav__title {
+	padding: 0.5rem 0;
+}
+
+.md-nav__list .md-nav__list {
+    padding-left: 1rem;
+}
+
+.md-nav__item {
+	padding: 0.5rem 0;
+}
+
+.md-nav__list .md-nav__list .md-nav__item {
+	color: var(--md-default-fg-color--light, #103050b0);
+	padding-bottom: 0;
+}
+
+.md-nav__link {
+	margin: 0;
+}
+
+.md-typeset dt {
+	font-weight: bold;
+}
+
+.md-typeset dd {
+	margin: 0 0 0.5rem 1rem;
+}
