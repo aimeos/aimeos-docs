@@ -1,7 +1,103 @@
-site_name: Aimeos documentation
-theme: readthedocs
+site_dir: docs/2020.x
+site_url: https://aimeos.org/docs/2020.x/
+
+
+site_name: Documentation
 repo_url: https://github.com/aimeos/aimeos-docs
+edit_uri: blob/master/content/
+markdown_extensions:
+  - toc:
+      permalink: '#'
+  - def_list
+plugins:
+  - search
+docs_dir: content
+theme:
+  name: material
+  custom_dir: theme
+  favicon: _assets/favicon.svg
+  logo: https://aimeos.org/fileadmin/logos/logo-aimeos-blue.svgz
+  font:
+    text: Noto Sans
 extra_css:
-- css/version-select.css
+  - _assets/css/aimeos.css
 extra_javascript:
-- js/version-select.js
+  - _assets/js/aimeos.js
+extra:
+  disqus: aimeos
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/aimeos
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/Aimeos
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/aimeos
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/c/aimeos
+tracking:
+  url: https://aimeos.org/stats
+  siteid: 1
+
+
+nav:
+  - Getting started:
+    - Laravel:
+      - Overview: start/laravel/index.md
+    - Symfony:
+      - Overview: start/symfony/index.md
+    - TYPO3:
+      - Overview: start/typo3/index.md
+    - Development:
+      - Architecture: start/developer/architecture.md
+      - Dependency container: start/developer/context.md
+      - Git workflow: start/developer/git-workflow.md
+      - Phing build system: start/developer/phing.md
+      - Create extensions: start/developer/extensions.md
+      - Add translations:  start/developer/translations.md
+  - User manual:
+    - Basic concepts:
+      - Working with sites:  manual/working-with-sites.md
+      - Filtering lists:  manual/filtering-lists.md
+    - Shop setup:
+      - Payment/Delivery:
+        - Built-in options: manual/services-list.md
+        - View service details: manual/service-details.md
+        - Adding features: manual/service-decorators.md
+      - Basket plugins:
+        - List of plugins: manual/plugin-list.md
+        - View plugins details: manual/plugins-details.md
+    - Manage content:
+      - Currencies/languages: manual/currencies-and-languages.md
+      - Products:
+        - List available products: manual/product-lists.md
+        - View product details: manual/product-details.md
+        - Special products: manual/special-products.md
+      - Catalog:
+        - Manage categories: manual/manage-categories.md
+        - View category details: manual/category-details.md
+      - Vouchers/Coupons:
+        - Built-in coupon types: manual/coupon-types.md
+        - View Coupon details: manual/coupon-details.md
+        - Adding features: manual/coupon-decorators.md
+      - Orders/Subscriptions:
+        - Manage orders: manual/orders.md
+        - Manage subscriptions: manual/subscriptions.md
+  - Frontend:
+    - HTML:
+      - Overview: frontend/html/index.md
+      - Themes: frontend/html/themes.md
+    - JSON API:
+      - Filter: frontend/jsonapi/filter.md
+    - Controller:
+      - Product: frontend/controller/product.md
+  - Admin backend:
+    - HTML:
+      - Overview: backend/html/index.md
+    - JSON API:
+      - Filter: backend/jsonapi/filter.md
+  - Cronjobs: cronjobs.md
+  - Data storage:
+    - Working with managers: storage/working-with-manaagers.md
+  - Infrastructure:
+    - Caching: infrastructure/caching.md
+    - Logging: infrastructure/logging.md
