@@ -55,25 +55,24 @@ nav:
       - Create extensions: start/developer/extensions.md
       - Add translations:  start/developer/translations.md
   - User manual:
-    - Basic concepts:
-      - Working with sites:  manual/working-with-sites.md
-      - Filtering lists:  manual/filtering-lists.md
+    - Filtering lists:  manual/filtering-lists.md
     - Shop setup:
+      - Working with sites:  manual/working-with-sites.md
+      - Currencies/languages: manual/currencies-and-languages.md
       - Payment/Delivery:
-        - Built-in options: manual/services-list.md
+        - Built-in options: manual/services.md
         - View service details: manual/service-details.md
         - Adding features: manual/service-decorators.md
       - Basket plugins:
-        - List of plugins: manual/plugin-list.md
+        - Built-in plugins: manual/plugins.md
         - View plugins details: manual/plugins-details.md
     - Manage content:
-      - Currencies/languages: manual/currencies-and-languages.md
       - Products:
-        - List available products: manual/product-lists.md
+        - List available products: manual/products.md
         - View product details: manual/product-details.md
-        - Special products: manual/special-products.md
+        - Special products: manual/products-special.md
       - Catalog:
-        - Manage categories: manual/manage-categories.md
+        - Manage categories: manual/categories.md
         - View category details: manual/category-details.md
       - Vouchers/Coupons:
         - Built-in coupon types: manual/coupon-types.md
