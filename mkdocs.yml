@@ -58,7 +58,7 @@ nav:
     - Filtering lists:  manual/filtering-lists.md
     - Shop setup:
       - Working with sites:  manual/working-with-sites.md
-      - Currencies/languages: manual/currencies-and-languages.md
+      - Currencies/languages: manual/locales.md
       - Payment/Delivery:
         - Built-in options: manual/services.md
         - View service details: manual/service-details.md
