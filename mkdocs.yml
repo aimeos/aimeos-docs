@@ -64,8 +64,8 @@ nav:
       - Working with sites:  manual/working-with-sites.md
       - Currencies/languages: manual/locales.md
       - Payment/Delivery:
-        - Built-in options: manual/services.md
-        - View service details: manual/service-details.md
+        - Available services: manual/services.md
+        - Service details: manual/service-details.md
         - Adding features: manual/service-decorators.md
       - Basket plugins:
         - Built-in plugins: manual/plugins.md
