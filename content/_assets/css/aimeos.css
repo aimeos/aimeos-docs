@@ -119,7 +119,7 @@ select.md-header-nav__button:focus {
 }
 
 .md-typeset dt {
-	font-weight: bold;
+	font-style: italic;
 }
 
 .md-typeset dd {

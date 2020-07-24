@@ -7,8 +7,12 @@ repo_url: https://github.com/aimeos/aimeos-docs
 edit_uri: blob/master/content/
 markdown_extensions:
   - toc:
+      baselevel: 2
       permalink: '#'
   - def_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 plugins:
   - search
 docs_dir: content
