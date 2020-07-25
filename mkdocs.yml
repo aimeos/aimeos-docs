@@ -72,9 +72,8 @@ nav:
         - Plugins details: manual/plugin-details.md
     - Manage content:
       - Products:
-        - List available products: manual/products.md
-        - View product details: manual/product-details.md
-        - Special products: manual/products-special.md
+        - Available products: manual/products.md
+        - Product details: manual/product-details.md
       - Catalog:
         - Manage categories: manual/categories.md
         - View category details: manual/category-details.md
