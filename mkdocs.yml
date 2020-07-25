@@ -78,8 +78,8 @@ nav:
         - Manage categories: manual/categories.md
         - Category details: manual/category-details.md
       - Vouchers/Coupons:
-        - Built-in coupon types: manual/coupon-types.md
-        - View Coupon details: manual/coupon-details.md
+        - Available coupon: manual/coupons.md
+        - Coupon details: manual/coupon-details.md
         - Adding features: manual/coupon-decorators.md
       - Orders/Subscriptions:
         - Manage orders: manual/orders.md
