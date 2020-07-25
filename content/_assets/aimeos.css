@@ -1,17 +1,17 @@
 :root>* {
-	--md-default-fg-color:           #103050;
-	--md-default-fg-color--light:    #103050b0;
-	--md-default-fg-color--lighter:  #10305080;
-	--md-default-fg-color--lightest: #10305040;
+	--md-default-fg-color:             #103050;
+	--md-default-fg-color--light:      #103050b0;
+	--md-default-fg-color--lighter:    #10305080;
+	--md-default-fg-color--lightest:   #10305040;
 
-	--md-primary-fg-color:        #103050;
-	--md-primary-fg-color--light: #103050bb;
-	--md-primary-fg-color--dark:  #103050ff;
+	--md-primary-fg-color:             #103050;
+	--md-primary-fg-color--light:      #103050bb;
+	--md-primary-fg-color--dark:       #103050ff;
 
 	--md-accent-fg-color:              #ba9a5a;
 	--md-accent-fg-color--transparent: #ba9a5a20;
 
-	--md-text-link-color: #ba9a5a;
+	--md-text-link-color:              #ba9a5a;
 }
 
 .md-header {
@@ -109,6 +109,10 @@ select.md-header-nav__button:focus {
 
 .md-nav__item {
 	padding: 0.5rem 0;
+}
+
+.md-nav--secondary .md-nav__item {
+    padding: 0.25rem 0;
 }
 
 .md-nav__list .md-nav__list .md-nav__item {

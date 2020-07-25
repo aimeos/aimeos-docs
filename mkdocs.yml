@@ -11,7 +11,13 @@ markdown_extensions:
       permalink: '#'
   - def_list
   - admonition
-  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
   - pymdownx.superfences
 plugins:
   - search
@@ -24,7 +30,7 @@ theme:
   font:
     text: Noto Sans
 extra_css:
-  - _assets/css/aimeos.css
+  - _assets/aimeos.css
 extra_javascript:
   - /docs/versions.js
 extra:
