@@ -26,7 +26,7 @@ theme:
 extra_css:
   - _assets/css/aimeos.css
 extra_javascript:
-  - _assets/js/aimeos.js
+  - /docs/versions.js
 extra:
   disqus: aimeos
   social:
