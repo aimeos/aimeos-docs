@@ -76,7 +76,7 @@ nav:
         - Product details: manual/product-details.md
       - Catalog:
         - Manage categories: manual/categories.md
-        - View category details: manual/category-details.md
+        - Category details: manual/category-details.md
       - Vouchers/Coupons:
         - Built-in coupon types: manual/coupon-types.md
         - View Coupon details: manual/coupon-details.md
