@@ -1,16 +1,18 @@
-:root {
-	--md-default-fg-color:               #103050;
-	--md-default-fg-color--light:        #103050b0;
-	--md-default-fg-color--lighter:      #10305080;
-	--md-default-fg-color--lightest:     #10305040;
+:root>* {
+	--md-default-fg-color:           #103050;
+	--md-default-fg-color--light:    #103050b0;
+	--md-default-fg-color--lighter:  #10305080;
+	--md-default-fg-color--lightest: #10305040;
 
 	--md-primary-fg-color:        #103050;
 	--md-primary-fg-color--light: #103050bb;
 	--md-primary-fg-color--dark:  #103050ff;
 
-	--md-accent-fg-color:                #ba9a5a;
-	--md-accent-fg-color--transparent:   #ba9a5a20;
-  }
+	--md-accent-fg-color:              #ba9a5a;
+	--md-accent-fg-color--transparent: #ba9a5a20;
+
+	--md-text-link-color: #ba9a5a;
+}
 
 .md-header {
 	position: static;
@@ -64,7 +66,7 @@
 
 select.md-header-nav__button {
 	width: 75%;
-	margin: inherit auto;
+	margin: 0.2rem auto;
 	border: none;
 	border-radius: 0;
 	border-bottom: 1px solid #10305040;
