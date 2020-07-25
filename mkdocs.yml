@@ -81,9 +81,8 @@ nav:
         - Available coupon: manual/coupons.md
         - Coupon details: manual/coupon-details.md
         - Adding features: manual/coupon-decorators.md
-      - Orders/Subscriptions:
-        - Manage orders: manual/orders.md
-        - Manage subscriptions: manual/subscriptions.md
+      - Orders: manual/orders.md
+      - Subscriptions: manual/subscriptions.md
   - Frontend:
     - HTML:
       - Overview: frontend/html/index.md
