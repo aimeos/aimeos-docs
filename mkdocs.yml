@@ -68,8 +68,8 @@ nav:
         - Service details: manual/service-details.md
         - Adding features: manual/service-decorators.md
       - Basket plugins:
-        - Built-in plugins: manual/plugins.md
-        - View plugins details: manual/plugins-details.md
+        - Available plugins: manual/plugins.md
+        - Plugins details: manual/plugin-details.md
     - Manage content:
       - Products:
         - List available products: manual/products.md
