@@ -131,3 +131,13 @@ select.md-header-nav__button:focus {
 .md-typeset dd {
 	margin: 0 0 0.5rem 1rem;
 }
+
+.md-clipboard {
+    top: 1px;
+    right: 1px;
+    height: 2em;
+    width: 2.3em;
+	padding: .4rem;
+	padding-bottom: 0.1rem;
+    background-color: var(--md-code-bg-color);
+}
