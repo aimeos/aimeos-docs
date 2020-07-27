@@ -94,7 +94,15 @@ nav:
       - Overview: frontend/html/index.md
       - Themes: frontend/html/themes.md
     - JSON API:
-      - Filter: frontend/jsonapi/filter.md
+      - Getting started: frontend/jsonapi/index.md
+      - Search basics: frontend/jsonapi/basics.md
+      - Catalog handling: frontend/jsonapi/catalog.md
+      - Manage baskets: frontend/jsonapi/baskets.md
+      - Basket products: frontend/jsonapi/basket-products.md
+      - Basket addresses: frontend/jsonapi/basket-addresses.md
+      - Basket services: frontend/jsonapi/basket-services.md
+      - Basket coupons: frontend/jsonapi/basket-coupons.md
+      - Manage orders: frontend/jsonapi/orders.md
     - Controller:
       - Product: frontend/controller/product.md
   - Admin backend:
@@ -108,3 +116,7 @@ nav:
   - Infrastructure:
     - Caching: infrastructure/caching.md
     - Logging: infrastructure/logging.md
+  - Changelog:
+    - 2019.x -> 2020.x : changelog/2020.x.md
+    - 2018.x -> 2019.x : changelog/2019.x.md
+    - 2017.x -> 2018.x : changelog/2018.x.md
