@@ -89,6 +89,187 @@ nav:
         - Adding features: manual/coupon-decorators.md
       - Orders: manual/orders.md
       - Subscriptions: manual/subscriptions.md
+  - Configuration:
+    - HTML clients:
+      - Account download: config/client-html/account-download.md
+      - Account favorite: config/client-html/account-favorite.md
+      - Account history: config/client-html/account-history.md
+      - Account index: config/client-html/account-index.md
+      - Account profile: config/client-html/account-profile.md
+      - Account subscription: config/client-html/account-subscription.md
+      - Account watch: config/client-html/account-watch.md
+      - Basket bulk: config/client-html/basket-bulk.md
+      - Basket cache: config/client-html/basket-cache.md
+      - Basket mini: config/client-html/basket-mini.md
+      - Basket related: config/client-html/basket-related.md
+      - Basket standard: config/client-html/basket-standard.md
+      - Catalog actions: config/client-html/catalog-actions.md
+      - Catalog attribute: config/client-html/catalog-attribute.md
+      - Catalog count: config/client-html/catalog-count.md
+      - Catalog detail: config/client-html/catalog-detail.md
+      - Catalog filter: config/client-html/catalog-filter.md
+      - Catalog lists: config/client-html/catalog-lists.md
+      - Catalog partials: config/client-html/catalog-partials.md
+      - Catalog product: config/client-html/catalog-product.md
+      - Catalog search: config/client-html/catalog-search.md
+      - Catalog selection: config/client-html/catalog-selection.md
+      - Catalog session: config/client-html/catalog-session.md
+      - Catalog social: config/client-html/catalog-social.md
+      - Catalog stage: config/client-html/catalog-stage.md
+      - Catalog stock: config/client-html/catalog-stock.md
+      - Catalog suggest: config/client-html/catalog-suggest.md
+      - Catalog supplier: config/client-html/catalog-supplier.md
+      - Catalog tree: config/client-html/catalog-tree.md
+      - Checkout confirm: config/client-html/checkout-confirm.md
+      - Checkout standard: config/client-html/checkout-standard.md
+      - Checkout update: config/client-html/checkout-update.md
+      - Common address: config/client-html/common-address.md
+      - Common cache: config/client-html/common-cache.md
+      - Common decorators: config/client-html/common-decorators.md
+      - Common partials: config/client-html/common-partials.md
+      - Common summary: config/client-html/common-summary.md
+      - Common template: config/client-html/common-template.md
+      - E-mail account: config/client-html/email-account.md
+      - E-mail common: config/client-html/email-common.md
+      - E-mail delivery: config/client-html/email-delivery.md
+      - E-mail payment: config/client-html/email-payment.md
+      - E-mail subscription: config/client-html/email-subscription.md
+      - E-mail voucher: config/client-html/email-voucher.md
+      - E-mail watch: config/client-html/email-watch.md
+      - Locale select: config/client-html/locale-select.md
+    - JSON REST API:
+      - Common: config/client-jsonapi/common.md
+      - Decorators: config/client-jsonapi/decorators.md
+      - Standard: config/client-jsonapi/standard.md
+      - URL: config/client-jsonapi/url.md
+      - Attribute: config/client-jsonapi/attribute.md
+      - Basket: config/client-jsonapi/basket.md
+      - Catalog: config/client-jsonapi/catalog.md
+      - Customer: config/client-jsonapi/customer.md
+      - Locale: config/client-jsonapi/locale.md
+      - Order: config/client-jsonapi/order.md
+      - Product: config/client-jsonapi/product.md
+      - Review: config/client-jsonapi/review.md
+      - Service: config/client-jsonapi/service.md
+      - Stock: config/client-jsonapi/stock.md
+      - Subscription: config/client-jsonapi/subscription.md
+      - Supplier: config/client-jsonapi/supplier.md
+    - Frontend controller:
+      - Attribute: config/controller-frontend/attribute.md
+      - Basket: config/controller-frontend/basket.md
+      - Catalog: config/controller-frontend/catalog.md
+      - Common: config/controller-frontend/common.md
+      - Customer: config/controller-frontend/customer.md
+      - Locale: config/controller-frontend/locale.md
+      - Order: config/controller-frontend/order.md
+      - Product: config/controller-frontend/product.md
+      - Review: config/controller-frontend/review.md
+      - Service: config/controller-frontend/service.md
+      - Stock: config/controller-frontend/stock.md
+      - Subscription: config/controller-frontend/subscription.md
+      - Supplier: config/controller-frontend/supplier.md
+    - JQAdm backend:
+      - Api: config/admin-jqadm/api.md
+      - Dataset: config/admin-jqadm/dataset.md
+      - Common: config/admin-jqadm/common.md
+      - Partial: config/admin-jqadm/partial.md
+      - Permissions: config/admin-jqadm/resource.md
+      - Template: config/admin-jqadm/template.md
+      - URL: config/admin-jqadm/url.md
+      - Attribute: config/admin-jqadm/attribute.md
+      - Catalog: config/admin-jqadm/catalog.md
+      - Coupon: config/admin-jqadm/coupon.md
+      - Customer: config/admin-jqadm/customer.md
+      - Dashboard: config/admin-jqadm/dashboard.md
+      - Group: config/admin-jqadm/group.md
+      - Locale: config/admin-jqadm/locale.md
+      - Log: config/admin-jqadm/log.md
+      - Order: config/admin-jqadm/order.md
+      - Plugin: config/admin-jqadm/plugin.md
+      - Product: config/admin-jqadm/product.md
+      - Service: config/admin-jqadm/service.md
+      - Subscription: config/admin-jqadm/subscription.md
+      - Supplier: config/admin-jqadm/supplier.md
+      - Type: config/admin-jqadm/type.md
+    - JsonAdm API:
+      - Common: config/admin-jsonadm/common.md
+      - Standard: config/admin-jsonadm/standard.md
+      - Decorators: config/admin-jsonadm/decorators.md
+      - Permissions: config/admin-jsonadm/resource.md
+      - URL: config/admin-jsonadm/url.md
+      - Attribute: config/admin-jsonadm/attribute.md
+      - Catalog: config/admin-jsonadm/catalog.md
+      - Coupon: config/admin-jsonadm/coupon.md
+      - Customer: config/admin-jsonadm/customer.md
+      - Locale: config/admin-jsonadm/locale.md
+      - Media: config/admin-jsonadm/media.md
+      - Order: config/admin-jsonadm/order.md
+      - Partials: config/admin-jsonadm/partials.md
+      - Plugin: config/admin-jsonadm/plugin.md
+      - Price: config/admin-jsonadm/price.md
+      - Product: config/admin-jsonadm/product.md
+      - Service: config/admin-jsonadm/service.md
+      - Stock: config/admin-jsonadm/stock.md
+      - Supplier: config/admin-jsonadm/supplier.md
+      - Text: config/admin-jsonadm/text.md
+    - Job controller:
+      - Admin cache: config/controller-jobs/admin-cache.md
+      - Admin log: config/controller-jobs/admin-log.md
+      - Attribute import: config/controller-jobs/attribute-import.md
+      - Catalog export: config/controller-jobs/catalog-export.md
+      - Catalog import: config/controller-jobs/catalog-import.md
+      - Common: config/controller-jobs/common.md
+      - Coupon import: config/controller-jobs/coupon-import.md
+      - Customer email: config/controller-jobs/customer-email.md
+      - Customer import: config/controller-jobs/customer-import.md
+      - Index optimize: config/controller-jobs/index-optimize.md
+      - Index rebuild: config/controller-jobs/index-rebuild.md
+      - Media scale: config/controller-jobs/media-scale.md
+      - Order cleanup: config/controller-jobs/order-cleanup.md
+      - Order email: config/controller-jobs/order-email.md
+      - Order export: config/controller-jobs/order-export.md
+      - Order service: config/controller-jobs/order-service.md
+      - product bought: config/controller-jobs/product-bought.md
+      - product export: config/controller-jobs/product-export.md
+      - Product import: config/controller-jobs/product-import.md
+      - Stock import: config/controller-jobs/stock-import.md
+      - Subcription process: config/controller-jobs/subcription-process.md
+      - Subscription export: config/controller-jobs/subscription-export.md
+      - Subscription process: config/controller-jobs/subscription-process.md
+      - Supplier import: config/controller-jobs/supplier-import.md
+      - XML import: config/controller-jobs/xml-import.md
+    - Common controller:
+      - Decorators: config/controller-jobs/common.md
+      - Media: config/controller-common/media.md
+      - Order: config/controller-common/order.md
+    - MShop:
+      - Attribute: config/mshop/attribute-manager.md
+      - Catalog: config/mshop/catalog-manager.md
+      - Common: config/mshop/common-manager.md
+      - Coupon: config/mshop/coupon-manager.md
+      - Customer: config/mshop/customer-manager.md
+      - Index: config/mshop/index-manager.md
+      - Locale: config/mshop/locale-manager.md
+      - Media: config/mshop/media-manager.md
+      - Order: config/mshop/order-manager.md
+      - Plugin: config/mshop/plugin-manager.md
+      - Price: config/mshop/price-manager.md
+      - Product: config/mshop/product-manager.md
+      - Review: config/mshop/review-manager.md
+      - Service: config/mshop/service-manager.md
+      - Stock: config/mshop/stock-manager.md
+      - Subscription: config/mshop/subscription-manager.md
+      - Supplier: config/mshop/supplier-manager.md
+      - Tag: config/mshop/tag-manager.md
+      - Text: config/mshop/text-manager.md
+      - Coupon provider: config/mshop/coupon-provider.md
+      - Plugin provider: config/mshop/plugin-provider.md
+      - Service provider: config/mshop/service-provider.md
+    - MAdmin:
+      - Cache: config/madmin/cache-manager.md
+      - Common: config/madmin/common-manager.md
+      - Job: config/madmin/job-manager.md
+      - Log: config/madmin/log-manager.md
   - Frontend:
     - HTML:
       - Overview: frontend/html/index.md
