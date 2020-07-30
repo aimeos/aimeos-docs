@@ -1,8 +1,10 @@
 Before you can retrieve the product items, you have to get to know the product resource endpoint via the OPTIONS request. Depending on the used routes it might be something like:
 
 ```bash
-curl -X OPTIONS http://localhost:8000/jsonapi
+curl -X OPTIONS 'http://localhost:8000/jsonapi'
 ```
+
+The response will contain the required endpoints you have to use:
 
 ```json
 {
@@ -21,6 +23,38 @@ curl -X OPTIONS http://localhost:8000/jsonapi
 
 Have a look at [retrieving an OPTIONS request](index.md#retrieve-meta-data) for more details.
 
+For each endpoint, you can use an OPTIONS request to get the supported filter and sort keys:
+
+```bash
+curl -X OPTIONS 'http://localhost:8000/jsonapi/product'
+```
+
+It also returns the [prefix](index.md#nested-parameters) you have to use if the value is not `null` and the base URL for media files:
+
+```json
+{
+"meta": {
+    "prefix": null,
+    "content-baseurl": "http://localhost:8000/",
+    "filter": {
+        "f_search": {
+        "label": "Return products whose text matches the user input",
+        "type": "string",
+        "default": "",
+        "required": false
+        },
+    },
+    "sort": {
+        "relevance": {
+            "label": "Sort products by their category position",
+            "type": "string",
+            "default": true,
+            "required": false
+        }
+    }
+}
+```
+
 # Fetch products
 
 Now you can retrieve product data directly via the "product" resource you get from the OPTIONS response. As the full, unsorted list of products isn't very helpful for users, you should offer the possibilities to search for products, list them by categories and filter them by their attributes in a faceted search.
@@ -28,8 +62,9 @@ Now you can retrieve product data directly via the "product" resource you get fr
 Independent of how you filter products, you will always get back a JSON object like this if you use:
 
 ```bash
-curl -X GET http://localhost:8000/jsonapi/product?include=attribute,media,price,product,product/property,text
-curl -X GET http://localhost:8000/jsonapi/product?ai[include]=attribute,media,price,product,product/property,text
+# include attribute, media, price, product, product/property, text
+# as well as category, supplier and stock items
+curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price,product,product/property,text,catalog,supplier,stock'
 ```
 
 ```json
@@ -92,6 +127,21 @@ curl -X GET http://localhost:8000/jsonapi/product?ai[include]=attribute,media,pr
                 "data": [{
                     "id": "228", "type": "text",
                     "attributes": {"product.lists.type": "default", ...}
+                }]
+            },
+            "catalog": {
+                "data": [{
+                    "id": "1", "type": "catalog"
+                }]
+            },
+            "supplier": {
+                "data": [{
+                    "id": "2", "type": "supplier"
+                }]
+            },
+            "stock": {
+                "data": [{
+                    "id": "1", "type": "stock"
                 }]
             }
         }
@@ -166,9 +216,44 @@ curl -X GET http://localhost:8000/jsonapi/product?ai[include]=attribute,media,pr
             "text.content": "This is the short description of the demo article.",
             "text.status": 1
         }
+    }, {
+        "id": "1",
+        "type": "catalog",
+        "attributes": {
+            "catalog.id": "1",
+            "catalog.code": "home",
+            "catalog.label": "Home",
+            "catalog.config": [],
+            "catalog.status": 1,
+            "catalog.target": "",
+            "catalog.hasChildren": true
+        }
+    }, {
+        "id": "2",
+        "type": "supplier",
+        "attributes": {
+            "supplier.id": "2",
+            "supplier.code": "demo-test2",
+            "supplier.label": "Test supplier 2",
+            "supplier.status": 1
+        }
+    }, {
+        "id": "1",
+        "type": "stock",
+        "attributes": {
+            "stock.id": "1",
+            "stock.productcode": "demo-article",
+            "stock.stocklevel": null,
+            "stock.timeframe": "",
+            "stock.dateback": null,
+            "stock.type": "default"
+        }
     }]
 }
 ```
+
+!!! note
+    Returning categories, suppliers and stock items in the product response is available since 2020.07
 
 # Sort product lists
 
@@ -181,12 +266,11 @@ Additional to the generic filter possibilities, the product lists can be easily 
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?sort=...
-	curl -X GET http://localhost:8000/jsonapi/product?ai[sort]=...
+	curl -X GET 'http://localhost:8000/jsonapi/product?sort=-ctime'
 	```
 === "jQuery"
 	```javascript
-	var params = {sort: '...'};
+	var params = {'sort': '-ctime'};
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -202,7 +286,7 @@ Additional to the generic filter possibilities, the product lists can be easily 
 	});
 	```
 
-Sorting by "relevance" is the default if no sort parameter is passed to the server.
+Sorting by "relevance" is the default if no sort parameter is passed to the server. You can also sort by other product fields, e.g. by the start date of the products using *&sort=product.datestart*
 
 # Search products by text
 
@@ -210,12 +294,15 @@ If you offer users a search field for products, you have to add the entered text
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?filter[f_search]=...
-	curl -X GET http://localhost:8000/jsonapi/product?ai[filter][f_search]=...
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_search\]=demo'
 	```
 === "jQuery"
 	```javascript
-	var params = {filter: {f_search: '...'}};
+	var params = {
+        'filter': {
+            'f_search': 'demo'
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -237,12 +324,15 @@ To enable users to filter products by price, you need to use the *index.price:va
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?filter[<][index.price:value("EUR")]=99.50
-	curl -X GET http://localhost:8000/jsonapi/product?ai[filter][<][index.price:value("EUR")]=99.50
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[<\]\[index.price:value("EUR")\]=99.50'
 	```
 === "jQuery"
 	```javascript
-	var params = {filter: {'<': {'index.price:value("EUR")': 99.50}}};
+    var params = {
+        'filter': {
+            '<': {'index.price:value("EUR")': 99.50}
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -262,17 +352,20 @@ Usually, you want to filter for a price range, so you need to pass an upper and 
 
 === "CURL"
 	```bash
-	# filter[&&][][>][index.price:value("EUR")]=50
-	# &filter[&&][][<][index.price:value("EUR")]=100
-	curl -X GET http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][index.price:value("EUR")]=50&filter[%26%26][][%3C][index.price:value("EUR")]=100
-	curl -X GET http://localhost:8000/jsonapi/product?ai[filter][%26%26][][%3E][index.price:value("EUR")]=50&ai[filter][%26%26][][%3C][index.price:value("EUR")]=100
+	# filter[&&][][>][index.price:value("EUR")]=100
+	# &filter[&&][][<][index.price:value("EUR")]=200
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%26%26\]\[\]\[%3E\]\[index.price:value("EUR")\]=100&filter\[%26%26\]\[\]\[%3C\]\[index.price:value("EUR")\]=200'
 	```
 === "jQuery"
 	```javascript
-	var params = {filter: {'&&': [
-		{'>': {'index.price:value("EUR")': 50}},
-		{'<': {'index.price:value("EUR")': 100}}
-	]}};
+	var params = {
+        'filter': {
+            '&&': [
+                {'>': {'index.price:value("EUR")': 100}},
+                {'<': {'index.price:value("EUR")': 200}}
+            ]
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -294,12 +387,11 @@ To display the category tree, you have to use the "catalog" resource returned by
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/catalog?include=catalog,media,text
-	curl -X GET http://localhost:8000/jsonapi/catalog?ai[include]=catalog,media,text
+	curl -X GET 'http://localhost:8000/jsonapi/catalog?include=catalog,media,text'
 	```
 === "jQuery"
 	```javascript
-	var params = {include: 'catalog,media,text'};
+	var params = {"include": 'catalog,media,text'};
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -324,8 +416,14 @@ This will return the root catalog node and its direct children as well as the te
         "id": "201",
         "type": "catalog",
         "links": {
-            "self": {"href": "http:\/\/localhost:8000\/jsonapi\/catalog\/201", "allow": ["GET"]},
-            "product": {"href": "http:\/\/localhost:8000\/jsonapi\/product?filter%5Bf_catid%5D=201", "allow": ["GET"]}
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=201",
+                "allow": ["GET"]
+            },
+            "product": {"
+                href": "http:\/\/localhost:8000\/jsonapi\/product?filter%5Bf_catid%5D=201",
+                "allow": ["GET"]
+            }
         },
         "attributes": {
             "catalog.id": "201",
@@ -348,12 +446,14 @@ This will return the root catalog node and its direct children as well as the te
         "id": "203",
         "type": "catalog",
         "links": {
-            "self": {"href": "http:\/\/localhost:8000\/jsonapi\/catalog\/203", "allow": ["GET"]}
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=203",
+                "allow": ["GET"]}
         },
         "attributes": {
             "catalog.id": "203",
             ...
-        }
+        },
         "relationships": {
             "media": {
                 "data": [
@@ -390,12 +490,15 @@ To get the products for a category, use the *f_catid* filter parameter:
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?filter[f_catid]=...
-	curl -X GET http://localhost:8000/jsonapi/product?ai[filter][f_catid]=...
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_catid\]=1'
 	```
 === "jQuery"
 	```javascript
-	var params = {filter: {f_catid: ...}};
+	var params = {
+        'filter': {
+            'f_catid': '1'
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -415,12 +518,16 @@ By default, the found products all use "default" as category list type. You can 
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?filter[f_catid]=...&filter[f_listtype]=promotion
-	curl -X GET http://localhost:8000/jsonapi/product?ai[filter][f_catid]=...&ai[filter][f_listtype]=promotion
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_catid\]=1&filter\[f_listtype\]=promotion'
 	```
 === "jQuery"
 	```javascript
-	var params = {filter: {f_catid: ...}};
+	var params = {
+        'filter': {
+            'f_catid': '1',
+            'f_listtype': 'promotion'
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -442,12 +549,11 @@ The product attributes for building the faceted search can be retrieved using th
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/attribute?include=media,text
-	curl -X GET http://localhost:8000/jsonapi/attribute?ai[include]=media,text
+	curl -X GET 'http://localhost:8000/jsonapi/attribute?include=media,text'
 	```
 === "jQuery"
 	```javascript
-	var params = {include: 'media,text'};
+	var params = {'include': 'media,text'};
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -473,7 +579,7 @@ This will return the first slice of attribute items as well as the texts and ima
         "type": "attribute",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/attribute\/32",
+                "href": "http:\/\/localhost:8000\/jsonapi\/attribute?id=32",
                 "allow": ["GET"]
             }
         },
@@ -490,14 +596,14 @@ This will return the first slice of attribute items as well as the texts and ima
         "relationships": {
             "media": {
                 "data": [{
-                    "id": "60", "type": "media"
-                    "attributes": {"attribute.list.type": "default"}
+                    "id": "60", "type": "media",
+                    "attributes": {"attribute.list.type": "default", ...}
                 }]
             },
             "text": {
                 "data": [{
-                    "id": "241", "type": "text"
-                    "attributes": {"attribute.list.type": "default"}
+                    "id": "241", "type": "text",
+                    "attributes": {"attribute.list.type": "default", ...}
                 }]
             }
         }
@@ -512,9 +618,12 @@ This will return the first slice of attribute items as well as the texts and ima
             "media.languageid": null,
             "media.mimetype": "image\/gif",
             "media.type": "default",
-            "media.typename": "Standard",
-            "media.preview": "relative/path/to/preview.jpg",
-            "media.url": "relative/path/to/original.jpg",
+            "media.previews": {
+                "1": "relative\/path\/to\/preview.jpg",
+                "250": "relative\/path\/to\/250-preview.jpg"
+            },
+            "media.preview": "relative\/path\/to\/preview.jpg",
+            "media.url": "relative\/path\/to\/original.jpg",
             "media.status": 1
         }
     }, {
@@ -523,7 +632,6 @@ This will return the first slice of attribute items as well as the texts and ima
         "attributes": {
             "text.id": "241",
             "text.languageid": "en",
-            "text.typename": "Name",
             "text.type": "name",
             "text.label": "Demo name\/en: Beige",
             "text.domain": "attribute",
@@ -542,12 +650,15 @@ If the user selects one or more of the attributes, you can get the corresponding
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?f_attrid[]=...&f_attrid[]=...
-	curl -X GET http://localhost:8000/jsonapi/product?ai[f_attrid][]=...&ai[f_attrid][]=...
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_attrid\]\[\]=1&filter\[f_attrid\]\[\]=3'
 	```
 === "jQuery"
 	```javascript
-	var params = {f_attrid: [...]};
+	var params = {
+        'filter': {
+            'f_attrid': ['1','3']
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -567,12 +678,15 @@ Instead of *f_attrid* which combines all attributes by an **AND** condition, you
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?f_optid[]=...&f_optid[]=...
-	curl -X GET http://localhost:8000/jsonapi/product?ai[f_optid][]=...&ai[f_optid][]=...
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_optid\]\[\]=1&filter\[f_optid\]\[\]=3'
 	```
 === "jQuery"
 	```javascript
-	var params = {f_optid: [...]};
+	var params = {
+        'filter': {
+            'f_optid': ['1','3']
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -592,15 +706,143 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?f_oneid[color][]=...&f_oneid[length][]=...
-	curl -X GET http://localhost:8000/jsonapi/product?ai[f_oneid][color][]=...&ai[f_oneid][length][]=...
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_oneid\]\[color\]\[\]=1&filter\[f_oneid\]\[length\]\[\]=3'
 	```
 === "jQuery"
 	```javascript
-	var params = {f_oneid: {
-		color: [...],
-		size: [...]
-	}};
+	var params = {
+        'filter': {
+            'f_oneid': {
+                'color': ['1'],
+                'size': ['3']
+            }
+        }
+    };
+
+	if(options.meta.prefix) { // returned from OPTIONS call
+		params[options.meta.prefix] = params;
+	}
+
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		url: options.meta.resources['product'], // returned from OPTIONS call
+		data: params
+	}).done( function( result ) {
+		console.log( result );
+	});
+	```
+
+# Suppliers for faceted search
+
+To fetch the suppliers for building the supplier facet, you should use the "supplier" resource returned by the OPTIONS method:
+
+=== "CURL"
+	```bash
+	curl -X GET 'http://localhost:8000/jsonapi/supplier?include=media,text'
+	```
+=== "jQuery"
+	```javascript
+	var params = {'include': 'media,text'};
+
+	if(options.meta.prefix) { // returned from OPTIONS call
+		params[options.meta.prefix] = params;
+	}
+
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		url: options.meta.resources['supplier'], // returned from OPTIONS call
+		data: params
+	}).done( function( result ) {
+		console.log( result );
+	});
+	```
+
+This will return the first slice of supplier items as well as the texts and images:
+
+```json
+{
+    ...,
+    "data": [{
+        "id": "1",
+        "type": "supplier",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/supplier?id=32",
+                "allow": ["GET"]
+            }
+        },
+        "attributes": {
+            "supplier.id": "1",
+            "supplier.code": "demo-test1",
+            "supplier.label": "Test supplier 1",
+            "supplier.status": 1
+        },
+        "relationships": {
+            "media": {
+                "data": [{
+                    "id": "8", "type": "media",
+                    "attributes": {"attribute.list.type": "default", ...}
+                }]
+            },
+            "text": {
+                "data": [{
+                    "id": "34", "type": "text",
+                    "attributes": {"attribute.list.type": "default", ...}
+                }]
+            }
+        }
+    }],
+    "included": [{
+        "id": "8",
+        "type": "media",
+        "attributes": {
+            "media.id": "8",
+            "media.domain": "supplier",
+            "media.label": "Supplier logo",
+            "media.languageid": null,
+            "media.mimetype": "image\/jpg",
+            "media.type": "default",
+            "media.previews": {
+                "1": "relative\/path\/to\/preview.jpg",
+                "250": "relative\/path\/to\/250-preview.jpg"
+            },
+            "media.preview": "relative\/path\/to\/preview.jpg",
+            "media.url": "relative\/path\/to\/original.jpg",
+            "media.status": 1
+        }
+    }, {
+        "id": "34",
+        "type": "text",
+        "attributes": {
+            "text.id": "34",
+            "text.languageid": "en",
+            "text.type": "name",
+            "text.label": "Demo supplier",
+            "text.domain": "supplier",
+            "text.content": "Demo supplier LLC",
+            "text.status": 1
+        }
+    }]
+}
+```
+
+# Get products by supplier
+
+If the user selects a supplier, you can get the corresponding products by adding a *f_supid* to the product URL:
+
+=== "CURL"
+	```bash
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_supid\]=1'
+	```
+=== "jQuery"
+	```javascript
+	var params = {
+        'filter': {
+            'f_supid': '1'
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -626,12 +868,11 @@ You can get the attribute counts by using the **aggregate** key and the correspo
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?aggregate=index.attribute.id
-	curl -X GET http://localhost:8000/jsonapi/product?ai[aggregate]=index.attribute.id
+	curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.attribute.id'
 	```
 === "jQuery"
 	```javascript
-	var params = {aggregate: 'index.attribute.id'};
+	var params = {'aggregate': 'index.attribute.id'};
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -668,12 +909,11 @@ In the same way you can get the product counts for the categories by using the *
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/product?aggregate=index.catalog.id
-	curl -X GET http://localhost:8000/jsonapi/product?ai[aggregate]=index.catalog.id
+	curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.catalog.id'
 	```
 === "jQuery"
 	```javascript
-	var params = {aggregate: 'index.catalog.id'};
+	var params = {'aggregate': 'index.catalog.id'};
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -702,18 +942,60 @@ This will return a list of "id" and "attributes" pairs where the value of "id" i
 }
 ```
 
-# Stock levels for products
+## Supplier count
 
-To retrieve the stock levels you need the value of the "product.code" attribute:
+To get the product counts for the suppliers, use the **aggregate** key and the corresponding *index.supplier.id* search key:
 
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/stock?filter=[s_prodcode][]=ABCD
-	curl -X GET http://localhost:8000/jsonapi/stock?ai[filter][s_prodcode][]=ABCD
+	curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.supplier.id'
 	```
 === "jQuery"
 	```javascript
-	var params = {filter: {s_prodcode: ['ABCD']}};
+	var params = {'aggregate': 'index.supplier.id'};
+
+	if(options.meta.prefix) { // returned from OPTIONS call
+		params[options.meta.prefix] = params;
+	}
+
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		url: options.meta.resources['product'], // returned from OPTIONS call
+		data: params
+	}).done( function( result ) {
+		console.log( result );
+	});
+	```
+
+This will return a list of "id" and "attributes" pairs where the value of "id" is the supplier ID and "attributes" is the number of products that are associated to the supplier:
+
+```javascript
+{
+    "meta": {
+        "total": 1
+    },
+    "data": [
+        {"id":1,"type":"index.supplier.id","attributes":"2"}
+    ]
+}
+```
+
+# Stock levels for products
+
+If you don't fetch the stock levels together with the products using *&include=stock*, you can retrieve the stock levels separately by using the value of the "product.code" attribute:
+
+=== "CURL"
+	```bash
+	curl -X GET 'http://localhost:8000/jsonapi/stock?filter\[s_prodcode\]\[\]=ABCD'
+	```
+=== "jQuery"
+	```javascript
+	var params = {
+        'filter': {
+            's_prodcode': ['ABCD']
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
@@ -756,15 +1038,18 @@ It returns the list of stock items for the given product codes:
 
 If the shop has different warehouses or local stores where customers can pick up their ordered products, you can use the *s_stocktype* parameter to fetch stock levels for different locations than the "default" one:
 
-
 === "CURL"
 	```bash
-	curl -X GET http://localhost:8000/jsonapi/stock?filter=[s_prodcode][]=ABCD&s_stocktype=...
-	curl -X GET http://localhost:8000/jsonapi/stock?ai[filter][s_prodcode][]=ABCD&ai[s_stocktype]=...
+	curl -X GET 'http://localhost:8000/jsonapi/stock?filter\[s_prodcode\]\[\]=ABCD&filter\[s_stocktype\]=berlin'
 	```
 === "jQuery"
 	```javascript
-	var params = {filter: {s_prodcode: ['ABCD']}};
+	var params = {
+        'filter': {
+            's_prodcode': ['ABCD'],
+            's_stocktype': 'berlin'
+        }
+    };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
 		params[options.meta.prefix] = params;
