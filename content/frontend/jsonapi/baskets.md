@@ -1,8 +1,22 @@
 To be able to retrieve the basket, you need the basket resource endpoint from the OPTIONS request. Depending on the used routes it might be something like:
 
-```bash
-curl -X OPTIONS https://localhost:8000/jsonapi
-```
+=== "CURL"
+	```bash
+	curl -b cookies.txt -c cookies.txt \
+	-X OPTIONS 'http://localhost:8000/jsonapi'
+	```
+=== "jQuery"
+	```javascript
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		url: 'http://localhost:8000/jsonapi'
+	}).done( function( result ) {
+		console.log( result.data );
+	});
+	```
+
+This will return a response like:
 
 ```json
 {
@@ -13,8 +27,8 @@ curl -X OPTIONS https://localhost:8000/jsonapi
         },
         "prefix": "ai",
         "resources": {
-            "attribute": "https://localhost:8000/jsonapi/attribute",
-            "basket": "https://localhost:8000/jsonapi/basket",
+            "attribute": "http://localhost:8000/jsonapi/attribute",
+            "basket": "http://localhost:8000/jsonapi/basket",
             ...
         }
     }
@@ -33,7 +47,8 @@ To retrieve the current basket content, you need to send a GET request to the ba
 
 === "CURL"
 	```bash
-	curl -X GET https://localhost:8000/jsonapi/basket?id=default
+	curl -b cookies.txt -c cookies.txt \
+	-X GET 'http://localhost:8000/jsonapi/basket'
 	```
 === "jQuery"
 	```javascript
@@ -46,7 +61,7 @@ To retrieve the current basket content, you need to send a GET request to the ba
 	});
 	```
 
-If the basket is empty, it will return only the basic basket properties but no products, addresses, service items or coupons. Important is that the same session cookie is sent with each request, which is normally the case. Otherwise, an empty basket is returned for every request. The response would be for example:
+If the basket is empty, it will return only the basic basket properties but no products, addresses, service items or coupons. Important is that the same session cookie is sent with each request. Otherwise, an empty basket is returned for every request, regardless of which action you've performed before. The response would be for example:
 
 ```json
 {
@@ -56,15 +71,14 @@ If the basket is empty, it will return only the basic basket properties but no p
         "content-baseurl": "/",
         "csrf": {
                 "name": "_token",
-                "value": ""
+                "value": "..."
             }
     },
     "links": {
         "self": {
             "href": "http://localhost:8000/jsonapi/basket",
             "allow": ["DELETE","GET","PATCH"]
-        },
-        // ...
+        }
     },
     "data": {
         "id": "default",
@@ -98,7 +112,8 @@ If the basket is empty, it will return only the basic basket properties but no p
 !!! tip
     You can create multiple baskets by passing different values for the "id" parameter, e.g.
 	```bash
-	curl -X GET https://localhost:8000/jsonapi/basket?id=second
+	curl -b cookies.txt -c cookies.txt \
+	-X GET 'http://localhost:8000/jsonapi/basket?id=second'
 	```
 
 # Modifiy the basket
@@ -113,23 +128,24 @@ The update the basket, you have to use the "self" link from a previous GET reque
 
 === "CURL"
 	```bash
-	curl -X PATCH https://localhost:8000/jsonapi/basket?id=default&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: { \
-		attributes: { \
-			"order.base.customerid": '...', \
-			"order.base.comment": "test comment", \
-			"order.base.customerref": "ABCD-1234" \
-		} \
+	curl -X PATCH 'http://localhost:8000/jsonapi/basket?id=default&_token=...' \
+	-H 'Content-Type: application/json' \
+	-b cookies.txt -c cookies.txt \
+	-d '{"data": {
+		"attributes": {
+			"order.base.customerid": "...",
+			"order.base.comment": "test comment",
+			"order.base.customerref": "ABCD-1234"
+		}
 	}}'
 	```
 === "jQuery"
 	```javascript
-	var params = {data: {
-		attributes: {
-			"order.base.customerid": '...', // from customer response (optional)
-			"order.base.comment": "test comment", // (optional)
-			"order.base.customerref": "ABCD-1234" // (optional)
+	var params = {'data': {
+		'attributes': {
+			'order.base.customerid': '...', // from customer response (optional)
+			'order.base.comment': 'test comment', // (optional)
+			'order.base.customerref': 'ABCD-1234' // (optional)
 		}
 	}};
 
@@ -159,7 +175,8 @@ Removing all items and properties from the basket (effectively wiping out the ba
 
 === "CURL"
 	```bash
-	curl -X DELETE https://localhost:8000/jsonapi/basket?id=default&_token=...
+	curl -b cookies.txt -c cookies.txt \
+	-X DELETE 'http://localhost:8000/jsonapi/basket?id=default&_token=...'
 	```
 === "jQuery"
 	```javascript
