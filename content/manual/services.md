@@ -234,16 +234,16 @@ testMode (boolean, optional)
 
 It supports these configuration options:
 
-omnipay.type (string, required)
+type (string, required)
 : Gateway name as defined by the [https://github.com/thephpleague/omnipay#payment-gateways Omnipay driver] (stated in the documentation of the driver)
 
-omnipay.address (boolean, optional)
+address (boolean, optional)
 : A value of "1" will send the customer address to the Stripe server for additional verification
 
-omnipay.authorize (boolean, optional)
+authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
-omnipay.onsite (boolean, optional)
+onsite (boolean, optional)
 : Use "1" if payment gateway requires that payment details are collected locally
 
 testMode (boolean, optional)
@@ -273,10 +273,10 @@ composer req "vdbelt/omnipay-oppwa:~3.0"
 
 It supports these configuration options:
 
-omnipay.type (string, required)
+type (string, required)
 : Must be "Oppwa"
 
-omnipay.onsite (boolean, required)
+onsite (boolean, required)
 : Must be "1"
 
 userId (string, required)
@@ -288,10 +288,10 @@ password (string, required)
 entityId (string, required)
 : Unique identifier for the payment account
 
-omnipay.address (boolean, optional)
+address (boolean, optional)
 : A value of "1" will send the customer address to the OPPWA server for additional verification
 
-omnipay.authorize (boolean, optional)
+authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
 testMode (boolean, optional)
@@ -308,10 +308,10 @@ composer req "academe/omnipay-payone:~3.0"
 
 The available configuration options are:
 
-omnipay.type (string, required)
+type (string, required)
 : Gateway name, "Payone_ShopFrontend" without quotation marks
 
-omnipay.address (boolean, optional)
+address (boolean, optional)
 : A value of "1" to pass the billing address to the payment gateway
 
 merchantId (string, required)
@@ -346,10 +346,10 @@ composer req "bummzack/omnipay-postfinance:~0.1"
 
 The available configuration options are:
 
-omnipay.type (string, required)
+type (string, required)
 : Gateway name, "Postfinance" without quotation marks
 
-omnipay.address (boolean, optional)
+address (boolean, optional)
 : A value of "1" to pass the billing address to the payment gateway
 
 pspId (string, required)
@@ -390,13 +390,13 @@ username (string, required)
 password (string, required)
 : API key from Projects -> My Projects -> <project name> -> General settings
 
-omnipay.type (string, required)
+type (string, required)
 : Gateway name, "Sofort" without quotation marks
 
-omnipay.authorize (boolean, required)
+authorize (boolean, required)
 : Always use "1" because the Sofort driver only supports this mode
 
-omnipay.address (boolean, optional)
+address (boolean, optional)
 : A value of "1" will send the customer address to the Sofort server for additional verification
 
 testMode (boolean, optional)
