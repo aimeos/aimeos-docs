@@ -4,37 +4,15 @@ There's also no common entry point to access the JSON API because it depends on 
 
 # Retrieve meta data
 
-The offered URLs to the resources depend on the application that hosts the Aimeos components. Therefore, you can't use fixed URLs like `http://localhost:8000/jsonapi/product/1`. Instead, you need to configure the base URL to the Aimeos JSON API of the instance you  want to connect to in your client application. Afterwards, you must use the OPTIONS method to retrieve the service description with the list of resources and their URLs, e.g.
+The offered URLs to the resources depend on the application that hosts the Aimeos components. Therefore, you can't use fixed URLs like `http://localhost:8000/jsonapi/product?id=1`. Instead, you need to configure the base URL to the Aimeos JSON API of the instance you  want to connect to in your client application. Afterwards, you must use the OPTIONS method to retrieve the service description with the list of resources and their URLs, e.g.
 
-```bash
-curl -X OPTIONS http://localhost:8000/jsonapi
-```
-
-It returns a JSON object containing the resources (those names are always the same and you can rely on them) and the corresponding URLs. An example response could be:
-
-```json
-{
-    "meta": {
-        "prefix": null,
-        "resources": {
-            "attribute": "http://localhost:8000/jsonapi/attribute",
-            ...
-            "product": "http://localhost:8000/jsonapi/product",
-            ...
-            "stock": "http://localhost:8000/jsonapi/stock",
-        }
-    }
-}
-```
-
-!!! warning
-    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. It's response will define the next possibilities.
-
-To access the products using jQuery for example, you must lookup the URL for the "product" resource key:
-
+=== "CURL"
+    ```bash
+    curl -X OPTIONS 'http://localhost:8000/jsonapi'
+    ```
 === "jQuery"
     ```javascript
-    var url = 'Base URL from config';
+    var url = 'http://localhost:8000/jsonapi'; // Base URL from config
 
     var promise = $.ajax( url, {
         method: "OPTIONS",
@@ -57,7 +35,27 @@ To access the products using jQuery for example, you must lookup the URL for the
     });
     ```
 
-Similarly, you can use every key defined in the `resources` object to retrieve the corresponding items.
+It returns a JSON object containing the resources (those names are always the same and you can rely on them) and the corresponding URLs, for example:
+
+```json
+{
+    "meta": {
+        "prefix": null,
+        "resources": {
+            "attribute": "http://localhost:8000/jsonapi/attribute",
+            ...
+            "product": "http://localhost:8000/jsonapi/product",
+            ...
+            "stock": "http://localhost:8000/jsonapi/stock",
+        }
+    }
+}
+```
+
+To access the products for example, you must lookup the URL for the "product" resource key. Similarly, you can use every key defined in the `resources` object to retrieve the corresponding items.
+
+!!! warning
+    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. It's response will define the next possibilities.
 
 # Nested parameters
 
@@ -71,7 +69,7 @@ To handle this case correctly, you must embed the GET parameters into another ob
 
 === "Javascript"
     ```javascript
-    var params = {resource: "product", id: "1"};
+    var params = {'resource': 'product', 'id': '1'};
 
     if( options.meta.prefix ) {
         params[options.meta.prefix] = params;
@@ -111,3 +109,9 @@ Also, the JSON API standard specifies an "errors" section in the JSON response t
 ```
 
 Each error item contains a "title" attribute that contains the error message for the user and the "detail" attribute including the stack trace for developers. You should show the error details because they are only helpful for developers.
+
+!!! note
+    The stack trace is only included if you enable debugging by configuring:
+    ```
+    client/jsonapi/debug = 1
+    ```

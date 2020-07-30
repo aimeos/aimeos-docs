@@ -1,16 +1,17 @@
 To fetch items from a resource, you need a GET request with the URL from the resource definition:
 
-```
-curl -X GET <resource URL returned by the OPTIONS request>
+```bash
+# resource URL returned by the OPTIONS request
+curl -X GET 'http://localhost:8000/jsonapi/product'
 ```
 
-Have a look at [retrieving an OPTIONS request](index.md#retrieve-meta-data) for more details.
+Please have a look at [retrieving an OPTIONS request](index.md#retrieve-meta-data) for more details.
 
 # Response structure
 
 All GET requests will return a JSON object with the structure defined by [jsonapi.org](http://jsonapi.org/):
 
-```javascript
+```json
 {
     "meta": {
          "total": 100
@@ -20,59 +21,51 @@ All GET requests will return a JSON object with the structure defined by [jsonap
         "prev": "http://localhost:8000/jsonapi/product?page[offset]=0",
         "next": "http://localhost:8000/jsonapi/product?page[offset]=25",
         "last": "http://localhost:8000/jsonapi/product?page[offset]=75",
-        "self": "http://localhost:8000/jsonapi/product?page[offset]=0",
+        "self": "http://localhost:8000/jsonapi/product?page[offset]=0"
     },
     "data": [ {
         "type": "product",
         "id": "1",
         "attributes": {
              "product.id": "1",
-             ...
              "product.status": "1"
         },
         "links": {
             "self": "http://localhost:8000/jsonapi/product/1"
         },
         "relationships": {
-            "product/property": [ {
+            "product/property": [{
                 "data": {
                     "id": "12",
                     "type": "product/property"
                 }
-            } ],
-            "text": [  {
+            }],
+            "text": [{
                 "data": {
                     "id": "9",
                     "type": "text",
                     "attributes": {
                         "product.lists.id": "5",
-                        ...
-                        "product.lists.refid": "9",
+                        "product.lists.refid": "9"
                     }
                 }
-            } ]
+            }]
         }
-    },
-    ...
-    ],
-    "included": [ {
+    }],
+    "included": [{
         "id": "12",
         "type": "product/property",
         "attributes": {
             "product.property.id": "12",
-            ...
-            "product.property.value": "1234-ABCD-5678",
+            "product.property.value": "1234-ABCD-5678"
     }, {
         "type": "text",
         "id": "9",
         "attributes": {
-           "text.id": "9",
-            ...
+            "text.id": "9",
             "text.content": "My product name"
         }
-    },
-    ...
-    ]
+    }]
 }
 ```
 
@@ -82,11 +75,14 @@ The **"meta"** section will always contain a "total" property on success. It's v
 
 In the **"included"** section all related items are listed if you told the server to hand them over in the same request as well. It's structure is the same as for the "data" section. For more information, please have a look into the [related resources](#include-related-resources) section.
 
-By default, the first 25 items available will be returned if no further GET parameters are sent along with the request. There are three parameters to modify that behavior:
+By default, the first 48 items available will be returned if no further GET parameters are sent along with the request. There are three parameters to modify that behavior:
 
 * filter (conditions to retrieve specific items)
 * sort (defines the order of the items in the result set)
 * page (contains "start" and "limit" for getting slices of the result set)
+
+!!! tip
+    For debugging, you can get a more human-readable output if you add *&pretty=1* at the end of the URLs.
 
 # Filtering the result
 
@@ -97,13 +93,14 @@ Additionally, you can use custom filters for each resource. The JSON API standar
 === "CURL"
     ```bash
     # filter[>][product.type]=select
-    curl -X GET "http://localhost:8000/jsonapi/product?filter[%3E][product.type]=select"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[filter][%3E][product.type]=select"
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%3E\]\[product.type\]=select'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        filter: {'>': {'product.type': 'select'}}
+        'filter': {
+            '>': {'product.type': 'select'}
+        }
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -140,16 +137,17 @@ To combine several conditions into one request, you can combine two or more "com
     ```bash
     # filter[&&][][>][product.type]=select
     # &filter[&&][][=~][product.label]=demo
-    curl -X GET "http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][product.type]=select&filter[%26%26][][%3D%7E][product.label]=demo"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[filter][%26%26][][%3E][product.type]=select&ai[filter][%26%26][][%3D%7E][product.label]=demo"
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%26%26\]\[\]\[%3E\]\[product.type\]=select&filter\[%26%26\]\[\]\[%3D%7E\]\[product.label\]=demo'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        filter: {'&&': [
-            {'>': {'product.type': 'select'}},
-            {'=~': {'product.label': 'demo'}}
-        ]}
+        'filter': {
+            '&&': [
+                {'>': {'product.type': 'select'}},
+                {'=~': {'product.label': 'demo'}}
+            ]
+        }
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -176,16 +174,17 @@ The negation is a special case because it only accepts one "compare" condition w
 
 === "CURL"
     ```bash
-    # filter[!][][=~][product.label]=demo
-    curl -X GET "http://localhost:8000/jsonapi/product?filter[%21][][%3D%7E][product.label]=demo"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[filter][%21][][%3D%7E][product.label]=demo"
+    # filter[!][][=~][product.code]=demo-s
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%21\]\[\]\[%3D%7E\]\[product.code\]=demo-s'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        filter: {'!': [
-            {'=~': {'product.label': 'demo'}}
-        ]}
+        'filter': {
+            '!': [
+                {'=~': {'product.code': 'demo-s'}}
+            ]
+        }
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -206,24 +205,25 @@ You can also create more complicated statements by nesting them like:
 
 === "CURL"
     ```bash
-    # filter[&&][][!][][=~][product.label]=demo
-    # &filter[&&][][||][][==][product.datestart]=
-    # &filter[&&][][||][][>][product.datestart]=2000-01-01 00:00:00
-    curl -X GET "http://localhost:8000/jsonapi/product?filter[%26%26][][%21][][%3D%7E][product.label]=demo&filter[%26%26][][%7C%7C][][%3D%3D][product.datestart]=&filter[%26%26][][%7C%7C][][%3E][product.datestart]=2000-01-01%2000:00:00"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[filter][%26%26][][%21][][%3D%7E][product.label]=demo&ai[filter][%26%26][][%7C%7C][][%3D%3D][product.datestart]=&ai[filter][%26%26][][%7C%7C][][%3E][product.datestart]=2000-01-01%2000:00:00"
+    # filter[&&][0][!][][=~][product.label]=demo
+    # &filter[&&][1][||][][==][product.datestart]=
+    # &filter[&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%26%26\]\[0\]\[%21\]\[\]\[%3D%7E\]\[product.label\]=demo&filter\[%26%26\]\[1\]\[%7C%7C\]\[\]\[%3D%3D\]\[product.datestart\]=&filter\[%26%26\]\[1\]\[%7C%7C\]\[\]\[%3E\]\[product.datestart\]=2000-01-01%2000:00:00'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        filter: {'&&': [
-            {'!': [
-                {'=~': {'product.label': 'demo'}}
-            ]},
-            {'||': [
-                {'==': {'product.datestart': null}},
-                {'>': {'product.datestart': '2000-01-01 00:00:00'}}
-            }
-        ]}
+        'filter': {
+            '&&': [
+                {'!': [
+                    {'=~': {'product.label': 'demo'}}
+                ]},
+                {'||': [
+                    {'==': {'product.datestart': null}},
+                    {'>': {'product.datestart': '2000-01-01 00:00:00'}}
+                }
+            ]
+        }
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -240,7 +240,7 @@ You can also create more complicated statements by nesting them like:
     });
     ```
 
-It combines the three expression by using the AND operator. In the second expression we tell the server that we want to get all items that doesn't start with "demo". The third expression is in this case an OR expression that specifies that "product.datestart" can be either be a null value or the start date must be after the beginning of the year 2000.
+It combines the three expression by using the AND operator. In the first expression we tell the server that we want to get all items whose code doesn't start with "demo-s". The second expression is in this case an OR expression that specifies that "product.datestart" can be either be a null value or the start date must be after the beginning of the year 2000.
 
 !!! warning
     Don't forget to [nest the parameters](index.md#nested-parameters) if a prefix is sent in the meta data!
@@ -253,13 +253,12 @@ Additionally, you can use the sort parameter and the items keys for generic sort
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?sort=product.label"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[sort]=product.label"
+    curl -X GET 'http://localhost:8000/jsonapi/product?sort=product.label'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        sort: 'product.label'
+        'sort': 'product.label'
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -280,13 +279,12 @@ This will return the results ordered by the product label. You can also tell the
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?sort=-product.label"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[sort]=-product.label"
+    curl -X GET 'http://localhost:8000/jsonapi/product?sort=-product.label'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        sort: '-product.label'
+        'sort': '-product.label'
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -307,13 +305,12 @@ Sorting by several keys is also possible if they are separated by a comma:
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?sort=-product.status,product.id"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[sort]=-product.status,product.id"
+    curl -X GET 'http://localhost:8000/jsonapi/product?sort=-product.status,product.id'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        sort: '-product.status,product.id'
+        'sort': '-product.status,product.id'
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -341,15 +338,14 @@ By default, only the first 25 items are returned if nothing else is specified. T
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?page[offset]=0&page[limit]=100"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[page][offset]=0&ai[page][limit]=100"
+    curl -X GET 'http://localhost:8000/jsonapi/product?page\[offset\]=0&page\[limit\]=2'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        page: {
-            offset: 0,
-            limit: 100
+        'page': {
+            'offset': 0,
+            'limit': 2
         }
     };
 
@@ -367,30 +363,32 @@ By default, only the first 25 items are returned if nothing else is specified. T
     });
     ```
 
-Thus, you will get the first 100 items instead. To get 100 items starting from the 300th one, simply increase the offset value:
+Thus, you will get the first 2 items instead.
+
+!!! tip
+    If more items are available, the first response automatically contains links for navigating through the results:
+    ```json
+    "links": {
+        "first": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
+        "prev": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
+        "next": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
+        "last": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
+        "self": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=2&page%5Blimit%5D=2"
+    }
+    ```
+
+To get the next 2 items starting from the 3rd one use the *next* link:
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?page[offset]=300&page[limit]=100"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[page][offset]=300&ai[page][limit]=100"
+    curl -X GET 'http://localhost:8000/jsonapi/product?page\[offset\]=2&page\[limit\]=2'
     ```
 === "jQuery"
     ```javascript
-    var params = {
-        page: {
-            offset: 300,
-            limit: 100
-        }
-    };
-
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
-
     $.ajax({
         method: "GET",
         dataType: "json",
-        url: options.meta.resources['product'], // returned from OPTIONS call
+        url: response.links.next, // returned from previous request
         data: params
     }).done( function( result ) {
         console.log( result.data );
@@ -406,13 +404,14 @@ If you only need the values of a few fields and want to reduce the amount of dat
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?fields[product]=product.id,product.label"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[fields][product]=product.id,product.label"
+    curl -X GET 'http://localhost:8000/jsonapi/product?fields\[product\]=product.id,product.label'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        fields: { product: "product.id,product.label" }
+        'fields': {
+            'product': 'product.id,product.label'
+        }
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -429,24 +428,23 @@ If you only need the values of a few fields and want to reduce the amount of dat
     });
     ```
 
-The generated request will then only return the ID and label of product items.
+The generated request will then only return the ID and label of product items:
 
 !!! warning
     Don't forget to [nest the parameters](index.md#nested-parameters) if a prefix is sent in the meta data!
 
 # Include related resources
 
-To minimize the number of requests, the Aimeos JSON API can add related resources to the response. For example, you can tell the server that it should not only return the list of products but also the texts and prices associated to these products. The JSON API uses the parameter "include" to specify the related resources:
+To minimize the number of requests, the Aimeos JSON API can add related resources to the response. For example, you can tell the server that it should not only return the list of products but also the texts associated to these products. The JSON API uses the parameter "include" to specify the related resources:
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?include=text,price"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[include]=text,price"
+    curl -X GET 'http://localhost:8000/jsonapi/product?include=text'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        include: 'text,price'
+        'include': 'text'
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -463,17 +461,134 @@ To minimize the number of requests, the Aimeos JSON API can add related resource
     });
     ```
 
-You can use the "include" parameter for all items that are associated via the lists to categories, products, services, attributes, media, prices and texts. This does also work for items from the same domain that have a parent/child relationship like product properties:
+This is return the texts associated to the products within the same request:
+
+```json
+{
+    "data": [{
+        "id": "1",
+        "type": "product",
+        "attributes": {
+            "product.id": "1",
+            "product.type": "default",
+            "product.code": "demo-article",
+            "product.label": "Demo article",
+            "product.status": 1,
+            "product.dataset": "",
+            "product.datestart": null,
+            "product.dateend": null,
+            "product.config": [],
+            "product.target": "",
+            "product.ctime": "2020-07-28 08:41:18"
+        },
+        "relationships": {
+            "text": {
+                "data": [{
+                    "id": "22",
+                    "type": "text",
+                    "attributes": {
+                        "product.lists.id": "16",
+                        "product.lists.domain": "text",
+                        "product.lists.refid": "22",
+                        "product.lists.datestart": null,
+                        "product.lists.dateend": null,
+                        "product.lists.config": [],
+                        "product.lists.position": 3,
+                        "product.lists.status": 1,
+                        "product.lists.type": "default"
+                    }
+                },{
+                    "id": "23",
+                    "type": "text",
+                    "attributes": {
+                        "product.lists.id": "17",
+                        "product.lists.domain": "text",
+                        "product.lists.refid": "23",
+                        "product.lists.datestart": null,
+                        "product.lists.dateend": null,
+                        "product.lists.config": [],
+                        "product.lists.position": 4,
+                        "product.lists.status": 1,
+                        "product.lists.type": "default"
+                    }
+                },{
+                    "id": "24",
+                    "type": "text",
+                    "attributes": {
+                        "product.lists.id": "18",
+                        "product.lists.domain": "text",
+                        "product.lists.refid": "24",
+                        "product.lists.datestart": null,
+                        "product.lists.dateend": null,
+                        "product.lists.config": [],
+                        "product.lists.position": 5,
+                        "product.lists.status": 1,
+                        "product.lists.type": "default"
+                    }
+                }]
+            }
+        }
+    }],
+    "included": [{
+        "id": "22",
+        "type": "text",
+        "attributes": {
+            "text.id": "22",
+            "text.languageid": "en",
+            "text.type": "name",
+            "text.label": "Demo name\/en: Demo article",
+            "text.domain": "product",
+            "text.content": "Demo article",
+            "text.status": 1
+        }
+    },{
+        "id": "23",
+        "type": "text",
+        "attributes": {
+            "text.id": "23",
+            "text.languageid": "en",
+            "text.type": "short",
+            "text.label": "Demo short\/en: This is the short description",
+            "text.domain": "product",
+            "text.content": "This is the short description of the demo article.",
+            "text.status": 1
+        }
+    },{
+        "id": "24",
+        "type": "text",
+        "attributes": {
+            "text.id": "24",
+            "text.languageid": "en",
+            "text.type": "long",
+            "text.label": "Demo long\/en: Add a detailed description",
+            "text.domain": "product",
+            "text.content": "Add a detailed description of the demo article that may be a little bit longer.",
+            "text.status": 1
+        }
+    }]
+}
+```
+
+You can use the "include" parameter for all items that are associated via the lists to one of these items:
+
+* catalog (categories)
+* product
+* service
+* attribute
+* media
+* price
+* text
+
+This does also work for items from the same domain that have a parent/child relationship like product properties:
 
 === "CURL"
     ```bash
-    curl -X GET "http://localhost:8000/jsonapi/product?include=text,product/property"
-    curl -X GET "http://localhost:8000/jsonapi/product?ai[include]=text,product/property"
+    curl -X GET 'http://localhost:8000/jsonapi/product?include=product/property'
     ```
 === "jQuery"
     ```javascript
     var params = {
-        include: 'text,product/property'
+        'include': 'product/property'
     };
 
 	if(options.meta.prefix) { // returned from OPTIONS call
@@ -490,8 +605,83 @@ You can use the "include" parameter for all items that are associated via the li
     });
     ```
 
-Then, the text items associated via the list table would be returned as well as the properties directly attached to the products.
+Then, the properties directly attached to the products will be returned:
 
+```json
+{
+    "data": [{
+        "id": "1",
+        "type": "product",
+        "attributes": {
+            "product.id": "1",
+            "product.type": "default",
+            "product.code": "demo-article",
+            "product.label": "Demo article",
+            "product.status": 1,
+            "product.dataset": "",
+            "product.datestart": null,
+            "product.dateend": null,
+            "product.config": [],
+            "product.target": "",
+            "product.ctime": "2020-07-28 08:41:18"
+        },
+        "relationships": {
+            "product\/property": {
+                "data": [{
+                    "id": "1",
+                    "type": "product\/property"
+                },{
+                    "id": "2",
+                    "type": "product\/property"
+                },{
+                    "id": "3",
+                    "type": "product\/property"
+                },{
+                    "id": "4",
+                    "type": "product\/property"
+                }]
+            }
+        }
+    }],
+    "included": [{
+        "id": "1",
+        "type": "product\/property",
+        "attributes": {
+            "product.property.id": "1",
+            "product.property.languageid": null,
+            "product.property.value": "20.00",
+            "product.property.type": "package-length"
+        }
+    },{
+        "id": "2",
+        "type": "product\/property",
+        "attributes": {
+            "product.property.id": "2",
+            "product.property.languageid": null,
+            "product.property.value": "10.00",
+            "product.property.type": "package-width"
+        }
+    },{
+        "id": "3",
+        "type": "product\/property",
+        "attributes": {
+            "product.property.id": "3",
+            "product.property.languageid": null,
+            "product.property.value": "5.00",
+            "product.property.type": "package-height"
+        }
+    },{
+        "id": "4",
+        "type": "product\/property",
+        "attributes": {
+            "product.property.id": "4",
+            "product.property.languageid": null,
+            "product.property.value": "2.5",
+            "product.property.type": "package-weight"
+        }
+    }]
+}
+```
 
 !!! warning
     Don't forget to [nest the parameters](index.md#nested-parameters) if a prefix is sent in the meta data!
