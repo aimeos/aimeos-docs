@@ -1,43 +1,27 @@
-Products can be added and removed from the basket as well as some attributes of each product entry in the basket changed. For the start, you need to [fetch one or more products](basics.md) using the product resource from the [OPTIONS response](index.md):
-
-```bash
-curl -X GET http://localhost:8000/jsonapi/product
-```
+Products can be added and removed from the basket as well as some attributes of each product entry in the basket changed. For the start, you need to [fetch one or more products](basics.md) using the product resource from the [OPTIONS response](index.md).
 
 Each listed product will contain the link how it could be added to the basket:
 
 ```json
 {
-    "meta": {
-        // ...
-    },
-    "links": {
-        "self": "http://localhost/jsonapi/product"
-    },
     "data": [{
         "id": "1",
         "type": "product",
         "links": {
             "self": {
-                "href": "http://localhost/default/jsonapi/product?id=1",
+                "href": "http://localhost:8000/jsonapi/product?id=1",
                 "allow": ["GET"]
             },
             "basket\/product": {
-                "href": "http://localhost/default/jsonapi/basket?id=default&related=product",
+                "href": "http://localhost:8000/jsonapi/basket?id=default&related=product",
                 "allow": ["POST"]
             }
         },
-        "attributes": {
-            // ...
-        }
+    }]
 }
 ```
 
-The URL to add the product to the basket is in
-
-```javascript
-data[0]['links']['basket/product']['href']
-```
+The URL to add the product to the basket is in `data['links']['basket/product']['href']`
 
 !!! warning
     Don't take these URLs for granted! They change depending on the route configration and the application.
@@ -58,27 +42,28 @@ config
 custom
 : Map of attribute ID and custom value pairs for data entered by the customer (e.g. text)
 
-To add a product to the basket may look like this:
+To add a simple product to the basket may look like this:
 
 === "CURL"
 	```bash
-	curl -X POST http://localhost:8000/jsonapi/basket?id=default&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: [{ \
-		attributes: { \
-			"product.id": "...", \
-			quantity: 1, \
-			stocktype: "default" \
-		} \
+	curl -b cookies.txt -c cookies.txt \
+	-X POST 'http://localhost:8000/jsonapi/basket?id=default&related=product&_token=...' \
+	-H 'Content-Type: application/json' \
+	-d '{"data": [{
+		"attributes": {
+			"product.id": "1",
+			"quantity": 1,
+			"stocktype": "default"
+		}
 	}]}'
 	```
 === "jQuery"
 	```javascript
-	var data = {data: [{
-		attributes: {
-			"product.id": '...', // from product response
-			quantity: 1, // optional
-			stocktype: "default", // warehouse code (optional)
+	var data = {'data': [{
+		'attributes': {
+			'product.id': '1', // from product response
+			'quantity': 1, // optional
+			'stocktype': 'default', // warehouse code (optional)
 		}
 	}]};
 
@@ -111,7 +96,7 @@ Then, the response will contain an additional "relationships" entry in the baske
     },
     "links": {
         "self": {
-            "href": "http://127.0.0.1:8000/jsonapi/basket/default/product/",
+            "href": "http://127.0.0.1:8000/jsonapi/basket?id=default&related=product/",
             "allow": ["DELETE","GET","PATCH"]
         },
         // ...
@@ -121,7 +106,7 @@ Then, the response will contain an additional "relationships" entry in the baske
         "type": "basket",
         "links": {
             "self": {
-                "href": "http://127.0.0.1:8000/jsonapi/basket/default",
+                "href": "http://127.0.0.1:8000/jsonapi/basket?id=default",
                 "allow": ["DELETE", "GET", "PATCH", "POST"]
             }
         },
@@ -177,25 +162,169 @@ Then, the response will contain an additional "relationships" entry in the baske
 }
 ```
 
-For selection products, you have to pass the IDs of the variant attributes too, so the concrete article can be identified:
+## Selection products
+
+For selection products, you have to pass the ID of the selection product and one ID for each variant attribute type assiged to the article, so the concrete article can be identified. If you have a shirt as selection product which includes two colors, your product structure would look like this one:
+
+Shirt product (product.type: select)
+
+* Blue shirt article (product.type: default)
+    * variant attribute type: color
+	* variant attribute code: blue
+* Beige shirt article (product.type: default)
+    * variant attribute type: color
+	* variant attribute code: beige
+
+There's some documentation available how to [create selection products](../../manual/products.md#selections).
+
+You will get the selection product including its variant articles their attributes if you add *&include=product,attribute* to the product URL:
+
+```json
+{
+	"data": {
+		"id": "4",
+		"type": "product",
+		"attributes": {
+			"product.id": "4"
+		},
+		"relationships": {
+			"attribute": {
+				"data": [{
+					"id": "2",
+					"type": "product",
+					"attributes": {
+						"product.lists.id": "1",
+						"product.lists.domain": "product",
+						"product.lists.refid": "2",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 0,
+						"product.lists.status": 1,
+						"product.lists.type": "default"
+					}
+				},{
+					"id": "3",
+					"type": "product",
+					"attributes": {
+						"product.lists.id": "2",
+						"product.lists.domain": "product",
+						"product.lists.refid": "3",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 1,
+						"product.lists.status": 1,
+						"product.lists.type": "default"
+					}
+				}]
+			}
+		}
+	},
+	"included": [{
+		"id": "2",
+		"type": "product",
+		"attributes": {
+			"product.id": "2"
+		},
+		"relationships": {
+			"attribute": {
+				"data": [{
+					"id": "2",
+					"type": "attribute",
+					"attributes": {
+						"product.lists.id": "1",
+						"product.lists.domain": "attribute",
+						"product.lists.refid": "2",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 0,
+						"product.lists.status": 1,
+						"product.lists.type": "variant"
+					}
+				}]
+			}
+		}
+	},{
+		"id": "3",
+		"type": "product",
+		"attributes": {
+			"product.id": "3"
+		},
+		"relationships": {
+			"attribute": {
+				"data": [{
+					"id": "5",
+					"type": "attribute",
+					"attributes": {
+						"product.lists.id": "2",
+						"product.lists.domain": "attribute",
+						"product.lists.refid": "5",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 1,
+						"product.lists.status": 1,
+						"product.lists.type": "variant"
+					}
+				}]
+			}
+		}
+	},{
+		"id": "1",
+		"type": "attribute",
+		"attributes": {
+			"attribute.id": "1",
+			"attribute.domain": "product",
+			"attribute.type": "color",
+			"attribute.code": "demo-blue",
+			"attribute.label": "Demo: Blue",
+			"attribute.status": 1,
+			"attribute.position": 0
+		},
+	}, {
+		"id": "5",
+		"type": "attribute",
+		"attributes": {
+			"attribute.id": "5",
+			"attribute.domain": "product",
+			"attribute.type": "color",
+			"attribute.code": "demo-beige",
+			"attribute.label": "Demo: Beige",
+			"attribute.status": 1,
+			"attribute.position": 1
+		},
+	}]
+}
+```
+
+The included article products (*product.lists.domain*: **product** and *product.lists.type*: **default**) reference the variant attribute (*product.lists.domain*: **attribute** and *product.lists.type*: **variant**) for each article.
+
+Here, the attributes with the IDs "1" and "5" are the variant attributes because the *product.lists.type* in
+
+```relationships['attribute']['data'][*]['attributes']['product.lists.type']```
+
+is **variant** in the included articles. Pass the ID of the variant attribute the user has chosen in the request to the server:
 
 === "CURL"
 	```bash
-	curl -X POST http://localhost:8000/jsonapi/basket?id=default&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: [{ \
-		attributes: { \
-			"product.id": "...", \
-			variant: ["...", "..."], \
-		} \
+	curl -b cookies.txt -c cookies.txt \
+	-X POST 'http://localhost:8000/jsonapi/basket?id=default&related=product&_token=...' \
+	-H 'Content-Type: application/json' \
+	-d '{"data": [{
+		"attributes": {
+			"product.id": "4",
+			"variant": ["5"]
+		}
 	}]}'
 	```
 === "jQuery"
 	```javascript
-	var data = {data: [{
-		attributes: {
-			"product.id": '...', // from product response
-			variant: [], // variant attribute IDs for selection products
+	var data = {"data": [{
+		"attributes": {
+			"product.id": '4', // from product response
+			"variant": ['5'], // one variant attribute ID for each variant dimension
 		}
 	}]};
 
@@ -217,27 +346,110 @@ For selection products, you have to pass the IDs of the variant attributes too, 
 	});
 	```
 
-If the product contains configurable attributes which the customer can optionally choose from, the IDs of these configurable attributes and their quantities must be passed like this:
+!!! tip
+    The response for selection products tends to get big if all articles, texts, images and attributes are included. You can limit the returned fields using the [fields parameter](basics.md#return-specific-fields-only) and this work for the relationship fields too if you use *&fields[product/lists]=product.lists.type for example to return the type of the product resp. attribute relationship only.
+
+## Configurable options
+
+You also get the config attribute IDs from the product response if you've used *&include=attribute* and if there are configurable attribute options available:
+
+```json
+{
+	"data": {
+		"id": "1",
+		"type": "product",
+		"attributes": {
+			"product.id": "1"
+		},
+		"relationships": {
+			"attribute": {
+				"data": [{
+					"id": "2",
+					"type": "attribute",
+					"attributes": {
+						"product.lists.id": "3",
+						"product.lists.domain": "attribute",
+						"product.lists.refid": "2",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 0,
+						"product.lists.status": 1,
+						"product.lists.type": "config"
+					}
+				},{
+					"id": "6",
+					"type": "attribute",
+					"attributes": {
+						"product.lists.id": "4",
+						"product.lists.domain": "attribute",
+						"product.lists.refid": "6",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 1,
+						"product.lists.status": 1,
+						"product.lists.type": "config"
+					}
+				}]
+			}
+		}
+	},
+	"included": [{
+		"id": "2",
+		"type": "attribute",
+		"attributes": {
+			"attribute.id": "2",
+			"attribute.domain": "product",
+			"attribute.type": "print",
+			"attribute.code": "demo-print-small",
+			"attribute.label": "Demo: Small print",
+			"attribute.status": 1,
+			"attribute.position": 0
+		},
+	}, {
+		"id": "6",
+		"type": "attribute",
+		"attributes": {
+			"attribute.id": "6",
+			"attribute.domain": "product",
+			"attribute.type": "print",
+			"attribute.code": "demo-print-large",
+			"attribute.label": "Demo: Large print",
+			"attribute.status": 1,
+			"attribute.position": 1
+		},
+	}]
+}
+```
+
+The response contains two configurable attributes with the IDs "2" and "6" because the *product.lists.type* in
+
+```data['relationships']['attribute']['data'][*]['attributes']['product.lists.type']```
+
+is **config**. Now, add all of those configurable attribute IDs and their quantities (`"<id>"': <qty>` pairs) the user selected to the request. The example below adds the "large print" option with a quantity of "2" to the basket product:
 
 === "CURL"
 	```bash
-	curl -X POST http://localhost:8000/jsonapi/basket?id=default&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: [{ \
-		attributes: { \
-			"product.id": "...", \
-			config: {"...": 2, "...": 1}, \
-		} \
+	curl -b cookies.txt -c cookies.txt \
+	-X POST 'http://localhost:8000/jsonapi/basket?id=default&related=product&_token=...' \
+	-H 'Content-Type: application/json' \
+	-d '{"data": [{
+		"attributes": {
+			"product.id": "1",
+			"config": {
+				"6": 2
+			}
+		}
 	}]}'
 	```
 === "jQuery"
 	```javascript
-	var data = {data: [{
-		attributes: {
-			"product.id": '...', // from product response
-			config: { // config attribute IDs/quantity pairs
-				"...": 2,
-				"...": 1
+	var data = {'data': [{
+		'attributes': {
+			'product.id': '1', // from product response
+			'config': {
+				'6': 2 // config attribute IDs/quantity pairs
 			},
 		}
 	}]};
@@ -260,32 +472,139 @@ If the product contains configurable attributes which the customer can optionall
 	});
 	```
 
-Custom attributes are a way to add values like a date, a text or even a custom price to an ordered product. The IDs and values of custom attribute must be passed as key/value pairs:
+## Custom options
+
+Custom attributes are a way to add values like a date, a text or even a custom price to an ordered product. They are included in the product response if you've added *&include=attribute* and if there are custom attribute options available:
+
+```json
+{
+	"data": {
+		"id": "1",
+		"type": "product",
+		"attributes": {
+			"product.id": "6"
+		},
+		"relationships": {
+			"attribute": {
+				"data": [{
+					"id": "3",
+					"type": "attribute",
+					"attributes": {
+						"product.lists.id": "5",
+						"product.lists.domain": "attribute",
+						"product.lists.refid": "3",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 0,
+						"product.lists.status": 1,
+						"product.lists.type": "custom"
+					}
+				},{
+					"id": "4",
+					"type": "attribute",
+					"attributes": {
+						"product.lists.id": "6",
+						"product.lists.domain": "attribute",
+						"product.lists.refid": "4",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 0,
+						"product.lists.status": 1,
+						"product.lists.type": "custom"
+					}
+				},{
+					"id": "7",
+					"type": "attribute",
+					"attributes": {
+						"product.lists.id": "8",
+						"product.lists.domain": "attribute",
+						"product.lists.refid": "7",
+						"product.lists.datestart": null,
+						"product.lists.dateend": null,
+						"product.lists.config": [],
+						"product.lists.position": 0,
+						"product.lists.status": 1,
+						"product.lists.type": "custom"
+					}
+				}]
+			}
+		}
+	},
+	"included": [{
+		"id": "3",
+		"type": "attribute",
+		"attributes": {
+			"attribute.id": "3",
+			"attribute.domain": "product",
+			"attribute.type": "date",
+			"attribute.code": "custom",
+			"attribute.label": "Custom date",
+			"attribute.status": 1,
+			"attribute.position": 0
+		},
+	}, {
+		"id": "4",
+		"type": "attribute",
+		"attributes": {
+			"attribute.id": "4",
+			"attribute.domain": "product",
+			"attribute.type": "price",
+			"attribute.code": "custom",
+			"attribute.label": "Custom price",
+			"attribute.status": 1,
+			"attribute.position": 0
+		},
+	}, {
+		"id": "7",
+		"type": "attribute",
+		"attributes": {
+			"attribute.id": "7",
+			"attribute.domain": "product",
+			"attribute.type": "text",
+			"attribute.code": "custom",
+			"attribute.label": "Custom text",
+			"attribute.status": 1,
+			"attribute.position": 0
+		},
+	}]
+}
+```
+
+Now we have three possible custom attributes with the IDs "3", "4" and "7" because the *product.lists.type* in
+
+```data['relationships']['attribute']['data'][*]['attributes']['product.lists.type']```
+
+is **custom**. To add all of those configurable attribute IDs and their values (`"<id>": "<value>"` pairs) the user entered use a request like that:
+
+The IDs and values of custom attribute must be passed as key/value pairs:
 
 === "CURL"
 	```bash
-	curl -X POST http://localhost:8000/jsonapi/basket?id=default&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: [{ \
-		attributes: { \
-			"product.id": "...", \
-			custom: { \
-				"...", "2020-01-01", \
-				"...", "100.00", \
-				"...", "Happy birthday" \
-			}, \
-		} \
+	curl -b cookies.txt -c cookies.txt \
+	-X POST 'http://localhost:8000/jsonapi/basket?id=default&related=product&_token=...' \
+	-H 'Content-Type: application/json' \
+	-d '{"data": [{
+		"attributes": {
+			"product.id": "6",
+			"custom": {
+				"3": "2020-01-01",
+				"4": "100.00",
+				"7": "Happy birthday"
+			}
+		}
 	}]}'
 	```
 === "jQuery"
 	```javascript
-	var data = {data: [{
-		attributes: {
-			"product.id": '...', // from product response
-			custom: { // custom attribute ID/value pairs
-				"...", "2020-01-01",
-				"...", "100.00",
-				"...", "Happy birthday"
+	var data = {'data': [{
+		'attributes': {
+			'product.id': '6', // from product response
+			'custom': { // custom attribute ID/value pairs
+				'3': '2020-01-01',
+				'4': '100.00',
+				'7': 'Happy birthday'
 			}
 		}
 	}]};
@@ -308,8 +627,6 @@ Custom attributes are a way to add values like a date, a text or even a custom p
 	});
 	```
 
-The attributes will also be updated to reflect the price of the products in the basket.
-
 # Edit products
 
 To edit already added products in the basket, you can send a PATCH request to the URL listed in the links section of the ordered product. In the response before it's:
@@ -327,21 +644,22 @@ Editing products in the basket should be similar to this one:
 
 === "CURL"
 	```bash
-	curl -X PATCH http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: [{ \
-		attributes: { \
-			quantity: 2 \
-			stocktype: "default" \
-		} \
-	}]}'
+	curl -b cookies.txt -c cookies.txt \
+	-X PATCH 'http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0&_token=...' \
+	-H 'Content-Type: application/json' \
+	-d '{"data": {
+		"attributes": {
+			"quantity": "2",
+			"stocktype": "default"
+		}
+	}}'
 	```
 === "jQuery"
 	```javascript
-	var params = {data: {
-		attributes: {
-			quantity: 2,
-			stocktype: "default" // optional
+	var params = {'data': {
+		'attributes': {
+			'quantity': 2,
+			'stocktype': 'default' // optional
 		}
 	}};
 
@@ -375,7 +693,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
     },
     "links": {
         "self": {
-            "href": "http://127.0.0.1:8000/jsonapi/basket/default/product/",
+            "href": "http://127.0.0.1:8000/jsonapi/basket?id=default&related=product/",
             "allow": ["DELETE","GET","PATCH"]
         },
         // ...
@@ -385,7 +703,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
         "type": "basket",
         "links": {
             "self": {
-                "href": "http://127.0.0.1:8000/jsonapi/basket/default",
+                "href": "http://127.0.0.1:8000/jsonapi/basket?id=default",
                 "allow": ["DELETE", "GET", "PATCH", "POST"]
             }
         },
@@ -456,7 +774,8 @@ The code for the DELETE request itself is fairly simple:
 
 === "CURL"
 	```bash
-	curl -X DELETE http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0&_token=...
+	curl -b cookies.txt -c cookies.txt \
+	-X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0&_token=...'
 	```
 === "jQuery"
 	```javascript
