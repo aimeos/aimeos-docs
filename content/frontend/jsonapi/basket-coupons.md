@@ -4,16 +4,17 @@ Coupon (or voucher) codes can be added to the basket by using the "basket/coupon
 
 === "CURL"
 	```bash
-	curl -X POST http://localhost:8000/jsonapi/basket?id=default&related=coupon&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: [{ \
-		id: "SALE1" \
+	curl -b cookies.txt -c cookies.txt \
+    -X POST 'http://localhost:8000/jsonapi/basket?id=default&related=coupon&_token=...' \
+	-H 'Content-Type: application/json' \
+    -d '{"data": [{
+		"id": "fixed"
 	}]}'
 	```
 === "jQuery"
 	```javascript
-	var params = {data: [{
-		id: "SALE1", // coupon code entered by the customer
+	var params = {"data": [{
+		"id": "fixed", // coupon code entered by the customer
 	}]};
 
 	var url = response['links']['basket/coupon']['href']; // from basket response
@@ -75,18 +76,18 @@ The response will then contain a new "relationships" section in the basket data 
             "basket/service": {
                 "data": [{
                     "type": "basket/coupon",
-                    "id": "SALE1"
+                    "id": "fixed"
                 }]
             }
         }
     },
     "included": [{
-        "id": "SALE1",
+        "id": "fixed",
         "type": "basket/coupon"
         },
         "links": {
             "self": {
-                "href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=SALE1",
+                "href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=fixed",
                 "allow": ["DELETE"]
             }
         }
@@ -103,7 +104,7 @@ If a coupon code does require one or more prerequisites and they aren't matched,
 Removing coupons from the basket is done by using a DELETE request to the URL of the coupon entry in the basket. In our example above, the URL is:
 
 ```
-http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=SALE1
+http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=fixed
 ```
 
 Deleting the coupon again would be:
@@ -111,7 +112,8 @@ Deleting the coupon again would be:
 
 === "CURL"
 	```bash
-	curl -X DELETE http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=SALE1&_token=...
+	curl -b cookies.txt -c cookies.txt \
+    -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=fixed&_token=...'
 	```
 === "jQuery"
 	```javascript
