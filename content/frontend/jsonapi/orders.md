@@ -5,30 +5,31 @@ Creating orders requires a complete basket, i.e. it contains at least one produc
 The first step to create an order is to persist the basket of the customer. This is done by a POST request to the basket URL. You obtain this URL either from the resource list of an OPTIONS response or from the basket response.
 
 === "CURL"
-	```bash
-	curl -X POST http://localhost:8000/jsonapi/basket&_token=...
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X POST 'http://localhost:8000/jsonapi/basket?_token=...'
+    ```
 === "jQuery"
-	```javascript
-	// basket URL returned from OPTIONS response
-	var url = response['meta']['resources']['basket'];
-	// or basket URL returned from basket response
-	var url = response['links']['self']['href'];
+    ```javascript
+    // basket URL returned from OPTIONS response
+    var url = response['meta']['resources']['basket'];
+    // or basket URL returned from basket response
+    var url = response['links']['self']['href'];
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json"
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json"
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 The response will then contain a basket ID value which is equivalent to the "order.base.id" attribute. Furthermore, it contains the link to create the order invoice in **response['links']['order']['href']**:
 
@@ -80,42 +81,52 @@ The response will then contain a basket ID value which is equivalent to the "ord
 }
 ```
 
+To mitigate DoS attacks, you can only create a limited number of orders from one IP address. The default configuration is 5 orders within 15 minutes. If you try to create more orders within this time frame, an error will be returned.
+
+* [controller/frontend/basket/limit-count](../../config/controller-frontend/basket.md#limit-count)
+* [controller/frontend/basket/limit-seconds](../../config/controller-frontend/basket.md#limit-seconds)
+
 # Create order invoice
 
 After saving the basket, you need to create an order invoice. For this, you must send a POST request to the "order" link listed in the response of the saved basket. In that request, the ID of the saved basket needs to be added as "order.baseid" value within the parameters sent with the POST request:
 
 === "CURL"
-	```bash
-	curl -X POST http://localhost:8000/jsonapi/order&_token=... \
-	-H "Content-Type: application/json"
-	-d '{data: {attributes: { \
-		"order.baseid": "..." \
-	}}}'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X POST 'http://localhost:8000/jsonapi/order?_token=...' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": {
+        "attributes": {
+            "order.baseid": "..."
+        }
+    }}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {data: {attributes: {
-		"order.baseid": response["data"]["id"], // generated ID returned in the basket POST response
-	}}};
+    ```javascript
+    var params = {'data': {
+        'attributes': {
+            "order.baseid": response["data"]["id"], // generated ID returned in the basket POST response
+        }
+    }};
 
-	// basket URL returned from basket response
-	var url = response['links']['order']['href'];
+    // basket URL returned from basket response
+    var url = response['links']['order']['href'];
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json",
-		data: JSON.stringify(params)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 The response will contain the data of the created order invoice item as well as the link to the next step. This can be either the URL to the payment gateway or to the thank you page and you can find it in **response['links']['process']['href']**:
 
@@ -145,14 +156,16 @@ The response will contain the data of the created order invoice item as well as 
                         "code": "invoiceid",
                         "required": true,
                         "default": 321,
-                        // ...
+                        "public": false,
+                        "type": "string"
                     },
                     "language": {
                         "code": "language",
                         "required": true,
                         "default": en,
-                        // ...
-                    },
+                        "public": false,
+                        "type": "string"
+                    }
                     // ...
                 }
             }
@@ -171,9 +184,12 @@ The response will contain the data of the created order invoice item as well as 
 }
 ```
 
-To mitigate DoS attacks, you can only create a limited number of orders from one IP address. The default configuration is five orders within five minutes. If you try to create more orders within this time frame, an error will be returned.
-
 Depending on the chosen payment, there might be entries in the "meta" section of the "process" URL. They will be relevant for the next step when you redirect the customer to the payment gateway.
+
+To mitigate DoS attacks, you can only create a limited number of invoices from one IP address. The default configuration is 5 orders within 15 minutes. If you try to create more orders within this time frame, an error will be returned.
+
+* [controller/frontend/order/limit-count](../../config/controller-frontend/order.md#limit-count)
+* [controller/frontend/order/limit-seconds](../../config/controller-frontend/order.md#limit-seconds)
 
 # Redirect to payment gateway
 
@@ -187,22 +203,40 @@ As you can see in the response above, the description of the required parameters
     "required": true,
     "default": 321,
     "public": false,
-    // ...
+    "type": "string"
 },
 ```
 
-The "code" contains the form parameter name and the "default" property the value that should be sent to the payment gateway. For all descriptions with "required" equals "true" but no default value, you have to show the customers a corresponding input field where they can enter e.g. their credit card number:
+Possible values for "type" are:
+
+boolean
+: True/false value (input of type "checkbox")
+
+string
+: Short text field (input)
+
+integer
+: Integer value (input of type "number" and no decimal places)
+
+date
+: Date selector (input of type "date")
+
+select
+: Select drop-down (with options from "default" property)
+
+
+The "code" contains the form parameter name and the "default" property the value that should be sent to the payment gateway. For all entries in the "meta" section with "public" equals "true", you have to show the customer a corresponding input field where they can enter e.g. their credit card number. All entries with "public" is "false" must be added as hidden input elements:
 
 === "jQuery"
-	```javascript
-	var form = $('<form/>');
+    ```javascript
+    var form = $('<form/>');
 
     // process URL returned in order POST response
-	form.attr('action', response['links']['process']['href']);
+    form.attr('action', response['links']['process']['href']);
     // from the order POST response
-	form.attr('method', response['links']['process']['allow'][0]);
+    form.attr('method', response['links']['process']['allow'][0]);
 
-	for(entry in response["data"]["links"]["process"]["meta"]) {
+    for(entry in response["data"]["links"]["process"]["meta"]) {
         // todo: translate code to readable string
         $('<label>' + entry['code'] + '</label>').appendTo(form);
 
@@ -216,29 +250,32 @@ The "code" contains the form parameter name and the "default" property the value
     }
 
     $('<button type="submit">Submit</button>').appendTo(form);
-	```
-
-!!! note
-    The parameters in the meta section that have to be posted to the payment gateway will also contain the URL to the checkout confirm page for redirecting the customer back to the shop. This is necessary as the payment gateway can't redirect to your Javascript application.
+    ```
 
 # Retrieve orders
 
-To get orders for a customer, the customer must be logged in. Then, you can retrieve the list of orders using the "order" endpoint:
+To get orders for a customer, the customer must be logged in.
+
+!!! tip
+    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+
+Then, you can retrieve the list of orders using the "order" endpoint:
 
 === "CURL"
-	```bash
-	curl -X GET http://localhost:8000/jsonapi/order
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X GET 'http://localhost:8000/jsonapi/order'
+    ```
 === "jQuery"
-	```javascript
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['order'] // returned from OPTIONS call
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    ```javascript
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['order'] // returned from OPTIONS call
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 To retrieve a single order only, you need to use the "self" link of the order item returned by the previous response. You can get the full order details by passing
 
@@ -249,25 +286,25 @@ order/base/address,order/base/coupon,order/base/product,order/base/service
 as *include* parameter:
 
 === "CURL"
-	```bash
-	curl -X GET http://localhost:8000/jsonapi/order?id=...&include=order/base/address,order/base/coupon,order/base/product,order/base/service
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/order?id=...&include=order/base/address,order/base/coupon,order/base/product,order/base/service'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
-		include: "order/base/address,order/base/coupon,order/base/product,order/base/service"
-	};
+    ```javascript
+    var params = {
+        include: "order/base/address,order/base/coupon,order/base/product,order/base/service"
+    };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['order'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['order'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
