@@ -347,7 +347,7 @@ is **variant** in the included articles. Pass the ID of the variant attribute th
 	```
 
 !!! tip
-    The response for selection products tends to get big if all articles, texts, images and attributes are included. You can limit the returned fields using the [fields parameter](basics.md#return-specific-fields-only) and this work for the relationship fields too if you use *&fields[product/lists]=product.lists.type for example to return the type of the product resp. attribute relationship only.
+    The response for selection products tends to get big if all articles, texts, images and attributes are included. You can limit the returned fields using the [fields parameter](basics.md#return-specific-fields-only) and this work for the relationship fields too if you use *&fields[product/lists]=product.lists.type* for example to return the type of the product resp. attribute relationship only.
 
 ## Configurable options
 
@@ -649,8 +649,7 @@ Editing products in the basket should be similar to this one:
 	-H 'Content-Type: application/json' \
 	-d '{"data": {
 		"attributes": {
-			"quantity": "2",
-			"stocktype": "default"
+			"quantity": "2"
 		}
 	}}'
 	```
@@ -658,8 +657,7 @@ Editing products in the basket should be similar to this one:
 	```javascript
 	var params = {'data': {
 		'attributes': {
-			'quantity': 2,
-			'stocktype': 'default' // optional
+			'quantity': 2
 		}
 	}};
 
