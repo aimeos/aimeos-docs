@@ -7,7 +7,7 @@ At first, you need to get the available delivery and payment options from the se
 === "CURL"
 	```bash
 	curl -b cookies.txt -c cookies.txt \
-	-X GET 'http://localhost:8000/jsonapi/service?filter\[cs_type\]=delivery&include=text,price,media'
+	-X GET 'http://localhost:8000/jsonapi/service?filter[cs_type]=delivery&include=text,price,media'
 	```
 === "jQuery"
 	```javascript

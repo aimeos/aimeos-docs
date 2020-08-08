@@ -93,7 +93,7 @@ Additionally, you can use custom filters for each resource. The JSON API standar
 === "CURL"
     ```bash
     # filter[>][product.type]=select
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%3E\]\[product.type\]=select'
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%3E][product.type]=select'
     ```
 === "jQuery"
     ```javascript
@@ -137,7 +137,7 @@ To combine several conditions into one request, you can combine two or more "com
     ```bash
     # filter[&&][][>][product.type]=select
     # &filter[&&][][=~][product.label]=demo
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%26%26\]\[\]\[%3E\]\[product.type\]=select&filter\[%26%26\]\[\]\[%3D%7E\]\[product.label\]=demo'
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][product.type]=select&filter[%26%26][][%3D%7E][product.label]=demo'
     ```
 === "jQuery"
     ```javascript
@@ -175,7 +175,7 @@ The negation is a special case because it only accepts one "compare" condition w
 === "CURL"
     ```bash
     # filter[!][][=~][product.code]=demo-s
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%21\]\[\]\[%3D%7E\]\[product.code\]=demo-s'
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%21][][%3D%7E][product.code]=demo-s'
     ```
 === "jQuery"
     ```javascript
@@ -208,7 +208,7 @@ You can also create more complicated statements by nesting them like:
     # filter[&&][0][!][][=~][product.label]=demo
     # &filter[&&][1][||][][==][product.datestart]=
     # &filter[&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%26%26\]\[0\]\[%21\]\[\]\[%3D%7E\]\[product.label\]=demo&filter\[%26%26\]\[1\]\[%7C%7C\]\[\]\[%3D%3D\]\[product.datestart\]=&filter\[%26%26\]\[1\]\[%7C%7C\]\[\]\[%3E\]\[product.datestart\]=2000-01-01%2000:00:00'
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][0][%21][][%3D%7E][product.label]=demo&filter[%26%26][1][%7C%7C][][%3D%3D][product.datestart]=&filter[%26%26][1][%7C%7C][][%3E][product.datestart]=2000-01-01%2000:00:00'
     ```
 === "jQuery"
     ```javascript
@@ -338,7 +338,7 @@ By default, only the first 25 items are returned if nothing else is specified. T
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/product?page\[offset\]=0&page\[limit\]=2'
+    curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=0&page[limit]=2'
     ```
 === "jQuery"
     ```javascript
@@ -381,7 +381,7 @@ To get the next 2 items starting from the 3rd one use the *next* link:
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/product?page\[offset\]=2&page\[limit\]=2'
+    curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=2&page[limit]=2'
     ```
 === "jQuery"
     ```javascript
@@ -404,7 +404,9 @@ If you only need the values of a few fields and want to reduce the amount of dat
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/product?fields\[product\]=product.id,product.label'
+    # product => product.id,product.label
+    # stock => stock.stocklevel
+    curl -X GET 'http://localhost:8000/jsonapi/product?fields[product]=product.id,product.label&fields[stock]=stock.stocklevel&include=stock'
     ```
 === "jQuery"
     ```javascript

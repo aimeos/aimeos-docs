@@ -294,7 +294,7 @@ If you offer users a search field for products, you have to add the entered text
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_search\]=demo'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_search]=demo'
 	```
 === "jQuery"
 	```javascript
@@ -324,7 +324,7 @@ To enable users to filter products by price, you need to use the *index.price:va
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[<\]\[index.price:value("EUR")\]=99.50'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[<][index.price:value("EUR")]=99.50'
 	```
 === "jQuery"
 	```javascript
@@ -354,7 +354,7 @@ Usually, you want to filter for a price range, so you need to pass an upper and 
 	```bash
 	# filter[&&][][>][index.price:value("EUR")]=100
 	# &filter[&&][][<][index.price:value("EUR")]=200
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[%26%26\]\[\]\[%3E\]\[index.price:value("EUR")\]=100&filter\[%26%26\]\[\]\[%3C\]\[index.price:value("EUR")\]=200'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][index.price:value("EUR")]=100&filter[%26%26][][%3C][index.price:value("EUR")]=200'
 	```
 === "jQuery"
 	```javascript
@@ -490,7 +490,7 @@ To get the products for a category, use the *f_catid* filter parameter:
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_catid\]=1'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1'
 	```
 === "jQuery"
 	```javascript
@@ -518,7 +518,7 @@ By default, the found products all use "default" as category list type. You can 
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_catid\]=1&filter\[f_listtype\]=promotion'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1&filter[f_listtype]=promotion'
 	```
 === "jQuery"
 	```javascript
@@ -650,7 +650,7 @@ If the user selects one or more of the attributes, you can get the corresponding
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_attrid\]\[\]=1&filter\[f_attrid\]\[\]=3'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_attrid][]=1&filter[f_attrid][]=3'
 	```
 === "jQuery"
 	```javascript
@@ -678,7 +678,7 @@ Instead of *f_attrid* which combines all attributes by an **AND** condition, you
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_optid\]\[\]=1&filter\[f_optid\]\[\]=3'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_optid][]=1&filter[f_optid][]=3'
 	```
 === "jQuery"
 	```javascript
@@ -706,7 +706,7 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_oneid\]\[color\]\[\]=1&filter\[f_oneid\]\[length\]\[\]=3'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_oneid][color][]=1&filter[f_oneid][length][]=3'
 	```
 === "jQuery"
 	```javascript
@@ -834,7 +834,7 @@ If the user selects a supplier, you can get the corresponding products by adding
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter\[f_supid\]=1'
+	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_supid]=1'
 	```
 === "jQuery"
 	```javascript
@@ -987,7 +987,7 @@ If you don't fetch the stock levels together with the products using *&include=s
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/stock?filter\[s_prodcode\]\[\]=ABCD'
+	curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD'
 	```
 === "jQuery"
 	```javascript
@@ -1040,7 +1040,7 @@ If the shop has different warehouses or local stores where customers can pick up
 
 === "CURL"
 	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/stock?filter\[s_prodcode\]\[\]=ABCD&filter\[s_stocktype\]=berlin'
+	curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD&filter[s_stocktype]=berlin'
 	```
 === "jQuery"
 	```javascript
