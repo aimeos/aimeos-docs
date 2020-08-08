@@ -36,11 +36,31 @@ There available fields for coupon codes are:
 Code (required)
 : A coupon code that is unique in the shop site and is able to identify only the coupon configuration its associated with. Good coupon codes are not two long and should avoid similar looking characters (e.g. zero and "O" or 1 and "l"). Please think twice before you really add codes with more than eight characters! If a code should be generally available, it's a good idea to create a descriptive code for your promotion. In the other case, if a lot of codes are generated and each code is exactly for one user, they must be random enough so they can't be guessed.
 
-Count (required)
-: The number of times the code can be redeemed. This can be "1" if only one customer should be able to do so or any other positive number. A value of zero disables the coupon code.
+Count (optional)
+: The number of times the code can be redeemed. This can be "1" if only one customer should be able to do so or any other positive number. A value of zero disables the coupon code und no value means that the code is available an unlimited number of times.
 
 Start date (optional)
 : The point in time when this coupon code can be entered by the customer. The date/time has to be in ISO format (YYYY-MM-DD HH:mm:ss) and the hours must be in the range of 0-23.
 
 End date (optional)
 : The point in time when the coupon code will expire. For this field the same format applies as for "Start date".
+
+## CSV upload
+
+There's also the possibility to upload CSV files with coupon codes when clicking on the the "+" symbol in the upper right corner of the coupon code list.
+
+![Import coupons](Admin-backend-coupon-add.png)
+
+The format of the uploaded file must be:
+
+```
+Code;Count;Start date;End date
+TEST1,1,2020-01-01 00:00.00,2020-12-31 23:59:59
+TEST2,1
+TEST3
+```
+
+The values for count, start date and end date are optional and using to value means no limitation of the coupon code in terms of the number of times it can be redeemed and time it is valid within.
+
+!!! note
+    To import the uploaded file, the "Coupon code import CSV" (*coupon/import/csv/code*) job must be executed regularly by a cronjob.

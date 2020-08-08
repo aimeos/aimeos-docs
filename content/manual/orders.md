@@ -6,8 +6,12 @@ The list view provides a paged list of all available orders, which can be [filte
 
 ![Order list](Admin-backend-order-list.png)
 
-You can also export all orders that match the current search filter by clicking on the download symbol in the right corner of the list header. This will create an export job that is executed by a cron job. Usually, the order export will be created within five minutes and is then available in the dashboard view.
+You can also export all orders that match the current search filter by clicking on the download symbol in the right corner of the list header. This will create an export job that is executed by a cron job and the order export will be available afterwards in the dashboard view. If you've added no restrictions in the [filter toolbar](filtering-lists.md), all orders of all pages will be exported.
 
+The format of the export can be configured using the [controller/jobs/order/export/csv/mapping](../config/controller-jobs/order-export.md#mapping)
+
+!!! note
+    To generate the order export file, you have to execute the "Order export CSV" (*order/export/csv*) job by a cronjob regularly.
 
 # Order details
 
