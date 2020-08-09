@@ -96,7 +96,7 @@ Then, the response will contain an additional "relationships" entry in the baske
     },
     "links": {
         "self": {
-            "href": "http://127.0.0.1:8000/jsonapi/basket?id=default&related=product/",
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=product/",
             "allow": ["DELETE","GET","PATCH"]
         },
         // ...
@@ -106,7 +106,7 @@ Then, the response will contain an additional "relationships" entry in the baske
         "type": "basket",
         "links": {
             "self": {
-                "href": "http://127.0.0.1:8000/jsonapi/basket?id=default",
+                "href": "http://localhost:8000/jsonapi/basket?id=default",
                 "allow": ["DELETE", "GET", "PATCH", "POST"]
             }
         },
@@ -691,7 +691,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
     },
     "links": {
         "self": {
-            "href": "http://127.0.0.1:8000/jsonapi/basket?id=default&related=product/",
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=product/",
             "allow": ["DELETE","GET","PATCH"]
         },
         // ...
@@ -701,7 +701,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
         "type": "basket",
         "links": {
             "self": {
-                "href": "http://127.0.0.1:8000/jsonapi/basket?id=default",
+                "href": "http://localhost:8000/jsonapi/basket?id=default",
                 "allow": ["DELETE", "GET", "PATCH", "POST"]
             }
         },
