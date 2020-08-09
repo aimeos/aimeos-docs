@@ -61,9 +61,17 @@ If the customer didn't authenticate himself yet, an empty customer item is retur
 		}
 	},
 	"links": {
-		"self": "http://127.0.0.1:8080/jsonapi/customer",
+		"self": "http://localhost:8080/jsonapi/customer",
 		"customer/address": {
-			"href": "http://127.0.0.1:8080/jsonapi/customer?related=address",
+			"href": "http://localhost:8080/jsonapi/customer?related=address",
+			"allow": ["GET","POST"]
+		},
+		"customer/property": {
+			"href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
+			"allow": ["GET","POST"]
+		},
+		"customer/relationships": {
+			"href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
 			"allow": ["GET","POST"]
 		}
 	},
@@ -72,7 +80,7 @@ If the customer didn't authenticate himself yet, an empty customer item is retur
 		"type": "customer",
 		"links": {
 			"self": {
-				"href": "http:\/\/127.0.0.1:8080\/jsonapi\/customer",
+				"href": "http:\/\/localhost:8080\/jsonapi\/customer",
 				"allow": ["DELETE","GET","PATCH"]
 			}
 		},
@@ -111,6 +119,108 @@ If the customer didn't authenticate himself yet, an empty customer item is retur
 
 !!! tip
     How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+
+For an authenticated user, the response will contain the account data and the groups assigned to the user:
+
+```json
+{
+	"meta": {
+	"total": 1,
+	"prefix": null,
+	"content-baseurl": "http://localhost:8000/",
+	"csrf": {
+		"name": "_token",
+		"value": "..."
+	}
+
+	},
+	"links": {
+		"self": "http://localhost:8000/jsonapi/customer",
+		"customer/address": {
+			"href": "http://localhost:8000/jsonapi/customer?id=2&related=address",
+			"allow": ["GET","POST"]
+		},
+		"customer/property": {
+			"href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
+			"allow": ["GET","POST"]
+		},
+		"customer/relationships": {
+			"href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
+			"allow": ["GET","POST"]
+		}
+	},
+	"data": {
+		"id": "2",
+		"type": "customer",
+		"links": {
+			"self": {
+				"href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
+				"allow": ["DELETE","GET","PATCH"]
+			}
+		},
+		"attributes": {
+			"customer.id": "2",
+			"customer.salutation": "mr",
+			"customer.company": "Test company",
+			"customer.vatid": "DE12345678",
+			"customer.title": "Dr.",
+			"customer.firstname": "Test",
+			"customer.lastname": "User",
+			"customer.address1": "Test street",
+			"customer.address2": "1",
+			"customer.address3": "2. floor",
+			"customer.postal": "12345",
+			"customer.city": "Test city",
+			"customer.state": "HH",
+			"customer.languageid": "de",
+			"customer.countryid": "DE",
+			"customer.telephone": "+49012345678",
+			"customer.email": "example@aimeos.org",
+			"customer.telefax": "+490123456789",
+			"customer.website": "https://aimeos.org",
+			"customer.longitude": 10.0,
+			"customer.latitude": 50.0,
+			"customer.label": "Test User",
+			"customer.code": "example@aimeos.org",
+			"customer.birthday": "2000-01-01",
+		},
+		"relationships": {
+			"customer\/group": {
+				"data": [{
+					"id": "1",
+					"type": "customer\/group",
+					"attributes": {
+						"customer.lists.id": "1",
+						"customer.lists.domain": "customer\/group",
+						"customer.lists.refid": "1",
+						"customer.lists.datestart": null,
+						"customer.lists.dateend": null,
+						"customer.lists.config": [],
+						"customer.lists.position": 0,
+						"customer.lists.status": 1,
+						"customer.lists.type": "default"
+					},
+					"links": {
+						"self": {
+							"href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
+							"allow": []
+						}
+					}
+				}]
+			}
+		}
+	},
+	"included": [{
+		"id": "1",
+		"type": "customer\/group",
+		"attributes": {
+			"customer.group.id": "1",
+			"customer.group.code": "admin",
+			"customer.group.label": "Administrator"
+		}
+	}]
+}
+```
 
 If you don't need all data, you can [limit the fields](basics.md#return-specific-fields-only) returned by adding *&fields[customer]=...* to the URL, e.g. "&fields[customer]=customer.code,customer.email".
 
@@ -229,10 +339,7 @@ In case the new account has been successfully created, the response will be simi
 	},
 	"links": {
 		"self": "http://localhost:8000/jsonapi/customer",
-		"customer/address": {
-			"href": "http://localhost:8000/jsonapi/customer?id=6&related=address",
-			"allow": ["GET","POST"]
-		}
+		// ...
 	},
 	"data": {
 		"id":"6",
@@ -362,18 +469,15 @@ The response will include the basic customer data including groups like in this 
 		}
 	},
 	"links": {
-		"self": "http://127.0.0.1:8000/jsonapi/customer?id=1",
-		"customer/address": {
-			"href": "http://127.0.0.1:8000/jsonapi/customer?id=2&related=address",
-			"allow": ["GET","POST"]
-		}
+		"self": "http://localhost:8000/jsonapi/customer?id=1",
+		// ...
 	},
 	"data": {
 		"id": "2",
 		"type": "customer",
 		"links": {
 			"self": {
-				"href": "http:\/\/127.0.0.1:8000\/jsonapi\/customer?id=2",
+				"href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
 				"allow": ["DELETE","GET","PATCH"]
 			}
 		},
@@ -423,7 +527,7 @@ The response will include the basic customer data including groups like in this 
 					},
 					"links": {
 						"self": {
-							"href": "http:\/\/127.0.0.1:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
+							"href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
 							"allow": ["DELETE","PATCH"]
 						}
 					}
