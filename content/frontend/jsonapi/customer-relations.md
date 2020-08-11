@@ -182,14 +182,29 @@ To add one or more relations to the authenticated customer, use a POST request i
 
 The fields that can be populated are:
 
-* customer.lists.domain (domain code up to 32 bytes, required)
-* customer.lists.type (type code up to 64 bytes, "default" if no value is passed)
-* customer.lists.refid (ID of the referenced domain item up to 36 bytes, required)
-* customer.lists.datestart (ISO datetime in "YYYY-MM-DD HH:mm:ss" format or null)
-* customer.lists.dateend (ISO datetime in "YYYY-MM-DD HH:mm:ss" format or null)
-* customer.lists.config (object of key/value pairs up to 64k bytes)
-* customer.lists.position (position in the list of relations, integer value)
-* customer.lists.status (status of the relation, integer value of -2:archived, -1:review, 0:disabled, 1:enabled)
+customer.lists.domain
+: Domain code up to 32 bytes, required
+
+customer.lists.type
+: Type code up to 64 bytes, "default" if no value is passed
+
+customer.lists.refid
+: ID of the referenced domain item up to 36 bytes, required
+
+customer.lists.datestart
+: ISO datetime in "YYYY-MM-DD HH:mm:ss" format or null
+
+customer.lists.dateend
+: ISO datetime in "YYYY-MM-DD HH:mm:ss" format or null
+
+customer.lists.config
+: Object of key/value pairs up to 64k bytes
+
+customer.lists.position
+: Position in the list of relations, integer value
+
+customer.lists.status
+: Status of the relation, integer value (-2:archived, -1:review, 0:disabled, 1:enabled)
 
 The request for creating a new relation looks similar to this one:
 
