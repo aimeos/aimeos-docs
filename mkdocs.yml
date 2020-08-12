@@ -66,29 +66,27 @@ nav:
       - Add translations:  start/developer/translations.md
   - User manual:
     - Filtering lists:  manual/filtering-lists.md
-    - Shop setup:
-      - Working with sites:  manual/working-with-sites.md
-      - Currencies/languages: manual/locales.md
-      - Payment/Delivery:
-        - Available services: manual/services.md
-        - Service details: manual/service-details.md
-        - Adding features: manual/service-decorators.md
-      - Basket plugins:
-        - Available plugins: manual/plugins.md
-        - Plugins details: manual/plugin-details.md
-    - Manage content:
-      - Products:
-        - Available products: manual/products.md
-        - Product details: manual/product-details.md
-      - Catalog:
-        - Manage categories: manual/categories.md
-        - Category details: manual/category-details.md
-      - Vouchers/Coupons:
-        - Available coupon: manual/coupons.md
-        - Coupon details: manual/coupon-details.md
-        - Adding features: manual/coupon-decorators.md
-      - Orders: manual/orders.md
-      - Subscriptions: manual/subscriptions.md
+    - Working with sites:  manual/working-with-sites.md
+    - Currencies/languages: manual/locales.md
+    - Products:
+      - Available products: manual/products.md
+      - Product details: manual/product-details.md
+    - Catalog:
+      - Manage categories: manual/categories.md
+      - Category details: manual/category-details.md
+    - Vouchers/Coupons:
+      - Available coupon: manual/coupons.md
+      - Coupon details: manual/coupon-details.md
+      - Adding features: manual/coupon-decorators.md
+    - Payment/Delivery:
+      - Available services: manual/services.md
+      - Service details: manual/service-details.md
+      - Adding features: manual/service-decorators.md
+    - Orders: manual/orders.md
+    - Subscriptions: manual/subscriptions.md
+    - Basket plugins:
+      - Available plugins: manual/plugins.md
+      - Plugins details: manual/plugin-details.md
   - Configuration:
     - HTML clients:
       - Account download: config/client-html/account-download.md
