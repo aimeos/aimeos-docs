@@ -51,12 +51,6 @@ tracking:
 
 nav:
   - Getting started:
-    - Laravel:
-      - Overview: start/laravel/index.md
-    - Symfony:
-      - Overview: start/symfony/index.md
-    - TYPO3:
-      - Overview: start/typo3/index.md
     - Development:
       - Architecture: start/developer/architecture.md
       - Dependency container: start/developer/context.md
@@ -269,9 +263,6 @@ nav:
       - Job: config/madmin/job-manager.md
       - Log: config/madmin/log-manager.md
   - Frontend:
-    - HTML:
-      - Overview: frontend/html/index.md
-      - Themes: frontend/html/themes.md
     - JSON API:
       - Getting started: frontend/jsonapi/index.md
       - Search basics: frontend/jsonapi/basics.md
@@ -288,18 +279,6 @@ nav:
       - Customer relations: frontend/jsonapi/customer-relations.md
       - Customer reviews: frontend/jsonapi/customer-reviews.md
       - Get reviews: frontend/jsonapi/reviews.md
-    - Controller
-  - Admin backend:
-    - HTML:
-      - Overview: backend/html/index.md
-    - JSON API:
-      - Filter: backend/jsonapi/filter.md
-  - Cronjobs: cronjobs.md
-  - Data storage:
-    - Working with managers: storage/working-with-manaagers.md
-  - Infrastructure:
-    - Caching: infrastructure/caching.md
-    - Logging: infrastructure/logging.md
   - Changelog:
     - 2019.x -> 2020.x : changelog/2020.x.md
     - 2018.x -> 2019.x : changelog/2019.x.md
