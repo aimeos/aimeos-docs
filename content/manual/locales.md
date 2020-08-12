@@ -1,8 +1,6 @@
-# Currencies and languages
-
 If you would like to provide your customers the possibility to choose between different languages and/or currencies, you have to configure the allowed combinations in the "Locale" panel.
 
-## List of available combiniations
+# List of available combiniations
 
 The list view displays the currently available combinations. You can add, edit or delete languages/currencies until the list fits your requirements. Be aware that products, attributes, etc. also need names/descriptions in the available languages and prices for the currencies. If they are not provided, the customers won't be able to buy the products.
 
@@ -10,7 +8,7 @@ The list view displays the currently available combinations. You can add, edit o
 
 The status, language ID and currency ID columns are rather self-explaining. The last column of each item manages the order of the languages and currencies in the frontend. The languages are sorted in ascending order by using the position column. If there are several currencies available for one language, these currencies will be listed in their select box and will also be ordered according to the position of the language/currency combination.
 
-## Detail view
+# Detail view
 
 ![Locale detail view](Admin-locale-detail.png)
 

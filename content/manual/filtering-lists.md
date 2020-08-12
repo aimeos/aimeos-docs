@@ -1,8 +1,6 @@
-# Filtering lists
-
 One of the main principles of interaction in the Aimeos administration interface is the concept of filtering list views. Almost all panels consist of a list view showing the records matching the selected filter criteria. By default, each panel has a standard filter matching all available records.
 
-## Global filter
+# Global filter
 
 ![Global filter on top of page](Admin-concepts-filtering-lists.png)
 
@@ -16,7 +14,7 @@ Its most important parts are the
 Located next to the input field is the "Search" button that starts filtering the list.
 
 
-## Fields to filter by
+# Fields to filter by
 
 ![Drop-down of filter options](Admin-concepts-filtering-lists7.png)
 
@@ -25,7 +23,7 @@ The drop-down containing the fields that you are able to filter depend on the pa
 There can be many fields in the list to filter, but the most important are always on the top. Fields that belong together are also grouped to find them more easily.
 
 
-## Filter operators
+# Filter operators
 
 ![Drop-down of filter operators](Admin-concepts-filtering-lists8.png)
 
@@ -59,13 +57,13 @@ after
 : Date is after the selected day
 
 
-## Filter toolbar
+# Filter toolbar
 
 ![Filter toolbar](Admin-concepts-filtering-lists3.png)
 
 Additionally to the global filter at the top right of the page, you can also add or select a filter criterium for each colum directly. The filter criteria are applied as soon as you click on the magnifier symbol on the right side. The "X" symbol resets all filters to their default values.
 
-## Paging toolbar
+# Paging toolbar
 
 ![Paging toolbar](Admin-concepts-filtering-lists6.png)
 
@@ -79,7 +77,7 @@ The paging toolbar consists of the
 * button to the last page
 * Drop-down for choosing the number of records per page
 
-## Changing columns shown
+# Changing columns shown
 
 ![Changing columns shown](Admin-concepts-filtering-lists5.png)
 
@@ -87,7 +85,7 @@ The most important columns are shown by default in the list view, but often ther
 
 Each list header contains an icon in the upper right corner, where the shown columns can be changed. Clicking on the icon opens the list of available columns, from where you can select or deselect columns by clicking on their names or checkboxes. To apply the changes and show the new columns in the list, you have to click on the column icon again to close the drop-down menu and click on the search button below (magnifier symbol).
 
-## Sorting columns
+# Sorting columns
 
 ![Sorting columns](Admin-concepts-filtering-lists4.png)
 
