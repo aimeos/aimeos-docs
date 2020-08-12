@@ -48,8 +48,7 @@ The response will then contain a new "relationships" section in the basket data 
         "self": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon",
             "allow": ["DELETE","GET"]
-        },
-        // ...
+        }
     },
     "data": {
         "id": "default",

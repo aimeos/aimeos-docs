@@ -21,8 +21,7 @@ The customer response can return more than the URLs for managing relations, it c
 		"customer/relationships": {
 			"href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
 			"allow": ["GET","POST"]
-		},
-		// ...
+		}
 	},
 	"data": {
 		"id": "2",
@@ -34,10 +33,8 @@ The customer response can return more than the URLs for managing relations, it c
 			}
 		},
 		"attributes": {
-			// ...
 		},
 		"relationships": {
-			// ...
 			"product": {
 				"data": [{
 					"id": "1",
@@ -174,10 +171,9 @@ To add one or more relations to the authenticated customer, use a POST request i
 		"customer/relationships": {
 			"href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
 			"allow": ["GET","POST"]
-		},
-		// ...
-	},
-	// ...
+		}
+	}
+}
 ```
 
 The fields that can be populated are:

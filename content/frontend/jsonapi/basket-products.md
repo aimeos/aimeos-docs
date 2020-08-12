@@ -98,8 +98,7 @@ Then, the response will contain an additional "relationships" entry in the baske
         "self": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=product/",
             "allow": ["DELETE","GET","PATCH"]
-        },
-        // ...
+        }
     },
     "data": {
         "id": "default",
@@ -693,8 +692,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
         "self": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=product/",
             "allow": ["DELETE","GET","PATCH"]
-        },
-        // ...
+        }
     },
     "data": {
         "id": "default",

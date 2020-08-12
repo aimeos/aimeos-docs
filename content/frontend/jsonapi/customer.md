@@ -338,8 +338,7 @@ In case the new account has been successfully created, the response will be simi
 		}
 	},
 	"links": {
-		"self": "http://localhost:8000/jsonapi/customer",
-		// ...
+		"self": "http://localhost:8000/jsonapi/customer"
 	},
 	"data": {
 		"id":"6",
@@ -469,8 +468,7 @@ The response will include the basic customer data including groups like in this 
 		}
 	},
 	"links": {
-		"self": "http://localhost:8000/jsonapi/customer?id=1",
-		// ...
+		"self": "http://localhost:8000/jsonapi/customer?id=1"
 	},
 	"data": {
 		"id": "2",

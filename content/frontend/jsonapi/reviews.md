@@ -11,8 +11,7 @@ The response will contain the required endpoints you have to use:
     "meta": {
         "prefix": null,
         "resources": {
-            "review": "http://localhost:8000/jsonapi/review",
-            // ...
+            "review": "http://localhost:8000/jsonapi/review"
         }
     }
 }

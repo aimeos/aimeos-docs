@@ -21,9 +21,9 @@ The customer response returnes the URLs for managing addresses:
 		"customer/address": {
 			"href": "http://localhost:8080/jsonapi/customer?related=address",
 			"allow": ["GET","POST"]
-		},
-		// ...
-	},
+		}
+	}
+}
 ```
 
 # Fetch adresses
@@ -124,8 +124,8 @@ You can add one or more addresses to the account of the currently authenticated 
 			"href": "http://localhost:8080/jsonapi/customer?related=address",
 				"allow": ["GET","POST"]
 		}
-	},
-	// ...
+	}
+}
 ```
 
 There are some address attributes that are suggested when adding an address:

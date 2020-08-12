@@ -21,9 +21,9 @@ The customer response returnes the URLs for managing properties:
 		"customer/property": {
 			"href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
 			"allow": ["GET","POST"]
-		},
-		// ...
-	},
+		}
+	}
+}
 ```
 
 # Fetch properties
@@ -102,8 +102,8 @@ To add one or more properties to the authenticated customer, use a POST request 
 			"href": "http://localhost:8080/jsonapi/customer?related=property",
 				"allow": ["GET","POST"]
 		}
-	},
-	// ...
+	}
+}
 ```
 
 These are the property fields you can use:

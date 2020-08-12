@@ -72,11 +72,9 @@ The response will then contain a basket ID value which is equivalent to the "ord
             "order.base.comment": "just a comment"
         },
         "relationships": {
-            // ...
         }
     },
     "included": [
-        // ...
     ]
 }
 ```
@@ -166,7 +164,6 @@ The response will contain the data of the created order invoice item as well as 
                         "public": false,
                         "type": "string"
                     }
-                    // ...
                 }
             }
         },
