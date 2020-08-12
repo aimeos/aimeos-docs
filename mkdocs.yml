@@ -278,14 +278,19 @@ nav:
       - Getting started: frontend/jsonapi/index.md
       - Search basics: frontend/jsonapi/basics.md
       - Catalog handling: frontend/jsonapi/catalog.md
-      - Manage baskets: frontend/jsonapi/baskets.md
+      - Basket management: frontend/jsonapi/baskets.md
       - Basket products: frontend/jsonapi/basket-products.md
       - Basket addresses: frontend/jsonapi/basket-addresses.md
       - Basket services: frontend/jsonapi/basket-services.md
       - Basket coupons: frontend/jsonapi/basket-coupons.md
-      - Manage orders: frontend/jsonapi/orders.md
-    - Controller:
-      - Product: frontend/controller/product.md
+      - Order management: frontend/jsonapi/orders.md
+      - Customer handling: frontend/jsonapi/customer.md
+      - Customer addresses: frontend/jsonapi/customer-addresses.md
+      - Customer properties: frontend/jsonapi/customer-properties.md
+      - Customer relations: frontend/jsonapi/customer-relations.md
+      - Customer reviews: frontend/jsonapi/customer-reviews.md
+      - Get reviews: frontend/jsonapi/reviews.md
+    - Controller
   - Admin backend:
     - HTML:
       - Overview: backend/html/index.md
