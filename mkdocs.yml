@@ -263,6 +263,17 @@ nav:
       - Job: config/madmin/job-manager.md
       - Log: config/madmin/log-manager.md
   - Frontend:
+    - HTML:
+      - Theme basics: frontend/html/theme-basics.md
+      - Adapt themes: frontend/html/adapt-themes.md
+      - Overwrite templates: frontend/html/overwrite-templates.md
+      - Template syntax: frontend/html/template-syntax.md
+      - Create subparts: frontend/html/create-subparts.md
+      - Implement components: frontend/html/implement-components.md
+      - Extend components: frontend/html/extend-components.md
+      - Checkout process: frontend/html/checkout-process.md
+      - Adapt price format: frontend/html/adapt-price-format.md
+      - Parameter names: frontend/html/parameter-names.md
     - JSON API:
       - Getting started: frontend/jsonapi/index.md
       - Search basics: frontend/jsonapi/basics.md
