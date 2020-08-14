@@ -119,14 +119,29 @@ Additionally, you can use custom filters for each resource. The JSON API standar
 
 This is known as the "polish" notation because the operator comes first and than the two operands (key and value). There are several operators available:
 
-* '=~' (%3D%7E) : Strings that starts with the given value
-* '~=' (%7E%3D) : Strings that contains the given value
-* '>' (%3E) : Greater than for date, date&time, integer and float values
-* '>=' (%3E%3D) : Greater than and equal for date, date&time, integer and float values
-* '<' (%3C) : Smaller than for date, date&time, integer and float values
-* '<=' (%3C%3D) : Smaller than and equal for date, date&time, integer and float values
-* '==' (%3D%3D) : Equal for boolean, date, date&time, integer, float and string values
-* '!=' (%21%3D) : Not equal for boolean, date, date&time, integer, float and string values
+**=~** (%3D%7E)
+: Strings that starts with the given value
+
+**~=** (%7E%3D)
+: Strings that contains the given value
+
+**>** (%3E)
+: Greater than for date, date&time, integer and float values
+
+**>=** (%3E%3D)
+: Greater than and equal for date, date&time, integer and float values
+
+**<** (%3C)
+: Smaller than for date, date&time, integer and float values
+
+**<=** (%3C%3D)
+: Smaller than and equal for date, date&time, integer and float values
+
+**==** (%3D%3D)
+: Equal for boolean, date, date&time, integer, float and string values
+
+**!=** (%21%3D)
+: Not equal for boolean, date, date&time, integer, float and string values
 
 !!! warning
     Don't forget to [nest the parameters](index.md#nested-parameters) if a prefix is sent in the meta data!
@@ -166,9 +181,14 @@ To combine several conditions into one request, you can combine two or more "com
 
 That would search for all product items which are selections AND whose labels starts with "demo". The available "combine" expressions are:
 
-* '&&' (%26%26) : Combines expressions using an AND operator
-* '||' (%7C%7C) : Combines expressions using an OR operator
-* '!' (%21) : Negates an expression
+**&&** (%26%26)
+: Combines expressions using an AND operator
+
+**||** (%7C%7C)
+: Combines expressions using an OR operator
+
+**!** (%21)
+: Negates an expression
 
 The negation is a special case because it only accepts one "compare" condition while the others require more than one condition. Nevertheless, the value of the negation operator must be an array like for the other "combine" operators:
 
