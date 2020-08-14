@@ -290,6 +290,14 @@ nav:
       - Customer relations: frontend/jsonapi/customer-relations.md
       - Customer reviews: frontend/jsonapi/customer-reviews.md
       - Get reviews: frontend/jsonapi/reviews.md
+  - Admin:
+    - JsonAdm API:
+      - Overview: admin/jsonadm/index.md
+      - Retrieve metadata: admin/jsonadm/metadata.md
+      - Search and filter: admin/jsonadm/search-filter.md
+      - Manage resources: admin/jsonadm/manage-resources.md
+      - Manage trees: admin/jsonadm/manage-trees.md
+      - Error handling: admin/jsonadm/error-handling.md
   - Changelog:
     - 2019.x -> 2020.x : changelog/2020.x.md
     - 2018.x -> 2019.x : changelog/2019.x.md
