@@ -298,6 +298,12 @@ nav:
       - Manage resources: admin/jsonadm/manage-resources.md
       - Manage trees: admin/jsonadm/manage-trees.md
       - Error handling: admin/jsonadm/error-handling.md
+  - Cronjobs:
+    - Available cronjobs: cronjobs/index.md
+    - Create job controller: cronjobs/create-job-controller.md
+    - Product CSV import: cronjobs/product-csv-import.md
+    - Category CSV import: cronjobs/catalog-csv-import.md
+    - Subscription processors: cronjobs/subscription-processors.md
   - Changelog:
     - 2019.x -> 2020.x : changelog/2020.x.md
     - 2018.x -> 2019.x : changelog/2019.x.md
