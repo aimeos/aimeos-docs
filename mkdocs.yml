@@ -51,6 +51,13 @@ tracking:
 
 nav:
   - Getting started:
+    - Laravel:
+      - Overview: start/laravel/laravel.md
+      - Customization: start/laravel/customize.md
+    - Symfony:
+      - Overview: start/symfony/index.md
+    - TYPO3:
+      - Overview: start/typo3/index.md
     - Development:
       - Architecture: start/developer/architecture.md
       - Dependency container: start/developer/context.md
@@ -65,7 +72,7 @@ nav:
     - Products:
       - Available products: manual/products.md
       - Product details: manual/product-details.md
-    - Catalog:
+    - Categories:
       - Manage categories: manual/categories.md
       - Category details: manual/category-details.md
     - Vouchers/Coupons:
@@ -304,6 +311,21 @@ nav:
     - Product CSV import: cronjobs/product-csv-import.md
     - Category CSV import: cronjobs/catalog-csv-import.md
     - Subscription processors: cronjobs/subscription-processors.md
+  - Providers:
+    - Service provider:
+      - Basics: providers/service/index.md
+      - Payment provider: providers/service/payment.md
+      - Delivery provider: providers/service/delivery.md
+      - Create decorators: providers/service/decorators.md
+      - Write unit tests: providers/service/unittests.md
+    - Basket plugins: providers/basket-plugins.md
+  - Infrastructure:
+    - Database: infrastructure/databases.md
+    - Migrations: infrastructure/schema-migrations.md
+    - Managing items: infrastructure/managing-items.md
+    - Filtering items: infrastructure/search-filter.md
+    - Extend managers: infrastructure/extend-managers.md
+    - Read/write files: infrastructure/read-write-files.md
   - Changelog:
     - 2019.x -> 2020.x : changelog/2020.x.md
     - 2018.x -> 2019.x : changelog/2019.x.md
