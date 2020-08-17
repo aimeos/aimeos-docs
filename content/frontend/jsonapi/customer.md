@@ -118,7 +118,7 @@ If the customer didn't authenticate himself yet, an empty customer item is retur
 ```
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 For an authenticated user, the response will contain the account data and the groups assigned to the user:
 
@@ -367,7 +367,7 @@ Only the ID of the newly created user account is returned for security reasons. 
 Once an account has been created and the user is logged in, the JSON API allows you to update the data in the user account.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 The request for changing data is very similar to creating a new user but it requires a PATCH request:
 
@@ -557,7 +557,7 @@ It's also possible to delete a user account and remove all associated data like 
 Every user can only delete his own account and he must be logged in to do so.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 For deleting the account use e.g.:
 

@@ -1,7 +1,7 @@
 Each customer account can store relations to other domains for different purposes, e.g. for favorite or watched products . The JSON REST API allows you to manage them for the authenticated user.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 The customer response can return more than the URLs for managing relations, it can also include the related items itself. Add the *include* parameter with the domain of the items you want to fetch, e.g. *&include=product* to get:
 

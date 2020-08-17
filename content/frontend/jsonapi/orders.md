@@ -254,7 +254,7 @@ The "code" contains the form parameter name and the "default" property the value
 To get orders for a customer, the customer must be logged in.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 Then, you can retrieve the list of orders using the "order" endpoint:
 

@@ -1,7 +1,7 @@
 Customers can view, add and update their own reviews using the JSON REST API but they need to authenticate themselves first.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at [Laravel Passport](https://laravel.com/docs/master/passport).
+    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 The customer response returnes the URLs for managing reviews:
 
