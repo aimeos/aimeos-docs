@@ -664,6 +664,7 @@ Adds a list of globally available decorators only to the catalog JQAdm client
 ```
 admin/jqadm/catalog/product/decorators/global = Array
 (
+    [0] => Index
 )
 ```
 

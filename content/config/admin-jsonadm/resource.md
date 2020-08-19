@@ -254,7 +254,8 @@ List of user groups that are allowed to manage customer group items
 admin/jsonadm/resource/customer/group/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -355,6 +356,80 @@ admin/jsonadm/resource/customer/property/type/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2018.07
+
+
+# index
+## attribute/groups
+
+```
+admin/jsonadm/resource/index/attribute/groups = Array
+(
+)
+```
+
+* Default: Array
+
+
+## catalog/groups
+
+```
+admin/jsonadm/resource/index/catalog/groups = Array
+(
+)
+```
+
+* Default: Array
+
+
+## groups
+
+List of user groups that are allowed to manage index items
+
+```
+admin/jsonadm/resource/index/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2020.10
+
+
+## price/groups
+
+```
+admin/jsonadm/resource/index/price/groups = Array
+(
+)
+```
+
+* Default: Array
+
+
+## supplier/groups
+
+```
+admin/jsonadm/resource/index/supplier/groups = Array
+(
+)
+```
+
+* Default: Array
+
+
+## text/groups
+
+```
+admin/jsonadm/resource/index/text/groups = Array
+(
+)
+```
+
+* Default: Array
 
 
 # locale

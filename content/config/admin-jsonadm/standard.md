@@ -43,6 +43,7 @@ admin/jsonadm/standard/template-delete = delete-standard
 * Default: delete-standard
 * Type: string - Relative path to the template creating the body for the DELETE method of the JSON API
 * Since: 2015.12
+* Since: 2020.10
 
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
@@ -58,6 +59,12 @@ should be replaced by the name of the new class.
 
 See also:
 
+* admin/jsonadm/standard/template-aggregate
+* admin/jsonadm/standard/template-get
+* admin/jsonadm/standard/template-patch
+* admin/jsonadm/standard/template-post
+* admin/jsonadm/standard/template-put
+* admin/jsonadm/standard/template-options
 * admin/jsonadm/standard/template-aggregate
 * admin/jsonadm/standard/template-get
 * admin/jsonadm/standard/template-patch
@@ -175,6 +182,7 @@ admin/jsonadm/standard/template-post = post-standard
 * Default: post-standard
 * Type: string - Relative path to the template creating the body for the POST method of the JSON API
 * Since: 2015.12
+* Since: 2020.10
 
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
@@ -190,6 +198,12 @@ should be replaced by the name of the new class.
 
 See also:
 
+* admin/jsonadm/standard/template-aggregate
+* admin/jsonadm/standard/template-get
+* admin/jsonadm/standard/template-patch
+* admin/jsonadm/standard/template-delete
+* admin/jsonadm/standard/template-put
+* admin/jsonadm/standard/template-options
 * admin/jsonadm/standard/template-aggregate
 * admin/jsonadm/standard/template-get
 * admin/jsonadm/standard/template-patch

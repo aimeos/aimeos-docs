@@ -143,7 +143,7 @@ Order limitation time frame in seconds
 controller/frontend/basket/limit-seconds = 31536000
 ```
 
-* Default: 300
+* Default: 900
 * Type: integer - Number of seconds to check orders within
 * Since: 2017.05
 

@@ -1280,12 +1280,13 @@ mshop/locale/manager/site/cleanup/shop/domains = Array
     [7] => plugin
     [8] => price
     [9] => product
-    [10] => tag
-    [11] => service
-    [12] => stock
-    [13] => subscription
-    [14] => supplier
-    [15] => text
+    [10] => review
+    [11] => tag
+    [12] => service
+    [13] => stock
+    [14] => subscription
+    [15] => supplier
+    [16] => text
 )
 ```
 

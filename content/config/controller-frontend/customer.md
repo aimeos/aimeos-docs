@@ -132,10 +132,10 @@ functionality for those users.
 Maximum number of customers within the time frame
 
 ```
-controller/frontend/customer/limit-count = 5
+controller/frontend/customer/limit-count = 3
 ```
 
-* Default: 5
+* Default: 3
 * Type: integer - Number of customer accounts allowed within the time frame
 * Since: 2017.07
 
@@ -155,10 +155,10 @@ See also:
 Customer account limitation time frame in seconds
 
 ```
-controller/frontend/customer/limit-seconds = 300
+controller/frontend/customer/limit-seconds = 14400
 ```
 
-* Default: 300
+* Default: 14400
 * Type: integer - Number of seconds to check customer accounts within
 * Since: 2017.07
 

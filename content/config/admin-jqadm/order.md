@@ -1,4 +1,16 @@
 
+# actions
+
+```
+admin/jqadm/order/actions = Array
+(
+    [order-export] => order-export
+)
+```
+
+* Default: Array
+
+
 # decorators
 ## excludes
 

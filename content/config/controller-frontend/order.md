@@ -108,27 +108,54 @@ See also:
 * controller/frontend/order/decorators/excludes
 * controller/frontend/order/decorators/global
 
+# limit-count
+
+Maximum number of invoices within the time frame
+
+```
+controller/frontend/order/limit-count = 1
+```
+
+* Default: 3
+* Type: integer - Number of orders allowed within the time frame
+* Since: 2020.10
+
+Creating new invoices is limited to avoid abuse and mitigate denial of
+service attacks. The number of invoices created within the time frame
+configured by "controller/frontend/invoices/limit-seconds" are counted
+before a new invoice of the same user (either logged in or identified
+by the IP address) is created. If the number of invoices is higher than
+the configured value, an error message will be shown to the user
+instead of creating a new invoice.
+
+See also:
+
+* controller/frontend/order/limit-seconds
+* controller/frontend/basket/limit-count
+* controller/frontend/basket/limit-seconds
+
 # limit-seconds
 
-Order limitation time frame in seconds
+Invoice limitation time frame in seconds
 
 ```
 controller/frontend/order/limit-seconds = 31536000
 ```
 
-* Default: 300
+* Default: 900
 * Type: integer - Number of seconds to check order items within
 * Since: 2017.05
 
-Creating new orders is limited to avoid abuse and mitigate denial of
-service attacks. Within the configured time frame, only one order
-item can be created per order base item. All orders for the order
+Creating new invoices is limited to avoid abuse and mitigate denial of
+service attacks. Within the configured time frame, only one invoice
+item can be created per order base item. All invoices for the order
 base item within the last X seconds are counted.  If there's already
 one available, an error message will be shown to the user instead of
 creating the new order item.
 
 See also:
 
+* controller/frontend/order/limit-count
 * controller/frontend/basket/limit-count
 * controller/frontend/basket/limit-seconds
 
