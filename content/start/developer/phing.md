@@ -1,4 +1,4 @@
-Currently we use [phing](http://www.phing.info) as build system and it makes it easy to run the unit tests or build the translation files for example.
+Currently we use [phing](https://www.phing.info) as build system and it makes it easy to run the unit tests or build the translation files for example.
 
 # Execute phing
 
@@ -41,7 +41,7 @@ testperf
 : Executes the performance tests
 
 check
-: Executes the [code sniffer](http://pear.php.net/manual/en/package.php.php-codesniffer.php)
+: Executes the [code sniffer](https://pear.php.net/manual/en/package.php.php-codesniffer.php)
 
 checkext
 : Executes the code sniffer for a specific extension directory given via "-Ddir=ext/<name>"

@@ -1,4 +1,4 @@
-Aimeos is hosted on Github which uses the "git" version control system to keep track of changes. If you would like to contribute to the Aimeos code base, this page contains a step by step description of what you have to do. For a detailed documentation about Git, please have a look at: <http://git-scm.com/doc>
+Aimeos is hosted on Github which uses the "git" version control system to keep track of changes. If you would like to contribute to the Aimeos code base, this page contains a step by step description of what you have to do. For a detailed documentation about Git, please have a look at: <https://git-scm.com/doc>
 
 # Create a Github account
 

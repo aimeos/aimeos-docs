@@ -180,7 +180,7 @@ For detailed information about the available methods, please have a look into th
 
 # Message queues
 
-If a request requires to do some tasks in the background, you can send it to a message queue and process it later. This prevents your request to run into the PHP memory or execution time limit and can be used to offload resource intensive tasks to other servers. A message queue is only a place where job descriptions can be temporarily stored, so you have to implement a [job controller](cronjobs/implemenentation.md) too that processes the job.
+If a request requires to do some tasks in the background, you can send it to a message queue and process it later. This prevents your request to run into the PHP memory or execution time limit and can be used to offload resource intensive tasks to other servers. A message queue is only a place where job descriptions can be temporarily stored, so you have to implement a [job controller](../../cronjobs/create-job-controller.md) too that processes the job.
 
 To add a new job to the message queue "mq-email" configured in the resource configuration:
 
@@ -211,7 +211,7 @@ More information about the available methods is available in the [message queue 
 
 # Parallel processing
 
-Aimeos offers the necessary infrastructure for processing tasks in parallel und therefore utilizing multi-core architectures of CPUs efficiently. This is only available in [job controllers](cronjobs/implementation.md) executed from the command line e.g. via scheduled cron jobs.
+Aimeos offers the necessary infrastructure for processing tasks in parallel und therefore utilizing multi-core architectures of CPUs efficiently. This is only available in [job controllers](../../cronjobs/create-job-controller.md) executed from the command line e.g. via scheduled cron jobs.
 
 ```php
 $fcn = function( \Aimeos\MShop\Context\Item\Iface $context, $data ) {
@@ -227,7 +227,7 @@ $context->getProcess();
 
 You can call *start()* as many times as you need. The process implementation cares about executing the passed anonymous function without overloading the server. The list of arguments in the second parameter are passed to your anonymous function in the same order. At last, you have to call *wait()* which will return when all running jobs are completed.
 
-Please have a look at the [article about parallel processing](cronjobs/implementation.md#Parallel-processing) too.
+Please have a look at the [article about parallel processing](../../cronjobs/create-job-controller.md#Parallel-processing) too.
 
 # Session
 
@@ -254,7 +254,7 @@ $content = $view->render( 'path/to/template.html.twig' ); // Symfony
 $content = $view->render( 'path/to/template.html' ); // TYPO3/Flow
 ```
 
-The path of the templates is relative to the [configured directory in the manifest.php of you extension](developer/extensions#custom). Within the templates, you have access to all assigned data (e.g. "myvalue") and all view helpers. The view helpers are different if you use Blade, Twig or Fluid.
+The path of the templates is relative to the [configured directory in the manifest.php of you extension](extensions#custom). Within the templates, you have access to all assigned data (e.g. "myvalue") and all view helpers. The view helpers are different if you use Blade, Twig or Fluid.
 
 ```php
 <?= $this->get( 'myvalue', 'default value' ) ?>
