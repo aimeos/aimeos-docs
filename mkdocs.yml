@@ -2,7 +2,7 @@ site_dir: docs/2020.x
 site_url: https://aimeos.org/docs/2020.x/
 
 
-site_name: Documentation
+site_name: Aimeos documentation
 repo_url: https://github.com/aimeos/aimeos-docs
 edit_uri: blob/master/content/
 markdown_extensions:
@@ -20,18 +20,19 @@ markdown_extensions:
             startinline: true
   - pymdownx.superfences
 plugins:
-  - search
+  - algolia
 docs_dir: content
 theme:
   name: material
   custom_dir: theme
-  favicon: _assets/favicon.svg
+  favicon: assets/favicon.svg
   logo: https://aimeos.org/fileadmin/logos/logo-aimeos-blue.svgz
   font:
     text: Noto Sans
 extra_css:
-  - _assets/aimeos.css
+  - assets/aimeos.css
 extra_javascript:
+  - assets/aimeos.js
   - /docs/versions.js
 extra:
   disqus: aimeos

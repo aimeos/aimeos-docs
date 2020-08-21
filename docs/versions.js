@@ -4,7 +4,7 @@
 
 	for(let i=0; i < nodes.length; i++) {
 
-		['2020.x', '2019.x'].forEach(function(el) {
+		['2020.x'].forEach(function(el) {
 			let option = document.createElement("option");
 			option.appendChild(document.createTextNode(el));
 			nodes[i].appendChild(option);

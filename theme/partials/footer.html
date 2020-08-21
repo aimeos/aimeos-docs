@@ -3,45 +3,37 @@
 -#}
 {% import "partials/language.html" as lang with context %}
 <footer class="md-footer">
-  {% if page.previous_page or page.next_page %}
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
-        {% if page.previous_page %}
-          <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title | striptags }}" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              {% include ".icons/material/arrow-left.svg" %}
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.previous") }}
-                </span>
-                {{ page.previous_page.title }}
-              </div>
-            </div>
-          </a>
-        {% endif %}
-        {% if page.next_page %}
-          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.next") }}
-                </span>
-                {{ page.next_page.title }}
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              {% include ".icons/material/arrow-right.svg" %}
-            </div>
-          </a>
-        {% endif %}
-      </nav>
-    </div>
-  {% endif %}
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      {% include "partials/social.html" %}
+      <div class="md-footer-integration">
+        <h2>Available for</h2>
+        <ul>
+          <li><a href="/laravel-ecommerce-package" alt="Laravel">Laravel</a></li>
+          <li><a href="/symfony-ecommerce-bundle" alt="Symfony">Symfony</a></li>
+          <li><a href="/typo3-shop-extension" alt="TYPO3">TYPO3</a></li>
+        </ul>
+      </div>
+      <div class="md-footer-developers">
+        <h2>Developers</h2>
+        <ul>
+          <li><a href="https://aimeos.org/help/" title="Help / Forum" target="_self">Help / Forum</a></li>
+          <li><a href="https://github.com/aimeos" title="GitHub" target="_blank">Source code</a></li>
+          <li><a href="https://transifex.com/aimeos/public" title="Transifex" target="_blank">Translations</a></li>
+        </ul>
+      </div>
+      <div class="md-footer-social">
+        <h2>Aimeos</h2>
+        {% for social in config.extra.social %}
+          {% set title = social.name %}
+          {% if not title and "//" in social.link %}
+            {% set _,url = social.link.split("//") %}
+            {% set title = url.split("/")[0] %}
+          {% endif %}
+          <a href="{{ social.link }}" target="_blank" rel="noopener" title="{{ title }}" class="md-footer-social__link">
+            {% include ".icons/" ~ social.icon ~ ".svg" %}
+          </a>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </footer>

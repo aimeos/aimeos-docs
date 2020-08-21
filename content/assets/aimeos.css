@@ -49,6 +49,12 @@
 	width: 100% !important;
 }
 
+@media screen and (max-width: 59.9375em) {
+	.md-search__form {
+		padding: 0.33rem 0;
+	}
+}
+
 .md-search__icon {
 	color: var(--md-default-fg-color--light, #103050b0) !important;
 }
@@ -58,10 +64,67 @@
 	border-bottom: 1px solid #10305040;
 	border-bottom-color: var(--md-default-fg-color--lightest, #10305040);
 	border-radius: 0;
+    height: 1.8rem;
+    color: inherit;
+	z-index: 2;
+    font-size: .8rem;
+    padding: 0 2.2rem;
+    text-overflow: ellipsis;
+	transition: color 250ms, background-color 250ms;
 }
 
 .md-search__input::placeholder {
 	color: var(--md-default-fg-color--light, #103050b0);
+}
+
+.algolia-autocomplete, .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+	width: 100%;
+}
+
+.algolia-autocomplete .aa-hint {
+	color: #f0f0f8;
+}
+
+.algolia-autocomplete .aa-dropdown-menu {
+	background-color: #f8f8fc;
+	width: 100%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+	border-bottom: 1px solid #e8e8f0;
+	padding: 0.75rem;
+    font-size: .8rem;
+	cursor: pointer;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .topic {
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .title:before {
+	content: "# ";
+	color: #ba9a5a;
+	color: var(--md-accent-fg-color, #ba9a5a);
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .content {
+	font-family: "Noto Sans",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+	background-color: #fff;
+	overflow-x: hidden;
+	font-size: .66rem;
+	margin-top: 1em;
+	padding: 1em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+	background-color: #f0f0f8;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+	font-style: normal;
+	background-color: #ba9a5a20;
+	background-color: var(--md-accent-fg-color--transparent, #ba9a5a20);
 }
 
 select.md-header-nav__button {
@@ -140,4 +203,19 @@ select.md-header-nav__button:focus {
 	padding: .4rem;
 	padding-bottom: 0.1rem;
     background-color: var(--md-code-bg-color);
+}
+
+.md-footer-integration, .md-footer-developers, .md-footer-social {
+	margin: 0 1rem;
+	padding: 0;
+}
+
+.md-footer-social__link {
+	padding: 0 0.2rem;
+	height: initial;
+	width: 2rem;
+}
+
+.md-footer-social__link svg {
+	max-height: initial;
 }
