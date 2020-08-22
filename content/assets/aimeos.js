@@ -25,24 +25,22 @@ autocomplete('.md-search__input', {
 	debounce: 300,
 	templates: {
 		suggestion: function(suggestion) {
-			if(suggestion._highlightResult.title.matchedWords.length > 0) {
+			if(suggestion._highlightResult.title.matchLevel == 'full') {
 				return '<div class="search-result-item"> \
 					<div class="topic">' + suggestion.topic + '</div> \
 					<div class="title">' + suggestion._highlightResult.title.value + '</div> \
-				</div>';
-			} else if(suggestion._highlightResult.content.matchedWords.length > 0) {
-				var len = suggestion._highlightResult.content.matchedWords[0].length;
-				var start = suggestion._highlightResult.content.value.indexOf('<em>') - 150 + len + 10;
-				start = (start > 0 ? start : 0);
-				var content = suggestion._highlightResult.content.value.substring(start, start + 150);
-				return '<div class="search-result-item"> \
-					<div class="topic">' + suggestion.topic + '</div> \
-					<div class="title">' + suggestion._highlightResult.title.value + '</div> \
-					<pre class="content">' + content.substr(content.indexOf(" ") + 1) + '...</pre> \
 				</div>';
 			} else {
+				var len = 30;
+				for(var i=0; i<suggestion._highlightResult.content.matchedWords.length; i++) {
+					len += suggestion._highlightResult.content.matchedWords[i].length;
+				}
+				var content = suggestion._highlightResult.content.value.replace(/\s+/g, ' ');
+				var start = Math.max(content.indexOf('<em>') - 200 + len, 0);
 				return '<div class="search-result-item"> \
 					<div class="topic">' + suggestion.topic + '</div> \
+					<div class="title">' + suggestion._highlightResult.title.value + '</div> \
+					<div class="content">' + content.substring(content.indexOf(" ", start) + 1, start + 200) + '...</div> \
 				</div>';
 			}
 		}
