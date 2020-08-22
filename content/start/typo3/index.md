@@ -23,7 +23,7 @@ The extension provides several plug-ins for certain functionalities (product fil
 # HTML Frontend
 
 * [Overwrite existing templates](../../frontend/html/overwrite-templates.md)
-* [Template syntax and view helper](../../frontend/html/template-syntax.md)
+* [Template syntax and view helper](../../infrastructure/view-helpers.md)
 * [Use Fluid templates](customize.md#fluid-templates)
 
 * [Create new subparts for existing components](../../frontend/html/create-subparts.md)

@@ -1,8 +1,8 @@
 The Aimeos Laravel package is a composer based extension for the Laravel web application framework. It integrates the core web shop component library into any Laravel 5.5+ based application and allows you to place the components on any page using Blade templates. Default templates for a quick start are already included.
 
-The Aimeos package also includes adapter classes for basic components used by any Laravel application like logging, configuration or URL generation. Thus, it integrates into any application natively that is based on the Laravel framework and leverages the full power of Laravel.
-
 If you like Aimeos: [Give a star](https://github.com/aimeos/aimeos-laravel)
+
+The Aimeos package also includes adapter classes for basic components used by any Laravel application like logging, configuration or URL generation. Thus, it integrates into any application natively that is based on the Laravel framework and leverages the full power of Laravel.
 
 1. [Install Aimeos](https://github.com/aimeos/aimeos-laravel#table-of-content)
 2. [Configure cronjobs](setup.md#cronjobs)
@@ -22,7 +22,7 @@ If you like Aimeos: [Give a star](https://github.com/aimeos/aimeos-laravel)
 # HTML Frontend
 
 * [Overwrite existing templates](../../frontend/html/overwrite-templates.md)
-* [Template syntax and view helper](../../frontend/html/template-syntax.md)
+* [Template syntax and view helper](../../infrastructure/view-helpers.md)
 * [Use Blade templates](customize.md#blade-templates)
 
 * [Create new subparts for existing components](../../frontend/html/create-subparts.md)

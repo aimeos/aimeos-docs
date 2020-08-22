@@ -53,10 +53,17 @@ tracking:
 nav:
   - Getting started:
     - Laravel:
-      - Overview: start/laravel/laravel.md
-      - Customization: start/laravel/customize.md
+      - First steps in Laravel: start/laravel/index.md
+      - Setup: start/laravel/setup.md
+      - Customize: start/laravel/customize.md
+      - Extend: start/laravel/extend.md
+      - Optimize: start/laravel/optimize.md
     - Symfony:
-      - Overview: start/symfony/index.md
+      - First steps in Symfony: start/symfony/index.md
+      - Setup: start/symfony/setup.md
+      - Customize: start/symfony/customize.md
+      - Extend: start/symfony/extend.md
+      - Optimize: start/symfony/optimize.md
     - TYPO3:
       - First steps in TYPO3: start/typo3/index.md
       - Setup: start/typo3/setup.md
