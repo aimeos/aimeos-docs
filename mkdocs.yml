@@ -58,7 +58,11 @@ nav:
     - Symfony:
       - Overview: start/symfony/index.md
     - TYPO3:
-      - Overview: start/typo3/index.md
+      - First steps in TYPO3: start/typo3/index.md
+      - Setup: start/typo3/setup.md
+      - Customize: start/typo3/customize.md
+      - Extend: start/typo3/extend.md
+      - Optimize: start/typo3/optimize.md
     - Development:
       - Architecture: start/developer/architecture.md
       - Dependency container: start/developer/context.md
