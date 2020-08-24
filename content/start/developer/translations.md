@@ -42,7 +42,7 @@ Strings can only be translated if they are wrapped by one of these methods:
 `sprintf( '<singular>' )`
 : Strings wrapped by the `sprintf()` function will be extracted and added to the .pot files as well. This is mainly useful for exception messages which can be translated in the "catch" block afterwards
 
-The "domain" argument determines the Gettext domain of the translation. In Aimeos translation domains like "mshop", "client" or "controller/jobs" are used. They correspond to the core and extension directory where the "./i18n/" subdirectory is located at. Translation domains separate translations into different files, so two translation domains can contain the same source string but different translations.
+The "domain" argument determines the Gettext domain of the translation. In Aimeos translation domains like "mshop", "client" or "controller/jobs" are used. They correspond to the core and extension directory where the "./i18n/" sub-directory is located at. Translation domains separate translations into different files, so two translation domains can contain the same source string but different translations.
 
 To translate new strings, follow these steps:
 1. Change to the directory of your extension

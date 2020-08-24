@@ -2,7 +2,7 @@ Currently we use [phing](https://www.phing.info) as build system and it makes it
 
 # Execute phing
 
-You can execute ''phing'' in the root directory of each repository. Depending on the repository, there are different ''phing'' targets available and you should have a look into the ''build.xml'' file to find out their name and what tasks they perform. In the Aimeos core, you can also execute ''phing'' in the subdirectories which contains a ''build.xml'' file too. Then, only the tasks related to these subdirectory are executed.
+You can execute *phing* in the root directory of each repository. Depending on the repository, there are different *phing* targets available and you should have a look into the *build.xml* file to find out their name and what tasks they perform. In the Aimeos core, you can also execute *phing* in the subdirectories which contains a *build.xml* file too. Then, only the tasks related to these sub-directory are executed.
 
 The most important targets for you are "setup" to populate the database and "test" to find out, if everything is still working as it should:
 ```bash
