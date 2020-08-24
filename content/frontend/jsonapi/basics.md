@@ -9,7 +9,7 @@ Please have a look at [retrieving an OPTIONS request](index.md#retrieve-meta-dat
 
 # Response structure
 
-All GET requests will return a JSON object with the structure defined by [jsonapi.org](http://jsonapi.org/):
+All GET requests will return a JSON object with the structure defined by [jsonapi.org](https://jsonapi.org/):
 
 ```json
 {

@@ -1,6 +1,6 @@
 In rare cases you might want to create a new shop component when none of the existing ones really fits into what you need. It's rather easy to create one but the **adapters for the frameworks and the applications** need to integrate your new component to utilize it.
 
-It's generally a good idea to discuss a new component in the [Aimeos forum](http://aimeos.org/help) first and contribute your code to the official core. Otherwise, you would have to do everything yourself.
+It's generally a good idea to discuss a new component in the [Aimeos forum](https://aimeos.org/help) first and contribute your code to the official core. Otherwise, you would have to do everything yourself.
 
 This article highlights the differences of a component compared to a subpart for an existing component. Please read the article about [implementing a new subpart](create-subparts.md) first for a decent understanding of the basics.
 

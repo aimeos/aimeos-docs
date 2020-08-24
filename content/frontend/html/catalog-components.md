@@ -136,7 +136,7 @@ Furthermore, the detail component consists of two subparts (service and last see
 
 The image section displays the product's images and provides features such as a thumbnail list of all images and a lightbox, allowing the user to zoom-in and toggle the photo to fullscreen. This is implemented as a partial that is included in the body template.
 
-Inside the basket related section is all of the necessary information for choosing the product that is displayed and the required hidden data for adding the product to the basket. It's also responsible for displaying the '''price of the product''' (or of the selected sub-product) and the '''[stock level information](../../config/client-html/catalog-detail/stock/enable)''' too. The selection of the product variant and optional attributes is outsourced in reusable partials.
+Inside the basket related section is all of the necessary information for choosing the product that is displayed and the required hidden data for adding the product to the basket. It's also responsible for displaying the price of the product (or of the selected sub-product) and the [stock level information](../../config/client-html/catalog-detail/stock/enable) too. The selection of the product variant and optional attributes is outsourced in reusable partials.
 
 !!! note
     The parameters and their format to add a product into the basket is described in the [parameters section of the basket standard component](Configuration/Core/client/html/Adapt_basket_standard#Parameters)
@@ -173,7 +173,7 @@ If the shown product is of type "bundle", the bundled products are displayed as 
 
 ### User actions
 
-The user actions are links to features where customers can add a product to one of their lists of '''pinned, favorite or watched products'''. Which user actions are shown is controlled by the [client/html/catalog/actions/list](../../config/client-html/catalog-actions/list) setting. They, as well as the social media buttons are both included by using partials.
+The user actions are links to features where customers can add a product to one of their lists of pinned, favorite or watched products. Which user actions are shown is controlled by the [client/html/catalog/actions/list](../../config/client-html/catalog-actions/list) setting. They, as well as the social media buttons are both included by using partials.
 
 There are several social platforms that can help to boost the sales of web shops, namely Pinterest, Facebook, WhatsApp and Twitter. They enable visitors to add products to their time line or social media profile
 

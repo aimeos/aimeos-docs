@@ -85,7 +85,7 @@ Service providers for many payment gateways are available by the Aimeos [ai-paym
 
 ## Authorize.net AIM
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [AIM method](http://www.authorize.net/support/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07.
+The [Authorize.net](https://www.authorize.net/) gateway for the [AIM method](https://www.authorize.net/support/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/authorizenet:~3.0"
@@ -111,7 +111,7 @@ testMode (boolean, optional)
 
 ## Authorize.net SIM
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](http://www.authorize.net/support/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07.
+The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/support/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/authorizenet:~3.0"
@@ -146,7 +146,7 @@ testMode (boolean, optional)
 
 ## Authorize.net DPM
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [DPM method](http://www.authorize.net/support/SIM_guide.pdf) (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07.
+The [Authorize.net](https://www.authorize.net/) gateway for the [DPM method](https://www.authorize.net/support/SIM_guide.pdf) (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/authorizenet:~3.0"
@@ -181,7 +181,7 @@ testMode (boolean, optional)
 
 ## CardSave
 
-The [CardSave](http://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07.
+The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/cardsave:~3.0"
@@ -227,7 +227,7 @@ testMode (boolean, optional)
 
 ## Omnipay (generic)
 
-[Omnipay](http://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider since 2015.07.
+[Omnipay](https://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider since 2015.07.
 
 !!! note
     If you use composer, you have to add the [Omnipay payment driver](https://github.com/thephpleague/omnipay#payment-gateways) you want to use to your composer.json and run *composer update*.

@@ -1,6 +1,6 @@
 In Aimeos, setup tasks are responsible for creating the database schema, updating the schema if necessary and migrating data required due to schema changes. They have to perform their tasks for all supported databases.
 
-The setup tasks have a lot of advantages and exceed the possibilities of other available solutions like ["Object-relational mapping" (ORM)](http://en.wikipedia.org/wiki/Object-relational_mapping) or similar alternatives to setup tasks:
+The setup tasks have a lot of advantages and exceed the possibilities of other available solutions like ["Object-relational mapping" (ORM)](https://en.wikipedia.org/wiki/Object-relational_mapping) or similar alternatives to setup tasks:
 
 * The database structure is stored in the version control system
 * For every commit there can be a suitable database structure created
@@ -15,7 +15,7 @@ They are also used to write the default and unit test data to the database durin
 
 Updating an existing schema or adding a new table to an existing data domain (product, catalog, attribute, etc.) is very simple and described in this article. If you need to migrate data, want to add a new data domain or rename a table, you need to create your own [setup task](#setup-task).
 
-For already existing data domains, a schema file exists in the [./lib/mshoplib/setup/default/schema/](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/setup/default/schema) directory of the Aimeos core. It consists of the list of tables including their definitions as [Doctring DBAL schema](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/). The *attribute.php* file contains these lines for example:
+For already existing data domains, a schema file exists in the [./lib/mshoplib/setup/default/schema/](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/setup/default/schema) directory of the Aimeos core. It consists of the list of tables including their definitions as [Doctring DBAL schema](https://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/). The *attribute.php* file contains these lines for example:
 
 ```php
 return [

@@ -196,7 +196,7 @@ Usually, some data is fetched from the database via the frontend controller. You
 
 For cache control there's a nice helper functions that make calculation of the expiration date and attaching the necessary tags very easy. The `addMetaItems()` method accepts an item object or a list of item objects that either provide a `getStartDate()` and `getEndDate()` method themselves or contain referenced items that implements those methods. It will add the expiration date/time and the tags to the second and third variable passed to this method.
 
-Necessary data can be assigned directly to the view because the [magic methods](http://php.net/manual/en/language.oop5.overloading.php) `__get()` and `__set()` care about their handling in the view class.
+Necessary data can be assigned directly to the view because the [magic methods](https://php.net/manual/en/language.oop5.overloading.php) `__get()` and `__set()` care about their handling in the view class.
 
 ## modifyBody()
 

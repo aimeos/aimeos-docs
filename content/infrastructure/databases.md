@@ -1,4 +1,4 @@
-The Aimeos core is database independent and supports several relational databases. For creating the database schema it uses the [Doctrine DBAL](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/index.html) layer. For retrieving, saving and deleting data, ANSI compatible SQL statements are used which can be replaced by database specific ones if necessary.
+The Aimeos core is database independent and supports several relational databases. For creating the database schema it uses the [Doctrine DBAL](https://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/index.html) layer. For retrieving, saving and deleting data, ANSI compatible SQL statements are used which can be replaced by database specific ones if necessary.
 
 For details about the structure of the Aimeos database, please have a look at the SVG file of the [ERM diagram for the Aimeos database layout](https://aimeos.org/fileadmin/download/Aimeos-database.svgz).
 

@@ -6,7 +6,7 @@ In both cases, for CSS and JS files, you need to create a new file in one of the
     * **aimeos.js** (Javascript file that contains new code or overwrites existing ones)
     * **aimeos.css** (CSS file that contains new styles or overwrites existing ones)
 
-These files must be included in your HTML template **after** the files from the theme so their content can overwrite the original one. The articles about adapting the templates in [Laravel](../../start/laravel/adapt-base-template.md) and [Symfony](../../start/symfony/adapt-base-template.md) show you where this should be done.
+These files must be included in your HTML template **after** the files from the theme so their content can overwrite the original one. The articles about adapting the templates in [Laravel](https://github.com/aimeos/aimeos-laravel#setup) and [Symfony](https://github.com/aimeos/aimeos-symfony#setup) show you where this should be done.
 
 # Cascading Style Sheets
 
@@ -30,7 +30,7 @@ to a bigger one with another color that floats left, then use the same CSS selec
 }
 ```
 
-Modern browsers are able to support you by their web development tools that can inspect HTML nodes. They show the CSS styles that are attached to these nodes and which style overwrites each other. The [CSS reference from w3schools](http://www.w3schools.com/cssref/default.asp) is also a good source that explains the instructions supported by different browsers.
+Modern browsers are able to support you by their web development tools that can inspect HTML nodes. They show the CSS styles that are attached to these nodes and which style overwrites each other. The [CSS reference from w3schools](https://www.w3schools.com/cssref/default.asp) is also a good source that explains the instructions supported by different browsers.
 
 # Javascript
 

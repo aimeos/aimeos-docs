@@ -1,4 +1,4 @@
-Errors can an will occur sooner or later. The [JSON API](http://jsonapi.org/) standard like every REST protocol uses the HTTP status codes to signal error conditions. Used HTTP status codes are:
+Errors can an will occur sooner or later. The [JSON API](https://jsonapi.org/) standard like every REST protocol uses the HTTP status codes to signal error conditions. Used HTTP status codes are:
 
 * 2xx : Successful operation
     * 200 : Operation was performed successfully

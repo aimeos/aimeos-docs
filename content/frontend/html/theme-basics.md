@@ -68,7 +68,7 @@ For partials used several times at different locations, the same CSS classes app
 Today, we have very different device sizes starting from small smart phones with 320px width to really big TVs that span 3960px in width and countless device widths in between. The art of web design is to create pages that look great on all of these devices.
 
 !!! tip
-    Frameworks like [http://getbootstrap.com/ Twitter bootstrap] provide fluid grid systems that help developers create web sites optimized for different device sizes.
+    Frameworks like [https://getbootstrap.com/ Twitter bootstrap] provide fluid grid systems that help developers create web sites optimized for different device sizes.
 
 The first rule of responsive web design is: **Avoid fixed measure units like px!**
 They are only useful for defining a maximum or minimum device width for media queries. If you pay no attention to this advice, your theme will scale miserably! If you define a margin of 50px to both sides of a div container it will eat up most of the space on a smart phone and won't be noticed on a 4k TV. Instead, use

@@ -201,7 +201,7 @@ You can also combine the different ways shown, e.g. collect the payment data loc
 
 Many payment gateways collect the payment related data on their server, process the payment and redirect the customer to the shop afterwards. Within this redirect, they usually send the payment status as GET or POST parameter, so the payment service provider can update the order status immediately. Thus, customers see if their payment and order was accepted on the confirmation page.
 
-These status updates sent directly within the redirect are handled by the *updateSync()* method. In the payment service provider, all data (GET/POST parameters as well as the request body) from the payment gateway is available in the [PSR-7 request object](http://www.php-fig.org/psr/psr-7/) passed to the method. Furthermore, the second argument is the order item representing the invoice of the order which contains the current payment status.
+These status updates sent directly within the redirect are handled by the *updateSync()* method. In the payment service provider, all data (GET/POST parameters as well as the request body) from the payment gateway is available in the [PSR-7 request object](https://www.php-fig.org/psr/psr-7/) passed to the method. Furthermore, the second argument is the order item representing the invoice of the order which contains the current payment status.
 
 ```php
 public function updateSync( \Psr\Http\Message\ServerRequestInterface $request, \Aimeos\MShop\Order\Item\Iface $order )
@@ -226,7 +226,7 @@ It's desirable to keep the payment status in the shop up to date to have one cen
 
 To be more precise, status updates sent synchronously via HTTP(S) are accepted by the *updatePush()* method. For updates sent via [asynchronous batch file transfers](#batch-update), use the *updateAsync()* method instead.
 
-The *updatePush()* method is called by the application as soon as a status update request via HTTP(S) arrives. This happen on the update page which accepts asynchronous update notifications sent by the payment gateways later on. The sent GET/POST parameters as well as the request body are available in the [PSR-7 request object](http://www.php-fig.org/psr/psr-7/):
+The *updatePush()* method is called by the application as soon as a status update request via HTTP(S) arrives. This happen on the update page which accepts asynchronous update notifications sent by the payment gateways later on. The sent GET/POST parameters as well as the request body are available in the [PSR-7 request object](https://www.php-fig.org/psr/psr-7/):
 
 ```php
 public function updatePush( \Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response )

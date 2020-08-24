@@ -23,7 +23,7 @@ To retrieve items from a resource, you need a GET request with the URL from the 
 
 # Response structure
 
-All GET requests will return a JSON object with the structure defined by [jsonapi.org](http://jsonapi.org/):
+All GET requests will return a JSON object with the structure defined by [jsonapi.org](https://jsonapi.org/):
 
 ```json
 {
