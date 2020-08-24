@@ -296,8 +296,6 @@ nav:
       - Theme basics: frontend/html/theme-basics.md
       - Adapt themes: frontend/html/adapt-themes.md
       - Overwrite templates: frontend/html/overwrite-templates.md
-      - Template syntax: frontend/html/template-syntax.md
-      - Create subparts: frontend/html/create-subparts.md
       - Implement components: frontend/html/implement-components.md
       - Extend components: frontend/html/extend-components.md
       - Checkout process: frontend/html/checkout-process.md
@@ -349,6 +347,7 @@ nav:
     - Filtering items: infrastructure/search-filter.md
     - Extend managers: infrastructure/extend-managers.md
     - Read/write files: infrastructure/read-write-files.md
+    - View and helpers: infrastructure/view-helpers.md
   - Changelog:
     - 2019.x -> 2020.x : changelog/2020.x.md
     - 2018.x -> 2019.x : changelog/2019.x.md

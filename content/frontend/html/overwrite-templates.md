@@ -3,6 +3,10 @@ Often, it's necessary to replace the templates of a component or subpart with a 
 !!! tip
     Use the [Aimeos extension builder](https://aimeos.org/extensions) to create an extension for your shop site. The generated extension skeletons contains all necessary directories and configuration to be used out of the box.
 
+# Templates
+
+The template views itself consist of HTML with [alternative PHP syntax](https://php.net/manual/en/control-structures.alternative-syntax.php). It's also possible to use the native template engine of your framework or application, i.e. Blade for Laravel, Twig for Symfony and Fluid for TYPO3. Please have a look at the "Get started" section to find out more.
+
 All standard templates are stored in the [client/html/templates/](https://github.com/aimeos/ai-client-html/tree/master/client/html/templates) directory of the ai-client-html extension. There are sub-directories for each component type and component implementation, e.g. the "catalog/detail" sub-directory for the catalog detail component. Below, the ".php" template files are stored for the component and all its subparts.
 
 The naming of the template files in the directory structure is:
@@ -28,3 +32,39 @@ Own extensions that contain template files in the `client/html/templates/` direc
     If you change the template now and reload the page, nothing will happen because the HTML snippet in your session isn't updated. You have to visit the detail page of another product to see a new item in the list.
 
     The existing items will still keep the layout when they have been added! To clear all entries that are using older versions of the template, you have to delete the session cookie in your browser.
+
+# Data access
+
+You have access to all data that has been assigned by the HTML client which renders the view, as well as all data that has been assigned by the parent HTML clients, e.g.
+
+```
+Client/Html/Checkout/Standard/Standard
+Client/Html/Checkout/Standard/Address/Standard
+Client/Html/Checkout/Standard/Address/Billing/Standard
+```
+
+The HTML clients use these templates and assign:
+
+* Client/Html/Checkout/Standard/Standard
+    * template: checkout/standard/body-standard.php
+    * assigns: standardSteps, etc.
+* Client/Html/Checkout/Standard/Address/Standard
+    * template: checkout/standard/address-body-standard.php
+    * assigns: addressCustomerItem, addressPaymentItem, etc.
+* Client/Html/Checkout/Standard/Address/Billing/Standard
+    * template: checkout/standard/address-billing-body-standard.php
+    * assigns: billingMandatory, billingOptional, etc.
+
+In the template of the *Client\Html\Checkout\Standard\Address\Billing\Standard* HTML client, you have now access to *standardSteps*, *addressCustomerItem*, *addressPaymentItem*, *billingMandatory*, *billingOptional*. Take a look at the templates and the HTML clients to find out, which data they assign.
+
+To access the data in the view, you can use:
+
+```php
+$this->get( 'billingOptional', [] ) // second parameter is the default value if not available
+$this->billingOptional // throws an exception if not available
+isset( $this->billingOptional ) // tests if the parameter is available
+```
+
+# View helpers
+
+For the list of available view helpers, how they work and what their parameters are, please have a look at the [view helper article](../../infrastructure/view-helpers.md).
