@@ -16,7 +16,7 @@ This works for all type of products, even for selection products with product
 variants and product bundles. By default, also optional attributes are
 displayed if they have been associated to a product.
 
-'''Note:''' To fetch the necessary product variants, you have to extend the
+**Note:** To fetch the necessary product variants, you have to extend the
 list of domains for "client/html/catalog/product/domains", e.g.
 
 ```

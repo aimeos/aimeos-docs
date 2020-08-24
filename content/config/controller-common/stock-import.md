@@ -19,7 +19,7 @@ the amount of memory required by the import process will increase as
 well. Therefore, it's a trade-off between memory consumption and
 import speed.
 
-'''Note:''' The maximum size is 10000 records
+**Note:** The maximum size is 10000 records
 
 See also:
 

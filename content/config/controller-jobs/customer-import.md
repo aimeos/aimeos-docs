@@ -24,7 +24,7 @@ which would create "backup/2000-01-01". For more information about the
 strftime() placeholders, please have a look into the PHP documentation of
 the [strftime() function](http://php.net/manual/en/function.strftime.php).
 
-'''Note:''' If no backup name is configured, the file or directory
+**Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
 and the new directory are writable so the file or directory could be
 moved.

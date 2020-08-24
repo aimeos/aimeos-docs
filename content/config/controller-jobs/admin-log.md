@@ -172,6 +172,7 @@ with this option but most formats are bound to a specific container
 type.
 
 The formats that are supported by default are:
+
 * CSV (requires container type "Zip")
 
 Extensions implement other container types like spread sheets, XMLs or
@@ -202,6 +203,7 @@ Each content format may support some configuration options to change
 the output for that content type.
 
 The options for the CSV content format are:
+
 * csv-separator, default ','
 * csv-enclosure, default '"'
 * csv-escape, default '"'
@@ -234,6 +236,7 @@ container file so editors don't have to upload one file for each
 coupon code file.
 
 The container file types that are supported by default are:
+
 * Zip
 
 Extensions implement other container types like spread sheets, XMLs or

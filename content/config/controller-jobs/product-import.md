@@ -24,7 +24,7 @@ which would create "backup/2000-01-01". For more information about the
 strftime() placeholders, please have a look into the PHP documentation of
 the [strftime() function](http://php.net/manual/en/function.strftime.php).
 
-'''Note:''' If no backup name is configured, the file or directory
+**Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
 and the new directory are writable so the file or directory could be
 moved.
@@ -52,11 +52,8 @@ controller/jobs/product/import/csv/container/content = CSV
 
 The content type must always be a CSV-like format and there are
 currently two format types that are supported:
-* CSV
-* PHPExcel
 
-'''Note:''' for the PHPExcel content type, you need to install the
-"ai-container" extension.
+* CSV
 
 See also:
 
@@ -104,12 +101,9 @@ controller/jobs/product/import/csv/container/type = Zip
 The container type tells the importer how it should retrieve the data.
 There are currently three container types that support the necessary
 CSV content:
+
 * Directory
 * Zip
-* PHPExcel
-
-'''Note:''' For the PHPExcel container, you need to install the
-"ai-container" extension.
 
 See also:
 
@@ -309,9 +303,9 @@ where the job will be executed from.
 
 The path can point to any supported container format as long as the
 content is in CSV format, e.g.
+
 * Directory container / CSV file
 * Zip container / compressed CSV file
-* PHPExcel container / PHPExcel sheet
 
 See also:
 
@@ -525,7 +519,7 @@ which would create "backup/2000-01-01". For more information about the
 strftime() placeholders, please have a look into the PHP documentation of
 the [strftime() function](http://php.net/manual/en/function.strftime.php).
 
-'''Note:''' If no backup name is configured, the file or directory
+**Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
 and the new directory are writable so the file or directory could be
 moved.

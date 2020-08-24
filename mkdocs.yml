@@ -203,6 +203,7 @@ nav:
       - Supplier: config/admin-jqadm/supplier.md
       - Type: config/admin-jqadm/type.md
     - JsonAdm API:
+      - Base: config/admin-jsonadm/index.md
       - Common: config/admin-jsonadm/common.md
       - Standard: config/admin-jsonadm/standard.md
       - Decorators: config/admin-jsonadm/decorators.md
@@ -253,6 +254,16 @@ nav:
       - Decorators: config/controller-jobs/common.md
       - Media: config/controller-common/media.md
       - Order: config/controller-common/order.md
+      - Catalog import: config/controller-common/catalog-import.md
+      - Common import: config/controller-common/common-import.md
+      - Coupon import: config/controller-common/coupon-import.md
+      - Customer import: config/controller-common/customer-import.md
+      - Order export: config/controller-common/order-export.md
+      - Product import: config/controller-common/product-import.md
+      - Stock import: config/controller-common/stock-import.md
+      - Subscription export: config/controller-common/subscription-export.md
+      - Subscription process: config/controller-common/subscription-process.md
+      - Supplier import: config/controller-common/supplier-import.md
     - MShop:
       - Attribute: config/mshop/attribute-manager.md
       - Catalog: config/mshop/catalog-manager.md

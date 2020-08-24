@@ -14,11 +14,8 @@ controller/jobs/order/export/csv/container/content = CSV
 
 The content type must always be a CSV-like format and there are
 currently two format types that are supported:
-* CSV
-* PHPExcel
 
-'''Note:''' for the PHPExcel content type, you need to install the
-"ai-container" extension.
+* CSV
 
 See also:
 
@@ -66,12 +63,9 @@ controller/jobs/order/export/csv/container/type = Directory
 The container type tells the exporter how it should retrieve the data.
 There are currently three container types that support the necessary
 CSV content:
+
 * Directory
 * Zip
-* PHPExcel
-
-'''Note:''' For the PHPExcel container, you need to install the
-"ai-container" extension.
 
 See also:
 
@@ -202,9 +196,9 @@ controller/jobs/order/export/csv/location = /tmp
 
 The path can point to any supported container format as long as the
 content is in CSV format, e.g.
+
 * Directory container / CSV file
 * Zip container / compressed CSV file
-* PHPExcel container / PHPExcel sheet
 
 See also:
 
