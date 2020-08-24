@@ -298,7 +298,13 @@ nav:
       - Overwrite templates: frontend/html/overwrite-templates.md
       - Implement components: frontend/html/implement-components.md
       - Extend components: frontend/html/extend-components.md
-      - Checkout process: frontend/html/checkout-process.md
+      - Create subparts: frontend/html/create-subparts.md
+      - Account components: frontend/html/account-components.md
+      - Basket components: frontend/html/basket-components.md
+      - Catalog components: frontend/html/catalog-components.md
+      - Checkout components: frontend/html/checkout-components.md
+      - E-Mail components: frontend/html/email-components.md
+      - Locale components: frontend/html/locale-components.md
       - Adapt price format: frontend/html/adapt-price-format.md
       - Parameter names: frontend/html/parameter-names.md
     - JSON API:
