@@ -19,7 +19,7 @@ The checkout process is one of the hearts of a web shop. Aimeos contains a full-
 
 All steps are implemented as subparts of the "checkout standard" component. The difference between this component and others is that only the subpart is shown that matches the step in the URL parameter or the first one that requires attention if the page is called without parameter.
 
-Moving through the steps is done by instantiating all subparts, calling their `process()` methods and the one that requires some input will set the *standardStepActive* view variable to its own subpart name. This subpart is rendered afterwards and the [process() method of the address subpart](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Checkout/Standard/Address/Standard.php) is a good place to see how this works.
+Moving through the steps is done by instantiating all subparts, calling their `process()` methods and the one that requires some input will set the *standardStepActive* view variable to its own subpart name. This subpart is rendered afterwards and the [process() method of the address subpart](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Checkout/Standard/Address/Standard.php#L250-L278) is a good place to see how this works.
 
 If a customer is already logged in and the [Autofill basket plug-in](../../manual/plugins.md#autofill) is configured, then the address data as well as the chosen delivery and payment options are used from the last order. The steps that doesn't require any input are skipped and the [configured destination page](../../config/client-html/checkout-standard.md#step-active) (the summary page by default) is displayed directly to the customer.
 
@@ -71,10 +71,10 @@ You have to configure the Aimeos  payment service provider which is responsible 
 By default, the checkout process consists of these steps in the following order:
 
 * [Enter billing (and delivery) address](../../config/client-html/checkout-standard.md#name)
-* [Choose delivery option](../../config/client-html/checkout-standard.md#name)
-* [Choose payment option](../../config/client-html/checkout-standard.md#name)
-* [Show detailed summary page](../../config/client-html/checkout-standard.md#name)
-* [Store order and redirect to the payment provider](../../config/client-html/checkout-standard.md#name)
+* [Choose delivery option](../../config/client-html/checkout-standard.md#name_1)
+* [Choose payment option](../../config/client-html/checkout-standard.md#name_3)
+* [Show detailed summary page](../../config/client-html/checkout-standard.md#name_5)
+* [Store order and redirect to the payment provider](../../config/client-html/checkout-standard.md#name_4)
 
 Depending on the type of product you are selling there's sometimes no need for e.g. choosing a delivery option by the customer. Virtual products usually fall into this category. You can remove a step from the process completely by [modifying the subparts configuration](../../config/client-html/checkout-standard.md#subparts) to
 
@@ -96,7 +96,7 @@ If necessary, you can also add new steps to the checkout process. They will be a
 
 You can decide to offer a one page checkout additionally to the standard multi step checkout or place two or more steps on the same checkout page. This makes the Aimeos checkout process incredibly flexible and allows you to adapt it to your needs.
 
-The main configuration option for the one page checkout is [client/html/checkout/standard/onepage](../../config/client-html/checkout-standard/onepage). Basically, it contains the checkout steps that should be placed on the same page. The available steps are those from the sub-clients of the checkout standard component:
+The main configuration option for the one page checkout is [client/html/checkout/standard/onepage](../../config/client-html/checkout-standard.md#onepage). Basically, it contains the checkout steps that should be placed on the same page. The available steps are those from the sub-clients of the checkout standard component:
 
 * address
 * delivery
@@ -128,13 +128,13 @@ If only one shipping method is available, you can also hide it in the one page c
 
 # Address
 
-The address page in the checkout process is usually the first page during the checkout customers will see. If customers are already logged in and the [Autofill](../../manual/plugins#Autofill) basket plug-in is configured, the last address is added automatically to the basket.
+The address page in the checkout process is usually the first page during the checkout customers will see. If customers are already logged in and the [Autofill](../../manual/plugins.md#Autofill) basket plug-in is configured, the last address is added automatically to the basket.
 
 ## Structure
 
 ![Aimeos-checkout-address](Aimeos-checkout-address.png)
 
-The address page consists of two sections: the billing address section; the delivery address section. These sections are controlled via the [address subparts configuration](../../config/client-html/checkout-standard.md#subparts). Both the [billing](../../config/client-html/checkout-standard.md#subparts) and [delivery](../../config/client-html/checkout-standard.md#subparts) sections can contain one or more custom subparts if you need to extend the existing implementations.
+The address page consists of two sections: the billing address section; the delivery address section. These sections are controlled via the [address subparts configuration](../../config/client-html/checkout-standard.md#standardsubparts). Both the [billing](../../config/client-html/checkout-standard.md#billingstandardsubparts) and [delivery](../../config/client-html/checkout-standard.md#deliverystandardsubparts) sections can contain one or more custom subparts if you need to extend the existing implementations.
 
 There are default implementations available for all sections but you are also able to replace or extend the existing implementations and configure alternative class names:
 
@@ -157,9 +157,9 @@ The shown fields in the billing and delivery forms are customizable. You can def
 * [hidden delivery fields](../../config/client-html/checkout-standard.md#deliveryhidden)
 
 !!! tip
-You can also prevent users from being able to enter a new billing or delivery address using these configuration options:
-* [Disable new billing address](../../config/client-html/checkout-standard.md#billingdisable-new)
-* [Disable new delivery address](../../config/client-html/checkout-standard.md#deliverydisable-new)
+    You can also prevent users from being able to enter a new billing or delivery address using these configuration options:
+    * [Disable new billing address](../../config/client-html/checkout-standard.md#billingdisable-new)
+    * [Disable new delivery address](../../config/client-html/checkout-standard.md#deliverydisable-new)
 
 The salutation drop-down contains the list of available salutation codes like "company", "mr" or "mrs" which are translated to appropriate strings in the language of the customer. You can customize which salutation codes can be chosen by the customer for the [billing](../../config/client-html/checkout-standard.md#billingsalutations) and [delivery](../../config/client-html/checkout-standard.md#deliverysalutations) address.
 
@@ -175,9 +175,9 @@ There's a hidden input field for the birthday of the customer in the address for
 
 To alter the billing address and delivery address sections, you can adapt the template for the address page by overwriting them in your own extension or by configuring alternative template names:
 
-* [address body template](../../config/client-html/checkout-standard.md#template-body)
-* [billing body template](../../config/client-html/checkout-standard.md#billingtemplate-body)
-* [delivery body template](../../config/client-html/checkout-standard.md#deliverytemplate-body)
+* [address body template](../../config/client-html/checkout-standard.md#standardtemplate-body)
+* [billing body template](../../config/client-html/checkout-standard.md#billingstandardtemplate-body)
+* [delivery body template](../../config/client-html/checkout-standard.md#deliverystandardtemplate-body)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't lose essential functionality.
 
@@ -218,25 +218,25 @@ client/html/checkout/standard/address/states = array(
 
 ![Aimeos-checkout-delivery](Aimeos-checkout-delivery.png)
 
-Currently, the [implementation of the delivery step](../../config/client-html/checkout-standard/delivery/name) contains only one subpart for displaying the list of delivery options. Although, [further subparts](../../config/client-html/checkout-standard.md#subparts) can be added like for any other component.
+Currently, the [implementation of the delivery step](../../config/client-html/checkout-standard.md#name_1) contains only one subpart for displaying the list of delivery options. Although, [further subparts](../../config/client-html/checkout-standard.md#standardsubparts_1) can be added like for any other component.
 
 The list of delivery options is determined by the configured list of [delivery services in the administration interface](../../manual/services.md#delivery). All active delivery services from the current site and all parent sites are taken into account. Their order is determined by the "position" value of each service item and lower values are sorted before higher one.
 
 You can adapt the body template for the delivery subpart by overwriting the template in your own extension or configuring an alternative template name:
 
-* [delivery body template](../../config/client-html/checkout-standard.md#template-body)
+* [delivery body template](../../config/client-html/checkout-standard.md#standardtemplate-body_1)
 
 # Payment
 
 ![Aimeos-checkout-payment](Aimeos-checkout-payment.png)
 
-Like in the delivery step, the [implementation of the payment step](../../config/client-html/checkout-standard/payment/name) also contains only one [subpart](../../config/client-html/checkout-standard.md#subparts), which can be extended as well.
+Like in the delivery step, the [implementation of the payment step](../../config/client-html/checkout-standard.md#name_3) also contains only one [subpart](../../config/client-html/checkout-standard.md#standardsubparts_2), which can be extended as well.
 
 All active [payment services set up in the administration interface](../../manual/services.md#payment) for the current site and all parent sites are listed on the payment page in the checkout process. The order of the payment items in the list of payment options is calculated in the same way as for the delivery step: The value of the "position" is used for sorting and those with lower values come first.
 
 You can adapt the body template for the payment subpart by overwriting the template in your own extension or configuring an alternative template name:
 
-* [payment body template](../../config/client-html/checkout-standard.md#template-body)
+* [payment body template](../../config/client-html/checkout-standard.md#standardtemplate-body_2)
 
 # Summary
 
@@ -246,7 +246,7 @@ Displaying the summary page is usually the last step before the order is stored 
 
 ![Aimeos-checkout-summary](Aimeos-checkout-summary.png)
 
-The checkout summary subpart contains no subparts itself but you can add one if needed by using [checkout summary subparts](../../config/client-html/checkout-standard.md#subparts). The summary template uses the "detail" partial shared with the basket and the HTML e-mails as well as a partial for the options.
+The checkout summary subpart contains no subparts itself but you can add one if needed by using [checkout summary subparts](../../config/client-html/checkout-standard.md#standardsubparts_4). The summary template uses the "detail" partial shared with the basket and the HTML e-mails as well as a partial for the options.
 
 ## Terms and privacy pages
 
@@ -256,7 +256,7 @@ By default, the "options" partial contains a "terms" section where customers hav
 
 You can adapt the template for the summary page by overwriting it in your own extension or configuring alternative template names:
 
-* [summary body template](../../config/client-html/checkout-standard.md#template-body)
+* [summary body template](../../config/client-html/checkout-standard.md#standardtemplate-body_4)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
@@ -271,7 +271,7 @@ After the order has been saved to the database, the payment part of the checkout
 
 ![Aimeos-checkout-order](Aimeos-checkout-order.png)
 
-Depending on the payment provider implementation, the [checkout payment implementation](../../config/client-html/checkout-standard/payment/name) will either display a payment form for entering the credit card details or the customer is directly forwarded to the payment gateway (or the "thank you" page if no further action is required). There's the possibility to add further subparts to the checkout payment component via the [process subpart](../../config/client-html/checkout-standard.md#subparts) configuration.
+Depending on the payment provider implementation, the [checkout payment implementation](../../config/client-html/checkout-standard.md#name_4) will either display a payment form for entering the credit card details or the customer is directly forwarded to the payment gateway (or the "thank you" page if no further action is required). There's the possibility to add further subparts to the checkout payment component via the [process subpart](../../config/client-html/checkout-standard.md#standardsubparts_3) configuration.
 
 In case of an external payment service, these gateways usually need some additional data, at least the unique order ID and the total amount of the order. This information must be pushed to the payment gateway by the customers and therefore, the data is added in hidden form fields. If Javacript is enabled, the browser will submit this form automatically. Otherwise, the customer has to send the form by clicking on the "Proceed" button.
 
@@ -279,7 +279,7 @@ In case of an external payment service, these gateways usually need some additio
 
 You can adapt the template for the checkout process subpart by overwriting the template in your own extension or configuring an alternative template name:
 
-* [checkout process body template ](../../config/client-html/checkout-standard.md#template-body)
+* [checkout process body template ](../../config/client-html/checkout-standard.md#standardtemplate-body_3)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
@@ -291,9 +291,9 @@ The "thank you" page including the "checkout confirm" component is the last page
 
 ![Aimeos-checkout-confirm](Aimeos-checkout-confirm.png)
 
-Two [subparts](../../config/client-html/checkout-confirm.md#subparts) are currently available in the "checkout confirm" component: The [intro](../../config/client-html/checkout-confirm/intro/name) and [order summary](../../config/client-html/checkout-confirm.md#name) section.
+Two [subparts](../../config/client-html/checkout-confirm.md#subparts) are currently available in the "checkout confirm" component: The [intro](../../config/client-html/checkout-confirm.md#name) and [order summary](../../config/client-html/checkout-confirm.md#name_2) section.
 
-The **intro section** contains only the headline and the notes for the customers that they will receive an e-mail with the order confirmation if the payment was successful resp. suitable texts for every payment status the order may have. You can change the texts via adapting their translations or add more [subparts to the intro section](../../config/client-html/checkout-confirm.md#subparts).
+The **intro section** contains only the headline and the notes for the customers that they will receive an e-mail with the order confirmation if the payment was successful resp. suitable texts for every payment status the order may have. You can change the texts via adapting their translations or add more [subparts to the intro section](../../config/client-html/checkout-confirm.md#standardsubparts).
 
 At last, the **order section** summarizes the details of the order placed by the customer. It uses the same shared partials also shown in the order history or checkout summary.
 
@@ -302,7 +302,7 @@ At last, the **order section** summarizes the details of the order placed by the
 You can adapt the templates of every section by overwriting them in your own extension or configuring alternative template names:
 
 * [header template](../../config/client-html/checkout-confirm.md#template-header)
-* [intro body template](../../config/client-html/checkout-confirm.md#template-body)
-* [order body template](../../config/client-html/checkout-confirm.md#template-body_1)
+* [intro body template](../../config/client-html/checkout-confirm.md#standardtemplate-body)
+* [order body template](../../config/client-html/checkout-confirm.md#standardtemplate-body_1)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.

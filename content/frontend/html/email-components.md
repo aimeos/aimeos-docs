@@ -39,8 +39,8 @@ You can adapt the templates for the HTML/text account e-mails itself and the inc
 
 * [Header template](../../config/client-html/email-account.md#template-header)
 * [Body template](../../config/client-html/email-account.md#template-body)
-* [HTML e-mail body](../../config/client-html/email-account.md#standard/template-body)
-* [Text e-mail body](../../config/client-html/email-account.md#standard/template-body)
+* [HTML e-mail body](../../config/client-html/email-account.md#standard/standardtemplate-body)
+* [Text e-mail body](../../config/client-html/email-account.md#standard/standardtemplate-body_1)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
@@ -62,26 +62,26 @@ For each of these delivery status values you are able to send out an e-mail to t
 
 ## E-Mail settings
 
-Shop owners have the possibility to configure specific e-mail settings for the delivery e-mails that differ from the [common settings](#E-mail). Each specific setting overwrites the correlated common setting for the delivery e-mails. The list of specific settings are:
+Shop owners have the possibility to configure specific e-mail settings for the delivery e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the delivery e-mails. The list of specific settings are:
 
-[client-html/email-delivery/from-email](../../config/client-html/email-delivery/from-email)
+[client-html/email-delivery/from-email](../../config/client-html/email-delivery.md#from-email)
 : E-Mail address used when sending delivery e-mails
 
-[client-html/email-delivery/from-name](../../config/client-html/email-delivery/from-name)
+[client-html/email-delivery/from-name](../../config/client-html/email-delivery.md#from-name)
 : Name used when sending delivery e-mails
 
-[client-html/email-delivery/reply-email](../../config/client-html/email-delivery/reply-email)
+[client-html/email-delivery/reply-email](../../config/client-html/email-delivery.md#reply-email)
 : E-Mail address used by the customer when replying to delivery e-mails
 
-[client-html/email-delivery/reply-name](../../config/client-html/email-delivery/reply-name)
+[client-html/email-delivery/reply-name](../../config/client-html/email-delivery.md#reply-name)
 : Recipient name displayed when the customer replies to delivery e-mails
 
-[client-html/email-delivery/bcc-email](../../config/client-html/email-delivery/bcc-email)
+[client-html/email-delivery/bcc-email](../../config/client-html/email-delivery.md#bcc-email)
 : E-Mail address all delivery e-mails should be also sent to (can be used as notification for the shop owner)
 
 ## Structure
 
-Delivery e-mails consists of a [HTML](../../config/client-html/email-delivery.md#name) and a [text](../../config/client-html/email-delivery.md#name_1) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+Delivery e-mails consists of a [HTML](../../config/client-html/email-delivery.md#name) and a [text](../../config/client-html/email-delivery.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
 
 ![Aimeos-email-service-html](Aimeos-email-service-html.png)
 ![Aimeos-email-service-text](Aimeos-email-service-text.png)
@@ -133,7 +133,7 @@ Shop owners have the possibility to configure specific e-mail settings for the p
 
 ## Structure
 
-Payment e-mails consists of a [HTML](../../config/client-html/email-payment.md#name) and a [text](../../config/client-html/email-payment.md#name_1) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+Payment e-mails consists of a [HTML](../../config/client-html/email-payment.md#name) and a [text](../../config/client-html/email-payment.md#name_3) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
 
 ![Aimeos-email-service-html](Aimeos-email-service-html.png)
 ![Aimeos-email-service-text](Aimeos-email-service-text.png)
@@ -145,7 +145,7 @@ You can adapt the templates for the HTML/text payment e-mails itself and the inc
 * [Header template](../../config/client-html/email-payment.md#template-header)
 * [Body template](../../config/client-html/email-payment.md#template-body)
 * [HTML e-mail body](../../config/client-html/email-payment.md#standardtemplate-body)
-* [Text e-mail body](../../config/client-html/email-payment.md#standardtemplate-body_1)
+* [Text e-mail body](../../config/client-html/email-payment.md#standardtemplate-body_2)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
@@ -174,7 +174,7 @@ Shop owners have the possibility to configure specific e-mail settings for the p
 
 ## Structure
 
-Product notification e-mails consists of a [HTML](../../config/client-html/email-watch.md#name) and a [text](../../config/client-html/email-watch.md#name_1) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+Product notification e-mails consists of a [HTML](../../config/client-html/email-watch.md#name) and a [text](../../config/client-html/email-watch.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
 
 ![Aimeos-email-watch-html](Aimeos-email-watch-html.png)
 ![Aimeos-email-watch-text](Aimeos-email-watch-text.png)

@@ -6,7 +6,7 @@ The "locale select" component allows visitors to switch between the configured l
 
 ![Aimeos-locale-select](Aimeos-locale-select.png)
 
-In the [locale select component implementation](../../config/client-html/locale-select.md#name), two sections are available that can be controlled via the [select subpart configuration](../../config/client-html/locale-select.md#subparts): The [language client](../../config/client-html/locale-select.md#name_1) for the language menu and the [currency client](../../config/client-html/locale-select.md#name) for the currency menu. Each of these sections can contain further subparts and they can be configured by the [language subpart](../../config/client-html/locale-select.md#standardsubparts_1) and [currency subpart](../../config/client-html/locale-select.md#standardsubparts) settings.
+In the [locale select component implementation](../../config/client-html/locale-select.md#name_2), two sections are available that can be controlled via the [select subpart configuration](../../config/client-html/locale-select.md#subparts): The [language client](../../config/client-html/locale-select.md#name_1) for the language menu and the [currency client](../../config/client-html/locale-select.md#name) for the currency menu. Each of these sections can contain further subparts and they can be configured by the [language subpart](../../config/client-html/locale-select.md#standardsubparts_1) and [currency subpart](../../config/client-html/locale-select.md#standardsubparts) settings.
 
 It's possible to pass options to the URL generator when the URLs for the menus are created:
 
