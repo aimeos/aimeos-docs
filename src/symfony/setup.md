@@ -67,7 +67,7 @@ php bin/console aimeos:jobs "<jobs>" "<sites>"
 ```
 
 jobs (mandatory)
-: The jobs parameter can be the name of a single job or a list of job names separated by a white space. For a list of available jobs have a look at [job controller documentation](../../cronjobs/index.md)
+: The jobs parameter can be the name of a single job or a list of job names separated by a white space. For a list of available jobs have a look at [job controller documentation](../cronjobs/index.md)
 
 sites (standard is "default")
 : This must be one or more locale site codes that you have used in the administration interface. Several sites must be separated by a white space.
@@ -90,7 +90,7 @@ aimeos_shop:
                     baseurl: '%kernel.root_dir%/../public/bundles/aimeosshop/themes/elegance'
 ```
 
-To use another theme CSS for the sent e-mails, you can set the [client/html/common/template/baseurl](../../config/client-html/common-template#baseurl) parameter like shown above. As the job controller is executed via a cronjob, you must configure an **absolute path to the theme files**. The easiest way is to use the `%kernel.root_dir%` variable which always points to the `./bin/` directory of your Symfony application.
+To use another theme CSS for the sent e-mails, you can set the [client/html/common/template/baseurl](../config/client-html/common-template#baseurl) parameter like shown above. As the job controller is executed via a cronjob, you must configure an **absolute path to the theme files**. The easiest way is to use the `%kernel.root_dir%` variable which always points to the `./bin/` directory of your Symfony application.
 
 E-mails with products also contains links to these products on you web site. But e-mails are sent from the command line and Symfony can't guess the base URL in this case. This is solved by adding the following settings to your `./config/services.yml` file:
 

@@ -2,7 +2,7 @@
 
 When talking about pages we tend to think of the full HTML response that is sent to the visitor's browser after they enter a [shop URL](http://laravel.demo.aimeos.org/default/en/EUR). It includes the output from the Aimeos components embedded into the [base template](https://github.com/aimeos/aimeos-laravel#setup) you've provided after installation.
 
-This article focuses on changing the components that are visible on a page. If you want to adapt only the layout, please read the article about [theming of the shop components](../../frontend/html/theme-basics.md).
+This article focuses on changing the components that are visible on a page. If you want to adapt only the layout, please read the article about [theming of the shop components](../frontend/html/theme-basics.md).
 
 All Aimeos pages can contain a list of pre-defined sections:
 
@@ -234,7 +234,7 @@ Available components are identified using the [directory structure](https://gith
 Thus, the catalog session component in the "Client/Html/Catalog/Session" directory is addressed via the string "catalog/session". Similarly, the product listing component is identified by "catalog/list", and the product detail component is identified by "catalog/detail". This works for all components besides the ones that are in the "Client/Html/Common" and "Client/Html/Email" directory.
 
 !!! warning
-    Please keep in mind that some components need specific parameters like the "catalog/detail" component, which requires at least a value for the "d_prodid" parameter. There's a [complete list of parameters used](../../frontend/html/parameter-names.md) available for reference.
+    Please keep in mind that some components need specific parameters like the "catalog/detail" component, which requires at least a value for the "d_prodid" parameter. There's a [complete list of parameters used](../frontend/html/parameter-names.md) available for reference.
 
 ## Modify your template
 
@@ -410,7 +410,7 @@ The "mycomponent" and "mypart" names must be replaced by the name of your Aimeos
 
 For shops offering multiple languages, currencies or both, Aimeos contains a locale selector component that renders menus of the configured language/currency combinations, so visitors are able to choose their preferred language and/or currency. By default, both will be part of the URL afterwards.
 
-How to add locales for language/currency combinations is described in the [user manual](../../manual/locales.md).
+How to add locales for language/currency combinations is described in the [user manual](../manual/locales.md).
 
 ## Configuration
 
@@ -509,7 +509,7 @@ These two lines require that the language ("locale") and currency ID must be par
 
 ## Adapt selector
 
-The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/standard/subparts](../../config/client-html/locale-select#subparts) configuration.
+The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/standard/subparts](../config/client-html/locale-select#subparts) configuration.
 
 Adapting the layout of the locale selector is possible via CSS.
 

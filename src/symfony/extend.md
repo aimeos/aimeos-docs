@@ -1,6 +1,6 @@
 # Adapt pages
 
-When talking about pages we think of the full HTML response that is sent to the browser of the visitors after they entered a [shop URL](http://symfony.demo.aimeos.org/default/en/EUR/list). It includes the output from the Aimeos components embedded into the [base template](https://github.com/aimeos/aimeos-symfony#setup) you've provided after installation. This article focuses on changing the components that are visible on a page. If you want to adapt only the theme, please read the article about [theming of the shop components](../../frontend/html/theme-basics.md).
+When talking about pages we think of the full HTML response that is sent to the browser of the visitors after they entered a [shop URL](http://symfony.demo.aimeos.org/default/en/EUR/list). It includes the output from the Aimeos components embedded into the [base template](https://github.com/aimeos/aimeos-symfony#setup) you've provided after installation. This article focuses on changing the components that are visible on a page. If you want to adapt only the theme, please read the article about [theming of the shop components](../frontend/html/theme-basics.md).
 
 All Aimeos pages can contain a list of pre-defined blocks:
 
@@ -91,7 +91,7 @@ Available components are listed for each Page controller action and they are ide
 Similarly, the product listing component is identified by "catalog/list" or the product detail component by "catalog/detail". This works for all components besides the ones that are in the "Client/Html/Common" and "Client/Html/Email" directory.
 
 !!! warning
-    Please keep in mind that some components need specific parameters like the "catalog/detail" component, which requires at least a value for the "d_prodid" parameter. There's a [complete list of parameters used](../../frontend/html/parameter-names.md) available for reference.
+    Please keep in mind that some components need specific parameters like the "catalog/detail" component, which requires at least a value for the "d_prodid" parameter. There's a [complete list of parameters used](../frontend/html/parameter-names.md) available for reference.
 
 For example, if you want to add the catalog filter component to your "MyAccount" page as well, you can add its name inside the square brackets of the page component list:
 
@@ -221,7 +221,7 @@ Available components are identified using the [directory structure](https://gith
 Similarly, the product listing component is identified by "catalog/list" or the product detail compoent by "catalog/detail". This works for all compoents besides the ones that are in the "Client/Html/Common" and "Client/Html/Email" directory.
 
 !!! warning
-    Please keep in mind that some components need specific parameters like the "catalog/detail" component, which requires at least a value for the "d_prodid" parameter. There's a [complete list of parameters used](../../frontend/html/parameter-names.md) available for reference.
+    Please keep in mind that some components need specific parameters like the "catalog/detail" component, which requires at least a value for the "d_prodid" parameter. There's a [complete list of parameters used](../frontend/html/parameter-names.md) available for reference.
 
 ## Modify your template
 
@@ -400,7 +400,7 @@ The "mycomponent" and "mypart" names must be replaced by the name of your Aimeos
 
 For shops offering multiple languages, currencies or both, Aimeos contains a locale selector component that renders menus of the configured language/currency combinations, so visitors are able to choose their preferred language and/or currency. By default, both will be part of the URL afterwards.
 
-How to add locales for language/currency combinations is described in the [user manual](../../manual/locales.md).
+How to add locales for language/currency combinations is described in the [user manual](../manual/locales.md).
 
 ## Configuration
 
@@ -458,7 +458,7 @@ aimeos_shop_account:
 
 ## Adapt selector
 
-The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/standard/subparts](../../config/client-html/locale-select.md#subparts) configuration.
+The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/standard/subparts](../config/client-html/locale-select.md#subparts) configuration.
 
 Adapting the layout of the locale selector is possible via CSS.
 

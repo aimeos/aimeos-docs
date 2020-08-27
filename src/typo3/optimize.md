@@ -60,7 +60,7 @@ return [
 ];
 ```
 
-More details about the available domains and the necessary configuration is available in the [database article](../../infrastructure/databases.md).
+More details about the available domains and the necessary configuration is available in the [database article](../infrastructure/databases.md).
 
 To avoid the install tool creating the tables in the TYPO3 database add the tables that are stored in other databases to the "DB" section of your `./typo3conf/LocalConfiguration.php`:
 
@@ -184,7 +184,7 @@ To disable the content caching completely, change this setting in the Aimeos ext
 The basket is also updated automatically if you add products to or delete products from the basket resp. modifying the basket content in another way.
 
 !!! tip
-    You can also disable caching the basket content in the sessions for development using the [client/html/basket/cache/enable](../../config/client-html/basket-cache#enable) configuration option.
+    You can also disable caching the basket content in the sessions for development using the [client/html/basket/cache/enable](../config/client-html/basket-cache#enable) configuration option.
 
 # Cache distribution
 

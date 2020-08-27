@@ -2,7 +2,7 @@ Delivery and payment handling are one of the most important tasks in a web shop.
 
 In Aimeos, the service providers are adapters between the shop interfaces for delivery and payment handling and any remote gateway. They can have arbitrary configurations, individually defined for each service provider. The base classes offer a rich set of methods that ease development and minimize the code that must be written.
 
-Your service provider must be part of your project specific [Aimeos extension](../../start/developer/extensions.md) you have to create and stored in
+Your service provider must be part of your project specific [Aimeos extension](../../developer/extensions.md) you have to create and stored in
 
 ```
 ./<yourext>/lib/custom/src/MShop/Service/Provider/Delivery/<classname>.php

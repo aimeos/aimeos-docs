@@ -10,7 +10,7 @@ phing setup
 phing test
 ```
 
-If you would like to test the Aimeos core on your hardware you can use target "setupperf" to write performance test data to the database and browse through the ["Perfomance" site](../../manual/working-with-sites.md) in the front end. You will have to activate the performance site in the [administration interface](../../manual/working-with-sites.md).
+If you would like to test the Aimeos core on your hardware you can use target "setupperf" to write performance test data to the database and browse through the ["Perfomance" site](../manual/working-with-sites.md) in the front end. You will have to activate the performance site in the [administration interface](../manual/working-with-sites.md).
 
 # Aimeos core targets
 

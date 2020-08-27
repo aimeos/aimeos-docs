@@ -90,7 +90,7 @@ The directory for the admin JSON REST API contains:
 
 Tutorials:
 
-* [Work with the admin JSON REST API](../../admin/jsonadm/index.md)
+* [Work with the admin JSON REST API](../admin/jsonadm/index.md)
 
 ## client
 
@@ -110,20 +110,20 @@ The HTML front-end and the classes plus templates generating the HTML output. Al
 
 Tutorials:
 
-* [Implement new components](../../frontend/html/implement-components.md)
-* [Extend existing components](../../frontend/html/extend-components.md)
-* [Adapt account components](../../frontend/html/account-components.md)
-* [Adapt basket components](../../frontend/html/basket-components.md)
-* [Adapt catalog components](../../frontend/html/catalog-components.md)
-* [Adapt checkout components](../../frontend/html/checkout-components.md)
-* [Adapt email components](../../frontend/html/email-components.md)
-* [Adapt locale components](../../frontend/html/locale-components.md)
-* [Used parameter names](../../frontend/html/parameter-names.md)
+* [Implement new components](../frontend/html/implement-components.md)
+* [Extend existing components](../frontend/html/extend-components.md)
+* [Adapt account components](../frontend/html/account-components.md)
+* [Adapt basket components](../frontend/html/basket-components.md)
+* [Adapt catalog components](../frontend/html/catalog-components.md)
+* [Adapt checkout components](../frontend/html/checkout-components.md)
+* [Adapt email components](../frontend/html/email-components.md)
+* [Adapt locale components](../frontend/html/locale-components.md)
+* [Used parameter names](../frontend/html/parameter-names.md)
 
 Theme tutorials:
 
-* [Theme basics](../../frontend/html/theme-basics.md)
-* [How to adapt themes](../../frontend/html/adapt-themes.md)
+* [Theme basics](../frontend/html/theme-basics.md)
+* [How to adapt themes](../frontend/html/adapt-themes.md)
 
 ## client/jsonapi
 
@@ -136,7 +136,7 @@ The JSON REST API for the front-end and the classes plus templates generating th
 
 Tutorials:
 
-* [How to use the JSON REST API](../../frontend/jsonapi/index.md)
+* [How to use the JSON REST API](../frontend/jsonapi/index.md)
 
 ## controller/common
 
@@ -167,7 +167,7 @@ A shop has to run several tasks in an asynchronous manner, like sending e-mails 
 
 Tutorials:
 
-* [Implement a job controller](../../cronjobs/create-job-controller.md)
+* [Implement a job controller](../cronjobs/create-job-controller.md)
 
 ## lib/custom
 
@@ -182,11 +182,11 @@ For the low level layer of the core including the adapters and data access manag
 
 Tutorials:
 
-* [Database setup](../../infrastructure/databases.md)
-* [Database migrations](../../infrastructure/schema-migrations.md)
-* [Using managers and items](../../infrastructure/managing-items.md)
-* [Implement payment/delivery providers](../../providers/service/index.md)
-* [Implement basket plugins](../../providers/basket-plugins.md)
+* [Database setup](../infrastructure/databases.md)
+* [Database migrations](../infrastructure/schema-migrations.md)
+* [Using managers and items](../infrastructure/managing-items.md)
+* [Implement payment/delivery providers](../providers/service/index.md)
+* [Implement basket plugins](../providers/basket-plugins.md)
 
 # Manifest
 

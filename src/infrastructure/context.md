@@ -1,4 +1,4 @@
-The [context item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php) is the dependency container of Aimeos and gives you access to the host system, independent of the used framework or application. It's available in all classes of the [data access layer and above](../start/developer/architecture.md) except the items (and template files of course) by calling
+The [context item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php) is the dependency container of Aimeos and gives you access to the host system, independent of the used framework or application. It's available in all classes of the [data access layer and above](../developer/architecture.md) except the items (and template files of course) by calling
 
 ```php
 $this->getContext()

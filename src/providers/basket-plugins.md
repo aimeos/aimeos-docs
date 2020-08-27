@@ -1,6 +1,6 @@
 If you want to perform actions on the basket content depending on current activity, basket plug-ins are the tool of choice. They allow you to operate on the whole basket and are able to add, remove or change products, services, coupons or addresses as you wish. Which basket plug-ins are available by default and how to configure them is described in the [user manual](../manual/plugins.md).
 
-Your basket plugin must be part of your project specific [Aimeos extension](../start/developer/extensions.md) which you must create and then store at *./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php* to be available in your Aimeos installation.
+Your basket plugin must be part of your project specific [Aimeos extension](../developer/extensions.md) which you must create and then store at *./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php* to be available in your Aimeos installation.
 
 For new basket plug-ins, you can use this skeleton class:
 
@@ -23,7 +23,7 @@ class Myexample
 }
 ```
 
-The file containing the class must be placed in the *./lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php* file (or any more reasonable file/class name) of your extension. There's an article about [creating extensions](../start/developer/extensions.md) for Aimeos if you haven't one yet.
+The file containing the class must be placed in the *./lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php* file (or any more reasonable file/class name) of your extension. There's an article about [creating extensions](../developer/extensions.md) for Aimeos if you haven't one yet.
 
 # Event system
 

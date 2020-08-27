@@ -76,7 +76,7 @@ php artisan aimeos:jobs "<jobs>" "<sites>"
 ```
 
 jobs (mandatory)
-: The jobs parameter can be the name of a single job or a list of job names separated by a white space. For a list of available jobs have a look at [job controller documentation](../../cronjobs/index.md)
+: The jobs parameter can be the name of a single job or a list of job names separated by a white space. For a list of available jobs have a look at [job controller documentation](../cronjobs/index.md)
 
 sites (standard is "default")
 : This must be one or more locale site codes that you have used in the administration interface. Several sites must be separated by a white space.
@@ -102,7 +102,7 @@ For some jobs (especially the tasks that are sending e-mails) a few configuratio
 ),
 ```
 
-To use another theme CSS for the sent e-mails, you can set the [client/html/common/template/baseurl](../../config/client-html/common-template.md#baseurl) parameter like shown above. As the job controller is executed via a cronjob, you must configure an **absolute path to the theme files**. The easiest way is to use the `public_path()` helper function which creates absolute paths to the `./public/` directory of your Laravel application.
+To use another theme CSS for the sent e-mails, you can set the [client/html/common/template/baseurl](../config/client-html/common-template.md#baseurl) parameter like shown above. As the job controller is executed via a cronjob, you must configure an **absolute path to the theme files**. The easiest way is to use the `public_path()` helper function which creates absolute paths to the `./public/` directory of your Laravel application.
 
 ## Every minute
 
