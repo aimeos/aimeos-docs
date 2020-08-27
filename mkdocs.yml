@@ -77,6 +77,7 @@ nav:
       - Git workflow: start/developer/git.md
       - Phing build system: start/developer/phing.md
   - User manual:
+    - Getting started: manual/index.md
     - Filtering lists:  manual/filtering-lists.md
     - Working with sites:  manual/working-with-sites.md
     - Currencies/languages: manual/locales.md

@@ -6,7 +6,7 @@ The Aimeos package also includes adapter classes for basic components used by an
 
 1. [Install Aimeos](https://github.com/aimeos/aimeos-laravel#table-of-content)
 2. [Configure cronjobs](setup.md#cronjobs)
-3. [Read the manual](../../manual/filtering-lists.md)
+3. [Read the manual](../../manual/index.md)
 4. [Create an extension](../developer/extensions.md)
 5. [Customize Aimeos](customize.md)
 6. [Adapt the frontend](#html-frontend)
