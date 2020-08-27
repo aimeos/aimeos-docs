@@ -51,31 +51,30 @@ tracking:
 
 
 nav:
-  - Getting started:
-    - Laravel:
-      - First steps in Laravel: start/laravel/index.md
-      - Setup: start/laravel/setup.md
-      - Customize: start/laravel/customize.md
-      - Extend: start/laravel/extend.md
-      - Optimize: start/laravel/optimize.md
-    - Symfony:
-      - First steps in Symfony: start/symfony/index.md
-      - Setup: start/symfony/setup.md
-      - Customize: start/symfony/customize.md
-      - Extend: start/symfony/extend.md
-      - Optimize: start/symfony/optimize.md
-    - TYPO3:
-      - First steps in TYPO3: start/typo3/index.md
-      - Setup: start/typo3/setup.md
-      - Customize: start/typo3/customize.md
-      - Extend: start/typo3/extend.md
-      - Optimize: start/typo3/optimize.md
-    - Development:
-      - Architecture: start/developer/architecture.md
-      - Create extensions: start/developer/extensions.md
-      - Add translations:  start/developer/translations.md
-      - Git workflow: start/developer/git.md
-      - Phing build system: start/developer/phing.md
+  - Laravel:
+    - Getting started: laravel/index.md
+    - Setup: laravel/setup.md
+    - Customize: laravel/customize.md
+    - Extend: laravel/extend.md
+    - Optimize: laravel/optimize.md
+  - Symfony:
+    - Getting started: symfony/index.md
+    - Setup: symfony/setup.md
+    - Customize: symfony/customize.md
+    - Extend: symfony/extend.md
+    - Optimize: symfony/optimize.md
+  - TYPO3:
+    - Getting started: typo3/index.md
+    - Setup: typo3/setup.md
+    - Customize: typo3/customize.md
+    - Extend: typo3/extend.md
+    - Optimize: typo3/optimize.md
+  - Development:
+    - Architecture: developer/architecture.md
+    - Create extensions: developer/extensions.md
+    - Add translations:  developer/translations.md
+    - Git workflow: developer/git.md
+    - Phing build system: developer/phing.md
   - User manual:
     - Getting started: manual/index.md
     - Filtering lists:  manual/filtering-lists.md

@@ -410,7 +410,7 @@ The "mycomponent" and "mypart" names must be replaced by the name of your Aimeos
 
 For shops offering multiple languages, currencies or both, Aimeos contains a locale selector component that renders menus of the configured language/currency combinations, so visitors are able to choose their preferred language and/or currency. By default, both will be part of the URL afterwards.
 
-How to add locales for language/currency combinations is described in the [user manual](../../manual/filtering-lists.md).
+How to add locales for language/currency combinations is described in the [user manual](../../manual/locales.md).
 
 ## Configuration
 
