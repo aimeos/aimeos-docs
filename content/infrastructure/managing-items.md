@@ -104,21 +104,38 @@ The manager will try to store the data, retrieve the unique ID for the item and 
 
 ## Get item
 
-You can retrieve a single item if you know its unique ID. The *get()* method returns exactly one item if the manager found one for the given ID:
+You can retrieve a single item if you know its unique ID. The *get()* method returns exactly one item if the manager found one for the given ID or throws, an exception if none is found:
 
 ```php
-$item = $manager->getItem( $id );
-$item = $manager->getItem( $id, ['text', 'media', 'price'] );
-$item = $manager->getItem( $id, ['attribute' => ['default', 'variant']] );
+$item = $manager->get( $id );
+$item = $manager->get( $id, ['text', 'media', 'price'] );
+$item = $manager->get( $id, ['attribute' => ['default', 'variant']] );
+$item = $manager->get( $id, ['supplier' => ['text', 'media']] );
 ```
 
-When none was found, an exception is thrown.
+There's an optional second parameter to fetch items from associated domains too. This can be either a list of domains:
 
-There's an optional second parameter to fetch items from associated domains too. This can be either a list of domains to fetch all items of that domains or the domain name as key and the list types as values, limiting the fetched items.
+```php
+['text', 'media', 'price']
+```
+
+which will fetch all items of the text, media and price domains. You can also pass the the domain name as key and the list types as values:
+
+```php
+['attribute' => ['default', 'variant']]
+```
+
+to fetch only attributes which are associated to the item with "default" or "variant" list type. For some managers like the product manager it's also possible to fetch categories, suppliers an stock items too. For the first two, you can declare which referenced items should be retrieved for auch catalog or supplier item:
 
 It's available for all domain items where items from other domains can be associated to them via a "list" table.
 
-Domains with a list table are:
+```php
+['supplier' => ['text', 'media']]
+```
+
+which will add the suppliers of a product including their "text" and "media" items.
+
+Domains with a list table where related items can be referenced are:
 
 * attribute
 * catalog
@@ -142,8 +159,8 @@ The second parameter for *getListItems()* and the third parameter for *getRefIte
 You can also retrieve items stored in the same domain, e.g. product properties or ordered products via the second parameter:
 
 ```php
-$item = $productManager->getItem( $id, ['product/property'] );
-$item = $orderBaseManager->getItem( $id, ['order/base/address', 'order/base/product'] );
+$item = $productManager->get( $id, ['product/property'] );
+$item = $orderBaseManager->get( $id, ['order/base/address', 'order/base/product'] );
 ```
 
 ## Find item
