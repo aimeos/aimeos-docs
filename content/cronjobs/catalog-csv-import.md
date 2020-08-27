@@ -12,7 +12,7 @@ Several container types are supported as long as their content consists of CSV-l
 * Directory container / CSV files
 * Zip container / compressed CSV files
 
-You can configure the container type and content format via the [controller/jobs/catalog/import/csv/container/type](../config/controller-jobs/catalog-import.md#type) and [controller/jobs/catalog/import/csv/container/content](../config/controller-jobs/catalog-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/container-content.md)
+You can configure the container type and content format via the [controller/jobs/catalog/import/csv/container/type](../config/controller-jobs/catalog-import.md#type) and [controller/jobs/catalog/import/csv/container/content](../config/controller-jobs/catalog-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md)
 
 !!! note
     The default container type is "directory", so you need to configure a directory where one or more import files are stored.
@@ -95,7 +95,7 @@ In fact, you can leave out indexes that shouldn't be imported and use an arbitra
 
 Each group in the mapping (e.g. "item", "text" or "media") defines the CSV fields that will be evaluated by the corresponding processor implementation. A processor is a class that cares about importing "its" data for the category, e.g. the "text" processor imports the data that will be stored in the *mshop_text* table and to associate this data via the *mshop_catalog_list* table to the corresponding catalog.
 
-To speed up importing the data, all existing catalog related data is fetched at once for each catalog item. You can change the retrieved relations via the [controller/common/catalog/import/csv/domains](../config/controller-common/catalog-import.md#domains) or - specific for the job controller - the [controller/jobs/catalog/import/csv/domains](../config/controller-jobs/catalog-import.md#domains) setting. This is especially useful if you don't want to import certain relations like associated media as it reduces the amount of data retrieved from the storage and speeds up the import.
+To speed up importing the data, all existing catalog related data is fetched at once for each catalog item. You can change the retrieved relations via the [controller/jobs/catalog/import/csv/domains](../config/controller-jobs/catalog-import.md#domains) setting. This is especially useful if you don't want to import certain relations like associated media as it reduces the amount of data retrieved from the storage and speeds up the import.
 
 !!! warning
     If you remove a name from the "domains" configuration but still have a mapping defined and your CSV file contains data for this domain, the import is likely to fail because the importer than tries to import duplicate entries. On the other hand, retrieving more domain items than necessary only slows down the importer.
@@ -251,7 +251,7 @@ If one or more relations should stay untouched, you can explicitly configure the
 
 Not all data in the CSV file is already in the required format. Maybe the text encoding isn't UTF-8, the date is not in ISO format or something similar. In order to convert the data before it's imported, you can specify a list of converter objects that should be applied to the data from the CSV file.
 
-To each field in the CSV file, you can apply one or more converters, e.g. to encode a Latin text to UTF8 for the second CSV field via the [controller/common/catalog/import/csv/converter](../config/controller-common/catalog-import.md#converter) or - specific for the job controller - [controller/jobs/catalog/import/csv/converter](../config/controller-jobs/catalog-import.md#converter) settings:
+To each field in the CSV file, you can apply one or more converters, e.g. to encode a Latin text to UTF8 for the second CSV field via the [controller/jobs/catalog/import/csv/converter](../config/controller-jobs/catalog-import.md#converter) settings:
 
 ```php
 [

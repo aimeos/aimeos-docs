@@ -12,7 +12,7 @@ Several container types are supported as long as their content consists of CSV-l
 * Directory container / CSV files
 * Zip container / compressed CSV files
 
-You can configure the container type and content format via the [controller/jobs/product/import/csv/container/type](../config/controller-jobs/product-import.md#type) and [controller/jobs/product/import/csv/container/content](../config/controller-jobs/product-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/container-content.md)
+You can configure the container type and content format via the [controller/jobs/product/import/csv/container/type](../config/controller-jobs/product-import.md#type) and [controller/jobs/product/import/csv/container/content](../config/controller-jobs/product-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md)
 
 For CSV files, there exists a wide range of possibilities about their format because it's not standardized besides the fact that fields are separated by comma (,) but even that isn't set in stone. As a guideline, you should use the following format, which is able to handle all edge cases:
 
@@ -101,7 +101,7 @@ Before you start, add these settings to your configuration:
 
 # Adapt the mapping
 
-In order to change the default mapping, you can either use the [controller/common/product/import/csv/mapping](../config/controller-common/product-import.md#mapping) or - specific for the job controller - the [controller/jobs/product/import/csv/mapping](../config/controller-jobs/product-import.md#mapping) setting.
+In order to change the default mapping, you can either use the [controller/jobs/product/import/csv/mapping](../config/controller-jobs/product-import.md#mapping) setting.
 
 You can freely rearrange the group names and e.g. put "media" before "text" or after "attribute". This changes the order at which the data is imported and in this example, first the product item, than the text and media data is imported and so on.
 
@@ -129,7 +129,7 @@ In fact, you can leave out indexes that shouldn't be imported and use an arbitra
 
 Each group in the mapping (e.g. "item", "text" or "media") defines the CSV fields that will be evaluated by the corresponding processor implementation. A processor is a class that cares about importing "its" data for the product, e.g. the "text" processor imports the data that will be stored in the *mshop_text* table and to associate this data via the *mshop_product_list* table to the corresponding product.
 
-To speed up importing the data, all existing product related data is fetched at once for each product item. You can change the retrieved relations via the [controller/common/product/import/csv/domains](../config/controller-common/product-import.md#domains) or - specific for the job controller - the [controller/jobs/product/import/csv/domains](../config/controller-jobs/product-import.md#domains) setting. This is especially useful if you don't want to import certain relations like associated products as it reduces the amount of data retrieved from the storage and speeds up the import.
+To speed up importing the data, all existing product related data is fetched at once for each product item. You can change the retrieved relations via the [controller/jobs/product/import/csv/domains](../config/controller-jobs/product-import.md#domains) setting. This is especially useful if you don't want to import certain relations like associated products as it reduces the amount of data retrieved from the storage and speeds up the import.
 
 !!! warning
     If you remove a name from the "domains" configuration but still have a mapping defined and your CSV file contains data for this domain, the import is likely to fail because the importer than tries to import duplicate entries. On the other hand, retrieving more domain items than necessary only slows down the importer.
