@@ -17,6 +17,7 @@ var version = window.location.pathname.slice(6, 12);
 var client = algoliasearch('M2A88JJEVU', 'd04abfdb562432b3055422cb5f63f169');
 var index = client.initIndex( version.search(/^[0-9]{4}\.x$/) !== -1 ? version : '2020.x');
 autocomplete('.md-search__input', {
+	autoselectOnBlur: true,
 	minLength: 3,
 	hint: false
 }, [{

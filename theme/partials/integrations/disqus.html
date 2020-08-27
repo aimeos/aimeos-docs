@@ -1,0 +1,39 @@
+{#-
+	This file was automatically generated - do not edit
+  -#}
+  {% set disqus = config.extra.disqus %}
+  {% if page and page.meta and page.meta.disqus is string %}
+	{% set disqus = page.meta.disqus %}
+  {% endif %}
+  {% if not page.is_homepage and disqus %}
+	<h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+	<div id="disqus_thread"></div>
+	<script>
+	var disqus_config=function(){
+		this.page.url="{{ page.canonical_url }}",
+		this.page.identifier="{{ page.canonical_url | replace(config.site_url, '') }}"
+	};
+
+	if('IntersectionObserver' in window) {
+		let observer = new IntersectionObserver(function(entries, observer) {
+			for(let entry of entries) {
+				if(entry.isIntersecting) {
+					observer.unobserve(entry.target);
+					el=document.createElement("script");
+					el.src="https://{{ disqus }}.disqus.com/embed.js";
+					el.setAttribute("data-timestamp",+new Date);
+					document.body.appendChild(el);
+				}
+			}
+		},{
+			threshold: 0.01
+		});
+		observer.observe(document.querySelector('#__comments'));
+	} else {
+		el=document.createElement("script");
+		el.src="https://{{ disqus }}.disqus.com/embed.js";
+		el.setAttribute("data-timestamp",+new Date);
+		document.body.appendChild(el);
+	}
+	</script>
+  {% endif %}

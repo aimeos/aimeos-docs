@@ -128,6 +128,23 @@
 	background-color: var(--md-accent-fg-color--transparent, #ba9a5a20);
 }
 
+.md-header-nav__source {
+	position: relative;
+}
+
+label.version-select {
+    text-transform: uppercase;
+	letter-spacing: 2.5px;
+	text-align: center;
+    position: absolute;
+    display: block;
+    margin: auto;
+    left: 12.5%;
+    opacity: .4;
+	width: 75%;
+	z-index: 2;
+}
+
 select.md-header-nav__button {
 	width: 75%;
 	margin: 0.2rem auto;
@@ -172,7 +189,16 @@ select.md-header-nav__button:focus {
 }
 
 .md-nav__item {
-	padding: 0.5rem 0;
+	padding: 0.45rem 0;
+}
+
+.md-nav__item--nested>.md-nav__link {
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.md-nav--primary .md-nav__title {
+	display: none;
 }
 
 .md-nav--secondary .md-nav__item {
