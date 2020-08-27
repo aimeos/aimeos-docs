@@ -4,7 +4,7 @@ site_url: https://aimeos.org/docs/2020.x/
 
 site_name: Aimeos documentation
 repo_url: https://github.com/aimeos/aimeos-docs
-edit_uri: blob/master/content/
+edit_uri: blob/master/src/
 markdown_extensions:
   - toc:
       baselevel: 2
@@ -21,7 +21,7 @@ markdown_extensions:
   - pymdownx.superfences
 plugins:
   - algolia
-docs_dir: content
+docs_dir: src
 theme:
   name: material
   custom_dir: theme
