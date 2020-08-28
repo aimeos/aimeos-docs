@@ -4,7 +4,7 @@
 
 	for(let i=0; i < nodes.length; i++) {
 
-		if(node.tagName === 'SELECT') {
+		if(nodes[i].tagName === 'SELECT') {
 
 			['2020.x'].forEach(function(el) {
 				let option = document.createElement("option");
