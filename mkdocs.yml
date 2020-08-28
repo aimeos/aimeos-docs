@@ -45,7 +45,7 @@ extra:
       link: https://twitter.com/aimeos
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/c/aimeos
-tracking:
+analytics:
   url: https://aimeos.org/stats
   siteid: 1
 
