@@ -19,8 +19,7 @@ markdown_extensions:
           options:
             startinline: true
   - pymdownx.superfences
-plugins:
-  - algolia
+plugins: []
 docs_dir: src
 theme:
   name: material
