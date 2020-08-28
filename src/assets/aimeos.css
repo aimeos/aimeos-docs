@@ -246,3 +246,30 @@ select.md-header-nav__button:focus {
 .md-footer-social__link svg {
 	max-height: initial;
 }
+
+.integration {
+    display: inline-block;
+    text-align: center;
+    min-width: 10rem;
+    width: 32%;
+}
+
+.integration .logo {
+    height: 4rem;
+}
+
+.integration .name {
+    display: block;
+    font-weight: bold;
+	padding: 1rem 0;
+	color: #103050;
+	color: var(--md-primary-fg-color, #103050);
+}
+
+.topic {
+	display: inline-block;
+	vertical-align: top;
+	min-width: 10rem;
+    margin: 0 5%;
+	width: 39%;
+}
