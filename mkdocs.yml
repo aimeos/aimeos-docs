@@ -68,12 +68,6 @@ nav:
     - Customize: typo3/customize.md
     - Extend: typo3/extend.md
     - Optimize: typo3/optimize.md
-  - Development:
-    - Architecture: developer/architecture.md
-    - Create extensions: developer/extensions.md
-    - Add translations:  developer/translations.md
-    - Git workflow: developer/git.md
-    - Phing build system: developer/phing.md
   - User manual:
     - Getting started: manual/index.md
     - Filtering lists:  manual/filtering-lists.md
@@ -98,6 +92,12 @@ nav:
     - Basket plugins:
       - Available plugins: manual/plugins.md
       - Plugins details: manual/plugin-details.md
+  - Development:
+    - Architecture: developer/architecture.md
+    - Create extensions: developer/extensions.md
+    - Add translations:  developer/translations.md
+    - Git workflow: developer/git.md
+    - Phing build system: developer/phing.md
   - Configuration:
     - HTML clients:
       - Account download: config/client-html/account-download.md
