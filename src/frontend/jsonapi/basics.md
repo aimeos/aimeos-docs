@@ -401,7 +401,7 @@ To get the next 2 items starting from the 3rd one use the *next* link:
 
 === "CURL"
     ```bash
-    curl -X GET '<http://localhost:8000/jsonapi/product?page[offset>]=2&page[limit]=2'
+    curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=2&page[limit]=2'
     ```
 === "jQuery"
     ```javascript
