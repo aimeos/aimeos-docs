@@ -202,7 +202,21 @@ select.md-header-nav__button:focus {
 }
 
 .md-nav__item {
-	padding: 0.45rem 0;
+	padding: 0.33rem 0.25rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(3),
+.md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(5),
+.md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(10) {
+    padding-bottom: 0.75rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(4),
+.md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(6),
+.md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(11) {
+    padding-top: 0.75rem;
+	border-top: 1px solid #10305040;
+	border-top-color: var(--md-default-fg-color--lightest, #10305040);
 }
 
 .md-nav__item--nested>.md-nav__link {
