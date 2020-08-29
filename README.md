@@ -105,7 +105,7 @@ your operating system. One such resource would be [Real Python: Installing Pytho
 markdown files. Install `mkdocs` and the dependencies required by `aimeos-docs` with `pip`:
 
 ```bash
-pip install mkdocs material
+pip install mkdocs mkdocs-material
 ```
 
 ### Start the local server
