@@ -2,11 +2,11 @@
 
 Everyone is invited to improve the documentation! :-)
 
-Just fork the repository (upper right corner of the page), edit and add files, commit your changes and create
-a pull request. Read on, if you want to know, how to setup a git workflow as well as a local live-reloading
-server.
+Just fork the repository, edit and add files, commit your changes and create a pull request:
 
-Thank you and enjoy!
+![Fork Aimeos docs](https://aimeos.org/fileadmin/user_upload/aimeos-docs-repo.png)
+
+Read on, if you want to know, how to edit the documentation locally using Git and preview your changes on your local machine.
 
 ## Setting up a git workflow
 
