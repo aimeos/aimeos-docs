@@ -108,13 +108,13 @@ markdown files. Install `mkdocs` and the dependencies required by `aimeos-docs` 
 pip install mkdocs material
 ```
 
-#### Start the local server
+### Start the local server
 
 Run `mkdocs serve` to start a local server on `http://127.0.0.1:8000`. Now, whenever
 you make changes to any file, the server will automatically reload and display the new
 version.
 
-#### Build the docs
+### Build the docs
 
 To build the `aimoes-docs` locally, use `mkdocs build`. You can now open the documentation
 in your browser from the newly generated `<your-aimeos-docs-clone-folder>/docs`´s index.html.
