@@ -166,7 +166,7 @@ To combine several conditions into one request, you can combine two or more "com
     };
 
     if(options.meta.prefix) { // returned from OPTIONS call
-      params[options.meta.prefix] = params;
+        params[options.meta.prefix] = params;
     }
 
     $.ajax({
@@ -247,7 +247,7 @@ You can also create more complicated statements by nesting them like:
     };
 
     if(options.meta.prefix) { // returned from OPTIONS call
-      params[options.meta.prefix] = params;
+        params[options.meta.prefix] = params;
     }
 
     $.ajax({
