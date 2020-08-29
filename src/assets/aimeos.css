@@ -128,6 +128,19 @@
 	background-color: var(--md-accent-fg-color--transparent, #ba9a5a20);
 }
 
+.algolia-autocomplete .search-result-empty {
+	padding: 1rem;
+}
+
+.algolia-autocomplete .search-result-empty .empty-text {
+	font-size: 0.75rem;
+}
+
+.algolia-autocomplete .search-result-empty em {
+	font-weight: bold;
+}
+
+
 .md-header-nav__source {
 	position: relative;
 }

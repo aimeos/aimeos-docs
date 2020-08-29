@@ -44,6 +44,13 @@ autocomplete('.md-search__input', {
 					<div class="content">' + content.substring(content.indexOf(" ", start) + 1, start + 200) + '...</div> \
 				</div>';
 			}
+		},
+		empty: function(result) {
+			return '<div class="search-result-empty"> \
+				<div class="empty-text"> \
+					We couldn\'t find any result for <em>' + autocomplete.escapeHighlightedString(result.query) + '</em> \
+				</div> \
+			</div>';
 		}
 	}
 }]).on('autocomplete:selected', function(event, suggestion) {
