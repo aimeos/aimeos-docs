@@ -57,9 +57,10 @@ Thank you and enjoy!
   > git checkout -b <name-of-your-current-commit-branch>
   ```
 
-- Edit the mardown files you wish to contribute to and push them to your fork:
+- Edit the mardown files you wish to contribute to, add a comment and push them to your fork:
 
   ```bash
+  > git commit -m '<describe briefly, what you changed>'
   > git push -u origin <name-of-your-current-commit-branch>
   ```
 
@@ -111,10 +112,9 @@ pip install mkdocs material
 
 Run `mkdocs serve` to start a local server on `http://127.0.0.1:8000`. Now, whenever
 you make changes to any file, the server will automatically reload and display the new
-version. (Hint: If you come from webpack or any similar setup, be aware that this process
-takes quite a bit longer then you might be used to.)
+version.
 
 #### Build the docs
 
 To build the `aimoes-docs` locally, use `mkdocs build`. You can now open the documentation
-in your browser from the newly generated `<your-aimeos-docs-clone-folder>/docs`'s index.html.
+in your browser from the newly generated `<your-aimeos-docs-clone-folder>/docs`´s index.html.
