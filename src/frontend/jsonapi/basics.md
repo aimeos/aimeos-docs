@@ -71,9 +71,9 @@ All GET requests will return a JSON object with the structure defined by [jsonap
 
 The **"meta"** section will always contain a "total" property on success. It's value is the number of items found in total for the current search filter. In the **"links"** section, all necessary links for navigating through the result set are listed including the link for the current request.
 
-**"data"** contains the product items and each item always contains the ID and the resource type. In the attributes section, you will find the same data as returned by the *toArray()* method for every item. An URL referencing the unique resource is included in "links". If related items are included, they will be referenced by their ID and type in the "relationships" section. For items that are associated via lists, they will also contain an "attributes" section with the data for the list table.
+**"data"** contains the product items, and each item always contains the ID and the resource type. In the attributes section, you will find the same data as returned by the *toArray()* method for every item. An URL referencing the unique resource is included in "links". If related items are included, they will be referenced by their ID and type in the "relationships" section. Items that are associated via lists will also contain an "attributes" section with the data for the list table.
 
-In the **"included"** section all related items are listed if you told the server to hand them over in the same request as well. It's structure is the same as for the "data" section. For more information, please have a look into the [related resources](#include-related-resources) section.
+In the **"included"** section all related items are listed if you told the server to hand them over in the same request as well. Its structure is the same as for the "data" section. For more information, please have a look into at the [related resources](#include-related-resources) section.
 
 By default, the first 48 items available will be returned if no further GET parameters are sent along with the request. There are three parameters to modify that behavior:
 
@@ -88,12 +88,12 @@ By default, the first 48 items available will be returned if no further GET para
 
 Each resource offers custom search parameters to retrieve data for common use cases. Please have a look into the articles about products, basket, etc. for details about these parameters.
 
-Additionally, you can use custom filters for each resource. The JSON API standard defines a parameter named "filter" that can contain arbitrary conditions. In the Aimeos API, you can use conditions for comparing values and combining them. To get all products items which are are selections:
+Additionally, you can use custom filters for each resource. The JSON API standard defines a parameter named "filter" that can contain arbitrary conditions. In the Aimeos API, you can use conditions for comparing values and combining them. To get all products items which are selections:
 
 === "CURL"
     ```bash
     # filter[>][product.type]=select
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%3E][product.type]=select'
+    curl -X GET '<http://localhost:8000/jsonapi/product?filter[%3E>][product.type]=select'
     ```
 === "jQuery"
     ```javascript
@@ -103,9 +103,9 @@ Additionally, you can use custom filters for each resource. The JSON API standar
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -117,13 +117,13 @@ Additionally, you can use custom filters for each resource. The JSON API standar
     });
     ```
 
-This is known as the "polish" notation because the operator comes first and than the two operands (key and value). There are several operators available:
+This is known as the "polish" notation because the operator comes first, then the two operands (key and value). There are several operators available:
 
 **=~** (%3D%7E)
-: Strings that starts with the given value
+: Strings that start with the given value
 
 **~=** (%7E%3D)
-: Strings that contains the given value
+: Strings that contain the given value
 
 **>** (%3E)
 : Greater than for date, date&time, integer and float values
@@ -152,7 +152,7 @@ To combine several conditions into one request, you can combine two or more "com
     ```bash
     # filter[&&][][>][product.type]=select
     # &filter[&&][][=~][product.label]=demo
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][product.type]=select&filter[%26%26][][%3D%7E][product.label]=demo'
+    curl -X GET '<http://localhost:8000/jsonapi/product?filter[%26%26>][][%3E][product.type]=select&filter[%26%26][][%3D%7E][product.label]=demo'
     ```
 === "jQuery"
     ```javascript
@@ -165,9 +165,9 @@ To combine several conditions into one request, you can combine two or more "com
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+      params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -195,7 +195,7 @@ The negation is a special case because it only accepts one "compare" condition w
 === "CURL"
     ```bash
     # filter[!][][=~][product.code]=demo-s
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%21][][%3D%7E][product.code]=demo-s'
+    curl -X GET '<http://localhost:8000/jsonapi/product?filter[%21>][][%3D%7E][product.code]=demo-s'
     ```
 === "jQuery"
     ```javascript
@@ -207,9 +207,9 @@ The negation is a special case because it only accepts one "compare" condition w
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -228,7 +228,7 @@ You can also create more complicated statements by nesting them like:
     # filter[&&][0][!][][=~][product.label]=demo
     # &filter[&&][1][||][][==][product.datestart]=
     # &filter[&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
-    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][0][%21][][%3D%7E][product.label]=demo&filter[%26%26][1][%7C%7C][][%3D%3D][product.datestart]=&filter[%26%26][1][%7C%7C][][%3E][product.datestart]=2000-01-01%2000:00:00'
+    curl -X GET '<http://localhost:8000/jsonapi/product?filter[%26%26>][0][%21][][%3D%7E][product.label]=demo&filter[%26%26][1][%7C%7C][][%3D%3D][product.datestart]=&filter[%26%26][1][%7C%7C][][%3E][product.datestart]=2000-01-01%2000:00:00'
     ```
 === "jQuery"
     ```javascript
@@ -246,9 +246,9 @@ You can also create more complicated statements by nesting them like:
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+      params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -260,14 +260,14 @@ You can also create more complicated statements by nesting them like:
     });
     ```
 
-It combines the three expression by using the AND operator. In the first expression we tell the server that we want to get all items whose code doesn't start with "demo-s". The second expression is in this case an OR expression that specifies that "product.datestart" can be either be a null value or the start date must be after the beginning of the year 2000.
+It combines the three expression by using the AND operator. In the first expression we tell the server that we want to get all items whose code doesn't start with "demo-s". The second expression in this case is an OR expression that specifies that "product.datestart" can either be a null value or the start date must be a date after the beginning of the year 2000.
 
 !!! warning
     Don't forget to [nest the parameters](index.md#nested-parameters) if a prefix is sent in the meta data!
 
 # Sorting the result set
 
-Some resources e.g. for products offer specific sorting like "price", "name" or "relevance". Others like for services use an implicit default sorting. Please have a look at the available sort criteria for the resources.
+Some resources, e.g. for products, offer specific sorting like "price", "name" or "relevance". Others, like those for services, use an implicit default sorting. Please have a look at the available sort criteria for the respective resources.
 
 Additionally, you can use the sort parameter and the items keys for generic sorting. In the JSON API standard, the URL parameter "sort" is used to define the sorting of the result set:
 
@@ -281,9 +281,9 @@ Additionally, you can use the sort parameter and the items keys for generic sort
         'sort': 'product.label'
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -307,9 +307,9 @@ This will return the results ordered by the product label. You can also tell the
         'sort': '-product.label'
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -333,9 +333,9 @@ Sorting by several keys is also possible if they are separated by a comma:
         'sort': '-product.status,product.id'
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -358,7 +358,7 @@ By default, only the first 25 items are returned if nothing else is specified. T
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=0&page[limit]=2'
+    curl -X GET '<http://localhost:8000/jsonapi/product?page[offset>]=0&page[limit]=2'
     ```
 === "jQuery"
     ```javascript
@@ -369,9 +369,9 @@ By default, only the first 25 items are returned if nothing else is specified. T
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -401,7 +401,7 @@ To get the next 2 items starting from the 3rd one use the *next* link:
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=2&page[limit]=2'
+    curl -X GET '<http://localhost:8000/jsonapi/product?page[offset>]=2&page[limit]=2'
     ```
 === "jQuery"
     ```javascript
@@ -436,9 +436,9 @@ If you only need the values of a few fields and want to reduce the amount of dat
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -457,7 +457,7 @@ The generated request will then only return the ID and label of product items:
 
 # Include related resources
 
-To minimize the number of requests, the Aimeos JSON API can add related resources to the response. For example, you can tell the server that it should not only return the list of products but also the texts associated to these products. The JSON API uses the parameter "include" to specify the related resources:
+To minimize the number of requests, the Aimeos JSON API can add related resources to the response. For example, you can tell the server that it should not only return the list of products but also the texts associated with these products. The JSON API uses the parameter "include" to specify the related resources:
 
 === "CURL"
     ```bash
@@ -469,9 +469,9 @@ To minimize the number of requests, the Aimeos JSON API can add related resource
         'include': 'text'
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
@@ -483,7 +483,7 @@ To minimize the number of requests, the Aimeos JSON API can add related resource
     });
     ```
 
-This is return the texts associated to the products within the same request:
+This returns the texts associated with the products within the same request:
 
 ```json
 {
@@ -591,7 +591,7 @@ This is return the texts associated to the products within the same request:
 }
 ```
 
-You can use the "include" parameter for all items that are associated via the lists to one of these items:
+You can use the "include" parameter for all items that are associated via the lists with one of these items:
 
 * catalog (categories)
 * product
@@ -613,9 +613,9 @@ This does also work for items from the same domain that have a parent/child rela
         'include': 'product/property'
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
     $.ajax({
         method: "GET",
