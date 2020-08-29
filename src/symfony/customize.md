@@ -93,7 +93,7 @@ ISO language code
 : To specify the language for the translation, the [two letter ISO language codes (639-1)](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) are necessary. It's also possible to add the [two letter ISO country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to refer to country specific language variants like "en_GB" for British English. Please make sure the language code is always in lower case while the the optional country code is always in upper case.
 
 translation domain
-: The translation domain where the original string is from. The Aimeos core has six translation domains: `mshop` (core lib with managers], `controller/frontend` (basic business logic for the frontend], `client` (frontend clients], `controller/jobs` (asynchronous cronjob tasks] and `admin` (administration interface). To find out the domain a string is from, you have to look at the .pot files in the Aimeos core for the string.
+: The translation domain where the original string is from. The Aimeos core has six translation domains: `mshop` (core lib with managers), `controller/frontend` (basic business logic for the frontend), `client` (frontend clients), `controller/jobs` (asynchronous cronjob tasks) and `admin` (administration interface). To find out the domain a string is from, you have to look at the .pot files in the Aimeos core for the string.
 
 original singular
 : It's the original singular string from the source code or the .pot file. The string must be exactly the same (character case, white spaces, etc.) as in the source code / .pot file. You can not use already translated strings as source.
