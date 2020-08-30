@@ -17,52 +17,52 @@ var version = window.location.pathname.slice(6, 12);
 var client = algoliasearch('M2A88JJEVU', 'd04abfdb562432b3055422cb5f63f169');
 var index = client.initIndex( version.search(/^[0-9]{4}\.x$/) !== -1 ? version : '2020.x');
 autocomplete('.md-search__input', {
-    autoselectOnBlur: true,
-    minLength: 3,
-    hint: false
+  autoselectOnBlur: true,
+  minLength: 3,
+  hint: false
 }, [{
-    source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
-    displayKey: 'title',
-    debounce: 300,
-    templates: {
-        suggestion: function(suggestion) {
-            if(suggestion._highlightResult.title.matchLevel == 'full') {
-                return '<div class="search-result-item"> \
-                    <div class="topic">' + suggestion.topic + '</div> \
-                    <div class="title">' + suggestion._highlightResult.title.value + '</div> \
-                </div>';
-            } else {
-                var len = 30;
-                for(var i=0; i<suggestion._highlightResult.content.matchedWords.length; i++) {
-                    len += suggestion._highlightResult.content.matchedWords[i].length;
-                }
-                var content = suggestion._highlightResult.content.value.replace(/\s+/g, ' ');
-                var start = Math.max(content.indexOf('<em>') - 200 + len, 0);
-                return '<div class="search-result-item"> \
-                    <div class="topic">' + suggestion.topic + '</div> \
-                    <div class="title">' + suggestion._highlightResult.title.value + '</div> \
-                    <div class="content">' + content.substring(content.indexOf(" ", start) + 1, start + 200) + '...</div> \
-                </div>';
-            }
-        },
-        empty: function(result) {
-            return '<div class="search-result-empty"> \
-                <div class="empty-text"> \
-                    We couldn\'t find any result for <em>' + autocomplete.escapeHighlightedString(result.query) + '</em> \
-                </div> \
-            </div>';
+  source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+  displayKey: 'title',
+  debounce: 300,
+  templates: {
+    suggestion: function(suggestion) {
+      if(suggestion._highlightResult.title.matchLevel == 'full') {
+        return '<div class="search-result-item"> \
+          <div class="topic">' + suggestion.topic + '</div> \
+          <div class="title">' + suggestion._highlightResult.title.value + '</div> \
+        </div>';
+      } else {
+        var len = 30;
+        for(var i=0; i<suggestion._highlightResult.content.matchedWords.length; i++) {
+          len += suggestion._highlightResult.content.matchedWords[i].length;
         }
+        var content = suggestion._highlightResult.content.value.replace(/\s+/g, ' ');
+        var start = Math.max(content.indexOf('<em>') - 200 + len, 0);
+        return '<div class="search-result-item"> \
+          <div class="topic">' + suggestion.topic + '</div> \
+          <div class="title">' + suggestion._highlightResult.title.value + '</div> \
+          <div class="content">' + content.substring(content.indexOf(" ", start) + 1, start + 200) + '...</div> \
+        </div>';
+      }
+    },
+    empty: function(result) {
+      return '<div class="search-result-empty"> \
+        <div class="empty-text"> \
+          We couldn\'t find any result for <em>' + autocomplete.escapeHighlightedString(result.query) + '</em> \
+        </div> \
+      </div>';
     }
+  }
 }]).on('autocomplete:selected', function(event, suggestion) {
-    window.location = suggestion.url;
+  window.location = suggestion.url;
 }).on('autocomplete:shown', function() {
-    var nodes = document.getElementsByClassName('md-main');
-    for(var i=0; i<nodes.length; i++) {
-        nodes[i].style.opacity = 0.5;
-    }
+  var nodes = document.getElementsByClassName('md-main');
+  for(var i=0; i<nodes.length; i++) {
+    nodes[i].style.opacity = 0.5;
+  }
 }).on('autocomplete:closed', function() {
-    var nodes = document.getElementsByClassName('md-main');
-    for(var i=0; i<nodes.length; i++) {
-        nodes[i].style.opacity = 1;
-    }
+  var nodes = document.getElementsByClassName('md-main');
+  for(var i=0; i<nodes.length; i++) {
+    nodes[i].style.opacity = 1;
+  }
 });
