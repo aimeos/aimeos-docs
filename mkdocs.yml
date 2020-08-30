@@ -98,6 +98,75 @@ nav:
     - Add translations:  developer/translations.md
     - Git workflow: developer/git.md
     - Phing build system: developer/phing.md
+  - Frontend:
+    - HTML:
+      - Theme basics: frontend/html/theme-basics.md
+      - Adapt themes: frontend/html/adapt-themes.md
+      - Overwrite templates: frontend/html/overwrite-templates.md
+      - Implement components: frontend/html/implement-components.md
+      - Extend components: frontend/html/extend-components.md
+      - Create subparts: frontend/html/create-subparts.md
+      - Account components: frontend/html/account-components.md
+      - Basket components: frontend/html/basket-components.md
+      - Catalog components: frontend/html/catalog-components.md
+      - Checkout components: frontend/html/checkout-components.md
+      - E-Mail components: frontend/html/email-components.md
+      - Locale components: frontend/html/locale-components.md
+      - Adapt price format: frontend/html/adapt-price-format.md
+      - Parameter names: frontend/html/parameter-names.md
+    - JSON API:
+      - Getting started: frontend/jsonapi/index.md
+      - Search basics: frontend/jsonapi/basics.md
+      - Catalog handling: frontend/jsonapi/catalog.md
+      - Basket management: frontend/jsonapi/baskets.md
+      - Basket products: frontend/jsonapi/basket-products.md
+      - Basket addresses: frontend/jsonapi/basket-addresses.md
+      - Basket services: frontend/jsonapi/basket-services.md
+      - Basket coupons: frontend/jsonapi/basket-coupons.md
+      - Order management: frontend/jsonapi/orders.md
+      - Customer handling: frontend/jsonapi/customer.md
+      - Customer addresses: frontend/jsonapi/customer-addresses.md
+      - Customer properties: frontend/jsonapi/customer-properties.md
+      - Customer relations: frontend/jsonapi/customer-relations.md
+      - Customer reviews: frontend/jsonapi/customer-reviews.md
+      - Get reviews: frontend/jsonapi/reviews.md
+  - Admin:
+    - JQAdm backend:
+      - Overwrite templates: admin/jqadm/overwrite-templates.md
+      - Implement panels: admin/jqadm/implement-panels.md
+      - Panel templates: admin/jqadm/panel-templates.md
+      - Create subparts: admin/jqadm/create-subparts.md
+      - Extend panels: admin/jqadm/extend-panels.md
+    - JsonAdm API:
+      - Overview: admin/jsonadm/index.md
+      - Retrieve metadata: admin/jsonadm/metadata.md
+      - Search and filter: admin/jsonadm/search-filter.md
+      - Manage resources: admin/jsonadm/manage-resources.md
+      - Manage trees: admin/jsonadm/manage-trees.md
+      - Error handling: admin/jsonadm/error-handling.md
+  - Cronjobs:
+    - Available cronjobs: cronjobs/index.md
+    - Create job controller: cronjobs/create-job-controller.md
+    - Product CSV import: cronjobs/product-csv-import.md
+    - Category CSV import: cronjobs/catalog-csv-import.md
+    - Subscription processors: cronjobs/subscription-processors.md
+  - Providers:
+    - Service provider:
+      - Basics: providers/service/index.md
+      - Payment provider: providers/service/payment.md
+      - Delivery provider: providers/service/delivery.md
+      - Create decorators: providers/service/decorators.md
+      - Write unit tests: providers/service/unittests.md
+    - Basket plugins: providers/basket-plugins.md
+  - Infrastructure:
+    - Database: infrastructure/databases.md
+    - Migrations: infrastructure/schema-migrations.md
+    - DI container: infrastructure/context.md
+    - Managing items: infrastructure/managing-items.md
+    - Filtering items: infrastructure/search-filter.md
+    - Extend managers: infrastructure/extend-managers.md
+    - Read/write files: infrastructure/read-write-files.md
+    - View and helpers: infrastructure/view-helpers.md
   - Configuration:
     - HTML clients:
       - Account download: config/client-html/account-download.md
@@ -290,69 +359,6 @@ nav:
       - Common: config/madmin/common-manager.md
       - Job: config/madmin/job-manager.md
       - Log: config/madmin/log-manager.md
-  - Frontend:
-    - HTML:
-      - Theme basics: frontend/html/theme-basics.md
-      - Adapt themes: frontend/html/adapt-themes.md
-      - Overwrite templates: frontend/html/overwrite-templates.md
-      - Implement components: frontend/html/implement-components.md
-      - Extend components: frontend/html/extend-components.md
-      - Create subparts: frontend/html/create-subparts.md
-      - Account components: frontend/html/account-components.md
-      - Basket components: frontend/html/basket-components.md
-      - Catalog components: frontend/html/catalog-components.md
-      - Checkout components: frontend/html/checkout-components.md
-      - E-Mail components: frontend/html/email-components.md
-      - Locale components: frontend/html/locale-components.md
-      - Adapt price format: frontend/html/adapt-price-format.md
-      - Parameter names: frontend/html/parameter-names.md
-    - JSON API:
-      - Getting started: frontend/jsonapi/index.md
-      - Search basics: frontend/jsonapi/basics.md
-      - Catalog handling: frontend/jsonapi/catalog.md
-      - Basket management: frontend/jsonapi/baskets.md
-      - Basket products: frontend/jsonapi/basket-products.md
-      - Basket addresses: frontend/jsonapi/basket-addresses.md
-      - Basket services: frontend/jsonapi/basket-services.md
-      - Basket coupons: frontend/jsonapi/basket-coupons.md
-      - Order management: frontend/jsonapi/orders.md
-      - Customer handling: frontend/jsonapi/customer.md
-      - Customer addresses: frontend/jsonapi/customer-addresses.md
-      - Customer properties: frontend/jsonapi/customer-properties.md
-      - Customer relations: frontend/jsonapi/customer-relations.md
-      - Customer reviews: frontend/jsonapi/customer-reviews.md
-      - Get reviews: frontend/jsonapi/reviews.md
-  - Admin:
-    - JsonAdm API:
-      - Overview: admin/jsonadm/index.md
-      - Retrieve metadata: admin/jsonadm/metadata.md
-      - Search and filter: admin/jsonadm/search-filter.md
-      - Manage resources: admin/jsonadm/manage-resources.md
-      - Manage trees: admin/jsonadm/manage-trees.md
-      - Error handling: admin/jsonadm/error-handling.md
-  - Cronjobs:
-    - Available cronjobs: cronjobs/index.md
-    - Create job controller: cronjobs/create-job-controller.md
-    - Product CSV import: cronjobs/product-csv-import.md
-    - Category CSV import: cronjobs/catalog-csv-import.md
-    - Subscription processors: cronjobs/subscription-processors.md
-  - Providers:
-    - Service provider:
-      - Basics: providers/service/index.md
-      - Payment provider: providers/service/payment.md
-      - Delivery provider: providers/service/delivery.md
-      - Create decorators: providers/service/decorators.md
-      - Write unit tests: providers/service/unittests.md
-    - Basket plugins: providers/basket-plugins.md
-  - Infrastructure:
-    - Database: infrastructure/databases.md
-    - Migrations: infrastructure/schema-migrations.md
-    - DI container: infrastructure/context.md
-    - Managing items: infrastructure/managing-items.md
-    - Filtering items: infrastructure/search-filter.md
-    - Extend managers: infrastructure/extend-managers.md
-    - Read/write files: infrastructure/read-write-files.md
-    - View and helpers: infrastructure/view-helpers.md
   - Changelog:
     - 2019.x -> 2020.x : changelog/2020.x.md
     - 2018.x -> 2019.x : changelog/2019.x.md
