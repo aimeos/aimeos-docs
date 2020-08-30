@@ -181,6 +181,21 @@ select.md-header-nav__button:focus {
   border-bottom-color: var(--md-default-fg-color, #103050);
 }
 
+@media screen and (max-width: 59.9375em) {
+  label.version-select {
+    opacity: 1;
+    color: #fff;
+    color: var(--md-primary-bg-color, #fff);
+    font-size: 0.57rem;
+  }
+  select.md-header-nav__button {
+    background-color: #103050;
+    background-color: var(--md-primary-fg-color, #103050);
+    color: #fff;
+    color: var(--md-primary-bg-color, #fff);
+  }
+}
+
 .md-sidebar__scrollwrap {
   scrollbar-color: var(--md-default-fg-color--lightest, #10305040);
 }
@@ -205,6 +220,10 @@ select.md-header-nav__button:focus {
   padding: 0.33rem 0.25rem;
 }
 
+.md-nav--primary .md-nav__item {
+  border: none
+}
+
 .md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(3),
 .md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(5),
 .md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(10) {
@@ -221,11 +240,7 @@ select.md-header-nav__button:focus {
 
 .md-nav__item--nested>.md-nav__link {
   font-weight: bold;
-  font-size: 90%;
-}
-
-.md-nav--primary .md-nav__title {
-  display: none;
+  font-size: .75rem;
 }
 
 .md-nav--secondary .md-nav__item {
