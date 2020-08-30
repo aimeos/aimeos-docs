@@ -12,14 +12,14 @@ Because a component must implement the same interface as all subparts and thus, 
 namespace Aimeos\Client\Html\Catalog\Detail;
 
 class Standard
-	extends \Aimeos\Client\Html\Common\Client\Factory\Base
-	implements Aimeos\Client\Html\Common\Client\Factory\Iface
+    extends \Aimeos\Client\Html\Common\Client\Factory\Base
+    implements Aimeos\Client\Html\Common\Client\Factory\Iface
 {
-	private $subPartPath = 'client/html/catalog/detail/standard/subparts';
-	private $subPartNames = [];
-	private $tags = [];
-	private $expire;
-	private $view;
+    private $subPartPath = 'client/html/catalog/detail/standard/subparts';
+    private $subPartNames = [];
+    private $tags = [];
+    private $expire;
+    private $view;
 
 
     public function getBody( $uid = '' ) : string
@@ -32,11 +32,11 @@ class Standard
 
     public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
     {
-	}
+    }
 
-	public function process()
-	{
-	}
+    public function process()
+    {
+    }
 
     protected function getSubClientNames() : array
     {
@@ -57,35 +57,35 @@ If you don't need to process any input in your new component, you can copy & pas
 ```php
 public function process()
 {
-	$context = $this->getContext();
-	$view = $this->getView();
+    $context = $this->getContext();
+    $view = $this->getView();
 
-	try
-	{
-		// your required code
-		parent::process();
-	}
-	catch( \Aimeos\Client\Html\Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'client', $e->getMessage() )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-	}
-	catch( \Aimeos\Controller\Frontend\Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'controller/frontend', $e->getMessage() )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-	}
-	catch( \Aimeos\MShop\Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'mshop', $e->getMessage() )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-	}
-	catch( \Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'client', 'A non-recoverable error occured' )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-		$this->logException( $e );
-	}
+    try
+    {
+        // your required code
+        parent::process();
+    }
+    catch( \Aimeos\Client\Html\Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'client', $e->getMessage() )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+    }
+    catch( \Aimeos\Controller\Frontend\Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'controller/frontend', $e->getMessage() )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+    }
+    catch( \Aimeos\MShop\Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'mshop', $e->getMessage() )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+    }
+    catch( \Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'client', 'A non-recoverable error occured' )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+        $this->logException( $e );
+    }
 }
 ```
 
@@ -101,11 +101,11 @@ The execptions caught in the methods and assigned to the view should be shown to
 
 ```php
 <?php if( isset( $this->detailErrorList ) ) : ?>
-	<ul class="error-list">
+    <ul class="error-list">
 <?php foreach( (array) $this->detailErrorList as $errmsg ) : ?>
-		<li class="error-item"><?= $this->encoder()->html( $errmsg ) ?></li>
+        <li class="error-item"><?= $this->encoder()->html( $errmsg ) ?></li>
 <?php endforeach ?>
-	</ul>
+    </ul>
 <?php endif ?>
 ```
 
@@ -122,47 +122,47 @@ Very similar to the `process()` method, you have to catch all execptions, transl
 ```php
 public function getBody( string $uid = '' ) : string
 {
-	$context = $this->getContext();
-	$view = $this->getView();
+    $context = $this->getContext();
+    $view = $this->getView();
 
-	try
-	{
-		if( !isset( $this->view ) ) {
-			$view = $this->view = $this->getObject()->addData( $view, $this->tags, $this->expire );
-		}
+    try
+    {
+        if( !isset( $this->view ) ) {
+            $view = $this->view = $this->getObject()->addData( $view, $this->tags, $this->expire );
+        }
 
-		$html = '';
-		foreach( $this->getSubClients() as $subclient ) {
-			$html .= $subclient->setView( $view )->getBody( $uid );
-		}
-		$view->detailBody = $html;
-	}
-	catch( \Aimeos\Client\Html\Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'client', $e->getMessage() )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-	}
-	catch( \Aimeos\Controller\Frontend\Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'controller/frontend', $e->getMessage() )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-	}
-	catch( \Aimeos\MShop\Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'mshop', $e->getMessage() )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-	}
-	catch( \Exception $e )
-	{
-		$error = [$context->getI18n()->dt( 'client', 'A non-recoverable error occured' )];
-		$view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-		$this->logException( $e );
-	}
+        $html = '';
+        foreach( $this->getSubClients() as $subclient ) {
+            $html .= $subclient->setView( $view )->getBody( $uid );
+        }
+        $view->detailBody = $html;
+    }
+    catch( \Aimeos\Client\Html\Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'client', $e->getMessage() )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+    }
+    catch( \Aimeos\Controller\Frontend\Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'controller/frontend', $e->getMessage() )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+    }
+    catch( \Aimeos\MShop\Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'mshop', $e->getMessage() )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+    }
+    catch( \Exception $e )
+    {
+        $error = [$context->getI18n()->dt( 'client', 'A non-recoverable error occured' )];
+        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
+        $this->logException( $e );
+    }
 
-	$tplconf = 'client/html/catalog/detail/standard/template-body';
-	$default = 'catalog/detail/body-standard';
+    $tplconf = 'client/html/catalog/detail/standard/template-body';
+    $default = 'catalog/detail/body-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -177,32 +177,32 @@ Compared to the `getBody()` method, `getHeader()` is really simple because there
 ```php
 public function getBody( string $uid = '' ) : string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	try
-	{
-		if( !isset( $this->view ) ) {
-			$view = $this->view = $this->getObject()->addData( $view, $this->tags, $this->expire );
-		}
+    try
+    {
+        if( !isset( $this->view ) ) {
+            $view = $this->view = $this->getObject()->addData( $view, $this->tags, $this->expire );
+        }
 
-		$html = '';
-		foreach( $this->getSubClients() as $subclient ) {
-			$html .= $subclient->setView( $view )->getHeader( $uid );
-		}
-		$view->detailHeader = $html;
-	}
-	catch( Exception $e )
-	{
-		$this->getContext()->getLogger()->log( $e->getMessage() . PHP_EOL . $e->getTraceAsString() );
-		return;
-	}
+        $html = '';
+        foreach( $this->getSubClients() as $subclient ) {
+            $html .= $subclient->setView( $view )->getHeader( $uid );
+        }
+        $view->detailHeader = $html;
+    }
+    catch( Exception $e )
+    {
+        $this->getContext()->getLogger()->log( $e->getMessage() . PHP_EOL . $e->getTraceAsString() );
+        return;
+    }
 
-	$tplconf = 'client/html/catalog/detail/standard/template-header';
-	$default = 'catalog/detail/header-stanard';
+    $tplconf = 'client/html/catalog/detail/standard/template-header';
+    $default = 'catalog/detail/header-stanard';
 
-	$html = $view->render( $view->config( $tplconf, $default ) );
+    $html = $view->render( $view->config( $tplconf, $default ) );
 
-	return $html;
+    return $html;
 }
 ```
 
@@ -223,23 +223,23 @@ You only need to specify the prefixes of the parameters your component listens t
 ```php
 public function getBody( string $uid = '' ) : string
 {
-	$prefixes = ['d'];
-	$confkey = 'client/html/catalog/detail';
+    $prefixes = ['d'];
+    $confkey = 'client/html/catalog/detail';
 
-	if( ( $html = $this->getCached( 'body', $uid, $prefixes, $confkey ) ) === null ) )
-	{
-		// code is the same as for the uncached variant
+    if( ( $html = $this->getCached( 'body', $uid, $prefixes, $confkey ) ) === null ) )
+    {
+        // code is the same as for the uncached variant
 
-		$html = $view->render( $view->config( $tplconf, $default ) );
+        $html = $view->render( $view->config( $tplconf, $default ) );
 
-		$this->setCached( 'body', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
-	}
-	else
-	{
-		$html = $this->modifyBody( $html, $uid );
-	}
+        $this->setCached( 'body', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
+    }
+    else
+    {
+        $html = $this->modifyBody( $html, $uid );
+    }
 
-	return $html;
+    return $html;
 }
 ```
 
@@ -256,23 +256,23 @@ For `getHeader()`, implementing caching is very similar to the implementation of
 ```php
 public function getHeader( string $uid = '' ) : string
 {
-	$prefixes = ['d'];
-	$confkey = 'client/html/catalog/detail';
+    $prefixes = ['d'];
+    $confkey = 'client/html/catalog/detail';
 
-	if( ( $html = $this->getCached( 'header', $uid, $prefixes, $confkey ) ) null )
-	{
-		// same code as for the uncached variant
+    if( ( $html = $this->getCached( 'header', $uid, $prefixes, $confkey ) ) null )
+    {
+        // same code as for the uncached variant
 
-		$html = $view->render( $view->config( $tplconf, $default ) );
+        $html = $view->render( $view->config( $tplconf, $default ) );
 
-		$this->setCached( 'header', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
-	}
-	else
-	{
-		$html = $this->modifyHeader( $html, $uid );
-	}
+        $this->setCached( 'header', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
+    }
+    else
+    {
+        $html = $this->modifyHeader( $html, $uid );
+    }
 
-	return $html;
+    return $html;
 }
 ```
 
@@ -288,27 +288,27 @@ All components are instantiated by factories which care about creating the HTML 
 namespace Aimeos\Client\Html\Catalog\Detail;
 
 class Factory
-	extends \Aimeos\Client\Html\Common\Factory\Base
-	implements \Aimeos\Client\Html\Common\Factory\Iface
+    extends \Aimeos\Client\Html\Common\Factory\Base
+    implements \Aimeos\Client\Html\Common\Factory\Iface
 {
-	public static function create( \Aimeos\MShop\Context\Item\Iface $context, array $paths, string $name = null ) : \Aimeos\Client\Html\Iface
-	{
-		if( $name null ) {
-			$name = $context->getConfig()->get( 'client/html/catalog/detail/name', 'Standard' );
-		}
+    public static function create( \Aimeos\MShop\Context\Item\Iface $context, array $paths, string $name = null ) : \Aimeos\Client\Html\Iface
+    {
+        if( $name null ) {
+            $name = $context->getConfig()->get( 'client/html/catalog/detail/name', 'Standard' );
+        }
 
-		$iface = '\\Aimeos\\Client\\Html\\Iface';
-		$classname = '\\Aimeos\\Client\\Html\\Catalog\\Detail\\' . $name;
+        $iface = '\\Aimeos\\Client\\Html\\Iface';
+        $classname = '\\Aimeos\\Client\\Html\\Catalog\\Detail\\' . $name;
 
-		if( ctype_alnum( $name ) === false ) {
-			throw new \Aimeos\Client\Html\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
-		}
+        if( ctype_alnum( $name ) === false ) {
+            throw new \Aimeos\Client\Html\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
+        }
 
-		$client = self::createClient( $context, $classname, $iface );
-		$client = self::addClientDecorators( $context, $client, 'catalog/detail' );
+        $client = self::createClient( $context, $classname, $iface );
+        $client = self::addClientDecorators( $context, $client, 'catalog/detail' );
 
-		return $client->setObject( $client );
-	}
+        return $client->setObject( $client );
+    }
 }
 ```
 

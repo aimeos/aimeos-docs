@@ -32,88 +32,88 @@ The "csrf" section in "meta" is important to modify the customer data. Each resp
 To get the customer entry, you have to send a GET request to the customer endpoint returned by the OPTIONS request:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X GET 'http://localhost:8000/jsonapi/customer'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X GET 'http://localhost:8000/jsonapi/customer'
+    ```
 === "jQuery"
-	```javascript
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: response.meta.resources['customer'] // returned from OPTIONS request
-	}).done( function( result ) {
-		console.log( result.data );
-	});
-	```
+    ```javascript
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: response.meta.resources['customer'] // returned from OPTIONS request
+    }).done( function( result ) {
+        console.log( result.data );
+    });
+    ```
 
 If the customer didn't authenticate himself yet, an empty customer item is returned:
 
 ```json
 {
-	"meta": {
-		"total": 1,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8080/jsonapi/customer",
-		"customer/address": {
-			"href": "http://localhost:8080/jsonapi/customer?related=address",
-			"allow": ["GET","POST"]
-		},
-		"customer/property": {
-			"href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
-			"allow": ["GET","POST"]
-		},
-		"customer/relationships": {
-			"href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
-			"allow": ["GET","POST"]
-		}
-	},
-	"data": {
-		"id": null,
-		"type": "customer",
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8080\/jsonapi\/customer",
-				"allow": ["DELETE","GET","PATCH"]
-			}
-		},
-		"attributes": {
-			"customer.id": null,
-			"customer.salutation": "",
-			"customer.company": "",
-			"customer.vatid": "",
-			"customer.title": "",
-			"customer.firstname": "",
-			"customer.lastname": "",
-			"customer.address1": "",
-			"customer.address2": "",
-			"customer.address3": "",
-			"customer.postal": "",
-			"customer.city": "",
-			"customer.state": "",
-			"customer.languageid": "",
-			"customer.countryid": "",
-			"customer.telephone": "",
-			"customer.email": "",
-			"customer.telefax": "",
-			"customer.website": "",
-			"customer.longitude": null,
-			"customer.latitude": null,
-			"customer.label": "",
-			"customer.code": "",
-			"customer.birthday": null,
-			"customer.status": 1,
-			"customer.groups": []
-		}
-	},
-	"included": []
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8080/jsonapi/customer",
+        "customer/address": {
+            "href": "http://localhost:8080/jsonapi/customer?related=address",
+            "allow": ["GET","POST"]
+        },
+        "customer/property": {
+            "href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
+            "allow": ["GET","POST"]
+        },
+        "customer/relationships": {
+            "href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
+            "allow": ["GET","POST"]
+        }
+    },
+    "data": {
+        "id": null,
+        "type": "customer",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8080\/jsonapi\/customer",
+                "allow": ["DELETE","GET","PATCH"]
+            }
+        },
+        "attributes": {
+            "customer.id": null,
+            "customer.salutation": "",
+            "customer.company": "",
+            "customer.vatid": "",
+            "customer.title": "",
+            "customer.firstname": "",
+            "customer.lastname": "",
+            "customer.address1": "",
+            "customer.address2": "",
+            "customer.address3": "",
+            "customer.postal": "",
+            "customer.city": "",
+            "customer.state": "",
+            "customer.languageid": "",
+            "customer.countryid": "",
+            "customer.telephone": "",
+            "customer.email": "",
+            "customer.telefax": "",
+            "customer.website": "",
+            "customer.longitude": null,
+            "customer.latitude": null,
+            "customer.label": "",
+            "customer.code": "",
+            "customer.birthday": null,
+            "customer.status": 1,
+            "customer.groups": []
+        }
+    },
+    "included": []
 }
 ```
 
@@ -124,101 +124,101 @@ For an authenticated user, the response will contain the account data and the gr
 
 ```json
 {
-	"meta": {
-	"total": 1,
-	"prefix": null,
-	"content-baseurl": "http://localhost:8000/",
-	"csrf": {
-		"name": "_token",
-		"value": "..."
-	}
+    "meta": {
+    "total": 1,
+    "prefix": null,
+    "content-baseurl": "http://localhost:8000/",
+    "csrf": {
+        "name": "_token",
+        "value": "..."
+    }
 
-	},
-	"links": {
-		"self": "http://localhost:8000/jsonapi/customer",
-		"customer/address": {
-			"href": "http://localhost:8000/jsonapi/customer?id=2&related=address",
-			"allow": ["GET","POST"]
-		},
-		"customer/property": {
-			"href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
-			"allow": ["GET","POST"]
-		},
-		"customer/relationships": {
-			"href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
-			"allow": ["GET","POST"]
-		}
-	},
-	"data": {
-		"id": "2",
-		"type": "customer",
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
-				"allow": ["DELETE","GET","PATCH"]
-			}
-		},
-		"attributes": {
-			"customer.id": "2",
-			"customer.salutation": "mr",
-			"customer.company": "Test company",
-			"customer.vatid": "DE12345678",
-			"customer.title": "Dr.",
-			"customer.firstname": "Test",
-			"customer.lastname": "User",
-			"customer.address1": "Test street",
-			"customer.address2": "1",
-			"customer.address3": "2. floor",
-			"customer.postal": "12345",
-			"customer.city": "Test city",
-			"customer.state": "HH",
-			"customer.languageid": "de",
-			"customer.countryid": "DE",
-			"customer.telephone": "+49012345678",
-			"customer.email": "example@aimeos.org",
-			"customer.telefax": "+490123456789",
-			"customer.website": "https://aimeos.org",
-			"customer.longitude": 10.0,
-			"customer.latitude": 50.0,
-			"customer.label": "Test User",
-			"customer.code": "example@aimeos.org",
-			"customer.birthday": "2000-01-01",
-		},
-		"relationships": {
-			"customer\/group": {
-				"data": [{
-					"id": "1",
-					"type": "customer\/group",
-					"attributes": {
-						"customer.lists.id": "1",
-						"customer.lists.domain": "customer\/group",
-						"customer.lists.refid": "1",
-						"customer.lists.datestart": null,
-						"customer.lists.dateend": null,
-						"customer.lists.config": [],
-						"customer.lists.position": 0,
-						"customer.lists.status": 1,
-						"customer.lists.type": "default"
-					},
-					"links": {
-						"self": {
-							"href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
-							"allow": []
-						}
-					}
-				}]
-			}
-		}
-	},
-	"included": [{
-		"id": "1",
-		"type": "customer\/group",
-		"attributes": {
-			"customer.group.id": "1",
-			"customer.group.code": "admin",
-			"customer.group.label": "Administrator"
-		}
-	}]
+    },
+    "links": {
+        "self": "http://localhost:8000/jsonapi/customer",
+        "customer/address": {
+            "href": "http://localhost:8000/jsonapi/customer?id=2&related=address",
+            "allow": ["GET","POST"]
+        },
+        "customer/property": {
+            "href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
+            "allow": ["GET","POST"]
+        },
+        "customer/relationships": {
+            "href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships",
+            "allow": ["GET","POST"]
+        }
+    },
+    "data": {
+        "id": "2",
+        "type": "customer",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
+                "allow": ["DELETE","GET","PATCH"]
+            }
+        },
+        "attributes": {
+            "customer.id": "2",
+            "customer.salutation": "mr",
+            "customer.company": "Test company",
+            "customer.vatid": "DE12345678",
+            "customer.title": "Dr.",
+            "customer.firstname": "Test",
+            "customer.lastname": "User",
+            "customer.address1": "Test street",
+            "customer.address2": "1",
+            "customer.address3": "2. floor",
+            "customer.postal": "12345",
+            "customer.city": "Test city",
+            "customer.state": "HH",
+            "customer.languageid": "de",
+            "customer.countryid": "DE",
+            "customer.telephone": "+49012345678",
+            "customer.email": "example@aimeos.org",
+            "customer.telefax": "+490123456789",
+            "customer.website": "https://aimeos.org",
+            "customer.longitude": 10.0,
+            "customer.latitude": 50.0,
+            "customer.label": "Test User",
+            "customer.code": "example@aimeos.org",
+            "customer.birthday": "2000-01-01",
+        },
+        "relationships": {
+            "customer\/group": {
+                "data": [{
+                    "id": "1",
+                    "type": "customer\/group",
+                    "attributes": {
+                        "customer.lists.id": "1",
+                        "customer.lists.domain": "customer\/group",
+                        "customer.lists.refid": "1",
+                        "customer.lists.datestart": null,
+                        "customer.lists.dateend": null,
+                        "customer.lists.config": [],
+                        "customer.lists.position": 0,
+                        "customer.lists.status": 1,
+                        "customer.lists.type": "default"
+                    },
+                    "links": {
+                        "self": {
+                            "href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
+                            "allow": []
+                        }
+                    }
+                }]
+            }
+        }
+    },
+    "included": [{
+        "id": "1",
+        "type": "customer\/group",
+        "attributes": {
+            "customer.group.id": "1",
+            "customer.group.code": "admin",
+            "customer.group.label": "Administrator"
+        }
+    }]
 }
 ```
 
@@ -240,87 +240,87 @@ If the user isn't logged in, it's possible to create a new customer by sending t
 * customer.languageid (required by many payment gateways)
 
 === "CURL"
-	```bash
-	curl-b cookies.txt -c cookies.txt \
-	-X POST 'http://localhost:8000/jsonapi/customer?_token=...' \
-	-H 'Content-Type: application/json' \
-	-d '{"data": {
-		"attributes": {
-			"customer.code": "testuser@example.com",
-			"customer.label": "Test user",
-			"customer.salutation": "mr",
-			"customer.company": "Example company",
-			"customer.vatid": "DE123456789",
-			"customer.title": "Dr.",
-			"customer.firstname": "Test",
-			"customer.lastname": "User",
-			"customer.address1": "Test street",
-			"customer.address2": "1",
-			"customer.address3": "",
-			"customer.postal": "12345",
-			"customer.city": "Test city",
-			"customer.state": "HH",
-			"customer.countryid": "DE",
-			"customer.languageid": "de",
-			"customer.telehone": "+4912345678",
-			"customer.telefax": "+49123456789",
-			"customer.email": "testuser@example.com",
-			"customer.website": "https://example.com",
-			"customer.longitude": 10.0,
-			"customer.latitude": 50.0,
-			"customer.birthday": "2000-01-01",
-			"customer.password": "secret123"
-		}
-	}}'
-	```
+    ```bash
+    curl-b cookies.txt -c cookies.txt \
+    -X POST 'http://localhost:8000/jsonapi/customer?_token=...' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": {
+        "attributes": {
+            "customer.code": "testuser@example.com",
+            "customer.label": "Test user",
+            "customer.salutation": "mr",
+            "customer.company": "Example company",
+            "customer.vatid": "DE123456789",
+            "customer.title": "Dr.",
+            "customer.firstname": "Test",
+            "customer.lastname": "User",
+            "customer.address1": "Test street",
+            "customer.address2": "1",
+            "customer.address3": "",
+            "customer.postal": "12345",
+            "customer.city": "Test city",
+            "customer.state": "HH",
+            "customer.countryid": "DE",
+            "customer.languageid": "de",
+            "customer.telehone": "+4912345678",
+            "customer.telefax": "+49123456789",
+            "customer.email": "testuser@example.com",
+            "customer.website": "https://example.com",
+            "customer.longitude": 10.0,
+            "customer.latitude": 50.0,
+            "customer.birthday": "2000-01-01",
+            "customer.password": "secret123"
+        }
+    }}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {data: {
-		attributes: {
-			"customer.code": "testuser@example.com", // (optional, customer.email is used if empty)
-			"customer.label": "Test user", // (optional, will be generated if empty)
-			"customer.salutation": "mr", // "mr", "mrs", "miss", "company" or empty (optional)
-			"customer.company": "Example company", // (optional)
-			"customer.vatid": "DE123456789", // (optional)
-			"customer.title": "Dr.", // (optional)
-			"customer.firstname": "Test", // (optional)
-			"customer.lastname": "User", // (required)
-			"customer.address1": "Test street", // (required)
-			"customer.address2": "1", // (optional)
-			"customer.address3": "", // (optional)
-			"customer.postal": "12345", // (optional)
-			"customer.city": "Test city", // (required)
-			"customer.state": "HH", // (optional)
-			"customer.countryid": "DE", // (optional)
-			"customer.languageid": "de", // (required by many payment gateways)
-			"customer.telehone": "+4912345678", // (optional)
-			"customer.telefax": "+49123456789", // (optional)
-			"customer.email": "testuser@example.com", // (required)
-			"customer.website": "https://example.com", // (optional)
-			"customer.longitude": 10.0, // (optional, float value)
-			"customer.latitude": 50.0, // (optional, float value)
-			"customer.birthday": "2000-01-01", // (optional)
-			"customer.password": "secret123" // (optional, generated if empty)
-		}
-	}};
+    ```javascript
+    var params = {data: {
+        attributes: {
+            "customer.code": "testuser@example.com", // (optional, customer.email is used if empty)
+            "customer.label": "Test user", // (optional, will be generated if empty)
+            "customer.salutation": "mr", // "mr", "mrs", "miss", "company" or empty (optional)
+            "customer.company": "Example company", // (optional)
+            "customer.vatid": "DE123456789", // (optional)
+            "customer.title": "Dr.", // (optional)
+            "customer.firstname": "Test", // (optional)
+            "customer.lastname": "User", // (required)
+            "customer.address1": "Test street", // (required)
+            "customer.address2": "1", // (optional)
+            "customer.address3": "", // (optional)
+            "customer.postal": "12345", // (optional)
+            "customer.city": "Test city", // (required)
+            "customer.state": "HH", // (optional)
+            "customer.countryid": "DE", // (optional)
+            "customer.languageid": "de", // (required by many payment gateways)
+            "customer.telehone": "+4912345678", // (optional)
+            "customer.telefax": "+49123456789", // (optional)
+            "customer.email": "testuser@example.com", // (required)
+            "customer.website": "https://example.com", // (optional)
+            "customer.longitude": 10.0, // (optional, float value)
+            "customer.latitude": 50.0, // (optional, float value)
+            "customer.birthday": "2000-01-01", // (optional)
+            "customer.password": "secret123" // (optional, generated if empty)
+        }
+    }};
 
-	var url = response['links']['customer']['href']; // from OPTIONS response
+    var url = response['links']['customer']['href']; // from OPTIONS response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json",
-		data: JSON.stringify(params)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 You can't set the "customer.status" and "customer.groups" properties for an account using the JSON API. If you do so, they will be ignored because obviously, this would enable attackers to re-enable their disabled account or gain additional privileges.
 
@@ -329,31 +329,31 @@ In case the new account has been successfully created, the response will be simi
 ```json
 {
 "meta": {
-	"total": 1,
-	"prefix": null,
-	"content-baseurl": "http://localhost:8000/",
-	"csrf": {
-		"name": "_token",
-		"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8000/jsonapi/customer"
-	},
-	"data": {
-		"id":"6",
-		"type":"customer",
-		"links":{
-			"self":{
-				"href":"http:\/\/localhost:8000\/jsonapi\/customer?id=6",
-				"allow":["DELETE","GET","PATCH"]
-			}
-		},
-		"attributes":{
-			"customer.id":"6"
-		}
-	},
-	"included": []
+    "total": 1,
+    "prefix": null,
+    "content-baseurl": "http://localhost:8000/",
+    "csrf": {
+        "name": "_token",
+        "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8000/jsonapi/customer"
+    },
+    "data": {
+        "id":"6",
+        "type":"customer",
+        "links":{
+            "self":{
+                "href":"http:\/\/localhost:8000\/jsonapi\/customer?id=6",
+                "allow":["DELETE","GET","PATCH"]
+            }
+        },
+        "attributes":{
+            "customer.id":"6"
+        }
+    },
+    "included": []
 }
 ```
 
@@ -372,176 +372,176 @@ Once an account has been created and the user is logged in, the JSON API allows 
 The request for changing data is very similar to creating a new user but it requires a PATCH request:
 
 === "CURL"
-	```bash
-	curl-b cookies.txt -c cookies.txt \
-	-X PATCH 'http://localhost:8000/jsonapi/customer?_token=...' \
-	-H 'Content-Type: application/json' \
-	-d '{"data": {
-		"attributes": {
-			"customer.code": "testuser@example.com",
-			"customer.label": "Test user",
-			"customer.salutation": "mr",
-			"customer.company": "Example company",
-			"customer.vatid": "DE123456789",
-			"customer.title": "Dr.",
-			"customer.firstname": "Test",
-			"customer.lastname": "User",
-			"customer.address1": "Test street",
-			"customer.address2": "2",
-			"customer.address3": "",
-			"customer.postal": "12345",
-			"customer.city": "Test city",
-			"customer.state": "HH",
-			"customer.countryid": "DE",
-			"customer.languageid": "de",
-			"customer.telehone": "+4912345678",
-			"customer.telefax": "+49123456789",
-			"customer.email": "testuser@example.com",
-			"customer.website": "https://example.com",
-			"customer.longitude": 10.0,
-			"customer.latitude": 50.0,
-			"customer.birthday": "2000-01-01",
-			"customer.password": "very+secret"
-		}
-	}}'
-	```
+    ```bash
+    curl-b cookies.txt -c cookies.txt \
+    -X PATCH 'http://localhost:8000/jsonapi/customer?_token=...' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": {
+        "attributes": {
+            "customer.code": "testuser@example.com",
+            "customer.label": "Test user",
+            "customer.salutation": "mr",
+            "customer.company": "Example company",
+            "customer.vatid": "DE123456789",
+            "customer.title": "Dr.",
+            "customer.firstname": "Test",
+            "customer.lastname": "User",
+            "customer.address1": "Test street",
+            "customer.address2": "2",
+            "customer.address3": "",
+            "customer.postal": "12345",
+            "customer.city": "Test city",
+            "customer.state": "HH",
+            "customer.countryid": "DE",
+            "customer.languageid": "de",
+            "customer.telehone": "+4912345678",
+            "customer.telefax": "+49123456789",
+            "customer.email": "testuser@example.com",
+            "customer.website": "https://example.com",
+            "customer.longitude": 10.0,
+            "customer.latitude": 50.0,
+            "customer.birthday": "2000-01-01",
+            "customer.password": "very+secret"
+        }
+    }}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {data: {
-		attributes: {
-			"customer.code": "testuser@example.com", // (optional, customer.email is used if empty)
-			"customer.label": "Test user", // (optional, will be generated if empty)
-			"customer.salutation": "mr", // "mr", "mrs", "miss", "company" or empty (optional)
-			"customer.company": "Example company", // (optional)
-			"customer.vatid": "DE123456789", // (optional)
-			"customer.title": "Dr.", // (optional)
-			"customer.firstname": "Test", // (optional)
-			"customer.lastname": "User", // (required)
-			"customer.address1": "Test street", // (required)
-			"customer.address2": "2", // (optional)
-			"customer.address3": "", // (optional)
-			"customer.postal": "12345", // (optional)
-			"customer.city": "Test city", // (required)
-			"customer.state": "HH", // (optional)
-			"customer.countryid": "DE", // (optional)
-			"customer.languageid": "de", // (required by many payment gateways)
-			"customer.telehone": "+4912345678", // (optional)
-			"customer.telefax": "+49123456789", // (optional)
-			"customer.email": "testuser@example.com", // (required)
-			"customer.website": "https://example.com", // (optional)
-			"customer.longitude": 10.0, // (optional, float value)
-			"customer.latitude": 50.0, // (optional, float value)
-			"customer.birthday": "2000-01-01", // (optional)
-			"customer.password": "very+secret" // (optional, generated if empty)
-		}
-	}};
+    ```javascript
+    var params = {data: {
+        attributes: {
+            "customer.code": "testuser@example.com", // (optional, customer.email is used if empty)
+            "customer.label": "Test user", // (optional, will be generated if empty)
+            "customer.salutation": "mr", // "mr", "mrs", "miss", "company" or empty (optional)
+            "customer.company": "Example company", // (optional)
+            "customer.vatid": "DE123456789", // (optional)
+            "customer.title": "Dr.", // (optional)
+            "customer.firstname": "Test", // (optional)
+            "customer.lastname": "User", // (required)
+            "customer.address1": "Test street", // (required)
+            "customer.address2": "2", // (optional)
+            "customer.address3": "", // (optional)
+            "customer.postal": "12345", // (optional)
+            "customer.city": "Test city", // (required)
+            "customer.state": "HH", // (optional)
+            "customer.countryid": "DE", // (optional)
+            "customer.languageid": "de", // (required by many payment gateways)
+            "customer.telehone": "+4912345678", // (optional)
+            "customer.telefax": "+49123456789", // (optional)
+            "customer.email": "testuser@example.com", // (required)
+            "customer.website": "https://example.com", // (optional)
+            "customer.longitude": 10.0, // (optional, float value)
+            "customer.latitude": 50.0, // (optional, float value)
+            "customer.birthday": "2000-01-01", // (optional)
+            "customer.password": "very+secret" // (optional, generated if empty)
+        }
+    }};
 
-	var url = response['links']['customer']['href']; // from OPTIONS response
+    var url = response['links']['customer']['href']; // from OPTIONS response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "PATCH",
-		dataType: "json",
-		data: JSON.stringify(params)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "PATCH",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 The response will include the basic customer data including groups like in this example:
 
 ```json
 {
-	"meta": {
-		"total": 1,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8000/jsonapi/customer?id=1"
-	},
-	"data": {
-		"id": "2",
-		"type": "customer",
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
-				"allow": ["DELETE","GET","PATCH"]
-			}
-		},
-		"attributes": {
-			"customer.id": "2",
-			"customer.code": "testuser@example.com",
-			"customer.label": "Test user",
-			"customer.salutation": "mr",
-			"customer.company": "Example company",
-			"customer.vatid": "DE123456789",
-			"customer.title": "Dr.",
-			"customer.firstname": "Test",
-			"customer.lastname": "User",
-			"customer.address1": "Test street",
-			"customer.address2": "2",
-			"customer.address3": "",
-			"customer.postal": "12345",
-			"customer.city": "Test city",
-			"customer.state": "HH",
-			"customer.countryid": "DE",
-			"customer.languageid": "de",
-			"customer.telehone": "+4912345678",
-			"customer.telefax": "+49123456789",
-			"customer.email": "testuser@example.com",
-			"customer.website": "https://example.com",
-			"customer.longitude": 10.0,
-			"customer.latitude": 50.0,
-			"customer.birthday": "2000-01-01",
-			"customer.status": 1,
-			"customer.groups": ["1"]
-		},
-		"relationships": {
-			"customer\/group": {
-				"data": [{
-					"id": "1",
-					"type": "customer\/group",
-					"attributes": {
-						"customer.lists.id": "1",
-						"customer.lists.domain": "customer\/group",
-						"customer.lists.refid": "1",
-						"customer.lists.datestart": null,
-						"customer.lists.dateend": null,
-						"customer.lists.config": [],
-						"customer.lists.position": 0,
-						"customer.lists.status": 1,
-						"customer.lists.type": "default"
-					},
-					"links": {
-						"self": {
-							"href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
-							"allow": ["DELETE","PATCH"]
-						}
-					}
-				}]
-			}
-		}
-	},
-	"included": [{
-		"id": "1",
-		"type": "customer\/group",
-		"attributes": {
-		"customer.group.id": "1",
-		"customer.group.code": "customer",
-		"customer.group.label": "Customer"
-		}
-	}]
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8000/jsonapi/customer?id=1"
+    },
+    "data": {
+        "id": "2",
+        "type": "customer",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
+                "allow": ["DELETE","GET","PATCH"]
+            }
+        },
+        "attributes": {
+            "customer.id": "2",
+            "customer.code": "testuser@example.com",
+            "customer.label": "Test user",
+            "customer.salutation": "mr",
+            "customer.company": "Example company",
+            "customer.vatid": "DE123456789",
+            "customer.title": "Dr.",
+            "customer.firstname": "Test",
+            "customer.lastname": "User",
+            "customer.address1": "Test street",
+            "customer.address2": "2",
+            "customer.address3": "",
+            "customer.postal": "12345",
+            "customer.city": "Test city",
+            "customer.state": "HH",
+            "customer.countryid": "DE",
+            "customer.languageid": "de",
+            "customer.telehone": "+4912345678",
+            "customer.telefax": "+49123456789",
+            "customer.email": "testuser@example.com",
+            "customer.website": "https://example.com",
+            "customer.longitude": 10.0,
+            "customer.latitude": 50.0,
+            "customer.birthday": "2000-01-01",
+            "customer.status": 1,
+            "customer.groups": ["1"]
+        },
+        "relationships": {
+            "customer\/group": {
+                "data": [{
+                    "id": "1",
+                    "type": "customer\/group",
+                    "attributes": {
+                        "customer.lists.id": "1",
+                        "customer.lists.domain": "customer\/group",
+                        "customer.lists.refid": "1",
+                        "customer.lists.datestart": null,
+                        "customer.lists.dateend": null,
+                        "customer.lists.config": [],
+                        "customer.lists.position": 0,
+                        "customer.lists.status": 1,
+                        "customer.lists.type": "default"
+                    },
+                    "links": {
+                        "self": {
+                            "href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
+                            "allow": ["DELETE","PATCH"]
+                        }
+                    }
+                }]
+            }
+        }
+    },
+    "included": [{
+        "id": "1",
+        "type": "customer\/group",
+        "attributes": {
+        "customer.group.id": "1",
+        "customer.group.code": "customer",
+        "customer.group.label": "Customer"
+        }
+    }]
 }
 ```
 
@@ -562,28 +562,28 @@ Every user can only delete his own account and he must be logged in to do so.
 For deleting the account use e.g.:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X DELETE 'http://localhost:8000/jsonapi/customer?id=...&_token=...'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X DELETE 'http://localhost:8000/jsonapi/customer?id=...&_token=...'
+    ```
 === "jQuery"
-	```javascript
-	var url = response.links.self.href; // from customer response
+    ```javascript
+    var url = response.links.self.href; // from customer response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?')= -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?')= -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url, // returned from OPTIONS request
-		method: "DELETE",
-		dataType: "json"
-	}).done( function( result ) {
-		console.log( result.data );
-	});
-	```
+    $.ajax({
+        url: url, // returned from OPTIONS request
+        method: "DELETE",
+        dataType: "json"
+    }).done( function( result ) {
+        console.log( result.data );
+    });
+    ```
 
 !!! note
     Deleting a user returns a successful response even if the user doesn't exist or you are not allowed to delete that user for security reasons. If you want to be sure the users' own account is deleted, perform a GET request to the customer endpoint. It will return an empty customer item with no *customer.id* value if the account doesn't exist any more.

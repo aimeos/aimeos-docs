@@ -20,8 +20,8 @@ The skeleton for the most basic implementation of a delivery service provider wo
 namespace Aimeos\MShop\Service\Provider\Delivery;
 
 class Myprovider
-	extends \Aimeos\MShop\Service\Provider\Delivery\Base
-	implements \Aimeos\MShop\Service\Provider\Delivery\Iface
+    extends \Aimeos\MShop\Service\Provider\Delivery\Base
+    implements \Aimeos\MShop\Service\Provider\Delivery\Iface
 {
     /**
      * Sends the order details to the ERP system for further processing.

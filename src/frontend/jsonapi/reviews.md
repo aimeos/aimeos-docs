@@ -28,35 +28,35 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
 ```json
 {
 "meta": {
-	"prefix": null,
-	"filter": {
-		"f_domain": {
-			"label": "Return reviews for that domain, e.g. "product"",
-			"type": "string",
-			"default": "product",
-			"required": false
-		},
-		"f_refid": {
-			"label": "Return reviews for the item from the domain with that ID",
-			"type": "string",
-			"default": null,
-			"required": false
-		}
-	},
-	"sort": {
-		"ctime": {
-			"label": "Sort reviews by creation date/time",
-			"type": "string",
-			"default": true,
-			"required": false
-		},
-		"ctime": {
-			"label": "Sort reviews by rating",
-			"type": "string",
-			"default": false,
-			"required": false
-		}
-	}
+    "prefix": null,
+    "filter": {
+        "f_domain": {
+            "label": "Return reviews for that domain, e.g. "product"",
+            "type": "string",
+            "default": "product",
+            "required": false
+        },
+        "f_refid": {
+            "label": "Return reviews for the item from the domain with that ID",
+            "type": "string",
+            "default": null,
+            "required": false
+        }
+    },
+    "sort": {
+        "ctime": {
+            "label": "Sort reviews by creation date/time",
+            "type": "string",
+            "default": true,
+            "required": false
+        },
+        "ctime": {
+            "label": "Sort reviews by rating",
+            "type": "string",
+            "default": false,
+            "required": false
+        }
+    }
 }
 ```
 
@@ -65,65 +65,65 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
 Now you can retrieve reviews via the "review" resource you've got from the OPTIONS response. By default, the list of all product reviews is returned and you should filter them by the ID of the product the user requested, e.g.:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/review?filter[f_refid]=1'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/review?filter[f_refid]=1'
+    ```
 === "jQuery"
-	```javascript
-	var params = {filter: {
-		'f_refid': '1'
-	}};
+    ```javascript
+    var params = {filter: {
+        'f_refid': '1'
+    }};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['review'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['review'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This response contains all reviews for the product with the ID "1":
 
 ```json
 {
-	"meta": {
-		"total": 1,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8000/default/jsonapi/review?f_refid=1"
-	},
-	"data": [{
-		"id": "1",
-		"type": "review",
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8000\/default\/jsonapi\/review?id=1",
-				"allow": ["GET"]
-			}
-		},
-		"attributes": {
-			"review.id": "1",
-			"review.refid": "1",
-			"review.domain": "product",
-			"review.response": "test response",
-			"review.comment": "test comment",
-			"review.rating": 5,
-			"review.status": 1,
-			"review.name": "test user"
-		}
-	}]
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8000/default/jsonapi/review?f_refid=1"
+    },
+    "data": [{
+        "id": "1",
+        "type": "review",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/default\/jsonapi\/review?id=1",
+                "allow": ["GET"]
+            }
+        },
+        "attributes": {
+            "review.id": "1",
+            "review.refid": "1",
+            "review.domain": "product",
+            "review.response": "test response",
+            "review.comment": "test comment",
+            "review.rating": 5,
+            "review.status": 1,
+            "review.name": "test user"
+        }
+    }]
 }
 ```
 
@@ -138,26 +138,26 @@ Additional to the generic filter possibilities, you can sort reviews by these ke
 * "rating" (asc) or "-rating" (desc)
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/review?sort=-rating'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/review?sort=-rating'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'sort': '-rating'};
+    ```javascript
+    var params = {'sort': '-rating'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['review'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['review'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 !!! tip
     You can also sort by other fields, e.g. by the last modification date of the reviews using *&sort=review.mtime*

@@ -45,43 +45,43 @@ You can freely configure how your data is organized in the CSV file but for a qu
 
 ```php
 [
-	'item' => [
-		0 => 'product.code', // e.g. unique EAN code
-		1 => 'product.label', // UTF-8 encoded text, also used as product name
-		2 => 'product.type', // type of the product, e.g. "default" or "selection"
-		3 => 'product.status', // enabled (1) or disabled (0)
-	],
-	'text' => [
-		4 => 'text.type', // e.g. "short" for short description
-		5 => 'text.content', // UTF-8 encoded text
-		6 => 'text.type', // e.g. "long" for long description
-		7 => 'text.content', // UTF-8 encoded text
-	],
-	'media' => [
-		8 => 'media.url', // relative URL of the product image on the server
-	],
-	'price' => [
-		9 => 'price.currencyid', // three letter ISO currency code
-		10 => 'price.quantity', // the quantity the price (for block pricing)
-		11 => 'price.value', // price with decimals separated by a dot
-		12 => 'price.taxrate', // tax rate with decimals separated by a dot
-	],
-	'attribute' => [
-		13 => 'attribute.code', // code of an attribute, will be created if not exists
-		14 => 'attribute.type', // e.g. "size", "length", "width", "color", etc.
-	],
-	'product' => [
-		15 => 'product.code', // e.g. EAN code of another product
-		16 => 'product.lists.type', // e.g. "suggestion" for suggested product
-	],
-	'property' => [
-		17 => 'product.property.value', // arbitrary value for the corresponding type
-		18 => 'product.property.type', // e.g. "package-weight"
-	],
-	'catalog' => [
-		19 => 'catalog.code', // e.g. Unique category code
-		20 => 'catalog.lists.type', // e.g. "promotion" for top seller products
-	],
+    'item' => [
+        0 => 'product.code', // e.g. unique EAN code
+        1 => 'product.label', // UTF-8 encoded text, also used as product name
+        2 => 'product.type', // type of the product, e.g. "default" or "selection"
+        3 => 'product.status', // enabled (1) or disabled (0)
+    ],
+    'text' => [
+        4 => 'text.type', // e.g. "short" for short description
+        5 => 'text.content', // UTF-8 encoded text
+        6 => 'text.type', // e.g. "long" for long description
+        7 => 'text.content', // UTF-8 encoded text
+    ],
+    'media' => [
+        8 => 'media.url', // relative URL of the product image on the server
+    ],
+    'price' => [
+        9 => 'price.currencyid', // three letter ISO currency code
+        10 => 'price.quantity', // the quantity the price (for block pricing)
+        11 => 'price.value', // price with decimals separated by a dot
+        12 => 'price.taxrate', // tax rate with decimals separated by a dot
+    ],
+    'attribute' => [
+        13 => 'attribute.code', // code of an attribute, will be created if not exists
+        14 => 'attribute.type', // e.g. "size", "length", "width", "color", etc.
+    ],
+    'product' => [
+        15 => 'product.code', // e.g. EAN code of another product
+        16 => 'product.lists.type', // e.g. "suggestion" for suggested product
+    ],
+    'property' => [
+        17 => 'product.property.value', // arbitrary value for the corresponding type
+        18 => 'product.property.type', // e.g. "package-weight"
+    ],
+    'catalog' => [
+        19 => 'catalog.code', // e.g. Unique category code
+        20 => 'catalog.lists.type', // e.g. "promotion" for top seller products
+    ],
 ]
 ```
 
@@ -109,17 +109,17 @@ Similarly, the mapping inside the groups can be changed to your needs and can be
 
 ```php
 [
-	'item' => [
-		0 => 'product.code', // e.g. unique EAN code
-		5 => 'product.status', // enabled (1) or disabled (0)
-		3 => 'product.label', // UTF-8 encoded text, also used as product name
-		4 => 'product.type', // type of the product, e.g. "default" or "selection"
-	],
-	// ...
-	'media' => [
-		2 => 'media.url', // relative URL of the product image on the server
-	],
-	// ...
+    'item' => [
+        0 => 'product.code', // e.g. unique EAN code
+        5 => 'product.status', // enabled (1) or disabled (0)
+        3 => 'product.label', // UTF-8 encoded text, also used as product name
+        4 => 'product.type', // type of the product, e.g. "default" or "selection"
+    ],
+    // ...
+    'media' => [
+        2 => 'media.url', // relative URL of the product image on the server
+    ],
+    // ...
 ]
 ```
 
@@ -138,16 +138,16 @@ All processors besides the "item" processor are able to import multiple sets at 
 
 ```php
 [
-	// ...
-	'text' => [
-		5 => 'text.content',
-		8 => 'text.type',
-		6 => 'text.content',
-		9 => 'text.type',
-		7 => 'text.content',
-		10 => 'text.type',
-	],
-	// ...
+    // ...
+    'text' => [
+        5 => 'text.content',
+        8 => 'text.type',
+        6 => 'text.content',
+        9 => 'text.type',
+        7 => 'text.content',
+        10 => 'text.type',
+    ],
+    // ...
 ]
 ```
 
@@ -166,14 +166,14 @@ Contrary, this mapping **won't work**:
 
 ```php
 [
-	// ...
-	'text' => [
-		5 => 'text.content',
-		6 => 'text.content',
-		7 => 'text.type',
-		8 => 'text.type',
-	],
-	// ...
+    // ...
+    'text' => [
+        5 => 'text.content',
+        6 => 'text.content',
+        7 => 'text.type',
+        8 => 'text.type',
+    ],
+    // ...
 ]
 ```
 
@@ -185,14 +185,14 @@ The "item" group is the most important data group because it contains the mappin
 
 ```php
 [
-	'item' => [
-		0 => 'product.code',
-		1 => 'product.type',
-		2 => 'product.label',
-		3 => 'product.status',
-		4 => 'product.datestart',
-		6 => 'product.dateend',
-	],
+    'item' => [
+        0 => 'product.code',
+        1 => 'product.type',
+        2 => 'product.label',
+        3 => 'product.status',
+        4 => 'product.datestart',
+        6 => 'product.dateend',
+    ],
 ]
 ```
 
@@ -204,13 +204,13 @@ Several product related texts can be part of each CSV line. Supported domain ite
 
 ```php
 [
-	'text' => [
-		0 => 'text.languageid',
-		1 => 'text.type',
-		2 => 'text.label',
-		3 => 'text.content',
-		4 => 'text.status',
-	],
+    'text' => [
+        0 => 'text.languageid',
+        1 => 'text.type',
+        2 => 'text.label',
+        3 => 'text.content',
+        4 => 'text.status',
+    ],
 ]
 ```
 
@@ -220,15 +220,15 @@ Additionally, you can import values for the product list relation as well:
 
 ```php
 [
-	'text' => [
-		// ...
-		7 => 'product.lists.type',
-		8 => 'product.lists.datestart',
-		9 => 'product.lists.dateend',
-		10 => 'product.lists.config',
-		11 => 'product.lists.position',
-		12 => 'product.lists.status',
-	],
+    'text' => [
+        // ...
+        7 => 'product.lists.type',
+        8 => 'product.lists.datestart',
+        9 => 'product.lists.dateend',
+        10 => 'product.lists.config',
+        11 => 'product.lists.position',
+        12 => 'product.lists.status',
+    ],
 ]
 ```
 
@@ -242,16 +242,16 @@ Several product related images and other media types can be part of each CSV lin
 
 ```php
 [
-	'media' => [
- 		0 => 'media.languageid',
-		1 => 'media.type',
-		2 => 'media.label',
-		3 => 'media.mimetype',
-		4 => 'media.preview',
-		// 4 => 'media.previews', // for several preview images
-		5 => 'media.url',
-		6 => 'media.status',
-	],
+    'media' => [
+         0 => 'media.languageid',
+        1 => 'media.type',
+        2 => 'media.label',
+        3 => 'media.mimetype',
+        4 => 'media.preview',
+        // 4 => 'media.previews', // for several preview images
+        5 => 'media.url',
+        6 => 'media.status',
+    ],
 ]
 ```
 
@@ -269,15 +269,15 @@ Additionally, you can import values for the product list relation as well:
 
 ```php
 [
- 	'media' => [
-		// ...
-		9 => 'product.lists.type',
-		10 => 'product.lists.datestart',
-		11 => 'product.lists.dateend',
-		12 => 'product.lists.config',
-		13 => 'product.lists.position',
-		14 => 'product.lists.status',
-	],
+     'media' => [
+        // ...
+        9 => 'product.lists.type',
+        10 => 'product.lists.datestart',
+        11 => 'product.lists.dateend',
+        12 => 'product.lists.config',
+        13 => 'product.lists.position',
+        14 => 'product.lists.status',
+    ],
 ]
 ```
 
@@ -291,16 +291,16 @@ Several product related prices can be part of each CSV line. Supported domain it
 
 ```php
 [
-	'price' => [
-		0 => 'price.type',
-		1 => 'price.label',
-		2 => 'price.currencyid',
-		3 => 'price.value',
-		4 => 'price.costs',
-		5 => 'price.rebate',
-		6 => 'price.taxrate',
-		7 => 'price.status',
-	],
+    'price' => [
+        0 => 'price.type',
+        1 => 'price.label',
+        2 => 'price.currencyid',
+        3 => 'price.value',
+        4 => 'price.costs',
+        5 => 'price.rebate',
+        6 => 'price.taxrate',
+        7 => 'price.status',
+    ],
 ]
 ```
 
@@ -310,15 +310,15 @@ Additionally, you can import values for the product list relation as well:
 
 ```php
 [
-	'price' => [
-		// ...
-		10 => 'product.lists.type',
-		11 => 'product.lists.datestart',
-		12 => 'product.lists.dateend',
-		13 => 'product.lists.config',
-		14 => 'product.lists.position',
-		15 => 'product.lists.status',
-	],
+    'price' => [
+        // ...
+        10 => 'product.lists.type',
+        11 => 'product.lists.datestart',
+        12 => 'product.lists.dateend',
+        13 => 'product.lists.config',
+        14 => 'product.lists.position',
+        15 => 'product.lists.status',
+    ],
 ]
 ```
 
@@ -332,13 +332,13 @@ Several product related attributes can be part of each CSV line. Supported domai
 
 ```php
 [
-	'attribute' => [
-		0 => 'attribute.type',
-		1 => 'attribute.code',
-		2 => 'attribute.label',
-		3 => 'attribute.position',
-		4 => 'attribute.status',
-	],
+    'attribute' => [
+        0 => 'attribute.type',
+        1 => 'attribute.code',
+        2 => 'attribute.label',
+        3 => 'attribute.position',
+        4 => 'attribute.status',
+    ],
 ]
 ```
 
@@ -350,15 +350,15 @@ Additionally, you can import values for the product list relation as well:
 
 ```php
 [
-	'attribute' => [
-		// ...
-		7 => 'product.lists.type',
-		8 => 'product.lists.datestart',
-		9 => 'product.lists.dateend',
-		10 => 'product.lists.config',
-		11 => 'product.lists.position',
-		12 => 'product.lists.status',
-	],
+    'attribute' => [
+        // ...
+        7 => 'product.lists.type',
+        8 => 'product.lists.datestart',
+        9 => 'product.lists.dateend',
+        10 => 'product.lists.config',
+        11 => 'product.lists.position',
+        12 => 'product.lists.status',
+    ],
 ]
 ```
 
@@ -372,9 +372,9 @@ Several product relations can be part of each CSV line. Supported domain item ke
 
 ```php
 [
-	'product' => [
-		0 => 'product.code',
-	],
+    'product' => [
+        0 => 'product.code',
+    ],
 ]
 ```
 
@@ -382,15 +382,15 @@ and it's also the minimum amount of data. The real power of the product relation
 
 ```php
 [
-	'product' => [
-		// ...
-		1 => 'product.lists.type',
-		2 => 'product.lists.datestart',
-		3 => 'product.lists.dateend',
-		4 => 'product.lists.config',
-		5 => 'product.lists.position',
-		6 => 'product.lists.status',
-	],
+    'product' => [
+        // ...
+        1 => 'product.lists.type',
+        2 => 'product.lists.datestart',
+        3 => 'product.lists.dateend',
+        4 => 'product.lists.config',
+        5 => 'product.lists.position',
+        6 => 'product.lists.status',
+    ],
 ]
 ```
 
@@ -404,11 +404,11 @@ Several product related properties (non-shared product data) can be part of each
 
 ```php
 [
-	'property' => [
-		0 => 'product.property.type',
-		1 => 'product.property.languageid',
-		2 => 'product.property.value',
-	],
+    'property' => [
+        0 => 'product.property.type',
+        1 => 'product.property.languageid',
+        2 => 'product.property.value',
+    ],
 ]
 ```
 
@@ -420,9 +420,9 @@ Several category relations can be part of each CSV line. Supported domain item k
 
 ```php
 [
-	'catalog' => [
-		0 => 'catalog.code',
-	],
+    'catalog' => [
+        0 => 'catalog.code',
+    ],
 ]
 ```
 
@@ -430,14 +430,14 @@ and it's also the minimum amount of data. The real power of the catalog relation
 
 ```php
 [
-	'catalog' => [
-		1 => 'catalog.lists.type',
-		2 => 'catalog.lists.datestart',
-		3 => 'catalog.lists.dateend',
-		4 => 'catalog.lists.config',
-		5 => 'catalog.lists.position',
-		6 => 'catalog.lists.status',
-	],
+    'catalog' => [
+        1 => 'catalog.lists.type',
+        2 => 'catalog.lists.datestart',
+        3 => 'catalog.lists.dateend',
+        4 => 'catalog.lists.config',
+        5 => 'catalog.lists.position',
+        6 => 'catalog.lists.status',
+    ],
 ]
 ```
 
@@ -451,11 +451,11 @@ If you want to set or update the stock levels during the product import as well,
 
 ```php
 [
-	'stock' => [
-		0 => 'stock.stocklevel',
-		1 => 'stock.type',
-		2 => 'stock.dateback',
-	],
+    'stock' => [
+        0 => 'stock.stocklevel',
+        1 => 'stock.type',
+        2 => 'stock.dateback',
+    ],
 ]
 ```
 
@@ -469,7 +469,7 @@ To each field in the CSV file, you can apply one or more converters, e.g. to enc
 
 ```php
 [
-	1 => 'Text/LatinUTF8'
+    1 => 'Text/LatinUTF8'
 ]
 ```
 
@@ -477,10 +477,10 @@ Similarly, you can also apply several converters at once to the same field:
 
 ```php
 [
-	1 => [
-		'Text/LatinUTF8',
-		'DateTime/EnglishISO'
-	]
+    1 => [
+        'Text/LatinUTF8',
+        'DateTime/EnglishISO'
+    ]
 ]
 ```
 
@@ -498,15 +498,15 @@ namespace Aimeos\MW\Convert\Text;
 
 class LatinUTF8 implements \Aimeos\MW\Convert\Interface
 {
-	public function translate( $value )
-	{
-		return utf8_encode( $value );
-	}
+    public function translate( $value )
+    {
+        return utf8_encode( $value );
+    }
 
-	public function reverse( $value )
-	{
-		return utf8_decode( $value );
-	}
+    public function reverse( $value )
+    {
+        return utf8_decode( $value );
+    }
 }
 ```
 

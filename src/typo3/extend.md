@@ -260,8 +260,8 @@ The *Compose* logger can send log messages to different loggers, e.g. to the *Fi
 
 ```php
 new \Aimeos\MW\Logger\Compose( [
-	new \Aimeos\MW\Logger\File( '/path/to/file' ),
-	new \Aimeos\MW\Logger\MySmsLogger( '<number>', 2 ),
+    new \Aimeos\MW\Logger\File( '/path/to/file' ),
+    new \Aimeos\MW\Logger\MySmsLogger( '<number>', 2 ),
 ] );
 ```
 

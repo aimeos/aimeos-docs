@@ -47,11 +47,11 @@ Since some components are built from several subparts (e.g. the "catalog-detail"
 
 !!! tip
     When defining new styles for a theme, always start with the CSS class of the subpart you want to style and then the class that is associated to the relevant HTML node, e.g.
-	```css
+    ```css
     .catalog-detail-basic .name {
         font-size: 125%
     }
-	```
+    ```
      This uniquely identifies the node and keeps the CSS path short so the browser isn't required to check for intermediate CSS classes that aren't necessary.
 
 For partials used several times at different locations, the same CSS classes apply to all locations. Examples for those classes are:
@@ -464,10 +464,10 @@ If you decide to implement a new component like an additional one for the catalo
 Aimeos<type><component> = {
 
     /**
-	 * Initializes the <type> <component> actions
-	 */
-	init: function() {
-	}
+     * Initializes the <type> <component> actions
+     */
+    init: function() {
+    }
 }
 ```
 

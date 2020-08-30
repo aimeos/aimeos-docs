@@ -20,7 +20,7 @@ The token must be passed with each request as GET parameter to the server:
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X POST '<resource URL>?_token=...' \
     -H 'Content-Type: application/json' \
     -d '{...}'
@@ -59,7 +59,7 @@ Adding new items to a list of resources is done by sending a POST request to the
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X POST 'http://localhost:8000/jsonadm/default/product?_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
@@ -197,7 +197,7 @@ You can also update the attributes of existing items via PATCH requests. As URLs
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X PATCH 'http://localhost:8000/jsonadm/default/product?id=1&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
@@ -337,7 +337,7 @@ Resources can also be deleted. To perform this operation, you have to send a DEL
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonadm/default/product?id=...&_token=...'
     ```
 === "jQuery"

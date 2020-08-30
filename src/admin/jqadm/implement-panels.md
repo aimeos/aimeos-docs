@@ -10,26 +10,26 @@ Use this example factory and replace `Mypanel` and `mypanel` by the name of your
 namespace Aimeos\Admin\JQAdm\Mypanel;
 
 class Factory
-	extends \Aimeos\Admin\JQAdm\Common\Factory\Base
-	implements \Aimeos\Admin\JQAdm\Common\Factory\Iface
+    extends \Aimeos\Admin\JQAdm\Common\Factory\Base
+    implements \Aimeos\Admin\JQAdm\Common\Factory\Iface
 {
-	public static function create( \Aimeos\MShop\Context\Item\Iface $context, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
-	{
-		if( $name === null ) {
-			$name = $context->getConfig()->get( 'admin/jqadm/mypanel/name', 'Standard' );
-		}
+    public static function create( \Aimeos\MShop\Context\Item\Iface $context, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
+    {
+        if( $name === null ) {
+            $name = $context->getConfig()->get( 'admin/jqadm/mypanel/name', 'Standard' );
+        }
 
-		$iface = '\\Aimeos\\Admin\\JQAdm\\Iface';
-		$classname = '\\Aimeos\\Admin\\JQAdm\\Mypanel\\' . $name;
+        $iface = '\\Aimeos\\Admin\\JQAdm\\Iface';
+        $classname = '\\Aimeos\\Admin\\JQAdm\\Mypanel\\' . $name;
 
-		if( ctype_alnum( $name ) === false ) {
-			throw new \Aimeos\Admin\JQAdm\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
-		}
+        if( ctype_alnum( $name ) === false ) {
+            throw new \Aimeos\Admin\JQAdm\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
+        }
 
-		$client = self::createAdmin( $context, $classname, $iface );
+        $client = self::createAdmin( $context, $classname, $iface );
 
-		return self::addClientDecorators( $context, $client, 'mypanel' );
-	}
+        return self::addClientDecorators( $context, $client, 'mypanel' );
+    }
 }
 ```
 
@@ -43,53 +43,53 @@ namespace Aimeos\Admin\JQAdm\Mypanel;
 sprintf( 'mypanel' ); // for translation
 
 class Standard
-	extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
-	implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
+    extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
+    implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
 {
-	public function copy() : ?string
-	{
-		return parent::copy();
-	}
+    public function copy() : ?string
+    {
+        return parent::copy();
+    }
 
-	public function create() : ?string
-	{
-		return parent::create();
-	}
+    public function create() : ?string
+    {
+        return parent::create();
+    }
 
-	public function delete() : ?string
-	{
-		return parent::delete();
-	}
+    public function delete() : ?string
+    {
+        return parent::delete();
+    }
 
-	public function export() : ?string
-	{
-		return parent::export();
-	}
+    public function export() : ?string
+    {
+        return parent::export();
+    }
 
-	public function get() : ?string
-	{
-		return parent::get();
-	}
+    public function get() : ?string
+    {
+        return parent::get();
+    }
 
-	public function save() : ?string
-	{
-		return parent::save();
-	}
+    public function save() : ?string
+    {
+        return parent::save();
+    }
 
-	public function search() : ?string
-	{
-		return parent::search();
-	}
+    public function search() : ?string
+    {
+        return parent::search();
+    }
 
-	public function getSubClient( string $type, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
-	{
-		return $this->createSubClient( 'mypanel/' . $type, $name );
-	}
+    public function getSubClient( string $type, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
+    {
+        return $this->createSubClient( 'mypanel/' . $type, $name );
+    }
 
-	protected function getSubClientNames() : array
-	{
-		return $this->getContext()->getConfig()->get( 'admin/jqadm/mypanel/standard/subparts', [] );
-	}
+    protected function getSubClientNames() : array
+    {
+        return $this->getContext()->getConfig()->get( 'admin/jqadm/mypanel/standard/subparts', [] );
+    }
 }
 ```
 
@@ -117,11 +117,11 @@ The file objects implement the [PSR-7](https://www.php-fig.org/psr/psr-7/#16-upl
 
 ```php
 if( $file->getError() !== UPLOAD_ERR_NO_FILE
-	&& $file->getError() === UPLOAD_ERR_OK
+    && $file->getError() === UPLOAD_ERR_OK
 ) {
-	$file->moveTo( '/path/to/new/filename' );
-	$stream = $file->getStream();
-	$content = (string) $stream; // don't do that for large files
+    $file->moveTo( '/path/to/new/filename' );
+    $stream = $file->getStream();
+    $content = (string) $stream; // don't do that for large files
 }
 ```
 
@@ -143,30 +143,30 @@ If you pass the data to the template, the view will render the form for the deta
 ```php
 public function copy() : ?string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	try
-	{
-		$manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
-		$view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
+    try
+    {
+        $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+        $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
 
-		$data = $view->item->toArray( true );
-		$data['mydomain.siteid'] = $this->getContext()->locale()->getSiteId();
-		$data['mydomain.code'] = $data['mydomain.code'] . '_copy';
-		$data['mydomain.id'] = '';
+        $data = $view->item->toArray( true );
+        $data['mydomain.siteid'] = $this->getContext()->locale()->getSiteId();
+        $data['mydomain.code'] = $data['mydomain.code'] . '_copy';
+        $data['mydomain.id'] = '';
 
-		$view->itemData = $data;
-		$view->itemBody = parent::copy();
-	}
-	catch( \Exception $e )
-	{
-		$this->report( $e, 'copy' );
-	}
+        $view->itemData = $data;
+        $view->itemBody = parent::copy();
+    }
+    catch( \Exception $e )
+    {
+        $this->report( $e, 'copy' );
+    }
 
-	$tplconf = 'admin/jqadm/mypanel/template-item';
-	$default = 'mypanel/item-standard';
+    $tplconf = 'admin/jqadm/mypanel/template-item';
+    $default = 'mypanel/item-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -191,29 +191,29 @@ When the editor has filled in the required data into the input fields and click 
 ```php
 public function create() : ?string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	try
-	{
-		if( !isset( $view->item ) ) {
-			$view->item = \Aimeos\MShop::create( $this->getContext(), 'mydomain' )->create();
-		}
+    try
+    {
+        if( !isset( $view->item ) ) {
+            $view->item = \Aimeos\MShop::create( $this->getContext(), 'mydomain' )->create();
+        }
 
-		$data = $view->param( 'item', [] );
-		$data['mydomain.siteid'] = $view->item->getSiteId();
+        $data = $view->param( 'item', [] );
+        $data['mydomain.siteid'] = $view->item->getSiteId();
 
-		$view->itemData = array_replace_recursive( $this->toArray( $view->item, true ), $data );
-		$view->itemBody = parent::create();
-	}
-	catch( \Exception $e )
-	{
-		$this->report( $e, 'create' );
-	}
+        $view->itemData = array_replace_recursive( $this->toArray( $view->item, true ), $data );
+        $view->itemBody = parent::create();
+    }
+    catch( \Exception $e )
+    {
+        $this->report( $e, 'create' );
+    }
 
-	$tplconf = 'admin/jqadm/mypanel/template-item';
-	$default = 'mypanel/item-standard';
+    $tplconf = 'admin/jqadm/mypanel/template-item';
+    $default = 'mypanel/item-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -234,35 +234,35 @@ To delete one or more items, their IDs must be passed by the HTML template. The 
 ```php
 public function delete() : ?string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	$manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
-	$manager->begin();
+    $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+    $manager->begin();
 
-	try
-	{
-		$ids = (array) $this->require( 'id' );
-		$search = $manager->filter()->add( 'mydomain.id', '==', $ids );
-		$items = $manager->search( $search->slice( 0, count( $ids ) ) );
+    try
+    {
+        $ids = (array) $this->require( 'id' );
+        $search = $manager->filter()->add( 'mydomain.id', '==', $ids );
+        $items = $manager->search( $search->slice( 0, count( $ids ) ) );
 
-		foreach( $items as $item )
-		{
-			$view->item = $item;
-			parent::delete();
-		}
+        foreach( $items as $item )
+        {
+            $view->item = $item;
+            parent::delete();
+        }
 
-		$manager->delete( $items->toArray() );
-		$manager->commit();
+        $manager->delete( $items->toArray() );
+        $manager->commit();
 
-		return $this->redirect( 'mypanel', 'search', null, 'delete' );
-	}
-	catch( \Exception $e )
-	{
-		$manager->rollback();
-		$this->report( $e, 'delete' );
-	}
+        return $this->redirect( 'mypanel', 'search', null, 'delete' );
+    }
+    catch( \Exception $e )
+    {
+        $manager->rollback();
+        $this->report( $e, 'delete' );
+    }
 
-	return $this->search();
+    return $this->search();
 }
 ```
 
@@ -288,34 +288,34 @@ Instead, you should send the request for exporting the data to a message queue a
 ```php
 public function export() : ?string
 {
-	$view = $this->getView();
-	$context = $this->getContext();
+    $view = $this->getView();
+    $context = $this->getContext();
 
-	try
-	{
-		$msg = ['sitecode' => $context->getLocale()->getSiteItem()->getCode()];
+    try
+    {
+        $msg = ['sitecode' => $context->getLocale()->getSiteItem()->getCode()];
 
-		if( $filter = $view->param( 'filter' ) ) {
-			$msg['filter'] = $this->getCriteriaConditions( (array) $filter );
-		}
+        if( $filter = $view->param( 'filter' ) ) {
+            $msg['filter'] = $this->getCriteriaConditions( (array) $filter );
+        }
 
-		if( $sort = $view->param( 'sort' ) ) {
-			$msg['sort'] = $this->getCriteriaSortations( (array) $sort );
-		}
+        if( $sort = $view->param( 'sort' ) ) {
+            $msg['sort'] = $this->getCriteriaSortations( (array) $sort );
+        }
 
-		$queue = $view->param( 'queue', 'myexportqueue' );
-		$mq = $context->queue( 'mq-admin', $queue );
-		$mq->add( json_encode( $msg ) );
+        $queue = $view->param( 'queue', 'myexportqueue' );
+        $mq = $context->queue( 'mq-admin', $queue );
+        $mq->add( json_encode( $msg ) );
 
-		$msg = $context->i18n()->dt( 'admin', 'Your export will be available in a few minutes for download' );
-		$view->info = $view->get( 'info', [] ) + ['mypanel-item' => $msg];
-	}
-	catch( \Exception $e )
-	{
-		$this->report( $e, 'export' );
-	}
+        $msg = $context->i18n()->dt( 'admin', 'Your export will be available in a few minutes for download' );
+        $view->info = $view->get( 'info', [] ) + ['mypanel-item' => $msg];
+    }
+    catch( \Exception $e )
+    {
+        $this->report( $e, 'export' );
+    }
 
-	return $this->search();
+    return $this->search();
 }
 ```
 
@@ -336,25 +336,25 @@ This method is used to retrive the data for the detail view of the panel. It's p
 ```php
 public function get() : ?string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	try
-	{
-		$manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+    try
+    {
+        $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
 
-		$view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
-		$view->itemData = $this->toArray( $view->item );
-		$view->itemBody = parent::get();
-	}
-	catch( \Exception $e )
-	{
-		$this->report( $e, 'get' );
-	}
+        $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
+        $view->itemData = $this->toArray( $view->item );
+        $view->itemBody = parent::get();
+    }
+    catch( \Exception $e )
+    {
+        $this->report( $e, 'get' );
+    }
 
-	$tplconf = 'admin/jqadm/mypanel/template-item';
-	$default = 'mypanel/item-standard';
+    $tplconf = 'admin/jqadm/mypanel/template-item';
+    $default = 'mypanel/item-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -371,36 +371,36 @@ This method actually adds or updates the item in the storage using the data pass
 ```php
 public function save() : ?string
 {
-	$view = $this->getView();
-	$context = $this->getContext();
+    $view = $this->getView();
+    $context = $this->getContext();
 
-	$manager = \Aimeos\MShop::create( $context, 'mydomain' );
-	$manager->begin();
+    $manager = \Aimeos\MShop::create( $context, 'mydomain' );
+    $manager->begin();
 
-	try
-	{
-		if( $id = $data['mydomain.id'] ?? null ) {
-			$item = $manager->get( $id, ['text', /* ... */] );
-		} else {
-			$item = $manager->create();
-		}
+    try
+    {
+        if( $id = $data['mydomain.id'] ?? null ) {
+            $item = $manager->get( $id, ['text', /* ... */] );
+        } else {
+            $item = $manager->create();
+        }
 
-		$item = $item->fromArray( $view->param( 'item', [] ), true );
-		$view->item = $item->getId() ? $item : $manager->save( $item );
-		$view->itemBody = parent::save();
+        $item = $item->fromArray( $view->param( 'item', [] ), true );
+        $view->item = $item->getId() ? $item : $manager->save( $item );
+        $view->itemBody = parent::save();
 
-		$item = $manager->save( clone $view->item );
-		$manager->commit();
+        $item = $manager->save( clone $view->item );
+        $manager->commit();
 
-		return $this->redirect( 'mypanel', $view->param( 'next' ), $view->item->getId(), 'save' );
-	}
-	catch( \Exception $e )
-	{
-		$manager->rollback();
-		$this->report( $e, 'save' );
-	}
+        return $this->redirect( 'mypanel', $view->param( 'next' ), $view->item->getId(), 'save' );
+    }
+    catch( \Exception $e )
+    {
+        $manager->rollback();
+        $this->report( $e, 'save' );
+    }
 
-	return $this->create();
+    return $this->create();
 }
 ```
 
@@ -429,32 +429,32 @@ The `search()` method creates the list view and is also used for every default v
 ```php
 public function search() : ?string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	try
-	{
-		$total = 0;
-		$params = $this->storeFilter( $view->param(), 'mydomain' );
-		$manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+    try
+    {
+        $total = 0;
+        $params = $this->storeFilter( $view->param(), 'mydomain' );
+        $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
 
-		$filter = $manager->filter()->sort( 'mydomain.id' );
-		$filter = $this->initCriteria( $filter, $params );
+        $filter = $manager->filter()->sort( 'mydomain.id' );
+        $filter = $this->initCriteria( $filter, $params );
 
-		$view->items = $manager->search( $filter, ['text', /* ... */], $total );
-		$view->filterAttributes = $manager->getSearchAttributes( true );
-		$view->filterOperators = $filter->getOperators();
-		$view->itemBody = parent::search();
-		$view->total = $total;
-	}
-	catch( \Exception $e )
-	{
-		$this->report( $e, 'search' );
-	}
+        $view->items = $manager->search( $filter, ['text', /* ... */], $total );
+        $view->filterAttributes = $manager->getSearchAttributes( true );
+        $view->filterOperators = $filter->getOperators();
+        $view->itemBody = parent::search();
+        $view->total = $total;
+    }
+    catch( \Exception $e )
+    {
+        $this->report( $e, 'search' );
+    }
 
-	$tplconf = 'admin/jqadm/mypanel/template-list';
-	$default = 'mypanel/list-standard';
+    $tplconf = 'admin/jqadm/mypanel/template-list';
+    $default = 'mypanel/list-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -476,50 +476,50 @@ To add your panel to the left navigation bar, your have to overwrite the `admin/
 
 ```php
 return [
-	'dashboard',
-	'order',
-	'customer',
-	'product',
-	'catalog',
-	'attribute',
-	'mypanel',
-	'coupon',
-	'subscription',
-	'supplier',
-	'service',
-	'plugin',
-	'group',
-	'locale' => [
-		'locale',
-		'locale/site',
-		'locale/language',
-		'locale/currency',
-	],
-	'type' => [
-		'type/attribute',
-		'type/attribute/lists',
-		'type/attribute/property',
-		'type/catalog/lists',
-		'type/customer/lists',
-		'type/customer/property',
-		'type/media',
-		'type/media/lists',
-		'type/media/property',
-		'type/plugin',
-		'type/price',
-		'type/price/lists',
-		'type/price/property',
-		'type/product',
-		'type/product/lists',
-		'type/product/property',
-		'type/service',
-		'type/service/lists',
-		'type/stock',
-		'type/tag',
-		'type/text',
-		'type/text/lists',
-	],
-	'log',
+    'dashboard',
+    'order',
+    'customer',
+    'product',
+    'catalog',
+    'attribute',
+    'mypanel',
+    'coupon',
+    'subscription',
+    'supplier',
+    'service',
+    'plugin',
+    'group',
+    'locale' => [
+        'locale',
+        'locale/site',
+        'locale/language',
+        'locale/currency',
+    ],
+    'type' => [
+        'type/attribute',
+        'type/attribute/lists',
+        'type/attribute/property',
+        'type/catalog/lists',
+        'type/customer/lists',
+        'type/customer/property',
+        'type/media',
+        'type/media/lists',
+        'type/media/property',
+        'type/plugin',
+        'type/price',
+        'type/price/lists',
+        'type/price/property',
+        'type/product',
+        'type/product/lists',
+        'type/product/property',
+        'type/service',
+        'type/service/lists',
+        'type/stock',
+        'type/tag',
+        'type/text',
+        'type/text/lists',
+    ],
+    'log',
 ];
 ```
 
@@ -531,7 +531,7 @@ You also need to configure who is allowed to access your panel. Therefore, add t
 
 ```
 'mypanel' => [
-	'groups' => ['editor', 'admin', 'super'],
+    'groups' => ['editor', 'admin', 'super'],
 ],
 ```
 

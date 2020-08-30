@@ -6,7 +6,7 @@ Adding a new catalog or locale site item is done by sending a POST request to th
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X POST 'http://localhost:8000/jsonadm/default/catalog?_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
@@ -102,7 +102,7 @@ As URL, you have to use the "self" URL of a catalog or locale site item returned
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X PATCH 'http://localhost:8000/jsonadm/default/catalog?id=1&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {

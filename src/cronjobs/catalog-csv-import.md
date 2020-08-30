@@ -46,20 +46,20 @@ You can freely configure how your data is organized in the CSV file but for a qu
 
 ```php
 [
-	'item' => [
-		0 => 'catalog.code', // e.g. unique EAN code
-		1 => 'catalog.parent', // Code of parent catalog node
-		2 => 'catalog.label', // UTF-8 encoded text, also used as catalog name
-		3 => 'catalog.status', // If category should be shown in the frontend
-	],
-	'text' => [
-		4 => 'text.languageid', // ISO language codes, e.g. "en"
-		5 => 'text.type', // e.g. "short" for short description
-		6 => 'text.content', // UTF-8 encoded text
-	],
-	'media' => [
-		7 => 'media.url', // relative URL of the catalog image on the server
-	],
+    'item' => [
+        0 => 'catalog.code', // e.g. unique EAN code
+        1 => 'catalog.parent', // Code of parent catalog node
+        2 => 'catalog.label', // UTF-8 encoded text, also used as catalog name
+        3 => 'catalog.status', // If category should be shown in the frontend
+    ],
+    'text' => [
+        4 => 'text.languageid', // ISO language codes, e.g. "en"
+        5 => 'text.type', // e.g. "short" for short description
+        6 => 'text.content', // UTF-8 encoded text
+    ],
+    'media' => [
+        7 => 'media.url', // relative URL of the catalog image on the server
+    ],
 ]
 ```
 
@@ -75,17 +75,17 @@ Similarly, the mapping inside the groups can be changed to your needs and can be
 
 ```php
 [
-	'item' => [
-		0 => 'catalog.code', // e.g. unique EAN code
-		5 => 'catalog.status', // enabled (1) or disabled (0)
-		3 => 'catalog.label', // UTF-8 encoded text, also used as category name
-		4 => 'catalog.parent', // Code of parent catalog node
-	],
-	// ...
-	'media' => [
-		2 => 'media.url', // relative URL of the catalog image on the server
-	],
-	// ...
+    'item' => [
+        0 => 'catalog.code', // e.g. unique EAN code
+        5 => 'catalog.status', // enabled (1) or disabled (0)
+        3 => 'catalog.label', // UTF-8 encoded text, also used as category name
+        4 => 'catalog.parent', // Code of parent catalog node
+    ],
+    // ...
+    'media' => [
+        2 => 'media.url', // relative URL of the catalog image on the server
+    ],
+    // ...
 ]
 ```
 
@@ -104,16 +104,16 @@ All processors besides the "item" processor are able to import multiple sets at 
 
 ```php
 [
-	// ...
-	'text' => [
-		5 => 'text.content',
-		8 => 'text.type',
-		6 => 'text.content',
-		9 => 'text.type',
-		7 => 'text.content',
-		10 => 'text.type',
-	],
-	// ...
+    // ...
+    'text' => [
+        5 => 'text.content',
+        8 => 'text.type',
+        6 => 'text.content',
+        9 => 'text.type',
+        7 => 'text.content',
+        10 => 'text.type',
+    ],
+    // ...
 ]
 ```
 
@@ -132,14 +132,14 @@ Contrary, this mapping **won't work**:
 
 ```php
 [
-	// ...
-	'text' => [
-		5 => 'text.content',
-		6 => 'text.content',
-		7 => 'text.type',
-		8 => 'text.type',
-	],
-	// ...
+    // ...
+    'text' => [
+        5 => 'text.content',
+        6 => 'text.content',
+        7 => 'text.type',
+        8 => 'text.type',
+    ],
+    // ...
 ]
 ```
 
@@ -151,12 +151,12 @@ The "item" group is the most important data group because it contains the mappin
 
 ```php
 [
-	'item' => [
-		0 => 'catalog.code',
-		1 => 'catalog.parent',
-		2 => 'catalog.label',
-		3 => 'catalog.status',
-	],
+    'item' => [
+        0 => 'catalog.code',
+        1 => 'catalog.parent',
+        2 => 'catalog.label',
+        3 => 'catalog.status',
+    ],
 ]
 ```
 
@@ -171,14 +171,14 @@ Several catalog related texts can be part of each CSV line. Supported domain ite
 
 ```php
 [
-	'text' => [
-		0 => 'text.languageid',
-		1 => 'text.typeid',
-		2 => 'text.type',
-		3 => 'text.label',
-		4 => 'text.content',
-		5 => 'text.status',
-	],
+    'text' => [
+        0 => 'text.languageid',
+        1 => 'text.typeid',
+        2 => 'text.type',
+        3 => 'text.label',
+        4 => 'text.content',
+        5 => 'text.status',
+    ],
 ]
 ```
 
@@ -188,16 +188,16 @@ Additionally, you can import values for the catalog list relation as well:
 
 ```php
 [
-	'text' => [
-		// ...
-		6 => 'catalog.lists.typeid',
-		7 => 'catalog.lists.type',
-		8 => 'catalog.lists.datestart',
-		9 => 'catalog.lists.dateend',
-		10 => 'catalog.lists.config',
-		11 => 'catalog.lists.position',
-		12 => 'catalog.lists.status',
-	],
+    'text' => [
+        // ...
+        6 => 'catalog.lists.typeid',
+        7 => 'catalog.lists.type',
+        8 => 'catalog.lists.datestart',
+        9 => 'catalog.lists.dateend',
+        10 => 'catalog.lists.config',
+        11 => 'catalog.lists.position',
+        12 => 'catalog.lists.status',
+    ],
 ]
 ```
 
@@ -211,16 +211,16 @@ Several catalog related images and other media types can be part of each CSV lin
 
 ```php
 [
-	'media' => [
- 		0 => 'media.languageid',
-		1 => 'media.typeid',
-		2 => 'media.type',
-		3 => 'media.label',
-		4 => 'media.mimetype',
-		5 => 'media.preview',
-		6 => 'media.url',
-		7 => 'media.status',
-	],
+    'media' => [
+         0 => 'media.languageid',
+        1 => 'media.typeid',
+        2 => 'media.type',
+        3 => 'media.label',
+        4 => 'media.mimetype',
+        5 => 'media.preview',
+        6 => 'media.url',
+        7 => 'media.status',
+    ],
 ]
 ```
 
@@ -230,16 +230,16 @@ Additionally, you can import values for the catalog list relation as well:
 
 ```php
 [
- 	'media' => [
-		// ...
-		8 => 'catalog.lists.typeid',
-		9 => 'catalog.lists.type',
-		10 => 'catalog.lists.datestart',
-		11 => 'catalog.lists.dateend',
-		12 => 'catalog.lists.config',
-		13 => 'catalog.lists.position',
-		14 => 'catalog.lists.status',
-	],
+     'media' => [
+        // ...
+        8 => 'catalog.lists.typeid',
+        9 => 'catalog.lists.type',
+        10 => 'catalog.lists.datestart',
+        11 => 'catalog.lists.dateend',
+        12 => 'catalog.lists.config',
+        13 => 'catalog.lists.position',
+        14 => 'catalog.lists.status',
+    ],
 ]
 ```
 
@@ -255,7 +255,7 @@ To each field in the CSV file, you can apply one or more converters, e.g. to enc
 
 ```php
 [
-	1 => 'Text/LatinUTF8'
+    1 => 'Text/LatinUTF8'
 ]
 ```
 
@@ -263,10 +263,10 @@ Similarly, you can also apply several converters at once to the same field:
 
 ```php
 [
-	1 => [
-		'Text/LatinUTF8',
-		'DateTime/EnglishISO'
-	)
+    1 => [
+        'Text/LatinUTF8',
+        'DateTime/EnglishISO'
+    )
 ]
 ```
 
@@ -285,15 +285,15 @@ namespace Aimeos\MW\Convert\Text;
 
 class LatinUTF8 implements \Aimeos\MW\Convert\Interface
 {
-	public function translate( $value )
-	{
-		return utf8_encode( $value );
-	}
+    public function translate( $value )
+    {
+        return utf8_encode( $value );
+    }
 
-	public function reverse( $value )
-	{
-		return utf8_decode( $value );
-	}
+    public function reverse( $value )
+    {
+        return utf8_decode( $value );
+    }
 }
 ```
 

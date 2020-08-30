@@ -32,29 +32,29 @@ The skeleton below is from the catalog detail service subpart and you can use it
 namespace Client\Html\Catalog\Detail\Basic;
 
 class Standard
-	extends \Aimeos\Client\Html\Common\Client\Factory\Base
-	implements \Aimeos\Client\Html\Common\Client\Factory\Iface
+    extends \Aimeos\Client\Html\Common\Client\Factory\Base
+    implements \Aimeos\Client\Html\Common\Client\Factory\Iface
 {
-	private $subPartPath = 'client/html/catalog/detail/service/standard/subparts';
-	private $subPartNames = [];
-	private $view;
+    private $subPartPath = 'client/html/catalog/detail/service/standard/subparts';
+    private $subPartNames = [];
+    private $view;
 
 
-	public function getBody( $uid = '' ) : string
-	{
-	}
+    public function getBody( $uid = '' ) : string
+    {
+    }
 
-	public function getHeader( $uid = '' ) : ?string
-	{
-	}
+    public function getHeader( $uid = '' ) : ?string
+    {
+    }
 
-	public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
-	{
-	}
+    public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
+    {
+    }
 
-	protected function getSubClientNames() : array
-	{
-	}
+    protected function getSubClientNames() : array
+    {
+    }
 }
 ```
 
@@ -73,18 +73,18 @@ The `getBody()` method is usually the most important one because it generates mo
 ```php
 public function getBody( $uid = '' ) : string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	$html = *;
-	foreach( $this->getSubClients() as $subclient ) {
-		$html .= $subclient->setView( $view )->getBody( $uid, $tags, $expire );
-	}
-	$view->serviceBody = $html;
+    $html = *;
+    foreach( $this->getSubClients() as $subclient ) {
+        $html .= $subclient->setView( $view )->getBody( $uid, $tags, $expire );
+    }
+    $view->serviceBody = $html;
 
-	$tplconf = 'client/html/catalog/detail/service/standard/template-body';
-	$default = 'catalog/detail/service-body-standard';
+    $tplconf = 'client/html/catalog/detail/service/standard/template-body';
+    $default = 'catalog/detail/service-body-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -106,18 +106,18 @@ Similar to `getBody()`, the `getHeader()` method generates any output that shoul
 ```php
 public function getHeader( string $uid = '' ) : ?string
 {
-	$view = $this->getView();
+    $view = $this->getView();
 
-	$html = *;
-	foreach( $this->getSubClients() as $subclient ) {
-		$html .= $subclient->setView( $view )->getHeader( $uid, $tags, $expire );
-	}
-	$view->serviceHeader = $html;
+    $html = *;
+    foreach( $this->getSubClients() as $subclient ) {
+        $html .= $subclient->setView( $view )->getHeader( $uid, $tags, $expire );
+    }
+    $view->serviceHeader = $html;
 
-	$tplconf = 'client/html/catalog/detail/service/standard/template-header';
-	$default = 'catalog/detail/service-header-standard';
+    $tplconf = 'client/html/catalog/detail/service/standard/template-header';
+    $default = 'catalog/detail/service-header-standard';
 
-	return $view->render( $this->config( $tplconf, $default ) );
+    return $view->render( $this->config( $tplconf, $default ) );
 }
 ```
 
@@ -141,7 +141,7 @@ Each client can have a list of subclients and your class is responsible for crea
 ```php
 public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
 {
-	return $this->createSubClient( 'catalog/detail/service/' . $type, $name );
+    return $this->createSubClient( 'catalog/detail/service/' . $type, $name );
 }
 ```
 
@@ -156,7 +156,7 @@ The implementation for the `getSubClientNames()` helper method is a one-liner to
 ```php
 protected function getSubClientNames() : array
 {
-	return $this->getContext()->getConfig()->get( $this->subPartPath, $this->subPartNames );
+    return $this->getContext()->getConfig()->get( $this->subPartPath, $this->subPartNames );
 }
 ```
 
@@ -182,13 +182,13 @@ This method can be called in both, the `getBody()` and `getHeader()` method. It 
 ```php
 public function addData( Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : Aimeos\MW\View\Iface
 {
-	// use controller or manager to retrieve required data
+    // use controller or manager to retrieve required data
 
-	$this->addMetaItem( $itemOrItemList, $expire, $tags );
+    $this->addMetaItem( $itemOrItemList, $expire, $tags );
 
-	$view->yoursubpartVarname = ...
+    $view->yoursubpartVarname = ...
 
-	return $view;
+    return $view;
 }
 ```
 
@@ -215,7 +215,7 @@ The method needs two parameters in return:
 ```php
 public function modifyBody( string $content, string $uid ) : string
 {
-	return $this->replaceSection( $content, $this->getView()->csrf()->formfield(), 'catalog.detail.csrf' );
+    return $this->replaceSection( $content, $this->getView()->csrf()->formfield(), 'catalog.detail.csrf' );
 }
 ```
 
@@ -245,7 +245,7 @@ Like for the body, the same is also possible for the header: Replace dynamic par
 ```php
 public function modifyHeader( string $content, string $uid ) : string
 {
-	return $this->replaceSection( $content, '... user dependent value ...', '...' );
+    return $this->replaceSection( $content, '... user dependent value ...', '...' );
 }
 ```
 
@@ -269,8 +269,8 @@ It doesn't need any parameter but the view is available via `$this->getView()` i
 ```php
 public function process()
 {
-	// do something only once
-	parent::process();
+    // do something only once
+    parent::process();
 }
 ```
 

@@ -3,37 +3,37 @@
 Coupon (or voucher) codes can be added to the basket by using the "basket/coupon" URL that is sent in every basket response. The data objects only need the code passed in the "id" parameter like this:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
     -X POST 'http://localhost:8000/jsonapi/basket?id=default&related=coupon&_token=...' \
-	-H 'Content-Type: application/json' \
+    -H 'Content-Type: application/json' \
     -d '{"data": [{
-		"id": "fixed"
-	}]}'
-	```
+        "id": "fixed"
+    }]}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {"data": [{
-		"id": "fixed", // coupon code entered by the customer
-	}]};
+    ```javascript
+    var params = {"data": [{
+        "id": "fixed", // coupon code entered by the customer
+    }]};
 
-	var url = response['links']['basket/coupon']['href']; // from basket response
+    var url = response['links']['basket/coupon']['href']; // from basket response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json",
-		data: JSON.stringify(data)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(data)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 The response will then contain a new "relationships" section in the basket data as well as a new entry with the coupon code in the "included" section:
 
@@ -110,28 +110,28 @@ Deleting the coupon again would be:
 
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=fixed&_token=...'
-	```
+    ```
 === "jQuery"
-	```javascript
-	// basket coupon URL returned from basket response
-	var url = response['included'][0]['links']['self']['href'];
+    ```javascript
+    // basket coupon URL returned from basket response
+    var url = response['included'][0]['links']['self']['href'];
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "DELETE",
-		dataType: "json"
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "DELETE",
+        dataType: "json"
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This will remove the coupon entry from the basket and revert all changes that have been done by the corresponding coupon provider.

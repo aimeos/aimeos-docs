@@ -205,12 +205,12 @@ Each country or region can be divided into states which is often used in the US.
 
 ```
 client/html/checkout/standard/address/states = array(
-	'US' => array(
-		'CA' => 'California',
-		'NY' => 'New York',
-		// ...
-	),
-	// ...
+    'US' => array(
+        'CA' => 'California',
+        'NY' => 'New York',
+        // ...
+    ),
+    // ...
 )
 ```
 

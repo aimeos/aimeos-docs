@@ -20,8 +20,8 @@ The skeleton for the most basic implementation of a service decorator would be:
 namespace \Aimeos\MShop\Service\Provider\Decorator;
 
 class Mydecorator
-	extends \Aimeos\MShop\Service\Provider\Decorator\Base
-	implements \Aimeos\MShop\Service\Provider\Decorator\Iface
+    extends \Aimeos\MShop\Service\Provider\Decorator\Base
+    implements \Aimeos\MShop\Service\Provider\Decorator\Iface
 {
 }
 ```

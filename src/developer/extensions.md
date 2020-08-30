@@ -197,25 +197,25 @@ The basic structure looks like:
 ```php
 <?php
 return [
-	'name' => '<vendor key>-<extension name>',
-	'depends' => [
-		// ...
-	],
-	'config' => [
-		// ...
-	],
-	'include' => [
-		// ...
-	],
-	'i18n' => [
-		// ...
-	],
-	'setup' => [
-		// ...
-	],
-	'custom' => [
-		// ...
-	],
+    'name' => '<vendor key>-<extension name>',
+    'depends' => [
+        // ...
+    ],
+    'config' => [
+        // ...
+    ],
+    'include' => [
+        // ...
+    ],
+    'i18n' => [
+        // ...
+    ],
+    'setup' => [
+        // ...
+    ],
+    'custom' => [
+        // ...
+    ],
 ];
 ```
 
@@ -227,13 +227,13 @@ By depending on the core and the Aimeos extensions, you can be sure that you are
 
 ```php
 'depends' => [
-	'aimeos-core',
-	'ai-admin-jqadm',
-	'ai-admin-jsonadm',
-	'ai-client-html',
-	'ai-client-jsonapi',
-	'ai-controller-jobs',
-	'ai-controller-frontend',
+    'aimeos-core',
+    'ai-admin-jqadm',
+    'ai-admin-jsonadm',
+    'ai-client-html',
+    'ai-client-jsonapi',
+    'ai-controller-jobs',
+    'ai-controller-frontend',
 ],
 ```
 
@@ -243,7 +243,7 @@ Aimeos is very flexible by using a lot of configuration, especially by avoiding 
 
 ```php
 'config' => [
-	'lib/custom/config',
+    'lib/custom/config',
 ],
 ```
 
@@ -254,12 +254,12 @@ The list of directories that contains the source code and which should be used b
 
 ```php
 'include' => [
-	'lib/custom/src',
-	'client/html/src',
-	'controller/frontend/src',
-	'controller/extjs/src',
-	'controller/jobs/src',
-	'admin/jqadm/src',
+    'lib/custom/src',
+    'client/html/src',
+    'controller/frontend/src',
+    'controller/extjs/src',
+    'controller/jobs/src',
+    'admin/jqadm/src',
 ],
 ```
 
@@ -273,12 +273,12 @@ The "i18n" section of the manifest file lists the directories that contains .po 
 
 ```php
 'i18n' => [
-	'admin' => 'admin/i18n',
-	'client' => 'client/i18n',
-	'custom' => 'lib/custom/i18n',
-	'controller/frontend' => 'controller/frontend/i18n',
-	'controller/extjs' => 'controller/extjs/i18n',
-	'controller/jobs' => 'controller/jobs/i18n',
+    'admin' => 'admin/i18n',
+    'client' => 'client/i18n',
+    'custom' => 'lib/custom/i18n',
+    'controller/frontend' => 'controller/frontend/i18n',
+    'controller/extjs' => 'controller/extjs/i18n',
+    'controller/jobs' => 'controller/jobs/i18n',
 ],
 ```
 
@@ -288,7 +288,7 @@ Setup tasks are a great way to create and update your database structure. They a
 
 ```php
 'i18n' => [
-	'lib/custom/setup',
+    'lib/custom/setup',
 ],
 ```
 
@@ -298,25 +298,25 @@ The "custom" section of the manifest.php is reserved for directory configuration
 
 ```php
 'custom' => [
-	'admin/jqadm/templates' => [
-		'admin/jqadm/templates',
-	],
-	'admin/jsonadm/templates' => [
-		'admin/jsonadm/templates',
-	],
-	'client/html/templates' => [
-		'client/html/templates',
-	],
-	'client/jsonapi/templates' => [
-		'client/jsonapi/templates',
-	],
-	'controller/jobs' => [
-		'controller/jobs/src',
-	],
-	'controller/jobs/templates' => [
-		'controller/jobs/templates',
-		'client/html/templates',
-	],
+    'admin/jqadm/templates' => [
+        'admin/jqadm/templates',
+    ],
+    'admin/jsonadm/templates' => [
+        'admin/jsonadm/templates',
+    ],
+    'client/html/templates' => [
+        'client/html/templates',
+    ],
+    'client/jsonapi/templates' => [
+        'client/jsonapi/templates',
+    ],
+    'controller/jobs' => [
+        'controller/jobs/src',
+    ],
+    'controller/jobs/templates' => [
+        'controller/jobs/templates',
+        'client/html/templates',
+    ],
 ],
 ```
 

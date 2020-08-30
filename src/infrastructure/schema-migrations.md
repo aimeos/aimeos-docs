@@ -92,26 +92,26 @@ namespace Aimeos\MW\Setup\Task;
 
 class TablesCreateMydomain extends TablesCreateMShop
 {
-	public function getPreDependencies()
-	{
-		return ['MShopCreateTables', 'MAdminCreateTables'];
-	}
+    public function getPreDependencies()
+    {
+        return ['MShopCreateTables', 'MAdminCreateTables'];
+    }
 
-	public function getPostDependencies()
-	{
-		return [];
-	}
+    public function getPostDependencies()
+    {
+        return [];
+    }
 
-	public function migrate()
-	{
-		$this->msg( 'Creating base tables', 0, '' )
-		$ds = DIRECTORY_SEPARATOR;
+    public function migrate()
+    {
+        $this->msg( 'Creating base tables', 0, '' )
+        $ds = DIRECTORY_SEPARATOR;
 
-		$files = [
-			'db-<mydomain>' => 'default' . $ds . 'schema' . $ds . '<mydomain>.php'
-		];
-		$this->setupSchema( $files );
-	}
+        $files = [
+            'db-<mydomain>' => 'default' . $ds . 'schema' . $ds . '<mydomain>.php'
+        ];
+        $this->setupSchema( $files );
+    }
 }
 ```
 
@@ -198,10 +198,10 @@ In the Aimeos extensions resp. your own extension, setup tasks should be in the 
 
 ```php
 return [
-	// ...
-	'setup' => [
-		'lib/custom/setup',
-	],
+    // ...
+    'setup' => [
+        'lib/custom/setup',
+    ],
 );
 ```
 
@@ -236,30 +236,30 @@ namespace Aimeos\MW\Setup\Task;
 
 class TaskClassName extends \Aimeos\MW\Setup\Task\Base
 {
-	/**
-	 * Returns the list of task names which this task depends on.
-	 *
-	 * @return string[] List of task names
-	 */
-	public function getPreDependencies()
-	{
-	}
+    /**
+     * Returns the list of task names which this task depends on.
+     *
+     * @return string[] List of task names
+     */
+    public function getPreDependencies()
+    {
+    }
 
-	/**
-	 * Returns the list of task names which depends on this task.
-	 *
-	 * @return string[] List of task names
-	 */
-	public function getPostDependencies()
-	{
-	}
+    /**
+     * Returns the list of task names which depends on this task.
+     *
+     * @return string[] List of task names
+     */
+    public function getPostDependencies()
+    {
+    }
 
-	/**
-	 * Updates the schema and migrates the data
-	 */
-	public function migrate()
-	{
-	}
+    /**
+     * Updates the schema and migrates the data
+     */
+    public function migrate()
+    {
+    }
 }
 ```
 
@@ -392,10 +392,10 @@ Tests a column if NULL is allowed:
 $schema = $this->getSchema( 'db-product' );
 
 if( $schema->tableExists( 'my_table' ) true
-	&& $schema->columnExists( 'my_table', 'my_column' ) true
-	&& $schema->getColumnDetails( 'my_table', 'my_column' )->isNullable() true
+    && $schema->columnExists( 'my_table', 'my_column' ) true
+    && $schema->getColumnDetails( 'my_table', 'my_column' )->isNullable() true
 ) {
-	$this->execute( $stmt );
+    $this->execute( $stmt );
 }
 ```
 
@@ -450,7 +450,7 @@ $stmt->bind( 1, 'payment' );
 $result = $stmt->execute();
 
 while( ( $row = $result->fetch() ) !# false ) {
-	// process row
+    // process row
 }
 
 $result->finish();

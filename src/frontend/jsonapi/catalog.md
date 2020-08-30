@@ -265,26 +265,26 @@ Additional to the generic filter possibilities, the product lists can be easily 
 * "ctime" (asc) or "-ctime" (desc)
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?sort=-ctime'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?sort=-ctime'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'sort': '-ctime'};
+    ```javascript
+    var params = {'sort': '-ctime'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 Sorting by "relevance" is the default if no sort parameter is passed to the server. You can also sort by other product fields, e.g. by the start date of the products using *&sort=product.datestart*
 
@@ -293,72 +293,72 @@ Sorting by "relevance" is the default if no sort parameter is passed to the serv
 If you offer users a search field for products, you have to add the entered text as query parameter to the URL of the product resource you got from the OPTIONS response:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_search]=demo'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_search]=demo'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             'f_search': 'demo'
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 # Filter products by price
 
 To enable users to filter products by price, you need to use the *index.price:value* filter and it requires the three letter currency code as parameter in round brackets and quotation marks ("). To return only products with a price of less than 99.50 Euro, you need:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[<][index.price:value("EUR")]=99.50'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[<][index.price:value("EUR")]=99.50'
+    ```
 === "jQuery"
-	```javascript
+    ```javascript
     var params = {
         'filter': {
             '<': {'index.price:value("EUR")': 99.50}
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 Usually, you want to filter for a price range, so you need to pass an upper and a lower value:
 
 === "CURL"
-	```bash
-	# filter[&&][][>][index.price:value("EUR")]=100
-	# &filter[&&][][<][index.price:value("EUR")]=200
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][index.price:value("EUR")]=100&filter[%26%26][][%3C][index.price:value("EUR")]=200'
-	```
+    ```bash
+    # filter[&&][][>][index.price:value("EUR")]=100
+    # &filter[&&][][<][index.price:value("EUR")]=200
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][index.price:value("EUR")]=100&filter[%26%26][][%3C][index.price:value("EUR")]=200'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             '&&': [
                 {'>': {'index.price:value("EUR")': 100}},
@@ -367,45 +367,45 @@ Usually, you want to filter for a price range, so you need to pass an upper and 
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 # Retrieve categories
 
 To display the category tree, you have to use the "catalog" resource returned by the OPTIONS method:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/catalog?include=catalog,media,text'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/catalog?include=catalog,media,text'
+    ```
 === "jQuery"
-	```javascript
-	var params = {"include": 'catalog,media,text'};
+    ```javascript
+    var params = {"include": 'catalog,media,text'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['catalog'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['catalog'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This will return the root catalog node and its direct children as well as the texts and images:
 
@@ -489,85 +489,85 @@ You can repeat this with the catalog children returned in the "included" section
 To get the products for a category, use the *f_catid* filter parameter:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             'f_catid': '1'
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 By default, the found products all use "default" as category list type. You can change the list type searched for by adding the *f_listtype* parameter to e.g. **promotion** to get promotional products:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1&filter[f_listtype]=promotion'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1&filter[f_listtype]=promotion'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             'f_catid': '1',
             'f_listtype': 'promotion'
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 # Attributes for faceted search
 
 The product attributes for building the faceted search can be retrieved using the "attribute" resource returned by the OPTIONS method:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/attribute?include=media,text'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/attribute?include=media,text'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'include': 'media,text'};
+    ```javascript
+    var params = {'include': 'media,text'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['attribute'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['attribute'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This will return the first slice of attribute items as well as the texts and images:
 
@@ -649,68 +649,68 @@ Group the attributes by their "attribute.code" and sort them by "attribute.posit
 If the user selects one or more of the attributes, you can get the corresponding products by adding a *f_attrid* to the product URL:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_attrid][]=1&filter[f_attrid][]=3'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_attrid][]=1&filter[f_attrid][]=3'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             'f_attrid': ['1','3']
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 Instead of *f_attrid* which combines all attributes by an **AND** condition, you can also use *f_optid* which uses an **OR** condition:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_optid][]=1&filter[f_optid][]=3'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_optid][]=1&filter[f_optid][]=3'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             'f_optid': ['1','3']
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs to filter for product that contains **at least one** of the attributes per type:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_oneid][color][]=1&filter[f_oneid][length][]=3'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_oneid][color][]=1&filter[f_oneid][length][]=3'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             'f_oneid': {
                 'color': ['1'],
@@ -719,45 +719,45 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 # Suppliers for faceted search
 
 To fetch the suppliers for building the supplier facet, you should use the "supplier" resource returned by the OPTIONS method:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/supplier?include=media,text'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/supplier?include=media,text'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'include': 'media,text'};
+    ```javascript
+    var params = {'include': 'media,text'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['supplier'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['supplier'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This will return the first slice of supplier items as well as the texts and images:
 
@@ -833,30 +833,30 @@ This will return the first slice of supplier items as well as the texts and imag
 If the user selects a supplier, you can get the corresponding products by adding a *f_supid* to the product URL:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_supid]=1'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_supid]=1'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             'f_supid': '1'
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 # Count matching products
 
@@ -867,26 +867,26 @@ For a real faceted search, you need the number of matching products per attribut
 You can get the attribute counts by using the **aggregate** key and the corresponding *index.attribute.id* search key:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.attribute.id'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.attribute.id'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'aggregate': 'index.attribute.id'};
+    ```javascript
+    var params = {'aggregate': 'index.attribute.id'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This will return a list of "id" and "attributes" pairs where the value of "id" is the attribute ID and "attributes" is the number of products that contains that attribute:
 
@@ -908,26 +908,26 @@ This will return a list of "id" and "attributes" pairs where the value of "id" i
 In the same way you can get the product counts for the categories by using the **aggregate** key and the corresponding *index.catalog.id* search key:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.catalog.id'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.catalog.id'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'aggregate': 'index.catalog.id'};
+    ```javascript
+    var params = {'aggregate': 'index.catalog.id'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This will return a list of "id" and "attributes" pairs where the value of "id" is the category ID and "attributes" is the number of products that are associated to the category:
 
@@ -947,26 +947,26 @@ This will return a list of "id" and "attributes" pairs where the value of "id" i
 To get the product counts for the suppliers, use the **aggregate** key and the corresponding *index.supplier.id* search key:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.supplier.id'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.supplier.id'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'aggregate': 'index.supplier.id'};
+    ```javascript
+    var params = {'aggregate': 'index.supplier.id'};
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['product'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['product'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This will return a list of "id" and "attributes" pairs where the value of "id" is the supplier ID and "attributes" is the number of products that are associated to the supplier:
 
@@ -986,30 +986,30 @@ This will return a list of "id" and "attributes" pairs where the value of "id" i
 If you don't fetch the stock levels together with the products using *&include=stock*, you can retrieve the stock levels separately by using the value of the "product.code" attribute:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             's_prodcode': ['ABCD']
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['stock'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['stock'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 It returns the list of stock items for the given product codes:
 
@@ -1039,28 +1039,28 @@ It returns the list of stock items for the given product codes:
 If the shop has different warehouses or local stores where customers can pick up their ordered products, you can use the *s_stocktype* parameter to fetch stock levels for different locations than the "default" one:
 
 === "CURL"
-	```bash
-	curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD&filter[s_stocktype]=berlin'
-	```
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD&filter[s_stocktype]=berlin'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
+    ```javascript
+    var params = {
         'filter': {
             's_prodcode': ['ABCD'],
             's_stocktype': 'berlin'
         }
     };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['stock'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['stock'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```

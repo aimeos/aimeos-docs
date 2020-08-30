@@ -59,19 +59,19 @@ namespace Aimeos\Admin\JQAdm\Common\Decorator;
 
 class Mydecorator extends Base
 {
-	public function delete() : ?string
-	{
-		$item = $this->getView()->item;
-		// notifiy the 3rd party system
-		return $this->getClient()->delete();
-	}
+    public function delete() : ?string
+    {
+        $item = $this->getView()->item;
+        // notifiy the 3rd party system
+        return $this->getClient()->delete();
+    }
 
-	public function save() : ?string
-	{
-		$item = $this->getView()->item;
-		// notifiy the 3rd party system
-		return $this->getClient()->save();
-	}
+    public function save() : ?string
+    {
+        $item = $this->getView()->item;
+        // notifiy the 3rd party system
+        return $this->getClient()->save();
+    }
 }
 ```
 

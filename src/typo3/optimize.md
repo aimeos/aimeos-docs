@@ -22,7 +22,7 @@ Create an additional database configuration in the `./typo3conf/LocalConfigurati
 ```php
     'DB' => [
         'Connections' => [
-			'Aimeos' => [
+            'Aimeos' => [
                 'driver' => 'mysqli',
                 'host' => '...',
                 'port' => '...',
@@ -34,29 +34,29 @@ Create an additional database configuration in the `./typo3conf/LocalConfigurati
                     'charset' => 'utf8mb4',
                     'collate' => 'utf8mb4_unicode_ci',
                 ]
-			]
-		]
-	]
+            ]
+        ]
+    ]
 ```
 
 Afterwards, create a file named `./Resources/Private/Config/resource.php` in your own Aimeos extension that will reference the database configuration from the `./typo3conf/LocalConfiguration.php` file:
 
 ```php
 return [
-	'db-order' => [
-		'adapter' => 'mysql',
-		'host' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['host'],
-		'port' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['port'],
-		'database' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['dbname'],
-		'username' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['user'],
-		'password' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['password'],
-		'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'"],
-		'defaultTableOptions' => [
-			'charset' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['tableoptions']['charset'] : 'utf8mb4',
-			'collate' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['tableoptions']['collate'] : 'utf8mb4_unicode_ci',
-		],
-		'limit' => 2,
-	],
+    'db-order' => [
+        'adapter' => 'mysql',
+        'host' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['host'],
+        'port' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['port'],
+        'database' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['dbname'],
+        'username' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['user'],
+        'password' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['password'],
+        'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'"],
+        'defaultTableOptions' => [
+            'charset' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['tableoptions']['charset'] : 'utf8mb4',
+            'collate' => $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Aimeos']['tableoptions']['collate'] : 'utf8mb4_unicode_ci',
+        ],
+        'limit' => 2,
+    ],
 ];
 ```
 
@@ -198,20 +198,20 @@ Alternatively, you can move the cached component content to another database ser
 
 ```php
 return [
-	'db-cache' => [
-		'adapter' => 'mysql',
-		'host' => '...',
-		'port' => '...',
-		'database' => '...',
-		'username' => '...',
-		'password' => '...',
-		'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'"],
-		'defaultTableOptions' => [
-			'charset' => 'utf8mb4',
-			'collate' => 'utf8mb4_unicode_ci',
-		],
-		'limit' => 2,
-	],
+    'db-cache' => [
+        'adapter' => 'mysql',
+        'host' => '...',
+        'port' => '...',
+        'database' => '...',
+        'username' => '...',
+        'password' => '...',
+        'stmt' => ["SET SESSION sort_buffer_size=2097144; SET NAMES 'utf8mb4'; SET SESSION sql_mode='ANSI'"],
+        'defaultTableOptions' => [
+            'charset' => 'utf8mb4',
+            'collate' => 'utf8mb4_unicode_ci',
+        ],
+        'limit' => 2,
+    ],
 ];
 ```
 
@@ -230,33 +230,33 @@ The advantage of a CDN over a sub-domain on your own server is the load-balancin
 In both cases, you need to configure the Aimeos extension to create links to the product pictures with a different domain. This can be done via an entry in the `./Resources/Private/Config/resource.php` file:
 
 ```php
-	'resource' => [
-		'fs' => [
-			'adapter' => 'Standard',
-			'tempdir' => PATH_site . 'typo3temp',
-			'basedir' => PATH_site . 'uploads/tx_aimeos',
-			'baseurl' => 'https://static.example.com/media/',
-		],
-	],
+    'resource' => [
+        'fs' => [
+            'adapter' => 'Standard',
+            'tempdir' => PATH_site . 'typo3temp',
+            'basedir' => PATH_site . 'uploads/tx_aimeos',
+            'baseurl' => 'https://static.example.com/media/',
+        ],
+    ],
 ```
 
 You can also use the "aimeos/ai-filesystem" package to store files directly on another server. There are drivers for different services available and for details, please have a look at the readme file of the [ai-filesystem package](https://github.com/aimeos/ai-filesystem#installation). An example configuration for using an Amazon S3 storage would be:
 
 ```php
-	'resource' => [
-		'fs' => [
-			'adapter' => 'FlyAwsS3',
-			'credentials' => [
-				'key'    => 'your-key',
-				'secret' => 'your-secret',
-			],
-			'region' => 'your-region',
-			'version' => 'latest',
-			'bucket' => 'your-bucket-name',
-			'prefix' => 'your-prefix', // optional
-			'baseurl' => 'https://your-bucket-name.s3.your-region.amazonaws.com/your-prefix/',
-		],
-	],
+    'resource' => [
+        'fs' => [
+            'adapter' => 'FlyAwsS3',
+            'credentials' => [
+                'key'    => 'your-key',
+                'secret' => 'your-secret',
+            ],
+            'region' => 'your-region',
+            'version' => 'latest',
+            'bucket' => 'your-bucket-name',
+            'prefix' => 'your-prefix', // optional
+            'baseurl' => 'https://your-bucket-name.s3.your-region.amazonaws.com/your-prefix/',
+        ],
+    ],
 ```
 
 You can also add some configuration to deliver the CSS and Javascript files from the second domain:

@@ -7,22 +7,22 @@ The customer response returnes the URLs for managing properties:
 
 ```json
 {
-	"meta": {
-		"total": 1,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8080/jsonapi/customer",
-		"customer/property": {
-			"href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
-			"allow": ["GET","POST"]
-		}
-	}
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8080/jsonapi/customer",
+        "customer/property": {
+            "href": "http://localhost:8000/jsonapi/customer?id=2&related=property",
+            "allow": ["GET","POST"]
+        }
+    }
 }
 ```
 
@@ -31,53 +31,53 @@ The customer response returnes the URLs for managing properties:
 Retrieving the properties of the customer requires a GET request to the *customer/property* endpoint returned by the GET request for the [customer](customer.md), e.g.:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X GET 'http://localhost:8000/jsonapi/customer?related=property'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X GET 'http://localhost:8000/jsonapi/customer?related=property'
+    ```
 === "jQuery"
-	```javascript
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: response['links']['customer/property']['href'] // from customer response
-	}).done( function( result ) {
-		console.log( result.data );
-	});
-	```
+    ```javascript
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: response['links']['customer/property']['href'] // from customer response
+    }).done( function( result ) {
+        console.log( result.data );
+    });
+    ```
 
 When at least one property is available, the response will be similar to this one:
 
 ```json
 {
-	"meta": {
-		"total": 1,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8000/jsonapi/customer?related=property"
-	},
-	"data": [{
-		"id": "1",
-		"type": "customer\/property",
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=property&relatedid=1",
-				"allow": ["DELETE","GET","PATCH"]
-			}
-		},
-		"attributes": {
-			"customer.property.id": "1",
-			"customer.property.languageid": null,
-			"customer.property.value": "1000",
-			"customer.property.type": "limit"
-		}
-	}]
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8000/jsonapi/customer?related=property"
+    },
+    "data": [{
+        "id": "1",
+        "type": "customer\/property",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=property&relatedid=1",
+                "allow": ["DELETE","GET","PATCH"]
+            }
+        },
+        "attributes": {
+            "customer.property.id": "1",
+            "customer.property.languageid": null,
+            "customer.property.value": "1000",
+            "customer.property.type": "limit"
+        }
+    }]
 }
 ```
 
@@ -87,22 +87,22 @@ To add one or more properties to the authenticated customer, use a POST request 
 
 ```json
 {
-	"meta": {
-		"total": 1,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8080/jsonapi/customer",
-		"customer/property": {
-			"href": "http://localhost:8080/jsonapi/customer?related=property",
-				"allow": ["GET","POST"]
-		}
-	}
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8080/jsonapi/customer",
+        "customer/property": {
+            "href": "http://localhost:8080/jsonapi/customer?related=property",
+                "allow": ["GET","POST"]
+        }
+    }
 }
 ```
 
@@ -115,86 +115,86 @@ These are the property fields you can use:
 The request for creating a new property looks similar to this one:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X POST 'http://localhost:8000/jsonapi/customer?related=property&_token=...' \
-	-H 'Content-Type: application/json' \
-	-d '{"data": [{
-		"attributes": {
-			"customer.property.type": "crm-id",
-			"customer.property.languageid": null,
-			"customer.property.value": "1234"
-		}
-	}]}'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X POST 'http://localhost:8000/jsonapi/customer?related=property&_token=...' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": [{
+        "attributes": {
+            "customer.property.type": "crm-id",
+            "customer.property.languageid": null,
+            "customer.property.value": "1234"
+        }
+    }]}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'data': [{
-		'attributes': {
-			"customer.property.type": "crm-id", // arbitrary type
-			"customer.property.languageid": null, // optional
-			"customer.property.value": "1234" // string up to 255 bytes
-		}
-	}]};
+    ```javascript
+    var params = {'data': [{
+        'attributes': {
+            "customer.property.type": "crm-id", // arbitrary type
+            "customer.property.languageid": null, // optional
+            "customer.property.value": "1234" // string up to 255 bytes
+        }
+    }]};
 
-	var url = response['links']['customer/property']['href']; // from customer response
+    var url = response['links']['customer/property']['href']; // from customer response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json",
-		data: JSON.stringify(params)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 # Modify property
 
 Changing one property of the authenticated customer is possible by executing a PATCH request. The URL for updating the property is returned in the response of the GET request which fetches all properties. You can add all property fields or only the modified ones in the PATCH request:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X PATCH 'http://localhost:8000/jsonapi/customer?related=property&relatedid=...&_token=...' \
-	-H 'Content-Type: application/json' \
-	-d '{"data": {
-		"attributes": {
-			"customer.property.value": "4321"
-		}
-	}}'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X PATCH 'http://localhost:8000/jsonapi/customer?related=property&relatedid=...&_token=...' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": {
+        "attributes": {
+            "customer.property.value": "4321"
+        }
+    }}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'data': {
-		'attributes': {
-			"customer.property.value": "4321"
-		}
-	}};
+    ```javascript
+    var params = {'data': {
+        'attributes': {
+            "customer.property.value": "4321"
+        }
+    }};
 
-	var url = response['data'][0]['links']['self']['href']; // from customer property response
+    var url = response['data'][0]['links']['self']['href']; // from customer property response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "PATCH",
-		dataType: "json",
-		data: JSON.stringify(params)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "PATCH",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 # Delete properties
 
@@ -208,27 +208,27 @@ The DELETE request can be constructed that way:
 
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X DELETE 'http://localhost:8000/jsonapi/customer?related=property&relatedid=...&_token=...'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X DELETE 'http://localhost:8000/jsonapi/customer?related=property&relatedid=...&_token=...'
+    ```
 === "jQuery"
-	```javascript
-	var url = response['data'][0]['links']['self']['href']; // from customer property response
+    ```javascript
+    var url = response['data'][0]['links']['self']['href']; // from customer property response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "DELETE",
-		dataType: "json"
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "DELETE",
+        dataType: "json"
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 Then, the property entry identified by its ID is removed from the customer account.

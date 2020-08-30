@@ -2,7 +2,7 @@ To retrieve items from a resource, you need a GET request with the URL from the 
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/admin/default/jsonadm/product'
     ```
 === "jQuery"
@@ -119,7 +119,7 @@ Filtering the result set by custom conditions is crucial for getting the items y
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/admin/default/jsonadm/product?filter[%3E][product.status]=0'
     ```
 === "jQuery"
@@ -173,7 +173,7 @@ To combine several conditions into one request, you can combine two or more "com
     ```bash
     # filter[&&][][>][product.type]=select
     # &filter[&&][][=~][product.label]=demo
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][product.type]=select&filter[%26%26][][%3D%7E][product.label]=demo'
     ```
 === "jQuery"
@@ -211,7 +211,7 @@ The negation is a special case because it only accepts one "compare" condition w
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?filter[%21][][%3D%7E][product.label]=demo'
     ```
 === "jQuery"
@@ -260,7 +260,7 @@ Server-side sorting of the filtered result set is also essential to retrieve the
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?sort=product.label'
     ```
 === "jQuery"
@@ -283,7 +283,7 @@ This will return the results ordered by the product label. You can also tell the
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?sort=-product.label'
     ```
 === "jQuery"
@@ -306,7 +306,7 @@ Sorting by several keys is also possible if they are separated by a comma:
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?sort=-product.status,product.id'
     ```
 === "jQuery"
@@ -336,7 +336,7 @@ By default, only the first 25 items are returned if nothing else is specified. T
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?sort=-product.status,product.id'
     ```
 === "jQuery"
@@ -362,7 +362,7 @@ Thus, you will get the first 100 items instead. To get 100 items starting from t
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?sort=-product.status,product.id'
     ```
 === "jQuery"
@@ -395,7 +395,7 @@ If you only need the values of a few fields and want to reduce the amount of dat
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?fields[product]=product.id,product.label'
     ```
 === "jQuery"
@@ -427,7 +427,7 @@ To minimize the number of requests, the Aimeos JSON API can add related resource
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?include=text,price'
     ```
 === "jQuery"
@@ -450,7 +450,7 @@ You can use the "include" parameter for all items that are associated via the li
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/product?include=text,product/property'
     ```
 === "jQuery"

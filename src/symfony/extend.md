@@ -194,11 +194,11 @@ $ouput = [
     'aibody' => [
         'basket/mini' => '<div> ... rendered HTML ... ',
         'catalog/session' => '<div> ... rendered HTML ... '
-	],
+    ],
     'aiheader' => [
         'basket/mini' => '... HTML head tags ...',
         'catalog/session' => '... HTML head tags ...'
-	]
+    ]
 ];
 ```
 

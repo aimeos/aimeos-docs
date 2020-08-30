@@ -35,12 +35,12 @@ That class must extend from the existing class and only contain the methods you 
 namespace Aimeos\Controller\Common\Subscription\Process\Processor\Cgroup;
 
 class Mygroup extends Standard
-	implements \Aimeos\Controller\Common\Subscription\Process\Processor\Iface
+    implements \Aimeos\Controller\Common\Subscription\Process\Processor\Iface
 {
-	public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription )
-	{
-		// Your modifed code from the original method
-	}
+    public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription )
+    {
+        // Your modifed code from the original method
+    }
 }
 ```
 
@@ -81,38 +81,38 @@ The code below contains a skeleton for the new class of type *Myproc*:
 namespace Aimeos\Controller\Common\Subscription\Process\Processor\Myproc;
 
 class Standard
-	extends \Aimeos\Controller\Common\Subscription\Process\Processor\Base
-	implements \Aimeos\Controller\Common\Subscription\Process\Processor\Iface
+    extends \Aimeos\Controller\Common\Subscription\Process\Processor\Base
+    implements \Aimeos\Controller\Common\Subscription\Process\Processor\Iface
 {
-	public function __construct( \Aimeos\MShop\Context\Item\Iface $context )
-	{
-		parent::__construct( $context );
-		// more initialization code
-	}
+    public function __construct( \Aimeos\MShop\Context\Item\Iface $context )
+    {
+        parent::__construct( $context );
+        // more initialization code
+    }
 
-	public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription )
-	{
-		$context = $this->getContext();
-		// Code that is executed at the beginning of the subscription
-	}
+    public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription )
+    {
+        $context = $this->getContext();
+        // Code that is executed at the beginning of the subscription
+    }
 
-	public function renewBefore( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
-	{
-		$context = $this->getContext();
-		// Code that is executed each time before the subscription is renewed
-	}
+    public function renewBefore( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
+    {
+        $context = $this->getContext();
+        // Code that is executed each time before the subscription is renewed
+    }
 
-	public function renewAfter( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
-	{
-		$context = $this->getContext();
-		// Code that is executed each time after the subscription is renewed
-	}
+    public function renewAfter( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
+    {
+        $context = $this->getContext();
+        // Code that is executed each time after the subscription is renewed
+    }
 
-	public function end( \Aimeos\MShop\Subscription\Item\Iface $subscription )
-	{
-		$context = $this->getContext();
-		// Code that is executed at the end of the subscription
-	}
+    public function end( \Aimeos\MShop\Subscription\Item\Iface $subscription )
+    {
+        $context = $this->getContext();
+        // Code that is executed at the end of the subscription
+    }
 }
 ```
 
@@ -141,23 +141,23 @@ namespace Aimeos\Controller\Common\Subscription\Process\Processor\Cgroup;
 
 class StandardTest extends \PHPUnit\Framework\TestCase
 {
-	protected function setUp()
-	{
-		\Aimeos\MShop::cache( true );
-	}
+    protected function setUp()
+    {
+        \Aimeos\MShop::cache( true );
+    }
 
-	protected function tearDown()
-	{
-		\Aimeos\MShop::cache( false );
-	}
+    protected function tearDown()
+    {
+        \Aimeos\MShop::cache( false );
+    }
 
-	public function testBegin()
-	{
-		$context = \TestHelperCntl::getContext();
-		$manager = \Aimeos\MShop::create( $context, 'subscription' );
-		$object = new \Aimeos\Controller\Common\Subscription\Process\Processor\Myproc\Standard( $context );
-		$object->begin( $manager->createItem() );
-	}
+    public function testBegin()
+    {
+        $context = \TestHelperCntl::getContext();
+        $manager = \Aimeos\MShop::create( $context, 'subscription' );
+        $object = new \Aimeos\Controller\Common\Subscription\Process\Processor\Myproc\Standard( $context );
+        $object->begin( $manager->createItem() );
+    }
  }
 ```
 
@@ -174,13 +174,13 @@ When testing subscription processor methods, it may be useful to test indirectly
 
 ```php
 $customerStub = $this->getMockBuilder( '\\Aimeos\\MShop\\Customer\\Manager\\Standard' )
-	->setConstructorArgs( [$context] )
-	->setMethods( ['get', 'save'] )
-	->getMock();
+    ->setConstructorArgs( [$context] )
+    ->setMethods( ['get', 'save'] )
+    ->getMock();
 \Aimeos\MShop::inject( $context, 'customer', $customerStub );
 
 $customerStub->expects( $this->once() )->method( 'get' )
-	->will( $this->returnValue( $customerStub->createItem() ) );
+    ->will( $this->returnValue( $customerStub->createItem() ) );
 $customerStub->expects( $this->once() )->method( 'save' );
 ```
 

@@ -29,8 +29,8 @@ aimeos_shop:
             database: %database_name%
             username: %database_user%
             password: %database_password%
-			stmt: ["SET NAMES 'utf8'; SET SESSION sql_mode='ANSI'; SET SESSION sort_buffer_size=2097144; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;"]
-			limit: 2
+            stmt: ["SET NAMES 'utf8'; SET SESSION sql_mode='ANSI'; SET SESSION sort_buffer_size=2097144; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;"]
+            limit: 2
             opt-persistent: 0
 ```
 

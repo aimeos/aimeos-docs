@@ -8,18 +8,18 @@ For new basket plug-ins, you can use this skeleton class:
 namespace Aimeos\MShop\Plugin\Provider\Order;
 
 class Myexample
-	extends \Aimeos\MShop\Plugin\Provider\Factory\Base
-	implements \Aimeos\MShop\Plugin\Provider\Iface, \Aimeos\MShop\Plugin\Provider\Factory\Iface
+    extends \Aimeos\MShop\Plugin\Provider\Factory\Base
+    implements \Aimeos\MShop\Plugin\Provider\Iface, \Aimeos\MShop\Plugin\Provider\Factory\Iface
 {
-	private $singleton;
+    private $singleton;
 
-	public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
-	{
-	}
+    public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
+    {
+    }
 
-	public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
-	{
-	}
+    public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
+    {
+    }
 }
 ```
 
@@ -70,9 +70,9 @@ To listen for such an event, your plug-in has to register itself at the publishe
 ```php
 public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
 {
-	$p->addListener( $this, 'addProduct.after' );
-	$p->addListener( $this, 'deleteProduct.after' );
-	// ...
+    $p->addListener( $this, 'addProduct.after' );
+    $p->addListener( $this, 'deleteProduct.after' );
+    // ...
 }
 ```
 
@@ -102,24 +102,24 @@ The following implementation shows the important code blocks:
 ```php
 public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
 {
-	$context = $this->getContext();
-	$iface = '\Aimeos\MShop\Order\Item\Base\Iface';
+    $context = $this->getContext();
+    $iface = '\Aimeos\MShop\Order\Item\Base\Iface';
 
-	if( !( $basket instanceof $iface ) )
-	{
-		$msg = sprintf( 'Object is not of required type "%1$s"', $iface );
-		throw new \Aimeos\MShop\Plugin\Provider\Exception( $msg );
-	}
+    if( !( $basket instanceof $iface ) )
+    {
+        $msg = sprintf( 'Object is not of required type "%1$s"', $iface );
+        throw new \Aimeos\MShop\Plugin\Provider\Exception( $msg );
+    }
 
-	if( $this->singleton === null )
-	{
-		$value = $this->getConfigValue( 'key', 'default' );
+    if( $this->singleton === null )
+    {
+        $value = $this->getConfigValue( 'key', 'default' );
 
-		// ...
-		$this->singleton = true;
-	}
+        // ...
+        $this->singleton = true;
+    }
 
-	return true;
+    return true;
 }
 ```
 
@@ -141,17 +141,17 @@ All you need to do is to extend from the *\Aimeos\MShop\Plugin\Provider\Decorato
 namespace \Aimeos\MShop\Plugin\Provider\Decorator;
 
 class Example
-	extends \Aimeos\MShop\Plugin\Provider\Decorator\Base
-	implements \Aimeos\MShop\Plugin\Provider\Decorator\Iface
+    extends \Aimeos\MShop\Plugin\Provider\Decorator\Base
+    implements \Aimeos\MShop\Plugin\Provider\Decorator\Iface
 {
-	public function update( \Aimeos\MW\Observer\Publisher\Iface $order, $action, $value = null )
-	{
-		if( <condition> ) {
-			return $this->getProvider()->update( $order, $action, $value );
-		}
+    public function update( \Aimeos\MW\Observer\Publisher\Iface $order, $action, $value = null )
+    {
+        if( <condition> ) {
+            return $this->getProvider()->update( $order, $action, $value );
+        }
 
-		return true;
-	}
+        return true;
+    }
 }
 ```
 
@@ -176,32 +176,32 @@ namespace \Aimeos\MShop\Plugin\Provider\Order;
 
 class ExampleTest extends \PHPUnit_Framework_TestCase
 {
-	private $object;
-	private $basket;
+    private $object;
+    private $basket;
 
-	protected function setUp()
-	{
-		$context = TestHelperMShop::getContext();
+    protected function setUp()
+    {
+        $context = TestHelperMShop::getContext();
 
-		$pluginManager = \Aimeos\MShopFactory::createManager( $context, 'plugin' );
-		$orderManager = \Aimeos\MShop\Factory::createManager( $context, 'order' );
-		$orderBaseManager = $orderManager->getSubManager( 'base' );
+        $pluginManager = \Aimeos\MShopFactory::createManager( $context, 'plugin' );
+        $orderManager = \Aimeos\MShop\Factory::createManager( $context, 'order' );
+        $orderBaseManager = $orderManager->getSubManager( 'base' );
 
-		$this->basket = $orderBaseManager->createItem();
-		$plugin = $pluginManager->createItem();
+        $this->basket = $orderBaseManager->createItem();
+        $plugin = $pluginManager->createItem();
 
-		$this->object = new \Aimeos\MShop\Plugin\Provider\Order\Example( $context, $plugin );
-	}
+        $this->object = new \Aimeos\MShop\Plugin\Provider\Order\Example( $context, $plugin );
+    }
 
-	public function testRegister()
-	{
-		$this->object->register( $this->basket );
-	}
+    public function testRegister()
+    {
+        $this->object->register( $this->basket );
+    }
 
-	public function testUpdate()
-	{
-		$this->assertTrue( $object->update( $this->basket, 'check.after' ) );
-	}
+    public function testUpdate()
+    {
+        $this->assertTrue( $object->update( $this->basket, 'check.after' ) );
+    }
 }
 ```
 

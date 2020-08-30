@@ -232,9 +232,9 @@ The Aimeos template engine has a "block" view helper to save a rendered template
 
 ```php
 <?php $this->block()->start( 'cataog/detail/actions' ); ?>
-	<div class="actions">
-		...
-	</div>
+    <div class="actions">
+        ...
+    </div>
 <?php $this->block()->stop(); ?>
 <?php echo $this->block()->get( 'catalog/detail/actions' ); ?>
 ```
@@ -242,9 +242,9 @@ by this Twig template:
 
 ```twig
 {% block cataog_detail_actions %}
-	<div class="actions">
-		...
-	</div>
+    <div class="actions">
+        ...
+    </div>
 {% endblock %}
 {{ block('cataog_detail_actions') }}
 ```

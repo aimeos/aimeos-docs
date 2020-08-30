@@ -10,63 +10,63 @@ You can use this base template for your own one but you must replace "Mypanel" a
 
 ```php
 <?php
-	$enc = $this->encoder();
+    $enc = $this->encoder();
 
-	$target = $this->config( 'admin/jqadm/url/search/target' );
-	$controller = $this->config( 'admin/jqadm/url/search/controller', 'Jqadm' );
-	$action = $this->config( 'admin/jqadm/url/search/action', 'search' );
-	$config = $this->config( 'admin/jqadm/url/search/config', [] );
+    $target = $this->config( 'admin/jqadm/url/search/target' );
+    $controller = $this->config( 'admin/jqadm/url/search/controller', 'Jqadm' );
+    $action = $this->config( 'admin/jqadm/url/search/action', 'search' );
+    $config = $this->config( 'admin/jqadm/url/search/config', [] );
 
-	$searchParams = $params = $this->get( 'pageParams', [] );
-	$searchParams['page']['start'] = 0;
+    $searchParams = $params = $this->get( 'pageParams', [] );
+    $searchParams['page']['start'] = 0;
 ?>
 <?php $this->block()->start( 'jqadm_content' ); ?>
 <div class="vue-block">
-	<nav class="main-navbar">
-		<span class="navbar-brand">
-			<?= $enc->html( $this->translate( 'admin', 'Mypanel' ) ); ?>
-			<span class="navbar-secondary">(<?= $enc->html( $this->site()->label() ); ?>)</span>
-		</span>
+    <nav class="main-navbar">
+        <span class="navbar-brand">
+            <?= $enc->html( $this->translate( 'admin', 'Mypanel' ) ); ?>
+            <span class="navbar-secondary">(<?= $enc->html( $this->site()->label() ); ?>)</span>
+        </span>
 
-		<?= $this->partial(
-			$this->config( 'admin/jqadm/partial/navsearch', 'common/partials/navsearch-standard' ), [
-				'filter' => $this->session( 'aimeos/admin/jqadm/mypanel/filter', [] ),
-				'filterAttributes' => $this->get( 'filterAttributes', [] ),
-				'filterOperators' => $this->get( 'filterOperators', [] ),
-				'params' => $params,
-			]
-		); ?>
-	</nav>
+        <?= $this->partial(
+            $this->config( 'admin/jqadm/partial/navsearch', 'common/partials/navsearch-standard' ), [
+                'filter' => $this->session( 'aimeos/admin/jqadm/mypanel/filter', [] ),
+                'filterAttributes' => $this->get( 'filterAttributes', [] ),
+                'filterOperators' => $this->get( 'filterOperators', [] ),
+                'params' => $params,
+            ]
+        ); ?>
+    </nav>
 
-	<?= $this->partial(
-			$this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination-standard' ),
-			['pageParams' => $params, 'pos' => 'top', 'total' => $this->get( 'total' ),
-			'page' =>$this->session( 'aimeos/admin/jqadm/mypanel/page', [] )]
-		);
-	?>
+    <?= $this->partial(
+            $this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination-standard' ),
+            ['pageParams' => $params, 'pos' => 'top', 'total' => $this->get( 'total' ),
+            'page' =>$this->session( 'aimeos/admin/jqadm/mypanel/page', [] )]
+        );
+    ?>
 
-	<form class="list list-mypanel" method="POST" action="<?= $enc->attr( $this->url( $target, $controller, $action, $searchParams, [], $config ) ); ?>">
-		<?= $this->csrf()->formfield(); ?>
+    <form class="list list-mypanel" method="POST" action="<?= $enc->attr( $this->url( $target, $controller, $action, $searchParams, [], $config ) ); ?>">
+        <?= $this->csrf()->formfield(); ?>
 
-		<table class="list-items table table-hover table-striped">
+        <table class="list-items table table-hover table-striped">
 
-		<!-- table header -->
+        <!-- table header -->
 
-		<!-- table body -->
+        <!-- table body -->
 
-		</table>
+        </table>
 
-		<?php if( $this->get( 'items', map() )->isEmpty() ) : ?>
-			<div class="noitems"><?= $enc->html( sprintf( $this->translate( 'admin', 'No items found' ) ) ); ?></div>
-		<?php endif; ?>
-	</form>
+        <?php if( $this->get( 'items', map() )->isEmpty() ) : ?>
+            <div class="noitems"><?= $enc->html( sprintf( $this->translate( 'admin', 'No items found' ) ) ); ?></div>
+        <?php endif; ?>
+    </form>
 
-	<?= $this->partial(
-			$this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination-standard' ),
-			['pageParams' => $params, 'pos' => 'bottom', 'total' => $this->get( 'total' ),
-			'page' => $this->session( 'aimeos/admin/jqadm/mypanel/page', [] )]
-		);
-	?>
+    <?= $this->partial(
+            $this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination-standard' ),
+            ['pageParams' => $params, 'pos' => 'bottom', 'total' => $this->get( 'total' ),
+            'page' => $this->session( 'aimeos/admin/jqadm/mypanel/page', [] )]
+        );
+    ?>
 
 </div>
 <?php $this->block()->stop(); ?>
@@ -103,84 +103,84 @@ Use this partial as example, insert it instead of the `<!-- table header -->` ma
 
 ```php
 <?php
-	$newTarget = $this->config( 'admin/jqadm/url/create/target' );
-	$newCntl = $this->config( 'admin/jqadm/url/create/controller', 'Jqadm' );
-	$newAction = $this->config( 'admin/jqadm/url/create/action', 'create' );
-	$newConfig = $this->config( 'admin/jqadm/url/create/config', [] );
+    $newTarget = $this->config( 'admin/jqadm/url/create/target' );
+    $newCntl = $this->config( 'admin/jqadm/url/create/controller', 'Jqadm' );
+    $newAction = $this->config( 'admin/jqadm/url/create/action', 'create' );
+    $newConfig = $this->config( 'admin/jqadm/url/create/config', [] );
 
-	$delTarget = $this->config( 'admin/jqadm/url/delete/target' );
-	$delCntl = $this->config( 'admin/jqadm/url/delete/controller', 'Jqadm' );
-	$delAction = $this->config( 'admin/jqadm/url/delete/action', 'delete' );
-	$delConfig = $this->config( 'admin/jqadm/url/delete/config', [] );
+    $delTarget = $this->config( 'admin/jqadm/url/delete/target' );
+    $delCntl = $this->config( 'admin/jqadm/url/delete/controller', 'Jqadm' );
+    $delAction = $this->config( 'admin/jqadm/url/delete/action', 'delete' );
+    $delConfig = $this->config( 'admin/jqadm/url/delete/config', [] );
 
-	$expTarget = $this->config( 'admin/jqadm/url/export/target' );
-	$expCntl = $this->config( 'admin/jqadm/url/export/controller', 'Jqadm' );
-	$expAction = $this->config( 'admin/jqadm/url/export/action', 'export' );
-	$expConfig = $this->config( 'admin/jqadm/url/export/config', [] );
+    $expTarget = $this->config( 'admin/jqadm/url/export/target' );
+    $expCntl = $this->config( 'admin/jqadm/url/export/controller', 'Jqadm' );
+    $expAction = $this->config( 'admin/jqadm/url/export/action', 'export' );
+    $expConfig = $this->config( 'admin/jqadm/url/export/config', [] );
 
-	$columnList = [
-		'mypanel.id' => $this->translate( 'admin', 'ID' ),
-		'mypanel.status' => $this->translate( 'admin', 'Status' ),
-		'mypanel.label' => $this->translate( 'admin', 'Label' ),
-		'mypanel.ctime' => $this->translate( 'admin', 'Created' ),
-		'mypanel.mtime' => $this->translate( 'admin', 'Modified' ),
-		'mypanel.editor' => $this->translate( 'admin', 'Editor' ),
-	];
+    $columnList = [
+        'mypanel.id' => $this->translate( 'admin', 'ID' ),
+        'mypanel.status' => $this->translate( 'admin', 'Status' ),
+        'mypanel.label' => $this->translate( 'admin', 'Label' ),
+        'mypanel.ctime' => $this->translate( 'admin', 'Created' ),
+        'mypanel.mtime' => $this->translate( 'admin', 'Modified' ),
+        'mypanel.editor' => $this->translate( 'admin', 'Editor' ),
+    ];
 
-	$default = $this->config( 'admin/jqadm/mypanel/fields', ['mypanel.id', 'mypanel.status', 'mypanel.label'] );
-	$fields = $this->session( 'aimeos/admin/jqadm/mypanel/fields', $default );
+    $default = $this->config( 'admin/jqadm/mypanel/fields', ['mypanel.id', 'mypanel.status', 'mypanel.label'] );
+    $fields = $this->session( 'aimeos/admin/jqadm/mypanel/fields', $default );
 ?>
 <thead class="list-header">
-	<tr>
-		<th class="select">
-			<a class="btn act-delete fa" tabindex="1" data-multi="1"
-				href="<?= $enc->attr( $this->url( $delTarget, $delCntl, $delAction, ['id' => ''] + $params, [], $delConfig ) ); ?>"
-				title="<?= $enc->attr( $this->translate( 'admin', 'Delete this entry' ) ); ?>"
-				aria-label="<?= $enc->attr( $this->translate( 'admin', 'Delete' ) ); ?>">
-			</a>
-		</th>
+    <tr>
+        <th class="select">
+            <a class="btn act-delete fa" tabindex="1" data-multi="1"
+                href="<?= $enc->attr( $this->url( $delTarget, $delCntl, $delAction, ['id' => ''] + $params, [], $delConfig ) ); ?>"
+                title="<?= $enc->attr( $this->translate( 'admin', 'Delete this entry' ) ); ?>"
+                aria-label="<?= $enc->attr( $this->translate( 'admin', 'Delete' ) ); ?>">
+            </a>
+        </th>
 
-		<?= $this->partial(
-				$this->config( 'admin/jqadm/partial/listhead', 'common/partials/listhead-standard' ),
-				['fields' => $fields, 'params' => $params, 'data' => $columnList,
-				'sort' => $this->session( 'aimeos/admin/jqadm/mypanel/sort', 'mypanel.id' )]
-			);
-		?>
+        <?= $this->partial(
+                $this->config( 'admin/jqadm/partial/listhead', 'common/partials/listhead-standard' ),
+                ['fields' => $fields, 'params' => $params, 'data' => $columnList,
+                'sort' => $this->session( 'aimeos/admin/jqadm/mypanel/sort', 'mypanel.id' )]
+            );
+        ?>
 
-		<th class="actions">
-			<div class="dropdown list-menu">
-				<button class="btn act-menu fa" type="button" id="menuButton"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-					title="<?= $enc->attr( $this->translate( 'admin', 'Actions' ) ); ?>"
-					aria-label="<?= $enc->attr( $this->translate( 'admin', 'Actions' ) ); ?>"
-					tabindex="<?= $this->get( 'tabindex' ); ?>">
-				</button>
-				<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="menuButton">
-					<li class="dropdown-item">
-						<a class="btn fa act-add" tabindex="1"
-							href="<?= $enc->attr( $this->url( $newTarget, $newCntl, $newAction, $params, [], $newConfig ) ); ?>"
-							title="<?= $enc->attr( $this->translate( 'admin', 'Insert new entry (Ctrl+I)' ) ); ?>"
-							aria-label="<?= $enc->attr( $this->translate( 'admin', 'Add' ) ); ?>">
-						</a>
-					</li>
-					<li class="dropdown-item">
-						<a class="btn fa act-download" tabindex="1"
-							href="<?= $enc->attr( $this->url( $expTarget, $expCntl, $expAction, $params, ['queue' => 'mypanel-export'], $expConfig ) ); ?>"
-							aria-label="<?= $enc->attr( $this->translate( 'admin/ext', 'Export' ) ); ?>"
-							title="<?= $enc->attr( $this->translate( 'admin/ext', 'Export' ) ); ?>">
-							<?= $enc->html( $this->translate( 'admin/ext', 'Export' ) ); ?>
-						</a>
-					</li>
-				</ul>
-			</div>
+        <th class="actions">
+            <div class="dropdown list-menu">
+                <button class="btn act-menu fa" type="button" id="menuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    title="<?= $enc->attr( $this->translate( 'admin', 'Actions' ) ); ?>"
+                    aria-label="<?= $enc->attr( $this->translate( 'admin', 'Actions' ) ); ?>"
+                    tabindex="<?= $this->get( 'tabindex' ); ?>">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="menuButton">
+                    <li class="dropdown-item">
+                        <a class="btn fa act-add" tabindex="1"
+                            href="<?= $enc->attr( $this->url( $newTarget, $newCntl, $newAction, $params, [], $newConfig ) ); ?>"
+                            title="<?= $enc->attr( $this->translate( 'admin', 'Insert new entry (Ctrl+I)' ) ); ?>"
+                            aria-label="<?= $enc->attr( $this->translate( 'admin', 'Add' ) ); ?>">
+                        </a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="btn fa act-download" tabindex="1"
+                            href="<?= $enc->attr( $this->url( $expTarget, $expCntl, $expAction, $params, ['queue' => 'mypanel-export'], $expConfig ) ); ?>"
+                            aria-label="<?= $enc->attr( $this->translate( 'admin/ext', 'Export' ) ); ?>"
+                            title="<?= $enc->attr( $this->translate( 'admin/ext', 'Export' ) ); ?>">
+                            <?= $enc->html( $this->translate( 'admin/ext', 'Export' ) ); ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-			<?= $this->partial(
-					$this->config( 'admin/jqadm/partial/columns', 'common/partials/columns-standard' ),
-					['fields' => $fields, 'data' => $columnList]
-				);
-			?>
-		</th>
-	</tr>
+            <?= $this->partial(
+                    $this->config( 'admin/jqadm/partial/columns', 'common/partials/columns-standard' ),
+                    ['fields' => $fields, 'data' => $columnList]
+                );
+            ?>
+        </th>
+    </tr>
 </thead>
 ```
 
@@ -210,114 +210,114 @@ You can adapt this partial to your needs, insert it instead of the `<!-- table b
 
 ```php
 <?php
-	$getTarget = $this->config( 'admin/jqadm/url/get/target' );
-	$getCntl = $this->config( 'admin/jqadm/url/get/controller', 'Jqadm' );
-	$getAction = $this->config( 'admin/jqadm/url/get/action', 'get' );
-	$getConfig = $this->config( 'admin/jqadm/url/get/config', [] );
+    $getTarget = $this->config( 'admin/jqadm/url/get/target' );
+    $getCntl = $this->config( 'admin/jqadm/url/get/controller', 'Jqadm' );
+    $getAction = $this->config( 'admin/jqadm/url/get/action', 'get' );
+    $getConfig = $this->config( 'admin/jqadm/url/get/config', [] );
 
-	$copyTarget = $this->config( 'admin/jqadm/url/copy/target' );
-	$copyCntl = $this->config( 'admin/jqadm/url/copy/controller', 'Jqadm' );
-	$copyAction = $this->config( 'admin/jqadm/url/copy/action', 'copy' );
-	$copyConfig = $this->config( 'admin/jqadm/url/copy/config', [] );
+    $copyTarget = $this->config( 'admin/jqadm/url/copy/target' );
+    $copyCntl = $this->config( 'admin/jqadm/url/copy/controller', 'Jqadm' );
+    $copyAction = $this->config( 'admin/jqadm/url/copy/action', 'copy' );
+    $copyConfig = $this->config( 'admin/jqadm/url/copy/config', [] );
 
-	$delTarget = $this->config( 'admin/jqadm/url/delete/target' );
-	$delCntl = $this->config( 'admin/jqadm/url/delete/controller', 'Jqadm' );
-	$delAction = $this->config( 'admin/jqadm/url/delete/action', 'delete' );
-	$delConfig = $this->config( 'admin/jqadm/url/delete/config', [] );
+    $delTarget = $this->config( 'admin/jqadm/url/delete/target' );
+    $delCntl = $this->config( 'admin/jqadm/url/delete/controller', 'Jqadm' );
+    $delAction = $this->config( 'admin/jqadm/url/delete/action', 'delete' );
+    $delConfig = $this->config( 'admin/jqadm/url/delete/config', [] );
 
-	$default = $this->config( 'admin/jqadm/mypanel/fields', ['mypanel.id', 'mypanel.status', 'mypanel.label'] );
-	$fields = $this->session( 'aimeos/admin/jqadm/mypanel/fields', $default );
+    $default = $this->config( 'admin/jqadm/mypanel/fields', ['mypanel.id', 'mypanel.status', 'mypanel.label'] );
+    $fields = $this->session( 'aimeos/admin/jqadm/mypanel/fields', $default );
 ?>
 <tbody>
-	<?= $this->partial(
-		$this->config( 'admin/jqadm/partial/listsearch', 'common/partials/listsearch-standard' ), [
-			'fields' => array_merge( $fields, ['select'] ),
-			'filter' => $this->session( 'aimeos/admin/jqadm/mypanel/filter', [] ),
-			'data' => [
-				'select' => ['type' => 'checkbox'],
-				'mypanel.id' => ['op' => '=='],
-				'mypanel.status' => ['op' => '==', 'type' => 'select', 'val' => [
-					'1' => $this->translate( 'mshop/code', 'status:1' ),
-					'0' => $this->translate( 'mshop/code', 'status:0' ),
-					'-1' => $this->translate( 'mshop/code', 'status:-1' ),
-					'-2' => $this->translate( 'mshop/code', 'status:-2' ),
-				]],
-				'mypanel.label' => [],
-				'mypanel.ctime' => ['op' => '-', 'type' => 'datetime-local'],
-				'mypanel.mtime' => ['op' => '-', 'type' => 'datetime-local'],
-				'mypanel.editor' => [],
-			]
-		] );
-	?>
+    <?= $this->partial(
+        $this->config( 'admin/jqadm/partial/listsearch', 'common/partials/listsearch-standard' ), [
+            'fields' => array_merge( $fields, ['select'] ),
+            'filter' => $this->session( 'aimeos/admin/jqadm/mypanel/filter', [] ),
+            'data' => [
+                'select' => ['type' => 'checkbox'],
+                'mypanel.id' => ['op' => '=='],
+                'mypanel.status' => ['op' => '==', 'type' => 'select', 'val' => [
+                    '1' => $this->translate( 'mshop/code', 'status:1' ),
+                    '0' => $this->translate( 'mshop/code', 'status:0' ),
+                    '-1' => $this->translate( 'mshop/code', 'status:-1' ),
+                    '-2' => $this->translate( 'mshop/code', 'status:-2' ),
+                ]],
+                'mypanel.label' => [],
+                'mypanel.ctime' => ['op' => '-', 'type' => 'datetime-local'],
+                'mypanel.mtime' => ['op' => '-', 'type' => 'datetime-local'],
+                'mypanel.editor' => [],
+            ]
+        ] );
+    ?>
 
-	<?php foreach( $this->get( 'items', [] ) as $id => $item ) : ?>
-		<?php $url = $enc->attr( $this->url( $getTarget, $getCntl, $getAction, ['id' => $id] + $params, [], $getConfig ) ) ?>
-		<tr class="list-item <?= $this->site()->readonly( $item->getSiteId() ); ?>"
-			data-label="<?= $enc->attr( $item->getLabel() ) ?>">
-			<td class="select">
-				<input class="form-control" type="checkbox" tabindex="1"
-					name="<?= $enc->attr( $this->formparam( ['id', ''] ) ) ?>"
-					value="<?= $enc->attr( $item->getId() ) ?>" />
-			</td>
-			<?php if( in_array( 'mypanel.id', $fields ) ) : ?>
-				<td class="mypanel-id">
-					<a class="items-field" href="<?= $url; ?>" tabindex="1">
-						<?= $enc->html( $item->getId() ); ?>
-					</a>
-				</td>
-			<?php endif; ?>
-			<?php if( in_array( 'mypanel.status', $fields ) ) : ?>
-				<td class="mypanel-status">
-					<a class="items-field" href="<?= $url; ?>">
-						<div class="fa status-<?= $enc->attr( $item->getStatus() ); ?>"></div>
-					</a>
-				</td>
-			<?php endif; ?>
-			<?php if( in_array( 'mypanel.label', $fields ) ) : ?>
-				<td class="mypanel-label">
-					<a class="items-field" href="<?= $url; ?>">
-						<?= $enc->html( $item->getLabel() ); ?>
-					</a>
-				</td>
-			<?php endif; ?>
-			<?php if( in_array( 'mypanel.ctime', $fields ) ) : ?>
-				<td class="mypanel-ctime">
-					<a class="items-field" href="<?= $url; ?>">
-						<?= $enc->html( $item->getTimeCreated() ); ?>
-					</a>
-				</td>
-			<?php endif; ?>
-			<?php if( in_array( 'mypanel.mtime', $fields ) ) : ?>
-				<td class="mypanel-mtime">
-					<a class="items-field" href="<?= $url; ?>">
-						<?= $enc->html( $item->getTimeModified() ); ?>
-					</a>
-				</td>
-			<?php endif; ?>
-			<?php if( in_array( 'mypanel.editor', $fields ) ) : ?>
-				<td class="mypanel-editor">
-					<a class="items-field" href="<?= $url; ?>">
-						<?= $enc->html( $item->getEditor() ); ?>
-					</a>
-				</td>
-			<?php endif; ?>
+    <?php foreach( $this->get( 'items', [] ) as $id => $item ) : ?>
+        <?php $url = $enc->attr( $this->url( $getTarget, $getCntl, $getAction, ['id' => $id] + $params, [], $getConfig ) ) ?>
+        <tr class="list-item <?= $this->site()->readonly( $item->getSiteId() ); ?>"
+            data-label="<?= $enc->attr( $item->getLabel() ) ?>">
+            <td class="select">
+                <input class="form-control" type="checkbox" tabindex="1"
+                    name="<?= $enc->attr( $this->formparam( ['id', ''] ) ) ?>"
+                    value="<?= $enc->attr( $item->getId() ) ?>" />
+            </td>
+            <?php if( in_array( 'mypanel.id', $fields ) ) : ?>
+                <td class="mypanel-id">
+                    <a class="items-field" href="<?= $url; ?>" tabindex="1">
+                        <?= $enc->html( $item->getId() ); ?>
+                    </a>
+                </td>
+            <?php endif; ?>
+            <?php if( in_array( 'mypanel.status', $fields ) ) : ?>
+                <td class="mypanel-status">
+                    <a class="items-field" href="<?= $url; ?>">
+                        <div class="fa status-<?= $enc->attr( $item->getStatus() ); ?>"></div>
+                    </a>
+                </td>
+            <?php endif; ?>
+            <?php if( in_array( 'mypanel.label', $fields ) ) : ?>
+                <td class="mypanel-label">
+                    <a class="items-field" href="<?= $url; ?>">
+                        <?= $enc->html( $item->getLabel() ); ?>
+                    </a>
+                </td>
+            <?php endif; ?>
+            <?php if( in_array( 'mypanel.ctime', $fields ) ) : ?>
+                <td class="mypanel-ctime">
+                    <a class="items-field" href="<?= $url; ?>">
+                        <?= $enc->html( $item->getTimeCreated() ); ?>
+                    </a>
+                </td>
+            <?php endif; ?>
+            <?php if( in_array( 'mypanel.mtime', $fields ) ) : ?>
+                <td class="mypanel-mtime">
+                    <a class="items-field" href="<?= $url; ?>">
+                        <?= $enc->html( $item->getTimeModified() ); ?>
+                    </a>
+                </td>
+            <?php endif; ?>
+            <?php if( in_array( 'mypanel.editor', $fields ) ) : ?>
+                <td class="mypanel-editor">
+                    <a class="items-field" href="<?= $url; ?>">
+                        <?= $enc->html( $item->getEditor() ); ?>
+                    </a>
+                </td>
+            <?php endif; ?>
 
-			<td class="actions">
-			<a class="btn act-copy fa" tabindex="1"
-					href="<?= $enc->attr( $this->url( $copyTarget, $copyCntl, $copyAction, ['id' => $id] + $params, [], $copyConfig ) ); ?>"
-					title="<?= $enc->attr( $this->translate( 'admin', 'Copy this entry' ) ); ?>"
-					aria-label="<?= $enc->attr( $this->translate( 'admin', 'Copy' ) ); ?>">
-				</a>
-				<?php if( !$this->site()->readonly( $item->getSiteId() ) ) : ?>
-					<a class="btn act-delete fa" tabindex="1"
-						href="<?= $enc->attr( $this->url( $delTarget, $delCntl, $delAction, ['resource' => 'mypanel', 'id' => $id] + $params, [], $delConfig ) ); ?>"
-						title="<?= $enc->attr( $this->translate( 'admin', 'Delete this entry' ) ); ?>"
-						aria-label="<?= $enc->attr( $this->translate( 'admin', 'Delete' ) ); ?>">
-					</a>
-				<?php endif; ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
+            <td class="actions">
+            <a class="btn act-copy fa" tabindex="1"
+                    href="<?= $enc->attr( $this->url( $copyTarget, $copyCntl, $copyAction, ['id' => $id] + $params, [], $copyConfig ) ); ?>"
+                    title="<?= $enc->attr( $this->translate( 'admin', 'Copy this entry' ) ); ?>"
+                    aria-label="<?= $enc->attr( $this->translate( 'admin', 'Copy' ) ); ?>">
+                </a>
+                <?php if( !$this->site()->readonly( $item->getSiteId() ) ) : ?>
+                    <a class="btn act-delete fa" tabindex="1"
+                        href="<?= $enc->attr( $this->url( $delTarget, $delCntl, $delAction, ['resource' => 'mypanel', 'id' => $id] + $params, [], $delConfig ) ); ?>"
+                        title="<?= $enc->attr( $this->translate( 'admin', 'Delete this entry' ) ); ?>"
+                        aria-label="<?= $enc->attr( $this->translate( 'admin', 'Delete' ) ); ?>">
+                    </a>
+                <?php endif; ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
 </tbody>
 ```
 
@@ -350,62 +350,62 @@ Use this as base template for your own one and replace "Mypanel" and "mypanel" w
 
 ```php
 <?php
-	$enc = $this->encoder();
-	$params = $this->get( 'pageParams', [] );
+    $enc = $this->encoder();
+    $params = $this->get( 'pageParams', [] );
 
-	$target = $this->config( 'admin/jqadm/url/save/target' );
-	$cntl = $this->config( 'admin/jqadm/url/save/controller', 'Jqadm' );
-	$action = $this->config( 'admin/jqadm/url/save/action', 'save' );
-	$config = $this->config( 'admin/jqadm/url/save/config', [] );
+    $target = $this->config( 'admin/jqadm/url/save/target' );
+    $cntl = $this->config( 'admin/jqadm/url/save/controller', 'Jqadm' );
+    $action = $this->config( 'admin/jqadm/url/save/action', 'save' );
+    $config = $this->config( 'admin/jqadm/url/save/config', [] );
 ?>
 <?php $this->block()->start( 'jqadm_content' ); ?>
 
 <form class="item item-mypanel form-horizontal" method="POST" enctype="multipart/form-data"
-	action="<?= $enc->attr( $this->url( $target, $cntl, $action, $params, [], $config ) ); ?>">
+    action="<?= $enc->attr( $this->url( $target, $cntl, $action, $params, [], $config ) ); ?>">
 
-	<input id="item-id" type="hidden"
-		name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.id'] ) ); ?>"
-		value="<?= $enc->attr( $this->get( 'itemData/mypanel.id' ) ); ?>" />
-	<input id="item-next" type="hidden"
-		name="<?= $enc->attr( $this->formparam( ['next'] ) ); ?>" value="get" />
+    <input id="item-id" type="hidden"
+        name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.id'] ) ); ?>"
+        value="<?= $enc->attr( $this->get( 'itemData/mypanel.id' ) ); ?>" />
+    <input id="item-next" type="hidden"
+        name="<?= $enc->attr( $this->formparam( ['next'] ) ); ?>" value="get" />
 
-	<?= $this->csrf()->formfield(); ?>
+    <?= $this->csrf()->formfield(); ?>
 
-	<nav class="main-navbar">
-		<h1 class="navbar-brand">
-			<span class="navbar-title">
-				<?= $enc->html( $this->translate( 'admin', 'Mypanel' ) ); ?>
-			</span>
-			<span class="navbar-id">
-				<?= $enc->html( $this->get( 'itemData/mypanel.id' ) ); ?>
-			</span>
-			<span class="navbar-label">
-				<?= $enc->html( $this->get( 'itemData/mypanel.label' ) ?: $this->translate( 'admin', 'New' ) ); ?>
-			</span>
-			<span class="navbar-site">
-				<?= $enc->html( $this->site()->match( $this->get( 'itemData/mypanel.siteid' ) ) ); ?>
-			</span>
-		</h1>
-		<div class="item-actions">
-			<?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions-standard' ), ['params' => $params] ); ?>
-		</div>
-	</nav>
-	<div class="row item-container">
-		<div class="col-md-3 item-navbar">
+    <nav class="main-navbar">
+        <h1 class="navbar-brand">
+            <span class="navbar-title">
+                <?= $enc->html( $this->translate( 'admin', 'Mypanel' ) ); ?>
+            </span>
+            <span class="navbar-id">
+                <?= $enc->html( $this->get( 'itemData/mypanel.id' ) ); ?>
+            </span>
+            <span class="navbar-label">
+                <?= $enc->html( $this->get( 'itemData/mypanel.label' ) ?: $this->translate( 'admin', 'New' ) ); ?>
+            </span>
+            <span class="navbar-site">
+                <?= $enc->html( $this->site()->match( $this->get( 'itemData/mypanel.siteid' ) ) ); ?>
+            </span>
+        </h1>
+        <div class="item-actions">
+            <?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions-standard' ), ['params' => $params] ); ?>
+        </div>
+    </nav>
+    <div class="row item-container">
+        <div class="col-md-3 item-navbar">
 
-			<!-- navigation sidebar -->
+            <!-- navigation sidebar -->
 
-		</div>
-		<div class="col-md-9 item-content tab-content">
+        </div>
+        <div class="col-md-9 item-content tab-content">
 
-			<!-- tab content -->
+            <!-- tab content -->
 
-			<?= $this->get( 'itemBody' ); ?>
-		</div>
-		<div class="item-actions">
-			<?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions-standard' ), ['params' => $params] ); ?>
-		</div>
-	</div>
+            <?= $this->get( 'itemBody' ); ?>
+        </div>
+        <div class="item-actions">
+            <?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions-standard' ), ['params' => $params] ); ?>
+        </div>
+    </div>
 </form>
 <?php $this->block()->stop(); ?>
 <?= $this->render( $this->config( 'admin/jqadm/template/page', 'common/page-standard' ) ); ?>
@@ -436,34 +436,34 @@ You can adapt this partial to your needs, insert it instead of the `<!-- navigat
 
 ```php
 <div class="navbar-content">
-	<ul class="nav nav-tabs flex-md-column flex-wrap d-flex justify-content-between" role="tablist">
-		<li class="nav-item basic">
-			<a class="nav-link active" href="#basic" data-toggle="tab" role="tab" aria-expanded="true" aria-controls="basic">
-				<?= $enc->html( $this->translate( 'admin', 'Basic' ) ); ?>
-			</a>
-		</li>
-		<?php foreach( array_values( $this->get( 'itemSubparts', [] ) ) as $idx => $subpart ) : ?>
-			<li class="nav-item <?= $enc->attr( $subpart ); ?>">
-				<a class="nav-link" href="#<?= $enc->attr( $subpart ); ?>" data-toggle="tab" role="tab" tabindex="<?= ++$idx + 1; ?>">
-					<?= $enc->html( $this->translate( 'admin', $subpart ) ); ?>
-				</a>
-			</li>
-		<?php endforeach; ?>
-	</ul>
-	<div class="item-meta text-muted">
-		<small>
-			<?= $enc->html( $this->translate( 'admin', 'Modified' ) ); ?>:
-			<span class="meta-value"><?= $enc->html( $this->get( 'itemData/mypanel.mtime' ) ); ?></span>
-		</small>
-		<small>
-			<?= $enc->html( $this->translate( 'admin', 'Created' ) ); ?>:
-			<span class="meta-value"><?= $enc->html( $this->get( 'itemData/mypanel.ctime' ) ); ?></span>
-		</small>
-		<small>
-			<?= $enc->html( $this->translate( 'admin', 'Editor' ) ); ?>:
-			<span class="meta-value"><?= $enc->html( $this->get( 'itemData/mypanel.editor' ) ); ?></span>
-		</small>
-	</div>
+    <ul class="nav nav-tabs flex-md-column flex-wrap d-flex justify-content-between" role="tablist">
+        <li class="nav-item basic">
+            <a class="nav-link active" href="#basic" data-toggle="tab" role="tab" aria-expanded="true" aria-controls="basic">
+                <?= $enc->html( $this->translate( 'admin', 'Basic' ) ); ?>
+            </a>
+        </li>
+        <?php foreach( array_values( $this->get( 'itemSubparts', [] ) ) as $idx => $subpart ) : ?>
+            <li class="nav-item <?= $enc->attr( $subpart ); ?>">
+                <a class="nav-link" href="#<?= $enc->attr( $subpart ); ?>" data-toggle="tab" role="tab" tabindex="<?= ++$idx + 1; ?>">
+                    <?= $enc->html( $this->translate( 'admin', $subpart ) ); ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="item-meta text-muted">
+        <small>
+            <?= $enc->html( $this->translate( 'admin', 'Modified' ) ); ?>:
+            <span class="meta-value"><?= $enc->html( $this->get( 'itemData/mypanel.mtime' ) ); ?></span>
+        </small>
+        <small>
+            <?= $enc->html( $this->translate( 'admin', 'Created' ) ); ?>:
+            <span class="meta-value"><?= $enc->html( $this->get( 'itemData/mypanel.ctime' ) ); ?></span>
+        </small>
+        <small>
+            <?= $enc->html( $this->translate( 'admin', 'Editor' ) ); ?>:
+            <span class="meta-value"><?= $enc->html( $this->get( 'itemData/mypanel.editor' ) ); ?></span>
+        </small>
+    </div>
 </div>
 ```
 
@@ -479,87 +479,87 @@ The content in the basic tab usually consists of input and select fields that co
 ```php
 <div id="basic" class="row item-basic tab-pane fade show active" role="tabpanel" aria-labelledby="basic">
 
-	<div class="col-xl-6 content-block vue-block <?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>"
-		data-data="<?= $enc->attr( $this->get( 'itemData', new stdClass() ) ) ?>">
+    <div class="col-xl-6 content-block vue-block <?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>"
+        data-data="<?= $enc->attr( $this->get( 'itemData', new stdClass() ) ) ?>">
 
-		<div class="form-group row mandatory">
-			<label class="col-sm-4 form-control-label"><?= $enc->html( $this->translate( 'admin', 'Status' ) ); ?></label>
-			<div class="col-sm-8">
-				<select class="form-control custom-select item-status" required="required" tabindex="1"
-					name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.status'] ) ); ?>"
-					<?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?> >
-					<option value="">
-						<?= $enc->html( $this->translate( 'admin', 'Please select' ) ); ?>
-					</option>
-					<option value="1" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), 1 ); ?> >
-						<?= $enc->html( $this->translate( 'mshop/code', 'status:1' ) ); ?>
-					</option>
-					<option value="0" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), 0 ); ?> >
-						<?= $enc->html( $this->translate( 'mshop/code', 'status:0' ) ); ?>
-					</option>
-					<option value="-1" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), -1 ); ?> >
-						<?= $enc->html( $this->translate( 'mshop/code', 'status:-1' ) ); ?>
-					</option>
-					<option value="-2" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), -2 ); ?> >
-						<?= $enc->html( $this->translate( 'mshop/code', 'status:-2' ) ); ?>
-					</option>
-				</select>
-			</div>
-		</div>
-		<?php if( ( $types = $this->get( 'itemTypes', map() )->col( 'mypanel.type.label', 'mypanel.type.code' ) )->count() !== 1 ) : ?>
-			<div class="form-group row mandatory">
-				<label class="col-sm-4 form-control-label"><?= $enc->html( $this->translate( 'admin', 'Type' ) ); ?></label>
-				<div class="col-sm-8">
-					<select is="select-component" class="form-control custom-select item-type" required v-bind:tabindex="'1'"
-						v-bind:readonly="'<?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>' ? true : false"
-						v-bind:name="'<?= $enc->attr( $this->formparam( ['item', 'mypanel.type'] ) ); ?>'"
-						v-bind:text="'<?= $enc->html( $this->translate( 'admin', 'Please select' ) ); ?>'"
-						v-bind:items="JSON.parse('<?= $enc->attr( $types->toArray() ) ?>')"
-						v-model="data['mypanel.type']" >
-						<option value="<?= $enc->attr( $this->get( 'itemData/mypanel.type' ) ) ?>">
-							<?= $enc->html( $types[$this->get( 'itemData/mypanel.type', '' )] ?? $this->translate( 'admin', 'Please select' ) ) ?>
-						</option>
-					</select>
-				</div>
-			</div>
-		<?php else : ?>
-			<input class="item-type" type="hidden"
-				name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.type'] ) ); ?>"
-				value="<?= $enc->attr( $types->firstKey() ) ?>" />
-		<?php endif; ?>
-		<div class="form-group row mandatory">
-			<label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'Label' ) ); ?></label>
-			<div class="col-sm-8">
-				<input class="form-control item-label" type="text" required="required" tabindex="1"
-					name="<?= $this->formparam( ['item', 'mypanel.label'] ); ?>"
-					placeholder="<?= $enc->attr( $this->translate( 'admin', 'Internal name (required)' ) ); ?>"
-					value="<?= $enc->attr( $this->get( 'itemData/mypanel.label' ) ); ?>"
-					<?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?> />
-			</div>
-			<div class="col-sm-12 form-text text-muted help-text">
-				<?= $enc->html( $this->translate( 'admin', 'Internal article name, will be used on the web site and for searching only if no other mypanel names in any language exist' ) ); ?>
-			</div>
-		</div>
-		<div class="form-group row optional advanced">
-			<label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'Created' ) ); ?></label>
-			<div class="col-sm-8">
-				<input is="flat-pickr" class="form-control item-ctime" type="datetime-local" tabindex="1"
-					name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.ctime'] ) ); ?>"
-					placeholder="<?= $enc->attr( $this->translate( 'admin', 'YYYY-MM-DD hh:mm:ss (optional)' ) ); ?>"
-					v-bind:value="'<?= $enc->attr( $this->datetime( $this->get( 'itemData/mypanel.ctime' ) ) ); ?>'"
-					v-bind:disabled="'<?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>' !== ''"
-					v-bind:config="Aimeos.flatpickr.datetime" />
-			</div>
-			<div class="col-sm-12 form-text text-muted help-text">
-				<?= $enc->html( $this->translate( 'admin', 'Since when the mypanel is available, used for sorting in the front-end' ) ); ?>
-			</div>
-		</div>
-	</div><!--
+        <div class="form-group row mandatory">
+            <label class="col-sm-4 form-control-label"><?= $enc->html( $this->translate( 'admin', 'Status' ) ); ?></label>
+            <div class="col-sm-8">
+                <select class="form-control custom-select item-status" required="required" tabindex="1"
+                    name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.status'] ) ); ?>"
+                    <?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?> >
+                    <option value="">
+                        <?= $enc->html( $this->translate( 'admin', 'Please select' ) ); ?>
+                    </option>
+                    <option value="1" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), 1 ); ?> >
+                        <?= $enc->html( $this->translate( 'mshop/code', 'status:1' ) ); ?>
+                    </option>
+                    <option value="0" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), 0 ); ?> >
+                        <?= $enc->html( $this->translate( 'mshop/code', 'status:0' ) ); ?>
+                    </option>
+                    <option value="-1" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), -1 ); ?> >
+                        <?= $enc->html( $this->translate( 'mshop/code', 'status:-1' ) ); ?>
+                    </option>
+                    <option value="-2" <?= $selected( $this->get( 'itemData/mypanel.status', 1 ), -2 ); ?> >
+                        <?= $enc->html( $this->translate( 'mshop/code', 'status:-2' ) ); ?>
+                    </option>
+                </select>
+            </div>
+        </div>
+        <?php if( ( $types = $this->get( 'itemTypes', map() )->col( 'mypanel.type.label', 'mypanel.type.code' ) )->count() !== 1 ) : ?>
+            <div class="form-group row mandatory">
+                <label class="col-sm-4 form-control-label"><?= $enc->html( $this->translate( 'admin', 'Type' ) ); ?></label>
+                <div class="col-sm-8">
+                    <select is="select-component" class="form-control custom-select item-type" required v-bind:tabindex="'1'"
+                        v-bind:readonly="'<?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>' ? true : false"
+                        v-bind:name="'<?= $enc->attr( $this->formparam( ['item', 'mypanel.type'] ) ); ?>'"
+                        v-bind:text="'<?= $enc->html( $this->translate( 'admin', 'Please select' ) ); ?>'"
+                        v-bind:items="JSON.parse('<?= $enc->attr( $types->toArray() ) ?>')"
+                        v-model="data['mypanel.type']" >
+                        <option value="<?= $enc->attr( $this->get( 'itemData/mypanel.type' ) ) ?>">
+                            <?= $enc->html( $types[$this->get( 'itemData/mypanel.type', '' )] ?? $this->translate( 'admin', 'Please select' ) ) ?>
+                        </option>
+                    </select>
+                </div>
+            </div>
+        <?php else : ?>
+            <input class="item-type" type="hidden"
+                name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.type'] ) ); ?>"
+                value="<?= $enc->attr( $types->firstKey() ) ?>" />
+        <?php endif; ?>
+        <div class="form-group row mandatory">
+            <label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'Label' ) ); ?></label>
+            <div class="col-sm-8">
+                <input class="form-control item-label" type="text" required="required" tabindex="1"
+                    name="<?= $this->formparam( ['item', 'mypanel.label'] ); ?>"
+                    placeholder="<?= $enc->attr( $this->translate( 'admin', 'Internal name (required)' ) ); ?>"
+                    value="<?= $enc->attr( $this->get( 'itemData/mypanel.label' ) ); ?>"
+                    <?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?> />
+            </div>
+            <div class="col-sm-12 form-text text-muted help-text">
+                <?= $enc->html( $this->translate( 'admin', 'Internal article name, will be used on the web site and for searching only if no other mypanel names in any language exist' ) ); ?>
+            </div>
+        </div>
+        <div class="form-group row optional advanced">
+            <label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'Created' ) ); ?></label>
+            <div class="col-sm-8">
+                <input is="flat-pickr" class="form-control item-ctime" type="datetime-local" tabindex="1"
+                    name="<?= $enc->attr( $this->formparam( ['item', 'mypanel.ctime'] ) ); ?>"
+                    placeholder="<?= $enc->attr( $this->translate( 'admin', 'YYYY-MM-DD hh:mm:ss (optional)' ) ); ?>"
+                    v-bind:value="'<?= $enc->attr( $this->datetime( $this->get( 'itemData/mypanel.ctime' ) ) ); ?>'"
+                    v-bind:disabled="'<?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>' !== ''"
+                    v-bind:config="Aimeos.flatpickr.datetime" />
+            </div>
+            <div class="col-sm-12 form-text text-muted help-text">
+                <?= $enc->html( $this->translate( 'admin', 'Since when the mypanel is available, used for sorting in the front-end' ) ); ?>
+            </div>
+        </div>
+    </div><!--
 
-	--><div class="col-xl-6 content-block vue-block <?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>"
-		data-data="<?= $enc->attr( $this->get( 'itemData', new stdClass() ) ) ?>">
+    --><div class="col-xl-6 content-block vue-block <?= $this->site()->readonly( $this->get( 'itemData/mypanel.siteid' ) ); ?>"
+        data-data="<?= $enc->attr( $this->get( 'itemData', new stdClass() ) ) ?>">
 
-	</div>
+    </div>
 </div>
 ```
 

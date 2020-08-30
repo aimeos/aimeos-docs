@@ -61,7 +61,7 @@ $stmt = $conn->create( 'UPDATE "mytable" SET "mycol" = ? WHERE "myid"=?' )
     ->bind( 1, 'some value' );
     ->bind( 2, 123, \Aimeos\MW\DB\Statement\Base::PARAM_INT );
     ->execute()
-	->finish();
+    ->finish();
 ```
 
 To retrieve data, you have to fetch the data of the result set:
@@ -69,7 +69,7 @@ To retrieve data, you have to fetch the data of the result set:
 ```php
 $result = $conn->create( 'SELECT * FROM "mytable" WHERE "mycol" = ?' )
     ->bind( 1, 'myvalue' )
-	->execute();
+    ->execute();
 
 while( $row = $result->fetch() ) {
     // $row is an associative array of column names and values
@@ -167,7 +167,7 @@ Sometimes, you will need to send an e-mail to someone for notification. The mail
 $this->getContext()->mail()
     ->createMessage()
     ->addFrom( 'me@localhost' )
-	->addTo( 'me@example.com' )
+    ->addTo( 'me@example.com' )
     ->setSubject( 'Important message' )
     ->setBody( 'The text body' )
     ->addAttachment( 'some data', 'text/plain', 'myfile.txt' )

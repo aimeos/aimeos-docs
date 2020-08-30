@@ -18,26 +18,26 @@ If you create a new job controller that doesn't extend an existing one, you need
 namespace Aimeos\Controller\Jobs\Product\Export;
 
 class Factory
-	extends \Aimeos\Controller\Jobs\Common\Factory\Base
-	implements \Aimeos\Controller\Jobs\Common\Factory\Iface
+    extends \Aimeos\Controller\Jobs\Common\Factory\Base
+    implements \Aimeos\Controller\Jobs\Common\Factory\Iface
 {
-	public static function create( \Aimeos\MShop\Context\Item\Iface $context, \Aimeos\Bootstrap $aimeos, string $name = null ) : \Aimeos\Controller\Jobs\Iface
-	{
-		if( $name === null ) {
-			$name = $context->getConfig()->get( 'controller/jobs/product/export/name', 'Standard' );
-		}
+    public static function create( \Aimeos\MShop\Context\Item\Iface $context, \Aimeos\Bootstrap $aimeos, string $name = null ) : \Aimeos\Controller\Jobs\Iface
+    {
+        if( $name === null ) {
+            $name = $context->getConfig()->get( 'controller/jobs/product/export/name', 'Standard' );
+        }
 
-		$iface = '\\Aimeos\\Controller\\Jobs\\Iface';
-		$classname = '\\Aimeos\\Controller\\Jobs\\Product\\Export\\' . $name;
+        $iface = '\\Aimeos\\Controller\\Jobs\\Iface';
+        $classname = '\\Aimeos\\Controller\\Jobs\\Product\\Export\\' . $name;
 
-		if( ctype_alnum( $name ) === false ) {
-			throw new \Aimeos\Controller\Jobs\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
-		}
+        if( ctype_alnum( $name ) === false ) {
+            throw new \Aimeos\Controller\Jobs\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
+        }
 
-		$controller = self::createController( $context, $aimeos, $classname, $iface );
+        $controller = self::createController( $context, $aimeos, $classname, $iface );
 
-		return self::addControllerDecorators( $context, $aimeos, $controller, 'product/export' );
-	}
+        return self::addControllerDecorators( $context, $aimeos, $controller, 'product/export' );
+    }
 }
 ```
 
@@ -51,23 +51,23 @@ Creating a new job controller is rather simple because it needs to contain only 
 namespace Aimeos\Controller\Jobs\Product\Export;
 
 class Standard
-	extends \Aimeos\Controller\Jobs\Base
-	implements Aimeos\Controller\Jobs\Iface
+    extends \Aimeos\Controller\Jobs\Base
+    implements Aimeos\Controller\Jobs\Iface
 {
-	public function getName() : string
-	{
-		return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Product export' );
-	}
+    public function getName() : string
+    {
+        return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Product export' );
+    }
 
- 	public function getDescription() : string
-	{
-		return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Exports all available products' );
-	}
+     public function getDescription() : string
+    {
+        return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Exports all available products' );
+    }
 
- 	public function run()
-	{
-		// ...
-	}
+     public function run()
+    {
+        // ...
+    }
 }
 ```
 
@@ -187,42 +187,42 @@ namespace Aimeos\Controller\Jobs\Product\Export;
 
 class StandardTest extends \PHPUnit\Framework\TestCase
 {
-	private $object;
-	private $context;
-	private $aimeos;
+    private $object;
+    private $context;
+    private $aimeos;
 
-	protected function setUp() : void
-	{
-		\Aimeos\MShop::cache( true );
+    protected function setUp() : void
+    {
+        \Aimeos\MShop::cache( true );
 
-		$this->context = \TestHelperJobs::getContext();
-		$this->aimeos = \TestHelperJobs::getAimeos();
+        $this->context = \TestHelperJobs::getContext();
+        $this->aimeos = \TestHelperJobs::getAimeos();
 
-		$this->object = new \Aimeos\Controller\Jobs\Product\Export\Standard( $this->context, $this->aimeos );
-	}
+        $this->object = new \Aimeos\Controller\Jobs\Product\Export\Standard( $this->context, $this->aimeos );
+    }
 
-	protected function tearDown() : void
-	{
-		\Aimeos\MShop::cache( false );
-		unset( $this->object, $this->context, $this->aimeos );
-	}
+    protected function tearDown() : void
+    {
+        \Aimeos\MShop::cache( false );
+        unset( $this->object, $this->context, $this->aimeos );
+    }
 
-	public function testGetName()
-	{
-		$this->assertEquals( 'Product export', $this->object->getName() );
-	}
+    public function testGetName()
+    {
+        $this->assertEquals( 'Product export', $this->object->getName() );
+    }
 
-	public function testGetDescription()
-	{
-		$text = 'Exports all available products';
-		$this->assertEquals( $text, $this->object->getDescription() );
-	}
+    public function testGetDescription()
+    {
+        $text = 'Exports all available products';
+        $this->assertEquals( $text, $this->object->getDescription() );
+    }
 
-	public function testRun()
-	{
-		$this->object->run();
-		// test changes
-	}
+    public function testRun()
+    {
+        $this->object->run();
+        // test changes
+    }
 }
 ```
 
@@ -239,9 +239,9 @@ In this `testRun()` method, the tests should be looking for generated files or o
 
 ```php
 $mock = $this->getMockBuilder('\Aimeos\MShop\Product\Manager\Standard')
-	->setConstructorArgs( [$this->context] )
-	->setMethods( ['delete', 'save'] )
-	->getMock();
+    ->setConstructorArgs( [$this->context] )
+    ->setMethods( ['delete', 'save'] )
+    ->getMock();
 
 \Aimeos\MShop::inject( $this->context, 'product', $mock );
 

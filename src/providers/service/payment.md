@@ -15,8 +15,8 @@ The skeleton for the most basic implementation of a payment service provider wou
 namespace Aimeos\MShop\Service\Provider\Payment;
 
 class Myprovider
-	extends \Aimeos\MShop\Service\Provider\Payment\Base
-	implements \Aimeos\MShop\Service\Provider\Payment\Iface
+    extends \Aimeos\MShop\Service\Provider\Payment\Base
+    implements \Aimeos\MShop\Service\Provider\Payment\Iface
 {
     /**
      * Tries to get an authorization or captures the money immediately for the given
@@ -25,7 +25,7 @@ class Myprovider
      * @param \Aimeos\MShop\Order\Item\Iface $order Order invoice object
      * @param array $params Request parameter if available
      * @return \Aimeos\MShop\Common\Helper\Form\Standard Form object with URL, action
-     *  and parameters to redirect to	(e.g. to an external server of the payment
+     *  and parameters to redirect to    (e.g. to an external server of the payment
      *  provider or to a local success page)
      */
     public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] )
@@ -117,7 +117,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = 
             'type' => 'string',
             'default' => $order->getId(),
             'public' => false,
-		] ),
+        ] ),
         'myprovider.total' => new \Aimeos\MW\Criteria\Attribute\Standard( [
             'label' => 'Total value',
             'code' => 'myprovider.total',
@@ -126,8 +126,8 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = 
             'type' => 'float',
             'default' => $total,
             'public' => false,
-		] ),
-	];
+        ] ),
+    ];
 
     $gatewayUrl = $this->getConfigValue( 'myprovider.url', 'https://gateway.com' );
     return new \Aimeos\MShop\Common\Helper\Form\Standard( $gatewayUrl, 'POST', $list );
@@ -170,8 +170,8 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = 
                 'type' => 'string',
                 'default' => *,
                 'public' => true,
-			] ),
-		];
+            ] ),
+        ];
 
         $selfUrl = $this->getConfigValue( 'payment.url-self' );
         return new \Aimeos\MShop\Common\Helper\Form\Standard( $selfUrl, 'POST', $list );

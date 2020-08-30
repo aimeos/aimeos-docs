@@ -175,9 +175,9 @@ You can add an entry for every data domain replacing the *<domain>* placeholder 
 The fallback database (which is also the standard database) is already configured within the Aimeos TYPO3 extension and is the one of your TYPO3 installation. If you want to move the shop related tables to their own database, add a configuration entry for **db** to your configuration file:
 
 ```php
-	'db' => [
-		// ...
-	],
+    'db' => [
+        // ...
+    ],
 ```
 
 !!! warning

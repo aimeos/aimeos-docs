@@ -44,8 +44,8 @@ It's also possible to specify several criteria as condition to filter the return
 
 ```php
 $filter->add( [
-	'product.id' => [1, 5, 7],
-	'product.code' => 'test'
+    'product.id' => [1, 5, 7],
+    'product.code' => 'test'
 ] );
 ```
 
@@ -53,8 +53,8 @@ These conditions would search for a product item with "test" as code and the pro
 
 ```php
 $filter->add( [
-	'product.id' => 10,
-	'product.status' => 0
+    'product.id' => 10,
+    'product.status' => 0
 ], '>' );
 ```
 
@@ -110,8 +110,8 @@ The second and the third array element (<list type> and <referenced ID> as well 
 
 ```php
 $filter->add( '==', 'product.type.code', 'select' )
-	->add( $filter->make( 'product:has', ['attribute', 'default', 123] ), '!=', null )
-	->add( $filter->make( 'product:prop', ['ISBN', null, 'abc'] ), '!=', null );
+    ->add( $filter->make( 'product:has', ['attribute', 'default', 123] ), '!=', null )
+    ->add( $filter->make( 'product:prop', ['ISBN', null, 'abc'] ), '!=', null );
 ```
 
 These criteria would return all product items that are selection products, having a referenced attribute with list type "default" and attribute ID "123" as well as a property of type "ISBN", which isn't language specific and equals "abc".
@@ -182,14 +182,14 @@ $start = 0;
 
 do
 {
-	$result = $manager->search( $filter->slice( $start ) );
+    $result = $manager->search( $filter->slice( $start ) );
 
-	foreach ( $result as $item ) {
-		// process items
-	}
+    foreach ( $result as $item ) {
+        // process items
+    }
 
-	$count = count( $result );
-	$start += $count;
+    $count = count( $result );
+    $start += $count;
 }
 while( $count == $filter->getLimit() );
 ```

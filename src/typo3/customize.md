@@ -186,11 +186,11 @@ plugin.tx_aimeos.settings.i18n.cz.0 {
   domain = client
   string = hour
   trans {
-	# one hour
+    # one hour
     0 = dlouhá hodina
-	# two to four hours
+    # two to four hours
     1 = dlouhé hodiny
-	# more than four hours
+    # more than four hours
     2 = dlouhých hodin
   }
 }

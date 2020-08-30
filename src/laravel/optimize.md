@@ -49,11 +49,11 @@ You can define one database for each domain (e.g. order, customer, etc.) in the 
         'username' => '<database user>',
         'password' => '<user password>',
         'stmt' => ["
-			SET NAMES 'utf8mb4';
-			SET SESSION sql_mode='ANSI';
-			SET SESSION sort_buffer_size=2097144;
-			SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
-		"],
+            SET NAMES 'utf8mb4';
+            SET SESSION sql_mode='ANSI';
+            SET SESSION sort_buffer_size=2097144;
+            SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+        "],
         'limit' => 2,
         'opt-persistent' => 0,
     ],
@@ -157,31 +157,31 @@ The advantage of a CDN over a sub-domain on your own server is the load-balancin
 In both cases, you need to configure the Aimeos Laravel package to create links to the product pictures with a different domain. This can be done via an entry in the `config/shop.php` file:
 
 ```php
-	'resource' => [
-		'fs' => [
-			'adapter' => 'Standard',
-			'basedir' => public_path(),
-			'tempdir' => storage_path( 'tmp' ),
-			'baseurl' => 'https://static.example.com/media/',
-		],
-	],
+    'resource' => [
+        'fs' => [
+            'adapter' => 'Standard',
+            'basedir' => public_path(),
+            'tempdir' => storage_path( 'tmp' ),
+            'baseurl' => 'https://static.example.com/media/',
+        ],
+    ],
 ```
 
 You can also use the "aimeos/ai-filesystem" package to store files directly on another server. There are drivers for different services available and for details, please have a look at the readme file of the [ai-filesystem package](https://github.com/aimeos/ai-filesystem#installation). An example configuration for using an Amazon S3 storage would be:
 
 ```php
-	'resource' => [
-		'fs' => [
-			'adapter' => 'FlyAwsS3',
-			'credentials' => [
-				'key'    => 'your-key',
-				'secret' => 'your-secret',
-			],
-			'region' => 'your-region',
-			'version' => 'latest',
-			'bucket' => 'your-bucket-name',
-			'prefix' => 'your-prefix', // optional
-			'baseurl' => 'https://your-bucket-name.s3.your-region.amazonaws.com/your-prefix/',
-		],
-	],
+    'resource' => [
+        'fs' => [
+            'adapter' => 'FlyAwsS3',
+            'credentials' => [
+                'key'    => 'your-key',
+                'secret' => 'your-secret',
+            ],
+            'region' => 'your-region',
+            'version' => 'latest',
+            'bucket' => 'your-bucket-name',
+            'prefix' => 'your-prefix', // optional
+            'baseurl' => 'https://your-bucket-name.s3.your-region.amazonaws.com/your-prefix/',
+        ],
+    ],
 ```

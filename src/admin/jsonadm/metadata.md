@@ -6,7 +6,7 @@ Afterwards, you must use the OPTIONS method to retrieve the service description 
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X OPTIONS 'https://localhost:8000/admin/default/jsonadm'
     ```
 === "jQuery"
@@ -43,7 +43,7 @@ To access the products for example, you must lookup the URL for the "product" re
 
 === "CURL"
     ```bash
-	curl -b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/admin/default/jsonadm/product'
     ```
 === "jQuery"

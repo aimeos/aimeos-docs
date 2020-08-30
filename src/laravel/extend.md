@@ -89,9 +89,9 @@ By default, not all shop components are available on every page as this would cr
 ```php
 'page' => [
     'account' => [
-		'account/history','account/favorite','account/watch',
-		'basket/mini','catalog/session'
-	]
+        'account/history','account/favorite','account/watch',
+        'basket/mini','catalog/session'
+    ]
 ]
 ```
 
@@ -107,9 +107,9 @@ For example, if you want to add the catalog filter component to your "MyAccount"
 ```php
 'page' => [
     'account-index' => [
-		'account/history','account/favorite','account/watch',
-		'basket/mini','catalog/session','catalog/filter'
-	]
+        'account/history','account/favorite','account/watch',
+        'basket/mini','catalog/session','catalog/filter'
+    ]
 ]
 ```
 
@@ -160,8 +160,8 @@ That template wouldn't output the "catalog/session" body and header HTML but to 
 ```php
 'page' => [
     'account-index' => [
-		'account/history','account/favorite','account/watch','basket/mini'
-	]
+        'account/history','account/favorite','account/watch','basket/mini'
+    ]
 ]
 ```
 
@@ -211,7 +211,7 @@ $ouput = [
     'aiheader' => [
         'basket/mini' => '... HTML head tags ...',
         'catalog/session' => '... HTML head tags ...'
-	],
+    ],
 );
 ```
 
@@ -301,8 +301,8 @@ Routes are defined in the `src/routes.php` of the Aimeos shop package and a set 
 
 ```php
 Route::match( ['GET', 'POST' ] '<path of the route>', [
-	'as' => '<route name>',
-	'uses' => 'Aimeos\Shop\Controller\<controller name>@<action name>'
+    'as' => '<route name>',
+    'uses' => 'Aimeos\Shop\Controller\<controller name>@<action name>'
 ));
 ```
 
@@ -337,8 +337,8 @@ For all existing routes, you can change the path and the default parameters by r
 
 ```php
 Route::get('terms_and_conditions', [
-	'as' => 'aimeos_shop_terms',
-	'uses' => '\Aimeos\Shop\Controller\PageController@termsAction'
+    'as' => 'aimeos_shop_terms',
+    'uses' => '\Aimeos\Shop\Controller\PageController@termsAction'
 ));
 ```
 
@@ -346,8 +346,8 @@ Similarly, changing the controller and action name to a custom one ("MyControlle
 
 ```php
 Route::get('terms', [
-	'as' => 'aimeos_shop_terms',
-	'uses' => 'MyController@mytermsAction'
+    'as' => 'aimeos_shop_terms',
+    'uses' => 'MyController@mytermsAction'
 ));
 ```
 
@@ -359,8 +359,8 @@ Aimeos is able to manage many sites in one installation with different languages
 
 ```php
 'routes' => [
-	'account' => ['prefix' => '{site}/{locale}/{currency}', ...],
-	'default' => ['prefix' => '{site}/{locale}/{currency}', ...]
+    'account' => ['prefix' => '{site}/{locale}/{currency}', ...],
+    'default' => ['prefix' => '{site}/{locale}/{currency}', ...]
 );
 ```
 
@@ -383,8 +383,8 @@ If you've implemented a new Aimeos core component that generates URLs to a new p
 
 ```php
 Route::get('new_page', [
-	'as' => 'aimeos_shop_mypage',
-	'uses' => 'MyController@myAction'
+    'as' => 'aimeos_shop_mypage',
+    'uses' => 'MyController@myAction'
 ));
 ```
 
@@ -418,20 +418,20 @@ To make the locale selector available in the templates, you need to add the comp
 
 ```php
 'page' => [
-	'account-index' => [
-		'locale/select','account/history','account/favorite','account/watch',
-		'basket/mini','catalog/session'
-	]
-	'basket-index' => ['locale/select','basket/standard','basket/related'],
-	'catalog-detail' => [
-		'locale/select','basket/mini','catalog/stage',
-		'catalog/detail','catalog/session'
-	],
-	'catalog-list' => [
-		'locale/select','basket/mini','catalog/filter',
-		'catalog/stage','catalog/lists'
-	],
-	// ...
+    'account-index' => [
+        'locale/select','account/history','account/favorite','account/watch',
+        'basket/mini','catalog/session'
+    ]
+    'basket-index' => ['locale/select','basket/standard','basket/related'],
+    'catalog-detail' => [
+        'locale/select','basket/mini','catalog/stage',
+        'catalog/detail','catalog/session'
+    ],
+    'catalog-list' => [
+        'locale/select','basket/mini','catalog/filter',
+        'catalog/stage','catalog/lists'
+    ],
+    // ...
 ]
 ```
 
@@ -441,18 +441,18 @@ If you upgrade from earlier versions, please make sure that your shop configurat
 
 ```php
 'client' => [
-	'html' => [
-		'locale' => [
-			'select' => [
-				'currency' => [
-					'param-name' => 'currency',
-				],
-				'language' => [
-					'param-name' => 'locale',
-				],
-			],
-		],
-	],
+    'html' => [
+        'locale' => [
+            'select' => [
+                'currency' => [
+                    'param-name' => 'currency',
+                ],
+                'language' => [
+                    'param-name' => 'locale',
+                ],
+            ],
+        ],
+    ],
 ],
 ```
 

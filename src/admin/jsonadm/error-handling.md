@@ -16,8 +16,8 @@ Also, the JSON API standard specifies an "errors" section in the JSON response t
 ```json
 {
     "errors": [{
-		"title": "No product with ID 1 available",
-		"detail": "<stack trace where the error occured>"
+        "title": "No product with ID 1 available",
+        "detail": "<stack trace where the error occured>"
     }]
 }
 ```

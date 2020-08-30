@@ -15,83 +15,83 @@ There are some address attributes that are required when adding or replacing an 
 The request for creating a new address in the basket could look like:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X POST 'http://localhost:8000/jsonapi/basket?id=default&related=address&_token=...' \
-	-H 'Content-Type: application/json' \
-	-d '{"data": [{
-		"id": "payment",
-		"attributes": {
-			"order.base.address.addressid": "...",
-			"order.base.address.salutation": "mr",
-			"order.base.address.company": "Example company",
-			"order.base.address.vatid": "DE123456789",
-			"order.base.address.title": "Dr.",
-			"order.base.address.firstname": "Test",
-			"order.base.address.lastname": "User",
-			"order.base.address.address1": "Test street",
-			"order.base.address.address2": "1",
-			"order.base.address.address3": "",
-			"order.base.address.postal": "12345",
-			"order.base.address.city": "Test city",
-			"order.base.address.state": "HH",
-			"order.base.address.countryid": "DE",
-			"order.base.address.languageid": "de",
-			"order.base.address.telephone": "+4912345678",
-			"order.base.address.telefax": "+49123456789",
-			"order.base.address.email": "test@example.com",
-			"order.base.address.website": "https://example.com",
-			"order.base.address.longitude": 10.0,
-			"order.base.address.latitude": 50.0
-		}
-	}]}'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X POST 'http://localhost:8000/jsonapi/basket?id=default&related=address&_token=...' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": [{
+        "id": "payment",
+        "attributes": {
+            "order.base.address.addressid": "...",
+            "order.base.address.salutation": "mr",
+            "order.base.address.company": "Example company",
+            "order.base.address.vatid": "DE123456789",
+            "order.base.address.title": "Dr.",
+            "order.base.address.firstname": "Test",
+            "order.base.address.lastname": "User",
+            "order.base.address.address1": "Test street",
+            "order.base.address.address2": "1",
+            "order.base.address.address3": "",
+            "order.base.address.postal": "12345",
+            "order.base.address.city": "Test city",
+            "order.base.address.state": "HH",
+            "order.base.address.countryid": "DE",
+            "order.base.address.languageid": "de",
+            "order.base.address.telephone": "+4912345678",
+            "order.base.address.telefax": "+49123456789",
+            "order.base.address.email": "test@example.com",
+            "order.base.address.website": "https://example.com",
+            "order.base.address.longitude": 10.0,
+            "order.base.address.latitude": 50.0
+        }
+    }]}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'data': [{
-		'id': 'payment', // or 'delivery'
-		'attributes': {
-			'order.base.address.addressid': '...', // customer address ID (optional)
-			'order.base.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
-			'order.base.address.company': 'Example company', // (optional)
-			'order.base.address.vatid': 'DE123456789', // (optional)
-			'order.base.address.title': 'Dr.', // (optional)
-			'order.base.address.firstname': 'Test', // (optional)
-			'order.base.address.lastname': 'User', // (required)
-			'order.base.address.address1': 'Test street', // (required)
-			'order.base.address.address2': '1', // (optional)
-			'order.base.address.address3': '', // (optional)
-			'order.base.address.postal': '12345', // (optional)
-			'order.base.address.city': 'Test city', // (required)
-			'order.base.address.state': 'HH', // (optional)
-			'order.base.address.countryid': 'DE', // (optional)
-			'order.base.address.languageid': 'de', // (required by many payment gateways)
-			'order.base.address.telephone': '+4912345678', // (optional)
-			'order.base.address.telefax': '+49123456789', // (optional)
-			'order.base.address.email': 'test@example.com', // (required)
-			'order.base.address.website': 'https://example.com', // (optional)
-			'order.base.address.longitude': 10.0, // (optional, float value)
-			'order.base.address.latitude': 50.0 // (optional, float value)
-		}
-	}]};
+    ```javascript
+    var params = {'data': [{
+        'id': 'payment', // or 'delivery'
+        'attributes': {
+            'order.base.address.addressid': '...', // customer address ID (optional)
+            'order.base.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
+            'order.base.address.company': 'Example company', // (optional)
+            'order.base.address.vatid': 'DE123456789', // (optional)
+            'order.base.address.title': 'Dr.', // (optional)
+            'order.base.address.firstname': 'Test', // (optional)
+            'order.base.address.lastname': 'User', // (required)
+            'order.base.address.address1': 'Test street', // (required)
+            'order.base.address.address2': '1', // (optional)
+            'order.base.address.address3': '', // (optional)
+            'order.base.address.postal': '12345', // (optional)
+            'order.base.address.city': 'Test city', // (required)
+            'order.base.address.state': 'HH', // (optional)
+            'order.base.address.countryid': 'DE', // (optional)
+            'order.base.address.languageid': 'de', // (required by many payment gateways)
+            'order.base.address.telephone': '+4912345678', // (optional)
+            'order.base.address.telefax': '+49123456789', // (optional)
+            'order.base.address.email': 'test@example.com', // (required)
+            'order.base.address.website': 'https://example.com', // (optional)
+            'order.base.address.longitude': 10.0, // (optional, float value)
+            'order.base.address.latitude': 50.0 // (optional, float value)
+        }
+    }]};
 
-	var url = response['links']['basket/address']['href']; // from basket response
+    var url = response['links']['basket/address']['href']; // from basket response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json",
-		data: JSON.stringify(params)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 The response will then contain an additional "relationships" section in the basket data that points to the new address in the "included" section:
 
@@ -190,28 +190,28 @@ The DELETE request can be constructed in that way:
 
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=address&relatedid=payment&_token=...'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=address&relatedid=payment&_token=...'
+    ```
 === "jQuery"
-	```javascript
-	// basket address URL returned from basket response
-	var url = response['included'][0]['links']['self']['href'];
+    ```javascript
+    // basket address URL returned from basket response
+    var url = response['included'][0]['links']['self']['href'];
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "DELETE",
-		dataType: "json"
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "DELETE",
+        dataType: "json"
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This request will remove the address entry from the basket and the response won't contain the address  in the "included" section as well the corresponding "relationships" entry any more.

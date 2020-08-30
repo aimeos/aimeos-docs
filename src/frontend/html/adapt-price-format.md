@@ -12,11 +12,11 @@ You can show only a specific price type or several price types at once, e.g. the
 
 ```php
 "i18n" => [
-	"en" => [
-		"client/code" => [
-			"price:default" => ["%1$s %2$s"]
-		],
-	],
+    "en" => [
+        "client/code" => [
+            "price:default" => ["%1$s %2$s"]
+        ],
+    ],
 ],
 ```
 
@@ -29,12 +29,12 @@ Imagine you need to display additional text next to your new price type, e.g. th
 
 ```php
 "i18n" => [
-	"en" => [
-		"client/code" => [
-			"price:month" => ["%1$s %2$s / month"]
-			"price:kilo" => ["%1$s %2$s / kg"]
-		],
-	],
+    "en" => [
+        "client/code" => [
+            "price:month" => ["%1$s %2$s / month"]
+            "price:kilo" => ["%1$s %2$s / kg"]
+        ],
+    ],
 ],
 ```
 

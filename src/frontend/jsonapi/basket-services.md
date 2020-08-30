@@ -5,217 +5,217 @@ Most of the time, you want to offer some shipping and payment options to your cu
 At first, you need to get the available delivery and payment options from the services resource URL listed in the OPTIONS request. With URL, you can query for the available services, either all together in one request or separated by their type ("delivery" or "payment"). The example code below will return all payment options:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X GET 'http://localhost:8000/jsonapi/service?filter[cs_type]=delivery&include=text,price,media'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X GET 'http://localhost:8000/jsonapi/service?filter[cs_type]=delivery&include=text,price,media'
+    ```
 === "jQuery"
-	```javascript
-	var params = {
-		'filter': {
-			'cs_type': 'delivery' // or "delivery" (optional)
-		},
-		'include': 'text,price,media'
-	};
+    ```javascript
+    var params = {
+        'filter': {
+            'cs_type': 'delivery' // or "delivery" (optional)
+        },
+        'include': 'text,price,media'
+    };
 
-	if(options.meta.prefix) { // returned from OPTIONS call
-		params[options.meta.prefix] = params;
-	}
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = params;
+    }
 
-	$.ajax({
-		method: "GET",
-		dataType: "json",
-		url: options.meta.resources['service'], // returned from OPTIONS call
-		data: params
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        method: "GET",
+        dataType: "json",
+        url: options.meta.resources['service'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 This returns the list of payment or delivery options (or both if the "filter" parameter is omitted) including the associated texts, price and images due to the "included" parameter:
 
 ```json
 {
-	"meta": {
-		"total": 5,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": "http://localhost:8000/jsonapi/service?filter%5Bcs_type%5D=delivery&include=text%2Cprice%2Cmedia"
-	},
-	"data": [{
-		"id": "1",
-		"type": "service",
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8000\/jsonapi\/service?id=1",
-				"allow": ["GET"]
-			},
-			"basket\/service": {
-				"href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
-				"allow": ["POST"],
-				"meta": {
-					"time.hourminute": {
-						"code": "time.hourminute",
-						"type": "time",
-						"label": "Delivery time",
-						"public": true,
-						"default": "07:15",
-						"required": true
-					},
-					"supplier.code": {
-						"code": "supplier.code",
-						"type": "list",
-						"label": "Pick-up address",
-						"public": true,
-						"default": {
-							"demo-test1": "Test supplier 1\nTest company\nTest street 1\n10000 Test city\nNY US\ndemo1@example.com\n",
-							"demo-test2": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n"
-						},
-						"required": true
-					}
-				}
-			}
-		},
-		"attributes": {
-			"service.id": "1",
-			"service.type": "delivery",
-			"service.code": "demo-pickup",
-			"service.label": "Click & Collect",
-			"service.provider": "Standard,Time,Supplier",
-			"service.position": 0,
-			"service.datestart": null,
-			"service.dateend": null,
-			"service.status": 1,
-			"price": {
-				"price.id": "27",
-				"price.type": "default",
-				"price.currencyid": "EUR",
-				"price.domain": "service",
-				"price.quantity": 1,
-				"price.value": "0.00",
-				"price.costs": "0.00",
-				"price.rebate": "0.00",
-				"price.taxvalue": "0.0000",
-				"price.taxrates": {
-					"": "0.00"
-				},
-				"price.taxrate": "0.00",
-				"price.taxflag": true,
-				"price.status": 1,
-				"price.label": "Demo: DHL"
-			}
-		},
-		"relationships": {
-			"media": {
-				"data": [{
-					"id": "18",
-					"type": "media",
-					"attributes": {
-						"service.lists.id": "1",
-						"service.lists.domain": "media",
-						"service.lists.refid": "18",
-						"service.lists.datestart": null,
-						"service.lists.dateend": null,
-						"service.lists.config": [],
-						"service.lists.position": 0,
-						"service.lists.status": 1,
-						"service.lists.type": "default"
-					}
-				}]
-			},
-			"price": {
-				"data": [{
-					"id": "27",
-					"type": "price",
-					"attributes": {
-						"service.lists.id": "2",
-						"service.lists.domain": "price",
-						"service.lists.refid": "27",
-						"service.lists.datestart": null,
-						"service.lists.dateend": null,
-						"service.lists.config": [],
-						"service.lists.position": 0,
-						"service.lists.status": 1,
-						"service.lists.type": "default"
-					}
-				}]
-			},
-			"text": {
-				"data": [{
-					"id": "86",
-					"type": "text",
-					"attributes": {
-						"service.lists.id": "6",
-						"service.lists.domain": "text",
-						"service.lists.refid": "86",
-						"service.lists.datestart": null,
-						"service.lists.dateend": null,
-						"service.lists.config": [],
-						"service.lists.position": 3,
-						"service.lists.status": 1,
-						"service.lists.type": "default"
-					}
-				}]
-			}
-		}
-	}],
-	"included": [{
-		"id": "18",
-		"type": "media",
-		"attributes": {
-		"media.id": "18",
-		"media.domain": "service",
-		"media.label": "Demo: dhl.png",
-		"media.languageid": null,
-		"media.mimetype": "image\/png",
-		"media.type": "icon",
-		"media.preview": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png",
-		"media.previews": {
-		"1": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png"
-		},
-		"media.url": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png",
-		"media.status": 1
-		}
-	},{
-		"id": "27",
-		"type": "price",
-		"attributes": {
-			"price.id": "27",
-			"price.type": "default",
-			"price.currencyid": "EUR",
-			"price.domain": "service",
-			"price.quantity": 1,
-			"price.value": "0.00",
-			"price.costs": "0.00",
-			"price.rebate": "0.00",
-			"price.taxvalue": "0.0000",
-			"price.taxrates": {
-				"": "0.00"
-			},
-			"price.taxrate": "0.00",
-			"price.taxflag": true,
-			"price.status": 1,
-			"price.label": "Demo: Click&Collect"
-		}
-	},{
-		"id": "86",
-		"type": "text",
-		"attributes": {
-			"text.id": "86",
-			"text.languageid": "en",
-			"text.type": "short",
-			"text.label": "Demo short\/en: Local pick-up",
-			"text.domain": "service",
-			"text.content": "Local pick-up",
-			"text.status": 1
-		}
-	}]
+    "meta": {
+        "total": 5,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": "http://localhost:8000/jsonapi/service?filter%5Bcs_type%5D=delivery&include=text%2Cprice%2Cmedia"
+    },
+    "data": [{
+        "id": "1",
+        "type": "service",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/service?id=1",
+                "allow": ["GET"]
+            },
+            "basket\/service": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
+                "allow": ["POST"],
+                "meta": {
+                    "time.hourminute": {
+                        "code": "time.hourminute",
+                        "type": "time",
+                        "label": "Delivery time",
+                        "public": true,
+                        "default": "07:15",
+                        "required": true
+                    },
+                    "supplier.code": {
+                        "code": "supplier.code",
+                        "type": "list",
+                        "label": "Pick-up address",
+                        "public": true,
+                        "default": {
+                            "demo-test1": "Test supplier 1\nTest company\nTest street 1\n10000 Test city\nNY US\ndemo1@example.com\n",
+                            "demo-test2": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n"
+                        },
+                        "required": true
+                    }
+                }
+            }
+        },
+        "attributes": {
+            "service.id": "1",
+            "service.type": "delivery",
+            "service.code": "demo-pickup",
+            "service.label": "Click & Collect",
+            "service.provider": "Standard,Time,Supplier",
+            "service.position": 0,
+            "service.datestart": null,
+            "service.dateend": null,
+            "service.status": 1,
+            "price": {
+                "price.id": "27",
+                "price.type": "default",
+                "price.currencyid": "EUR",
+                "price.domain": "service",
+                "price.quantity": 1,
+                "price.value": "0.00",
+                "price.costs": "0.00",
+                "price.rebate": "0.00",
+                "price.taxvalue": "0.0000",
+                "price.taxrates": {
+                    "": "0.00"
+                },
+                "price.taxrate": "0.00",
+                "price.taxflag": true,
+                "price.status": 1,
+                "price.label": "Demo: DHL"
+            }
+        },
+        "relationships": {
+            "media": {
+                "data": [{
+                    "id": "18",
+                    "type": "media",
+                    "attributes": {
+                        "service.lists.id": "1",
+                        "service.lists.domain": "media",
+                        "service.lists.refid": "18",
+                        "service.lists.datestart": null,
+                        "service.lists.dateend": null,
+                        "service.lists.config": [],
+                        "service.lists.position": 0,
+                        "service.lists.status": 1,
+                        "service.lists.type": "default"
+                    }
+                }]
+            },
+            "price": {
+                "data": [{
+                    "id": "27",
+                    "type": "price",
+                    "attributes": {
+                        "service.lists.id": "2",
+                        "service.lists.domain": "price",
+                        "service.lists.refid": "27",
+                        "service.lists.datestart": null,
+                        "service.lists.dateend": null,
+                        "service.lists.config": [],
+                        "service.lists.position": 0,
+                        "service.lists.status": 1,
+                        "service.lists.type": "default"
+                    }
+                }]
+            },
+            "text": {
+                "data": [{
+                    "id": "86",
+                    "type": "text",
+                    "attributes": {
+                        "service.lists.id": "6",
+                        "service.lists.domain": "text",
+                        "service.lists.refid": "86",
+                        "service.lists.datestart": null,
+                        "service.lists.dateend": null,
+                        "service.lists.config": [],
+                        "service.lists.position": 3,
+                        "service.lists.status": 1,
+                        "service.lists.type": "default"
+                    }
+                }]
+            }
+        }
+    }],
+    "included": [{
+        "id": "18",
+        "type": "media",
+        "attributes": {
+        "media.id": "18",
+        "media.domain": "service",
+        "media.label": "Demo: dhl.png",
+        "media.languageid": null,
+        "media.mimetype": "image\/png",
+        "media.type": "icon",
+        "media.preview": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png",
+        "media.previews": {
+        "1": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png"
+        },
+        "media.url": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png",
+        "media.status": 1
+        }
+    },{
+        "id": "27",
+        "type": "price",
+        "attributes": {
+            "price.id": "27",
+            "price.type": "default",
+            "price.currencyid": "EUR",
+            "price.domain": "service",
+            "price.quantity": 1,
+            "price.value": "0.00",
+            "price.costs": "0.00",
+            "price.rebate": "0.00",
+            "price.taxvalue": "0.0000",
+            "price.taxrates": {
+                "": "0.00"
+            },
+            "price.taxrate": "0.00",
+            "price.taxflag": true,
+            "price.status": 1,
+            "price.label": "Demo: Click&Collect"
+        }
+    },{
+        "id": "86",
+        "type": "text",
+        "attributes": {
+            "text.id": "86",
+            "text.languageid": "en",
+            "text.type": "short",
+            "text.label": "Demo short\/en: Local pick-up",
+            "text.domain": "service",
+            "text.content": "Local pick-up",
+            "text.status": 1
+        }
+    }]
 }
 ```
 
@@ -230,47 +230,47 @@ http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delive
 To add this service as delivery option in the current basket, you should use:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X POST 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=uP2PvRc9JbLe3uk0zADb8wktD8m620WwM4ZI6BiV' \
-	-H 'Content-Type: application/json' \
-	-d '{"data": [{
-		"id": "delivery",
-		"attributes": {
-			"service.id": "1",
-			"time.hourminute": "15:00",
-			"supplier.code": "demo-test2"
-		}
-	}]}'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X POST 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=uP2PvRc9JbLe3uk0zADb8wktD8m620WwM4ZI6BiV' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": [{
+        "id": "delivery",
+        "attributes": {
+            "service.id": "1",
+            "time.hourminute": "15:00",
+            "supplier.code": "demo-test2"
+        }
+    }]}'
+    ```
 === "jQuery"
-	```javascript
-	var params = {'data': [{
-		'id': 'payment',
-		'attributes': {
-			'service.id': '7', // from service response
-			'time.hourminute': '15:00', // key/value pairs of data entered by the customer
-			'supplier.code': 'demo-test2'
-		}
-	}]};
+    ```javascript
+    var params = {'data': [{
+        'id': 'payment',
+        'attributes': {
+            'service.id': '7', // from service response
+            'time.hourminute': '15:00', // key/value pairs of data entered by the customer
+            'supplier.code': 'demo-test2'
+        }
+    }]};
 
-	var url = response['data'][0]['links']['basket/service']['href']; // from service response
+    var url = response['data'][0]['links']['basket/service']['href']; // from service response
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json",
-		data: JSON.stringify(params)
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 It's important to add the **id: "delivery"** (or **"payment"**) and the service ID in the attributes section of the parameters sent to the server.  The value for "id" is the service type while the value for "service.id" must be the ID of the service option that should be added as delivery or payment entry to the basket.
 
@@ -278,109 +278,109 @@ The response to this request would be similar to this:
 
 ```json
 {
-	"meta": {
-		"total": 1,
-		"prefix": null,
-		"content-baseurl": "http://localhost:8000/",
-		"csrf": {
-			"name": "_token",
-			"value": "..."
-		}
-	},
-	"links": {
-		"self": {
-			"href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
-			"allow": ["DELETE","GET","PATCH","POST"]
-		},
-		"basket/product": {
-			"href": "http://localhost:8000/jsonapi/basket?id=default&related=product",
-			"allow": ["POST"]
-		},
-		"basket/service": {
-			"href": "http://localhost:8000/jsonapi/basket?id=default&related=service",
-			"allow": ["POST"]
-		},
-		"basket/address": {
-			"href": "http://localhost:8000/jsonapi/basket?id=default&related=address",
-			"allow": ["POST"]
-		},
-		"basket/coupon": {
-			"href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon",
-			"allow": ["POST"]
-		}
-	},
-	"data": {
-		"id": "default",
-		"type": "basket",
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default",
-				"allow": ["DELETE","GET","PATCH","POST"]
-			}
-		},
-		"attributes": {
-			"order.base.id": null,
-			"order.base.sitecode": "",
-			"order.base.customerid": "",
-			"order.base.languageid": "en",
-			"order.base.currencyid": "EUR",
-			"order.base.price": "0.00",
-			"order.base.costs": "0.00",
-			"order.base.rebate": "0.00",
-			"order.base.taxvalue": "0.0000",
-			"order.base.taxflag": true,
-			"order.base.customerref": "",
-			"order.base.comment": ""
-		},
-		"relationships": {
-			"basket\/service": {
-				"data": [{
-					"type": "basket\/service",
-					"id": "delivery"
-				}]
-			}
-		}
-	},
-	"included": [{
-		"id": "delivery",
-		"type": "basket\/service",
-		"attributes": {
-			"order.base.service.id": null,
-			"order.base.service.price": "0.00",
-			"order.base.service.costs": "0.00",
-			"order.base.service.rebate": "0.00",
-			"order.base.service.taxrate": "0.00",
-			"order.base.service.taxrates": {
-				"": "0.00"
-			},
-			"order.base.service.type": "delivery",
-			"order.base.service.code": "demo-pickup",
-			"order.base.service.name": "Click & Collect",
-			"order.base.service.position": null,
-			"order.base.service.mediaurl": "",
-			"attribute": [{
-				"order.base.service.attribute.id": null,
-				"order.base.service.attribute.type": "delivery",
-				"order.base.service.attribute.name": "",
-				"order.base.service.attribute.code": "time.hourminute",
-				"order.base.service.attribute.value": "15:00",
-				"order.base.service.attribute.quantity": 1
-			},{
-				"order.base.service.attribute.id": null,
-				"order.base.service.attribute.type": "delivery",
-				"order.base.service.attribute.name": "",
-				"order.base.service.attribute.code": "supplier.address",
-				"order.base.service.attribute.value": "Test supplier 2, Test company, Test road 10, 20000 Test town",
-				"order.base.service.attribute.quantity": 1
-			}]
-		},
-		"links": {
-			"self": {
-				"href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
-				"allow": ["DELETE"]
-			}
-		}
-	}]
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
+            "allow": ["DELETE","GET","PATCH","POST"]
+        },
+        "basket/product": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=product",
+            "allow": ["POST"]
+        },
+        "basket/service": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=service",
+            "allow": ["POST"]
+        },
+        "basket/address": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=address",
+            "allow": ["POST"]
+        },
+        "basket/coupon": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon",
+            "allow": ["POST"]
+        }
+    },
+    "data": {
+        "id": "default",
+        "type": "basket",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default",
+                "allow": ["DELETE","GET","PATCH","POST"]
+            }
+        },
+        "attributes": {
+            "order.base.id": null,
+            "order.base.sitecode": "",
+            "order.base.customerid": "",
+            "order.base.languageid": "en",
+            "order.base.currencyid": "EUR",
+            "order.base.price": "0.00",
+            "order.base.costs": "0.00",
+            "order.base.rebate": "0.00",
+            "order.base.taxvalue": "0.0000",
+            "order.base.taxflag": true,
+            "order.base.customerref": "",
+            "order.base.comment": ""
+        },
+        "relationships": {
+            "basket\/service": {
+                "data": [{
+                    "type": "basket\/service",
+                    "id": "delivery"
+                }]
+            }
+        }
+    },
+    "included": [{
+        "id": "delivery",
+        "type": "basket\/service",
+        "attributes": {
+            "order.base.service.id": null,
+            "order.base.service.price": "0.00",
+            "order.base.service.costs": "0.00",
+            "order.base.service.rebate": "0.00",
+            "order.base.service.taxrate": "0.00",
+            "order.base.service.taxrates": {
+                "": "0.00"
+            },
+            "order.base.service.type": "delivery",
+            "order.base.service.code": "demo-pickup",
+            "order.base.service.name": "Click & Collect",
+            "order.base.service.position": null,
+            "order.base.service.mediaurl": "",
+            "attribute": [{
+                "order.base.service.attribute.id": null,
+                "order.base.service.attribute.type": "delivery",
+                "order.base.service.attribute.name": "",
+                "order.base.service.attribute.code": "time.hourminute",
+                "order.base.service.attribute.value": "15:00",
+                "order.base.service.attribute.quantity": 1
+            },{
+                "order.base.service.attribute.id": null,
+                "order.base.service.attribute.type": "delivery",
+                "order.base.service.attribute.name": "",
+                "order.base.service.attribute.code": "supplier.address",
+                "order.base.service.attribute.value": "Test supplier 2, Test company, Test road 10, 20000 Test town",
+                "order.base.service.attribute.quantity": 1
+            }]
+        },
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
+                "allow": ["DELETE"]
+            }
+        }
+    }]
 }
 ```
 
@@ -395,25 +395,25 @@ The "attributes" section in "data" can contain additional key/value pairs whose 
 
 ```json
 "meta": {
-	"time.hourminute": {
-		"code": "time.hourminute",
-		"type": "time",
-		"label": "Delivery time",
-		"public": true,
-		"default": "07:15",
-		"required": true
-	},
-	"supplier.code": {
-		"code": "supplier.code",
-		"type": "list",
-		"label": "Pick-up address",
-		"public": true,
-		"default": {
-			"demo-test1": "Test supplier 1\nTest company\nTest street 1\n10000 Test city\nNY US\ndemo1@example.com\n",
-			"demo-test2": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n"
-		},
-		"required": true
-	}
+    "time.hourminute": {
+        "code": "time.hourminute",
+        "type": "time",
+        "label": "Delivery time",
+        "public": true,
+        "default": "07:15",
+        "required": true
+    },
+    "supplier.code": {
+        "code": "supplier.code",
+        "type": "list",
+        "label": "Pick-up address",
+        "public": true,
+        "default": {
+            "demo-test1": "Test supplier 1\nTest company\nTest street 1\n10000 Test city\nNY US\ndemo1@example.com\n",
+            "demo-test2": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n"
+        },
+        "required": true
+    }
 }
 ```
 
@@ -458,19 +458,19 @@ The additional service attributes are then stored in the "attribute" section of 
 
 ```json
 "attribute": [{
-	"order.base.service.attribute.id": null,
-	"order.base.service.attribute.type": "delivery",
-	"order.base.service.attribute.name": "",
-	"order.base.service.attribute.code": "time.hourminute",
-	"order.base.service.attribute.value": "15:00",
-	"order.base.service.attribute.quantity": 1
+    "order.base.service.attribute.id": null,
+    "order.base.service.attribute.type": "delivery",
+    "order.base.service.attribute.name": "",
+    "order.base.service.attribute.code": "time.hourminute",
+    "order.base.service.attribute.value": "15:00",
+    "order.base.service.attribute.quantity": 1
 },{
-	"order.base.service.attribute.id": null,
-	"order.base.service.attribute.type": "delivery",
-	"order.base.service.attribute.name": "",
-	"order.base.service.attribute.code": "supplier.address",
-	"order.base.service.attribute.value": "Test supplier 2, Test company, Test road 10, 20000 Test town",
-	"order.base.service.attribute.quantity": 1
+    "order.base.service.attribute.id": null,
+    "order.base.service.attribute.type": "delivery",
+    "order.base.service.attribute.name": "",
+    "order.base.service.attribute.code": "supplier.address",
+    "order.base.service.attribute.value": "Test supplier 2, Test company, Test road 10, 20000 Test town",
+    "order.base.service.attribute.quantity": 1
 }]
 ```
 
@@ -485,29 +485,29 @@ http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delive
 Executing a DELETE request using this URL will remove the service option from the basket again:
 
 === "CURL"
-	```bash
-	curl -b cookies.txt -c cookies.txt \
-	-X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=...'
-	```
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=...'
+    ```
 === "jQuery"
-	```javascript
-	// basket service URL returned from basket response
-	var url = response['included'][0]['links']['self']['href'];
+    ```javascript
+    // basket service URL returned from basket response
+    var url = response['included'][0]['links']['self']['href'];
 
-	if(response['meta']['csrf']) { // add CSRF token if available and therefore required
-		var csrf = {};
-		csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
-		url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
-	}
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
 
-	$.ajax({
-		url: url
-		method: "DELETE",
-		dataType: "json"
-	}).done( function( result ) {
-		console.log( result );
-	});
-	```
+    $.ajax({
+        url: url
+        method: "DELETE",
+        dataType: "json"
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
 
 !!! note
     In the default configuration, the "Autofill" plugin will automatically add a delivery option after removing the delivery option from the basket.

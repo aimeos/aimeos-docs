@@ -10,53 +10,53 @@ namespace Aimeos\Admin\JQAdm\Mypanel\Mysubpanel;
 sprintf( 'mysubpanel' ); // for translation
 
 class Standard
-	extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
-	implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
+    extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
+    implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
 {
-	public function copy() : ?string
-	{
-		return parent::copy();
-	}
+    public function copy() : ?string
+    {
+        return parent::copy();
+    }
 
-	public function create() : ?string
-	{
-		return parent::create();
-	}
+    public function create() : ?string
+    {
+        return parent::create();
+    }
 
-	public function delete() : ?string
-	{
-		return parent::delete();
-	}
+    public function delete() : ?string
+    {
+        return parent::delete();
+    }
 
-	public function export() : ?string
-	{
-		return parent::export();
-	}
+    public function export() : ?string
+    {
+        return parent::export();
+    }
 
-	public function get() : ?string
-	{
-		return parent::get();
-	}
+    public function get() : ?string
+    {
+        return parent::get();
+    }
 
-	public function save() : ?string
-	{
-		return parent::save();
-	}
+    public function save() : ?string
+    {
+        return parent::save();
+    }
 
-	public function search() : ?string
-	{
-		return parent::search();
-	}
+    public function search() : ?string
+    {
+        return parent::search();
+    }
 
-	public function getSubClient( string $type, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
-	{
-		return $this->createSubClient( 'mypanel/mysubpanel/' . $type, $name );
-	}
+    public function getSubClient( string $type, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
+    {
+        return $this->createSubClient( 'mypanel/mysubpanel/' . $type, $name );
+    }
 
-	protected function getSubClientNames() : array
-	{
-		return $this->getContext()->getConfig()->get( 'admin/jqadm/mypanel/mysubpanel/standard/subparts', [] );
-	}
+    protected function getSubClientNames() : array
+    {
+        return $this->getContext()->getConfig()->get( 'admin/jqadm/mypanel/mysubpanel/standard/subparts', [] );
+    }
 }
 ```
 
@@ -74,26 +74,26 @@ If you pass the data to the template, the view will render the form fields for t
 ```php
 public function copy() : ?string
 {
-	$data = [];
-	$view = $this->getView();
-	$siteid = $this->getContext()->getLocale()->getSiteId();
-	$manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
+    $data = [];
+    $view = $this->getView();
+    $siteid = $this->getContext()->getLocale()->getSiteId();
+    $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
 
-	foreach( $manager->searchItems( $manager->filter() ) as $item )
-	{
-		$entry = $item->toArray( true );
-		$entry['somedomain.siteid'] = $siteId;
-		$entry['somedomain.id'] = '';
-		$data[] = $entry;
-	}
+    foreach( $manager->searchItems( $manager->filter() ) as $item )
+    {
+        $entry = $item->toArray( true );
+        $entry['somedomain.siteid'] = $siteId;
+        $entry['somedomain.id'] = '';
+        $data[] = $entry;
+    }
 
-	$view->mysubpanelData = $data;
-	$view->mysubpanelBody = parent::copy();
+    $view->mysubpanelData = $data;
+    $view->mysubpanelBody = parent::copy();
 
-	$tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
-	$default = 'mypanel/item-mysubpanel-standard';
+    $tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
+    $default = 'mypanel/item-mysubpanel-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -108,21 +108,21 @@ The `create()` method must not add a new record in the storage. Instead, it's te
 ```php
 public function create() : ?string
 {
-	$view = $this->getView();
-	$data = $view->param( 'mysubpanel', [] );
-	$siteid = $this->getContext()->getLocale()->getSiteId();
+    $view = $this->getView();
+    $data = $view->param( 'mysubpanel', [] );
+    $siteid = $this->getContext()->getLocale()->getSiteId();
 
-	foreach( $view->value( $data, 'somedomain.id', [] ) as $idx => $value ) {
-		$data[$idx]['mysubpanel.siteid'] = $siteid;
-	}
+    foreach( $view->value( $data, 'somedomain.id', [] ) as $idx => $value ) {
+        $data[$idx]['mysubpanel.siteid'] = $siteid;
+    }
 
-	$view->mysubpanelData = $data;
-	$view->mysubpanelBody = parent::copy();
+    $view->mysubpanelData = $data;
+    $view->mysubpanelBody = parent::copy();
 
-	$tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
-	$default = 'mypanel/item-mysubpanel-standard';
+    $tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
+    $default = 'mypanel/item-mysubpanel-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -137,15 +137,15 @@ To remove the items managed by the subpart, you can delete their items based on 
 ```php
 public function delete() : ?string
 {
-	parent::delete();
+    parent::delete();
 
-	$itemId = $this->getView()->item->getId();
+    $itemId = $this->getView()->item->getId();
 
-	$manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
-	$filter = $manager->filter()->add( ['somedomain.foreignid' => $itemId] );
-	$manager->deleteItems( $manager->searchItems( $filter )->toArray() );
+    $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
+    $filter = $manager->filter()->add( ['somedomain.foreignid' => $itemId] );
+    $manager->deleteItems( $manager->searchItems( $filter )->toArray() );
 
-	return null;
+    return null;
 }
 ```
 
@@ -166,25 +166,25 @@ This method is used to retrive the data shown in the subpart of the detail view 
 ```php
 public function get() : ?string
 {
-	$data = [];
-	$view = $this->getView();
-	$context = $this->getContext();
-	$siteId = $context->getLocale()->getSiteId();
+    $data = [];
+    $view = $this->getView();
+    $context = $this->getContext();
+    $siteId = $context->getLocale()->getSiteId();
 
-	$manager = \Aimeos\MShop::create( $context, 'somedomain' );
-	$filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
+    $manager = \Aimeos\MShop::create( $context, 'somedomain' );
+    $filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
 
-	foreach( $manager->searchItems( $filter ) as $item ) {
-		$data[] = $item->toArray( true );
-	}
+    foreach( $manager->searchItems( $filter ) as $item ) {
+        $data[] = $item->toArray( true );
+    }
 
-	$view->mysubpanelData = $data;
-	$view->mysubpanelBody = parent::get();
+    $view->mysubpanelData = $data;
+    $view->mysubpanelBody = parent::get();
 
-	$tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
-	$default = 'mypanel/item-mysubpanel-standard';
+    $tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
+    $default = 'mypanel/item-mysubpanel-standard';
 
-	return $view->render( $view->config( $tplconf, $default ) );
+    return $view->render( $view->config( $tplconf, $default ) );
 }
 ```
 
@@ -199,41 +199,41 @@ Here, the newly entered or updated data from the form in the detail view is actu
 ```php
 public function save() : ?string
 {
-		$view = $this->getView();
+        $view = $this->getView();
 
-		$manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
-		$manager->begin();
+        $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
+        $manager->begin();
 
-		try
-		{
-			$filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
-			$items = $manager->search( $filter );
-			$list = [];
+        try
+        {
+            $filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
+            $items = $manager->search( $filter );
+            $list = [];
 
-			foreach( $view->param( 'mysubpanel', [] ) as $entry )
-			{
-				$id = $this->getValue( $entry, 'somedomain.id' );
+            foreach( $view->param( 'mysubpanel', [] ) as $entry )
+            {
+                $id = $this->getValue( $entry, 'somedomain.id' );
 
-				$list[] = $items->get( $id, $manager->createItem() )
-					->fromArray( $entry )
-					->setParentId( $view->item->getId() );
+                $list[] = $items->get( $id, $manager->createItem() )
+                    ->fromArray( $entry )
+                    ->setParentId( $view->item->getId() );
 
-				$items->remove( $id );
-			}
+                $items->remove( $id );
+            }
 
-			$manager->deleteItems( $items->toArray() );
-			$manager->saveItems( $list, false );
-			$manager->commit();
+            $manager->deleteItems( $items->toArray() );
+            $manager->saveItems( $list, false );
+            $manager->commit();
 
-			parent::save();
-		}
-		catch( \Exception $e )
-		{
-			$manager->rollback();
-			throw $e;
-		}
+            parent::save();
+        }
+        catch( \Exception $e )
+        {
+            $manager->rollback();
+            throw $e;
+        }
 
-		return null;
+        return null;
 }
 ```
 
@@ -255,17 +255,17 @@ A subpart template is almost the same as the [panel item template](panel-templat
 
 ```php
 <?php
-	$enc = $this->encoder();
+    $enc = $this->encoder();
 ?>
 <div id="mysubpanel" class="item-mysubpanel content-block tab-pane fade" role="tabpanel" aria-labelledby="mysubpanel">
 
-	<div class="col-xl-6 content-block vue-block <?= $this->site()->readonly( $this->get( 'mysubpanelData/mysubpanel.siteid' ) ); ?>"
-		data-data="<?= $enc->attr( $this->get( 'mysubpanelData', new stdClass() ) ) ?>">
+    <div class="col-xl-6 content-block vue-block <?= $this->site()->readonly( $this->get( 'mysubpanelData/mysubpanel.siteid' ) ); ?>"
+        data-data="<?= $enc->attr( $this->get( 'mysubpanelData', new stdClass() ) ) ?>">
 
-		<!-- input/select fields -->
+        <!-- input/select fields -->
 
-		<?= $this->get( 'mysubpanelBody' ); ?>
-	<div>
+        <?= $this->get( 'mysubpanelBody' ); ?>
+    <div>
 </div>
 ```
 

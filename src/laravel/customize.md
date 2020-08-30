@@ -321,9 +321,9 @@ The Aimeos shop package contains routes packaged into some route groups that can
 
 ```php
 'routes' => [
-	'jsonapi' => ['prefix' => '{site}/jsonapi', 'middleware' => ['web', 'api']],
-	'account' => ['prefix' => '{site}/profile', 'middleware' => ['web', 'auth']],
-	'default' => ['prefix' => '{site}/shop', 'middleware' => ['web']]
+    'jsonapi' => ['prefix' => '{site}/jsonapi', 'middleware' => ['web', 'api']],
+    'account' => ['prefix' => '{site}/profile', 'middleware' => ['web', 'auth']],
+    'default' => ['prefix' => '{site}/shop', 'middleware' => ['web']]
 ],
 ```
 
@@ -333,13 +333,13 @@ To use domains or subdomains use this configuration:
 
 ```php
 'routes' => [
-	'admin' => ['domain' => '{site}', 'prefix' => 'admin', 'middleware' => ['web']],
-	'jqadm' => ['domain' => '{site}', 'prefix' => 'admin/jqadm', 'middleware' => ['web', 'auth']],
-	'jsonadm' => ['domain' => '{site}', 'prefix' => 'admin/jsonadm', 'middleware' => ['web', 'auth']],
-	'jsonapi' => ['domain' => '{site}', 'prefix' => 'jsonapi', 'middleware' => ['web', 'api']],
-	'account' => ['domain' => '{site}', 'prefix' => 'profile', 'middleware' => ['web', 'auth']],
-	'default' => ['domain' => '{site}', 'prefix' => 'shop', 'middleware' => ['web']],
-	'update' => ['domain' => '{site}'],
+    'admin' => ['domain' => '{site}', 'prefix' => 'admin', 'middleware' => ['web']],
+    'jqadm' => ['domain' => '{site}', 'prefix' => 'admin/jqadm', 'middleware' => ['web', 'auth']],
+    'jsonadm' => ['domain' => '{site}', 'prefix' => 'admin/jsonadm', 'middleware' => ['web', 'auth']],
+    'jsonapi' => ['domain' => '{site}', 'prefix' => 'jsonapi', 'middleware' => ['web', 'api']],
+    'account' => ['domain' => '{site}', 'prefix' => 'profile', 'middleware' => ['web', 'auth']],
+    'default' => ['domain' => '{site}', 'prefix' => 'shop', 'middleware' => ['web']],
+    'update' => ['domain' => '{site}'],
 ],
 ```
 
