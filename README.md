@@ -18,9 +18,9 @@ Read on, if you want to know, how to edit the documentation locally using Git an
   > git clone https://github.com/[YOUR-GITHUB-ACCOUNT]/aimeos-docs.git
   ```
 
-  This creates a folder called `aimeos-docs`.
+  This creates a folder called *aimeos-docs*.
 
-- Change into your newly created local `aimeos-doc` folder and add upstream links to be able to always keep your local clone up-to-date:
+- Change into your newly created local *aimeos-docs* folder and add upstream links to be able to always keep your local clone up-to-date:
 
   ```bash
   > cd aimeos-doc
@@ -66,7 +66,7 @@ Read on, if you want to know, how to edit the documentation locally using Git an
   > git push -u origin <name-of-your-current-commit-branch>
   ```
 
-- Go to your `aimeos-docs` fork in your github account and create a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request ).
+- Go to your *aimeos-docs* fork in your github account and create a [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request ).
 
 - Once your are finished with your commit, don't forget to switch back to the master branch in your local clone:
 
@@ -91,9 +91,9 @@ Read on, if you want to know, how to edit the documentation locally using Git an
 
 ## Build and live reload your local clone (optional)
 
-Contributing to `aimeos-docs` does not require anything else but editing the markdown
+Contributing to *aimeos-docs* does not require anything else but editing the markdown
 files. However, if you would like to run a local version of the generated docs, you
-need Python 3. This enables the local generation of the complete `aimeos-docs` as well
+need Python 3. This enables the local generation of the complete *aimeos-docs* as well
 as running a local development server that reloads automatically as soon as changes
 to the repository files are detected.
 
@@ -104,8 +104,8 @@ your operating system. One such resource would be [Real Python: Installing Pytho
 
 ### Install mkdocs and required dependencies
 
-`aimeos-docs` uses [mkdocs](https://www.mkdocs.org/) to create static html files from
-markdown files. Install `mkdocs` and the dependencies required by `aimeos-docs` with `pip`:
+*aimeos-docs* uses [mkdocs](https://www.mkdocs.org/) to create static html files from
+markdown files. Install `mkdocs` and the dependencies required by *aimeos-docs* with `pip`:
 
 ```bash
 pip install mkdocs mkdocs-material
@@ -118,11 +118,12 @@ changes to any file, the server will automatically reload and display your edite
 
 ### Build the docs
 
-To build the `aimoes-docs` locally, use `mkdocs build`. You can now open the documentation
+To build the *aimeos-docs* locally, use `mkdocs build`. You can now open the documentation
 in your browser from the newly generated `<your-aimeos-docs-clone-folder>/docs`´s index.html.
 
 ### Troubleshooting
 
-Due to some configuration limits of mkdocs, the command line will print out a 404
-warning concerning the `versions.js` file and also a warning about the `analytics` configuration
-attribute. Please just ignore these warning.
+Due to some configuration limits, `mkdocs serve` will tell you that it couldn't find `versions.js`.
+Also, `mkdocs serve` as well as `mkdocs build` might warn about an unknown `analytics` configuration
+attribute.
+You can safely ignore these warnings.
