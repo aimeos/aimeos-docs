@@ -383,24 +383,23 @@ By default, only the first 25 items are returned if nothing else is specified. T
     });
     ```
 
-Thus, you will get the first 2 items instead.
+Thus, you will get the first 2 items instead. If more items are available, the first response automatically contains links for navigating through the results:
 
-!!! tip
-    If more items are available, the first response automatically contains links for navigating through the results:
-    ```json
-    "links": {
-        "first": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
-        "prev": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
-        "next": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
-        "last": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
-        "self": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=2&page%5Blimit%5D=2"
-    }
-    ```
+```json
+"links": {
+    "first": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
+    "prev": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
+    "next": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
+    "last": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
+    "self": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=2&page%5Blimit%5D=2"
+}
+```
 
-To get the next 2 items starting from the 3rd one use the *next* link:
+To get the next 2 items starting from the 3rd one use the *next* link from the above response:
 
 === "CURL"
     ```bash
+    # URL from "links" -> "next" of the response above
     curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=2&page[limit]=2'
     ```
 === "jQuery"
