@@ -85,7 +85,7 @@ To add a simple product to the basket may look like this:
     });
     ```
 
-Then, the response will contain an additional "relationships" entry in the basket data that points to the order product entry in the "included" section:
+Then the response will contain an additional "relationships" entry in the basket data that points to the order product entry in the "included" section:
 
 ```json
 {
@@ -163,7 +163,7 @@ Then, the response will contain an additional "relationships" entry in the baske
 
 ## Selection products
 
-For selection products, you have to pass the ID of the selection product and one ID for each variant attribute type assiged to the article, so the concrete article can be identified. If you have a shirt as selection product which includes two colors, your product structure would look like this one:
+For selection products, you have to pass the ID of the selection product and one ID for each variant attribute type assigned to the article, so the concrete article can be identified. If you have a shirt as selection product which includes two colors, your product structure would look like this one:
 
 Shirt product (product.type: select)
 
@@ -174,9 +174,9 @@ Shirt product (product.type: select)
     * variant attribute type: color
     * variant attribute code: beige
 
-There's some documentation available how to [create selection products](../../manual/products.md#selections).
+There's some documentation available on how to [create selection products](../../manual/products.md#selections).
 
-You will get the selection product including its variant articles their attributes if you add *&include=product,attribute* to the product URL:
+You will get the selection product including its variant attributes if you add *&include=product,attribute* to the product URL:
 
 ```json
 {
@@ -346,7 +346,7 @@ is **variant** in the included articles. Pass the ID of the variant attribute th
     ```
 
 !!! tip
-    The response for selection products tends to get big if all articles, texts, images and attributes are included. You can limit the returned fields using the [fields parameter](basics.md#return-specific-fields-only) and this work for the relationship fields too if you use *&fields[product/lists]=product.lists.type* for example to return the type of the product resp. attribute relationship only.
+    The response for selection products tends to get big if all articles, texts, images and attributes are included. You can limit the returned fields using the [fields parameter](basics.md#return-specific-fields-only). This works for the relationship fields, too, if you use e.g. *&fields[product/lists]=product.lists.type* to return the type of the product resp. attribute relationship only.
 
 ## Configurable options
 
@@ -426,7 +426,7 @@ The response contains two configurable attributes with the IDs "2" and "6" becau
 
 ```data['relationships']['attribute']['data'][*]['attributes']['product.lists.type']```
 
-is **config**. Now, add all of those configurable attribute IDs and their quantities (`"<id>"': <qty>` pairs) the user selected to the request. The example below adds the "large print" option with a quantity of "2" to the basket product:
+is **config**. Now add all of those configurable attribute IDs and their quantities (`"<id>"': <qty>` pairs) the user selected to the request. The example below adds the "large print" option with a quantity of "2" to the basket product:
 
 === "CURL"
     ```bash
@@ -575,9 +575,7 @@ Now we have three possible custom attributes with the IDs "3", "4" and "7" becau
 
 ```data['relationships']['attribute']['data'][*]['attributes']['product.lists.type']```
 
-is **custom**. To add all of those configurable attribute IDs and their values (`"<id>": "<value>"` pairs) the user entered use a request like that:
-
-The IDs and values of custom attribute must be passed as key/value pairs:
+is **custom**. To add all of those configurable attribute IDs and their values (`"<id>": "<value>"` pairs) the user entered use a request like this passing the IDs and values of the **custom** attributes as key/value pairs:
 
 === "CURL"
     ```bash
@@ -628,18 +626,18 @@ The IDs and values of custom attribute must be passed as key/value pairs:
 
 # Edit products
 
-To edit already added products in the basket, you can send a PATCH request to the URL listed in the links section of the ordered product. In the response before it's:
+To edit already added products in the basket, you can send a PATCH request to the URL listed in the links section of the ordered product. Based on a response URL like this:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0
 ```
 
-Based on this URL, you can change the quanity of the product in the basket:
+you can change the quanity of the product in the basket:
 
 quantity
 : Amount of products that should be bought
 
-Editing products in the basket should be similar to this one:
+Editing products in the basket should be similar to this:
 
 === "CURL"
     ```bash
@@ -755,8 +753,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
 }
 ```
 
-
-The response only contains the updated product and basket details in this example.
+In this example, the response only contains the updated product and basket details.
 
 # Delete products
 
