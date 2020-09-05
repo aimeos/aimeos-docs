@@ -23,13 +23,13 @@ The response will contain the required endpoints you have to use:
 
 Have a look at [retrieving an OPTIONS request](index.md#retrieve-meta-data) for more details.
 
-For each endpoint, you can use an OPTIONS request to get the supported filter and sort keys:
+For each endpoint you can use an OPTIONS request to get the supported filter and sort keys:
 
 ```bash
 curl -X OPTIONS 'http://localhost:8000/jsonapi/product'
 ```
 
-It also returns the [prefix](index.md#nested-parameters) you have to use if the value is not `null` and the base URL for media files:
+It also returns the [prefix](index.md#nested-parameters) you have to use, if the value is not `null`, and the base URL for media files:
 
 ```json
 {
@@ -38,10 +38,10 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
     "content-baseurl": "http://localhost:8000/",
     "filter": {
         "f_search": {
-        "label": "Return products whose text matches the user input",
-        "type": "string",
-        "default": "",
-        "required": false
+            "label": "Return products whose text matches the user input",
+            "type": "string",
+            "default": "",
+            "required": false
         },
     },
     "sort": {
@@ -81,7 +81,7 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/product\/13",
-                "allow": ["GET"]
+                "allow": ['GET']
             },
             "basket\/product": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/basket\/default\/product",
@@ -257,7 +257,7 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
 
 # Sort product lists
 
-Additional to the generic filter possibilities, the product lists can be easily sorted by these keys:
+Additional to the generic filter possibilities, the product lists can be sorted easily by these keys:
 
 * "relevance" (asc) or "-relevance" (desc)
 * "name" (asc) or "-name" (desc)
@@ -270,15 +270,18 @@ Additional to the generic filter possibilities, the product lists can be easily 
     ```
 === "jQuery"
     ```javascript
-    var params = {'sort': '-ctime'};
+    var paramsObj = {'sort': '-ctime'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -286,7 +289,7 @@ Additional to the generic filter possibilities, the product lists can be easily 
     });
     ```
 
-Sorting by "relevance" is the default if no sort parameter is passed to the server. You can also sort by other product fields, e.g. by the start date of the products using *&sort=product.datestart*
+Sorting by "relevance" is the default sorting parameter if no other is passed to the server. You can also sort by other product fields, e.g. by the start date of the products using *&sort=product.datestart*
 
 # Search products by text
 
@@ -298,19 +301,22 @@ If you offer users a search field for products, you have to add the entered text
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             'f_search': 'demo'
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -320,7 +326,7 @@ If you offer users a search field for products, you have to add the entered text
 
 # Filter products by price
 
-To enable users to filter products by price, you need to use the *index.price:value* filter and it requires the three letter currency code as parameter in round brackets and quotation marks ("). To return only products with a price of less than 99.50 Euro, you need:
+To enable users to filter products by price, you need to use the *index.price:value* filter as well as the three letter currency code as parameter in round brackets and quotation marks ("). To return only products with a price of less than e.g. 99.50 Euro you need:
 
 === "CURL"
     ```bash
@@ -328,19 +334,22 @@ To enable users to filter products by price, you need to use the *index.price:va
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             '<': {'index.price:value("EUR")': 99.50}
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -358,7 +367,7 @@ Usually, you want to filter for a price range, so you need to pass an upper and 
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             '&&': [
                 {'>': {'index.price:value("EUR")': 100}},
@@ -366,14 +375,17 @@ Usually, you want to filter for a price range, so you need to pass an upper and 
             ]
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -391,15 +403,18 @@ To display the category tree, you have to use the "catalog" resource returned by
     ```
 === "jQuery"
     ```javascript
-    var params = {"include": 'catalog,media,text'};
+    var paramsObj = {'include': 'catalog,media,text'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['catalog'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -407,7 +422,7 @@ To display the category tree, you have to use the "catalog" resource returned by
     });
     ```
 
-This will return the root catalog node and its direct children as well as the texts and images:
+This will return the root catalog node and its direct children as well as their related texts and images:
 
 ```json
 {
@@ -418,11 +433,11 @@ This will return the root catalog node and its direct children as well as the te
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=201",
-                "allow": ["GET"]
+                "allow": ['GET']
             },
             "product": {"
                 href": "http:\/\/localhost:8000\/jsonapi\/product?filter%5Bf_catid%5D=201",
-                "allow": ["GET"]
+                "allow": ['GET']
             }
         },
         "attributes": {
@@ -448,7 +463,7 @@ This will return the root catalog node and its direct children as well as the te
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=203",
-                "allow": ["GET"]}
+                "allow": ['GET']}
         },
         "attributes": {
             "catalog.id": "203",
@@ -494,19 +509,22 @@ To get the products for a category, use the *f_catid* filter parameter:
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             'f_catid': '1'
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -514,7 +532,7 @@ To get the products for a category, use the *f_catid* filter parameter:
     });
     ```
 
-By default, the found products all use "default" as category list type. You can change the list type searched for by adding the *f_listtype* parameter to e.g. **promotion** to get promotional products:
+By default, all the found products use "default" as the category list type. You can change the list type searched for by adding the *f_listtype* parameter to e.g. **promotion** to get promotional products:
 
 === "CURL"
     ```bash
@@ -522,20 +540,23 @@ By default, the found products all use "default" as category list type. You can 
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             'f_catid': '1',
             'f_listtype': 'promotion'
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -553,15 +574,18 @@ The product attributes for building the faceted search can be retrieved using th
     ```
 === "jQuery"
     ```javascript
-    var params = {'include': 'media,text'};
+    var paramsObj = {'include': 'media,text'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['attribute'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -569,7 +593,7 @@ The product attributes for building the faceted search can be retrieved using th
     });
     ```
 
-This will return the first slice of attribute items as well as the texts and images:
+This will return the first slice of attribute items as well as their related texts and images:
 
 ```json
 {
@@ -580,7 +604,7 @@ This will return the first slice of attribute items as well as the texts and ima
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/attribute?id=32",
-                "allow": ["GET"]
+                "allow": ['GET']
             }
         },
         "attributes": {
@@ -654,19 +678,22 @@ If the user selects one or more of the attributes, you can get the corresponding
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             'f_attrid': ['1','3']
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -682,19 +709,22 @@ Instead of *f_attrid* which combines all attributes by an **AND** condition, you
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             'f_optid': ['1','3']
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -702,7 +732,7 @@ Instead of *f_attrid* which combines all attributes by an **AND** condition, you
     });
     ```
 
-Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs to filter for product that contains **at least one** of the attributes per type:
+Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs to filter for products that contain **at least one** of the attributes per type:
 
 === "CURL"
     ```bash
@@ -710,7 +740,7 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             'f_oneid': {
                 'color': ['1'],
@@ -718,14 +748,17 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
             }
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -743,15 +776,18 @@ To fetch the suppliers for building the supplier facet, you should use the "supp
     ```
 === "jQuery"
     ```javascript
-    var params = {'include': 'media,text'};
+    var paramsObj = {'include': 'media,text'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['supplier'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -759,7 +795,7 @@ To fetch the suppliers for building the supplier facet, you should use the "supp
     });
     ```
 
-This will return the first slice of supplier items as well as the texts and images:
+This will return the first slice of supplier items as well as their associated texts and images:
 
 ```json
 {
@@ -770,7 +806,7 @@ This will return the first slice of supplier items as well as the texts and imag
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/supplier?id=32",
-                "allow": ["GET"]
+                "allow": ['GET']
             }
         },
         "attributes": {
@@ -838,19 +874,22 @@ If the user selects a supplier, you can get the corresponding products by adding
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             'f_supid': '1'
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -872,15 +911,18 @@ You can get the attribute counts by using the **aggregate** key and the correspo
     ```
 === "jQuery"
     ```javascript
-    var params = {'aggregate': 'index.attribute.id'};
+    var paramsObj = {'aggregate': 'index.attribute.id'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -888,7 +930,7 @@ You can get the attribute counts by using the **aggregate** key and the correspo
     });
     ```
 
-This will return a list of "id" and "attributes" pairs where the value of "id" is the attribute ID and "attributes" is the number of products that contains that attribute:
+This will return a list of "id" and "attributes" pairs where the value of "id" is the attribute ID and "attributes" is the number of products that contain that attribute:
 
 ```javascript
 {
@@ -897,8 +939,8 @@ This will return a list of "id" and "attributes" pairs where the value of "id" i
     },
     "data": [
         {"id":25, "type":"index.attribute.id", "attributes":"2"},
-        {"id":26,"type":"index.attribute.id","attributes":"2"},
-        {"id":29,"type":"index.attribute.id","attributes":"1"}
+        {"id":26, "type":"index.attribute.id","attributes":"2"},
+        {"id":29, "type":"index.attribute.id","attributes":"1"}
     ]
 }
 ```
@@ -913,15 +955,18 @@ In the same way you can get the product counts for the categories by using the *
     ```
 === "jQuery"
     ```javascript
-    var params = {'aggregate': 'index.catalog.id'};
+    var paramsObj = {'aggregate': 'index.catalog.id'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -952,15 +997,18 @@ To get the product counts for the suppliers, use the **aggregate** key and the c
     ```
 === "jQuery"
     ```javascript
-    var params = {'aggregate': 'index.supplier.id'};
+    var paramsObj = {'aggregate': 'index.supplier.id'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['product'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -991,19 +1039,22 @@ If you don't fetch the stock levels together with the products using *&include=s
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             's_prodcode': ['ABCD']
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['stock'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
@@ -1021,7 +1072,7 @@ It returns the list of stock items for the given product codes:
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/stock\/12",
-                "allow": ["GET"]
+                "allow": ['GET']
             }
         },
         "attributes": {
@@ -1044,20 +1095,23 @@ If the shop has different warehouses or local stores where customers can pick up
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var paramsObj = {
         'filter': {
             's_prodcode': ['ABCD'],
             's_stocktype': 'berlin'
         }
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = paramsObj;
+    } else {
+        params = paramsObj;
     }
 
     $.ajax({
-        method: "GET",
-        dataType: "json",
+        method: 'GET',
+        dataType: 'json',
         url: options.meta.resources['stock'], // returned from OPTIONS call
         data: params
     }).done( function( result ) {
