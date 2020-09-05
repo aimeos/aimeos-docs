@@ -1,4 +1,4 @@
-To be able to retrieve the basket, you need the basket resource endpoint from the OPTIONS request. Depending on the used routes it might be something like:
+To be able to retrieve the basket, you need the basket resource endpoint from the OPTIONS request. Depending on the used routes it might be something like this:
 
 === "CURL"
     ```bash
@@ -61,7 +61,7 @@ To retrieve the current basket content, you need to send a GET request to the ba
     });
     ```
 
-If the basket is empty, it will return only the basic basket properties but no products, addresses, service items or coupons. Important is that the same session cookie is sent with each request. Otherwise, an empty basket is returned for every request, regardless of which action you've performed before. The response would be for example:
+If the basket is empty, it will return only the basic basket properties but no products, addresses, service items or coupons. Important is that the same session cookie is sent with each request. Otherwise an empty basket is returned for every request regardless of which action you've performed before. The response would be for example:
 
 ```json
 {
@@ -120,7 +120,7 @@ If the basket is empty, it will return only the basic basket properties but no p
 
 There are three values that you can update using a PATCH request to the basket:
 
-* order.base.customerid (ID of the customers to show the order in their account history)
+* order.base.customerid (ID of the customer to show the order in their account history)
 * order.base.comment (customer comment for this order)
 * order.base.customerref (own reference of the customer for this order)
 
