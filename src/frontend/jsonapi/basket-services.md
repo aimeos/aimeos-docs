@@ -1,25 +1,28 @@
-Most of the time, you want to offer some shipping and payment options to your customers or at least one. Even if you don't show the shipping or payment options, you need to add it to the basket so the process after creating the order continues as expected.
+Most of the time you want to offer some shipping and/or payment options to your customers. Even if you don't show the shipping or payment options, you need to add it to the basket so the process after creating the order continues as expected.
 
 # List options
 
-At first, you need to get the available delivery and payment options from the services resource URL listed in the OPTIONS request. With URL, you can query for the available services, either all together in one request or separated by their type ("delivery" or "payment"). The example code below will return all payment options:
+At first you need to get the available delivery and payment options from the services resource URL listed in the OPTIONS request. With that URL you can query for the available services, either all together in one request or separated by their type ("delivery" or "payment"). The example code below will return all payment options:
 
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X GET 'http://localhost:8000/jsonapi/service?filter[cs_type]=delivery&include=text,price,media'
+    -X GET 'http://localhost:8000/jsonapi/service?filter[cs_type]=payment&include=text,price,media'
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var args = {
         'filter': {
-            'cs_type': 'delivery' // or "delivery" (optional)
+            'cs_type': 'payment' // or "delivery" (optional)
         },
         'include': 'text,price,media'
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
     }
 
     $.ajax({
@@ -32,7 +35,7 @@ At first, you need to get the available delivery and payment options from the se
     });
     ```
 
-This returns the list of payment or delivery options (or both if the "filter" parameter is omitted) including the associated texts, price and images due to the "included" parameter:
+This returns the list of payment or delivery options (or both if the "filter" parameter is omitted) including the associated texts, prices and images due to the "included" parameter:
 
 ```json
 {
@@ -221,18 +224,18 @@ This returns the list of payment or delivery options (or both if the "filter" pa
 
 # Add delivery/payment
 
-To add a service to the basket, you need the "basket/service" URL from the service resource response. In our previous example, the URL of the first delivery option that would add this service to the basket was:
+To add a service to the basket you need the "basket/service" URL from the service resource response. In our previous example, the URL of the first delivery option that would add this service to the basket is:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery
 ```
 
-To add this service as delivery option in the current basket, you should use:
+To add this service as delivery option to the current basket you should use:
 
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X POST 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=uP2PvRc9JbLe3uk0zADb8wktD8m620WwM4ZI6BiV' \
+    -X POST 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": [{
         "id": "delivery",
@@ -272,7 +275,7 @@ To add this service as delivery option in the current basket, you should use:
     });
     ```
 
-It's important to add the **id: "delivery"** (or **"payment"**) and the service ID in the attributes section of the parameters sent to the server.  The value for "id" is the service type while the value for "service.id" must be the ID of the service option that should be added as delivery or payment entry to the basket.
+It's important to add the **id: "delivery"** (or **"payment"**) and the service ID in the attributes section of the parameters sent to the server. The value for "id" is the service type while the value for "service.id" must be the ID of the service option that should be added as delivery or payment entry to the basket.
 
 The response to this request would be similar to this:
 
@@ -391,7 +394,7 @@ It contains an additional "relationships" entry for the basket which points to t
 
 ## Passing additonal data
 
-The "attributes" section in "data" can contain additional key/value pairs whose values are entered by the customer. Here, the pickup time and location is passed and e.g. for direct debit payment related data must be passed. The available keys are listed in the "meta" section of the "basket/service" link of each entry returned by the service response:
+The "attributes" section in "data" can contain additional key/value pairs whose values are entered by the customer. Here, the pickup time and location is passed, and e.g. for direct debit payment related data must be passed. The available keys are listed in the "meta" section of the "basket/service" link of each entry returned by the service response:
 
 ```json
 "meta": {
@@ -419,7 +422,7 @@ The "attributes" section in "data" can contain additional key/value pairs whose 
 
 Only values for these keys will be accepted and if the "required" property is true, they must be passed in the request!
 
-Each of these additional service attributes contains a type property, which can be one of these:
+Each of these additional service attributes contains a type property which can be one of these:
 
 boolean
 : True/false value (input of type "checkbox")
@@ -476,7 +479,7 @@ The additional service attributes are then stored in the "attribute" section of 
 
 # Delete services
 
-Delivery or payment options added to the basket can also be removed again. For this, you need the URL from the basket service entry that is returned in the basket response. For the example above, it's:
+Delivery or payment options added to the basket can also be removed again. For this you need the URL from the basket service entry that is returned in the basket response. For the example above it is:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery
