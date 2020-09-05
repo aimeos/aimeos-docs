@@ -163,7 +163,7 @@ Then the response will contain an additional "relationships" entry in the basket
 
 ## Selection products
 
-For selection products, you have to pass the ID of the selection product and one ID for each variant attribute type assigned to the article, so the concrete article can be identified. If you have a shirt as selection product which includes two colors, your product structure would look like this one:
+For selection products you have to pass the ID of the selection product and one ID for each variant attribute type assigned to the article, so the concrete article can be identified. If you have a shirt as selection product which includes two colors, your product structure would look like this one:
 
 Shirt product (product.type: select)
 
@@ -753,11 +753,11 @@ The PATCH requests will change primarily the product data in the basket. Dependi
 }
 ```
 
-In this example, the response only contains the updated product and basket details.
+In this example the response only contains the updated product and basket details.
 
 # Delete products
 
-Removing product entries from the basket is done by using a DELETE request to the URL of the ordered product. In our example before, the URL is:
+Removing product entries from the basket is done by using a DELETE request to the URL of the ordered product. In our current example the URL is:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0
@@ -791,4 +791,4 @@ The code for the DELETE request itself is fairly simple:
     ```
 
 
-Afterwards, the product in the basket identified by the URL is removed from the basket. Depending on the activated basket plugins, more changes might have happened.
+Afterwards the product in the basket identified by the URL is removed from the basket. Depending on the activated basket plugins, more changes might have happened.
