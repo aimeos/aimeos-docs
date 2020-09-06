@@ -1,8 +1,8 @@
-By default, you can add a billing and delivery address to the basket. While the delivery address is optional, setting the billing address is almost always mandatory.
+By default you can add a billing and delivery address to the basket. While the delivery address is optional, setting the billing address is almost always mandatory.
 
 # Add addresses
 
-To add one or more addresses, you have to pass the data including the "id" and the attributes in a POST request to the server. The "id" is in that case the type of the address, i.e. "payment" for the billing address and "delivery" for the corresponding address.
+To add one or more addresses you have to pass the data including the "id" and the attributes in a POST request to the server. The "id" is in that case the type of the address, i.e. "payment" for the billing address and "delivery" for the corresponding address.
 
 There are some address attributes that are required when adding or replacing an address:
 
@@ -12,7 +12,7 @@ There are some address attributes that are required when adding or replacing an 
 * order.base.address.languageid (language the customer prefers)
 * order.base.address.email (account e-mail address)
 
-The request for creating a new address in the basket could look like:
+The request for creating a new address in the basket could look like this:
 
 === "CURL"
     ```bash
@@ -176,18 +176,17 @@ The response will then contain an additional "relationships" section in the bask
 }
 ```
 
-Depending on the activated basket plugins, the content of the response can be modified more than that. Especially, as the address is often the basis for the available delivery options.
+Depending on the activated basket plugins, the content of the response can be modified more than that. Especially since the address is often the basis for the available delivery options.
 
 # Delete addresses
 
-You can also remove addresses from the basket again by using a DELETE request to the URL of the address in the basket. In our example above, the URL is:
+You can also remove addresses from the basket again by using a DELETE request to the URL of the address in the basket. In our example above the URL is:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=address&relatedid=payment
 ```
 
 The DELETE request can be constructed in that way:
-
 
 === "CURL"
     ```bash
@@ -214,4 +213,4 @@ The DELETE request can be constructed in that way:
     });
     ```
 
-This request will remove the address entry from the basket and the response won't contain the address  in the "included" section as well the corresponding "relationships" entry any more.
+This request will remove the address entry from the basket, and the response won't contain the address in the "included" section neither the corresponding "relationships" entry anymore.
