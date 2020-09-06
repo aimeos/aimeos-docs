@@ -1,4 +1,4 @@
-Creating orders requires a complete basket, i.e. it contains at least one product, the billing address and a payment and delivery entry. Then, it's a three way step to create the required database entries and redirect to the payment gateway or the thank you page.
+Creating orders requires a complete basket, i.e. it contains at least one product, the billing address and a payment and delivery entry. Then it's a three way step to create the required database entries and redirect to the payment gateway or the thank you page.
 
 # Save basket
 
@@ -126,7 +126,7 @@ After saving the basket, you need to create an order invoice. For this, you must
     });
     ```
 
-The response will contain the data of the created order invoice item as well as the link to the next step. This can be either the URL to the payment gateway or to the thank you page and you can find it in **response['links']['process']['href']**:
+The response will contain the data of the created order invoice item as well as the link to the next step. This can either be the URL to the payment gateway or to the thank you page and can be found in **response['links']['process']['href']**:
 
 ```json
 {
@@ -222,7 +222,7 @@ select
 : Select drop-down (with options from "default" property)
 
 
-The "code" contains the form parameter name and the "default" property the value that should be sent to the payment gateway. For all entries in the "meta" section with "public" equals "true", you have to show the customer a corresponding input field where they can enter e.g. their credit card number. All entries with "public" is "false" must be added as hidden input elements:
+The "code" contains the form parameter name and the "default" property value that should be sent to the payment gateway. For all entries in the "meta" section with "public" equals "true", you have to show the customer a corresponding input field where they can enter e.g. their credit card number. All entries with "public" is "false" must be added as hidden input elements:
 
 === "jQuery"
     ```javascript
@@ -288,12 +288,15 @@ as *include* parameter:
     ```
 === "jQuery"
     ```javascript
-    var params = {
+    var args = {
         include: "order/base/address,order/base/coupon,order/base/product,order/base/service"
     };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
     }
 
     $.ajax({
