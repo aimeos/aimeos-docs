@@ -390,18 +390,18 @@ The response to this request would be similar to this:
 It contains an additional "relationships" entry for the basket which points to the basket service entry in the "included" section.
 
 !!! note
-    If you perform the same request again, **existing options** in the basket are **NOT overwritten** but an additional option added! Thus, you can add several delivery or payment options in one order.
+    If you perform the same request again, **existing options** in the basket are **NOT overwritten** but an additional option added! Thus you can add several delivery or payment options in one order.
 
 ## Passing additonal data
 
-The "attributes" section in "data" can contain additional key/value pairs whose values are entered by the customer. Here, the pickup time and location is passed, and e.g. for direct debit payment related data must be passed. The available keys are listed in the "meta" section of the "basket/service" link of each entry returned by the service response:
+The "attributes" section in "data" can contain additional key/value pairs whose values are entered by the customer. Here the "pickup time" and "location" are passed. The available keys are listed in the "meta" section of the "basket/service" link of each entry returned by the service response:
 
 ```json
 "meta": {
     "time.hourminute": {
         "code": "time.hourminute",
         "type": "time",
-        "label": "Delivery time",
+        "label": "Pick-up time",
         "public": true,
         "default": "07:15",
         "required": true
