@@ -1,4 +1,4 @@
-To create a customer or modify his data, you need the customer resource endpoint from the OPTIONS request. Depending on the used routes it might be something like:
+To create a customer or modify her/his data, you need the customer resource endpoint from the OPTIONS request. Depending on the used routes, it might be something like this:
 
 ```bash
 curl -b cookies.txt -c cookies.txt \
@@ -25,7 +25,7 @@ curl -b cookies.txt -c cookies.txt \
 The "csrf" section in "meta" is important to modify the customer data. Each response will contain such a "csrf" section if the host application supports tokens against cross-site request forgery attacks. If available, you have to send them with every DELETE, PATCH and POST request.
 
 !!! warning
-    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. It's response will define the next possibilities.
+    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. Its response will define the next possibilities.
 
 # Fetch customer data
 
@@ -47,7 +47,7 @@ To get the customer entry, you have to send a GET request to the customer endpoi
     });
     ```
 
-If the customer didn't authenticate himself yet, an empty customer item is returned:
+If the customer didn't authenticate herself/himself yet, an empty customer item is returned:
 
 ```json
 {
@@ -118,9 +118,9 @@ If the customer didn't authenticate himself yet, an empty customer item is retur
 ```
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
+    The way how a user is authenticated depends very much on the PHP framework you use. Please have a look at the documentation of the respective framework of your choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
-For an authenticated user, the response will contain the account data and the groups assigned to the user:
+The response of an authenticated user contains the account data and the groups assigned to the user:
 
 ```json
 {
@@ -224,7 +224,7 @@ For an authenticated user, the response will contain the account data and the gr
 
 If you don't need all data, you can [limit the fields](basics.md#return-specific-fields-only) returned by adding *&fields[customer]=...* to the URL, e.g. "&fields[customer]=customer.code,customer.email".
 
-To fetch addresses or other [related data](basics.md#include-related-resources) too, you can add *&include=...* to the URL so the related data is returned in the response too. Available related resources are:
+To fetch addresses or other [related data](basics.md#include-related-resources), too, you can add *&include=...* to the URL, so the related data is returned in the response as well. Available related resources are:
 
 * *customer/address* : List of delivery addresses
 * *customer/property* : List of properties stored for the user
@@ -322,7 +322,7 @@ If the user isn't logged in, it's possible to create a new customer by sending t
     });
     ```
 
-You can't set the "customer.status" and "customer.groups" properties for an account using the JSON API. If you do so, they will be ignored because obviously, this would enable attackers to re-enable their disabled account or gain additional privileges.
+You can't set the "customer.status" and "customer.groups" properties for an account using the JSON API. If you do so, they will be ignored because, obviously, this would enable attackers to re-enable their disabled account or gain additional privileges.
 
 In case the new account has been successfully created, the response will be similar to this one:
 
@@ -548,16 +548,16 @@ The response will include the basic customer data including groups like in this 
 It's not necessary to pass all customer fields along with the PATCH request. Instead, you can only add those fields with new or changed data. All other customer fields will remain unchanged.
 
 !!! warning
-    In most frameworks, the e-mail address is used as unique identifier and therefore, **customer.code** and **customer.email** should contain the same value if both are sent within the request. Otherwise, this may lead to inconsistencies when using different frameworks as host application.
+    In most frameworks the e-mail address is used as unique identifier. Therefore, **customer.code** and **customer.email** should contain the same value if both are sent within the request. Otherwise, this may lead to inconsistencies when using different frameworks as host application.
 
 # Delete customer
 
-It's also possible to delete a user account and remove all associated data like addresses but except orders. All order related data will stay untouched because it's only loosely related to customer accounts and must be available for accounting reasons.
+It's also possible to delete a user account and remove all associated data (like addresses), except orders. All order related data will stay untouched because it's only loosely related to customer accounts and must be available for accounting reasons.
 
-Every user can only delete his own account and he must be logged in to do so.
+Every user can only delete his own account and she/he must be logged in to do so.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
+    The way a user is authenticated depends very much on the PHP framework you use. Please have a look at the documentation of the respective framework of your choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 For deleting the account use e.g.:
 
