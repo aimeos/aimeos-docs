@@ -253,11 +253,11 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
 ```
 
 !!! note
-    Returning categories, suppliers and stock items in the product response is available since 2020.07
+    Returning categories, suppliers and stock items in the product response is available since 2020.07.
 
 # Sort product lists
 
-Additional to the generic filter possibilities, the product lists can be sorted easily by these keys:
+In addition to the generic filter possibilities, the product lists can be sorted easily by these keys:
 
 * "relevance" (asc) or "-relevance" (desc)
 * "name" (asc) or "-name" (desc)
@@ -326,7 +326,7 @@ If you offer users a search field for products, you have to add the entered text
 
 # Filter products by price
 
-To enable users to filter products by price, you need to use the *index.price:value* filter as well as the three letter currency code as parameter in round brackets and quotation marks ("). To return only products with a price of less than e.g. 99.50 Euro you need:
+To enable users to filter products by price, you need to use the *index.price:value* filter as well as the three letter currency code as parameter in round brackets and quotation marks ("). To return only products with a price of less than e.g. 99.50 Euro, you need:
 
 === "CURL"
     ```bash
@@ -497,7 +497,7 @@ This will return the root catalog node and its direct children as well as their 
 ]}
 ```
 
-You can repeat this with the catalog children returned in the "included" section to get their children. In **links[self]** of the children, the right URL for retrieving them is available.
+If you wish to display the children's children of a specific category, use the URL that is provided by the **links[self]** key in the "included" section.
 
 # Get products by category
 
@@ -701,7 +701,7 @@ If the user selects one or more of the attributes, you can get the corresponding
     });
     ```
 
-Instead of *f_attrid* which combines all attributes by an **AND** condition, you can also use *f_optid* which uses an **OR** condition:
+Instead of *f_attrid* which combines all attributes with an **AND** condition, you can also use *f_optid* which uses an **OR** condition:
 
 === "CURL"
     ```bash
@@ -768,7 +768,7 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
 
 # Suppliers for faceted search
 
-To fetch the suppliers for building the supplier facet, you should use the "supplier" resource returned by the OPTIONS method:
+To fetch the suppliers for building the supplier facet, use the "supplier" resource returned by the OPTIONS method:
 
 === "CURL"
     ```bash
