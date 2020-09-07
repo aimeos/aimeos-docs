@@ -27,34 +27,35 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
 
 ```json
 {
-"meta": {
-    "prefix": null,
-    "filter": {
-        "f_domain": {
-            "label": "Return reviews for that domain, e.g. 'product'",
-            "type": "string",
-            "default": "product",
-            "required": false
+    "meta": {
+        "prefix": null,
+        "filter": {
+            "f_domain": {
+                "label": "Return reviews for that domain, e.g. 'product'",
+                "type": "string",
+                "default": "product",
+                "required": false
+            },
+            "f_refid": {
+                "label": "Return reviews for the item from the domain with that ID",
+                "type": "string",
+                "default": null,
+                "required": false
+            }
         },
-        "f_refid": {
-            "label": "Return reviews for the item from the domain with that ID",
-            "type": "string",
-            "default": null,
-            "required": false
-        }
-    },
-    "sort": {
-        "ctime": {
-            "label": "Sort reviews by creation date/time",
-            "type": "string",
-            "default": true,
-            "required": false
-        },
-        "ctime": {
-            "label": "Sort reviews by rating",
-            "type": "string",
-            "default": false,
-            "required": false
+        "sort": {
+            "ctime": {
+                "label": "Sort reviews by creation date/time",
+                "type": "string",
+                "default": true,
+                "required": false
+            },
+            "ctime": {
+                "label": "Sort reviews by rating",
+                "type": "string",
+                "default": false,
+                "required": false
+            }
         }
     }
 }
