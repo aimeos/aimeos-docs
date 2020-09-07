@@ -35,7 +35,6 @@ This will return a response like:
 }
 ```
 
-
 The "csrf" section in "meta" will be important when you want to modify the basket. Each response will contain such a "csrf" section if the host application supports tokens against cross-site request forgery attacks. If available, you need to send them with every DELETE, PATCH and POST request.
 
 !!! warning
