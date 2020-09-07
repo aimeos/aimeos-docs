@@ -1,7 +1,7 @@
 Customers can view, add and update their own reviews using the JSON REST API but they need to authenticate themselves first.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
+    The way how a user is authenticated depends very much on the PHP framework you use. Please have a look into the documentation of your framework of choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 The customer response returnes the URLs for managing reviews:
 
@@ -88,7 +88,7 @@ When at least one review is available, the response will be similar to this one:
 
 # Add reviews
 
-To add one or more reviews to the authenticated customer, use a POST request including the review data. The URL to add reviews is returned by the GET request to the [customer endpoint](customer.md), which contains a *customer/review* entry in the *links* section.
+To add one or more reviews to the authenticated customer, use a POST request including the review data. The URL to add reviews is returned by the GET request to the [customer endpoint](customer.md) which contains a *customer/review* entry in the *links* section.
 
 The available fields for reviews are:
 
@@ -164,7 +164,7 @@ Changing one review of the authenticated customer is possible by performing a PA
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X PATCH 'http://localhost:8000/jsonapi/customer?related=review&relatedid=8&_token=sTVVJGBtJyarXfgrYOxL5hpGADLbYOMb1azBn79V' \
+    -X PATCH 'http://localhost:8000/jsonapi/customer?related=review&relatedid=8&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
         "attributes": {
@@ -208,13 +208,12 @@ Removing reviews from the user account is also possible by executing a DELETE re
 http://localhost:8000/jsonapi/customer?id=2&related=review&relatedid=1
 ```
 
-You can build a DELETE request using:
-
+You can build a DELETE request like this:
 
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X DELETE 'http://localhost:8000/jsonapi/customer?related=review&relatedid=8&_token=sTVVJGBtJyarXfgrYOxL5hpGADLbYOMb1azBn79V'
+    -X DELETE 'http://localhost:8000/jsonapi/customer?related=review&relatedid=8&_token=...'
     ```
 === "jQuery"
     ```javascript
@@ -235,4 +234,4 @@ You can build a DELETE request using:
     });
     ```
 
-Then, the review identified by its ID is removed from the customer account.
+Then, the review identified by its ID is removed from the customer's account.
