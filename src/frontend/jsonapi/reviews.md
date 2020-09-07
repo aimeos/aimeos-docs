@@ -1,4 +1,4 @@
-Before you can retrieve the reviews, you must get the resource endpoint via the OPTIONS request. Depending on the used routes it might be something like:
+Before you can retrieve the reviews, you must get the resource endpoint via the OPTIONS request. Depending on the used routes it might be something like this:
 
 ```bash
 curl -X OPTIONS 'http://localhost:8000/jsonapi'
@@ -31,7 +31,7 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
     "prefix": null,
     "filter": {
         "f_domain": {
-            "label": "Return reviews for that domain, e.g. "product"",
+            "label": "Return reviews for that domain, e.g. 'product'",
             "type": "string",
             "default": "product",
             "required": false
@@ -62,7 +62,7 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
 
 # Fetch reviews
 
-Now you can retrieve reviews via the "review" resource you've got from the OPTIONS response. By default, the list of all product reviews is returned and you should filter them by the ID of the product the user requested, e.g.:
+Now you can retrieve reviews via the "review" resource you've just received from the OPTIONS response. By default, the list of all product reviews is returned and you should filter them by the ID of the product the user requested, e.g.:
 
 === "CURL"
     ```bash
@@ -70,12 +70,17 @@ Now you can retrieve reviews via the "review" resource you've got from the OPTIO
     ```
 === "jQuery"
     ```javascript
-    var params = {filter: {
-        'f_refid': '1'
-    }};
+    var args = {
+        filter: {
+            'f_refid': '1'
+        }
+    };
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
     }
 
     $.ajax({
@@ -132,7 +137,7 @@ This response contains all reviews for the product with the ID "1":
 
 # Sort reviews
 
-Additional to the generic filter possibilities, you can sort reviews by these keys:
+In addition to the generic filter possibilities, you can sort reviews by these keys:
 
 * "ctime" (asc) or "-ctime" (desc)
 * "rating" (asc) or "-rating" (desc)
@@ -143,10 +148,13 @@ Additional to the generic filter possibilities, you can sort reviews by these ke
     ```
 === "jQuery"
     ```javascript
-    var params = {'sort': '-rating'};
+    var args = {'sort': '-rating'};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = params;
+    } else {
+        params = args;
     }
 
     $.ajax({
