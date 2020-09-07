@@ -21,7 +21,6 @@ curl -b cookies.txt -c cookies.txt \
 }
 ```
 
-
 The "csrf" section in "meta" is important to modify the customer data. Each response will contain such a "csrf" section if the host application supports tokens against cross-site request forgery attacks. If available, you have to send them with every DELETE, PATCH and POST request.
 
 !!! warning
