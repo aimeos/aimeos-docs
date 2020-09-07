@@ -1,9 +1,9 @@
-Each customer account can store relations to other domains for different purposes, e.g. for favorite or watched products . The JSON REST API allows you to manage them for the authenticated user.
+Each customer account can store relations to other domains for different purposes, e.g. for favorite or watched products. The JSON REST API allows you to manage them for an authenticated user.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
+    The way how a user is authenticated depends very much on the PHP framework you use. Please have a look into the documentation of your framework of choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
-The customer response can return more than the URLs for managing relations, it can also include the related items itself. Add the *include* parameter with the domain of the items you want to fetch, e.g. *&include=product* to get:
+In addition to the URLs for managing relations, the customer response can also include the related items themselves. Add the *include* parameter with the domain of the items you want to fetch, e.g. *&include=product* to get:
 
 ```json
 {
@@ -92,25 +92,29 @@ To get the relations only, use a GET request to the *customer/relationships* end
 === "jQuery"
     ```javascript
     var url = response['links']['customer/relationships']['href']; // from customer response
-    var $params = {include: "product"};
+    var args = {include: "product"};
+    var params;
 
     if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = args;
+    } else {
+        params = args
     }
 
     $.ajax({
         url: url,
         method: "GET",
-        dataType: "json"
+        dataType: "json",
+        data: params
     }).done( function( result ) {
         console.log( result.data );
     });
     ```
 
 !!! note
-    Don't forget to add the *include* parameter to specify which domain items you want to retrieve. If you forget that parameter, no relations are returned even if there are items referenced by the customer account!
+    Don't forget to add the *include* parameter to specify which domain items you want to retrieve. If you forget that parameter, no relations will be returned even if there are items referenced by the customer account!
 
-The response will look like this one if at least one relationship is available:
+The response will look similar to this one if at least one relationship is available:
 
 ```json
 {
@@ -153,7 +157,7 @@ The response will look like this one if at least one relationship is available:
 
 # Add relations
 
-To add one or more relations to the authenticated customer, use a POST request including the relationship data, i.e. the data for the list item. The URL for that request is returned by the GET request to the [customer endpoint](customer.md) and contains a *customer/relationships* entry in the *links* section:
+To add one or more relations to an authenticated customer, use a POST request including the relationship data, i.e. the data for the list item. The URL for that request is returned by the GET request to the [customer endpoint](customer.md) and contains a *customer/relationships* entry in the *links* section:
 
 ```json
 {
@@ -260,7 +264,7 @@ The request for creating a new relation looks similar to this one:
     ```
 
 !!! note
-    If you want to get the created relationship back, add the *include* parameter with the domain you have added the item for.
+    If you want to get back the created relationship, add the *include* parameter with the domain to which you have just added the item.
 
 ## Favorite products
 
@@ -465,7 +469,6 @@ http://localhost:8000/jsonapi/customer?id=2&related=relationships&relatedid=1
 
 A DELETE request is performed by:
 
-
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
@@ -490,4 +493,4 @@ A DELETE request is performed by:
     });
     ```
 
-Then, the relation entry identified by its ID is removed from the customer account.
+Then, the relation entry identified by its ID is removed from the customer's account.
