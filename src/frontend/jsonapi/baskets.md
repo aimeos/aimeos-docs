@@ -38,7 +38,7 @@ This will return a response like:
 The "csrf" section in "meta" will be important when you want to modify the basket. Each response will contain such a "csrf" section if the host application supports tokens against cross-site request forgery attacks. If available, you need to send them with every DELETE, PATCH and POST request.
 
 !!! warning
-    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus your client needs the OPTIONS URL of the JSON REST API as configuration parameter. Its response will define the next possibilities.
+    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. Its response will define the next possibilities.
 
 # Fetch the basket
 
@@ -119,7 +119,7 @@ If the basket is empty, it will return only the basic basket properties but no p
 
 There are three values that you can update using a PATCH request to the basket:
 
-* order.base.customerid (ID of the customer to show the order in their account history)
+* order.base.customerid (ID of the customer to show the order in her/his account history)
 * order.base.comment (customer comment for this order)
 * order.base.customerref (own reference of the customer for this order)
 
