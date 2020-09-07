@@ -291,7 +291,7 @@ as *include* parameter:
     var args = {
         include: "order/base/address,order/base/coupon,order/base/product,order/base/service"
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;

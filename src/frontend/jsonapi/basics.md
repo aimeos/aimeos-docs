@@ -104,7 +104,7 @@ Additionally, you can use custom filters for each resource. The JSON API standar
             '>': {'product.type': 'select'}
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -169,7 +169,7 @@ To combine several conditions into one request, you can combine two or more "com
             ]
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -214,7 +214,7 @@ The negation is a special case because it only accepts one "compare" condition w
             ]
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -256,7 +256,7 @@ You can also create more complicated statements by nesting them like:
             ]
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -294,7 +294,7 @@ Additionally, you can use the sort parameter and the items keys for generic sort
     var args = {
         'sort': 'product.label'
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -323,7 +323,7 @@ This will return the results ordered by the product label. You can also tell the
     var args = {
         'sort': '-product.label'
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -352,7 +352,7 @@ Sorting by several keys is also possible if they are separated by a comma:
     var args = {
         'sort': '-product.status,product.id'
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -391,7 +391,7 @@ By default, only the first 25 items are returned if nothing else is specified. T
             'limit': 2
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -463,7 +463,7 @@ If you only need the values of a few fields and want to reduce the amount of dat
             'product': 'product.id,product.label'
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -499,7 +499,7 @@ To minimize the number of requests, the Aimeos JSON API can add related resource
     var args = {
         'include': 'text'
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -646,7 +646,7 @@ This does also work for items from the same domain that have a parent/child rela
     var args = {
         'include': 'product/property'
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;

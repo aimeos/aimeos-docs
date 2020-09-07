@@ -17,7 +17,7 @@ At first you need to get the available delivery and payment options from the ser
         },
         'include': 'text,price,media'
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;

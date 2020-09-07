@@ -21,7 +21,7 @@ The offered URLs to the resources depend on the application that hosts the Aimeo
 
     promise.done( function( options ) {
         var args = {};
-        var params;
+        var params = {};
 
         if(options.meta.prefix) { // returned from OPTIONS call
             params[options.meta.prefix] = args;
@@ -77,7 +77,7 @@ To handle this case correctly, you must embed the GET parameters into another ob
 === "Javascript"
     ```javascript
     var args = {'resource': 'product', 'id': '1'};
-    var params;
+    var params = {};
 
     if( options.meta.prefix ) {
         params[options.meta.prefix] = args;

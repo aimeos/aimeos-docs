@@ -271,7 +271,7 @@ In addition to the generic filter possibilities, the product lists can be sorted
 === "jQuery"
     ```javascript
     var args = {'sort': '-ctime'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -306,7 +306,7 @@ If you offer users a search field for products, you have to add the entered text
             'f_search': 'demo'
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -339,7 +339,7 @@ To enable users to filter products by price, you need to use the *index.price:va
             '<': {'index.price:value("EUR")': 99.50}
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -375,7 +375,7 @@ Usually, you want to filter for a price range, so you need to pass an upper and 
             ]
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -404,7 +404,7 @@ To display the category tree, you have to use the "catalog" resource returned by
 === "jQuery"
     ```javascript
     var args = {'include': 'catalog,media,text'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -514,7 +514,7 @@ To get the products for a category, use the *f_catid* filter parameter:
             'f_catid': '1'
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -546,7 +546,7 @@ By default, all the found products use "default" as the category list type. You 
             'f_listtype': 'promotion'
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -575,7 +575,7 @@ The product attributes for building the faceted search can be retrieved using th
 === "jQuery"
     ```javascript
     var args = {'include': 'media,text'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -683,7 +683,7 @@ If the user selects one or more of the attributes, you can get the corresponding
             'f_attrid': ['1','3']
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -714,7 +714,7 @@ Instead of *f_attrid* which combines all attributes with an **AND** condition, y
             'f_optid': ['1','3']
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -748,7 +748,7 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
             }
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -777,7 +777,7 @@ To fetch the suppliers for building the supplier facet, use the "supplier" resou
 === "jQuery"
     ```javascript
     var args = {'include': 'media,text'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -879,7 +879,7 @@ If the user selects a supplier, you can get the corresponding products by adding
             'f_supid': '1'
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -912,7 +912,7 @@ You can get the attribute counts by using the **aggregate** key and the correspo
 === "jQuery"
     ```javascript
     var args = {'aggregate': 'index.attribute.id'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -956,7 +956,7 @@ In the same way you can get the product counts for the categories by using the *
 === "jQuery"
     ```javascript
     var args = {'aggregate': 'index.catalog.id'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -998,7 +998,7 @@ To get the product counts for the suppliers, use the **aggregate** key and the c
 === "jQuery"
     ```javascript
     var args = {'aggregate': 'index.supplier.id'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -1044,7 +1044,7 @@ If you don't fetch the stock levels together with the products using *&include=s
             's_prodcode': ['ABCD']
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -1101,7 +1101,7 @@ If the shop has different warehouses or local stores where customers can pick up
             's_stocktype': 'berlin'
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;

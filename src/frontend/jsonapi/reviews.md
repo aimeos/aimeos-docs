@@ -75,7 +75,7 @@ Now you can retrieve reviews via the "review" resource you've just received from
             'f_refid': '1'
         }
     };
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
@@ -149,7 +149,7 @@ In addition to the generic filter possibilities, you can sort reviews by these k
 === "jQuery"
     ```javascript
     var args = {'sort': '-rating'};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = params;

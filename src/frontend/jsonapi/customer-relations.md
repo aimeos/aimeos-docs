@@ -93,7 +93,7 @@ To get the relations only, use a GET request to the *customer/relationships* end
     ```javascript
     var url = response['links']['customer/relationships']['href']; // from customer response
     var args = {include: "product"};
-    var params;
+    var params = {};
 
     if(options.meta.prefix) { // returned from OPTIONS call
         params[options.meta.prefix] = args;
