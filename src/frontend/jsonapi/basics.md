@@ -415,7 +415,7 @@ This will get only the first 2 items. If more items are available, the first res
 "links": {
     "first": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
     "prev": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=0&page%5Blimit%5D=2",
-    "next": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=2&page%5Blimit%5D=2",
+    "next": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
     "last": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=4&page%5Blimit%5D=2",
     "self": "http://localhost:8000/jsonapi/product?page%5Boffset%5D=2&page%5Blimit%5D=2"
 }
