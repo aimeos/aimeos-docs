@@ -1,4 +1,4 @@
-To be able to retrieve the basket, you need the basket resource endpoint from the OPTIONS request. Depending on the used routes it might be something like:
+To be able to retrieve the basket, you need the basket resource endpoint from the OPTIONS request. Depending on the used routes it might be something like this:
 
 === "CURL"
     ```bash
@@ -35,15 +35,14 @@ This will return a response like:
 }
 ```
 
-
 The "csrf" section in "meta" will be important when you want to modify the basket. Each response will contain such a "csrf" section if the host application supports tokens against cross-site request forgery attacks. If available, you need to send them with every DELETE, PATCH and POST request.
 
 !!! warning
-    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. It's response will define the next possibilities.
+    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. Its response will define the next possibilities.
 
 # Fetch the basket
 
-To retrieve the current basket content, you need to send a GET request to the basket resource like this:
+To retrieve the current basket content you need to send a GET request to the basket resource like this:
 
 === "CURL"
     ```bash
@@ -61,7 +60,7 @@ To retrieve the current basket content, you need to send a GET request to the ba
     });
     ```
 
-If the basket is empty, it will return only the basic basket properties but no products, addresses, service items or coupons. Important is that the same session cookie is sent with each request. Otherwise, an empty basket is returned for every request, regardless of which action you've performed before. The response would be for example:
+If the basket is empty, it will return only the basic basket properties but no products, addresses, service items or coupons. It is very important that the same session cookie is sent with each request. Otherwise an empty basket is returned for every request regardless of which action you've performed before. The response would be for example:
 
 ```json
 {
@@ -70,9 +69,9 @@ If the basket is empty, it will return only the basic basket properties but no p
         "prefix": null,
         "content-baseurl": "/",
         "csrf": {
-                "name": "_token",
-                "value": "..."
-            }
+            "name": "_token",
+            "value": "..."
+        }
     },
     "links": {
         "self": {
@@ -120,11 +119,11 @@ If the basket is empty, it will return only the basic basket properties but no p
 
 There are three values that you can update using a PATCH request to the basket:
 
-* order.base.customerid (ID of the customers to show the order in their account history)
+* order.base.customerid (ID of the customer to show the order in her/his account history)
 * order.base.comment (customer comment for this order)
 * order.base.customerref (own reference of the customer for this order)
 
-The update the basket, you have to use the "self" link from a previous GET request:
+To update the basket you have to use the "self" link from a previous GET request:
 
 === "CURL"
     ```bash
@@ -171,7 +170,7 @@ The response will be the same as for the GET request but the attributes are upda
 
 # Clear the basket
 
-Removing all items and properties from the basket (effectively wiping out the basket content) is done by doing a DELETE request to the basket resource:
+Removing all items and properties from the basket (effectively wiping out the basket content) is done by sending a DELETE request to the basket resource:
 
 === "CURL"
     ```bash

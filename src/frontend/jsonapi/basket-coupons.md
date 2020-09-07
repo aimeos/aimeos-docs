@@ -1,6 +1,6 @@
 # Add coupons
 
-Coupon (or voucher) codes can be added to the basket by using the "basket/coupon" URL that is sent in every basket response. The data objects only need the code passed in the "id" parameter like this:
+Coupon (or voucher) codes can be added to the basket by using the "basket/coupon" URL that is sent with every basket response. The data objects only need the code passed in the "id" parameter like this:
 
 === "CURL"
     ```bash
@@ -100,7 +100,7 @@ If a coupon code does require one or more prerequisites and they aren't matched,
 
 # Delete coupons
 
-Removing coupons from the basket is done by using a DELETE request to the URL of the coupon entry in the basket. In our example above, the URL is:
+Removing coupons from the basket is done by using a DELETE request to the URL of the coupon entry in the basket. In our example above the URL is:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=fixed

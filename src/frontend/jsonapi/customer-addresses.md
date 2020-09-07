@@ -1,7 +1,7 @@
 Aimeos allows several delivery addresses for each customer but customers must be authenticated before they can add, delete, retrieve and update their addresses.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
+    The way how a user is authenticated depends very much on the PHP framework you use. Please have a look into the documentation of your framework of choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).
 
 The customer response returnes the URLs for managing addresses:
 
@@ -46,7 +46,7 @@ To retrieve the delivery addresses of the customer, you have to send a GET reque
     });
     ```
 
-If there's at least one delivery address available, the response looks like:
+If there's at least one delivery address available, the response looks like this:
 
 ```json
 {
@@ -135,7 +135,7 @@ There are some address attributes that are suggested when adding an address:
 * customer.address.city (town or city name)
 * customer.address.languageid (language the customer prefers)
 
-The request for creating a new delivery address could look like:
+The request for creating a new delivery address could look like this:
 
 === "CURL"
     ```bash
@@ -214,7 +214,7 @@ The request for creating a new delivery address could look like:
 
 # Modify address
 
-In the same way you can add address, you can change one or more address fields of the authenticated customer using a PATCH request. The URL for updating an address is returned by the GET response containing the customer delivery addresses. You can add all address fields or only the modified ones in the PATCH request:
+In the same way you can add an address, you can change one or more address fields of the authenticated customer using a PATCH request. The URL for updating an address is returned by the GET response containing the customer delivery addresses. You can add all address fields or only the modified ones in the PATCH request:
 
 === "CURL"
     ```bash
@@ -257,14 +257,13 @@ In the same way you can add address, you can change one or more address fields o
 
 # Delete addresses
 
-You can also remove delivery addresses from the customer account by using a DELETE request to the URL of the customer address. In our first response above, the URL is:
+You can also remove delivery addresses from the customer account by using a DELETE request to the URL of the customer's address. In our first response above, the URL is:
 
 ```
 http://localhost:8000/jsonapi/customer?id=2&related=address&relatedid=2
 ```
 
-Use code like that to contruct the DELETE request:
-
+Use code like this one to construct a DELETE request:
 
 === "CURL"
     ```bash
@@ -290,4 +289,4 @@ Use code like that to contruct the DELETE request:
     });
     ```
 
-This request will remove the address entry from the user account and an additional GET request to retrieve the addresses won't contain the address any more.
+This request will remove the address entry with id 2 from the user account. Any subsequent GET requests to retrieve the customer's addresses won't contain the address with the id 2 anymore.

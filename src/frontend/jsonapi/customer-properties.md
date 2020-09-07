@@ -1,7 +1,7 @@
 You can store arbitrary key/language/value pairs in each customer account for different purposes. The JSON REST API allows you to manage them for the authenticated user.
 
 !!! tip
-    How to authenticate the user depends on the used PHP framework. Please have a look into the documentation of your used framework, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html)).
+    The way how a user is authenticated depends very much on the PHP framework you use. Please have a look into the documentation of your framework of choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html)).
 
 The customer response returnes the URLs for managing properties:
 
@@ -28,7 +28,7 @@ The customer response returnes the URLs for managing properties:
 
 # Fetch properties
 
-Retrieving the properties of the customer requires a GET request to the *customer/property* endpoint returned by the GET request for the [customer](customer.md), e.g.:
+Retrieving the properties of a customer requires a GET request to the *customer/property* endpoint returned by the GET request for the [customer](customer.md), e.g.:
 
 === "CURL"
     ```bash
@@ -83,7 +83,7 @@ When at least one property is available, the response will be similar to this on
 
 # Add properties
 
-To add one or more properties to the authenticated customer, use a POST request including the property data. The URL for that request is returned by the GET request to the [customer endpoint](customer.md) and contains a *customer/property* entry in the *links* section:
+To add one or more properties to an authenticated customer, use a POST request including the property data. The URL for that request is returned by the GET request to the [customer endpoint](customer.md) and contains a *customer/property* entry in the *links* section:
 
 ```json
 {
@@ -100,7 +100,7 @@ To add one or more properties to the authenticated customer, use a POST request 
         "self": "http://localhost:8080/jsonapi/customer",
         "customer/property": {
             "href": "http://localhost:8080/jsonapi/customer?related=property",
-                "allow": ["GET","POST"]
+            "allow": ["GET","POST"]
         }
     }
 }
@@ -157,7 +157,7 @@ The request for creating a new property looks similar to this one:
 
 # Modify property
 
-Changing one property of the authenticated customer is possible by executing a PATCH request. The URL for updating the property is returned in the response of the GET request which fetches all properties. You can add all property fields or only the modified ones in the PATCH request:
+Changing one property of an authenticated customer is possible by executing a PATCH request. The URL for updating the property is returned in the response of the GET request which fetches all properties. You can add all property fields or only the modified ones in the PATCH request:
 
 === "CURL"
     ```bash
@@ -204,8 +204,7 @@ Removing properties from the user account is also possible by executing a DELETE
 http://localhost:8000/jsonapi/customer?id=2&related=property&relatedid=1
 ```
 
-The DELETE request can be constructed that way:
-
+The DELETE request can be constructed like this:
 
 === "CURL"
     ```bash

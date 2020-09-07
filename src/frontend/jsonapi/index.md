@@ -1,10 +1,10 @@
 Since 2017.04, Aimeos contains a front-end JSON API modeled after the guidelines of <https://jsonapi.org/>. It enables you to view and order products via mobile apps or create JavaScript applications to access to any Aimeos based online shop using a single look and feel.
 
-There's also no common entry point to access the JSON API because it depends on the host application. You have to retrieve the initial base URL from a configuration setting or somewhere else. Also the resource URLs are different depending on the environment but you can get the available ones by querying the meta data from the base URL (via the HTTP OPTIONS method).
+The entry point to access the Aimeos JSON API depends on the host application you use (Laravel, Symfony, TYPO3). You have to retrieve the initial base URL from a configuration setting or somewhere else. The resource URLs are different depending on the environment, but you can get the available ones by querying the meta data from the base URL (via the HTTP OPTIONS method).
 
 # Retrieve meta data
 
-The offered URLs to the resources depend on the application that hosts the Aimeos components. Therefore, you can't use fixed URLs like `http://localhost:8000/jsonapi/product?id=1`. Instead, you need to configure the base URL to the Aimeos JSON API of the instance you  want to connect to in your client application. Afterwards, you must use the OPTIONS method to retrieve the service description with the list of resources and their URLs, e.g.
+The offered URLs to the resources depend on the application that hosts the Aimeos components. Therefore, you can't use fixed URLs like `http://localhost:8000/jsonapi/product?id=1`. Instead you need to configure the base URL to the Aimeos JSON API of the instance you want to connect to in your client application. Afterwards you must use the OPTIONS method to retrieve the service description with the list of resources and their URLs, e.g.
 
 === "CURL"
     ```bash
@@ -20,7 +20,14 @@ The offered URLs to the resources depend on the application that hosts the Aimeo
     });
 
     promise.done( function( options ) {
+        var args = {};
         var params = {};
+
+        if(options.meta.prefix) { // returned from OPTIONS call
+            params[options.meta.prefix] = args;
+        } else {
+            params = args;
+        }
 
         var result = $.ajax({
             method: "GET",
@@ -55,7 +62,7 @@ It returns a JSON object containing the resources (those names are always the sa
 To access the products for example, you must lookup the URL for the "product" resource key. Similarly, you can use every key defined in the `resources` object to retrieve the corresponding items.
 
 !!! warning
-    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. It's response will define the next possibilities.
+    Don't take the resource URLs in the OPTIONS response as granted! They will change depending on the routes and the application. Thus, your client needs the OPTIONS URL of the JSON REST API as configuration parameter. Its response will define the next possibilities.
 
 # Nested parameters
 
@@ -69,10 +76,13 @@ To handle this case correctly, you must embed the GET parameters into another ob
 
 === "Javascript"
     ```javascript
-    var params = {'resource': 'product', 'id': '1'};
+    var args = {'resource': 'product', 'id': '1'};
+    var params = {};
 
     if( options.meta.prefix ) {
-        params[options.meta.prefix] = params;
+        params[options.meta.prefix] = args;
+    } else {
+        params = args
     }
     ```
 
