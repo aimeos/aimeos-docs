@@ -388,6 +388,16 @@ Follow these steps to create multiple shops/sites:
     plugin.tx_aimeos.settings.typo3.param.name.site = C
     ```
 
+7. **Deactive or delete a site**
+
+    If you want to deactivate or delete a site/shop go to the Aimeos administation interface in the TYPO3 backend. Go to the "Locales" menu and click on its submenu "Sites".
+
+    If you want to *disable* a shop/site, click on any of the available fields (status, code, name, ...) of the shop you would like to deactivate. In the next step, set "Status" to "disabled".
+
+    If you want to *delete* a shop/site, click on the `x` on the very right ('Delete this entry') and you are done.
+
+    In both case clear all TYPO3 caches and reload. Also, don't forget to deactivate the respective TYPO3 page of the shop in question in order to prevent erroneous page renderings in the front end.
+
 # Basket in navigation
 
 Most e-commerce sites show a small basket at the top right corner of each page. The Aimeos TYPO3 extension provides a plug-in for a small basket, too, containing only the number of products and the total value. You can either add this basket plug-in by
