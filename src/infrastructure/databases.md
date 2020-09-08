@@ -55,21 +55,7 @@ For PostgreSQL servers, you need to reset some configuration and configure Postg
 'mshop' => [
     'index' => [
         'manager' => [
-            'attribute' => [
-                'name' => 'Standard',
-            ],
-            'catalog' => [
-                'name' => 'Standard',
-            ],
-            'price' => [
-                'name' => 'Standard',
-            ],
-            'supplier' => [
-                'name' => 'Standard',
-            ],
-            'text' => [
-                'name' => 'PgSQL',
-            ],
+            'name' => 'PgSQL',
         ],
     ],
 ],
@@ -92,19 +78,7 @@ For PostgreSQL servers, you need to reset some configuration and configure Postg
 'mshop' => [
     'index' => [
         'manager' => [
-            'name' => 'Standard',
-            'attribute' => [
-                'name' => 'Standard',
-            ],
-            'catalog' => [
-                'name' => 'Standard',
-            ],
-            'price' => [
-                'name' => 'Standard',
-            ],
-            'text' => [
-                'name' => 'SQLSrv',
-            ],
+            'name' => 'SQLSrv',
         ],
     ],
 ],
