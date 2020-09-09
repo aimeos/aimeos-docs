@@ -232,7 +232,7 @@ Using them in TypoScript is more difficult because TypoScript doesn't allow new 
 ```typoscript
 plugin.tx_aimeos.settings.i18n.de.0 {
   domain = client
-  string = The payment was cancelled.\nWould you like to place your order again?
+  string = The payment was canceled.\nDo you wish to retry your order?
   trans = Die Zahlung wurde abgebrochen.\nMöchten Sie Ihre Bestellung wiederholen?
 ```
 
