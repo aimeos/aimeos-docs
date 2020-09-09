@@ -4,25 +4,46 @@ There are a lot of configuration options available and documented in the *Config
 
 ## Frontend
 
-To add or overwrite configuration options in TYPO3, you can use TypoScript added to the setup section of a page TypoScript template to set the values. The keys in the configuration documentation are always in the form:
+To add or overwrite configuration options in TYPO3, you can use TypoScript. Simply add the new or overwritten configuration values to the setup section of a page TypoScript template.
+
+The keys in the configuration documentation are always in the form of:
 
 ```
 client/html/catalog/filter/default/button = 1
 ```
 
-To use such a key, replace the slashes (/) by dots (.) and prepend it with "plugin.tx_aimeos.settings.":
+To use such a key with TypoScript, replace the slashes (/) with dots (.) and prepend "plugin.tx_aimeos.settings.":
 
 ```typoscript
 plugin.tx_aimeos.settings.client.html.catalog.filter.default.button = 1
 ```
 
-If the configuration key accepts an array of values, then you can add them like this:
+If the configuration key accepts an array of values, add them like this:
 
 ```typoscript
 plugin.tx_aimeos.settings.client.html.catalog.filter.default.subparts {
-  0 = search
-  1 = tree
-  2 = attribute
+    0 = search
+    1 = tree
+    2 = attribute
+}
+```
+
+In case you want to limit related items by their list type or fetch additional items for suppliers or categories, then use:
+
+```typoscript
+plugin.tx_aimeos.settings.client.html.catalog.lists.domains {
+    text = text
+    product {
+        0 = default
+    }
+    supplier {
+        0 = text
+        1 = media
+    }
+    catalog {
+        0 = text
+        1 = media
+    }
 }
 ```
 
@@ -34,31 +55,31 @@ Several plugins provide the possibility to add plug-in specific TypoScript confi
 client.html.catalog.filter.default.button = 1
 ```
 
-Slashes (/) are replaced by a dot (.) and nothing is prepended. The same works with arrays of values as well. Please have a look at the [frontend section](#frontend) above for an example.
+Each slash (/) is replaced by a dot (.), nothing is prepended. The same is true for arrays of values as well. Please have a look at the [frontend section](#frontend) above for an example.
 
 ## PageTS
 
-TYPO3 needs a special handling for configuration options that should affect what the plugins will show in their own options view when you edit a plugin placed on a page in the backend. This is called the Page TypoScript or PageTS. Aimeos only has one setting that affects the shown plugin options and this is the selection of the site if you have several ones:
+In order to configure a plugin's behaviour in the backend, TYPO3 uses what is called a "page typoscript" (pageTS). *Aimeos* offers only one such configuration option, the "site selection", which is only needed, when you run a [multiple shop](#multiple-shops) setup:
 
 ```typoscript
 tx_aimeos.mshop.locale.site = myshop
 ```
 
-If you have several shops in your TYPO3 installation, this setting will e.g. change categories shown in the plugin options view of the catalog filter plugin. In order to change this setting, you have to edit the page and go to the "Resources" tab. There's a text area where you can add the line above.
+This setting will change e.g. which categories are displayed in the plugin options view of the catalog filter plugin. In order to change this setting, you have to edit the page and go to the "Resources" tab. There is a text area where you can add the line above.
 
 ## Admin backend
 
-Like the frontend, the shop administration interface can be configured as well. It's implemented as TYPO3 backend module which means that the prefix for the TypoScript configuration must be "module.tx_aimeos.settings." for all settings that should be handed over to the admin interface, e.g.
+Like the frontend, the *Aimeos* administration interface in TYPO3's backend can be configured as well. It is implemented as a TYPO3 backend module which means that the the respective TypoScript configurations must be prefixed with "module.tx_aimeos.settings.", e.g.:
 
 ```typoscript
 module.tx_aimeos.settings.mshop.locale.site = myshop
 ```
 
-It doesn't make sense to assign all frontend settings also to the backend module. This would only slow down loading the administration interface. There are only a few settings that you may want to share between frontend and backend for the same page, namely the "mshop.locale.site" setting.
+It doesn't make sense to assign all frontend settings to the backend module, too. This would only slow down loading the administration interface. There are only a few settings you may want to share between frontend and backend for the same page, namely the "mshop.locale.site" setting.
 
 ## Scheduler
 
-All scheduler tasks allow adding specific TypoScript configuration for the jobs that should be executed. This is especially useful for setting or overwriting configuration values for e-mails that should be sent to customers. Use the configuration keys from the documentation as in the example below:
+All scheduler tasks allow adding specific TypoScript configuration for the jobs that should be executed. This is especially useful for setting or overwriting configuration values for e-mails that should be sent to customers. Use the configuration keys from the documentation like this:
 
 ```typoscript
 client.html.common.content.baseurl = https://yourdomain/uploads/tx_aimeos
@@ -75,9 +96,10 @@ controller.jobs.order.email.payment.default.status {
     1 = 6
 }
 ```
+
 # Overwrite translations
 
-There is the possibility to overwrite translations from the core or other Aimeos extensions via TypoScript. This is very comfortable if you only want to replace certain existing translations by your own one. For each translation, you need the ISO language code, the translation domain, the original string and the new translation, e.g.
+There is the possibility to overwrite translations from the core or other *Aimeos* extensions via TypoScript. This is very comfortable if you only want to replace certain existing translations with your own ones. For each translation, you need the ISO language code, the translation domain, the original string and the new translation, e.g.:
 
 ```typoscript
 plugin.tx_aimeos.settings.i18n.<ISO language code>.<number> {
@@ -88,24 +110,24 @@ plugin.tx_aimeos.settings.i18n.<ISO language code>.<number> {
 ```
 
 !!! warning
-    This should be used only to replace a few translations. If you would like to translate Aimeos to a new language, please use the [Transifex website](https://www.transifex.com/aimeos/public/) instead. It will be available in the next Aimeos release automatically. Also, if you need to overwrite more than a few translations, you should read the article about [adding translations](../developer/translations.md).
+    This should only be used to replace a few translations! If you would like to translate *Aimeos* to a new language, please use the [Transifex website](https://www.transifex.com/aimeos/public/) instead. It will be available in the next *Aimeos* release automatically. Also, if you need to overwrite more than a few translations, you should read the article about [adding translations](../developer/translations.md).
 
 ## Required information
 
 ISO language code
-: To specify the language for the translation, the [two letter ISO language codes (639-1)](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) are necessary. It's also possible to add the [two letter ISO country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to refer to country specific language variants like "en_GB" for British English. You can use all languages that are mapped via TypoScript from the TYPO3 language IDs. Please make sure the language code is always in lower case while the the optional country code is always in upper case.
+: To specify the language for the translation, a [two letter ISO language code (639-1)](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is necessary (e.g. "en"). It is also possible to add the [two letter ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to refer to country-specific language variants like "en_GB" for British English. You can use all languages that are mapped via TypoScript from the TYPO3 language IDs. Please make sure the language code is always in lower case while the the optional country code is always in upper case.
 
 number
-: This is a continuous number to distinguish between the different translations added to the TypoScript configuration. If you are using a number twice, the later translation definition will overwrite the former one.
+: This is a continuous number to distinguish between the different translations added to the TypoScript configuration. If you are using a number twice, the latter translation definition will overwrite the former one.
 
 domain
-: The translation domain where the original string is from. The Aimeos core has six translation domains: "mshop" (core lib with managers), "controller/frontend" (basic business logic for the frontend), "client" (frontend HTML parts), "controller/jobs" (asynchronous cronjob tasks) and "admin" (administration interface). To find out the domain a string is from, you have to look at the .pot files in the Aimeos core for the string.
+: The "translation domain" where the original string stems from. The *Aimeos* core has six translation domains: "mshop" (core lib with managers), "controller/frontend" (basic business logic for the frontend), "client" (frontend HTML parts), "controller/jobs" (asynchronous cronjob tasks) and "admin" (administration interface). To figure out the domain where a string originates from, look at the ".pot" files in the *Aimeos* core.
 
 string
-: It's the original singular string from the source code or the .pot file. The string must be exactly the same (character case, white spaces, etc.) as in the English source code / .pot file! You can not use an already translated string as source.
+: The original singular string from the source code or the .pot file. The string must be exactly the same (character case, white spaces, etc.) as in the English source code / .pot file! You can not use an already translated string as source.
 
 trans
-: New translation for the original string. This can be also an array, if one or more plural forms are necessary.
+: The new translation for the original string. This can be also an array, if one or more plural forms are necessary.
 
 ## Singular translations
 
@@ -115,7 +137,7 @@ A simple singular translation to English:
 plugin.tx_aimeos.settings.i18n.en.0 {
   domain = client
   string = address
-  trans = Addresses
+  trans = Address
 }
 ```
 
@@ -161,13 +183,14 @@ plugin.tx_aimeos.settings.i18n.en.0 {
 
 ## Plural translations
 
-A translations including one or more plural forms can be defined, if the original string in the source code also supports plurals. In this case the source code looks like
+A translation including one or more plural forms can be defined if the original string in the source code also supports plurals. Two methods are available to perform proper translation of plural strings: `translate()` and `dn()`.
 
 ```
-translation method>( '<domain>', '<singular>, '<plural>', <count> );
+$this->translate( '<domain>', '<singular>, '<plural>', <count> )
+$i18n->dn( '<domain>', '<singular>, '<plural>', <count> )
 ```
 
-and the translation methods for plurals can be `translate()` or `dn()`. To overwrite a plural translation, the simplest form is:
+To overwrite a plural translation, the simplest form is:
 
 ```typoscript
 plugin.tx_aimeos.settings.i18n.<ISO language code>.<number> {
@@ -179,7 +202,7 @@ plugin.tx_aimeos.settings.i18n.<ISO language code>.<number> {
 }
 ```
 
-The index "0" is always the singular translation. Most languages only have one plural form, so it must be defined by using the index "1". But some languages use several plural forms depending on the count given in the last parameter of the translation method. In this case, the index depends on the language and the value of <count>. To find out the right index for the language, you have to have a look into the [`getPluralIndex()` method](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Translation/Base.php) that maps *count* to the index for the language you want to translate. An example for Czech would be:
+The index "0" is always the singular translation. Most languages only have one plural form, so it must be defined by using the index "1". But some languages use several plural forms depending on the count given in the last parameter of the translation method. In this case, the index depends on the language and the value of *count*. To find out the right index for the language, you have to have a look into the [`getPluralIndex()` method](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Translation/Base.php) that maps *count* to the index of the proper plural form of the language you want to translate to. An example for Czech would be:
 
 ```typoscript
 plugin.tx_aimeos.settings.i18n.cz.0 {
@@ -198,13 +221,13 @@ plugin.tx_aimeos.settings.i18n.cz.0 {
 
 ## Special characters
 
-Sometimes, the source string, that should be translated, contains special characters like new lines (\n) or backslashes (\). This is no problem, if you place them in a .po file of your project specific extension (same location as the original .po file) and transform its content using the Unix Gettext command, e.g.:
+Sometimes, the source string, that should be translated, contains special characters like new lines (\n) or backslashes (\). This is no problem if you place them in a ".po" file of your project specific extension (same location as the original ".po" file) and transform its content using the Unix Gettext command, e.g.:
 
 ```bash
 msgfmt -c -o de de.po
 ```
 
-Using them in TypoScript is more difficult, because TypoScript doesn't allow new lines in values. Therefore, you have to use "\n" (a backslash and the character "n") as replacement:
+Using them in TypoScript is more difficult because TypoScript doesn't allow new lines in values. Therefore, you have to use "\n" (a backslash and the character "n") as replacement:
 
 ```typoscript
 plugin.tx_aimeos.settings.i18n.de.0 {
@@ -224,22 +247,22 @@ plugin.tx_aimeos.settings.i18n.de.0 {
 
 # Fluid templates
 
-All Aimeos templates are written in PHP using a template engine and view helpers that are easy to understand. It works in all integrations in the same way, is extremely fast and doesn't require you as developer to learn a new syntax.
+All *Aimeos* templates are written in PHP using a template engine and view helpers that are easy to understand. It works in all integrations in the same way, is extremely fast and doesn't require you as developer to learn a new syntax.
 
-Alternatively, you can use the TYPO3 Fluid template engine for Aimeos templates overwritten for your project. Thus, all your templates will be in the same template language.
+Alternatively, you can use the TYPO3 Fluid template engine for *Aimeos* templates overwritten for your project. Thus, all your templates will be in the same template language.
 
 !!! tip
-    The Aimeos templates contains nested objects and their methods sometimes needs arguments. To be able to call these methods within Fluid templates, you need to install the [VHS view helper extension](https://typo3.org/extensions/repository/view/vhs) and use the `v:call()` view helper for this.
+    The *Aimeos* templates contain nested objects and their methods sometimes needs arguments. To be able to call these methods within Fluid templates, you need to install the [VHS view helper extension](https://typo3.org/extensions/repository/view/vhs) and use the `v:call()` view helper.
 
-To replace an Aimeos PHP template by our own Fluid template, the Fluid template needs to be stored at the same location as you would store the PHP template, i.e. the `./client/html/templates/` folder of your project-specific Aimeos extension. You should also keep the directory structure underneath and must save the file as `<template-name>.html`, e.g.
+To replace an *Aimeos* PHP template by our own Fluid template, the Fluid template needs to be stored at the same location as the *Aimeos* PHP template, i.e. at the `./client/html/templates/` folder of your project-specific *Aimeos* extension. It is also required to preserve the underlying directory structure as well as to abide by the file naming convention (`<template-name>.html`), e.g.:
 
 ```
 ./client/html/templates/catalog/detail/body-default.html
 ```
 
-The file extension `.html` is important to be recognized as template that should be processed by the Fluid engine.
+The file extension `.html` is important in order to be recognized as template that should be processed by the Fluid engine.
 
-The Fluid view helpers available by default can't give you access to all data you need. Therefore, the Aimeos package contains some view helpers to retrieve data from Aimeos specific sources like configuration settings or translations. You have to include this view helpers by adding this to the Fluid template before using them:
+The Fluid view helpers available by default can't give you access to all data you need. Therefore, the *Aimeos* package contains some view helpers to retrieve data from *Aimeos* specific sources like configuration settings or translations. You have to include these view helpers by adding the appropriate namespace to the Fluid template before using them:
 
 ```
 {namespace ai=Aimeos\Aimeos\ViewHelper}
@@ -253,7 +276,7 @@ The Fluid view helpers available by default can't give you access to all data yo
 <ai:config key="key/to/config" default="" />
 ```
 
-The `ai:config` view helper retrieves the Aimeos setting for the given key, e.g. *client/html/catalog/lists/basket-add*. If no value is found for the key, the given default value (optional) is returned instead.
+The `ai:config` view helper retrieves the *Aimeos* settings for a given key, e.g. *client/html/catalog/lists/basket-add*. If no value is found for the key, the given default value (optional) is returned instead.
 
 ## Translations
 
@@ -263,26 +286,26 @@ The `ai:config` view helper retrieves the Aimeos setting for the given key, e.g.
 <ai:translate singular="string for singular" plural="string for plural" number="1" arguments="{0: 10, 1: 'value'}" domain="client" escape="true" />
 ```
 
-The `ai:translate` view helper retrieves the translated value from the Aimeos Gettext files. It's similar to the `f:translate` view helper and useful for translating singular and plural phrases, e.g.
+The `ai:translate` view helper retrieves the translated value from the *Aimeos* "Gettext" files. It is similar to the `f:translate` view helper and useful for translating singular and plural phrases, e.g.:
 
 ```
 {ai:translate(singular: '%1$d apple', plural: '%1$d apples', number: 10, arguments: {0: 10})}
 ```
 
-When the third parameter is "1", the function would return "1 apple" and for values greater than 1 it returns e.g. "10 apples". The method takes care about the different plural rules for all languages.
+When the third parameter is "1", the function returns "1 apple", and for values greater than 1 it returns e.g. "10 apples". The method takes care of the various plural rules for all languages.
 
-If the fourth argument (`arguments`) contains values, they will be used to replace the placeholders in the translated string. Internally, the [vsprintf()](https://php.net/manual/en/function.vsprintf.php) method takes care about that.
+If the fourth argument (`arguments`) contains values, they will be used to replace the placeholders in the translated string. Internally, the [vsprintf()](https://php.net/manual/en/function.vsprintf.php) method takes care of that.
 
-The *domain* argument is the same as used in the Aimeos `$this->translate()` view helper. In the frontend it's either "client" or "client/code" while for templates in the administration interface it's "admin".
+The *domain* argument is the same one that is used in the *Aimeos* `$this->translate()` view helper. In the frontend it is either "client" or "client/code" while for templates in the administration interface it is "admin".
 
-If you don't want the output to be escaped (i.e. HTML tags returned as source), you should set the *escape* argument to *false*.
+If you don't want the output to be escaped (i.e. HTML tags returned as source), set the *escape* argument to *false*.
 
 !!! note
     All arguments besides "singular" are optional.
 
 ## Blocks
 
-The Aimeos template engine has a "block" view helper to save a rendered template so it can be inserted in another template. This is very similar to the `f:section` tags of the Fluid engine and you should replace the block view helper statements with the appropriate Fluid section tags, e.g.
+The *Aimeos* template engine has a "block" view helper to save a rendered template, so it can be inserted into another template. This is very similar to the `f:section` tag of the Fluid template engine. It is therefore recommended to replace an *Aimeos* block view helper statement...
 
 ```php
  <?php $this->block()->start( 'cataog/detail/actions' ); ?>
@@ -293,7 +316,7 @@ The Aimeos template engine has a "block" view helper to save a rendered template
  <?php echo $this->block()->get( 'catalog/detail/actions' ); ?>
 ```
 
-by this Fluid template:
+... with a Fluid section tag:
 
 ```html
  <f:section name="catalog/detail/actions">
@@ -306,90 +329,133 @@ by this Fluid template:
 
 # Multiple shops
 
-Aimeos is multi-site capable and allows storing several shops in one database. In order to tell TYPO3 which shop should be used in what page tree, you have to add a TypoScript configuration for each shop page tree. This is not necessary for the page tree that should contain the first shop (site: "default").
+In *Aimeos* terms, a "shop" is a "site". Therefore, when discussing whether the system can handle "mutlipe shops", we say that *Aimeos* is *multi-site capable*. It allows to store several shops in one database.
 
-## Create new site
+Follow these steps to create and manage multiple *Aimeos* sites:
 
-In the Aimeos configuration settings within the extension manager, you can enter a site code for which a new site will be created. If it already exists, it will get updated with the required entries for the used extension version.
+1. ## Create a new TYPO3 page
 
-![Aimeos extension settings](Aimeos-settings.png)
+    Each shop needs its individual TYPO3 page tree section. Therefore, create a new page that is located outside of any other potential *Aimeos* site that might already exist.
 
-* Admin Tools::Settings:
-    1. Search for "aimeos"
-    1. Enter a new site code in the corresponding input field
-    1. Save and return
-* Admin Tools::Extensions:
-    1. Click on the update icon of the Aimeos extension
+    ![Aimeos extension settings](Aimeos-multiple-shops-pagetree.png)
 
-You will see a list of checks that have been done and at the end the types of data that has been added to the new site.
+    It is even possible to import the [.t3d package](https://github.com/aimeos/aimeos-typo3#page-setup) that *Aimeos* provides into the new page.
 
-!!! warning
-    If you update Aimeos from a previous version, you need to run the update script for all sites you've created! Otherwise, required records may be missing and existing data isn't migrated.
+2. ## Create the new site in the Extension Manager
 
-!!! tip
-    Don't forget to create the appropriate "locale" entries for your new site in the administration interface!
+    In the Extension Manager, go to the *Aimeos* configuration settings. Enter a new "site code" for which a new site will be created. (If it already exists, it will be updated with the required entries for the used extension version, in case you have updated to a newer *Aimeos* version.)
 
-## Page TS config
+    ![Aimeos extension settings](Aimeos-settings.png)
 
-Some plugins display e.g. the category tree of the shop/site to be able to select one of those categories. To display the available options from the required shop/site, please insert an additional line into the PageTS field of the page:
+    * Admin Tools::Settings:
+        1. Search for "aimeos"
+        2. Enter a new site code in the corresponding input field
+        3. Save and return
+    * Admin Tools::Extensions:
+        1. Click on the update icon of the *Aimeos* extension
 
-![PageTS for multiple sites](Aimeos-pagets.png)
+    The "update" function runs through a list of checks. Once this check has finished executing, you'll be presented with the types of data that have been added to the new site.
 
-* Web::Page
-    1. Select second page tree
-    1. Edit page
-    1. Tab *Resources*, section *TypoScript Configuration*
+    !!! warning
+        If you update *Aimeos* from a previous version, you need to run the update script for **all** sites you've created! Otherwise, required records may be missing and existing data isn't migrated.
 
-```typoscript
-tx_aimeos.mshop.locale.site = <code of site>
-```
+3. ## Create the new "Aimeos locale"
 
-Click on the icon for *Save and close document* at the top to store the change. Repeat these steps for each page tree where an other shop site other than the "default" site should be used. Clear all TYPO3 caches when you are done.
+    In the *Aimeos* administraion interface of the TYPO3 backend, open the "Locales" menu and click on "Sites":
 
-## TypoScript config
+    ![Aimeos Locales :: Site](Aimeos-multiple-shops-locales-site.jpg)
 
-To tell the front-end that it should use another shop/site by default instead of the standard one ("default"), add a line of TypoScript to the setup config:
+     Add a new site:
 
-![Aimeos setup TS configuration](Aimeos-setupts.png)
+    ![Add a new *Aimeos* site](Aimeos-multiple-shops-locales-site-add.jpg)
 
-* Web::Template
-    1. Select second page tree
-    1. Choose *Info/Modify* in the drop-down at the top
-    1. Click on *Setup* in the box below
+    Enter the new "site code" in the required "Code" field:
 
-```typoscript
-plugin.tx_aimeos.settings.mshop.locale.site = <code of site>
-```
+    ![Enter the new "site code"](Aimeos-multiple-shops-locales-site-code.jpg)
 
-Click on the icon for *Save and close document* at the top to store the change. Repeat these steps for each page tree where an other shop site other than the "default" site should be used. Clear all TYPO3 caches when you are done.
+    Finally click "Save" in the upper right corner.
 
-## Site parameter
+4. ## Add pageTS config
 
-Users can switch between multiple shops if the `loc-site` parameter is included in the URL. You can configure the name of the parameter (`loc-site` by default) to a different name in the TypoScript setup section:
+    Back in TYPO3's page tree, go to the root page of the newly created shop/site. In order to display the appropriate data of the respective (second, third,...) shop/site, add an additional setting to the page's pageTS field:
 
-```typoscript
-plugin.tx_aimeos.settings.typo3.param.name.site = <name of the site parameter>
-```
+    ![PageTS for multiple sites](Aimeos-pagets.png)
 
-For example, if you use the parameter "C" for the countries and that matches the site code too, then you have to add this configuration to your TypoScript setup:
+    * Web::Page
+        1. Select the root site of the new page tree
+        2. Edit page
+        3. Tab *Resources*, section *TypoScript Configuration*
 
-```typoscript
-plugin.tx_aimeos.settings.typo3.param.name.site = C
-```
+    ```typoscript
+    tx_aimeos.mshop.locale.site = <code of site>
+    ```
+
+    Click on the icon for *Save and close document* at the top to store the change. Repeat these steps for each page tree where an different shop site other than the "default" site should be used. Clear all TYPO3 caches when you are done.
+
+5. ## TypoScript config
+
+    To tell the frontend which shop/site to use in the new site's page tree, add a line of TypoScript to the setup configuration:
+
+    ![Aimeos setup TS configuration](Aimeos-setupts.png)
+
+    * Web::Template
+        1. Select the new site's page tree root
+        2. Choose *Info/Modify* in the drop-down at the top
+        3. Click on *Setup* in the box below
+
+    ```typoscript
+    plugin.tx_aimeos.settings.mshop.locale.site = <code of site>
+    ```
+
+    Click on the icon for *Save and close document* at the top to store the change. Repeat these steps for each page tree where another shop site other than the "default" site should be used. Clear all TYPO3 caches when you are done.
+
+6. ## Site parameter
+
+    Users can switch between multiple shops if the `loc-site` parameter is included in the URL. You can configure the name of the parameter (`loc-site` by default) to a different name in the TypoScript setup section:
+
+    ```typoscript
+    plugin.tx_aimeos.settings.typo3.param.name.site = <name of the site parameter>
+    ```
+
+    For example, if you use the parameter "C" for the countries and that matches the site code, too, then you have to add this configuration to your TypoScript setup:
+
+    ```typoscript
+    plugin.tx_aimeos.settings.typo3.param.name.site = C
+    ```
+
+7. ## Update multiple shops
+
+    If you decide to upgrade to a newer version of Aimeos, it is required to run the *Aimeos* update script in the Extension Manager for each and every shop/site separately.
+
+    In order to get the code of a specific shop/site, go to "Aimeos Locales", choose "Sites" from its submenu and then one of the shops. You will find the site's unique code in the required field "Code". (Please have a look at [step 3](#create-the-new-aimeos-locale) for details on how to get to the *Aimeos* Locales and its site settings.)
+
+    Next, enter the code in the *Aimeos* extension settings and run the update script. (Please have a look at [step 2](#create-the-new-site-in-the-extension-manager) for a detailed description on how to get to the *Aimeos* extension settings.)
+
+    Repeat these steps for every shop you administer.
+
+8. ## Disable, archive, review or delete a site
+
+    Since these actions are independet of the host application (in this case TYPO3), please refer to the appropriate section in the [manual](../manual/working-with-sites.md) to learn more about how to handle these scenarios.
+
+    Just keep in mind to check any TypoScript settings that might need re-configuration and to clear all TYPO3 caches once you are done, as well as to reload the TYPO3 backend. You might also want to take appropriate care of the respective TYPO3 page of the *Aimeos* site in question, e.g. disabling it, in order to prevent erroneous page renderings in the front end.
+
+9.  ## More info in the user manual
+
+    It is recommended to also read up on the user manual's section that is dedicated to the use of multiple sites: [Working with sites](../manual/working-with-sites.md)
 
 # Basket in navigation
 
-Most e-commerce sites show a small basket at the top right corner of each page. The Aimeos TYPO3 extension provides a plug-in for a small basket too, containing only the number of products and the total value. You can either add this basket plug-in by
+Most e-commerce sites show a small basket at the top right corner of each page. The *Aimeos* TYPO3 extension provides a plug-in for a small basket, too, containing only the number of products and the total value. You can either add this basket plug-in by
 
 * placing the plug-in inside a column of a backend page layout
 * assigning the plug-in output to a TypoScript object used in your Fluid layout
 
 !!! tip
-    Using a Typoscript object for the basket doesn't require a column in the backend page layout which easier understandable by editors as long as they shouldn't be able to place the basket plug-in themselves.
+    Using a Typoscript object for the basket doesn't require a column in the backend page layout which tends to be easier understandable by editors as long as they shouldn't be able to place the basket plug-in themselves.
 
 ## TypoScript object
 
-The following TypoScript code must be placed in a **TypoScript setup template**. The best place would be a .ts file in your `./fileadmin/` directory that is included in the setup section of your site. For example, create a `./fileadmin/setup.ts` file with the following content:
+The following TypoScript code must be placed in a **TypoScript setup template**. One such place could be a `*.typoscript` file in your `./fileadmin/` directory that is included in the setup section of your site. For example, create a `./fileadmin/setup.typoscript` file with the following content:
 
 ```typoscript
 lib.navigation.basket = COA
@@ -409,13 +475,15 @@ lib.navigation.basket.10 {
 Afterwards, you have to add an include statement in the *Web::Template -> Setup* section of your root page:
 
 ```typoscript
-<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/setup.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/setup.typosript">
 
 plugin.tx_aimeos.settings.client.html.basket.standard.url.target = <page ID of your basket page>
 plugin.tx_aimeos.settings.client.jsonapi.url.target = <page ID of your JSON API page>
 ```
 
-You can find more about TypoScript includes in the [documentation of TYPO3](https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/TypoScriptSyntax/Syntax/Includes.html). **Don't forget to replace the placeholders** with page ID of your basket page (without the angle brackets!). Otherwise, the small basket won't link to your basket page. Afterwards, the output of the plug-in is available as cObject in your Fluid templates:
+You can find more about TypoScript includes in the [documentation of TYPO3](https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/TypoScriptSyntax/Syntax/Includes.html). **Don't forget to replace the placeholders** with the proper page ID of your basket page (without the angle brackets!). Otherwise, the small basket won't link to your basket page.
+
+Afterwards, the output of the plug-in is available as `cObject` in your Fluid templates:
 
 ```xml
 <f:cObject typoscriptObjectPath="lib.navigation.basket" />
@@ -439,7 +507,7 @@ The TYPO3 [bootstrap_package](https://typo3.org/extensions/repository/view/boots
 </div>
 ```
 
-Afterwards, add this TypoScript configuration in *Web::Template -> Constants* telling the *bootstrap_package* to look for the partials inside your extension:
+Afterwards, add this TypoScript configuration to *Web::Template -> Constants* telling the *bootstrap_package* to look for the partials inside your extension:
 
 ```typoscript
 page.fluidtemplate.partialRootPath = EXT:<your extension name>/Resources/Private/Partials/Page/
@@ -447,13 +515,16 @@ page.fluidtemplate.partialRootPath = EXT:<your extension name>/Resources/Private
 
 Now the small basket should be displayed in the navigation bar on top of your site and you can start styling the HTML.
 
-# Countries, regions and states
+!!! tip
+    Don't forget to activate your extension in the extension manager!
+
+# Countries, states and regions
 
 ## Countries
 
 If you want to ship your products to several countries or you need to know from which countries your customers are, you have to enable the country selection in the address page of the checkout process.
 
-By default, the country list is hidden for the billing and delivery address in the checkout process. To make show them and make them mandatory you need to add "order.base.address.countryid" to the list of values defined in
+By default, the country list is hidden for the billing and delivery address in the checkout process. To display them as mandatory fields you need to add "order.base.address.countryid" to the list of values defined in
 
 * [client/html/checkout/standard/address/billing/mandatory](../config/client-html/checkout-standard/#billingmandatory)
 * [client/html/checkout/standard/address/delivery/mandatory](../config/client-html/checkout-standard/#deliverymandatory)
@@ -477,12 +548,12 @@ plugin.tx_aimeos.settings.client.html.checkout.standard.address {
 }
 ```
 
-If no selection should be enforced, you can use instead
+If no selection should be enforced, use these settings instead:
 
 * [client/html/checkout/standard/address/billing/optional](../config/client-html/checkout-standard/#billingoptional)
 * [client/html/checkout/standard/address/delivery/optional](../config/client-html/checkout-standard/#deliveryoptional)
 
-In TYPO3 the country for billing and delivery addresses are optional with this TypoScript configuration:
+To define the country for billing and delivery addresses as optional, use this TypoScript configuration:
 
 ```typoscript
 plugin.tx_aimeos.settings.client.html.checkout.standard.address {
@@ -1006,7 +1077,7 @@ plugin.tx_aimeos.settings.client.html.checkout.standard.address.countries {
  }
 ```
 
-## States and Regions
+## States and regions
 
 For each country you can freely define a list of states or regions that can be used afterwards to calculate the final price for each delivery option. To define states or regions via TypoScript use something like this:
 
