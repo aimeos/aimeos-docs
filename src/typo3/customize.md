@@ -435,19 +435,11 @@ Follow these steps to create and manage multiple *Aimeos* sites:
 
 8. ## Disable, archive, review or delete a site
 
-    If you want to deactivate or delete a site/shop go to the *Aimeos* administation interface in the TYPO3 backend. Choose "Locales" and then the submenu "Sites". (Please have a look at [step 3](#create-the-new-aimeos-locale) for details on how to get to the *Aimeos* Locales and its site settings.)
+    Since these actions are independet of the host application (in this case TYPO3), please refer to the appropriate section in the [manual](../manual/working-with-sites.md) to learn more about how to handle these scenarios.
 
-    If you want to *disable* a shop/site, click on any of the available fields (status, code, name, ...) of the shop you would like to deactivate. Next, set "Status" to "Disabled" (or any of the other setting you wish to activate):
+    Just keep in mind to check any TypoScript settings that might need re-configuration and to clear all TYPO3 caches once you are done, as well as to reload the TYPO3 backend. You might also want to take appropriate care of the respective TYPO3 page of the *Aimeos* site in question, e.g. disabling it, in order to prevent erroneous page renderings in the front end.
 
-    ![Disable a site](Aimeos-disable-site.png)
-
-    If you want to *delete* a shop/site, click on the `x` on the very right ('Delete this entry') of a site and you are done.
-
-    Remember to check any TypoScript settings that might need re-configuration.
-
-    In both cases clear all TYPO3 caches once you are done and reload TYPO3. Also, don't forget to deactivate the respective TYPO3 page of the *Aimeos* site in question in order to prevent erroneous page renderings in the front end.
-
-9. ## More info in the user manual
+9.  ## More info in the user manual
 
     It is recommended to also read up on the user manual's section that is dedicated to the use of multiple sites: [Working with sites](../manual/working-with-sites.md)
 
