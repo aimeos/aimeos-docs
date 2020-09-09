@@ -28,7 +28,7 @@ plugin.tx_aimeos.settings.client.html.catalog.filter.default.subparts {
 }
 ```
 
-In certain cases nested arrays have to be re-written like this:
+In case you want to limit related items by their list type or fetch additional items for suppliers or categories, then use:
 
 ```typoscript
 plugin.tx_aimeos.settings.client.html.catalog.lists.domains {
