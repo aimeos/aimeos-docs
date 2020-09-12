@@ -153,7 +153,7 @@ A big performance boost can be achieved by installing "APCu" (the APC user cache
 !!! warning
     Be aware that you have to clear the APC user cache manually each time after you've changed a configuration option or a translation!
 
-In order to tell your application to use the APC user cache, you need to activate "Use APC cache" checkbox in the Aimeos configuration:
+In order to tell your application to use the APC user cache, you need to activate the "Use APC cache" checkbox in the Aimeos extension configuration:
 
 ![Enable APCu caching](Aimeos-apcu.png)
 
@@ -225,7 +225,7 @@ If the internet connection to your customers is short and fast and your server i
 
 Another option is to use a domain from a content delivery network (CDN) like [Amazon Cloudfront](https://aws.amazon.com/cloudfront/). Usually, you can configure these services to retrieve the static files on the first request from your host and deliver them from their caches afterwards.
 
-The advantage of a CDN over a sub-domain on your own server is the load-balancing across many servers and the distribution from a server near to the visitors of your web site. Both can improve the speed of your web site a lot.
+The advantage of a CDN over a sub-domain on your own server is the load-balancing across many servers and the distribution from a server close to the visitors of your web site. Both can improve the speed of your web site a lot.
 
 In both cases, you need to configure the Aimeos extension to create links to the product pictures with a different domain. This can be done via an entry in the `./Resources/Private/Config/resource.php` file:
 
@@ -240,7 +240,7 @@ In both cases, you need to configure the Aimeos extension to create links to the
     ],
 ```
 
-You can also use the "aimeos/ai-filesystem" package to store files directly on another server. There are drivers for different services available and for details, please have a look at the readme file of the [ai-filesystem package](https://github.com/aimeos/ai-filesystem#installation). An example configuration for using an Amazon S3 storage would be:
+You can also use the "aimeos/ai-filesystem" package to store files directly on another server. There are drivers for different services available. For details, please have a look at the readme file of the [ai-filesystem package](https://github.com/aimeos/ai-filesystem#installation). An example configuration for using an Amazon S3 storage would be:
 
 ```php
     'resource' => [
