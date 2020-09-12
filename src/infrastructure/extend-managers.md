@@ -101,7 +101,7 @@ return [
 
 # Custom way
 
-To have full control over the implementation including those of the item, you need do a bit more.
+To have full control over the implementation including those of the item, you need to do a bit more.
 
 ## Items
 
@@ -168,7 +168,7 @@ class Myproject extends Standard
 }
 ```
 
-The *fromArray()* and *toArray()* methods are important if you need to manage your new properties via the admin interface. By using calls the to parent class, you can utilize the existing code and only add new code for your own property.
+The *fromArray()* and *toArray()* methods are important if you need to manage your new properties via the admin interface. By using calls of the to parent class you can use the existing code and only add new code for your own property.
 
 ## Managers
 
@@ -246,7 +246,7 @@ By adding a new SQL SELECT statement for `mshop/product/manager/standard/search/
 
 ## Testing
 
-All test class must be in the `./<yourext>/lib/custom/tests/` directory using the same directory structure as in `./src/`, e.g. `./<yourext>/lib/custom/tests/MShop/Product/Item/MyprojectTest.php` the `...Test.php` extension is important so PHPUnit will recognize these files as test classes. For items, they usually consists of
+All test class must be in the `./<yourext>/lib/custom/tests/` directory using the same directory structure as in `./src/`, e.g. `./<yourext>/lib/custom/tests/MShop/Product/Item/MyprojectTest.php` the `...Test.php` extension is important so PHPUnit will recognize these files as test classes. For items, they usually consist of
 
 ```php
 namespace Aimeos\MShop\Product\Item;

@@ -1,6 +1,6 @@
 Since 2016.01, Aimeos contains a JSON API modeled after the guidelines of <https://jsonapi.org/>. It allows full access to all shop data and is especially useful to manage the content.
 
-There's no common entry point to access the JSON API. This depends on the host application and you have to retrieve the initial base URL from a configuration setting. Also the resource URLs are different depending on the environment but you can get the available ones by querying the meta data from the base URL (via the HTTP OPTIONS method).
+There's no common entry point to access the JSON API. This depends on the host application and you have to retrieve the initial base URL from a configuration setting. Also, the resource URLs are different depending on the environment but you can get the available ones by querying the meta data from the base URL (via the HTTP OPTIONS method).
 
 !!! note
     Because you have access to all shop content, the JSON API is protected and the administrative users must be logged in before they can use the API.

@@ -1,4 +1,4 @@
-Inserting and updating items that are part of a hierarchical tree like categories or locale site item must be handled a bit different than regular resources.
+Inserting and updating items that are part of a hierarchical tree like categories or locale site item must be handled a bit different from regular resources.
 
 # Insert items
 
@@ -50,7 +50,7 @@ Adding a new catalog or locale site item is done by sending a POST request to th
     });
     ```
 
-The JSON encoded request body must contain a "data" section that specifies the resource type ("catalog" in this case) and the list of attributes that should be set in the new item. Up to now that's exactly the same procedure like for regular items. Additionally, you have to add two more properties to the "data" section:
+The JSON encoded request body must contain a "data" section that specifies the resource type ("catalog" in this case) and the list of attributes that should be set in the new item. Up to now that's exactly the same procedure as for regular items. Additionally, you have to add two more properties to the "data" section:
 
 ```json
 {

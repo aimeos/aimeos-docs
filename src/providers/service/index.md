@@ -14,7 +14,7 @@ or
 
 to be available in your Aimeos installation.
 
-For most service providers, you need some configuration values like for user name and password to authenticate against external web services. You can store arbitrary numbers of key/value pairs in the service items for each provider which can be checked against a given configuration definition to minimize errors.
+For most service providers, you need some configuration values like for username and password to authenticate against external web services. You can store arbitrary numbers of key/value pairs in the service items for each provider which can be checked against a given configuration definition to minimize errors.
 
 !!! warning
     There are two kinds of configuration definitions: For the fields the customer has to fill out in the front-end and for the shop owner in the administration interface!  Both use the same way and format for their definition, the only difference is by which method they are returned, either by *getConfigFE()* for the front-end or by *getConfigBE()* for the administration interface.
@@ -86,7 +86,7 @@ These three lines would save any changes in the address and service items includ
 
 ## Retrieve data
 
-In cases you need to fetch items from other domains, the context object is necessary to instantiate the appropriate managers. Use it only if you really need it! The complete order can be fetched much simpler with the other support methods and the service item for the provider is already available. To get the context object, use
+In cases you need to fetch items from other domains, the context object is necessary to instantiate the appropriate managers. Use it only if you really need it! The complete order can be fetched much simpler with the other support methods and the service item for the provider is already available. To get the context object, use:
 
 ```php
 $context = $this->getContext();
@@ -108,7 +108,7 @@ When integrating external services you often want or have to store data returned
 setAttributes( \Aimeos\MShop\Order\Item\Base\Service\Iface $item, array $attributes, $type );
 ```
 
-It adds the key/value pairs in the second parameter with the specified type to the given order service item. If the attribute key/type combination already exists, the attribute value will be updated. The type is an arbitrary string but its best to use the service provider name in lower case to quickly identify to which service provider it belongs. You can save one or more attribute like this:
+It adds the key/value pairs in the second parameter with the specified type to the given order service item. If the attribute key/type combination already exists, the attribute value will be updated. The type is an arbitrary string but it's best to use the service provider name in lower case to quickly identify to which service provider it belongs. You can save one or more attribute like this:
 
 ```php
 $attributes = ['transactionid' => 123];
@@ -206,7 +206,7 @@ In the front-end you can also specify if the setting should be hidden or not:
 ];
 ```
 
-A definition is always identified by an unique key which is identical to its **code** and should contain the provider name in lower case as prefix ("myprovider.token" for example). This prevents collisions between keys of decorators named the same.
+A definition is always identified by a unique key which is identical to its **code** and should contain the provider name in lower case as prefix ("myprovider.token" for example). This prevents collisions between keys of decorators named the same.
 
 The value for **internalcode** can be the name that is expected by the external service if you have to post the value directly to the gateway. Otherwise, it should be the same as the value for "code".
 
@@ -232,7 +232,7 @@ date
 time
 : A 24h time value (HH:mm)
 
-datetime
+date time
 : An ISO date and time value (YYYY-MM-DD HH:mm:ss)
 
 select
@@ -374,7 +374,7 @@ public function getConfigBE()
 }
 ```
 
-There are some global back-end configurations available (especially for payment providers) like the URLs for success, failure, cancellation and updating a payment. Therefore, you should call the parent function before your add your own definition to the list (*$this->beconfig* contains your own definition in this example).
+There are some global back-end configurations available (especially for payment providers) like the URLs for success, failure, cancellation and updating a payment. Therefore, you should call the parent function before you add your own definition to the list (*$this->beconfig* contains your own definition in this example).
 
 In the back-end, the "public" flag has no meaning while the "required" flag enforces a configuration value to be set. The editor is informed after pressing the "Save" button what settings are missing or invalid. The check if that is the case is done by the *checkConfigBE()* method:
 

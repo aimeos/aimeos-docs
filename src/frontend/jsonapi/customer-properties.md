@@ -3,7 +3,7 @@ You can store arbitrary key/language/value pairs in each customer account for di
 !!! tip
     The way how a user is authenticated depends very much on the PHP framework you use. Please have a look into the documentation of your framework of choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html)).
 
-The customer response returnes the URLs for managing properties:
+The customer response returns the URLs for managing properties:
 
 ```json
 {
@@ -157,7 +157,7 @@ The request for creating a new property looks similar to this one:
 
 # Modify property
 
-Changing one property of an authenticated customer is possible by executing a PATCH request. The URL for updating the property is returned in the response of the GET request which fetches all properties. You can add all property fields or only the modified ones in the PATCH request:
+Changing one property of an authenticated customer is possible by executing a PATCH request. The URL for updating the property is returned to the response of the GET request which fetches all properties. You can add all property fields or only the modified ones in the PATCH request:
 
 === "CURL"
     ```bash

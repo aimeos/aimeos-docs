@@ -119,7 +119,7 @@ There's an optional second parameter to fetch items from associated domains too.
 ['text', 'media', 'price']
 ```
 
-which will fetch all items of the text, media and price domains. You can also pass the the domain name as key and the list types as values:
+which will fetch all items of the text, media and price domains. You can also pass the domain name as key and the list types as values:
 
 ```php
 ['attribute' => ['default', 'variant']]
@@ -154,7 +154,7 @@ $textref = $item->getListItems( 'text', 'default', 'name', true );
 $texts = $item->getRefItems( 'text', 'name', 'default', true );
 ```
 
-The second parameter for *getListItems()* and the third parameter for *getRefItems()* defines the type of association between the domain items. When the fourth parameter is false, all items are retured even if they shouldn't by available in the frontend. All parameters of both methods are optional.
+The second parameter for *getListItems()* and the third parameter for *getRefItems()* defines the type of association between the domain items. When the fourth parameter is false, all items are retured even if they shouldn't be available in the frontend. All parameters of both methods are optional.
 
 You can also retrieve items stored in the same domain, e.g. product properties or ordered products via the second parameter:
 
@@ -178,7 +178,7 @@ The second argument for retrieving the associated items too is the same as descr
 
 ## Search items
 
-Several items can be retrieved at once via the the *search()* method. It enables you to specify criteria to exactly get the items you need. To create a required criteria object, use the *filter()* method:
+Several items can be retrieved at once via the *search()* method. It enables you to specify criteria to exactly get the items you need. To create a required criteria object, use the *filter()* method:
 
 ```php
 $filter = $manager->filter();
@@ -203,7 +203,7 @@ The last argument is a value/result parameter which will contain the total numbe
 
 ## Delete items
 
-The last action in the life cycle of an item is to delete it from the storage if it's not needed any more. Managers offer the method *delete()* for removing entries:
+The last action in the life cycle of an item is to delete it from the storage if it's not needed anymore. Managers offer the method *delete()* for removing entries:
 
 ```php
 $manager->delete( $id );
@@ -393,6 +393,6 @@ Examples:
 * "size" is an attribute because the attribute values are used by all clothing products
 * "isbn" is a property because it's only relevant for one book
 
-There might be grey areas where it's not so clear if you should use attributes or properties. Then, prefer properties over attributes if you don't need it to build facets for performance reasons.
+There might be gray areas where it's not so clear if you should use attributes or properties. In this case prefer properties over attributes, if you don't need it to build facets for performance reasons.
 
 Attributes are referenced in the *mshop_product_list* table and so are media, texts, prices, etc. If you have millions of entries in the lists table an only thousands in the mshop_product_property table, then your performance might be lower than in could be due to MySQL selecting sometimes the wrong index.

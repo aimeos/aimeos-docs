@@ -1,4 +1,4 @@
-Often, it's necessary to replace the templates of a panel or subpart with a different one, e.g. if you need want to remove input fields or add own HTML code. In these cases, you can overwrite an existing template by creating a new file with the same name and within the same directory structure as the orginal file in your own extension.
+Often, it's necessary to replace the templates of a panel or subpart with a different one, e.g. if you need want to remove input fields or add own HTML code. In these cases, you can overwrite an existing template by creating a new file with the same name and within the same directory structure as the original file in your own extension.
 
 !!! tip
     Use the [Aimeos extension builder](https://aimeos.org/extensions) to create an extension for your shop site. The generated extension skeletons contains all necessary directories and configuration to be used out of the box.

@@ -22,7 +22,7 @@ In the [filter component implementation](../../config/client-html/catalog-filter
 
 The catalog filter component itself has an additional [configuration option for the search button](../../config/client-html/catalog-filter.md#button) that is normally displayed below the filter if Javascript is disabled. Via this setting, you can control if the button will be rendered or not.
 
-For the tree subpart there are a few more options available and they influence how the catalog tree is displayed:
+For the tree subpart there are a few more options available, and they influence how the catalog tree is displayed:
 
 [controller/frontend/catalog/levels-always](../../config/controller-frontend/catalog.md#levels-always)
 : Number of category levels that are always displayed
@@ -107,7 +107,7 @@ Used templates for the list component are:
 * [template body](../../config/client-html/catalog-lists.md#template-body)
 * [template header](../../config/client-html/catalog-lists.md#template-header)
 
-To those templates additional data like category information (texts, images), customer quotes (texts) is assigned. Shop owners can attach that texts and images to categories which describes what products are listed in these categories and supply images as visual elements for this description.
+To those templates additional data like category information (texts, images), customer quotes (texts) is assigned. Store owners can attach these texts and images to categories that describe what products are listed in those categories and provide images as visual elements for that description.
 
 The body template also uses a partial for rendering the pagination which contains not only the links for the product list paging itself but also the possibilities for sorting the result set.
 
@@ -162,9 +162,9 @@ Used templates for the detail component are:
 
 Furthermore, the detail component consists of two subparts (service and last seen) that can be controlled via the [detail subpart configuration](../../config/client-html/catalog-detail.md#subparts). These are described in more detail below.
 
-The image section displays the product's images and provides features such as a thumbnail list of all images and a lightbox, allowing the user to zoom-in and toggle the photo to fullscreen. This is implemented as a partial that is included in the body template.
+The image section displays the product's images and provides features such as a thumbnail list of all images and a light box, allowing the user to zoom-in and toggle the photo to full screen. This is implemented as a partial that is included in the body template.
 
-Inside the basket related section is all of the necessary information for choosing the product that is displayed and the required hidden data for adding the product to the basket. It's also responsible for displaying the price of the product (or of the selected sub-product) and the [stock level information](../../config/client-html/catalog-detail.md#enable) too. The selection of the product variant and optional attributes is outsourced in reusable partials.
+Inside the basket related section is all the necessary information for choosing the product that is displayed and the required hidden data for adding the product to the basket. It's also responsible for displaying the price of the product (or of the selected sub-product) and the [stock level information](../../config/client-html/catalog-detail.md#enable) too. The selection of the product variant and optional attributes is outsourced in reusable partials.
 
 !!! note
     The parameters and their format to add a product into the basket is described in the [parameters section of the basket standard component](parameter-names.md#basket)
@@ -181,7 +181,7 @@ client/html/catalog/attribute/type/... = select|radio
 
 configuration options. You only have to replace the three dots (...) with the attribute code used for the attribute types (length, width, color, size, etc.). Using "select" will display a HTML select box while "radio" will show a HTML radio checkbox for each option. The value "select" is the default for all attribute types if nothing else is configured.
 
-You can also enforce if there's an option pre-selected or not using
+You can also enforce if there's an option pre-selected or not using:
 ```
 client/html/catalog/selection/preselect/... = 1
 client/html/catalog/attribute/preselect/... = 1
@@ -203,7 +203,7 @@ If the shown product is of type "bundle", the bundled products are displayed as 
 
 The user actions are links to features where customers can add a product to one of their lists of pinned, favorite or watched products. Which user actions are shown is controlled by the [client/html/catalog/actions/list](../../config/client-html/catalog-actions.md#list) setting. They, as well as the social media buttons are both included by using partials.
 
-There are several social platforms that can help to boost the sales of web shops, namely Pinterest, Facebook, WhatsApp and Twitter. They enable visitors to add products to their time line or social media profile
+There are several social platforms that can help to boost the sales of web shops, namely Pinterest, Facebook, WhatsApp and Twitter. They enable visitors to add products to their time line or social media profile.
 
 Via the configuration option for the displayed [list of social links](../../config/client-html/catalog-social.md#list), you can choose which ones are available for your visitors. You can also add new social media links without changing the code. With the social list setting it's possible to add new or remove existing social links, which are then defined by the
 
@@ -239,7 +239,7 @@ When the job controller for generating the list of products bought together with
 
 ## Last seen products
 
-This part is a little bit special because it generates no visible output in the detail view. Instead, it creates the HTML for the the last seen product that is added to the session of the visitor. It's all done by the [seen section implementation](../../config/client-html/catalog-detail.md#name_1) and even here, more data sections can be added by the [seen subparts](../../config/client-html/catalog-detail.md#standardsubparts) setting.
+This part is a bit special because it generates no visible output in the detail view. Instead, it creates the HTML for the last seen product that is added to the session of the visitor. It's all done by the [seen section implementation](../../config/client-html/catalog-detail.md#name_1) and even here, more data sections can be added by the [seen subparts](../../config/client-html/catalog-detail.md#standardsubparts) setting.
 
 Like in the list or details component you also have the possibility to define which [domain items for the list of last seen products](../../config/client-html/catalog-detail.md#domains_1) (e.g. texts, media, prices, etc.) are fetched from the database.
 
@@ -249,7 +249,7 @@ Only the body template is used by the "last seen" section:
 
 # Session
 
-When visitors had a look at product details or if they pinned a product, these information is stored in the session of the visitor. The catalog session component displays these information and in the case of pinned products, visitors are also able to manage them.
+When visitors had a look at product details or if they pinned a product, this information is stored in the session of the visitor. The catalog session component displays this information and in the case of pinned products, visitors are also able to manage them.
 
 ## Structure
 
@@ -263,7 +263,7 @@ Two sections are part of the [catalog session component implementation](../../co
 [seen client](../../config/client-html/catalog-session.md#name_2)
 : the last seen products including the [seen subpart](../../config/client-html/catalog-session.md#standardsubparts_1)
 
-Both subparts allow futher configuration, namely for the entry count in the header and the maximum number of allowed items in both lists:
+Both subparts allow further configuration, namely for the entry count in the header and the maximum number of allowed items in both lists:
 
 [client/html/catalog/session/pinned/domains](../../config/client-html/catalog-session.md#domains)
 : A list of domains whose items should be fetched from the database for the product representation in the pinned view

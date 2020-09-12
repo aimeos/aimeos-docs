@@ -212,7 +212,7 @@ The rest of the test case is much like in the *updateSync()* method to prevent c
 
 # Test optional methods
 
-All optional methods (*cancel()*, *capture()* and *refund()* for payment service provider, *query()* for both, delivery and payment service providers) can be tested in the same way because their method signature is the same and they all behave in a very similar way: Use the ID of the given order to connect to a remove gateway and update the delivery or payment status afterwards:
+All optional methods (*cancel()*, *capture()* and *refund()* for payment service provider, *query()* for both, delivery and payment service providers) can be tested in the same way because their method signature is the same, and they all behave in a very similar way: Use the ID of the given order to connect to a remove gateway and update the delivery or payment status afterwards:
 
 ```php
 public function testCancel()

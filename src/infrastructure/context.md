@@ -1,4 +1,4 @@
-The [context item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php) is the dependency container of Aimeos and gives you access to the host system, independent of the used framework or application. It's available in all classes of the [data access layer and above](../developer/architecture.md) except the items (and template files of course) by calling
+The [context item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php) is the dependency container of Aimeos and gives you access to the host system, independent of the used framework or application. It's available in all classes of the [data access layer and above](../developer/architecture.md) except the items (and template files of course) by calling.
 
 ```php
 $this->getContext()
@@ -54,7 +54,7 @@ try {
 !!! warning
     It's extremely important that you release the database connection again using the same name as in *acquire()* because it's shared within the process. If you forget to do this, new connections will be opened until the connection limit is reached and an exception is thrown!
 
-With the connection object, you can execte a SQL statement:
+With the connection object, you can execute a SQL statement:
 
 ```php
 $stmt = $conn->create( 'UPDATE "mytable" SET "mycol" = ? WHERE "myid"=?' )
@@ -88,7 +88,7 @@ For detailed information about the available methods, please have a look into th
 
 # File system
 
-The file system object gives you access to the configured parts of the storage. This may be the local file system but can be a remote FTP server or the AWS cloud too, depending on the configuration. You doesn't have to care about the details because the file system interface provides a way to work with any storage the same way.
+The file system object gives you access to the configured parts of the storage. This may be the local file system but can be a remote FTP server or the AWS cloud too, depending on the configuration. You don't have to care about the details because the file system interface provides a way to work with any storage the same way.
 
 ```php
 $fs = $this->getContext()->fs( 'fs-secure' );
@@ -161,7 +161,7 @@ More information about the methods is available in the [logger interface](https:
 
 # Mail
 
-Sometimes, you will need to send an e-mail to someone for notification. The mail object offers a simple but yet powerful interface to the mail implementation of the host framework or application and its configuration. It's much more flexible than the PHP *mail()* function.
+Sometimes you need to send someone an e-mail for notification. The mail object offers a simple but yet powerful interface to the mail implementation of the host framework or application and its configuration. It's much more flexible than the PHP *mail()* function.
 
 ```php
 $this->getContext()->mail()
@@ -180,7 +180,7 @@ For detailed information about the available methods, please have a look into th
 
 # Message queues
 
-If a request requires to do some tasks in the background, you can send it to a message queue and process it later. This prevents your request to run into the PHP memory or execution time limit and can be used to offload resource intensive tasks to other servers. A message queue is only a place where job descriptions can be temporarily stored, so you have to implement a [job controller](../cronjobs/create-job-controller.md) too that processes the job.
+If a request requires to do some tasks in the background, you can send it to a message queue and process it later. This prevents your request to run into the PHP memory or execution time limit and can be used to offload resource intensive tasks to other servers. A message queue is only a place where job descriptions can be temporarily stored, so you have to implement a [job controller](../cronjobs/create-job-controller.md) too, that processes the job.
 
 To add a new job to the message queue "mq-email" configured in the resource configuration:
 
@@ -210,7 +210,7 @@ More information about the available methods is available in the [message queue 
 
 # Parallel processing
 
-Aimeos offers the necessary infrastructure for processing tasks in parallel und therefore utilizing multi-core architectures of CPUs efficiently. This is only available in [job controllers](../cronjobs/create-job-controller.md) executed from the command line e.g. via scheduled cron jobs.
+Aimeos offers the necessary infrastructure for processing tasks in parallel and therefore utilizing multi-core architectures of CPUs efficiently. This is only available in [job controllers](../cronjobs/create-job-controller.md) executed from the command line e.g. via scheduled cron jobs.
 
 ```php
 $fcn = function( \Aimeos\MShop\Context\Item\Iface $context, $data ) {
@@ -253,7 +253,7 @@ $content = $view->render( 'path/to/template.html.twig' ); // Symfony
 $content = $view->render( 'path/to/template.html' ); // TYPO3/Flow
 ```
 
-The path of the templates is relative to the [configured directory in the manifest.php of you extension](extensions#custom). Within the templates, you have access to all assigned data (e.g. "myvalue") and all view helpers. The view helpers are different if you use Blade, Twig or Fluid.
+The path of the templates is relative to the [configured directory in the manifest.php of your extension](extensions#custom). Within the templates, you have access to all assigned data (e.g. "myvalue") and all view helpers. The view helpers are different if you use Blade, Twig or Fluid.
 
 ```php
 <?= $this->get( 'myvalue', 'default value' ) ?>

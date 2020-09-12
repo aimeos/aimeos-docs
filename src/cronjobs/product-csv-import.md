@@ -12,7 +12,7 @@ Several container types are supported as long as their content consists of CSV-l
 * Directory container / CSV files
 * Zip container / compressed CSV files
 
-You can configure the container type and content format via the [controller/jobs/product/import/csv/container/type](../config/controller-jobs/product-import.md#type) and [controller/jobs/product/import/csv/container/content](../config/controller-jobs/product-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md)
+You can configure the container type and content format via the [controller/jobs/product/import/csv/container/type](../config/controller-jobs/product-import.md#type) and [controller/jobs/product/import/csv/container/content](../config/controller-jobs/product-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md).
 
 For CSV files, there exists a wide range of possibilities about their format because it's not standardized besides the fact that fields are separated by comma (,) but even that isn't set in stone. As a guideline, you should use the following format, which is able to handle all edge cases:
 
@@ -29,7 +29,7 @@ The basic rules are:
 * A new line character within the field data doesn't need to be treated specially
 * The line ending must be a new line character (or a "\r\n" produced by Windows)
 
-Your CSV files can **start with a header** describing the columns so they are more readable by humans. In this case, you need to configure the import to **skip these lines** using the [controller/jobs/product/import/csv/skip-lines](../config/controller-jobs/product-import.md#skip-lines) configuration.
+Your CSV files can **start with a header** describing the columns, so they are more readable by humans. In this case, you need to configure the import to **skip these lines** using the [controller/jobs/product/import/csv/skip-lines](../config/controller-jobs/product-import.md#skip-lines) configuration.
 
 For additional tuning of the CSV import, the [controller/common/product/import/csv/max-size](../config/controller-jobs/product-import.md#max-size) setting can help you to speed up the import or to reduce the memory consumption of the importer. If you set the number of CSV lines processed in one chunk higher, it will save some database queries at the cost of more memory required to cache the result sets. Similarly, lower values will result in more database queries but also to less allocated memory, which is useful if you have a hard memory limit.
 
@@ -181,7 +181,7 @@ In this case the processor would assume that the first field (position 5) doesn'
 
 ## Item
 
-The "item" group is the most important data group because it contains the mapping for the product item that must be stored in the database before the rest of the processors can start to insert or update the data they are managing. It accepts data for these domain item keys:
+The "item" group is the most important data group because it contains the mapping for the product item that must be stored in the database before the rest of the processors can start to insert or update the data they are managing. It accepts data for this domain item keys:
 
 ```php
 [
@@ -304,7 +304,7 @@ Several product related prices can be part of each CSV line. Supported domain it
 ]
 ```
 
-The value, currencyid and type are required as the minimum amount of data. If you don't have a CSV field for the status, it's set to enabled ("1").
+The value, currency-id and type are required as the minimum amount of data. If you don't have a CSV field for the status, it's set to enabled ("1").
 
 Additionally, you can import values for the product list relation as well:
 
@@ -342,7 +342,7 @@ Several product related attributes can be part of each CSV line. Supported domai
 ]
 ```
 
-The value and the type is required as the minimum amount of data.
+The value and the type are required as the minimum amount of data.
 
 Attributes are usually shared among several products and therefore, the attribute processor associates them to the imported product. Nevertheless, if an attribute doesn't exist, it will be created automatically. You will then be able to enrich these attributes manually by adding texts for different languages or prices if it's an optional attribute. Furthermore, if you don't have a CSV field for the status, it's set to enabled ("1").
 
@@ -368,7 +368,7 @@ If one or more relations should stay untouched, you can explicitly configure the
 
 ## Product
 
-Several product relations can be part of each CSV line. Supported domain item key is only
+Several product relations can be part of each CSV line. Supported domain item key is only:
 
 ```php
 [
@@ -412,11 +412,11 @@ Several product related properties (non-shared product data) can be part of each
 ]
 ```
 
-The value and the type is required as the minimum amount of data. If you don't have a CSV field for the language ID, the property is imported with no language and is then considered language independent.
+The value and the type are required as the minimum amount of data. If you don't have a CSV field for the language ID, the property is imported with no language and is then considered language independent.
 
 ## Catalog
 
-Several category relations can be part of each CSV line. Supported domain item key is only
+Several category relations can be part of each CSV line. Supported domain item key is only:
 
 ```php
 [
@@ -447,7 +447,7 @@ If one or more relations should stay untouched, you can explicitly configure the
 
 ## Stock
 
-If you want to set or update the stock levels during the product import as well, you can configure the mapping for your CSV file to support these domain item keys:
+If you want to set or update the stock levels during the product import as well, you can configure the mapping for your CSV file to support this domain item keys:
 
 ```php
 [

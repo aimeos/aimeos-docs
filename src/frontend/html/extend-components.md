@@ -1,6 +1,6 @@
-Sometimes you need additional data from the database for one of the components because your template should display these information. If you only want to add data, **extending existing component classes** is troublesome. Another developer may want to add other data and several users might need the information from both classes in their templates.
+Sometimes you need additional data from the database for one of the components because your template should display this information. If you only want to add data, **extending existing component classes** is troublesome. Another developer may want to add other data and several users might need the information from both classes in their templates.
 
-A far better way is creating a **HTML client decorator** and configure this decorator for the component where the information should be added to the views. In this case, anybody else can add both decorators (and more) only by configuration. This way of stacking is far more flexible than extending classes.
+A far better way is creating an **HTML client decorator** and configure this decorator for the component where the information should be added to the views. In this case, anybody else can add both decorators (and more) only by configuration. This way of stacking is far more flexible than extending classes.
 
 The decorators you are implementing have to be stored in your own Aimeos extension in this directory:
 

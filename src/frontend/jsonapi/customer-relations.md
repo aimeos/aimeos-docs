@@ -82,7 +82,7 @@ In addition to the URLs for managing relations, the customer response can also i
 
 # Fetch relations
 
-To get the relations only, use a GET request to the *customer/relationships* endpoint returned by the reponse of the [customer](customer.md) request, e.g.:
+To get the relations only, use a GET request to the *customer/relationships* endpoint returned by the response of the [customer](customer.md) request, e.g.:
 
 === "CURL"
     ```bash
@@ -405,7 +405,7 @@ pricevalue
 
 # Modify relations
 
-To change a relation of the authenticated customer, perform a PATCH request. The URL for updating the relation is returned in the response of the GET request which fetches all relations. You can add all fields or only the modified ones of a relation in the PATCH request:
+To change a relation of the authenticated customer, perform a PATCH request. The URL for updating the relation is returned to the response of the GET request which fetches all relations. You can add all fields or only the modified ones of a relation in the PATCH request:
 
 === "CURL"
     ```bash

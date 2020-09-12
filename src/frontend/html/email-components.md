@@ -35,7 +35,7 @@ Account e-mails consists of a [HTML](../../config/client-html/email-account.md#n
 
 ## Templates
 
-You can adapt the templates for the HTML/text account e-mails itself and the included sections by overwriting them in you own extension or configuring alternative template names:
+You can adapt the templates for the HTML/text account e-mails itself and the included sections by overwriting them in your own extension or configuring alternative template names:
 
 * [Header template](../../config/client-html/email-account.md#template-header)
 * [Body template](../../config/client-html/email-account.md#template-body)
@@ -62,7 +62,7 @@ For each of these delivery status values you are able to send out an e-mail to t
 
 ## E-Mail settings
 
-Shop owners have the possibility to configure specific e-mail settings for the delivery e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the delivery e-mails. The list of specific settings are:
+Shop owners have the possibility to configure specific e-mail settings for the delivery e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the delivery e-mails. The list of specific settings is:
 
 [client-html/email-delivery/from-email](../../config/client-html/email-delivery.md#from-email)
 : E-Mail address used when sending delivery e-mails
@@ -81,14 +81,14 @@ Shop owners have the possibility to configure specific e-mail settings for the d
 
 ## Structure
 
-Delivery e-mails consists of a [HTML](../../config/client-html/email-delivery.md#name) and a [text](../../config/client-html/email-delivery.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+Delivery e-mails consists of an [HTML](../../config/client-html/email-delivery.md#name) and a [text](../../config/client-html/email-delivery.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
 
 ![Aimeos-email-service-html](Aimeos-email-service-html.png)
 ![Aimeos-email-service-text](Aimeos-email-service-text.png)
 
 ## Templates
 
-You can adapt the templates for the HTML/text delivery e-mails itself and the included sections by overwriting them in you own extension or configuring alternative template names:
+You can adapt the templates for the HTML/text delivery e-mails itself and the included sections by overwriting them in your own extension or configuring alternative template names:
 
 * [Header template](../../config/client-html/email-delivery.md#template-header)
 * [Body template](../../config/client-html/email-delivery.md#template-body)
@@ -114,7 +114,7 @@ For each of these payment status values you are able to send out an e-mail to th
 
 ## E-Mail settings
 
-Shop owners have the possibility to configure specific e-mail settings for the payment e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the payment e-mails. The list of specific settings are:
+Shop owners have the possibility to configure specific e-mail settings for the payment e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the payment e-mails. The list of specific settings is:
 
 * [client-html/email-payment/from-email](../../config/client-html/email-payment.md#from-email)
 : E-Mail address used when sending payment e-mails
@@ -133,7 +133,7 @@ Shop owners have the possibility to configure specific e-mail settings for the p
 
 ## Structure
 
-Payment e-mails consists of a [HTML](../../config/client-html/email-payment.md#name) and a [text](../../config/client-html/email-payment.md#name_3) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+Payment e-mails consists of an [HTML](../../config/client-html/email-payment.md#name) and a [text](../../config/client-html/email-payment.md#name_3) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
 
 ![Aimeos-email-service-html](Aimeos-email-service-html.png)
 ![Aimeos-email-service-text](Aimeos-email-service-text.png)
@@ -155,7 +155,7 @@ Notification e-mails for watched products are sent out by the [customer/email/wa
 
 ## E-Mail settings
 
-Shop owners have the possibility to configure specific e-mail settings for the product notification e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the watch e-mails. The list of specific settings are:
+Shop owners have the possibility to configure specific e-mail settings for the product notification e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the watch e-mails. The list of specific settings is:
 
 [client-html/email-watch/from-email](../../config/client-html/email-watch.md#from-email)
 : E-Mail address used when sending notification e-mails
@@ -174,7 +174,7 @@ Shop owners have the possibility to configure specific e-mail settings for the p
 
 ## Structure
 
-Product notification e-mails consists of a [HTML](../../config/client-html/email-watch.md#name) and a [text](../../config/client-html/email-watch.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+Product notification e-mails consists of an [HTML](../../config/client-html/email-watch.md#name) and a [text](../../config/client-html/email-watch.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
 
 ![Aimeos-email-watch-html](Aimeos-email-watch-html.png)
 ![Aimeos-email-watch-text](Aimeos-email-watch-text.png)

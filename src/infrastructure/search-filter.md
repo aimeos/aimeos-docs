@@ -9,13 +9,13 @@ The second example using *true* as first argument automatically adds the default
 
 # Compare
 
-A criteria consists of three parts:
+A criterion consists of three parts:
 
 * search key
 * operator
 * value
 
-You can set a new criteria using:
+You can set a new criterion using:
 
 ```php
 $filter->add( 'product.code', '==', 'test' );
@@ -88,7 +88,7 @@ The *not()* method is special in this case because its only valid for single con
 ```php
 $filter->add( $filter->not( $filter->is( 'product.status', '==', 0 );
 
-// or combine several conditions an negate them:
+// or combine several conditions and negate them:
 $filter->add( $filter->not( $filter->and( [
     $filter->is( 'product.type', 'default' ),
     $filter->is( 'product.status', 0 ),

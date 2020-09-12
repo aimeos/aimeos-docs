@@ -1,6 +1,6 @@
 The template views itself consist of HTML with [alternative PHP syntax](https://php.net/manual/en/control-structures.alternative-syntax.php). It's also possible to use the native template engine of your framework or application, i.e. Blade for Laravel, Twig for Symfony and Fluid for TYPO3. Please have a look at the "Get started" section to find out more.
 
-To access the data assigend to the view, you can use:
+To access the data assigned to the view, you can use:
 
 ```php
 $this->get( 'somekey', [] ) // second parameter is the default value if not available
@@ -65,7 +65,7 @@ The first parameter is the configuration key, without slashes (/) at the beginni
 
 # content
 
-Generates an URL from the paths which are stored in the database.
+Generates a URL from the paths which are stored in the database.
 
 ```php
 <?= $this->content( 'relative/path/to/media.jpg' ) ?>
@@ -123,11 +123,11 @@ Generates the value for the "name" attribute of input elements. Depending on the
 <?= $this->formparam( ['name', ''] ) ?> // as name[]=value
 ```
 
-If you forget to use the *formparam()* view helper, you component or subpart won't work in all frameworks or applications!
+If you forget to use the *formparam()* view helper, your component or subpart won't work in all frameworks or applications!
 
 # imageset
 
-Creates a string for the srcset attribute of image tags (`<image srcset="...">`) depending on the list of passed image width and URLs which are used for reponsive images.
+Creates a string for the srcset attribute of image tags (`<image srcset="...">`) depending on the list of passed image widths and URLs used for response images.
 
 ```php
 <?= $this->imageset( [100 => '/path/to/100width.jpg', 300 => '/path/to/300width.jpg'] ) ?>
@@ -137,7 +137,7 @@ This will generate a string of `/path/to/100width.jpg 100w, /path/to/300width.jp
 
 # link
 
-Generates an URL for the `url` configuration key, parameters and anchor fragments.
+Generates a URL for the `url` configuration key, parameters and anchor fragments.
 
 ```php
 <?= $this->link( 'client/html/catalog/detail/url', ['d_prodid' => 1], ['image', '2'] ) ?>
@@ -176,7 +176,7 @@ The second parameter is the number of decimal digits the result should contain. 
 
 # param
 
-Returns the  GET/POST/URL parameter or a list if its an array.
+Returns the  GET/POST/URL parameter or a list if it's an array.
 
 ```php
 <?= $this->param( 'myparam' ) ?>

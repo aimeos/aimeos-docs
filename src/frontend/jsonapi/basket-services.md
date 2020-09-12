@@ -2,7 +2,7 @@ Most of the time you want to offer some shipping and/or payment options to your 
 
 # List options
 
-At first you need to get the available delivery and payment options from the services resource URL listed in the OPTIONS request. With that URL you can query for the available services, either all together in one request or separated by their type ("delivery" or "payment"). The example code below will return all payment options:
+At first you need to get the available delivery and payment options from the service's resource URL listed in the OPTIONS request. With that URL you can query for the available services, either all together in one request or separated by their type ("delivery" or "payment"). The example code below will return all payment options:
 
 === "CURL"
     ```bash
@@ -392,7 +392,7 @@ It contains an additional "relationships" entry for the basket which points to t
 !!! note
     If you perform the same request again, **existing options** in the basket are **NOT overwritten** but an additional option added! Thus you can add several delivery or payment options in one order.
 
-## Passing additonal data
+## Passing additional data
 
 The "attributes" section in "data" can contain additional key/value pairs whose values are entered by the customer. Here the "pickup time" and "location" are passed. The available keys are listed in the "meta" section of the "basket/service" link of each entry returned by the service response:
 
@@ -479,7 +479,7 @@ The additional service attributes are then stored in the "attribute" section of 
 
 # Delete services
 
-Delivery or payment options added to the basket can also be removed again. For this you need the URL from the basket service entry that is returned in the basket response. For the example above it is:
+Delivery or payment options added to the basket can also be removed again. For this you need the URL from the basket service entry, which is returned in the basket response. For the example above it is:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery

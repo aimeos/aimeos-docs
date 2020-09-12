@@ -23,7 +23,7 @@ media/ (optional)
 CSS is a very powerful style sheet language to describe the presentation for the existing HTML structure. It is possible to create a totally different layout by using individual styles for the same HTML elements.
 
 !!! tip
-    If you want to create a new theme it is best to start with a CSS file of an existing theme. Their CSS definitions already contain a great amount of brain-power which makes them compatible with different browsers and for different devices like smart phones or tablets.
+    If you want to create a new theme it is best to start with a CSS file of an existing theme. Their CSS definitions already contain a great amount of brain-power which makes them compatible with different browsers and for different devices like smartphones or tablets.
 
 ## CSS classes and selectors
 
@@ -65,13 +65,13 @@ For partials used several times at different locations, the same CSS classes app
 
 ## Responsive web design
 
-Today, we have very different device sizes starting from small smart phones with 320px width to really big TVs that span 3960px in width and countless device widths in between. The art of web design is to create pages that look great on all of these devices.
+Today, we have very different device sizes starting from small smartphones with 320px width to huge TVs that span 3960px in width and countless device widths in between. The art of web design is to create pages that look great on all of these devices.
 
 !!! tip
     Frameworks like [https://getbootstrap.com/ Twitter bootstrap] provide fluid grid systems that help developers create web sites optimized for different device sizes.
 
 The first rule of responsive web design is: **Avoid fixed measure units like px!**
-They are only useful for defining a maximum or minimum device width for media queries. If you pay no attention to this advice, your theme will scale miserably! If you define a margin of 50px to both sides of a div container it will eat up most of the space on a smart phone and won't be noticed on a 4k TV. Instead, use
+They are only useful for defining a maximum or minimum device width for media queries. If you pay no attention to this advice, your theme will scale miserably! If you define a margin of 50px to both sides of a div container it will eat up most of the space on a smartphone and won't be noticed on a 4k TV. Instead, use
 
 * "%" for relative widths and font sizes
 * "rem" for fixed widths
@@ -471,7 +471,7 @@ Aimeos<type><component> = {
 }
 ```
 
-Please replace the placeholders for <type> and <component> with the appropriate names, like "Catalog" (type) and "Mysubpart" (component) depending on the names you've used for the HTML client class so you get e.g.
+Please replace the placeholders for <type> and <component> with the appropriate names, like "Catalog" (type) and "Mysubpart" (component) depending on the names you've used for the HTML client class so you get e.g.:
 
 ```javascript
 AimeosCatalogMysubpart = {}

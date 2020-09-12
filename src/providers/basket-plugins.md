@@ -23,7 +23,7 @@ class Myexample
 }
 ```
 
-The file containing the class must be placed in the *./lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php* file (or any more reasonable file/class name) of your extension. There's an article about [creating extensions](../developer/extensions.md) for Aimeos if you haven't one yet.
+The file containing the class must be placed in the *./lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php* file (or anymore reasonable file/class name) of your extension. Here is an article about [creating extensions](../developer/extensions.md) for Aimeos, if you don't have one yet.
 
 # Event system
 
@@ -92,7 +92,7 @@ Use plug-in configuration values
 : The configuration consists of key/value pairs stored in an array. If a configuration value is required by the plug-in, you should test for it and handle a missing value by either throwing an exception or using a reasonable default value. The configuration options can be set in the [administration interface](../manual/plugin-details.md).
 
 Throw exceptions
-: When something goes wrong, throw an exception of type *\Aimeos\MShop\Plugin\Provider\Exception*. This class has a special fourth parameter where specific information about the occurred problem can be passed. Please have a look at the [AddressAvailable](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/AddressesAvailable.php) and [ProductGone](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/ProductGone.php) plug-ins for more details.
+: If something goes wrong, throw an exception of the type *\Aimeos\MShop\Plugin\Provider\Exception*.This class has a special fourth parameter where specific information about the occurred problem can be passed. Please have a look at the [AddressAvailable](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/AddressesAvailable.php) and [ProductGone](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/ProductGone.php) plug-ins for more details.
 
 Return a boolean value
 : The method should return true if everything worked fine. If false is returned, the execution of all following plug-ins for this event is skipped. The advantage is that the code execution is not aborted completely by throwing an exception. You have control over the order of the executed plug-ins by the "position" property in the [administration interface](../manual/plugin-details.md). The plug-in with the lowest number is executed first. If two or more plug-ins share the same number, the order of these plug-ins is arbitrary.
@@ -130,7 +130,7 @@ Your plug-in has access to the value handed over by the basket, which depends on
 
 # Decorators
 
-They are are a great way to add constraints to the basket plug-ins or to implement functionality that should be available for multiple plug-ins. Decorators are added in the administration interface by adding their name after the plug-in name, separated by a comma.
+They are a great way to add constraints to the basket plug-ins or to implement functionality that should be available for multiple plug-ins. Decorators are added in the administration interface by adding their name after the plug-in name, separated by a comma.
 
 !!! note
     It is possible to apply decorators to basket plug-ins globally using the [mshop/plugin/provider/order/decorators](../config/mshop/plugin-provider.md#decorators) configuration setting. Named decorators listed in this configuration array are applied to all plug-ins.

@@ -91,13 +91,13 @@ public function process()
 
 The only thing you have to **adapt is the name of the error list** assigned to the view. It should be named after your class name to something like `$view->...ErrorList`.
 
-The cascade of `catch()` statements ensures that all exceptions are caught. Furthermore, all error messages translated that are passed to the view and shown to the customers. Unspecific execptions are logged and only a generic error message is shown in the front-end to avoid giving away sensitive information.
+The cascade of `catch()` statements ensures that all exceptions are caught. Furthermore, all error messages translated that are passed to the view and shown to the customers. Unspecific exceptions are logged and only a generic error message is shown in the front-end to avoid giving away sensitive information.
 
 You need to print these error messages in your component view which is described in the next section.
 
 # Display error messages
 
-The execptions caught in the methods and assigned to the view should be shown to the customers so they know what's going on. For this, you need to add a snippet similar to this one at the top of your component body view:
+The exceptions caught in the methods and assigned to the view should be shown to the customers so they know what's going on. For this, you need to add a snippet similar to this one at the top of your component body view:
 
 ```php
 <?php if( isset( $this->detailErrorList ) ) : ?>
@@ -117,7 +117,7 @@ If the output of your new component isn't suitable for caching, things are a bit
 
 ## getBody()
 
-Very similar to the `process()` method, you have to catch all execptions, translate them if possible and assign them to the view so the visitors are notified about the errors. The example method below only contains the parts that are different to those of the [method from the subpart clients](create-subparts.md#getBody):
+Very similar to the `process()` method, you have to catch all exceptions, translate them if possible and assign them to the view so the visitors are notified about the errors. The example method below only contains the parts that are different to those of the [method from the subpart clients](create-subparts.md#getBody):
 
 ```php
 public function getBody( string $uid = '' ) : string
@@ -216,7 +216,7 @@ Components that can cache its output are extremely fast. Once the content is gen
 
 When caching comes into play, the first thing you have to think about is: What does your output depend on? Usually, two external sources can influence what content needs to be generated: The request parameters and the configuration settings. Both has to be part of the cache key.
 
-In an Aimeos component, it's not difficult to encode both sources into the cache key. All parameters are prefixed depending on their source, e.g. parameters that are used for the catalog filter start with a "f", all catalog list parameters with a "l" and the parameters for the catalog detail page with a "d".
+In an Aimeos component, it's not difficult to encode both sources into the cache key. All parameters are prefixed depending on their source, e.g. parameters that are used for the catalog filter start with an "f", all catalog list parameters with a "l" and the parameters for the catalog detail page with a "d".
 
 You only need to specify the prefixes of the parameters your component listens to. The configuration settings are build hierarchically, so the prefix that is shared by all subclients of your component is required. The rest is simply calling the `getCached()` and `setCached()` method from the parent class.
 
@@ -245,7 +245,7 @@ public function getBody( string $uid = '' ) : string
 
 There's one thing to note when caching content: Sometimes, a subpart can't be cached because it depends on the sessions or cookies of the customers. In this case the whole content wouldn't be cachable at all. Fortunately, there's a solution for this problem: The `modifyBody()` method allows any subclient to replace a section in the cached content.
 
-The details for this are described in the article about [creating new subparts](create-subparts#modifyBody). The important thing here is to call the `modifyBody()` method provided by the parent class after sucessfully retrieving the cached content.
+The details for this are described in the article about [creating new subparts](create-subparts#modifyBody). The important thing here is to call the `modifyBody()` method provided by the parent class after successfully retrieving the cached content.
 
 In doubt, have a look into a full example of a working [getBody() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
@@ -276,7 +276,7 @@ public function getHeader( string $uid = '' ) : string
 }
 ```
 
-In `getHeader()`, the exception handling is much simpler as you only need to log any exception. Only keep in mind that you also need to call the `modifyHeader()` method after sucessfully retrieving the cached content. This allows subclients of your component the chance to replace their sections with their new content.
+In `getHeader()`, the exception handling is much simpler as you only need to log any exception. Only keep in mind that you also need to call the `modifyHeader()` method after successfully retrieving the cached content. This allows subclients of your component the chance to replace their sections with their new content.
 
 In doubt, have a look into a full example of a working [getHeader() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
@@ -312,7 +312,7 @@ class Factory
 }
 ```
 
-The code above is a factory for the catalog detail client. You can copy the code and replace the "Catalog\Detail" and "catalog/detail" strings with the name of you own component. For example, if you want to create a new "catalog homepage" component, you should replace the strings like this:
+The code above is a factory for the catalog detail client. You can copy the code and replace the "Catalog\Detail" and "catalog/detail" strings with the name of your own component. For example, if you want to create a new "catalog homepage" component, you should replace the strings like this:
 
 ```
 Catalog\Detail -> Catalog\Homepage
