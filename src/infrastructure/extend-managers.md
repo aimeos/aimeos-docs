@@ -168,7 +168,7 @@ class Myproject extends Standard
 }
 ```
 
-The *fromArray()* and *toArray()* methods are important if you need to manage your new properties via the admin interface. By using calls of the to parent class you can use the existing code and only add new code for your own property.
+The *fromArray()* and *toArray()* methods are important if you need to manage your new properties via the admin interface. By using calls of the parent class you can use the existing code and only add new code for your own property.
 
 ## Managers
 

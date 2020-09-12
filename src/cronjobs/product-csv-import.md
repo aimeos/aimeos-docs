@@ -181,7 +181,7 @@ In this case the processor would assume that the first field (position 5) doesn'
 
 ## Item
 
-The "item" group is the most important data group because it contains the mapping for the product item that must be stored in the database before the rest of the processors can start to insert or update the data they are managing. It accepts data for this domain item keys:
+The "item" group is the most important data group because it contains the mapping for the product item that must be stored in the database before the rest of the processors can start to insert or update the data they are managing. It accepts data for these domain item keys:
 
 ```php
 [
@@ -304,7 +304,7 @@ Several product related prices can be part of each CSV line. Supported domain it
 ]
 ```
 
-The value, currency-id and type are required as the minimum amount of data. If you don't have a CSV field for the status, it's set to enabled ("1").
+The value, currency ID and type are required as the minimum amount of data. If you don't have a CSV field for the status, it's set to enabled ("1").
 
 Additionally, you can import values for the product list relation as well:
 
@@ -447,7 +447,7 @@ If one or more relations should stay untouched, you can explicitly configure the
 
 ## Stock
 
-If you want to set or update the stock levels during the product import as well, you can configure the mapping for your CSV file to support this domain item keys:
+If you want to set or update the stock levels during the product import as well, you can configure the mapping for your CSV file to support these domain item keys:
 
 ```php
 [

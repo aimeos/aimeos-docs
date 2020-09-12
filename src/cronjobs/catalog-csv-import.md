@@ -147,7 +147,7 @@ In this case the processor would assume that the first field (position 5) doesn'
 
 ## Item
 
-The "item" group is the most important data group because it contains the mapping for the catalog item that must be stored in the database before the rest of the processors can start to insert or update the data they are managing. It accepts data for this domain item keys:
+The "item" group is the most important data group because it contains the mapping for the catalog item that must be stored in the database before the rest of the processors can start to insert or update the data they are managing. It accepts data for these domain item keys:
 
 ```php
 [

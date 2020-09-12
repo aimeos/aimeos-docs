@@ -195,7 +195,7 @@ There's a default implementation for the "bought" section but you are able to re
 * [Bought section class name](../../config/client-html/basket-related.md#name)
 
 !!! note
-    Products that should be suggested in the "bought" section must be calculated according to the orders of previous customers. Aimeos comes with a job controller called "Product/Purchase" that does this for you automatically, but you need to run this job regularly, preferably once a day. 
+    Products that should be suggested in the "bought" section must be calculated according to the orders of previous customers. Aimeos comes with a job controller named "product/bought" that does this for you automatically, but you need to run this job regularly, preferably once a day. 
 
 ## Templates
 

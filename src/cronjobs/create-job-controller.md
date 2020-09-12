@@ -8,7 +8,7 @@ Depending on the type of task you need to implement, e.g if it depends on anothe
 
 The first part of the job controller key (e.g. "product" in "product/export") corresponds to the domain of the managers in the *lib/mshoplib/src* directory of the Aimeos core. The term "domain" refers all classes that care about the same kind of data like the "order" domain for all order related data: Ordered products, customer addresses, used delivery and payment in orders and basic order information.
 
-If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *Controller/Jobs/Media* and then call it by pressing the "media/..." button.
+If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *Controller/Jobs/Media* and then call it by pressing the "media/..." key.
 
 # Factory
 
@@ -81,7 +81,7 @@ maps to:
 Aimeos\Controller\Jobs\Product\Export\Standard
 ```
 
-For new implementations that are not an alternative to an existing implementation, you should always use "standard" at the end to show that it is the standard implementation. This makes it easy to replace your implementation by an alternative one, e.g. *Aimeos\Controller\Jobs\Product\Export\Myexport* only by configuration.
+For new implementations that are not an alternative to an existing implementation, you should always use "Standard" at the end to show that it is the standard implementation. This makes it easy to replace your implementation by an alternative one, e.g. *Aimeos\Controller\Jobs\Product\Export\Myexport* only by configuration.
 
 Furthermore, you need to extend from the base abstract class *Aimeos\Controller\Jobs\Base* to have access to the context and to some helper methods for functionality that is commonly used. Finally, implementing the *Aimeos\Controller\Jobs\Iface* interface makes your class a job controller recognized by the core.
 
@@ -106,7 +106,7 @@ A more descriptive message about the functionality of your job controller should
 return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Exports all available products' );
 ```
 
-The translation domain is also "controller/jobs" like for the name. Descriptions should be short but descriptive enough so people not used to your job controller can understand what it does. Don't make it to long (more than 250 characters are to long for sure) because it depends on the application how the description is shown and there may be not enough space to display long texts.
+The translation domain is also "controller/jobs" like for the name. Descriptions should be short but descriptive enough so people not used to your job controller can understand what it does. Don't make it too long (more than 250 characters are to long for sure) because it depends on the application how the description is shown and there may be not enough space to display long texts.
 
 ## run()
 

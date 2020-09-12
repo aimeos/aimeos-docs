@@ -98,7 +98,7 @@ The **"meta"** section will always contain a "total" property on success. It's v
 
 In the **"links"** section, all necessary links for navigating through the result set are listed including the link for the current request.
 
-**"data"** contains the items and each item always includes the ID and the resource type. In the attributes section, you will find the same data as returned by the `toArray()` method for every item. A URL referencing the unique resource is included in "links". If related items are included, they will be referenced by their ID and type in the "relationships" section. For items that are associated via lists, they will also contain an "attributes" section with the data for the list table.
+**"data"** contains the items and each item always includes the ID and the resource type. In the attributes section, you will find the same data as returned by the `toArray()` method for every item. An URL referencing the unique resource is included in "links". If related items are included, they will be referenced by their ID and type in the "relationships" section. For items that are associated via lists, they will also contain an "attributes" section with the data for the list table.
 
 In the **"included"** section all related items are listed if you told the server to hand them over in the same request as well. It's structure is the same as for the "data" section. For more information, please have a look into the [related resources](#include-related-resources) section.
 

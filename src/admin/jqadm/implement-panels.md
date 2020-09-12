@@ -4,7 +4,7 @@ You can implement a new panel for managing additional data of a new data domain 
 
 First you need to create a `Factory.php` class in the `./admin/jqadm/src/Admin/JQAdm/Mypanel/` directory. It's reponsible for instantiating the panel class, allows replacing your class by configuration and add configured decorators to the instantiated object.
 
-Use this example factory and replace `Mypanel` and `mypanel` by the name of your panel. The first character of the name in the namespace and classname part must be upper case, all other occurences must be lowered case.
+Use this example factory and replace `Mypanel` and `mypanel` by the name of your panel. The first character of the name in the namespace and classname part must be upper case, all other occurences must be in lower case.
 
 ```php
 namespace Aimeos\Admin\JQAdm\Mypanel;
@@ -173,7 +173,7 @@ public function copy() : ?string
 Retrieve the required ID, then fetch the item from the storage and use `toArray(true)` to retrieve a simple array of key/value pairs. There are three things to keep in mind when an item should be copied in Aimeos:
 
 * The `....siteid` value must be set to the ID of the current site
-* If the item must contain a unique value, add `_copy` to the existing one
+* If the item must contain an unique value, add `_copy` to the existing one
 * Reset the ID to an empty string to create a new record in the storage
 
 Besides the modified record data, you should also call `parent::copy()` and assign the return value to the view. This will contain the forms of the subparts if there are any (in the future).

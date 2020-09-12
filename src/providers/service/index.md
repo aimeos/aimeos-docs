@@ -206,7 +206,7 @@ In the front-end you can also specify if the setting should be hidden or not:
 ];
 ```
 
-A definition is always identified by a unique key which is identical to its **code** and should contain the provider name in lower case as prefix ("myprovider.token" for example). This prevents collisions between keys of decorators named the same.
+A definition is always identified by an unique key which is identical to its **code** and should contain the provider name in lower case as prefix ("myprovider.token" for example). This prevents collisions between keys of decorators named the same.
 
 The value for **internalcode** can be the name that is expected by the external service if you have to post the value directly to the gateway. Otherwise, it should be the same as the value for "code".
 
@@ -232,7 +232,7 @@ date
 time
 : A 24h time value (HH:mm)
 
-date time
+datetime
 : An ISO date and time value (YYYY-MM-DD HH:mm:ss)
 
 select

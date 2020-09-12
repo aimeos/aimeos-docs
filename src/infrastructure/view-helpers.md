@@ -65,7 +65,7 @@ The first parameter is the configuration key, without slashes (/) at the beginni
 
 # content
 
-Generates a URL from the paths which are stored in the database.
+Generates an URL from the paths which are stored in the database.
 
 ```php
 <?= $this->content( 'relative/path/to/media.jpg' ) ?>
@@ -127,7 +127,7 @@ If you forget to use the *formparam()* view helper, your component or subpart wo
 
 # imageset
 
-Creates a string for the srcset attribute of image tags (`<image srcset="...">`) depending on the list of passed image widths and URLs used for response images.
+Creates a string for the srcset attribute of image tags (`<image srcset="...">`) depending on the list of passed image widths and URLs used for responsive images.
 
 ```php
 <?= $this->imageset( [100 => '/path/to/100width.jpg', 300 => '/path/to/300width.jpg'] ) ?>
@@ -137,7 +137,7 @@ This will generate a string of `/path/to/100width.jpg 100w, /path/to/300width.jp
 
 # link
 
-Generates a URL for the `url` configuration key, parameters and anchor fragments.
+Generates an URL for the `url` configuration key, parameters and anchor fragments.
 
 ```php
 <?= $this->link( 'client/html/catalog/detail/url', ['d_prodid' => 1], ['image', '2'] ) ?>

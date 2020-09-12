@@ -85,7 +85,7 @@ client/html/checkout/standard/standard/subparts = ['address', 'payment', 'summar
 This example would leave the order of the steps as is but removes the "delivery" step. Depending on the configuration of the plug-ins, **delivery and payment options may be enforced**. To change this behavior, you have to adapt the [ServicesAvailable basket plug-in](../../manual/plugins.md#ServicesAvailable).
 
 !!! warning
-    In theory, you can reorder the single steps to any other order but it's not recommended. There are dependencies between some steps like the delivery options depend on the address entered by the customer or the costs of the payment options depend on the total value including the delivery costs. For the same reason it's not recommended replacing all steps on a single page. If you do this or change the order be sure that you know what the consequences are!
+    In theory, you can reorder the single steps to any other order but it's not recommended. There are dependencies between some steps like the delivery options depend on the address entered by the customer or the costs of the payment options depend on the total value including the delivery costs. For the same reason it's not recommended to place all steps on a single page. If you do this or change the order be sure that you know what the consequences are!
 
 
 If necessary, you can also add new steps to the checkout process. They will be automatically inserted into the process after you've added their names to the [subpart configuration](../../config/client-html/checkout-standard.md#subparts).
