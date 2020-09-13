@@ -2,9 +2,9 @@ You can implement a new panel for managing additional data of a new data domain 
 
 # Factory class
 
-First of all, you need to create a `Factory.php` class in the `./admin/jqadm/src/Admin/JQAdm/Mypanel/` directory. It's reponsible for instantiating the panel class, allows replacing your class by configuration and add configured decorators to the instantiated object.
+First you need to create a `Factory.php` class in the `./admin/jqadm/src/Admin/JQAdm/Mypanel/` directory. It's reponsible for instantiating the panel class, allows replacing your class by configuration and add configured decorators to the instantiated object.
 
-Use this example factory and replace `Mypanel` and `mypanel` by the name of your panel. The first character of the name in the namespace and classname part must be upper case, all other occurences must be lower case.
+Use this example factory and replace `Mypanel` and `mypanel` by the name of your panel. The first character of the name in the namespace and classname part must be upper case, all other occurences must be in lower case.
 
 ```php
 namespace Aimeos\Admin\JQAdm\Mypanel;
@@ -97,7 +97,7 @@ All methods beside the last two are optional and default implementations exist i
 
 # Parameters and files
 
-When the class is instantiated, a view object containing the passed GET and POST parameters as well as the uploaded files is added to the object. It should also be used to render the template after more data has been assiged to the view. You can access the view and the parameters using:
+When the class is instantiated, a view object containing the passed GET and POST parameters as well as the uploaded files is added to the object. It should also be used to render the template after more data has been assigned to the view. You can access the view and the parameters using:
 
 ```php
 $view = $this->getView();
@@ -266,11 +266,11 @@ public function delete() : ?string
 }
 ```
 
-When deleting items, you should always wrap the operations into a transation. This avoids deleting records partitially and improves performance because the data is only synced once to the storage.
+When deleting items, you should always wrap the operations into a transaction. This avoids deleting records partially and improves performance because the data is only synced once to the storage.
 
 Retrieve the required ID or IDs, then fetch the item or items from the storage. You need to assign the items one by one to the view and call `parent::delete()` so the subparts have access to the item and delete related data too.
 
-Now delete the fetched items and commit your transation if everything is fine. Send a redirect to the browser to the list view using `$this->redirect()`. It's parameters are:
+Now delete the fetched items and commit your transaction if everything is fine. Send a redirect to the browser to the list view using `$this->redirect()`. It's parameters are:
 
 * Resource to redirect too (usually the same as the deleted one)
 * Action to perform (usually *search* to render the list view)
@@ -404,16 +404,16 @@ public function save() : ?string
 }
 ```
 
-You should always wrap the operations into a transation. This avoids saving records partitially and improves performance because the data is only synced once to the storage.
+You should always wrap the operations into a transaction. This avoids saving records partially and improves performance because the data is only synced once to the storage.
 
 If the ID of the item is passed, you have to fetch the item and otherwise, create an empty item. Then, you can merge the data with the existing item values and save the item if it doesn't have an ID yet. This is important because the subparts which have access to `$view->item` when calling `parent::save()` will need the ID of the item to perform their own tasks.
 
-After the subparts added their own content to the item, save a copy of it again. Using a copy is important if something goes wrong and the related items are only partially saved but they already contain IDs. This would lead to problems if the editor clicks on save in the detail view again because those items wouldn't be saved at all!
+After the subparts added their own content to the item, save a copy of it again. Using a copy is important if something goes wrong and the related items are only partially saved, but they already contain IDs. This would lead to problems if the editor clicks on save in the detail view again because those items wouldn't be saved at all!
 
 !!! tip
     Here's also a good place to store uploaded files for importing them. Use `$view->request()->getUploadedFiles()` and the methods described in the [parameters and files](#parameters-and-files) section.
 
-When everything is fine, commit the transation and redirect the browser to the next page. The redirect depends on the *next* parameter sent by the "Save", "Save & close" or "Save & copy" button. The parameters for `$this->redirect()` are:
+When everything is fine, commit the transaction and redirect the browser to the next page. The redirect depends on the *next* parameter sent by the "Save", "Save & close" or "Save & copy" button. The parameters for `$this->redirect()` are:
 
 * Resource to redirect too (usually the same as the saved one)
 * Action to perform (depends on the *next* parameter)
@@ -472,7 +472,7 @@ At the end, render the view with `$view->render()` to create the HTML output for
 
 ## Navigation
 
-To add your panel to the left navigation bar, your have to overwrite the `admin/jqadm/navbar` configuration setting and add your panel name at the appropriate position:
+To add your panel to the left navigation bar, you have to overwrite the `admin/jqadm/navbar` configuration setting and add your panel name at the appropriate position:
 
 ```php
 return [

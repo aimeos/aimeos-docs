@@ -63,7 +63,7 @@ To create a new subscription processor, the file for the class must be located i
 ./controller/common/src/Controller/Common/Subscription/Process/Processor/<name>/Standard.php
 ```
 
-Please replace the "<type>" place holder with the name of the task your processor handles, e.g. "Ldap" if it connects to an LDAP server to manage authorization information. The example below uses the type *Myproc*, so the file location in your own Aimeos extension would be:
+Please replace the "<type>" placeholder with the name of the task your processor handles, e.g. "Ldap" if it connects to an LDAP server to manage authorization information. The example below uses the type *Myproc*, so the file location in your own Aimeos extension would be:
 
 ```
 ./controller/common/src/Controller/Common/Subscription/Process/Processor/Myproc/Standard.php
@@ -168,7 +168,7 @@ If you already know unit tests the implementation is pretty straight forward. Th
 \Aimeos\MShop::cache( false );
 ```
 
-When you use the `\Aimeos\MShop::create()` method to create manager objects, it caches objects and returns them if its asked for the same kind of object again. In unit tests, this may have undesired side effects and therefore, the lines above enable this caching only for the test cases of this unit test class and clears the object cache afterwards so the next unit test class starts in a defined state.
+When you use the `\Aimeos\MShop::create()` method to create manager objects, it caches objects and returns them if it's asked for the same kind of object again. In unit tests, this may have undesired side effects and therefore, the lines above enable this caching only for the test cases of this unit test class and clears the object cache afterwards so the next unit test class starts in a defined state.
 
 When testing subscription processor methods, it may be useful to test indirectly if the test case succeeded by testing what the method is doing internally, i.e. if object methods in the processor are called. This is a bit more advanced as you must create mock objects first and let the `\Aimeos\MShop` class return them instead of creating a new, real object:
 

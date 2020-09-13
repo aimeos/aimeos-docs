@@ -4,7 +4,7 @@ Things get more complicated if your files are very big because the product expor
 
 Implementation tend to get even more complicated when different file formats come into play. You want to create a CSV file, maybe as compressed .gz file or several files combined in one .zip file? Using only the PHP functions will get messy very soon!
 
-There are utility classes in the [*./lib/mwlib/src/MW*](https://github.com/aimeos/aimeos-core/tree/master/lib/mwlib/src/MW) directory of the core available that provide a single interface for handling container and content objects. Container could be anything that can store one or more content objects (e.g. files) like directories or Zip files. Content objects can be any binary or text files, CSV files or spread sheets.
+There are utility classes in the [*./lib/mwlib/src/MW*](https://github.com/aimeos/aimeos-core/tree/master/lib/mwlib/src/MW) directory of the core available that provide a single interface for handling container and content objects. Container could be anything that can store one or more content objects (e.g. files) like directories or Zip files. Content objects can be any binary or text files, CSV files or spreadsheets.
 
 # Create files
 
@@ -119,7 +119,7 @@ The names of the container implementations are:
 Manages content files in local directories.
 
 dir-perm (default is 0755)
-: Permission bit mask if the directory doesn't exist and have to be created. The leading zero is mandatory so the value is recognized as octal value. The second digit is the mask for the creator of the directory, the third for this group and the forth for everybody else. The digits are bit masks for read, write and search permissions so "4" is read only, "2" is write only and "1" is the ability to decent into the directory and read the names of the next level.
+: Permission bit mask if the directory doesn't exist and have to be created. The leading zero is mandatory so the value is recognized as octal value. The second digit is the mask for the creator of the directory, the third for this group and the forth for everybody else. The digits are bit masks for read, write and search permissions so "4" is read only, "2" is write only and "1" is the ability to descent into the directory and read the names of the next level.
 
 ## Zip
 

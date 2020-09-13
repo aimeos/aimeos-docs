@@ -4,7 +4,7 @@ Decorators are a great way to dynamically extend the functionality of a class. T
 
 When calling a method of such a wrapped object, the method of the outermost decorator is called first. Each decorator can decide to do something before or after calling the same method of the next decorator. It can even stop and return immediately without calling the underlaying object.
 
-The picture illustrates an example how decorators can be used. Customers should be able to pay by invoice but only if
+The picture illustrates an example how decorators can be used. Customers should be able to pay by invoice but only if:
 
 * they are logged in
 * it's not their first order
@@ -43,6 +43,6 @@ public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket )
 }
 ```
 
-The code above intercepts the *calcPrice()* method for example. It receives the same parameters as the service provider and must return a value if this is documented in the interface describing the method. To underlying object is available via `$this->getProvider()` and it can be used to call any method of that object. Normally it's the same method as the implemented one but it can be another one too.
+The code above intercepts the *calcPrice()* method for example. It receives the same parameters as the service provider and must return a value if this is documented in the interface describing the method. The underlying object is available via `$this->getProvider()` and it can be used to call any method of this object. Normally it's the same method as the implemented one but it can be another one too.
 
 For examples of decorators and their implementations, you should have a look at the [available decorators](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/src/MShop/Service/Provider/Decorator) in the Aimeos core.

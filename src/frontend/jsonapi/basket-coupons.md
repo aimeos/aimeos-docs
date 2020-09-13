@@ -96,7 +96,7 @@ The response will then contain a new "relationships" section in the basket data 
 
 Depending on the coupon code, there will be more changes to the basket. They can modify the shipping costs, add rebate products that reduce the price or perform other modifications to the basket.
 
-If a coupon code does require one or more prerequisites and they aren't matched, only the coupon entry will be part of the basket response. As soon as changes to the basket content fulfill the coupon requirements, the changes implemented by the corresponding coupon provider are automatically applied to the basket.
+If a coupon code does require one or more prerequisites, and they aren't matched, only the coupon entry will be part of the basket response. As soon as changes to the basket content fulfill the coupon requirements, the changes implemented by the corresponding coupon provider are automatically applied to the basket.
 
 # Delete coupons
 

@@ -17,7 +17,7 @@ The target, controller and action will stay the same after the page reload when 
 
 ## Templates
 
-You can adapt the templates for the locale select component and their subparts by overwriting the templates in you own extension or configuring alternative template names:
+You can adapt the templates for the locale select component and their subparts by overwriting the templates in your own extension or configuring alternative template names:
 
 * [template body for the select component](../../config/client-html/locale-select.md#template-body)
 * [template header for the select component](../../config/client-html/locale-select.md#template-header)

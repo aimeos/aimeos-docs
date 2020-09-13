@@ -12,7 +12,7 @@ Several container types are supported as long as their content consists of CSV-l
 * Directory container / CSV files
 * Zip container / compressed CSV files
 
-You can configure the container type and content format via the [controller/jobs/catalog/import/csv/container/type](../config/controller-jobs/catalog-import.md#type) and [controller/jobs/catalog/import/csv/container/content](../config/controller-jobs/catalog-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md)
+You can configure the container type and content format via the [controller/jobs/catalog/import/csv/container/type](../config/controller-jobs/catalog-import.md#type) and [controller/jobs/catalog/import/csv/container/content](../config/controller-jobs/catalog-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md).
 
 !!! note
     The default container type is "directory", so you need to configure a directory where one or more import files are stored.
@@ -32,7 +32,7 @@ The basic rules are:
 * A new line character within the field data doesn't need to be treated specially
 * The line ending must be a new line character (or a "\r\n" produced by Windows)
 
-Your CSV files can **start with a header** describing the columns so they are more readable by humans. In this case, you need to configure the import to **skip these lines** using the [controller/jobs/catalog/import/csv/skip-lines](../config/controller-jobs/catalog-import.md#skip-lines) configuration.
+Your CSV files can **start with a header** describing the columns, so they are more readable by humans. In this case, you need to configure the import to **skip these lines** using the [controller/jobs/catalog/import/csv/skip-lines](../config/controller-jobs/catalog-import.md#skip-lines) configuration.
 
 !!! note
     If you are using TYPO3, you have to put all configuration into the TSConfig field of the appropriate scheduler task. For all other frameworks, the settings must be added to the configuration file.

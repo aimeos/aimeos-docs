@@ -1,4 +1,4 @@
-Creating orders requires a complete basket, i.e. it contains at least one product, the billing address and a payment and delivery entry. Then it's a three way step to create the required database entries and redirect to the payment gateway or the thank you page.
+Creating orders requires a complete basket, i.e. it contains at least one product, the billing address and a payment and delivery entry. Then it's a three-way step to create the required database entries and redirect to the payment gateway or the "Thank You" page.
 
 # Save basket
 
@@ -126,7 +126,7 @@ After saving the basket, you need to create an order invoice. For this, you must
     });
     ```
 
-The response will contain the data of the created order invoice item as well as the link to the next step. This can either be the URL to the payment gateway or to the thank you page and can be found in **response['links']['process']['href']**:
+The response will contain the data of the created order invoice item as well as the link to the next step. This can either be the URL to the payment gateway or to the "Thank You" page and can be found in **response['links']['process']['href']**:
 
 ```json
 {
@@ -274,7 +274,7 @@ Then, you can retrieve the list of orders using the "order" endpoint:
     });
     ```
 
-To retrieve a single order only, you need to use the "self" link of the order item returned by the previous response. You can get the full order details by passing
+To retrieve a single order only, you need to use the "self" link of the order item returned by the previous response. You can get the full order details by passing:
 
 ```
 order/base/address,order/base/coupon,order/base/product,order/base/service

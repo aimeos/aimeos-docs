@@ -1,6 +1,6 @@
 # List template
 
-The list template for a panel must be stored in you own Aimeos extension in `./admin/jqadm/templates/<panel name>/list-standard.php` and consists of the
+The list template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/list-standard.php` and consists of the
 
 * navigation bar including the global search
 * top and bottom pagination
@@ -92,7 +92,7 @@ block rendering
 
 ## Table header
 
-The table header renders the
+The table header renders the:
 
 * link to delete all selected items
 * columns for the item properties
@@ -190,7 +190,7 @@ mass action
 : The first column is for performing mass actions like deleting several items at once. If you don't want or support that, you can leave that column out.
 
 data columns
-: All columns related to item properties are rendered by the *listhead* partial. For that, it uses the columns in `$fields` that are read from the session if the editor changed the columns (from configuration otherwise). The column for sorting by default must be passed and for all all columns sorting is enabled. If you don't want that, you have to pass *NULL* as value in `$columnList` for that column.
+: All columns related to item properties are rendered by the *listhead* partial. For that, it uses the columns in `$fields` that are read from the session if the editor changed the columns (from configuration otherwise). The column for the default sorting must be passed and sorting is activated for all columns. If you don't want that, you have to pass *NULL* as value in `$columnList` for that column.
 
 action drop-down
 : You can add several actions to `<th class="actions">` and should provide at least a "create" action if applicable.
@@ -340,7 +340,7 @@ actions
 
 # Detail template
 
-The details template for a panel must be stored in you own Aimeos extension in `./admin/jqadm/templates/<panel name>/item-standard.php` and consists of the
+The details template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/item-standard.php` and consists of the:
 
 * navigation bar including Save/Cancel buttons
 * left sidebar with sub-panels
@@ -417,7 +417,7 @@ form
 : The form must enclose the complete content so ever input field in the detail view will be sent to the server when the editor clicks on "Save"
 
 hidden input fields
-: The are important because they contain the ID of the item and the next action parameter
+: They are important because they contain the ID of the item and the next action parameter
 
 CSRF protection
 : The `<?= $this->csrf()->formfield(); ?>` is very important because it will contain the token to protect against client side request forgery. If you leave that out, frameworks supporting CSRF protection will refuse your request
@@ -427,7 +427,7 @@ item action
 
 ## Sidebar
 
-The navigation sidebar for the sub-parts renders the
+The navigation sidebar for the sub-parts renders the:
 
 * list of tabs for the sub-parts
 * meta data (mtime, ctime, editor)
@@ -583,7 +583,7 @@ select (standard)
 : The standard HTML select tag for the item status is straight forward
 
 select (Vue component)
-: There's an alternative select implmenented as Vue.js component that is able to show options dynamically. It also adds the initial value as options to the select list if it doesn't exists in the list of given options. Also, the type field example is only shown if there's more than one option available due to the if/else
+: There's an alternative select implemented as Vue.js component that is able to show options dynamically. It also adds the initial value as options to the select list if it doesn't exist in the list of given options. Also, the type field example is only shown if there's more than one option available due to the if/else
 
 date picker
 : In case of input fields with type `datetime-local`, you can also use the *flatpickr* Vue component because e.g. Safari doesn't support date/time fields at all and doesn't offer a calendar widget

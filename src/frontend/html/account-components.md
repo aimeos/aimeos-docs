@@ -19,7 +19,7 @@ To be able to generate the URL for the page or route the component is available 
 
 ## Templates
 
-You can adapt the templates for the favorite component by overwriting the templates in you own extension or configuring alternative template names:
+You can adapt the templates for the favorite component by overwriting the templates in your own extension or configuring alternative template names:
 
 * [account favorite body](../../config/client-html/account-favorite.md#template-body)
 * [account favorite header](../../config/client-html/account-favorite.md#template-header)
@@ -50,7 +50,7 @@ To be able to load the order details and to return to the list of orders, the UR
 
 ## Templates
 
-You can adapt the templates for the sections by overwriting the templates in you own extension or configuring alternative template names:
+You can adapt the templates for the sections by overwriting the templates in your own extension or configuring alternative template names:
 
 * [account history body](../../config/client-html/account-history.md#template-body)
 * [account history header](../../config/client-html/account-history.md#template-header)
@@ -80,7 +80,7 @@ To be able to generate the URL for the page or route the component is available 
 
 ## Templates
 
-You can adapt the templates for the "account watch" component by overwriting the templates in you own extension or configuring alternative template names:
+You can adapt the templates for the "account watch" component by overwriting the templates in your own extension or configuring alternative template names:
 
 * [account watch body](../../config/client-html/account-watch.md#template-body)
 * [account watch header](../../config/client-html/account-watch.md#template-header)

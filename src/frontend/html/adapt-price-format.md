@@ -20,7 +20,7 @@ You can show only a specific price type or several price types at once, e.g. the
 ],
 ```
 
-The format is determined by the translation which contains the placeholders. To swap the value and currency symbol for example, you only need change the order of the placeholders, e.g. "%2$s %1$s". All translations by price type are located in the "client/code" domain and the translation key consists of "price:" and the code of the price type.
+The format is determined by the translation which contains the placeholders. To swap the value and currency symbol for example, you only need to change the order of the placeholders, e.g. "%2$s %1$s". All translations by price type are located in the "client/code" domain and the translation key consists of "price:" and the code of the price type.
 
 !!! note
     You need to add a translation for every new price type you create. Otherwise, the "price:&lt;code&gt;" string will be displayed in the frontend instead of the price.
@@ -38,4 +38,4 @@ Imagine you need to display additional text next to your new price type, e.g. th
 ],
 ```
 
-This will create a translation for the price types "month" and "kilo" to strings like "99 € / month" or "1.99 € / kg". If your shop offers additional languages that visitors can view the web site in, you need to add translations for those languages as well. Simply copy the code and exchange the two letter ISO language code ("en") by that language code your web site offers too.
+This will create a translation for the price types "month" and "kilo" to strings like "99 € / month" or "1.99 € / kg". If your shop offers additional languages that visitors can view the web site in, you need to add translations for those languages as well. Simply copy the code and exchange the two letter ISO language code ("en") by that language code your website offers too.

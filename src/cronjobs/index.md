@@ -75,7 +75,7 @@ subscription/process/renew
 subscription/process/end
 : Finish subscription period and revoke permissions if applicable
 
-Each application and framwork offers means to execute them directly:
+Each application and framework offers means to execute them directly:
 
 * [Laravel](../laravel/setup.md#cronjobs)
 * [Symfony](../symfony/setup.md#cronjobs)

@@ -59,7 +59,7 @@ The notifications about payment status updates can happen every time and are the
 
 All real-time updates are sent directly to the "checkout update" component of your Aimeos shop. Some payment service provider implementations are able to hand over the URL created by using the [configured destination page or route](../../config/client-html/checkout-update.md#url) automatically to the payment gateway. In the other cases, you need to add the absolute URL to your page containing the "checkout update" component in the management backend of the payment gateway.
 
-Batch updates work in a different way. Usually, files are uploaded via FTP to your server or you have to fetch the files from the server of your payment gateway. Afterwards, the Aimeos service provider can import the file and updated the payment status of the order in the database.
+Batch updates work differently. Usually, files are uploaded via FTP to your server or you have to fetch the files from the server of your payment gateway. Afterwards, the Aimeos service provider can import the file and updated the payment status of the order in the database.
 
 You have to configure the Aimeos  payment service provider which is responsible for these files to import them. This is explicitly stated in the [service provider documentation](../../manual/services.md#built-in-payment-services) if necessary.
 
@@ -76,7 +76,7 @@ By default, the checkout process consists of these steps in the following order:
 * [Show detailed summary page](../../config/client-html/checkout-standard.md#name_5)
 * [Store order and redirect to the payment provider](../../config/client-html/checkout-standard.md#name_4)
 
-Depending on the type of product you are selling there's sometimes no need for e.g. choosing a delivery option by the customer. Virtual products usually fall into this category. You can remove a step from the process completely by [modifying the subparts configuration](../../config/client-html/checkout-standard.md#subparts) to
+Depending on the type of product you sell, sometimes it is not necessary for the customer to choose e.g. a delivery option. Virtual products usually fall into this category. You can remove a step from the process completely by [modifying the subpart's configuration](../../config/client-html/checkout-standard.md#subparts) to:
 
 ```
 client/html/checkout/standard/standard/subparts = ['address', 'payment', 'summary', 'order', 'process']

@@ -98,7 +98,7 @@ You can use that to build filters for the user interface. The `public` property 
 
 # Nested parameters
 
-Some host applications need nested GET parameters so they are recognized as part of the JSON request. In this case, a product resource URL can look like:
+Some host applications need nested GET parameters, so they are recognized as part of the JSON request. In this case, a product resource URL can look like:
 
 ```
 http://localhost:8000/admin/default/jsonadm?ai[resource]=product&ai[id]=1

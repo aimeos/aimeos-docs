@@ -1,8 +1,8 @@
 Regarding deliveries, shop owners are usually offering several delivery methods a customer can choose from but the shop owners also need to make sure that the orders are pushed to their back-end systems. Both is possible with delivery service providers which are the base for the configured delivery methods.
 
-A delivery method can be anything like delivering by courier service, mail, DHL, UPS or any other transportation company. What's displayed in the list of delivery methods the customers can select from is independent from the implementation of the delivery service provider underneath. This means that you can name the delivery method in the checkout process "Express delivery" but the configured delivery service provider class behind is "Manual" which only implies the orders will be exported from the shop database by hand.
+A delivery method can be anything like delivering by courier service, mail, DHL, UPS or any other transportation company. What's displayed in the list of delivery methods the customers can select from is independent of the implementation of the delivery service provider underneath. This means that you can name the delivery method in the checkout process "Express delivery" but the configured delivery service provider class behind is "Manual" which only implies the orders will be exported from the shop database by hand.
 
-Depending of the delivery service provider implementation, it may send the orders in the required format to the ERP system of the shop owner or to a fulfillment company in a format understood by them. As sending orders is an asynchronous process started regularly in the background, it doesn't depend on any action of the customers besides their successful payment.
+Depending on the delivery service provider implementation, it may send the orders in the required format to the ERP system of the shop owner or to a fulfillment company in a format understood by them. As sending orders is an asynchronous process started regularly in the background, it doesn't depend on any action of the customers besides their successful payment.
 
 Also the format is totally up to the other side: It can be CSV, XML or any other format you implement and delivered via HTTP, batch file transfer or another arbitrary protocol.
 
@@ -34,13 +34,13 @@ class Myprovider
 }
 ```
 
-The only method that must be implemented is the *process()* method that will be called regularly by the job controller for exporting the orders. Anything else is optional. How to access configuration or which supporting methods are available is descriped in the [basics article](index.md).
+The only method that must be implemented is the *process()* method that will be called regularly by the job controller for exporting the orders. Anything else is optional. How to access configuration or which supporting methods are available is described in the [basics article](index.md).
 
 Delivery service providers also [share some methods](index.md#most-often-used) with payment service providers. They allow you to control the visibility of the delivery options, calculate variable service fees and check if certain methods are implemented.
 
 # Process an order
 
-The main methods of every delivery service provider are the *processBatch()* and *process()* methods and they must be implemented so the provider can perform anything useful.
+The main methods of every delivery service provider are the *processBatch()* and *process()* methods, and they must be implemented so the provider can perform anything useful.
 
 The *processBatch()* method will be called by the job controller regularly for all orders that have been paid (or at least where the payment have been authorized) and should be sent to the next step. This can contain exporting the order to a file, pushing it to the ERP system or forwarding it to the fulfillment company.
 
@@ -164,7 +164,7 @@ As batch files usually contain several updates at once, e.g. one at each line, e
 
 To enable querying the current delivery status, you have to implement the *query()* method in your delivery service provider. This method is one of the optional methods where no default implementation exists and an exception is thrown when called nevertheless.
 
-It it exists, the *query()* method should ask its remote service for the actual delivery status of the order passed as argument to the method and update the delivery status of the order accordingly:
+If it exists, the *query()* method should ask its remote service for the actual delivery status of the order, which is passed as an argument to the method, and update the delivery status of the order accordingly:
 
 ```php
 public function query( \Aimeos\MShop\Order\Item\Iface $order )

@@ -97,7 +97,7 @@ public function copy() : ?string
 }
 ```
 
-Fetch the data you need from the storage and reset the *siteid* and *id* values so they are stored again using the current site ID and a new ID. You should also call `parent::copy()` and assign the return value to the view. This will contain the forms of further subparts if there are any (in the future).
+Fetch the data you need from the storage and reset the *siteid* and *id* values, so they are stored again using the current site ID and a new ID. You should also call `parent::copy()` and assign the return value to the view. This will contain the forms of further subparts if there are any (in the future).
 
 At the end, render the view with `$view->render()` to create the HTML output for the detail view. Use `$view->config()` to make the used template configurable. The first parameter is the configuration key, the second parameter is the default value if no alternative template path is configured.
 
@@ -237,9 +237,9 @@ public function save() : ?string
 }
 ```
 
-You should always wrap the operations into a transation. This avoids saving records partitially and improves performance because the data is only synced once to the storage.
+You should always wrap the operations into a transaction. This avoids saving records partially and improves performance because the data is only synced once to the storage.
 
-Fetch the related items first so you know which records are currently associated to the item. Then, loop over the data sent by the browser and retreive the ID if there's any so we know we have to update or create the item. Now, you can use `get()` to return the item if there's already one in `$items` or create a new one if not. Use `fromArray()` to populate the item with the new data and set the property by which you know the record belongs to the item from the main panel (here: `setParentId()`).
+Fetch the related items first so you know which records are currently associated to the item. Then, loop over the data sent by the browser and retrieve the ID if there's any, so we know we have to update or create the item. Now, you can use `get()` to return the item if there's already one in `$items` or create a new one if not. Use `fromArray()` to populate the item with the new data and set the property by which you know the record belongs to the item from the main panel (here: `setParentId()`).
 
 Store the updated item in a separate list because now you remove the item from the original `$items` map. Thus, you can then delete all left over items because they have been removed by the editor and are not part of the data sent by the browser any more. Save the updated/created items and commit the transation.
 

@@ -223,7 +223,7 @@ The response of an authenticated user contains the account data and the groups a
 
 If you don't need all data, you can [limit the fields](basics.md#return-specific-fields-only) returned by adding *&fields[customer]=...* to the URL, e.g. "&fields[customer]=customer.code,customer.email".
 
-To fetch addresses or other [related data](basics.md#include-related-resources), too, you can add *&include=...* to the URL, so the related data is returned in the response as well. Available related resources are:
+To also retrieve addresses or other [related data](basics.md#include-related-resources), you can add the URL *&include=...* to the URL so that the related data is also returned in the response. Available related resources are:
 
 * *customer/address* : List of delivery addresses
 * *customer/property* : List of properties stored for the user
@@ -553,7 +553,7 @@ It's not necessary to pass all customer fields along with the PATCH request. Ins
 
 It's also possible to delete a user account and remove all associated data (like addresses), except orders. All order related data will stay untouched because it's only loosely related to customer accounts and must be available for accounting reasons.
 
-Every user can only delete his own account and she/he must be logged in to do so.
+Every user can only delete his own account, and she/he must be logged in to do so.
 
 !!! tip
     The way a user is authenticated depends very much on the PHP framework you use. Please have a look at the documentation of the respective framework of your choice, e.g. at Laravel [Passport](https://laravel.com/docs/master/passport)/[Sanctum](https://laravel.com/docs/master/sanctum) or Symfony [Guard](https://symfony.com/doc/current/security/guard_authentication.html).

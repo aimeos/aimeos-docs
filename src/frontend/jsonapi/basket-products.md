@@ -24,7 +24,7 @@ Each listed product will contain the link how it could be added to the basket:
 The URL to add the product to the basket is in `data['links']['basket/product']['href']`
 
 !!! warning
-    Don't take these URLs for granted! They change depending on the route configration and the application.
+    Don't take these URLs for granted! They change depending on the route configuration and the application.
 
 # Add products
 
@@ -632,7 +632,7 @@ To edit already added products in the basket, you can send a PATCH request to th
 http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0
 ```
 
-you can change the quanity of the product in the basket:
+you can change the quantity of the product in the basket:
 
 quantity
 : Amount of products that should be bought
@@ -677,7 +677,7 @@ Editing products in the basket should be similar to this:
     });
     ```
 
-The PATCH requests will change primarily the product data in the basket. Depending on the activated basket plugins, they can also lead to additional or less entries in the response:
+The PATCH requests will change primarily the product data in the basket. Depending on the activated basket plugins, they can also lead to additional or fewer entries in the response:
 
 ```json
 {

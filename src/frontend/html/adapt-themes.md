@@ -1,6 +1,6 @@
 If you would like to use one of the default themes as base for your own shop, chances are high that you also want to adapt it to your needs. Modifying a theme is possible without touching the existing CSS and Javascript files by simply overwriting the parts that should be different in your shop.
 
-In both cases, for CSS and JS files, you need to create a new file in one of the directories of your web site and which is accessible via the browser. The preferred location depends on the application or framework you are using. Please have a look into their documentation for advices where they should be located. The basic directory structure should be:
+In both cases, for CSS and JS files, you need to create a new file in one of the directories of your website and which is accessible via the browser. The preferred location depends on the application or framework you are using. Please have a look into their documentation for advices where they should be located. The basic directory structure should be:
 
 * **./mytheme/** (directory named after your theme or project)
     * **aimeos.js** (Javascript file that contains new code or overwrites existing ones)
@@ -10,7 +10,7 @@ These files must be included in your HTML template **after** the files from the 
 
 # Cascading Style Sheets
 
-Overwriting existing CSS styles is done by using the same CSS selector and applying different values to the existing instructions or by adding new instructions. For example, if you would like to change the style for a product name
+Overwriting existing CSS styles is done by using the same CSS selector and applying different values to the existing instructions or by adding new instructions. For example, if you would like to change the style for a product name:
 
 ```css
 .catalog-detail-basic .name {
@@ -20,7 +20,7 @@ Overwriting existing CSS styles is done by using the same CSS selector and apply
 }
 ```
 
-to a bigger one with another color that floats left, then use the same CSS selector and
+to a bigger one with another color that floats left, then use the same CSS selector and:
 
 ```css
 .catalog-detail-basic .name {

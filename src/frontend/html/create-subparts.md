@@ -1,10 +1,10 @@
-Each core component can be divided into one or more subparts which are implemented as HTML clients themselves and they can contain several subparts as well. This article focuses on creating a new HTML client subpart that can be added via configuration between any existing subparts.
+Each core component can be divided into one or more subparts which are implemented as HTML clients themselves, and they can contain several subparts as well. This article focuses on creating a new HTML client subpart that can be added via configuration between any existing subparts.
 
 # Component, level and name
 
 Please keep in mind that a **subpart is written for a specific component and for a certain level** inside the tree structure. I.e. you can't use a subpart written for one component in another one or move the subpart up and down in the hierarchy solely by configuration.
 
-The existing components are located in the [client/html/src/Client/Html/](https://github.com/aimeos/ai-client-html/tree/master/client/html/src/Client/Html) directory and grouped together with similar compenents, e.g. the "Catalog" directory contains all compentents used for the product presentation, among others also the catalog detail component. Let's see what this component consists of:
+The existing components are located in the [client/html/src/Client/Html/](https://github.com/aimeos/ai-client-html/tree/master/client/html/src/Client/Html) directory and grouped together with similar components, e.g. the "Catalog" directory contains all components used for the product presentation, among others also the catalog detail component. Let's see what this component consists of:
 
 ![Catalog detail subparts](Core-catalog-detail-layout.png)
 
@@ -151,7 +151,7 @@ Remember that for clients at a deeper level in the hierarchy, the same as for th
 
 ## getSubClientNames()
 
-The implementation for the `getSubClientNames()` helper method is a one-liner too. You can copy and paste this method without any changes. The two class variables you've seen in the class skeleton contains the configration key and the default value:
+The implementation for the `getSubClientNames()` helper method is a one-liner too. You can copy and paste this method without any changes. The two class variables you've seen in the class skeleton contains the configuration key and the default value:
 
 ```php
 protected function getSubClientNames() : array
@@ -162,7 +162,7 @@ protected function getSubClientNames() : array
 
 The configuration path assigned to the `$subPartPath` variable can be used to overwrite the list of subparts whose content should be rendered to. The default subpart names including their order is stored in the array assigned to the `$subPartNames` class variable.
 
-Thus, you are able to provide strong defaults for the subparts and their order, so no more configuration is necessary. Futhermore, you make it possible to overwrite this configuration and to add new subparts.
+Thus, you are able to provide strong defaults for the subparts and their order, so no more configuration is necessary. Furthermore, you make it possible to overwrite this configuration and to add new subparts.
 
 # Optional methods
 
@@ -219,7 +219,7 @@ public function modifyBody( string $content, string $uid ) : string
 }
 ```
 
-This line of code is an advanced version of the PHP `str_replace()` function. It replaces the old part identified by the last parameter with the newly generated output in the second parameter. The important part is the name of the marker passed as last parameter: It's a unique string and should resemble the parts identifiying your class.
+This line of code is an advanced version of the PHP `str_replace()` function. It replaces the old part identified by the last parameter with the newly generated output in the second parameter. The important part is the name of the marker passed as last parameter: It's a unique string and should resemble the parts identifying your class.
 
 In the template file, the marker is prefixed by `<!-- ` and postfixed by ` -->` to create a valid HTML/XML comment. You need that marker before and after the content you want to replace, e.g.:
 
@@ -234,10 +234,10 @@ In the template file, the marker is prefixed by `<!-- ` and postfixed by ` -->` 
 
 ## modifyHeader()
 
-Like for the body, the same is also possible for the header: Replace dynamic parts of a cached entry without loosing the ability of caching at all. The `modifyHeader()` method is called after the cached header entry is retrieved and needs the same parameters:
+Like for the body, the same is also possible for the header: Replace dynamic parts of a cached entry without losing the ability of caching at all. The `modifyHeader()` method is called after the cached header entry is retrieved and needs the same parameters:
 
 * content
-: The cached content including the begin and end marker of the volatile section in the header
+: The cached content including the beginning and end marker of the volatile section in the header
 
 * uid
 : Unique identifier if the content is placed more than once in the header of the same page using different configuration values

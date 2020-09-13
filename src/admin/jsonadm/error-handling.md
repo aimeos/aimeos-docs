@@ -1,4 +1,4 @@
-Errors can an will occur sooner or later. The [JSON API](https://jsonapi.org/) standard like every REST protocol uses the HTTP status codes to signal error conditions. Used HTTP status codes are:
+Errors can and will occur sooner or later. The [JSON API](https://jsonapi.org/) standard like every REST protocol uses the HTTP status codes to signal error conditions. Used HTTP status codes are:
 
 * 2xx : Successful operation
     * 200 : Operation was performed successfully
@@ -8,7 +8,7 @@ Errors can an will occur sooner or later. The [JSON API](https://jsonapi.org/) s
     * 403 : Operation is forbidden/unsupported
     * 404 : The resource wasn't found
 * 5xx : Internal server error
-    * 500 : A non-recoverable error occured
+    * 500 : A non-recoverable error occurred
     * 501 : Operation not implemented
 
 Also, the JSON API standard specifies an "errors" section in the JSON response that can contain error hints for one or more operations:
@@ -17,7 +17,7 @@ Also, the JSON API standard specifies an "errors" section in the JSON response t
 {
     "errors": [{
         "title": "No product with ID 1 available",
-        "detail": "<stack trace where the error occured>"
+        "detail": "<stack trace where the error occurred>"
     }]
 }
 ```

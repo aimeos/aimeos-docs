@@ -66,13 +66,13 @@ To access the products for example, you must lookup the URL for the "product" re
 
 # Nested parameters
 
-Some host applications need nested GET parameters so they are recognized as part of the JSON request. In this case, a product resource URL can look like:
+Some host applications need nested GET parameters, so they are recognized as part of the JSON request. In this case, a product resource URL can look like:
 
 ```
 http://localhost:8000/jsonapi?ai[resource]=product/type&ai[id]=1
 ```
 
-To handle this case correctly, you must embed the GET parameters into another object if the "prefix" attribute from the service description is not empty, e.g. by
+To handle this case correctly, you must embed the GET parameters into another object if the "prefix" attribute from the service description is not empty, e.g. by:
 
 === "Javascript"
     ```javascript
@@ -91,7 +91,7 @@ To handle this case correctly, you must embed the GET parameters into another ob
 
 # Error handling
 
-Errors can an will occur sooner or later. The [JSON:API standard](https://jsonapi.org/format/#errors) like every REST protocol uses the HTTP status codes to signal error conditions. Used HTTP status codes are:
+Errors can and will occur sooner or later. The [JSON:API standard](https://jsonapi.org/format/#errors) like every REST protocol uses the HTTP status codes to signal error conditions. Used HTTP status codes are:
 
 * 2xx : Successful operation
     * 200 : Operation was performed successfully
@@ -101,7 +101,7 @@ Errors can an will occur sooner or later. The [JSON:API standard](https://jsonap
     * 403 : Operation is forbidden/unsupported
     * 404 : The resource wasn't found
 * 5xx : Internal server error
-    * 500 : A non-recoverable error occured
+    * 500 : A non-recoverable error occurred
     * 501 : Operation not implemented
 
 Also, the JSON API standard specifies an "errors" section in the JSON response that can contain error hints for one or more operations:

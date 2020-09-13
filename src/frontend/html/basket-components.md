@@ -17,7 +17,7 @@ There's only the main component without subparts by default but you can add your
 
 Most of the HTML layout code is located in the shared [common summary partials](https://github.com/aimeos/ai-client-html/tree/master/client/html/templates/common/summary) so you will have to revise it if you want to change the layout.
 
-If you want to change the layout of the basket independently from the checkout summary and the confirmation e-mail, you can use the [client/html/basket/standard/summary/detail](../../config/client-html/basket-standard.md#detail) configuration setting to point to a different partial file.
+If you want to change the layout of the basket independently of the checkout summary and the confirmation e-mail, you can use the [client/html/basket/standard/summary/detail](../../config/client-html/basket-standard.md#detail) configuration setting to point to a different partial file.
 
 ## Templates
 
@@ -122,14 +122,14 @@ The quantity of the first product in the basket would be reduced to two and both
 
 ### Manage coupons
 
-Managing coupon codes in the basket is the easiest part as you can only add or delete one coupon code at a time. To add a coupon code use
+Managing coupon codes in the basket is the easiest part as you can only add or delete one coupon code at a time. To add a coupon code use:
 
 ```html
 <input type="hidden" name="b_action" value="coupon-add" />
 <input type="hidden" name="b_coupon" value="TESTCODE" />
 ```
 
-and to delete it from the basket again use
+and to delete it from the basket again use:
 
 ```html
 <input type="hidden" name="b_action" value="coupon-delete" />
@@ -157,7 +157,7 @@ Other components need to link to the page which contains the basket or post data
 
 ## Coupon
 
-Coupons are personal or shared codes for granting goodies, giving a price reduction or any other possibility that offers customers an additional advantage. The actions behind coupons are implemented by coupon providers in the MShop library and they can modify the basket content in any way.
+Coupons are personal or shared codes for granting goodies, giving a price reduction or any other possibility that offers customers an additional advantage. The actions behind coupons are implemented by coupon providers in the MShop library, and they can modify the basket content in any way.
 
 Normally, shop owners would like to grant customers only one advantage per order and thus, the number of coupons that can be entered is limited to one by default. But there may be situations where it's applicable to allow more than one coupon code and therefore, the maximum number of coupon codes can be configured via the [controller/frontend/basket/coupon/allowed](../../config/controller-frontend/basket.md#couponallowed) setting.
 
@@ -195,11 +195,11 @@ There's a default implementation for the "bought" section but you are able to re
 * [Bought section class name](../../config/client-html/basket-related.md#name)
 
 !!! note
-    Products that should be suggested in the "bought" section must be calculated according to the orders of previous customers. Aimeos ships with a job controller named "product/bought" that does this for you automatically but you need to execute this job regularly, best once a day.
+    Products that should be suggested in the "bought" section must be calculated according to the orders of previous customers. Aimeos comes with a job controller named "product/bought" that does this for you automatically, but you need to run this job regularly, preferably once a day. 
 
 ## Templates
 
-You can adapt the templates for the "basket related" component itself and its "bought" section by overwriting the templates in you own extension or configuring alternative template names:
+You can adapt the templates for the "basket related" component itself and its "bought" section by overwriting the templates in your own extension or configuring alternative template names:
 
 * [related header template](../../config/client-html/basket-related.md#template-header)
 * [related body template](../../config/client-html/basket-related.md#template-body)
@@ -209,7 +209,7 @@ If you want to change the HTML structure of one of the templates, please have a 
 
 ## Bought together
 
-Some additional settings for the cross selling subpart have been implemented to create a configurable implementation that can be adapted to the various needs of shop owners:
+Some additional settings for the cross-selling subpart have been implemented to create a configurable implementation that can be adapted to the various needs of shop owners:
 
 [client/html/basket/related/bought/standard/domains](../../config/client-html/basket-related.md#standarddomains)
 : List of content types fetched from the database

@@ -8,7 +8,7 @@ Depending on the type of task you need to implement, e.g if it depends on anothe
 
 The first part of the job controller key (e.g. "product" in "product/export") corresponds to the domain of the managers in the *lib/mshoplib/src* directory of the Aimeos core. The term "domain" refers all classes that care about the same kind of data like the "order" domain for all order related data: Ordered products, customer addresses, used delivery and payment in orders and basic order information.
 
-If you want to implement a job controller that mainly works on data from a domain like "media", feel free to create your controller in the *Controller/Jobs/Media* directory and then it's accessed by the "media/..." key.
+If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *Controller/Jobs/Media* and then call it by pressing the "media/..." key.
 
 # Factory
 
@@ -41,7 +41,7 @@ class Factory
 }
 ```
 
-The example is from the product export job controller. You need to replace all occurences of "product", "Product", "export" and "Export" by the names that match your directories below *controller/jobs/src/Controller/Jobs/* in your Aimeos extension. If you want more than two levels, e.g. "product/export/sitemap", please extend the namespace, paths and class names by that last part.
+The example is from the product export job controller. You need to replace all occurrences of "product", "Product", "export" and "Export" by the names that match your directories below *controller/jobs/src/Controller/Jobs/* in your Aimeos extension. If you want more than two levels, e.g. "product/export/sitemap", please extend the namespace, paths and class names by that last part.
 
 # Skeleton
 
@@ -76,12 +76,12 @@ The name of the job controller corresponds to it's location in the file system. 
 ```
 Controller/Jobs/Product/Export/Standard.php
 ```
-maps to
+maps to:
 ```
 Aimeos\Controller\Jobs\Product\Export\Standard
 ```
 
-For new implementations that are not an alternative to an existing ones, you should always use "Standard" at the end to show that it's the default implementation. This makes it easy to replace your implementation by an alternative one, e.g. *Aimeos\Controller\Jobs\Product\Export\Myexport* only by configuration.
+For new implementations that are not an alternative to an existing implementation, you should always use "Standard" at the end to show that it is the standard implementation. This makes it easy to replace your implementation by an alternative one, e.g. *Aimeos\Controller\Jobs\Product\Export\Myexport* only by configuration.
 
 Furthermore, you need to extend from the base abstract class *Aimeos\Controller\Jobs\Base* to have access to the context and to some helper methods for functionality that is commonly used. Finally, implementing the *Aimeos\Controller\Jobs\Iface* interface makes your class a job controller recognized by the core.
 
@@ -146,7 +146,7 @@ In the templates (usually in the sub-directories of "controller/jobs/templates")
 ```php
 $this->varname
 ```
-or
+or:
 ```php
 $this->get('varname', 'defaultvalue')
 ```
@@ -233,7 +233,7 @@ If you already know unit tests the implementation is pretty straight forward. Th
 \Aimeos\MShop::setCache( false );
 ```
 
-When you use the `\Aimeos\MShop::create()` method to create manager objects, it caches objects and returns them if its asked for the same kind of object again. In unit tests, this may have undesired side effects and therefore, the lines above enable this caching only for the test cases of this unit test class. At the end, it clears the object cache so the next unit test class starts in a clean state.
+When you use the `\Aimeos\MShop::create()` method to create manager objects, it caches objects and returns them if it's asked for the same kind of object again. In unit tests, this may have undesired side effects and therefore, the lines above enable this caching only for the test cases of this unit test class. At the end, it clears the object cache so the next unit test class starts in a clean state.
 
 In this `testRun()` method, the tests should be looking for generated files or other changes. Often you may want to test if methods of objects used in the job controller are called. This is a bit more advanced as you must create mock objects first and let the `\Aimeos\MShop` class return them instead of creating a new, real object. An example would be:
 
