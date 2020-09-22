@@ -50,7 +50,7 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
                 "default": true,
                 "required": false
             },
-            "ctime": {
+            "rating": {
                 "label": "Sort reviews by rating",
                 "type": "string",
                 "default": false,
