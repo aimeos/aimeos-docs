@@ -170,3 +170,49 @@ In addition to the generic filter possibilities, you can sort reviews by these k
 
 !!! tip
     You can also sort by other fields, e.g. by the last modification date of the reviews using *&sort=review.mtime*
+
+# Count ratings
+
+You can get the rating counts for the reviews by using the **aggregate** key and the corresponding *review.rating* search key:
+
+=== "CURL"
+    ```bash
+    curl -X GET 'http://localhost:8000/jsonapi/review?aggregate=review.rating'
+    ```
+=== "jQuery"
+    ```javascript
+    var args = {'aggregate': 'review.rating'};
+    var params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
+    }
+
+    $.ajax({
+        method: 'GET',
+        dataType: 'json',
+        url: options.meta.resources['review'], // returned from OPTIONS call
+        data: params
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
+
+This will return a list of "id" and "attributes" pairs where the value of "id" is the rating value and "attributes" is the number of reviews with that rating:
+
+```javascript
+{
+    "meta": {
+        "total": 1
+    },
+    "data": [
+        {"id":1,"type":"review.rating","attributes":"0"},
+        {"id":2,"type":"review.rating","attributes":"2"},
+        {"id":3,"type":"review.rating","attributes":"3"},
+        {"id":4,"type":"review.rating","attributes":"5"},
+        {"id":5,"type":"review.rating","attributes":"10"}
+    ]
+}
+```
