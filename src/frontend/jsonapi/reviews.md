@@ -108,6 +108,8 @@ This response contains all reviews for the product with the ID "1":
         }
     },
     "links": {
+        "next": "http://localhost:8000/default/jsonapi/review?f_refid=1&page%5Boffset%5D=10",
+        "last": "http://localhost:8000/default/jsonapi/review?f_refid=1&page%5Boffset%5D=10",
         "self": "http://localhost:8000/default/jsonapi/review?f_refid=1"
     },
     "data": [{
