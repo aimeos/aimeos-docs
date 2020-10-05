@@ -175,6 +175,7 @@ $this->getContext()->mail()
 ```
 
 For detailed information about the available methods, please have a look into these interfaces:
+
 * [mail interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Mail/Iface.php)
 * [message interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Mail/Message/Iface.php)
 
