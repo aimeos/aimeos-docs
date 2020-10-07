@@ -45,6 +45,7 @@ autocomplete('.md-search__input', {
         </div>';
       }
     },
+    footer: '<div class="algolia-branding"><img src="https://res.cloudinary.com/hilnmyskv/image/upload/q_auto/v1601475673/Algolia_com_Website_assets/images/shared/algolia_logo/search-by-algolia-light-background.svg" /></div>',
     empty: function(result) {
       return '<div class="search-result-empty"> \
         <div class="empty-text"> \
