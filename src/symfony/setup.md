@@ -37,7 +37,7 @@ As a rule of thumb:
 
 Instead of upgrading to a new LTS version, you can also buy an [extended long term support](https://aimeos.com/support) from the Aimeos company. They guarantee up to **five years support** for your used version.
 
-More information about the release schedule and the support periods is available on the Aimeos roadmap page: <https://aimeos.org/project/roadmap/>
+More information about the release schedule and the support periods is available on the Aimeos roadmap page: <https://aimeos.org/roadmap>
 
 ## Process
 
