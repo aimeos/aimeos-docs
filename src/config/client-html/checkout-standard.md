@@ -1576,14 +1576,21 @@ See also:
 
 ## validate/order.base.address.address1
 
+Regular expression to check the "address1" address value
+
 ```
 client/html/checkout/standard/address/validate/order.base.address.address1 = 
 ```
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.address2
+
+Regular expression to check the "address2" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.address2 = 
@@ -1591,8 +1598,13 @@ client/html/checkout/standard/address/validate/order.base.address.address2 =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.address3
+
+Regular expression to check the "address3" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.address3 = 
@@ -1600,8 +1612,13 @@ client/html/checkout/standard/address/validate/order.base.address.address3 =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.city
+
+Regular expression to check the "city" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.city = 
@@ -1609,8 +1626,13 @@ client/html/checkout/standard/address/validate/order.base.address.city =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.company
+
+Regular expression to check the "company" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.company = 
@@ -1618,8 +1640,27 @@ client/html/checkout/standard/address/validate/order.base.address.company =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
+
+## validate/order.base.address.countryid
+
+Regular expression to check the "countryid" address value
+
+```
+client/html/checkout/standard/address/validate/order.base.address.countryid = 
+```
+
+* Default: 
+
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.email
+
+Regular expression to check the "email" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.email = ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
@@ -1627,8 +1668,13 @@ client/html/checkout/standard/address/validate/order.base.address.email = ^.+@[a
 
 * Default: ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.firstname
+
+Regular expression to check the "firstname" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.firstname = 
@@ -1636,8 +1682,27 @@ client/html/checkout/standard/address/validate/order.base.address.firstname =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
+
+## validate/order.base.address.languageid
+
+Regular expression to check the "languageid" address value
+
+```
+client/html/checkout/standard/address/validate/order.base.address.languageid = 
+```
+
+* Default: 
+
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.lastname
+
+Regular expression to check the "lastname" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.lastname = 
@@ -1645,8 +1710,13 @@ client/html/checkout/standard/address/validate/order.base.address.lastname =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.postal
+
+Regular expression to check the "postal" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.postal = 
@@ -1654,8 +1724,41 @@ client/html/checkout/standard/address/validate/order.base.address.postal =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
+
+## validate/order.base.address.salutation
+
+Regular expression to check the "salutation" address value
+
+```
+client/html/checkout/standard/address/validate/order.base.address.salutation = 
+```
+
+* Default: 
+
+See also:
+
+* client/html/checkout/standard/address/validate
+
+## validate/order.base.address.state
+
+Regular expression to check the "state" address value
+
+```
+client/html/checkout/standard/address/validate/order.base.address.state = 
+```
+
+* Default: 
+
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.telefax
+
+Regular expression to check the "telefax" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.telefax = 
@@ -1663,8 +1766,13 @@ client/html/checkout/standard/address/validate/order.base.address.telefax =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.telephone
+
+Regular expression to check the "telephone" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.telephone = 
@@ -1672,8 +1780,13 @@ client/html/checkout/standard/address/validate/order.base.address.telephone =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.vatid
+
+Regular expression to check the "vatid" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.vatid = 
@@ -1681,8 +1794,13 @@ client/html/checkout/standard/address/validate/order.base.address.vatid =
 
 * Default: 
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.website
+
+Regular expression to check the "website" address value
 
 ```
 client/html/checkout/standard/address/validate/order.base.address.website = ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
@@ -1690,6 +1808,9 @@ client/html/checkout/standard/address/validate/order.base.address.website = ^([a
 
 * Default: ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
 
+See also:
+
+* client/html/checkout/standard/address/validate
 
 ## validate/postal
 
