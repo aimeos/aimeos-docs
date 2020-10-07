@@ -290,6 +290,55 @@ See also:
 
 * mshop/review/manager/standard/aggregate/ansi
 
+## aggregaterate/ansi
+
+```
+mshop/review/manager/standard/aggregaterate/ansi = 
+ SELECT "key", SUM("val") AS "sum", COUNT(*) AS "count"
+ FROM (
+ 	SELECT :key AS "key", mrev.rating AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY "key"
+```
+
+* Default: mshop/review/manager/standard/aggregaterate
+
+
+## aggregaterate/mysql
+
+```
+mshop/review/manager/standard/aggregaterate/mysql = 
+ SELECT "key", SUM("val") AS "sum", COUNT(*) AS "count"
+ FROM (
+ 	SELECT :key AS "key", mrev.rating AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY "key"
+```
+
+* Default: 
+ SELECT "key", SUM("val") AS "sum", COUNT(*) AS "count"
+ FROM (
+ 	SELECT :key AS "key", mrev.rating AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY "key"
+
+
+
 ## count/ansi
 
 Counts the number of records matched by the given criteria in the database

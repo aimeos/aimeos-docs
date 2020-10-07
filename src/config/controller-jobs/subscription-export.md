@@ -2,11 +2,20 @@
 # csv
 ## collapse
 
+Collapse all lines in the subscription export on only one line
+
 ```
 controller/jobs/subscription/export/csv/collapse = 1
 ```
 
 * Default: 
+* Type: bool - True to collapse all lines of one subscription, false for separate lines
+* Since: 2020.07
+
+By default, the subscription export will contain several lines for each
+subscription, e.g. for the product, the addresses, the delivery and payment
+services as well as the invoice data. You can merge them into one line using
+this configuration setting.
 
 
 ## container/content

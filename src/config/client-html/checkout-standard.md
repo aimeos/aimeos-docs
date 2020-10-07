@@ -1447,7 +1447,6 @@ client/html/checkout/standard/address/validate/address1 =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/address2
 
@@ -1461,7 +1460,6 @@ client/html/checkout/standard/address/validate/address2 =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/address3
@@ -1477,7 +1475,6 @@ client/html/checkout/standard/address/validate/address3 =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/city
 
@@ -1491,7 +1488,6 @@ client/html/checkout/standard/address/validate/city =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/company
@@ -1507,7 +1503,6 @@ client/html/checkout/standard/address/validate/company =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/countryid
 
@@ -1521,7 +1516,6 @@ client/html/checkout/standard/address/validate/countryid =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/email
@@ -1537,7 +1531,6 @@ client/html/checkout/standard/address/validate/email =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/firstname
 
@@ -1551,7 +1544,6 @@ client/html/checkout/standard/address/validate/firstname =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/languageid
@@ -1567,7 +1559,6 @@ client/html/checkout/standard/address/validate/languageid =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/lastname
 
@@ -1581,7 +1572,6 @@ client/html/checkout/standard/address/validate/lastname =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/order.base.address.address1
@@ -1714,7 +1704,6 @@ client/html/checkout/standard/address/validate/postal =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/salutation
 
@@ -1728,7 +1717,6 @@ client/html/checkout/standard/address/validate/salutation =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/state
@@ -1744,7 +1732,6 @@ client/html/checkout/standard/address/validate/state =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/telefax
 
@@ -1758,7 +1745,6 @@ client/html/checkout/standard/address/validate/telefax =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/telephone
@@ -1774,7 +1760,6 @@ client/html/checkout/standard/address/validate/telephone =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/vatid
 
@@ -1789,7 +1774,6 @@ client/html/checkout/standard/address/validate/vatid =
 See also:
 
 * client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 ## validate/website
 
@@ -1803,7 +1787,6 @@ client/html/checkout/standard/address/validate/website =
 
 See also:
 
-* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 # decorators

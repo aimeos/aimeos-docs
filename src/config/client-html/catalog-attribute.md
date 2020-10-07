@@ -118,6 +118,7 @@ client/html/catalog/attribute/name = Standard
 * Default: Standard
 * Type: string - Last part of the class name
 * Since: 2018.04
+* Since: 2018.04
 
 Each default HTML client can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class

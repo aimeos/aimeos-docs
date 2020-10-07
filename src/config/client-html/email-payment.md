@@ -562,11 +562,18 @@ See also:
 
 ## name
 
+Name of the PDF part used by the email payment client implementation
+
 ```
 client/html/email/payment/pdf/name = Standard
 ```
 
 * Default: Standard
+* Type: string - Last part of the client class name
+* Since: 2020.07
+
+Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Payment\Pdf\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
 ## standard/subparts

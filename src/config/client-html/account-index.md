@@ -77,6 +77,29 @@ See also:
 * client/html/account/index/url/action
 * client/html/account/index/url/config
 
+## filter
+
+Removes parameters for the detail page before generating the URL
+
+```
+client/html/account/index/url/filter = 
+```
+
+* Default: 
+* Type: array - List of parameter names to remove
+* Since: 2019.07
+
+For SEO, it's nice to have URLs which contains only required parameters.
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/account/index/url/target
+* client/html/account/index/url/controller
+* client/html/account/index/url/action
+* client/html/account/index/url/config
+
 ## target
 
 Destination of the URL where the controller specified in the URL is known

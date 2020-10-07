@@ -231,8 +231,7 @@ The list of text types that should be rendered in the catalog list head section
 ```
 client/html/catalog/lists/head/text-types = Array
 (
-    [0] => short
-    [1] => long
+    [0] => long
 )
 ```
 
@@ -743,12 +742,10 @@ See also:
 Adds a list of globally available decorators only to the catalog list promo html client
 
 ```
-client/html/catalog/lists/promo/decorators/global = Array
-(
-)
+client/html/catalog/lists/promo/decorators/global = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -778,12 +775,10 @@ See also:
 Adds a list of local decorators only to the catalog list promo html client
 
 ```
-client/html/catalog/lists/promo/decorators/local = Array
-(
-)
+client/html/catalog/lists/promo/decorators/local = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -813,10 +808,10 @@ See also:
 Name of the promotion part used by the catalog list client implementation
 
 ```
-client/html/catalog/lists/promo/name = Standard
+client/html/catalog/lists/promo/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -1040,8 +1035,7 @@ List of HTML sub-clients rendered within the catalog list section
 ```
 client/html/catalog/lists/standard/subparts = Array
 (
-    [0] => promo
-    [1] => items
+    [0] => items
 )
 ```
 

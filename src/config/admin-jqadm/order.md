@@ -1,6 +1,8 @@
 
 # actions
 
+Actions available in the list view of the order panel
+
 ```
 admin/jqadm/order/actions = Array
 (
@@ -9,6 +11,20 @@ admin/jqadm/order/actions = Array
 ```
 
 * Default: Array
+* Type: array - List of action queue names
+* Since: 2020.10
+
+List of actions, the editor can select from in the list header of the order
+panel. You can dynamically extend the available actions like exporting the
+selected orders in CSV format and translate the action names using the
+"admin/ext" translation domain.
+
+The action names will be passed as "queue" parameter to the export method
+of the JQADM order class, which will create an entry for the message queue
+from the selected filter criteria. You have to implement a suitable controller
+which must fetch the entries from the message queue and generate the appropriate
+files. If files should be offered for download in the dashboard, a new job
+entry must be created using the MAdmin Job manager.
 
 
 # decorators

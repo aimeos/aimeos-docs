@@ -25,7 +25,9 @@ list of domains for "client/html/catalog/product/domains", e.g.
 
 See also:
 
+* client/html/catalog/home/basket-add
 * client/html/catalog/lists/basket-add
+* client/html/basket/related/basket-add
 
 # cache
 
@@ -248,7 +250,7 @@ to allow a list of products with configurable products.
 client/html/catalog/product/product-codes = Array
 (
     [0] => CNE
-    [1] => IJKL
+    [1] => ABCD
     [2] => CNC
 )
 ```

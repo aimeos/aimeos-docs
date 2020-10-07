@@ -180,3 +180,28 @@ named like the default one but with the string "standard" replaced by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "standard"
 should be replaced by the name of the new class.
+
+
+## template-aggregate
+
+Relative path to the review aggregate JSON API template
+
+```
+client/jsonapi/review/standard/template-aggregate = 
+```
+
+* Default: 
+* Type: string - Relative path to the template creating the list of aggregated review counts
+* Since: 2020.10
+
+The template file contains the code and processing instructions
+to generate the result shown in the JSON API body. The
+configuration string is the path to the template file relative
+to the templates directory (usually in client/jsonapi/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.

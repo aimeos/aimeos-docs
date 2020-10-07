@@ -266,8 +266,7 @@ List of user groups that are allowed to access the locale site panel
 ```
 admin/jqadm/resource/locale/site/groups = Array
 (
-    [0] => admin
-    [1] => super
+    [0] => super
 )
 ```
 
@@ -402,6 +401,38 @@ admin/jqadm/resource/product/key = P
 * Since: 2017.10
 
 
+# review
+## groups
+
+List of user groups that are allowed to access the review panel
+
+```
+admin/jqadm/resource/review/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2020.10
+
+
+## key
+
+Shortcut key to switch to the review panel by using the keyboard
+
+```
+admin/jqadm/resource/review/key = R
+```
+
+* Default: 
+* Type: string - Single character in upper case
+* Since: 2020.10
+
+
 # service
 ## groups
 
@@ -475,7 +506,7 @@ admin/jqadm/resource/subscription/groups = Array
 Shortcut key to switch to the subscription panel by using the keyboard
 
 ```
-admin/jqadm/resource/subscription/key = R
+admin/jqadm/resource/subscription/key = B
 ```
 
 * Default: 

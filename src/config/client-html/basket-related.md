@@ -1,12 +1,26 @@
 
 # basket-add
 
+Display the "add to basket" button for each product item
+
 ```
 client/html/basket/related/basket-add = 
 ```
 
 * Default: 
+* Type: boolean - True to display the button, false to hide it
+* Since: 2020.10
 
+Enables the button for adding products to the basket for the related products
+in the basket. This works for all type of products, even for selection products
+with product variants and product bundles. By default, also optional attributes
+are displayed if they have been associated to a product.
+
+See also:
+
+* client/html/catalog/home/basket-add
+* client/html/catalog/lists/basket-add
+* client/html/catalog/product/basket-add
 
 # bought
 ## decorators/excludes

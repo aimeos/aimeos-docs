@@ -18,17 +18,6 @@ admin/jsonadm/resource/attribute/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/attribute/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage attribute lists items
@@ -52,10 +41,14 @@ admin/jsonadm/resource/attribute/lists/groups = Array
 List of user groups that are allowed to manage attribute lists type items
 
 ```
-admin/jsonadm/resource/attribute/lists/type/groups = 
+admin/jsonadm/resource/attribute/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -130,17 +123,6 @@ admin/jsonadm/resource/catalog/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/catalog/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage catalog lists items
@@ -164,10 +146,14 @@ admin/jsonadm/resource/catalog/lists/groups = Array
 List of user groups that are allowed to manage catalog lists type items
 
 ```
-admin/jsonadm/resource/catalog/lists/type/groups = 
+admin/jsonadm/resource/catalog/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -282,17 +268,6 @@ admin/jsonadm/resource/customer/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/customer/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage customer lists items
@@ -316,10 +291,14 @@ admin/jsonadm/resource/customer/lists/groups = Array
 List of user groups that are allowed to manage customer lists type items
 
 ```
-admin/jsonadm/resource/customer/lists/type/groups = 
+admin/jsonadm/resource/customer/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -361,24 +340,39 @@ admin/jsonadm/resource/customer/property/type/groups = Array
 # index
 ## attribute/groups
 
+List of user groups that are allowed to manage index attribute items
+
 ```
 admin/jsonadm/resource/index/attribute/groups = Array
 (
+    [0] => admin
+    [1] => editor
+    [2] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2020.10
+* Since: 2020.10
 
 
 ## catalog/groups
 
+List of user groups that are allowed to manage index catalog items
+
 ```
 admin/jsonadm/resource/index/catalog/groups = Array
 (
+    [0] => admin
+    [1] => editor
+    [2] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2020.10
 
 
 ## groups
@@ -401,35 +395,56 @@ admin/jsonadm/resource/index/groups = Array
 
 ## price/groups
 
+List of user groups that are allowed to manage index price items
+
 ```
 admin/jsonadm/resource/index/price/groups = Array
 (
+    [0] => admin
+    [1] => editor
+    [2] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2020.10
 
 
 ## supplier/groups
 
+List of user groups that are allowed to manage index supplier items
+
 ```
 admin/jsonadm/resource/index/supplier/groups = Array
 (
+    [0] => admin
+    [1] => editor
+    [2] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2020.10
 
 
 ## text/groups
 
+List of user groups that are allowed to manage index text items
+
 ```
 admin/jsonadm/resource/index/text/groups = Array
 (
+    [0] => admin
+    [1] => editor
+    [2] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2020.10
 
 
 # locale
@@ -520,17 +535,6 @@ admin/jsonadm/resource/media/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/media/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage media lists items
@@ -554,10 +558,14 @@ admin/jsonadm/resource/media/lists/groups = Array
 List of user groups that are allowed to manage media lists type items
 
 ```
-admin/jsonadm/resource/media/lists/type/groups = 
+admin/jsonadm/resource/media/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -847,17 +855,6 @@ admin/jsonadm/resource/price/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/price/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage price lists items
@@ -881,34 +878,51 @@ admin/jsonadm/resource/price/lists/groups = Array
 List of user groups that are allowed to manage price lists type items
 
 ```
-admin/jsonadm/resource/price/lists/type/groups = 
+admin/jsonadm/resource/price/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
 
 ## property/groups
 
+List of user groups that are allowed to manage price property items
+
 ```
 admin/jsonadm/resource/price/property/groups = Array
 (
+    [0] => admin
+    [1] => editor
+    [2] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2019.10
 
 
 ## property/type/groups
 
+List of user groups that are allowed to manage price property type items
+
 ```
 admin/jsonadm/resource/price/property/type/groups = Array
 (
+    [0] => admin
+    [1] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2019.10
 
 
 ## type/groups
@@ -947,17 +961,6 @@ admin/jsonadm/resource/product/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/product/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage product lists items
@@ -981,10 +984,14 @@ admin/jsonadm/resource/product/lists/groups = Array
 List of user groups that are allowed to manage product lists type items
 
 ```
-admin/jsonadm/resource/product/lists/type/groups = 
+admin/jsonadm/resource/product/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1076,17 +1083,6 @@ admin/jsonadm/resource/service/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/service/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage service lists items
@@ -1109,10 +1105,14 @@ admin/jsonadm/resource/service/lists/groups = Array
 List of user groups that are allowed to manage service lists type items
 
 ```
-admin/jsonadm/resource/service/lists/type/groups = 
+admin/jsonadm/resource/service/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1206,17 +1206,6 @@ admin/jsonadm/resource/supplier/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/supplier/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage supplier lists items
@@ -1240,10 +1229,14 @@ admin/jsonadm/resource/supplier/lists/groups = Array
 List of user groups that are allowed to manage supplier lists type items
 
 ```
-admin/jsonadm/resource/supplier/lists/type/groups = 
+admin/jsonadm/resource/supplier/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1312,17 +1305,6 @@ admin/jsonadm/resource/text/groups = Array
 * Since: 2017.10
 
 
-## list/type/groups
-
-```
-admin/jsonadm/resource/text/list/type/groups = Array
-(
-)
-```
-
-* Default: Array
-
-
 ## lists/groups
 
 List of user groups that are allowed to manage text lists items
@@ -1346,10 +1328,14 @@ admin/jsonadm/resource/text/lists/groups = Array
 List of user groups that are allowed to manage text lists type items
 
 ```
-admin/jsonadm/resource/text/lists/type/groups = 
+admin/jsonadm/resource/text/lists/type/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 

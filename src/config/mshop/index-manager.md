@@ -1989,6 +1989,110 @@ See also:
 
 * mshop/index/manager/standard/aggregate/ansi
 
+## aggregatemax/ansi
+
+```
+mshop/index/manager/standard/aggregatemax/ansi = 
+ SELECT "key", MAX("val") AS "count"
+ FROM (
+ 	SELECT :key AS "key", mindpr."value" AS "val"
+ 	FROM "mshop_product" AS mpro
+ 	JOIN "mshop_index_price" mindpr ON mpro."id" = mindpr."prodid"
+ 	WHERE :cond
+ 	GROUP BY :key, mindpr.value, mpro."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY "key"
+```
+
+* Default: mshop/index/manager/standard/aggregatemax
+
+
+## aggregatemax/mysql
+
+```
+mshop/index/manager/standard/aggregatemax/mysql = 
+ SELECT "key", MAX("val") AS "count"
+ FROM (
+ 	SELECT :key AS "key", mindpr."value" AS "val"
+ 	FROM "mshop_product" AS mpro
+ 	JOIN "mshop_index_price" mindpr ON mpro."id" = mindpr."prodid"
+ 	WHERE :cond
+ 	GROUP BY :key, mindpr.value, mpro."id"
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY "key"
+```
+
+* Default: 
+ SELECT "key", MAX("val") AS "count"
+ FROM (
+ 	SELECT :key AS "key", mindpr."value" AS "val"
+ 	FROM "mshop_product" AS mpro
+ 	JOIN "mshop_index_price" mindpr ON mpro."id" = mindpr."prodid"
+ 	WHERE :cond
+ 	GROUP BY :key, mindpr.value, mpro."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY "key"
+
+
+
+## aggregatemin/ansi
+
+```
+mshop/index/manager/standard/aggregatemin/ansi = 
+ SELECT "key", MIN("val") AS "count"
+ FROM (
+ 	SELECT :key AS "key", mindpr."value" AS "val"
+ 	FROM "mshop_product" AS mpro
+ 	JOIN "mshop_index_price" mindpr ON mpro."id" = mindpr."prodid"
+ 	WHERE :cond
+ 	GROUP BY :key, mindpr.value, mpro."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY "key"
+```
+
+* Default: mshop/index/manager/standard/aggregatemin
+
+
+## aggregatemin/mysql
+
+```
+mshop/index/manager/standard/aggregatemin/mysql = 
+ SELECT "key", MIN("val") AS "count"
+ FROM (
+ 	SELECT :key AS "key", mindpr."value" AS "val"
+ 	FROM "mshop_product" AS mpro
+ 	JOIN "mshop_index_price" mindpr ON mpro."id" = mindpr."prodid"
+ 	WHERE :cond
+ 	GROUP BY :key, mindpr.value, mpro."id"
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY "key"
+```
+
+* Default: 
+ SELECT "key", MIN("val") AS "count"
+ FROM (
+ 	SELECT :key AS "key", mindpr."value" AS "val"
+ 	FROM "mshop_product" AS mpro
+ 	JOIN "mshop_index_price" mindpr ON mpro."id" = mindpr."prodid"
+ 	WHERE :cond
+ 	GROUP BY :key, mindpr.value, mpro."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY "key"
+
+
+
 ## chunksize
 
 Number of products that should be indexed at once
@@ -3062,6 +3166,15 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyText"!
+
+
+## sqlsrv/fulltext
+
+```
+mshop/index/manager/text/sqlsrv/fulltext = 
+```
+
+* Default: 
 
 
 ## standard/cleanup/ansi

@@ -151,3 +151,23 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyReview"!
+
+
+# status
+
+Default status for new reviews
+
+```
+controller/frontend/review/status = -1
+```
+
+* Default: -1
+* Type: integer - Review status value
+* Since: 2020.10
+
+By default, new reviews are stored with the status "in review" so they
+need to be approved by an admin or editor. Possible status values are:
+
+* 1 : enabled
+* 0 : disabled
+* -1 : in review

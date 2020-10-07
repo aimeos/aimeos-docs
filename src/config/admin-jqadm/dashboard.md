@@ -2413,10 +2413,12 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 List of JQAdm sub-clients rendered within the dashboard setting section
 
 ```
-admin/jqadm/dashboard/setting/standard/subparts = 
+admin/jqadm/dashboard/setting/standard/subparts = Array
+(
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of sub-client names
 * Since: 2020.01
 

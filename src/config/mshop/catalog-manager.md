@@ -2040,7 +2040,7 @@ insert or update statements and closed by an unlock statement.
 SQL statement for locking the catalog table
 
 ```
-mshop/catalog/manager/standard/lock/mysql = SELECT GET_LOCK('aimeos.catalog', -1)
+mshop/catalog/manager/standard/lock/mysql = DO GET_LOCK('aimeos.catalog', -1)
 ```
 
 * Default: mshop/catalog/manager/standard/lock
@@ -2475,7 +2475,7 @@ the database.
 SQL statement for unlocking the catalog table
 
 ```
-mshop/catalog/manager/standard/unlock/mysql = SELECT RELEASE_LOCK('aimeos.catalog')
+mshop/catalog/manager/standard/unlock/mysql = DO RELEASE_LOCK('aimeos.catalog')
 ```
 
 * Default: mshop/catalog/manager/standard/unlock

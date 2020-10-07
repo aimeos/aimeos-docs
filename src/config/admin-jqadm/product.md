@@ -1762,12 +1762,24 @@ editors a hint which config keys are available and are used in the templates.
 
 ## navbar-limit
 
+Number of sub-part links in the product sidebar shown by default
+
 ```
 admin/jqadm/product/item/navbar-limit = 7
 ```
 
 * Default: 7
+* Type: integer - Number of product sub-part links
+* Since: 2020.10
 
+The navigation sidebar is divided into the basic and advanced section.
+All sub-parts up to the configured limit are always shown while additional
+links in the advanced section are hidden by default. Using this setting you
+can change how many links are always shown.
+
+See also:
+
+* admin/jqadm/navbar-limit
 
 ## price/config/suggest
 

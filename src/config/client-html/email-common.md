@@ -24,11 +24,20 @@ See also:
 
 ## pdf
 
+Location of the address partial template for the text e-mails
+
 ```
 client/html/email/common/summary/pdf = email/common/pdf-summary-partial
 ```
 
 * Default: email/common/pdf-summary-partial
+* Type: string - Relative path to the address partial
+* Since: 2020.07
+
+To configure an alternative template for the address partial, you
+have to configure its path relative to the template directory
+(usually client/html/templates/). It's then used to display the
+payment or delivery address block in the text e-mails.
 
 
 ## text

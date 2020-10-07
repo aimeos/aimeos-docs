@@ -3077,6 +3077,62 @@ See also:
 
 * mshop/product/manager/standard/newid/ansi
 
+## rate/ansi
+
+Updates the rating of the product in the database
+
+```
+mshop/product/manager/standard/rate/ansi = 
+ UPDATE "mshop_product"
+ SET "rating" = ?, "ratings" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/product/manager/standard/rate
+* Type: string - SQL statement for update ratings
+* Since: 2020.10
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values for the rating to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the rate() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/product/manager/standard/insert/ansi
+* mshop/product/manager/standard/update/ansi
+* mshop/product/manager/standard/newid/ansi
+* mshop/product/manager/standard/delete/ansi
+* mshop/product/manager/standard/search/ansi
+* mshop/product/manager/standard/count/ansi
+
+## rate/mysql
+
+Updates the rating of the product in the database
+
+```
+mshop/product/manager/standard/rate/mysql = 
+ UPDATE "mshop_product"
+ SET "rating" = ?, "ratings" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_product"
+ SET "rating" = ?, "ratings" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/product/manager/standard/rate/ansi
+
 ## search/ansi
 
 Retrieves the records matched by the given criteria in the database
@@ -3091,14 +3147,15 @@ mshop/product/manager/standard/search/ansi =
  	mpro."status" AS "product.status", mpro."ctime" AS "product.ctime",
  	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
- 	mpro."scale" AS "product.scale", mpro."config" AS "product.config"
+ 	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
+ 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings"
  FROM "mshop_product" AS mpro
  :joins
  WHERE :cond
  GROUP BY :columns :group
  	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
  	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
- 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor"
+ 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3168,7 +3225,8 @@ mshop/product/manager/standard/search/mysql =
  	mpro."status" AS "product.status", mpro."ctime" AS "product.ctime",
  	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
- 	mpro."scale" AS "product.scale", mpro."config" AS "product.config"
+ 	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
+ 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings"
  FROM "mshop_product" AS mpro
  :joins
  WHERE :cond
@@ -3186,14 +3244,15 @@ mshop/product/manager/standard/search/mysql =
  	mpro."status" AS "product.status", mpro."ctime" AS "product.ctime",
  	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
- 	mpro."scale" AS "product.scale", mpro."config" AS "product.config"
+ 	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
+ 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings"
  FROM "mshop_product" AS mpro
  :joins
  WHERE :cond
  GROUP BY :columns :group
  	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
  	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
- 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor"
+ 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 

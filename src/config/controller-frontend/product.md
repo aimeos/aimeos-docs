@@ -151,23 +151,3 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyProduct"!
-
-
-# price-types
-
-Use different product prices types for sorting by price
-
-```
-controller/frontend/product/price-types = Array
-(
-    [0] => default
-)
-```
-
-* Default: Array
-* Type: array - List of price types codes
-* Since: 2018.10
-
-In some cases, prices are stored with different types, eg. price per kg.
-This configuration option defines which types are incorporated when sorting
-the product list by price.
