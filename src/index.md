@@ -19,6 +19,12 @@
     </ul>
 </div>
 <div class="topic">
+    <h2>Tutorials</h2>
+    <ul>
+        <li><a href="frontend/html/create-themes/">Create new themes</a></li>
+    </ul>
+</div>
+<div class="topic">
     <h2>For developers</h2>
     <ul>
         <li><a href="developer/architecture/">Architecture</a></li>

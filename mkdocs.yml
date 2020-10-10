@@ -102,6 +102,7 @@ nav:
     - HTML:
       - Theme basics: frontend/html/theme-basics.md
       - Adapt themes: frontend/html/adapt-themes.md
+      - Create new themes: frontend/html/create-themes.md
       - Overwrite templates: frontend/html/overwrite-templates.md
       - Implement components: frontend/html/implement-components.md
       - Extend components: frontend/html/extend-components.md

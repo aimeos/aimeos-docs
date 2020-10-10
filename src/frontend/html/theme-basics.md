@@ -86,8 +86,7 @@ The Javascript code of a theme should only be used to improve site usability (by
 It's guaranteed that these jQuery libraries are available and included before the aimeos.js file:
 
 * jQuery
-* jQuery-migrate
-* jQuery-UI (customized)
+* jQuery-UI (customized, detail page only)
 
 The jQuery-UI package contains the following features:
 
