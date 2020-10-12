@@ -295,7 +295,7 @@ by this Blade template:
 
 # Multiple shops
 
-Aimeos is multi-site capable and allows storing several shops in one database.
+Aimeos is multi-site/multi-vendor capable and allows storing several shops for multiple vendors in one database.
 
 ## Create new site
 
