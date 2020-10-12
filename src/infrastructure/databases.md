@@ -211,7 +211,7 @@ In fact, there are 16 different data domains which can be stored in one database
 * text
 
 !!! tip
-    Usually it doesn't make sense to assign every data domain into its own database. Reasonable data domains are those which will grow very big in your setup. Candidates are the **log** and **order** domains which might fill up with data over the time.
+    Usually it doesn't make sense to assign every data domain to its own database. Reasonable data domains are those which will grow very big in your setup. Candidates are the **log** and **order** domains which might fill up with data over the time.
 
 You need to create a **resource.php** file in the config directory that will contain the database configuration:
 
