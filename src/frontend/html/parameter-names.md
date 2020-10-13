@@ -1,6 +1,6 @@
 For building routes in any application it's good to know which parameter names are used and if a parameter can only appear in combination with another one.
 
-# Catalog filter
+# Catalog filter and list
 
 f_catid
 : Category ID
