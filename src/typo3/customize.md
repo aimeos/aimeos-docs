@@ -1,18 +1,27 @@
 # Change configuration
 
-There are a lot of configuration options available and documented in the *Configuration* section.
-
-## Frontend
-
-To add or overwrite configuration options in TYPO3, you can use TypoScript. Simply add the new or overwritten configuration values to the setup section of a page TypoScript template.
-
-The keys in the configuration documentation are always in the form of:
+There are a lot of configuration options available and documented in the *Configuration* section. The keys in the configuration documentation are always in the form of:
 
 ```
 client/html/catalog/filter/default/button = 1
 ```
 
-To use such a key with TypoScript, replace the slashes (/) with dots (.) and prepend "plugin.tx_aimeos.settings.":
+As a rule of thumb, replace the slashes (/) with dots (.) to use such keys in TypoScript:
+
+```typoscript
+client.html.catalog.filter.default.button = 1
+```
+
+!!! warning
+    Don't for get **prefixes** necessary for frontend and backend settings! Also, the dot-notation only applies to the key on the **left-hand side** of the equal sign, not to the value on the right side, i.e.
+    
+    ```typoscript
+    client.html.catalog.lists.standard.template-body = catalog/lists/body-mytemplate
+    ```
+
+## Frontend
+
+To add or overwrite configuration options in TYPO3, you can use TypoScript. Simply add the new or overwritten configuration values to the setup section of a page TypoScript template, e.g.:
 
 ```typoscript
 plugin.tx_aimeos.settings.client.html.catalog.filter.default.button = 1
@@ -82,14 +91,14 @@ It doesn't make sense to assign all frontend settings to the backend module, too
 All scheduler tasks allow adding specific TypoScript configuration for the jobs that should be executed. This is especially useful for setting or overwriting configuration values for e-mails that should be sent to customers. Use the configuration keys from the documentation like this:
 
 ```typoscript
-client.html.common.content.baseurl = https://yourdomain/uploads/tx_aimeos
+client.html.email.payment.standard.template-body = email/payment/body-standard
 ```
 
 The same works with arrays of values as well:
 
 ```typoscript
 client.html {
-    common.content.baseurl = https://yourdomain/uploads/tx_aimeos
+    email.payment.standard.template-body = email/payment/body-standard
 }
 controller.jobs.order.email.payment.default.status {
     0 = 5
