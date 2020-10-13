@@ -11,14 +11,17 @@ In the [filter component implementation](../../config/client-html/catalog-filter
 [attribute client](../../config/client-html/catalog-filter.md#name)
 : the faceted search including the [attribute subpart](../../config/client-html/catalog-filter.md#standardsubparts)
 
-[search client](../../config/client-html/catalog-filter.md#name_2)
-: full text search including the [search subpart](../../config/client-html/catalog-filter.md#standardsubparts_1)
+[price client](../../config/client-html/catalog-filter.md#name_2)
+: price filter including the [price subpart](../../config/client-html/catalog-filter.md#standardsubparts_1)
 
-[supplier client](../../config/client-html/catalog-filter.md#name_3)
-: list of suppliers including the [supplier subpart](../../config/client-html/catalog-filter.md#standardsubparts_2)
+[search client](../../config/client-html/catalog-filter.md#name_3)
+: full text search including the [search subpart](../../config/client-html/catalog-filter.md#standardsubparts_2)
 
-[tree client](../../config/client-html/catalog-filter.md#name_4)
-: category tree including the [tree subpart](../../config/client-html/catalog-filter.md#standardsubparts_3)
+[supplier client](../../config/client-html/catalog-filter.md#name_4)
+: list of suppliers including the [supplier subpart](../../config/client-html/catalog-filter.md#standardsubparts_3)
+
+[tree client](../../config/client-html/catalog-filter.md#name_5)
+: category tree including the [tree subpart](../../config/client-html/catalog-filter.md#standardsubparts_4)
 
 The catalog filter component itself has an additional [configuration option for the search button](../../config/client-html/catalog-filter.md#button) that is normally displayed below the filter if Javascript is disabled. Via this setting, you can control if the button will be rendered or not.
 
@@ -40,9 +43,10 @@ You can adapt the templates for the catalog filter component and their subparts 
 * [template body for the filter component](../../config/client-html/catalog-filter.md#template-body)
 * [template header for the filter component](../../config/client-html/catalog-filter.md#template-header)
 * [template body for the attribute filter](../../config/client-html/catalog-filter.md#standardtemplate-body)
-* [template body for the search filter](../../config/client-html/catalog-filter.md#standardtemplate-body_1)
-* [template body for the supplier filter](../../config/client-html/catalog-filter.md#standardtemplate-body_2)
-* [template body for the category tree](../../config/client-html/catalog-filter.md#standardtemplate-body_3)
+* [template body for the price filter](../../config/client-html/catalog-filter.md#standardtemplate-body_1)
+* [template body for the search filter](../../config/client-html/catalog-filter.md#standardtemplate-body_2)
+* [template body for the supplier filter](../../config/client-html/catalog-filter.md#standardtemplate-body_3)
+* [template body for the category tree](../../config/client-html/catalog-filter.md#standardtemplate-body_4)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
