@@ -300,10 +300,9 @@ Examples for pre-dependencies:
 
 Post-dependencies are a little bit different, because you have to know what the task will do. Most often, post dependencies are used for the *TablesCreateMShop* and *CatalogRebuildIndex* or similar named tasks. The first one creates all new tables and indexes. Tasks modifying existing tables won't do anything, if the tables are not yet available, so adding *TablesCreateMShop* as post-dependency will speed up the process for new installations.
 
-Examples for post-dependencies:
+Example for post-dependencies (taken from *./lib/mshoplib/setup/MShopAddLocaleData.php*):
 
-* *CatalogAddIndexTypeCode* should run before *TablesCreateMShop* (to speed up the setup process)
-* *ProductAddTestData* should run before *CatalogRebuildTestIndex* (so the test products are written into the catalog index)
+* *MShopAddLocaleLangCurData* should run before *MShopSetLocale*
 
 # Helper methods
 
@@ -320,7 +319,7 @@ status( '<string>' )
 ## Get schema/connection
 
 getSchema( '<database domain>' )
-: Retrieves the schema object for one of the databases. The parameter is one of the [Developers/Several_databases|domains] prefixed by "db-", e.g. "db-product".
+: Retrieves the schema object for one of the databases. The parameter is one of the [domains](database.md#multiple-databases) prefixed by "db-", e.g. "db-product".
 
 getConnection( '<database domain>' )
 : Returns the connection object for one of the databases. The parameter is the same as for *getSchema()*.
@@ -458,7 +457,7 @@ $stmt = $conn->create( 'SELECT * FROM my_table WHERE type = ?' );
 $stmt->bind( 1, 'payment' );
 $result = $stmt->execute();
 
-while( ( $row = $result->fetch() ) !# false ) {
+while( $row = $result->fetch() ) {
     // process row
 }
 
