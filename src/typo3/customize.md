@@ -47,6 +47,15 @@ plugin.tx_aimeos.settings.client.html.catalog.lists.domains {
 }
 ```
 
+!!! warning "Be extra careful with template assignments!"
+    In the case of assigning templates to a plugin (e.g. via the Typoscript Configuration field in a plugin's flexform), the dot-notation only applies to the **left-hand side** of the equation! The **right-hand site**, the relative path to the template, still has to be written **with slashes**!
+
+    **Example:**
+    
+    ```typoscript
+    client.html.catalog.lists.standard.template-body = catalog/lists/body-myspeciallayout
+    ```
+
 ## Per Plugin
 
 Several plugins provide the possibility to add plug-in specific TypoScript configuration in the "Plugin" tab of the plug-ins placed on a page. Use the configuration keys from the documentation as in the example below:
