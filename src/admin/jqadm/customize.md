@@ -2,7 +2,10 @@
 
 Aimeos currently implements the *CKEditor v4 Standard All Edition* via [jsdelivr](https://www.jsdelivr.com/) which hosts the npm version (https://www.npmjs.com/package/ckeditor4). This version comes with all standard plugins activated and all *official* plugins included, but deactivated. The standard configuration is ruled by CKEditor's  [Allowed Content Rules](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_allowed_content_rules.html) which, by default, hides some buttons (e.g. "superscript", "subscript"), something to be aware of, when it comes to configuration.
 
-## Configure CKEditor in *custom.js*
+!!! note
+    CKEditor configuraton works since v2020.7.10-dev.
+
+## Configure CKEditor via *custom.js*
 
 Your aimeos extensions includes a *custom.js* script which allows you to configure CKEditor. 
 
@@ -23,12 +26,11 @@ Aimeos.editorcfg = [
 ]
 ```
 
-This configuration will be merged in the global Aimeos configuration and, since it is currently not possible to create an individual configuration for a specific text field, applied to all available text fields of all domains.
+This configuration will be merged into the global *Aimeos* configuration and applied to all available text fields of all domains. (Configuration for specific text fields is currently not available.)
 
-If you wish to add buttons like super- and/or subscript or activate text align options, you have to extend your configuration like this:
+If you wish to activate certain buttons, e.g. for super- and/or subscript, or add e.g. text align options, you have to extend your configuration like this:
   
 ```javascript
-// Override the toolbar options
 Aimeos.editorcfg = [
   [ 'Undo', 'Redo' ],
   [ 'Link', 'Unlink', 'Anchor' ],
@@ -40,29 +42,32 @@ Aimeos.editorcfg = [
 ]
 ```
 
-but this would only be the first step, since the text editor's buttons would not be available yet. This is due to the fact that the *CKEditor v4 Standard Edition* disables additional plugins.
+This would only be the first step, though, since neither the text align nor the super-/subscript buttons would be available/visible yet. This is due to the fact that the *CKEditor v4 Standard Edition* disables additional plugins. (If you wish to activate other plugins or buttons like the ones mentioned here, please research the CKEditor website to find out, which plugins are offered by the *CKEditor v4 Standard Edition (from npm)* and which buttons are hidden by default.)
 
 ## Activate plugins
 
-In order to make the text align options visible, you need to add the *justify* plugin to the *extraPlugins* option:
+In order to make buttons like the text align options (JustifyLeft, JustifyCenter, JustifyRight, JustifyBlock) visible, you may have to add a plugin, in this case the *justify* plugin, to the *extraPlugins* option:
 
 ```javascript
-Aimeos.extraPlugins = ',justify'
+Aimeos.extraPlugins = 'devarea,justify'
 ```
 
-!!! warning
-    Please make sure to put a comma first! Otherwise the *Aimeos* standard configuration will break!
+Now the text align options will be visible except for *JustifyBlock*, which is removed by default by the *removeButtons* option. (See below.)
 
-Now the text align options will be visible.
+!!! note
+    Please note that the standard configuration is `Aimeos.extraPlugins = 'devarea'`. `devarea` is a CKEditor plugin that renders the CKEditor in a div tag instead of in an iframe. We recommend to not remove it!
 
 ## Manage removed buttons
 
-However, "Superscript" and "Subscript" are still not visible, because the *CKEDITOR v4 Standard Edition* removes these (and other) buttons. In order to make these buttons visible again, you need to configure the *removeButtons* option:
+Buttons like "Superscript" and "Subscript" are not visible, because the *CKEDITOR v4 Standard Edition* removes them (and others) by default. In order to make such buttons visible again, you need to configure the *removeButtons* option:
 
 ```javascript
 Aimeos.removeButtons = ''
 ```
 
+!!! note
+    Please note that the standard configuration is `Aimeos.removeButtons = 'Superscript,Subscript,JustifyBlock,Underline'`.
+
 ## Add external CSS
 
-Adding styles via an external CSS file is currently not implemented by *Aimeos*.
+The option to add style via an external CSS file is currently not implemented.
