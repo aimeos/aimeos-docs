@@ -49,13 +49,13 @@ This would only be the first step, though, since neither the text align nor the 
 In order to make buttons like the text align options (JustifyLeft, JustifyCenter, JustifyRight, JustifyBlock) visible, you may have to add a plugin, in this case the *justify* plugin, to the *extraPlugins* option:
 
 ```javascript
-Aimeos.extraPlugins = 'devarea,justify'
+Aimeos.extraPlugins = 'divarea,justify'
 ```
 
 Now the text align options will be visible except for *JustifyBlock*, which is removed by default by the *removeButtons* option. (See below.)
 
 !!! note
-    Please note that the standard configuration is `Aimeos.extraPlugins = 'devarea'`. `devarea` is a CKEditor plugin that renders the CKEditor in a div tag instead of in an iframe. We recommend to not remove it!
+    Please note that the standard configuration is `Aimeos.extraPlugins = 'divarea'`. `divarea` is a CKEditor plugin that renders the CKEditor in a div tag instead of in an iframe. We recommend to not remove it!
 
 ## Manage removed buttons
 
