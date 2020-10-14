@@ -138,6 +138,7 @@ nav:
       - Panel templates: admin/jqadm/panel-templates.md
       - Create subparts: admin/jqadm/create-subparts.md
       - Extend panels: admin/jqadm/extend-panels.md
+      - Customize: admin/jqadm/customize.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
       - Retrieve metadata: admin/jsonadm/metadata.md
