@@ -13,7 +13,7 @@ client.html.catalog.filter.default.button = 1
 ```
 
 !!! warning
-    Don't for get **prefixes** necessary for frontend and backend settings! Also, the dot-notation only applies to the key on the **left-hand side** of the equal sign, not to the value on the right side, i.e.
+    Don't forget the **prefixes** necessary for frontend (`plugin.tx_aimeos.settings.`) and backend (`module.tx_aimeos.settings.`) settings! Also, the dot-notation only applies to the key on the **left-hand side** of the equal sign, not to the value on the right-hand side, i.e.
     
     ```typoscript
     client.html.catalog.lists.standard.template-body = catalog/lists/body-mytemplate
