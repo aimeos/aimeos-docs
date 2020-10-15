@@ -26,7 +26,7 @@ Aimeos.editorcfg = [
 ]
 ```
 
-This configuration will be merged into the global *Aimeos* configuration and applied to all available text fields of all domains. (Configuration for specific text fields is currently not available.)
+This configuration will be merged into the global *Aimeos* configuration and applied to all available text fields of all domains. (Individual configurations for specific text fields is currently not available.)
 
 If you wish to activate certain buttons, e.g. for super- and/or subscript, or add e.g. text align options, you have to extend your configuration like this:
   
@@ -52,21 +52,28 @@ In order to make buttons like the text align options (JustifyLeft, JustifyCenter
 Aimeos.extraPlugins = 'divarea,justify'
 ```
 
-Now the text align options will be visible except for *JustifyBlock*, which is removed by default by the *removeButtons* option. (See below.)
+Now the text align options will be visible.
 
 !!! note
-    Please note that the standard configuration is `Aimeos.extraPlugins = 'divarea'`. `divarea` is a CKEditor plugin that renders the CKEditor in a div tag instead of in an iframe. We recommend to not remove it!
+    Please note that the default configuration is `Aimeos.extraPlugins = 'divarea'`. `divarea` is a CKEditor plugin that renders the CKEditor in a div tag instead of in an iframe. We recommend to not remove it!
 
 ## Manage removed buttons
 
-Buttons like "Superscript" and "Subscript" are not visible, because the *CKEDITOR v4 Standard Edition* removes them (and others) by default. In order to make such buttons visible again, you need to configure the *removeButtons* option:
+Buttons like "Superscript" and "Subscript" are not visible, because the *CKEDITOR v4 Standard Edition* removes them (and others) by default. In order to make those buttons visible again, you need to configure the *removeButtons* option:
 
 ```javascript
 Aimeos.removeButtons = ''
 ```
 
 !!! note
-    Please note that the standard configuration is `Aimeos.removeButtons = 'Superscript,Subscript,JustifyBlock,Underline'`.
+    Please note that the default configuration is `Aimeos.removeButtons = 'Underline,Subscript,Superscript'`.
+
+## Manage allowed tags
+
+The `Aimeos.editortags` options allows you to add or remove tags.
+
+!!! note
+    The default configuration is `Aimeos.editortags = 'div(*);span(*);p(*);'`.
 
 ## Add external CSS
 
