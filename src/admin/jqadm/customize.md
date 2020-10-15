@@ -12,10 +12,9 @@ Your aimeos extensions includes a *custom.js* script which allows you to configu
 !!! note
     If you decide to rename this file, make sure to also change the file reference in the *manifest.jsb2* file one folder level above!
 
-Initially this file is empty. To configure the editor, override the `Aimeos.editorcfg` object like this:
+Initially this file is empty. If you want to customize CKEditor's *toolbar*, you can configure `Aimeos.editorcfg` like this:
 
 ```javascript
-// Override the toolbar options
 Aimeos.editorcfg = [
   [ 'Undo', 'Redo' ],
   [ 'Link', 'Unlink', 'Anchor' ],
@@ -28,12 +27,14 @@ Aimeos.editorcfg = [
 
 This configuration will be merged into the global *Aimeos* configuration and applied to all available text fields of all domains. (Individual configurations for specific text fields is currently not available.)
 
-If you wish to activate certain buttons, e.g. for super- and/or subscript, or add e.g. text align options, you have to extend your configuration like this:
+## Manage visibility of buttons
+
+If you wish to activate certain buttons, e.g. for super- and/or subscript, or add e.g. text align options, extend your configuration like this:
   
 ```javascript
 Aimeos.editorcfg = [
-  [ 'Undo', 'Redo' ],
-  [ 'Link', 'Unlink', 'Anchor' ],
+  [ 'Undo', 'Redo', 'Anchor' ],
+  [ 'Link', 'Unlink' ],
   [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ],
   [ 'Bold', 'Italic', 'Underline', 'Strike', 'Superscript', 'Subscript' ],
   [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote' ],
@@ -42,39 +43,39 @@ Aimeos.editorcfg = [
 ]
 ```
 
-This would only be the first step, though, since neither the text align nor the super-/subscript buttons would be available/visible yet. This is due to the fact that the *CKEditor v4 Standard Edition* disables additional plugins. (If you wish to activate other plugins or buttons like the ones mentioned here, please research the CKEditor website to find out, which plugins are offered by the *CKEditor v4 Standard Edition (from npm)* and which buttons are hidden by default.)
+This would only be the first step, though, since neither the text align nor the super-/subscript buttons would be available/visible yet. This is due to the fact that the *CKEditor v4 Standard Edition* disables additional plugins by default as well as removes some buttons. (If you wish to activate other plugins or buttons like the ones mentioned here, please research the CKEditor website to find out, which plugins are offered by the *CKEditor v4 Standard Edition (from npm)* and which buttons are hidden by default.)
 
-## Activate plugins
+### Activate plugins
 
-In order to make buttons like the text align options (JustifyLeft, JustifyCenter, JustifyRight, JustifyBlock) visible, you may have to add a plugin, in this case the *justify* plugin, to the *extraPlugins* option:
+In order to make buttons like the text align options (JustifyLeft, JustifyCenter, JustifyRight, JustifyBlock) visible, you have to add a plugin to the *editorExtraPlugins* option, in this case the *justify* plugin:
 
 ```javascript
-Aimeos.extraPlugins = 'divarea,justify'
+Aimeos.editorExtraPlugins = 'divarea,justify'
 ```
 
 Now the text align options will be visible.
 
 !!! note
-    Please note that the default configuration is `Aimeos.extraPlugins = 'divarea'`. `divarea` is a CKEditor plugin that renders the CKEditor in a div tag instead of in an iframe. We recommend to not remove it!
+    Please note that the default configuration is `Aimeos.editorExtraPlugins = 'divarea'`. `divarea` is a CKEditor plugin that renders the CKEditor in a div tag instead of an iframe. We recommend to not remove it!
 
-## Manage removed buttons
+### Manage removed buttons
 
-Buttons like "Superscript" and "Subscript" are not visible, because the *CKEDITOR v4 Standard Edition* removes them (and others) by default. In order to make those buttons visible again, you need to configure the *removeButtons* option:
+Buttons like "Superscript" and "Subscript" are not visible, because the *CKEDITOR v4 Standard Edition* removes them (and others) by default. In order to make these buttons visible again, you need to configure the *editorRemoveButtons* option:
 
 ```javascript
-Aimeos.removeButtons = ''
+Aimeos.editorRemoveButtons = ''
 ```
 
 !!! note
-    Please note that the default configuration is `Aimeos.removeButtons = 'Underline,Subscript,Superscript'`.
+    Please note that the default configuration is `Aimeos.editorRemoveButtons = 'Underline,Subscript,Superscript'`.
 
 ## Manage allowed tags
 
-The `Aimeos.editortags` options allows you to add or remove tags.
+The `Aimeos.editortags` options allows you to add or remove tags. It is used to configure CKEditor's *extraAllowedContent* option.
 
 !!! note
     The default configuration is `Aimeos.editortags = 'div(*);span(*);p(*);'`.
 
 ## Add external CSS
 
-The option to add style via an external CSS file is currently not implemented.
+The option to add styles via an external CSS file is currently not implemented.
