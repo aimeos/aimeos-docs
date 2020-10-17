@@ -151,12 +151,12 @@ If you want to associate items to the newly created item immediately, you can us
             "product.status": "0"
         },
         "relationships": {
-            "text": {
+            "attribute": {
                 "data": [{
                     "id": "10",
-                    "type": "text",
+                    "type": "attribute",
                     "attributes": {
-                        "product.lists.typeid": "1",
+                        "product.lists.type": "hidden",
                         "product.lists.config": {}
                     }
                 }]
@@ -166,7 +166,7 @@ If you want to associate items to the newly created item immediately, you can us
 }
 ```
 
-Within the `relationships` section, there can be one or more keys for the domain of the referenced items ("text" in this example). The `id` within the `data` section is the unique ID of the referenced item (e.g. from the text domain) and the `type` is the same as the domain. The key/value pairs in the `attributes` section can be anything that is returned by the *fromArray()* method of a lists item.
+Within the `relationships` section, there can be one or more keys for the domain of the referenced items ("attribute" in this example). The `id` within the `data` section is the unique ID of the referenced item (e.g. from the attribute domain) and the `type` is the same as the domain. The key/value pairs in the `attributes` section can be anything that is returned by the *fromArray()* method of a lists item.
 
 The response of all POST requests will contain the same data structure as in the request. Also, the "meta" section including the "total" property is included which counts the number of created items:
 
@@ -278,8 +278,8 @@ It's also possible to update several new items at once. Simply send a list insid
 
 All resource types sent in the request body must be the same (product in this example) because you are patching them using a single resource URL.
 
-!!! note
-    Use the ".../lists" resource URLs (e.g. for "product/lists") to update and delete list items instead.
+!!! tip
+    Use the ".../lists" resource URLs (e.g. for "product/lists") to delete list items only. To update relationships, you should use the "relationships" key like described in the section for [creating items](#create-items).
 
 The response of all PATCH requests will contain the same data structure as in the request. Also, the "meta" section including the "total" property is included which counts the number of updated items:
 
