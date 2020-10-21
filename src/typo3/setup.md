@@ -134,7 +134,7 @@ These jobs should be executed once a day (best at times of low traffic):
 For TYPO3 9.5 and later, you can define the routes for your shop in your `./config/sites/<sitename>/config.yaml` file for composer based installations so you get user and SEO friendly URLs for your Aimeos shop pages.
 
 ```yaml
- routeEnhancers:
+routeEnhancers:
   Aimeos:
     type: Extbase
     namespace: ai
@@ -142,20 +142,25 @@ For TYPO3 9.5 and later, you can define the routes for your shop in your `./conf
     routes:
       - { routePath: '/pin/{pin_action}/{pin_id}/{d_name}', _controller: 'Catalog::detail' }
       - { routePath: '/history/{his_action}/{his_id}', _controller: 'Account::history' }
-      - { routePath: '/watch/{wat_action}', _controller: 'Account::watch' }
       - { routePath: '/watch/{wat_action}/{wat_id}', _controller: 'Account::watch' }
-      - { routePath: '/fav/{fav_action}', _controller: 'Account::favorite' }
+      - { routePath: '/watch/{wat_action}', _controller: 'Account::watch' }
       - { routePath: '/fav/{fav_action}/{fav_id}', _controller: 'Account::favorite' }
+      - { routePath: '/fav/{fav_action}', _controller: 'Account::favorite' }
+      - { routePath: '/c/{f_name}~{f_catid}', _controller: 'Catalog::list' }
+      - { routePath: '/l/{f_sort}', _controller: 'Catalog::list' }
       - { routePath: '/b/{b_action}', _controller: 'Basket::index' }
       - { routePath: '/co/{c_step}', _controller: 'Checkout::index' }
-      - { routePath: '/c/{f_name}~{f_catid}', _controller: 'Catalog::list' }
-      - { routePath: '/d/{d_name}', _controller: 'Catalog::detail' }
-      - { routePath: '/l/{f_sort}', _controller: 'Catalog::list' }
+      - { routePath: '/p/{d_name}/{d_prodid}/{d_pos}', _controller: 'Catalog::detail' }
+      - { routePath: '/d/{d_name}/{d_pos}', _controller: 'Catalog::detail' }
     defaults:
       b_action: ''
       c_step: ''
       f_sort: ''
+      d_pos: ''
 ```
+
+!!! warn
+    Only use the latest TYPO3 9 or 10 releases as older releases have several route enhancer related bugs.
 
 # Backend access
 
