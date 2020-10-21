@@ -1,4 +1,4 @@
-If you already manage your categories in an ERP system you want to import the category tree and related information from that system into your shop and update it regularly. Therefore, you can use the catalog import job controller which processes CSV files and imports/updates the categories accordingly.
+If you already manage your categories in an ERP system you want to bulk import the category tree and related information from that system into your shop and update it regularly. Therefore, you can use the catalog import job controller which processes CSV files and imports/updates the categories accordingly.
 
 !!! note
     The catalog import is triggered via a cronjob/scheduler that executes the "catalog/import/csv" job controller.

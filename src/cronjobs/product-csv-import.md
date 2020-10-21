@@ -1,4 +1,4 @@
-Most of the time, you already have an ERP system which manages all your products and most of the information required to fill your shop are stored there. In this case, most often you want to import the product information from the ERP system into your shop and update it regularly. You can use the product import job controller for CSV files to import/update the products.
+Most of the time, you already have an ERP system which manages all your products and most of the information required to fill your shop are stored there. In this case, most often you want to bulk import the product information from the ERP system into your shop and update it regularly. You can use the product import job controller for CSV files to import/update the products.
 
 !!! note
     The product import is triggered via a cronjob/scheduler that executes the "product/import/csv" job controller.
