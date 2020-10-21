@@ -18,24 +18,6 @@ controller/common/product/import/csv/cache/catalog/name = Standard
 * Default: Standard
 
 
-## cache/customer/name
-
-```
-controller/common/product/import/csv/cache/customer/name = Standard
-```
-
-* Default: Standard
-
-
-## cache/group/name
-
-```
-controller/common/product/import/csv/cache/group/name = Standard
-```
-
-* Default: Standard
-
-
 ## cache/product/name
 
 ```
@@ -111,8 +93,6 @@ controller/common/product/import/csv/domains = Array
     [product] => product
     [product/property] => product/property
     [text] => text
-    [customer] => customer
-    [customer/group] => customer/group
 )
 ```
 
@@ -308,7 +288,7 @@ controller/common/product/import/csv/processor/price/listtypes =
 ## processor/price/name
 
 ```
-controller/common/product/import/csv/processor/price/name = Cgroup
+controller/common/product/import/csv/processor/price/name = Standard
 ```
 
 * Default: Standard

@@ -2,7 +2,7 @@
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the stock manager
+Excludes decorators added by the "common" option from the product stock manager
 
 ```
 mshop/stock/manager/decorators/excludes = Array
@@ -22,7 +22,7 @@ modify what is returned to the caller.
 
 This option allows you to remove a decorator added via
 "mshop/common/manager/decorators/default" before they are wrapped
-around the stock manager.
+around the product stock manager.
 
 ```
  mshop/stock/manager/decorators/excludes = array( 'decorator1' )
@@ -30,7 +30,7 @@ around the stock manager.
 
 This would remove the decorator named "decorator1" from the list of
 common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
-"mshop/common/manager/decorators/default" for the stock manager.
+"mshop/common/manager/decorators/default" for the product stock manager.
 
 See also:
 
@@ -43,7 +43,7 @@ See also:
 
 ## global
 
-Adds a list of globally available decorators only to the stock manager
+Adds a list of globally available decorators only to the product stock manager
 
 ```
 mshop/stock/manager/decorators/global = Array
@@ -62,15 +62,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the stock manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the product stock manager.
 
 ```
  mshop/stock/manager/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the stock
-manager.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the product controller.
 
 See also:
 
@@ -83,7 +82,7 @@ See also:
 
 ## local
 
-Adds a list of local decorators only to the stock manager
+Adds a list of local decorators only to the product stock manager
 
 ```
 mshop/stock/manager/decorators/local = Array
@@ -102,15 +101,15 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Stock\Manager\Decorator\*") around the stock manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the product stock manager.
 
 ```
  mshop/stock/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Stock\Manager\Decorator\Decorator2" only to the stock
-manager.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator2" only to the product
+controller.
 
 See also:
 
@@ -123,7 +122,7 @@ See also:
 
 # name
 
-Class name of the used stock manager implementation
+Class name of the used product stock manager implementation
 
 ```
 mshop/stock/manager/name = Standard
@@ -134,7 +133,7 @@ mshop/stock/manager/name = Standard
 * Since: 2017.01
 * Since: 2017.01
 
-Each default manager can be replace by an alternative imlementation.
+Each default product stock manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
 name as configuration value so the manager factory knows which class it
 has to instantiate.
@@ -142,19 +141,19 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\MShop\Stock\Manager\Standard
+ \Aimeos\MShop\Stock\Manager\Stock\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\MShop\Stock\Manager\Mymanager
+ \Aimeos\MShop\Stock\Manager\Stock\Mystock
 ```
 
 then you have to set the this configuration option:
 
 ```
- mshop/stock/manager/name = Mymanager
+ mshop/stock/manager/name = Mystock
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -164,7 +163,7 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MyManager"!
+or numbers. Avoid chamel case names like "MyStock"!
 
 
 # sitemode

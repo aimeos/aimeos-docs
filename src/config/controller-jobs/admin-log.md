@@ -277,7 +277,7 @@ See also:
 Path to a writable directory where the log archive files should be stored
 
 ```
-controller/jobs/admin/log/standard/path = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/controller/jobs/tests/tmp
+controller/jobs/admin/log/standard/path = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/tmp
 ```
 
 * Default: /tmp

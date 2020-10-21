@@ -186,6 +186,14 @@ List of billing address input fields that are required
 ```
 client/html/checkout/standard/address/billing/mandatory = Array
 (
+    [0] => order.base.address.salutation
+    [1] => order.base.address.firstname
+    [2] => order.base.address.lastname
+    [3] => order.base.address.address1
+    [4] => order.base.address.postal
+    [5] => order.base.address.city
+    [6] => order.base.address.languageid
+    [7] => order.base.address.email
 )
 ```
 
@@ -742,7 +750,6 @@ Adds a list of globally available decorators only to the checkout standard addre
 ```
 client/html/checkout/standard/address/decorators/global = Array
 (
-    [VatCheck] => VatCheck
 )
 ```
 
@@ -992,6 +999,13 @@ List of delivery address input fields that are required
 ```
 client/html/checkout/standard/address/delivery/mandatory = Array
 (
+    [0] => order.base.address.salutation
+    [1] => order.base.address.firstname
+    [2] => order.base.address.lastname
+    [3] => order.base.address.address1
+    [4] => order.base.address.postal
+    [5] => order.base.address.city
+    [6] => order.base.address.languageid
 )
 ```
 
@@ -1429,10 +1443,10 @@ Until 2015-02, the configuration option was available as
 
 See also:
 
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/optional
 * client/html/checkout/standard/address/delivery/mandatory
 * client/html/checkout/standard/address/delivery/optional
+* client/html/checkout/standard/address/billing/mandatory
+* client/html/checkout/standard/address/billing/optional
 
 ## validate/address1
 

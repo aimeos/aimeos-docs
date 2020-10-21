@@ -42,8 +42,8 @@ admin/jsonadm/standard/template-delete = delete-standard
 
 * Default: delete-standard
 * Type: string - Relative path to the template creating the body for the DELETE method of the JSON API
-* Since: 2015.12
 * Since: 2020.10
+* Since: 2015.12
 
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
@@ -181,8 +181,8 @@ admin/jsonadm/standard/template-post = post-standard
 
 * Default: post-standard
 * Type: string - Relative path to the template creating the body for the POST method of the JSON API
-* Since: 2015.12
 * Since: 2020.10
+* Since: 2015.12
 
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The

@@ -196,7 +196,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/stock/import/csv/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/controller/jobs/tests/Controller/Jobs/Stock/Import/Csv/_testfiles
+controller/jobs/stock/import/csv/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/Controller/Jobs/Stock/Import/Csv/_testfiles
 ```
 
 * Default: 

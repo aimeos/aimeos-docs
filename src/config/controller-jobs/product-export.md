@@ -167,7 +167,7 @@ See also:
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/product/export/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/controller/jobs/tests/tmp
+controller/jobs/product/export/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/tmp
 ```
 
 * Default: 
@@ -616,7 +616,7 @@ See also:
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/product/export/sitemap/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/controller/jobs/tests/tmp
+controller/jobs/product/export/sitemap/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/tmp
 ```
 
 * Default: 

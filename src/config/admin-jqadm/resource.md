@@ -470,14 +470,10 @@ admin/jqadm/resource/service/key = S
 List of user groups that are allowed to change to different sites
 
 ```
-admin/jqadm/resource/site/groups = Array
-(
-    [0] => admin
-    [1] => super
-)
+admin/jqadm/resource/site/groups = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of user group names
 * Since: 2017.10
 
