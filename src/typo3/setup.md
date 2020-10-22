@@ -19,7 +19,7 @@ For the list of TYPO3 versions that are supported by the Aimeos extension, pleas
 
 **TYPO3 distribution** : Can be installed in a fresh TYPO3 instance within five minutes to get a complete shop system:
 
-* <https://extensions.typo3.org/extension/aimeos_dist>
+* <https://github.com/aimeos/aimeos-typo3-dist>
 
 # Upgrade
 
