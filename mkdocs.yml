@@ -319,9 +319,8 @@ nav:
       - product export: config/controller-jobs/product-export.md
       - Product import: config/controller-jobs/product-import.md
       - Stock import: config/controller-jobs/stock-import.md
-      - Subcription process: config/controller-jobs/subcription-process.md
-      - Subscription export: config/controller-jobs/subscription-export.md
       - Subscription process: config/controller-jobs/subscription-process.md
+      - Subscription export: config/controller-jobs/subscription-export.md
       - Supplier import: config/controller-jobs/supplier-import.md
       - XML import: config/controller-jobs/xml-import.md
     - Common controller:

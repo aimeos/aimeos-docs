@@ -20,5 +20,5 @@ php -m
 
 The `intl` extension must now be part of the list of PHP extensions displayed.
 
-!!! warn
+!!! warning
     Some hoster use different PHP setups for CLI and web, so `php -m` can report that the `intl` extension is available but in your browser PHP still complains that the extension is missing!
