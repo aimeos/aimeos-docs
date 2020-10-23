@@ -230,7 +230,7 @@ testMode (boolean, optional)
 [Omnipay](https://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider since 2015.07.
 
 !!! note
-    If you use composer, you have to add the [Omnipay payment driver](https://github.com/thephpleague/omnipay#payment-gateways) you want to use to your composer.json and run *composer update*.
+    You have to add the [Omnipay payment driver](https://github.com/thephpleague/omnipay#payment-gateways) you want to use to your composer.json and run *composer update*.
 
 It supports these configuration options:
 
@@ -252,13 +252,16 @@ testMode (boolean, optional)
 !!! note
     You need to add the credentials for each payment gateway you want to use. There is no common naming for the credentials, so you have to look into the *./src/Gateway.php* of each [payment gateway](https://github.com/thephpleague/omnipay#payment-gateways) to find out what's required. They are listed in the *getDefaultParameters()* method of each Gateway class, e.g. in the [2Checkout class](https://github.com/thephpleague/omnipay-2checkout/blob/master/src/Gateway.php).
 
+![Aimeos Omnipay setup](Admin-backend-service-omnipay.png)
+
 !!! tip
-    Some payment gateways offered by Omnipay requires special handling. Sub-classing from the Omnipay provider and overwriting the existing methods if required can support even special payment gateways interfaces. Please drop us a not if you got a provider working in your shop.
+    Some payment gateways offered by Omnipay requires special handling. Sub-classing from the Omnipay provider and overwriting the existing methods if required can support even special payment gateways interfaces. Please drop us a note if you got a provider working in your shop.
 
 
 ## OPPWA
 
 OPPWA is a white label platform for payments used by several payment providers like:
+
 * Hobex
 * HyperPay
 * Pay.ON
