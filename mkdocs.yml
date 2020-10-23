@@ -146,6 +146,7 @@ nav:
       - Search and filter: admin/jsonadm/search-filter.md
       - Manage resources: admin/jsonadm/manage-resources.md
       - Manage trees: admin/jsonadm/manage-trees.md
+      - Manage index: admin/jsonadm/manage-index.md
       - Error handling: admin/jsonadm/error-handling.md
   - Cronjobs:
     - Available cronjobs: cronjobs/index.md
