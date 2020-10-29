@@ -147,11 +147,14 @@ routeEnhancers:
       - { routePath: '/fav/{fav_action}/{fav_id}', _controller: 'Account::favorite' }
       - { routePath: '/fav/{fav_action}', _controller: 'Account::favorite' }
       - { routePath: '/c/{f_name}~{f_catid}', _controller: 'Catalog::list' }
+      - { routePath: '/p/{d_name}/{d_prodid}/{d_pos}', _controller: 'Catalog::detail' }
+      - { routePath: '/d/{d_name}/{d_pos}', _controller: 'Catalog::detail' }
+      - { routePath: '/lt/{l_type}', _controller: 'Catalog::list' }
+      - { routePath: '/lp/{l_page}', _controller: 'Catalog::list' }
+      - { routePath: '/ls/{f_sort}/{l_page}', _controller: 'Catalog::list' }
       - { routePath: '/l/{f_sort}', _controller: 'Catalog::list' }
       - { routePath: '/b/{b_action}', _controller: 'Basket::index' }
       - { routePath: '/co/{c_step}', _controller: 'Checkout::index' }
-      - { routePath: '/p/{d_name}/{d_prodid}/{d_pos}', _controller: 'Catalog::detail' }
-      - { routePath: '/d/{d_name}/{d_pos}', _controller: 'Catalog::detail' }
     defaults:
       b_action: ''
       c_step: ''
