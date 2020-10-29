@@ -83,19 +83,17 @@ $item = $manager->create( [/*...*/] );
 This creates a new object with some default values for the item set. You can add properties if you pass a list of key/value pairs:
 
 ```php
-$item => $manager->create( [$key1 => $value1, $key2 => $value2] )
+$item => $manager->create( ['key1' => 'value1', 'key2' => 'value2'] )
 
 // Example for a product item:
 $item => $manager->create( ['product.code' => 'test', 'product.label' => 'Test'] )
 ```
 
-If you want to find out more about the structure of an item's arguments, use `toArray()`:
+If you want to find out more about the keys of an item's arguments, use `toArray()`:
 
 ```php
 $item->create()->toArray()
 ```
-
-A product item would return something like this: `['product.id => null, 'product.siteid' => '1.', 'product.code' => '', 'product.label' => '', ...]`
 
 The item doesn't have an unique ID by default and is only available in memory.
 
