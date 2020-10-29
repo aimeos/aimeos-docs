@@ -88,7 +88,7 @@ Service providers for many payment gateways are available by the Aimeos [ai-paym
 The [Authorize.net](https://www.authorize.net/) gateway for the [AIM method](https://www.authorize.net/support/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07.
 
 ```
-composer req "omnipay/authorizenet:~3.0"
+composer req "omnipay/authorizenet"
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -114,7 +114,7 @@ testMode (boolean, optional)
 The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/support/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07.
 
 ```
-composer req "omnipay/authorizenet:~3.0"
+composer req "omnipay/authorizenet"
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -149,7 +149,7 @@ testMode (boolean, optional)
 The [Authorize.net](https://www.authorize.net/) gateway for the [DPM method](https://www.authorize.net/support/SIM_guide.pdf) (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07.
 
 ```
-composer req "omnipay/authorizenet:~3.0"
+composer req "omnipay/authorizenet"
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -184,7 +184,7 @@ testMode (boolean, optional)
 The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07.
 
 ```
-composer req "omnipay/cardsave:~3.0"
+composer req "omnipay/cardsave"
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -210,7 +210,7 @@ testMode (boolean, optional)
 The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07. It supports all on-line payment methods (e.g. credit card) but no off-line payments (e.g. SEPA) and no authorization before capture.
 
 ```
-composer req "omnipay/mollie:~3.0"
+composer req "omnipay/mollie"
 ```
 
 The available configuration options are:
@@ -271,7 +271,7 @@ OPPWA is a white label platform for payments used by several payment providers l
 * ZooPay
 
 ```
-composer req "vdbelt/omnipay-oppwa:~3.0"
+composer req "vdbelt/omnipay-oppwa"
 ```
 
 It supports these configuration options:
@@ -306,7 +306,7 @@ testMode (boolean, optional)
 The [Payone](https://www.payone.de/en/) payment gateways are available via the Omnipay payment service provider.
 
 ```
-composer req "academe/omnipay-payone:~3.0"
+composer req "academe/omnipay-payone"
 ```
 
 The available configuration options are:
@@ -344,7 +344,7 @@ testMode (boolean, optional)
 The [Postfinance](https://e-payment.postfinance.ch) payment gateways are available via the Omnipay payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "bummzack/omnipay-postfinance:~0.1"
+composer req "bummzack/omnipay-postfinance"
 ```
 
 The available configuration options are:
@@ -379,7 +379,7 @@ testMode (boolean, optional)
 The [Sofort](https://sofort.com/) payment gateway is available via the Omnipay payment service provider since 2016.07.
 
 ```
-composer req "aimeoscom/omnipay-sofort:~3.0"
+composer req "aimeoscom/omnipay-sofort"
 ```
 
 The available configuration options are:
@@ -411,7 +411,7 @@ testMode (boolean, optional)
 The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider since 2015.07. It supports credit card payments and authorization before capture.
 
 ```
-composer req "omnipay/stripe:~3.0"
+composer req "omnipay/stripe"
 ```
 
 The available configuration options are:
