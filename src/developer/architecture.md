@@ -86,7 +86,7 @@ To be implemented
 
 The second layer offers access to the data stored in relational database systems, NoSQL databases or provided by external (HTTP) APIs. It doesn't matter where the data is stored, the data access layer provides the same PHP API and semantics to the layers above regardless of the source. The implementation is located in the [Aimeos core](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/src/MShop) "./lib/mshoplib/" or in extensions.
 
-Within the access layer, separate domains care about specific data, e.g. the product domain manages only the product data while the order domain only cares about order data. There are currently 16 domains available that can be replaced by own implementations for different data sources.
+Aimeos is build on the principles of the domain driven design (DDD) and each data domain is self-contained. Within the access layer, separate domains care about specific data, e.g. the product domain manages only the product data while the order domain only cares about order data. There are currently 16 domains available that can be replaced by own implementations for different data sources.
 
 Code: [Aimeos core](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib)
 
@@ -117,6 +117,7 @@ Supporting domains:
 * tag : Tags for all items with a list table
 * text : All kind of texts referenced by other domains
 
+Due to the strict separation it's possible to store each data in a [separate domain database](../infrastructure/databases.md#multiple-databases).
 
 # Adapters
 
