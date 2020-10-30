@@ -482,10 +482,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/account/profile/url/action = 
+client/html/account/profile/url/action = profile
 ```
 
-* Default: 
+* Default: profile
 * Type: string - Name of the action
 * Since: 2019.10
 
@@ -537,10 +537,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/account/profile/url/controller = 
+client/html/account/profile/url/controller = Account
 ```
 
-* Default: 
+* Default: Account
 * Type: string - Name of the controller
 * Since: 2019.10
 

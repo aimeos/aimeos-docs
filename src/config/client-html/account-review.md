@@ -501,10 +501,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/account/review/url/action = 
+client/html/account/review/url/action = review
 ```
 
-* Default: 
+* Default: review
 * Type: string - Name of the action
 * Since: 2020.10
 
@@ -556,10 +556,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/account/review/url/controller = 
+client/html/account/review/url/controller = Account
 ```
 
-* Default: 
+* Default: Account
 * Type: string - Name of the controller
 * Since: 2020.10
 

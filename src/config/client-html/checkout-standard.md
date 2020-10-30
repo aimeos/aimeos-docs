@@ -148,6 +148,7 @@ client/html/checkout/standard/address/billing/hidden = Array
 You can configure the list of billing address fields that
 are hidden when a customer enters his new billing address.
 Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -204,6 +205,7 @@ client/html/checkout/standard/address/billing/mandatory = Array
 You can configure the list of billing address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -272,6 +274,7 @@ client/html/checkout/standard/address/billing/optional = Array
 You can configure the list of billing address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -320,6 +323,7 @@ client/html/checkout/standard/address/billing/salutations = Array
 * Since: 2015.02
 
 The following salutations are available:
+
 * empty string for "unknown"
 * company
 * mr
@@ -961,6 +965,7 @@ client/html/checkout/standard/address/delivery/hidden = Array
 You can configure the list of delivery address fields that
 are hidden when a customer enters his delivery address.
 Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1016,6 +1021,7 @@ client/html/checkout/standard/address/delivery/mandatory = Array
 You can configure the list of delivery address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1084,6 +1090,7 @@ client/html/checkout/standard/address/delivery/optional = Array
 You can configure the list of delivery address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1132,6 +1139,7 @@ client/html/checkout/standard/address/delivery/salutations = Array
 * Since: 2015.02
 
 The following salutations are available:
+
 * empty string for "unknown"
 * company
 * mr
@@ -1393,6 +1401,7 @@ client/html/checkout/standard/address/validate =
 To validate the address input data of the customer, an individual
 [Perl compatible regular expression](http://php.net/manual/en/pcre.pattern.php)
 can be applied to each field. Available fields are:
+
 * company
 * vatid
 * salutation
@@ -1413,6 +1422,7 @@ can be applied to each field. Available fields are:
 
 Some fields are validated automatically because they are not
 dependent on a country specific rule. These fields are:
+
 * salutation
 * email
 * website
@@ -1461,6 +1471,7 @@ client/html/checkout/standard/address/validate/address1 =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/address2
 
@@ -1474,6 +1485,7 @@ client/html/checkout/standard/address/validate/address2 =
 
 See also:
 
+* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/address3
@@ -1489,6 +1501,7 @@ client/html/checkout/standard/address/validate/address3 =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/city
 
@@ -1502,6 +1515,7 @@ client/html/checkout/standard/address/validate/city =
 
 See also:
 
+* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/company
@@ -1517,6 +1531,7 @@ client/html/checkout/standard/address/validate/company =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/countryid
 
@@ -1531,19 +1546,21 @@ client/html/checkout/standard/address/validate/countryid =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/email
 
 Regular expression to check the "email" address value
 
 ```
-client/html/checkout/standard/address/validate/email = 
+client/html/checkout/standard/address/validate/email = ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
 ```
 
-* Default: 
+* Default: ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
 
 See also:
 
+* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/firstname
@@ -1559,6 +1576,7 @@ client/html/checkout/standard/address/validate/firstname =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/languageid
 
@@ -1572,6 +1590,7 @@ client/html/checkout/standard/address/validate/languageid =
 
 See also:
 
+* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/lastname
@@ -1587,243 +1606,6 @@ client/html/checkout/standard/address/validate/lastname =
 See also:
 
 * client/html/checkout/standard/address/validate
-
-## validate/order.base.address.address1
-
-Regular expression to check the "address1" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.address1 = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.address2
-
-Regular expression to check the "address2" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.address2 = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.address3
-
-Regular expression to check the "address3" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.address3 = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.city
-
-Regular expression to check the "city" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.city = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.company
-
-Regular expression to check the "company" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.company = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.countryid
-
-Regular expression to check the "countryid" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.countryid = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.email
-
-Regular expression to check the "email" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.email = ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
-```
-
-* Default: ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.firstname
-
-Regular expression to check the "firstname" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.firstname = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.languageid
-
-Regular expression to check the "languageid" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.languageid = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.lastname
-
-Regular expression to check the "lastname" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.lastname = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.postal
-
-Regular expression to check the "postal" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.postal = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.salutation
-
-Regular expression to check the "salutation" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.salutation = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.state
-
-Regular expression to check the "state" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.state = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.telefax
-
-Regular expression to check the "telefax" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.telefax = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.telephone
-
-Regular expression to check the "telephone" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.telephone = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.vatid
-
-Regular expression to check the "vatid" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.vatid = 
-```
-
-* Default: 
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/order.base.address.website
-
-Regular expression to check the "website" address value
-
-```
-client/html/checkout/standard/address/validate/order.base.address.website = ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
-```
-
-* Default: ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
-
-See also:
-
 * client/html/checkout/standard/address/validate
 
 ## validate/postal
@@ -1839,6 +1621,7 @@ client/html/checkout/standard/address/validate/postal =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/salutation
 
@@ -1852,6 +1635,7 @@ client/html/checkout/standard/address/validate/salutation =
 
 See also:
 
+* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/state
@@ -1867,6 +1651,7 @@ client/html/checkout/standard/address/validate/state =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/telefax
 
@@ -1880,6 +1665,7 @@ client/html/checkout/standard/address/validate/telefax =
 
 See also:
 
+* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 ## validate/telephone
@@ -1895,6 +1681,7 @@ client/html/checkout/standard/address/validate/telephone =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/vatid
 
@@ -1909,19 +1696,21 @@ client/html/checkout/standard/address/validate/vatid =
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
 
 ## validate/website
 
 Regular expression to check the "website" address value
 
 ```
-client/html/checkout/standard/address/validate/website = 
+client/html/checkout/standard/address/validate/website = ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
 ```
 
-* Default: 
+* Default: ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
 
 See also:
 
+* client/html/checkout/standard/address/validate
 * client/html/checkout/standard/address/validate
 
 # decorators
@@ -2333,6 +2122,7 @@ Using this config options, shop developers are able to define which
 checkout subparts are combined to a one page view. Simply add the names
 of all checkout subparts to the list. Available checkout subparts for
 a one page checkout are:
+
 * address
 * delivery
 * payment
@@ -3176,17 +2966,20 @@ client/html/checkout/standard/process/validate = Array
 To validate the payment input data of the customer, an individual Perl
 compatible regular expression (http://php.net/manual/en/pcre.pattern.php)
 can be applied to each field. Available fields are:
+
 * payment.cardno
 * payment.cvv
 * payment.expirymonthyear
 
 To validate e.g the CVV security code, you can define a regular expression
 like this to allow only three digits:
+
 ```
  client/html/checkout/standard/process/validate/payment.cvv = '^[0-9]{3}$'
 ```
 
 Several regular expressions can be defined line this:
+
 ```
  client/html/checkout/standard/process/validate = array(
   'payment.cardno' = '^[0-9]{16,19}$',
