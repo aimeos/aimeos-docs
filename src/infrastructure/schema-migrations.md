@@ -85,12 +85,12 @@ return [
 
 ## Tables for new domains
 
-In order to create tables for a new data domain (not existing ones like "attribute", "product", "service", etc.], you need to create a setup task, too. This setup task must extend from the existing `MShopCreateTables` and/or `MAdminCreateTables` setup task. E.g., for a new domain *mynewdomain* (defined in *setup/default/schema/mynewdomain.php*) create a file called *TablesCreateMynewdomain.php* with content similar to this one:
+In order to create tables for a new data domain (not existing ones like "attribute", "product", "service", etc.], you need to create a setup task, too. This setup task must extend from the existing `MShopCreateTables` and/or `MAdminCreateTables` setup task. E.g., for a new domain *mydomain* (defined in *setup/default/schema/mydomain.php*) create a file called *TablesCreateMydomain.php* with content similar to this one:
 
 ```php
 namespace Aimeos\MW\Setup\Task;
 
-class TablesCreateMynewdomain extends TablesCreateMShop
+class TablesCreateMydomain extends TablesCreateMShop
 {
     public function getPreDependencies()
     {
@@ -104,18 +104,18 @@ class TablesCreateMynewdomain extends TablesCreateMShop
 
     public function migrate()
     {
-        $this->msg( 'Creating mynewdomain tables', 0, '' )
+        $this->msg( 'Creating mydomain tables', 0, '' )
         $ds = DIRECTORY_SEPARATOR;
 
         $files = [
-            'db-mynewdomain' => 'default' . $ds . 'schema' . $ds . 'mynewdomain.php'
+            'db-mydomain' => 'default' . $ds . 'schema' . $ds . 'mydomain.php'
         ];
         $this->setupSchema( $files );
     }
 }
 ```
 
-In the *migrate()* method, you have to call the *setupSchema()* method from the parent class with the file that contains your schema definition. The *$files* array contains the name of the database connection as key (*db* is used if *db-mynewdomain* isn't explicitely configured) and the relative path to the schema file.
+In the *migrate()* method, you have to call the *setupSchema()* method from the parent class with the file that contains your schema definition. The *$files* array contains the name of the database connection as key (*db* is used if *db-mydomain* isn't explicitely configured) and the relative path to the schema file.
 
 ## Modify existing tables
 
@@ -179,11 +179,7 @@ Each *setup task* can declare dependencies to other tasks, e.g. a list of tasks 
 
 1. Tasks that do not declare any dependencies to other tasks and are not listed as post-dependencies in other tasks. There are only a few such tasks, because usually each task has one or more dependencies.
 
-2. Tasks that depend on other tasks. Reasons for the dependencies can be (among others):
-  * changing columns that have been changed before by other tasks.
-  * creating new columns that should be inserted next to columns created by other tasks.
-  
-  In an empty database most of these setup tasks will exit immediately, because the first check is always, if the necessary database table exists. Therefore, the task for creating the tables is always executed after the ones changing tables in an existing database. This reduces the time for the setup process drastically for new installations.
+2. Tasks that depend on other tasks. Reasons for the dependencies can be (among others) that columns must have been changed before by other tasks or new columns created by other tasks must be inserted before. In an empty database most of these setup tasks will exit immediately, because the first check is always, if the necessary database table exists. Therefore, the task for creating the tables is always executed after the ones changing tables in an existing database. This reduces the time for the setup process drastically for new installations.
 
 3. The task for creating the tables and indexes is executed very late in the process. It reads the schema files in e.g. "./lib/mshoplib/setup/default/schema/" and executes the SQL statements if necessary.
 
@@ -311,15 +307,15 @@ As every *setup task* must extend the *Aimeos\MW\Setup\Task\Base* class, it inhe
 ## Print messages
 
 msg( '<string>', <level> )
-: Prints the message indented by the given level. This method formats the messages so the output looks nice. Must be followed by a call to *$this->_status( '...' )*.
+: Prints the message indented by the given level. This method formats the messages so the output looks nice. Must be followed by a call to `$this->_status( '...' )`.
 
 status( '<string>' )
-: Outputs the status for the test that was printed by *$this->_msg( ... )* before. Usual status values are: "OK" (nothing to do], "Done" (task has been performed) or the number of records inserted ("<inserted>/<total>").
+: Outputs the status for the test that was printed by `$this->_msg( ... )` before. Usual status values are: "OK" (nothing to do], "done" (task has been performed) or the number of records inserted ("<inserted>/<total>").
 
 ## Get schema/connection
 
 getSchema( '<database domain>' )
-: Retrieves the schema object for one of the databases. The parameter is one of the [domains](database.md#multiple-databases) prefixed by "db-", e.g. "db-product".
+: Retrieves the schema object for one of the databases. The parameter is one of the [domains](databases.md#multiple-databases) prefixed by "db-", e.g. "db-product".
 
 getConnection( '<database domain>' )
 : Returns the connection object for one of the databases. The parameter is the same as for *getSchema()*.
