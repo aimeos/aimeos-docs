@@ -38,12 +38,16 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/aimeos
+      title: Github
     - icon: fontawesome/brands/facebook
       link: https://facebook.com/Aimeos
+      title: Facebook
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/aimeos
+      title: Twitter
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/c/aimeos
+      title: Youtube
 analytics:
   url: https://aimeos.org/stats
   siteid: 1

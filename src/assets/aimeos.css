@@ -284,19 +284,123 @@ select.md-header-nav__button:focus {
   background-color: var(--md-code-bg-color);
 }
 
+
+.partnering {
+  padding: 5rem 0;
+}
+
+.partnering-box {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2.5rem;
+  padding-top: 1.5rem;
+  box-shadow: 4px 16px 20px 4px #e6eaee;
+}
+
+.partnering .header {
+  flex: 0 0 100%;
+  max-width: 100%;
+  font-size: 250%;
+}
+
+.partnering .intro {
+  font-size: 175%;
+}
+
+.partnering .header,
+.partnering .intro {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .partnering .intro {
+    flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
+  }
+
+  .partnering .button {
+    flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
+  }
+}
+
+.btn, .btn:link, .btn:visited {
+  display: block;
+  font-weight: bold;
+  margin: 2em auto;
+  padding: 0.75em;
+  min-width: 16em;
+  max-width: 20em;
+  width: 100%;
+  background-color: #103050;
+  border: solid 1px #103050;
+  border-radius: 0;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.5;
+  font-size: 150%;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:hover {
+  text-decoration: none;
+  background-color: transparent;
+  border: solid 1px #103050;
+  color: #103050;
+}
+
+.md-footer-meta {
+  background-color: #cad2d9;
+  border-top: 1px solid #ba9a5a;
+  padding-bottom: 2rem;
+}
+
+.md-footer-meta h2 {
+  font-weight: bold;
+  color: #fff;
+}
+
+html .md-footer-meta.md-typeset a {
+  color: #103050;
+}
+
+html .md-footer-meta.md-typeset ul,
+html .md-footer-meta.md-typeset li {
+  list-style: none;
+  margin-left: 0;
+}
+
 .md-footer-integration, .md-footer-developers, .md-footer-social {
   margin: 0 1rem;
   padding: 0;
 }
 
+.md-footer .logo {
+  width: 10rem;
+  padding: 2rem 0;
+}
+
 .md-footer-social__link {
-  padding: 0 0.2rem;
+  padding: 0.5rem 0;
   height: initial;
-  width: 2rem;
+  display: block;
+  width: auto;
+  text-align: left;
 }
 
 .md-footer-social__link svg {
   max-height: initial;
+  width: 2rem;
+}
+
+.md-footer-social__link span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  height: 2rem;
 }
 
 .integration {
