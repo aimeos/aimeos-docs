@@ -1,8 +1,12 @@
 If you want to perform actions on the basket content depending on current activity, basket plug-ins are the tool of choice. They allow you to operate on the whole basket and are able to add, remove or change products, services, coupons or addresses as you wish. Which basket plug-ins are available by default and how to configure them is described in the [user manual](../manual/plugins.md).
 
-Your basket plugin must be part of your project specific [Aimeos extension](../developer/extensions.md) which you must create and then store at *./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php* to be available in your Aimeos installation.
+Your basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) following this path structure:
+```
+./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
+```
+to be available in your Aimeos installation.
 
-For new basket plug-ins, you can use this skeleton class:
+For a new basket plugin you can use this skeleton class:
 
 ```php
 namespace Aimeos\MShop\Plugin\Provider\Order;
@@ -13,8 +17,9 @@ class Myexample
 {
     private $singleton;
 
-    public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
+    public function register( \Aimeos\MW\Observer\Publisher\Iface $p ) : \Aimeos\MW\Observer\Listener\Iface
     {
+        return $this;
     }
 
     public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
@@ -23,11 +28,14 @@ class Myexample
 }
 ```
 
-The file containing the class must be placed in the *./lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php* file (or anymore reasonable file/class name) of your extension. Here is an article about [creating extensions](../developer/extensions.md) for Aimeos, if you don't have one yet.
+The file containing this code would have to be named `Myexample.php` and be placed in this location: 
+```
+./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
+```
 
 # Event system
 
-The basket plug-in system is implemented as event driven process, meaning that your plug-in will get notified if something have happened. Plug-ins have to register for events they want to listen to, so only those plug-ins are executed that actually need to do something. They can listen to these events:
+The basket plugin system is implemented as event driven process, meaning that your plug-in will get notified if something have happened. Plug-ins have to register for events they want to listen to, so only those plug-ins are executed that actually need to do something. They can listen to these events:
 
 setCustomerId.before, setCustomerId.after
 : Before and after the basket has been associated to the customer, plug-in receives the customer ID
