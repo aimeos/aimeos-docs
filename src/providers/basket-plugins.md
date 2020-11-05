@@ -17,8 +17,9 @@ class Myexample
 {
     private $singleton;
 
-    public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
+    public function register( \Aimeos\MW\Observer\Publisher\Iface $p ) : \Aimeos\MW\Observer\Listener\Iface
     {
+        return $this;
     }
 
     public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
