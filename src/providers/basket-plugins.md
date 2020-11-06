@@ -2,7 +2,11 @@ If you want to perform actions on the basket content depending on current activi
 
 Your basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) following this path structure:
 ```
-./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
+// Laravel, Symphony
+./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
+
+// TYPO3
+./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
 ```
 to be available in your Aimeos installation.
 
