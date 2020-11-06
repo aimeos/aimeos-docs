@@ -186,7 +186,7 @@ Tutorials:
 * [Database migrations](../infrastructure/schema-migrations.md)
 * [Using managers and items](../infrastructure/managing-items.md)
 * [Implement payment/delivery providers](../providers/service/index.md)
-* [Implement basket plugins](../providers/basket-plugins.md)
+* [Implement basket plugins](../providers/basket-plugins/index.md)
 
 # Manifest
 

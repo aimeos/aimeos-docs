@@ -30,7 +30,7 @@ The Aimeos package also includes adapter classes for basic components used by an
 ## Basket
 
 * [Configure basket behavior and templates](../frontend/html/basket-components.md)
-* [Implement basket plug-ins](../providers/basket-plugins.md)
+* [Implement basket plug-ins](../providers/basket-plugins/index.md)
 
 ## Checkout
 

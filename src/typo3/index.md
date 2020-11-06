@@ -30,7 +30,7 @@ The extension provides several plug-ins for certain functionalities (product fil
 ## Basket
 
 * [Configure basket behavior and templates](../frontend/html/basket-components.md)
-* [Implement basket plug-ins](../providers/basket-plugins.md)
+* [Implement basket plug-ins](../providers/basket-plugins/index.md)
 
 ## Checkout
 

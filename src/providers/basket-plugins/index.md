@@ -1,43 +1,5 @@
-If you want to perform actions on the basket content depending on current activity, basket plugins are the tool of choice. They allow you to operate on the whole basket and are able to add, remove or change products, services, coupons or addresses as you wish. Which basket plugins are available by default and how to configure them is described in the [user manual](../manual/plugins.md).
+If you want to perform actions on the basket content depending on current activity, basket plugins are the tool of choice. They allow you to operate on the whole basket and are able to add, remove or change products, services, coupons or addresses as you wish. Which basket plugins are available by default and how to configure them is described in the [user manual](../../manual/plugins.md). If you want to have a basic run-through on how a plugin is created an inserted, check out our [Quick tutorial](basket-plugins-life-cycle.md).
 
-Your basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) following this path structure:
-```
-// Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
-// TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
-```
-to be available in your Aimeos installation.
-
-For a new basket plugin you can use this skeleton class:
-
-```php
-namespace Aimeos\MShop\Plugin\Provider\Order;
-
-class Myexample
-    extends \Aimeos\MShop\Plugin\Provider\Factory\Base
-    implements \Aimeos\MShop\Plugin\Provider\Iface, \Aimeos\MShop\Plugin\Provider\Factory\Iface
-{
-    private $singleton;
-
-    public function register( \Aimeos\MW\Observer\Publisher\Iface $p ) : \Aimeos\MW\Observer\Listener\Iface
-    {
-        return $this;
-    }
-
-    public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
-    {
-    }
-}
-```
-
-The file containing this code would have to be named `Myexample.php` and be placed in this location: 
-```
-// Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
-// TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
-```
 
 # Event system
 
@@ -105,13 +67,13 @@ Protect against multiple invocations
 : In event driven systems, your `update()` method can be called more than once if other plugins generate events that maniulate the basket, too. If your code should only be executed once, set a singleton value in your class the first time it is called, and skip the code in subsequent calls.
 
 Use plugin configuration values
-: The configuration consists of key/value pairs stored in an array. If a configuration value is required by the plugin, you should test for it and handle a missing value by either throwing an exception or using a reasonable default value. The configuration options can be set in the [administration interface](../manual/plugin-details.md).
+: The configuration consists of key/value pairs stored in an array. If a configuration value is required by the plugin, you should test for it and handle a missing value by either throwing an exception or using a reasonable default value. The configuration options can be set in the [administration interface](../../manual/plugin-details.md).
 
 Throw exceptions
 : If something goes wrong, throw an exception of type *\Aimeos\MShop\Plugin\Provider\Exception*. This class has a special fourth parameter where specific information about the  problem occurred can be passed. Please have a look at the [AddressAvailable](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/AddressesAvailable.php) and [ProductGone](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/ProductGone.php) plugins for more details.
 
 Return a boolean value
-: The method should return true if everything worked fine. If false is returned, the execution of all following plugins for this event is skipped. The advantage is that the code execution is not aborted completely by throwing an exception. You have control over the order of the executed plugins by the "position" property in the [administration interface](../manual/plugin-details.md). The plugin with the lowest number is executed first. If two or more plugins share the same number, the order of these plugins is arbitrary.
+: The method should return true if everything worked fine. If false is returned, the execution of all following plugins for this event is skipped. The advantage is that the code execution is not aborted completely by throwing an exception. You have control over the order of the executed plugins by the "position" property in the [administration interface](../../manual/plugin-details.md). The plugin with the lowest number is executed first. If two or more plugins share the same number, the order of these plugins is arbitrary.
 
 The following implementation shows the important code blocks of the `update()` method:
 
@@ -149,7 +111,7 @@ Your plugin has access to the value handed over by the basket, which depends on 
 Decorators are a great way to add constraints to the basket plugins or to implement functionality that should be available for multiple plugins. They are added in the administration interface by adding their name after the plugin name, separated by a comma.
 
 !!! note
-    It is possible to apply decorators to basket plugins globally using the [mshop/plugin/provider/order/decorators](../config/mshop/plugin-provider.md#decorators) configuration setting. Named decorators listed in this configuration array are applied to all plugins.
+    It is possible to apply decorators to basket plugins globally using the [mshop/plugin/provider/order/decorators](../../config/mshop/plugin-provider.md#decorators) configuration setting. Named decorators listed in this configuration array are applied to all plugins.
 
 All you need to do is to extend from the *\Aimeos\MShop\Plugin\Provider\Decorator\Base* class and overwrite the `update()` method where you can apply additional rules to the execution of the original method. Here's an example skeleton for a plugin decorator:
 
@@ -173,9 +135,10 @@ class Example
 
 The file *Example.php* holding this code would be located at e.g.
 
-```
+```php
 // Laravel, Symfony
 ./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
 ```

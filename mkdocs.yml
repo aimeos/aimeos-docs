@@ -165,7 +165,9 @@ nav:
       - Delivery provider: providers/service/delivery.md
       - Create decorators: providers/service/decorators.md
       - Write unit tests: providers/service/unittests.md
-    - Basket plugins: providers/basket-plugins.md
+    - Basket plugins:
+      - Basket plugins: providers/basket-plugins/index.md
+      - Quick tutorial: providers/basket-plugins/basket-plugins-life-cycle.md
   - Infrastructure:
     - Database: infrastructure/databases.md
     - Migrations: infrastructure/schema-migrations.md
