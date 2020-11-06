@@ -1,8 +1,8 @@
-Delivery and payment handling are one of the most important tasks in a web shop. Most often this involves connecting to external systems and pushing data to them. Therefore, it's vital that a shop system has a feature rich interface that is able to cope with all kinds of special requirements remote services demand.
+Delivery and payment handling are one of the most important tasks in a web shop. Most often this involves connecting to external systems and pushing data to them. Therefore it's vital that a shop system has a feature rich interface that is able to cope with all kinds of special requirements remote services demand.
 
-In Aimeos, the service providers are adapters between the shop interfaces for delivery and payment handling and any remote gateway. They can have arbitrary configurations, individually defined for each service provider. The base classes offer a rich set of methods that ease development and minimize the code that must be written.
+In *Aimeos* the service providers are adapters between the shop interfaces for delivery and payment handling and any remote gateway. They can have arbitrary configurations, individually defined for each service provider. The base classes offer a rich set of methods that ease development and minimize the code that must be written.
 
-Your service provider must be part of your project specific [Aimeos extension](../../developer/extensions.md) you have to create and stored in
+Your service provider must be part of your project specific [*Aimeos* extension](../../developer/extensions.md) and be stored in
 
 ```
 ./<yourext>/lib/custom/src/MShop/Service/Provider/Delivery/<classname>.php
@@ -12,12 +12,12 @@ or
 ./<yourext>/lib/custom/src/MShop/Service/Provider/Payment/<classname>.php
 ```
 
-to be available in your Aimeos installation.
+to be available in your *Aimeos* installation.
 
-For most service providers, you need some configuration values like for username and password to authenticate against external web services. You can store arbitrary numbers of key/value pairs in the service items for each provider which can be checked against a given configuration definition to minimize errors.
+For most service providers you need some configuration values like for username and password to authenticate against external web services. You can store arbitrary numbers of key/value pairs in the service items for each provider which can be checked against a given configuration definition to minimize errors.
 
 !!! warning
-    There are two kinds of configuration definitions: For the fields the customer has to fill out in the front-end and for the shop owner in the administration interface!  Both use the same way and format for their definition, the only difference is by which method they are returned, either by *getConfigFE()* for the front-end or by *getConfigBE()* for the administration interface.
+    There are two kinds of configuration definitions: For the fields the customer has to fill out in the front-end and for the shop owner in the administration interface! Both use the same way and format for their definition, the only difference is by which method they are returned, either by `getConfigFE()` for the front-end or by `getConfigBE()` for the administration interface.
 
 In order to make things as easy as possible, the base service provider class offers some common methods that are often used in provider implementations.
 
@@ -35,7 +35,7 @@ Keep in mind that the order needs to belong to the same site or one of its desce
 
 ## Retrieve complete order
 
-In the order item itself only some status values, dates and related IDs are stored. Most often, you need to get the service data stored in the order because there you can add data related to the payment gateway (e.g. transaction references) and fetch them later if you need them again:
+In the order item itself only some status values, dates and related IDs are stored. Most often you need to get the service data stored in the order because there you can add data related to the payment gateway (e.g. transaction references) and fetch them later if you need them again:
 
 ```php
 $baseItem = $this->getOrderBase( $orderItem->getBaseId() );
@@ -314,7 +314,7 @@ In this method you can also modify the values before storing them. You could enc
 All values can be used later on in the back-end systems but don't have any further effect in the web shop.
 
 !!! note
-    Aimeos don't offer a payment service provider that stores any credit card data. This was an explicit design decision to prevent credit card theft. Please use a payment gateway instead that processes credit card data in a PCI compliant environment.
+    *Aimeos* don't offer a payment service provider that stores any credit card data. This was an explicit design decision to prevent credit card theft. Please use a payment gateway instead that processes credit card data in a PCI compliant environment.
 
 If you need to retrieve data from the fields you defined at your feconfig you can use this code at your Payment Provider:
 

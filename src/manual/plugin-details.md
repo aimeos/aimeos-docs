@@ -1,6 +1,6 @@
 ![Detail view for plug-ins](Admin-backend-plugin-detail.png)
 
-There are some select and input fields in the left section of the detail view that are all required. Their purpose are:
+There are some select and input fields in the left section of the detail view that are all required. Their purpose is:
 
 Status (required)
 : Controls the global availability of the configured plugin. There are several status values available but the plugin will only be used if the status is "enabled".
@@ -9,10 +9,10 @@ Type (required)
 : The plugin type, which can be only "Order" for basket plugins at the moment.
 
 Provider (required)
-: This is the last part of the plugin provider class name, e.g. "Shipping" for the "\Aimeos}MShop\Plugin\Provider\Order\Shipping". The name of the provider is **case sensitive**, so "shipping" is not the same as "Shipping"! Each plugin provider can be enhanced by one or more decorators that must be added to the provider name and separated by a comma. To configure the "Shipping" plugin provider in combination with e.g. a decorator called "Example", enter "Shipping,Example" into the input field of the provider. For a list of plugins and decorators that are part of the Aimeos core, please have a look at the [plugin overview](plugins.md).
+: This is the last part of the plugin provider class name, e.g. "Shipping" for the "\Aimeos\MShop\Plugin\Provider\Order\Shipping". The name of the provider is **case sensitive**, so "shipping" is not the same as "Shipping"! Each plugin provider can be enhanced by one or more decorators that must be added to the provider name and separated by a comma. To configure the "Shipping" plugin provider in combination with e.g. a decorator called "Example", enter "Shipping,Example" into the input field of the provider. For a list of plugins and decorators that are part of the Aimeos core, please have a look at the [plugin overview](plugins.md).
 
 Label (required)
-: An internal label which helps you to identify the plugin and which can be used for searching in the administration interface.
+: An internal label which helps you to identify the plugin and can be used for searching in the administration interface.
 
 Created (read-only)
 : Date and time when the entry was added. This value is set automatically.
