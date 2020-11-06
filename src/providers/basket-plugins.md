@@ -84,8 +84,10 @@ To listen for such an event, your plugin has to register itself at the publisher
 ```php
 public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
 {
-    $p->attach( $this, 'addProduct.after' );
-    $p->attach( $this, 'deleteProduct.after' );
+    $plugin = $this->getObject();
+
+    $p->attach( $plugin, 'addProduct.after' );
+    $p->attach( $plugin, 'deleteProduct.after' );
     // ...
 }
 ```
