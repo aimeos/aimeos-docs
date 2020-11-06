@@ -2,7 +2,10 @@ If you want to perform actions on the basket content depending on current activi
 
 Your basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) following this path structure:
 ```
-./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
+// Laravel, Symfony
+./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
+// TYPO3
+./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
 ```
 to be available in your Aimeos installation.
 
@@ -30,7 +33,10 @@ class Myexample
 
 The file containing this code would have to be named `Myexample.php` and be placed in this location: 
 ```
-./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
+// Laravel, Symfony
+./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
+// TYPO3
+./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
 ```
 
 # Event system
@@ -165,7 +171,12 @@ class Example
 
 The file *Example.php* holding this code would be located at e.g.
 
-`./<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php`
+```
+// Laravel, Symfony
+./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+// TYPO3
+./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+```
 
 !!! tip
     Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/Example.php)
