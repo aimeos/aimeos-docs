@@ -173,7 +173,13 @@ class Example
 
 The file *Example.php* holding this code would be located at e.g.
 
-`./<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php`
+```
+// Laravel, Symphony
+./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+
+// TYPO3
+./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+```
 
 !!! tip
     Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/Example.php)
