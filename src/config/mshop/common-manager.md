@@ -47,7 +47,7 @@ mshop/common/manager/maxdepth = 2
 
 Searching for items also fetches the associated items referenced in the
 list tables if the domain names are passed to the second parameter of e.g. the
-searchItems() method. To avoid infinite recursion because two items reference
+`search()` method. To avoid infinite recursion because two items reference
 each other, the maximum level must be limited.
 
 The default setting (two levels) means that retrieving a product item with

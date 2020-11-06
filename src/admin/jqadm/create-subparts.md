@@ -79,7 +79,7 @@ public function copy() : ?string
     $siteid = $this->getContext()->getLocale()->getSiteId();
     $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
 
-    foreach( $manager->searchItems( $manager->filter() ) as $item )
+    foreach( $manager->search( $manager->filter() ) as $item )
     {
         $entry = $item->toArray( true );
         $entry['somedomain.siteid'] = $siteId;
@@ -143,7 +143,7 @@ public function delete() : ?string
 
     $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
     $filter = $manager->filter()->add( ['somedomain.foreignid' => $itemId] );
-    $manager->deleteItems( $manager->searchItems( $filter )->toArray() );
+    $manager->deleteItems( $manager->search( $filter )->toArray() );
 
     return null;
 }
@@ -174,7 +174,7 @@ public function get() : ?string
     $manager = \Aimeos\MShop::create( $context, 'somedomain' );
     $filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
 
-    foreach( $manager->searchItems( $filter ) as $item ) {
+    foreach( $manager->search( $filter ) as $item ) {
         $data[] = $item->toArray( true );
     }
 

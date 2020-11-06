@@ -49,10 +49,10 @@ protected function getOrderItem()
 {
     $manager = \Aimeos\MShop\Factory::createManager( TestHelperMShop::getContext(), 'order' );
 
-    $search = $manager->createSearch();
+    $search = $manager->filter();
     $search->setConditions( $search->compare( '==', 'order.datepayment', '2008-02-15 12:34:56' ) );
 
-    $result = $manager->searchItems( $search );
+    $result = $manager->search( $search );
 
     if( ( $item = reset( $result ) ) === false ) {
         throw new Exception( 'No order found' );

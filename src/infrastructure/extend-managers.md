@@ -211,7 +211,7 @@ class Myproject extends Standard
 }
 ```
 
-The *$searchConfig* and *getSearchAttributes()* method will allow you to use the defined code (*product.myvalue*) in search criteria expressions passed to *searchItems()*.
+The `$searchConfig` and `getSearchAttributes()` method will allow you to use the defined code (`product.myvalue`) in search criteria expressions passed to `search()`.
 
 You also need to add a new SQL SELECT statement to the configuration, so the values are fetched from the database.
 

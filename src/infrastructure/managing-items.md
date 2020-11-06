@@ -139,7 +139,7 @@ which will fetch all items of the "text", "media" and "price" domains. You can a
 ['attribute' => ['default', 'variant']]
 ```
 
-to fetch only attributes which are associated to the item with "default" or "variant" list types. For some managers like the product manager it's also possible to fetch categories, suppliers an stock items. 
+to fetch only attributes which are associated to the item with "default" or "variant" list types. For some managers like the product manager it's also possible to fetch categories, suppliers an stock items.
 
 For the *catalog* and *supplier* items you can declare which referenced items should be retrieved. They are available for all domain items where items from other domains can be associated to them via a "list" table.
 
@@ -192,7 +192,7 @@ The second argument for retrieving the associated items, too, is the same as des
 
 ## Search items
 
-Several items can be retrieved at once via the *search()* method. It enables you to specify criteria to exactly get the items you need. To create a required criteria object, use the *filter()* method:
+Several items can be retrieved at once via the `search()` method. It enables you to specify criteria to exactly get the items you need. To create a required criteria object, use the `filter()` method:
 
 ```php
 $filter = $manager->filter();

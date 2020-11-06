@@ -577,7 +577,7 @@ Afterwards, you are able to create every object from the Aimeos core and save, r
 $manager = \Aimeos\MShop::create( $context, 'product' );
 $filter = $manager->filter()->add( 'product.code', '==', 'test' );
 
-foreach( $manager->searchItems( $search ) as $id => $item ) {
+foreach( $manager->search( $search ) as $id => $item ) {
     // print_r( $item );
 }
 ```

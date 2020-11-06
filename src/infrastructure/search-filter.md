@@ -1,4 +1,4 @@
-The *search()* method of each manager accepts a filter as first argument. You can create the filter object with:
+The `search()` method of each manager accepts a filter as first argument. You can create the filter object with:
 
 ```php
 $filter = $manager->filter();
@@ -146,7 +146,7 @@ The result set is ordered by the product status first and if two or more items h
 
 # Paging
 
-If your shop contains more than a few items, paging comes into play. By default, only the first 100 found items will be returned by *search()*. To retrieve items beyond or with a different slice size, you should use the *slice()* method of the search object:
+If your shop contains more than a few items, paging comes into play. By default, only the first 100 found items will be returned by `search()`. To retrieve items beyond or with a different slice size, you should use the *slice()* method of the search object:
 
 ```php
 $filter->slice( 100, 50  );
@@ -169,11 +169,11 @@ If you want to know which conditions have been added to the filter, you can use 
 print_r( $filter->__toArray() );
 ```
 
-This will print all (nested) conditions of the filter that will be used by the manager if you pass the filter to the *search()* method of the manager.
+This will print all (nested) conditions of the filter that will be used by the manager if you pass the filter to the `search()` method of the manager.
 
 # Fetch records efficiently
 
-Retrieving records in the database is always done in bunches (default: 100 records/search, can be changed using *slice()*) and if you need to process more or all items, you have to repeatedly call *search()* of the manager. The most efficient code for this is:
+Retrieving records in the database is always done in bunches (default: 100 records/search, can be changed using `slice()`) and if you need to process more or all items, you have to repeatedly call `search()` of the manager. The most efficient code for this is:
 
 ```php
 $manager = \Aimeos\MShop::create( $this->getContext(), 'product' );
