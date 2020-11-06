@@ -2,9 +2,8 @@ If you want to perform actions on the basket content depending on current activi
 
 Your basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) following this path structure:
 ```
-// Laravel, Symphony
+// Laravel, Symfony
 ./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
-
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
 ```
@@ -34,9 +33,8 @@ class Myexample
 
 The file containing this code would have to be named `Myexample.php` and be placed in this location: 
 ```
-// Laravel, Symphony
+// Laravel, Symfony
 ./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
-
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
 ```
@@ -174,9 +172,8 @@ class Example
 The file *Example.php* holding this code would be located at e.g.
 
 ```
-// Laravel, Symphony
+// Laravel, Symfony
 ./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
-
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
 ```
