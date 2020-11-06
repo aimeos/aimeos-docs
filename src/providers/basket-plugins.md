@@ -34,7 +34,11 @@ class Myexample
 
 The file containing this code would have to be named `Myexample.php` and be placed in this location: 
 ```
-./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
+// Laravel, Symphony
+./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
+
+// TYPO3
+./<yourext>/Resources/Private/Extensions//<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
 ```
 
 # Event system
