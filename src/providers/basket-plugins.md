@@ -38,7 +38,7 @@ The file containing this code would have to be named `Myexample.php` and be plac
 ./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
 
 // TYPO3
-./<yourext>/Resources/Private/Extensions//<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
+./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
 ```
 
 # Event system
