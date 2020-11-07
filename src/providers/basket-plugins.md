@@ -1,10 +1,10 @@
 If you want to perform actions on the basket content depending on current activity, basket plugins are the tool of choice. They allow you to operate on the whole basket and are able to add, remove or change products, services, coupons or addresses as you wish. Which basket plugins are available by default and how to configure them is described in the [user manual](../manual/plugins.md).
 
-# Create a plugin
+# Create a new basket plugin
 
 1. ## Example code
 
-    To create new basket plugin, put this code snippet in a class file with the name *ExamplePlugin.php*:
+    To create a new basket plugin, put this code snippet in a class file with the name *ExamplePlugin.php*:
 
     ```php
     namespace Aimeos\MShop\Plugin\Provider\Order;
