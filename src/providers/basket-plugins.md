@@ -1,43 +1,72 @@
 If you want to perform actions on the basket content depending on current activity, basket plugins are the tool of choice. They allow you to operate on the whole basket and are able to add, remove or change products, services, coupons or addresses as you wish. Which basket plugins are available by default and how to configure them is described in the [user manual](../manual/plugins.md).
 
-Your basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) following this path structure:
-```
-// Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
-// TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/<classname>.php
-```
-to be available in your Aimeos installation.
+# Create a plugin
 
-For a new basket plugin you can use this skeleton class:
+1. ## Example code
 
-```php
-namespace Aimeos\MShop\Plugin\Provider\Order;
+    To create new basket plugin, put this code snippet in a class file with the name *ExamplePlugin.php*:
 
-class Myexample
-    extends \Aimeos\MShop\Plugin\Provider\Factory\Base
-    implements \Aimeos\MShop\Plugin\Provider\Iface, \Aimeos\MShop\Plugin\Provider\Factory\Iface
-{
-    private $singleton;
+    ```php
+    namespace Aimeos\MShop\Plugin\Provider\Order;
 
-    public function register( \Aimeos\MW\Observer\Publisher\Iface $p ) : \Aimeos\MW\Observer\Listener\Iface
+    class ExamplePlugin
+        extends \Aimeos\MShop\Plugin\Provider\Factory\Base
+        implements \Aimeos\MShop\Plugin\Provider\Iface, \Aimeos\MShop\Plugin\Provider\Factory\Iface
     {
-        return $this;
-    }
+        private $singleton;
 
-    public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
-    {
-    }
-}
-```
+        public function register( \Aimeos\MW\Observer\Publisher\Iface $p ) : \Aimeos\MW\Observer\Listener\Iface
+        {
+            return $this;
+        }
 
-The file containing this code would have to be named `Myexample.php` and be placed in this location: 
-```
-// Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
-// TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/Myexample.php
-```
+        public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
+        {
+        }
+    }
+    ```
+
+    The filename must be the same as the class name (here: *ExamplePlugin*). Of course you should use a more meaningful name for your plugin class and file. Be aware that all names are case sensitive.
+
+    As discussed in more detail below, `register()` and `update()` are required methods, while the `$singleton` property is optional.
+
+2. ## Location of plugin class
+
+    The new basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) at this location:
+
+    ```php
+    // Laravel, Symfony
+    ./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
+
+    // TYPO3
+    ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
+    ```
+
+    Once this is done, Aimeos detects the plugin automatically and editors of your shop site will now be able to insert the plugin in the *Plugins* section of the *Aimeos* backend.
+
+3. ## Verify plugin availability
+    
+    To verify, if the plugin is already available, make sure the following steps work as expected:
+
+    1. ### Check pre-requisites
+
+        First, make sure the plugin type *Order* (code: *order*) exists in the "Types -> Plugins" backend:
+
+        [![Types -> Plugins](Plugin-development__00__type-plugin.jpg)](Plugin-development__00__type-plugin.jpg)
+
+        Do not change nor delete it! If it does not exist, create it or use *Aimeos*'s update script, which re-generates that plugin type. Currently, *Aimeos* only supports basket plugins, which is, why `order` is the only eligible domain.
+
+    2. ### Check provider drop-down list
+
+        Next, go to "Plugins" and click the "+" (plus/add) sign to insert a new plugin:
+
+        [![Insert new plugin](Plugin-development__01__insert-new-plugin.png)](Plugin-development__01__insert-new-plugin.png)
+
+        Check, if the new plugin name appears in the drop-down list under *Provider*: 
+
+        [![Check if new plugin exists in *Provider* drop-down list](Plugin-development__02__check-provider.png)](Plugin-development__02__check-provider.png)
+
+        If everything works, start adding functionality to your plugin. Consult the [user manual](../manual/Admin-backend-plugin-detail.png) for more ideas what kind of configuration options are available.
 
 # Event system
 
