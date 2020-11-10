@@ -16,8 +16,8 @@
 }
 
 .md-header {
+  box-shadow: 0 0 10px 0 #ccc;
   position: static;
-  box-shadow: none;
   height: auto;
 }
 
