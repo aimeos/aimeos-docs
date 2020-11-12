@@ -1,6 +1,6 @@
 ![Coupon details](Admin-backend-coupon-detail.png)
 
-There are some select and input fields in the left section of the detail view that are available for configuring a coupon. Their purpose are:
+The Coupon detail view offers vaious select and input fields to configure a coupon. Their purpose are:
 
 Status (required)
 : Controls the global availability of the configured coupon. There are several status values available but the coupon will only be used if the status is "enabled".
@@ -9,49 +9,56 @@ Label (required)
 : An internal label which helps you to identify the coupon and which can be used for searching in the administration interface.
 
 Provider (required)
-: This is the last part of the coupon provider class name, e.g. "FixedRebate" for the "\Aimeos\MShop\Coupon\Provider\FixedRebate". The name of the provider is **case sensitive**, so "fixedrebate" is not the same as "FixedRebate"! You will get a list of available providers when clicking on the input field. Each coupon provider can be enhanced by one or more decorators that must be added to the provider name and separated by a comma. You view the list of available decorators when clicking on the "+" symbol right of the input field. By clicking on the decorator name it will be added after the provider name or previously added decorators. For a detailed description of the available coupon providers and decorators that are part of the Aimeos core, please have a look at the [coupon overview](coupons.md) and the page for the [coupon decorators](coupon-decorators.md).
+: This is the last part of the coupon provider class name, e.g. "FixedRebate" for the "\Aimeos\MShop\Coupon\Provider\FixedRebate". The name of the provider is **case sensitive**, so "fixedrebate" is not the same as "FixedRebate"!    
+A list of available providers is shown when you click into the input field. Selecting a provider adds it to the input field. Each provider can be enhanced by one or more decorators, which you can choose from the drop-down list that appears when clicking on the "+" symbol next to the input field. Selecting a name of a decorator adds it sequentially to the provider and any previously added decorator(s). (Keep in mind that each decorator brings its own configuration settings. Therefore, depending on which decorator you activate and how many decorators you implement, the amount of configuration fields on the right site / in the lower section of the detail page will change.)    
+For a detailed description of all the available coupon providers and decorators provided by the Aimeos core, have a look at the [coupon overview](coupons.md) and the [coupon decorators](coupon-decorators.md).
 
 Start date (optional)
-: The point in time when the coupon will be available for customers to enter their codes. The date/time has to be in ISO format (YYYY-MM-DD HH:mm:ss) and the hours must be in the range of 0-23.
+: The point in time when the coupon will be available for customers to enter their codes. The date/time value has to be in ISO format (YYYY-MM-DD HH:mm:ss) and the hours must be in the range of 0-23.
 
 End date (optional)
-: The point in time when the coupon won't be available any more. For this field the same format applies as for "Start date".
+: The point in time when the coupon won't be available any more. The same format rules apply as for "Start date".
 
 
 # Coupon configuration
 
-The right side (or below) of the coupon detail view contains a key/value configuration panel where the necessary configuration values of the coupon and the decorators must be added. The left column in the configuration panel is for the configuration key, the right column for the value and at least the left column of each line must be filled with a valid key. You can add lines by clicking on the "Add" button in the menu bar and delete selected lines with the "Delete" button. The order of the lines doesn't matter.
+The right side (or lower part) of the coupon detail view offers a panel, which presents a list of all the configurable options of a coupon provider and its assigned decorators. Whenever you add or remove a provider or a decorator, its respective configuration option(s) will be added to or removed from the list automatically.
+
+The panel's left column is resevered for configuration keys, the right column for their values. At least the left column of each line must be filled with a valid key. You can add lines by clicking on the "Add" (+) button in the menu bar and delete selected lines via the respective "Delete" (x) button on a line's right side. The order of the lines doesn't matter.
 
 ![Coupon configuration](Admin-backend-coupon-config.png)
 
-Each coupon and decorator needs its own configuration. For details about the required resp. available configuration keys and values, please refer to the documentation of the coupon or decorator. Documentation for the built-in ones is available at the [coupon overview](coupons.md) page and the [coupon decorators](coupon-decorators.md) page. When you add a provider or a decorator, their configuration options will be added to the list automatically.
+Each coupon and each decorator needs its own configuration. For details about which configuration keys and values are available resp. required, refer to the documentation of the coupon or decorator. Documentation for *Aimeos*'s built-in coupons is available at the [coupon overview](coupons.md) page and the [coupon decorators](coupon-decorators.md) page.
 
 # Coupon codes
 
-You can add new coupons by clicking on the "+" symbol in the upper right corner of the list header and click on "Add" in the dropdown menu. Alternatively, you can import a whole file of coupon codes, one at each line by choosing "Import" instead. Also, this file can contain the number of times the code is valid as well as its start and end date separated by commas in each line.
+You can add new coupons by clicking on the "+" symbol in the upper right corner of the list header, then on "Add" in the dropdown menu. Alternatively, you can import a file with coupon codes by choosing "Import" instead (see [CSV upload](#csv-upload) below for more information).
+
 ![Coupon code list](Admin-backend-coupon-code-list.png)
 
-There available fields for coupon codes are:
+The available fields for coupon codes are:
 
 Code (required)
-: A coupon code that is unique in the shop site and is able to identify only the coupon configuration its associated with. Good coupon codes are not two long and should avoid similar looking characters (e.g. zero and "O" or 1 and "l"). Please think twice before you really add codes with more than eight characters! If a code should be generally available, it's a good idea to create a descriptive code for your promotion. In the other case, if a lot of codes are generated and each code is exactly for one user, they must be random enough so they can't be guessed.
+: A coupon code that is unique in the shop site and is able to identify only the coupon configuration it is associated with. Good coupon codes are not too long and should avoid similar looking characters (e.g. the number zero and the capital letter "O", or the number 1 and the lower letter "l"). Please think twice before you really add codes with more than eight (random) characters!
+
+If a code should be generally available (e.g. a special sale for "Black Friday" in 2021), it's a good idea to create a descriptive code for your promotion (e.g. "Black-Friday-2021"). On the other hand, if there are lot of different codes and each code is meant to be for exactly one user only, they must be random enough so they can't be guessed.
 
 Count (optional)
-: The number of times the code can be redeemed. This can be "1" if only one customer should be able to do so or any other positive number. A value of zero disables the coupon code und no value means that the code is available an unlimited number of times.
+: The number of times the code can be redeemed. This can be "1" if only one customer should be able to do so or any other positive number. A value of zero disables the coupon code, and no value at all means that the code is available for an unlimited number of times.
 
 Start date (optional)
-: The point in time when this coupon code can be entered by the customer. The date/time has to be in ISO format (YYYY-MM-DD HH:mm:ss) and the hours must be in the range of 0-23.
+: The point in time when this coupon code can be entered by the customer. The date/time value has to be in ISO format (YYYY-MM-DD HH:mm:ss), and the hours must be in the range of 0-23.
 
 End date (optional)
-: The point in time when the coupon code will expire. For this field the same format applies as for "Start date".
+: The point in time when the coupon code will expire. The same format rules apply as for "Start date".
 
 ## CSV upload
 
-There's also the possibility to upload CSV files with coupon codes when clicking on the the "+" symbol in the upper right corner of the coupon code list.
+There is also the possibility to upload CSV files with coupon codes when clicking on the the "+" symbol in the upper right corner of the coupon code list.
 
 ![Import coupons](Admin-backend-coupon-add.png)
 
-The format of the uploaded file must be:
+The format of the data in the CSV file must be:
 
 ```
 Code;Count;Start date;End date
@@ -60,7 +67,7 @@ TEST2,1
 TEST3
 ```
 
-The values for count, start date and end date are optional and using to value means no limitation of the coupon code in terms of the number of times it can be redeemed and time it is valid within.
+The "field values" *Code*, *Count*, *Start date*, *End date* must always be present in the first line, separated by a semicolon only (no white space!).  While *Code* is a required value, *Count*, *Start date* and *End date* are optional. **Important:** Assigning no values at all also means no limitations at all for a coupon code in terms of the number of times it can be redeemed and time it is valid within.
 
 !!! note
     To import the uploaded file, the "Coupon code import CSV" (*coupon/import/csv/code*) job must be executed regularly by a cronjob.
