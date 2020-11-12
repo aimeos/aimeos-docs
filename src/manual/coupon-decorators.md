@@ -55,7 +55,7 @@ category.only (optional)
 
 ## Once
 
-Tests if a customer has already used the same coupon code in previous orders by checking their billing email address. If this is the case, the customer is informed about that and the coupon code has no effect. No further configuration is required. This decorator is available since 2017.10.
+Tests if a customer has already used the same coupon code in previous orders by checking the billing email address. If this is the case, the customer is informed about that and the coupon code has no effect. No further configuration is required. This decorator is available since 2017.10.
 
 ## Not
 
