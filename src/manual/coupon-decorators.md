@@ -26,7 +26,7 @@ If you would also like to restrict the coupon to the availability of a certain p
 FixedRebate,BasketValues,Required
 ```
 
-The decorators are called from right to left, so in the given example the "Required" decorator would execute first, then the "BasketValues" decorator and at last the "FixedRebate" coupon provider. Therefore, it's a good idea to add decorators requiring less resources at the end of the input field and decorators using external sources just before the coupon provider.
+The decorators are called from right to left, so in the given example the "Required" decorator would execute first, then the "BasketValues" decorator and finally the "FixedRebate" coupon provider. Therefore, it's a good idea to add decorators requiring less resources at the end of the input field and decorators using external sources just before the coupon provider.
 
 
 # Built-in decorators
