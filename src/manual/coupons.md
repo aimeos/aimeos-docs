@@ -31,7 +31,8 @@ fixedrebate.productcode (required)
 : The unique code of the [discount product](products.md#Default-articles) that is used to show the granted rebate in the basket. As rebates are displayed like normal products, you can give them a descriptive name and add a picture in the same way as with a regular product. **Caution:** This is *not* the product the rebate should be for!
 
 fixedrebate.rebate (required)
-: Rebate value in the currency the customers are using that should be granted if they enter a valid rebate code. The format of the value must be "x.xx" but the decimal point and two digits afterwards are optional. The value must not include a thousands separator or anything similar! It's possible to use different values for multiple currencies. To use 5.00 EUR and 7.00 USD insert *{"EUR":5.00,"USD":7.00}* as configuration value.
+: Rebate value in the currency the customers are using that should be granted if they enter a valid rebate code. The format of the value must be "x.xx" but the decimal point and two digits afterwards are optional. The value must not include a thousands separator or anything similar! It's possible to use different values for multiple currencies. To use 5.00 EUR and 7.00 USD insert *{"EUR":5.00,"USD":7.00}* as configuration value. To enter value easily, click on the "+" icon to open an input dialog:
+![Enter values](Admin-backend-coupon-add-limit-for-rebate.png)
 
 ## PercentRebate
 
