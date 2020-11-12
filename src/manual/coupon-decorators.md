@@ -37,7 +37,7 @@ Tests if the total value of the basket (including service costs for delivery and
 
 basketvalues.total-value-min (optional)
 : The minimum value before the coupon has any effect. The format is a JSON encoded map of the currency ID and the value in x.xx format, e.g. *{"EUR":"1.00","USD":"1.00"}*
-To easliy enter the desired values, click the "+" icon to open a input form:
+To easliy enter the desired values, click the "+" icon to open a convenient input form:
 ![Input form to enter values](Admin-backend-coupon-limit.png)
 
 basketvalues.total-value-max (optional)
