@@ -10,7 +10,7 @@ Label (required)
 
 Provider (required)
 : This is the last part of the coupon provider class name, e.g. "FixedRebate" for the "\Aimeos\MShop\Coupon\Provider\FixedRebate". The name of the provider is **case sensitive**, so "fixedrebate" is not the same as "FixedRebate"!    
-A list of available providers is shown when you click into the input field. Selecting a provider adds it to the input field. Furthermore, each provider can be enhanced by one or more decorators, which can be choosen from the drop-down list that appears when the "+" symbol next to the input field is clicked. Selecting a decorator adds it sequentially to the provider and any previously added decorator(s). (Keep in mind that each decorator brings its own configuration settings. Therefore, depending on which decorator you activate and how many decorators you implement, the amount of configuration fields on the right site / in the lower section of the detail page will change.)    
+A list of available providers is shown when you click into the input field. Selecting a provider adds it to the input field. Furthermore, each provider can be enhanced by one or more decorators, which can be choosen from the drop-down list that appears when the "+" symbol next to the input field is clicked. Selecting a decorator adds it sequentially to the provider or any other previously added decorator(s).    
 For a detailed description of all the available coupon providers and decorators provided by the Aimeos core, have a look at [Available coupons](coupons.md) and [Adding features](coupon-decorators.md).
 
 Start date (optional)
@@ -19,6 +19,11 @@ Start date (optional)
 End date (optional)
 : The point in time when the coupon won't be available any more. The same format rules apply as for "Start date".
 
+!!! note
+     Keep in mind that each decorator brings its own configuration settings. Therefore, depending on which decorator you activate and how many decorators you implement, the amount of configuration fields on the right site / in the lower section of the detail page will change.
+
+!!! hint
+    Uninstalling a decorator has to be done manually by drag-selecting the decorator name including its preceding comma, hitting the delete key or cutting out the selected text and saving afterwards. A decorator's configuration fields will not be deleted right away, which might be helpful for testing purposes. If you don't know, which configuration fields do not belong to the current setup anymore, simply hit *Save* in the top right corner of the page: the page will refuse to save and instead warn about all superfluous fields.
 
 # Coupon configuration
 

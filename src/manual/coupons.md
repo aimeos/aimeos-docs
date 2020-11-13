@@ -22,7 +22,6 @@ Adds a [reduction product](products.md#Default-articles) to the basket of the cu
 freeshipping.productcode (required)
 : The unique code of the [discount product](products.md#Default-articles) that is used to add the negative delivery costs to the basket. As rebates are displayed like normal products, you can give them a descriptive name and add a picture in the same way as with a regular product.
 
-
 ## FixedRebate
 
 Adds a [reduction product](products.md#Default-articles) to the basket of the customer with the configured rebate amount. For example, if the configured rebate is *{"EUR":"5.00"}*, a value of 5€ would be subtracted from the basket total regardless of the total value of the basket. Therefore, in this case, it's a good idea to configure a [minimum order value](plugins.md#BasketLimits), that is higher than the granted rebate, as well.
