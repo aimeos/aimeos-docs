@@ -22,10 +22,7 @@ End date (optional)
      Keep in mind that each decorator can bring along its own configuration setting(s). Therefore, depending on which decorator you activate and how many decorators you implement, the amount of configuration fields on the right site / in the lower section of the detail page will change (and therefore also differ from the screenshot shown above).
 
 !!! hint
-    Up to and including *Aimeos* 20.10.2, uninstalling a decorator has to be done manually by drag-selecting the decorator name including its preceding comma, hitting the delete key or cutting out the selected text and saving afterwards.  
-    Starting with *Aimeos* 20.10.3, this field is read only. The only way to delete a decorator now is by replacing the current configuration completely via adding the provider anew and re-assigning decorators again.
-    
-    A decorator's configuration field(s) will not be deleted right away, which might be helpful for testing purposes. If you don't know, which configuration fields do not belong to the current setup anymore, simply hit *Save* in the top right corner of the page: the page will refuse to save and instead warn about all superfluous fields.
+    To delete a decorator, select the provider from the list and re-assign the decorators you need again. A decorator's configuration field(s) will not be deleted right away, which might be helpful for testing purposes.
 
 # Coupon configuration
 
@@ -35,7 +32,7 @@ The panel's left column is resevered for configuration keys, the right column fo
 
 ![Coupon configuration](Admin-backend-coupon-config.png)
 
-Each coupon and each decorator needs its own configuration. For details about which configuration keys and values are available resp. required, refer to the documentation of the coupon or decorator. Documentation for *Aimeos*'s built-in coupons is available in [Available coupons](coupons.md) and [Adding features](coupon-decorators.md).
+Each coupon and each decorator needs its own configuration. For details about which configuration keys and values are available resp. required, refer to the documentation of the coupon or decorator. For more information about *Aimeos*'s built-in coupons, checkout the documentation about [Available coupons](coupons.md) and [Adding features](coupon-decorators.md).
 
 
 # Coupon codes
@@ -73,7 +70,10 @@ TEST2,1
 TEST3
 ```
 
-The first line contains the required keys *Code*, *Count*, *Start date* and *End date*, separated by a colon or semicolon only. All the following lines hold the various values for either of the keys. Only the first value for *Code* is required, all the others are optional. **Important:** Assigning no values at all also means no limitations at all in terms of the number of times a coupon code can be redeemed as well as its valid time period.
+The first line contains the required keys *Code*, *Count*, *Start date* and *End date*, separated by a colon or semicolon only. All the following lines hold the various values for either of the keys. Only the first value for *Code* is required, all the others are optional. 
+
+!!! warn
+    **Important:** Assigning no values at all also means no limitations at all in terms of the number of times a coupon code can be redeemed as well as its valid time period.
 
 !!! note
     To import the uploaded file, the "Coupon code import CSV" (*coupon/import/csv/code*) job must be executed regularly by a cronjob.
