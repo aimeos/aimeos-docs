@@ -80,14 +80,20 @@ The **PostPay** provider is useful for all payments where the customers pay afte
 
 # Supported by ai-payments
 
-Service providers for many payment gateways are available by the *Aimeos* [ai-payments extension](https://github.com/aimeoscom/ai-payments). It includes:
+Service providers for many payment gateways are available by the *Aimeos* [ai-payments extension](https://github.com/aimeoscom/ai-payments). If you use composer, add this to your composer.json and run *composer update*:
+
+```
+composer req "aimeos/ai-payments"
+```
+
+*Aimeos* ai-payments supports the following payment gateways:
 
 ## Authorize.net AIM
 
-::: hint "Update November 2020:"
+!!! hint "Update November 2020:"
     This API is deprecated. The recommended alternative solution is called [Payment transations](http://developer.authorize.net/api/reference/index.html#payment-transactions), which incorporates all AIM transaction methods. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07.
+The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "omnipay/authorizenet"
@@ -113,10 +119,10 @@ testMode (boolean, optional)
 
 ## Authorize.net SIM
 
-::: hint "Update November 2020:"
+!!! hint "Update November 2020:"
     This API is deprecated. The recommended alternative solution is called [Accept hosted](https://developer.authorize.net/api/reference/features/accept_hosted.html). SIM still works and receives bug fixes. The exact end of lifetime of SIM has not yet been announced. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07.
+The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "omnipay/authorizenet"
@@ -151,10 +157,10 @@ testMode (boolean, optional)
 
 ## Authorize.net DPM
 
-::: warn "Update November 2020:"
+!!! warn "Update November 2020:"
     This API is deprecated. The recommended alternative solution is called [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html). Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07.
+The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "omnipay/authorizenet"
@@ -189,7 +195,7 @@ testMode (boolean, optional)
 
 ## CardSave
 
-The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07.
+The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "omnipay/cardsave"
@@ -215,7 +221,7 @@ testMode (boolean, optional)
 
 ## Mollie
 
-The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07.
+The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "omnipay/mollie"
