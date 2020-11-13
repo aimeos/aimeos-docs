@@ -99,6 +99,13 @@ return [
 ];
 ```
 
+Afterwards, you can access the values of your new columns in the item using:
+
+```php
+$item->get( 'mycolumn', '<default value>' );
+$item->mycolumn;
+```
+
 # Custom way
 
 To have full control over the implementation including those of the item, you need to do a bit more.
