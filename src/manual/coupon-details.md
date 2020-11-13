@@ -73,7 +73,7 @@ TEST3
 The first line contains the required keys *Code*, *Count*, *Start date* and *End date*, separated by a colon or semicolon only. All the following lines hold the various values for either of the keys. Only the first value for *Code* is required, all the others are optional. 
 
 !!! warn
-    **Important:** Assigning no values at all also means no limitations at all in terms of the number of times a coupon code can be redeemed as well as its valid time period.
+    Assigning no values at all also means no limitations at all in terms of the number of times a coupon code can be redeemed as well as its valid time period.
 
 !!! note
     To import the uploaded file, the "Coupon code import CSV" (*coupon/import/csv/code*) job must be executed regularly by a cronjob.
