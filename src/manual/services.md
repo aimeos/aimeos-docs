@@ -83,7 +83,7 @@ The **PostPay** provider is useful for all payments where the customers pay afte
 Service providers for many payment gateways are available by the *Aimeos* [ai-payments extension](https://github.com/aimeoscom/ai-payments). If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "aimeos/ai-payments"
+composer req aimeos/ai-payments
 ```
 
 *Aimeos* ai-payments supports the following payment gateways:
@@ -96,7 +96,7 @@ composer req "aimeos/ai-payments"
 The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "omnipay/authorizenet"
+composer req aimeos/ai-payments omnipay/authorizenet
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -125,7 +125,7 @@ testMode (boolean, optional)
 The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "omnipay/authorizenet"
+composer req aimeos/ai-payments omnipay/authorizenet
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -163,7 +163,7 @@ testMode (boolean, optional)
 The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "omnipay/authorizenet"
+composer req aimeos/ai-payments omnipay/authorizenet
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -198,7 +198,7 @@ testMode (boolean, optional)
 The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "omnipay/cardsave"
+composer req aimeos/ai-payments omnipay/cardsave
 ```
 
 It supports authorization/capture and offers these configuration options:
@@ -224,7 +224,7 @@ testMode (boolean, optional)
 The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "omnipay/mollie"
+composer req aimeos/ai-payments omnipay/mollie
 ```
 
 The available configuration options are:
@@ -287,7 +287,7 @@ testMode (boolean, optional)
 If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "vdbelt/omnipay-oppwa"
+composer req aimeos/ai-payments vdbelt/omnipay-oppwa
 ```
 
 It supports these configuration options:
@@ -322,7 +322,7 @@ testMode (boolean, optional)
 The [Payone](https://www.payone.com/) payment gateways are available via the Omnipay payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "academe/omnipay-payone"
+composer req aimeos/ai-payments academe/omnipay-payone
 ```
 
 The available configuration options are:
@@ -360,7 +360,7 @@ testMode (boolean, optional)
 The [Postfinance](https://e-payment.postfinance.ch) payment gateways are available via the Omnipay payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "bummzack/omnipay-postfinance:@dev"
+composer req aimeos/ai-payments bummzack/omnipay-postfinance:@dev
 ```
 
 The available configuration options are:
@@ -395,7 +395,7 @@ testMode (boolean, optional)
 The [Klarna Sofortüberweisung](https://www.klarna.com/sofort/) (previously *Sofortüberweisung*) payment gateway is available via the Omnipay payment service provider since 2016.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "aimeoscom/omnipay-sofort"
+composer req aimeos/ai-payments aimeoscom/omnipay-sofort
 ```
 
 The available configuration options are:
@@ -427,7 +427,7 @@ testMode (boolean, optional)
 The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider since 2015.07. It supports credit card payments and authorization before capture. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "omnipay/stripe"
+composer req aimeos/ai-payments omnipay/stripe
 ```
 
 The available configuration options are:
