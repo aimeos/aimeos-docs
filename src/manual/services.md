@@ -1,6 +1,6 @@
-The service panel is dedicated to the delivery and payment options that should be available during the checkout process. A service item configures the delivery or payment provider which are responsible for the further handling of the order (i.e. the payment).
+The service panel is dedicated to the delivery and payment options that should be available during the checkout process. A service item configures the delivery or payment provider which is responsible for the further handling of the order (i.e. the payment).
 
-The list view provides a paged list of all available delivery and payment options in the system, which can be [filtered](filtering-lists.md) by various criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Delivery and payment options can be added, edited or deleted using the buttons in the list. A click on the entry also opens the detail view for editing the delivery or payment item.
+The list view provides a paged list of all available delivery and payment options in the system, which can be [filtered](filtering-lists.md) by various criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Delivery and payment options can be added or deleted using the buttons in the list. A click on the entry also opens the detail view for editing the delivery or payment item.
 
 ![List of delivery/payment options](Admin-backend-service-list.png)
 
@@ -8,15 +8,15 @@ The list view provides a paged list of all available delivery and payment option
 
 ## Delivery
 
-During the checkout process, the customer might be able to choose between several delivery options (e.g. UPS, TNT, etc.) if they are made available by the shop owner. Each delivery option can have its own description, picture, and price. You can add as many delivery options as you like.
+During the checkout process, the customer can choose between several delivery options (e.g. UPS, TNT, etc.) if they are made available by the shop owner. Each delivery option can have its own description, picture and price. You can add as many delivery options as you like.
 
-Every delivery option needs a delivery provider configured with the necessary parameter. A delivery provider implements the handling of the order after the payment was successful. This can be either a completely manual handling, a transfer of the order to the logistic partner, or an automated process for providing a customized download file to the customer. Everything that can be implemented in an algorithm is possible within a provider.
+Every delivery option needs a properly configured delivery provider. It implements the handling of the order after the payment was successful. This can be a completely manual handling, a transfer of the order to a logistic partner or an automated process for providing a customized download file to the customer. Everything that can be implemented in an algorithm is possible within a provider.
 
 ## Payment
 
-Just as shop customers can select one of many delivery options, customers can select one of several payment options, but only if provided by the shop owner. Payment options can also have their own description, picture, and price.
+During checkout, customers can select a payment option if provided by the shop owner. Payment options can have their own description, picture, and price.
 
-For each payment option there must also be a configured payment provider to take care of the payment. There are two different payment processes: Local and remote payments. A local payment process collects the required payment data (if any additional data is necessary) and stores it locally in the shop system. Alternatively, a remote payment provider redirects the customer to a payment gateway, which handles the payment and notifies the shop system about the result of the payment process (usually success or failure).
+Each payment option requires its own configured payment provider that takes care of the payment. There are two different payment processes: local and remote payments. A local payment process collects the required payment data (if any additional data is necessary) and stores it locally in the shop system. Alternatively, a remote payment provider redirects the customer to a payment gateway, which handles the payment and notifies the shop system about the result of the payment process (usually success or failure).
 
 Extensions implementing payment providers are available, especially those using payment gateways to handle payments of customers.
 
@@ -51,7 +51,7 @@ xml.updatedir (optional)
 
 ## DirectDebit
 
-If you want to offer payments via an automatic bank transfer from the bank account of the customer, you should configure the **DirectDebit** payment service provider. The customer is asked for the necessary details like bank name, bank account, etc. which are stored along with the order in your database. This service doesn't have any options.
+If you want to offer payments via an automatic bank transfer from the bank account of the customer, you should configure the **DirectDebit** payment service provider. The customer is asked for the necessary details like bank name, bank account, etc., which are stored along with the order in your database. This service doesn't have any options.
 
 ## PayPalExpress
 
@@ -64,7 +64,7 @@ paypalexpress.ApiUsername
 : User name of the account that should be used for the automatic communication with the shop. This is not the name of your own user account!
 
 paypalexpress.ApiPassword
-: The password you have assigned the the API user name. This is not the password of your own user account!
+: The password you have assigned to the API user name. This is not the password of your own user account!
 
 paypalexpress.ApiSignature
 : The shared secret that is created by PayPal for the API user
@@ -80,12 +80,14 @@ The **PostPay** provider is useful for all payments where the customers pay afte
 
 # Supported by ai-payments
 
-Service providers for many payment gateways are available by the Aimeos [ai-payments extension](https://github.com/aimeoscom/ai-payments). This includes:
-
+Service providers for many payment gateways are available by the *Aimeos* [ai-payments extension](https://github.com/aimeoscom/ai-payments). It includes:
 
 ## Authorize.net AIM
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [AIM method](https://www.authorize.net/support/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07.
+::: hint "Update November 2020:"
+    This API is deprecated. The recommended alternative solution is called [Payment transations](http://developer.authorize.net/api/reference/index.html#payment-transactions), which incorporates all AIM transaction methods. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
+
+The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/authorizenet"
@@ -111,7 +113,10 @@ testMode (boolean, optional)
 
 ## Authorize.net SIM
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/support/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07.
+::: hint "Update November 2020:"
+    This API is deprecated. The recommended alternative solution is called [Accept hosted](https://developer.authorize.net/api/reference/features/accept_hosted.html). SIM still works and receives bug fixes. The exact end of lifetime of SIM has not yet been announced. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
+
+The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/authorizenet"
@@ -146,7 +151,10 @@ testMode (boolean, optional)
 
 ## Authorize.net DPM
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [DPM method](https://www.authorize.net/support/SIM_guide.pdf) (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07.
+::: warn "Update November 2020:"
+    This API is deprecated. The recommended alternative solution is called [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html). Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
+
+The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/authorizenet"
@@ -207,7 +215,7 @@ testMode (boolean, optional)
 
 ## Mollie
 
-The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07. It supports all on-line payment methods (e.g. credit card) but no off-line payments (e.g. SEPA) and no authorization before capture.
+The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07.
 
 ```
 composer req "omnipay/mollie"
@@ -230,7 +238,7 @@ testMode (boolean, optional)
 [Omnipay](https://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider since 2015.07.
 
 !!! note
-    You have to add the [Omnipay payment driver](https://github.com/thephpleague/omnipay#payment-gateways) you want to use to your composer.json and run *composer update*.
+    You have to add the [Omnipay payment driver](https://github.com/thephpleague/omnipay#payment-gateways) you want to use to your composer.json and run *composer update*. Read more about the installation process here: [https://omnipay.thephpleague.com/installation/](https://omnipay.thephpleague.com/installation/).
 
 It supports these configuration options:
 
@@ -255,12 +263,12 @@ testMode (boolean, optional)
 ![Aimeos Omnipay setup](Admin-backend-service-omnipay.png)
 
 !!! tip
-    Some payment gateways offered by Omnipay requires special handling. Sub-classing from the Omnipay provider and overwriting the existing methods if required can support even special payment gateways interfaces. Please drop us a note if you got a provider working in your shop.
+    Some payment gateways offered by Omnipay require special handling. Sub-classing from the Omnipay provider and overwriting the existing methods if required can support even special payment gateways interfaces. Please drop us a note if you got a provider working in your shop.
 
 
 ## OPPWA
 
-OPPWA is a white label platform for payments used by several payment providers like:
+[OPPWA](https://github.com/vdbelt/omnipay-oppwa) is a white label platform for payments used by several payment providers e.g.:
 
 * Hobex
 * HyperPay
@@ -269,6 +277,8 @@ OPPWA is a white label platform for payments used by several payment providers l
 * Peach Payments
 * Qualife
 * ZooPay
+
+If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "vdbelt/omnipay-oppwa"
@@ -303,7 +313,7 @@ testMode (boolean, optional)
 
 ## Payone
 
-The [Payone](https://www.payone.de/en/) payment gateways are available via the Omnipay payment service provider.
+The [Payone](https://www.payone.com/) payment gateways are available via the Omnipay payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "academe/omnipay-payone"
@@ -333,18 +343,18 @@ clearingtype (string, optional)
 : Code from the Payone documentation (default: "cc" for credit cards)
 
 testMode (boolean, optional)
-: Use "1" for test payments without real money. Requires activating the test mode in your payone account too
+: Use "1" for test payments without real money. Requires activating the test mode in your payone account, too
 
 
 ## Postfinance
 
-!!! warning
-    The *bummzack/omnipay-postfinance* driver is currently available for the outdated Omnipay 2.0 only and will not work in Aimeos 2019.x+ releases!
+!!! hint
+    The dev-master of the [*bummzack/omnipay-postfinance*](https://github.com/bummzack/omnipay-postfinance) driver supports Omnipay 3.0, which is required to work with *Aimeos* 2019.x+ releases!
 
 The [Postfinance](https://e-payment.postfinance.ch) payment gateways are available via the Omnipay payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
-composer req "bummzack/omnipay-postfinance"
+composer req "bummzack/omnipay-postfinance:@dev"
 ```
 
 The available configuration options are:
@@ -376,7 +386,7 @@ testMode (boolean, optional)
 
 ## Sofort
 
-The [Sofort](https://sofort.com/) payment gateway is available via the Omnipay payment service provider since 2016.07.
+The [Klarna Sofortüberweisung](https://www.klarna.com/sofort/) (previously *Sofortüberweisung*) payment gateway is available via the Omnipay payment service provider since 2016.07. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "aimeoscom/omnipay-sofort"
@@ -408,7 +418,7 @@ testMode (boolean, optional)
 
 ## Stripe
 
-The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider since 2015.07. It supports credit card payments and authorization before capture.
+The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider since 2015.07. It supports credit card payments and authorization before capture. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req "omnipay/stripe"
