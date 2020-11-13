@@ -1,24 +1,32 @@
-A decorator can add additional features on top of services only by configuration. For example, if a payment by invoice should only be available if the customer is logged in and already placed one successful order, then this can be done by an additional decorator added to the payment option. The great advantage of decorators is that they can be reused in any combination with all services. It's like a set of rules that can be rearranged to create different rule sets only with a small amount of rules.
+A decorator can add additional features on top of services only by configuration. For example, if a payment by invoice should only be available, when the customer is logged in and already placed at least one successful order, then this can be done by adding a decorator to the payment provider. The great advantage of decorators is that they can be reused in any combination with all services. It's like a set of rules that can be rearranged to create different *rule sets* with only a small amount of rules. Decorators are available for all types of services, therefore each decorator can be used with delivery and payment services. 
 
-Decorators are available for all types of services so each decorator can be used with delivery and payment services. They are activated by adding their name comma separated after the service provider name in the "Provider" field in the detail view a service item. If currently payment by invoice (provided by the PostPay service provider) is configured like this
+# Usage
+
+Decorators are activated by adding them to the "Provider" input field in the *Basic* view of a delivery/payment service item. The easiest way to do so is by clicking on the "+" icon next to the input field and selecting the desired decorator:
+
+![Add a decorator to the delivery/payment provider](Admin-backend-payment-delivery-add-decorator.png)
+
+However, if you decide to enter the names of the decorators (and the provider) manually, please keep in mind that they are case-sensitive and must be separated by a comma!
+
+**Example**: If a payment by invoice (provided by the "PostPay" service provider) is configured like this:
 
 ```
 PostPay
 ```
 
-the decorator checking for successful orders of the customer is added via
+the decorator checking for successful orders of the customer (the "OrderCheck" decorator) must be added like this:
 
 ```
 PostPay,OrderCheck
 ```
 
-If you would like to restrict the visibility of the payment option also to one or more countries, you can additionally add the "Country" decorator:
+If you would also like to restrict the visibility of the payment option also to one or more countries, you can additionally add the "Country" decorator:
 
 ```
 PostPay,OrderCheck,Country
 ```
 
-The decorators are called from right to left, so at first the "Country" decorator is executed, afterwards the "OrderCheck" decorator and at last the "PostPay" service provider. Therefore, it's a good idea to add the decorators requiring less resources at the end and the decorators using external sources just before the service provider.
+The decorators are called from right to left, so in the given example the "Country" decorator would execute first, then the "OrderCheck" decorator and finally the "PostPay" service provider. Therefore, it's a good idea to add the decorators requiring less resources at the end of the input field and the decorators using external sources just before the service provider.
 
 # Built-in decorators
 
@@ -32,12 +40,16 @@ category.include (optional)
 category.exclude (optional)
 : Comma separated list (without spaces) of catalog codes. If one product in the basket is in one of the configured categories, the service option is hidden from the user during the checkout.
 
-The service option is only shown if one product in the basket is from the "subscriptions" or "special" category or one of it's sub-categories:
+**Examples**: 
+
+The "Category" service option is only shown, if at least one product in the basket belongs to either the "subscriptions" or "special" category or any of their sub-categories:
+
 ```
 category.include : subscriptions,special
 ```
 
-The service option is hidden if one product in the basket is from the "subscriptions" or "special" category or one of it's sub-categories:
+The service option is hidden, if at last one product in the basket belongs to either the "subscriptions" or "special" category or any of their sub-categories:
+
 ```
 category.exclude : subscriptions,special
 ```
@@ -45,17 +57,19 @@ category.exclude : subscriptions,special
 
 ## Costs
 
-Adds an additional percentage based on the basket value to the configured delivery or payment costs. By default, service options can have a fixed price but this decorator is able to calculate additional costs, e.g. for credit card companies or PayPal which keep 1.25% to 3.5% of the total amount as transaction fee.
+Adds an additional percentage based on the basket value to the configured delivery or payment costs. By default, service options have a fixed price, but this decorator is able to calculate additional costs, e.g. for credit card companies or PayPal, services that keep 1.25% to 3.5% of the total amount as transaction fee.
 
 costs.percent (required)
 : Decimal value for the additional service fee in percent. The value must not contain the percent sign (%) and the fractions must be separated by a decimal point, e.g. "1.25" to add 0.125 for each Euro, Dollar or any other currency as service costs.
 
-To add 2.5% to each order as service fee where the service option was chosen use a configuration like this:
+**Example**: To add 2.5% to each order as service fee, where the service option was chosen, use a configuration like this:
+
 ```
 costs.percent : 2.5
 ```
 
 You can also use negative values for a reduction:
+
 ```
 costs.percent : -3.0
 ```
@@ -68,23 +82,27 @@ costs.percent : -3.0
 Limits the availability of a service option to one or more countries. Either the billing address, the delivery address or both can be used for the check. Please keep in mind that you have to configure the country drop-down on the address page in the checkout process before this decorator can be used.
 
 country.billing-include (optional)
-: If the selected country in the **billing address** of the customer matches one of the countries, the service option is **shown**. The configuration consists of a comma separated list of two letter ISO country codes in upper case, e.g. "DE,AT,CH". Please have a look at the full [list of official country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) if you are unsure. Also avoid white spaces between the codes and the commas. If the list is empty, the service option won't be shown at all.
+: If the selected country in the **billing address** of the customer matches one of the countries, the service option is **shown**. The configuration consists of a comma separated list of two letter ISO country codes in upper case, e.g. "DE,AT,CH". For a full list of official two letter country codes refer to [this wikipedia list](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Avoid white spaces between the codes and commas. If the list is empty, the service option won't be shown at all.
 
 country.billing-exclude (optional)
-: If the selected country in the **billing address** of the customer matches one of the countries, the service option is **hidden**. The configuration consists of a comma separated list of two letter ISO country codes in upper case, e.g. "DE,AT,CH". Please have a look at the full [list of official country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 if you are unsure. Also avoid white spaces between the codes and the commas.
+: If the selected country in the **billing address** of the customer matches one of the countries, the service option is **hidden**. (Same rules as for *country.billing-include* apply.)
 
 country.delivery-include (optional)
-: If the selected country in the **delivery address** of the customer matches one of the countries, the service option is **shown**. The configuration consists of a comma separated list of two letter ISO country codes in upper case, e.g. "DE,AT,CH". Please have a look at the full [list of official country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 if you are unsure. Also avoid white spaces between the codes and the commas. If the list is empty, the service option won't be shown at all.
+: If the selected country in the **delivery address** of the customer matches one of the countries, the service option is **shown**. (Same rules as for *country.billing-include* apply.)
 
 country.delivery-exclude (optional)
-: If the selected country in the **delivery address** of the customer matches one of the countries, the service option is **hidden**. The configuration consists of a comma separated list of two letter ISO country codes in upper case, e.g. "DE,AT,CH". Please have a look at the full [list of official country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 if you are unsure. Also avoid white spaces between the codes and the commas.
+: If the selected country in the **delivery address** of the customer matches one of the countries, the service option is **hidden**. (Same rules as for *country.billing-include* apply.)
+
+**Examples**: 
 
 To show the service option only for customers in Germany, Austria and Switzerland use
+
 ```
 country.billing-include : DE,AT,CH
 ```
 
 To hide a service option for customers living in UK use
+
 ```
 country.billing-exclude : GB
 ```
@@ -92,34 +110,40 @@ country.billing-exclude : GB
 If you would like to offer delivery options with different costs depending on the country use
 
 First delivery option:
+
 ```
 country.delivery-include : DE,AT,CH
 ```
 
 Second delivery option:
+
 ```
 country.delivery-exclude : DE,AT,CH
 ```
 
-The first delivery option would be shown for customers from Germany, Austria and Switzerland while only the second delivery option would be only available for customers from the rest of the world.
+The first delivery option would be presented to customers from Germany, Austria and Switzerland only, while the second delivery option would be available for customers from the rest of the world only.
 
 
 ## Currency
 
-Shows service options only of the currency used in the basket is one of the configured ones or is not one of the excluded ones.
+Shows service options, if the currency used in the basket is either found in the include or *not* found in the exclude configuration.
 
 currency.include (optional)
 : Comma separated list of three letter ISO currency codes (without spaces). If the used currency in the basket **matches one of the listed currency codes**, the service option is shown to the user during the checkout.
 
 currency.exclude (optional)
-: Comma separated list of three letter ISO currency codes (without spaces). If the used currency in the basket **doesn't match one of the listed currency codes**, the service option is shown to the user during the checkout.
+: Comma separated list of three letter ISO currency codes (without spaces). If the used currency in the basket **does *not* match one of the listed currency codes**, the service option is shown to the user during the checkout.
 
-If the customer has chosen "USD" as currency, the service option isn't shown if this configuration is set:
+**Examples**
+
+If the customer has chosen "USD" as currency, the service option is *not* shown if this configuration is set:
+
 ```
 currency.include : CHF,EUR,GBP
 ```
 
-When the customer again uses "USD" as currency, the service option is shown in this case:
+With "USD" as the customer's chosen currency, the service option is displayed with a configuration like this:
+
 ```
 currency.exclude : CHF,EUR
 ```
