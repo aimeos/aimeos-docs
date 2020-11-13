@@ -90,7 +90,7 @@ composer req aimeos/ai-payments
 
 ## Authorize.net AIM
 
-!!! hint "Update November 2020:"
+!!! warn
     This API is deprecated. The recommended alternative solution is called [Payment transations](http://developer.authorize.net/api/reference/index.html#payment-transactions), which incorporates all AIM transaction methods. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
 The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
@@ -119,7 +119,7 @@ testMode (boolean, optional)
 
 ## Authorize.net SIM
 
-!!! hint "Update November 2020:"
+!!! warn
     This API is deprecated. The recommended alternative solution is called [Accept hosted](https://developer.authorize.net/api/reference/features/accept_hosted.html). SIM still works and receives bug fixes. The exact end of lifetime of SIM has not yet been announced. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
 The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
@@ -157,7 +157,7 @@ testMode (boolean, optional)
 
 ## Authorize.net DPM
 
-!!! warn "Update November 2020:"
+!!! warn
     This API is deprecated. The recommended alternative solution is called [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html). Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
 The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
