@@ -22,7 +22,7 @@ End date (optional)
      Keep in mind that each decorator can bring along its own configuration setting(s). Therefore, depending on which decorator you activate and how many decorators you implement, the amount of configuration fields on the right site / in the lower section of the detail page will change (and therefore also differ from the screenshot shown above).
 
 !!! hint
-    To delete a decorator, select the provider from the list and re-assign the decorators you need again. A decorator's configuration field(s) will not be deleted right away, which might be helpful for testing purposes.
+    To delete a decorator, select the provider from the list and re-assign the decorator(s) you need. A decorator's configuration field(s) will not be deleted right away, which might be helpful for testing purposes.
 
 # Coupon configuration
 
@@ -72,7 +72,7 @@ TEST3
 
 The first line contains the required keys *Code*, *Count*, *Start date* and *End date*, separated by a colon or semicolon only. All the following lines hold the various values for either of the keys. Only the first value for *Code* is required, all the others are optional. 
 
-!!! warn
+!!! warning
     Assigning no values at all also means no limitations at all in terms of the number of times a coupon code can be redeemed as well as its valid time period.
 
 !!! note
