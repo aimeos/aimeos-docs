@@ -147,7 +147,7 @@ currency.exclude : CHF,EUR
 
 ## Date
 
-Customers can be enabled to chose a delivery/pick up date if you add the "Date" decorator to a (delivery) service option. You can configure certain restrictions for the delivery date:
+Offers customers an option to chose a delivery/pick up date. You can configure certain restrictions for the delivery date:
 
 date.minimumdays (optional)
 : Miniumn number of days to wait when selecting dates
@@ -175,7 +175,7 @@ delivery.collective : 1
 
 ## Download
 
-Checks if all products are downloads to enable or disable service options. This decorator is available since 2015.10.
+Checks if all products are downloads to enable or disable service options.
 
 download.all (optional)
 : If set to "1", the delivery or payment service option in the checkout process is only available when all products in the basket contain a download attribute (i.e. are download products). Otherwise, the service option is disabled. A value of "0" enables the service option if at least one of the products in the basket is *not* a download product resp. disables the option if all products are downloads.
@@ -236,12 +236,12 @@ Add this confiugration for the "OrderCheck" decorator so it returns true if the 
 ordercheck.total-number-min : 3
 ```
 
-For the availability, the decorators are evaluated from left to right. If the customer doesn't have three successful orders yet, the "OrderCheck" decorator will return "false", but the "Not" decorator turns that into "true" and the option is shown. If the customer has three or more successful orders, the "OrderCheck" decorator returns "true" but the "Not" decorator flips the result to "false" and the option is hidden.
+For the availability, the decorators are evaluated from left to right. If the customer hasn't placed at least three successful orders yet, the "OrderCheck" decorator will return "false", but the "Not" decorator turns that into "true" and therefore the option is shown. If the customer has three or more successful orders, the "OrderCheck" decorator returns "true", but the "Not" decorator flips the result to "false" and the option is hidden.
 
 
 ## OrderCheck
 
-Displays the payment or delivery option only if the customer has already placed at least one successful order. Pending payments for orders within a configurable amount of time can also be a reason to hide the service option. Customers must be logged in to see the options, otherwise those options are hidden by default. This decorator requires more processing time and should therefore be placed right after the service provider, if possible.
+Displays the payment or delivery option only, if the customer has already placed at least one successful order. Pending payments for orders within a configurable amount of time can also be a reason to hide the service option. Customers must be logged in to see the options, otherwise those options are hidden by default. This decorator requires more processing time and should therefore be placed right after the service provider, if possible.
 
 ordercheck.total-number-min (optional)
 : The service option will only be shown if the configured number of successfully placed orders is reached. The configuration value must be an integer.
@@ -249,7 +249,7 @@ ordercheck.total-number-min (optional)
 ordercheck.limit-days-pending (optional)
 : The delivery or payment option will be hidden if an order placed withing the specified number of days has a payment status "pending". The configuration value can be an integer or a decimal number (using a decimal point to separate the fractional part).
 
-Display the option only if the customer placed at least three successful orders:
+Display the option only, if the customer placed at least three successful orders:
 
 ```
 ordercheck.total-number-min : 3
@@ -305,7 +305,7 @@ product.exclude : 1357AB
 
 ## Quantity
 
-Aou can add delivery costs that depend on the quantity of products. It's even possible to define package sizes with more than one product, e.g. one to five products fit into a package and each package costs $5 extra. This decorator is available since 2017.10.
+Adds delivery costs that depend on the quantity of products. It's even possible to define package sizes with more than one product, e.g. one to five products fit into a package and each package costs $5 extra.
 
 quantity.packagecosts (required)
 : Delivery costs added for each required article or package of articles
@@ -316,7 +316,7 @@ quantity.packagesize (optional)
 
 ## Reduction
 
-Grants a reduction of a configurable percentage based on the basket value for the delivery or payment option. If you would like to promote certain delivery or payment options, you can reduce the costs of the order by a defined percentage. The reduction can be granted only if the total value of the basket is above a minimum and/or below a maximum value.
+Grants a reduction of a configurable percentage based on the basket value for the delivery or payment option. If you would like to promote certain delivery or payment options, you can reduce the costs of the order by a defined percentage. The reduction can be granted only, if the total value of the basket is above a minimum and/or below a maximum value.
 
 reduction.percent (required)
 : Decimal value of the reduction in percent. The value must not contain the percent sign (%) and the fractional part must be separated by a decimal point, e.g. "2.5", to reduce each Euro, Dollar or any other currency by 0.025.
@@ -356,12 +356,12 @@ reduction.basket-value-max : {"EUR":500}
 
 ## Supplier
 
-Adds a list of suppliers to the (delivery) service options, from which a customer can choose. The supplier can be a local store,  for example, where customers can pick up their orders. The list of available suppliers is generated from the active suppliers you add in the "Supplier" panel. The code of the chosen supplier is stored as order service attribute. No further configurations required. This decorator is available since 2017.10.
+Adds a list of suppliers to the (delivery) service options, from which a customer can choose. The supplier can be a local store,  for example, where customers can pick up their orders. The list of available suppliers is generated from the active suppliers you add in the "Supplier" panel. The code of the chosen supplier is stored as order service attribute. No further configurations required.
 
 
 ## Time
 
-Customers are able to chose a delivery/pick up time if you add the "Time" decorator to a (delivery) service option. This decorator is available since 2017.10.
+Customers are able to chose a delivery/pick up time if you add the "Time" decorator to a (delivery) service option.
 
 Certain restrictions for the delivery time can be configured:
 
@@ -379,7 +379,7 @@ The chosen delivery time will be stored as service attribute in the order of the
 
 ## Weight
 
-Shows delivery or payment options only if the sum of all product weights is between the configured minimum and maximum weight values. It's assumed that you use the same weight measure for all products weights, e.g. kg, g, lbs or any other suitable weight measure.
+Shows delivery or payment options only, if the sum of all product weights is between the configured minimum and maximum weight values. It's assumed that you use the same weight measure for all products weights, e.g. kg, g, lbs or any other suitable weight measure.
 
 weight.min (optional)
 : Minimum weight of all products to show the service option
