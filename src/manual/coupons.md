@@ -2,7 +2,7 @@ Coupon providers are classes that modify the content of the basket after a valid
 
 The codes are associated to one configured coupon provider, so different codes can be used for differently configured providers. The same provider can be configured and used twice, e.g. the first includes a rebate of 5€, the second a rebate of 10€. Depending on the entered code, either the provider with 5€ or 10€ is used.
 
-The configured providers are also notified if the basket content changes because the customer added or deleted a product, has chosen a payment or delivery method or when another coupon is entered. They can then adapt the result of their previously performed action. By default only one coupon code can be entered by the customer, but this can be changed to any number by setting the number of allowed codes.
+The configured providers are also notified if the basket content changes because the customer added or deleted a product, has chosen a payment or delivery method or when another coupon is entered. They can then adapt the result of their previously performed action. By default only one coupon code can be entered by the customer, but this can be changed to any number by [setting the number of allowed codes](../../config/controller-frontend/basket/#couponallowed).
 
 Coupon providers can be enhanced by [decorators](coupon-decorators.md) to add certain requirements for restricting coupons. If the requirements for the action aren't met, the coupon code is added to the basket nevertheless, and also stays in the basket. As soon as the basket content changes, the conditions are re-evaluated by the provider and the configured decorators.
 
