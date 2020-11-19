@@ -69,6 +69,9 @@ paypalexpress.ApiPassword
 paypalexpress.ApiSignature
 : The shared secret that is created by PayPal for the API user
 
+!!! hint
+    The *Aimeos* PayPalExpress driver uses the [NVP (Name-Value Pair) API](https://developer.paypal.com/docs/nvp-soap-api/NVPAPIOverview/), which is only available with business accounts. This PayPal service is nowadays known as *PayPal Checkout*. – If you test your account with a sandbox, remember to also change the links already given in the *Aimeos* PayPalExpress interface (e.g. "https://api-3t.paypal.com/nvp" to "https://api-3t.sandbox.paypal.com/nvp").
+
 ## PrePay
 
 The **PrePay** provider is used for payments that must be done in advance and before the delivery of the ordered products is started, like a bank transfer in advance. This service doesn't have any options.
@@ -93,7 +96,7 @@ composer req aimeos/ai-payments
 !!! warn
     This API is deprecated. The recommended alternative solution is called [Payment transations](http://developer.authorize.net/api/reference/index.html#payment-transactions), which incorporates all AIM transaction methods. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req aimeos/ai-payments omnipay/authorizenet
@@ -122,7 +125,7 @@ testMode (boolean, optional)
 !!! warn
     This API is deprecated. The recommended alternative solution is called [Accept hosted](https://developer.authorize.net/api/reference/features/accept_hosted.html). SIM still works and receives bug fixes. The exact end of lifetime of SIM has not yet been announced. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req aimeos/ai-payments omnipay/authorizenet
@@ -160,7 +163,7 @@ testMode (boolean, optional)
 !!! warn
     This API is deprecated. The recommended alternative solution is called [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html). Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req aimeos/ai-payments omnipay/authorizenet
@@ -195,7 +198,7 @@ testMode (boolean, optional)
 
 ## CardSave
 
-The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req aimeos/ai-payments omnipay/cardsave
@@ -221,7 +224,7 @@ testMode (boolean, optional)
 
 ## Mollie
 
-The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req aimeos/ai-payments omnipay/mollie
@@ -241,7 +244,7 @@ testMode (boolean, optional)
 
 ## Omnipay (generic)
 
-[Omnipay](https://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider since 2015.07.
+[Omnipay](https://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider.
 
 !!! note
     You have to add the [Omnipay payment driver](https://github.com/thephpleague/omnipay#payment-gateways) you want to use to your composer.json and run *composer update*. Read more about the installation process here: [https://omnipay.thephpleague.com/installation/](https://omnipay.thephpleague.com/installation/).
@@ -424,7 +427,7 @@ testMode (boolean, optional)
 
 ## Stripe
 
-The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider since 2015.07. It supports credit card payments and authorization before capture. If you use composer, add this to your composer.json and run *composer update*:
+The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider. It supports credit card payments and authorization before capture. If you use composer, add this to your composer.json and run *composer update*:
 
 ```
 composer req aimeos/ai-payments omnipay/stripe
