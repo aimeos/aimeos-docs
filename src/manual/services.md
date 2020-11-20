@@ -404,13 +404,13 @@ composer req aimeos/ai-payments aimeoscom/omnipay-sofort
 The available configuration options are:
 
 projectId (string, required)
-: Project ID from Projects -> My Projects -> `<project name>` -> General settings
+: Project ID from Projects -> My Projects
 
 username (string, required)
-: Customer ID from Projects -> My Projects -> `<project name>` -> General settings
+: "Customer No." ("user_id" in test mode), shown in the top left of the user's Klarna backend
 
 password (string, required)
-: API key from Projects -> My Projects -> `<project name>` -> General settings
+: API key from Projects (not available in test mode) -> My Projects -> `<project name>` -> Base settings
 
 type (string, required)
 : Gateway name, "Sofort" without quotation marks
@@ -422,7 +422,10 @@ address (boolean, optional)
 : A value of "1" will send the customer address to the Sofort server for additional verification
 
 testMode (boolean, optional)
-: Use "1" for test payments without real money. Requires activating the test mode in your sofort.com account too
+: Use "1" for test payments without real money. Requires activating the test mode in your sofort.com account, too
+
+!!! hint 
+    You have to create a valid account with Klarna Sofort first, before you can create a project and activate the test mode. During registration you will be asked for bank details, but you will not be charged yet. Once you have an account, create a new project under "New project" and choose "Classic project" as project type.
 
 
 ## Stripe
