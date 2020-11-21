@@ -70,7 +70,7 @@ paypalexpress.ApiSignature
 : The shared secret that is created by PayPal for the API user
 
 !!! hint
-    The *Aimeos* PayPalExpress driver uses the [NVP (Name-Value Pair) API](https://developer.paypal.com/docs/nvp-soap-api/NVPAPIOverview/), which is only available with business accounts. This PayPal service is nowadays known as *PayPal Checkout*. – If you test your account with a sandbox, remember to also change the links already given in the *Aimeos* PayPalExpress interface (e.g. "https://api-3t.paypal.com/nvp" to "https://api-3t.sandbox.paypal.com/nvp").
+    The *Aimeos* PayPalExpress driver uses the [NVP (Name-Value Pair) API](https://developer.paypal.com/docs/nvp-soap-api/NVPAPIOverview/), which is only available with business accounts. This PayPal service is nowadays known as *PayPal Checkout*. If you test your account with a sandbox, remember to also change the links already given in the *Aimeos* PayPalExpress interface (e.g. *https://api-3t.paypal.com/nvp* to *https://api-3t.sandbox.paypal.com/nvp*).
 
 ## PrePay
 
