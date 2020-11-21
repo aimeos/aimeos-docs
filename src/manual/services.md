@@ -69,6 +69,9 @@ paypalexpress.ApiPassword
 paypalexpress.ApiSignature
 : The shared secret that is created by PayPal for the API user
 
+!!! hint
+    The *Aimeos* PayPalExpress driver uses the [NVP (Name-Value Pair) API](https://developer.paypal.com/docs/nvp-soap-api/NVPAPIOverview/), which is only available with business accounts. This PayPal service is nowadays known as *PayPal Checkout*. If you test your account with a sandbox, remember to also change the links already given in the *Aimeos* PayPalExpress interface (e.g. *https://api-3t.paypal.com/nvp* to *https://api-3t.sandbox.paypal.com/nvp*).
+
 ## PrePay
 
 The **PrePay** provider is used for payments that must be done in advance and before the delivery of the ordered products is started, like a bank transfer in advance. This service doesn't have any options.
@@ -80,7 +83,7 @@ The **PostPay** provider is useful for all payments where the customers pay afte
 
 # Supported by ai-payments
 
-Service providers for many payment gateways are available by the *Aimeos* [ai-payments extension](https://github.com/aimeoscom/ai-payments). If you use composer, add this to your composer.json and run *composer update*:
+Service providers for many payment gateways are available by the *Aimeos* [ai-payments extension](https://github.com/aimeoscom/ai-payments). If you use composer run:
 
 ```
 composer req aimeos/ai-payments
@@ -93,7 +96,7 @@ composer req aimeos/ai-payments
 !!! warn
     This API is deprecated. The recommended alternative solution is called [Payment transations](http://developer.authorize.net/api/reference/index.html#payment-transactions), which incorporates all AIM transaction methods. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments omnipay/authorizenet
@@ -122,7 +125,7 @@ testMode (boolean, optional)
 !!! warn
     This API is deprecated. The recommended alternative solution is called [Accept hosted](https://developer.authorize.net/api/reference/features/accept_hosted.html). SIM still works and receives bug fixes. The exact end of lifetime of SIM has not yet been announced. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Authorize.net](https://www.authorize.net/) gateway for the [SIM method](https://www.authorize.net/content/dam/anet-redesign/documents/SIM_guide.pdf) (collect payment details at the payment gateway site) is available via the **AuthorizeSIM** payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments omnipay/authorizenet
@@ -160,7 +163,7 @@ testMode (boolean, optional)
 !!! warn
     This API is deprecated. The recommended alternative solution is called [Accept.js](https://developer.authorize.net/api/reference/features/acceptjs.html). Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
 
-The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Authorize.net](https://www.authorize.net/) gateway for the DPM method (collect payment details locally but pass them to the payment gateway directly) is available via the **AuthorizeDPM** payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments omnipay/authorizenet
@@ -195,7 +198,7 @@ testMode (boolean, optional)
 
 ## CardSave
 
-The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [CardSave](https://www.cardsave.net/) payment gateway is available via the **CardSave** payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments omnipay/cardsave
@@ -221,7 +224,7 @@ testMode (boolean, optional)
 
 ## Mollie
 
-The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since 2015.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since. If you use composer run:
 
 ```
 composer req aimeos/ai-payments omnipay/mollie
@@ -241,7 +244,7 @@ testMode (boolean, optional)
 
 ## Omnipay (generic)
 
-[Omnipay](https://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider since 2015.07.
+[Omnipay](https://omnipay.thephpleague.com/) is a library offering a common interface for 100+ different payment gateways. It's available via the **OmniPay** payment service provider.
 
 !!! note
     You have to add the [Omnipay payment driver](https://github.com/thephpleague/omnipay#payment-gateways) you want to use to your composer.json and run *composer update*. Read more about the installation process here: [https://omnipay.thephpleague.com/installation/](https://omnipay.thephpleague.com/installation/).
@@ -284,7 +287,7 @@ testMode (boolean, optional)
 * Qualife
 * ZooPay
 
-If you use composer, add this to your composer.json and run *composer update*:
+If you use composer run:
 
 ```
 composer req aimeos/ai-payments vdbelt/omnipay-oppwa
@@ -319,7 +322,7 @@ testMode (boolean, optional)
 
 ## Payone
 
-The [Payone](https://www.payone.com/) payment gateways are available via the Omnipay payment service provider. If you use composer, add this to your composer.json and run *composer update*:
+The [Payone](https://www.payone.com/) payment gateways are available via the Omnipay payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments academe/omnipay-payone
@@ -355,9 +358,9 @@ testMode (boolean, optional)
 ## Postfinance
 
 !!! hint
-    The dev-master of the [*bummzack/omnipay-postfinance*](https://github.com/bummzack/omnipay-postfinance) driver supports Omnipay 3.0, which is required to work with *Aimeos* 2019.x+ releases!
+    The *dev-master* of the [*bummzack/omnipay-postfinance*](https://github.com/bummzack/omnipay-postfinance) driver supports Omnipay 3.0, which is required to work with *Aimeos* 2019.x+ releases!
 
-The [Postfinance](https://e-payment.postfinance.ch) payment gateways are available via the Omnipay payment service provider. If you use composer, add this to your composer.json and run *composer update*:
+The [Postfinance](https://e-payment.postfinance.ch) payment gateways are available via the Omnipay payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments bummzack/omnipay-postfinance:@dev
@@ -384,7 +387,7 @@ testMode (boolean, optional)
 : Use "1" for test payments without real money. Requires activating the test mode in your payone account too
 
 !!! note
-    Please configure your Postfinance account according to this documenation: [Required Postfinance settings] (https://github.com/bummzack/omnipay-postfinance#configuration-in-the-postfinance-backend)
+    Please configure your Postfinance account according to this documenation: [Required Postfinance settings](https://github.com/bummzack/omnipay-postfinance#configuration-in-the-postfinance-backend)
 
 ![Parameter hashing configuration](Postfinance-global.png)
 ![Send feedback parameters](Postfinance-feedback.png)
@@ -392,7 +395,7 @@ testMode (boolean, optional)
 
 ## Sofort
 
-The [Klarna Sofortüberweisung](https://www.klarna.com/sofort/) (previously *Sofortüberweisung*) payment gateway is available via the Omnipay payment service provider since 2016.07. If you use composer, add this to your composer.json and run *composer update*:
+The [Klarna Sofortüberweisung](https://www.klarna.com/sofort/) (previously *Sofortüberweisung*) payment gateway is available via the Omnipay payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments aimeoscom/omnipay-sofort
@@ -401,13 +404,13 @@ composer req aimeos/ai-payments aimeoscom/omnipay-sofort
 The available configuration options are:
 
 projectId (string, required)
-: Project ID from Projects -> My Projects -> <project name> -> General settings
+: Project ID from Projects -> My Projects
 
 username (string, required)
-: Customer ID from Projects -> My Projects -> <project name> -> General settings
+: "Customer No." ("user_id" in test mode), shown in the top left of the user's Klarna backend
 
 password (string, required)
-: API key from Projects -> My Projects -> <project name> -> General settings
+: API key from Projects (not available in test mode) -> My Projects -> `<project name>` -> Base settings
 
 type (string, required)
 : Gateway name, "Sofort" without quotation marks
@@ -419,12 +422,15 @@ address (boolean, optional)
 : A value of "1" will send the customer address to the Sofort server for additional verification
 
 testMode (boolean, optional)
-: Use "1" for test payments without real money. Requires activating the test mode in your sofort.com account too
+: Use "1" for test payments without real money. Requires activating the test mode in your sofort.com account, too
+
+!!! hint 
+    You have to create a valid account with Klarna Sofort first, before you can create a project and activate the test mode. (During registration you will be asked for your bank account details, but you will not be charged yet.) Once you have an account, create a new project under "New project" and choose "Classic project" as project type.
 
 
 ## Stripe
 
-The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider since 2015.07. It supports credit card payments and authorization before capture. If you use composer, add this to your composer.json and run *composer update*:
+The [Stripe](https://stripe.com) payment gateway is available via the **Stripe** payment service provider. It supports credit card payments and authorization before capture. If you use composer run:
 
 ```
 composer req aimeos/ai-payments omnipay/stripe
