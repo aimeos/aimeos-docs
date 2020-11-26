@@ -1,6 +1,8 @@
 # Change configuration
 
-There are a lot of configuration options available and documented in the *Configuration* section. The keys in the configuration documentation are always in the form of:
+There are a lot of configuration options available and documented in the *Configuration* section.
+
+The keys in the configuration documentation are always in the form of:
 
 ```
 client/html/catalog/filter/default/button = 1
@@ -17,6 +19,17 @@ client.html.catalog.filter.default.button = 1
     
     ```typoscript
     client.html.catalog.lists.standard.template-body = catalog/lists/body-mytemplate
+    ```
+
+!!! important
+    The *ai-typo3* extension brings even more configuration options along. Due to the way the configuration section of this documentaion is generated, these options do not show up currently. Please have a look at the source files at `<typo3-root>/ext/ai-typo3/lib/custom/src/MShop/Customer/Manager/Typo3.php` and `<typo3-root>/ext/ai-typo3/lib/custom/src/MShop/Customer/Manager/Group/Typo3.php` for detailed information. The options in question all start with `mshop/customer/manager/typo3/` or  `mshop/customer/manager/group/typo3/`. The 2 most common options needed to configure the `Users` folder (where customers are saved to on account creation) are:
+    ```
+    plugin.tx_aimeos.settings {
+        mshop.customer.manager {
+            group.typo3.pid-default = {$tx_aimeos.customer.pid}
+            typo3.pid-default = {$tx_aimeos.customer.pid}
+        }
+    }
     ```
 
 ## Frontend
