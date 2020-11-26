@@ -11,7 +11,7 @@ To extend or overwrite existing classes, you have to:
 
 # Easy way
 
-Since 2019.10 it's possible to add new columns by [extending the database table](schema-migrations.md) and a manager decorator only. The example will use the customer manager but you can extend all managers in the same way.
+It is possible to add new columns by [extending the database table](schema-migrations.md) and a manager decorator only. The example will use the customer manager but you can extend all managers in the same way.
 
 Implementing decorators is a great way to dynamically extend managers without inheriting from the existing manager class. Instead, you can wrap multiple decorators around a manager object like the layers of an onion. In each decorator, you can implement additional code that changes the parameters or the result of the manager method or performs additional actions.
 

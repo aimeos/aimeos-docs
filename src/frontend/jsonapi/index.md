@@ -1,4 +1,4 @@
-Since 2017.04, Aimeos contains a front-end JSON API modeled after the guidelines of <https://jsonapi.org/>. It enables you to view and order products via mobile apps or create JavaScript applications to access to any Aimeos based online shop using a single look and feel.
+Aimeos contains a front-end JSON API modeled after the guidelines of <https://jsonapi.org/>. It enables you to view and order products via mobile apps or create JavaScript applications to access to any Aimeos based online shop using a single look and feel.
 
 The entry point to access the Aimeos JSON API depends on the host application you use (Laravel, Symfony, TYPO3). You have to retrieve the initial base URL from a configuration setting or somewhere else. The resource URLs are different depending on the environment, but you can get the available ones by querying the meta data from the base URL (via the HTTP OPTIONS method).
 

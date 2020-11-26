@@ -47,7 +47,7 @@ basketvalues.total-value-max (optional)
 
 ## Category
 
-Tests if at least one product from the configured category or categories is in the basket of the customer. The decorator is available since 2017.10.
+Tests if at least one product from the configured category or categories is in the basket of the customer.
 
 category.code (required)
 : The category code or a list of comma-separated category codes (e.g. home,men,shirts)
@@ -57,7 +57,7 @@ category.only (optional)
 
 ## Once
 
-Tests if a customer has already used the same coupon code in previous orders by checking the billing email address. If this is the case, the customer is informed about that and the coupon code has no effect. No further configuration is required. This decorator is available since 2017.10.
+Tests if a customer has already used the same coupon code in previous orders by checking the billing email address. If this is the case, the customer is informed about that and the coupon code has no effect. No further configuration is required.
 
 ## Not
 
