@@ -12,16 +12,16 @@ The list view provides a paged list of all available products in the system, whi
 
 ## Default articles
 
-Articles (product type: "Default") are the base for almost all products that are added to the shop. Each article contains its own SKU and therefore its own stock level.
+An *Article* (product type / product code: "Default") is the base for almost all products that are added to the shop. An *article* contains its own SKU and therefore its own stock level. All *articles* must be assigned to at least one category in order to be visible, selectable and searchable in the frontend.
 
 ![Product article](Admin-product-article.png)
 
-Aimeos can offer discounts of various types when the consumer enters a coupon code. In case of monetary discounts, the amount is assigned to the configured (discount) article. In that case, the article is only used for giving the discount and it shouldn't be associated to a category. This ensures that the product is not added to the catalog index and therefore, not listed in any search results. It also prevents users from adding that product to their basket at all.
+There is something like a **non-categorizable article**, though. This is actually not a separate product type, but a *default article* product, which *must not* be added to any category, reason being that such an *article* is only used in conjunction with [vouchers](#vouchers) (not to be confused with a *voucher product*!) and/or any of their providers. A *voucher* is usually used to apply a rebate or a discount to the basket, but it itself does not have any form elements for content (texts, images et. alt.) that might be required for display once it is applied. Therefore it is dependent on such an uncategorized *default article* product that provides any desired information. Due to the nature of such a *voucher* – appling a rebate or discount – these non-categorized articles are sometimes also referred to as *rebate products* or *discount products*. 
 
 
 ## Bundles
 
-Product bundles are a combination of articles that can be added by a customer to the basket in one step and that will stay there as one product. Only select the articles that should be part of the bundle in the "Bundle" tab of the product detail view. You should also add texts, images and prices to the bundle that are used instead of the data from the single articles. The bundled articles will be shown in the product detail view as well.
+*Bundles* are a combination of articles that can be added by a customer to the basket in one step and that will stay there as one product. Only select the articles that should be part of the bundle in the "Bundle" tab of the product detail view. You should also add texts, images and prices to the bundle that are used instead of the data from the single articles. The bundled articles will be shown in the product detail view as well.
 
 ![Product bundles](Admin-product-bundle.png)
 
@@ -31,16 +31,16 @@ Product bundles are a combination of articles that can be added by a customer to
 
 ## Events
 
-Event products are similar to articles, but they have a start and end date assigned where the event will happen.
+*Event* products are similar to articles, but they have a start and end date assigned where the event will happen.
 
 ![Event products](Admin-product-event.png)
 
-Contrary to regular products, events are shown in the frontend catalog lists even if their start date is in the future. When their end date is reached, they won't be shown any more.
+Contrary to regular products, *event* products are shown in the frontend catalog lists even if their start date is in the future. Once their end date is reached, they won't be shown any more.
 
 
 ## Selections
 
-If you have several variations of a single product that differ by the unique code and in the values of the associated attributes and you want to show them only once in the product lists, then you should use a product of type "Selection". It's an alternative to adding all attributes to one product which can only have one code/SKU and store the selected attributes in the order.
+If you have several variations of a single product that differ by the unique code and in the values of the associated attributes and you want to show them only once in the product lists, then you should use a product of type *Selection*. It's an alternative to adding all attributes to one product which can only have one code/SKU and store the selected attributes in the order.
 
 ![Create variant attributes](Admin-attribute-list.png)
 
@@ -72,18 +72,18 @@ In the next step, create a product of type "Selection" in the "Variants" tab, yo
 
 To each jeans article, you have to associate the combination of attributes that uniquely identifies the jeans.
 
-After saving the selection product, you will find the articles that belongs to the selection produt in the product list as well. You can also open the product details for each article directly if you click on the eye symbol in the variants tab.
+After saving the *selection* product, you will find all the articles that belong to the *selection* produt in the product list as well. You can also open the product details for each article individually if you click on the eye symbol in the variants tab.
 
-Each selection article can have own prices and images like any other product. They will be shown/used if a customer selects the variant attributes that identify the article.
+Each *selection* article can have its own texts, prices and images, like any other product. They will be shown/used if a customer selects the variant attributes that identify the article.
 
 
 ## Vouchers
 
-Voucher products are virtual products that will generate a coupon code for the bought value which is sent to the customer afterwards. The generated coupon code can be used by the customers themselves or as gifts for other persons. A voucher product can be a single article with a fixed price, an article with a [user defined price](product-details.md#price) or it can be part of a selection product (assign a variant attribute in that case).
+*Voucher* products (*not* to be confused with [*vouchers*](coupons.md)) are virtual products that will generate a *coupon code* once it has been bought. That *coupon code* will be emailed to the customer, who can use it or sent on to other persons (e.g. as a gift). A *voucher* product can be a single *article* with a fixed price, an article with a [user defined price](product-details.md#price) or part of a *selection* product (assign a variant attribute in that case).
 
 ![Voucher product](Admin-product-voucher.png)
 
-After the customer bought the voucher product and the payment is authorized or received, the **order/email/voucher** job controller will generate the coupon codes and sends an e-mail with the code to the delivery address (or billing address if no delivery address is given) of the order. Make sure you run that **job controller at least every five minutes**.
+After a customer has bought a *voucher* product and payment has been authorized or received, the [**order/email/voucher** job controller](./../cronjobs/index.md) will generate the coupon codes and send them via email to the delivery address (or billing address if no delivery address is given) of the order. Make sure you run that **job controller at least every five minutes**.
 
 !!! warning
-    You need to set up the [Voucher coupon provider](coupons.md#Voucher) for enabling the customer (or the person the voucher code is given to) to redeem voucher
+    You need to set up the [Voucher coupon provider](coupons.md#Voucher) for enabling the customer (or the person the voucher code will be given to) to redeem the voucher.
