@@ -95,6 +95,9 @@ The available fields for reviews are:
 review.domain
 : Domain of the reviewed item, e.g. "product" (required, up to 32 bytes)
 
+review.orderproductid
+: ID of the product in the order of the customer (required, up to 36 bytes)
+
 review.refid
 : ID of the reviewed item (required, up to 36 bytes)
 
@@ -117,6 +120,7 @@ The request for creating a new review looks similar to this one:
     -d '{"data": [{
         "attributes": {
             "review.domain": "product",
+            "review.orderproductid": "123",
             "review.refid": "1",
             "review.name": "Test User",
             "review.rating": 5,
@@ -129,6 +133,7 @@ The request for creating a new review looks similar to this one:
     var params = {'data': [{
         'attributes': {
             "review.domain": "product",
+            "review.orderproductid": "123",
             "review.refid": "1",
             "review.name": "Test User",
             "review.rating": 5,
@@ -155,7 +160,7 @@ The request for creating a new review looks similar to this one:
     ```
 
 !!! warning
-    For each product, a customer can only create one review!
+    For each product, a customer can only create one review and you have to pass the ID of the product in the order of the customer to prevent fake reviews! You can get the order product ID from the [order endpoint](orders.md#retrieve-orders).
 
 # Modify reviews
 
