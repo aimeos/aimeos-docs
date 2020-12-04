@@ -79,7 +79,7 @@ By default, the checkout process consists of these steps in the following order:
 Depending on the type of product you sell, sometimes it is not necessary for the customer to choose e.g. a delivery option. Virtual products usually fall into this category. You can remove a step from the process completely by [modifying the subpart's configuration](../../config/client-html/checkout-standard.md#subparts) to:
 
 ```
-client/html/checkout/standard/standard/subparts = ['address', 'payment', 'summary', 'order', 'process']
+client/html/checkout/standard/subparts = ['address', 'payment', 'summary', 'order', 'process']
 ```
 
 This example would leave the order of the steps as is but removes the "delivery" step. Depending on the configuration of the plug-ins, **delivery and payment options may be enforced**. To change this behavior, you have to adapt the [ServicesAvailable basket plug-in](../../manual/plugins.md#ServicesAvailable).
@@ -96,7 +96,7 @@ If necessary, you can also add new steps to the checkout process. They will be a
 
 You can decide to offer a one page checkout additionally to the standard multi step checkout or place two or more steps on the same checkout page. This makes the Aimeos checkout process incredibly flexible and allows you to adapt it to your needs.
 
-The main configuration option for the one page checkout is [client/html/checkout/standard/onepage](../../config/client-html/checkout-standard.md#onepage). Basically, it contains the checkout steps that should be placed on the same page. The available steps are those from the sub-clients of the checkout standard component:
+The main configuration option for the one page checkout is [client/html/checkout/onepage](../../config/client-html/checkout-standard.md#onepage). Basically, it contains the checkout steps that should be placed on the same page. The available steps are those from the sub-clients of the checkout standard component:
 
 * address
 * delivery
@@ -106,7 +106,7 @@ The main configuration option for the one page checkout is [client/html/checkout
 There's a fifth ("process") step available but they aren't suited to be used for a one page checkout because they have to perform some actions after the order is placed. An example for a full one page configuration would be:
 
 ```
-client/html/checkout/standard/onepage = ['address', 'delivery', 'payment', 'summary']
+client/html/checkout/onepage = ['address', 'delivery', 'payment', 'summary']
 ```
 
 The order of the subpart names doesn't matter in this setting as it's already determined by the order of the [subparts](../../config/client-html/checkout-standard.md#subparts) configuration.
@@ -122,7 +122,7 @@ Address, delivery and payment on one page
 Full one page checkout including all steps
 : This is the real all in one checkout where customers have every information on one page. It's best suited if you need to display only a limited amount of information or show/hide the parts where users have to enter their data dynamically. To be legally on the safe side, your total order amount must not change any more as soon as this page is displayed. This means that shipping costs are fixed and no payment costs can be charged. Additionally, all drawbacks of the last option applies as well.
 
-When using a full one page checkout, you can limit the sections shown in the summary subpart as well. The blocks for the addresses and delivery/payment options are useless in this setup and should be removed from the [checkout summary template](https://github.com/aimeos/ai-client-html/blob/master/client/html/templates/checkout/standard/summary-body-standard.php).
+When using a full one page checkout, you can limit the sections shown in the summary subpart as well. The blocks for the addresses and delivery/payment options are useless in this setup and should be removed from the [checkout summary template](https://github.com/aimeos/ai-client-html/blob/master/client/html/templates/checkout/summary-body-standard.php).
 
 If only one shipping method is available, you can also hide it in the one page checkout but you shouldn't remove it. As long as it's part of the order, backend systems can work with that data. Instead, make it invisible by using CSS.
 
@@ -186,7 +186,7 @@ If you want to change the HTML structure of one of the templates, please have a 
 Each field of the billing or delivery address form can be [validated against a regular expression](../../config/client-html/checkout-standard.md#validate). This enables shop owners to define rules for each field and enforce syntax, like postal code patterns:
 
 ```
-client/html/checkout/standard/address/validate/postal = '/^[0-9]+$/'
+client/html/checkout/address/validate/postal = '/^[0-9]+$/'
 ```
 
 Defined validation rules are applied to both, billing and delivery address fields.
@@ -196,7 +196,7 @@ Defined validation rules are applied to both, billing and delivery address field
 When shipping to different countries, you need to know which country or region your customer is living or where the parcel should be shipped to. This may affect the shipping costs. Therefore, you should define the countryid field as mandatory in both the [billing](../../config/client-html/checkout-standard.md#billingmandatory) and [delivery](../../config/client-html/checkout-standard.md#deliverymandatory) address. Afterwards, you can [configure the countries or regions](../../config/client-html/checkout-standard.md#countries) that will be available for selection by the customer:
 
 ```
-client/html/checkout/standard/address/countries = ['DE', 'FR', 'ES']
+client/html/checkout/address/countries = ['DE', 'FR', 'ES']
 ```
 
 Usually, these are the two letter ISO country codes but you are able to choose any two letter code for describing e.g. a region like "EU" for Europe or "WE" and "EE" for western and eastern Europe.
@@ -204,7 +204,7 @@ Usually, these are the two letter ISO country codes but you are able to choose a
 Each country or region can be divided into states which is often used in the US. States are country or region specific so each list of states must belong to a country or region. Thus, the [state](../../config/client-html/checkout-standard.md#states) list needs the country or region code as key:
 
 ```
-client/html/checkout/standard/address/states = array(
+client/html/checkout/address/states = array(
     'US' => array(
         'CA' => 'California',
         'NY' => 'New York',

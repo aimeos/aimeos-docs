@@ -45,7 +45,7 @@ Media items can be files of any type, from pictures over documents to audio file
 
 ![Associate pictures to a product](Admin-product-detail-media.png)
 
-There should be at least one picture showing the product. The best size of that picture is 240px in length and 320px in height if the default size is used in the frontend. If you upload larger images, they can be scaled down if you configure that, smaller images keep their size (depending on the configuration in controller/common/media/standard/* configuration). If you need other sizes in the frontend later, you can rescale all product images using the media/scale job controller). It should be in JPEG, PNG or GIF to make sure it can be displayed on all platforms.
+There should be at least one picture showing the product. The best size of that picture is 240px in length and 320px in height if the default size is used in the frontend. If you upload larger images, they can be scaled down if you configure that, smaller images keep their size (depending on the configuration in controller/common/media/* configuration). If you need other sizes in the frontend later, you can rescale all product images using the media/scale job controller). It should be in JPEG, PNG or GIF to make sure it can be displayed on all platforms.
 
 If you are able to provide more pictures of the product, they will be displayed as thumbnails in the detail view
 

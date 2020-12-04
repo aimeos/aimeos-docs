@@ -46,13 +46,13 @@ Client/Html/Checkout/Standard/Address/Billing/Standard
 The HTML clients use these templates and assign:
 
 * Client/Html/Checkout/Standard/Standard
-    * template: checkout/standard/body-standard.php
+    * template: checkout/body-standard.php
     * assigns: standardSteps, etc.
 * Client/Html/Checkout/Standard/Address/Standard
-    * template: checkout/standard/address-body-standard.php
+    * template: checkout/address-body-standard.php
     * assigns: addressCustomerItem, addressPaymentItem, etc.
 * Client/Html/Checkout/Standard/Address/Billing/Standard
-    * template: checkout/standard/address-billing-body-standard.php
+    * template: checkout/address-billing-body-standard.php
     * assigns: billingMandatory, billingOptional, etc.
 
 In the template of the *Client\Html\Checkout\Standard\Address\Billing\Standard* HTML client, you have now access to *standardSteps*, *addressCustomerItem*, *addressPaymentItem*, *billingMandatory*, *billingOptional*. Take a look at the templates and the HTML clients to find out, which data they assign.

@@ -195,7 +195,7 @@ There's a default implementation for the "bought" section but you are able to re
 * [Bought section class name](../../config/client-html/basket-related.md#name)
 
 !!! note
-    Products that should be suggested in the "bought" section must be calculated according to the orders of previous customers. Aimeos comes with a job controller named "product/bought" that does this for you automatically, but you need to run this job regularly, preferably once a day. 
+    Products that should be suggested in the "bought" section must be calculated according to the orders of previous customers. Aimeos comes with a job controller named "product/bought" that does this for you automatically, but you need to run this job regularly, preferably once a day.
 
 ## Templates
 
@@ -211,10 +211,10 @@ If you want to change the HTML structure of one of the templates, please have a 
 
 Some additional settings for the cross-selling subpart have been implemented to create a configurable implementation that can be adapted to the various needs of shop owners:
 
-[client/html/basket/related/bought/standard/domains](../../config/client-html/basket-related.md#standarddomains)
+[client/html/basket/related/bought/domains](../../config/client-html/basket-related.md#standarddomains)
 : List of content types fetched from the database
 
-[client/html/basket/related/bought/standard/limit](../../config/client-html/basket-related.md#standardlimit)
+[client/html/basket/related/bought/limit](../../config/client-html/basket-related.md#standardlimit)
 : Maximum number of products displayed
 
 More configuration options are used while generating the list of products bought together. They are available in the documentation of the "product/bought" job controller.

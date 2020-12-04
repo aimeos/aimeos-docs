@@ -35,7 +35,7 @@ class Standard
     extends \Aimeos\Client\Html\Common\Client\Factory\Base
     implements \Aimeos\Client\Html\Common\Client\Factory\Iface
 {
-    private $subPartPath = 'client/html/catalog/detail/service/standard/subparts';
+    private $subPartPath = 'client/html/catalog/detail/service/subparts';
     private $subPartNames = [];
     private $view;
 
@@ -81,7 +81,7 @@ public function getBody( $uid = '' ) : string
     }
     $view->serviceBody = $html;
 
-    $tplconf = 'client/html/catalog/detail/service/standard/template-body';
+    $tplconf = 'client/html/catalog/detail/service/template-body';
     $default = 'catalog/detail/service-body-standard';
 
     return $view->render( $view->config( $tplconf, $default ) );
@@ -114,7 +114,7 @@ public function getHeader( string $uid = '' ) : ?string
     }
     $view->serviceHeader = $html;
 
-    $tplconf = 'client/html/catalog/detail/service/standard/template-header';
+    $tplconf = 'client/html/catalog/detail/service/template-header';
     $default = 'catalog/detail/service-header-standard';
 
     return $view->render( $this->config( $tplconf, $default ) );

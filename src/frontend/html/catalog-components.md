@@ -63,7 +63,7 @@ In the [stage component implementation](../../config/client-html/catalog-stage.m
 [navigator client](../../config/client-html/catalog-stage.md#name_1)
 : back/next product links inluding the [navigator subpart](../../config/client-html/catalog-stage.md#standardsubparts)
 
-Furthermore, you can limit or extend the domain items that are fetched from the database and thus available in the templates via the [client/html/catalog/stage/standard/domains](../../config/client-html/catalog-stage.md#domains) setting.
+Furthermore, you can limit or extend the domain items that are fetched from the database and thus available in the templates via the [client/html/catalog/stage/domains](../../config/client-html/catalog-stage.md#domains) setting.
 
 ## Templates
 
@@ -275,13 +275,13 @@ Both subparts allow further configuration, namely for the entry count in the hea
 [client/html/catalog/session/pinned/count/enable](../../config/client-html/catalog-session.md#countenable)
 : Display the number of entries in the "pinned" list next to the section header
 
-[client/html/catalog/session/pinned/standard/maxitems](../../config/client-html/catalog-session.md#standardmaxitems)
+[client/html/catalog/session/pinned/maxitems](../../config/client-html/catalog-session.md#standardmaxitems)
 : Maximum number of displayed pinned products
 
 [client/html/catalog/session/seen/count/enable](../../config/client-html/catalog-session.md#countenable_1)
 : Display the number of entries in the "last seen" list next to the section header
 
-[client/html/catalog/session/seen/standard/maxitems](../../config/client-html/catalog-session.md#standardmaxitems_1)
+[client/html/catalog/session/seen/maxitems](../../config/client-html/catalog-session.md#standardmaxitems_1)
 : Maximum number of displayed "last seen" products
 
 ## Templates

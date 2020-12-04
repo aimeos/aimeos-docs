@@ -130,7 +130,7 @@ You can use views and templates for generating output in job controllers. They a
 $view = $this->getContext()->getView();
 $view->items = [1, 2, 3];
 
-$tplconf = 'controller/jobs/product/export/standard/template-items';
+$tplconf = 'controller/jobs/product/export/template-items';
 $default = 'product/export/items-body-default.xml';
 $result = $view->render( $view->config( $tplconf, $default ) ) );
 ```

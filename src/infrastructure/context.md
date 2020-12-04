@@ -22,7 +22,7 @@ All configured settings are available in the config object and can be retrieved 
 
 ```php
 $config = $this->getContext()->config()
-    ->get( 'client/html/catalog/detail/standard/subparts', [] );
+    ->get( 'client/html/catalog/detail/subparts', [] );
 ```
 
 The full description of its methods is available in the documentation of the [config interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Config/Iface.php).

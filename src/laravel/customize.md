@@ -351,8 +351,8 @@ If you want to ship your products to several countries or you need to know from 
 
 By default, the country list is hidden for the billing and delivery address in the checkout process. To make show them and make them mandatory you need to add "order.base.address.countryid" to the list of values defined in
 
-* [client/html/checkout/standard/address/billing/mandatory](../config/client-html/checkout-standard.md#billingmandatory)
-* [client/html/checkout/standard/address/delivery/mandatory](../config/client-html/checkout-standard.md#deliverymandatory)
+* [client/html/checkout/address/billing/mandatory](../config/client-html/checkout-standard.md#billingmandatory)
+* [client/html/checkout/address/delivery/mandatory](../config/client-html/checkout-standard.md#deliverymandatory)
 
 In the Aimeos package this is configured for billing and delivery addresses in the `config/shop.php` configuration file:
 
@@ -397,8 +397,8 @@ In the Aimeos package this is configured for billing and delivery addresses in t
 
 If no selection should be enforced, you can use instead
 
-* [client/html/checkout/standard/address/billing/optional](../config/client-html/checkout-standard.md#billingoptional)
-* [client/html/checkout/standard/address/delivery/optional](../config/client-html/checkout-standard.md#deliveryoptional)
+* [client/html/checkout/address/billing/optional](../config/client-html/checkout-standard.md#billingoptional)
+* [client/html/checkout/address/delivery/optional](../config/client-html/checkout-standard.md#deliveryoptional)
 
 
 To make the country for billing and delivery addresses optional, use this configuration:
@@ -429,7 +429,7 @@ To make the country for billing and delivery addresses optional, use this config
 ],
 ```
 
-The list of countries is defined by the values added to the configuration key [client/html/checkout/standard/address/countries](../config/client-html/checkout-standard.md#countries). The configuration below will add all countries worldwide to the select boxes for the billing and delivery address:
+The list of countries is defined by the values added to the configuration key [client/html/checkout/address/countries](../config/client-html/checkout-standard.md#countries). The configuration below will add all countries worldwide to the select boxes for the billing and delivery address:
 
 ```php
 'client' => [
@@ -727,4 +727,4 @@ To define states or regions via the configuration use something like this:
 
 The key you have chosen for the state or region will be stored in the order address of the customer and can then be used during the rest of the checkout process. More details can be found in the documentation of the configuration option:
 
-* [client/html/checkout/standard/address/states](../config/client-html/checkout-standard.md#states)
+* [client/html/checkout/address/states](../config/client-html/checkout-standard.md#states)

@@ -249,7 +249,7 @@ return [
 
 The configuration of the new manager class does also work for sub-managers like the product lists type and all other sub-managers by using `mshop/<domain>/manager/<submanager>/<submanager>/name` instead, e.g. `mshop/product/manager/lists/type/name`.
 
-By adding a new SQL SELECT statement for `mshop/product/manager/standard/search/ansi`, the existing manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class.
+By adding a new SQL SELECT statement for `mshop/product/manager/search/ansi`, the existing manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class.
 
 ## Testing
 

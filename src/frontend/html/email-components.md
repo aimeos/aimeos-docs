@@ -58,7 +58,7 @@ Delivery e-mails are sent out by the [order/email/delivery job](../../cronjobs/i
 * STAT_REFUSED (6)
 * STAT_RETURNED (7)
 
-For each of these delivery status values you are able to send out an e-mail to the customers informing them about the delivery status change. For which status changes e-mails are sent is configured via the [controller/jobs/order/email/delivery/standard/status](../../config/controller-jobs/order-email.md#standardstatus) setting.
+For each of these delivery status values you are able to send out an e-mail to the customers informing them about the delivery status change. For which status changes e-mails are sent is configured via the [controller/jobs/order/email/delivery/status](../../config/controller-jobs/order-email.md#standardstatus) setting.
 
 ## E-Mail settings
 
@@ -110,7 +110,7 @@ Payment e-mails are sent out by the [order/email/payment job](../../cronjobs/ind
 * PAY_AUTHORIZED (5)
 * PAY_RECEIVED (6)
 
-For each of these payment status values you are able to send out an e-mail to the customers informing them about the payment status change. For which status changes e-mails are sent is configured via the [controller/jobs/order/email/payment/standard/status](../../config/controller-jobs/order-email.md#standardstatus_1) setting.
+For each of these payment status values you are able to send out an e-mail to the customers informing them about the payment status change. For which status changes e-mails are sent is configured via the [controller/jobs/order/email/payment/status](../../config/controller-jobs/order-email.md#standardstatus_1) setting.
 
 ## E-Mail settings
 
