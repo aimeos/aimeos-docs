@@ -156,7 +156,7 @@ class StandardTest extends \PHPUnit\Framework\TestCase
         $context = \TestHelperCntl::getContext();
         $manager = \Aimeos\MShop::create( $context, 'subscription' );
         $object = new \Aimeos\Controller\Common\Subscription\Process\Processor\Myproc\Standard( $context );
-        $object->begin( $manager->createItem() );
+        $object->begin( $manager->create() );
     }
  }
 ```
@@ -180,7 +180,7 @@ $customerStub = $this->getMockBuilder( '\\Aimeos\\MShop\\Customer\\Manager\\Stan
 \Aimeos\MShop::inject( $context, 'customer', $customerStub );
 
 $customerStub->expects( $this->once() )->method( 'get' )
-    ->will( $this->returnValue( $customerStub->createItem() ) );
+    ->will( $this->returnValue( $customerStub->create() ) );
 $customerStub->expects( $this->once() )->method( 'save' );
 ```
 

@@ -23,7 +23,7 @@ class MyproviderTest extends \PHPUnit_Framework_TestCase
         $context = TestHelperMShop::getContext();
 
         $serviceManager = Aimeos\MShop\Factory::createManager( $context, 'service' );
-        $this->serviceItem = $serviceManager->createItem();
+        $this->serviceItem = $serviceManager->create();
 
         $this->object = $this->getMockBuilder( 'Aimeos\MShop\Service\Provider\Payment\Myprovider' )
             ->setMethods( ['getOrder', 'getOrderBase', 'saveOrder', 'saveOrderBase', 'myConnection'] )

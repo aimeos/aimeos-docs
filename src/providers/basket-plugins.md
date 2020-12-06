@@ -205,18 +205,18 @@ class ExampleTest extends \PHPUnit\Framework\TestCase
 {
     private $object;
     private $basket;
-    
+
     protected function setUp() : void
     {
         $context = \TestHelper::getContext();
-        
+
         $pluginManager = \Aimeos\MShop::create( $context, 'plugin' );
         $orderManager = \Aimeos\MShop::create( $context, 'order' );
         $orderBaseManager = $orderManager->getSubManager( 'base' );
 
-        $this->basket = $orderBaseManager->createItem();
-        $plugin = $pluginManager->createItem();
-        
+        $this->basket = $orderBaseManager->create();
+        $plugin = $pluginManager->create();
+
         $this->object = new \Aimeos\MShop\Plugin\Provider\Order\Example( $context, $plugin );
     }
 
@@ -235,7 +235,7 @@ class ExampleTest extends \PHPUnit\Framework\TestCase
 You should implement more tests for the `update()` method until every line inside is executed at least once. For more information regarding unit tests have a look into the [PHPUnit documentation](https://phpunit.readthedocs.io/en/latest/writing-tests-for-phpunit.html). The chapter about [stubs and mocks](https://phpunit.readthedocs.io/en/latest/test-doubles.html) is especially useful if you want to replace the manager objects used in your plugin during the tests by injecting a mock object into the Aimeos manager factories via the [*inject()*](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop.php) method.
 
 # Configuration
-    
+
 To verify, if the plugin is already available, make sure the following steps work as expected:
 
 First, make sure the plugin type *Order* (code: *order*) exists in the "Types -> Plugins" backend:
@@ -248,7 +248,7 @@ Next, go to "Plugins" and click the "+" (plus/add) sign to insert a new plugin:
 
 [![Insert new plugin](Plugin-development__01__insert-new-plugin.png)](Plugin-development__01__insert-new-plugin.png)
 
-Check, if the new plugin name appears in the drop-down list under *Provider*: 
+Check, if the new plugin name appears in the drop-down list under *Provider*:
 
 [![Check if new plugin exists in *Provider* drop-down list](Plugin-development__02__check-provider.png)](Plugin-development__02__check-provider.png)
 

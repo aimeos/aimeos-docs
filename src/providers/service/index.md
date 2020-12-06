@@ -423,7 +423,7 @@ public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket )
     $productTotal = ...; // Sum up the price of all products in $basket
     $manager = \Aimeos\MShop::create( $this->getContext(], 'price' );
 
-    $price = $manager->createItem();
+    $price = $manager->create();
     $price->setCosts( '0.10' * $productTotal );
 
     return $price;

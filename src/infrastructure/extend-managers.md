@@ -196,10 +196,13 @@ class Myproject extends Standard
         ),
     );
 
-    public function saveItem( \Aimeos\MShop\Common\Item\Iface $item, $fetch = true )
+    public function save( $items, $fetch = true )
     {
-        // a modified copy of the code from the parent class
-        // extended by a bind() call and updated bind positions (first parameter)
+        foreach( map( $items ) as $item ) {
+            // a modified copy of the code from the parent class
+            // extended by an additional bind() call
+		}
+        return $items;
     }
 
     public function getSearchAttributes( $withsub = true )

@@ -143,7 +143,7 @@ public function delete() : ?string
 
     $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
     $filter = $manager->filter()->add( ['somedomain.foreignid' => $itemId] );
-    $manager->deleteItems( $manager->search( $filter )->toArray() );
+    $manager->delete( $manager->search( $filter ) );
 
     return null;
 }
@@ -214,15 +214,15 @@ public function save() : ?string
             {
                 $id = $this->getValue( $entry, 'somedomain.id' );
 
-                $list[] = $items->get( $id, $manager->createItem() )
+                $list[] = $items->get( $id, $manager->create() )
                     ->fromArray( $entry )
                     ->setParentId( $view->item->getId() );
 
                 $items->remove( $id );
             }
 
-            $manager->deleteItems( $items->toArray() );
-            $manager->saveItems( $list, false );
+            $manager->delete( $items );
+            $manager->save( $list, false );
             $manager->commit();
 
             parent::save();

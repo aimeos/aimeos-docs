@@ -42,7 +42,7 @@ The language and currency IDs are optional and the first matching locale item fr
 
 ```php
 $manager = \Aimeos\MShop::create( $context, 'locale' );
-$item = $manager->createItem()->setLanguageId( 'en' );
+$item = $manager->create()->setLanguageId( 'en' );
 $context->setLocale( $item );
 ```
 
