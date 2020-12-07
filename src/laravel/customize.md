@@ -329,7 +329,21 @@ The Aimeos shop package contains routes packaged into some route groups that can
 
 Then, the path of all routes additionally start with `/{site}/` which contains the shop site code. There's no strict need to prefix the routes for "admin", "jqadm", "jsonadm" and "update", but you can give them a prefix as well. More details about the "prefix" setting including the possibility to add language and currency placeholders can be found in the [custom routes](extend.md#custom-routes) article.
 
-To use domains or subdomains use this configuration:
+To use subdomains use this configuration:
+
+```php
+'routes' => [
+    'admin' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'admin', 'middleware' => ['web']],
+    'jqadm' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'admin/jqadm', 'middleware' => ['web', 'auth']],
+    'jsonadm' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'admin/jsonadm', 'middleware' => ['web', 'auth']],
+    'jsonapi' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'jsonapi', 'middleware' => ['web', 'api']],
+    'account' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'profile', 'middleware' => ['web', 'auth']],
+    'default' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'shop', 'middleware' => ['web']],
+    'update' => ['domain' => '{site}.yourdomain.com'],
+],
+```
+
+The site code you've entered for the *aimeos:setup* command will be used as the subdomain in that case. For custom domains, configure your routes like this:
 
 ```php
 'routes' => [
@@ -341,6 +355,13 @@ To use domains or subdomains use this configuration:
     'default' => ['domain' => '{site}', 'prefix' => 'shop', 'middleware' => ['web']],
     'update' => ['domain' => '{site}'],
 ],
+```
+
+Now, the site code is used as domain for the shops and you must enter the domain name as site code when creating a new site, e.g.
+
+```bash
+php artisan aimeos:setup shop.mydomain.com
+php artisan aimeos:setup myshop.com
 ```
 
 # Countries, regions and states
