@@ -16,21 +16,7 @@ You can edit files directly in your fork. For bigger changes, create a local ver
 git clone https://github.com/[your-account]/aimeos-core.git aimeos-core
 ```
 
-Please replace "\[your-account]" with your account name before executing the command. After the command has finished, a clone of the complete repository will be available in the "aimeos-core" directory on your local hard drive.
-
-# Automatic builds (optional)
-
-To be sure that your changes don't break existing tests, you can use the [Travis CI](https://travis-ci.org/) build service to automatically test them on every push to your fork.
-
-To get started with Travis CI, sign in through GitHub by following the Sign-In link at the top of the Travis CI website. Github will ask you for granting read and write access. Travis CI needs write access for setting up service hooks for your repositories, when you request it, but it won't touch anything else.
-
-Once you're signed in, go to your profile page on Travis CI. You'll see a list of your repositories. Flip the on/off switch for each repository that you want to hook up on Travis CI. Then visit the Github service hooks page for that project and paste your Github username and Travis token into the settings for the Travis service, if it is not already pre-filled.
-
-That's it! Now every push to the repository will start a build on Travis CI. You can view the output of the tests on
-
-<https://travis-ci.org/[your-account]/aimeos-core>
-
-when you replace "[your-account]" with the name of your Github account. Before we will merge your changes to the main repository, we will wait for the result of the Travis CI build.
+Please replace "\[your-account\]" with your account name before executing the command. After the command has finished, a clone of the complete repository will be available in the "aimeos-core" directory on your local hard drive.
 
 # Daily work with git
 
