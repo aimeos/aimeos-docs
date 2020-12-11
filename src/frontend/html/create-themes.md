@@ -2,15 +2,11 @@ Since 2020.10, there's a simple way to create new themes, install and configure 
 
 * [Create an extension](#create-theme-extension)
 * [Use custom templates](#custom-templates)
-* [Add custom CSS styles](#custom-css-styles)
-* [Add custom Javascript](#custom-javascript)
-* [Install the theme](#install-custom-themes)
+* [Use custom theme](#custom-themes)
 
-# Create theme extension
+# Create extension
 
 To create a portable theme, you should generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Copy it to the `./ext/` directory of your application where also the other Aimeos extensions are located. You should also put that extension under version control, e.g. by adding it to a Git repository.
-
-In your extension, create a new theme directory `./client/html/themes/<themename>/`. Replace `<themename>` with an unique name for your theme.
 
 # Custom templates
 
@@ -47,37 +43,21 @@ Afterwards, the categories, price, supplier and attribute filter will be shown o
 !!! note
     For the pages displaying a category, you have to adapt the `./catalog/tree.blade.php` file too.
 
-# Custom CSS styles
+# Custom themes
 
-You have to add two CSS files named *aimeos.css* and *email.css* to your theme directory in `./client/html/themes/<themename>/`. These files must contain all styles for the HTML frontend (*aimeos.css*) and the sent e-mails (*email.css*).
+For a custom theme, you need to create the required CSS and JS files in `./client/html/themes/<themename>/` of your extension:
 
-The simplest way is to copy the files from the default ["elegance" Aimeos theme](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes/elegance) and adapt them to your needs. Remove the styles you don't need to keep the file small and add the new styles for your theme.
+* aimeos.css
+* email.css
+* aimeos.js
 
-The CSS class names used in the templates are semantic, so you can add CSS styles for the shop components only. To learn more about semantic naming, please read the article about [theme basics](theme-basics.md#cascading-style-sheets).
+For the start, you can copy the existing ["elegance" Aimeos theme](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes/elegance) directory and the included files, e.g.
 
-You can also add icons you need for your theme to the `./client/html/themes/<themename>/media/` directory and reference them in the CSS using:
-
-```css
-url(media/icon.png)
+```bash
+cp -r ./client/html/themes/elegance/ ./client/html/themes/mytheme/
 ```
 
-# Custom Javascript
-
-By default, there are two standard JS files included:
-
-* aimeos.js
-* aimeos-detail.js (catalog detail page only)
-
-Both are offered by the Aimeos ai-client-html extension and are located in `./ext/ai-client-html/client/html/themes/` of your installation. They contain the JS code for all dynamic features, which is described in the [theme basics article](theme-basics.md#javacript).
-
-Additionally, you must add an *aimeos.js* file in the `./client/html/themes/<themename>/` of your extension. This file should contain your own Javascript code or JS libraries for certain features you want to use.
-
-!!! note
-    If you don't need more JS code, the *aimeos.js* file can be empty but it must exist to avoid 404 errors.
-
-# Install custom themes
-
-First, use `composer update` to copy your theme to the `./public/` directory so the files will be available. Then, change the `client/html/common/baseurl` configuration to point to your new theme.
+Chage the theme files according to your needs. Then, use `composer update` to copy your theme files to the `./public/` directory so the files will be available. Change the `client/html/common/baseurl` configuration afterwards to point to your new theme.
 
 For Laravel, open the `./config/shop.php` file and search for the `baseurl` key:
 
@@ -94,3 +74,35 @@ For Laravel, open the `./config/shop.php` file and search for the `baseurl` key:
 ```
 
 Uncomment the line with `baseurl` and replace `elegance` by your new theme name.
+
+## Custom CSS styles
+
+You have to adapt the two CSS files named
+
+* aimeos.css
+* email.css
+
+to your theme directory in `./client/html/themes/<themename>/`. These files must contain all styles for the HTML frontend (*aimeos.css*) and the sent e-mails (*email.css*).
+
+The simplest way is to copy the files from the default ["elegance" Aimeos theme](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes/elegance) and adapt them to your needs. Remove the styles you don't need to keep the file small and add the new styles for your theme.
+
+The CSS class names used in the templates are semantic, so you can add CSS styles for the shop components only. To learn more about semantic naming, please read the article about [theme basics](theme-basics.md#cascading-style-sheets).
+
+You can also add icons you need for your theme to the `./client/html/themes/<themename>/media/` directory and reference them in the CSS using:
+
+```css
+url(media/icon.png)
+```
+
+## Custom Javascript
+
+By default, there are two standard JS files included outside of the theme directories: *aimeos.js* and *aimeos-detail.js* (catalog detail page only). Both are offered by the Aimeos ai-client-html extension and are located in `./ext/ai-client-html/client/html/themes/` of your installation. They contain the JS code for all dynamic features, which is described in the [theme basics article](theme-basics.md#javacript).
+
+Additionally, you must add a file named
+
+* aimeos.js
+
+in the `./client/html/themes/<themename>/` of your extension. This file should contain your own Javascript code or JS libraries for certain features you want to use.
+
+!!! note
+    If you don't need more JS code, the *aimeos.js* file can be empty but it must exist to avoid 404 errors.
