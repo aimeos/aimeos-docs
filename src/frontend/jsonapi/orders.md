@@ -289,7 +289,7 @@ as *include* parameter:
 === "jQuery"
     ```javascript
     var args = {
-        include: "order/base/address,order/base/coupon,order/base/product,order/base/service"
+        include: "order/base,order/base/address,order/base/coupon,order/base/product,order/base/service"
     };
     var params = {};
 
