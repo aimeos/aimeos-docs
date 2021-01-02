@@ -277,14 +277,14 @@ Then, you can retrieve the list of orders using the "order" endpoint:
 To retrieve a single order only, you need to use the "self" link of the order item returned by the previous response. You can get the full order details by passing:
 
 ```
-order/base/address,order/base/coupon,order/base/product,order/base/service
+order/base,order/base/address,order/base/coupon,order/base/product,order/base/service
 ```
 
 as *include* parameter:
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/order?id=...&include=order/base/address,order/base/coupon,order/base/product,order/base/service'
+    curl -X GET 'http://localhost:8000/jsonapi/order?id=...&include=order/base,order/base/address,order/base/coupon,order/base/product,order/base/service'
     ```
 === "jQuery"
     ```javascript
