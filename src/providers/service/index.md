@@ -176,7 +176,7 @@ The first call will either return the URL for "payment.url-failure" if available
 To make the available configuration settings known, you have to specify which configuration keys they use, what value types are allowed, if there's a default value and if it's required or optional:
 
 ```php
-[
+private $feconfig = [
     'myprovider.username' => [
         'code' => 'myprovider.username',
         'internalcode'=> 'myprovider.username',
@@ -192,7 +192,7 @@ To make the available configuration settings known, you have to specify which co
 In the front-end you can also specify if the setting should be hidden or not:
 
 ```php
-[
+private $feconfig = [
     'myprovider.token' => [
         'code' => 'myprovider.token',
         'internalcode'=> 'token',
@@ -359,7 +359,23 @@ For example, the [OmniPay service provider](https://github.com/aimeoscom/ai-paym
 
 ## Admin interface
 
-To support editors when configuring your service provider, you must define the configuration possibilities of your implementation. They will be informed about what options are available and which one have to be added before the service provider will work. Similar to the front-end, there's a *getConfigBE()* method that must return the available settings as attribute objects:
+To support editors when configuring your service provider, you must define the configuration possibilities of your implementation:
+
+```php
+private $beconfig = [
+    'myprovider.myoption' => [
+        'code' => 'myprovider.myoption',
+        'internalcode'=> 'myprovider.myoption',
+        'label'=> 'My option',
+        'type'=> 'string',
+        'internaltype'=> 'string',
+        'default'=> '',
+        'required'=> true,
+    ],
+];
+```
+
+They will be informed about what options are available and which one have to be added before the service provider will work. Similar to the front-end, there's a *getConfigBE()* method that must return the available settings as attribute objects:
 
 ```php
 public function getConfigBE()
