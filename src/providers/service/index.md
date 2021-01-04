@@ -183,7 +183,7 @@ To make the available configuration settings known, you have to specify which co
         'label'=> 'Username',
         'type'=> 'string',
         'internaltype'=> 'string',
-        'default'=> *,
+        'default'=> '',
         'required'=> true,
     ],
 ];
