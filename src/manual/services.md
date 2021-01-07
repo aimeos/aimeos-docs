@@ -355,6 +355,29 @@ testMode (boolean, optional)
 : Use "1" for test payments without real money. Requires activating the test mode in your payone account, too
 
 
+## PayPalPlus
+
+[PayPalPlus](https://www.paypal.com/) payments are available via the **PayPalPlus** payment service provider. If you use composer run:
+
+```
+composer req aimeos/ai-payments omnipay/paypal
+```
+
+The available configuration options are:
+
+clientid (string, required)
+: Your PayPal REST client ID available in your [PayPal developer account](https://developer.paypal.com/developer/applications/)
+
+secret (string, required)
+: Your PayPal REST secret you've created in your [PayPal developer account](https://developer.paypal.com/developer/applications/)
+
+authorize (boolean, optional)
+: Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
+
+testmode (boolean, optional)
+: Use "1" for test payments without real money. Requires using the sandbox API credentials, too
+
+
 ## Postfinance
 
 !!! hint
@@ -424,7 +447,7 @@ address (boolean, optional)
 testMode (boolean, optional)
 : Use "1" for test payments without real money. Requires activating the test mode in your sofort.com account, too
 
-!!! hint 
+!!! hint
     You have to create a valid account with Klarna Sofort first, before you can create a project and activate the test mode. (During registration you will be asked for your bank account details, but you will not be charged yet.) Once you have an account, create a new project under "New project" and choose "Classic project" as project type.
 
 
