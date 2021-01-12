@@ -151,7 +151,6 @@ routeEnhancers:
       - { routePath: '/d/{d_name}/{d_pos}', _controller: 'Catalog::detail' }
       - { routePath: '/lt/{l_type}', _controller: 'Catalog::list' }
       - { routePath: '/lp/{l_page}', _controller: 'Catalog::list' }
-      - { routePath: '/ls/{f_sort}/{l_page}', _controller: 'Catalog::list' }
       - { routePath: '/l/{f_sort}', _controller: 'Catalog::list' }
       - { routePath: '/b/{b_action}', _controller: 'Basket::index' }
       - { routePath: '/co/{c_step}', _controller: 'Checkout::index' }
