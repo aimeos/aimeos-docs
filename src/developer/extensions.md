@@ -294,7 +294,7 @@ Setup tasks are a great way to create and update your database structure. They a
 
 ## custom
 
-The "custom" section of the manifest.php is reserved for directory configurations that are specific for the different parts of the library. The directory for the library part must the key and the value is always a list of subdirectories or files that are required for specific the purpose. A full example would be:
+The "custom" section of the manifest.php is reserved for directory configurations that are specific for the different parts of the library. The directory must be the array key and the value must be the list of subdirectories or files that are required for specific the purpose. A full example would be:
 
 ```php
 'custom' => [
