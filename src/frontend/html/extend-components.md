@@ -83,7 +83,7 @@ class Mydecorator
     extends \Aimeos\Client\Html\Common\Decorator\Base
     implements \Aimeos\Client\Html\Common\Decorator\Iface
 {
-    public function addData( \Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : Aimeos\MW\View\Iface
+    public function addData( \Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : \Aimeos\MW\View\Iface
     {
         $view = parent::addData( $view, $tags, $expire );
 
