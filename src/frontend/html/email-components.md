@@ -149,6 +149,44 @@ You can adapt the templates for the HTML/text payment e-mails itself and the inc
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
+# Subscription
+
+When the product subscription of customer ends, either because the customer canceled the subscription or the payment failed, an e-mail is sent out by the [subscription/process/renew](../../cronjobs/index.md) or [subscription/process/end](../../cronjobs/index.md) job if the **Email** subscription processor is configured for [subscription renew](../../../config/controller-jobs/subscription-process/#decoratorsglobal_2) or [subscription end](../../../config/controller-jobs/subscription-process/#decoratorsglobal_1). More details about how to configure subscription processors are available in the [subscription processor docs](../../../cronjobs/subscription-processors/).
+
+## E-Mail settings
+
+Shop owners have the possibility to configure specific e-mail settings for the subscription e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the subscription e-mails. The list of specific settings is:
+
+[client-html/email-subscription/from-email](../../config/client-html/email-subscription.md#from-email)
+: E-Mail address used when sending subscription e-mails
+
+[client-html/email-subscription/from-name](../../config/client-html/email-subscription.md#from-name)
+: Name used when sending subscription e-mails
+
+[client-html/email-subscription/reply-email](../../config/client-html/email-subscription.md#reply-email)
+: E-Mail address used by the customer when replying to subscription e-mails
+
+[client-html/email-subscription/reply-name](../../config/client-html/email-subscription.md#reply-name)
+: Recipient name displayed when the customer replies to subscription e-mails
+
+[client-html/email-subscription/bcc-email](../../config/client-html/email-subscription.md#bcc-email)
+: E-Mail address all subscription e-mails should be also sent to (can be used for debug purposes or to explicitly remove a common BCC e-mail address by setting it to NULL)
+
+## Structure
+
+Subscription e-mails consists of an [HTML](../../config/client-html/email-subscription.md#name) and a [text](../../config/client-html/email-subscription.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+
+## Templates
+
+You can adapt the templates for the HTML/text subscription e-mails itself and the included sections by overwriting them in your own extension or configuring alternative template names:
+
+* [Header template](../../config/client-html/email-subscription.md#template-header)
+* [Body template](../../config/client-html/email-subscription.md#template-body)
+* [HTML e-mail body](../../config/client-html/email-subscription.md#standardtemplate-body)
+* [Text e-mail body](../../config/client-html/email-subscription.md#standardtemplate-body_1)
+
+If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
+
 # Voucher
 
 If a customer bought a voucher, the voucher e-mail including the coupon code is sent out by the [order/email/voucher job](../../cronjobs/index.md). For each bought voucher, one e-mail is sent to the delivery e-mail address (or the billing e-mail address if no delivery address is available).
