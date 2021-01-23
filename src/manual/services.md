@@ -222,9 +222,32 @@ testMode (boolean, optional)
 : Use "1" for test payments without real money
 
 
+## Datatrans
+
+The [Datatrans](https://www.datatrans.ch/en/) payment gateway is available via the **Datatrans** payment service provider. If you use composer run:
+
+```
+composer req aimeos/ai-payments academe/omnipay-datatrans
+```
+
+The available configuration options are:
+
+merchantId (string, required)
+: Your merchant ID
+
+sign (string, required)
+: Your sign identifier available in the datatrans backend
+
+hmacKey1 (string, optional)
+: The SHA256 pre-shared key for signing requests. It's recommended adding the key to increase security
+
+testMode (boolean, optional)
+: Use "1" for test payments without real money
+
+
 ## Mollie
 
-The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider since. If you use composer run:
+The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **Mollie** payment service provider. If you use composer run:
 
 ```
 composer req aimeos/ai-payments omnipay/mollie
