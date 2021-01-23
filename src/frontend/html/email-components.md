@@ -149,6 +149,46 @@ You can adapt the templates for the HTML/text payment e-mails itself and the inc
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
+# Voucher
+
+If a customer bought a voucher, the voucher e-mail including the coupon code is sent out by the [order/email/voucher job](../../cronjobs/index.md). For each bought voucher, one e-mail is sent to the delivery e-mail address (or the billing e-mail address if no delivery address is available).
+
+## E-Mail settings
+
+Shop owners have the possibility to configure specific e-mail settings for the voucher e-mails that differ from the [common settings](#common). Each specific setting overwrites the correlated common setting for the voucher e-mails. The list of specific settings is:
+
+[client-html/email-voucher/from-email](../../config/client-html/email-voucher.md#from-email)
+: E-Mail address used when sending voucher e-mails
+
+[client-html/email-voucher/from-name](../../config/client-html/email-voucher.md#from-name)
+: Name used when sending voucher e-mails
+
+[client-html/email-voucher/reply-email](../../config/client-html/email-voucher.md#reply-email)
+: E-Mail address used by the customer when replying to voucher e-mails
+
+[client-html/email-voucher/reply-name](../../config/client-html/email-voucher.md#reply-name)
+: Recipient name displayed when the customer replies to voucher e-mails
+
+[client-html/email-voucher/bcc-email](../../config/client-html/email-voucher.md#bcc-email)
+: E-Mail address all voucher e-mails should be also sent to (can be used for debug purposes or to explicitly remove a common BCC e-mail address by setting it to NULL)
+
+## Structure
+
+Voucher e-mails consists of an [HTML](../../config/client-html/email-voucher.md#name) and a [text](../../config/client-html/email-voucher.md#name_2) part. They are sent in one e-mail as alternative views and the mail clients will display the one that is preferred by the customer.
+
+![Aimeos-email-voucher-html](Aimeos-email-voucher-html.png)
+
+## Templates
+
+You can adapt the templates for the HTML/text voucher e-mails itself and the included sections by overwriting them in your own extension or configuring alternative template names:
+
+* [Header template](../../config/client-html/email-voucher.md#template-header)
+* [Body template](../../config/client-html/email-voucher.md#template-body)
+* [HTML e-mail body](../../config/client-html/email-voucher.md#standardtemplate-body)
+* [Text e-mail body](../../config/client-html/email-voucher.md#standardtemplate-body_1)
+
+If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
+
 # Product watch
 
 Notification e-mails for watched products are sent out by the [customer/email/watch job](../../cronjobs/index.md) after the product was updated. This includes both, price and stock level updates.
@@ -187,6 +227,5 @@ You can adapt the templates for the HTML/text product notification e-mails itsel
 * [Body template](../../config/client-html/email-watch.md#template-body)
 * [HTML e-mail body](../../config/client-html/email-watch.md#standardtemplate-body)
 * [Text e-mail body](../../config/client-html/email-watch.md#standardtemplate-body_1)
-
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
