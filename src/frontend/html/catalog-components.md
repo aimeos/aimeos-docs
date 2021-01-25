@@ -180,7 +180,7 @@ client/html/catalog/selection/type/... = select|radio
 ```
 and
 ```
-client/html/catalog/attribute/type/... = select|radio
+client/html/catalog/attribute/type/... = select|input
 ```
 
 configuration options. You only have to replace the three dots (...) with the attribute code used for the attribute types (length, width, color, size, etc.). Using "select" will display a HTML select box while "radio" will show a HTML radio checkbox for each option. The value "select" is the default for all attribute types if nothing else is configured.
