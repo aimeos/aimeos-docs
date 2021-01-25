@@ -532,11 +532,9 @@ This object is a dependency injection container that offers access to configurat
 
 ```php
 // in a controller action
-$context = $this->app->make('aimeos.context')->get();
-// in a command task
-$context = $this->getLaravel()->make('aimeos.context')->get(false);
+$context = app('aimeos.context')->get();
 // anywhere else
-$context = App::make('aimeos.context')->get(false);
+$context = app('aimeos.context')->get(false);
 ```
 
 The parameter of the *get()* method determines if a locale object with site, language and currency based on the request parameters will be automatically added to the context together with the translation facilities. Certainly, this is only possible in MVC controller actions where the required parameters are available as part of the request.
