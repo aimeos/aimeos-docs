@@ -109,7 +109,7 @@ If you want to search for items that has referenced data via the list table or p
 The second and the third array element (<list type> and <referenced ID> as well as <language ID> and <property value>) are optional.
 
 ```php
-$filter->add( '==', 'product.type.code', 'select' )
+$filter->add( 'product.type.code', '==', 'select' )
     ->add( $filter->make( 'product:has', ['attribute', 'default', 123] ), '!=', null )
     ->add( $filter->make( 'product:prop', ['ISBN', null, 'abc'] ), '!=', null );
 ```
