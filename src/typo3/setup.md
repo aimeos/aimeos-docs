@@ -152,17 +152,13 @@ routeEnhancers:
       - { routePath: '/lt/{l_type}', _controller: 'Catalog::list' }
       - { routePath: '/lp/{l_page}', _controller: 'Catalog::list' }
       - { routePath: '/l/{f_sort}', _controller: 'Catalog::list' }
-      - { routePath: '/b/{b_action}', _controller: 'Basket::index' }
-      - { routePath: '/co/{c_step}', _controller: 'Checkout::index' }
     defaults:
-      b_action: ''
-      c_step: ''
       f_sort: ''
       d_pos: ''
 ```
 
 !!! warn
-    Only use the latest TYPO3 9 or 10 releases as older releases have several route enhancer related bugs.
+    Only use the latest TYPO3 9 or 10 releases as older releases have several route enhancer related bugs and the TYPO3 route enhancer implementation is still not bug free!
 
 # Backend access
 
