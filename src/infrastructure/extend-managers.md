@@ -251,6 +251,45 @@ The configuration of the new manager class does also work for sub-managers like 
 
 By adding a new SQL SELECT statement for `mshop/product/manager/standard/search/ansi`, the existing manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class.
 
+## Search functions
+
+It's not possible to e.g. use a column name as argument for conditions, only fixed values. This would be only possible in SQL but e.g. not in other storages like ElasticSearch. To support all type of storages, you have to add a "search function" like in the [product manager](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Product/Manager/Standard.php#L175-L183).
+
+It can contain storage (SQL) specific code and to compare two columns in the `mshop_stock` table for example you need to add this to your custom manager:
+
+```php
+'product:check' => array(
+	'code' => 'product:check()',
+	'internalcode' => '(mpro."code" <> mpro."label)"',
+	'label' => 'Low stock levels',
+	'type' => 'boolean',
+	'internaltype' => 'boolean',
+	'public' => false,
+),
+```
+
+Then, you can add this condition by using:
+
+```php
+$filter->add( $filter->make( 'product:check', [] ), '==', true )
+```
+
+This will create a MySQL query like:
+
+```sql
+SELECT * FROM mshop_product WHERE (mpro."code" <> mpro."label") = 1
+```
+
+And in PostgreSQL it will be:
+
+```sql
+SELECT * FROM mshop_product WHERE (mpro."code" <> mpro."label") = true
+```
+
+Because the expression in `internalcode` is always compared to some value, it must return something that is comparable to a value or NULL. In this case it's a boolean true/false value but in other cases, you need to add a subquery in `internalcode` to match that need and compare against a (not) NULL value.
+
+There's also more information available about [how to use search functions](https://aimeos.org/docs/latest/infrastructure/search-filter/#search-functions).
+
 ## Testing
 
 All test class must be in the `./<yourext>/lib/custom/tests/` directory using the same directory structure as in `./src/`, e.g. `./<yourext>/lib/custom/tests/MShop/Product/Item/MyprojectTest.php` the `...Test.php` extension is important so PHPUnit will recognize these files as test classes. For items, they usually consist of
