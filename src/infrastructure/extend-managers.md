@@ -11,20 +11,20 @@ To extend or overwrite existing classes, you have to:
 
 # Easy way
 
-Since 2019.10 it's possible to add new columns by [extending the database table](schema-migrations.md) and a manager decorator only. The example will use the customer manager but you can extend all managers in the same way.
+Since 2019.10 it's possible to add new columns by [extending the database table](schema-migrations.md) and a manager decorator only. The example will use the product manager but you can extend all managers in the same way.
 
 Implementing decorators is a great way to dynamically extend managers without inheriting from the existing manager class. Instead, you can wrap multiple decorators around a manager object like the layers of an onion. In each decorator, you can implement additional code that changes the parameters or the result of the manager method or performs additional actions.
 
-If you need to store e.g. an arbitrary ID to another system in your customer/user table, you can extend the existing table by adding a new field like described in the article about modifying existing tables.
+If you need to store e.g. an arbitrary ID to another system in your product table, you can extend the existing table by adding a new field like described in the article about modifying existing tables.
 
-Let's name the new field "someid". Add a new `./<yourext>/lib/custom/setup/default/schema/customer.php` file to your extension that adds your new column to the *mshop_customer* table:
+Let's name the new field "someid". Add a new `./<yourext>/lib/custom/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
 
 ```php
 return array(
   'table' => array(
-    'mshop_customer' => function ( \Doctrine\DBAL\Schema\Schema $schema ) {
+    'mshop_product' => function ( \Doctrine\DBAL\Schema\Schema $schema ) {
 
-        $table = $schema->getTable( 'mshop_customer' );
+        $table = $schema->getTable( 'mshop_product' );
         $table->addColumn(  'someid', 'string', array( 'length' => 32, 'notnull' => false ) );
         return $schema;
     },
@@ -35,31 +35,31 @@ return array(
 !!! note
     The new column must be nullable, that means it must allow NULL values!
 
-You need to create a decorator for the customer manager that will care about the new column(s). A decorator has the advantage that you can add multiple decorators on top of the manager and 3rd party extensions can do that too.
+You need to create a decorator for the product manager that will care about the new column(s). A decorator has the advantage that you can add multiple decorators on top of the manager and 3rd party extensions can do that too.
 
-Your new customer manager decorator class should be located in `./<yourext>/lib/custom/src/MShop/Customer/Manager/Decorator/Myproject.php` and should contain:
+Your new product manager decorator class should be located in `./<yourext>/lib/custom/src/MShop/Product/Manager/Decorator/Myproject.php` and should contain:
 
 ```php
-namespace Aimeos\MShop\Customer\Manager\Decorator;
+namespace Aimeos\MShop\Product\Manager\Decorator;
 
 class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
 {
     private $attr = [
         'mycolumn' => [
             'code' => 'mycolumn',
-            'internalcode' => 'mcus."mycolumn"',
+            'internalcode' => 'mpro."mycolumn"',
             'label' => 'My new column',
             'type' => 'string',
             'internaltype' => \Aimeos\MW\DB\Statement\Base::PARAM_STR,
         ],
     ];
 
-    public function getSaveAttributes()
+    public function getSaveAttributes() : array
     {
         return parent::getSaveAttributes() + $this->createAttributes( $this->attr );
     }
 
-    public function getSearchAttributes( $sub = true )
+    public function getSearchAttributes( $sub = true ) : array
     {
         return parent::getSearchAttributes( $sub ) + $this->createAttributes( $this->attr );
     }
@@ -70,7 +70,7 @@ The `$attr` array contains a definition of the column(s) and the requirements ar
 
 1. The key must be exactly the name of your column in the database (here: 'mycolumn')
 2. The value for *code* must be exactly the name of your column in the database (here: 'mycolumn')
-3. The value for *internalcode* must be SQL alias of the table, a dot and the column name enclosed in quotation marks (here: 'mcus."mycolumn"')
+3. The value for *internalcode* must be SQL alias of the table, a dot and the column name enclosed in quotation marks (here: 'mpro."mycolumn"')
 
 !!! tip
     For the SQL alias you have to use, please have a at into the SELECT statement of the domain in the [configuration](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/config/mshop).
@@ -85,11 +85,11 @@ The other values in the *$attr* array are optional:
     * \Aimeos\MW\DB\Statement\Base::PARAM_FLOAT
     * \Aimeos\MW\DB\Statement\Base::PARAM_BOOL
 
-As last step, you have to add your decorator name to the list of local decorators for that manager in the `./<yourext>/config/mshop.php` file. For the customer manager it's:
+As last step, you have to add your decorator name to the list of local decorators for that manager in the `./<yourext>/config/mshop.php` file. For the product manager it's:
 
 ```php
 return [
-    'customer' => [
+    'product' => [
         'manager' => [
             'decorators' => [
                 'local' => ['Myproject']
@@ -127,7 +127,7 @@ class Myproject extends Standard
         $this->myvalues = $values;
     }
 
-    public function getMyId()
+    public function getMyId() : string
     {
         if( isset( $this->myvalues['myid'] ) ) {
             return (string) $this->myvalues['myid'];
@@ -135,7 +135,7 @@ class Myproject extends Standard
         return '';
     }
 
-    public function setMyId( $val )
+    public function setMyId( ?string $val ) : \Aimeos\MShop\Common\Item\Iface
     {
         if( (string) $val !== $this->getMyId() )
         {
@@ -145,28 +145,29 @@ class Myproject extends Standard
         return $this;
     }
 
-    public function fromArray( array $list )
+    public function fromArray( array &$list, bool $private = false ) : \Aimeos\MShop\Common\Item\Iface
     {
         $unknown = [];
-        $list = parent::fromArray( $list );
+		$item = parent::fromArray( $list, $private );
 
-        foreach( $list as $key => $value )
-        {
-            switch( $key )
-            {
-                case 'myid': $this->setMyId( $value ); break;
-                default: $unknown[$key] = $value;
+		foreach( $list as $key => $value )
+		{
+			switch( $key )
+			{
+                case 'myid': $item = $item->setMyId( $value ); break;
+				default: continue 2;
             }
+			unset( $list[$key] );
         }
 
-        return $unknown;
+        return $item;
     }
 
-    public function toArray( $private = false )
+	public function toArray( bool $private = false ) : array
     {
         $list = parent::toArray( $private );
 
-        if( $private true ) {
+        if( $private === true ) {
             $list['myid'] = $this->getMyId();
         }
 
@@ -196,13 +197,13 @@ class Myproject extends Standard
         ),
     );
 
-    public function saveItem( \Aimeos\MShop\Common\Item\Iface $item, $fetch = true )
+    public function saveItem( \Aimeos\MShop\Product\Item\Iface $item, $fetch = true ) : \Aimeos\MShop\Product\Item\Iface
     {
         // a modified copy of the code from the parent class
         // extended by a bind() call and updated bind positions (first parameter)
     }
 
-    public function getSearchAttributes( $withsub = true )
+    public function getSearchAttributes( $withsub = true ) : array
     {
         $list = parent::getSearchAttributes( $withsub );
         foreach( $this->searchConfig as $key => $fields ) {
@@ -211,9 +212,10 @@ class Myproject extends Standard
         return $list;
     }
 
-    protected function createItemBase( array $values = [] /* , ... */ )
+	protected function createItemBase( array $values = [], array $listItems = [],
+		array $refItems = [], array $propertyItems = [] ) : \Aimeos\MShop\Common\Item\Iface
     {
-        return new \Aimeos\MShop\Product\Item\Myproject( $values /* , ... */ );
+        return new \Aimeos\MShop\Product\Item\Myproject( $values, $listItems, $refItems, $propertyItems );
     }
 }
 ```
@@ -240,6 +242,7 @@ return [
                 ],
                 'search' => [
                     'ansi' => 'SELECT ... (with new column)',
+                    'mysql' => 'SELECT ... (with new column)',
                 ],
             ],
         ],
@@ -249,7 +252,7 @@ return [
 
 The configuration of the new manager class does also work for sub-managers like the product lists type and all other sub-managers by using `mshop/<domain>/manager/<submanager>/<submanager>/name` instead, e.g. `mshop/product/manager/lists/type/name`.
 
-By adding a new SQL SELECT statement for `mshop/product/manager/standard/search/ansi`, the existing manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class.
+By adding a new SQL SELECT statement for `mshop/product/manager/standard/search/ansi` and `mshop/product/manager/standard/search/mysql`, the manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class. You can see the standard SQL statements for the product manager in the [product manager configuration](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/config/mshop/product.php#L489-L555) of the Aimeos core.
 
 ## Search functions
 
@@ -301,7 +304,7 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
 {
     private $object;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $values = ['myvalue' => 'test'];
         $this->object = new \Aimeos\MShop\Product\Item\Myproject( $values );
@@ -342,7 +345,7 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
 {
     private $object;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $context = \TestHelperMShop::getContext();
         $this->object = new \Aimeos\MShop\Product\Manager\Standard( $context );
