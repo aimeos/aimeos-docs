@@ -60,7 +60,7 @@ Adding new items to a list of resources is done by sending a POST request to the
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X POST 'http://localhost:8000/jsonadm/default/product?_token=...' \
+    -X POST 'http://localhost:8000/admin/default/jsonadm/product?_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
         "type": "product",
@@ -198,7 +198,7 @@ You can also update the attributes of existing items via PATCH requests. As URLs
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X PATCH 'http://localhost:8000/jsonadm/default/product?id=1&_token=...' \
+    -X PATCH 'http://localhost:8000/admin/default/jsonadm/product?id=1&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
         "id": "1",
@@ -212,7 +212,7 @@ You can also update the attributes of existing items via PATCH requests. As URLs
 === "jQuery"
     ```javascript
     // returned in "self" link from products response
-    var url = 'http://localhost:8000/jsonadm/default/product?id=1';
+    var url = 'http://localhost:8000/admin/default/jsonadm/product?id=1';
 
     var params = {"data": {
         "id": "1",
@@ -338,12 +338,12 @@ Resources can also be deleted. To perform this operation, you have to send a DEL
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X DELETE 'http://localhost:8000/jsonadm/default/product?id=...&_token=...'
+    -X DELETE 'http://localhost:8000/admin/default/jsonadm/product?id=...&_token=...'
     ```
 === "jQuery"
     ```javascript
     // returned in "self" link from resource response
-    var url = 'http://localhost:8000/jsonadm/default/product?id=...';
+    var url = 'http://localhost:8000/admin/default/jsonadm/product?id=...';
 
     if(options['meta']['csrf']) {
         var csrf = {};
