@@ -59,7 +59,7 @@ class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
         return parent::getSaveAttributes() + $this->createAttributes( $this->attr );
     }
 
-    public function getSearchAttributes( $sub = true ) : array
+    public function getSearchAttributes( bool $sub = true ) : array
     {
         return parent::getSearchAttributes( $sub ) + $this->createAttributes( $this->attr );
     }
@@ -187,23 +187,23 @@ namespace Aimeos\MShop\Product\Manager;
 
 class Myproject extends Standard
 {
-    private $searchConfig = array(
-        'product.myvalue'=> array(
-            'code'=>'product.myvalue',
-            'internalcode'=>'mpro."myval"',
-            'label'=>'Product MyValue',
-            'type'=> 'string', // integer, float, etc.
-            'internaltype'=> \Aimeos\MW\DB\Statement\Base::PARAM_STR, // _INT, _FLOAT, etc.
-        ),
-    );
+    private $searchConfig = [
+        'product.myvalue' => [
+            'code' => 'product.myvalue',
+            'internalcode' => 'mpro."myval"',
+            'label' => 'Product MyValue',
+            'type' => 'string', // integer, float, etc.
+            'internaltype' => \Aimeos\MW\DB\Statement\Base::PARAM_STR, // _INT, _FLOAT, etc.
+        ],
+    ];
 
-    public function saveItem( \Aimeos\MShop\Product\Item\Iface $item, $fetch = true ) : \Aimeos\MShop\Product\Item\Iface
+    public function saveItem( \Aimeos\MShop\Product\Item\Iface $item, bool $fetch = true ) : \Aimeos\MShop\Product\Item\Iface
     {
         // a modified copy of the code from the parent class
         // extended by a bind() call and updated bind positions (first parameter)
     }
 
-    public function getSearchAttributes( $withsub = true ) : array
+    public function getSearchAttributes( bool $withsub = true ) : array
     {
         $list = parent::getSearchAttributes( $withsub );
         foreach( $this->searchConfig as $key => $fields ) {
@@ -261,14 +261,14 @@ It's not possible to e.g. use a column name as argument for conditions, only fix
 It can contain storage (SQL) specific code and to compare two columns in the `mshop_stock` table for example you need to add this to your custom manager:
 
 ```php
-'product:check' => array(
+'product:check' => [
 	'code' => 'product:check()',
 	'internalcode' => '(mpro."code" <> mpro."label)"',
 	'label' => 'Low stock levels',
 	'type' => 'boolean',
 	'internaltype' => 'boolean',
 	'public' => false,
-),
+],
 ```
 
 Then, you can add this condition by using:
