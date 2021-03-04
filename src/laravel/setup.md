@@ -48,9 +48,9 @@ More information about the release schedule and the support periods is available
 If you want to upgrade from earlier versions, there are some steps necessary to update your Laravel application:
 
 * Follow the steps in the [installation guide](https://github.com/aimeos/aimeos-laravel#table-of-content)
-* Copy the `vendor/aimeos-laravel/src/config/shop.php` to `config/shop.php`
+* Copy the `vendor/aimeos/aimeos-laravel/src/config/shop.php` to `config/shop.php`
 * Adapt the `shop.php` to your needs again
-* Copy the `./vendor/aimeos-laravel/src/views/` folder to `./resources/views/vendor/shop/`
+* Copy the `./vendor/aimeos/aimeos-laravel/src/views/` folder to `./resources/views/vendor/shop/`
 * Adapt the views to your needs again
 * Update the database and clear all caches
 
