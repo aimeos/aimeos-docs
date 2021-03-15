@@ -1,4 +1,4 @@
-A decorator can add additional features on top of services only by configuration. For example, if a payment by invoice should only be available, when the customer is logged in and already placed at least one successful order, then this can be done by adding a decorator to the payment provider. The great advantage of decorators is that they can be reused in any combination with all services. It's like a set of rules that can be rearranged to create different *rule sets* with only a small amount of rules. Decorators are available for all types of services, therefore each decorator can be used with delivery and payment services. 
+A decorator can add additional features on top of services only by configuration. For example, if a payment by invoice should only be available, when the customer is logged in and already placed at least one successful order, then this can be done by adding a decorator to the payment provider. The great advantage of decorators is that they can be reused in any combination with all services. It's like a set of rules that can be rearranged to create different *rule sets* with only a small amount of rules. Decorators are available for all types of services, therefore each decorator can be used with delivery and payment services.
 
 
 # Usage
@@ -75,7 +75,7 @@ costs.percent : -3.0
 ```
 
 !!! note
-    Contrary to the "Reduction" decorator, any amounts subtracted by the "Costs" decorator are not displayed as rebates!
+    Contrary to the "Reduction" decorator, any amounts subtracted by the "Costs" decorator are not displayed as rebates but as (negative) delivery or payment costs!
 
 ## Country
 
@@ -316,7 +316,7 @@ quantity.packagesize (optional)
 
 ## Reduction
 
-Grants a reduction of a configurable percentage based on the basket value for the delivery or payment option. If you would like to promote certain delivery or payment options, you can reduce the costs of the order by a defined percentage. The reduction can be granted only, if the total value of the basket is above a minimum and/or below a maximum value.
+Grants a reduction of a configurable percentage based on the basket value if the delivery or payment option was chosen. If you would like to promote certain delivery or payment options, you can reduce the amount of the order by a defined percentage. The reduction can be granted only, if the total value of the basket is above a minimum and/or below a maximum value.
 
 reduction.percent (required)
 : Decimal value of the reduction in percent. The value must not contain the percent sign (%) and the fractional part must be separated by a decimal point, e.g. "2.5", to reduce each Euro, Dollar or any other currency by 0.025.
@@ -327,25 +327,19 @@ reduction.basket-value-min (optional)
 reduction.basket-value-max (optional)
 : Map of currencies and maximum total values that must not be exceeded to get the reduction for an order. The currencies must be three letter ISO currency codes in upper case format and the minimum total value can be of decimal nature (using a decimal point to separate the fractional part). For a complete list of official currency codes, refer to [https://en.wikipedia.org/wiki/ISO_4217](https://en.wikipedia.org/wiki/ISO_4217).
 
-reduction.product-costs (optional)
-: Include product specific shipping costs when calculating reduction. If this option is set to "yes" for the delivery service option, the product shipping costs will be reduced by the same percentage as the global shipping costs.
+reduction.include-costs (optional)
+: Include shipping and payments costs when calculating reduction. If this option is set to "yes" in the service option, the all shipping costs will be reduced by the same percentage as the basket value.
 
-To grant a reduction of 3% for all baskets in Euro when choosing the service option:
-
-```
-reduction.percent : {"EUR":3}
-```
-
-Different reduction amounts for different currencies can be granted as well:
+To grant a reduction of 3% of the basket value when choosing the service option:
 
 ```
-reduction.percent : {"EUR":3.0,"USD":1.5}
+reduction.percent : 3
 ```
 
 To limit a reduction to orders between 100 and 500 Euro use:
 
 ```
-reduction.percent : {"EUR":3.0}
+reduction.percent : 3.0
 reduction.basket-value-min : {"EUR":100}
 reduction.basket-value-max : {"EUR":500}
 ```
