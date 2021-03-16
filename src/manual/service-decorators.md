@@ -316,7 +316,7 @@ quantity.packagesize (optional)
 
 ## Reduction
 
-Grants a reduction of a configurable percentage based on the basket value if the delivery or payment option was chosen. If you would like to promote certain delivery or payment options, you can reduce the amount of the order by a defined percentage. The reduction can be granted only, if the total value of the basket is above a minimum and/or below a maximum value.
+Grants a reduction of a configurable percentage based on the delivery/payment costs if the delivery or payment option was chosen. If you would like to promote certain delivery or payment options, you can reduce the delivery/payment costs by a defined percentage. The reduction can be granted only, if the total value of the basket is above a minimum and/or below a maximum value.
 
 reduction.percent (required)
 : Decimal value of the reduction in percent. The value must not contain the percent sign (%) and the fractional part must be separated by a decimal point, e.g. "2.5", to reduce each Euro, Dollar or any other currency by 0.025.
