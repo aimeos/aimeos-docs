@@ -1,3 +1,47 @@
+# Custom CSS/JS
+
+If you [generate an Aimeos extension](https://aimeos.org/extensions) for your project, you can add own CSS and JS code in these files included in the generated extension:
+
+```
+./admin/jqadm/themes/custom.css
+./admin/jqadm/themes/custom.js
+```
+
+They will be loaded automatically and appended to the Aimeos core files so you can overwrite any Aimeos CSS or JS code.
+
+You can also add more CSS/JS files if you have lots of code and want to keep them in separate files. Then, you have to register your files in the *manifest.jsb2* file stored in:
+
+```
+./admin/jqadm/manifest.jsb2
+```
+
+This file contains a *pkgs* section for the CSS and the JS files:
+
+```
+{
+	"pkgs": [{
+		"name": "yourext CSS",
+		"file": "yourext.css",
+		"fileIncludes": [{
+			"text": "additonal-styles.css",
+			"path": "themes/"
+		}]
+	}, {
+		"name": "yourext JS",
+		"file": "yourext.js",
+		"fileIncludes": [{
+			"text": "additional-javascript.js",
+			"path": "themes/"
+		}]
+	}],
+}
+```
+
+The *fileIncludes* sections contain the list of files that will be included in each request. It's a list of Javascript objects with *text* and *path* keys.
+
+!!! caution
+    The *text* value must be the file name **without path** while the *path* value must contain the path relative to the *manifest.jsb2* file including a **trailing slash** ("/").
+
 # CKEditor
 
 Aimeos offers a rich text HTML editor in the text panels for adding HTML formatting to short and long descriptions and currently, the *CKEditor v4 Standard All Edition* is used. This version comes with all standard plugins activated and all *official* plugins included, but deactivated. The standard configuration hides some buttons (e.g. "superscript", "subscript"), something to be aware of, when it comes to configuration.
