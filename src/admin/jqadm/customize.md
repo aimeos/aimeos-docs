@@ -22,7 +22,7 @@ Aimeos.editorcfg = [
 
 This configuration will replace the existing Aimeos configuration and will be applied to all available text area fields in all text panels.
 
-### Activate plugins
+## Activate plugins
 
 In order to make buttons like the text align options (JustifyLeft, JustifyCenter, JustifyRight, JustifyBlock) visible, you have to add a plugin to the *editorExtraPlugins* option, in this case the *justify* plugin:
 
@@ -48,7 +48,7 @@ The `Aimeos.editortags` option enables you to configure more tags which are allo
 ## Show more buttons
 
 If you wish to activate certain buttons, e.g. for super- and/or subscript, or add e.g. text align options, extend your configuration like this:
-  
+
 ```javascript
 Aimeos.editorcfg = [
   [ 'Undo', 'Redo', 'Anchor' ],
@@ -63,7 +63,7 @@ Aimeos.editorcfg = [
 
 This would only be the first step, though, since neither the text align nor the super-/subscript buttons would be available/visible yet. This is due to the fact that the *CKEditor v4 Standard Edition* disables additional plugins by default as well as removes some buttons.
 
-### Remove buttons
+## Remove buttons
 
 The buttons for "Underline", "Superscript" and "Subscript" are not visible, because the *CKEDITOR v4 Standard Edition* removes them by default. You can change the list of buttons using the `Aimeos.editorRemoveButtons` setting. The default configuration in Aimeos is:
 
