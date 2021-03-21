@@ -116,7 +116,7 @@ authorizenet.address (boolean, optional)
 authorizenet.authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 
@@ -154,7 +154,7 @@ authorizenet.header (string, optional)
 authorizenet.body (string, optional)
 : The HTTP body sent by the checkout update component after updating the order successfully ("success" by default). This could be a complete HTML page too that is shown to the customer and offering a link to the confirm page (authorizenet.header must be a empty value in this case)
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 
@@ -192,7 +192,7 @@ authorizenet.header (string, optional)
 authorizenet.body (string, optional)
 : The HTTP body sent by the checkout update component after updating the order successfully ("success" by default). This could be a complete HTML page too that is shown to the customer and offering a link to the confirm page (authorizenet.header must be a empty value in this case)
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 
@@ -218,7 +218,7 @@ cardsave.address (boolean, optional)
 cardsave.authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 
@@ -241,7 +241,7 @@ sign (string, required)
 hmacKey1 (string, optional)
 : The SHA256 pre-shared key for signing requests. It's recommended adding the key to increase security
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 
@@ -261,7 +261,7 @@ apiKey (string, required)
 mollie.address (boolean, optional)
 : A value of "1" will send the customer address to the Mollie server for additional verification
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 
@@ -286,7 +286,7 @@ authorize (boolean, optional)
 onsite (boolean, optional)
 : Use "1" if payment gateway requires that payment details are collected locally
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 !!! note
@@ -339,7 +339,7 @@ address (boolean, optional)
 authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 
@@ -374,7 +374,7 @@ subAccountId (string, required)
 clearingtype (string, optional)
 : Code from the Payone documentation (default: "cc" for credit cards)
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money. Requires activating the test mode in your payone account, too
 
 
@@ -429,7 +429,7 @@ shaIn (string, required)
 shaOut (string, required)
 : SHA-OUT key
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money. Requires activating the test mode in your payone account too
 
 !!! note
@@ -467,7 +467,7 @@ authorize (boolean, required)
 address (boolean, optional)
 : A value of "1" will send the customer address to the Sofort server for additional verification
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money. Requires activating the test mode in your sofort.com account, too
 
 !!! hint
@@ -496,5 +496,5 @@ stripe.address (boolean, optional)
 stripe.authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
-testMode (boolean, optional)
+testmode (boolean, optional)
 : Use "1" for test payments without real money
