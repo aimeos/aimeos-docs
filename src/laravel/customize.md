@@ -364,6 +364,31 @@ php artisan aimeos:setup shop.mydomain.com
 php artisan aimeos:setup myshop.com
 ```
 
+## Homepage
+
+To use the catalog-home component for the home page in a multi-vendor setup, add one of these alternatives at the end of the `routes/web.php` file:
+
+```php
+// prefix: yourdomain.com/vendor1
+Route::group(['prefix' => '{site}', 'middleware' => ['web']], function () {
+	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction');
+		->name('aimeos_home')->where( ['site' => '[a-z0-9\-]+'] );
+});
+
+// subdomain: vendor1.yourdomain.com
+Route::group(['domain' => '{site}.yourdomain.com', 'middleware' => ['web']], function () {
+	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction');
+		->name('aimeos_home')->where( ['site' => '[a-z0-9\-]+'] );
+});
+
+// custom domain: vendor1.com
+Route::group(['domain' => '{site}', 'middleware' => ['web']], function () {
+	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction');
+		->name('aimeos_home')->where( ['site' => '[a-z0-9\.\-]+'] );
+});
+```
+
+
 # Countries, regions and states
 
 ## Countries
