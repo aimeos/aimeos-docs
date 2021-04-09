@@ -32,6 +32,29 @@ The decorators are called from right to left, so in the given example the "Count
 
 # Built-in decorators
 
+## BasketValues
+
+Shows or hides service options based on the basket value. You can configure a minium or maximum basket total value or both and a missing value is interpreted as no restriction.
+
+basketvalues.basket-value-min (optional)
+: Map of currencies and minimum total values required to show the service option. The currencies must be three letter ISO currency codes in upper case format and the minimum total value can be of decimal nature (using a decimal point to separate the fractional part). For a complete list of official currency codes, refer to [https://en.wikipedia.org/wiki/ISO_4217](https://en.wikipedia.org/wiki/ISO_4217).
+
+basketvalues.basket-value-max (optional)
+: Map of currencies and maximum total values that must not be exceeded to show the service option. The currencies must be three letter ISO currency codes in upper case format and the minimum total value can be of decimal nature (using a decimal point to separate the fractional part). For a complete list of official currency codes, refer to [https://en.wikipedia.org/wiki/ISO_4217](https://en.wikipedia.org/wiki/ISO_4217).
+
+To limit a delivery or payment option to orders up to 100 Euro use:
+
+```
+basketvalues.basket-value-max : {"EUR":100}
+```
+
+For an additional service options which should be mutually exclusive to the first one, configure the total value above 100 and e.g. an upper limit of 500 Euro:
+
+```
+basketvalues.basket-value-min : {"EUR":100.01}
+basketvalues.basket-value-max : {"EUR":500}
+```
+
 ## Category
 
 Shows or hides service options if one of the products in the basket is associated to one of the configured category.
@@ -321,14 +344,8 @@ Grants a reduction of a configurable percentage based on the basket value if the
 reduction.percent (required)
 : Decimal value of the reduction in percent. The value must not contain the percent sign (%) and the fractional part must be separated by a decimal point, e.g. "2.5", to reduce each Euro, Dollar or any other currency by 0.025.
 
-reduction.basket-value-min (optional)
-: Map of currencies and minimum total values required to get the reduction for an order. The currencies must be three letter ISO currency codes in upper case format and the minimum total value can be of decimal nature (using a decimal point to separate the fractional part). For a complete list of official currency codes, refer to [https://en.wikipedia.org/wiki/ISO_4217](https://en.wikipedia.org/wiki/ISO_4217).
-
-reduction.basket-value-max (optional)
-: Map of currencies and maximum total values that must not be exceeded to get the reduction for an order. The currencies must be three letter ISO currency codes in upper case format and the minimum total value can be of decimal nature (using a decimal point to separate the fractional part). For a complete list of official currency codes, refer to [https://en.wikipedia.org/wiki/ISO_4217](https://en.wikipedia.org/wiki/ISO_4217).
-
-reduction.include-costs (optional)
-: Include shipping and payments costs when calculating reduction. If this option is set to "yes" in the service option, the all shipping costs will be reduced by the same percentage as the basket value.
+reduction.product-costs (optional)
+: Include product specific shipping costs when calculating reduction. If this option is set to "yes" for the delivery service option, the product shipping costs will be reduced by the same percentage as the global shipping costs.
 
 To grant a reduction of 3% of the basket value when choosing the service option:
 
@@ -336,13 +353,6 @@ To grant a reduction of 3% of the basket value when choosing the service option:
 reduction.percent : 3
 ```
 
-To limit a reduction to orders between 100 and 500 Euro use:
-
-```
-reduction.percent : 3.0
-reduction.basket-value-min : {"EUR":100}
-reduction.basket-value-max : {"EUR":500}
-```
 
 !!! note
     Contrary to the "Costs" decorator, any amounts subtracted by the "Reduction" decorator will be displayed as rebates in the basket!
