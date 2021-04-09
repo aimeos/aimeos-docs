@@ -257,15 +257,19 @@ A subpart template is almost the same as the [panel item template](panel-templat
 <?php
     $enc = $this->encoder();
 ?>
-<div id="mysubpanel" class="item-mysubpanel content-block tab-pane fade" role="tabpanel" aria-labelledby="mysubpanel">
+<div id="mysubpanel" class="item-mysubpanel tab-pane fade" role="tabpanel" aria-labelledby="mysubpanel">
 
-    <div class="col-xl-6 content-block vue-block <?= $this->site()->readonly( $this->get( 'mysubpanelData/mysubpanel.siteid' ) ); ?>"
-        data-data="<?= $enc->attr( $this->get( 'mysubpanelData', new stdClass() ) ) ?>">
+    <div class="box">
+        <div class="row">
+            <div class="col-xl-6 vue <?= $this->site()->readonly( $this->get( 'mysubpanelData/mysubpanel.siteid' ) ); ?>"
+                data-data="<?= $enc->attr( $this->get( 'mysubpanelData', new stdClass() ) ) ?>">
 
-        <!-- input/select fields -->
-
-        <?= $this->get( 'mysubpanelBody' ); ?>
+                <!-- input/select fields -->
+            <div>
+        <div>
     <div>
+
+    <?= $this->get( 'mysubpanelBody' ); ?>
 </div>
 ```
 
@@ -274,8 +278,44 @@ Notes on subpart templates:
 tab pane
 : The first `<div>` is for the Boostrap tab and must not be the root of the Vue.js application
 
-vue block
-: In the second `<div>`, the Vue applcation is initialized because it contains the `vue-block` class. The Aimeos JS creates a Vue instance for each HTML node that contains the class. You can add arbitrary data to the Vue instance in the `data-data="..."` attribute, which must contain a valid Javascript object (`{}`). Remove the `vue-block` CSS class if you don't use Vue.js components in your subpart
+vue
+: In the second `<div>`, the Vue applcation is initialized because it contains the `vue` class. The Aimeos JS creates a Vue instance for each HTML node that contains the class. You can add arbitrary data to the Vue instance in the `data-data="..."` attribute, which must contain a valid Javascript object (`{}`). Remove the `vue` CSS class if you don't use Vue.js components in your subpart
 
 further subparts
 : Include the `<?= $this->get( 'mysubpanelBody' ); ?>` to allow other extensions to add more subparts to yours
+
+# Configuration
+
+To show your new subpart in the panel, you have to add the subpart name to the subparts configuration for that panel in the `./config/admin.php` file of your extension:
+
+```php
+return [
+    'jqadm' => [
+        'mypanel' => [
+            'subparts' => [
+                'mysubpanel' => 'mysubpanel'
+            ]
+        ]
+    ]
+];
+```
+
+!!! note
+    Merge the configuration above with the existing configuration in that file if there is any!
+
+For existing panels like the product detail panel, only change the panel name:
+
+```php
+return [
+    'jqadm' => [
+        'product' => [
+            'subparts' => [
+                'mysubpanel' => 'mysubpanel'
+            ]
+        ]
+    ]
+];
+```
+
+!!! warn
+    You can only configure the subpanel for the main panel it's written for according to its namespace! Configuring your subpart for a foreign panel doesn't work and will result in an error that the subpart isn't found.
