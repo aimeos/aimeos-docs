@@ -249,7 +249,6 @@ select.md-header-nav__button:focus {
 }
 
 .md-nav__item--nested>.md-nav__link {
-  font-weight: bold;
   font-size: .75rem;
 }
 
