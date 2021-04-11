@@ -179,12 +179,12 @@ To make the available configuration settings known, you have to specify which co
 private $feconfig = [
     'myprovider.username' => [
         'code' => 'myprovider.username',
-        'internalcode'=> 'myprovider.username',
-        'label'=> 'Username',
-        'type'=> 'string',
-        'internaltype'=> 'string',
-        'default'=> '',
-        'required'=> true,
+        'internalcode' => 'myprovider.username',
+        'label' => 'Username',
+        'type' => 'string',
+        'internaltype' => 'string',
+        'default' => '',
+        'required' => true,
     ],
 ];
 ```
@@ -195,12 +195,12 @@ In the front-end you can also specify if the setting should be hidden or not:
 private $feconfig = [
     'myprovider.token' => [
         'code' => 'myprovider.token',
-        'internalcode'=> 'token',
-        'label'=> 'Authentication token',
-        'type'=> 'number',
-        'internaltype'=> 'integer',
-        'default'=> '1234',
-        'required'=> true,
+        'internalcode' => 'token',
+        'label' => 'Authentication token',
+        'type' => 'number',
+        'internaltype' => 'integer',
+        'default' => '1234',
+        'required' => true,
         'public' => false,
    ],
 ];

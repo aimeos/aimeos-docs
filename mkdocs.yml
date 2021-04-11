@@ -171,6 +171,7 @@ nav:
       - Create decorators: providers/service/decorators.md
       - Write unit tests: providers/service/unittests.md
     - Basket plugins: providers/basket-plugins.md
+    - Pricing rules: providers/rules.md
   - Infrastructure:
     - Database: infrastructure/databases.md
     - Migrations: infrastructure/schema-migrations.md
