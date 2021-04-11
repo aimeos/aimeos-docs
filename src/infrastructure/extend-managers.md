@@ -106,6 +106,27 @@ $item->get( 'mycolumn', '<default value>' );
 $item->mycolumn;
 ```
 
+You can also register new methods in each item class which transforms the values to enforcing types for example:
+
+```php
+\Aimeos\MShop\Product\Item\Standard::method( 'getMycolumn', function() {
+    return (int) $this->get( 'mycolumn' );
+} );
+
+\Aimeos\MShop\Product\Item\Standard::method( 'setMycolumn', function( $value ) {
+    return $this->set( 'mycolumn', (int) $value );
+} );
+```
+
+It's also possible to add new methods that combine several values like:
+
+```php
+\Aimeos\MShop\Customer\Item\Standard::method( 'getFullName', function() {
+    return $this->get( 'customer.firstname' ) . ' ' . $this->get( 'customer.lastname' );
+} );
+
+
+
 # Custom way
 
 To have full control over the implementation including those of the item, you need to do a bit more.
