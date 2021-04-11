@@ -17,14 +17,14 @@ Aimeos is totally customizable without the need to touch any Aimeos code and you
 
 The "MShop" layer using the data access / data transfer object design pattern and consists of managers and items for different data domains (from domain driven design) to interact with the storage like a relational or NoSQL database. They hide the differences between different implementations and offer a single interface for all storage services. Thus, managers allow you to store products in a document oriented storage like ElasticSearch instead of a relational database without any change in your code. How to use managers and items is described here:
 
-* [Managing items](../infrastructure/manaing-items.md)
+* [Managing items](../infrastructure/managing-items.md)
 * [Query builder](../infrastructure/search-filter.md)
 
 ## Extend managers
 
 Sometimes, you need to store e.g. additional product data and the first idea might be to extend the product table for that. As said, Aimeos is incredible flexible and allows you to store arbitrary data in property items or attributes. Property items belong to one (product) item only while attributes can be shared between several (product) items. Thus, using properties and attributes, extending the data structures isn't necessary in most cases:
 
-* [Manage related items](../infrastructure/manaing-items.md#manage-related-items)
+* [Manage related items](../infrastructure/managing-items.md#manage-related-items)
 
 One valid case where you need to extend the data structure (i.e. table or document) is if you need fast filtering and sorting of the (product) items for those values. In that case, you should read:
 

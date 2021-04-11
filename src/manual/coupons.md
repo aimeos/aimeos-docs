@@ -8,7 +8,7 @@ Coupon providers can be enhanced by [decorators](coupon-decorators.md) to add ce
 
 # List of configured coupons
 
-The "Coupon" list view provides a paged list of all configured coupons in the system, which can be [filtered](filtering-lists.md) by various criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Coupons can be added, edited or deleted either by using the button in the menu or by using the context menu, which is shown if you right-click into the list. A double click also opens the detail view for editing the coupons.
+The "Coupon" list view provides a paged list of all configured coupons in the system, which can be [filtered](filtering-lists.md) by various criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Coupons can be added, edited or deleted either by using the shown buttons or by clicking on the list entry.
 
 ![List of configured coupons](Admin-backend-coupon-list.png)
 
