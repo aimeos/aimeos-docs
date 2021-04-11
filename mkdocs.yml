@@ -84,6 +84,10 @@ nav:
     - Categories:
       - Manage categories: manual/categories.md
       - Category details: manual/category-details.md
+    - Pricing rules:
+      - Available rules: manual/rules.md
+      - Rule details: manual/rule-details.md
+      - Adding features: manual/rule-decorators.md
     - Vouchers/Coupons:
       - Available coupon: manual/coupons.md
       - Coupon details: manual/coupon-details.md
