@@ -98,6 +98,7 @@ nav:
       - Available plugins: manual/plugins.md
       - Plugins details: manual/plugin-details.md
   - Development:
+    - Getting started: developer/index.md
     - Architecture: developer/architecture.md
     - Create extensions: developer/extensions.md
     - Add translations:  developer/translations.md
