@@ -10,7 +10,7 @@ Coupon providers can be enhanced by [decorators](coupon-decorators.md) to add ce
 
 The "Coupon" list view provides a paged list of all configured coupons in the system, which can be [filtered](filtering-lists.md) by various criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Coupons can be added, edited or deleted either by using the shown buttons or by clicking on the list entry.
 
-![List of configured coupons](Admin-backend-coupon-list.png)
+![List of configured coupons](Admin-coupon-list.png)
 
 
 # Built-in coupon providers
@@ -34,7 +34,7 @@ fixedrebate.rebate (required)
 
 To enter value easily, click on the "+" icon to open an input dialog:
 
-![Enter values](Admin-backend-coupon-add-limit-for-rebate.png)
+![Enter values](Admin-coupon-add-limit.png)
 
 ## PercentRebate
 

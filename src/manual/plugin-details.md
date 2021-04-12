@@ -1,4 +1,4 @@
-![Detail view for plug-ins](Admin-backend-plugin-detail.png)
+![Detail view for plug-ins](Admin-plugin-detail.png)
 
 There are some select and input fields in the left section of the detail view that are all required. Their purpose is:
 

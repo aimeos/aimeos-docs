@@ -2,7 +2,7 @@ The service panel is dedicated to the delivery and payment options that should b
 
 The list view provides a paged list of all available delivery and payment options in the system, which can be [filtered](filtering-lists.md) by various criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Delivery and payment options can be added or deleted using the buttons in the list. A click on the entry also opens the detail view for editing the delivery or payment item.
 
-![List of delivery/payment options](Admin-backend-service-list.png)
+![List of delivery/payment options](Admin-service-list.png)
 
 # Services explained
 
@@ -331,7 +331,7 @@ testmode (boolean, optional)
 !!! note
     You need to add the credentials for each payment gateway you want to use. There is no common naming for the credentials, so you have to look into the *./src/Gateway.php* of each [payment gateway](https://github.com/thephpleague/omnipay#payment-gateways) to find out what's required. They are listed in the *getDefaultParameters()* method of each Gateway class, e.g. in the [2Checkout class](https://github.com/thephpleague/omnipay-2checkout/blob/master/src/Gateway.php).
 
-![Aimeos Omnipay setup](Admin-backend-service-omnipay.png)
+![Aimeos Omnipay setup](Admin-service-omnipay.png)
 
 !!! tip
     Some payment gateways offered by Omnipay require special handling. Sub-classing from the Omnipay provider and overwriting the existing methods if required can support even special payment gateways interfaces. Please drop us a note if you got a provider working in your shop.

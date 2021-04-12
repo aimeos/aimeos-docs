@@ -5,7 +5,7 @@ A plug-in in the Aimeos e-commerce framework is a class that registers itself at
 
 The "Plugin" list view provides a paged list of all configured plug-ins in the system. The most important columns are shown by default but the list of columns can be adapted via the list header. Plug-in configurations can be added, edited or deleted. A click on the name opens the detail view for editing the plug-in configuration.
 
-![List of configured plug-ins](Admin-backend-plugin-list.png)
+![List of configured plug-ins](Admin-plugin-list.png)
 
 Currently, the following plug-ins are configured by default:
 

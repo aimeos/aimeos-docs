@@ -5,7 +5,7 @@ A decorator can add additional features on top of services only by configuration
 
 Decorators are activated by adding them to the "Provider" input field in the *Basic* view of a delivery/payment service item. The easiest way to do so is by clicking on the "+" icon next to the input field and selecting the desired decorator:
 
-![Add a decorator to the delivery/payment provider](Admin-backend-payment-delivery-add-decorator.png)
+![Add a decorator to the delivery/payment provider](Admin-service-add-decorator.png)
 
 However, if you decide to enter the names of the decorators (and the provider) manually, please keep in mind that they are case-sensitive and must be separated by a comma!
 

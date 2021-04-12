@@ -6,7 +6,7 @@ Rule providers can be enhanced by [decorators](rule-decorators.md) to add certai
 
 The "Rule" list view (in the "Marketing" menu) provides a paged list of all configured rules in the system, which can be [filtered](filtering-lists.md) by various criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Rules can be added, edited or deleted either by using the shown buttons or by clicking on the list entry.
 
-![List of configured rules](Admin-backend-rule-list.png)
+![List of configured rules](Admin-rule-list.png)
 
 
 # Built-in rule providers

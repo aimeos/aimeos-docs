@@ -4,7 +4,7 @@ A decorator adds additional features to a rule provider by adding additional con
 
 Decorators are activated by adding them to the "Provider" input field in the detail view of a rule item. The easiest way to do so is by clicking on the "+" icon next to the input field and selecting the desired decorator:
 
-![Add a decorator to the rule provider](Admin-backend-rule-add-decorator.png)
+![Add a decorator to the rule provider](Admin-rule-add-decorator.png)
 
 **Example**: If a percentage (provided by the "Percent" rule provider) is configured like this:
 

@@ -23,13 +23,13 @@ Depending on the selected site, you will see the data associated with this site.
 
 If you want to deactivate or delete a site, go to the *Aimeos* administation interface, choose "Locales", then "Sites":
 
-![Locales :: Sites](Admin-backend-locales-sites.jpg)
+![Locales :: Sites](Admin-locales-sites.png)
 
 A list of all your sites will be displayed.
 
 If you want to *disable* a site, click on any of the available fields (status, code, name, ...) of the site to edit its settings. Next, set "Status" to "Disabled" (or any of the other setting you wish to activate):
 
-![Disable a site](Admin-backend-locales-sites-disable.png)
+![Disable a site](Admin-locales-sites-disable.png)
 
 Click "Save" once you are done.
 

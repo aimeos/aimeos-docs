@@ -4,7 +4,7 @@ A decorator adds additional features to a coupon provider by adding additional c
 
 Decorators are activated by adding them to the "Provider" input field in the detail view of a coupon item. The easiest way to do so is by clicking on the "+" icon next to the input field and selecting the desired decorator:
 
-![Add a decorator to the coupon provider](Admin-backend-coupon-add-decorator.png)
+![Add a decorator to the coupon provider](Admin-coupon-add-decorator.png)
 
 However, if you decide to enter the names of the decorators (and the provider) manually, please keep in mind that they are case-sensitive and must be separated by a comma!
 
@@ -40,7 +40,7 @@ basketvalues.total-value-min (optional)
 
 To easliy enter the desired values, click the "+" icon to open a convenient input form:
 
-![Input form to enter values](Admin-backend-coupon-limit.png)
+![Input form to enter values](Admin-coupon-add-limit.png)
 
 basketvalues.total-value-max (optional)
 : The maximum value after the coupon has no effect any more. Same format as *basketvalues.total-value-min*.

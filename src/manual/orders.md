@@ -4,7 +4,7 @@ After creating the products and setting up the other parts of the system, custom
 
 The list view provides a paged list of all available orders, which can be [filtered](filtering-lists.md) by various, order-related criteria. The most important columns are shown by default but the list of columns can be adapted via the list header. Orders can be edited by clicking on the list item.
 
-![Order list](Admin-backend-order-list.png)
+![Order list](Admin-order-list.png)
 
 You can also export all orders that match the current search filter by clicking on the download symbol in the right corner of the list header. This will create an export job that is executed by a cron job and the order export will be available afterwards in the dashboard view. If you've added no restrictions in the [filter toolbar](filtering-lists.md), all orders of all pages will be exported.
 
@@ -22,7 +22,7 @@ The orders created by the Aimeos e-commerce framework are split into two areas:
 
 The difference is that an order can have several invoices, e.g. if orders have to be split or if customers are able to order the same products again with one click.
 
-![Basic order details](Admin-backend-order-detail-basic.png)
+![Basic order details](Admin-order-detail-basic.png)
 
 On top of the order detail view some general order information is listed:
 
@@ -45,7 +45,7 @@ Customer reference
 
 The "Products" section contains the products that were bought by the customer in this order. Only the delivery status of the products can be changed.
 
-![List of ordered products](Admin-backend-order-detail-products.png)
+![List of ordered products](Admin-order-detail-products.png)
 
 The shown columns contain these data:
 
@@ -71,7 +71,7 @@ Sum (read-only)
 
 Below the list of ordered products are the redeemed coupons. This can be more than one if it's allowed by configuration. The coupon codes can't be changed because this could affect the whole order.
 
-![Coupons and comment](Admin-backend-order-detail-coupon.png)
+![Coupons and comment](Admin-order-detail-coupon.png)
 
 The comment field contains the text the customer has entered at the end of the checkout process. This text can be modified and also used to add arbitrary information to the order. Keep in mind that the customer will be able to see that information because it's also shown in the account history of the customer and sent in the e-mails to the customer.
 
@@ -79,7 +79,7 @@ The comment field contains the text the customer has entered at the end of the c
 
 The content of the "Addresses" section is split into the billing address (left) and the delivery address (right, only if entered by the customer). The billing address is always available while the delivery address is only available if the customer entered a different one than the billing address. By clicking on the address, fields for changing the address details are shown below.
 
-![Billing and delivery address of an order](Admin-backend-order-detail-addresses.png)
+![Billing and delivery address of an order](Admin-order-detail-addresses.png)
 
 The displayed fields of each address are:
 
@@ -141,7 +141,7 @@ VAT ID
 
 The "Payment" and "Delivery" sections of the order detail view contains the details about the payment and delivery option chosen by the customer.
 
-![Order service details](Admin-backend-order-detail-service.png)
+![Order service details](Admin-order-detail-service.png)
 
 The listed information is:
 
@@ -168,13 +168,13 @@ You can add new lines by clicking on the "+" symbol in the list header and remov
 
 In the summary section, the sub-total of all ordered products is displayed. This includes granted rebates. The shipping costs (and payment costs if there are any) are printed below before the order total is summed up. The included tax (or additional one in B2B mode) is listed separately just as the value of the included rebates.
 
-![Order summary](Admin-backend-order-detail-summary.png)
+![Order summary](Admin-order-detail-summary.png)
 
 # Invoices
 
 The invoice sub-panel contains information about the invoices related to that order. To change any value of the invoice data, you have to click on the pencil icon on the right first.
 
-![Invoice details](Admin-backend-order-detail-invoice.png)
+![Invoice details](Admin-order-detail-invoice.png)
 
 Their purposes are:
 

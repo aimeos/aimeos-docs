@@ -1,4 +1,4 @@
-![Coupon details](Admin-backend-coupon-detail.png)
+![Coupon details](Admin-coupon-detail.png)
 
 The Coupon detail view offers various select and input fields to configure a coupon:
 
@@ -9,7 +9,7 @@ Label (required)
 : An internal label which helps you to identify the coupon and which can be used for searching in the administration interface.
 
 Provider (required)
-: This field contains the case-sensitive coupon provider class name, e.g. "FixedRebate". A list of available providers is shown when you click into the input field. Selecting a provider adds it to the input field. Furthermore, each provider can be enhanced by one or more decorators, which can be choosen from the drop-down list that appears when the "+" symbol next to the input field is clicked. Selecting a decorator adds it sequentially to the provider or any other previously added decorator(s).  
+: This field contains the case-sensitive coupon provider class name, e.g. "FixedRebate". A list of available providers is shown when you click into the input field. Selecting a provider adds it to the input field. Furthermore, each provider can be enhanced by one or more decorators, which can be choosen from the drop-down list that appears when the "+" symbol next to the input field is clicked. Selecting a decorator adds it sequentially to the provider or any other previously added decorator(s).
 For a detailed description of all the available coupon providers and decorators provided by the Aimeos core, have a look at [Available coupons](coupons.md) and [Adding features](coupon-decorators.md).
 
 Start date (optional)
@@ -30,7 +30,7 @@ The right side (or lower part) of the coupon detail view offers a panel, which p
 
 The panel's left column is resevered for configuration keys, the right column for their values. At least the left column of each line must be filled with a valid key. You can add lines by clicking on the "Add" (+) button in the menu bar and delete selected lines via the respective "Delete" (x) button on a line's right side. The order of the lines doesn't matter.
 
-![Coupon configuration](Admin-backend-coupon-config.png)
+![Coupon configuration](Admin-coupon-config.png)
 
 Each coupon and each decorator needs its own configuration. For details about which configuration keys and values are available resp. required, refer to the documentation of the coupon or decorator. For more information about *Aimeos*'s built-in coupons, checkout the documentation about [Available coupons](coupons.md) and [Adding features](coupon-decorators.md).
 
@@ -39,7 +39,7 @@ Each coupon and each decorator needs its own configuration. For details about wh
 
 You can add new coupons by clicking on the "+" symbol in the upper right corner of the list header, then on "Add" in the dropdown menu. Alternatively, you can import a file with coupon codes by choosing "Import" instead (see [CSV upload](#csv-upload) below for more information).
 
-![Coupon code list](Admin-backend-coupon-code-list.png)
+![Coupon code add](Admin-coupon-code-add.png)
 
 The available fields for coupon codes are:
 
@@ -59,7 +59,7 @@ End date (optional)
 
 There is also the possibility to upload CSV files with coupon codes when clicking on the the "+" symbol in the upper right corner of the coupon code list.
 
-![Import coupons](Admin-backend-coupon-add.png)
+![Import coupons](Admin-coupon-code-import.png)
 
 The format of the data in the CSV file must be:
 
@@ -70,7 +70,7 @@ TEST2,1
 TEST3
 ```
 
-The first line contains the required keys *Code*, *Count*, *Start date* and *End date*, separated by a colon or semicolon only. All the following lines hold the various values for either of the keys. Only the first value for *Code* is required, all the others are optional. 
+The first line contains the required keys *Code*, *Count*, *Start date* and *End date*, separated by a colon or semicolon only. All the following lines hold the various values for either of the keys. Only the first value for *Code* is required, all the others are optional.
 
 !!! warning
     Assigning no values at all also means no limitations at all in terms of the number of times a coupon code can be redeemed as well as its valid time period.

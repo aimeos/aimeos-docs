@@ -1,4 +1,4 @@
-![Rule details](Admin-backend-rule-detail.png)
+![Rule details](Admin-rule-detail.png)
 
 The Rule detail view offers various select and input fields to configure a rule:
 
@@ -33,6 +33,6 @@ The right side (or lower part) of the rule detail view offers a panel, which pre
 
 The panel's left column is resevered for configuration keys, the right column for their values. At least the left column of each line must be filled with a valid key. You can add lines by clicking on the "Add" (+) button in the menu bar and delete selected lines via the respective "Delete" (x) button on a line's right side. The order of the lines doesn't matter.
 
-![Rule configuration](Admin-backend-rule-config.png)
+![Rule configuration](Admin-rule-config.png)
 
 Each rule and each decorator needs its own configuration. For details about which configuration keys and values are available resp. required, refer to the documentation of the rule or decorator. For more information about *Aimeos*'s built-in rules, checkout the documentation about [Available rules](rules.md) and [Adding features](rule-decorators.md).

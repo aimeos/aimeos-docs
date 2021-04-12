@@ -1,4 +1,4 @@
-![Delivery/payment details](Admin-backend-service-detail.png)
+![Delivery/payment details](Admin-service-detail.png)
 
 The *Basic* page of a service is two-tiered: the first part is dedicated to the basic setup of a delivery/payment service, while the second half provides fine-grained configuration options of the provider and decorators you define.
 
@@ -31,7 +31,7 @@ End date (optional)
 
 # Service configuration
 
-![Service configuration](Admin-backend-service-config.png)
+![Service configuration](Admin-service-config.png)
 
 The second part of the *Basic* page offers a panel which presents a list of all the configurable options of a service provider and its assigned decorators. Whenever you add or remove a provider or a decorator, its respective configuration option(s) will be added to this list automatically.
 
@@ -45,13 +45,13 @@ In order to properly communicate to the user which delivery and payment services
 
 ## Images
 
-![Associate images to a service](Admin-backend-service-detail-media.png)
+![Associate images to a service](Admin-service-detail-media.png)
 
 It is recommended to add at least the logo of the logistic / payment service. Allowed image formats are JPEG, PNG, GIF and SVG.
 
 ## Texts
 
-![Associate texts to a service](Admin-backend-service-detail-text.png)
+![Associate texts to a service](Admin-service-detail-text.png)
 
 To name and describe the service, three types of texts should be added for each language the website provides:
 
@@ -66,7 +66,7 @@ Long description
 
 ## Prices
 
-![Associate prices to a service](Admin-backend-service-detail-price.png)
+![Associate prices to a service](Admin-service-detail-price.png)
 
 Each delivery or payment item must have one price associated - even if the shipping or payment is for free, in which case the price is displayed as 0.00.
 

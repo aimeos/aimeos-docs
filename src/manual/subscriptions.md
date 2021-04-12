@@ -57,7 +57,7 @@ Currency (read-only)
 Language (read-only)
 : The language that is used within the order. For e-mails sent to the customers, the language field in their addresses has priority if available
 
-![Order details](Admin-subscription-order.png)
+![Subscription details](Admin-subscription-detail.png)
 
 The "Product" section contains the product that were bought by the customer as subscription.
 
