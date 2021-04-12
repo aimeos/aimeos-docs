@@ -222,6 +222,9 @@ The [CardSave](https://www.cardsave.net/) payment gateway is available via the *
 composer req aimeos/ai-payments omnipay/cardsave
 ```
 
+!!! note
+    Use "Omnipay" as provider because it's directly supported by the generic Omnipay integration
+
 It supports authorization/capture and offers these configuration options:
 
 merchantId (string, required)
@@ -282,6 +285,9 @@ The [Mollie](https://www.mollie.com/en/) payment gateway is available via the **
 ```
 composer req aimeos/ai-payments omnipay/mollie
 ```
+
+!!! note
+    Use "Omnipay" as provider because it's directly supported by the generic Omnipay integration
 
 The available configuration options are:
 
@@ -354,6 +360,9 @@ If you use composer run:
 ```
 composer req aimeos/ai-payments vdbelt/omnipay-oppwa
 ```
+
+!!! note
+    Use "Omnipay" as provider because it's directly supported by the generic Omnipay integration
 
 It supports these configuration options:
 
@@ -469,6 +478,9 @@ The [Postfinance](https://e-payment.postfinance.ch) payment gateways are availab
 composer req aimeos/ai-payments bummzack/omnipay-postfinance:@dev
 ```
 
+!!! note
+    Use "Omnipay" as provider because it's directly supported by the generic Omnipay integration
+
 The available configuration options are:
 
 type (string, required)
@@ -509,6 +521,9 @@ The [Klarna Sofortüberweisung](https://www.klarna.com/sofort/) (previously *Sof
 ```
 composer req aimeos/ai-payments aimeoscom/omnipay-sofort
 ```
+
+!!! note
+    Use "Omnipay" as provider because it's directly supported by the generic Omnipay integration
 
 The available configuration options are:
 
