@@ -91,40 +91,6 @@ composer req aimeos/ai-payments
 
 *Aimeos* ai-payments supports the following payment gateways:
 
-## Authorize.net AIM
-
-!!! warn
-    This API is deprecated. The recommended alternative solution is called [Payment transations](http://developer.authorize.net/api/reference/index.html#payment-transactions), which incorporates all AIM transaction methods. Read more about [alternative solutions](https://developer.authorize.net/api/upgrade_guide.html).
-
-The [Authorize.net](https://www.authorize.net/) gateway for the [AIM methods](https://www.authorize.net/content/dam/anet-redesign/documents/AIM_guide.pdf) (collect payment details locally and send them to the payment gateway) is available via the **AuthorizeAIM** payment service provider. If you use composer run:
-
-```
-composer req aimeos/ai-payments omnipay/authorizenet
-```
-
-It supports authorization/capture and offers these configuration options:
-
-apiLoginId (string, required)
-: The API login ID from your Authorize.net account
-
-transactionKey (string, required)
-: The transaction key generated for your Authorize.net account
-
-authorizenet.address (boolean, optional)
-: A value of "1" will send the customer address to Authorize.net
-
-authorizenet.authorize (boolean, optional)
-: Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
-
-createtoken (boolean, optional)
-: Not supported by that payment provider
-
-onsite (boolean, optional)
-: Not supported by that payment provider
-
-testmode (boolean, optional)
-: Use "1" for test payments without real money
-
 
 ## Authorize.net SIM
 
