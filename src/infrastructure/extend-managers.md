@@ -124,7 +124,7 @@ It's also possible to add new methods that combine several values like:
 \Aimeos\MShop\Customer\Item\Standard::method( 'getFullName', function() {
     return $this->get( 'customer.firstname' ) . ' ' . $this->get( 'customer.lastname' );
 } );
-
+```
 
 
 # Custom way
