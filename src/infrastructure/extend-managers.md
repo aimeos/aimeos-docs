@@ -9,13 +9,9 @@ To extend or overwrite existing classes, you have to:
 * Give it a different name as the original class, e.g. *Myproject*
 * Extend from the original class
 
-# Easy way
+# Database setup
 
-Since 2019.10 it's possible to add new columns by [extending the database table](schema-migrations.md) and a manager decorator only. The example will use the product manager but you can extend all managers in the same way.
-
-Implementing decorators is a great way to dynamically extend managers without inheriting from the existing manager class. Instead, you can wrap multiple decorators around a manager object like the layers of an onion. In each decorator, you can implement additional code that changes the parameters or the result of the manager method or performs additional actions.
-
-If you need to store e.g. an arbitrary ID to another system in your product table, you can extend the existing table by adding a new field like described in the article about modifying existing tables.
+If you need to store e.g. an arbitrary ID to another system in your product table, you can [extend the existing table](schema-migrations.md) by adding a new field like described in the article about modifying existing tables.
 
 Let's name the new field "someid". Add a new `./<yourext>/lib/custom/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
 
@@ -34,6 +30,25 @@ return array(
 
 !!! note
     The new column must be nullable, that means it must allow NULL values!
+
+To create the new column in the database, you have to execute the setup tasks:
+
+Laravel
+: **php artisan aimeos:setup**
+
+Symfony
+: **php bin/console aimeos:setup**
+
+TYPO3
+: **php vendor/bin/typo3 aimeos:setup** (or via the update script in the extension manager)
+
+# Easy way
+
+Since 2019.10 it's possible to add new columns by extending the database table and a manager decorator only. The example will use the product manager but you can extend all managers in the same way.
+
+Implementing decorators is a great way to dynamically extend managers without inheriting from the existing manager class. Instead, you can wrap multiple decorators around a manager object like the layers of an onion. In each decorator, you can implement additional code that changes the parameters or the result of the manager method or performs additional actions.
+
+## Manager decorator
 
 You need to create a decorator for the product manager that will care about the new column(s). A decorator has the advantage that you can add multiple decorators on top of the manager and 3rd party extensions can do that too.
 
@@ -98,6 +113,8 @@ return [
     ]
 ];
 ```
+
+## Item properties
 
 Afterwards, you can access the values of your new columns in the item using:
 
