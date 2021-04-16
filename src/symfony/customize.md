@@ -3,7 +3,7 @@
 The core library contains a lot of configuration options documented in the "Configuration" section that can be changed in the `./config/packages/aimeos_shop.php` file and they are displayed in the documentation like this:
 
 ```
-client/html/catalog/filter/default/button = 1
+client/html/catalog/filter/button = 1
 ```
 
 Symfony uses normal PHP arrays for configuration. As a rule of thumb, replace each part separated by a slash (/) by `'...':`:
@@ -14,8 +14,7 @@ aimeos_shop:
         html:
             catalog:
                 filter:
-                    default:
-                        button: 1
+                    button: 1
 ```
 
 ## Value lists
@@ -28,8 +27,7 @@ aimeos_shop:
         html:
             catalog:
                 filter:
-                    default:
-                        subparts: ['search', 'tree', 'attribute']
+                    subparts: ['search', 'tree', 'attribute']
 ```
 
 ## Quoting
@@ -56,20 +54,17 @@ aimeos_shop:
         madmin:
             log:
                 manager:
-                    standard:
-                        loglevel: 7
+                    loglevel: 7
     backend:
         madmin:
             log:
                 manager:
-                    standard:
-                        loglevel: 5
+                    loglevel: 5
     frontend:
         madmin:
             log:
                 manager:
-                    standard:
-                        loglevel: 4
+                    loglevel: 4
 ```
 
 # Overwrite translations
@@ -189,7 +184,7 @@ You can alternatively use the Twig template engine for Aimeos templates overwrit
 To replace an Aimeos PHP template by our own Twig template, the Twig template needs to be stored at the same location as you would store the PHP template, i.e. the **./client/html/templates/** folder of your project-specific Aimeos extension. You should also keep the directory structure underneath and must save the file as **<template-name>.html.twig**, e.g.
 
 ```
-./client/html/templates/catalog/detail/body-default.html.twig
+./client/html/templates/catalog/detail/body-standard.html.twig
 ```
 
 The file extension **.html.twig** is important to be recognized as template that should be processed by the Twig engine.
