@@ -9,7 +9,7 @@ client/html/catalog/filter/default/button = 1
 As a rule of thumb, replace the slashes (/) with dots (.) to use such keys in TypoScript:
 
 ```typoscript
-client.html.catalog.filter.default.button = 1
+client.html.catalog.filter.standard.button = 1
 ```
 
 !!! warning
@@ -24,13 +24,13 @@ client.html.catalog.filter.default.button = 1
 To add or overwrite configuration options in TYPO3, you can use TypoScript. Simply add the new or overwritten configuration values to the setup section of a page TypoScript template, e.g.:
 
 ```typoscript
-plugin.tx_aimeos.settings.client.html.catalog.filter.default.button = 1
+plugin.tx_aimeos.settings.client.html.catalog.filter.standard.button = 1
 ```
 
 If the configuration key accepts an array of values, add them like this:
 
 ```typoscript
-plugin.tx_aimeos.settings.client.html.catalog.filter.default.subparts {
+plugin.tx_aimeos.settings.client.html.catalog.filter.standard.subparts {
     0 = search
     1 = tree
     2 = attribute
@@ -61,7 +61,7 @@ plugin.tx_aimeos.settings.client.html.catalog.lists.domains {
 Several plugins provide the possibility to add plug-in specific TypoScript configuration in the "Plugin" tab of the plug-ins placed on a page. Use the configuration keys from the documentation as in the example below:
 
 ```typoscript
-client.html.catalog.filter.default.button = 1
+client.html.catalog.filter.standard.button = 1
 ```
 
 Each slash (/) is replaced by a dot (.), nothing is prepended. The same is true for arrays of values as well. Please have a look at the [frontend section](#frontend) above for an example.
@@ -100,7 +100,7 @@ The same works with arrays of values as well:
 client.html {
     email.payment.standard.template-body = email/payment/body-standard
 }
-controller.jobs.order.email.payment.default.status {
+controller.jobs.order.email.payment.standard.status {
     0 = 5
     1 = 6
 }
@@ -266,7 +266,7 @@ Alternatively, you can use the TYPO3 Fluid template engine for *Aimeos* template
 To replace an *Aimeos* PHP template by our own Fluid template, the Fluid template needs to be stored at the same location as the *Aimeos* PHP template, i.e. at the `./client/html/templates/` folder of your project-specific *Aimeos* extension. It is also required to preserve the underlying directory structure as well as to abide by the file naming convention (`<template-name>.html`), e.g.:
 
 ```
-./client/html/templates/catalog/detail/body-default.html
+./client/html/templates/catalog/detail/body-standard.html
 ```
 
 The file extension `.html` is important in order to be recognized as template that should be processed by the Fluid engine.

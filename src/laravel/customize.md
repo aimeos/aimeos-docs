@@ -13,7 +13,7 @@ Laravel uses normal PHP arrays for configuration. As a rule of thumb, replace ea
     'html' => [
         'catalog' => [
             'filter' => [
-                'default' => [
+                'standard' => [
                     'button' => 1,
                 ],
             ],
@@ -31,7 +31,7 @@ The same works with arrays of values as well:
     'html' => [
         'catalog' => [
             'filter' => [
-                'default' => [
+                'standard' => [
                     'subparts' => ['search', 'tree', 'attribute'],
                 ],
             ],
@@ -232,7 +232,7 @@ You can alternatively use Laravels Blade template engine for Aimeos templates ov
 To replace an Aimeos PHP template by our own Blade template, the Blade template needs to be stored at the same location as you would store the PHP template, i.e. the **./client/html/templates/** folder of your project-specific Aimeos extension. You should also keep the directory structure underneath and must save the file as **<template-name>.blade.php**, e.g.
 
 ```
-./client/html/templates/catalog/detail/body-default.blade.php
+./client/html/templates/catalog/detail/body-standard.blade.php
 ```
 
 The file extension **.blade.php** is important to be recognized as template that should be processed by Laravels Blade engine.
