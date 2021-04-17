@@ -4,7 +4,7 @@ If you [generate an Aimeos extension](https://aimeos.org/extensions) for your pr
 
 ```
 ./admin/jqadm/themes/custom.css
-./admin/jqadm/themes/custom.js
+./admin/jqadm/js/custom.js
 ```
 
 They will be loaded automatically and appended to the Aimeos core files so you can overwrite any Aimeos CSS or JS code.
@@ -31,7 +31,7 @@ This file contains a *pkgs* section for the CSS and the JS files:
 		"file": "yourext.js",
 		"fileIncludes": [{
 			"text": "additional-javascript.js",
-			"path": "themes/"
+			"path": "js/"
 		}]
 	}],
 }
