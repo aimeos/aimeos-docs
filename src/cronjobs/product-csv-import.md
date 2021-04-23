@@ -443,7 +443,38 @@ and it's also the minimum amount of data. The real power of the catalog relation
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/catalog/listtypes](../config/controller-common/product-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/catalog/listtypes](../config/controller-common/product-import.md#processorcataloglisttypes) setting.
+
+## Supplier
+
+Several supplier relations can be part of each CSV line. Supported domain item key is only:
+
+```php
+[
+    'supplier' => [
+        0 => 'supplier.code',
+    ],
+]
+```
+
+and it's also the minimum amount of data. The real power of the supplier relations is in the values for the supplier list relation:
+
+```php
+[
+    'supplier' => [
+        1 => 'supplier.lists.type',
+        2 => 'supplier.lists.datestart',
+        3 => 'supplier.lists.dateend',
+        4 => 'supplier.lists.config',
+        5 => 'supplier.lists.position',
+        6 => 'supplier.lists.status',
+    ],
+]
+```
+
+Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
+
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/supplier/listtypes](../config/controller-common/product-import.md#processorsupplierlisttypes) setting.
 
 ## Stock
 
