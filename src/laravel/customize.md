@@ -361,19 +361,19 @@ To use the catalog-home component for the home page in a multi-vendor setup, add
 ```php
 // prefix: yourdomain.com/vendor1
 Route::group(['prefix' => '{site}', 'middleware' => ['web']], function () {
-	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction');
+	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction')
 		->name('aimeos_home')->where( ['site' => '[a-z0-9\-]+'] );
 });
 
 // subdomain: vendor1.yourdomain.com
 Route::group(['domain' => '{site}.yourdomain.com', 'middleware' => ['web']], function () {
-	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction');
+	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction')
 		->name('aimeos_home')->where( ['site' => '[a-z0-9\-]+'] );
 });
 
 // custom domain: vendor1.com
 Route::group(['domain' => '{site}', 'middleware' => ['web']], function () {
-	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction');
+	Route::get('/', '\Aimeos\Shop\Controller\CatalogController@homeAction')
 		->name('aimeos_home')->where( ['site' => '[a-z0-9\.\-]+'] );
 });
 ```
