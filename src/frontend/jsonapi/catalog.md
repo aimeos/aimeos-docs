@@ -1031,17 +1031,17 @@ This will return a list of "id" and "attributes" pairs where the value of "id" i
 
 # Stock levels for products
 
-If you don't fetch the stock levels together with the products using *&include=stock*, you can retrieve the stock levels separately by using the value of the "product.code" attribute:
+If you don't fetch the stock levels together with the products using *&include=stock*, you can retrieve the stock levels separately by using the value of the "product.id" attribute:
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD'
+    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid][]=1234'
     ```
 === "jQuery"
     ```javascript
     var args = {
         'filter': {
-            's_prodcode': ['ABCD']
+            's_prodid': ['1234']
         }
     };
     var params = {};
@@ -1062,7 +1062,7 @@ If you don't fetch the stock levels together with the products using *&include=s
     });
     ```
 
-It returns the list of stock items for the given product codes:
+It returns the list of stock items for the given product IDs:
 
 ```json
 {
@@ -1077,7 +1077,7 @@ It returns the list of stock items for the given product codes:
         },
         "attributes": {
             "stock.id": "12",
-            "stock.productcode": "demo-article",
+            "stock.productid": "1234",
             "stock.stocklevel": null,
             "stock.dateback": null,
             "stock.typename": "Standard",
@@ -1091,13 +1091,13 @@ If the shop has different warehouses or local stores where customers can pick up
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodcode][]=ABCD&filter[s_stocktype]=berlin'
+    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid][]=1234&filter[s_stocktype]=berlin'
     ```
 === "jQuery"
     ```javascript
     var args = {
         'filter': {
-            's_prodcode': ['ABCD'],
+            's_prodid': ['1234'],
             's_stocktype': 'berlin'
         }
     };
