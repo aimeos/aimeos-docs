@@ -44,7 +44,8 @@ List of user groups that are allowed to manage attribute lists type items
 admin/jsonadm/resource/attribute/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -61,7 +62,8 @@ List of user groups that are allowed to manage attribute property items
 admin/jsonadm/resource/attribute/property/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -78,7 +80,8 @@ List of user groups that are allowed to manage attribute property type items
 admin/jsonadm/resource/attribute/property/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -95,7 +98,8 @@ List of user groups that are allowed to manage attribute type items
 admin/jsonadm/resource/attribute/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -149,7 +153,8 @@ List of user groups that are allowed to manage catalog lists type items
 admin/jsonadm/resource/catalog/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -294,7 +299,8 @@ List of user groups that are allowed to manage customer lists type items
 admin/jsonadm/resource/customer/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -311,7 +317,8 @@ List of user groups that are allowed to manage customer property items
 admin/jsonadm/resource/customer/property/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -328,7 +335,8 @@ List of user groups that are allowed to manage customer property type items
 admin/jsonadm/resource/customer/property/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -561,7 +569,8 @@ List of user groups that are allowed to manage media lists type items
 admin/jsonadm/resource/media/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -578,7 +587,8 @@ List of user groups that are allowed to manage media property items
 admin/jsonadm/resource/media/property/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -595,7 +605,8 @@ List of user groups that are allowed to manage media property type items
 admin/jsonadm/resource/media/property/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -612,7 +623,8 @@ List of user groups that are allowed to manage media type items
 admin/jsonadm/resource/media/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -881,7 +893,8 @@ List of user groups that are allowed to manage price lists type items
 admin/jsonadm/resource/price/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -916,7 +929,8 @@ List of user groups that are allowed to manage price property type items
 admin/jsonadm/resource/price/property/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -933,7 +947,8 @@ List of user groups that are allowed to manage price type items
 admin/jsonadm/resource/price/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -987,7 +1002,8 @@ List of user groups that are allowed to manage product lists type items
 admin/jsonadm/resource/product/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -1022,7 +1038,8 @@ List of user groups that are allowed to manage product property type items
 admin/jsonadm/resource/product/property/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -1039,7 +1056,8 @@ List of user groups that are allowed to manage product type items
 admin/jsonadm/resource/product/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -1161,7 +1179,8 @@ List of user groups that are allowed to manage stock type items
 admin/jsonadm/resource/stock/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -1179,7 +1198,8 @@ List of user groups that are allowed to manage supplier address items
 admin/jsonadm/resource/supplier/address/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -1232,7 +1252,8 @@ List of user groups that are allowed to manage supplier lists type items
 admin/jsonadm/resource/supplier/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -1331,7 +1352,8 @@ List of user groups that are allowed to manage text lists type items
 admin/jsonadm/resource/text/lists/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 
@@ -1348,7 +1370,8 @@ List of user groups that are allowed to manage text type items
 admin/jsonadm/resource/text/type/groups = Array
 (
     [0] => admin
-    [1] => super
+    [1] => editor
+    [2] => super
 )
 ```
 

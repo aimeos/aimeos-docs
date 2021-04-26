@@ -1400,6 +1400,34 @@ See also:
 * client/html/catalog/filter/tree/decorators/excludes
 * client/html/catalog/filter/tree/decorators/global
 
+## deep
+
+Load the category tree instead of the nodes of the first level only
+
+```
+client/html/catalog/filter/tree/deep = 
+```
+
+* Default: 
+* Type: bool - True for category tree, false for first level only
+* Since: 2020.10
+
+If you want to use the catalog filter component to display the whole
+category tree without loading data in an asynchcron way, set this
+configuration option to "1" or true.
+
+**Warning:** If your category tree has a lot of nodes, it will
+take a very long time to render all categories. Thus, it's only
+recommended for small category trees with a limited node size
+(less than 50).
+
+See also:
+
+* controller/frontend/catalog/levels-always
+* controller/frontend/catalog/levels-only
+* client/html/catalog/filter/tree/domains
+* client/html/catalog/filter/tree/startid
+
 ## domains
 
 List of domain names whose items should be fetched with the filter categories
@@ -1426,9 +1454,10 @@ required for fetching the content!
 
 See also:
 
+* controller/frontend/catalog/levels-always
+* controller/frontend/catalog/levels-only
 * client/html/catalog/filter/tree/startid
-* client/html/catalog/filter/tree/levels-always
-* client/html/catalog/filter/tree/levels-only
+* client/html/catalog/filter/tree/deep
 
 ## force-search
 
@@ -1564,6 +1593,7 @@ start ID individually for each catalog filter.
 
 See also:
 
-* client/html/catalog/filter/tree/levels-always
-* client/html/catalog/filter/tree/levels-only
+* controller/frontend/catalog/levels-always
+* controller/frontend/catalog/levels-only
 * client/html/catalog/filter/tree/domains
+* client/html/catalog/filter/tree/deep

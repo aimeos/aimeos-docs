@@ -121,7 +121,6 @@ client/html/catalog/stock/level/low = 5
 * Since: 2014.03
 
 There are four stock levels available:
-
 * unlimited
 * high
 * low
@@ -206,7 +205,6 @@ be shown in the product detail page. To get a consistent sortation
 of this list, the configured key will be used by the stock manager.
 
 Possible keys for sorting are ("-stock.type" for descending order):
-
 * stock.productcode
 * stock.stocklevel
 * stock.type

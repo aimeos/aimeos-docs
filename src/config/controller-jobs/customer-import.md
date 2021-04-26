@@ -47,6 +47,7 @@ controller/jobs/customer/import/xml/decorators/excludes = Array
 * Default: Array
 * Type: array - List of decorator names
 * Since: 2019.04
+* Since: 2019.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -70,6 +71,9 @@ See also:
 * controller/jobs/common/decorators/default
 * controller/jobs/customer/import/xml/decorators/global
 * controller/jobs/customer/import/xml/decorators/local
+* controller/jobs/common/decorators/default
+* controller/jobs/customer/import/xml/decorators/global
+* controller/jobs/customer/import/xml/decorators/local
 
 ## decorators/global
 
@@ -83,6 +87,7 @@ controller/jobs/customer/import/xml/decorators/global = Array
 
 * Default: Array
 * Type: array - List of decorator names
+* Since: 2019.04
 * Since: 2019.04
 
 Decorators extend the functionality of a class by adding new aspects
@@ -105,6 +110,9 @@ See also:
 * controller/jobs/common/decorators/default
 * controller/jobs/customer/import/xml/decorators/excludes
 * controller/jobs/customer/import/xml/decorators/local
+* controller/jobs/common/decorators/default
+* controller/jobs/customer/import/xml/decorators/excludes
+* controller/jobs/customer/import/xml/decorators/local
 
 ## decorators/local
 
@@ -118,6 +126,7 @@ controller/jobs/customer/import/xml/decorators/local = Array
 
 * Default: Array
 * Type: array - List of decorator names
+* Since: 2019.04
 * Since: 2019.04
 
 Decorators extend the functionality of a class by adding new aspects
@@ -139,6 +148,9 @@ only to the job controller.
 
 See also:
 
+* controller/jobs/common/decorators/default
+* controller/jobs/customer/import/xml/decorators/excludes
+* controller/jobs/customer/import/xml/decorators/global
 * controller/jobs/common/decorators/default
 * controller/jobs/customer/import/xml/decorators/excludes
 * controller/jobs/customer/import/xml/decorators/global
@@ -230,6 +242,7 @@ controller/jobs/customer/import/xml/name = Standard
 
 * Default: Standard
 * Type: string - Last part of the class name
+* Since: 2019.04
 * Since: 2019.04
 
 Each default job controller can be replace by an alternative imlementation.

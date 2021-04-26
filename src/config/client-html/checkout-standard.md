@@ -148,7 +148,6 @@ client/html/checkout/standard/address/billing/hidden = Array
 You can configure the list of billing address fields that
 are hidden when a customer enters his new billing address.
 Available field keys are:
-
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -205,7 +204,6 @@ client/html/checkout/standard/address/billing/mandatory = Array
 You can configure the list of billing address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
-
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -274,7 +272,6 @@ client/html/checkout/standard/address/billing/optional = Array
 You can configure the list of billing address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
-
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -323,7 +320,6 @@ client/html/checkout/standard/address/billing/salutations = Array
 * Since: 2015.02
 
 The following salutations are available:
-
 * empty string for "unknown"
 * company
 * mr
@@ -965,7 +961,6 @@ client/html/checkout/standard/address/delivery/hidden = Array
 You can configure the list of delivery address fields that
 are hidden when a customer enters his delivery address.
 Available field keys are:
-
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1021,7 +1016,6 @@ client/html/checkout/standard/address/delivery/mandatory = Array
 You can configure the list of delivery address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
-
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1090,7 +1084,6 @@ client/html/checkout/standard/address/delivery/optional = Array
 You can configure the list of delivery address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
-
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1139,7 +1132,6 @@ client/html/checkout/standard/address/delivery/salutations = Array
 * Since: 2015.02
 
 The following salutations are available:
-
 * empty string for "unknown"
 * company
 * mr
@@ -1401,7 +1393,6 @@ client/html/checkout/standard/address/validate =
 To validate the address input data of the customer, an individual
 [Perl compatible regular expression](http://php.net/manual/en/pcre.pattern.php)
 can be applied to each field. Available fields are:
-
 * company
 * vatid
 * salutation
@@ -1422,7 +1413,6 @@ can be applied to each field. Available fields are:
 
 Some fields are validated automatically because they are not
 dependent on a country specific rule. These fields are:
-
 * salutation
 * email
 * website
@@ -2122,7 +2112,6 @@ Using this config options, shop developers are able to define which
 checkout subparts are combined to a one page view. Simply add the names
 of all checkout subparts to the list. Available checkout subparts for
 a one page checkout are:
-
 * address
 * delivery
 * payment
@@ -2966,20 +2955,17 @@ client/html/checkout/standard/process/validate = Array
 To validate the payment input data of the customer, an individual Perl
 compatible regular expression (http://php.net/manual/en/pcre.pattern.php)
 can be applied to each field. Available fields are:
-
 * payment.cardno
 * payment.cvv
 * payment.expirymonthyear
 
 To validate e.g the CVV security code, you can define a regular expression
 like this to allow only three digits:
-
 ```
  client/html/checkout/standard/process/validate/payment.cvv = '^[0-9]{3}$'
 ```
 
 Several regular expressions can be defined line this:
-
 ```
  client/html/checkout/standard/process/validate = array(
   'payment.cardno' = '^[0-9]{16,19}$',

@@ -206,7 +206,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- controller/frontend/customer/name = Mycustomer
+ controller/jobs/frontend/customer/name = Mycustomer
 ```
 
 The value is the last part of your own class name and it's case sensitive,

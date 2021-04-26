@@ -31,7 +31,6 @@ the placeholder for the URL:
 ```
 
 Possible placeholders and replaced values are:
-
 * %1$s : Shop URL of the product detail page
 * %2$s : Name of the product
 * %3$s : URL of the first product image
@@ -61,7 +60,6 @@ contain at least the "%1$s" placeholder for the URL to the product detail
 page of the shop.
 
 Possible placeholders and replaced values are:
-
 * %1$s : Shop URL of the product detail page
 * %2$s : Name of the product
 * %3$s : URL of the first product image
@@ -88,7 +86,6 @@ contain the "%1$s", "%2$s" and "%3$s" placeholders for the URL to the
 product detail page, the product name and the product image to be useful.
 
 Possible placeholders and replaced values are:
-
 * %1$s : Shop URL of the product detail page
 * %2$s : Name of the product
 * %3$s : URL of the first product image
@@ -115,7 +112,6 @@ contain at least the "%1$s" placeholder for the URL to the product detail
 page of the shop.
 
 Possible placeholders and replaced values are:
-
 * %1$s : Shop URL of the product detail page
 * %2$s : Name of the product
 * %3$s : URL of the first product image
@@ -142,7 +138,6 @@ contain at least the "%1$s" placeholder for the URL to the product detail
 page of the shop.
 
 Possible placeholders and replaced values are:
-
 * %1$s : Shop URL of the product detail page
 * %2$s : Name of the product
 * %3$s : URL of the first product image

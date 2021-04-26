@@ -267,7 +267,7 @@ Number of days after the product can be reviewed
 client/html/account/review/todo/days-after = 0
 ```
 
-* Default: 5
+* Default: 0
 * Type: int - Number of days
 * Since: 2020.10
 
@@ -501,10 +501,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/account/review/url/action = review
+client/html/account/review/url/action = 
 ```
 
-* Default: review
+* Default: 
 * Type: string - Name of the action
 * Since: 2020.10
 
@@ -556,10 +556,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/account/review/url/controller = Account
+client/html/account/review/url/controller = 
 ```
 
-* Default: Account
+* Default: 
 * Type: string - Name of the controller
 * Since: 2020.10
 
