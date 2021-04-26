@@ -6,7 +6,7 @@
 
 		if(nodes[i].tagName === 'SELECT') {
 
-			['latest', '2020.x'].forEach(function(el) {
+			['latest', '2021.x', '2020.x'].forEach(function(el) {
 				let option = document.createElement("option");
 				option.appendChild(document.createTextNode(el));
 				nodes[i].appendChild(option);
