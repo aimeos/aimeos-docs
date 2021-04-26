@@ -215,6 +215,7 @@ nav:
       - Catalog suggest: config/client-html/catalog-suggest.md
       - Catalog supplier: config/client-html/catalog-supplier.md
       - Catalog tree: config/client-html/catalog-tree.md
+      - Checkout address: config/client-html/checkout-address.md
       - Checkout confirm: config/client-html/checkout-confirm.md
       - Checkout standard: config/client-html/checkout-standard.md
       - Checkout update: config/client-html/checkout-update.md
@@ -318,6 +319,7 @@ nav:
       - Common: config/controller-jobs/common.md
       - Coupon import: config/controller-jobs/coupon-import.md
       - Customer email: config/controller-jobs/customer-email.md
+      - Customer group: config/controller-jobs/customer-group.md
       - Customer import: config/controller-jobs/customer-import.md
       - Index optimize: config/controller-jobs/index-optimize.md
       - Index rebuild: config/controller-jobs/index-rebuild.md
