@@ -252,4 +252,4 @@ Check, if the new plugin name appears in the drop-down list under *Provider*:
 
 [![Check if new plugin exists in *Provider* drop-down list](Plugin-development__02__check-provider.png)](Plugin-development__02__check-provider.png)
 
-If everything works, start adding functionality to your plugin. Consult the [user manual](../manual/Admin-backend-plugin-detail.png) for more ideas what kind of configuration options are available.
+If everything works, start adding functionality to your plugin. Consult the [user manual](../manual/plugins.md) for more ideas what kind of configuration options are available.
