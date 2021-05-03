@@ -29,10 +29,10 @@ theme:
   font:
     text: Noto Sans
 extra_css:
-  - assets/aimeos.css?v2
+  - assets/aimeos.css?v3
 extra_javascript:
-  - assets/aimeos.js?v2
-  - /docs/versions.js?v2
+  - assets/aimeos.js?v3
+  - /docs/versions.js?v3
 extra:
   disqus: aimeos
   social:
