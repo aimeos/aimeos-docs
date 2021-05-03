@@ -140,16 +140,6 @@
   font-weight: bold;
 }
 
-.algolia-branding {
-  padding: 0.5rem 1rem;
-  text-align: right;
-}
-
-.algolia-branding img {
-  display: inline-block;
-  height: 1rem;
-}
-
 
 .md-header-nav__source {
   position: relative;
