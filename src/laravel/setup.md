@@ -47,7 +47,7 @@ More information about the release schedule and the support periods is available
 
 If you want to upgrade from earlier versions, there are some steps necessary to update your Laravel application:
 
-* Follow the steps in the [installation guide](https://github.com/aimeos/aimeos-laravel#table-of-content)
+* Follow the steps in the [installation guide](https://github.com/aimeos/aimeos-laravel#installation)
 * Copy the `vendor/aimeos/aimeos-laravel/src/config/shop.php` to `config/shop.php`
 * Adapt the `shop.php` to your needs again
 * Copy the `./vendor/aimeos/aimeos-laravel/src/views/` folder to `./resources/views/vendor/shop/`
@@ -61,7 +61,7 @@ php ./artisan view:clear
 php ./artisan aimeos:clear
 ```
 
-If you've created a custom Aimeos extension, please have a look into the Aimeos **changelog section** and search for changes that applies to your code.
+If you've created a custom Aimeos extension, please have a look into the Aimeos **Changelog** (left navigation) and search for changes that applies to your code.
 
 # Cronjobs
 
