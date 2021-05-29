@@ -22,7 +22,7 @@ autocomplete('.md-search__input', {
   minLength: 3,
   hint: false
 }, [{
-  source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+  source: autocomplete.sources.hits(index, { hitsPerPage: 10 }),
   displayKey: 'title',
   debounce: 300,
   templates: {
