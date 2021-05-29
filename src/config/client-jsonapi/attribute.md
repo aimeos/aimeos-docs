@@ -156,13 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyAttribute"!
 
 
-# standard
-## template
+# template
 
 Relative path to the attribute lists JSON API template
 
 ```
-client/jsonapi/attribute/standard/template = attribute/standard
+client/jsonapi/attribute/template = attribute/standard
 ```
 
 * Default: attribute/standard

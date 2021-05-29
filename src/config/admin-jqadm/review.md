@@ -198,13 +198,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the review section
 
 ```
-admin/jqadm/review/standard/subparts = Array
+admin/jqadm/review/subparts = Array
 (
 )
 ```

@@ -1,4 +1,60 @@
 
+# count
+## ansi
+
+Retrieves the records matched by the given criteria in the database
+
+```
+madmin/cache/manager/count/ansi = 
+```
+
+* Default: 
+* Type: string - SQL statement for searching items
+* Since: 2014.03
+
+Fetches the records matched by the given criteria from the cache
+database. The records must be from the sites that is
+configured in the context item.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/cache/manager/get/ansi
+* madmin/cache/manager/delete/ansi
+* madmin/cache/manager/deletebytag/ansi
+* madmin/cache/manager/set/ansi
+* madmin/cache/manager/settag/ansi
+* madmin/cache/manager/search/ansi
+
+## mysql
+
+Retrieves the records matched by the given criteria in the database
+
+```
+madmin/cache/manager/count/mysql = 
+```
+
+* Default: 
+
+See also:
+
+* madmin/cache/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -108,6 +164,173 @@ See also:
 * madmin/cache/manager/decorators/excludes
 * madmin/cache/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+madmin/cache/manager/delete/ansi = 
+ DELETE FROM "madmin_cache" WHERE :cond
+```
+
+* Default: madmin/cache/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the cache database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/cache/manager/deletebytag/ansi
+* madmin/cache/manager/get/ansi
+* madmin/cache/manager/set/ansi
+* madmin/cache/manager/settag/ansi
+* madmin/cache/manager/search/ansi
+* madmin/cache/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+madmin/cache/manager/delete/mysql = 
+ DELETE FROM "madmin_cache" WHERE :cond
+```
+
+* Default: 
+ DELETE FROM "madmin_cache" WHERE :cond
+
+
+See also:
+
+* madmin/cache/manager/delete/ansi
+
+# deletebytag
+## ansi
+
+Deletes the items from the database matched by the given tags
+
+```
+madmin/cache/manager/deletebytag/ansi = 
+ DELETE FROM "madmin_cache" WHERE id IN (
+ 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
+ )
+```
+
+* Default: madmin/cache/manager/deletebytag
+* Type: string - SQL statement for deleting items by tags
+* Since: 2014.03
+
+Removes the records specified by the given tags from the cache database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the tag column and
+the given tag or list of tags.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/cache/manager/delete/ansi
+* madmin/cache/manager/get/ansi
+* madmin/cache/manager/set/ansi
+* madmin/cache/manager/settag/ansi
+* madmin/cache/manager/search/ansi
+* madmin/cache/manager/count/ansi
+
+## mysql
+
+Deletes the items from the database matched by the given tags
+
+```
+madmin/cache/manager/deletebytag/mysql = 
+ DELETE FROM "madmin_cache" WHERE id IN (
+ 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
+ )
+```
+
+* Default: 
+ DELETE FROM "madmin_cache" WHERE id IN (
+ 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
+ )
+
+
+See also:
+
+* madmin/cache/manager/deletebytag/ansi
+
+# get
+## ansi
+
+Retrieves the records matched by the given criteria in the database
+
+```
+madmin/cache/manager/get/ansi = 
+ SELECT "id", "value", "expire" FROM "madmin_cache"
+ WHERE :cond
+```
+
+* Default: madmin/cache/manager/get
+* Type: string - SQL statement for searching items
+* Since: 2014.03
+
+Fetches the records matched by the given criteria from the cache
+database. The records must be from the sites that is
+configured in the context item.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/cache/manager/delete/ansi
+* madmin/cache/manager/deletebytag/ansi
+* madmin/cache/manager/set/ansi
+* madmin/cache/manager/settag/ansi
+* madmin/cache/manager/search/ansi
+* madmin/cache/manager/count/ansi
+
+## mysql
+
+Retrieves the records matched by the given criteria in the database
+
+```
+madmin/cache/manager/get/mysql = 
+ SELECT "id", "value", "expire" FROM "madmin_cache"
+ WHERE :cond
+```
+
+* Default: 
+ SELECT "id", "value", "expire" FROM "madmin_cache"
+ WHERE :cond
+
+
+See also:
+
+* madmin/cache/manager/get/ansi
+
 # name
 
 Class name of the used cache manager implementation
@@ -153,232 +376,13 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
-# standard
-## count/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-madmin/cache/manager/standard/count/ansi = 
-```
-
-* Default: 
-* Type: string - SQL statement for searching items
-* Since: 2014.03
-
-Fetches the records matched by the given criteria from the cache
-database. The records must be from the sites that is
-configured in the context item.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/cache/manager/standard/get/ansi
-* madmin/cache/manager/standard/delete/ansi
-* madmin/cache/manager/standard/deletebytag/ansi
-* madmin/cache/manager/standard/set/ansi
-* madmin/cache/manager/standard/settag/ansi
-* madmin/cache/manager/standard/search/ansi
-
-## count/mysql
-
-Retrieves the records matched by the given criteria in the database
-
-```
-madmin/cache/manager/standard/count/mysql = 
-```
-
-* Default: 
-
-See also:
-
-* madmin/cache/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-madmin/cache/manager/standard/delete/ansi = 
- DELETE FROM "madmin_cache" WHERE :cond
-```
-
-* Default: madmin/cache/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the cache database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/cache/manager/standard/deletebytag/ansi
-* madmin/cache/manager/standard/get/ansi
-* madmin/cache/manager/standard/set/ansi
-* madmin/cache/manager/standard/settag/ansi
-* madmin/cache/manager/standard/search/ansi
-* madmin/cache/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-madmin/cache/manager/standard/delete/mysql = 
- DELETE FROM "madmin_cache" WHERE :cond
-```
-
-* Default: 
- DELETE FROM "madmin_cache" WHERE :cond
-
-
-See also:
-
-* madmin/cache/manager/standard/delete/ansi
-
-## deletebytag/ansi
-
-Deletes the items from the database matched by the given tags
-
-```
-madmin/cache/manager/standard/deletebytag/ansi = 
- DELETE FROM "madmin_cache" WHERE id IN (
- 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
- )
-```
-
-* Default: madmin/cache/manager/standard/deletebytag
-* Type: string - SQL statement for deleting items by tags
-* Since: 2014.03
-
-Removes the records specified by the given tags from the cache database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the tag column and
-the given tag or list of tags.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/cache/manager/standard/delete/ansi
-* madmin/cache/manager/standard/get/ansi
-* madmin/cache/manager/standard/set/ansi
-* madmin/cache/manager/standard/settag/ansi
-* madmin/cache/manager/standard/search/ansi
-* madmin/cache/manager/standard/count/ansi
-
-## deletebytag/mysql
-
-Deletes the items from the database matched by the given tags
-
-```
-madmin/cache/manager/standard/deletebytag/mysql = 
- DELETE FROM "madmin_cache" WHERE id IN (
- 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
- )
-```
-
-* Default: 
- DELETE FROM "madmin_cache" WHERE id IN (
- 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
- )
-
-
-See also:
-
-* madmin/cache/manager/standard/deletebytag/ansi
-
-## get/ansi
-
-Retrieves the records matched by the given criteria in the database
-
-```
-madmin/cache/manager/standard/get/ansi = 
- SELECT "id", "value", "expire" FROM "madmin_cache"
- WHERE :cond
-```
-
-* Default: madmin/cache/manager/standard/get
-* Type: string - SQL statement for searching items
-* Since: 2014.03
-
-Fetches the records matched by the given criteria from the cache
-database. The records must be from the sites that is
-configured in the context item.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/cache/manager/standard/delete/ansi
-* madmin/cache/manager/standard/deletebytag/ansi
-* madmin/cache/manager/standard/set/ansi
-* madmin/cache/manager/standard/settag/ansi
-* madmin/cache/manager/standard/search/ansi
-* madmin/cache/manager/standard/count/ansi
-
-## get/mysql
-
-Retrieves the records matched by the given criteria in the database
-
-```
-madmin/cache/manager/standard/get/mysql = 
- SELECT "id", "value", "expire" FROM "madmin_cache"
- WHERE :cond
-```
-
-* Default: 
- SELECT "id", "value", "expire" FROM "madmin_cache"
- WHERE :cond
-
-
-See also:
-
-* madmin/cache/manager/standard/get/ansi
-
-## search/ansi
-
-Retrieves the records matched by the given criteria in the database
-
-```
-madmin/cache/manager/standard/search/ansi = 
+madmin/cache/manager/search/ansi = 
  SELECT "id", "value", "expire"
  FROM "madmin_cache"
  WHERE :cond
@@ -386,7 +390,7 @@ madmin/cache/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: madmin/cache/manager/standard/search
+* Default: madmin/cache/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -413,19 +417,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* madmin/cache/manager/standard/get/ansi
-* madmin/cache/manager/standard/delete/ansi
-* madmin/cache/manager/standard/deletebytag/ansi
-* madmin/cache/manager/standard/set/ansi
-* madmin/cache/manager/standard/settag/ansi
-* madmin/cache/manager/standard/count/ansi
+* madmin/cache/manager/get/ansi
+* madmin/cache/manager/delete/ansi
+* madmin/cache/manager/deletebytag/ansi
+* madmin/cache/manager/set/ansi
+* madmin/cache/manager/settag/ansi
+* madmin/cache/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-madmin/cache/manager/standard/search/mysql = 
+madmin/cache/manager/search/mysql = 
  SELECT "id", "value", "expire"
  FROM "madmin_cache"
  WHERE :cond
@@ -443,14 +447,15 @@ madmin/cache/manager/standard/search/mysql =
 
 See also:
 
-* madmin/cache/manager/standard/search/ansi
+* madmin/cache/manager/search/ansi
 
-## set/ansi
+# set
+## ansi
 
 Inserts the cache entry into the database
 
 ```
-madmin/cache/manager/standard/set/ansi = 
+madmin/cache/manager/set/ansi = 
  INSERT INTO "madmin_cache" (
  	"id", "expire", "value"
  ) VALUES (
@@ -458,7 +463,7 @@ madmin/cache/manager/standard/set/ansi =
  )
 ```
 
-* Default: madmin/cache/manager/standard/set
+* Default: madmin/cache/manager/set
 * Type: string - SQL statement for inserting a new cache entry
 * Since: 2014.03
 
@@ -481,19 +486,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* madmin/cache/manager/standard/delete/ansi
-* madmin/cache/manager/standard/deletebytag/ansi
-* madmin/cache/manager/standard/get/ansi
-* madmin/cache/manager/standard/settag/ansi
-* madmin/cache/manager/standard/search/ansi
-* madmin/cache/manager/standard/count/ansi
+* madmin/cache/manager/delete/ansi
+* madmin/cache/manager/deletebytag/ansi
+* madmin/cache/manager/get/ansi
+* madmin/cache/manager/settag/ansi
+* madmin/cache/manager/search/ansi
+* madmin/cache/manager/count/ansi
 
-## set/mysql
+## mysql
 
 Inserts the cache entry into the database
 
 ```
-madmin/cache/manager/standard/set/mysql = 
+madmin/cache/manager/set/mysql = 
  INSERT INTO "madmin_cache" (
  	"id", "expire", "value"
  ) VALUES (
@@ -511,14 +516,15 @@ madmin/cache/manager/standard/set/mysql =
 
 See also:
 
-* madmin/cache/manager/standard/set/ansi
+* madmin/cache/manager/set/ansi
 
-## settag/ansi
+# settag
+## ansi
 
 Inserts a new tag to an existing cache entry
 
 ```
-madmin/cache/manager/standard/settag/ansi = 
+madmin/cache/manager/settag/ansi = 
  INSERT INTO "madmin_cache_tag" (
  	"tid", "tname"
  ) VALUES (
@@ -526,7 +532,7 @@ madmin/cache/manager/standard/settag/ansi =
  )
 ```
 
-* Default: madmin/cache/manager/standard/settag
+* Default: madmin/cache/manager/settag
 * Type: string - SQL statement for inserting a new tag to an existing cache entry
 * Since: 2014.03
 
@@ -540,7 +546,7 @@ the cache ID and tag name from the cache item to the statement
 before they are sent to the database server. The number of question
 marks must be the same as the number of columns listed in the INSERT
 statement. The order of the columns must correspond to the order in
-the saveItems() method, so the correct values are bound to the
+the save() method, so the correct values are bound to the
 columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -549,19 +555,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* madmin/cache/manager/standard/delete/ansi
-* madmin/cache/manager/standard/deletebytag/ansi
-* madmin/cache/manager/standard/get/ansi
-* madmin/cache/manager/standard/set/ansi
-* madmin/cache/manager/standard/search/ansi
-* madmin/cache/manager/standard/count/ansi
+* madmin/cache/manager/delete/ansi
+* madmin/cache/manager/deletebytag/ansi
+* madmin/cache/manager/get/ansi
+* madmin/cache/manager/set/ansi
+* madmin/cache/manager/search/ansi
+* madmin/cache/manager/count/ansi
 
-## settag/mysql
+## mysql
 
 Inserts a new tag to an existing cache entry
 
 ```
-madmin/cache/manager/standard/settag/mysql = 
+madmin/cache/manager/settag/mysql = 
  INSERT INTO "madmin_cache_tag" (
  	"tid", "tname"
  ) VALUES (
@@ -579,7 +585,7 @@ madmin/cache/manager/standard/settag/mysql =
 
 See also:
 
-* madmin/cache/manager/standard/settag/ansi
+* madmin/cache/manager/settag/ansi
 
 # submanagers
 

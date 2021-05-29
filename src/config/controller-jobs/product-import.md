@@ -643,12 +643,12 @@ List of item domain names that should be retrieved along with the product items
 ```
 controller/jobs/product/import/xml/domains = Array
 (
-    [0] => attribute
-    [1] => media
-    [2] => price
-    [3] => product
-    [4] => product/property
-    [5] => text
+    [attribute] => attribute
+    [media] => media
+    [price] => price
+    [product] => product
+    [product/property] => product/property
+    [text] => text
 )
 ```
 

@@ -1,4 +1,250 @@
 
+# aggregate
+## ansi
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/review/manager/aggregate/ansi = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mrev.id DESC
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: mshop/review/manager/aggregate
+* Type: string - SQL statement for aggregating review items
+* Since: 2020.10
+
+Groups all records by the values in the key column and counts their
+occurence. The matched records can be limited by the given criteria
+from the review database. The records must be from one of the sites
+that are configured via the context item. If the current site is part
+of a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+This statement doesn't return any records. Instead, it returns pairs
+of the different values found in the key column together with the
+number of records that have been found for that key values.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/review/manager/insert/ansi
+* mshop/review/manager/update/ansi
+* mshop/review/manager/newid/ansi
+* mshop/review/manager/delete/ansi
+* mshop/review/manager/search/ansi
+* mshop/review/manager/count/ansi
+
+## mysql
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/review/manager/aggregate/mysql = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mrev.id DESC
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+
+
+See also:
+
+* mshop/review/manager/aggregate/ansi
+
+# aggregaterate
+## ansi
+
+```
+mshop/review/manager/aggregaterate/ansi = 
+ SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
+ FROM (
+ 	SELECT :acols, mrev.rating AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: mshop/review/manager/aggregaterate
+
+
+## mysql
+
+```
+mshop/review/manager/aggregaterate/mysql = 
+ SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
+ FROM (
+ 	SELECT :acols, mrev.rating AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: 
+ SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
+ FROM (
+ 	SELECT :acols, mrev.rating AS "val"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+
+
+
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/review/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mrev."id"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mrev."id"
+ 	ORDER BY mrev."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/review/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2020.10
+
+Counts all records matched by the given criteria from the review
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/review/manager/insert/ansi
+* mshop/review/manager/update/ansi
+* mshop/review/manager/newid/ansi
+* mshop/review/manager/delete/ansi
+* mshop/review/manager/search/ansi
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/review/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mrev."id"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mrev."id"
+ 	ORDER BY mrev."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mrev."id"
+ 	FROM "mshop_review" AS mrev
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mrev."id"
+ 	ORDER BY mrev."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/review/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -111,6 +357,131 @@ See also:
 * mshop/review/manager/decorators/excludes
 * mshop/review/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/review/manager/delete/ansi = 
+ DELETE FROM "mshop_review"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/review/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2020.10
+
+Removes the records specified by the given IDs from the review database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/review/manager/insert/ansi
+* mshop/review/manager/update/ansi
+* mshop/review/manager/newid/ansi
+* mshop/review/manager/search/ansi
+* mshop/review/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/review/manager/delete/mysql = 
+ DELETE FROM "mshop_review"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_review"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/review/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new review record into the database table
+
+```
+mshop/review/manager/insert/ansi = 
+ INSERT INTO "mshop_review" ( :names
+ 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
+ 	"rating", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/review/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2020.10
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the review item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The review of the columns must correspond to the
+review in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/review/manager/update/ansi
+* mshop/review/manager/newid/ansi
+* mshop/review/manager/delete/ansi
+* mshop/review/manager/search/ansi
+* mshop/review/manager/count/ansi
+
+## mysql
+
+Inserts a new review record into the database table
+
+```
+mshop/review/manager/insert/mysql = 
+ INSERT INTO "mshop_review" ( :names
+ 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
+ 	"rating", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_review" ( :names
+ 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
+ 	"rating", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/review/manager/insert/ansi
+
 # name
 
 Class name of the used review manager implementation
@@ -156,419 +527,16 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
-# sitemode
-
-Mode how items from levels below or above in the site tree are handled
-
-```
-mshop/review/manager/sitemode = 2
-```
-
-* Default: 2
-* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
-* Since: 2020.10
-
-By default, only items from the current site are fetched from the
-storage. If the ai-sites extension is installed, you can create a
-tree of sites. Then, this setting allows you to define for the
-whole review domain if items from parent sites are inherited,
-sites from child sites are aggregated or both.
-
-Available constants for the site mode are:
-* 0 = only items from the current site
-* 1 = inherit items from parent sites
-* 2 = aggregate items from child sites
-* 3 = inherit and aggregate items at the same time
-
-You also need to set the mode in the locale manager
-(mshop/locale/manager/standard/sitelevel) to one of the constants.
-If you set it to the same value, it will work as described but you
-can also use different modes. For example, if inheritance and
-aggregation is configured the locale manager but only inheritance
-in the domain manager because aggregating items makes no sense in
-this domain, then items wil be only inherited. Thus, you have full
-control over inheritance and aggregation in each domain.
-
-See also:
-
-* mshop/locale/manager/standard/sitelevel
-
-# standard
-## aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/review/manager/standard/aggregate/ansi = 
- SELECT "key", COUNT("val") AS "count"
- FROM (
- 	SELECT :key AS "key", :val AS "val"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-```
-
-* Default: mshop/review/manager/standard/aggregate
-* Type: string - SQL statement for aggregating review items
-* Since: 2020.10
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the review database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/review/manager/standard/insert/ansi
-* mshop/review/manager/standard/update/ansi
-* mshop/review/manager/standard/newid/ansi
-* mshop/review/manager/standard/delete/ansi
-* mshop/review/manager/standard/search/ansi
-* mshop/review/manager/standard/count/ansi
-
-## aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/review/manager/standard/aggregate/mysql = 
- SELECT "key", COUNT("val") AS "count"
- FROM (
- 	SELECT :key AS "key", :val AS "val"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY "key"
-```
-
-* Default: 
- SELECT "key", COUNT("val") AS "count"
- FROM (
- 	SELECT :key AS "key", :val AS "val"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-
-
-See also:
-
-* mshop/review/manager/standard/aggregate/ansi
-
-## aggregaterate/ansi
-
-```
-mshop/review/manager/standard/aggregaterate/ansi = 
- SELECT "key", SUM("val") AS "sum", COUNT(*) AS "count"
- FROM (
- 	SELECT :key AS "key", mrev.rating AS "val"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-```
-
-* Default: mshop/review/manager/standard/aggregaterate
-
-
-## aggregaterate/mysql
-
-```
-mshop/review/manager/standard/aggregaterate/mysql = 
- SELECT "key", SUM("val") AS "sum", COUNT(*) AS "count"
- FROM (
- 	SELECT :key AS "key", mrev.rating AS "val"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY "key"
-```
-
-* Default: 
- SELECT "key", SUM("val") AS "sum", COUNT(*) AS "count"
- FROM (
- 	SELECT :key AS "key", mrev.rating AS "val"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-
-
-
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/review/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrev."id"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	GROUP BY mrev."id"
- 	ORDER BY mrev."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/review/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2020.10
-
-Counts all records matched by the given criteria from the review
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/review/manager/standard/insert/ansi
-* mshop/review/manager/standard/update/ansi
-* mshop/review/manager/standard/newid/ansi
-* mshop/review/manager/standard/delete/ansi
-* mshop/review/manager/standard/search/ansi
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/review/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrev."id"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	GROUP BY mrev."id"
- 	ORDER BY mrev."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrev."id"
- 	FROM "mshop_review" AS mrev
- 	:joins
- 	WHERE :cond
- 	GROUP BY mrev."id"
- 	ORDER BY mrev."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/review/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/review/manager/standard/delete/ansi = 
- DELETE FROM "mshop_review"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/review/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2020.10
-
-Removes the records specified by the given IDs from the review database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/review/manager/standard/insert/ansi
-* mshop/review/manager/standard/update/ansi
-* mshop/review/manager/standard/newid/ansi
-* mshop/review/manager/standard/search/ansi
-* mshop/review/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/review/manager/standard/delete/mysql = 
- DELETE FROM "mshop_review"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_review"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/review/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new review record into the database table
-
-```
-mshop/review/manager/standard/insert/ansi = 
- INSERT INTO "mshop_review" ( :names
- 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
- 	"rating", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/review/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2020.10
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the review item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The review of the columns must correspond to the
-review in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/review/manager/standard/update/ansi
-* mshop/review/manager/standard/newid/ansi
-* mshop/review/manager/standard/delete/ansi
-* mshop/review/manager/standard/search/ansi
-* mshop/review/manager/standard/count/ansi
-
-## insert/mysql
-
-Inserts a new review record into the database table
-
-```
-mshop/review/manager/standard/insert/mysql = 
- INSERT INTO "mshop_review" ( :names
- 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
- 	"rating", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_review" ( :names
- 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
- 	"rating", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/review/manager/standard/insert/ansi
-
-## newid/ansi
+# newid
+## ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/review/manager/standard/newid/ansi = mshop/review/manager/standard/newid
+mshop/review/manager/newid/ansi = mshop/review/manager/newid
 ```
 
-* Default: mshop/review/manager/standard/newid
+* Default: mshop/review/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2020.10
 
@@ -594,32 +562,33 @@ specific way.
 
 See also:
 
-* mshop/review/manager/standard/insert/ansi
-* mshop/review/manager/standard/update/ansi
-* mshop/review/manager/standard/delete/ansi
-* mshop/review/manager/standard/search/ansi
-* mshop/review/manager/standard/count/ansi
+* mshop/review/manager/insert/ansi
+* mshop/review/manager/update/ansi
+* mshop/review/manager/delete/ansi
+* mshop/review/manager/search/ansi
+* mshop/review/manager/count/ansi
 
-## newid/mysql
+## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/review/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/review/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/review/manager/standard/newid
+* Default: mshop/review/manager/newid
 
 See also:
 
-* mshop/review/manager/standard/newid/ansi
+* mshop/review/manager/newid/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/review/manager/standard/search/ansi = 
+mshop/review/manager/search/ansi = 
  SELECT :columns
  	mrev."id" AS "review.id", mrev."siteid" AS "review.siteid",
  	mrev."domain" AS "review.domain", mrev."refid" AS "review.refid",
@@ -639,7 +608,7 @@ mshop/review/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/review/manager/standard/search
+* Default: mshop/review/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2020.10
 
@@ -684,18 +653,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/review/manager/standard/insert/ansi
-* mshop/review/manager/standard/update/ansi
-* mshop/review/manager/standard/newid/ansi
-* mshop/review/manager/standard/delete/ansi
-* mshop/review/manager/standard/count/ansi
+* mshop/review/manager/insert/ansi
+* mshop/review/manager/update/ansi
+* mshop/review/manager/newid/ansi
+* mshop/review/manager/delete/ansi
+* mshop/review/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/review/manager/standard/search/mysql = 
+mshop/review/manager/search/mysql = 
  SELECT :columns
  	mrev."id" AS "review.id", mrev."siteid" AS "review.siteid",
  	mrev."domain" AS "review.domain", mrev."refid" AS "review.refid",
@@ -734,55 +703,44 @@ mshop/review/manager/standard/search/mysql =
 
 See also:
 
-* mshop/review/manager/standard/search/ansi
+* mshop/review/manager/search/ansi
 
-## update/ansi
+# sitemode
 
-Updates an existing review record in the database
+Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/review/manager/standard/update/ansi = 
+mshop/review/manager/sitemode = 2
 ```
 
-* Default: 
-* Type: string - SQL statement for updating records
+* Default: 2
+* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2020.10
 
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
+By default, only items from the current site are fetched from the
+storage. If the ai-sites extension is installed, you can create a
+tree of sites. Then, this setting allows you to define for the
+whole review domain if items from parent sites are inherited,
+sites from child sites are aggregated or both.
 
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the review item to the statement before they are
-sent to the database server. The review of the columns must
-correspond to the review in the saveItems() method, so the
-correct values are bound to the columns.
+Available constants for the site mode are:
+* 0 = only items from the current site
+* 1 = inherit items from parent sites
+* 2 = aggregate items from child sites
+* 3 = inherit and aggregate items at the same time
 
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/review/manager/standard/insert/ansi
-* mshop/review/manager/standard/newid/ansi
-* mshop/review/manager/standard/delete/ansi
-* mshop/review/manager/standard/search/ansi
-* mshop/review/manager/standard/count/ansi
-
-## update/mysql
-
-Updates an existing review record in the database
-
-```
-mshop/review/manager/standard/update/mysql = 
-```
-
-* Default: 
+You also need to set the mode in the locale manager
+(mshop/locale/manager/sitelevel) to one of the constants.
+If you set it to the same value, it will work as described but you
+can also use different modes. For example, if inheritance and
+aggregation is configured the locale manager but only inheritance
+in the domain manager because aggregating items makes no sense in
+this domain, then items wil be only inherited. Thus, you have full
+control over inheritance and aggregation in each domain.
 
 See also:
 
-* mshop/review/manager/standard/update/ansi
+* mshop/locale/manager/sitelevel
 
 # submanagers
 
@@ -807,3 +765,53 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+# update
+## ansi
+
+Updates an existing review record in the database
+
+```
+mshop/review/manager/update/ansi = 
+```
+
+* Default: 
+* Type: string - SQL statement for updating records
+* Since: 2020.10
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the review item to the statement before they are
+sent to the database server. The review of the columns must
+correspond to the review in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/review/manager/insert/ansi
+* mshop/review/manager/newid/ansi
+* mshop/review/manager/delete/ansi
+* mshop/review/manager/search/ansi
+* mshop/review/manager/count/ansi
+
+## mysql
+
+Updates an existing review record in the database
+
+```
+mshop/review/manager/update/mysql = 
+```
+
+* Default: 
+
+See also:
+
+* mshop/review/manager/update/ansi

@@ -188,13 +188,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyProduct"!
 
 
-# standard
-## template
+# template
 
 Relative path to the product JSON API template
 
 ```
-client/jsonapi/product/standard/template = product/standard
+client/jsonapi/product/template = product/standard
 ```
 
 * Default: product/standard
@@ -214,12 +213,12 @@ you've implemented an alternative client class as well, "standard"
 should be replaced by the name of the new class.
 
 
-## template-aggregate
+# template-aggregate
 
 Relative path to the product aggregate JSON API template
 
 ```
-client/jsonapi/product/standard/template-aggregate = aggregate-standard
+client/jsonapi/product/template-aggregate = aggregate-standard
 ```
 
 * Default: aggregate-standard

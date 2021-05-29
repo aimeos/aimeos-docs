@@ -146,12 +146,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Coupon\Code\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the coupon code section
 
 ```
-admin/jqadm/coupon/code/standard/subparts = Array
+admin/jqadm/coupon/code/subparts = Array
 (
 )
 ```
@@ -396,13 +396,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the coupon section
 
 ```
-admin/jqadm/coupon/standard/subparts = Array
+admin/jqadm/coupon/subparts = Array
 (
     [code] => code
 )

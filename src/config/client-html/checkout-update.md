@@ -152,13 +152,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyUpdate"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the checkout update section
 
 ```
-client/html/checkout/update/standard/subparts = Array
+client/html/checkout/update/subparts = Array
 (
 )
 ```
@@ -200,12 +199,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the checkout update client.
 
 ```
-client/html/checkout/update/standard/template-body = checkout/update/body-standard
+client/html/checkout/update/template-body = checkout/update/body-standard
 ```
 
 * Default: checkout/update/body-standard
@@ -226,14 +225,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/update/standard/template-header
+* client/html/checkout/update/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the checkout update client.
 
 ```
-client/html/checkout/update/standard/template-header = checkout/update/header-standard
+client/html/checkout/update/template-header = checkout/update/header-standard
 ```
 
 * Default: checkout/update/header-standard
@@ -255,7 +254,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/update/standard/template-body
+* client/html/checkout/update/template-body
 
 # url
 ## action

@@ -1,4 +1,203 @@
 
+# aggregate
+## ansi
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/subscription/manager/aggregate/ansi = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_subscription" AS mord
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mord.id, :cols, :val
+ 	ORDER BY mord.id DESC
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: mshop/subscription/manager/aggregate
+* Type: string - SQL statement for aggregating subscription items
+* Since: 2018.04
+
+Groups all records by the values in the key column and counts their
+occurence. The matched records can be limited by the given criteria
+from the subscription database. The records must be from one of the sites
+that are configured via the context item. If the current site is part
+of a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+This statement doesn't return any records. Instead, it returns pairs
+of the different values found in the key column together with the
+number of records that have been found for that key values.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/subscription/manager/insert/ansi
+* mshop/subscription/manager/update/ansi
+* mshop/subscription/manager/newid/ansi
+* mshop/subscription/manager/delete/ansi
+* mshop/subscription/manager/search/ansi
+* mshop/subscription/manager/count/ansi
+
+## mysql
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/subscription/manager/aggregate/mysql = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_subscription" AS mord
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mord.id, :cols, :val
+ 	ORDER BY mord.id DESC
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_subscription" AS mord
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mord.id, :cols, :val
+ 	ORDER BY mord.id DESC
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+
+
+See also:
+
+* mshop/subscription/manager/aggregate/ansi
+
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/subscription/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mord."id"
+ 	FROM "mshop_subscription" AS mord
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mord."id"
+ 	ORDER BY mord."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/subscription/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2018.04
+
+Counts all records matched by the given criteria from the subscription
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/subscription/manager/insert/ansi
+* mshop/subscription/manager/update/ansi
+* mshop/subscription/manager/newid/ansi
+* mshop/subscription/manager/delete/ansi
+* mshop/subscription/manager/search/ansi
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/subscription/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mord."id"
+ 	FROM "mshop_subscription" AS mord
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mord."id"
+ 	ORDER BY mord."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mord."id"
+ 	FROM "mshop_subscription" AS mord
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mord."id"
+ 	ORDER BY mord."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/subscription/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -111,6 +310,131 @@ See also:
 * mshop/subscription/manager/decorators/excludes
 * mshop/subscription/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/subscription/manager/delete/ansi = 
+ DELETE FROM "mshop_subscription"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/subscription/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2018.04
+
+Removes the records specified by the given IDs from the subscription database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/subscription/manager/insert/ansi
+* mshop/subscription/manager/update/ansi
+* mshop/subscription/manager/newid/ansi
+* mshop/subscription/manager/search/ansi
+* mshop/subscription/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/subscription/manager/delete/mysql = 
+ DELETE FROM "mshop_subscription"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_subscription"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/subscription/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new subscription record into the database table
+
+```
+mshop/subscription/manager/insert/ansi = 
+ INSERT INTO "mshop_subscription" ( :names
+ 	"baseid", "ordprodid", "next", "end", "interval", "productid", "period",
+ 	"reason", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/subscription/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2018.04
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the subscription item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The subscription of the columns must correspond to the
+subscription in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/subscription/manager/update/ansi
+* mshop/subscription/manager/newid/ansi
+* mshop/subscription/manager/delete/ansi
+* mshop/subscription/manager/search/ansi
+* mshop/subscription/manager/count/ansi
+
+## mysql
+
+Inserts a new subscription record into the database table
+
+```
+mshop/subscription/manager/insert/mysql = 
+ INSERT INTO "mshop_subscription" ( :names
+ 	"baseid", "ordprodid", "next", "end", "interval", "productid", "period",
+ 	"reason", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_subscription" ( :names
+ 	"baseid", "ordprodid", "next", "end", "interval", "productid", "period",
+ 	"reason", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/subscription/manager/insert/ansi
+
 # name
 
 Class name of the used subscription manager implementation
@@ -156,370 +480,16 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
-# sitemode
-
-Mode how items from levels below or above in the site tree are handled
-
-```
-mshop/subscription/manager/sitemode = 2
-```
-
-* Default: 2
-* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
-* Since: 2018.04
-
-By default, only items from the current site are fetched from the
-storage. If the ai-sites extension is installed, you can create a
-tree of sites. Then, this setting allows you to define for the
-whole subscription domain if items from parent sites are inherited,
-sites from child sites are aggregated or both.
-
-Available constants for the site mode are:
-* 0 = only items from the current site
-* 1 = inherit items from parent sites
-* 2 = aggregate items from child sites
-* 3 = inherit and aggregate items at the same time
-
-You also need to set the mode in the locale manager
-(mshop/locale/manager/standard/sitelevel) to one of the constants.
-If you set it to the same value, it will work as described but you
-can also use different modes. For example, if inheritance and
-aggregation is configured the locale manager but only inheritance
-in the domain manager because aggregating items makes no sense in
-this domain, then items wil be only inherited. Thus, you have full
-control over inheritance and aggregation in each domain.
-
-See also:
-
-* mshop/locale/manager/standard/sitelevel
-
-# standard
-## aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/subscription/manager/standard/aggregate/ansi = 
- SELECT "key", COUNT("val") AS "count"
- FROM (
- 	SELECT :key AS "key", :val AS "val"
- 	FROM "mshop_subscription" AS mord
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-```
-
-* Default: mshop/subscription/manager/standard/aggregate
-* Type: string - SQL statement for aggregating subscription items
-* Since: 2018.04
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the subscription database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/subscription/manager/standard/insert/ansi
-* mshop/subscription/manager/standard/update/ansi
-* mshop/subscription/manager/standard/newid/ansi
-* mshop/subscription/manager/standard/delete/ansi
-* mshop/subscription/manager/standard/search/ansi
-* mshop/subscription/manager/standard/count/ansi
-
-## aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/subscription/manager/standard/aggregate/mysql = 
- SELECT "key", COUNT("val") AS "count"
- FROM (
- 	SELECT :key AS "key", :val AS "val"
- 	FROM "mshop_subscription" AS mord
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY "key"
-```
-
-* Default: 
- SELECT "key", COUNT("val") AS "count"
- FROM (
- 	SELECT :key AS "key", :val AS "val"
- 	FROM "mshop_subscription" AS mord
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-
-
-See also:
-
-* mshop/subscription/manager/standard/aggregate/ansi
-
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/subscription/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mord."id"
- 	FROM "mshop_subscription" AS mord
- 	:joins
- 	WHERE :cond
- 	GROUP BY mord."id"
- 	ORDER BY mord."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/subscription/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2018.04
-
-Counts all records matched by the given criteria from the subscription
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/subscription/manager/standard/insert/ansi
-* mshop/subscription/manager/standard/update/ansi
-* mshop/subscription/manager/standard/newid/ansi
-* mshop/subscription/manager/standard/delete/ansi
-* mshop/subscription/manager/standard/search/ansi
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/subscription/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mord."id"
- 	FROM "mshop_subscription" AS mord
- 	:joins
- 	WHERE :cond
- 	GROUP BY mord."id"
- 	ORDER BY mord."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mord."id"
- 	FROM "mshop_subscription" AS mord
- 	:joins
- 	WHERE :cond
- 	GROUP BY mord."id"
- 	ORDER BY mord."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/subscription/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/subscription/manager/standard/delete/ansi = 
- DELETE FROM "mshop_subscription"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/subscription/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2018.04
-
-Removes the records specified by the given IDs from the subscription database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/subscription/manager/standard/insert/ansi
-* mshop/subscription/manager/standard/update/ansi
-* mshop/subscription/manager/standard/newid/ansi
-* mshop/subscription/manager/standard/search/ansi
-* mshop/subscription/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/subscription/manager/standard/delete/mysql = 
- DELETE FROM "mshop_subscription"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_subscription"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/subscription/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new subscription record into the database table
-
-```
-mshop/subscription/manager/standard/insert/ansi = 
- INSERT INTO "mshop_subscription" ( :names
- 	"baseid", "ordprodid", "next", "end", "interval", "productid", "period",
- 	"reason", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/subscription/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2018.04
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the subscription item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The subscription of the columns must correspond to the
-subscription in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/subscription/manager/standard/update/ansi
-* mshop/subscription/manager/standard/newid/ansi
-* mshop/subscription/manager/standard/delete/ansi
-* mshop/subscription/manager/standard/search/ansi
-* mshop/subscription/manager/standard/count/ansi
-
-## insert/mysql
-
-Inserts a new subscription record into the database table
-
-```
-mshop/subscription/manager/standard/insert/mysql = 
- INSERT INTO "mshop_subscription" ( :names
- 	"baseid", "ordprodid", "next", "end", "interval", "productid", "period",
- 	"reason", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_subscription" ( :names
- 	"baseid", "ordprodid", "next", "end", "interval", "productid", "period",
- 	"reason", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/subscription/manager/standard/insert/ansi
-
-## newid/ansi
+# newid
+## ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/subscription/manager/standard/newid/ansi = mshop/subscription/manager/standard/newid
+mshop/subscription/manager/newid/ansi = mshop/subscription/manager/newid
 ```
 
-* Default: mshop/subscription/manager/standard/newid
+* Default: mshop/subscription/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2018.04
 
@@ -545,32 +515,33 @@ specific way.
 
 See also:
 
-* mshop/subscription/manager/standard/insert/ansi
-* mshop/subscription/manager/standard/update/ansi
-* mshop/subscription/manager/standard/delete/ansi
-* mshop/subscription/manager/standard/search/ansi
-* mshop/subscription/manager/standard/count/ansi
+* mshop/subscription/manager/insert/ansi
+* mshop/subscription/manager/update/ansi
+* mshop/subscription/manager/delete/ansi
+* mshop/subscription/manager/search/ansi
+* mshop/subscription/manager/count/ansi
 
-## newid/mysql
+## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/subscription/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/subscription/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/subscription/manager/standard/newid
+* Default: mshop/subscription/manager/newid
 
 See also:
 
-* mshop/subscription/manager/standard/newid/ansi
+* mshop/subscription/manager/newid/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/subscription/manager/standard/search/ansi = 
+mshop/subscription/manager/search/ansi = 
  SELECT :columns
  	mord."id" AS "subscription.id", mord."baseid" AS "subscription.ordbaseid",
  	mord."ordprodid" AS "subscription.ordprodid", mord."siteid" AS "subscription.siteid",
@@ -590,7 +561,7 @@ mshop/subscription/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/subscription/manager/standard/search
+* Default: mshop/subscription/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2018.04
 
@@ -635,18 +606,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/subscription/manager/standard/insert/ansi
-* mshop/subscription/manager/standard/update/ansi
-* mshop/subscription/manager/standard/newid/ansi
-* mshop/subscription/manager/standard/delete/ansi
-* mshop/subscription/manager/standard/count/ansi
+* mshop/subscription/manager/insert/ansi
+* mshop/subscription/manager/update/ansi
+* mshop/subscription/manager/newid/ansi
+* mshop/subscription/manager/delete/ansi
+* mshop/subscription/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/subscription/manager/standard/search/mysql = 
+mshop/subscription/manager/search/mysql = 
  SELECT :columns
  	mord."id" AS "subscription.id", mord."baseid" AS "subscription.ordbaseid",
  	mord."ordprodid" AS "subscription.ordprodid", mord."siteid" AS "subscription.siteid",
@@ -685,71 +656,44 @@ mshop/subscription/manager/standard/search/mysql =
 
 See also:
 
-* mshop/subscription/manager/standard/search/ansi
+* mshop/subscription/manager/search/ansi
 
-## update/ansi
+# sitemode
 
-Updates an existing subscription record in the database
+Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/subscription/manager/standard/update/ansi = 
- UPDATE "mshop_subscription"
- SET :names
- 	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
- 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+mshop/subscription/manager/sitemode = 2
 ```
 
-* Default: mshop/subscription/manager/standard/update
-* Type: string - SQL statement for updating records
+* Default: 2
+* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.04
 
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
+By default, only items from the current site are fetched from the
+storage. If the ai-sites extension is installed, you can create a
+tree of sites. Then, this setting allows you to define for the
+whole subscription domain if items from parent sites are inherited,
+sites from child sites are aggregated or both.
 
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the subscription item to the statement before they are
-sent to the database server. The subscription of the columns must
-correspond to the subscription in the saveItems() method, so the
-correct values are bound to the columns.
+Available constants for the site mode are:
+* 0 = only items from the current site
+* 1 = inherit items from parent sites
+* 2 = aggregate items from child sites
+* 3 = inherit and aggregate items at the same time
 
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/subscription/manager/standard/insert/ansi
-* mshop/subscription/manager/standard/newid/ansi
-* mshop/subscription/manager/standard/delete/ansi
-* mshop/subscription/manager/standard/search/ansi
-* mshop/subscription/manager/standard/count/ansi
-
-## update/mysql
-
-Updates an existing subscription record in the database
-
-```
-mshop/subscription/manager/standard/update/mysql = 
- UPDATE "mshop_subscription"
- SET :names
- 	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
- 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_subscription"
- SET :names
- 	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
- 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
+You also need to set the mode in the locale manager
+(mshop/locale/manager/sitelevel) to one of the constants.
+If you set it to the same value, it will work as described but you
+can also use different modes. For example, if inheritance and
+aggregation is configured the locale manager but only inheritance
+in the domain manager because aggregating items makes no sense in
+this domain, then items wil be only inherited. Thus, you have full
+control over inheritance and aggregation in each domain.
 
 See also:
 
-* mshop/subscription/manager/standard/update/ansi
+* mshop/locale/manager/sitelevel
 
 # submanagers
 
@@ -775,3 +719,69 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+# update
+## ansi
+
+Updates an existing subscription record in the database
+
+```
+mshop/subscription/manager/update/ansi = 
+ UPDATE "mshop_subscription"
+ SET :names
+ 	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
+ 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/subscription/manager/update
+* Type: string - SQL statement for updating records
+* Since: 2018.04
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the subscription item to the statement before they are
+sent to the database server. The subscription of the columns must
+correspond to the subscription in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/subscription/manager/insert/ansi
+* mshop/subscription/manager/newid/ansi
+* mshop/subscription/manager/delete/ansi
+* mshop/subscription/manager/search/ansi
+* mshop/subscription/manager/count/ansi
+
+## mysql
+
+Updates an existing subscription record in the database
+
+```
+mshop/subscription/manager/update/mysql = 
+ UPDATE "mshop_subscription"
+ SET :names
+ 	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
+ 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_subscription"
+ SET :names
+ 	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
+ 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/subscription/manager/update/ansi

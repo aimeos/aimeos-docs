@@ -156,12 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyAddress"!
 
 
-## standard/template
+## template
 
 Relative path to the customer address JSON API template
 
 ```
-client/jsonapi/customer/address/standard/template = customer/address/standard
+client/jsonapi/customer/address/template = customer/address/standard
 ```
 
 * Default: customer/address/standard
@@ -495,12 +495,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyProperty"!
 
 
-## standard/template
+## template
 
 Relative path to the customer property JSON API template
 
 ```
-client/jsonapi/customer/property/standard/template = customer/property/standard
+client/jsonapi/customer/property/template = customer/property/standard
 ```
 
 * Default: customer/property/standard
@@ -677,12 +677,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyRelationships"!
 
 
-## standard/template
+## template
 
 Relative path to the customer relationships JSON API template
 
 ```
-client/jsonapi/customer/relationships/standard/template = customer/relationships/standard
+client/jsonapi/customer/relationships/template = customer/relationships/standard
 ```
 
 * Default: customer/relationships/standard
@@ -859,12 +859,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyReview"!
 
 
-## standard/template
+## template
 
 Relative path to the customer review JSON API template
 
 ```
-client/jsonapi/customer/review/standard/template = customer/review/standard
+client/jsonapi/customer/review/template = customer/review/standard
 ```
 
 * Default: customer/review/standard
@@ -884,13 +884,12 @@ you've implemented an alternative client class as well, "standard"
 should be replaced by the name of the new class.
 
 
-# standard
-## template
+# template
 
 Relative path to the customer JSON API template
 
 ```
-client/jsonapi/customer/standard/template = customer/standard
+client/jsonapi/customer/template = customer/standard
 ```
 
 * Default: customer/standard

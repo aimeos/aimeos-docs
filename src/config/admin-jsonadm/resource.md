@@ -1066,6 +1066,61 @@ admin/jsonadm/resource/product/type/groups = Array
 * Since: 2017.10
 
 
+# rule
+## config/groups
+
+List of user groups that are allowed to fetch available rule configuration
+
+```
+admin/jsonadm/resource/rule/config/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
+
+
+## groups
+
+List of user groups that are allowed to manage rule items
+
+```
+admin/jsonadm/resource/rule/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
+
+
+## type/groups
+
+List of user groups that are allowed to manage rule type items
+
+```
+admin/jsonadm/resource/rule/type/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
+
+
 # service
 ## config/groups
 

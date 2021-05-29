@@ -215,13 +215,12 @@ client/html/catalog/attribute/preselect/size =
 * Default: 
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog attribute section
 
 ```
-client/html/catalog/attribute/standard/subparts = Array
+client/html/catalog/attribute/subparts = Array
 (
     [0] => attribute
 )

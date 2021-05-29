@@ -142,12 +142,12 @@ See also:
 
 * client/html/locale/select/language/param-name
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the locale select currency section
 
 ```
-client/html/locale/select/currency/standard/subparts = Array
+client/html/locale/select/currency/subparts = Array
 (
 )
 ```
@@ -189,12 +189,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the locale select currency client.
 
 ```
-client/html/locale/select/currency/standard/template-body = locale/select/currency-body-standard
+client/html/locale/select/currency/template-body = locale/select/currency-body-standard
 ```
 
 * Default: locale/select/currency-body-standard
@@ -215,7 +215,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/locale/select/currency/standard/template-header
+* client/html/locale/select/currency/template-header
 
 ## url/config
 
@@ -495,12 +495,12 @@ See also:
 
 * client/html/locale/select/currency/param-name
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the locale select language section
 
 ```
-client/html/locale/select/language/standard/subparts = Array
+client/html/locale/select/language/subparts = Array
 (
 )
 ```
@@ -542,12 +542,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the locale select language client.
 
 ```
-client/html/locale/select/language/standard/template-body = locale/select/language-body-standard
+client/html/locale/select/language/template-body = locale/select/language-body-standard
 ```
 
 * Default: locale/select/language-body-standard
@@ -568,7 +568,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/locale/select/language/standard/template-header
+* client/html/locale/select/language/template-header
 
 ## url/config
 
@@ -642,13 +642,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySelect"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the locale select section
 
 ```
-client/html/locale/select/standard/subparts = Array
+client/html/locale/select/subparts = Array
 (
     [0] => language
     [1] => currency
@@ -692,12 +691,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the locale select client.
 
 ```
-client/html/locale/select/standard/template-body = locale/select/body-standard
+client/html/locale/select/template-body = locale/select/body-standard
 ```
 
 * Default: locale/select/body-standard
@@ -718,14 +717,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/locale/select/standard/template-header
+* client/html/locale/select/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the locale select client.
 
 ```
-client/html/locale/select/standard/template-header = locale/select/header-standard
+client/html/locale/select/template-header = locale/select/header-standard
 ```
 
 * Default: locale/select/header-standard
@@ -747,4 +746,4 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/locale/select/standard/template-body
+* client/html/locale/select/template-body

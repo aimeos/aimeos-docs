@@ -1,4 +1,100 @@
 
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+madmin/job/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM(
+ 	SELECT majob."id"
+ 	FROM "madmin_job" AS majob
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY "id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: madmin/job/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the job
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/job/manager/insert/ansi
+* madmin/job/manager/update/ansi
+* madmin/job/manager/newid/ansi
+* madmin/job/manager/delete/ansi
+* madmin/job/manager/search/ansi
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+madmin/job/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM(
+ 	SELECT majob."id"
+ 	FROM "madmin_job" AS majob
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY "id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM(
+ 	SELECT majob."id"
+ 	FROM "madmin_job" AS majob
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY "id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* madmin/job/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -108,6 +204,131 @@ See also:
 * madmin/job/manager/decorators/excludes
 * madmin/job/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+madmin/job/manager/delete/ansi = 
+ DELETE FROM "madmin_job"
+ WHERE :cond
+ AND "siteid" = ?
+```
+
+* Default: madmin/job/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the job database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/job/manager/insert/ansi
+* madmin/job/manager/update/ansi
+* madmin/job/manager/newid/ansi
+* madmin/job/manager/search/ansi
+* madmin/job/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+madmin/job/manager/delete/mysql = 
+ DELETE FROM "madmin_job"
+ WHERE :cond
+ AND "siteid" = ?
+```
+
+* Default: 
+ DELETE FROM "madmin_job"
+ WHERE :cond
+ AND "siteid" = ?
+
+
+See also:
+
+* madmin/job/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new job record into the database table
+
+```
+madmin/job/manager/insert/ansi = 
+ INSERT INTO "madmin_job" ( :names
+ 	"label", "path", "status", "editor", "mtime", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: madmin/job/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the job item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/job/manager/update/ansi
+* madmin/job/manager/newid/ansi
+* madmin/job/manager/delete/ansi
+* madmin/job/manager/search/ansi
+* madmin/job/manager/count/ansi
+
+## mysql
+
+Inserts a new job record into the database table
+
+```
+madmin/job/manager/insert/mysql = 
+ INSERT INTO "madmin_job" ( :names
+ 	"label", "path", "status", "editor", "mtime", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "madmin_job" ( :names
+ 	"label", "path", "status", "editor", "mtime", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* madmin/job/manager/insert/ansi
+
 # name
 
 Class name of the used job manager implementation
@@ -153,237 +374,16 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
-# standard
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-madmin/job/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM(
- 	SELECT majob."id"
- 	FROM "madmin_job" AS majob
- 	:joins
- 	WHERE :cond
- 	ORDER BY "id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: madmin/job/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the job
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/job/manager/standard/insert/ansi
-* madmin/job/manager/standard/update/ansi
-* madmin/job/manager/standard/newid/ansi
-* madmin/job/manager/standard/delete/ansi
-* madmin/job/manager/standard/search/ansi
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-madmin/job/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM(
- 	SELECT majob."id"
- 	FROM "madmin_job" AS majob
- 	:joins
- 	WHERE :cond
- 	ORDER BY "id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM(
- 	SELECT majob."id"
- 	FROM "madmin_job" AS majob
- 	:joins
- 	WHERE :cond
- 	ORDER BY "id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* madmin/job/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-madmin/job/manager/standard/delete/ansi = 
- DELETE FROM "madmin_job"
- WHERE :cond
- AND "siteid" = ?
-```
-
-* Default: madmin/job/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the job database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/job/manager/standard/insert/ansi
-* madmin/job/manager/standard/update/ansi
-* madmin/job/manager/standard/newid/ansi
-* madmin/job/manager/standard/search/ansi
-* madmin/job/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-madmin/job/manager/standard/delete/mysql = 
- DELETE FROM "madmin_job"
- WHERE :cond
- AND "siteid" = ?
-```
-
-* Default: 
- DELETE FROM "madmin_job"
- WHERE :cond
- AND "siteid" = ?
-
-
-See also:
-
-* madmin/job/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new job record into the database table
-
-```
-madmin/job/manager/standard/insert/ansi = 
- INSERT INTO "madmin_job" ( :names
- 	"label", "method", "parameter", "result", "status",
- 	"editor", "mtime", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: madmin/job/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the job item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/job/manager/standard/update/ansi
-* madmin/job/manager/standard/newid/ansi
-* madmin/job/manager/standard/delete/ansi
-* madmin/job/manager/standard/search/ansi
-* madmin/job/manager/standard/count/ansi
-
-## insert/mysql
-
-Inserts a new job record into the database table
-
-```
-madmin/job/manager/standard/insert/mysql = 
- INSERT INTO "madmin_job" ( :names
- 	"label", "method", "parameter", "result", "status",
- 	"editor", "mtime", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "madmin_job" ( :names
- 	"label", "method", "parameter", "result", "status",
- 	"editor", "mtime", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* madmin/job/manager/standard/insert/ansi
-
-## newid/ansi
+# newid
+## ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-madmin/job/manager/standard/newid/ansi = madmin/job/manager/standard/newid
+madmin/job/manager/newid/ansi = madmin/job/manager/newid
 ```
 
-* Default: madmin/job/manager/standard/newid
+* Default: madmin/job/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -409,36 +409,36 @@ specific way.
 
 See also:
 
-* madmin/job/manager/standard/insert/ansi
-* madmin/job/manager/standard/update/ansi
-* madmin/job/manager/standard/delete/ansi
-* madmin/job/manager/standard/search/ansi
-* madmin/job/manager/standard/count/ansi
+* madmin/job/manager/insert/ansi
+* madmin/job/manager/update/ansi
+* madmin/job/manager/delete/ansi
+* madmin/job/manager/search/ansi
+* madmin/job/manager/count/ansi
 
-## newid/mysql
+## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-madmin/job/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+madmin/job/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: madmin/job/manager/standard/newid
+* Default: madmin/job/manager/newid
 
 See also:
 
-* madmin/job/manager/standard/newid/ansi
+* madmin/job/manager/newid/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-madmin/job/manager/standard/search/ansi = 
+madmin/job/manager/search/ansi = 
  SELECT :columns
  	majob."id" AS "job.id", majob."siteid" AS "job.siteid",
- 	majob."label" AS "job.label", majob."method" AS "job.method",
- 	majob."parameter" AS "job.parameter", majob."result" AS "job.result",
+ 	majob."label" AS "job.label", majob."path" AS "job.path",
  	majob."status" AS "job.status", majob."editor" AS "job.editor",
  	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
  FROM "madmin_job" AS majob
@@ -448,7 +448,7 @@ madmin/job/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: madmin/job/manager/standard/search
+* Default: madmin/job/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -493,22 +493,21 @@ includes using double quotes for table and column names.
 
 See also:
 
-* madmin/job/manager/standard/insert/ansi
-* madmin/job/manager/standard/update/ansi
-* madmin/job/manager/standard/newid/ansi
-* madmin/job/manager/standard/delete/ansi
-* madmin/job/manager/standard/count/ansi
+* madmin/job/manager/insert/ansi
+* madmin/job/manager/update/ansi
+* madmin/job/manager/newid/ansi
+* madmin/job/manager/delete/ansi
+* madmin/job/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-madmin/job/manager/standard/search/mysql = 
+madmin/job/manager/search/mysql = 
  SELECT :columns
  	majob."id" AS "job.id", majob."siteid" AS "job.siteid",
- 	majob."label" AS "job.label", majob."method" AS "job.method",
- 	majob."parameter" AS "job.parameter", majob."result" AS "job.result",
+ 	majob."label" AS "job.label", majob."path" AS "job.path",
  	majob."status" AS "job.status", majob."editor" AS "job.editor",
  	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
  FROM "madmin_job" AS majob
@@ -521,8 +520,7 @@ madmin/job/manager/standard/search/mysql =
 * Default: 
  SELECT :columns
  	majob."id" AS "job.id", majob."siteid" AS "job.siteid",
- 	majob."label" AS "job.label", majob."method" AS "job.method",
- 	majob."parameter" AS "job.parameter", majob."result" AS "job.result",
+ 	majob."label" AS "job.label", majob."path" AS "job.path",
  	majob."status" AS "job.status", majob."editor" AS "job.editor",
  	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
  FROM "madmin_job" AS majob
@@ -534,71 +532,7 @@ madmin/job/manager/standard/search/mysql =
 
 See also:
 
-* madmin/job/manager/standard/search/ansi
-
-## update/ansi
-
-Updates an existing job record in the database
-
-```
-madmin/job/manager/standard/update/ansi = 
- UPDATE "madmin_job"
- SET :names
- 	"label" = ?, "method" = ?, "parameter" = ?,
- 	"result" = ?, "status" = ?, "editor" = ?, "mtime" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: madmin/job/manager/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the job item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/job/manager/standard/insert/ansi
-* madmin/job/manager/standard/newid/ansi
-* madmin/job/manager/standard/delete/ansi
-* madmin/job/manager/standard/search/ansi
-* madmin/job/manager/standard/count/ansi
-
-## update/mysql
-
-Updates an existing job record in the database
-
-```
-madmin/job/manager/standard/update/mysql = 
- UPDATE "madmin_job"
- SET :names
- 	"label" = ?, "method" = ?, "parameter" = ?,
- 	"result" = ?, "status" = ?, "editor" = ?, "mtime" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "madmin_job"
- SET :names
- 	"label" = ?, "method" = ?, "parameter" = ?,
- 	"result" = ?, "status" = ?, "editor" = ?, "mtime" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* madmin/job/manager/standard/update/ansi
+* madmin/job/manager/search/ansi
 
 # submanagers
 
@@ -623,3 +557,66 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+# update
+## ansi
+
+Updates an existing job record in the database
+
+```
+madmin/job/manager/update/ansi = 
+ UPDATE "madmin_job"
+ SET :names
+ 	"label" = ?, "path" = ?, "status" = ?, "editor" = ?, "mtime" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: madmin/job/manager/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the job item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/job/manager/insert/ansi
+* madmin/job/manager/newid/ansi
+* madmin/job/manager/delete/ansi
+* madmin/job/manager/search/ansi
+* madmin/job/manager/count/ansi
+
+## mysql
+
+Updates an existing job record in the database
+
+```
+madmin/job/manager/update/mysql = 
+ UPDATE "madmin_job"
+ SET :names
+ 	"label" = ?, "path" = ?, "status" = ?, "editor" = ?, "mtime" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "madmin_job"
+ SET :names
+ 	"label" = ?, "path" = ?, "status" = ?, "editor" = ?, "mtime" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* madmin/job/manager/update/ansi

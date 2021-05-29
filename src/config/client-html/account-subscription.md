@@ -229,12 +229,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Account\Subscription\De
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the account subscription detail section
 
 ```
-client/html/account/subscription/detail/standard/subparts = Array
+client/html/account/subscription/detail/subparts = Array
 (
 )
 ```
@@ -276,12 +276,12 @@ should support adding, removing or redetailing content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the account subscription detail client.
 
 ```
-client/html/account/subscription/detail/standard/template-body = account/subscription/detail-body-standard
+client/html/account/subscription/detail/template-body = account/subscription/detail-body-standard
 ```
 
 * Default: account/subscription/detail-body-standard
@@ -302,7 +302,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/subscription/detail/standard/template-header
+* client/html/account/subscription/detail/template-header
 
 # lists
 ## decorators/excludes
@@ -426,12 +426,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Account\Subscription\Li
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the account subscription list section
 
 ```
-client/html/account/subscription/lists/standard/subparts = Array
+client/html/account/subscription/lists/subparts = Array
 (
 )
 ```
@@ -473,12 +473,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the account subscription list client.
 
 ```
-client/html/account/subscription/lists/standard/template-body = account/subscription/lists-body-standard
+client/html/account/subscription/lists/template-body = account/subscription/lists-body-standard
 ```
 
 * Default: account/subscription/lists-body-standard
@@ -499,7 +499,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/subscription/lists/standard/template-header
+* client/html/account/subscription/lists/template-header
 
 # name
 
@@ -546,13 +546,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySubscription"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account subscription section
 
 ```
-client/html/account/subscription/standard/subparts = Array
+client/html/account/subscription/subparts = Array
 (
     [0] => lists
     [1] => detail
@@ -595,63 +594,6 @@ As the clients only generates structural HTML, the layout defined via CSS
 should support adding, removing or reordering content by a fluid like
 design.
 
-
-## template-body
-
-Relative path to the HTML body template of the account subscription client.
-
-```
-client/html/account/subscription/standard/template-body = account/subscription/body-standard
-```
-
-* Default: account/subscription/body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2018.04
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/account/subscription/standard/template-header
-
-## template-header
-
-Relative path to the HTML header template of the account subscription client.
-
-```
-client/html/account/subscription/standard/template-header = account/subscription/header-standard
-```
-
-* Default: account/subscription/header-standard
-* Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2018.04
-
-The template file contains the HTML code and processing instructions
-to generate the HTML code that is inserted into the HTML page header
-of the rendered page in the frontend. The configuration string is the
-path to the template file relative to the templates directory (usually
-in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/account/subscription/standard/template-body
 
 # summary
 ## address
@@ -697,6 +639,63 @@ See also:
 
 * client/html/account/subscription/summary/address
 * client/html/account/subscription/summary/service
+
+# template-body
+
+Relative path to the HTML body template of the account subscription client.
+
+```
+client/html/account/subscription/template-body = account/subscription/body-standard
+```
+
+* Default: account/subscription/body-standard
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2018.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* client/html/account/subscription/template-header
+
+# template-header
+
+Relative path to the HTML header template of the account subscription client.
+
+```
+client/html/account/subscription/template-header = account/subscription/header-standard
+```
+
+* Default: account/subscription/header-standard
+* Type: string - Relative path to the template creating code for the HTML page head
+* Since: 2018.04
+
+The template file contains the HTML code and processing instructions
+to generate the HTML code that is inserted into the HTML page header
+of the rendered page in the frontend. The configuration string is the
+path to the template file relative to the templates directory (usually
+in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* client/html/account/subscription/template-body
 
 # url
 ## action

@@ -156,13 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyStock"!
 
 
-# standard
-## template
+# template
 
 Relative path to the catalog lists JSON API template
 
 ```
-client/jsonapi/stock/standard/template = stock/standard
+client/jsonapi/stock/template = stock/standard
 ```
 
 * Default: stock/standard

@@ -1,4 +1,27 @@
 
+# aggregate
+## limit
+
+Limits the number of records that are used when aggregating items
+
+```
+mshop/common/manager/aggregate/limit = 10000
+```
+
+* Default: 10000
+* Type: integer - Number of records
+* Since: 2021.04
+
+As counting huge amount of records (several 10 000 records) takes a long time,
+the limit can cut down response times so the counts are available more quickly
+in the front-end and the server load is reduced.
+
+Using a low limit can lead to incorrect numbers if the amount of found items
+is very high. Approximate item counts are normally not a problem but it can
+lead to the situation that visitors see that no items are available despite
+the fact that there would be at least one.
+
+
 # decorators
 ## default
 
@@ -47,7 +70,7 @@ mshop/common/manager/maxdepth = 2
 
 Searching for items also fetches the associated items referenced in the
 list tables if the domain names are passed to the second parameter of e.g. the
-searchItems() method. To avoid infinite recursion because two items reference
+search() method. To avoid infinite recursion because two items reference
 each other, the maximum level must be limited.
 
 The default setting (two levels) means that retrieving a product item with

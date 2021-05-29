@@ -25,6 +25,10 @@ list of domains for "client/html/catalog/lists/domains", e.g.
 
 See also:
 
+* client/html/catalog/home/basket-add
+* client/html/catalog/detail/basket-add
+* client/html/catalog/product/basket-add
+* client/html/basket/related/basket-add
 * client/html/catalog/domains
 
 # cache
@@ -57,7 +61,7 @@ client/html/catalog/lists/catid-default =
 ```
 
 * Default: 
-* Type: string - Category ID
+* Type: array|string - Category ID or IDs
 * Since: 2014.03
 
 If users view a product list page without a category ID in the
@@ -74,6 +78,7 @@ See also:
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
 * client/html/catalog/detail/prodid-default
+* client/html/catalog/lists/supid-default
 
 # decorators
 ## excludes
@@ -191,8 +196,9 @@ A list of domain names whose items should be available in the product list view 
 client/html/catalog/lists/domains = Array
 (
     [0] => media
-    [1] => price
-    [2] => text
+    [1] => media/property
+    [2] => price
+    [3] => text
 )
 ```
 
@@ -218,6 +224,7 @@ See also:
 * client/html/catalog/detail/domains
 * client/html/catalog/stage/domains
 * client/html/catalog/lists/catid-default
+* client/html/catalog/lists/supid-default
 * client/html/catalog/lists/size
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
@@ -386,12 +393,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Lists\Items\Myn
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the catalog list items section
 
 ```
-client/html/catalog/lists/items/standard/subparts = Array
+client/html/catalog/lists/items/subparts = Array
 (
 )
 ```
@@ -433,12 +440,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the catalog list items client.
 
 ```
-client/html/catalog/lists/items/standard/template-body = catalog/lists/items-body-standard
+client/html/catalog/lists/items/template-body = catalog/lists/items-body-standard
 ```
 
 * Default: catalog/lists/items-body-standard
@@ -463,7 +470,7 @@ that case, you can configure the template by adding "-<type>" to the
 configuration key. To configure an alternative list view template for
 example, use the key
 
-client/html/catalog/lists/items/standard/template-body-list = catalog/lists/items-body-list.php
+client/html/catalog/lists/items/template-body-list = catalog/lists/items-body-list.php
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
@@ -473,24 +480,24 @@ contains the template for switching between list types.
 
 See also:
 
-* client/html/catalog/lists/items/standard/template-header
-* client/html/catalog/lists/type/standard/template-body
+* client/html/catalog/lists/items/template-header
+* client/html/catalog/lists/type/template-body
 
-## standard/template-body-list
+## template-body-list
 
 ```
-client/html/catalog/lists/items/standard/template-body-list = catalog/lists/items-body-list
+client/html/catalog/lists/items/template-body-list = catalog/lists/items-body-list
 ```
 
 * Default: catalog/lists/items-body-standard
 
 
-## standard/template-header
+## template-header
 
 Relative path to the HTML header template of the catalog list items client.
 
 ```
-client/html/catalog/lists/items/standard/template-header = catalog/lists/items-header-standard
+client/html/catalog/lists/items/template-header = catalog/lists/items-header-standard
 ```
 
 * Default: catalog/lists/items-header-standard
@@ -516,7 +523,7 @@ that case, you can configure the template by adding "-<type>" to the
 configuration key. To configure an alternative list view template for
 example, use the key
 
-client/html/catalog/lists/items/standard/template-header-list = catalog/lists/items-header-list.php
+client/html/catalog/lists/items/template-header-list = catalog/lists/items-header-list.php
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
@@ -526,8 +533,8 @@ contains the template for switching between list types.
 
 See also:
 
-* client/html/catalog/lists/items/standard/template-body
-* client/html/catalog/lists/type/standard/template-body
+* client/html/catalog/lists/items/template-body
+* client/html/catalog/lists/type/template-body
 
 # levels
 
@@ -546,6 +553,7 @@ current category product list, e.g. if the current category contains
 no products at all or if there are only a few products in all categories.
 
 Possible constant values for this setting are:
+
 * 1 : Only products from the current category
 * 2 : Products from the current category and the direct child categories
 * 3 : Products from the current category and the whole category sub-tree
@@ -563,6 +571,7 @@ ones or during the product import automatically.
 See also:
 
 * client/html/catalog/lists/catid-default
+* client/html/catalog/lists/supid-default
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/size
 * client/html/catalog/lists/sort
@@ -658,6 +667,7 @@ allowed. The value can't be overwritten per request.
 See also:
 
 * client/html/catalog/lists/catid-default
+* client/html/catalog/lists/supid-default
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
@@ -839,203 +849,13 @@ promotional products are added to this category than the set
 value.
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the catalog list promo section
 
 ```
-client/html/catalog/lists/promo/standard/subparts = Array
+client/html/catalog/lists/promo/subparts = Array
 (
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## standard/template-body
-
-Relative path to the HTML body template of the catalog list promotion client.
-
-```
-client/html/catalog/lists/promo/standard/template-body = catalog/lists/promo-body-standard
-```
-
-* Default: catalog/lists/promo-body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-It's also possible to create a specific template for each type, e.g.
-for the grid, list or whatever view you want to offer your users. In
-that case, you can configure the template by adding "-<type>" to the
-configuration key. To configure an alternative list view template for
-example, use the key
-
-client/html/catalog/lists/promo/standard/template-body-list = catalog/lists/promo-body-list.php
-
-The argument is the relative path to the new template file. The type of
-the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
-contains the template for switching between list types.
-
-See also:
-
-* client/html/catalog/lists/promo/standard/template-header
-* client/html/catalog/lists/type/standard/template-body
-
-## standard/template-header
-
-Relative path to the HTML header template of the catalog list promotion client.
-
-```
-client/html/catalog/lists/promo/standard/template-header = catalog/lists/promo-header-standard
-```
-
-* Default: catalog/lists/promo-header-standard
-* Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the HTML code that is inserted into the HTML page header
-of the rendered page in the frontend. The configuration string is the
-path to the template file relative to the templates directory (usually
-in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-It's also possible to create a specific template for each type, e.g.
-for the grid, list or whatever view you want to offer your users. In
-that case, you can configure the template by adding "-<type>" to the
-configuration key. To configure an alternative list view template for
-example, use the key
-
-client/html/catalog/lists/promo/standard/template-header-list = catalog/lists/promo-header-list.php
-
-The argument is the relative path to the new template file. The type of
-the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
-contains the template for switching between list types.
-
-See also:
-
-* client/html/catalog/lists/promo/standard/template-body
-* client/html/catalog/lists/type/standard/template-body
-
-# size
-
-The number of products shown in a list page
-
-```
-client/html/catalog/lists/size = 48
-```
-
-* Default: 48
-* Type: integer - Number of products
-* Since: 2014.03
-
-Limits the number of products that are shown in the list pages to the
-given value. If more products are available, the products are split
-into bunches which will be shown on their own list page. The user is
-able to move to the next page (or previous one if it's not the first)
-to display the next (or previous) products.
-
-The value must be an integer number from 1 to 100. Negative values as
-well as values above 100 are not allowed. The value can be overwritten
-per request if the "l_size" parameter is part of the URL.
-
-See also:
-
-* client/html/catalog/lists/catid-default
-* client/html/catalog/lists/domains
-* client/html/catalog/lists/levels
-* client/html/catalog/lists/sort
-* client/html/catalog/lists/pages
-
-# sort
-
-Default sorting of product list if no other sorting is given by parameter
-
-```
-client/html/catalog/lists/sort = relevance
-```
-
-* Default: relevance
-* Type: string - Sort code "relevance", "name", "-name", "price", "-price", "ctime" or "-ctime"
-* Since: 2018.07
-
-Configures the standard sorting of products in list views. This sorting is used
-as long as it's not overwritten by an URL parameter. Except "relevance", all
-other sort codes can be prefixed by a "-" (minus) sign to sort the products in
-a descending order. By default, the sorting is ascending.
-
-See also:
-
-* client/html/catalog/lists/catid-default
-* client/html/catalog/lists/domains
-* client/html/catalog/lists/levels
-* client/html/catalog/lists/size
-
-# standard
-## subparts
-
-List of HTML sub-clients rendered within the catalog list section
-
-```
-client/html/catalog/lists/standard/subparts = Array
-(
-    [0] => items
 )
 ```
 
@@ -1078,13 +898,13 @@ design.
 
 ## template-body
 
-Relative path to the HTML body template of the catalog list client.
+Relative path to the HTML body template of the catalog list promotion client.
 
 ```
-client/html/catalog/lists/standard/template-body = catalog/lists/body-standard
+client/html/catalog/lists/promo/template-body = catalog/lists/promo-body-standard
 ```
 
-* Default: catalog/lists/body-standard
+* Default: catalog/lists/promo-body-standard
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1106,7 +926,7 @@ that case, you can configure the template by adding "-<type>" to the
 configuration key. To configure an alternative list view template for
 example, use the key
 
-client/html/catalog/lists/standard/template-body-list = catalog/lists/body-list.php
+client/html/catalog/lists/promo/template-body-list = catalog/lists/promo-body-list.php
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
@@ -1116,18 +936,18 @@ contains the template for switching between list types.
 
 See also:
 
-* client/html/catalog/lists/standard/template-header
-* client/html/catalog/lists/type/standard/template-body
+* client/html/catalog/lists/promo/template-header
+* client/html/catalog/lists/type/template-body
 
 ## template-header
 
-Relative path to the HTML header template of the catalog list client.
+Relative path to the HTML header template of the catalog list promotion client.
 
 ```
-client/html/catalog/lists/standard/template-header = catalog/lists/header-standard
+client/html/catalog/lists/promo/template-header = catalog/lists/promo-header-standard
 ```
 
-* Default: catalog/lists/header-standard
+* Default: catalog/lists/promo-header-standard
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -1150,7 +970,7 @@ that case, you can configure the template by adding "-<type>" to the
 configuration key. To configure an alternative list view template for
 example, use the key
 
-client/html/catalog/lists/standard/template-header-list = catalog/lists/header-list.php
+client/html/catalog/lists/promo/template-header-list = catalog/lists/promo-header-list.php
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
@@ -1160,8 +980,64 @@ contains the template for switching between list types.
 
 See also:
 
-* client/html/catalog/lists/standard/template-body
-* client/html/catalog/lists/type/standard/template-body
+* client/html/catalog/lists/promo/template-body
+* client/html/catalog/lists/type/template-body
+
+# size
+
+The number of products shown in a list page
+
+```
+client/html/catalog/lists/size = 48
+```
+
+* Default: 48
+* Type: integer - Number of products
+* Since: 2014.03
+
+Limits the number of products that are shown in the list pages to the
+given value. If more products are available, the products are split
+into bunches which will be shown on their own list page. The user is
+able to move to the next page (or previous one if it's not the first)
+to display the next (or previous) products.
+
+The value must be an integer number from 1 to 100. Negative values as
+well as values above 100 are not allowed. The value can be overwritten
+per request if the "l_size" parameter is part of the URL.
+
+See also:
+
+* client/html/catalog/lists/catid-default
+* client/html/catalog/lists/supid-default
+* client/html/catalog/lists/domains
+* client/html/catalog/lists/levels
+* client/html/catalog/lists/sort
+* client/html/catalog/lists/pages
+
+# sort
+
+Default sorting of product list if no other sorting is given by parameter
+
+```
+client/html/catalog/lists/sort = relevance
+```
+
+* Default: relevance
+* Type: string - Sort code "relevance", "name", "-name", "price", "-price", "ctime" or "-ctime"
+* Since: 2018.07
+
+Configures the standard sorting of products in list views. This sorting is used
+as long as it's not overwritten by an URL parameter. Except "relevance", all
+other sort codes can be prefixed by a "-" (minus) sign to sort the products in
+a descending order. By default, the sorting is ascending.
+
+See also:
+
+* client/html/catalog/lists/catid-default
+* client/html/catalog/lists/supid-default
+* client/html/catalog/lists/domains
+* client/html/catalog/lists/levels
+* client/html/catalog/lists/size
 
 # stock
 ## enable
@@ -1191,6 +1067,168 @@ See also:
 * client/html/catalog/stock/url/controller
 * client/html/catalog/stock/url/action
 * client/html/catalog/stock/url/config
+
+# subparts
+
+List of HTML sub-clients rendered within the catalog list section
+
+```
+client/html/catalog/lists/subparts = Array
+(
+    [0] => items
+)
+```
+
+* Default: Array
+* Type: array - List of sub-client names
+* Since: 2014.03
+
+The output of the frontend is composed of the code generated by the HTML
+clients. Each HTML client can consist of serveral (or none) sub-clients
+that are responsible for rendering certain sub-parts of the output. The
+sub-clients can contain HTML clients themselves and therefore a
+hierarchical tree of HTML clients is composed. Each HTML client creates
+the output that is placed inside the container of its parent.
+
+At first, always the HTML code generated by the parent is printed, then
+the HTML code of its sub-clients. The order of the HTML sub-clients
+determines the order of the output of these sub-clients inside the parent
+container. If the configured list of clients is
+
+```
+ array( "subclient1", "subclient2" )
+```
+
+you can easily change the order of the output by reordering the subparts:
+
+```
+ client/html/<clients>/subparts = array( "subclient1", "subclient2" )
+```
+
+You can also remove one or more parts if they shouldn't be rendered:
+
+```
+ client/html/<clients>/subparts = array( "subclient1" )
+```
+
+As the clients only generates structural HTML, the layout defined via CSS
+should support adding, removing or reordering content by a fluid like
+design.
+
+
+# supid-default
+
+The default supplier ID used if none is given as parameter
+
+```
+client/html/catalog/lists/supid-default = 
+```
+
+* Default: 
+* Type: array|string - Supplier ID or IDs
+* Since: 2021.01
+
+Products in the list page can be limited to one or more suppliers.
+By default, the products are not limited to any supplier until one or
+more supplier IDs are passed in the URL using the f_supid parameter.
+You can also configure the default supplier IDs for limiting the
+products if no IDs are passed in the URL using this configuration.
+
+See also:
+
+* client/html/catalog/lists/sort
+* client/html/catalog/lists/size
+* client/html/catalog/lists/domains
+* client/html/catalog/lists/levels
+* client/html/catalog/lists/catid-default
+* client/html/catalog/detail/prodid-default
+
+# template-body
+
+Relative path to the HTML body template of the catalog list client.
+
+```
+client/html/catalog/lists/template-body = catalog/lists/body-standard
+```
+
+* Default: catalog/lists/body-standard
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+It's also possible to create a specific template for each type, e.g.
+for the grid, list or whatever view you want to offer your users. In
+that case, you can configure the template by adding "-<type>" to the
+configuration key. To configure an alternative list view template for
+example, use the key
+
+client/html/catalog/lists/template-body-list = catalog/lists/body-list.php
+
+The argument is the relative path to the new template file. The type of
+the view is determined by the "l_type" parameter (allowed characters for
+the types are a-z and 0-9), which is also stored in the session so users
+will keep the view during their visit. The catalog list type subpart
+contains the template for switching between list types.
+
+See also:
+
+* client/html/catalog/lists/template-header
+* client/html/catalog/lists/type/template-body
+
+# template-header
+
+Relative path to the HTML header template of the catalog list client.
+
+```
+client/html/catalog/lists/template-header = catalog/lists/header-standard
+```
+
+* Default: catalog/lists/header-standard
+* Type: string - Relative path to the template creating code for the HTML page head
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the HTML code that is inserted into the HTML page header
+of the rendered page in the frontend. The configuration string is the
+path to the template file relative to the templates directory (usually
+in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+It's also possible to create a specific template for each type, e.g.
+for the grid, list or whatever view you want to offer your users. In
+that case, you can configure the template by adding "-<type>" to the
+configuration key. To configure an alternative list view template for
+example, use the key
+
+client/html/catalog/lists/template-header-list = catalog/lists/header-list.php
+
+The argument is the relative path to the new template file. The type of
+the view is determined by the "l_type" parameter (allowed characters for
+the types are a-z and 0-9), which is also stored in the session so users
+will keep the view during their visit. The catalog list type subpart
+contains the template for switching between list types.
+
+See also:
+
+* client/html/catalog/lists/template-body
+* client/html/catalog/lists/type/template-body
 
 # url
 ## action

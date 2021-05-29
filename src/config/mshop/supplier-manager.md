@@ -1,5 +1,100 @@
 
 # address
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/address/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msupad."id"
+ 	FROM "mshop_supplier_address" AS msupad
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msupad."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/supplier/manager/address/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the supplier
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/address/insert/ansi
+* mshop/supplier/manager/address/update/ansi
+* mshop/supplier/manager/address/newid/ansi
+* mshop/supplier/manager/address/delete/ansi
+* mshop/supplier/manager/address/search/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/address/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msupad."id"
+ 	FROM "mshop_supplier_address" AS msupad
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msupad."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msupad."id"
+ 	FROM "mshop_supplier_address" AS msupad
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msupad."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/supplier/manager/address/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the supplier address manager
@@ -111,6 +206,138 @@ See also:
 * mshop/supplier/manager/address/decorators/excludes
 * mshop/supplier/manager/address/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/address/delete/ansi = 
+ DELETE FROM "mshop_supplier_address"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/supplier/manager/address/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the supplier database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/address/insert/ansi
+* mshop/supplier/manager/address/update/ansi
+* mshop/supplier/manager/address/newid/ansi
+* mshop/supplier/manager/address/search/ansi
+* mshop/supplier/manager/address/count/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/address/delete/mysql = 
+ DELETE FROM "mshop_supplier_address"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_supplier_address"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/supplier/manager/address/delete/ansi
+
+## insert/ansi
+
+Inserts a new supplier address record into the database table
+
+```
+mshop/supplier/manager/address/insert/ansi = 
+ INSERT INTO "mshop_supplier_address" ( :names
+ 	"parentid", "company", "vatid", "salutation", "title",
+ 	"firstname", "lastname", "address1", "address2", "address3",
+ 	"postal", "city", "state", "countryid", "langid", "telephone",
+ 	"email", "telefax", "website", "longitude", "latitude",
+ 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/supplier/manager/address/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier list item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/address/update/ansi
+* mshop/supplier/manager/address/newid/ansi
+* mshop/supplier/manager/address/delete/ansi
+* mshop/supplier/manager/address/search/ansi
+* mshop/supplier/manager/address/count/ansi
+
+## insert/mysql
+
+Inserts a new supplier address record into the database table
+
+```
+mshop/supplier/manager/address/insert/mysql = 
+ INSERT INTO "mshop_supplier_address" ( :names
+ 	"parentid", "company", "vatid", "salutation", "title",
+ 	"firstname", "lastname", "address1", "address2", "address3",
+ 	"postal", "city", "state", "countryid", "langid", "telephone",
+ 	"email", "telefax", "website", "longitude", "latitude",
+ 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_supplier_address" ( :names
+ 	"parentid", "company", "vatid", "salutation", "title",
+ 	"firstname", "lastname", "address1", "address2", "address3",
+ 	"postal", "city", "state", "countryid", "langid", "telephone",
+ 	"email", "telefax", "website", "longitude", "latitude",
+ 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/supplier/manager/address/insert/ansi
+
 ## name
 
 Class name of the used supplier address manager implementation
@@ -156,242 +383,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyAddress"!
 
 
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/address/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupad."id"
- 	FROM "mshop_supplier_address" AS msupad
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupad."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/supplier/manager/address/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the supplier
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/address/standard/insert/ansi
-* mshop/supplier/manager/address/standard/update/ansi
-* mshop/supplier/manager/address/standard/newid/ansi
-* mshop/supplier/manager/address/standard/delete/ansi
-* mshop/supplier/manager/address/standard/search/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/address/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupad."id"
- 	FROM "mshop_supplier_address" AS msupad
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupad."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupad."id"
- 	FROM "mshop_supplier_address" AS msupad
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupad."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/supplier/manager/address/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/address/standard/delete/ansi = 
- DELETE FROM "mshop_supplier_address"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/supplier/manager/address/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the supplier database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/address/standard/insert/ansi
-* mshop/supplier/manager/address/standard/update/ansi
-* mshop/supplier/manager/address/standard/newid/ansi
-* mshop/supplier/manager/address/standard/search/ansi
-* mshop/supplier/manager/address/standard/count/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/address/standard/delete/mysql = 
- DELETE FROM "mshop_supplier_address"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_supplier_address"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/supplier/manager/address/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new supplier address record into the database table
-
-```
-mshop/supplier/manager/address/standard/insert/ansi = 
- INSERT INTO "mshop_supplier_address" ( :names
- 	"parentid", "company", "vatid", "salutation", "title",
- 	"firstname", "lastname", "address1", "address2", "address3",
- 	"postal", "city", "state", "countryid", "langid", "telephone",
- 	"email", "telefax", "website", "longitude", "latitude",
- 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/supplier/manager/address/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier list item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/address/standard/update/ansi
-* mshop/supplier/manager/address/standard/newid/ansi
-* mshop/supplier/manager/address/standard/delete/ansi
-* mshop/supplier/manager/address/standard/search/ansi
-* mshop/supplier/manager/address/standard/count/ansi
-
-## standard/insert/mysql
-
-Inserts a new supplier address record into the database table
-
-```
-mshop/supplier/manager/address/standard/insert/mysql = 
- INSERT INTO "mshop_supplier_address" ( :names
- 	"parentid", "company", "vatid", "salutation", "title",
- 	"firstname", "lastname", "address1", "address2", "address3",
- 	"postal", "city", "state", "countryid", "langid", "telephone",
- 	"email", "telefax", "website", "longitude", "latitude",
- 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_supplier_address" ( :names
- 	"parentid", "company", "vatid", "salutation", "title",
- 	"firstname", "lastname", "address1", "address2", "address3",
- 	"postal", "city", "state", "countryid", "langid", "telephone",
- 	"email", "telefax", "website", "longitude", "latitude",
- 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/supplier/manager/address/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/address/standard/newid/ansi = mshop/supplier/manager/address/standard/newid
+mshop/supplier/manager/address/newid/ansi = mshop/supplier/manager/address/newid
 ```
 
-* Default: mshop/supplier/manager/address/standard/newid
+* Default: mshop/supplier/manager/address/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -417,32 +417,32 @@ specific way.
 
 See also:
 
-* mshop/supplier/manager/address/standard/insert/ansi
-* mshop/supplier/manager/address/standard/update/ansi
-* mshop/supplier/manager/address/standard/delete/ansi
-* mshop/supplier/manager/address/standard/search/ansi
-* mshop/supplier/manager/address/standard/count/ansi
+* mshop/supplier/manager/address/insert/ansi
+* mshop/supplier/manager/address/update/ansi
+* mshop/supplier/manager/address/delete/ansi
+* mshop/supplier/manager/address/search/ansi
+* mshop/supplier/manager/address/count/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/address/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/address/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/supplier/manager/address/standard/newid
+* Default: mshop/supplier/manager/address/newid
 
 See also:
 
-* mshop/supplier/manager/address/standard/newid/ansi
+* mshop/supplier/manager/address/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/address/standard/search/ansi = 
+mshop/supplier/manager/address/search/ansi = 
  SELECT :columns
  	msupad."id" AS "supplier.address.id", msupad."siteid" AS "supplier.address.siteid",
  	msupad."parentid" AS "supplier.address.parentid", msupad."pos" AS "supplier.address.position",
@@ -465,7 +465,7 @@ mshop/supplier/manager/address/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/supplier/manager/address/standard/search
+* Default: mshop/supplier/manager/address/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -510,18 +510,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/supplier/manager/address/standard/insert/ansi
-* mshop/supplier/manager/address/standard/update/ansi
-* mshop/supplier/manager/address/standard/newid/ansi
-* mshop/supplier/manager/address/standard/delete/ansi
-* mshop/supplier/manager/address/standard/count/ansi
+* mshop/supplier/manager/address/insert/ansi
+* mshop/supplier/manager/address/update/ansi
+* mshop/supplier/manager/address/newid/ansi
+* mshop/supplier/manager/address/delete/ansi
+* mshop/supplier/manager/address/count/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/address/standard/search/mysql = 
+mshop/supplier/manager/address/search/mysql = 
  SELECT :columns
  	msupad."id" AS "supplier.address.id", msupad."siteid" AS "supplier.address.siteid",
  	msupad."parentid" AS "supplier.address.parentid", msupad."pos" AS "supplier.address.position",
@@ -569,83 +569,7 @@ mshop/supplier/manager/address/standard/search/mysql =
 
 See also:
 
-* mshop/supplier/manager/address/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing supplier address record in the database
-
-```
-mshop/supplier/manager/address/standard/update/ansi = 
- UPDATE "mshop_supplier_address"
- SET :names
- 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
- 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
- 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
- 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
- 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/supplier/manager/address/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier list item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/address/standard/insert/ansi
-* mshop/supplier/manager/address/standard/newid/ansi
-* mshop/supplier/manager/address/standard/delete/ansi
-* mshop/supplier/manager/address/standard/search/ansi
-* mshop/supplier/manager/address/standard/count/ansi
-
-## standard/update/mysql
-
-Updates an existing supplier address record in the database
-
-```
-mshop/supplier/manager/address/standard/update/mysql = 
- UPDATE "mshop_supplier_address"
- SET :names
- 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
- 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
- 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
- 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
- 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_supplier_address"
- SET :names
- 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
- 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
- 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
- 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
- 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/supplier/manager/address/standard/update/ansi
+* mshop/supplier/manager/address/search/ansi
 
 ## submanagers
 
@@ -671,6 +595,181 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## update/ansi
+
+Updates an existing supplier address record in the database
+
+```
+mshop/supplier/manager/address/update/ansi = 
+ UPDATE "mshop_supplier_address"
+ SET :names
+ 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
+ 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
+ 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
+ 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
+ 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
+ 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/supplier/manager/address/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier list item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/address/insert/ansi
+* mshop/supplier/manager/address/newid/ansi
+* mshop/supplier/manager/address/delete/ansi
+* mshop/supplier/manager/address/search/ansi
+* mshop/supplier/manager/address/count/ansi
+
+## update/mysql
+
+Updates an existing supplier address record in the database
+
+```
+mshop/supplier/manager/address/update/mysql = 
+ UPDATE "mshop_supplier_address"
+ SET :names
+ 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
+ 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
+ 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
+ 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
+ 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
+ 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_supplier_address"
+ SET :names
+ 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
+ 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
+ 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
+ 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
+ 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
+ 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/supplier/manager/address/update/ansi
+
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msup."id"
+ 	FROM "mshop_supplier" AS msup
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY msup."id"
+ 	ORDER BY msup."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/supplier/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the supplier
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/insert/ansi
+* mshop/supplier/manager/update/ansi
+* mshop/supplier/manager/newid/ansi
+* mshop/supplier/manager/delete/ansi
+* mshop/supplier/manager/search/ansi
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msup."id"
+ 	FROM "mshop_supplier" AS msup
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY msup."id"
+ 	ORDER BY msup."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msup."id"
+ 	FROM "mshop_supplier" AS msup
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY msup."id"
+ 	ORDER BY msup."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/supplier/manager/count/ansi
 
 # decorators
 ## excludes
@@ -782,7 +881,324 @@ See also:
 * mshop/supplier/manager/decorators/excludes
 * mshop/supplier/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/delete/ansi = 
+ DELETE FROM "mshop_supplier"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/supplier/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the supplier database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/insert/ansi
+* mshop/supplier/manager/update/ansi
+* mshop/supplier/manager/newid/ansi
+* mshop/supplier/manager/search/ansi
+* mshop/supplier/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/delete/mysql = 
+ DELETE FROM "mshop_supplier"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_supplier"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/supplier/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new supplier record into the database table
+
+```
+mshop/supplier/manager/insert/ansi = 
+ INSERT INTO "mshop_supplier" ( :names
+ 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/supplier/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/update/ansi
+* mshop/supplier/manager/newid/ansi
+* mshop/supplier/manager/delete/ansi
+* mshop/supplier/manager/search/ansi
+* mshop/supplier/manager/count/ansi
+
+## mysql
+
+Inserts a new supplier record into the database table
+
+```
+mshop/supplier/manager/insert/mysql = 
+ INSERT INTO "mshop_supplier" ( :names
+ 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_supplier" ( :names
+ 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/supplier/manager/insert/ansi
+
 # lists
+## aggregate/ansi
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/supplier/manager/lists/aggregate/ansi = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_supplier_list" AS msupli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, msupli."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: mshop/supplier/manager/lists/aggregate
+* Type: string - SQL statement for aggregating order items
+* Since: 2014.07
+
+Groups all records by the values in the key column and counts their
+occurence. The matched records can be limited by the given criteria
+from the order database. The records must be from one of the sites
+that are configured via the context item. If the current site is part
+of a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+This statement doesn't return any records. Instead, it returns pairs
+of the different values found in the key column together with the
+number of records that have been found for that key values.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/insert/ansi
+* mshop/supplier/manager/lists/update/ansi
+* mshop/supplier/manager/lists/newid/ansi
+* mshop/supplier/manager/lists/delete/ansi
+* mshop/supplier/manager/lists/search/ansi
+* mshop/supplier/manager/lists/count/ansi
+
+## aggregate/mysql
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/supplier/manager/lists/aggregate/mysql = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_supplier_list" AS msupli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, msupli."id"
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_supplier_list" AS msupli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, msupli."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+
+
+See also:
+
+* mshop/supplier/manager/lists/aggregate/ansi
+
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/lists/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msupli."id"
+ 	FROM "mshop_supplier_list" AS msupli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msupli."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/supplier/manager/lists/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the supplier
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/insert/ansi
+* mshop/supplier/manager/lists/update/ansi
+* mshop/supplier/manager/lists/newid/ansi
+* mshop/supplier/manager/lists/delete/ansi
+* mshop/supplier/manager/lists/search/ansi
+* mshop/supplier/manager/lists/aggregate/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/lists/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msupli."id"
+ 	FROM "mshop_supplier_list" AS msupli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msupli."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msupli."id"
+ 	FROM "mshop_supplier_list" AS msupli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msupli."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/supplier/manager/lists/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the supplier list manager
@@ -894,6 +1310,131 @@ See also:
 * mshop/supplier/manager/lists/decorators/excludes
 * mshop/supplier/manager/lists/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/lists/delete/ansi = 
+ DELETE FROM "mshop_supplier_list"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/supplier/manager/lists/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the supplier database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/insert/ansi
+* mshop/supplier/manager/lists/update/ansi
+* mshop/supplier/manager/lists/newid/ansi
+* mshop/supplier/manager/lists/search/ansi
+* mshop/supplier/manager/lists/count/ansi
+* mshop/supplier/manager/lists/aggregate/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/lists/delete/mysql = 
+ DELETE FROM "mshop_supplier_list"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_supplier_list"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/supplier/manager/lists/delete/ansi
+
+## insert/ansi
+
+Inserts a new supplier list record into the database table
+
+```
+mshop/supplier/manager/lists/insert/ansi = 
+ INSERT INTO "mshop_supplier_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/supplier/manager/lists/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier list item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/update/ansi
+* mshop/supplier/manager/lists/newid/ansi
+* mshop/supplier/manager/lists/delete/ansi
+* mshop/supplier/manager/lists/search/ansi
+* mshop/supplier/manager/lists/count/ansi
+* mshop/supplier/manager/lists/aggregate/ansi
+
+## insert/mysql
+
+Inserts a new supplier list record into the database table
+
+```
+mshop/supplier/manager/lists/insert/mysql = 
+ INSERT INTO "mshop_supplier_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_supplier_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/supplier/manager/lists/insert/ansi
+
 ## name
 
 Class name of the used supplier list manager implementation
@@ -939,335 +1480,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyList"!
 
 
-## standard/aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/supplier/manager/lists/standard/aggregate/ansi = 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", msupli."id" AS "id"
- 	FROM "mshop_supplier_list" AS msupli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, msupli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-```
-
-* Default: mshop/supplier/manager/lists/standard/aggregate
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/standard/insert/ansi
-* mshop/supplier/manager/lists/standard/update/ansi
-* mshop/supplier/manager/lists/standard/newid/ansi
-* mshop/supplier/manager/lists/standard/delete/ansi
-* mshop/supplier/manager/lists/standard/search/ansi
-* mshop/supplier/manager/lists/standard/count/ansi
-
-## standard/aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/supplier/manager/lists/standard/aggregate/mysql = 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", msupli."id" AS "id"
- 	FROM "mshop_supplier_list" AS msupli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, msupli."id"
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY "key"
-```
-
-* Default: 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", msupli."id" AS "id"
- 	FROM "mshop_supplier_list" AS msupli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, msupli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-
-
-See also:
-
-* mshop/supplier/manager/lists/standard/aggregate/ansi
-
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/lists/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupli."id"
- 	FROM "mshop_supplier_list" AS msupli
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/supplier/manager/lists/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the supplier
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/standard/insert/ansi
-* mshop/supplier/manager/lists/standard/update/ansi
-* mshop/supplier/manager/lists/standard/newid/ansi
-* mshop/supplier/manager/lists/standard/delete/ansi
-* mshop/supplier/manager/lists/standard/search/ansi
-* mshop/supplier/manager/lists/standard/aggregate/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/lists/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupli."id"
- 	FROM "mshop_supplier_list" AS msupli
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupli."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupli."id"
- 	FROM "mshop_supplier_list" AS msupli
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/supplier/manager/lists/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/lists/standard/delete/ansi = 
- DELETE FROM "mshop_supplier_list"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/supplier/manager/lists/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the supplier database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/standard/insert/ansi
-* mshop/supplier/manager/lists/standard/update/ansi
-* mshop/supplier/manager/lists/standard/newid/ansi
-* mshop/supplier/manager/lists/standard/search/ansi
-* mshop/supplier/manager/lists/standard/count/ansi
-* mshop/supplier/manager/lists/standard/aggregate/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/lists/standard/delete/mysql = 
- DELETE FROM "mshop_supplier_list"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_supplier_list"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/supplier/manager/lists/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new supplier list record into the database table
-
-```
-mshop/supplier/manager/lists/standard/insert/ansi = 
- INSERT INTO "mshop_supplier_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/supplier/manager/lists/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier list item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/standard/update/ansi
-* mshop/supplier/manager/lists/standard/newid/ansi
-* mshop/supplier/manager/lists/standard/delete/ansi
-* mshop/supplier/manager/lists/standard/search/ansi
-* mshop/supplier/manager/lists/standard/count/ansi
-* mshop/supplier/manager/lists/standard/aggregate/ansi
-
-## standard/insert/mysql
-
-Inserts a new supplier list record into the database table
-
-```
-mshop/supplier/manager/lists/standard/insert/mysql = 
- INSERT INTO "mshop_supplier_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_supplier_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/supplier/manager/lists/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/lists/standard/newid/ansi = mshop/supplier/manager/lists/standard/newid
+mshop/supplier/manager/lists/newid/ansi = mshop/supplier/manager/lists/newid
 ```
 
-* Default: mshop/supplier/manager/lists/standard/newid
+* Default: mshop/supplier/manager/lists/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -1293,33 +1514,33 @@ specific way.
 
 See also:
 
-* mshop/supplier/manager/lists/standard/insert/ansi
-* mshop/supplier/manager/lists/standard/update/ansi
-* mshop/supplier/manager/lists/standard/delete/ansi
-* mshop/supplier/manager/lists/standard/search/ansi
-* mshop/supplier/manager/lists/standard/count/ansi
-* mshop/supplier/manager/lists/standard/aggregate/ansi
+* mshop/supplier/manager/lists/insert/ansi
+* mshop/supplier/manager/lists/update/ansi
+* mshop/supplier/manager/lists/delete/ansi
+* mshop/supplier/manager/lists/search/ansi
+* mshop/supplier/manager/lists/count/ansi
+* mshop/supplier/manager/lists/aggregate/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/lists/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/supplier/manager/lists/standard/newid
+* Default: mshop/supplier/manager/lists/newid
 
 See also:
 
-* mshop/supplier/manager/lists/standard/newid/ansi
+* mshop/supplier/manager/lists/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/lists/standard/search/ansi = 
+mshop/supplier/manager/lists/search/ansi = 
  SELECT :columns
  	msupli."id" AS "supplier.lists.id", msupli."parentid" AS "supplier.lists.parentid",
  	msupli."siteid" AS "supplier.lists.siteid", msupli."type" AS "supplier.lists.type",
@@ -1335,7 +1556,7 @@ mshop/supplier/manager/lists/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/supplier/manager/lists/standard/search
+* Default: mshop/supplier/manager/lists/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -1380,19 +1601,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/supplier/manager/lists/standard/insert/ansi
-* mshop/supplier/manager/lists/standard/update/ansi
-* mshop/supplier/manager/lists/standard/newid/ansi
-* mshop/supplier/manager/lists/standard/delete/ansi
-* mshop/supplier/manager/lists/standard/count/ansi
-* mshop/supplier/manager/lists/standard/aggregate/ansi
+* mshop/supplier/manager/lists/insert/ansi
+* mshop/supplier/manager/lists/update/ansi
+* mshop/supplier/manager/lists/newid/ansi
+* mshop/supplier/manager/lists/delete/ansi
+* mshop/supplier/manager/lists/count/ansi
+* mshop/supplier/manager/lists/aggregate/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/lists/standard/search/mysql = 
+mshop/supplier/manager/lists/search/mysql = 
  SELECT :columns
  	msupli."id" AS "supplier.lists.id", msupli."parentid" AS "supplier.lists.parentid",
  	msupli."siteid" AS "supplier.lists.siteid", msupli."type" AS "supplier.lists.type",
@@ -1402,6 +1623,7 @@ mshop/supplier/manager/lists/standard/search/mysql =
  	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
  	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
  FROM "mshop_supplier_list" AS msupli
+ USE INDEX (unq_mssupli_pid_sid_dm_ty_rid, idx_mssupli_pid_dm_sid_pos_rid, idx_mssupli_rid_dom_sid_ty, idx_mssupli_key_sid)
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1426,72 +1648,7 @@ mshop/supplier/manager/lists/standard/search/mysql =
 
 See also:
 
-* mshop/supplier/manager/lists/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing supplier list record in the database
-
-```
-mshop/supplier/manager/lists/standard/update/ansi = 
- UPDATE "mshop_supplier_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/supplier/manager/lists/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier list item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/standard/insert/ansi
-* mshop/supplier/manager/lists/standard/newid/ansi
-* mshop/supplier/manager/lists/standard/delete/ansi
-* mshop/supplier/manager/lists/standard/search/ansi
-* mshop/supplier/manager/lists/standard/count/ansi
-* mshop/supplier/manager/lists/standard/aggregate/ansi
-
-## standard/update/mysql
-
-Updates an existing supplier list record in the database
-
-```
-mshop/supplier/manager/lists/standard/update/mysql = 
- UPDATE "mshop_supplier_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_supplier_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/supplier/manager/lists/standard/update/ansi
+* mshop/supplier/manager/lists/search/ansi
 
 ## submanagers
 
@@ -1517,6 +1674,101 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## type/count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/lists/type/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msuplity."id"
+ 	FROM "mshop_supplier_list_type" AS msuplity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msuplity."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/supplier/manager/lists/type/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the supplier
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/type/insert/ansi
+* mshop/supplier/manager/lists/type/update/ansi
+* mshop/supplier/manager/lists/type/newid/ansi
+* mshop/supplier/manager/lists/type/delete/ansi
+* mshop/supplier/manager/lists/type/search/ansi
+
+## type/count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/supplier/manager/lists/type/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msuplity."id"
+ 	FROM "mshop_supplier_list_type" AS msuplity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msuplity."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msuplity."id"
+ 	FROM "mshop_supplier_list_type" AS msuplity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msuplity."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/supplier/manager/lists/type/count/ansi
 
 ## type/decorators/excludes
 
@@ -1629,6 +1881,129 @@ See also:
 * mshop/supplier/manager/lists/type/decorators/excludes
 * mshop/supplier/manager/lists/type/decorators/global
 
+## type/delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/lists/type/delete/ansi = 
+ DELETE FROM "mshop_supplier_list_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/supplier/manager/lists/type/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the supplier database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/type/insert/ansi
+* mshop/supplier/manager/lists/type/update/ansi
+* mshop/supplier/manager/lists/type/newid/ansi
+* mshop/supplier/manager/lists/type/search/ansi
+* mshop/supplier/manager/lists/type/count/ansi
+
+## type/delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/supplier/manager/lists/type/delete/mysql = 
+ DELETE FROM "mshop_supplier_list_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_supplier_list_type"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/supplier/manager/lists/type/delete/ansi
+
+## type/insert/ansi
+
+Inserts a new supplier list type record into the database table
+
+```
+mshop/supplier/manager/lists/type/insert/ansi = 
+ INSERT INTO "mshop_supplier_list_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/supplier/manager/lists/type/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier list type item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/type/update/ansi
+* mshop/supplier/manager/lists/type/newid/ansi
+* mshop/supplier/manager/lists/type/delete/ansi
+* mshop/supplier/manager/lists/type/search/ansi
+* mshop/supplier/manager/lists/type/count/ansi
+
+## type/insert/mysql
+
+Inserts a new supplier list type record into the database table
+
+```
+mshop/supplier/manager/lists/type/insert/mysql = 
+ INSERT INTO "mshop_supplier_list_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_supplier_list_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/supplier/manager/lists/type/insert/ansi
+
 ## type/name
 
 Class name of the used supplier list type manager implementation
@@ -1674,233 +2049,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyType"!
 
 
-## type/standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/lists/type/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" AS msuplity
- 	:joins
- 	WHERE :cond
- 	ORDER BY msuplity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/supplier/manager/lists/type/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the supplier
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/insert/ansi
-* mshop/supplier/manager/lists/type/standard/update/ansi
-* mshop/supplier/manager/lists/type/standard/newid/ansi
-* mshop/supplier/manager/lists/type/standard/delete/ansi
-* mshop/supplier/manager/lists/type/standard/search/ansi
-
-## type/standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/lists/type/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" AS msuplity
- 	:joins
- 	WHERE :cond
- 	ORDER BY msuplity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" AS msuplity
- 	:joins
- 	WHERE :cond
- 	ORDER BY msuplity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/count/ansi
-
-## type/standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/lists/type/standard/delete/ansi = 
- DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/supplier/manager/lists/type/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the supplier database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/insert/ansi
-* mshop/supplier/manager/lists/type/standard/update/ansi
-* mshop/supplier/manager/lists/type/standard/newid/ansi
-* mshop/supplier/manager/lists/type/standard/search/ansi
-* mshop/supplier/manager/lists/type/standard/count/ansi
-
-## type/standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/lists/type/standard/delete/mysql = 
- DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/delete/ansi
-
-## type/standard/insert/ansi
-
-Inserts a new supplier list type record into the database table
-
-```
-mshop/supplier/manager/lists/type/standard/insert/ansi = 
- INSERT INTO "mshop_supplier_list_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/supplier/manager/lists/type/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier list type item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/update/ansi
-* mshop/supplier/manager/lists/type/standard/newid/ansi
-* mshop/supplier/manager/lists/type/standard/delete/ansi
-* mshop/supplier/manager/lists/type/standard/search/ansi
-* mshop/supplier/manager/lists/type/standard/count/ansi
-
-## type/standard/insert/mysql
-
-Inserts a new supplier list type record into the database table
-
-```
-mshop/supplier/manager/lists/type/standard/insert/mysql = 
- INSERT INTO "mshop_supplier_list_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_supplier_list_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/insert/ansi
-
-## type/standard/newid/ansi
+## type/newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/lists/type/standard/newid/ansi = mshop/supplier/manager/lists/type/standard/newid
+mshop/supplier/manager/lists/type/newid/ansi = mshop/supplier/manager/lists/type/newid
 ```
 
-* Default: mshop/supplier/manager/lists/type/standard/newid
+* Default: mshop/supplier/manager/lists/type/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -1926,32 +2083,32 @@ specific way.
 
 See also:
 
-* mshop/supplier/manager/lists/type/standard/insert/ansi
-* mshop/supplier/manager/lists/type/standard/update/ansi
-* mshop/supplier/manager/lists/type/standard/delete/ansi
-* mshop/supplier/manager/lists/type/standard/search/ansi
-* mshop/supplier/manager/lists/type/standard/count/ansi
+* mshop/supplier/manager/lists/type/insert/ansi
+* mshop/supplier/manager/lists/type/update/ansi
+* mshop/supplier/manager/lists/type/delete/ansi
+* mshop/supplier/manager/lists/type/search/ansi
+* mshop/supplier/manager/lists/type/count/ansi
 
-## type/standard/newid/mysql
+## type/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/lists/type/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/supplier/manager/lists/type/standard/newid
+* Default: mshop/supplier/manager/lists/type/newid
 
 See also:
 
-* mshop/supplier/manager/lists/type/standard/newid/ansi
+* mshop/supplier/manager/lists/type/newid/ansi
 
-## type/standard/search/ansi
+## type/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/lists/type/standard/search/ansi = 
+mshop/supplier/manager/lists/type/search/ansi = 
  SELECT :columns
  	msuplity."id" AS "supplier.lists.type.id", msuplity."siteid" AS "supplier.lists.type.siteid",
  	msuplity."code" AS "supplier.lists.type.code", msuplity."domain" AS "supplier.lists.type.domain",
@@ -1965,7 +2122,7 @@ mshop/supplier/manager/lists/type/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/supplier/manager/lists/type/standard/search
+* Default: mshop/supplier/manager/lists/type/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -2010,18 +2167,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/supplier/manager/lists/type/standard/insert/ansi
-* mshop/supplier/manager/lists/type/standard/update/ansi
-* mshop/supplier/manager/lists/type/standard/newid/ansi
-* mshop/supplier/manager/lists/type/standard/delete/ansi
-* mshop/supplier/manager/lists/type/standard/count/ansi
+* mshop/supplier/manager/lists/type/insert/ansi
+* mshop/supplier/manager/lists/type/update/ansi
+* mshop/supplier/manager/lists/type/newid/ansi
+* mshop/supplier/manager/lists/type/delete/ansi
+* mshop/supplier/manager/lists/type/count/ansi
 
-## type/standard/search/mysql
+## type/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/lists/type/standard/search/mysql = 
+mshop/supplier/manager/lists/type/search/mysql = 
  SELECT :columns
  	msuplity."id" AS "supplier.lists.type.id", msuplity."siteid" AS "supplier.lists.type.siteid",
  	msuplity."code" AS "supplier.lists.type.code", msuplity."domain" AS "supplier.lists.type.domain",
@@ -2051,71 +2208,7 @@ mshop/supplier/manager/lists/type/standard/search/mysql =
 
 See also:
 
-* mshop/supplier/manager/lists/type/standard/search/ansi
-
-## type/standard/update/ansi
-
-Updates an existing supplier list type record in the database
-
-```
-mshop/supplier/manager/lists/type/standard/update/ansi = 
- UPDATE "mshop_supplier_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/supplier/manager/lists/type/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier list type item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/insert/ansi
-* mshop/supplier/manager/lists/type/standard/newid/ansi
-* mshop/supplier/manager/lists/type/standard/delete/ansi
-* mshop/supplier/manager/lists/type/standard/search/ansi
-* mshop/supplier/manager/lists/type/standard/count/ansi
-
-## type/standard/update/mysql
-
-Updates an existing supplier list type record in the database
-
-```
-mshop/supplier/manager/lists/type/standard/update/mysql = 
- UPDATE "mshop_supplier_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_supplier_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/supplier/manager/lists/type/standard/update/ansi
+* mshop/supplier/manager/lists/type/search/ansi
 
 ## type/submanagers
 
@@ -2141,6 +2234,135 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## type/update/ansi
+
+Updates an existing supplier list type record in the database
+
+```
+mshop/supplier/manager/lists/type/update/ansi = 
+ UPDATE "mshop_supplier_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/supplier/manager/lists/type/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier list type item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/type/insert/ansi
+* mshop/supplier/manager/lists/type/newid/ansi
+* mshop/supplier/manager/lists/type/delete/ansi
+* mshop/supplier/manager/lists/type/search/ansi
+* mshop/supplier/manager/lists/type/count/ansi
+
+## type/update/mysql
+
+Updates an existing supplier list type record in the database
+
+```
+mshop/supplier/manager/lists/type/update/mysql = 
+ UPDATE "mshop_supplier_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_supplier_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/supplier/manager/lists/type/update/ansi
+
+## update/ansi
+
+Updates an existing supplier list record in the database
+
+```
+mshop/supplier/manager/lists/update/ansi = 
+ UPDATE "mshop_supplier_list"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/supplier/manager/lists/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier list item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/lists/insert/ansi
+* mshop/supplier/manager/lists/newid/ansi
+* mshop/supplier/manager/lists/delete/ansi
+* mshop/supplier/manager/lists/search/ansi
+* mshop/supplier/manager/lists/count/ansi
+* mshop/supplier/manager/lists/aggregate/ansi
+
+## update/mysql
+
+Updates an existing supplier list record in the database
+
+```
+mshop/supplier/manager/lists/update/mysql = 
+ UPDATE "mshop_supplier_list"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_supplier_list"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/supplier/manager/lists/update/ansi
 
 # name
 
@@ -2187,271 +2409,16 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
-# sitemode
-
-Mode how items from levels below or above in the site tree are handled
-
-```
-mshop/supplier/manager/sitemode = 3
-```
-
-* Default: 3
-* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
-* Since: 2018.01
-
-By default, only items from the current site are fetched from the
-storage. If the ai-sites extension is installed, you can create a
-tree of sites. Then, this setting allows you to define for the
-whole supplier domain if items from parent sites are inherited,
-sites from child sites are aggregated or both.
-
-Available constants for the site mode are:
-* 0 = only items from the current site
-* 1 = inherit items from parent sites
-* 2 = aggregate items from child sites
-* 3 = inherit and aggregate items at the same time
-
-You also need to set the mode in the locale manager
-(mshop/locale/manager/standard/sitelevel) to one of the constants.
-If you set it to the same value, it will work as described but you
-can also use different modes. For example, if inheritance and
-aggregation is configured the locale manager but only inheritance
-in the domain manager because aggregating items makes no sense in
-this domain, then items wil be only inherited. Thus, you have full
-control over inheritance and aggregation in each domain.
-
-See also:
-
-* mshop/locale/manager/standard/sitelevel
-
-# standard
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msup."id"
- 	FROM "mshop_supplier" AS msup
- 	:joins
- 	WHERE :cond
- 	GROUP BY msup."id"
- 	ORDER BY msup."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/supplier/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the supplier
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/standard/insert/ansi
-* mshop/supplier/manager/standard/update/ansi
-* mshop/supplier/manager/standard/newid/ansi
-* mshop/supplier/manager/standard/delete/ansi
-* mshop/supplier/manager/standard/search/ansi
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/supplier/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msup."id"
- 	FROM "mshop_supplier" AS msup
- 	:joins
- 	WHERE :cond
- 	GROUP BY msup."id"
- 	ORDER BY msup."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msup."id"
- 	FROM "mshop_supplier" AS msup
- 	:joins
- 	WHERE :cond
- 	GROUP BY msup."id"
- 	ORDER BY msup."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/supplier/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/standard/delete/ansi = 
- DELETE FROM "mshop_supplier"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/supplier/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the supplier database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/standard/insert/ansi
-* mshop/supplier/manager/standard/update/ansi
-* mshop/supplier/manager/standard/newid/ansi
-* mshop/supplier/manager/standard/search/ansi
-* mshop/supplier/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/supplier/manager/standard/delete/mysql = 
- DELETE FROM "mshop_supplier"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_supplier"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/supplier/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new supplier record into the database table
-
-```
-mshop/supplier/manager/standard/insert/ansi = 
- INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/supplier/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/standard/update/ansi
-* mshop/supplier/manager/standard/newid/ansi
-* mshop/supplier/manager/standard/delete/ansi
-* mshop/supplier/manager/standard/search/ansi
-* mshop/supplier/manager/standard/count/ansi
-
-## insert/mysql
-
-Inserts a new supplier record into the database table
-
-```
-mshop/supplier/manager/standard/insert/mysql = 
- INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/supplier/manager/standard/insert/ansi
-
-## newid/ansi
+# newid
+## ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/standard/newid/ansi = mshop/supplier/manager/standard/newid
+mshop/supplier/manager/newid/ansi = mshop/supplier/manager/newid
 ```
 
-* Default: mshop/supplier/manager/standard/newid
+* Default: mshop/supplier/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -2477,32 +2444,33 @@ specific way.
 
 See also:
 
-* mshop/supplier/manager/standard/insert/ansi
-* mshop/supplier/manager/standard/update/ansi
-* mshop/supplier/manager/standard/delete/ansi
-* mshop/supplier/manager/standard/search/ansi
-* mshop/supplier/manager/standard/count/ansi
+* mshop/supplier/manager/insert/ansi
+* mshop/supplier/manager/update/ansi
+* mshop/supplier/manager/delete/ansi
+* mshop/supplier/manager/search/ansi
+* mshop/supplier/manager/count/ansi
 
-## newid/mysql
+## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/supplier/manager/standard/newid
+* Default: mshop/supplier/manager/newid
 
 See also:
 
-* mshop/supplier/manager/standard/newid/ansi
+* mshop/supplier/manager/newid/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/standard/search/ansi = 
+mshop/supplier/manager/search/ansi = 
  SELECT :columns
  	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
@@ -2518,7 +2486,7 @@ mshop/supplier/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/supplier/manager/standard/search
+* Default: mshop/supplier/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -2563,18 +2531,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/supplier/manager/standard/insert/ansi
-* mshop/supplier/manager/standard/update/ansi
-* mshop/supplier/manager/standard/newid/ansi
-* mshop/supplier/manager/standard/delete/ansi
-* mshop/supplier/manager/standard/count/ansi
+* mshop/supplier/manager/insert/ansi
+* mshop/supplier/manager/update/ansi
+* mshop/supplier/manager/newid/ansi
+* mshop/supplier/manager/delete/ansi
+* mshop/supplier/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/supplier/manager/standard/search/mysql = 
+mshop/supplier/manager/search/mysql = 
  SELECT :columns
  	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
@@ -2606,68 +2574,44 @@ mshop/supplier/manager/standard/search/mysql =
 
 See also:
 
-* mshop/supplier/manager/standard/search/ansi
+* mshop/supplier/manager/search/ansi
 
-## update/ansi
+# sitemode
 
-Updates an existing supplier record in the database
+Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/supplier/manager/standard/update/ansi = 
- UPDATE "mshop_supplier"
- SET :names
- 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+mshop/supplier/manager/sitemode = 3
 ```
 
-* Default: mshop/supplier/manager/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
+* Default: 3
+* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
+* Since: 2018.01
 
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
+By default, only items from the current site are fetched from the
+storage. If the ai-sites extension is installed, you can create a
+tree of sites. Then, this setting allows you to define for the
+whole supplier domain if items from parent sites are inherited,
+sites from child sites are aggregated or both.
 
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the supplier item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
+Available constants for the site mode are:
+* 0 = only items from the current site
+* 1 = inherit items from parent sites
+* 2 = aggregate items from child sites
+* 3 = inherit and aggregate items at the same time
 
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
+You also need to set the mode in the locale manager
+(mshop/locale/manager/sitelevel) to one of the constants.
+If you set it to the same value, it will work as described but you
+can also use different modes. For example, if inheritance and
+aggregation is configured the locale manager but only inheritance
+in the domain manager because aggregating items makes no sense in
+this domain, then items wil be only inherited. Thus, you have full
+control over inheritance and aggregation in each domain.
 
 See also:
 
-* mshop/supplier/manager/standard/insert/ansi
-* mshop/supplier/manager/standard/newid/ansi
-* mshop/supplier/manager/standard/delete/ansi
-* mshop/supplier/manager/standard/search/ansi
-* mshop/supplier/manager/standard/count/ansi
-
-## update/mysql
-
-Updates an existing supplier record in the database
-
-```
-mshop/supplier/manager/standard/update/mysql = 
- UPDATE "mshop_supplier"
- SET :names
- 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_supplier"
- SET :names
- 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/supplier/manager/standard/update/ansi
+* mshop/locale/manager/sitelevel
 
 # submanagers
 
@@ -2693,3 +2637,66 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+# update
+## ansi
+
+Updates an existing supplier record in the database
+
+```
+mshop/supplier/manager/update/ansi = 
+ UPDATE "mshop_supplier"
+ SET :names
+ 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/supplier/manager/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the supplier item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/supplier/manager/insert/ansi
+* mshop/supplier/manager/newid/ansi
+* mshop/supplier/manager/delete/ansi
+* mshop/supplier/manager/search/ansi
+* mshop/supplier/manager/count/ansi
+
+## mysql
+
+Updates an existing supplier record in the database
+
+```
+mshop/supplier/manager/update/mysql = 
+ UPDATE "mshop_supplier"
+ SET :names
+ 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_supplier"
+ SET :names
+ 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/supplier/manager/update/ansi

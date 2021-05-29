@@ -27,10 +27,10 @@ be relative to the templates/ folder, e.g. "partials/data-standard".
 Relative path to the data partial template file for the locale site  client
 
 ```
-admin/jsonadm/partials/locale/site/template-data = partials/locale/site/data-standard
+admin/jsonadm/partials/locale/site/template-data = 
 ```
 
-* Default: partials/data-standard
+* Default: 
 * Type: string - Relative path to the template file
 * Since: 2016.07
 
@@ -41,6 +41,27 @@ partial creates the "data" part for the JSON API response.
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
 be relative to the templates/ folder, e.g. "partials/data-standard".
+
+
+## site/template-included
+
+Relative path to the included partial template file for the locale site  client
+
+```
+admin/jsonadm/partials/locale/site/template-included = partials/included-standard
+```
+
+* Default: partials/included-standard
+* Type: string - Relative path to the template file
+* Since: 2021.04
+
+Partials are templates which are reused in other templates and generate
+reoccuring blocks filled with data from the assigned values. The included
+partial creates the "included" part for the JSON API response.
+
+The partial template files are usually stored in the templates/partials/ folder
+of the core or the extensions. The configured path to the partial file must
+be relative to the templates/ folder, e.g. "partials/included-standard".
 
 
 # order

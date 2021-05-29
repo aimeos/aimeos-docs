@@ -431,12 +431,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Catalog\Media\Property\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the catalog media property section
 
 ```
-admin/jqadm/catalog/media/property/standard/subparts = Array
+admin/jqadm/catalog/media/property/subparts = Array
 (
 )
 ```
@@ -503,12 +503,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the catalog media section
 
 ```
-admin/jqadm/catalog/media/standard/subparts = Array
+admin/jqadm/catalog/media/subparts = Array
 (
     [property] => property
 )
@@ -730,7 +730,7 @@ See also:
 
 ## fields
 
-List of catalog list and product columns that should be displayed in the catalogproduct view
+List of catalog list and product columns that should be displayed in the catalog product view
 
 ```
 admin/jqadm/catalog/product/fields = Array
@@ -770,12 +770,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Catalog\Product\Myname"
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the catalog product section
 
 ```
-admin/jqadm/catalog/product/standard/subparts = Array
+admin/jqadm/catalog/product/subparts = Array
 (
 )
 ```
@@ -842,13 +842,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the catalog section
 
 ```
-admin/jqadm/catalog/standard/subparts = Array
+admin/jqadm/catalog/subparts = Array
 (
     [media] => media
     [text] => text
@@ -1040,12 +1039,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Catalog\Text\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the catalog text section
 
 ```
-admin/jqadm/catalog/text/standard/subparts = Array
+admin/jqadm/catalog/text/subparts = Array
 (
 )
 ```

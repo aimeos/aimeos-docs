@@ -121,6 +121,7 @@ client/html/catalog/stock/level/low = 5
 * Since: 2014.03
 
 There are four stock levels available:
+
 * unlimited
 * high
 * low
@@ -205,7 +206,8 @@ be shown in the product detail page. To get a consistent sortation
 of this list, the configured key will be used by the stock manager.
 
 Possible keys for sorting are ("-stock.type" for descending order):
-* stock.productcode
+
+* stock.productid
 * stock.stocklevel
 * stock.type
 * stock.dateback
@@ -214,13 +216,12 @@ See also:
 
 * client/html/catalog/stock/level/low
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog stock section
 
 ```
-client/html/catalog/stock/standard/subparts = Array
+client/html/catalog/stock/subparts = Array
 (
 )
 ```
@@ -262,12 +263,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the catalog stock client.
 
 ```
-client/html/catalog/stock/standard/template-body = catalog/stock/body-standard
+client/html/catalog/stock/template-body = catalog/stock/body-standard
 ```
 
 * Default: catalog/stock/body-standard
@@ -288,14 +289,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/stock/standard/template-header
+* client/html/catalog/stock/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the catalog stock client.
 
 ```
-client/html/catalog/stock/standard/template-header = catalog/stock/header-standard
+client/html/catalog/stock/template-header = catalog/stock/header-standard
 ```
 
 * Default: catalog/stock/header-standard
@@ -317,7 +318,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/stock/standard/template-body
+* client/html/catalog/stock/template-body
 
 # url
 ## action

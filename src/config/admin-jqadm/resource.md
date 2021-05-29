@@ -63,6 +63,18 @@ admin/jqadm/resource/catalog/key = C
 * Since: 2017.10
 
 
+# configuration
+## groups
+
+```
+admin/jqadm/resource/configuration/groups = Array
+(
+)
+```
+
+* Default: Array
+
+
 # coupon
 ## groups
 
@@ -98,7 +110,7 @@ admin/jqadm/resource/coupon/key = V
 # customer
 ## groups
 
-List of user groups that are allowed to access the user panel
+List of user groups that are allowed to access the customer panel
 
 ```
 admin/jqadm/resource/customer/groups = Array
@@ -157,6 +169,25 @@ admin/jqadm/resource/dashboard/key = D
 * Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
+
+
+# goods
+## groups
+
+List of user groups that are allowed to access the goods submenu
+
+```
+admin/jqadm/resource/goods/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
 
 
 # group
@@ -226,6 +257,15 @@ admin/jqadm/resource/locale/currency/groups = Array
 * Since: 2017.10
 
 
+## currency/key
+
+```
+admin/jqadm/resource/locale/currency/key = 
+```
+
+* Default: 
+
+
 ## groups
 
 List of user groups that are allowed to access the locale panel
@@ -241,6 +281,15 @@ admin/jqadm/resource/locale/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## key
+
+```
+admin/jqadm/resource/locale/key = 
+```
+
+* Default: 
 
 
 ## language/groups
@@ -259,6 +308,15 @@ admin/jqadm/resource/locale/language/groups = Array
 * Since: 2017.10
 
 
+## language/key
+
+```
+admin/jqadm/resource/locale/language/key = 
+```
+
+* Default: 
+
+
 ## site/groups
 
 List of user groups that are allowed to access the locale site panel
@@ -266,13 +324,23 @@ List of user groups that are allowed to access the locale site panel
 ```
 admin/jqadm/resource/locale/site/groups = Array
 (
-    [0] => super
+    [0] => admin
+    [1] => super
 )
 ```
 
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## site/key
+
+```
+admin/jqadm/resource/locale/site/key = 
+```
+
+* Default: 
 
 
 # log
@@ -304,6 +372,25 @@ admin/jqadm/resource/log/key = L
 * Default: 
 * Type: string - Single character in upper case
 * Since: 2018.04
+
+
+# marketing
+## groups
+
+List of user groups that are allowed to access the marketing submenu
+
+```
+admin/jqadm/resource/marketing/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
 
 
 # order
@@ -433,6 +520,57 @@ admin/jqadm/resource/review/key = R
 * Since: 2020.10
 
 
+# rule
+## groups
+
+List of user groups that are allowed to access the rule panel
+
+```
+admin/jqadm/resource/rule/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
+
+
+## key
+
+Shortcut key to switch to the rule panel by using the keyboard
+
+```
+admin/jqadm/resource/rule/key = E
+```
+
+* Default: 
+* Type: string - Single character in upper case
+* Since: 2021.04
+
+
+# sales
+## groups
+
+List of user groups that are allowed to access the sales submenu
+
+```
+admin/jqadm/resource/sales/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
+
+
 # service
 ## groups
 
@@ -464,16 +602,34 @@ admin/jqadm/resource/service/key = S
 * Since: 2017.10
 
 
+# settings
+## groups
+
+List of user groups that are allowed to access the settings submenu
+
+```
+admin/jqadm/resource/settings/groups = 
+```
+
+* Default: 
+* Type: array - List of user group names
+* Since: 2021.04
+
+
 # site
 ## groups
 
 List of user groups that are allowed to change to different sites
 
 ```
-admin/jqadm/resource/site/groups = 
+admin/jqadm/resource/site/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
 ```
 
-* Default: 
+* Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -561,6 +717,15 @@ admin/jqadm/resource/type/attribute/groups = Array
 * Since: 2017.10
 
 
+## attribute/key
+
+```
+admin/jqadm/resource/type/attribute/key = 
+```
+
+* Default: 
+
+
 ## attribute/lists/groups
 
 List of user groups that are allowed to access the attribute lists type panel
@@ -576,6 +741,15 @@ admin/jqadm/resource/type/attribute/lists/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## attribute/lists/key
+
+```
+admin/jqadm/resource/type/attribute/lists/key = 
+```
+
+* Default: 
 
 
 ## attribute/property/groups
@@ -595,6 +769,15 @@ admin/jqadm/resource/type/attribute/property/groups = Array
 * Since: 2017.10
 
 
+## attribute/property/key
+
+```
+admin/jqadm/resource/type/attribute/property/key = 
+```
+
+* Default: 
+
+
 ## catalog/lists/groups
 
 List of user groups that are allowed to access the catalog lists type panel
@@ -610,6 +793,15 @@ admin/jqadm/resource/type/catalog/lists/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## catalog/lists/key
+
+```
+admin/jqadm/resource/type/catalog/lists/key = 
+```
+
+* Default: 
 
 
 ## customer/lists/groups
@@ -629,6 +821,15 @@ admin/jqadm/resource/type/customer/lists/groups = Array
 * Since: 2017.10
 
 
+## customer/lists/key
+
+```
+admin/jqadm/resource/type/customer/lists/key = 
+```
+
+* Default: 
+
+
 ## customer/property/groups
 
 List of user groups that are allowed to access the customer property type panel
@@ -644,6 +845,15 @@ admin/jqadm/resource/type/customer/property/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2018.07
+
+
+## customer/property/key
+
+```
+admin/jqadm/resource/type/customer/property/key = 
+```
+
+* Default: 
 
 
 ## groups
@@ -681,6 +891,15 @@ admin/jqadm/resource/type/media/groups = Array
 * Since: 2017.10
 
 
+## media/key
+
+```
+admin/jqadm/resource/type/media/key = 
+```
+
+* Default: 
+
+
 ## media/lists/groups
 
 List of user groups that are allowed to access the media lists type panel
@@ -696,6 +915,15 @@ admin/jqadm/resource/type/media/lists/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## media/lists/key
+
+```
+admin/jqadm/resource/type/media/lists/key = 
+```
+
+* Default: 
 
 
 ## media/property/groups
@@ -715,6 +943,15 @@ admin/jqadm/resource/type/media/property/groups = Array
 * Since: 2017.10
 
 
+## media/property/key
+
+```
+admin/jqadm/resource/type/media/property/key = 
+```
+
+* Default: 
+
+
 ## plugin/groups
 
 List of user groups that are allowed to access the plugin type panel
@@ -730,6 +967,15 @@ admin/jqadm/resource/type/plugin/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## plugin/key
+
+```
+admin/jqadm/resource/type/plugin/key = 
+```
+
+* Default: 
 
 
 ## price/groups
@@ -749,6 +995,15 @@ admin/jqadm/resource/type/price/groups = Array
 * Since: 2017.10
 
 
+## price/key
+
+```
+admin/jqadm/resource/type/price/key = 
+```
+
+* Default: 
+
+
 ## price/lists/groups
 
 List of user groups that are allowed to access the price lists type panel
@@ -764,6 +1019,15 @@ admin/jqadm/resource/type/price/lists/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## price/lists/key
+
+```
+admin/jqadm/resource/type/price/lists/key = 
+```
+
+* Default: 
 
 
 ## price/property/groups
@@ -783,6 +1047,15 @@ admin/jqadm/resource/type/price/property/groups = Array
 * Since: 2020.04
 
 
+## price/property/key
+
+```
+admin/jqadm/resource/type/price/property/key = 
+```
+
+* Default: 
+
+
 ## product/groups
 
 List of user groups that are allowed to access the product type panel
@@ -800,6 +1073,15 @@ admin/jqadm/resource/type/product/groups = Array
 * Since: 2017.10
 
 
+## product/key
+
+```
+admin/jqadm/resource/type/product/key = 
+```
+
+* Default: 
+
+
 ## product/lists/groups
 
 List of user groups that are allowed to access the product lists type panel
@@ -815,6 +1097,15 @@ admin/jqadm/resource/type/product/lists/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## product/lists/key
+
+```
+admin/jqadm/resource/type/product/lists/key = 
+```
+
+* Default: 
 
 
 ## product/property/groups
@@ -835,6 +1126,15 @@ admin/jqadm/resource/type/product/property/groups = Array
 * Since: 2017.10
 
 
+## product/property/key
+
+```
+admin/jqadm/resource/type/product/property/key = 
+```
+
+* Default: 
+
+
 ## service/groups
 
 List of user groups that are allowed to access the service type panel
@@ -850,6 +1150,15 @@ admin/jqadm/resource/type/service/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## service/key
+
+```
+admin/jqadm/resource/type/service/key = 
+```
+
+* Default: 
 
 
 ## service/lists/groups
@@ -869,6 +1178,15 @@ admin/jqadm/resource/type/service/lists/groups = Array
 * Since: 2017.10
 
 
+## service/lists/key
+
+```
+admin/jqadm/resource/type/service/lists/key = 
+```
+
+* Default: 
+
+
 ## stock/groups
 
 List of user groups that are allowed to access the stock type panel
@@ -884,6 +1202,15 @@ admin/jqadm/resource/type/stock/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## stock/key
+
+```
+admin/jqadm/resource/type/stock/key = 
+```
+
+* Default: 
 
 
 ## tag/groups
@@ -903,6 +1230,15 @@ admin/jqadm/resource/type/tag/groups = Array
 * Since: 2017.10
 
 
+## tag/key
+
+```
+admin/jqadm/resource/type/tag/key = 
+```
+
+* Default: 
+
+
 ## text/groups
 
 List of user groups that are allowed to access the text type panel
@@ -920,6 +1256,15 @@ admin/jqadm/resource/type/text/groups = Array
 * Since: 2017.10
 
 
+## text/key
+
+```
+admin/jqadm/resource/type/text/key = 
+```
+
+* Default: 
+
+
 ## text/lists/groups
 
 List of user groups that are allowed to access the text lists type panel
@@ -935,3 +1280,31 @@ admin/jqadm/resource/type/text/lists/groups = Array
 * Default: Array
 * Type: array - List of user group names
 * Since: 2017.10
+
+
+## text/lists/key
+
+```
+admin/jqadm/resource/type/text/lists/key = 
+```
+
+* Default: 
+
+
+# users
+## groups
+
+List of user groups that are allowed to access the users submenu
+
+```
+admin/jqadm/resource/users/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.04

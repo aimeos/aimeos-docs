@@ -190,13 +190,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyDownload"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account download section
 
 ```
-client/html/account/download/standard/subparts = Array
+client/html/account/download/subparts = Array
 (
 )
 ```

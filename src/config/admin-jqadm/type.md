@@ -225,14 +225,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Attribute\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Attribute\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/attribute/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Attribute\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Attribute\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -286,13 +286,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Attribute\Liststype\Standard
+ \Aimeos\Admin\JQAdm\Attribute\Lists\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Attribute\Liststype\Myfavorite
+ \Aimeos\Admin\JQAdm\Attribute\Lists\Myfavorite
 ```
 
 then you have to set the this configuration option:
@@ -311,12 +311,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/attribute/lists/standard/subparts = Array
+admin/jqadm/type/attribute/lists/subparts = Array
 (
 )
 ```
@@ -631,12 +631,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/attribute/property/standard/subparts = Array
+admin/jqadm/type/attribute/property/subparts = Array
 (
 )
 ```
@@ -728,12 +728,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/attribute/standard/subparts = Array
+admin/jqadm/type/attribute/subparts = Array
 (
 )
 ```
@@ -918,14 +918,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Catalog\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Catalog\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/catalog/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Catalog\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Catalog\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -979,13 +979,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Catalog\Liststype\Standard
+ \Aimeos\Admin\JQAdm\Catalog\Lists\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Catalog\Liststype\Myfavorite
+ \Aimeos\Admin\JQAdm\Catalog\Lists\Myfavorite
 ```
 
 then you have to set the this configuration option:
@@ -1004,12 +1004,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/catalog/lists/standard/subparts = Array
+admin/jqadm/type/catalog/lists/subparts = Array
 (
 )
 ```
@@ -1194,14 +1194,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Customer\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Customer\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/customer/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Customer\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Customer\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -1255,13 +1255,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Customer\Liststype\Standard
+ \Aimeos\Admin\JQAdm\Customer\Lists\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Customer\Liststype\Myfavorite
+ \Aimeos\Admin\JQAdm\Customer\Lists\Myfavorite
 ```
 
 then you have to set the this configuration option:
@@ -1280,12 +1280,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/customer/lists/standard/subparts = Array
+admin/jqadm/type/customer/lists/subparts = Array
 (
 )
 ```
@@ -1555,12 +1555,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/customer/property/standard/subparts = Array
+admin/jqadm/type/customer/property/subparts = Array
 (
 )
 ```
@@ -1878,14 +1878,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Media\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Media\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/media/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Media\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Media\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -1940,13 +1940,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Media\Liststype\Standard
+ \Aimeos\Admin\JQAdm\Media\Lists\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Media\Liststype\Myfavorite
+ \Aimeos\Admin\JQAdm\Media\Lists\Myfavorite
 ```
 
 then you have to set the this configuration option:
@@ -1965,12 +1965,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/media/lists/standard/subparts = Array
+admin/jqadm/type/media/lists/subparts = Array
 (
 )
 ```
@@ -2285,12 +2285,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/media/property/standard/subparts = Array
+admin/jqadm/type/media/property/subparts = Array
 (
 )
 ```
@@ -2382,12 +2382,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/media/standard/subparts = Array
+admin/jqadm/type/media/subparts = Array
 (
 )
 ```
@@ -2658,12 +2658,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/plugin/standard/subparts = Array
+admin/jqadm/type/plugin/subparts = Array
 (
 )
 ```
@@ -2981,14 +2981,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Price\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Price\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/price/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Price\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Price\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -3042,13 +3042,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Price\Liststype\Standard
+ \Aimeos\Admin\JQAdm\Price\Lists\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Price\Liststype\Myfavorite
+ \Aimeos\Admin\JQAdm\Price\Lists\Myfavorite
 ```
 
 then you have to set the this configuration option:
@@ -3067,12 +3067,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/price/lists/standard/subparts = Array
+admin/jqadm/type/price/lists/subparts = Array
 (
 )
 ```
@@ -3387,12 +3387,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/price/property/standard/subparts = Array
+admin/jqadm/type/price/property/subparts = Array
 (
 )
 ```
@@ -3484,12 +3484,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/price/standard/subparts = Array
+admin/jqadm/type/price/subparts = Array
 (
 )
 ```
@@ -3807,14 +3807,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Product\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/product/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Product\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -3869,13 +3869,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Product\Liststype\Standard
+ \Aimeos\Admin\JQAdm\Product\Lists\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Product\Liststype\Myfavorite
+ \Aimeos\Admin\JQAdm\Product\Lists\Myfavorite
 ```
 
 then you have to set the this configuration option:
@@ -3894,12 +3894,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/product/lists/standard/subparts = Array
+admin/jqadm/type/product/lists/subparts = Array
 (
 )
 ```
@@ -4128,14 +4128,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Product\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/product/property/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Product\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -4189,13 +4189,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Product\Liststype\Standard
+ \Aimeos\Admin\JQAdm\Product\Lists\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Product\Liststype\Myfavorite
+ \Aimeos\Admin\JQAdm\Product\Lists\Myfavorite
 ```
 
 then you have to set the this configuration option:
@@ -4214,12 +4214,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/product/property/standard/subparts = Array
+admin/jqadm/type/product/property/subparts = Array
 (
 )
 ```
@@ -4311,12 +4311,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/product/standard/subparts = Array
+admin/jqadm/type/product/subparts = Array
 (
 )
 ```
@@ -4394,6 +4394,282 @@ admin/jqadm/type/product/template-list = type/product/list-standard
 * Default: type/product/list-standard
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in admin/jqadm/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "default" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "default"
+should be replaced by the name of the new class.
+
+
+# rule
+## decorators/excludes
+
+Excludes decorators added by the "common" option from the type JQAdm client
+
+```
+admin/jqadm/type/rule/decorators/excludes = Array
+(
+)
+```
+
+* Default: Array
+* Type: array - List of decorator names
+* Since: 2021.04
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/jqadm/common/decorators/default" before they are wrapped
+around the JQAdm client.
+
+```
+ admin/jqadm/type/rule/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
+"client/jqadm/common/decorators/default" to the JQAdm client.
+
+See also:
+
+* admin/jqadm/common/decorators/default
+* admin/jqadm/type/rule/decorators/global
+* admin/jqadm/type/rule/decorators/local
+
+## decorators/global
+
+Adds a list of globally available decorators only to the type JQAdm client
+
+```
+admin/jqadm/type/rule/decorators/global = Array
+(
+)
+```
+
+* Default: Array
+* Type: array - List of decorator names
+* Since: 2021.04
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
+
+```
+ admin/jqadm/type/rule/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
+
+See also:
+
+* admin/jqadm/common/decorators/default
+* admin/jqadm/type/rule/decorators/excludes
+* admin/jqadm/type/rule/decorators/local
+
+## decorators/local
+
+Adds a list of local decorators only to the type JQAdm client
+
+```
+admin/jqadm/type/rule/decorators/local = Array
+(
+)
+```
+
+* Default: Array
+* Type: array - List of decorator names
+* Since: 2021.04
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Admin\JQAdm\Type\Rule\Decorator\*") around the JQAdm client.
+
+```
+ admin/jqadm/type/rule/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Admin\JQAdm\Type\Rule\Decorator\Decorator2" only to the JQAdm client.
+
+See also:
+
+* admin/jqadm/common/decorators/default
+* admin/jqadm/type/rule/decorators/excludes
+* admin/jqadm/type/rule/decorators/global
+
+## fields
+
+List of rule type columns that should be displayed in the list view
+
+```
+admin/jqadm/type/rule/fields = Array
+(
+    [0] => rule.type.domain
+    [1] => rule.type.status
+    [2] => rule.type.code
+    [3] => rule.type.label
+)
+```
+
+* Default: Array
+* Type: array - List of field names, i.e. search keys
+* Since: 2017.10
+
+Changes the list of rule type columns shown by default in the rule type
+list view. The columns can be changed by the editor as required within the
+administraiton interface.
+
+The names of the colums are in fact the search keys defined by the managers,
+e.g. "rule.type.id" for the rule type ID.
+
+
+## name
+
+Class name of the used account favorite client implementation
+
+```
+admin/jqadm/type/rule/name = Standard
+```
+
+* Default: Standard
+* Type: string - Last part of the class name
+* Since: 2021.04
+
+Each default admin client can be replace by an alternative imlementation.
+To use this implementation, you have to set the last part of the class
+name as configuration value so the client factory knows which class it
+has to instantiate.
+
+For example, if the name of the default class is
+
+```
+ \Aimeos\Admin\JQAdm\Type\Rule\Standard
+```
+
+and you want to replace it with your own version named
+
+```
+ \Aimeos\Admin\JQAdm\Type\Rule\Myfavorite
+```
+
+then you have to set the this configuration option:
+
+```
+ admin/jqadm/type/rule/name = Myfavorite
+```
+
+The value is the last part of your own class name and it's case sensitive,
+so take care that the configuration value is exactly named like the last
+part of the class name.
+
+The allowed characters of the class name are A-Z, a-z and 0-9. No other
+characters are possible! You should always start the last part of the class
+name with an upper case character and continue only with lower case characters
+or numbers. Avoid chamel case names like "MyFavorite"!
+
+
+## subparts
+
+List of JQAdm sub-clients rendered within the type section
+
+```
+admin/jqadm/type/rule/subparts = Array
+(
+)
+```
+
+* Default: Array
+* Type: array - List of sub-client names
+* Since: 2021.04
+
+The output of the frontend is composed of the code generated by the JQAdm
+clients. Each JQAdm client can consist of serveral (or none) sub-clients
+that are responsible for rendering certain sub-parts of the output. The
+sub-clients can contain JQAdm clients themselves and therefore a
+hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
+the output that is placed inside the container of its parent.
+
+At first, always the JQAdm code generated by the parent is printed, then
+the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
+determines the order of the output of these sub-clients inside the parent
+container. If the configured list of clients is
+
+```
+ array( "subclient1", "subclient2" )
+```
+
+you can easily change the order of the output by reordering the subparts:
+
+```
+ admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
+```
+
+You can also remove one or more parts if they shouldn't be rendered:
+
+```
+ admin/jqadm/<clients>/subparts = array( "subclient1" )
+```
+
+As the clients only generates structural JQAdm, the layout defined via CSS
+should support adding, removing or reordering content by a fluid like
+design.
+
+
+## template-item
+
+Relative path to the HTML body template for the type item.
+
+```
+admin/jqadm/type/rule/template-item = type/rule/item-standard
+```
+
+* Default: type/rule/item-standard
+* Type: string - Relative path to the template creating the HTML code
+* Since: 2021.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in admin/jqadm/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "default" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "default"
+should be replaced by the name of the new class.
+
+
+## template-list
+
+Relative path to the HTML body template for the type list.
+
+```
+admin/jqadm/type/rule/template-list = type/rule/list-standard
+```
+
+* Default: type/rule/list-standard
+* Type: string - Relative path to the template creating the HTML code
+* Since: 2021.04
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
@@ -4628,14 +4904,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Service\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Service\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/service/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Service\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Service\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -4669,12 +4945,12 @@ The names of the colums are in fact the search keys defined by the managers,
 e.g. "service.lists.type.id" for the service type ID.
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/service/lists/standard/subparts = Array
+admin/jqadm/type/service/lists/subparts = Array
 (
 )
 ```
@@ -4811,12 +5087,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/service/standard/subparts = Array
+admin/jqadm/type/service/subparts = Array
 (
 )
 ```
@@ -5087,12 +5363,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/stock/standard/subparts = Array
+admin/jqadm/type/stock/subparts = Array
 (
 )
 ```
@@ -5363,12 +5639,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/tag/standard/subparts = Array
+admin/jqadm/type/tag/subparts = Array
 (
 )
 ```
@@ -5680,14 +5956,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Text\Liststype\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Text\Lists\Decorator\*") around the JQAdm client.
 
 ```
  admin/jqadm/type/text/lists/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Text\Liststype\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Text\Lists\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
@@ -5721,12 +5997,12 @@ The names of the colums are in fact the search keys defined by the managers,
 e.g. "text.lists.type.id" for the text type ID.
 
 
-## lists/standard/subparts
+## lists/subparts
 
 List of JQAdm sub-clients rendered within the list type section
 
 ```
-admin/jqadm/type/text/lists/standard/subparts = Array
+admin/jqadm/type/text/lists/subparts = Array
 (
 )
 ```
@@ -5863,12 +6139,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the type section
 
 ```
-admin/jqadm/type/text/standard/subparts = Array
+admin/jqadm/type/text/subparts = Array
 (
 )
 ```

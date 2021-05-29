@@ -5,14 +5,12 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/review/decorators/excludes = Array
-(
-)
+client/jsonapi/site/decorators/excludes = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of decorator names
-* Since: 2020.10
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -34,22 +32,20 @@ common decorators ("\Aimeos\Client\JsonApi\Common\Decorator\*") added via
 See also:
 
 * client/jsonapi/common/decorators/default
-* client/jsonapi/review/decorators/global
-* client/jsonapi/review/decorators/local
+* client/jsonapi/site/decorators/global
+* client/jsonapi/site/decorators/local
 
 ## global
 
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/review/decorators/global = Array
-(
-)
+client/jsonapi/site/decorators/global = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of decorator names
-* Since: 2020.10
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -61,32 +57,30 @@ This option allows you to wrap global decorators
 client.
 
 ```
- client/jsonapi/review/decorators/global = array( 'decorator1' )
+ client/jsonapi/site/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
 "\Aimeos\Client\JsonApi\Common\Decorator\Decorator1" only to the
-"review" JsonApi client.
+"site" JsonApi client.
 
 See also:
 
 * client/jsonapi/common/decorators/default
-* client/jsonapi/review/decorators/excludes
-* client/jsonapi/review/decorators/local
+* client/jsonapi/site/decorators/excludes
+* client/jsonapi/site/decorators/local
 
 ## local
 
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/review/decorators/local = Array
-(
-)
+client/jsonapi/site/decorators/local = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of decorator names
-* Since: 2020.10
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -94,34 +88,56 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Client\JsonApi\Review\Decorator\*") around the JsonApi
+("\Aimeos\Client\JsonApi\Site\Decorator\*") around the JsonApi
 client.
 
 ```
- client/jsonapi/review/decorators/local = array( 'decorator2' )
+ client/jsonapi/site/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\JsonApi\Review\Decorator\Decorator2" only to the
-"review" JsonApi client.
+"\Aimeos\Client\JsonApi\Site\Decorator\Decorator2" only to the
+"site" JsonApi client.
 
 See also:
 
 * client/jsonapi/common/decorators/default
-* client/jsonapi/review/decorators/excludes
-* client/jsonapi/review/decorators/global
+* client/jsonapi/site/decorators/excludes
+* client/jsonapi/site/decorators/global
+
+# deep
+
+Load the site tree instead of the nodes of the first level only
+
+```
+client/jsonapi/site/deep = 
+```
+
+* Default: 
+* Type: bool - True for site tree, false for first level only
+* Since: 2021.04
+
+If you want to use the site filter component to display the whole
+site tree without loading data in an asynchcron way, set this
+configuration option to "1" or true.
+
+**Warning:** If your site tree has a lot of nodes, it will
+take a very long time to render all categories. Thus, it's only
+recommended for small site trees with a limited node size
+(less than 50).
+
 
 # name
 
-Class name of the used review client implementation
+Class name of the used site client implementation
 
 ```
-client/jsonapi/review/name = Standard
+client/jsonapi/site/name = Standard
 ```
 
 * Default: Standard
 * Type: string - Last part of the class name
-* Since: 2017.03
+* Since: 2021.04
 
 Each default JSON API client can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -131,19 +147,19 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Client\JsonApi\Review\Standard
+ \Aimeos\Client\JsonApi\Site\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Client\JsonApi\Review\Myreview
+ \Aimeos\Client\JsonApi\Site\Mysite
 ```
 
 then you have to set the this configuration option:
 
 ```
- client/jsonapi/review/name = Myreview
+ client/jsonapi/site/name = Mysite
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -153,20 +169,20 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MyReview"!
+or numbers. Avoid chamel case names like "MySite"!
 
 
 # template
 
-Relative path to the review JSON API template
+Relative path to the site lists JSON API template
 
 ```
-client/jsonapi/review/template = review/standard
+client/jsonapi/site/template = site/standard
 ```
 
-* Default: review/standard
-* Type: string - Relative path to the template creating the body of the JSON API
-* Since: 2017.03
+* Default: site/standard
+* Type: string - Relative path to the template creating the body for the GET method of the JSON API
+* Since: 2021.04
 
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
@@ -175,32 +191,9 @@ to the templates directory (usually in client/jsonapi/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but with the string "default" replaced by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "standard"
 should be replaced by the name of the new class.
 
-
-# template-aggregate
-
-Relative path to the review aggregate JSON API template
-
-```
-client/jsonapi/review/template-aggregate = 
-```
-
-* Default: 
-* Type: string - Relative path to the template creating the list of aggregated review counts
-* Since: 2020.10
-
-The template file contains the code and processing instructions
-to generate the result shown in the JSON API body. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+@site Developer

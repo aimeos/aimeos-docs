@@ -152,13 +152,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySupplier"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog supplier section
 
 ```
-client/html/catalog/supplier/standard/subparts = Array
+client/html/catalog/supplier/subparts = Array
 (
     [0] => supplier
 )

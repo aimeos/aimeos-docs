@@ -2,17 +2,17 @@
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the log JQAdm client
+Excludes decorators added by the "common" option from the rule JQAdm client
 
 ```
-admin/jqadm/log/decorators/excludes = Array
+admin/jqadm/rule/decorators/excludes = Array
 (
 )
 ```
 
 * Default: Array
 * Type: array - List of decorator names
-* Since: 2018.04
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -24,7 +24,7 @@ This option allows you to remove a decorator added via
 around the JQAdm client.
 
 ```
- admin/jqadm/log/decorators/excludes = array( 'decorator1' )
+ admin/jqadm/rule/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -34,22 +34,22 @@ common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
 See also:
 
 * admin/jqadm/common/decorators/default
-* admin/jqadm/log/decorators/global
-* admin/jqadm/log/decorators/local
+* admin/jqadm/rule/decorators/global
+* admin/jqadm/rule/decorators/local
 
 ## global
 
-Adds a list of globally available decorators only to the log JQAdm client
+Adds a list of globally available decorators only to the rule JQAdm client
 
 ```
-admin/jqadm/log/decorators/global = Array
+admin/jqadm/rule/decorators/global = Array
 (
 )
 ```
 
 * Default: Array
 * Type: array - List of decorator names
-* Since: 2018.04
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -60,7 +60,7 @@ This option allows you to wrap global decorators
 ("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
 
 ```
- admin/jqadm/log/decorators/global = array( 'decorator1' )
+ admin/jqadm/rule/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -69,22 +69,22 @@ This would add the decorator named "decorator1" defined by
 See also:
 
 * admin/jqadm/common/decorators/default
-* admin/jqadm/log/decorators/excludes
-* admin/jqadm/log/decorators/local
+* admin/jqadm/rule/decorators/excludes
+* admin/jqadm/rule/decorators/local
 
 ## local
 
-Adds a list of local decorators only to the log JQAdm client
+Adds a list of local decorators only to the rule JQAdm client
 
 ```
-admin/jqadm/log/decorators/local = Array
+admin/jqadm/rule/decorators/local = Array
 (
 )
 ```
 
 * Default: Array
 * Type: array - List of decorator names
-* Since: 2018.04
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -92,45 +92,45 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Log\Decorator\*") around the JQAdm client.
+("\Aimeos\Admin\JQAdm\Rule\Decorator\*") around the JQAdm client.
 
 ```
- admin/jqadm/log/decorators/local = array( 'decorator2' )
+ admin/jqadm/rule/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Log\Decorator\Decorator2" only to the JQAdm client.
+"\Aimeos\Admin\JQAdm\Rule\Decorator\Decorator2" only to the JQAdm client.
 
 See also:
 
 * admin/jqadm/common/decorators/default
-* admin/jqadm/log/decorators/excludes
-* admin/jqadm/log/decorators/global
+* admin/jqadm/rule/decorators/excludes
+* admin/jqadm/rule/decorators/global
 
 # fields
 
-List of log columns that should be displayed in the list view
+List of rule columns that should be displayed in the list view
 
 ```
-admin/jqadm/log/fields = Array
+admin/jqadm/rule/fields = Array
 (
-    [0] => log.timestamp
-    [1] => log.facility
-    [2] => log.priority
-    [3] => log.message
+    [0] => rule.status
+    [1] => rule.label
+    [2] => rule.provider
+    [3] => rule.position
 )
 ```
 
 * Default: Array
 * Type: array - List of field names, i.e. search keys
-* Since: 2018.04
+* Since: 2021.04
 
-Changes the list of log columns shown by default in the log list view.
+Changes the list of rule columns shown by default in the rule list view.
 The columns can be changed by the editor as required within the administraiton
 interface.
 
 The names of the colums are in fact the search keys defined by the managers,
-e.g. "log.facility" for the log facility.
+e.g. "rule.id" for the customer ID.
 
 
 # name
@@ -138,12 +138,12 @@ e.g. "log.facility" for the log facility.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/log/name = Standard
+admin/jqadm/rule/name = Standard
 ```
 
 * Default: Standard
 * Type: string - Last part of the class name
-* Since: 2018.04
+* Since: 2021.04
 
 Each default admin client can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -153,19 +153,19 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Admin\JQAdm\Log\Standard
+ \Aimeos\Admin\JQAdm\Rule\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Admin\JQAdm\Log\Myfavorite
+ \Aimeos\Admin\JQAdm\Rule\Myfavorite
 ```
 
 then you have to set the this configuration option:
 
 ```
- admin/jqadm/log/name = Myfavorite
+ admin/jqadm/rule/name = Myfavorite
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -180,17 +180,17 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 
 # subparts
 
-List of JQAdm sub-clients rendered within the log section
+List of JQAdm sub-clients rendered within the rule section
 
 ```
-admin/jqadm/log/subparts = Array
+admin/jqadm/rule/subparts = Array
 (
 )
 ```
 
 * Default: Array
 * Type: array - List of sub-client names
-* Since: 2018.04
+* Since: 2021.04
 
 The output of the frontend is composed of the code generated by the JQAdm
 clients. Each JQAdm client can consist of serveral (or none) sub-clients
@@ -227,15 +227,15 @@ design.
 
 # template-item
 
-Relative path to the HTML body template for the log item.
+Relative path to the HTML body template for the rule item.
 
 ```
-admin/jqadm/log/template-item = 
+admin/jqadm/rule/template-item = rule/item-standard
 ```
 
-* Default: 
+* Default: rule/item-standard
 * Type: string - Relative path to the template creating the HTML code
-* Since: 2016.04
+* Since: 2021.04
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
@@ -252,15 +252,15 @@ should be replaced by the name of the new class.
 
 # template-list
 
-Relative path to the HTML body template for the log list.
+Relative path to the HTML body template for the rule list.
 
 ```
-admin/jqadm/log/template-list = log/list-standard
+admin/jqadm/rule/template-list = rule/list-standard
 ```
 
-* Default: log/list-standard
+* Default: rule/list-standard
 * Type: string - Relative path to the template creating the HTML code
-* Since: 2016.04
+* Since: 2021.04
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The

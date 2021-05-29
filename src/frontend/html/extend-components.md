@@ -102,10 +102,10 @@ For your parameters, you should use the **name of your decorator as prefix** to 
 
 # Configuration
 
-After you've created your new decorator, you need to tell the factory to add it to the HTML client for the component. This is done via configuration, e.g. for the catalog list component:
+After you've created your new decorator, you need to tell the factory to add it to the HTML client for the component. This is done via configuration, e.g. for the catalog lists component:
 
 ```
-client/html/catalog/list/decorators/global = ['Mydecorator']
+client/html/catalog/lists/decorators/global = ['Mydecorator']
 ```
 
 For the mini basket component, the configuration would be:

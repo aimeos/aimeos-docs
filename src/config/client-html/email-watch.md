@@ -304,12 +304,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Watch\Html\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the product notification e-mail html section
 
 ```
-client/html/email/watch/html/standard/subparts = Array
+client/html/email/watch/html/subparts = Array
 (
 )
 ```
@@ -351,12 +351,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the product notification e-mail html client.
 
 ```
-client/html/email/watch/html/standard/template-body = email/watch/html-body-standard
+client/html/email/watch/html/template-body = email/watch/html-body-standard
 ```
 
 * Default: email/watch/html-body-standard
@@ -384,7 +384,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/watch/html/standard/template-header
+* client/html/email/watch/html/template-header
 
 # name
 
@@ -480,13 +480,12 @@ See also:
 * client/html/email/from-email
 * client/html/email/bcc-email
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the product notification e-mail
 
 ```
-client/html/email/watch/standard/subparts = Array
+client/html/email/watch/subparts = Array
 (
     [0] => text
     [1] => html
@@ -530,12 +529,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the product notification e-mail client.
 
 ```
-client/html/email/watch/standard/template-body = email/watch/body-standard
+client/html/email/watch/template-body = email/watch/body-standard
 ```
 
 * Default: email/watch/body-standard
@@ -563,14 +562,14 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/watch/standard/template-header
+* client/html/email/watch/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the product notification e-mail client.
 
 ```
-client/html/email/watch/standard/template-header = email/watch/header-standard
+client/html/email/watch/template-header = email/watch/header-standard
 ```
 
 * Default: email/watch/header-standard
@@ -599,7 +598,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/watch/standard/template-body
+* client/html/email/watch/template-body
 
 # text
 ## decorators/excludes
@@ -723,12 +722,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Watch\Text\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the text section of a product notification email
 
 ```
-client/html/email/watch/text/standard/subparts = Array
+client/html/email/watch/text/subparts = Array
 (
 )
 ```
@@ -770,12 +769,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the text body template of the product notification email text client.
 
 ```
-client/html/email/watch/text/standard/template-body = email/watch/text-body-standard
+client/html/email/watch/text/template-body = email/watch/text-body-standard
 ```
 
 * Default: email/watch/text-body-standard
@@ -803,4 +802,4 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/watch/text/standard/template-header
+* client/html/email/watch/text/template-header

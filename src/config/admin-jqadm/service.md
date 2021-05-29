@@ -455,12 +455,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Service\Media\Property\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the service media property section
 
 ```
-admin/jqadm/service/media/property/standard/subparts = Array
+admin/jqadm/service/media/property/subparts = Array
 (
 )
 ```
@@ -527,12 +527,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the service media section
 
 ```
-admin/jqadm/service/media/standard/subparts = Array
+admin/jqadm/service/media/subparts = Array
 (
     [property] => property
 )
@@ -888,12 +888,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Service\Price\Property\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the service price property section
 
 ```
-admin/jqadm/service/price/property/standard/subparts = Array
+admin/jqadm/service/price/property/subparts = Array
 (
 )
 ```
@@ -960,12 +960,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the service price section
 
 ```
-admin/jqadm/service/price/standard/subparts = Array
+admin/jqadm/service/price/subparts = Array
 (
     [property] => property
 )
@@ -1033,13 +1033,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the service section
 
 ```
-admin/jqadm/service/standard/subparts = Array
+admin/jqadm/service/subparts = Array
 (
     [media] => media
     [text] => text
@@ -1256,12 +1255,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Service\Text\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the service text section
 
 ```
-admin/jqadm/service/text/standard/subparts = Array
+admin/jqadm/service/text/subparts = Array
 (
 )
 ```

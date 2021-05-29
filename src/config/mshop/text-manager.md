@@ -1,4 +1,103 @@
 
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtex."id"
+ 	FROM "mshop_text" AS mtex
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mtex."id"
+ 	ORDER BY mtex."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/text/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the text
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/insert/ansi
+* mshop/text/manager/update/ansi
+* mshop/text/manager/newid/ansi
+* mshop/text/manager/delete/ansi
+* mshop/text/manager/search/ansi
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtex."id"
+ 	FROM "mshop_text" AS mtex
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mtex."id"
+ 	ORDER BY mtex."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtex."id"
+ 	FROM "mshop_text" AS mtex
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mtex."id"
+ 	ORDER BY mtex."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/text/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -109,7 +208,327 @@ See also:
 * mshop/text/manager/decorators/excludes
 * mshop/text/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/delete/ansi = 
+ DELETE FROM "mshop_text"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/text/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the text database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/insert/ansi
+* mshop/text/manager/update/ansi
+* mshop/text/manager/newid/ansi
+* mshop/text/manager/search/ansi
+* mshop/text/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/delete/mysql = 
+ DELETE FROM "mshop_text"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_text"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/text/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new text record into the database table
+
+```
+mshop/text/manager/insert/ansi = 
+ INSERT INTO "mshop_text" ( :names
+ 	"langid", "type", "domain", "label", "content",
+ 	"status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/text/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/update/ansi
+* mshop/text/manager/newid/ansi
+* mshop/text/manager/delete/ansi
+* mshop/text/manager/search/ansi
+* mshop/text/manager/count/ansi
+
+## mysql
+
+Inserts a new text record into the database table
+
+```
+mshop/text/manager/insert/mysql = 
+ INSERT INTO "mshop_text" ( :names
+ 	"langid", "type", "domain", "label", "content",
+ 	"status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_text" ( :names
+ 	"langid", "type", "domain", "label", "content",
+ 	"status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/text/manager/insert/ansi
+
 # lists
+## aggregate/ansi
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/text/manager/lists/aggregate/ansi = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_text_list" AS mtexli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, mtexli."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: mshop/text/manager/lists/aggregate
+* Type: string - SQL statement for aggregating order items
+* Since: 2014.07
+
+Groups all records by the values in the key column and counts their
+occurence. The matched records can be limited by the given criteria
+from the order database. The records must be from one of the sites
+that are configured via the context item. If the current site is part
+of a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+This statement doesn't return any records. Instead, it returns pairs
+of the different values found in the key column together with the
+number of records that have been found for that key values.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/insert/ansi
+* mshop/text/manager/lists/update/ansi
+* mshop/text/manager/lists/newid/ansi
+* mshop/text/manager/lists/delete/ansi
+* mshop/text/manager/lists/search/ansi
+* mshop/text/manager/lists/count/ansi
+
+## aggregate/mysql
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/text/manager/lists/aggregate/mysql = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_text_list" AS mtexli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, mtexli."id"
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_text_list" AS mtexli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, mtexli."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+
+
+See also:
+
+* mshop/text/manager/lists/aggregate/ansi
+
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/lists/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexli."id"
+ 	FROM "mshop_text_list" AS mtexli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexli."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/text/manager/lists/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the text
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/insert/ansi
+* mshop/text/manager/lists/update/ansi
+* mshop/text/manager/lists/newid/ansi
+* mshop/text/manager/lists/delete/ansi
+* mshop/text/manager/lists/search/ansi
+* mshop/text/manager/lists/aggregate/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/lists/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexli."id"
+ 	FROM "mshop_text_list" AS mtexli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexli."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexli."id"
+ 	FROM "mshop_text_list" AS mtexli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexli."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/text/manager/lists/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the text list manager
@@ -220,6 +639,131 @@ See also:
 * mshop/text/manager/lists/decorators/excludes
 * mshop/text/manager/lists/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/lists/delete/ansi = 
+ DELETE FROM "mshop_text_list"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/text/manager/lists/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the text database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/insert/ansi
+* mshop/text/manager/lists/update/ansi
+* mshop/text/manager/lists/newid/ansi
+* mshop/text/manager/lists/search/ansi
+* mshop/text/manager/lists/count/ansi
+* mshop/text/manager/lists/aggregate/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/lists/delete/mysql = 
+ DELETE FROM "mshop_text_list"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_text_list"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/text/manager/lists/delete/ansi
+
+## insert/ansi
+
+Inserts a new text list record into the database table
+
+```
+mshop/text/manager/lists/insert/ansi = 
+ INSERT INTO "mshop_text_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/text/manager/lists/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text list item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/update/ansi
+* mshop/text/manager/lists/newid/ansi
+* mshop/text/manager/lists/delete/ansi
+* mshop/text/manager/lists/search/ansi
+* mshop/text/manager/lists/count/ansi
+* mshop/text/manager/lists/aggregate/ansi
+
+## insert/mysql
+
+Inserts a new text list record into the database table
+
+```
+mshop/text/manager/lists/insert/mysql = 
+ INSERT INTO "mshop_text_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_text_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/text/manager/lists/insert/ansi
+
 ## name
 
 Class name of the used text list manager implementation
@@ -265,335 +809,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyList"!
 
 
-## standard/aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/text/manager/lists/standard/aggregate/ansi = 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", mtexli."id" AS "id"
- 	FROM "mshop_text_list" AS mtexli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, mtexli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-```
-
-* Default: mshop/text/manager/lists/standard/aggregate
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/standard/insert/ansi
-* mshop/text/manager/lists/standard/update/ansi
-* mshop/text/manager/lists/standard/newid/ansi
-* mshop/text/manager/lists/standard/delete/ansi
-* mshop/text/manager/lists/standard/search/ansi
-* mshop/text/manager/lists/standard/count/ansi
-
-## standard/aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/text/manager/lists/standard/aggregate/mysql = 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", mtexli."id" AS "id"
- 	FROM "mshop_text_list" AS mtexli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, mtexli."id"
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY "key"
-```
-
-* Default: 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", mtexli."id" AS "id"
- 	FROM "mshop_text_list" AS mtexli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, mtexli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-
-
-See also:
-
-* mshop/text/manager/lists/standard/aggregate/ansi
-
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/lists/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexli."id"
- 	FROM "mshop_text_list" AS mtexli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/text/manager/lists/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the text
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/standard/insert/ansi
-* mshop/text/manager/lists/standard/update/ansi
-* mshop/text/manager/lists/standard/newid/ansi
-* mshop/text/manager/lists/standard/delete/ansi
-* mshop/text/manager/lists/standard/search/ansi
-* mshop/text/manager/lists/standard/aggregate/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/lists/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexli."id"
- 	FROM "mshop_text_list" AS mtexli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexli."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexli."id"
- 	FROM "mshop_text_list" AS mtexli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/text/manager/lists/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/lists/standard/delete/ansi = 
- DELETE FROM "mshop_text_list"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/text/manager/lists/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the text database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/standard/insert/ansi
-* mshop/text/manager/lists/standard/update/ansi
-* mshop/text/manager/lists/standard/newid/ansi
-* mshop/text/manager/lists/standard/search/ansi
-* mshop/text/manager/lists/standard/count/ansi
-* mshop/text/manager/lists/standard/aggregate/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/lists/standard/delete/mysql = 
- DELETE FROM "mshop_text_list"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_text_list"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/text/manager/lists/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new text list record into the database table
-
-```
-mshop/text/manager/lists/standard/insert/ansi = 
- INSERT INTO "mshop_text_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/text/manager/lists/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text list item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/standard/update/ansi
-* mshop/text/manager/lists/standard/newid/ansi
-* mshop/text/manager/lists/standard/delete/ansi
-* mshop/text/manager/lists/standard/search/ansi
-* mshop/text/manager/lists/standard/count/ansi
-* mshop/text/manager/lists/standard/aggregate/ansi
-
-## standard/insert/mysql
-
-Inserts a new text list record into the database table
-
-```
-mshop/text/manager/lists/standard/insert/mysql = 
- INSERT INTO "mshop_text_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_text_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/text/manager/lists/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/lists/standard/newid/ansi = mshop/text/manager/lists/standard/newid
+mshop/text/manager/lists/newid/ansi = mshop/text/manager/lists/newid
 ```
 
-* Default: mshop/text/manager/lists/standard/newid
+* Default: mshop/text/manager/lists/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -619,33 +843,33 @@ specific way.
 
 See also:
 
-* mshop/text/manager/lists/standard/insert/ansi
-* mshop/text/manager/lists/standard/update/ansi
-* mshop/text/manager/lists/standard/delete/ansi
-* mshop/text/manager/lists/standard/search/ansi
-* mshop/text/manager/lists/standard/count/ansi
-* mshop/text/manager/lists/standard/aggregate/ansi
+* mshop/text/manager/lists/insert/ansi
+* mshop/text/manager/lists/update/ansi
+* mshop/text/manager/lists/delete/ansi
+* mshop/text/manager/lists/search/ansi
+* mshop/text/manager/lists/count/ansi
+* mshop/text/manager/lists/aggregate/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/lists/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/text/manager/lists/standard/newid
+* Default: mshop/text/manager/lists/newid
 
 See also:
 
-* mshop/text/manager/lists/standard/newid/ansi
+* mshop/text/manager/lists/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/lists/standard/search/ansi = 
+mshop/text/manager/lists/search/ansi = 
  SELECT :columns
  	mtexli."id" AS "text.lists.id", mtexli."parentid" AS "text.lists.parentid",
  	mtexli."siteid" AS "text.lists.siteid", mtexli."type" AS "text.lists.type",
@@ -661,7 +885,7 @@ mshop/text/manager/lists/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/text/manager/lists/standard/search
+* Default: mshop/text/manager/lists/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -706,19 +930,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/text/manager/lists/standard/insert/ansi
-* mshop/text/manager/lists/standard/update/ansi
-* mshop/text/manager/lists/standard/newid/ansi
-* mshop/text/manager/lists/standard/delete/ansi
-* mshop/text/manager/lists/standard/count/ansi
-* mshop/text/manager/lists/standard/aggregate/ansi
+* mshop/text/manager/lists/insert/ansi
+* mshop/text/manager/lists/update/ansi
+* mshop/text/manager/lists/newid/ansi
+* mshop/text/manager/lists/delete/ansi
+* mshop/text/manager/lists/count/ansi
+* mshop/text/manager/lists/aggregate/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/lists/standard/search/mysql = 
+mshop/text/manager/lists/search/mysql = 
  SELECT :columns
  	mtexli."id" AS "text.lists.id", mtexli."parentid" AS "text.lists.parentid",
  	mtexli."siteid" AS "text.lists.siteid", mtexli."type" AS "text.lists.type",
@@ -752,72 +976,7 @@ mshop/text/manager/lists/standard/search/mysql =
 
 See also:
 
-* mshop/text/manager/lists/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing text list record in the database
-
-```
-mshop/text/manager/lists/standard/update/ansi = 
- UPDATE "mshop_text_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/text/manager/lists/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text list item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/standard/insert/ansi
-* mshop/text/manager/lists/standard/newid/ansi
-* mshop/text/manager/lists/standard/delete/ansi
-* mshop/text/manager/lists/standard/search/ansi
-* mshop/text/manager/lists/standard/count/ansi
-* mshop/text/manager/lists/standard/aggregate/ansi
-
-## standard/update/mysql
-
-Updates an existing text list record in the database
-
-```
-mshop/text/manager/lists/standard/update/mysql = 
- UPDATE "mshop_text_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_text_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/text/manager/lists/standard/update/ansi
+* mshop/text/manager/lists/search/ansi
 
 ## submanagers
 
@@ -843,6 +1002,101 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## type/count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/lists/type/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexlity."id"
+ 	FROM "mshop_text_list_type" as mtexlity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexlity."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/text/manager/lists/type/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the text
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/type/insert/ansi
+* mshop/text/manager/lists/type/update/ansi
+* mshop/text/manager/lists/type/newid/ansi
+* mshop/text/manager/lists/type/delete/ansi
+* mshop/text/manager/lists/type/search/ansi
+
+## type/count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/lists/type/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexlity."id"
+ 	FROM "mshop_text_list_type" as mtexlity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexlity."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexlity."id"
+ 	FROM "mshop_text_list_type" as mtexlity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexlity."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/text/manager/lists/type/count/ansi
 
 ## type/decorators/excludes
 
@@ -955,6 +1209,129 @@ See also:
 * mshop/text/manager/lists/type/decorators/excludes
 * mshop/text/manager/lists/type/decorators/global
 
+## type/delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/lists/type/delete/ansi = 
+ DELETE FROM "mshop_text_list_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/text/manager/lists/type/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the text database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/type/insert/ansi
+* mshop/text/manager/lists/type/update/ansi
+* mshop/text/manager/lists/type/newid/ansi
+* mshop/text/manager/lists/type/search/ansi
+* mshop/text/manager/lists/type/count/ansi
+
+## type/delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/lists/type/delete/mysql = 
+ DELETE FROM "mshop_text_list_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_text_list_type"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/text/manager/lists/type/delete/ansi
+
+## type/insert/ansi
+
+Inserts a new text list type record into the database table
+
+```
+mshop/text/manager/lists/type/insert/ansi = 
+ INSERT INTO "mshop_text_list_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/text/manager/lists/type/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text list type item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/type/update/ansi
+* mshop/text/manager/lists/type/newid/ansi
+* mshop/text/manager/lists/type/delete/ansi
+* mshop/text/manager/lists/type/search/ansi
+* mshop/text/manager/lists/type/count/ansi
+
+## type/insert/mysql
+
+Inserts a new text list type record into the database table
+
+```
+mshop/text/manager/lists/type/insert/mysql = 
+ INSERT INTO "mshop_text_list_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_text_list_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/text/manager/lists/type/insert/ansi
+
 ## type/name
 
 Class name of the used text list type manager implementation
@@ -1000,233 +1377,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyType"!
 
 
-## type/standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/lists/type/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexlity."id"
- 	FROM "mshop_text_list_type" as mtexlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/text/manager/lists/type/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the text
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/type/standard/insert/ansi
-* mshop/text/manager/lists/type/standard/update/ansi
-* mshop/text/manager/lists/type/standard/newid/ansi
-* mshop/text/manager/lists/type/standard/delete/ansi
-* mshop/text/manager/lists/type/standard/search/ansi
-
-## type/standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/lists/type/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexlity."id"
- 	FROM "mshop_text_list_type" as mtexlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexlity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexlity."id"
- 	FROM "mshop_text_list_type" as mtexlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/text/manager/lists/type/standard/count/ansi
-
-## type/standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/lists/type/standard/delete/ansi = 
- DELETE FROM "mshop_text_list_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/text/manager/lists/type/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the text database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/type/standard/insert/ansi
-* mshop/text/manager/lists/type/standard/update/ansi
-* mshop/text/manager/lists/type/standard/newid/ansi
-* mshop/text/manager/lists/type/standard/search/ansi
-* mshop/text/manager/lists/type/standard/count/ansi
-
-## type/standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/lists/type/standard/delete/mysql = 
- DELETE FROM "mshop_text_list_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_text_list_type"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/text/manager/lists/type/standard/delete/ansi
-
-## type/standard/insert/ansi
-
-Inserts a new text list type record into the database table
-
-```
-mshop/text/manager/lists/type/standard/insert/ansi = 
- INSERT INTO "mshop_text_list_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/text/manager/lists/type/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text list type item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/type/standard/update/ansi
-* mshop/text/manager/lists/type/standard/newid/ansi
-* mshop/text/manager/lists/type/standard/delete/ansi
-* mshop/text/manager/lists/type/standard/search/ansi
-* mshop/text/manager/lists/type/standard/count/ansi
-
-## type/standard/insert/mysql
-
-Inserts a new text list type record into the database table
-
-```
-mshop/text/manager/lists/type/standard/insert/mysql = 
- INSERT INTO "mshop_text_list_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_text_list_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/text/manager/lists/type/standard/insert/ansi
-
-## type/standard/newid/ansi
+## type/newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/lists/type/standard/newid/ansi = mshop/text/manager/lists/type/standard/newid
+mshop/text/manager/lists/type/newid/ansi = mshop/text/manager/lists/type/newid
 ```
 
-* Default: mshop/text/manager/lists/type/standard/newid
+* Default: mshop/text/manager/lists/type/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -1252,32 +1411,32 @@ specific way.
 
 See also:
 
-* mshop/text/manager/lists/type/standard/insert/ansi
-* mshop/text/manager/lists/type/standard/update/ansi
-* mshop/text/manager/lists/type/standard/delete/ansi
-* mshop/text/manager/lists/type/standard/search/ansi
-* mshop/text/manager/lists/type/standard/count/ansi
+* mshop/text/manager/lists/type/insert/ansi
+* mshop/text/manager/lists/type/update/ansi
+* mshop/text/manager/lists/type/delete/ansi
+* mshop/text/manager/lists/type/search/ansi
+* mshop/text/manager/lists/type/count/ansi
 
-## type/standard/newid/mysql
+## type/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/lists/type/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/text/manager/lists/type/standard/newid
+* Default: mshop/text/manager/lists/type/newid
 
 See also:
 
-* mshop/text/manager/lists/type/standard/newid/ansi
+* mshop/text/manager/lists/type/newid/ansi
 
-## type/standard/search/ansi
+## type/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/lists/type/standard/search/ansi = 
+mshop/text/manager/lists/type/search/ansi = 
  SELECT :columns
  	mtexlity."id" AS "text.lists.type.id", mtexlity."siteid" AS "text.lists.type.siteid",
  	mtexlity."code" AS "text.lists.type.code", mtexlity."domain" AS "text.lists.type.domain",
@@ -1291,7 +1450,7 @@ mshop/text/manager/lists/type/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/text/manager/lists/type/standard/search
+* Default: mshop/text/manager/lists/type/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -1336,18 +1495,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/text/manager/lists/type/standard/insert/ansi
-* mshop/text/manager/lists/type/standard/update/ansi
-* mshop/text/manager/lists/type/standard/newid/ansi
-* mshop/text/manager/lists/type/standard/delete/ansi
-* mshop/text/manager/lists/type/standard/count/ansi
+* mshop/text/manager/lists/type/insert/ansi
+* mshop/text/manager/lists/type/update/ansi
+* mshop/text/manager/lists/type/newid/ansi
+* mshop/text/manager/lists/type/delete/ansi
+* mshop/text/manager/lists/type/count/ansi
 
-## type/standard/search/mysql
+## type/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/lists/type/standard/search/mysql = 
+mshop/text/manager/lists/type/search/mysql = 
  SELECT :columns
  	mtexlity."id" AS "text.lists.type.id", mtexlity."siteid" AS "text.lists.type.siteid",
  	mtexlity."code" AS "text.lists.type.code", mtexlity."domain" AS "text.lists.type.domain",
@@ -1377,71 +1536,7 @@ mshop/text/manager/lists/type/standard/search/mysql =
 
 See also:
 
-* mshop/text/manager/lists/type/standard/search/ansi
-
-## type/standard/update/ansi
-
-Updates an existing text list type record in the database
-
-```
-mshop/text/manager/lists/type/standard/update/ansi = 
- UPDATE "mshop_text_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/text/manager/lists/type/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text list type item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/type/standard/insert/ansi
-* mshop/text/manager/lists/type/standard/newid/ansi
-* mshop/text/manager/lists/type/standard/delete/ansi
-* mshop/text/manager/lists/type/standard/search/ansi
-* mshop/text/manager/lists/type/standard/count/ansi
-
-## type/standard/update/mysql
-
-Updates an existing text list type record in the database
-
-```
-mshop/text/manager/lists/type/standard/update/mysql = 
- UPDATE "mshop_text_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_text_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/text/manager/lists/type/standard/update/ansi
+* mshop/text/manager/lists/type/search/ansi
 
 ## type/submanagers
 
@@ -1467,6 +1562,135 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## type/update/ansi
+
+Updates an existing text list type record in the database
+
+```
+mshop/text/manager/lists/type/update/ansi = 
+ UPDATE "mshop_text_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/text/manager/lists/type/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text list type item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/type/insert/ansi
+* mshop/text/manager/lists/type/newid/ansi
+* mshop/text/manager/lists/type/delete/ansi
+* mshop/text/manager/lists/type/search/ansi
+* mshop/text/manager/lists/type/count/ansi
+
+## type/update/mysql
+
+Updates an existing text list type record in the database
+
+```
+mshop/text/manager/lists/type/update/mysql = 
+ UPDATE "mshop_text_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_text_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/text/manager/lists/type/update/ansi
+
+## update/ansi
+
+Updates an existing text list record in the database
+
+```
+mshop/text/manager/lists/update/ansi = 
+ UPDATE "mshop_text_list"
+ SET :names
+ 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/text/manager/lists/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text list item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/lists/insert/ansi
+* mshop/text/manager/lists/newid/ansi
+* mshop/text/manager/lists/delete/ansi
+* mshop/text/manager/lists/search/ansi
+* mshop/text/manager/lists/count/ansi
+* mshop/text/manager/lists/aggregate/ansi
+
+## update/mysql
+
+Updates an existing text list record in the database
+
+```
+mshop/text/manager/lists/update/mysql = 
+ UPDATE "mshop_text_list"
+ SET :names
+ 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_text_list"
+ SET :names
+ 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/text/manager/lists/update/ansi
 
 # name
 
@@ -1513,274 +1737,16 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
-# sitemode
-
-Mode how items from levels below or above in the site tree are handled
-
-```
-mshop/text/manager/sitemode = 3
-```
-
-* Default: 3
-* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
-* Since: 2018.01
-
-By default, only items from the current site are fetched from the
-storage. If the ai-sites extension is installed, you can create a
-tree of sites. Then, this setting allows you to define for the
-whole text domain if items from parent sites are inherited,
-sites from child sites are aggregated or both.
-
-Available constants for the site mode are:
-* 0 = only items from the current site
-* 1 = inherit items from parent sites
-* 2 = aggregate items from child sites
-* 3 = inherit and aggregate items at the same time
-
-You also need to set the mode in the locale manager
-(mshop/locale/manager/standard/sitelevel) to one of the constants.
-If you set it to the same value, it will work as described but you
-can also use different modes. For example, if inheritance and
-aggregation is configured the locale manager but only inheritance
-in the domain manager because aggregating items makes no sense in
-this domain, then items wil be only inherited. Thus, you have full
-control over inheritance and aggregation in each domain.
-
-See also:
-
-* mshop/locale/manager/standard/sitelevel
-
-# standard
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtex."id"
- 	FROM "mshop_text" AS mtex
- 	:joins
- 	WHERE :cond
- 	GROUP BY mtex."id"
- 	ORDER BY mtex."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/text/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the text
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/standard/insert/ansi
-* mshop/text/manager/standard/update/ansi
-* mshop/text/manager/standard/newid/ansi
-* mshop/text/manager/standard/delete/ansi
-* mshop/text/manager/standard/search/ansi
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtex."id"
- 	FROM "mshop_text" AS mtex
- 	:joins
- 	WHERE :cond
- 	GROUP BY mtex."id"
- 	ORDER BY mtex."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtex."id"
- 	FROM "mshop_text" AS mtex
- 	:joins
- 	WHERE :cond
- 	GROUP BY mtex."id"
- 	ORDER BY mtex."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/text/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/standard/delete/ansi = 
- DELETE FROM "mshop_text"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/text/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the text database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/standard/insert/ansi
-* mshop/text/manager/standard/update/ansi
-* mshop/text/manager/standard/newid/ansi
-* mshop/text/manager/standard/search/ansi
-* mshop/text/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/standard/delete/mysql = 
- DELETE FROM "mshop_text"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_text"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/text/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new text record into the database table
-
-```
-mshop/text/manager/standard/insert/ansi = 
- INSERT INTO "mshop_text" ( :names
- 	"langid", "type", "domain", "label", "content",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/text/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/standard/update/ansi
-* mshop/text/manager/standard/newid/ansi
-* mshop/text/manager/standard/delete/ansi
-* mshop/text/manager/standard/search/ansi
-* mshop/text/manager/standard/count/ansi
-
-## insert/mysql
-
-Inserts a new text record into the database table
-
-```
-mshop/text/manager/standard/insert/mysql = 
- INSERT INTO "mshop_text" ( :names
- 	"langid", "type", "domain", "label", "content",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_text" ( :names
- 	"langid", "type", "domain", "label", "content",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/text/manager/standard/insert/ansi
-
-## newid/ansi
+# newid
+## ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/standard/newid/ansi = mshop/text/manager/standard/newid
+mshop/text/manager/newid/ansi = mshop/text/manager/newid
 ```
 
-* Default: mshop/text/manager/standard/newid
+* Default: mshop/text/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -1806,32 +1772,33 @@ specific way.
 
 See also:
 
-* mshop/text/manager/standard/insert/ansi
-* mshop/text/manager/standard/update/ansi
-* mshop/text/manager/standard/delete/ansi
-* mshop/text/manager/standard/search/ansi
-* mshop/text/manager/standard/count/ansi
+* mshop/text/manager/insert/ansi
+* mshop/text/manager/update/ansi
+* mshop/text/manager/delete/ansi
+* mshop/text/manager/search/ansi
+* mshop/text/manager/count/ansi
 
-## newid/mysql
+## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/text/manager/standard/newid
+* Default: mshop/text/manager/newid
 
 See also:
 
-* mshop/text/manager/standard/newid/ansi
+* mshop/text/manager/newid/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/standard/search/ansi = 
+mshop/text/manager/search/ansi = 
  SELECT :columns
  	mtex."id" AS "text.id", mtex."siteid" AS "text.siteid",
  	mtex."langid" AS "text.languageid",	mtex."type" AS "text.type",
@@ -1849,7 +1816,7 @@ mshop/text/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/text/manager/standard/search
+* Default: mshop/text/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -1894,18 +1861,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/text/manager/standard/insert/ansi
-* mshop/text/manager/standard/update/ansi
-* mshop/text/manager/standard/newid/ansi
-* mshop/text/manager/standard/delete/ansi
-* mshop/text/manager/standard/count/ansi
+* mshop/text/manager/insert/ansi
+* mshop/text/manager/update/ansi
+* mshop/text/manager/newid/ansi
+* mshop/text/manager/delete/ansi
+* mshop/text/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/standard/search/mysql = 
+mshop/text/manager/search/mysql = 
  SELECT :columns
  	mtex."id" AS "text.id", mtex."siteid" AS "text.siteid",
  	mtex."langid" AS "text.languageid",	mtex."type" AS "text.type",
@@ -1941,71 +1908,44 @@ mshop/text/manager/standard/search/mysql =
 
 See also:
 
-* mshop/text/manager/standard/search/ansi
+* mshop/text/manager/search/ansi
 
-## update/ansi
+# sitemode
 
-Updates an existing text record in the database
+Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/text/manager/standard/update/ansi = 
- UPDATE "mshop_text"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
- 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+mshop/text/manager/sitemode = 3
 ```
 
-* Default: mshop/text/manager/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
+* Default: 3
+* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
+* Since: 2018.01
 
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
+By default, only items from the current site are fetched from the
+storage. If the ai-sites extension is installed, you can create a
+tree of sites. Then, this setting allows you to define for the
+whole text domain if items from parent sites are inherited,
+sites from child sites are aggregated or both.
 
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
+Available constants for the site mode are:
+* 0 = only items from the current site
+* 1 = inherit items from parent sites
+* 2 = aggregate items from child sites
+* 3 = inherit and aggregate items at the same time
 
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
+You also need to set the mode in the locale manager
+(mshop/locale/manager/sitelevel) to one of the constants.
+If you set it to the same value, it will work as described but you
+can also use different modes. For example, if inheritance and
+aggregation is configured the locale manager but only inheritance
+in the domain manager because aggregating items makes no sense in
+this domain, then items wil be only inherited. Thus, you have full
+control over inheritance and aggregation in each domain.
 
 See also:
 
-* mshop/text/manager/standard/insert/ansi
-* mshop/text/manager/standard/newid/ansi
-* mshop/text/manager/standard/delete/ansi
-* mshop/text/manager/standard/search/ansi
-* mshop/text/manager/standard/count/ansi
-
-## update/mysql
-
-Updates an existing text record in the database
-
-```
-mshop/text/manager/standard/update/mysql = 
- UPDATE "mshop_text"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
- 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_text"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
- 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/text/manager/standard/update/ansi
+* mshop/locale/manager/sitelevel
 
 # submanagers
 
@@ -2033,6 +1973,101 @@ retrieved list of items.
 
 
 # type
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/type/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexty."id"
+ 	FROM "mshop_text_type" mtexty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/text/manager/type/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the text
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/type/insert/ansi
+* mshop/text/manager/type/update/ansi
+* mshop/text/manager/type/newid/ansi
+* mshop/text/manager/type/delete/ansi
+* mshop/text/manager/type/search/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/text/manager/type/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexty."id"
+ 	FROM "mshop_text_type" mtexty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexty."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mtexty."id"
+ 	FROM "mshop_text_type" mtexty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mtexty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/text/manager/type/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the text type manager
@@ -2143,6 +2178,129 @@ See also:
 * mshop/text/manager/type/decorators/excludes
 * mshop/text/manager/type/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/type/delete/ansi = 
+ DELETE FROM "mshop_text_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/text/manager/type/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the text database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/type/insert/ansi
+* mshop/text/manager/type/update/ansi
+* mshop/text/manager/type/newid/ansi
+* mshop/text/manager/type/search/ansi
+* mshop/text/manager/type/count/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/text/manager/type/delete/mysql = 
+ DELETE FROM "mshop_text_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_text_type"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/text/manager/type/delete/ansi
+
+## insert/ansi
+
+Inserts a new text type record into the database table
+
+```
+mshop/text/manager/type/insert/ansi = 
+ INSERT INTO "mshop_text_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/text/manager/type/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text type item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/type/update/ansi
+* mshop/text/manager/type/newid/ansi
+* mshop/text/manager/type/delete/ansi
+* mshop/text/manager/type/search/ansi
+* mshop/text/manager/type/count/ansi
+
+## insert/mysql
+
+Inserts a new text type record into the database table
+
+```
+mshop/text/manager/type/insert/mysql = 
+ INSERT INTO "mshop_text_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_text_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/text/manager/type/insert/ansi
+
 ## name
 
 Class name of the used text type manager implementation
@@ -2188,233 +2346,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyType"!
 
 
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/type/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexty."id"
- 	FROM "mshop_text_type" mtexty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/text/manager/type/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the text
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/type/standard/insert/ansi
-* mshop/text/manager/type/standard/update/ansi
-* mshop/text/manager/type/standard/newid/ansi
-* mshop/text/manager/type/standard/delete/ansi
-* mshop/text/manager/type/standard/search/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/text/manager/type/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexty."id"
- 	FROM "mshop_text_type" mtexty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexty."id"
- 	FROM "mshop_text_type" mtexty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/text/manager/type/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/type/standard/delete/ansi = 
- DELETE FROM "mshop_text_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/text/manager/type/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the text database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/type/standard/insert/ansi
-* mshop/text/manager/type/standard/update/ansi
-* mshop/text/manager/type/standard/newid/ansi
-* mshop/text/manager/type/standard/search/ansi
-* mshop/text/manager/type/standard/count/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/text/manager/type/standard/delete/mysql = 
- DELETE FROM "mshop_text_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_text_type"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/text/manager/type/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new text type record into the database table
-
-```
-mshop/text/manager/type/standard/insert/ansi = 
- INSERT INTO "mshop_text_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/text/manager/type/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text type item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/type/standard/update/ansi
-* mshop/text/manager/type/standard/newid/ansi
-* mshop/text/manager/type/standard/delete/ansi
-* mshop/text/manager/type/standard/search/ansi
-* mshop/text/manager/type/standard/count/ansi
-
-## standard/insert/mysql
-
-Inserts a new text type record into the database table
-
-```
-mshop/text/manager/type/standard/insert/mysql = 
- INSERT INTO "mshop_text_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_text_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/text/manager/type/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/type/standard/newid/ansi = mshop/text/manager/type/standard/newid
+mshop/text/manager/type/newid/ansi = mshop/text/manager/type/newid
 ```
 
-* Default: mshop/text/manager/type/standard/newid
+* Default: mshop/text/manager/type/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -2440,32 +2380,32 @@ specific way.
 
 See also:
 
-* mshop/text/manager/type/standard/insert/ansi
-* mshop/text/manager/type/standard/update/ansi
-* mshop/text/manager/type/standard/delete/ansi
-* mshop/text/manager/type/standard/search/ansi
-* mshop/text/manager/type/standard/count/ansi
+* mshop/text/manager/type/insert/ansi
+* mshop/text/manager/type/update/ansi
+* mshop/text/manager/type/delete/ansi
+* mshop/text/manager/type/search/ansi
+* mshop/text/manager/type/count/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/type/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/text/manager/type/standard/newid
+* Default: mshop/text/manager/type/newid
 
 See also:
 
-* mshop/text/manager/type/standard/newid/ansi
+* mshop/text/manager/type/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/type/standard/search/ansi = 
+mshop/text/manager/type/search/ansi = 
  SELECT :columns
  	mtexty."id" AS "text.type.id", mtexty."siteid" AS "text.type.siteid",
  	mtexty."code" AS "text.type.code", mtexty."domain" AS "text.type.domain",
@@ -2479,7 +2419,7 @@ mshop/text/manager/type/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/text/manager/type/standard/search
+* Default: mshop/text/manager/type/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -2524,18 +2464,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/text/manager/type/standard/insert/ansi
-* mshop/text/manager/type/standard/update/ansi
-* mshop/text/manager/type/standard/newid/ansi
-* mshop/text/manager/type/standard/delete/ansi
-* mshop/text/manager/type/standard/count/ansi
+* mshop/text/manager/type/insert/ansi
+* mshop/text/manager/type/update/ansi
+* mshop/text/manager/type/newid/ansi
+* mshop/text/manager/type/delete/ansi
+* mshop/text/manager/type/count/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/text/manager/type/standard/search/mysql = 
+mshop/text/manager/type/search/mysql = 
  SELECT :columns
  	mtexty."id" AS "text.type.id", mtexty."siteid" AS "text.type.siteid",
  	mtexty."code" AS "text.type.code", mtexty."domain" AS "text.type.domain",
@@ -2565,71 +2505,7 @@ mshop/text/manager/type/standard/search/mysql =
 
 See also:
 
-* mshop/text/manager/type/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing text type record in the database
-
-```
-mshop/text/manager/type/standard/update/ansi = 
- UPDATE "mshop_text_type"
- SET :names
- 	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?,"mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/text/manager/type/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the text type item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/type/standard/insert/ansi
-* mshop/text/manager/type/standard/newid/ansi
-* mshop/text/manager/type/standard/delete/ansi
-* mshop/text/manager/type/standard/search/ansi
-* mshop/text/manager/type/standard/count/ansi
-
-## standard/update/mysql
-
-Updates an existing text type record in the database
-
-```
-mshop/text/manager/type/standard/update/mysql = 
- UPDATE "mshop_text_type"
- SET :names
- 	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?,"mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_text_type"
- SET :names
- 	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?,"mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/text/manager/type/standard/update/ansi
+* mshop/text/manager/type/search/ansi
 
 ## submanagers
 
@@ -2654,3 +2530,133 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+## update/ansi
+
+Updates an existing text type record in the database
+
+```
+mshop/text/manager/type/update/ansi = 
+ UPDATE "mshop_text_type"
+ SET :names
+ 	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?,"mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/text/manager/type/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text type item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/type/insert/ansi
+* mshop/text/manager/type/newid/ansi
+* mshop/text/manager/type/delete/ansi
+* mshop/text/manager/type/search/ansi
+* mshop/text/manager/type/count/ansi
+
+## update/mysql
+
+Updates an existing text type record in the database
+
+```
+mshop/text/manager/type/update/mysql = 
+ UPDATE "mshop_text_type"
+ SET :names
+ 	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?,"mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_text_type"
+ SET :names
+ 	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?,"mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/text/manager/type/update/ansi
+
+# update
+## ansi
+
+Updates an existing text record in the database
+
+```
+mshop/text/manager/update/ansi = 
+ UPDATE "mshop_text"
+ SET :names
+ 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
+ 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/text/manager/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the text item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/text/manager/insert/ansi
+* mshop/text/manager/newid/ansi
+* mshop/text/manager/delete/ansi
+* mshop/text/manager/search/ansi
+* mshop/text/manager/count/ansi
+
+## mysql
+
+Updates an existing text record in the database
+
+```
+mshop/text/manager/update/mysql = 
+ UPDATE "mshop_text"
+ SET :names
+ 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
+ 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_text"
+ SET :names
+ 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
+ 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/text/manager/update/ansi

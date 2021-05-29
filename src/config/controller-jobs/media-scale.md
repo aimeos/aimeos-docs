@@ -108,6 +108,24 @@ See also:
 * controller/jobs/media/scale/decorators/excludes
 * controller/jobs/media/scale/decorators/global
 
+# force
+
+Enforce rescaling all images
+
+```
+controller/jobs/media/scale/force = 1
+```
+
+* Default: 1
+* Type: bool - True to rescale all images, false for new ones only
+* Since: 2019.10
+
+By default, all images are rescaled when executing the job controller.
+You can limit scaling to new images only (if mtime of the file is newer
+than the mtime of the media record) by setting this configuration option
+to false or 0
+
+
 # name
 
 Class name of the used media scale job controller implementation
@@ -151,22 +169,3 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "Myscaler"!
-
-
-# standard
-## force
-
-Enforce rescaling all images
-
-```
-controller/jobs/media/scale/standard/force = 1
-```
-
-* Default: 1
-* Type: bool - True to rescale all images, false for new ones only
-* Since: 2019.10
-
-By default, all images are rescaled when executing the job controller.
-You can limit scaling to new images only (if mtime of the file is newer
-than the mtime of the media record) by setting this configuration option
-to false or 0

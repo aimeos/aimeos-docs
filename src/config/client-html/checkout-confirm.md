@@ -229,12 +229,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Confirm\Intro\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the checkout confirm intro section
 
 ```
-client/html/checkout/confirm/intro/standard/subparts = Array
+client/html/checkout/confirm/intro/subparts = Array
 (
 )
 ```
@@ -276,12 +276,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the checkout confirm intro client.
 
 ```
-client/html/checkout/confirm/intro/standard/template-body = Array
+client/html/checkout/confirm/intro/template-body = Array
 (
     [0] => checkout/confirm/5/intro-body-standard
     [1] => checkout/confirm/intro-body-standard
@@ -314,7 +314,7 @@ If no specific layout template is found, the common template in the
 
 See also:
 
-* client/html/checkout/confirm/intro/standard/template-header
+* client/html/checkout/confirm/intro/template-header
 
 # name
 
@@ -483,12 +483,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Confirm\Order\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the checkout confirm order section
 
 ```
-client/html/checkout/confirm/order/standard/subparts = Array
+client/html/checkout/confirm/order/subparts = Array
 (
 )
 ```
@@ -530,12 +530,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the checkout confirm order client.
 
 ```
-client/html/checkout/confirm/order/standard/template-body = checkout/confirm/order-body-standard
+client/html/checkout/confirm/order/template-body = checkout/confirm/order-body-standard
 ```
 
 * Default: checkout/confirm/order-body-standard
@@ -556,15 +556,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/confirm/order/standard/template-header
+* client/html/checkout/confirm/order/template-header
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the checkout confirm section
 
 ```
-client/html/checkout/confirm/standard/subparts = Array
+client/html/checkout/confirm/subparts = Array
 (
     [0] => intro
     [1] => order
@@ -607,63 +606,6 @@ As the clients only generates structural HTML, the layout defined via CSS
 should support adding, removing or reordering content by a fluid like
 design.
 
-
-## template-body
-
-Relative path to the HTML body template of the checkout confirm client.
-
-```
-client/html/checkout/confirm/standard/template-body = checkout/confirm/body-standard
-```
-
-* Default: checkout/confirm/body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/checkout/confirm/standard/template-header
-
-## template-header
-
-Relative path to the HTML header template of the checkout confirm client.
-
-```
-client/html/checkout/confirm/standard/template-header = checkout/confirm/header-standard
-```
-
-* Default: checkout/confirm/header-standard
-* Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the HTML code that is inserted into the HTML page header
-of the rendered page in the frontend. The configuration string is the
-path to the template file relative to the templates directory (usually
-in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/checkout/confirm/standard/template-body
 
 # summary
 ## address
@@ -733,6 +675,63 @@ See also:
 
 * client/html/checkout/confirm/summary/address
 * client/html/checkout/confirm/summary/detail
+
+# template-body
+
+Relative path to the HTML body template of the checkout confirm client.
+
+```
+client/html/checkout/confirm/template-body = checkout/confirm/body-standard
+```
+
+* Default: checkout/confirm/body-standard
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* client/html/checkout/confirm/template-header
+
+# template-header
+
+Relative path to the HTML header template of the checkout confirm client.
+
+```
+client/html/checkout/confirm/template-header = checkout/confirm/header-standard
+```
+
+* Default: checkout/confirm/header-standard
+* Type: string - Relative path to the template creating code for the HTML page head
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the HTML code that is inserted into the HTML page header
+of the rendered page in the frontend. The configuration string is the
+path to the template file relative to the templates directory (usually
+in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* client/html/checkout/confirm/template-body
 
 # url
 ## action

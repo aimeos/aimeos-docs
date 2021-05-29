@@ -464,12 +464,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyRenew"!
 
 
-## standard/use-coupons
+## use-coupons
 
 Applies the coupons of the previous order also to the new one
 
 ```
-controller/jobs/subscription/process/renew/standard/use-coupons = 
+controller/jobs/subscription/process/renew/use-coupons = 
 ```
 
 * Default: 

@@ -27,6 +27,7 @@ See also:
 
 * client/html/catalog/home/basket-add
 * client/html/catalog/lists/basket-add
+* client/html/catalog/detail/basket-add
 * client/html/basket/related/basket-add
 
 # cache
@@ -167,8 +168,9 @@ A list of domain names whose items should be available in the catalog product vi
 client/html/catalog/product/domains = Array
 (
     [0] => media
-    [1] => price
-    [2] => text
+    [1] => media/property
+    [2] => price
+    [3] => text
 )
 ```
 
@@ -260,13 +262,41 @@ client/html/catalog/product/product-codes = Array
 * Since: 2019.06
 
 
-# standard
-## subparts
+# stock
+## enable
+
+Enables or disables displaying product stock levels in product list views
+
+```
+client/html/catalog/product/stock/enable = 1
+```
+
+* Default: 1
+* Type: boolean - Value of "1" to display stock levels, "0" to disable displaying them
+* Since: 2019.06
+
+This configuration option allows shop owners to display product
+stock levels for each product in list views or to disable
+fetching product stock information.
+
+The stock information is fetched via AJAX and inserted via Javascript.
+This allows to cache product items by leaving out such highly
+dynamic content like stock levels which changes with each order.
+
+See also:
+
+* client/html/catalog/detail/stock/enable
+* client/html/catalog/stock/url/target
+* client/html/catalog/stock/url/controller
+* client/html/catalog/stock/url/action
+* client/html/catalog/stock/url/config
+
+# subparts
 
 List of HTML sub-clients rendered within the catalog product section
 
 ```
-client/html/catalog/product/standard/subparts = Array
+client/html/catalog/product/subparts = Array
 (
 )
 ```
@@ -308,12 +338,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the catalog product client.
 
 ```
-client/html/catalog/product/standard/template-body = catalog/product/body-standard
+client/html/catalog/product/template-body = catalog/product/body-standard
 ```
 
 * Default: catalog/product/body-standard
@@ -334,14 +364,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/product/standard/template-header
+* client/html/catalog/product/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the catalog product client.
 
 ```
-client/html/catalog/product/standard/template-header = catalog/product/header-standard
+client/html/catalog/product/template-header = catalog/product/header-standard
 ```
 
 * Default: catalog/product/header-standard
@@ -363,33 +393,4 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/product/standard/template-body
-
-# stock
-## enable
-
-Enables or disables displaying product stock levels in product list views
-
-```
-client/html/catalog/product/stock/enable = 1
-```
-
-* Default: 1
-* Type: boolean - Value of "1" to display stock levels, "0" to disable displaying them
-* Since: 2019.06
-
-This configuration option allows shop owners to display product
-stock levels for each product in list views or to disable
-fetching product stock information.
-
-The stock information is fetched via AJAX and inserted via Javascript.
-This allows to cache product items by leaving out such highly
-dynamic content like stock levels which changes with each order.
-
-See also:
-
-* client/html/catalog/detail/stock/enable
-* client/html/catalog/stock/url/target
-* client/html/catalog/stock/url/controller
-* client/html/catalog/stock/url/action
-* client/html/catalog/stock/url/config
+* client/html/catalog/product/template-body

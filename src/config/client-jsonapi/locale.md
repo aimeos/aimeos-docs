@@ -156,13 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyLocale"!
 
 
-# standard
-## template
+# template
 
 Relative path to the locale lists JSON API template
 
 ```
-client/jsonapi/locale/standard/template = locale/standard
+client/jsonapi/locale/template = locale/standard
 ```
 
 * Default: locale/standard

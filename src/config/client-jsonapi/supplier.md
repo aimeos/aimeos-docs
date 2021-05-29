@@ -156,13 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySupplier"!
 
 
-# standard
-## template
+# template
 
 Relative path to the supplier lists JSON API template
 
 ```
-client/jsonapi/supplier/standard/template = supplier/standard
+client/jsonapi/supplier/template = supplier/standard
 ```
 
 * Default: supplier/standard

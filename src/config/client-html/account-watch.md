@@ -136,6 +136,29 @@ See also:
 
 * client/html/catalog/domains
 
+# maxitems
+
+Maximum number of products that can be watched in parallel
+
+```
+client/html/account/watch/maxitems = 100
+```
+
+* Default: 100
+* Type: integer - Number of products
+* Since: 2014.09
+
+This option limits the number of products that can be watched
+after the users added the products to their watch list.
+It must be a positive integer value greater than 0.
+
+Note: It's recommended to set this value not too high as this
+leads to a high memory consumption when the e-mails are generated
+to notify the customers. The memory used will up to 100*maxitems
+of the footprint of one product item including the associated
+texts, prices and media.
+
+
 # name
 
 Class name of the used account watch client implementation
@@ -207,36 +230,12 @@ See also:
 
 * client/html/catalog/lists/size
 
-# standard
-## maxitems
-
-Maximum number of products that can be watched in parallel
-
-```
-client/html/account/watch/standard/maxitems = 100
-```
-
-* Default: 100
-* Type: integer - Number of products
-* Since: 2014.09
-
-This option limits the number of products that can be watched
-after the users added the products to their watch list.
-It must be a positive integer value greater than 0.
-
-Note: It's recommended to set this value not too high as this
-leads to a high memory consumption when the e-mails are generated
-to notify the customers. The memory used will up to 100*maxitems
-of the footprint of one product item including the associated
-texts, prices and media.
-
-
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account watch section
 
 ```
-client/html/account/watch/standard/subparts = Array
+client/html/account/watch/subparts = Array
 (
 )
 ```
@@ -278,12 +277,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the account watch client.
 
 ```
-client/html/account/watch/standard/template-body = account/watch/body-standard
+client/html/account/watch/template-body = account/watch/body-standard
 ```
 
 * Default: account/watch/body-standard
@@ -304,14 +303,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/watch/standard/template-header
+* client/html/account/watch/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the account watch client.
 
 ```
-client/html/account/watch/standard/template-header = account/watch/header-standard
+client/html/account/watch/template-header = account/watch/header-standard
 ```
 
 * Default: account/watch/header-standard
@@ -333,7 +332,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/watch/standard/template-body
+* client/html/account/watch/template-body
 
 # url
 ## action

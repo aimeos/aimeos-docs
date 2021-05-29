@@ -229,12 +229,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Account\History\Lists\M
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the account history list section
 
 ```
-client/html/account/history/lists/standard/subparts = Array
+client/html/account/history/lists/subparts = Array
 (
 )
 ```
@@ -276,12 +276,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the account history list client.
 
 ```
-client/html/account/history/lists/standard/template-body = account/history/list-body-standard
+client/html/account/history/lists/template-body = account/history/list-body-standard
 ```
 
 * Default: account/history/list-body-standard
@@ -302,7 +302,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/history/lists/standard/template-header
+* client/html/account/history/lists/template-header
 
 # name
 
@@ -471,12 +471,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Account\History\Order\M
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the account history order section
 
 ```
-client/html/account/history/order/standard/subparts = Array
+client/html/account/history/order/subparts = Array
 (
 )
 ```
@@ -518,12 +518,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the account history order client.
 
 ```
-client/html/account/history/order/standard/template-body = account/history/order-body-standard
+client/html/account/history/order/template-body = account/history/order-body-standard
 ```
 
 * Default: account/history/order-body-standard
@@ -544,15 +544,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/history/order/standard/template-header
+* client/html/account/history/order/template-header
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account history section
 
 ```
-client/html/account/history/standard/subparts = Array
+client/html/account/history/subparts = Array
 (
     [0] => lists
     [1] => order
@@ -595,63 +594,6 @@ As the clients only generates structural HTML, the layout defined via CSS
 should support adding, removing or reordering content by a fluid like
 design.
 
-
-## template-body
-
-Relative path to the HTML body template of the account history client.
-
-```
-client/html/account/history/standard/template-body = account/history/body-standard
-```
-
-* Default: account/history/body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/account/history/standard/template-header
-
-## template-header
-
-Relative path to the HTML header template of the account history client.
-
-```
-client/html/account/history/standard/template-header = account/history/header-standard
-```
-
-* Default: account/history/header-standard
-* Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the HTML code that is inserted into the HTML page header
-of the rendered page in the frontend. The configuration string is the
-path to the template file relative to the templates directory (usually
-in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/account/history/standard/template-body
 
 # summary
 ## address
@@ -719,6 +661,63 @@ See also:
 
 * client/html/account/history/summary/address
 * client/html/account/history/summary/detail
+
+# template-body
+
+Relative path to the HTML body template of the account history client.
+
+```
+client/html/account/history/template-body = account/history/body-standard
+```
+
+* Default: account/history/body-standard
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* client/html/account/history/template-header
+
+# template-header
+
+Relative path to the HTML header template of the account history client.
+
+```
+client/html/account/history/template-header = account/history/header-standard
+```
+
+* Default: account/history/header-standard
+* Type: string - Relative path to the template creating code for the HTML page head
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the HTML code that is inserted into the HTML page header
+of the rendered page in the frontend. The configuration string is the
+path to the template file relative to the templates directory (usually
+in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* client/html/account/history/template-body
 
 # url
 ## action

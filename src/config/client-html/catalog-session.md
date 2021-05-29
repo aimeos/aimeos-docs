@@ -329,28 +329,12 @@ See also:
 * client/html/catalog/lists/domains
 * client/html/catalog/detail/domains
 
-## name
-
-Name of the pinned part used by the catalog session client implementation
-
-```
-client/html/catalog/session/pinned/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the client class name
-* Since: 2014.09
-
-Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Session\Pinned\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## standard/maxitems
+## maxitems
 
 Maximum number of products displayed in the "pinned" section
 
 ```
-client/html/catalog/session/pinned/standard/maxitems = 50
+client/html/catalog/session/pinned/maxitems = 50
 ```
 
 * Default: 50
@@ -367,12 +351,28 @@ to the client each time the user loads a page with the list of
 pinned products.
 
 
-## standard/subparts
+## name
+
+Name of the pinned part used by the catalog session client implementation
+
+```
+client/html/catalog/session/pinned/name = Standard
+```
+
+* Default: Standard
+* Type: string - Last part of the client class name
+* Since: 2014.09
+
+Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Session\Pinned\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## subparts
 
 List of HTML sub-clients rendered within the catalog session pinned section
 
 ```
-client/html/catalog/session/pinned/standard/subparts = Array
+client/html/catalog/session/pinned/subparts = Array
 (
 )
 ```
@@ -414,12 +414,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the catalog session pinned client.
 
 ```
-client/html/catalog/session/pinned/standard/template-body = catalog/session/pinned-body-standard
+client/html/catalog/session/pinned/template-body = catalog/session/pinned-body-standard
 ```
 
 * Default: catalog/session/pinned-body-standard
@@ -440,7 +440,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/session/pinned/standard/template-header
+* client/html/catalog/session/pinned/template-header
 
 ## url/action
 
@@ -687,6 +687,23 @@ See also:
 * client/html/catalog/session/seen/decorators/excludes
 * client/html/catalog/session/seen/decorators/global
 
+## maxitems
+
+Maximum number of products displayed in the "last seen" section
+
+```
+client/html/catalog/session/seen/maxitems = 6
+```
+
+* Default: 6
+* Type: integer - Number of products
+* Since: 2014.03
+
+This option limits the number of products that are shown in the
+"last seen" section after the user visited their detail pages. It
+must be a positive integer value greater than 0.
+
+
 ## name
 
 Name of the seen part used by the catalog session client implementation
@@ -703,29 +720,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Session\Seen\My
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/maxitems
-
-Maximum number of products displayed in the "last seen" section
-
-```
-client/html/catalog/session/seen/standard/maxitems = 6
-```
-
-* Default: 6
-* Type: integer - Number of products
-* Since: 2014.03
-
-This option limits the number of products that are shown in the
-"last seen" section after the user visited their detail pages. It
-must be a positive integer value greater than 0.
-
-
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the catalog session seen section
 
 ```
-client/html/catalog/session/seen/standard/subparts = Array
+client/html/catalog/session/seen/subparts = Array
 (
 )
 ```
@@ -767,12 +767,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the catalog session seen client.
 
 ```
-client/html/catalog/session/seen/standard/template-body = catalog/session/seen-body-standard
+client/html/catalog/session/seen/template-body = catalog/session/seen-body-standard
 ```
 
 * Default: catalog/session/seen-body-standard
@@ -793,15 +793,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/session/seen/standard/template-header
+* client/html/catalog/session/seen/template-header
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog session section
 
 ```
-client/html/catalog/session/standard/subparts = Array
+client/html/catalog/session/subparts = Array
 (
     [0] => pinned
     [1] => seen
@@ -845,12 +844,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the catalog session client.
 
 ```
-client/html/catalog/session/standard/template-body = catalog/session/body-standard
+client/html/catalog/session/template-body = catalog/session/body-standard
 ```
 
 * Default: catalog/session/body-standard
@@ -871,14 +870,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/session/standard/template-header
+* client/html/catalog/session/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the catalog session client.
 
 ```
-client/html/catalog/session/standard/template-header = catalog/session/header-standard
+client/html/catalog/session/template-header = catalog/session/header-standard
 ```
 
 * Default: catalog/session/header-standard
@@ -900,4 +899,4 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/catalog/session/standard/template-body
+* client/html/catalog/session/template-body

@@ -233,6 +233,7 @@ nav:
       - E-mail voucher: config/client-html/email-voucher.md
       - E-mail watch: config/client-html/email-watch.md
       - Locale select: config/client-html/locale-select.md
+      - Supplier detail: config/client-html/supplier-detail.md
     - JSON REST API:
       - Common: config/client-jsonapi/common.md
       - Decorators: config/client-jsonapi/decorators.md
@@ -247,6 +248,7 @@ nav:
       - Product: config/client-jsonapi/product.md
       - Review: config/client-jsonapi/review.md
       - Service: config/client-jsonapi/service.md
+      - Site: config/client-jsonapi/site.md
       - Stock: config/client-jsonapi/stock.md
       - Subscription: config/client-jsonapi/subscription.md
       - Supplier: config/client-jsonapi/supplier.md
@@ -261,6 +263,7 @@ nav:
       - Product: config/controller-frontend/product.md
       - Review: config/controller-frontend/review.md
       - Service: config/controller-frontend/service.md
+      - Site: config/controller-frontend/site.md
       - Stock: config/controller-frontend/stock.md
       - Subscription: config/controller-frontend/subscription.md
       - Supplier: config/controller-frontend/supplier.md
@@ -284,6 +287,7 @@ nav:
       - Plugin: config/admin-jqadm/plugin.md
       - Product: config/admin-jqadm/product.md
       - Review: config/admin-jqadm/review.md
+      - Rule: config/admin-jqadm/rule.md
       - Service: config/admin-jqadm/service.md
       - Subscription: config/admin-jqadm/subscription.md
       - Supplier: config/admin-jqadm/supplier.md
@@ -306,6 +310,7 @@ nav:
       - Plugin: config/admin-jsonadm/plugin.md
       - Price: config/admin-jsonadm/price.md
       - Product: config/admin-jsonadm/product.md
+      - Rule: config/admin-jsonadm/rule.md
       - Service: config/admin-jsonadm/service.md
       - Stock: config/admin-jsonadm/stock.md
       - Supplier: config/admin-jsonadm/supplier.md
@@ -364,6 +369,7 @@ nav:
       - Price: config/mshop/price-manager.md
       - Product: config/mshop/product-manager.md
       - Review: config/mshop/review-manager.md
+      - Rule: config/mshop/rule-manager.md
       - Service: config/mshop/service-manager.md
       - Stock: config/mshop/stock-manager.md
       - Subscription: config/mshop/subscription-manager.md

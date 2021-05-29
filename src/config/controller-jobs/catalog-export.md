@@ -377,12 +377,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySitemap"!
 
 
-## standard/template-footer
+## template-footer
 
 Relative path to the XML site map footer template of the catalog site map job controller.
 
 ```
-controller/jobs/catalog/export/sitemap/standard/template-footer = catalog/export/sitemap-items-footer-standard
+controller/jobs/catalog/export/sitemap/template-footer = catalog/export/sitemap-items-footer-standard
 ```
 
 * Default: catalog/export/sitemap-items-footer-standard
@@ -403,16 +403,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/catalog/export/sitemap/standard/template-header
-* controller/jobs/catalog/export/sitemap/standard/template-items
-* controller/jobs/catalog/export/sitemap/standard/template-index
+* controller/jobs/catalog/export/sitemap/template-header
+* controller/jobs/catalog/export/sitemap/template-items
+* controller/jobs/catalog/export/sitemap/template-index
 
-## standard/template-header
+## template-header
 
 Relative path to the XML site map header template of the catalog site map job controller.
 
 ```
-controller/jobs/catalog/export/sitemap/standard/template-header = catalog/export/sitemap-items-header-standard
+controller/jobs/catalog/export/sitemap/template-header = catalog/export/sitemap-items-header-standard
 ```
 
 * Default: catalog/export/sitemap-items-header-standard
@@ -433,16 +433,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/catalog/export/sitemap/standard/template-items
-* controller/jobs/catalog/export/sitemap/standard/template-footer
-* controller/jobs/catalog/export/sitemap/standard/template-index
+* controller/jobs/catalog/export/sitemap/template-items
+* controller/jobs/catalog/export/sitemap/template-footer
+* controller/jobs/catalog/export/sitemap/template-index
 
-## standard/template-index
+## template-index
 
 Relative path to the XML site map index template of the catalog site map job controller.
 
 ```
-controller/jobs/catalog/export/sitemap/standard/template-index = catalog/export/sitemap-index-standard
+controller/jobs/catalog/export/sitemap/template-index = catalog/export/sitemap-index-standard
 ```
 
 * Default: catalog/export/sitemap-index-standard
@@ -463,16 +463,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/catalog/export/sitemap/standard/template-header
-* controller/jobs/catalog/export/sitemap/standard/template-items
-* controller/jobs/catalog/export/sitemap/standard/template-footer
+* controller/jobs/catalog/export/sitemap/template-header
+* controller/jobs/catalog/export/sitemap/template-items
+* controller/jobs/catalog/export/sitemap/template-footer
 
-## standard/template-items
+## template-items
 
 Relative path to the XML items template of the catalog site map job controller.
 
 ```
-controller/jobs/catalog/export/sitemap/standard/template-items = catalog/export/sitemap-items-body-standard
+controller/jobs/catalog/export/sitemap/template-items = catalog/export/sitemap-items-body-standard
 ```
 
 * Default: catalog/export/sitemap-items-body-standard
@@ -493,6 +493,6 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/catalog/export/sitemap/standard/template-header
-* controller/jobs/catalog/export/sitemap/standard/template-footer
-* controller/jobs/catalog/export/sitemap/standard/template-index
+* controller/jobs/catalog/export/sitemap/template-header
+* controller/jobs/catalog/export/sitemap/template-footer
+* controller/jobs/catalog/export/sitemap/template-index
