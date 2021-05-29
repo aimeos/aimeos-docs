@@ -169,13 +169,12 @@ by default. You can change the number of empty input lines shown by default
 using this configuration setting.
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the bulk order section
 
 ```
-client/html/basket/bulk/standard/subparts = Array
+client/html/basket/bulk/subparts = Array
 (
 )
 ```
@@ -217,12 +216,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the bulk order client.
 
 ```
-client/html/basket/bulk/standard/template-body = basket/bulk/body-standard
+client/html/basket/bulk/template-body = basket/bulk/body-standard
 ```
 
 * Default: basket/bulk/body-standard
@@ -243,14 +242,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/basket/bulk/standard/template-header
+* client/html/basket/bulk/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the bulk order client.
 
 ```
-client/html/basket/bulk/standard/template-header = basket/bulk/header-standard
+client/html/basket/bulk/template-header = basket/bulk/header-standard
 ```
 
 * Default: basket/bulk/header-standard
@@ -272,4 +271,4 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/basket/bulk/standard/template-body
+* client/html/basket/bulk/template-body

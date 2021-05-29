@@ -304,12 +304,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Subscription\Html
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the subscription e-mail html section
 
 ```
-client/html/email/subscription/html/standard/subparts = Array
+client/html/email/subscription/html/subparts = Array
 (
 )
 ```
@@ -351,12 +351,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the subscription e-mail html client.
 
 ```
-client/html/email/subscription/html/standard/template-body = email/subscription/html-body-standard
+client/html/email/subscription/html/template-body = email/subscription/html-body-standard
 ```
 
 * Default: email/subscription/html-body-standard
@@ -384,7 +384,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/subscription/html/standard/template-header
+* client/html/email/subscription/html/template-header
 
 # name
 
@@ -480,13 +480,12 @@ See also:
 * client/html/email/from-email
 * client/html/email/bcc-email
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the subscription e-mail
 
 ```
-client/html/email/subscription/standard/subparts = Array
+client/html/email/subscription/subparts = Array
 (
     [0] => text
     [1] => html
@@ -530,12 +529,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the subscription e-mail client.
 
 ```
-client/html/email/subscription/standard/template-body = email/subscription/body-standard
+client/html/email/subscription/template-body = email/subscription/body-standard
 ```
 
 * Default: email/subscription/body-standard
@@ -563,14 +562,14 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/subscription/standard/template-header
+* client/html/email/subscription/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the subscription e-mail client.
 
 ```
-client/html/email/subscription/standard/template-header = email/subscription/header-standard
+client/html/email/subscription/template-header = email/subscription/header-standard
 ```
 
 * Default: email/subscription/header-standard
@@ -599,7 +598,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/subscription/standard/template-body
+* client/html/email/subscription/template-body
 
 # text
 ## decorators/excludes
@@ -723,12 +722,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Subscription\Text
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the text section of a subscription email
 
 ```
-client/html/email/subscription/text/standard/subparts = Array
+client/html/email/subscription/text/subparts = Array
 (
 )
 ```
@@ -770,12 +769,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the text body template of the subscription email text client.
 
 ```
-client/html/email/subscription/text/standard/template-body = email/subscription/text-body-standard
+client/html/email/subscription/text/template-body = email/subscription/text-body-standard
 ```
 
 * Default: email/subscription/text-body-standard
@@ -803,4 +802,4 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/subscription/text/standard/template-header
+* client/html/email/subscription/text/template-header

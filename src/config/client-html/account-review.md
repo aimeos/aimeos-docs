@@ -152,13 +152,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyReview"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account review section
 
 ```
-client/html/account/review/standard/subparts = Array
+client/html/account/review/subparts = Array
 (
     [0] => todo
 )
@@ -201,12 +200,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the account review client.
 
 ```
-client/html/account/review/standard/template-body = account/review/body-standard
+client/html/account/review/template-body = account/review/body-standard
 ```
 
 * Default: account/review/body-standard
@@ -227,14 +226,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/review/standard/template-header
+* client/html/account/review/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the account review client.
 
 ```
-client/html/account/review/standard/template-header = account/review/header-standard
+client/html/account/review/template-header = account/review/header-standard
 ```
 
 * Default: account/review/header-standard
@@ -256,7 +255,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/review/standard/template-body
+* client/html/account/review/template-body
 
 # todo
 ## days-after
@@ -420,12 +419,12 @@ See also:
 
 * client/html/account/review/todo/days-after
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the account review todo section
 
 ```
-client/html/account/review/todo/standard/subparts = Array
+client/html/account/review/todo/subparts = Array
 (
 )
 ```
@@ -467,12 +466,12 @@ should support adding, removing or retodoing content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the account review todo client.
 
 ```
-client/html/account/review/todo/standard/template-body = account/review/todo-body-standard
+client/html/account/review/todo/template-body = account/review/todo-body-standard
 ```
 
 * Default: account/review/todo-body-standard
@@ -493,7 +492,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/review/todo/standard/template-header
+* client/html/account/review/todo/template-header
 
 # url
 ## action
@@ -501,10 +500,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/account/review/url/action = 
+client/html/account/review/url/action = review
 ```
 
-* Default: 
+* Default: review
 * Type: string - Name of the action
 * Since: 2020.10
 
@@ -556,10 +555,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/account/review/url/controller = 
+client/html/account/review/url/controller = Account
 ```
 
-* Default: 
+* Default: Account
 * Type: string - Name of the controller
 * Since: 2020.10
 

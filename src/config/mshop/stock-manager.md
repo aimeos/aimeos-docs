@@ -1,4 +1,101 @@
 
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/stock/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msto."id"
+ 	FROM "mshop_stock" AS msto
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msto."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/stock/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2017.01
+
+Counts all records matched by the given criteria from the product
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/insert/ansi
+* mshop/stock/manager/update/ansi
+* mshop/stock/manager/newid/ansi
+* mshop/stock/manager/delete/ansi
+* mshop/stock/manager/search/ansi
+* mshop/stock/manager/stocklevel
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/stock/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msto."id"
+ 	FROM "mshop_stock" AS msto
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msto."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT msto."id"
+ 	FROM "mshop_stock" AS msto
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY msto."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/stock/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -120,6 +217,133 @@ See also:
 * mshop/stock/manager/decorators/excludes
 * mshop/stock/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/stock/manager/delete/ansi = 
+ DELETE FROM "mshop_stock"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/stock/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2017.01
+
+Removes the records specified by the given IDs from the product database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/insert/ansi
+* mshop/stock/manager/update/ansi
+* mshop/stock/manager/newid/ansi
+* mshop/stock/manager/search/ansi
+* mshop/stock/manager/count/ansi
+* mshop/stock/manager/stocklevel
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/stock/manager/delete/mysql = 
+ DELETE FROM "mshop_stock"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_stock"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/stock/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new product stock record into the database table
+
+```
+mshop/stock/manager/insert/ansi = 
+ INSERT INTO "mshop_stock" ( :names
+ 	"prodid", "type", "stocklevel", "backdate",
+ 	"timeframe", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/stock/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2017.01
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the product stock item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/update/ansi
+* mshop/stock/manager/newid/ansi
+* mshop/stock/manager/delete/ansi
+* mshop/stock/manager/search/ansi
+* mshop/stock/manager/count/ansi
+* mshop/stock/manager/stocklevel
+
+## mysql
+
+Inserts a new product stock record into the database table
+
+```
+mshop/stock/manager/insert/mysql = 
+ INSERT INTO "mshop_stock" ( :names
+ 	"prodid", "type", "stocklevel", "backdate",
+ 	"timeframe", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_stock" ( :names
+ 	"prodid", "type", "stocklevel", "backdate",
+ 	"timeframe", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/stock/manager/insert/ansi
+
 # name
 
 Class name of the used product stock manager implementation
@@ -166,274 +390,16 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyStock"!
 
 
-# sitemode
-
-Mode how items from levels below or above in the site tree are handled
-
-```
-mshop/stock/manager/sitemode = 3
-```
-
-* Default: 3
-* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
-* Since: 2018.01
-
-By default, only items from the current site are fetched from the
-storage. If the ai-sites extension is installed, you can create a
-tree of sites. Then, this setting allows you to define for the
-whole stock domain if items from parent sites are inherited,
-sites from child sites are aggregated or both.
-
-Available constants for the site mode are:
-* 0 = only items from the current site
-* 1 = inherit items from parent sites
-* 2 = aggregate items from child sites
-* 3 = inherit and aggregate items at the same time
-
-You also need to set the mode in the locale manager
-(mshop/locale/manager/standard/sitelevel) to one of the constants.
-If you set it to the same value, it will work as described but you
-can also use different modes. For example, if inheritance and
-aggregation is configured the locale manager but only inheritance
-in the domain manager because aggregating items makes no sense in
-this domain, then items wil be only inherited. Thus, you have full
-control over inheritance and aggregation in each domain.
-
-See also:
-
-* mshop/locale/manager/standard/sitelevel
-
-# standard
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/stock/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msto."id"
- 	FROM "mshop_stock" AS msto
- 	:joins
- 	WHERE :cond
- 	ORDER BY msto."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/stock/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2017.01
-
-Counts all records matched by the given criteria from the product
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/standard/insert/ansi
-* mshop/stock/manager/standard/update/ansi
-* mshop/stock/manager/standard/newid/ansi
-* mshop/stock/manager/standard/delete/ansi
-* mshop/stock/manager/standard/search/ansi
-* mshop/stock/manager/standard/stocklevel
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/stock/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msto."id"
- 	FROM "mshop_stock" AS msto
- 	:joins
- 	WHERE :cond
- 	ORDER BY msto."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msto."id"
- 	FROM "mshop_stock" AS msto
- 	:joins
- 	WHERE :cond
- 	ORDER BY msto."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/stock/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/stock/manager/standard/delete/ansi = 
- DELETE FROM "mshop_stock"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/stock/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2017.01
-
-Removes the records specified by the given IDs from the product database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/standard/insert/ansi
-* mshop/stock/manager/standard/update/ansi
-* mshop/stock/manager/standard/newid/ansi
-* mshop/stock/manager/standard/search/ansi
-* mshop/stock/manager/standard/count/ansi
-* mshop/stock/manager/standard/stocklevel
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/stock/manager/standard/delete/mysql = 
- DELETE FROM "mshop_stock"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_stock"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/stock/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new product stock record into the database table
-
-```
-mshop/stock/manager/standard/insert/ansi = 
- INSERT INTO "mshop_stock" ( :names
- 	"productcode", "type", "stocklevel", "backdate",
- 	"timeframe", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/stock/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2017.01
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the product stock item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/standard/update/ansi
-* mshop/stock/manager/standard/newid/ansi
-* mshop/stock/manager/standard/delete/ansi
-* mshop/stock/manager/standard/search/ansi
-* mshop/stock/manager/standard/count/ansi
-* mshop/stock/manager/standard/stocklevel
-
-## insert/mysql
-
-Inserts a new product stock record into the database table
-
-```
-mshop/stock/manager/standard/insert/mysql = 
- INSERT INTO "mshop_stock" ( :names
- 	"productcode", "type", "stocklevel", "backdate",
- 	"timeframe", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_stock" ( :names
- 	"productcode", "type", "stocklevel", "backdate",
- 	"timeframe", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/stock/manager/standard/insert/ansi
-
-## newid/ansi
+# newid
+## ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/stock/manager/standard/newid/ansi = mshop/stock/manager/standard/newid
+mshop/stock/manager/newid/ansi = mshop/stock/manager/newid
 ```
 
-* Default: mshop/stock/manager/standard/newid
+* Default: mshop/stock/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2017.01
 
@@ -459,35 +425,36 @@ specific way.
 
 See also:
 
-* mshop/stock/manager/standard/insert/ansi
-* mshop/stock/manager/standard/update/ansi
-* mshop/stock/manager/standard/delete/ansi
-* mshop/stock/manager/standard/search/ansi
-* mshop/stock/manager/standard/count/ansi
-* mshop/stock/manager/standard/stocklevel
+* mshop/stock/manager/insert/ansi
+* mshop/stock/manager/update/ansi
+* mshop/stock/manager/delete/ansi
+* mshop/stock/manager/search/ansi
+* mshop/stock/manager/count/ansi
+* mshop/stock/manager/stocklevel
 
-## newid/mysql
+## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/stock/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/stock/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/stock/manager/standard/newid
+* Default: mshop/stock/manager/newid
 
 See also:
 
-* mshop/stock/manager/standard/newid/ansi
+* mshop/stock/manager/newid/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/stock/manager/standard/search/ansi = 
+mshop/stock/manager/search/ansi = 
  SELECT :columns
- 	msto."id" AS "stock.id", msto."productcode" AS "stock.productcode",
+ 	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
  	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
  	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.backdate",
  	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
@@ -499,7 +466,7 @@ mshop/stock/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/stock/manager/standard/search
+* Default: mshop/stock/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2017.01
 
@@ -544,21 +511,21 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/stock/manager/standard/insert/ansi
-* mshop/stock/manager/standard/update/ansi
-* mshop/stock/manager/standard/newid/ansi
-* mshop/stock/manager/standard/delete/ansi
-* mshop/stock/manager/standard/count/ansi
-* mshop/stock/manager/standard/stocklevel
+* mshop/stock/manager/insert/ansi
+* mshop/stock/manager/update/ansi
+* mshop/stock/manager/newid/ansi
+* mshop/stock/manager/delete/ansi
+* mshop/stock/manager/count/ansi
+* mshop/stock/manager/stocklevel
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/stock/manager/standard/search/mysql = 
+mshop/stock/manager/search/mysql = 
  SELECT :columns
- 	msto."id" AS "stock.id", msto."productcode" AS "stock.productcode",
+ 	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
  	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
  	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.backdate",
  	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
@@ -572,7 +539,7 @@ mshop/stock/manager/standard/search/mysql =
 
 * Default: 
  SELECT :columns
- 	msto."id" AS "stock.id", msto."productcode" AS "stock.productcode",
+ 	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
  	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
  	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.backdate",
  	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
@@ -586,27 +553,65 @@ mshop/stock/manager/standard/search/mysql =
 
 See also:
 
-* mshop/stock/manager/standard/search/ansi
+* mshop/stock/manager/search/ansi
 
-## stocklevel/ansi
+# sitemode
+
+Mode how items from levels below or above in the site tree are handled
+
+```
+mshop/stock/manager/sitemode = 3
+```
+
+* Default: 3
+* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
+* Since: 2018.01
+
+By default, only items from the current site are fetched from the
+storage. If the ai-sites extension is installed, you can create a
+tree of sites. Then, this setting allows you to define for the
+whole stock domain if items from parent sites are inherited,
+sites from child sites are aggregated or both.
+
+Available constants for the site mode are:
+* 0 = only items from the current site
+* 1 = inherit items from parent sites
+* 2 = aggregate items from child sites
+* 3 = inherit and aggregate items at the same time
+
+You also need to set the mode in the locale manager
+(mshop/locale/manager/sitelevel) to one of the constants.
+If you set it to the same value, it will work as described but you
+can also use different modes. For example, if inheritance and
+aggregation is configured the locale manager but only inheritance
+in the domain manager because aggregating items makes no sense in
+this domain, then items wil be only inherited. Thus, you have full
+control over inheritance and aggregation in each domain.
+
+See also:
+
+* mshop/locale/manager/sitelevel
+
+# stocklevel
+## ansi
 
 Increases or decreases the stock level for the given product and type code
 
 ```
-mshop/stock/manager/standard/stocklevel/ansi = 
+mshop/stock/manager/stocklevel/ansi = 
  UPDATE "mshop_stock"
  SET "stocklevel" = "stocklevel" - ?, "mtime" = ?, "editor" = ?
- WHERE "productcode" = ? AND "type" = ? AND :cond
+ WHERE "prodid" = ? AND "type" = ? AND :cond
 ```
 
-* Default: mshop/stock/manager/standard/stocklevel
+* Default: mshop/stock/manager/stocklevel
 * Type: string - SQL statement for increasing/decreasing the stock level
 * Since: 2017.01
 
 The stock level is decreased for the ordered products each time
 an order is placed by a customer successfully. Also, updates
 from external sources like ERP systems can increase the stock
-level of a product if no absolute values are set via saveItem()
+level of a product if no absolute values are set via save()
 instead.
 
 The stock level must be from one of the sites that are configured
@@ -620,98 +625,33 @@ set to the current timestamp and the editor field is updated.
 
 See also:
 
-* mshop/stock/manager/standard/insert/ansi
-* mshop/stock/manager/standard/update/ansi
-* mshop/stock/manager/standard/newid/ansi
-* mshop/stock/manager/standard/delete/ansi
-* mshop/stock/manager/standard/search/ansi
-* mshop/stock/manager/standard/count/ansi
+* mshop/stock/manager/insert/ansi
+* mshop/stock/manager/update/ansi
+* mshop/stock/manager/newid/ansi
+* mshop/stock/manager/delete/ansi
+* mshop/stock/manager/search/ansi
+* mshop/stock/manager/count/ansi
 
-## stocklevel/mysql
+## mysql
 
 Increases or decreases the stock level for the given product and type code
 
 ```
-mshop/stock/manager/standard/stocklevel/mysql = 
+mshop/stock/manager/stocklevel/mysql = 
  UPDATE "mshop_stock"
  SET "stocklevel" = "stocklevel" - ?, "mtime" = ?, "editor" = ?
- WHERE "productcode" = ? AND "type" = ? AND :cond
+ WHERE "prodid" = ? AND "type" = ? AND :cond
 ```
 
 * Default: 
  UPDATE "mshop_stock"
  SET "stocklevel" = "stocklevel" - ?, "mtime" = ?, "editor" = ?
- WHERE "productcode" = ? AND "type" = ? AND :cond
+ WHERE "prodid" = ? AND "type" = ? AND :cond
 
 
 See also:
 
-* mshop/stock/manager/standard/stocklevel/ansi
-
-## update/ansi
-
-Updates an existing product stock record in the database
-
-```
-mshop/stock/manager/standard/update/ansi = 
- UPDATE "mshop_stock"
- SET :names
- 	"productcode" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
- 	"timeframe" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/stock/manager/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2017.01
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the product stock item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/standard/insert/ansi
-* mshop/stock/manager/standard/newid/ansi
-* mshop/stock/manager/standard/delete/ansi
-* mshop/stock/manager/standard/search/ansi
-* mshop/stock/manager/standard/count/ansi
-* mshop/stock/manager/standard/stocklevel
-
-## update/mysql
-
-Updates an existing product stock record in the database
-
-```
-mshop/stock/manager/standard/update/mysql = 
- UPDATE "mshop_stock"
- SET :names
- 	"productcode" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
- 	"timeframe" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_stock"
- SET :names
- 	"productcode" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
- 	"timeframe" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/stock/manager/standard/update/ansi
+* mshop/stock/manager/stocklevel/ansi
 
 # submanagers
 
@@ -739,6 +679,101 @@ retrieved list of items.
 
 
 # type
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/stock/manager/type/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mstoty."id"
+ 	FROM "mshop_stock_type" mstoty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mstoty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/stock/manager/type/count
+* Type: string - SQL statement for counting items
+* Since: 2017.01
+
+Counts all records matched by the given criteria from the product
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" stock from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/type/insert/ansi
+* mshop/stock/manager/type/update/ansi
+* mshop/stock/manager/type/newid/ansi
+* mshop/stock/manager/type/delete/ansi
+* mshop/stock/manager/type/search/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/stock/manager/type/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mstoty."id"
+ 	FROM "mshop_stock_type" mstoty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mstoty."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mstoty."id"
+ 	FROM "mshop_stock_type" mstoty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mstoty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/stock/manager/type/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the stock type manager
@@ -850,6 +885,129 @@ See also:
 * mshop/stock/manager/type/decorators/excludes
 * mshop/stock/manager/type/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/stock/manager/type/delete/ansi = 
+ DELETE FROM "mshop_stock_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/stock/manager/type/delete
+* Type: string - SQL statement for deleting items
+* Since: 2017.01
+
+Removes the records specified by the given IDs from the product database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/type/insert/ansi
+* mshop/stock/manager/type/update/ansi
+* mshop/stock/manager/type/newid/ansi
+* mshop/stock/manager/type/search/ansi
+* mshop/stock/manager/type/count/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/stock/manager/type/delete/mysql = 
+ DELETE FROM "mshop_stock_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_stock_type"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/stock/manager/type/delete/ansi
+
+## insert/ansi
+
+Inserts a new stock type record into the database table
+
+```
+mshop/stock/manager/type/insert/ansi = 
+ INSERT INTO "mshop_stock_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/stock/manager/type/insert
+* Type: string - SQL statement for inserting records
+* Since: 2017.01
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the product type item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/type/update/ansi
+* mshop/stock/manager/type/newid/ansi
+* mshop/stock/manager/type/delete/ansi
+* mshop/stock/manager/type/search/ansi
+* mshop/stock/manager/type/count/ansi
+
+## insert/mysql
+
+Inserts a new stock type record into the database table
+
+```
+mshop/stock/manager/type/insert/mysql = 
+ INSERT INTO "mshop_stock_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_stock_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/stock/manager/type/insert/ansi
+
 ## name
 
 Class name of the used stock type manager implementation
@@ -895,233 +1053,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyType"!
 
 
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/stock/manager/type/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mstoty."id"
- 	FROM "mshop_stock_type" mstoty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mstoty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/stock/manager/type/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2017.01
-
-Counts all records matched by the given criteria from the product
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" stock from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/type/standard/insert/ansi
-* mshop/stock/manager/type/standard/update/ansi
-* mshop/stock/manager/type/standard/newid/ansi
-* mshop/stock/manager/type/standard/delete/ansi
-* mshop/stock/manager/type/standard/search/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/stock/manager/type/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mstoty."id"
- 	FROM "mshop_stock_type" mstoty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mstoty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mstoty."id"
- 	FROM "mshop_stock_type" mstoty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mstoty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/stock/manager/type/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/stock/manager/type/standard/delete/ansi = 
- DELETE FROM "mshop_stock_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/stock/manager/type/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2017.01
-
-Removes the records specified by the given IDs from the product database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/type/standard/insert/ansi
-* mshop/stock/manager/type/standard/update/ansi
-* mshop/stock/manager/type/standard/newid/ansi
-* mshop/stock/manager/type/standard/search/ansi
-* mshop/stock/manager/type/standard/count/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/stock/manager/type/standard/delete/mysql = 
- DELETE FROM "mshop_stock_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_stock_type"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/stock/manager/type/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new stock type record into the database table
-
-```
-mshop/stock/manager/type/standard/insert/ansi = 
- INSERT INTO "mshop_stock_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/stock/manager/type/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2017.01
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the product type item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/type/standard/update/ansi
-* mshop/stock/manager/type/standard/newid/ansi
-* mshop/stock/manager/type/standard/delete/ansi
-* mshop/stock/manager/type/standard/search/ansi
-* mshop/stock/manager/type/standard/count/ansi
-
-## standard/insert/mysql
-
-Inserts a new stock type record into the database table
-
-```
-mshop/stock/manager/type/standard/insert/mysql = 
- INSERT INTO "mshop_stock_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_stock_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/stock/manager/type/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/stock/manager/type/standard/newid/ansi = mshop/stock/manager/type/standard/newid
+mshop/stock/manager/type/newid/ansi = mshop/stock/manager/type/newid
 ```
 
-* Default: mshop/stock/manager/type/standard/newid
+* Default: mshop/stock/manager/type/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2017.01
 
@@ -1147,32 +1087,32 @@ specific way.
 
 See also:
 
-* mshop/stock/manager/type/standard/insert/ansi
-* mshop/stock/manager/type/standard/update/ansi
-* mshop/stock/manager/type/standard/delete/ansi
-* mshop/stock/manager/type/standard/search/ansi
-* mshop/stock/manager/type/standard/count/ansi
+* mshop/stock/manager/type/insert/ansi
+* mshop/stock/manager/type/update/ansi
+* mshop/stock/manager/type/delete/ansi
+* mshop/stock/manager/type/search/ansi
+* mshop/stock/manager/type/count/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/stock/manager/type/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/stock/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/stock/manager/type/standard/newid
+* Default: mshop/stock/manager/type/newid
 
 See also:
 
-* mshop/stock/manager/type/standard/newid/ansi
+* mshop/stock/manager/type/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/stock/manager/type/standard/search/ansi = 
+mshop/stock/manager/type/search/ansi = 
  SELECT :columns
  	mstoty."id" AS "stock.type.id", mstoty."siteid" AS "stock.type.siteid",
  	mstoty."code" AS "stock.type.code", mstoty."domain" AS "stock.type.domain",
@@ -1186,7 +1126,7 @@ mshop/stock/manager/type/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/stock/manager/type/standard/search
+* Default: mshop/stock/manager/type/search
 * Type: string - SQL statement for searching items
 * Since: 2017.01
 
@@ -1231,18 +1171,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/stock/manager/type/standard/insert/ansi
-* mshop/stock/manager/type/standard/update/ansi
-* mshop/stock/manager/type/standard/newid/ansi
-* mshop/stock/manager/type/standard/delete/ansi
-* mshop/stock/manager/type/standard/count/ansi
+* mshop/stock/manager/type/insert/ansi
+* mshop/stock/manager/type/update/ansi
+* mshop/stock/manager/type/newid/ansi
+* mshop/stock/manager/type/delete/ansi
+* mshop/stock/manager/type/count/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/stock/manager/type/standard/search/mysql = 
+mshop/stock/manager/type/search/mysql = 
  SELECT :columns
  	mstoty."id" AS "stock.type.id", mstoty."siteid" AS "stock.type.siteid",
  	mstoty."code" AS "stock.type.code", mstoty."domain" AS "stock.type.domain",
@@ -1272,71 +1212,7 @@ mshop/stock/manager/type/standard/search/mysql =
 
 See also:
 
-* mshop/stock/manager/type/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing stock type record in the database
-
-```
-mshop/stock/manager/type/standard/update/ansi = 
- UPDATE "mshop_stock_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/stock/manager/type/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2017.01
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the product type item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/stock/manager/type/standard/insert/ansi
-* mshop/stock/manager/type/standard/newid/ansi
-* mshop/stock/manager/type/standard/delete/ansi
-* mshop/stock/manager/type/standard/search/ansi
-* mshop/stock/manager/type/standard/count/ansi
-
-## standard/update/mysql
-
-Updates an existing stock type record in the database
-
-```
-mshop/stock/manager/type/standard/update/mysql = 
- UPDATE "mshop_stock_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_stock_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/stock/manager/type/standard/update/ansi
+* mshop/stock/manager/type/search/ansi
 
 ## submanagers
 
@@ -1361,3 +1237,134 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+## update/ansi
+
+Updates an existing stock type record in the database
+
+```
+mshop/stock/manager/type/update/ansi = 
+ UPDATE "mshop_stock_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/stock/manager/type/update
+* Type: string - SQL statement for updating records
+* Since: 2017.01
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the product type item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/type/insert/ansi
+* mshop/stock/manager/type/newid/ansi
+* mshop/stock/manager/type/delete/ansi
+* mshop/stock/manager/type/search/ansi
+* mshop/stock/manager/type/count/ansi
+
+## update/mysql
+
+Updates an existing stock type record in the database
+
+```
+mshop/stock/manager/type/update/mysql = 
+ UPDATE "mshop_stock_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_stock_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/stock/manager/type/update/ansi
+
+# update
+## ansi
+
+Updates an existing product stock record in the database
+
+```
+mshop/stock/manager/update/ansi = 
+ UPDATE "mshop_stock"
+ SET :names
+ 	"prodid" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
+ 	"timeframe" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/stock/manager/update
+* Type: string - SQL statement for updating records
+* Since: 2017.01
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the product stock item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/stock/manager/insert/ansi
+* mshop/stock/manager/newid/ansi
+* mshop/stock/manager/delete/ansi
+* mshop/stock/manager/search/ansi
+* mshop/stock/manager/count/ansi
+* mshop/stock/manager/stocklevel
+
+## mysql
+
+Updates an existing product stock record in the database
+
+```
+mshop/stock/manager/update/mysql = 
+ UPDATE "mshop_stock"
+ SET :names
+ 	"prodid" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
+ 	"timeframe" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_stock"
+ SET :names
+ 	"prodid" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
+ 	"timeframe" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/stock/manager/update/ansi

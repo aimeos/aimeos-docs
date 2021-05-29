@@ -304,12 +304,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Voucher\Html\Myna
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the voucher e-mail html section
 
 ```
-client/html/email/voucher/html/standard/subparts = Array
+client/html/email/voucher/html/subparts = Array
 (
 )
 ```
@@ -351,12 +351,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the voucher e-mail html client.
 
 ```
-client/html/email/voucher/html/standard/template-body = email/voucher/html-body-standard
+client/html/email/voucher/html/template-body = email/voucher/html-body-standard
 ```
 
 * Default: email/voucher/html-body-standard
@@ -384,7 +384,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/voucher/html/standard/template-header
+* client/html/email/voucher/html/template-header
 
 # name
 
@@ -480,13 +480,12 @@ See also:
 * client/html/email/from-email
 * client/html/email/bcc-email
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the voucher e-mail
 
 ```
-client/html/email/voucher/standard/subparts = Array
+client/html/email/voucher/subparts = Array
 (
     [0] => text
     [1] => html
@@ -530,12 +529,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the voucher e-mail client.
 
 ```
-client/html/email/voucher/standard/template-body = email/voucher/body-standard
+client/html/email/voucher/template-body = email/voucher/body-standard
 ```
 
 * Default: email/voucher/body-standard
@@ -563,14 +562,14 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/voucher/standard/template-header
+* client/html/email/voucher/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the voucher e-mail client.
 
 ```
-client/html/email/voucher/standard/template-header = email/voucher/header-standard
+client/html/email/voucher/template-header = email/voucher/header-standard
 ```
 
 * Default: email/voucher/header-standard
@@ -599,7 +598,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/voucher/standard/template-body
+* client/html/email/voucher/template-body
 
 # text
 ## decorators/excludes
@@ -723,12 +722,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Voucher\Text\Myna
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the text section of a voucher email
 
 ```
-client/html/email/voucher/text/standard/subparts = Array
+client/html/email/voucher/text/subparts = Array
 (
 )
 ```
@@ -770,12 +769,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the text body template of the voucher email text client.
 
 ```
-client/html/email/voucher/text/standard/template-body = email/voucher/text-body-standard
+client/html/email/voucher/text/template-body = email/voucher/text-body-standard
 ```
 
 * Default: email/voucher/text-body-standard
@@ -803,4 +802,4 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/voucher/text/standard/template-header
+* client/html/email/voucher/text/template-header

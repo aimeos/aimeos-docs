@@ -156,13 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySubscription"!
 
 
-# standard
-## template
+# template
 
 Relative path to the subscription JSON API template
 
 ```
-client/jsonapi/subscription/standard/template = subscription/standard
+client/jsonapi/subscription/template = subscription/standard
 ```
 
 * Default: subscription/standard

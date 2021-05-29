@@ -7,6 +7,7 @@ Excludes decorators added by the "common" option from the JSON API clients
 ```
 admin/jsonadm/product/decorators/excludes = Array
 (
+    [0] => Test
 )
 ```
 
@@ -110,3 +111,11 @@ See also:
 * admin/jsonadm/common/decorators/default
 * admin/jsonadm/product/decorators/excludes
 * admin/jsonadm/product/decorators/global
+
+# name
+
+```
+admin/jsonadm/product/name = Standard
+```
+
+* Default: Standard

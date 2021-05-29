@@ -156,13 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyOrder"!
 
 
-# standard
-## template
+# template
 
 Relative path to the order JSON API template
 
 ```
-client/jsonapi/order/standard/template = order/standard
+client/jsonapi/order/template = order/standard
 ```
 
 * Default: order/standard

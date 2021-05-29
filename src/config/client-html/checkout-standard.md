@@ -148,6 +148,7 @@ client/html/checkout/standard/address/billing/hidden = Array
 You can configure the list of billing address fields that
 are hidden when a customer enters his new billing address.
 Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -186,14 +187,13 @@ List of billing address input fields that are required
 ```
 client/html/checkout/standard/address/billing/mandatory = Array
 (
-    [0] => order.base.address.salutation
-    [1] => order.base.address.firstname
-    [2] => order.base.address.lastname
-    [3] => order.base.address.address1
-    [4] => order.base.address.postal
-    [5] => order.base.address.city
-    [6] => order.base.address.languageid
-    [7] => order.base.address.email
+    [0] => order.base.address.firstname
+    [1] => order.base.address.lastname
+    [2] => order.base.address.address1
+    [3] => order.base.address.postal
+    [4] => order.base.address.city
+    [5] => order.base.address.languageid
+    [6] => order.base.address.email
 )
 ```
 
@@ -204,6 +204,7 @@ client/html/checkout/standard/address/billing/mandatory = Array
 You can configure the list of billing address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -257,11 +258,12 @@ List of billing address input fields that are optional
 ```
 client/html/checkout/standard/address/billing/optional = Array
 (
-    [0] => order.base.address.company
-    [1] => order.base.address.vatid
-    [2] => order.base.address.address2
-    [3] => order.base.address.countryid
-    [4] => order.base.address.state
+    [0] => order.base.address.salutation
+    [1] => order.base.address.company
+    [2] => order.base.address.vatid
+    [3] => order.base.address.address2
+    [4] => order.base.address.countryid
+    [5] => order.base.address.state
 )
 ```
 
@@ -272,6 +274,7 @@ client/html/checkout/standard/address/billing/optional = Array
 You can configure the list of billing address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -309,9 +312,10 @@ List of salutions the customer can select from for the billing address
 ```
 client/html/checkout/standard/address/billing/salutations = Array
 (
-    [0] => company
-    [1] => mr
-    [2] => mrs
+    [0] => 
+    [1] => company
+    [2] => mr
+    [3] => ms
 )
 ```
 
@@ -320,19 +324,14 @@ client/html/checkout/standard/address/billing/salutations = Array
 * Since: 2015.02
 
 The following salutations are available:
+
 * empty string for "unknown"
 * company
 * mr
-* mrs
-* miss
+* ms
 
 You can modify the list of salutation codes and remove the ones
-which shouldn't be used. Adding new salutations is a little bit
-more difficult because you have to adapt a few areas in the source
-code.
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/billing/salutations" starting from 2014-03.
+which shouldn't be used or add new ones.
 
 See also:
 
@@ -341,13 +340,14 @@ See also:
 * client/html/checkout/standard/address/billing/optional
 * client/html/checkout/standard/address/billing/hidden
 * client/html/checkout/standard/address/countries
+* client/html/common/address/salutations
 
-## billing/standard/subparts
+## billing/subparts
 
 List of HTML sub-clients rendered within the checkout standard address billing section
 
 ```
-client/html/checkout/standard/address/billing/standard/subparts = Array
+client/html/checkout/standard/address/billing/subparts = Array
 (
 )
 ```
@@ -389,12 +389,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## billing/standard/template-body
+## billing/template-body
 
 Relative path to the HTML body template of the checkout standard address billing client.
 
 ```
-client/html/checkout/standard/address/billing/standard/template-body = checkout/standard/address-billing-body-standard
+client/html/checkout/standard/address/billing/template-body = checkout/standard/address-billing-body-standard
 ```
 
 * Default: checkout/standard/address-billing-body-standard
@@ -415,7 +415,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/standard/address/billing/standard/template-header
+* client/html/checkout/standard/address/billing/template-header
 
 ## countries
 
@@ -934,9 +934,6 @@ Besides the billing address, customers can usually enter a different
 delivery address as well. To suppress displaying the form fields for
 a delivery address, you can set this configuration option to "1".
 
-Until 2015-02, the configuration option was available as
-"client/html/common/address/delivery/disable-new" starting from 2014-03.
-
 See also:
 
 * client/html/checkout/standard/address/delivery/salutations
@@ -961,6 +958,7 @@ client/html/checkout/standard/address/delivery/hidden = Array
 You can configure the list of delivery address fields that
 are hidden when a customer enters his delivery address.
 Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -981,9 +979,6 @@ Available field keys are:
 
 Caution: Only hide fields that don't require any input
 
-Until 2015-02, the configuration option was available as
-"client/html/common/address/delivery/hidden" starting from 2014-03.
-
 See also:
 
 * client/html/checkout/standard/address/delivery/disable-new
@@ -999,13 +994,12 @@ List of delivery address input fields that are required
 ```
 client/html/checkout/standard/address/delivery/mandatory = Array
 (
-    [0] => order.base.address.salutation
-    [1] => order.base.address.firstname
-    [2] => order.base.address.lastname
-    [3] => order.base.address.address1
-    [4] => order.base.address.postal
-    [5] => order.base.address.city
-    [6] => order.base.address.languageid
+    [0] => order.base.address.firstname
+    [1] => order.base.address.lastname
+    [2] => order.base.address.address1
+    [3] => order.base.address.postal
+    [4] => order.base.address.city
+    [5] => order.base.address.languageid
 )
 ```
 
@@ -1016,6 +1010,7 @@ client/html/checkout/standard/address/delivery/mandatory = Array
 You can configure the list of delivery address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1033,9 +1028,6 @@ continue the checkout process. Available field keys are:
 * order.base.address.telefax
 * order.base.address.email
 * order.base.address.website
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/delivery/mandatory" starting from 2014-03.
 
 See also:
 
@@ -1069,11 +1061,12 @@ List of delivery address input fields that are optional
 ```
 client/html/checkout/standard/address/delivery/optional = Array
 (
-    [0] => order.base.address.company
-    [1] => order.base.address.vatid
-    [2] => order.base.address.address2
-    [3] => order.base.address.countryid
-    [4] => order.base.address.state
+    [0] => order.base.address.salutation
+    [1] => order.base.address.company
+    [2] => order.base.address.vatid
+    [3] => order.base.address.address2
+    [4] => order.base.address.countryid
+    [5] => order.base.address.state
 )
 ```
 
@@ -1084,6 +1077,7 @@ client/html/checkout/standard/address/delivery/optional = Array
 You can configure the list of delivery address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
+
 * order.base.address.company
 * order.base.address.vatid
 * order.base.address.salutation
@@ -1101,9 +1095,10 @@ continue the checkout process. Available field keys are:
 * order.base.address.telefax
 * order.base.address.email
 * order.base.address.website
+* nostore
 
-Until 2015-02, the configuration option was available as
-"client/html/common/address/delivery/optional" starting from 2014-03.
+Using the "nostore" field displays the option to avoid storing the
+delivery address permanently in the customer account.
 
 See also:
 
@@ -1121,9 +1116,10 @@ List of salutions the customer can select from for the delivery address
 ```
 client/html/checkout/standard/address/delivery/salutations = Array
 (
-    [0] => company
-    [1] => mr
-    [2] => mrs
+    [0] => 
+    [1] => company
+    [2] => mr
+    [3] => ms
 )
 ```
 
@@ -1132,19 +1128,14 @@ client/html/checkout/standard/address/delivery/salutations = Array
 * Since: 2015.02
 
 The following salutations are available:
+
 * empty string for "unknown"
 * company
 * mr
-* mrs
-* miss
+* ms
 
 You can modify the list of salutation codes and remove the ones
-which shouldn't be used. Adding new salutations is a little bit
-more difficult because you have to adapt a few areas in the source
-code.
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/delivery/salutations" starting from 2014-03.
+which shouldn't be used or add new ones.
 
 See also:
 
@@ -1153,13 +1144,14 @@ See also:
 * client/html/checkout/standard/address/delivery/optional
 * client/html/checkout/standard/address/delivery/hidden
 * client/html/checkout/standard/address/countries
+* client/html/common/address/salutations
 
-## delivery/standard/subparts
+## delivery/subparts
 
 List of HTML sub-clients rendered within the checkout standard address delivery section
 
 ```
-client/html/checkout/standard/address/delivery/standard/subparts = Array
+client/html/checkout/standard/address/delivery/subparts = Array
 (
 )
 ```
@@ -1201,12 +1193,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## delivery/standard/template-body
+## delivery/template-body
 
 Relative path to the HTML body template of the checkout standard address delivery client.
 
 ```
-client/html/checkout/standard/address/delivery/standard/template-body = checkout/standard/address-delivery-body-standard
+client/html/checkout/standard/address/delivery/template-body = checkout/standard/address-delivery-body-standard
 ```
 
 * Default: checkout/standard/address-delivery-body-standard
@@ -1227,7 +1219,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/standard/address/delivery/standard/template-header
+* client/html/checkout/standard/address/delivery/template-header
 
 ## name
 
@@ -1244,83 +1236,6 @@ client/html/checkout/standard/address/name = Standard
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Address\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
-
-## standard/subparts
-
-List of HTML sub-clients rendered within the checkout standard address section
-
-```
-client/html/checkout/standard/address/standard/subparts = Array
-(
-    [0] => billing
-    [1] => delivery
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## standard/template-body
-
-Relative path to the HTML body template of the checkout standard address client.
-
-```
-client/html/checkout/standard/address/standard/template-body = checkout/standard/address-body-standard
-```
-
-* Default: checkout/standard/address-body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/checkout/standard/address/standard/template-header
 
 ## states
 
@@ -1378,6 +1293,83 @@ See also:
 * client/html/checkout/standard/address/delivery/mandatory
 * client/html/checkout/standard/address/delivery/optional
 
+## subparts
+
+List of HTML sub-clients rendered within the checkout standard address section
+
+```
+client/html/checkout/standard/address/subparts = Array
+(
+    [0] => billing
+    [1] => delivery
+)
+```
+
+* Default: Array
+* Type: array - List of sub-client names
+* Since: 2014.03
+
+The output of the frontend is composed of the code generated by the HTML
+clients. Each HTML client can consist of serveral (or none) sub-clients
+that are responsible for rendering certain sub-parts of the output. The
+sub-clients can contain HTML clients themselves and therefore a
+hierarchical tree of HTML clients is composed. Each HTML client creates
+the output that is placed inside the container of its parent.
+
+At first, always the HTML code generated by the parent is printed, then
+the HTML code of its sub-clients. The order of the HTML sub-clients
+determines the order of the output of these sub-clients inside the parent
+container. If the configured list of clients is
+
+```
+ array( "subclient1", "subclient2" )
+```
+
+you can easily change the order of the output by reordering the subparts:
+
+```
+ client/html/<clients>/subparts = array( "subclient1", "subclient2" )
+```
+
+You can also remove one or more parts if they shouldn't be rendered:
+
+```
+ client/html/<clients>/subparts = array( "subclient1" )
+```
+
+As the clients only generates structural HTML, the layout defined via CSS
+should support adding, removing or reordering content by a fluid like
+design.
+
+
+## template-body
+
+Relative path to the HTML body template of the checkout standard address client.
+
+```
+client/html/checkout/standard/address/template-body = checkout/standard/address-body-standard
+```
+
+* Default: checkout/standard/address-body-standard
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* client/html/checkout/standard/address/template-header
+
 ## validate
 
 List of regular expressions to validate the data of the address fields
@@ -1393,43 +1385,45 @@ client/html/checkout/standard/address/validate =
 To validate the address input data of the customer, an individual
 [Perl compatible regular expression](http://php.net/manual/en/pcre.pattern.php)
 can be applied to each field. Available fields are:
-* company
-* vatid
-* salutation
-* firstname
-* lastname
-* address1
-* address2
-* address3
-* postal
-* city
-* state
-* languageid
-* countryid
-* telephone
-* telefax
-* email
-* website
+
+* order.base.address.company
+* order.base.address.vatid
+* order.base.address.salutation
+* order.base.address.firstname
+* order.base.address.lastname
+* order.base.address.address1
+* order.base.address.address2
+* order.base.address.address3
+* order.base.address.postal
+* order.base.address.city
+* order.base.address.state
+* order.base.address.languageid
+* order.base.address.countryid
+* order.base.address.telephone
+* order.base.address.telefax
+* order.base.address.email
+* order.base.address.website
 
 Some fields are validated automatically because they are not
 dependent on a country specific rule. These fields are:
-* salutation
-* email
-* website
+
+* order.base.address.salutation
+* order.base.address.email
+* order.base.address.website
 
 To validate e.g the postal/zip code, you can define a regular
 expression like this if you want to allow only digits:
 
 ```
- client/html/checkout/standard/address/validate/postal = '^[0-9]+$'
+ client/html/checkout/standard/address/validate/order.base.address.postal = '^[0-9]+$'
 ```
 
 Several regular expressions can be defined line this:
 
 ```
  client/html/checkout/standard/address/validate = array(
-     'postal' = '^[0-9]+$',
-     'vatid' = '^[A-Z]{2}[0-9]{8}$',
+     'order.base.address.postal' = '^[0-9]+$',
+     'order.base.address.vatid' = '^[A-Z]{2}[0-9]{8}$',
  )
 ```
 
@@ -1960,12 +1954,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Deliv
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the checkout standard delivery section
 
 ```
-client/html/checkout/standard/delivery/standard/subparts = Array
+client/html/checkout/standard/delivery/subparts = Array
 (
 )
 ```
@@ -2007,12 +2001,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the checkout standard delivery client.
 
 ```
-client/html/checkout/standard/delivery/standard/template-body = checkout/standard/delivery-body-standard
+client/html/checkout/standard/delivery/template-body = checkout/standard/delivery-body-standard
 ```
 
 * Default: checkout/standard/delivery-body-standard
@@ -2033,7 +2027,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/standard/delivery/standard/template-header
+* client/html/checkout/standard/delivery/template-header
 
 # name
 
@@ -2112,6 +2106,7 @@ Using this config options, shop developers are able to define which
 checkout subparts are combined to a one page view. Simply add the names
 of all checkout subparts to the list. Available checkout subparts for
 a one page checkout are:
+
 * address
 * delivery
 * payment
@@ -2326,12 +2321,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Payme
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the checkout standard payment section
 
 ```
-client/html/checkout/standard/payment/standard/subparts = Array
+client/html/checkout/standard/payment/subparts = Array
 (
 )
 ```
@@ -2373,12 +2368,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the checkout standard payment client.
 
 ```
-client/html/checkout/standard/payment/standard/template-body = checkout/standard/payment-body-standard
+client/html/checkout/standard/payment/template-body = checkout/standard/payment-body-standard
 ```
 
 * Default: checkout/standard/payment-body-standard
@@ -2399,7 +2394,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/standard/payment/standard/template-header
+* client/html/checkout/standard/payment/template-header
 
 # process
 ## account/decorators/excludes
@@ -2523,12 +2518,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Proce
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## account/standard/subparts
+## account/subparts
 
 List of HTML sub-clients rendered within the checkout standard process account section
 
 ```
-client/html/checkout/standard/process/account/standard/subparts = Array
+client/html/checkout/standard/process/account/subparts = Array
 (
 )
 ```
@@ -2691,12 +2686,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Proce
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## address/standard/subparts
+## address/subparts
 
 List of HTML sub-clients rendered within the checkout standard process address section
 
 ```
-client/html/checkout/standard/process/address/standard/subparts = Array
+client/html/checkout/standard/process/address/subparts = Array
 (
 )
 ```
@@ -2859,12 +2854,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Proce
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the checkout standard process section
 
 ```
-client/html/checkout/standard/process/standard/subparts = Array
+client/html/checkout/standard/process/subparts = Array
 (
     [0] => account
     [1] => address
@@ -2908,12 +2903,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the checkout standard process client.
 
 ```
-client/html/checkout/standard/process/standard/template-body = checkout/standard/process-body-standard
+client/html/checkout/standard/process/template-body = checkout/standard/process-body-standard
 ```
 
 * Default: checkout/standard/process-body-standard
@@ -2934,7 +2929,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/standard/process/standard/template-header
+* client/html/checkout/standard/process/template-header
 
 ## validate
 
@@ -2955,17 +2950,20 @@ client/html/checkout/standard/process/validate = Array
 To validate the payment input data of the customer, an individual Perl
 compatible regular expression (http://php.net/manual/en/pcre.pattern.php)
 can be applied to each field. Available fields are:
+
 * payment.cardno
 * payment.cvv
 * payment.expirymonthyear
 
 To validate e.g the CVV security code, you can define a regular expression
 like this to allow only three digits:
+
 ```
  client/html/checkout/standard/process/validate/payment.cvv = '^[0-9]{3}$'
 ```
 
 Several regular expressions can be defined line this:
+
 ```
  client/html/checkout/standard/process/validate = array(
   'payment.cardno' = '^[0-9]{16,19}$',
@@ -2980,116 +2978,6 @@ inside the expression must be escaped by backlashes, i.e. "/".
 See also:
 
 * client/html/checkout/standard/address/validate
-
-# standard
-## subparts
-
-List of HTML sub-clients rendered within the checkout standard section
-
-```
-client/html/checkout/standard/standard/subparts = Array
-(
-    [0] => address
-    [1] => delivery
-    [2] => payment
-    [3] => summary
-    [4] => process
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## template-body
-
-Relative path to the HTML body template of the checkout standard client.
-
-```
-client/html/checkout/standard/standard/template-body = checkout/standard/body-standard
-```
-
-* Default: checkout/standard/body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/checkout/standard/standard/template-header
-
-## template-header
-
-Relative path to the HTML header template of the checkout standard client.
-
-```
-client/html/checkout/standard/standard/template-header = checkout/standard/header-standard
-```
-
-* Default: checkout/standard/header-standard
-* Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the HTML code that is inserted into the HTML page header
-of the rendered page in the frontend. The configuration string is the
-path to the template file relative to the templates directory (usually
-in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/checkout/standard/standard/template-body
 
 # summary
 ## address
@@ -3604,12 +3492,12 @@ See also:
 * client/html/checkout/standard/summary/detail
 * client/html/checkout/standard/summary/options
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the checkout standard summary section
 
 ```
-client/html/checkout/standard/summary/standard/subparts = Array
+client/html/checkout/standard/summary/subparts = Array
 (
 )
 ```
@@ -3651,12 +3539,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the checkout standard summary client.
 
 ```
-client/html/checkout/standard/summary/standard/template-body = checkout/standard/summary-body-standard
+client/html/checkout/standard/summary/template-body = checkout/standard/summary-body-standard
 ```
 
 * Default: checkout/standard/summary-body-standard
@@ -3677,7 +3565,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/checkout/standard/summary/standard/template-header
+* client/html/checkout/standard/summary/template-header
 
 # url
 ## action
@@ -3798,7 +3686,7 @@ that are configured for the checkout client.
 
 See also:
 
-* client/html/checkout/standard/standard/subparts
+* client/html/checkout/subparts
 
 ## target
 

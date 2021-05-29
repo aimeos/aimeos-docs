@@ -121,12 +121,44 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Account\Profile\Address
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## salutations
+
+List of salutions the customers can select from in their account
+
+```
+client/html/account/profile/address/salutations = Array
+(
+    [0] => 
+    [1] => company
+    [2] => mr
+    [3] => ms
+)
+```
+
+* Default: Array
+* Type: array - List of available salutation codes
+* Since: 2021.04
+
+The following salutations are available:
+
+* empty string for "unknown"
+* company
+* mr
+* ms
+
+You can modify the list of salutation codes and remove the ones
+which shouldn't be used or add new ones.
+
+See also:
+
+* client/html/common/address/salutations
+
+## subparts
 
 List of HTML sub-clients rendered within the account profile address section
 
 ```
-client/html/account/profile/address/standard/subparts = Array
+client/html/account/profile/address/subparts = Array
 (
 )
 ```
@@ -168,12 +200,12 @@ should support adding, removing or readdressing content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the account profile address client.
 
 ```
-client/html/account/profile/address/standard/template-body = account/profile/address-body-standard
+client/html/account/profile/address/template-body = account/profile/address-body-standard
 ```
 
 * Default: account/profile/address-body-standard
@@ -194,7 +226,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/profile/address/standard/template-header
+* client/html/account/profile/address/template-header
 
 # decorators
 ## excludes
@@ -370,13 +402,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyProfile"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account profile section
 
 ```
-client/html/account/profile/standard/subparts = Array
+client/html/account/profile/subparts = Array
 (
     [0] => address
 )
@@ -419,12 +450,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the account profile client.
 
 ```
-client/html/account/profile/standard/template-body = account/profile/body-standard
+client/html/account/profile/template-body = account/profile/body-standard
 ```
 
 * Default: account/profile/body-standard
@@ -445,14 +476,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/profile/standard/template-header
+* client/html/account/profile/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the account profile client.
 
 ```
-client/html/account/profile/standard/template-header = account/profile/header-standard
+client/html/account/profile/template-header = account/profile/header-standard
 ```
 
 * Default: account/profile/header-standard
@@ -474,7 +505,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/profile/standard/template-body
+* client/html/account/profile/template-body
 
 # url
 ## action
@@ -482,10 +513,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/account/profile/url/action = 
+client/html/account/profile/url/action = profile
 ```
 
-* Default: 
+* Default: profile
 * Type: string - Name of the action
 * Since: 2019.10
 
@@ -537,10 +568,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/account/profile/url/controller = 
+client/html/account/profile/url/controller = Account
 ```
 
-* Default: 
+* Default: Account
 * Type: string - Name of the controller
 * Since: 2019.10
 

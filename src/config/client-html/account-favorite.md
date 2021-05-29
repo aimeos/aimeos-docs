@@ -136,6 +136,22 @@ See also:
 
 * client/html/catalog/domains
 
+# maxitems
+
+Maximum number of products that can be favorites
+
+```
+client/html/account/favorite/maxitems = 100
+```
+
+* Default: 100
+* Type: integer - Number of products
+* Since: 2019.04
+
+This option limits the number of products users can add to their
+favorite list. It must be a positive integer value greater than 0.
+
+
 # name
 
 Class name of the used account favorite client implementation
@@ -207,29 +223,12 @@ See also:
 
 * client/html/catalog/lists/size
 
-# standard
-## maxitems
-
-Maximum number of products that can be favorites
-
-```
-client/html/account/favorite/standard/maxitems = 100
-```
-
-* Default: 100
-* Type: integer - Number of products
-* Since: 2019.04
-
-This option limits the number of products users can add to their
-favorite list. It must be a positive integer value greater than 0.
-
-
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account favorite section
 
 ```
-client/html/account/favorite/standard/subparts = Array
+client/html/account/favorite/subparts = Array
 (
 )
 ```
@@ -271,12 +270,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the account favorite client.
 
 ```
-client/html/account/favorite/standard/template-body = account/favorite/body-standard
+client/html/account/favorite/template-body = account/favorite/body-standard
 ```
 
 * Default: account/favorite/body-standard
@@ -297,14 +296,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/favorite/standard/template-header
+* client/html/account/favorite/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the account favorite client.
 
 ```
-client/html/account/favorite/standard/template-header = account/favorite/header-standard
+client/html/account/favorite/template-header = account/favorite/header-standard
 ```
 
 * Default: account/favorite/header-standard
@@ -326,7 +325,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/favorite/standard/template-body
+* client/html/account/favorite/template-body
 
 # url
 ## action

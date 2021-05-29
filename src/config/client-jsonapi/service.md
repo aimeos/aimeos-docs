@@ -156,13 +156,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyService"!
 
 
-# standard
-## template
+# template
 
 Relative path to the service JSON API template
 
 ```
-client/jsonapi/service/standard/template = service/standard
+client/jsonapi/service/template = service/standard
 ```
 
 * Default: service/standard

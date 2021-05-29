@@ -121,12 +121,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Customer\Address\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the customer address section
 
 ```
-admin/jqadm/customer/address/standard/subparts = Array
+admin/jqadm/customer/address/subparts = Array
 (
 )
 ```
@@ -542,12 +542,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Customer\Address\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the customer order section
 
 ```
-admin/jqadm/customer/order/standard/subparts = Array
+admin/jqadm/customer/order/subparts = Array
 (
 )
 ```
@@ -723,26 +723,25 @@ See also:
 
 ## fields
 
-List of list and product columns that should be displayed in the customer product view
+List of customer list and product columns that should be displayed in the customer product view
 
 ```
 admin/jqadm/customer/product/fields = Array
 (
-    [0] => customer.lists.position
-    [1] => customer.lists.status
-    [2] => customer.lists.type
-    [3] => customer.lists.config
-    [4] => customer.lists.refid
+    [0] => customer.lists.status
+    [1] => customer.lists.type
+    [2] => customer.lists.position
+    [3] => customer.lists.refid
 )
 ```
 
 * Default: Array
 * Type: array - List of field names, i.e. search keys
-* Since: 2017.07
+* Since: 2017.10
 
-Changes the list of list and product columns shown by default in the customer product view.
-The columns can be changed by the editor as required within the administraiton
-interface.
+Changes the list of customer list and product columns shown by default in the
+customer product view. The columns can be changed by the editor as required
+within the administraiton interface.
 
 The names of the colums are in fact the search keys defined by the managers,
 e.g. "customer.lists.status" for the status value.
@@ -764,12 +763,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Customer\Address\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the customer product section
 
 ```
-admin/jqadm/customer/product/standard/subparts = Array
+admin/jqadm/customer/product/subparts = Array
 (
 )
 ```
@@ -958,12 +957,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Customer\Property\Mynam
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the customer property section
 
 ```
-admin/jqadm/customer/property/standard/subparts = Array
+admin/jqadm/customer/property/subparts = Array
 (
 )
 ```
@@ -1030,13 +1029,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the customer section
 
 ```
-admin/jqadm/customer/standard/subparts = Array
+admin/jqadm/customer/subparts = Array
 (
     [address] => address
     [order] => order

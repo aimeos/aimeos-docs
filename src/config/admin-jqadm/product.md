@@ -121,12 +121,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Bundle\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product bundle section
 
 ```
-admin/jqadm/product/bundle/standard/subparts = Array
+admin/jqadm/product/bundle/subparts = Array
 (
 )
 ```
@@ -315,12 +315,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Category\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product category section
 
 ```
-admin/jqadm/product/category/standard/subparts = Array
+admin/jqadm/product/category/subparts = Array
 (
 )
 ```
@@ -509,12 +509,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Characteristic\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## attribute/standard/subparts
+## attribute/subparts
 
 List of JQAdm sub-clients rendered within the product attribute section
 
 ```
-admin/jqadm/product/characteristic/attribute/standard/subparts = Array
+admin/jqadm/product/characteristic/attribute/subparts = Array
 (
 )
 ```
@@ -807,12 +807,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Characteristic\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## hidden/standard/subparts
+## hidden/subparts
 
 List of JQAdm sub-clients rendered within the product hidden characteristics section
 
 ```
-admin/jqadm/product/characteristic/hidden/standard/subparts = Array
+admin/jqadm/product/characteristic/hidden/subparts = Array
 (
 )
 ```
@@ -1016,12 +1016,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Characteristic\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the product property section
 
 ```
-admin/jqadm/product/characteristic/property/standard/subparts = Array
+admin/jqadm/product/characteristic/property/subparts = Array
 (
 )
 ```
@@ -1088,12 +1088,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product characteristic section
 
 ```
-admin/jqadm/product/characteristic/standard/subparts = Array
+admin/jqadm/product/characteristic/subparts = Array
 (
     [property] => property
     [variant] => variant
@@ -1285,12 +1285,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Characteristic\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## variant/standard/subparts
+## variant/subparts
 
 List of JQAdm sub-clients rendered within the product variant characteristics section
 
 ```
-admin/jqadm/product/characteristic/variant/standard/subparts = Array
+admin/jqadm/product/characteristic/variant/subparts = Array
 (
 )
 ```
@@ -1619,12 +1619,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Download\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product download section
 
 ```
-admin/jqadm/product/download/standard/subparts = Array
+admin/jqadm/product/download/subparts = Array
 (
 )
 ```
@@ -2061,12 +2061,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Media\Property\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the product media property section
 
 ```
-admin/jqadm/product/media/property/standard/subparts = Array
+admin/jqadm/product/media/property/subparts = Array
 (
 )
 ```
@@ -2133,12 +2133,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product media section
 
 ```
-admin/jqadm/product/media/standard/subparts = Array
+admin/jqadm/product/media/subparts = Array
 (
     [property] => property
 )
@@ -2357,28 +2357,12 @@ See also:
 * admin/jqadm/product/option/config/decorators/excludes
 * admin/jqadm/product/option/config/decorators/global
 
-## config/name
-
-Name of the option/config subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/option/config/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2017.03
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Config\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## config/standard/exclude
+## config/exclude
 
 List of attribute types that shouldn't be managed by the product options client
 
 ```
-admin/jqadm/product/option/config/standard/exclude = Array
+admin/jqadm/product/option/config/exclude = Array
 (
     [interval] => interval
 )
@@ -2395,14 +2379,30 @@ config client.
 
 See also:
 
-* admin/jqadm/product/option/custom/standard/exclude
+* admin/jqadm/product/option/custom/exclude
 
-## config/standard/subparts
+## config/name
+
+Name of the option/config subpart used by the JQAdm product implementation
+
+```
+admin/jqadm/product/option/config/name = Standard
+```
+
+* Default: Standard
+* Type: string - Last part of the JQAdm class name
+* Since: 2017.03
+
+Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Config\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## config/subparts
 
 List of JQAdm sub-clients rendered within the product config section
 
 ```
-admin/jqadm/product/option/config/standard/subparts = Array
+admin/jqadm/product/option/config/subparts = Array
 (
 )
 ```
@@ -2574,28 +2574,12 @@ See also:
 * admin/jqadm/product/option/custom/decorators/excludes
 * admin/jqadm/product/option/custom/decorators/global
 
-## custom/name
-
-Name of the option/custom subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/option/custom/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2017.03
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Custom\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## custom/standard/exclude
+## custom/exclude
 
 List of attribute types that shouldn't be managed by the product options client
 
 ```
-admin/jqadm/product/option/custom/standard/exclude = Array
+admin/jqadm/product/option/custom/exclude = Array
 (
     [price] => price
 )
@@ -2612,14 +2596,30 @@ custom client.
 
 See also:
 
-* admin/jqadm/product/option/custom/standard/exclude
+* admin/jqadm/product/option/custom/exclude
 
-## custom/standard/subparts
+## custom/name
+
+Name of the option/custom subpart used by the JQAdm product implementation
+
+```
+admin/jqadm/product/option/custom/name = Standard
+```
+
+* Default: Standard
+* Type: string - Last part of the JQAdm class name
+* Since: 2017.03
+
+Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Custom\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## custom/subparts
 
 List of JQAdm sub-clients rendered within the product custom section
 
 ```
-admin/jqadm/product/option/custom/standard/subparts = Array
+admin/jqadm/product/option/custom/subparts = Array
 (
 )
 ```
@@ -2807,12 +2807,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product option section
 
 ```
-admin/jqadm/product/option/standard/subparts = Array
+admin/jqadm/product/option/subparts = Array
 (
     [config] => config
     [custom] => custom
@@ -3039,12 +3039,12 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 @order Developer
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product order section
 
 ```
-admin/jqadm/product/order/standard/subparts = Array
+admin/jqadm/product/order/subparts = Array
 (
 )
 ```
@@ -3237,12 +3237,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Physical\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product physical section
 
 ```
-admin/jqadm/product/physical/standard/subparts = Array
+admin/jqadm/product/physical/subparts = Array
 (
 )
 ```
@@ -3552,12 +3552,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Price\Property\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the product price property section
 
 ```
-admin/jqadm/product/price/property/standard/subparts = Array
+admin/jqadm/product/price/property/subparts = Array
 (
 )
 ```
@@ -3624,12 +3624,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product price section
 
 ```
-admin/jqadm/product/price/standard/subparts = Array
+admin/jqadm/product/price/subparts = Array
 (
     [property] => property
 )
@@ -3819,12 +3819,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Product\Bought\
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## bought/standard/subparts
+## bought/subparts
 
 List of JQAdm sub-clients rendered within the product bought section
 
 ```
-admin/jqadm/product/related/bought/standard/subparts = Array
+admin/jqadm/product/related/bought/subparts = Array
 (
 )
 ```
@@ -4012,12 +4012,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Related\Myname"
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product related section
 
 ```
-admin/jqadm/product/related/standard/subparts = Array
+admin/jqadm/product/related/subparts = Array
 (
     [suggest] => suggest
     [bought] => bought
@@ -4182,12 +4182,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Product\Suggest
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## suggest/standard/subparts
+## suggest/subparts
 
 List of JQAdm sub-clients rendered within the product suggest section
 
 ```
-admin/jqadm/product/related/suggest/standard/subparts = Array
+admin/jqadm/product/related/suggest/subparts = Array
 (
 )
 ```
@@ -4401,12 +4401,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Selection\Mynam
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product selection section
 
 ```
-admin/jqadm/product/selection/standard/subparts = Array
+admin/jqadm/product/selection/subparts = Array
 (
 )
 ```
@@ -4471,69 +4471,6 @@ named like the default one but with the string "default" replaced by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
-
-
-# standard
-## subparts
-
-List of JQAdm sub-clients rendered within the product section
-
-```
-admin/jqadm/product/standard/subparts = Array
-(
-    [selection] => selection
-    [bundle] => bundle
-    [media] => media
-    [text] => text
-    [price] => price
-    [stock] => stock
-    [category] => category
-    [characteristic] => characteristic
-    [option] => option
-    [related] => related
-    [supplier] => supplier
-    [physical] => physical
-    [subscription] => subscription
-    [download] => download
-    [order] => order
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2016.01
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
 
 
 # stock
@@ -4658,12 +4595,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Stock\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product stock section
 
 ```
-admin/jqadm/product/stock/standard/subparts = Array
+admin/jqadm/product/stock/subparts = Array
 (
 )
 ```
@@ -4728,6 +4665,68 @@ named like the default one but with the string "default" replaced by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
+
+
+# subparts
+
+List of JQAdm sub-clients rendered within the product section
+
+```
+admin/jqadm/product/subparts = Array
+(
+    [selection] => selection
+    [bundle] => bundle
+    [media] => media
+    [text] => text
+    [price] => price
+    [stock] => stock
+    [category] => category
+    [characteristic] => characteristic
+    [option] => option
+    [related] => related
+    [supplier] => supplier
+    [physical] => physical
+    [subscription] => subscription
+    [download] => download
+    [order] => order
+)
+```
+
+* Default: Array
+* Type: array - List of sub-client names
+* Since: 2016.01
+
+The output of the frontend is composed of the code generated by the JQAdm
+clients. Each JQAdm client can consist of serveral (or none) sub-clients
+that are responsible for rendering certain sub-parts of the output. The
+sub-clients can contain JQAdm clients themselves and therefore a
+hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
+the output that is placed inside the container of its parent.
+
+At first, always the JQAdm code generated by the parent is printed, then
+the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
+determines the order of the output of these sub-clients inside the parent
+container. If the configured list of clients is
+
+```
+ array( "subclient1", "subclient2" )
+```
+
+you can easily change the order of the output by reordering the subparts:
+
+```
+ admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
+```
+
+You can also remove one or more parts if they shouldn't be rendered:
+
+```
+ admin/jqadm/<clients>/subparts = array( "subclient1" )
+```
+
+As the clients only generates structural JQAdm, the layout defined via CSS
+should support adding, removing or reordering content by a fluid like
+design.
 
 
 # subscription
@@ -4852,12 +4851,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Subscription\My
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product subscription section
 
 ```
-admin/jqadm/product/subscription/standard/subparts = Array
+admin/jqadm/product/subscription/subparts = Array
 (
 )
 ```
@@ -5054,12 +5053,12 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 @supplier Developer
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product supplier section
 
 ```
-admin/jqadm/product/supplier/standard/subparts = Array
+admin/jqadm/product/supplier/subparts = Array
 (
 )
 ```
@@ -5302,12 +5301,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Text\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the product text section
 
 ```
-admin/jqadm/product/text/standard/subparts = Array
+admin/jqadm/product/text/subparts = Array
 (
 )
 ```

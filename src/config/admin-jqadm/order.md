@@ -307,12 +307,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Order\Invoice\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the order invoice section
 
 ```
-admin/jqadm/order/invoice/standard/subparts = Array
+admin/jqadm/order/invoice/subparts = Array
 (
 )
 ```
@@ -487,13 +487,12 @@ See also:
 
 * admin/jqadm/order/service/delivery/attribute/suggest
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the order section
 
 ```
-admin/jqadm/order/standard/subparts = Array
+admin/jqadm/order/subparts = Array
 (
     [invoice] => invoice
 )

@@ -105,6 +105,33 @@ See also:
 * client/jsonapi/catalog/decorators/excludes
 * client/jsonapi/catalog/decorators/global
 
+# deep
+
+Load the category tree instead of the nodes of the first level only
+
+```
+client/jsonapi/catalog/deep = 
+```
+
+* Default: 
+* Type: bool - True for category tree, false for first level only
+* Since: 2020.10
+
+If you want to use the catalog filter component to display the whole
+category tree without loading data in an asynchcron way, set this
+configuration option to "1" or true.
+
+**Warning:** If your category tree has a lot of nodes, it will
+take a very long time to render all categories. Thus, it's only
+recommended for small category trees with a limited node size
+(less than 50).
+
+See also:
+
+* controller/frontend/catalog/levels-always
+* controller/frontend/catalog/levels-only
+* client/html/catalog/filter/tree/deep
+
 # name
 
 Class name of the used catalog client implementation
@@ -150,13 +177,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyCatalog"!
 
 
-# standard
-## template
+# template
 
 Relative path to the catalog lists JSON API template
 
 ```
-client/jsonapi/catalog/standard/template = catalog/standard
+client/jsonapi/catalog/template = catalog/standard
 ```
 
 * Default: catalog/standard

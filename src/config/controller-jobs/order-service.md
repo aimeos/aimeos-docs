@@ -302,8 +302,8 @@ failed and old orders would have been shipped now.
 
 See also:
 
-* controller/jobs/order/email/payment/standard/limit-days
-* controller/jobs/order/email/delivery/standard/limit-days
+* controller/jobs/order/email/payment/limit-days
+* controller/jobs/order/email/delivery/limit-days
 * controller/jobs/order/service/delivery/batch-max
 
 ## name

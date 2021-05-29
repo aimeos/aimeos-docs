@@ -152,13 +152,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySearch"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog search section
 
 ```
-client/html/catalog/search/standard/subparts = Array
+client/html/catalog/search/subparts = Array
 (
     [0] => search
 )

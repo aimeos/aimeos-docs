@@ -1,4 +1,103 @@
 
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT matt."id"
+ 	FROM "mshop_attribute" AS matt
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY matt."id"
+ 	ORDER BY matt."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/attribute/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the attribute
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/insert/ansi
+* mshop/attribute/manager/update/ansi
+* mshop/attribute/manager/newid/ansi
+* mshop/attribute/manager/delete/ansi
+* mshop/attribute/manager/search/ansi
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT matt."id"
+ 	FROM "mshop_attribute" AS matt
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY matt."id"
+ 	ORDER BY matt."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT matt."id"
+ 	FROM "mshop_attribute" AS matt
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY matt."id"
+ 	ORDER BY matt."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/attribute/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -108,7 +207,327 @@ See also:
 * mshop/attribute/manager/decorators/excludes
 * mshop/attribute/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/delete/ansi = 
+ DELETE FROM "mshop_attribute"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/attribute/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the attribute database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/insert/ansi
+* mshop/attribute/manager/update/ansi
+* mshop/attribute/manager/newid/ansi
+* mshop/attribute/manager/search/ansi
+* mshop/attribute/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/delete/mysql = 
+ DELETE FROM "mshop_attribute"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_attribute"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/attribute/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new attribute record into the database table
+
+```
+mshop/attribute/manager/insert/ansi = 
+ INSERT INTO "mshop_attribute" ( :names
+ 	"key", "type", "domain", "code", "status", "pos",
+ 	"label", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/attribute/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/update/ansi
+* mshop/attribute/manager/newid/ansi
+* mshop/attribute/manager/delete/ansi
+* mshop/attribute/manager/search/ansi
+* mshop/attribute/manager/count/ansi
+
+## mysql
+
+Inserts a new attribute record into the database table
+
+```
+mshop/attribute/manager/insert/mysql = 
+ INSERT INTO "mshop_attribute" ( :names
+ 	"key", "type", "domain", "code", "status", "pos",
+ 	"label", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_attribute" ( :names
+ 	"key", "type", "domain", "code", "status", "pos",
+ 	"label", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/attribute/manager/insert/ansi
+
 # lists
+## aggregate/ansi
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/attribute/manager/lists/aggregate/ansi = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_attribute_list" AS mattli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, mattli."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: mshop/attribute/manager/lists/aggregate
+* Type: string - SQL statement for aggregating order items
+* Since: 2014.07
+
+Groups all records by the values in the key column and counts their
+occurence. The matched records can be limited by the given criteria
+from the order database. The records must be from one of the sites
+that are configured via the context item. If the current site is part
+of a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+This statement doesn't return any records. Instead, it returns pairs
+of the different values found in the key column together with the
+number of records that have been found for that key values.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/insert/ansi
+* mshop/attribute/manager/lists/update/ansi
+* mshop/attribute/manager/lists/newid/ansi
+* mshop/attribute/manager/lists/delete/ansi
+* mshop/attribute/manager/lists/search/ansi
+* mshop/attribute/manager/lists/count/ansi
+
+## aggregate/mysql
+
+Counts the number of records grouped by the values in the key column and matched by the given criteria
+
+```
+mshop/attribute/manager/lists/aggregate/mysql = 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_attribute_list" AS mattli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, mattli."id"
+ 	ORDER BY :order
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY :keys
+```
+
+* Default: 
+ SELECT :keys, :type("val") AS "value"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "mshop_attribute_list" AS mattli
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY :cols, mattli."id"
+ 	ORDER BY :order
+ 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+
+
+See also:
+
+* mshop/attribute/manager/lists/aggregate/ansi
+
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/lists/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattli."id"
+ 	FROM "mshop_attribute_list" AS mattli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattli."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/attribute/manager/lists/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the attribute
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/insert/ansi
+* mshop/attribute/manager/lists/update/ansi
+* mshop/attribute/manager/lists/newid/ansi
+* mshop/attribute/manager/lists/delete/ansi
+* mshop/attribute/manager/lists/search/ansi
+* mshop/attribute/manager/lists/aggregate/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/lists/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattli."id"
+ 	FROM "mshop_attribute_list" AS mattli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattli."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattli."id"
+ 	FROM "mshop_attribute_list" AS mattli
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattli."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/attribute/manager/lists/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the attribute list manager
@@ -220,6 +639,131 @@ See also:
 * mshop/attribute/manager/lists/decorators/excludes
 * mshop/attribute/manager/lists/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/lists/delete/ansi = 
+ DELETE FROM "mshop_attribute_list"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/attribute/manager/lists/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the attribute database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/insert/ansi
+* mshop/attribute/manager/lists/update/ansi
+* mshop/attribute/manager/lists/newid/ansi
+* mshop/attribute/manager/lists/search/ansi
+* mshop/attribute/manager/lists/count/ansi
+* mshop/attribute/manager/lists/aggregate/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/lists/delete/mysql = 
+ DELETE FROM "mshop_attribute_list"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_attribute_list"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/attribute/manager/lists/delete/ansi
+
+## insert/ansi
+
+Inserts a new attribute list record into the database table
+
+```
+mshop/attribute/manager/lists/insert/ansi = 
+ INSERT INTO "mshop_attribute_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/attribute/manager/lists/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute list item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/update/ansi
+* mshop/attribute/manager/lists/newid/ansi
+* mshop/attribute/manager/lists/delete/ansi
+* mshop/attribute/manager/lists/search/ansi
+* mshop/attribute/manager/lists/count/ansi
+* mshop/attribute/manager/lists/aggregate/ansi
+
+## insert/mysql
+
+Inserts a new attribute list record into the database table
+
+```
+mshop/attribute/manager/lists/insert/mysql = 
+ INSERT INTO "mshop_attribute_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_attribute_list" ( :names
+ 	"parentid", "key", "type", "domain", "refid", "start", "end",
+ 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/attribute/manager/lists/insert/ansi
+
 ## name
 
 Class name of the used attribute list manager implementation
@@ -265,335 +809,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyList"!
 
 
-## standard/aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/attribute/manager/lists/standard/aggregate/ansi = 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", mattli."id" AS "id"
- 	FROM "mshop_attribute_list" AS mattli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, mattli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-```
-
-* Default: mshop/attribute/manager/lists/standard/aggregate
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/standard/insert/ansi
-* mshop/attribute/manager/lists/standard/update/ansi
-* mshop/attribute/manager/lists/standard/newid/ansi
-* mshop/attribute/manager/lists/standard/delete/ansi
-* mshop/attribute/manager/lists/standard/search/ansi
-* mshop/attribute/manager/lists/standard/count/ansi
-
-## standard/aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/attribute/manager/lists/standard/aggregate/mysql = 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", mattli."id" AS "id"
- 	FROM "mshop_attribute_list" AS mattli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, mattli."id"
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY "key"
-```
-
-* Default: 
- SELECT "key", COUNT("id") AS "count"
- FROM (
- 	SELECT :key AS "key", mattli."id" AS "id"
- 	FROM "mshop_attribute_list" AS mattli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :key, mattli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY "key"
-
-
-See also:
-
-* mshop/attribute/manager/lists/standard/aggregate/ansi
-
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/lists/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattli."id"
- 	FROM "mshop_attribute_list" AS mattli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/attribute/manager/lists/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the attribute
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/standard/insert/ansi
-* mshop/attribute/manager/lists/standard/update/ansi
-* mshop/attribute/manager/lists/standard/newid/ansi
-* mshop/attribute/manager/lists/standard/delete/ansi
-* mshop/attribute/manager/lists/standard/search/ansi
-* mshop/attribute/manager/lists/standard/aggregate/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/lists/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattli."id"
- 	FROM "mshop_attribute_list" AS mattli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattli."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattli."id"
- 	FROM "mshop_attribute_list" AS mattli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/attribute/manager/lists/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/lists/standard/delete/ansi = 
- DELETE FROM "mshop_attribute_list"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/attribute/manager/lists/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the attribute database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/standard/insert/ansi
-* mshop/attribute/manager/lists/standard/update/ansi
-* mshop/attribute/manager/lists/standard/newid/ansi
-* mshop/attribute/manager/lists/standard/search/ansi
-* mshop/attribute/manager/lists/standard/count/ansi
-* mshop/attribute/manager/lists/standard/aggregate/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/lists/standard/delete/mysql = 
- DELETE FROM "mshop_attribute_list"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_attribute_list"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/attribute/manager/lists/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new attribute list record into the database table
-
-```
-mshop/attribute/manager/lists/standard/insert/ansi = 
- INSERT INTO "mshop_attribute_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/attribute/manager/lists/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute list item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/standard/update/ansi
-* mshop/attribute/manager/lists/standard/newid/ansi
-* mshop/attribute/manager/lists/standard/delete/ansi
-* mshop/attribute/manager/lists/standard/search/ansi
-* mshop/attribute/manager/lists/standard/count/ansi
-* mshop/attribute/manager/lists/standard/aggregate/ansi
-
-## standard/insert/mysql
-
-Inserts a new attribute list record into the database table
-
-```
-mshop/attribute/manager/lists/standard/insert/mysql = 
- INSERT INTO "mshop_attribute_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_attribute_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/attribute/manager/lists/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/lists/standard/newid/ansi = mshop/attribute/manager/lists/standard/newid
+mshop/attribute/manager/lists/newid/ansi = mshop/attribute/manager/lists/newid
 ```
 
-* Default: mshop/attribute/manager/lists/standard/newid
+* Default: mshop/attribute/manager/lists/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -619,33 +843,33 @@ specific way.
 
 See also:
 
-* mshop/attribute/manager/lists/standard/insert/ansi
-* mshop/attribute/manager/lists/standard/update/ansi
-* mshop/attribute/manager/lists/standard/delete/ansi
-* mshop/attribute/manager/lists/standard/search/ansi
-* mshop/attribute/manager/lists/standard/count/ansi
-* mshop/attribute/manager/lists/standard/aggregate/ansi
+* mshop/attribute/manager/lists/insert/ansi
+* mshop/attribute/manager/lists/update/ansi
+* mshop/attribute/manager/lists/delete/ansi
+* mshop/attribute/manager/lists/search/ansi
+* mshop/attribute/manager/lists/count/ansi
+* mshop/attribute/manager/lists/aggregate/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/lists/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/attribute/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/attribute/manager/lists/standard/newid
+* Default: mshop/attribute/manager/lists/newid
 
 See also:
 
-* mshop/attribute/manager/lists/standard/newid/ansi
+* mshop/attribute/manager/lists/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/lists/standard/search/ansi = 
+mshop/attribute/manager/lists/search/ansi = 
  SELECT :columns
  	mattli."id" AS "attribute.lists.id", mattli."siteid" AS "attribute.lists.siteid",
  	mattli."parentid" AS "attribute.lists.parentid", mattli."type" AS "attribute.lists.type",
@@ -661,7 +885,7 @@ mshop/attribute/manager/lists/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/attribute/manager/lists/standard/search
+* Default: mshop/attribute/manager/lists/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -706,19 +930,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/lists/standard/insert/ansi
-* mshop/attribute/manager/lists/standard/update/ansi
-* mshop/attribute/manager/lists/standard/newid/ansi
-* mshop/attribute/manager/lists/standard/delete/ansi
-* mshop/attribute/manager/lists/standard/count/ansi
-* mshop/attribute/manager/lists/standard/aggregate/ansi
+* mshop/attribute/manager/lists/insert/ansi
+* mshop/attribute/manager/lists/update/ansi
+* mshop/attribute/manager/lists/newid/ansi
+* mshop/attribute/manager/lists/delete/ansi
+* mshop/attribute/manager/lists/count/ansi
+* mshop/attribute/manager/lists/aggregate/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/lists/standard/search/mysql = 
+mshop/attribute/manager/lists/search/mysql = 
  SELECT :columns
  	mattli."id" AS "attribute.lists.id", mattli."siteid" AS "attribute.lists.siteid",
  	mattli."parentid" AS "attribute.lists.parentid", mattli."type" AS "attribute.lists.type",
@@ -752,72 +976,7 @@ mshop/attribute/manager/lists/standard/search/mysql =
 
 See also:
 
-* mshop/attribute/manager/lists/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing attribute list record in the database
-
-```
-mshop/attribute/manager/lists/standard/update/ansi = 
- UPDATE "mshop_attribute_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/attribute/manager/lists/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute list item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/standard/insert/ansi
-* mshop/attribute/manager/lists/standard/newid/ansi
-* mshop/attribute/manager/lists/standard/delete/ansi
-* mshop/attribute/manager/lists/standard/search/ansi
-* mshop/attribute/manager/lists/standard/count/ansi
-* mshop/attribute/manager/lists/standard/aggregate/ansi
-
-## standard/update/mysql
-
-Updates an existing attribute list record in the database
-
-```
-mshop/attribute/manager/lists/standard/update/mysql = 
- UPDATE "mshop_attribute_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_attribute_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/attribute/manager/lists/standard/update/ansi
+* mshop/attribute/manager/lists/search/ansi
 
 ## submanagers
 
@@ -843,6 +1002,101 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## type/count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/lists/type/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattlity."id"
+ 	FROM "mshop_attribute_list_type" AS mattlity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattlity."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/attribute/manager/lists/type/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the attribute
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/type/insert/ansi
+* mshop/attribute/manager/lists/type/update/ansi
+* mshop/attribute/manager/lists/type/newid/ansi
+* mshop/attribute/manager/lists/type/delete/ansi
+* mshop/attribute/manager/lists/type/search/ansi
+
+## type/count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/lists/type/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattlity."id"
+ 	FROM "mshop_attribute_list_type" AS mattlity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattlity."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattlity."id"
+ 	FROM "mshop_attribute_list_type" AS mattlity
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattlity."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/attribute/manager/lists/type/count/ansi
 
 ## type/decorators/excludes
 
@@ -955,6 +1209,129 @@ See also:
 * mshop/attribute/manager/lists/type/decorators/excludes
 * mshop/attribute/manager/lists/type/decorators/global
 
+## type/delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/lists/type/delete/ansi = 
+ DELETE FROM "mshop_attribute_list_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/attribute/manager/lists/type/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the attribute database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/type/insert/ansi
+* mshop/attribute/manager/lists/type/update/ansi
+* mshop/attribute/manager/lists/type/newid/ansi
+* mshop/attribute/manager/lists/type/search/ansi
+* mshop/attribute/manager/lists/type/count/ansi
+
+## type/delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/lists/type/delete/mysql = 
+ DELETE FROM "mshop_attribute_list_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_attribute_list_type"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/attribute/manager/lists/type/delete/ansi
+
+## type/insert/ansi
+
+Inserts a new attribute list type record into the database table
+
+```
+mshop/attribute/manager/lists/type/insert/ansi = 
+ INSERT INTO "mshop_attribute_list_type"( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime","editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/attribute/manager/lists/type/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute list type item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/type/update/ansi
+* mshop/attribute/manager/lists/type/newid/ansi
+* mshop/attribute/manager/lists/type/delete/ansi
+* mshop/attribute/manager/lists/type/search/ansi
+* mshop/attribute/manager/lists/type/count/ansi
+
+## type/insert/mysql
+
+Inserts a new attribute list type record into the database table
+
+```
+mshop/attribute/manager/lists/type/insert/mysql = 
+ INSERT INTO "mshop_attribute_list_type"( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime","editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_attribute_list_type"( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime","editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/attribute/manager/lists/type/insert/ansi
+
 ## type/name
 
 Class name of the used attribute list type manager implementation
@@ -1000,233 +1377,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyType"!
 
 
-## type/standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/lists/type/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattlity."id"
- 	FROM "mshop_attribute_list_type" AS mattlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/attribute/manager/lists/type/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the attribute
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/insert/ansi
-* mshop/attribute/manager/lists/type/standard/update/ansi
-* mshop/attribute/manager/lists/type/standard/newid/ansi
-* mshop/attribute/manager/lists/type/standard/delete/ansi
-* mshop/attribute/manager/lists/type/standard/search/ansi
-
-## type/standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/lists/type/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattlity."id"
- 	FROM "mshop_attribute_list_type" AS mattlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattlity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattlity."id"
- 	FROM "mshop_attribute_list_type" AS mattlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/count/ansi
-
-## type/standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/lists/type/standard/delete/ansi = 
- DELETE FROM "mshop_attribute_list_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/attribute/manager/lists/type/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the attribute database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/insert/ansi
-* mshop/attribute/manager/lists/type/standard/update/ansi
-* mshop/attribute/manager/lists/type/standard/newid/ansi
-* mshop/attribute/manager/lists/type/standard/search/ansi
-* mshop/attribute/manager/lists/type/standard/count/ansi
-
-## type/standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/lists/type/standard/delete/mysql = 
- DELETE FROM "mshop_attribute_list_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_attribute_list_type"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/delete/ansi
-
-## type/standard/insert/ansi
-
-Inserts a new attribute list type record into the database table
-
-```
-mshop/attribute/manager/lists/type/standard/insert/ansi = 
- INSERT INTO "mshop_attribute_list_type"( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/attribute/manager/lists/type/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute list type item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/update/ansi
-* mshop/attribute/manager/lists/type/standard/newid/ansi
-* mshop/attribute/manager/lists/type/standard/delete/ansi
-* mshop/attribute/manager/lists/type/standard/search/ansi
-* mshop/attribute/manager/lists/type/standard/count/ansi
-
-## type/standard/insert/mysql
-
-Inserts a new attribute list type record into the database table
-
-```
-mshop/attribute/manager/lists/type/standard/insert/mysql = 
- INSERT INTO "mshop_attribute_list_type"( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_attribute_list_type"( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/insert/ansi
-
-## type/standard/newid/ansi
+## type/newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/lists/type/standard/newid/ansi = mshop/attribute/manager/lists/type/standard/newid
+mshop/attribute/manager/lists/type/newid/ansi = mshop/attribute/manager/lists/type/newid
 ```
 
-* Default: mshop/attribute/manager/lists/type/standard/newid
+* Default: mshop/attribute/manager/lists/type/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -1252,32 +1411,32 @@ specific way.
 
 See also:
 
-* mshop/attribute/manager/lists/type/standard/insert/ansi
-* mshop/attribute/manager/lists/type/standard/update/ansi
-* mshop/attribute/manager/lists/type/standard/delete/ansi
-* mshop/attribute/manager/lists/type/standard/search/ansi
-* mshop/attribute/manager/lists/type/standard/count/ansi
+* mshop/attribute/manager/lists/type/insert/ansi
+* mshop/attribute/manager/lists/type/update/ansi
+* mshop/attribute/manager/lists/type/delete/ansi
+* mshop/attribute/manager/lists/type/search/ansi
+* mshop/attribute/manager/lists/type/count/ansi
 
-## type/standard/newid/mysql
+## type/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/lists/type/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/attribute/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/attribute/manager/lists/type/standard/newid
+* Default: mshop/attribute/manager/lists/type/newid
 
 See also:
 
-* mshop/attribute/manager/lists/type/standard/newid/ansi
+* mshop/attribute/manager/lists/type/newid/ansi
 
-## type/standard/search/ansi
+## type/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/lists/type/standard/search/ansi = 
+mshop/attribute/manager/lists/type/search/ansi = 
  SELECT :columns
  	mattlity."id" AS "attribute.lists.type.id", mattlity."siteid" AS "attribute.lists.type.siteid",
  	mattlity."code" AS "attribute.lists.type.code", mattlity."domain" AS "attribute.lists.type.domain",
@@ -1291,7 +1450,7 @@ mshop/attribute/manager/lists/type/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/attribute/manager/lists/type/standard/search
+* Default: mshop/attribute/manager/lists/type/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -1336,18 +1495,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/lists/type/standard/insert/ansi
-* mshop/attribute/manager/lists/type/standard/update/ansi
-* mshop/attribute/manager/lists/type/standard/newid/ansi
-* mshop/attribute/manager/lists/type/standard/delete/ansi
-* mshop/attribute/manager/lists/type/standard/count/ansi
+* mshop/attribute/manager/lists/type/insert/ansi
+* mshop/attribute/manager/lists/type/update/ansi
+* mshop/attribute/manager/lists/type/newid/ansi
+* mshop/attribute/manager/lists/type/delete/ansi
+* mshop/attribute/manager/lists/type/count/ansi
 
-## type/standard/search/mysql
+## type/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/lists/type/standard/search/mysql = 
+mshop/attribute/manager/lists/type/search/mysql = 
  SELECT :columns
  	mattlity."id" AS "attribute.lists.type.id", mattlity."siteid" AS "attribute.lists.type.siteid",
  	mattlity."code" AS "attribute.lists.type.code", mattlity."domain" AS "attribute.lists.type.domain",
@@ -1377,71 +1536,7 @@ mshop/attribute/manager/lists/type/standard/search/mysql =
 
 See also:
 
-* mshop/attribute/manager/lists/type/standard/search/ansi
-
-## type/standard/update/ansi
-
-Updates an existing attribute list type record in the database
-
-```
-mshop/attribute/manager/lists/type/standard/update/ansi = 
- UPDATE "mshop_attribute_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/attribute/manager/lists/type/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute list type item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/insert/ansi
-* mshop/attribute/manager/lists/type/standard/newid/ansi
-* mshop/attribute/manager/lists/type/standard/delete/ansi
-* mshop/attribute/manager/lists/type/standard/search/ansi
-* mshop/attribute/manager/lists/type/standard/count/ansi
-
-## type/standard/update/mysql
-
-Updates an existing attribute list type record in the database
-
-```
-mshop/attribute/manager/lists/type/standard/update/mysql = 
- UPDATE "mshop_attribute_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_attribute_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/attribute/manager/lists/type/standard/update/ansi
+* mshop/attribute/manager/lists/type/search/ansi
 
 ## type/submanagers
 
@@ -1467,6 +1562,135 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## type/update/ansi
+
+Updates an existing attribute list type record in the database
+
+```
+mshop/attribute/manager/lists/type/update/ansi = 
+ UPDATE "mshop_attribute_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/attribute/manager/lists/type/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute list type item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/type/insert/ansi
+* mshop/attribute/manager/lists/type/newid/ansi
+* mshop/attribute/manager/lists/type/delete/ansi
+* mshop/attribute/manager/lists/type/search/ansi
+* mshop/attribute/manager/lists/type/count/ansi
+
+## type/update/mysql
+
+Updates an existing attribute list type record in the database
+
+```
+mshop/attribute/manager/lists/type/update/mysql = 
+ UPDATE "mshop_attribute_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_attribute_list_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/attribute/manager/lists/type/update/ansi
+
+## update/ansi
+
+Updates an existing attribute list record in the database
+
+```
+mshop/attribute/manager/lists/update/ansi = 
+ UPDATE "mshop_attribute_list"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/attribute/manager/lists/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute list item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/lists/insert/ansi
+* mshop/attribute/manager/lists/newid/ansi
+* mshop/attribute/manager/lists/delete/ansi
+* mshop/attribute/manager/lists/search/ansi
+* mshop/attribute/manager/lists/count/ansi
+* mshop/attribute/manager/lists/aggregate/ansi
+
+## update/mysql
+
+Updates an existing attribute list record in the database
+
+```
+mshop/attribute/manager/lists/update/mysql = 
+ UPDATE "mshop_attribute_list"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_attribute_list"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
+ 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/attribute/manager/lists/update/ansi
 
 # name
 
@@ -1513,7 +1737,157 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
+# newid
+## ansi
+
+Retrieves the ID generated by the database when inserting a new record
+
+```
+mshop/attribute/manager/newid/ansi = mshop/attribute/manager/newid
+```
+
+* Default: mshop/attribute/manager/newid
+* Type: string - SQL statement for retrieving the last inserted record ID
+* Since: 2014.03
+
+As soon as a new record is inserted into the database table,
+the database server generates a new and unique identifier for
+that record. This ID can be used for retrieving, updating and
+deleting that specific record from the table again.
+
+For MySQL:
+```
+ SELECT LAST_INSERT_ID()
+For PostgreSQL:
+ SELECT currval('seq_matt_id')
+For SQL Server:
+ SELECT SCOPE_IDENTITY()
+For Oracle:
+ SELECT "seq_matt_id".CURRVAL FROM DUAL
+```
+
+There's no way to retrive the new ID by a SQL statements that
+fits for most database servers as they implement their own
+specific way.
+
+See also:
+
+* mshop/attribute/manager/insert/ansi
+* mshop/attribute/manager/update/ansi
+* mshop/attribute/manager/delete/ansi
+* mshop/attribute/manager/search/ansi
+* mshop/attribute/manager/count/ansi
+
+## mysql
+
+Retrieves the ID generated by the database when inserting a new record
+
+```
+mshop/attribute/manager/newid/mysql = SELECT LAST_INSERT_ID()
+```
+
+* Default: mshop/attribute/manager/newid
+
+See also:
+
+* mshop/attribute/manager/newid/ansi
+
 # property
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/property/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattpr."id"
+ 	FROM "mshop_attribute_property" AS mattpr
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattpr."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/attribute/manager/property/count
+* Type: string - SQL statement for counting items
+* Since: 2018.01
+
+Counts all records matched by the given criteria from the attribute
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/property/insert/ansi
+* mshop/attribute/manager/property/update/ansi
+* mshop/attribute/manager/property/newid/ansi
+* mshop/attribute/manager/property/delete/ansi
+* mshop/attribute/manager/property/search/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/property/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattpr."id"
+ 	FROM "mshop_attribute_property" AS mattpr
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattpr."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattpr."id"
+ 	FROM "mshop_attribute_property" AS mattpr
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattpr."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/attribute/manager/property/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the attribute property manager
@@ -1625,6 +1999,129 @@ See also:
 * mshop/attribute/manager/property/decorators/excludes
 * mshop/attribute/manager/property/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/property/delete/ansi = 
+ DELETE FROM "mshop_attribute_property"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/attribute/manager/property/delete
+* Type: string - SQL statement for deleting items
+* Since: 2018.01
+
+Removes the records specified by the given IDs from the attribute database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/property/insert/ansi
+* mshop/attribute/manager/property/update/ansi
+* mshop/attribute/manager/property/newid/ansi
+* mshop/attribute/manager/property/search/ansi
+* mshop/attribute/manager/property/count/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/property/delete/mysql = 
+ DELETE FROM "mshop_attribute_property"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_attribute_property"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/attribute/manager/property/delete/ansi
+
+## insert/ansi
+
+Inserts a new attribute property record into the database table
+
+```
+mshop/attribute/manager/property/insert/ansi = 
+ INSERT INTO "mshop_attribute_property" ( :names
+ 	"parentid", "key", "type", "langid", "value",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/attribute/manager/property/insert
+* Type: string - SQL statement for inserting records
+* Since: 2018.01
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute property item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/property/update/ansi
+* mshop/attribute/manager/property/newid/ansi
+* mshop/attribute/manager/property/delete/ansi
+* mshop/attribute/manager/property/search/ansi
+* mshop/attribute/manager/property/count/ansi
+
+## insert/mysql
+
+Inserts a new attribute property record into the database table
+
+```
+mshop/attribute/manager/property/insert/mysql = 
+ INSERT INTO "mshop_attribute_property" ( :names
+ 	"parentid", "key", "type", "langid", "value",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_attribute_property" ( :names
+ 	"parentid", "key", "type", "langid", "value",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/attribute/manager/property/insert/ansi
+
 ## name
 
 Class name of the used attribute property manager implementation
@@ -1670,233 +2167,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyProperty"!
 
 
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/property/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattpr."id"
- 	FROM "mshop_attribute_property" AS mattpr
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattpr."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/attribute/manager/property/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2018.01
-
-Counts all records matched by the given criteria from the attribute
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/standard/insert/ansi
-* mshop/attribute/manager/property/standard/update/ansi
-* mshop/attribute/manager/property/standard/newid/ansi
-* mshop/attribute/manager/property/standard/delete/ansi
-* mshop/attribute/manager/property/standard/search/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/property/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattpr."id"
- 	FROM "mshop_attribute_property" AS mattpr
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattpr."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattpr."id"
- 	FROM "mshop_attribute_property" AS mattpr
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattpr."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/attribute/manager/property/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/property/standard/delete/ansi = 
- DELETE FROM "mshop_attribute_property"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/attribute/manager/property/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2018.01
-
-Removes the records specified by the given IDs from the attribute database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/standard/insert/ansi
-* mshop/attribute/manager/property/standard/update/ansi
-* mshop/attribute/manager/property/standard/newid/ansi
-* mshop/attribute/manager/property/standard/search/ansi
-* mshop/attribute/manager/property/standard/count/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/property/standard/delete/mysql = 
- DELETE FROM "mshop_attribute_property"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_attribute_property"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/attribute/manager/property/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new attribute property record into the database table
-
-```
-mshop/attribute/manager/property/standard/insert/ansi = 
- INSERT INTO "mshop_attribute_property" ( :names
- 	"parentid", "key", "type", "langid", "value",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/attribute/manager/property/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2018.01
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute property item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/standard/update/ansi
-* mshop/attribute/manager/property/standard/newid/ansi
-* mshop/attribute/manager/property/standard/delete/ansi
-* mshop/attribute/manager/property/standard/search/ansi
-* mshop/attribute/manager/property/standard/count/ansi
-
-## standard/insert/mysql
-
-Inserts a new attribute property record into the database table
-
-```
-mshop/attribute/manager/property/standard/insert/mysql = 
- INSERT INTO "mshop_attribute_property" ( :names
- 	"parentid", "key", "type", "langid", "value",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_attribute_property" ( :names
- 	"parentid", "key", "type", "langid", "value",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/attribute/manager/property/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/property/standard/newid/ansi = mshop/attribute/manager/property/standard/newid
+mshop/attribute/manager/property/newid/ansi = mshop/attribute/manager/property/newid
 ```
 
-* Default: mshop/attribute/manager/property/standard/newid
+* Default: mshop/attribute/manager/property/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2018.01
 
@@ -1922,32 +2201,32 @@ specific way.
 
 See also:
 
-* mshop/attribute/manager/property/standard/insert/ansi
-* mshop/attribute/manager/property/standard/update/ansi
-* mshop/attribute/manager/property/standard/delete/ansi
-* mshop/attribute/manager/property/standard/search/ansi
-* mshop/attribute/manager/property/standard/count/ansi
+* mshop/attribute/manager/property/insert/ansi
+* mshop/attribute/manager/property/update/ansi
+* mshop/attribute/manager/property/delete/ansi
+* mshop/attribute/manager/property/search/ansi
+* mshop/attribute/manager/property/count/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/property/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/attribute/manager/property/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/attribute/manager/property/standard/newid
+* Default: mshop/attribute/manager/property/newid
 
 See also:
 
-* mshop/attribute/manager/property/standard/newid/ansi
+* mshop/attribute/manager/property/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/property/standard/search/ansi = 
+mshop/attribute/manager/property/search/ansi = 
  SELECT :columns
  	mattpr."id" AS "attribute.property.id", mattpr."parentid" AS "attribute.property.parentid",
  	mattpr."siteid" AS "attribute.property.siteid", mattpr."type" AS "attribute.property.type",
@@ -1961,7 +2240,7 @@ mshop/attribute/manager/property/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/attribute/manager/property/standard/search
+* Default: mshop/attribute/manager/property/search
 * Type: string - SQL statement for searching items
 * Since: 2018.01
 
@@ -2006,18 +2285,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/property/standard/insert/ansi
-* mshop/attribute/manager/property/standard/update/ansi
-* mshop/attribute/manager/property/standard/newid/ansi
-* mshop/attribute/manager/property/standard/delete/ansi
-* mshop/attribute/manager/property/standard/count/ansi
+* mshop/attribute/manager/property/insert/ansi
+* mshop/attribute/manager/property/update/ansi
+* mshop/attribute/manager/property/newid/ansi
+* mshop/attribute/manager/property/delete/ansi
+* mshop/attribute/manager/property/count/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/property/standard/search/mysql = 
+mshop/attribute/manager/property/search/mysql = 
  SELECT :columns
  	mattpr."id" AS "attribute.property.id", mattpr."parentid" AS "attribute.property.parentid",
  	mattpr."siteid" AS "attribute.property.siteid", mattpr."type" AS "attribute.property.type",
@@ -2047,71 +2326,7 @@ mshop/attribute/manager/property/standard/search/mysql =
 
 See also:
 
-* mshop/attribute/manager/property/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing attribute property record in the database
-
-```
-mshop/attribute/manager/property/standard/update/ansi = 
- UPDATE "mshop_attribute_property"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
- 	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/attribute/manager/property/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2018.01
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute property item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/standard/insert/ansi
-* mshop/attribute/manager/property/standard/newid/ansi
-* mshop/attribute/manager/property/standard/delete/ansi
-* mshop/attribute/manager/property/standard/search/ansi
-* mshop/attribute/manager/property/standard/count/ansi
-
-## standard/update/mysql
-
-Updates an existing attribute property record in the database
-
-```
-mshop/attribute/manager/property/standard/update/mysql = 
- UPDATE "mshop_attribute_property"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
- 	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_attribute_property"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
- 	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/attribute/manager/property/standard/update/ansi
+* mshop/attribute/manager/property/search/ansi
 
 ## submanagers
 
@@ -2138,6 +2353,101 @@ manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
+
+## type/count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/property/type/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattprty."id"
+ 	FROM "mshop_attribute_property_type" mattprty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattprty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/attribute/manager/property/type/count
+* Type: string - SQL statement for counting items
+* Since: 2018.01
+
+Counts all records matched by the given criteria from the attribute
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/property/type/insert/ansi
+* mshop/attribute/manager/property/type/update/ansi
+* mshop/attribute/manager/property/type/newid/ansi
+* mshop/attribute/manager/property/type/delete/ansi
+* mshop/attribute/manager/property/type/search/ansi
+
+## type/count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/property/type/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattprty."id"
+ 	FROM "mshop_attribute_property_type" mattprty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattprty."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattprty."id"
+ 	FROM "mshop_attribute_property_type" mattprty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattprty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/attribute/manager/property/type/count/ansi
 
 ## type/decorators/excludes
 
@@ -2250,6 +2560,129 @@ See also:
 * mshop/attribute/manager/property/type/decorators/excludes
 * mshop/attribute/manager/property/type/decorators/global
 
+## type/delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/property/type/delete/ansi = 
+ DELETE FROM "mshop_attribute_property_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/attribute/manager/property/type/delete
+* Type: string - SQL statement for deleting items
+* Since: 2018.01
+
+Removes the records specified by the given IDs from the attribute database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/property/type/insert/ansi
+* mshop/attribute/manager/property/type/update/ansi
+* mshop/attribute/manager/property/type/newid/ansi
+* mshop/attribute/manager/property/type/search/ansi
+* mshop/attribute/manager/property/type/count/ansi
+
+## type/delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/property/type/delete/mysql = 
+ DELETE FROM "mshop_attribute_property_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_attribute_property_type"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/attribute/manager/property/type/delete/ansi
+
+## type/insert/ansi
+
+Inserts a new attribute property type record into the database table
+
+```
+mshop/attribute/manager/property/type/insert/ansi = 
+ INSERT INTO "mshop_attribute_property_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/attribute/manager/property/type/insert
+* Type: string - SQL statement for inserting records
+* Since: 2018.01
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute type item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/property/type/update/ansi
+* mshop/attribute/manager/property/type/newid/ansi
+* mshop/attribute/manager/property/type/delete/ansi
+* mshop/attribute/manager/property/type/search/ansi
+* mshop/attribute/manager/property/type/count/ansi
+
+## type/insert/mysql
+
+Inserts a new attribute property type record into the database table
+
+```
+mshop/attribute/manager/property/type/insert/mysql = 
+ INSERT INTO "mshop_attribute_property_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_attribute_property_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/attribute/manager/property/type/insert/ansi
+
 ## type/name
 
 Class name of the used attribute property type manager implementation
@@ -2295,233 +2728,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyType"!
 
 
-## type/standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/property/type/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattprty."id"
- 	FROM "mshop_attribute_property_type" mattprty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattprty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/attribute/manager/property/type/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2018.01
-
-Counts all records matched by the given criteria from the attribute
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/insert/ansi
-* mshop/attribute/manager/property/type/standard/update/ansi
-* mshop/attribute/manager/property/type/standard/newid/ansi
-* mshop/attribute/manager/property/type/standard/delete/ansi
-* mshop/attribute/manager/property/type/standard/search/ansi
-
-## type/standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/property/type/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattprty."id"
- 	FROM "mshop_attribute_property_type" mattprty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattprty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattprty."id"
- 	FROM "mshop_attribute_property_type" mattprty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattprty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/count/ansi
-
-## type/standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/property/type/standard/delete/ansi = 
- DELETE FROM "mshop_attribute_property_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/attribute/manager/property/type/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2018.01
-
-Removes the records specified by the given IDs from the attribute database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/insert/ansi
-* mshop/attribute/manager/property/type/standard/update/ansi
-* mshop/attribute/manager/property/type/standard/newid/ansi
-* mshop/attribute/manager/property/type/standard/search/ansi
-* mshop/attribute/manager/property/type/standard/count/ansi
-
-## type/standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/property/type/standard/delete/mysql = 
- DELETE FROM "mshop_attribute_property_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_attribute_property_type"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/delete/ansi
-
-## type/standard/insert/ansi
-
-Inserts a new attribute property type record into the database table
-
-```
-mshop/attribute/manager/property/type/standard/insert/ansi = 
- INSERT INTO "mshop_attribute_property_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/attribute/manager/property/type/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2018.01
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute type item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/update/ansi
-* mshop/attribute/manager/property/type/standard/newid/ansi
-* mshop/attribute/manager/property/type/standard/delete/ansi
-* mshop/attribute/manager/property/type/standard/search/ansi
-* mshop/attribute/manager/property/type/standard/count/ansi
-
-## type/standard/insert/mysql
-
-Inserts a new attribute property type record into the database table
-
-```
-mshop/attribute/manager/property/type/standard/insert/mysql = 
- INSERT INTO "mshop_attribute_property_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_attribute_property_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/insert/ansi
-
-## type/standard/newid/ansi
+## type/newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/property/type/standard/newid/ansi = mshop/attribute/manager/property/type/standard/newid
+mshop/attribute/manager/property/type/newid/ansi = mshop/attribute/manager/property/type/newid
 ```
 
-* Default: mshop/attribute/manager/property/type/standard/newid
+* Default: mshop/attribute/manager/property/type/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2018.01
 
@@ -2547,32 +2762,32 @@ specific way.
 
 See also:
 
-* mshop/attribute/manager/property/type/standard/insert/ansi
-* mshop/attribute/manager/property/type/standard/update/ansi
-* mshop/attribute/manager/property/type/standard/delete/ansi
-* mshop/attribute/manager/property/type/standard/search/ansi
-* mshop/attribute/manager/property/type/standard/count/ansi
+* mshop/attribute/manager/property/type/insert/ansi
+* mshop/attribute/manager/property/type/update/ansi
+* mshop/attribute/manager/property/type/delete/ansi
+* mshop/attribute/manager/property/type/search/ansi
+* mshop/attribute/manager/property/type/count/ansi
 
-## type/standard/newid/mysql
+## type/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/property/type/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/attribute/manager/property/type/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/attribute/manager/property/type/standard/newid
+* Default: mshop/attribute/manager/property/type/newid
 
 See also:
 
-* mshop/attribute/manager/property/type/standard/newid/ansi
+* mshop/attribute/manager/property/type/newid/ansi
 
-## type/standard/search/ansi
+## type/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/property/type/standard/search/ansi = 
+mshop/attribute/manager/property/type/search/ansi = 
  SELECT :columns
  	mattprty."id" AS "attribute.property.type.id", mattprty."siteid" AS "attribute.property.type.siteid",
  	mattprty."code" AS "attribute.property.type.code", mattprty."domain" AS "attribute.property.type.domain",
@@ -2586,7 +2801,7 @@ mshop/attribute/manager/property/type/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/attribute/manager/property/type/standard/search
+* Default: mshop/attribute/manager/property/type/search
 * Type: string - SQL statement for searching items
 * Since: 2018.01
 
@@ -2631,18 +2846,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/property/type/standard/insert/ansi
-* mshop/attribute/manager/property/type/standard/update/ansi
-* mshop/attribute/manager/property/type/standard/newid/ansi
-* mshop/attribute/manager/property/type/standard/delete/ansi
-* mshop/attribute/manager/property/type/standard/count/ansi
+* mshop/attribute/manager/property/type/insert/ansi
+* mshop/attribute/manager/property/type/update/ansi
+* mshop/attribute/manager/property/type/newid/ansi
+* mshop/attribute/manager/property/type/delete/ansi
+* mshop/attribute/manager/property/type/count/ansi
 
-## type/standard/search/mysql
+## type/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/property/type/standard/search/mysql = 
+mshop/attribute/manager/property/type/search/mysql = 
  SELECT :columns
  	mattprty."id" AS "attribute.property.type.id", mattprty."siteid" AS "attribute.property.type.siteid",
  	mattprty."code" AS "attribute.property.type.code", mattprty."domain" AS "attribute.property.type.domain",
@@ -2672,71 +2887,7 @@ mshop/attribute/manager/property/type/standard/search/mysql =
 
 See also:
 
-* mshop/attribute/manager/property/type/standard/search/ansi
-
-## type/standard/update/ansi
-
-Updates an existing attribute property type record in the database
-
-```
-mshop/attribute/manager/property/type/standard/update/ansi = 
- UPDATE "mshop_attribute_property_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/attribute/manager/property/type/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2018.01
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute type item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/insert/ansi
-* mshop/attribute/manager/property/type/standard/newid/ansi
-* mshop/attribute/manager/property/type/standard/delete/ansi
-* mshop/attribute/manager/property/type/standard/search/ansi
-* mshop/attribute/manager/property/type/standard/count/ansi
-
-## type/standard/update/mysql
-
-Updates an existing attribute property type record in the database
-
-```
-mshop/attribute/manager/property/type/standard/update/mysql = 
- UPDATE "mshop_attribute_property_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_attribute_property_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/attribute/manager/property/type/standard/update/ansi
+* mshop/attribute/manager/property/type/search/ansi
 
 ## type/submanagers
 
@@ -2763,225 +2914,32 @@ using the search keys of the sub-managers to further limit the
 retrieved list of items.
 
 
-# sitemode
+## type/update/ansi
 
-Mode how items from levels below or above in the site tree are handled
+Updates an existing attribute property type record in the database
 
 ```
-mshop/attribute/manager/sitemode = 3
+mshop/attribute/manager/property/type/update/ansi = 
+ UPDATE "mshop_attribute_property_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
 ```
 
-* Default: 3
-* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
+* Default: mshop/attribute/manager/property/type/update
+* Type: string - SQL statement for updating records
 * Since: 2018.01
 
-By default, only items from the current site are fetched from the
-storage. If the ai-sites extension is installed, you can create a
-tree of sites. Then, this setting allows you to define for the
-whole attribute domain if items from parent sites are inherited,
-sites from child sites are aggregated or both.
-
-Available constants for the site mode are:
-* 0 = only items from the current site
-* 1 = inherit items from parent sites
-* 2 = aggregate items from child sites
-* 3 = inherit and aggregate items at the same time
-
-You also need to set the mode in the locale manager
-(mshop/locale/manager/standard/sitelevel) to one of the constants.
-If you set it to the same value, it will work as described but you
-can also use different modes. For example, if inheritance and
-aggregation is configured the locale manager but only inheritance
-in the domain manager because aggregating items makes no sense in
-this domain, then items wil be only inherited. Thus, you have full
-control over inheritance and aggregation in each domain.
-
-See also:
-
-* mshop/locale/manager/standard/sitelevel
-
-# standard
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT matt."id"
- 	FROM "mshop_attribute" AS matt
- 	:joins
- 	WHERE :cond
- 	GROUP BY matt."id"
- 	ORDER BY matt."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/attribute/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the attribute
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/standard/insert/ansi
-* mshop/attribute/manager/standard/update/ansi
-* mshop/attribute/manager/standard/newid/ansi
-* mshop/attribute/manager/standard/delete/ansi
-* mshop/attribute/manager/standard/search/ansi
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT matt."id"
- 	FROM "mshop_attribute" AS matt
- 	:joins
- 	WHERE :cond
- 	GROUP BY matt."id"
- 	ORDER BY matt."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT matt."id"
- 	FROM "mshop_attribute" AS matt
- 	:joins
- 	WHERE :cond
- 	GROUP BY matt."id"
- 	ORDER BY matt."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/attribute/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/standard/delete/ansi = 
- DELETE FROM "mshop_attribute"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/attribute/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the attribute database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/standard/insert/ansi
-* mshop/attribute/manager/standard/update/ansi
-* mshop/attribute/manager/standard/newid/ansi
-* mshop/attribute/manager/standard/search/ansi
-* mshop/attribute/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/standard/delete/mysql = 
- DELETE FROM "mshop_attribute"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_attribute"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/attribute/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new attribute record into the database table
-
-```
-mshop/attribute/manager/standard/insert/ansi = 
- INSERT INTO "mshop_attribute" ( :names
- 	"key", "type", "domain", "code", "status", "pos",
- 	"label", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/attribute/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the attribute item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
+the values from the attribute type item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
 compatible with most relational database systems. This also
@@ -2989,99 +2947,108 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/standard/update/ansi
-* mshop/attribute/manager/standard/newid/ansi
-* mshop/attribute/manager/standard/delete/ansi
-* mshop/attribute/manager/standard/search/ansi
-* mshop/attribute/manager/standard/count/ansi
+* mshop/attribute/manager/property/type/insert/ansi
+* mshop/attribute/manager/property/type/newid/ansi
+* mshop/attribute/manager/property/type/delete/ansi
+* mshop/attribute/manager/property/type/search/ansi
+* mshop/attribute/manager/property/type/count/ansi
 
-## insert/mysql
+## type/update/mysql
 
-Inserts a new attribute record into the database table
+Updates an existing attribute property type record in the database
 
 ```
-mshop/attribute/manager/standard/insert/mysql = 
- INSERT INTO "mshop_attribute" ( :names
- 	"key", "type", "domain", "code", "status", "pos",
- 	"label", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
+mshop/attribute/manager/property/type/update/mysql = 
+ UPDATE "mshop_attribute_property_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
 ```
 
 * Default: 
- INSERT INTO "mshop_attribute" ( :names
- 	"key", "type", "domain", "code", "status", "pos",
- 	"label", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
+ UPDATE "mshop_attribute_property_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
 
 
 See also:
 
-* mshop/attribute/manager/standard/insert/ansi
+* mshop/attribute/manager/property/type/update/ansi
 
-## newid/ansi
+## update/ansi
 
-Retrieves the ID generated by the database when inserting a new record
+Updates an existing attribute property record in the database
 
 ```
-mshop/attribute/manager/standard/newid/ansi = mshop/attribute/manager/standard/newid
+mshop/attribute/manager/property/update/ansi = 
+ UPDATE "mshop_attribute_property"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
+ 	"value" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
 ```
 
-* Default: mshop/attribute/manager/standard/newid
-* Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Default: mshop/attribute/manager/property/update
+* Type: string - SQL statement for updating records
+* Since: 2018.01
 
-As soon as a new record is inserted into the database table,
-the database server generates a new and unique identifier for
-that record. This ID can be used for retrieving, updating and
-deleting that specific record from the table again.
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
 
-For MySQL:
-```
- SELECT LAST_INSERT_ID()
-For PostgreSQL:
- SELECT currval('seq_matt_id')
-For SQL Server:
- SELECT SCOPE_IDENTITY()
-For Oracle:
- SELECT "seq_matt_id".CURRVAL FROM DUAL
-```
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute property item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
 
-There's no way to retrive the new ID by a SQL statements that
-fits for most database servers as they implement their own
-specific way.
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/standard/insert/ansi
-* mshop/attribute/manager/standard/update/ansi
-* mshop/attribute/manager/standard/delete/ansi
-* mshop/attribute/manager/standard/search/ansi
-* mshop/attribute/manager/standard/count/ansi
+* mshop/attribute/manager/property/insert/ansi
+* mshop/attribute/manager/property/newid/ansi
+* mshop/attribute/manager/property/delete/ansi
+* mshop/attribute/manager/property/search/ansi
+* mshop/attribute/manager/property/count/ansi
 
-## newid/mysql
+## update/mysql
 
-Retrieves the ID generated by the database when inserting a new record
+Updates an existing attribute property record in the database
 
 ```
-mshop/attribute/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/attribute/manager/property/update/mysql = 
+ UPDATE "mshop_attribute_property"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
+ 	"value" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
 ```
 
-* Default: mshop/attribute/manager/standard/newid
+* Default: 
+ UPDATE "mshop_attribute_property"
+ SET :names
+ 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
+ 	"value" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
 
 See also:
 
-* mshop/attribute/manager/standard/newid/ansi
+* mshop/attribute/manager/property/update/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/standard/search/ansi = 
+mshop/attribute/manager/search/ansi = 
  SELECT :columns
  	matt."id" AS "attribute.id", matt."siteid" AS "attribute.siteid",
  	matt."type" AS "attribute.type", matt."domain" AS "attribute.domain",
@@ -3099,7 +3066,7 @@ mshop/attribute/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/attribute/manager/standard/search
+* Default: mshop/attribute/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -3144,18 +3111,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/standard/insert/ansi
-* mshop/attribute/manager/standard/update/ansi
-* mshop/attribute/manager/standard/newid/ansi
-* mshop/attribute/manager/standard/delete/ansi
-* mshop/attribute/manager/standard/count/ansi
+* mshop/attribute/manager/insert/ansi
+* mshop/attribute/manager/update/ansi
+* mshop/attribute/manager/newid/ansi
+* mshop/attribute/manager/delete/ansi
+* mshop/attribute/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/standard/search/mysql = 
+mshop/attribute/manager/search/mysql = 
  SELECT :columns
  	matt."id" AS "attribute.id", matt."siteid" AS "attribute.siteid",
  	matt."type" AS "attribute.type", matt."domain" AS "attribute.domain",
@@ -3191,71 +3158,44 @@ mshop/attribute/manager/standard/search/mysql =
 
 See also:
 
-* mshop/attribute/manager/standard/search/ansi
+* mshop/attribute/manager/search/ansi
 
-## update/ansi
+# sitemode
 
-Updates an existing attribute record in the database
+Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/attribute/manager/standard/update/ansi = 
- UPDATE "mshop_attribute"
- SET :names
- 	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
- 	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+mshop/attribute/manager/sitemode = 3
 ```
 
-* Default: mshop/attribute/manager/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
+* Default: 3
+* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
+* Since: 2018.01
 
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
+By default, only items from the current site are fetched from the
+storage. If the ai-sites extension is installed, you can create a
+tree of sites. Then, this setting allows you to define for the
+whole attribute domain if items from parent sites are inherited,
+sites from child sites are aggregated or both.
 
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
+Available constants for the site mode are:
+* 0 = only items from the current site
+* 1 = inherit items from parent sites
+* 2 = aggregate items from child sites
+* 3 = inherit and aggregate items at the same time
 
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
+You also need to set the mode in the locale manager
+(mshop/locale/manager/sitelevel) to one of the constants.
+If you set it to the same value, it will work as described but you
+can also use different modes. For example, if inheritance and
+aggregation is configured the locale manager but only inheritance
+in the domain manager because aggregating items makes no sense in
+this domain, then items wil be only inherited. Thus, you have full
+control over inheritance and aggregation in each domain.
 
 See also:
 
-* mshop/attribute/manager/standard/insert/ansi
-* mshop/attribute/manager/standard/newid/ansi
-* mshop/attribute/manager/standard/delete/ansi
-* mshop/attribute/manager/standard/search/ansi
-* mshop/attribute/manager/standard/count/ansi
-
-## update/mysql
-
-Updates an existing attribute record in the database
-
-```
-mshop/attribute/manager/standard/update/mysql = 
- UPDATE "mshop_attribute"
- SET :names
- 	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
- 	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_attribute"
- SET :names
- 	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
- 	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/attribute/manager/standard/update/ansi
+* mshop/locale/manager/sitelevel
 
 # submanagers
 
@@ -3283,6 +3223,101 @@ retrieved list of items.
 
 
 # type
+## count/ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/type/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattty."id"
+ 	FROM "mshop_attribute_type" AS mattty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: mshop/attribute/manager/type/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the attribute
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/type/insert/ansi
+* mshop/attribute/manager/type/update/ansi
+* mshop/attribute/manager/type/newid/ansi
+* mshop/attribute/manager/type/delete/ansi
+* mshop/attribute/manager/type/search/ansi
+
+## count/mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+mshop/attribute/manager/type/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattty."id"
+ 	FROM "mshop_attribute_type" AS mattty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattty."id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM (
+ 	SELECT mattty."id"
+ 	FROM "mshop_attribute_type" AS mattty
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY mattty."id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* mshop/attribute/manager/type/count/ansi
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the attribute type manager
@@ -3394,6 +3429,129 @@ See also:
 * mshop/attribute/manager/type/decorators/excludes
 * mshop/attribute/manager/type/decorators/global
 
+## delete/ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/type/delete/ansi = 
+ DELETE FROM "mshop_attribute_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: mshop/attribute/manager/type/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the attribute database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/type/insert/ansi
+* mshop/attribute/manager/type/update/ansi
+* mshop/attribute/manager/type/newid/ansi
+* mshop/attribute/manager/type/search/ansi
+* mshop/attribute/manager/type/count/ansi
+
+## delete/mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+mshop/attribute/manager/type/delete/mysql = 
+ DELETE FROM "mshop_attribute_type"
+ WHERE :cond AND siteid = ?
+```
+
+* Default: 
+ DELETE FROM "mshop_attribute_type"
+ WHERE :cond AND siteid = ?
+
+
+See also:
+
+* mshop/attribute/manager/type/delete/ansi
+
+## insert/ansi
+
+Inserts a new attribute type record into the database table
+
+```
+mshop/attribute/manager/type/insert/ansi = 
+ INSERT INTO "mshop_attribute_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: mshop/attribute/manager/type/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute type item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/type/update/ansi
+* mshop/attribute/manager/type/newid/ansi
+* mshop/attribute/manager/type/delete/ansi
+* mshop/attribute/manager/type/search/ansi
+* mshop/attribute/manager/type/count/ansi
+
+## insert/mysql
+
+Inserts a new attribute type record into the database table
+
+```
+mshop/attribute/manager/type/insert/mysql = 
+ INSERT INTO "mshop_attribute_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "mshop_attribute_type" ( :names
+ 	"code", "domain", "label", "pos", "status",
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* mshop/attribute/manager/type/insert/ansi
+
 ## name
 
 Class name of the used attribute type manager implementation
@@ -3439,233 +3597,15 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyType"!
 
 
-## standard/count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/type/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattty."id"
- 	FROM "mshop_attribute_type" AS mattty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: mshop/attribute/manager/type/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the attribute
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/type/standard/insert/ansi
-* mshop/attribute/manager/type/standard/update/ansi
-* mshop/attribute/manager/type/standard/newid/ansi
-* mshop/attribute/manager/type/standard/delete/ansi
-* mshop/attribute/manager/type/standard/search/ansi
-
-## standard/count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-mshop/attribute/manager/type/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattty."id"
- 	FROM "mshop_attribute_type" AS mattty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mattty."id"
- 	FROM "mshop_attribute_type" AS mattty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mattty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* mshop/attribute/manager/type/standard/count/ansi
-
-## standard/delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/type/standard/delete/ansi = 
- DELETE FROM "mshop_attribute_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: mshop/attribute/manager/type/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the attribute database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/type/standard/insert/ansi
-* mshop/attribute/manager/type/standard/update/ansi
-* mshop/attribute/manager/type/standard/newid/ansi
-* mshop/attribute/manager/type/standard/search/ansi
-* mshop/attribute/manager/type/standard/count/ansi
-
-## standard/delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-mshop/attribute/manager/type/standard/delete/mysql = 
- DELETE FROM "mshop_attribute_type"
- WHERE :cond AND siteid = ?
-```
-
-* Default: 
- DELETE FROM "mshop_attribute_type"
- WHERE :cond AND siteid = ?
-
-
-See also:
-
-* mshop/attribute/manager/type/standard/delete/ansi
-
-## standard/insert/ansi
-
-Inserts a new attribute type record into the database table
-
-```
-mshop/attribute/manager/type/standard/insert/ansi = 
- INSERT INTO "mshop_attribute_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: mshop/attribute/manager/type/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute type item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/type/standard/update/ansi
-* mshop/attribute/manager/type/standard/newid/ansi
-* mshop/attribute/manager/type/standard/delete/ansi
-* mshop/attribute/manager/type/standard/search/ansi
-* mshop/attribute/manager/type/standard/count/ansi
-
-## standard/insert/mysql
-
-Inserts a new attribute type record into the database table
-
-```
-mshop/attribute/manager/type/standard/insert/mysql = 
- INSERT INTO "mshop_attribute_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "mshop_attribute_type" ( :names
- 	"code", "domain", "label", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* mshop/attribute/manager/type/standard/insert/ansi
-
-## standard/newid/ansi
+## newid/ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/type/standard/newid/ansi = mshop/attribute/manager/type/standard/newid
+mshop/attribute/manager/type/newid/ansi = mshop/attribute/manager/type/newid
 ```
 
-* Default: mshop/attribute/manager/type/standard/newid
+* Default: mshop/attribute/manager/type/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -3691,32 +3631,32 @@ specific way.
 
 See also:
 
-* mshop/attribute/manager/type/standard/insert/ansi
-* mshop/attribute/manager/type/standard/update/ansi
-* mshop/attribute/manager/type/standard/delete/ansi
-* mshop/attribute/manager/type/standard/search/ansi
-* mshop/attribute/manager/type/standard/count/ansi
+* mshop/attribute/manager/type/insert/ansi
+* mshop/attribute/manager/type/update/ansi
+* mshop/attribute/manager/type/delete/ansi
+* mshop/attribute/manager/type/search/ansi
+* mshop/attribute/manager/type/count/ansi
 
-## standard/newid/mysql
+## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/attribute/manager/type/standard/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/attribute/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/attribute/manager/type/standard/newid
+* Default: mshop/attribute/manager/type/newid
 
 See also:
 
-* mshop/attribute/manager/type/standard/newid/ansi
+* mshop/attribute/manager/type/newid/ansi
 
-## standard/search/ansi
+## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/type/standard/search/ansi = 
+mshop/attribute/manager/type/search/ansi = 
  SELECT :columns
  	mattty."id" AS "attribute.type.id", mattty."siteid" AS "attribute.type.siteid",
  	mattty."code" AS "attribute.type.code", mattty."domain" AS "attribute.type.domain",
@@ -3730,7 +3670,7 @@ mshop/attribute/manager/type/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/attribute/manager/type/standard/search
+* Default: mshop/attribute/manager/type/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -3775,18 +3715,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/attribute/manager/type/standard/insert/ansi
-* mshop/attribute/manager/type/standard/update/ansi
-* mshop/attribute/manager/type/standard/newid/ansi
-* mshop/attribute/manager/type/standard/delete/ansi
-* mshop/attribute/manager/type/standard/count/ansi
+* mshop/attribute/manager/type/insert/ansi
+* mshop/attribute/manager/type/update/ansi
+* mshop/attribute/manager/type/newid/ansi
+* mshop/attribute/manager/type/delete/ansi
+* mshop/attribute/manager/type/count/ansi
 
-## standard/search/mysql
+## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/attribute/manager/type/standard/search/mysql = 
+mshop/attribute/manager/type/search/mysql = 
  SELECT :columns
  	mattty."id" AS "attribute.type.id", mattty."siteid" AS "attribute.type.siteid",
  	mattty."code" AS "attribute.type.code", mattty."domain" AS "attribute.type.domain",
@@ -3816,71 +3756,7 @@ mshop/attribute/manager/type/standard/search/mysql =
 
 See also:
 
-* mshop/attribute/manager/type/standard/search/ansi
-
-## standard/update/ansi
-
-Updates an existing attribute type record in the database
-
-```
-mshop/attribute/manager/type/standard/update/ansi = 
- UPDATE "mshop_attribute_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: mshop/attribute/manager/type/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the attribute type item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/attribute/manager/type/standard/insert/ansi
-* mshop/attribute/manager/type/standard/newid/ansi
-* mshop/attribute/manager/type/standard/delete/ansi
-* mshop/attribute/manager/type/standard/search/ansi
-* mshop/attribute/manager/type/standard/count/ansi
-
-## standard/update/mysql
-
-Updates an existing attribute type record in the database
-
-```
-mshop/attribute/manager/type/standard/update/mysql = 
- UPDATE "mshop_attribute_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "mshop_attribute_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* mshop/attribute/manager/type/standard/update/ansi
+* mshop/attribute/manager/type/search/ansi
 
 ## submanagers
 
@@ -3905,3 +3781,133 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+## update/ansi
+
+Updates an existing attribute type record in the database
+
+```
+mshop/attribute/manager/type/update/ansi = 
+ UPDATE "mshop_attribute_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/attribute/manager/type/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute type item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/type/insert/ansi
+* mshop/attribute/manager/type/newid/ansi
+* mshop/attribute/manager/type/delete/ansi
+* mshop/attribute/manager/type/search/ansi
+* mshop/attribute/manager/type/count/ansi
+
+## update/mysql
+
+Updates an existing attribute type record in the database
+
+```
+mshop/attribute/manager/type/update/mysql = 
+ UPDATE "mshop_attribute_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_attribute_type"
+ SET :names
+ 	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
+ 	"status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/attribute/manager/type/update/ansi
+
+# update
+## ansi
+
+Updates an existing attribute record in the database
+
+```
+mshop/attribute/manager/update/ansi = 
+ UPDATE "mshop_attribute"
+ SET :names
+ 	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
+ 	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/attribute/manager/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the attribute item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/attribute/manager/insert/ansi
+* mshop/attribute/manager/newid/ansi
+* mshop/attribute/manager/delete/ansi
+* mshop/attribute/manager/search/ansi
+* mshop/attribute/manager/count/ansi
+
+## mysql
+
+Updates an existing attribute record in the database
+
+```
+mshop/attribute/manager/update/mysql = 
+ UPDATE "mshop_attribute"
+ SET :names
+ 	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
+ 	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_attribute"
+ SET :names
+ 	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
+ 	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/attribute/manager/update/ansi

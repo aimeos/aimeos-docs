@@ -1,4 +1,76 @@
 
+# container
+## content
+
+List of file container options for the export files
+
+```
+controller/jobs/product/export/container/content = Binary
+```
+
+* Default: Binary
+* Type: array - Associative list of option name/value pairs
+* Since: 2015.01
+
+The generated files are stored using container/content objects from
+the core.
+
+See also:
+
+* controller/jobs/product/export/container/type
+* controller/jobs/product/export/container/options
+* controller/jobs/product/export/location
+* controller/jobs/product/export/max-items
+* controller/jobs/product/export/max-query
+
+## options
+
+List of file container options for the export files
+
+```
+controller/jobs/product/export/container/options = Array
+(
+)
+```
+
+* Default: Array
+* Type: array - Associative list of option name/value pairs
+* Since: 2015.01
+
+The generated files are stored using container/content objects from
+the core.
+
+See also:
+
+* controller/jobs/product/export/container/type
+* controller/jobs/product/export/container/content
+* controller/jobs/product/export/location
+* controller/jobs/product/export/max-items
+* controller/jobs/product/export/max-query
+
+## type
+
+List of file container options for the export files
+
+```
+controller/jobs/product/export/container/type = Directory
+```
+
+* Default: Directory
+* Type: string - Container name
+* Since: 2015.01
+
+The generated files are stored using container/content objects from
+the core.
+
+See also:
+
+* controller/jobs/product/export/container/content
+* controller/jobs/product/export/container/options
+* controller/jobs/product/export/location
+* controller/jobs/product/export/max-items
+* controller/jobs/product/export/max-query
+
 # decorators
 ## excludes
 
@@ -128,9 +200,9 @@ you can make more or less associated items available in the template.
 
 See also:
 
-* controller/jobs/product/export/standard/container/type
-* controller/jobs/product/export/standard/container/content
-* controller/jobs/product/export/standard/container/options
+* controller/jobs/product/export/container/type
+* controller/jobs/product/export/container/content
+* controller/jobs/product/export/container/options
 * controller/jobs/product/export/filename
 * controller/jobs/product/export/location
 * controller/jobs/product/export/max-items
@@ -154,9 +226,9 @@ exported product and the ISO date/time when the file was created.
 
 See also:
 
-* controller/jobs/product/export/standard/container/type
-* controller/jobs/product/export/standard/container/content
-* controller/jobs/product/export/standard/container/options
+* controller/jobs/product/export/container/type
+* controller/jobs/product/export/container/content
+* controller/jobs/product/export/container/options
 * controller/jobs/product/export/location
 * controller/jobs/product/export/max-items
 * controller/jobs/product/export/max-query
@@ -179,7 +251,7 @@ server that is writeable by the process generating the files, e.g.
 
 See also:
 
-* controller/jobs/product/export/standard/container/options
+* controller/jobs/product/export/container/options
 * controller/jobs/product/export/max-items
 * controller/jobs/product/export/max-query
 
@@ -202,9 +274,9 @@ parallel is able to speed up importing the files again.
 
 See also:
 
-* controller/jobs/product/export/standard/container/type
-* controller/jobs/product/export/standard/container/content
-* controller/jobs/product/export/standard/container/options
+* controller/jobs/product/export/container/type
+* controller/jobs/product/export/container/content
+* controller/jobs/product/export/container/options
 * controller/jobs/product/export/filename
 * controller/jobs/product/export/location
 * controller/jobs/product/export/max-query
@@ -230,9 +302,9 @@ of the PHP process is higher.
 
 See also:
 
-* controller/jobs/product/export/standard/container/type
-* controller/jobs/product/export/standard/container/content
-* controller/jobs/product/export/standard/container/options
+* controller/jobs/product/export/container/type
+* controller/jobs/product/export/container/content
+* controller/jobs/product/export/container/options
 * controller/jobs/product/export/filename
 * controller/jobs/product/export/location
 * controller/jobs/product/export/max-items
@@ -752,12 +824,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySitemap"!
 
 
-## standard/template-footer
+## template-footer
 
 Relative path to the XML site map footer template of the product site map job controller.
 
 ```
-controller/jobs/product/export/sitemap/standard/template-footer = product/export/sitemap-items-footer-standard
+controller/jobs/product/export/sitemap/template-footer = product/export/sitemap-items-footer-standard
 ```
 
 * Default: product/export/sitemap-items-footer-standard
@@ -778,16 +850,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/sitemap/standard/template-header
-* controller/jobs/product/export/sitemap/standard/template-items
-* controller/jobs/product/export/sitemap/standard/template-index
+* controller/jobs/product/export/sitemap/template-header
+* controller/jobs/product/export/sitemap/template-items
+* controller/jobs/product/export/sitemap/template-index
 
-## standard/template-header
+## template-header
 
 Relative path to the XML site map header template of the product site map job controller.
 
 ```
-controller/jobs/product/export/sitemap/standard/template-header = product/export/sitemap-items-header-standard
+controller/jobs/product/export/sitemap/template-header = product/export/sitemap-items-header-standard
 ```
 
 * Default: product/export/sitemap-items-header-standard
@@ -808,16 +880,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/sitemap/standard/template-items
-* controller/jobs/product/export/sitemap/standard/template-footer
-* controller/jobs/product/export/sitemap/standard/template-index
+* controller/jobs/product/export/sitemap/template-items
+* controller/jobs/product/export/sitemap/template-footer
+* controller/jobs/product/export/sitemap/template-index
 
-## standard/template-index
+## template-index
 
 Relative path to the XML site map index template of the product site map job controller.
 
 ```
-controller/jobs/product/export/sitemap/standard/template-index = product/export/sitemap-index-standard
+controller/jobs/product/export/sitemap/template-index = product/export/sitemap-index-standard
 ```
 
 * Default: product/export/sitemap-index-standard
@@ -838,16 +910,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/sitemap/standard/template-header
-* controller/jobs/product/export/sitemap/standard/template-items
-* controller/jobs/product/export/sitemap/standard/template-footer
+* controller/jobs/product/export/sitemap/template-header
+* controller/jobs/product/export/sitemap/template-items
+* controller/jobs/product/export/sitemap/template-footer
 
-## standard/template-items
+## template-items
 
 Relative path to the XML items template of the product site map job controller.
 
 ```
-controller/jobs/product/export/sitemap/standard/template-items = product/export/sitemap-items-body-standard
+controller/jobs/product/export/sitemap/template-items = product/export/sitemap-items-body-standard
 ```
 
 * Default: product/export/sitemap-items-body-standard
@@ -868,88 +940,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/sitemap/standard/template-header
-* controller/jobs/product/export/sitemap/standard/template-footer
-* controller/jobs/product/export/sitemap/standard/template-index
+* controller/jobs/product/export/sitemap/template-header
+* controller/jobs/product/export/sitemap/template-footer
+* controller/jobs/product/export/sitemap/template-index
 
-# standard
-## container/content
-
-List of file container options for the export files
-
-```
-controller/jobs/product/export/standard/container/content = Binary
-```
-
-* Default: Binary
-* Type: array - Associative list of option name/value pairs
-* Since: 2015.01
-
-The generated files are stored using container/content objects from
-the core.
-
-See also:
-
-* controller/jobs/product/export/standard/container/type
-* controller/jobs/product/export/standard/container/options
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
-
-## container/options
-
-List of file container options for the export files
-
-```
-controller/jobs/product/export/standard/container/options = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - Associative list of option name/value pairs
-* Since: 2015.01
-
-The generated files are stored using container/content objects from
-the core.
-
-See also:
-
-* controller/jobs/product/export/standard/container/type
-* controller/jobs/product/export/standard/container/content
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
-
-## container/type
-
-List of file container options for the export files
-
-```
-controller/jobs/product/export/standard/container/type = Directory
-```
-
-* Default: Directory
-* Type: string - Container name
-* Since: 2015.01
-
-The generated files are stored using container/content objects from
-the core.
-
-See also:
-
-* controller/jobs/product/export/standard/container/content
-* controller/jobs/product/export/standard/container/options
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
-
-## template-footer
+# template-footer
 
 Relative path to the XML site map footer template of the product site map job controller.
 
 ```
-controller/jobs/product/export/standard/template-footer = product/export/items-footer-standard
+controller/jobs/product/export/template-footer = product/export/items-footer-standard
 ```
 
 * Default: product/export/items-footer-standard
@@ -970,16 +970,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/standard/template-header
-* controller/jobs/product/export/standard/template-items
-* controller/jobs/product/export/standard/template-index
+* controller/jobs/product/export/template-header
+* controller/jobs/product/export/template-items
+* controller/jobs/product/export/template-index
 
-## template-header
+# template-header
 
 Relative path to the XML site map header template of the product site map job controller.
 
 ```
-controller/jobs/product/export/standard/template-header = product/export/items-header-standard
+controller/jobs/product/export/template-header = product/export/items-header-standard
 ```
 
 * Default: product/export/items-header-standard
@@ -1000,16 +1000,16 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/standard/template-items
-* controller/jobs/product/export/standard/template-footer
-* controller/jobs/product/export/standard/template-index
+* controller/jobs/product/export/template-items
+* controller/jobs/product/export/template-footer
+* controller/jobs/product/export/template-index
 
-## template-items
+# template-items
 
 Relative path to the XML items template of the product site map job controller.
 
 ```
-controller/jobs/product/export/standard/template-items = product/export/items-body-standard
+controller/jobs/product/export/template-items = product/export/items-body-standard
 ```
 
 * Default: product/export/items-body-standard
@@ -1030,6 +1030,6 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/favorite/standard/template-header
-* controller/jobs/product/export/standard/template-footer
-* controller/jobs/product/export/standard/template-index
+* client/html/account/favorite/template-header
+* controller/jobs/product/export/template-footer
+* controller/jobs/product/export/template-index

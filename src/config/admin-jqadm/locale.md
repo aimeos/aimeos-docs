@@ -177,12 +177,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the locale section
 
 ```
-admin/jqadm/locale/currency/standard/subparts = Array
+admin/jqadm/locale/currency/subparts = Array
 (
 )
 ```
@@ -586,12 +586,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the locale section
 
 ```
-admin/jqadm/locale/language/standard/subparts = Array
+admin/jqadm/locale/language/subparts = Array
 (
 )
 ```
@@ -925,12 +925,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the locale section
 
 ```
-admin/jqadm/locale/site/standard/subparts = Array
+admin/jqadm/locale/site/subparts = Array
 (
 )
 ```
@@ -1022,13 +1022,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the locale section
 
 ```
-admin/jqadm/locale/standard/subparts = Array
+admin/jqadm/locale/subparts = Array
 (
 )
 ```

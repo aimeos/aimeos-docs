@@ -1,4 +1,100 @@
 
+# count
+## ansi
+
+Counts the number of records matched by the given criteria in the database
+
+```
+madmin/log/manager/count/ansi = 
+ SELECT COUNT(*) AS "count"
+ FROM(
+ 	SELECT malog."id"
+ 	FROM "madmin_log" AS malog
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY "id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+```
+
+* Default: madmin/log/manager/count
+* Type: string - SQL statement for counting items
+* Since: 2014.03
+
+Counts all records matched by the given criteria from the log
+database. The records must be from one of the sites that are
+configured via the context item. If the current site is part of
+a tree of sites, the statement can count all records from the
+current site and the complete sub-tree of sites.
+
+As the records can normally be limited by criteria from sub-managers,
+their tables must be joined in the SQL context. This is done by
+using the "internaldeps" property from the definition of the ID
+column of the sub-managers. These internal dependencies specify
+the JOIN between the tables and the used columns for joining. The
+":joins" placeholder is then replaced by the JOIN strings from
+the sub-managers.
+
+To limit the records matched, conditions can be added to the given
+criteria object. It can contain comparisons like column names that
+must match specific values which can be combined by AND, OR or NOT
+operators. The resulting string of SQL conditions replaces the
+":cond" placeholder before the statement is sent to the database
+server.
+
+Both, the strings for ":joins" and for ":cond" are the same as for
+the "search" SQL statement.
+
+Contrary to the "search" statement, it doesn't return any records
+but instead the number of records that have been found. As counting
+thousands of records can be a long running task, the maximum number
+of counted records is limited for performance reasons.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/log/manager/insert/ansi
+* madmin/log/manager/update/ansi
+* madmin/log/manager/newid/ansi
+* madmin/log/manager/delete/ansi
+* madmin/log/manager/search/ansi
+
+## mysql
+
+Counts the number of records matched by the given criteria in the database
+
+```
+madmin/log/manager/count/mysql = 
+ SELECT COUNT(*) AS "count"
+ FROM(
+ 	SELECT malog."id"
+ 	FROM "madmin_log" AS malog
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY "id"
+ 	LIMIT 10000 OFFSET 0
+ ) AS list
+```
+
+* Default: 
+ SELECT COUNT(*) AS "count"
+ FROM(
+ 	SELECT malog."id"
+ 	FROM "madmin_log" AS malog
+ 	:joins
+ 	WHERE :cond
+ 	ORDER BY "id"
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
+ ) AS list
+
+
+See also:
+
+* madmin/log/manager/count/ansi
+
 # decorators
 ## excludes
 
@@ -108,6 +204,168 @@ See also:
 * madmin/log/manager/decorators/excludes
 * madmin/log/manager/decorators/global
 
+# delete
+## ansi
+
+Deletes the items matched by the given IDs from the database
+
+```
+madmin/log/manager/delete/ansi = 
+ DELETE FROM "madmin_log"
+ WHERE :cond AND "siteid" = ?
+```
+
+* Default: madmin/log/manager/delete
+* Type: string - SQL statement for deleting items
+* Since: 2014.03
+
+Removes the records specified by the given IDs from the log database.
+The records must be from the site that is configured via the
+context item.
+
+The ":cond" placeholder is replaced by the name of the ID column and
+the given ID or list of IDs while the site ID is bound to the question
+mark.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/log/manager/insert/ansi
+* madmin/log/manager/update/ansi
+* madmin/log/manager/newid/ansi
+* madmin/log/manager/search/ansi
+* madmin/log/manager/count/ansi
+
+## mysql
+
+Deletes the items matched by the given IDs from the database
+
+```
+madmin/log/manager/delete/mysql = 
+ DELETE FROM "madmin_log"
+ WHERE :cond AND "siteid" = ?
+```
+
+* Default: 
+ DELETE FROM "madmin_log"
+ WHERE :cond AND "siteid" = ?
+
+
+See also:
+
+* madmin/log/manager/delete/ansi
+
+# insert
+## ansi
+
+Inserts a new log record into the database table
+
+```
+madmin/log/manager/insert/ansi = 
+ INSERT INTO "madmin_log" ( :names
+ 	"facility", "timestamp", "priority", "message", "request", "siteid"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: madmin/log/manager/insert
+* Type: string - SQL statement for inserting records
+* Since: 2014.03
+
+Items with no ID yet (i.e. the ID is NULL) will be created in
+the database and the newly created ID retrieved afterwards
+using the "newid" SQL statement.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the log item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
+bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/log/manager/update/ansi
+* madmin/log/manager/newid/ansi
+* madmin/log/manager/delete/ansi
+* madmin/log/manager/search/ansi
+* madmin/log/manager/count/ansi
+
+## mysql
+
+Inserts a new log record into the database table
+
+```
+madmin/log/manager/insert/mysql = 
+ INSERT INTO "madmin_log" ( :names
+ 	"facility", "timestamp", "priority", "message", "request", "siteid"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?
+ )
+```
+
+* Default: 
+ INSERT INTO "madmin_log" ( :names
+ 	"facility", "timestamp", "priority", "message", "request", "siteid"
+ ) VALUES ( :values
+ 	?, ?, ?, ?, ?, ?
+ )
+
+
+See also:
+
+* madmin/log/manager/insert/ansi
+
+# loglevel
+
+Sets the severity level for messages to be written to the log
+
+```
+madmin/log/manager/loglevel = 5
+```
+
+* Default: 5
+* Type: int - Log level number
+* Since: 2014.03
+
+Manager, provider and other active components write messages about
+problems, informational and debug output to the logs. The messages
+that are actually written to the logs can be limited with the
+"loglevel" configuration.
+
+Available log levels are:
+* Emergency (0): system is unusable
+* Alert (1): action must be taken immediately
+* Critical (2): critical conditions
+* Error (3): error conditions
+* Warning (4): warning conditions
+* Notice (5): normal but significant condition
+* Informational (6): informational messages
+* Debug (7): debug messages
+
+The "loglevel" configuration option defines the severity of messages
+that will be written to the logs, e.g. a log level of "3" (error)
+will allow all messages with an associated level of three and below
+(error, critical, alert and emergency) to be written to the storage.
+Messages with other log levels (warning, notice, informational and
+debug) would be discarded and won't be written to the storage.
+
+The higher the log level, the more messages will be written to the
+storage. Keep in mind that a higher volume of messages will slow
+down the system and the debug log level shouldn't be used in
+production environments with a high number of visitors!
+
+
 # name
 
 Class name of the used log manager implementation
@@ -153,271 +411,16 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyManager"!
 
 
-# standard
-## count/ansi
-
-Counts the number of records matched by the given criteria in the database
-
-```
-madmin/log/manager/standard/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM(
- 	SELECT malog."id"
- 	FROM "madmin_log" AS malog
- 	:joins
- 	WHERE :cond
- 	ORDER BY "id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
-
-* Default: madmin/log/manager/standard/count
-* Type: string - SQL statement for counting items
-* Since: 2014.03
-
-Counts all records matched by the given criteria from the log
-database. The records must be from one of the sites that are
-configured via the context item. If the current site is part of
-a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-Both, the strings for ":joins" and for ":cond" are the same as for
-the "search" SQL statement.
-
-Contrary to the "search" statement, it doesn't return any records
-but instead the number of records that have been found. As counting
-thousands of records can be a long running task, the maximum number
-of counted records is limited for performance reasons.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/log/manager/standard/insert/ansi
-* madmin/log/manager/standard/update/ansi
-* madmin/log/manager/standard/newid/ansi
-* madmin/log/manager/standard/delete/ansi
-* madmin/log/manager/standard/search/ansi
-
-## count/mysql
-
-Counts the number of records matched by the given criteria in the database
-
-```
-madmin/log/manager/standard/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM(
- 	SELECT malog."id"
- 	FROM "madmin_log" AS malog
- 	:joins
- 	WHERE :cond
- 	ORDER BY "id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
-```
-
-* Default: 
- SELECT COUNT(*) AS "count"
- FROM(
- 	SELECT malog."id"
- 	FROM "madmin_log" AS malog
- 	:joins
- 	WHERE :cond
- 	ORDER BY "id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-
-
-See also:
-
-* madmin/log/manager/standard/count/ansi
-
-## delete/ansi
-
-Deletes the items matched by the given IDs from the database
-
-```
-madmin/log/manager/standard/delete/ansi = 
- DELETE FROM "madmin_log"
- WHERE :cond AND "siteid" = ?
-```
-
-* Default: madmin/log/manager/standard/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the log database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/log/manager/standard/insert/ansi
-* madmin/log/manager/standard/update/ansi
-* madmin/log/manager/standard/newid/ansi
-* madmin/log/manager/standard/search/ansi
-* madmin/log/manager/standard/count/ansi
-
-## delete/mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-madmin/log/manager/standard/delete/mysql = 
- DELETE FROM "madmin_log"
- WHERE :cond AND "siteid" = ?
-```
-
-* Default: 
- DELETE FROM "madmin_log"
- WHERE :cond AND "siteid" = ?
-
-
-See also:
-
-* madmin/log/manager/standard/delete/ansi
-
-## insert/ansi
-
-Inserts a new log record into the database table
-
-```
-madmin/log/manager/standard/insert/ansi = 
- INSERT INTO "madmin_log" ( :names
- 	"facility", "timestamp", "priority", "message", "request", "siteid"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: madmin/log/manager/standard/insert
-* Type: string - SQL statement for inserting records
-* Since: 2014.03
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the log item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the saveItems() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/log/manager/standard/update/ansi
-* madmin/log/manager/standard/newid/ansi
-* madmin/log/manager/standard/delete/ansi
-* madmin/log/manager/standard/search/ansi
-* madmin/log/manager/standard/count/ansi
-
-## insert/mysql
-
-Inserts a new log record into the database table
-
-```
-madmin/log/manager/standard/insert/mysql = 
- INSERT INTO "madmin_log" ( :names
- 	"facility", "timestamp", "priority", "message", "request", "siteid"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
-```
-
-* Default: 
- INSERT INTO "madmin_log" ( :names
- 	"facility", "timestamp", "priority", "message", "request", "siteid"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
-
-
-See also:
-
-* madmin/log/manager/standard/insert/ansi
-
-## loglevel
-
-Sets the severity level for messages to be written to the log
-
-```
-madmin/log/manager/standard/loglevel = 5
-```
-
-* Default: 5
-* Type: int - Log level number
-* Since: 2014.03
-
-Manager, provider and other active components write messages about
-problems, informational and debug output to the logs. The messages
-that are actually written to the logs can be limited with the
-"loglevel" configuration.
-
-Available log levels are:
-* Emergency (0): system is unusable
-* Alert (1): action must be taken immediately
-* Critical (2): critical conditions
-* Error (3): error conditions
-* Warning (4): warning conditions
-* Notice (5): normal but significant condition
-* Informational (6): informational messages
-* Debug (7): debug messages
-
-The "loglevel" configuration option defines the severity of messages
-that will be written to the logs, e.g. a log level of "3" (error)
-will allow all messages with an associated level of three and below
-(error, critical, alert and emergency) to be written to the storage.
-Messages with other log levels (warning, notice, informational and
-debug) would be discarded and won't be written to the storage.
-
-The higher the log level, the more messages will be written to the
-storage. Keep in mind that a higher volume of messages will slow
-down the system and the debug log level shouldn't be used in
-production environments with a high number of visitors!
-
-
-## newid/ansi
+# newid
+## ansi
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-madmin/log/manager/standard/newid/ansi = madmin/log/manager/standard/newid
+madmin/log/manager/newid/ansi = madmin/log/manager/newid
 ```
 
-* Default: madmin/log/manager/standard/newid
+* Default: madmin/log/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -443,32 +446,33 @@ specific way.
 
 See also:
 
-* madmin/log/manager/standard/insert/ansi
-* madmin/log/manager/standard/update/ansi
-* madmin/log/manager/standard/delete/ansi
-* madmin/log/manager/standard/search/ansi
-* madmin/log/manager/standard/count/ansi
+* madmin/log/manager/insert/ansi
+* madmin/log/manager/update/ansi
+* madmin/log/manager/delete/ansi
+* madmin/log/manager/search/ansi
+* madmin/log/manager/count/ansi
 
-## newid/mysql
+## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-madmin/log/manager/standard/newid/mysql = SELECT LAST_INSERT_ID()
+madmin/log/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: madmin/log/manager/standard/newid
+* Default: madmin/log/manager/newid
 
 See also:
 
-* madmin/log/manager/standard/newid/ansi
+* madmin/log/manager/newid/ansi
 
-## search/ansi
+# search
+## ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-madmin/log/manager/standard/search/ansi = 
+madmin/log/manager/search/ansi = 
  SELECT :columns
  	malog."id" AS "log.id", malog."siteid" AS "log.siteid",
  	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
@@ -481,7 +485,7 @@ madmin/log/manager/standard/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: madmin/log/manager/standard/search
+* Default: madmin/log/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -526,18 +530,18 @@ includes using double quotes for table and column names.
 
 See also:
 
-* madmin/log/manager/standard/insert/ansi
-* madmin/log/manager/standard/update/ansi
-* madmin/log/manager/standard/newid/ansi
-* madmin/log/manager/standard/delete/ansi
-* madmin/log/manager/standard/count/ansi
+* madmin/log/manager/insert/ansi
+* madmin/log/manager/update/ansi
+* madmin/log/manager/newid/ansi
+* madmin/log/manager/delete/ansi
+* madmin/log/manager/count/ansi
 
-## search/mysql
+## mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-madmin/log/manager/standard/search/mysql = 
+madmin/log/manager/search/mysql = 
  SELECT :columns
  	malog."id" AS "log.id", malog."siteid" AS "log.siteid",
  	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
@@ -565,68 +569,7 @@ madmin/log/manager/standard/search/mysql =
 
 See also:
 
-* madmin/log/manager/standard/search/ansi
-
-## update/ansi
-
-Updates an existing log record in the database
-
-```
-madmin/log/manager/standard/update/ansi = 
- UPDATE "madmin_log"
- SET :names
- 	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: madmin/log/manager/standard/update
-* Type: string - SQL statement for updating records
-* Since: 2014.03
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the log item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the saveItems() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/log/manager/standard/insert/ansi
-* madmin/log/manager/standard/newid/ansi
-* madmin/log/manager/standard/delete/ansi
-* madmin/log/manager/standard/search/ansi
-* madmin/log/manager/standard/count/ansi
-
-## update/mysql
-
-Updates an existing log record in the database
-
-```
-madmin/log/manager/standard/update/mysql = 
- UPDATE "madmin_log"
- SET :names
- 	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
- WHERE "siteid" = ? AND "id" = ?
-```
-
-* Default: 
- UPDATE "madmin_log"
- SET :names
- 	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
- WHERE "siteid" = ? AND "id" = ?
-
-
-See also:
-
-* madmin/log/manager/standard/update/ansi
+* madmin/log/manager/search/ansi
 
 # submanagers
 
@@ -651,3 +594,66 @@ The search keys from sub-managers can be normally used in the
 manager as well. It allows you to search for items of the manager
 using the search keys of the sub-managers to further limit the
 retrieved list of items.
+
+
+# update
+## ansi
+
+Updates an existing log record in the database
+
+```
+madmin/log/manager/update/ansi = 
+ UPDATE "madmin_log"
+ SET :names
+ 	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: madmin/log/manager/update
+* Type: string - SQL statement for updating records
+* Since: 2014.03
+
+Items which already have an ID (i.e. the ID is not NULL) will
+be updated in the database.
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values from the log item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* madmin/log/manager/insert/ansi
+* madmin/log/manager/newid/ansi
+* madmin/log/manager/delete/ansi
+* madmin/log/manager/search/ansi
+* madmin/log/manager/count/ansi
+
+## mysql
+
+Updates an existing log record in the database
+
+```
+madmin/log/manager/update/mysql = 
+ UPDATE "madmin_log"
+ SET :names
+ 	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "madmin_log"
+ SET :names
+ 	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* madmin/log/manager/update/ansi

@@ -108,6 +108,29 @@ See also:
 * controller/jobs/order/email/delivery/decorators/excludes
 * controller/jobs/order/email/delivery/decorators/global
 
+## limit-days
+
+Only send delivery e-mails of orders that were created in the past within the configured number of days
+
+```
+controller/jobs/order/email/delivery/limit-days = 90
+```
+
+* Default: 90
+* Type: integer - Number of days
+* Since: 2014.03
+
+The delivery e-mails are normally send immediately after the delivery
+status has changed. This option prevents e-mails for old order from
+being send in case anything went wrong or an update failed to avoid
+confusion of customers.
+
+See also:
+
+* controller/jobs/order/email/delivery/status
+* controller/jobs/order/email/payment/limit-days
+* controller/jobs/service/delivery/process/limit-days
+
 ## name
 
 Class name of the used order email delivery scheduler controller implementation
@@ -153,35 +176,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyDelivery"!
 
 
-## standard/limit-days
-
-Only send delivery e-mails of orders that were created in the past within the configured number of days
-
-```
-controller/jobs/order/email/delivery/standard/limit-days = 90
-```
-
-* Default: 90
-* Type: integer - Number of days
-* Since: 2014.03
-
-The delivery e-mails are normally send immediately after the delivery
-status has changed. This option prevents e-mails for old order from
-being send in case anything went wrong or an update failed to avoid
-confusion of customers.
-
-See also:
-
-* controller/jobs/order/email/delivery/standard/status
-* controller/jobs/order/email/payment/standard/limit-days
-* controller/jobs/service/delivery/process/limit-days
-
-## standard/status
+## status
 
 Only send order delivery notification e-mails for these delivery status values
 
 ```
-controller/jobs/order/email/delivery/standard/status = Array
+controller/jobs/order/email/delivery/status = Array
 (
     [0] => 2
     [1] => 3
@@ -210,8 +210,8 @@ block of values between 30000 and 32767.
 
 See also:
 
-* controller/jobs/order/email/payment/standard/status
-* controller/jobs/order/email/delivery/standard/limit-days
+* controller/jobs/order/email/payment/status
+* controller/jobs/order/email/delivery/limit-days
 
 # payment
 ## decorators/excludes
@@ -322,6 +322,28 @@ See also:
 * controller/jobs/order/email/payment/decorators/excludes
 * controller/jobs/order/email/payment/decorators/global
 
+## limit-days
+
+Only send payment e-mails of orders that were created in the past within the configured number of days
+
+```
+controller/jobs/order/email/payment/limit-days = 30
+```
+
+* Default: 30
+* Type: integer - Number of days
+* Since: 2014.03
+
+The payment e-mails are normally send immediately after the payment
+status has changed. This option prevents e-mails for old order from
+being send in case anything went wrong or an update failed to avoid
+confusion of customers.
+
+See also:
+
+* controller/jobs/order/email/delivery/limit-days
+* controller/jobs/service/delivery/process/limit-days
+
 ## name
 
 Class name of the used order email payment scheduler controller implementation
@@ -367,34 +389,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyPayment"!
 
 
-## standard/limit-days
-
-Only send payment e-mails of orders that were created in the past within the configured number of days
-
-```
-controller/jobs/order/email/payment/standard/limit-days = 30
-```
-
-* Default: 30
-* Type: integer - Number of days
-* Since: 2014.03
-
-The payment e-mails are normally send immediately after the payment
-status has changed. This option prevents e-mails for old order from
-being send in case anything went wrong or an update failed to avoid
-confusion of customers.
-
-See also:
-
-* controller/jobs/order/email/delivery/standard/limit-days
-* controller/jobs/service/delivery/process/limit-days
-
-## standard/status
+## status
 
 Only send order payment notification e-mails for these payment status values
 
 ```
-controller/jobs/order/email/payment/standard/status = Array
+controller/jobs/order/email/payment/status = Array
 (
     [0] => 3
     [1] => 4
@@ -422,8 +422,8 @@ block of values between 30000 and 32767.
 
 See also:
 
-* controller/jobs/order/email/delivery/standard/status
-* controller/jobs/order/email/payment/standard/limit-days
+* controller/jobs/order/email/delivery/status
+* controller/jobs/order/email/payment/limit-days
 
 # voucher
 ## decorators/excludes
@@ -534,6 +534,27 @@ See also:
 * controller/jobs/order/email/voucher/decorators/excludes
 * controller/jobs/order/email/voucher/decorators/global
 
+## limit-days
+
+Only send voucher e-mails of orders that were created in the past within the configured number of days
+
+```
+controller/jobs/order/email/voucher/limit-days = 30
+```
+
+* Default: 30
+* Type: integer - Number of days
+* Since: 2018.07
+
+The voucher e-mails are normally send immediately after the voucher
+has been ordered. This option prevents e-mails for old orders from
+being send in case anything went wrong or an update failed to avoid
+confusion of customers.
+
+See also:
+
+* controller/jobs/order/email/voucher/status
+
 ## name
 
 Class name of the used order email voucher scheduler controller implementation
@@ -579,33 +600,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyVoucher"!
 
 
-## standard/limit-days
-
-Only send voucher e-mails of orders that were created in the past within the configured number of days
-
-```
-controller/jobs/order/email/voucher/standard/limit-days = 30
-```
-
-* Default: 30
-* Type: integer - Number of days
-* Since: 2018.07
-
-The voucher e-mails are normally send immediately after the voucher
-has been ordered. This option prevents e-mails for old orders from
-being send in case anything went wrong or an update failed to avoid
-confusion of customers.
-
-See also:
-
-* controller/jobs/order/email/voucher/standard/status
-
-## standard/status
+## status
 
 Only send e-mails containing voucher for these payment status values
 
 ```
-controller/jobs/order/email/voucher/standard/status = Array
+controller/jobs/order/email/voucher/status = Array
 (
     [0] => 5
     [1] => 6
@@ -627,4 +627,4 @@ E-mail containing vouchers can be sent for these payment status values:
 
 See also:
 
-* controller/jobs/order/email/voucher/standard/limit-days
+* controller/jobs/order/email/voucher/limit-days

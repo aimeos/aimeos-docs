@@ -121,12 +121,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Supplier\Address\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the supplier address section
 
 ```
-admin/jqadm/supplier/address/standard/subparts = Array
+admin/jqadm/supplier/address/subparts = Array
 (
 )
 ```
@@ -628,12 +628,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Supplier\Media\Property
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the supplier media property section
 
 ```
-admin/jqadm/supplier/media/property/standard/subparts = Array
+admin/jqadm/supplier/media/property/subparts = Array
 (
 )
 ```
@@ -700,12 +700,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the supplier media section
 
 ```
-admin/jqadm/supplier/media/standard/subparts = Array
+admin/jqadm/supplier/media/subparts = Array
 (
     [property] => property
 )
@@ -926,26 +926,25 @@ See also:
 
 ## fields
 
-List of list and product columns that should be displayed in the supplier product view
+List of supplier list and product columns that should be displayed in the supplier product view
 
 ```
 admin/jqadm/supplier/product/fields = Array
 (
-    [0] => supplier.lists.position
-    [1] => supplier.lists.status
-    [2] => supplier.lists.type
-    [3] => supplier.lists.config
-    [4] => supplier.lists.refid
+    [0] => supplier.lists.status
+    [1] => supplier.lists.type
+    [2] => supplier.lists.position
+    [3] => supplier.lists.refid
 )
 ```
 
 * Default: Array
 * Type: array - List of field names, i.e. search keys
-* Since: 2017.07
+* Since: 2017.10
 
-Changes the list of list and product columns shown by default in the supplier product view.
-The columns can be changed by the editor as required within the administraiton
-interface.
+Changes the list of supplier list and product columns shown by default in the
+supplier product view. The columns can be changed by the editor as required
+within the administraiton interface.
 
 The names of the colums are in fact the search keys defined by the managers,
 e.g. "supplier.lists.status" for the status value.
@@ -967,12 +966,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Supplier\Product\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the supplier product section
 
 ```
-admin/jqadm/supplier/product/standard/subparts = Array
+admin/jqadm/supplier/product/subparts = Array
 (
 )
 ```
@@ -1039,13 +1038,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the supplier section
 
 ```
-admin/jqadm/supplier/standard/subparts = Array
+admin/jqadm/supplier/subparts = Array
 (
     [address] => address
     [media] => media
@@ -1263,12 +1261,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Supplier\Text\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the supplier text section
 
 ```
-admin/jqadm/supplier/text/standard/subparts = Array
+admin/jqadm/supplier/text/subparts = Array
 (
 )
 ```

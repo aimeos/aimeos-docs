@@ -304,12 +304,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Account\Html\Myna
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the account creation e-mail html section
 
 ```
-client/html/email/account/html/standard/subparts = Array
+client/html/email/account/html/subparts = Array
 (
 )
 ```
@@ -351,12 +351,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the account creation e-mail html client.
 
 ```
-client/html/email/account/html/standard/template-body = email/account/html-body-standard
+client/html/email/account/html/template-body = email/account/html-body-standard
 ```
 
 * Default: email/account/html-body-standard
@@ -384,7 +384,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/account/html/standard/template-header
+* client/html/email/account/html/template-header
 
 # name
 
@@ -480,13 +480,12 @@ See also:
 * client/html/email/from-email
 * client/html/email/bcc-email
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the account creation e-mail
 
 ```
-client/html/email/account/standard/subparts = Array
+client/html/email/account/subparts = Array
 (
     [0] => text
     [1] => html
@@ -530,12 +529,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the account creation e-mail client.
 
 ```
-client/html/email/account/standard/template-body = email/account/body-standard
+client/html/email/account/template-body = email/account/body-standard
 ```
 
 * Default: email/account/body-standard
@@ -563,14 +562,14 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/account/standard/template-header
+* client/html/email/account/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the account creation e-mail client.
 
 ```
-client/html/email/account/standard/template-header = email/account/header-standard
+client/html/email/account/template-header = email/account/header-standard
 ```
 
 * Default: email/account/header-standard
@@ -599,7 +598,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/account/standard/template-body
+* client/html/email/account/template-body
 
 # text
 ## decorators/excludes
@@ -723,12 +722,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Account\Text\Myna
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the text section of a account creation email
 
 ```
-client/html/email/account/text/standard/subparts = Array
+client/html/email/account/text/subparts = Array
 (
 )
 ```
@@ -770,12 +769,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the text body template of the account creation email text client.
 
 ```
-client/html/email/account/text/standard/template-body = email/account/text-body-standard
+client/html/email/account/text/template-body = email/account/text-body-standard
 ```
 
 * Default: email/account/text-body-standard
@@ -803,4 +802,4 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/account/text/standard/template-header
+* client/html/email/account/text/template-header

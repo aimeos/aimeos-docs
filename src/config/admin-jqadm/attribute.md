@@ -456,12 +456,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Attribute\Media\Propert
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the attribute media property section
 
 ```
-admin/jqadm/attribute/media/property/standard/subparts = Array
+admin/jqadm/attribute/media/property/subparts = Array
 (
 )
 ```
@@ -528,12 +528,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the attribute media section
 
 ```
-admin/jqadm/attribute/media/standard/subparts = Array
+admin/jqadm/attribute/media/subparts = Array
 (
     [property] => property
 )
@@ -889,12 +889,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Attribute\Price\Propert
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## property/standard/subparts
+## property/subparts
 
 List of JQAdm sub-clients rendered within the attribute price property section
 
 ```
-admin/jqadm/attribute/price/property/standard/subparts = Array
+admin/jqadm/attribute/price/property/subparts = Array
 (
 )
 ```
@@ -961,12 +961,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the attribute price section
 
 ```
-admin/jqadm/attribute/price/standard/subparts = Array
+admin/jqadm/attribute/price/subparts = Array
 (
     [property] => property
 )
@@ -1156,12 +1156,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Attribute\Property\Myna
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the attribute property section
 
 ```
-admin/jqadm/attribute/property/standard/subparts = Array
+admin/jqadm/attribute/property/subparts = Array
 (
 )
 ```
@@ -1228,13 +1228,12 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
-# standard
-## subparts
+# subparts
 
 List of JQAdm sub-clients rendered within the attribute section
 
 ```
-admin/jqadm/attribute/standard/subparts = Array
+admin/jqadm/attribute/subparts = Array
 (
     [media] => media
     [text] => text
@@ -1452,12 +1451,12 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Attribute\Text\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of JQAdm sub-clients rendered within the attribute text section
 
 ```
-admin/jqadm/attribute/text/standard/subparts = Array
+admin/jqadm/attribute/text/subparts = Array
 (
 )
 ```

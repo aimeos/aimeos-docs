@@ -6,6 +6,7 @@ Configures the list of decorators applied to all html clients
 ```
 client/html/common/decorators/default = Array
 (
+    [0] => Context
 )
 ```
 

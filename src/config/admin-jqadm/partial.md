@@ -58,36 +58,6 @@ See also:
 * admin/jqadm/partial/info
 * admin/jqadm/partial/problem
 
-# error
-
-Relative path to the partial template for displaying errors
-
-```
-admin/jqadm/partial/error = common/partials/error-standard
-```
-
-* Default: common/partials/error-standard
-* Type: string - Relative path to the partial creating the HTML code
-* Since: 2016.04
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the administration interface. The
-configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
-
-See also:
-
-* admin/jqadm/partial/confirm
-* admin/jqadm/partial/info
-* admin/jqadm/partial/problem
-
 # info
 
 Relative path to the partial template for displaying notices
@@ -289,3 +259,11 @@ See also:
 * admin/jqadm/partial/confirm
 * admin/jqadm/partial/error
 * admin/jqadm/partial/info
+
+# productref
+
+```
+admin/jqadm/partial/productref = common/partials/productref-standard
+```
+
+* Default: common/partials/productref-standard

@@ -327,12 +327,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Delivery\Html\Myn
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the email delivery html section
 
 ```
-client/html/email/delivery/html/standard/subparts = Array
+client/html/email/delivery/html/subparts = Array
 (
 )
 ```
@@ -374,12 +374,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the email delivery html client.
 
 ```
-client/html/email/delivery/html/standard/template-body = email/delivery/html-body-standard
+client/html/email/delivery/html/template-body = email/delivery/html-body-standard
 ```
 
 * Default: email/delivery/html-body-standard
@@ -407,7 +407,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/delivery/html/standard/template-header
+* client/html/email/delivery/html/template-header
 
 # name
 
@@ -501,13 +501,12 @@ See also:
 * client/html/email/from-email
 * client/html/email/bcc-email
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the email delivery section
 
 ```
-client/html/email/delivery/standard/subparts = Array
+client/html/email/delivery/subparts = Array
 (
     [0] => text
     [1] => html
@@ -551,12 +550,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the text body template of the email delivery client.
 
 ```
-client/html/email/delivery/standard/template-body = Array
+client/html/email/delivery/template-body = Array
 (
     [0] => email/delivery/4/body-standard
     [1] => email/delivery/body-standard
@@ -588,14 +587,14 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/delivery/standard/template-header
+* client/html/email/delivery/template-header
 
-## template-header
+# template-header
 
 Relative path to the text header template of the email delivery client.
 
 ```
-client/html/email/delivery/standard/template-header = Array
+client/html/email/delivery/template-header = Array
 (
     [0] => email/delivery/4/header-standard
     [1] => email/delivery/header-standard
@@ -628,7 +627,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/delivery/standard/template-body
+* client/html/email/delivery/template-body
 
 # text
 ## decorators/excludes
@@ -752,12 +751,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Delivery\Text\Myn
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the email delivery text section
 
 ```
-client/html/email/delivery/text/standard/subparts = Array
+client/html/email/delivery/text/subparts = Array
 (
 )
 ```
@@ -799,12 +798,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the text body template of the email delivery text client.
 
 ```
-client/html/email/delivery/text/standard/template-body = email/delivery/text-body-standard
+client/html/email/delivery/text/template-body = email/delivery/text-body-standard
 ```
 
 * Default: email/delivery/text-body-standard
@@ -832,4 +831,4 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/delivery/text/standard/template-header
+* client/html/email/delivery/text/template-header

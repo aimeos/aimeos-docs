@@ -101,13 +101,12 @@ See also:
 * client/html/catalog/price/decorators/excludes
 * client/html/catalog/price/decorators/global
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog price section
 
 ```
-client/html/catalog/price/standard/subparts = Array
+client/html/catalog/price/subparts = Array
 (
     [0] => price
 )

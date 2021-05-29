@@ -20,6 +20,7 @@ See also:
 
 * client/html/catalog/home/basket-add
 * client/html/catalog/lists/basket-add
+* client/html/catalog/detail/basket-add
 * client/html/catalog/product/basket-add
 
 # bought
@@ -128,28 +129,12 @@ See also:
 * client/html/basket/related/bought/decorators/excludes
 * client/html/basket/related/bought/decorators/global
 
-## name
-
-Name of the bought together part used by the basket related client implementation
-
-```
-client/html/basket/related/bought/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the client class name
-* Since: 2014.09
-
-Use "Myname" if your class is named "\Aimeos\Client\Html\Basket\Related\Bought\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## standard/domains
+## domains
 
 The list of domain names whose items should be available in the template for the products
 
 ```
-client/html/basket/related/bought/standard/domains = Array
+client/html/basket/related/bought/domains = Array
 (
     [0] => text
     [1] => price
@@ -170,12 +155,12 @@ Please keep in mind that the more domains you add to the configuration,
 the more time is required for fetching the content!
 
 
-## standard/limit
+## limit
 
 Number of items in the list of bought together products
 
 ```
-client/html/basket/related/bought/standard/limit = 6
+client/html/basket/related/bought/limit = 6
 ```
 
 * Default: 6
@@ -192,12 +177,28 @@ the bought together products regularly to get up to date
 product suggestions.
 
 
-## standard/subparts
+## name
+
+Name of the bought together part used by the basket related client implementation
+
+```
+client/html/basket/related/bought/name = Standard
+```
+
+* Default: Standard
+* Type: string - Last part of the client class name
+* Since: 2014.09
+
+Use "Myname" if your class is named "\Aimeos\Client\Html\Basket\Related\Bought\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## subparts
 
 List of HTML sub-clients rendered within the basket related bought section
 
 ```
-client/html/basket/related/bought/standard/subparts = Array
+client/html/basket/related/bought/subparts = Array
 (
 )
 ```
@@ -239,12 +240,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the basket related bought client.
 
 ```
-client/html/basket/related/bought/standard/template-body = basket/related/bought-body-standard
+client/html/basket/related/bought/template-body = basket/related/bought-body-standard
 ```
 
 * Default: basket/related/bought-body-standard
@@ -265,7 +266,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/basket/related/bought/standard/template-header
+* client/html/basket/related/bought/template-header
 
 # decorators
 ## excludes
@@ -420,13 +421,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyBasket"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the basket related section
 
 ```
-client/html/basket/related/standard/subparts = Array
+client/html/basket/related/subparts = Array
 (
     [0] => bought
 )
@@ -469,12 +469,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the basket related client.
 
 ```
-client/html/basket/related/standard/template-body = basket/related/body-standard
+client/html/basket/related/template-body = basket/related/body-standard
 ```
 
 * Default: basket/related/body-standard
@@ -495,14 +495,14 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/basket/related/standard/template-header
+* client/html/basket/related/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the basket related client.
 
 ```
-client/html/basket/related/standard/template-header = basket/related/header-standard
+client/html/basket/related/template-header = basket/related/header-standard
 ```
 
 * Default: basket/related/header-standard
@@ -524,4 +524,4 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/basket/related/standard/template-body
+* client/html/basket/related/template-body

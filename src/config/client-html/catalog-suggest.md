@@ -132,7 +132,7 @@ will be! Keep it to an absolute minium for user friendly response times.
 
 See also:
 
-* client/html/catalog/suggest/standard/template-body
+* client/html/catalog/suggest/template-body
 * client/html/catalog/suggest/restrict
 * client/html/catalog/suggest/size
 
@@ -222,13 +222,12 @@ See also:
 * client/html/catalog/suggest/domains
 * client/html/catalog/suggest/restrict
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog suggest client
 
 ```
-client/html/catalog/suggest/standard/subparts = Array
+client/html/catalog/suggest/subparts = Array
 (
 )
 ```
@@ -273,12 +272,12 @@ Note: Up to 2015-02, this configuration option was available as
 client/html/catalog/lists/simple/subparts
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the catalog suggest client.
 
 ```
-client/html/catalog/suggest/standard/template-body = catalog/suggest/body-standard
+client/html/catalog/suggest/template-body = catalog/suggest/body-standard
 ```
 
 * Default: catalog/suggest/body-standard
@@ -302,15 +301,15 @@ client/html/catalog/lists/simple/template-body
 
 See also:
 
-* client/html/catalog/suggest/standard/template-header
+* client/html/catalog/suggest/template-header
 * client/html/catalog/suggest/domains
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the catalog suggest client.
 
 ```
-client/html/catalog/suggest/standard/template-header = catalog/suggest/header-standard
+client/html/catalog/suggest/template-header = catalog/suggest/header-standard
 ```
 
 * Default: catalog/suggest/header-standard
@@ -335,7 +334,7 @@ client/html/catalog/lists/simple/template-header
 
 See also:
 
-* client/html/catalog/suggest/standard/template-body
+* client/html/catalog/suggest/template-body
 * client/html/catalog/suggest/domains
 
 # url

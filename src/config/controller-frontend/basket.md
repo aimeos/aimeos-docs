@@ -1,4 +1,26 @@
 
+# coupon
+## allowed
+
+Number of coupon codes a customer is allowed to enter
+
+```
+controller/frontend/basket/coupon/allowed = 1
+```
+
+* Default: 1
+* Type: integer - Positive number of coupon codes including zero
+* Since: 2017.08
+
+This configuration option enables shop owners to limit the number of coupon
+codes that can be added by a customer to his current basket. By default, only
+one coupon code is allowed per order.
+
+Coupon codes are valid until a payed order is placed by the customer. The
+"count" of the codes is decreased afterwards. If codes are not personalized
+the codes can be reused in the next order until their "count" reaches zero.
+
+
 # decorators
 ## excludes
 
@@ -226,25 +248,3 @@ into the basket as well. This makes it possible to get all articles
 or a subset of articles (e.g. all of a color) at once.
 
 This option replace the "client/html/basket/require-variant" setting.
-
-
-# standard
-## coupon/allowed
-
-Number of coupon codes a customer is allowed to enter
-
-```
-controller/frontend/basket/standard/coupon/allowed = 1
-```
-
-* Default: 1
-* Type: integer - Positive number of coupon codes including zero
-* Since: 2017.08
-
-This configuration option enables shop owners to limit the number of coupon
-codes that can be added by a customer to his current basket. By default, only
-one coupon code is allowed per order.
-
-Coupon codes are valid until a payed order is placed by the customer. The
-"count" of the codes is decreased afterwards. If codes are not personalized
-the codes can be reused in the next order until their "count" reaches zero.

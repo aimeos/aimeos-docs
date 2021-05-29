@@ -4,12 +4,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-admin/jsonadm/decorators/excludes = Array
-(
-)
+admin/jsonadm/decorators/excludes = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -41,12 +39,10 @@ See also:
 Adds a list of globally available decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/decorators/global = Array
-(
-)
+admin/jsonadm/decorators/global = 
 ```
 
-* Default: Array
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 

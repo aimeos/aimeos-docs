@@ -152,13 +152,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyTree"!
 
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the catalog tree section
 
 ```
-client/html/catalog/tree/standard/subparts = Array
+client/html/catalog/tree/subparts = Array
 (
     [0] => tree
 )

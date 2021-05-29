@@ -784,13 +784,12 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyService"!
 
 
-# standard
-## template
+# template
 
 Relative path to the basket JSON API template
 
 ```
-client/jsonapi/basket/standard/template = basket/standard
+client/jsonapi/basket/template = basket/standard
 ```
 
 * Default: basket/standard

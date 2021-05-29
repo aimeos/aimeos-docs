@@ -670,6 +670,17 @@ See also:
 * admin/jqadm/url/search/action
 * admin/jqadm/url/search/config
 
+## filter
+
+```
+admin/jqadm/url/search/filter = Array
+(
+)
+```
+
+* Default: Array
+
+
 ## target
 
 Destination of the URL where the controller specified in the URL is known

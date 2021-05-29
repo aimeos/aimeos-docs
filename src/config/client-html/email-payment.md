@@ -327,12 +327,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Payment\Html\Myna
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the email payment html section
 
 ```
-client/html/email/payment/html/standard/subparts = Array
+client/html/email/payment/html/subparts = Array
 (
 )
 ```
@@ -374,12 +374,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the email payment html client.
 
 ```
-client/html/email/payment/html/standard/template-body = email/payment/html-body-standard
+client/html/email/payment/html/template-body = email/payment/html-body-standard
 ```
 
 * Default: email/payment/html-body-standard
@@ -407,7 +407,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/payment/html/standard/template-header
+* client/html/email/payment/html/template-header
 
 # name
 
@@ -576,12 +576,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Payment\Pdf\Mynam
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the email payment PDF section
 
 ```
-client/html/email/payment/pdf/standard/subparts = Array
+client/html/email/payment/pdf/subparts = Array
 (
 )
 ```
@@ -623,12 +623,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the HTML body template of the email payment PDF client.
 
 ```
-client/html/email/payment/pdf/standard/template-body = email/payment/pdf-body-standard
+client/html/email/payment/pdf/template-body = email/payment/pdf-body-standard
 ```
 
 * Default: email/payment/pdf-body-standard
@@ -656,7 +656,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/payment/pdf/standard/template-header
+* client/html/email/payment/pdf/template-header
 
 # reply-email
 
@@ -707,13 +707,12 @@ See also:
 * client/html/email/from-email
 * client/html/email/bcc-email
 
-# standard
-## subparts
+# subparts
 
 List of HTML sub-clients rendered within the email payment section
 
 ```
-client/html/email/payment/standard/subparts = Array
+client/html/email/payment/subparts = Array
 (
     [0] => text
     [1] => html
@@ -758,12 +757,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## template-body
+# template-body
 
 Relative path to the HTML body template of the email payment client.
 
 ```
-client/html/email/payment/standard/template-body = Array
+client/html/email/payment/template-body = Array
 (
     [0] => email/payment/6/body-standard
     [1] => email/payment/body-standard
@@ -795,14 +794,14 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/payment/standard/template-header
+* client/html/email/payment/template-header
 
-## template-header
+# template-header
 
 Relative path to the HTML header template of the email payment client.
 
 ```
-client/html/email/payment/standard/template-header = Array
+client/html/email/payment/template-header = Array
 (
     [0] => email/payment/6/header-standard
     [1] => email/payment/header-standard
@@ -835,7 +834,7 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/payment/standard/template-body
+* client/html/email/payment/template-body
 
 # text
 ## decorators/excludes
@@ -959,12 +958,12 @@ Use "Myname" if your class is named "\Aimeos\Client\Html\Email\Payment\Text\Myna
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## standard/subparts
+## subparts
 
 List of HTML sub-clients rendered within the email payment text section
 
 ```
-client/html/email/payment/text/standard/subparts = Array
+client/html/email/payment/text/subparts = Array
 (
 )
 ```
@@ -1006,12 +1005,12 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-## standard/template-body
+## template-body
 
 Relative path to the text body template of the email payment text client.
 
 ```
-client/html/email/payment/text/standard/template-body = email/payment/text-body-standard
+client/html/email/payment/text/template-body = email/payment/text-body-standard
 ```
 
 * Default: email/payment/text-body-standard
@@ -1039,4 +1038,4 @@ specific layout template is found, the common template in the
 
 See also:
 
-* client/html/email/payment/text/standard/template-header
+* client/html/email/payment/text/template-header
