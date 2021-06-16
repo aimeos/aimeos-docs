@@ -18,9 +18,9 @@ The base layout of your application offers the general structure including HTML 
 
 For Laravel, the Aimeos package includes structural templates for each page which extend from the base layout to build e.g. a catalog list, a basket or checkout page. These [structural Blade template files](https://github.com/aimeos/aimeos-laravel/tree/master/src/views) are located in the `./src/views/` directory of the Aimeos extension.
 
-The `base.blade.php` template file is used by most templates and references the CSS and JS files of the theme. The `./catalog/list.blade.php` template uses the base template via `@extends('shop::base')` and adds the output of the configured components to the sections defined in the `resources/views/app.blade.php` layout template.
+The `base.blade.php` template file is used by most templates and references the CSS and JS files of the theme. The `./catalog/list.blade.php` template uses the base template via `@extends('shop::base')` and adds the output of the configured components to the sections defined in the `base.blade.php` layout template.
 
-If you want change the structure and use a two column layout for your list page, you must copy the `./catalog/list.blade.php` file to the `./resources/views/vendor/shop/catalog/` directory and change the `aimeos_nav` and `aimeos_body` sections like in this example:
+If you want change the structure and use a two column layout for your list page, you must copy the `./catalog/list.blade.php` file to the `./views/catalog/` directory of your *Laravel YYYY.x extension* you've created and change the `aimeos_nav` and `aimeos_body` sections like in this example:
 
 ```blade
 @section('aimeos_nav')
