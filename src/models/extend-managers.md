@@ -2,7 +2,7 @@ Usually, it's only rarely necessary to extend existing managers and items becaus
 
 To extend or overwrite existing classes, you have to:
 
-* Extend the database table (refer to [schema updates](schema-migrations.md))
+* Extend the database table (refer to [schema updates](../infrastructure/schema-migrations.md))
 * Create a new class in your project specific Aimeos extension
 * Store the class file in the `./lib/custom/src/` directory
 * Use the same directory structure as for the original class below the `./src` directory
@@ -11,7 +11,7 @@ To extend or overwrite existing classes, you have to:
 
 # Database setup
 
-If you need to store e.g. an arbitrary ID to another system in your product table, you can [extend the existing table](schema-migrations.md) by adding a new field like described in the article about modifying existing tables.
+If you need to store e.g. an arbitrary ID to another system in your product table, you can [extend the existing table](../infrastructure/schema-migrations.md) by adding a new field like described in the article about modifying existing tables.
 
 Let's name the new field "someid". Add a new `./<yourext>/lib/custom/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
 

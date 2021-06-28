@@ -1,4 +1,4 @@
-You can implement a new panel for managing additional data of a new data domain you've created or for a foreign table editors should be able to administrate. In the first case, you need to [create the manager and item](../../infrastructure/managing-items.md) first. To manage a foreign table, you can also use the raw database connection from the [Aimeos context](../../infrastructure/context.md) if you want.
+You can implement a new panel for managing additional data of a new data domain you've created or for a foreign table editors should be able to administrate. In the first case, you need to [create the manager and item](../../models/managing-items.md) first. To manage a foreign table, you can also use the raw database connection from the [Aimeos context](../../infrastructure/context.md) if you want.
 
 # Factory class
 

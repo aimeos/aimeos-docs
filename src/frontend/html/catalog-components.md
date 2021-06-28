@@ -91,7 +91,7 @@ The [list component implementation](../../config/client-html/catalog-lists.md#na
 ```
 ['text', 'media', 'price', 'catalog' => ['text', 'media'], 'supplier' => ['text']]
 ```
-For details please have a look at the documentation of the [*get()* manager method](../../infrastructure/managing-items.md#get-item)
+For details please have a look at the documentation of the [*get()* manager method](../../models/managing-items.md#get-item)
 
 [client/html/catalog/lists/size](../../config/client-html/catalog-lists.md#size_1)
 : The maximum number of products shown in a list page before the result is paginated
@@ -150,7 +150,7 @@ In the [detail component implementation](../../config/client-html/catalog-detail
 ```
 ['text', 'media', 'price', 'catalog' => ['text'], 'supplier' => ['text', 'media']]
 ```
-For details please have a look at the documentation of the [*get()* manager method](../../infrastructure/managing-items.md#get-item)
+For details please have a look at the documentation of the [*get()* manager method](../../models/managing-items.md#get-item)
 
 Other components such as the catalog list need to know at which URL the product details will be displayed. The generated URL can be configured via these settings:
 
