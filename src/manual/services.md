@@ -26,6 +26,25 @@ Extensions implementing payment providers are available, especially those using 
 
 # Built-in delivery services
 
+## Email
+
+Sends e-mails to shop owners including the orders. Both, the e-mail content and the attachment with the orders can be customized using templates.
+
+email.from (required)
+: E-Mail address the e-mails are sent from
+
+email.to (required)
+: E-Mail address of the recipient of the order e-mails
+
+email.subject (optional)
+: Subject of the order e-mails
+
+email.template (required)
+: Relative path to the template file in the template directory for the e-mail content
+
+email.order-template (required)
+: Relative path to the template file in the template directory for the e-mail attachment
+
 ## Standard
 
 Completely manual handling of orders without any notifications. It only sets the status of the order to "in progress". This service requires no further configuration.
