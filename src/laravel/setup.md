@@ -63,6 +63,37 @@ php ./artisan aimeos:clear
 
 If you've created a custom Aimeos extension, please have a look into the Aimeos **Changelog** (left navigation) and search for changes that applies to your code.
 
+## Upgrade to 2021.07+
+
+Since 2021.07, installing Aimeos via composer requires composer 2.1+ and the official Aimeos extensions prefixed with "ai-" must be removed from the *./ext/* directory. Instead, they are installed into *./vendor/aimeos/* now. If you don't remove them with:
+
+```bash
+rm -rf ./ext/ai-*
+```
+
+from your installation after upgrading, you will get an error about these extensions are available twice (once in *./ext* and once in *./vendor/aimeos/*). Your custom extensions can still be placed in the ./ext directory to make development easier.
+
+Due to splitting uploaded files by site, the directory structure changed and those file are now stored in subdirectories named by the site ID, e.g. *./public/aimeos/1./files/*. New uploaded files use that new structure automatically. The old paths were:
+
+* ./public/files/...
+* ./public/previews/...
+
+In 2021.07+, the new paths are:
+
+* ./public/aimeos/1./files/...
+* ./public/aimeos/1./previews/...
+* ./public/aimeos/2./files/...
+* ./public/aimeos/2./previews/...
+
+Thus, old uploaded files will be only found if you move the old paths to the new *./public/aimeos* sub-directory:
+
+```bash
+mv ./public/files/ ./public/aimeos/files
+mv ./public/previews/ ./public/aimeos/previews
+```
+
+Furthermore, the themes directory for Laravel installation has changed from *./public/packages/shop* to *./public/vendor/shop* to comply to Laravel standards.
+
 # Cronjobs
 
 Aimeos jobs are implemented for maintenance tasks like clean up or sending e-mails. Some of them need to be executed very often, others only once a day.
