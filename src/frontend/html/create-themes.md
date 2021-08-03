@@ -51,10 +51,10 @@ For a custom theme, you need to create the required CSS and JS files in `./clien
 * email.css
 * aimeos.js
 
-For the start, you can copy the existing ["elegance" Aimeos theme](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes/elegance) directory and the included files, e.g.
+For the start, you can copy the existing ["default" Aimeos theme](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes/default) directory and the included files, e.g.
 
 ```bash
-cp -r ./client/html/themes/elegance/ ./client/html/themes/mytheme/
+cp -r ./client/html/themes/default/ ./client/html/themes/mytheme/
 ```
 
 Chage the theme files according to your needs. Then, use `composer update` to copy your theme files to the `./public/` directory so the files will be available. Change the `client/html/common/baseurl` configuration afterwards to point to your new theme.
@@ -66,14 +66,14 @@ For Laravel, open the `./config/shop.php` file and search for the `baseurl` key:
 		'html' => [
 			'common' => [
 				'template' => [
-					'baseurl' => 'packages/aimeos/shop/themes/elegance',
+					'baseurl' => 'vendor/shop/themes/default'
 				],
 			],
 		],
 	],
 ```
 
-Uncomment the line with `baseurl` and replace `elegance` by your new theme name.
+Uncomment the line with `baseurl` and replace `default` by your new theme name.
 
 ## Custom CSS styles
 
@@ -84,7 +84,7 @@ You have to adapt the two CSS files named
 
 to your theme directory in `./client/html/themes/<themename>/`. These files must contain all styles for the HTML frontend (*aimeos.css*) and the sent e-mails (*email.css*).
 
-The simplest way is to copy the files from the default ["elegance" Aimeos theme](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes/elegance) and adapt them to your needs. Remove the styles you don't need to keep the file small and add the new styles for your theme.
+The simplest way is to copy the files from the default ["default" Aimeos theme](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes/default) and adapt them to your needs. Remove the styles you don't need to keep the file small and add the new styles for your theme.
 
 The CSS class names used in the templates are semantic, so you can add CSS styles for the shop components only. To learn more about semantic naming, please read the article about [theme basics](theme-basics.md#cascading-style-sheets).
 
