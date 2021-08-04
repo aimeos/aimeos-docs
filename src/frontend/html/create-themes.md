@@ -6,7 +6,7 @@ Since 2020.10, there's a simple way to create new themes, install and configure 
 
 # Create extension
 
-To create a portable theme, you should generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Copy it to the `./ext/` directory of your application where also the other Aimeos extensions are located. You should also put that extension under version control, e.g. by adding it to a Git repository.
+To create a portable theme, you should generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Copy it to the `./ext/` directory of your application and you should also put that extension under version control, e.g. by adding it to a Git repository.
 
 # Custom templates
 
@@ -16,7 +16,7 @@ The base layout of your application offers the general structure including HTML 
 
 ## Laravel templates
 
-For Laravel, the Aimeos package includes structural templates for each page which extend from the base layout to build e.g. a catalog list, a basket or checkout page. These [structural Blade template files](https://github.com/aimeos/aimeos-laravel/tree/master/src/views) are located in the `./src/views/` directory of the Aimeos extension.
+For Laravel, the Aimeos package includes structural templates for each page which extend from the base layout to build e.g. a catalog list, a basket or checkout page. These [structural Blade template files](https://github.com/aimeos/aimeos-laravel/tree/master/src/views) are located in the `./src/views/` directory of the Aimeos package.
 
 The `base.blade.php` template file is used by most templates and references the CSS and JS files of the theme. The `./catalog/list.blade.php` template uses the base template via `@extends('shop::base')` and adds the output of the configured components to the sections defined in the `base.blade.php` layout template.
 
