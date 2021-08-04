@@ -28,7 +28,7 @@ class Myprovider
      *  and parameters to redirect to    (e.g. to an external server of the payment
      *  provider or to a local success page)
      */
-    public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] )
+    public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
     {
         // perform your actions
         return parent::process( $order, $params );
@@ -51,7 +51,7 @@ The method will be called during the checkout process after the customer clicked
 The first example lists the steps to use a direct API call to a remote server for executing the payment. When *process()* is called, the order item of the order that should be processed is passed as argument. It can be used to retrieve the rest of the order data and to update the payment status afterwards:
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] )
+public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
 {
     $basket = $this->getOrderBase( $order->getBaseId() );
     $total = $basket->getPrice()->getValue() + $basket->getPrice()->getCosts();
@@ -102,7 +102,7 @@ PAY_RECEIVED
 Instead of an API call, you can also redirect the customer directly to the payment gateway and hand over the required data via GET or POST:
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] )
+public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
 {
     $basket = $this->getOrderBase( $order->getBaseId() );
     $total = $basket->getPrice()->getValue() + $basket->getPrice()->getCosts();
@@ -144,7 +144,7 @@ payment.url-success
 : URL to the "Thank You" page (also for failed payments but a suitable text will be displayed instead)
 
 payment.url-update
-: Page where the checkout update component is placed and waits for asynchronous notifications from the payment provider 
+: Page where the checkout update component is placed and waits for asynchronous notifications from the payment provider
 
 You can retrieve these URLs using:
 
@@ -156,9 +156,9 @@ $url = $this->getConfigValue( 'payment.url-update' );
 The last way the *process()* method could be implemented is to collect the payment data locally. Therefore, you have to generate a form first and retrieve the data entered by the customer afterwards. In this case, the "params" argument will contain the GET/POST parameters that have been posted:
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] )
+public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
 {
-    if( !isset( $params['myprovider.accountno'] ) || $params['myprovider.accountno'] * )
+    if( $params['myprovider.accountno'] ?? null )
     {
         // define the form to collect the payment data from the customer
         $list = [
@@ -201,10 +201,11 @@ You can also combine the different ways shown, e.g. collect the payment data loc
 
 Many payment gateways collect the payment related data on their server, process the payment and redirect the customer to the shop afterwards. Within this redirect, they usually send the payment status as GET or POST parameter, so the payment service provider can update the order status immediately. Thus, customers see if their payment and order was accepted on the confirmation page.
 
-These status updates sent directly within the redirect are handled by the *updateSync()* method. In the payment service provider, all data (GET/POST parameters as well as the request body) from the payment gateway is available in the [PSR-7 request object](https://www.php-fig.org/psr/psr-7/) passed to the method.  Furthermore, the second argument is the order item, which represents the invoice of the order containing the current payment status. 
+These status updates sent directly within the redirect are handled by the *updateSync()* method. In the payment service provider, all data (GET/POST parameters as well as the request body) from the payment gateway is available in the [PSR-7 request object](https://www.php-fig.org/psr/psr-7/) passed to the method.  Furthermore, the second argument is the order item, which represents the invoice of the order containing the current payment status.
 
 ```php
-public function updateSync( \Psr\Http\Message\ServerRequestInterface $request, \Aimeos\MShop\Order\Item\Iface $order )
+public function updateSync( \Psr\Http\Message\ServerRequestInterface $request,
+		\Aimeos\MShop\Order\Item\Iface $orderItem ) : \Aimeos\MShop\Order\Item\Iface
 {
     // extract status from the request
     // map the status value to one of the Aimeos payment status values
@@ -229,7 +230,8 @@ To be more precise, status updates sent synchronously via HTTP(S) are accepted b
 The *updatePush()* method is called by the application as soon as a status update request via HTTP(S) arrives. This happens on the update page which accepts asynchronous update notifications sent by the payment gateways later on. The sent GET/POST parameters as well as the request body are available in the [PSR-7 request object](https://www.php-fig.org/psr/psr-7/):
 
 ```php
-public function updatePush( \Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response )
+public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
+		\Psr\Http\Message\ResponseInterface $response ) : \Psr\Http\Message\ResponseInterface;
 {
     // extract the order ID and latest status from the request
     $order = $this->getOrder( $orderid );
@@ -255,7 +257,7 @@ Keeping the payment status of each order up to date can not only be done [[#Upda
 The *updateAsync()* method is called regularly by a job controller. Thus, there are no parameters passed to this method and your service provider needs to know where to look after the batch files. The information could be available in the [configuration](index.md#configuration) added by the shop owner when setting up the service option/provider.
 
 ```php
-public function updateAsync()
+public function updateAsync() : bool
 {
     // extract the order IDs and latest status values from the file
 
@@ -267,6 +269,8 @@ public function updateAsync()
         $order->setPaymentStatus( $status );
         $this->saveOrder( $order );
     }
+
+    return true;
 }
 ```
 
@@ -284,13 +288,15 @@ The methods described in this section are optional methods where no useful defau
 To enable querying the current payment status, you have to implement the *query()* method in your payment service provider. If it exists, the *query()* method should ask its payment gateway for the actual status of the order passed as argument to the method and update the payment status of that order accordingly:
 
 ```php
-public function query( \Aimeos\MShop\Order\Item\Iface $order )
+public function query( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
 {
     $orderid = $order->getId();
     // ask the external service for the current payment status for the given order
 
     $order->setPaymentStatus( $status );
     $this->saveOrder( $order );
+
+    return $order;
 }
 ```
 
@@ -299,7 +305,7 @@ The available [payment status values](https://github.com/aimeos/aimeos-core/blob
 As the *query()* method isn't available by default, you have to tell the application using the service provider that your implementation supports it. Thus, you have to [overwrite the *isImplemented()* method](index.md#check-available-methods) and return true for the query feature:
 
 ```php
-public function isImplemented( $what )
+public function isImplemented( int $what ) : bool
 {
     switch( $what )
     {
@@ -320,7 +326,7 @@ If the method exists, it should tell the payment gateway to capture the money fo
 
 
 ```php
-public function capture( \Aimeos\MShop\Order\Item\Iface $order )
+public function capture( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
 {
     $orderid = $order->getId();
     // ask the payment gateway to capture the money for the given order
@@ -328,6 +334,8 @@ public function capture( \Aimeos\MShop\Order\Item\Iface $order )
     $status = \Aimeos\MShop\Order\Item\Base::PAY_RECEIVED;
     $order->setPaymentStatus( $status );
     $this->saveOrder( $order );
+
+    return $order;
 }
 ```
 
@@ -337,7 +345,7 @@ Use the "PAY_RECEIVED" payment status after capturing the money and save the ord
 As the *capture()* method isn't available by default, you have to tell the application using the service provider that your implementation supports it. Thus, you have to [overwrite the *isImplemented()* method](index.md#check-available-methods) and return true for the capture feature:
 
 ```php
-public function isImplemented( $what )
+public function isImplemented( int $what ) : bool
 {
     switch( $what )
     {
@@ -355,7 +363,7 @@ This example implementation will tell the application that the capture feature i
 If the payment gateway supports cancellations, you should implement the *cancel()* method. If the method exists, it should ask the payment gateway to cancel the payment for the order passed as argument to the method if possible and update the payment status of the order accordingly:
 
 ```php
-public function cancel( \Aimeos\MShop\Order\Item\Iface $order )
+public function cancel( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
 {
     $orderid = $order->getId();
     // ask the payment gateway to cancel the payment for the given order
@@ -363,6 +371,8 @@ public function cancel( \Aimeos\MShop\Order\Item\Iface $order )
     $status = \Aimeos\MShop\Order\Item\Base::PAY_DELETED;
     $order->setPaymentStatus( $status );
     $this->saveOrder( $order );
+
+    return $order;
 }
 ```
 
@@ -374,7 +384,7 @@ Use the "PAY_DELETED" payment status after canceling the payment and save the or
 As the *cancel()* method isn't available by default, you have to tell the application using the service provider that your implementation supports it. Thus, you must [overwrite the *isImplemented()* method](index.md#check-available-methods) and return true for the cancel feature:
 
 ```php
-public function isImplemented( $what )
+public function isImplemented( int $what ) : bool
 {
     switch( $what )
     {
@@ -392,7 +402,7 @@ This example implementation will tell the application that the capture feature i
 If the payment gateway supports refunding payments, you should implement the *refund()* method. If the method exists, it should ask the payment gateway to refund the complete payment for the order passed as argument to the method and update the payment status of the order accordingly:
 
 ```php
-public function refund( \Aimeos\MShop\Order\Item\Iface $order )
+public function refund( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
 {
     $orderid = $order->getId();
     // ask the payment gateway to refund the complete payment for the given order
@@ -400,6 +410,8 @@ public function refund( \Aimeos\MShop\Order\Item\Iface $order )
     $status = \Aimeos\MShop\Order\Item\Base::PAY_REFUND;
     $order->setPaymentStatus( $status );
     $this->saveOrder( $order );
+
+    return $order;
 }
 ```
 
@@ -409,7 +421,7 @@ As the *refund()* method isn't available by default, you have to tell the applic
 
 
 ```php
-public function isImplemented( $what )
+public function isImplemented( int $what ) : bool
 {
     switch( $what )
     {

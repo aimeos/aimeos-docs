@@ -28,7 +28,7 @@ class Myprovider
      *
      * @param \Aimeos\MShop\Order\Item\Iface $order Order invoice object to process
      */
-    public function process( \Aimeos\MShop\Order\Item\Iface $order )
+    public function process( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
     {
     }
 }
@@ -47,17 +47,19 @@ The *processBatch()* method will be called by the job controller regularly for a
 When called, the item(s) of the orders that should be processed are passed as argument. It can be used to retrieve the rest of the order data and to update the delivery status afterwards:
 
 ```php
-public function processBatch( array $orders )
+public function processBatch( iterable $orders ) : \Aimeos\Map
 {
     // this is also the default implementation of processBatch()
     foreach( $orders as $order ) {
         $this->getObject()->process( $order );
     }
+
+    return map( $orders );
 }
 ```
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order )
+public function process( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
 {
     $parts = \Aimeos\MShop\Order\Item\Base\Base::PARTS_ALL;
     $basket = $this->getOrderBase( $order->getBaseId(), $parts );
@@ -66,7 +68,8 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order )
 
     $status = \Aimeos\MShop\Order\Item\Base::STAT_PROGRESS;
     $order->setDeliveryStatus( $status );
-    $this->saveOrder( $order );
+
+    return $order;
 }
 ```
 
@@ -111,7 +114,7 @@ To be more precise, status updates sent synchronously via HTTP(S) are accepted b
 The *updatePush()* method is called by the application as soon as a status update request via HTTP(S) arrives. The sent GET/POST parameters as well as the request body are available in the [PSR-7 request](https://www.php-fig.org/psr/psr-7/) object:
 
 ```php
-public function updatePush( \Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response )
+public function updatePush( \Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response ) : \Psr\Http\Message\ResponseInterface
 {
     // extract the order ID and latest status from the request
     $order = $this->getOrder( $orderid );
@@ -140,7 +143,7 @@ Keeping the delivery status of each order up to date can not only be done via HT
 The *updateAsync()* method is called regularly by a job controller. Thus, there are no parameters passed to this method and your service provider needs to know where to look after the batch files. The information could be available in the configuration added by the shop owner when setting up the service option/provider.
 
 ```php
-public function updateAsync()
+public function updateAsync() : bool
 {
     // extract the order IDs and latest status values from the file
 
@@ -152,6 +155,8 @@ public function updateAsync()
         $order->setDeliveryStatus( $status );
         $this->saveOrder( $order );
     }
+
+    return true;
 }
 ```
 
@@ -167,7 +172,7 @@ To enable querying the current delivery status, you have to implement the *query
 If it exists, the *query()* method should ask its remote service for the actual delivery status of the order, which is passed as an argument to the method, and update the delivery status of the order accordingly:
 
 ```php
-public function query( \Aimeos\MShop\Order\Item\Iface $order )
+public function query( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
 {
     $orderid = $order->getId();
     // ask the external service for the current delivery status for the given order
@@ -185,7 +190,7 @@ As the *query()* method isn't available by default, you have to tell the applica
 
 
 ```php
-public function isImplemented( $what )
+public function isImplemented( int $what ) : bool
 {
     switch( $what )
     {
