@@ -30,6 +30,7 @@ class Myprovider
      */
     public function process( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\Order\Item\Iface
     {
+        return $order;
     }
 }
 ```
@@ -180,6 +181,8 @@ public function query( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\O
     $status = \Aimeos\MShop\Order\Item\Base::STAT_DISPATCHED;
     $order->setDeliveryStatus( $status );
     $this->saveOrder( $order );
+
+    return $order;
 }
 ```
 
