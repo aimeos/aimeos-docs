@@ -138,6 +138,9 @@ string
 trans
 : The new translation for the original string. This can be also an array, if one or more plural forms are necessary.
 
+!!! warning
+    The original string is **case sensitive** so it makes a difference if you use "Basket" or "basket"! Always use the same string as used in the template or source code.
+
 ## Singular translations
 
 A simple singular translation to English:
@@ -155,8 +158,8 @@ A simple singular translation to US English:
 ```typoscript
 plugin.tx_aimeos.settings.i18n.en_US.0 {
   domain = client
-  string = basket
-  trans = Shopping cart
+  string = Basket
+  trans = Cart
 }
 ```
 
@@ -166,8 +169,8 @@ Several singular translations to English:
 plugin.tx_aimeos.settings.i18n.en {
   0 {
     domain = client
-    string = basket
-    trans = Basket
+    string = Basket
+    trans = Cart
   }
   1 {
     domain = client
