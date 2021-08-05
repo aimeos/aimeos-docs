@@ -121,6 +121,9 @@ original singular
 new translation
 : New translation for the original string. This must be an array to support one or more plural forms.
 
+!!! warning
+    The original string is **case sensitive** so it makes a difference if you use "Basket" or "basket"! Always use the same string as used in the template or source code.
+
 ## Singular translations
 
 A simple singular translation to English:
@@ -141,7 +144,7 @@ A simple singular translation to US English:
 'i18n' => [
     'en_US' => [
         'client' => [
-            'basket' => ['Shopping cart'],
+            'Basket' => ['Cart'],
         ],
     ],
 ],
@@ -154,7 +157,7 @@ Several singular translations to English:
     'en_US' => [
         'client' => [
             'address' => ['Address'],
-            'basket' => ['Basket'],
+            'Basket' => ['Cart'],
         ],
     ],
 ],
