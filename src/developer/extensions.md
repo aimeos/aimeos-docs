@@ -5,7 +5,7 @@ Extensions are an easy way to add new features, change existing ones or manage c
 
 # Location
 
-Your new extension has to be placed in the Aimeos extension directory. This directory is usually named `./ext/` if you are working with either the Laravel or Symfony.
+Your new extension can be either placed into the `./ext` directory if your application or when installed via composer, it will be placed into the `./vendor/` directory. The easiest way is to create the `./ext/` folder and place your extension there if you are working with either Laravel or Symfony.
 
 CMS applications like TYPO3 require the Aimeos extension to be part of an application specific extension. The [Aimeos extension builder](https://aimeos.org/extensions) can create both at the same time, packaged together in one .zip file. The Aimeos extension is then placed in the appropriate sub-directory like `./Resources/Private/Extensions/` for TYPO3.
 
