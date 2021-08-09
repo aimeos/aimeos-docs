@@ -121,7 +121,7 @@ For some jobs (especially the tasks that are sending e-mails) a few configuratio
     'html' => array(
         'common' => array(
             'template' => array(
-                 'baseurl' => public_path('packages/aimeos/shop/themes/elegance'),
+                 'baseurl' => public_path('vendor/shop/themes/elegance'),
             ),
         ),
         'email' => array(
