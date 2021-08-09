@@ -460,7 +460,7 @@ If you upgrade from earlier versions, please make sure that your shop configurat
 
 ## Templates
 
-Laravel applications can overwrite the templates of packages by copying a modified version of the template to the `resources/views/vendor/aimeos/shop/` directory. This is done automatically during the installation via composer.
+Laravel applications can overwrite the templates of packages by copying a modified version of the template to the `resources/views/vendor/shop/` directory. This is done automatically during the installation via composer.
 
 In each page template where the locale selector should be available, you need to add the lines for rendering the header and body section of the locale selector:
 
