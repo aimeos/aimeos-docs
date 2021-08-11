@@ -118,8 +118,8 @@ You can add multiple prices to a single product. Either enter different quantiti
 Tax rate in % (required)
 : Tax rate in percent which is included in the price (gross prices) or added to the price (net prices). All prices have to be either gross or net prices depending on the tax flag configuration. If several tax rates are configured e.g. "GST" and "PST", then multiple tax rates can be entered
 
-Actual current price (required)
-: Price like shown in the frontend and used when purchasing the product.
+Actual current price (optional)
+: Price like shown in the frontend and used when purchasing the product. If no price is added, "on request" will be shown in the frontend and the product won't contribute to the basket total.
 
 Shipping costs per item (optional)
 : If items are very heavy or have to be sent in a special way, you can add these costs as additional shipping costs. If a customer adds products with additional shipping costs two times to the basket, the additional shipping costs will be also added twice.
