@@ -28,10 +28,19 @@ The URL to add the product to the basket is in `data['links']['basket/product'][
 
 # Add products
 
-When adding a product to the basket, you can specify some more attributes than just the product ID. Besides the quantity (amount of products in the basket), there are a number of optional attributes:
+When adding a product to the basket, you can specify some more attributes than just the product ID which are all optional:
+
+quantity
+: Amount of products that will be added to the basket
 
 stocktype
 : Warehouse or local store where the product is available
+
+supplier
+: ID of the supplier if the product is available be more than one supplier
+
+siteid
+: ID of the site whose vendor will ship the bought product (in multi-site environments)
 
 variant
 : List of product attribute IDs that uniquely determine the article of a selection product
