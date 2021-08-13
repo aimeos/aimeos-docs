@@ -1,6 +1,8 @@
 ![Product details](Admin-product-detail.png)
 
-There are many select and input fields in the left section of the detail view that are all directly related to the product you've added or you are going to delete. Their purpose are:
+There are many select and input fields in the left section of the detail view that are all directly related to the product you are adding or you are going to modify. Some of them are hidden by default and can be shown by clicking on the three dots (...) below the last shown field. This applies also to the navigation where only a subset of the available tabs is shown by default.
+
+The purpose of the available fields are:
 
 Dataset (optional)
 : List of pre-configured data sets to simplify creating new products for editors
