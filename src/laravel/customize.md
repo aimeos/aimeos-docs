@@ -286,6 +286,58 @@ by this Blade template:
 @yield( 'cataog/detail/actions' )
 ```
 
+# Add locale selector
+
+For shops offering multiple languages, currencies or both, Aimeos contains a locale selector component that renders menus of the configured language/currency combinations, so visitors are able to choose their preferred language and/or currency. By default, both will be part of the URL afterwards.
+
+How to add locales for language/currency combinations is described in the [user manual](../manual/locales.md).
+
+## Configuration
+
+To make the locale selector available in the templates, you need to add the component name to the page configuration. Replace the relevant settings for the "page" configuration in your `config/shop.php` file which these lines:
+
+```php
+'page' => [
+    'account-index' => ['locale/select', /* ... more components ... */],
+    'basket-index' => ['locale/select', /* ... more components ... */],
+    'catalog-detail' => ['locale/select', /* ... more components ... */],
+    'catalog-list' => ['locale/select', /* ... more components ... */],
+    // ...
+]
+```
+
+Your `config/shop.php` already contains the necessary lines if you uncomment the `page` section.
+
+## Routes
+
+Language and currency ID chosen by the visitor are part of the URL by default, so they are explicit and can be cached (contrary to information based on session data). To make this work, you need to add a route prefix in your `config/shop.php`:
+
+```php
+'routes' => [
+    'account' => ['prefix' => '{locale}/{currency}', ... ],
+    'default' => ['prefix' => '{locale}/{currency}', ... ],
+    'confirm' => ['prefix' => '{locale}/{currency}', ... ],
+    'update' => ['prefix' => '{locale}/{currency}', ... ],
+]
+```
+
+These two lines require that the language ("locale") and currency ID must be part of all URLs besides the "admin" ones. If you only need the language, you should use this instead:
+
+```php
+'routes' => [
+    'account' => ['prefix' => '{locale}', ... ],
+    'default' => ['prefix' => '{locale}', ... ],
+    'confirm' => ['prefix' => '{locale}', ... ],
+    'update' => ['prefix' => '{locale}', ... ],
+]
+```
+
+## Adapt selector
+
+The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/subparts](../config/client-html/locale-select#subparts) configuration.
+
+Adapting the layout of the locale selector is possible via CSS.
+
 # Multiple shops
 
 Aimeos is multi-site/multi-vendor capable and allows storing several shops for multiple vendors in one database.

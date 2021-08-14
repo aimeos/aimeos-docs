@@ -250,6 +250,45 @@ by this Twig template:
 !!! warning
     Twig doesn't allow slashes ("/") in block names. Thus, you have to **replace each slash with an underscore** when using the block/endblock directives. In Aimeos templates, these blocks will be available with slashes as separator again.
 
+# Add locale selector
+
+For shops offering multiple languages, currencies or both, Aimeos contains a locale selector component that renders menus of the configured language/currency combinations, so visitors are able to choose their preferred language and/or currency. By default, both will be part of the URL afterwards.
+
+How to add locales for language/currency combinations is described in the [user manual](../manual/locales.md).
+
+## Configuration
+
+To make the locale selector available in the templates, you need to add the component name to the page configuration. Add these settings for the "page" configuration in your `./config/packages/aimeos_shop.yaml` file:
+
+```yaml
+aimeos_shop:
+    page:
+        account-index: ['locale/select', ...]
+        basket-index: ['locale/select', ...]
+        catalog-detail: ['locale/select', ...]
+        catalog-list: ['locale/select', ...]
+```
+
+They add the "locale/select" component to the account, basket, catalog detail and catalog list templates where they can be rendered afterwards.
+
+## Routes
+
+Language and currency ID chosen by the visitor are part of the URL by default, so they are explicit and can be cached (contrary to information based on session data). To make this work, you need to redefine all routes besides the "adm" (admin) routes with a prefix in your `./config/routing.yaml`:
+
+```yaml
+aimeos_shop_account:
+    path: /{locale}/myaccount
+    defaults: { _controller: AimeosShopBundle:Account:index, locale: 'en' }
+
+# ...
+```
+
+## Adapt selector
+
+The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/subparts](../config/client-html/locale-select.md#subparts) configuration.
+
+Adapting the layout of the locale selector is possible via CSS.
+
 # Multiple shops
 
 Aimeos is multi-site capable and allows storing several shops in one database.
