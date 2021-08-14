@@ -17,7 +17,7 @@ var version = window.location.pathname.slice(6, 12);
 var client = algoliasearch('M2A88JJEVU', 'd04abfdb562432b3055422cb5f63f169');
 var index = client.initIndex( version.search(/^[0-9]{4}\.x$/) !== -1 ? version : '2021.x');
 autocomplete('.md-search__input', {
-  autoselectOnBlur: true,
+  autoselectOnBlur: false,
   clearOnSelected: true,
   minLength: 3,
   hint: false
@@ -65,5 +65,13 @@ autocomplete('.md-search__input', {
   var nodes = document.getElementsByClassName('md-main');
   for(var i=0; i<nodes.length; i++) {
     nodes[i].style.opacity = 1;
+  }
+});
+
+
+$('.aa-input').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) {
+    e.preventDefault(); return false;
   }
 });
