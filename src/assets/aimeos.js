@@ -69,9 +69,12 @@ autocomplete('.md-search__input', {
 });
 
 
-$('.aa-input').on('keyup keypress', function(e) {
-  var keyCode = e.keyCode || e.which;
-  if (keyCode === 13) {
-    e.preventDefault(); return false;
-  }
-});
+var input = document.querySelector('.aa-input');
+if(input) {
+  input.addEventListener('keypress', function(e) {
+    var keyCode = e.keyCode || e.which;
+    if (keyCode === 13) {
+      e.preventDefault(); return false;
+    }
+  });
+}
