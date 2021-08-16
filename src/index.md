@@ -21,7 +21,8 @@
 <div class="topic">
     <h2>Tutorials</h2>
     <ul>
-        <li><a href="frontend/html/create-themes/">Create new themes</a></li>
+        <li><a href="frontend/html/create-themes/">Create basic themes</a></li>
+        <li><a href="laravel/themes/">Laravel theme packages</a></li>
     </ul>
 </div>
 <div class="topic">
