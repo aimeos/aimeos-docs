@@ -1,14 +1,14 @@
-# Laravel theme packages
+For Laravel, Aimeos offers a way to create distributable theme that you can offer as self-contained packages for download or installation via composer. These themes can be selected per site in the *Settings* panel of the Aimeos admin backend after installation:
 
-For Laravel, Aimeos offers a way to create distributable theme that you can offer as self-contained packages for download or installation via composer.
+![Aimeos theme selector in Settings panel](backend-settings-themes.png)
 
-## Create theme extension
+# Create theme extension
 
 To create a distributable theme, you must generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Choose "Laravel theme YYYY.x extension" where YYYY.x is the Aimeos version the theme is for, enter a name of your theme and click on "Download".
 
-## Installation
+# Installation
 
-### Composer installation
+## Composer installation
 
 Installation via composer should be the preferred method as this ensures that everything works out of the box for everyone automatically. This requires that you distribute your theme package via one of the [repository types supported by composer](https://getcomposer.org/doc/05-repositories.md). Then, only change the package name in the `composer.json` and you or your users only need to run:
 
@@ -18,11 +18,11 @@ composer req <vendor>/<mytheme>
 
 The name `<vendor>/<mytheme>` must be replaced with the name from the composer.json file of your theme package.
 
-### Manual installation
+## Manual installation
 
-For local installations only, you can add your theme package into the `./ext/` directory of your Laravel application.
+For local installations only, you can add your theme package into the `./packages/` directory of your Laravel application.
 
-* Create the directory for your theme by executing e.g. `mkdir -p ext/mytheme`
+* Create the directory for your theme by executing e.g. `mkdir -p packages/mytheme`
 * Unzip the downloaded .zip theme package into that directory
 
 Furthermore, you have to add a *repositories* section to the `composer.json` of your Laravel application which must contain these lines (replace "mytheme" with the name of your theme):
@@ -31,7 +31,7 @@ Furthermore, you have to add a *repositories* section to the `composer.json` of 
     "repositories": {
         "mytheme": {
             "type": "path",
-            "url": "ext/mytheme"
+            "url": "packages/mytheme"
         }
     },
 ```
@@ -39,10 +39,10 @@ Furthermore, you have to add a *repositories* section to the `composer.json` of 
 Finally, set up your theme using:
 
 ```
-composer up
+composer req aimeos-themes/<mytheme>
 ```
 
-## Blade templates
+# Blade templates
 
 For Laravel, the Aimeos package includes structural templates for each page which extend from the base layout to build e.g. a catalog list, a basket or checkout page. These [structural Blade template files](https://github.com/aimeos/aimeos-laravel/tree/master/src/views) are located in the `./views/` directory your theme package.
 
@@ -65,11 +65,11 @@ Afterwards, the categories, price, supplier and attribute filter will be shown a
 !!! note
     For the pages displaying a category, you have to adapt the `./catalog/tree.blade.php` file too.
 
-## HTML client templates
+# HTML client templates
 
 Most often, you don't need to change the structure of the HTML templates because you can rearrange the layout using CSS to a large degree. If your layout requires a different HTML structure, you can [overwrite the HTML client templates](../frontend/html/overwrite-templates.md) from the *ai-client-html* extension.
 
-## CSS and JS files
+# CSS and JS files
 
 The files located in the `client/html/themes/<mytheme>` directory of your Aimeos theme extension for Laravel are distributed within the package but are not used. Instead, the will be automatically copied to the `./public/vendor/shop/<mytheme>` directory of your Laravel application by the last `composer` command.
 
