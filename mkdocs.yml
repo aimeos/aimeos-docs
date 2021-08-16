@@ -60,6 +60,7 @@ nav:
     - Customize: laravel/customize.md
     - Extend: laravel/extend.md
     - Optimize: laravel/optimize.md
+    - Create themes: laravel/themes.md
   - Symfony:
     - Getting started: symfony/index.md
     - Setup: symfony/setup.md
