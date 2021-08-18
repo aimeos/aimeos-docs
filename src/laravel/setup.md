@@ -190,3 +190,49 @@ The appropriate cronjob command is:
 ```
 0 1 * * * php /path/to/artisan aimeos:jobs "admin/cache admin/log catalog/import/csv order/cleanup/unpaid product/import/csv product/bought index/rebuild index/optimize product/export/sitemap subscription/process/begin subscription/process/renew subscription/process/end"
 ```
+
+# Content Security Policy
+
+Since 2021.07+, Aimeos enforces a strict Content Security Policy (CSP) by default to prevent cross-site scripting attacks. You won't notice that most of the time but if you need to include CSS, Javascript or images from other domains or try to add inline Javascript, you will see errors like this one in the browser console:
+
+```
+js.stripe.com/:1 Refused to frame 'https://js.stripe.com/'
+because it violates the following Content Security Policy directive:
+"default-src 'self' https://cdn.jsdelivr.net"
+```
+
+The default CSP is part of the [base.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/views/base.blade.php#L7) template and consists of:
+
+```
+default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://cdn.jsdelivr.net;
+style-src 'unsafe-inline' 'self' https://cdn.jsdelivr.net;
+img-src 'self' data: https://cdn.jsdelivr.net https://aimeos.org
+```
+
+This allows:
+
+* CSS from own domain, Jsdelivr and as inline styles
+* Images from own domain, Jsdeliver, Aimeos and as "data" content
+* Everything else (incl. Javascript) from own domain and Jsdelivr
+
+The random `nonce-...` value also allows inline Javascript when a *nonce* attribute is added to the script tag in the template, e.g.:
+
+```
+<script nonce="{{ app( 'aimeos.context' )->get()->nonce() }}">
+var count = 1;
+</script>
+```
+
+To add another domain to the CSP, first you have to copy the `base.blade.php` template from `./vendor/aimeos/aimeos-laravel/src/views/base.blade.php` to `./resources/views/vendor/shop/base.blade.php`. Then, your copy takes precedence over the template in the `./vendor` directory and you can change it according to your needs.
+
+To add e.g. YouTube videos, you should add `https://youtube.com` to the *default-src* directive, e.g.:
+
+```
+default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://cdn.jsdelivr.net https://youtube.com; style-src 'unsafe-inline' 'self' https://cdn.jsdelivr.net; img-src 'self' data: https://cdn.jsdelivr.net https://aimeos.org
+```
+
+Sometimes, several subdomains are used e.g. by Stripe and then you should add `https://*.stripe.com` as wildcard:
+
+```
+default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://cdn.jsdelivr.net https://*.stripe.com; style-src 'unsafe-inline' 'self' https://cdn.jsdelivr.net; img-src 'self' data: https://cdn.jsdelivr.net https://aimeos.org
+```

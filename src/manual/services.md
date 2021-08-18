@@ -305,7 +305,7 @@ type (string, required)
 : Gateway name as defined by the [https://github.com/thephpleague/omnipay#payment-gateways Omnipay driver] (stated in the documentation of the driver)
 
 address (boolean, optional)
-: A value of "1" will send the customer address to the Stripe server for additional verification
+: A value of "1" will send the customer address to the payment server for additional verification
 
 authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
@@ -573,3 +573,6 @@ onsite (boolean, optional)
 
 testmode (boolean, optional)
 : Use "1" for test payments without real money
+
+!!! warning
+    Stripe requires external Javascript and for Laravel, it needs a customized [Content Security Policy](../laravel/setup.md#content-security-policy)!
