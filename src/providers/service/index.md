@@ -273,7 +273,7 @@ The definitions of what is available will render a form in the front-end near th
 
 
 ```php
-public function getConfigFE( \Aimeos\MShop\Order\Item\Base\Iface $basket )
+public function getConfigFE( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : array
 {
     $list = [];
 
@@ -290,7 +290,7 @@ The *$this->feconfig* contains the front-end configuration definition in this ex
 If form fields are marked as public, then customers can or must fill out the fields - depending on the "required" flag. If customers forgot one field or entered invalid data, an error message will be shown and the form fields are highlighted where values are missing or invalid. To make this happen, implement the *checkConfigFE()* method in your service provider:
 
 ```php
-public function checkConfigFE( array $attributes )
+public function checkConfigFE( array $attributes ) : array
 {
     return $this->checkConfig( $this->feconfig, $attributes );
 }
@@ -301,7 +301,8 @@ It will receive an associative list of key/value pairs with the "code" you've us
 After the values have been checked and no invalid data has been found, the values entered by customers into the fields should be stored as service attributes along with the selected delivery or payment option in the basket and afterwards in the order. Implement the *setConfigFE()* method to do this:
 
 ```php
-public function setConfigFE( \Aimeos\MShop\Order\Item\Base\Service\Iface $orderServiceItem, array $attributes )
+public function setConfigFE( \Aimeos\MShop\Order\Item\Base\Service\Iface $orderServiceItem,
+    array $attributes ) : \Aimeos\MShop\Order\Item\Base\Service\Iface
 {
     $this->setAttributes( $orderServiceItem, $attributes, 'payment' );
 }
@@ -319,7 +320,8 @@ All values can be used later on in the back-end systems but don't have any furth
 If you need to retrieve data from the fields you defined at your feconfig you can use this code at your Payment Provider:
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] )
+public function process( \Aimeos\MShop\Order\Item\Iface $order,
+    array $params = [] ) : \Aimeos\MShop\Order\Item\Iface
 {
     $parts = \Aimeos\MShop\Order\Manager\Base\Base::PARTS_ALL;
     $orderBaseItem = $this->getOrderBase( $order->getBaseId(], $parts );
@@ -342,7 +344,8 @@ Most payment gateways require some values to be posted to their servers like the
 In the same way you've defined the front-end configuration, you can specify the form fields of the payment form too. Only the way how to pass them to the front-end is different because they have to be returned as part of a [form helper object](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Common/Helper/Form/Iface.php) by the *process()* method of your payment service provider. This doesn't apply to delivery service providers!
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [) )
+public function process( \Aimeos\MShop\Order\Item\Iface $order,
+    array $params = [) ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
 {
     $attr = [];
 
@@ -378,7 +381,7 @@ private $beconfig = [
 They will be informed about what options are available and which one have to be added before the service provider will work. Similar to the front-end, there's a *getConfigBE()* method that must return the available settings as attribute objects:
 
 ```php
-public function getConfigBE()
+public function getConfigBE() : array
 {
     $list = parent::getConfigBE();
 
@@ -395,7 +398,7 @@ There are some global back-end configurations available (especially for payment 
 In the back-end, the "public" flag has no meaning while the "required" flag enforces a configuration value to be set. The editor is informed after pressing the "Save" button what settings are missing or invalid. The check if that is the case is done by the *checkConfigBE()* method:
 
 ```php
-public function checkConfigBE( array $attributes )
+public function checkConfigBE( array $attributes ) : array
 {
     $errors = parent::checkConfigBE( $attributes );
     return array_merge( $errors, $this->checkConfig( $this->beconfig, $attributes ) );
@@ -415,7 +418,7 @@ Both, delivery and payment service provider can implement some methods that are 
 By default, all delivery and payment options are displayed to all customers without any restrictions. On the other side, there's often the case that single options are only available in specific countries if you sell worldwide. For this, it's possible to restrict each option via the *isAvailable()* method. What are the criteria for the restriction is totally up to you. The complete basket including everything that was added up to now is available.
 
 ```php
-public function isAvailable( \Aimeos\MShop\Order\Item\Base\Iface $basket )
+public function isAvailable( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : bool
 {
     if( $basket->getPrice()->getTotal() > 1000 ) {
         return false;
@@ -434,7 +437,7 @@ In the example method above, the delivery or payment option would only be availa
 For each delivery and payment option, a service fee can be charged. By default, the fixed fee that was associated to the service item by the shop owner is added to the total price of the basket. If you need a variable service fee depending on the value of the basket, you have to overwrite the *calcPrice()* method and calculate the fee value yourself:
 
 ```php
-public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket )
+public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : \Aimeos\MShop\Price\Item\Iface
 {
     $productTotal = ...; // Sum up the price of all products in $basket
     $manager = \Aimeos\MShop::create( $this->getContext(], 'price' );
@@ -480,7 +483,7 @@ query
 To avoid the need to call the method and catch the exception afterwards, the *isImplemented()* method simplifies the handling in this case. There are `FEAT_*` constants defined for the methods that can be supported in the [delivery class](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Delivery/Base.php) and the [payment class](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Payment/Base.php). These constants must be fed to the *isImplemented()* method to determine if the feature is supported or not:
 
 ```php
-public function isImplemented( $what )
+public function isImplemented( int $what ) : bool
 {
     switch( $what )
     {

@@ -33,7 +33,7 @@ It's only important to extend from the base decorator class and implement the de
 A decorator without methods is totally valid but useless. Thus, you should add one or more methods that intercept the calls to the "onion" object and implement some additional functionality. You can intercept any **public method** that is implemented in a delivery or payment service provider.
 
 ```php
-public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket )
+public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : \Aimeos\MShop\Price\Item\Iface
 {
     // do something before
     $price = $this->getProvider()->calcPrice( $basket );
