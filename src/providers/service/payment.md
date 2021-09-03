@@ -28,7 +28,8 @@ class Myprovider
      *  and parameters to redirect to    (e.g. to an external server of the payment
      *  provider or to a local success page)
      */
-    public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
+    public function process( \Aimeos\MShop\Order\Item\Iface $order,
+        array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
     {
         // perform your actions
         return parent::process( $order, $params );
@@ -51,7 +52,8 @@ The method will be called during the checkout process after the customer clicked
 The first example lists the steps to use a direct API call to a remote server for executing the payment. When *process()* is called, the order item of the order that should be processed is passed as argument. It can be used to retrieve the rest of the order data and to update the payment status afterwards:
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
+public function process( \Aimeos\MShop\Order\Item\Iface $order,
+    array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
 {
     $basket = $this->getOrderBase( $order->getBaseId() );
     $total = $basket->getPrice()->getValue() + $basket->getPrice()->getCosts();
@@ -102,7 +104,8 @@ PAY_RECEIVED
 Instead of an API call, you can also redirect the customer directly to the payment gateway and hand over the required data via GET or POST:
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
+public function process( \Aimeos\MShop\Order\Item\Iface $order,
+    array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
 {
     $basket = $this->getOrderBase( $order->getBaseId() );
     $total = $basket->getPrice()->getValue() + $basket->getPrice()->getCosts();
@@ -156,7 +159,8 @@ $url = $this->getConfigValue( 'payment.url-update' );
 The last way the *process()* method could be implemented is to collect the payment data locally. Therefore, you have to generate a form first and retrieve the data entered by the customer afterwards. In this case, the "params" argument will contain the GET/POST parameters that have been posted:
 
 ```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order, array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
+public function process( \Aimeos\MShop\Order\Item\Iface $order,
+    array $params = [] ) : ?\Aimeos\MShop\Common\Helper\Form\Iface
 {
     if( $params['myprovider.accountno'] ?? null )
     {
@@ -205,7 +209,7 @@ These status updates sent directly within the redirect are handled by the *updat
 
 ```php
 public function updateSync( \Psr\Http\Message\ServerRequestInterface $request,
-		\Aimeos\MShop\Order\Item\Iface $orderItem ) : \Aimeos\MShop\Order\Item\Iface
+	\Aimeos\MShop\Order\Item\Iface $orderItem ) : \Aimeos\MShop\Order\Item\Iface
 {
     // extract status from the request
     // map the status value to one of the Aimeos payment status values
@@ -231,7 +235,7 @@ The *updatePush()* method is called by the application as soon as a status updat
 
 ```php
 public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
-		\Psr\Http\Message\ResponseInterface $response ) : \Psr\Http\Message\ResponseInterface;
+	\Psr\Http\Message\ResponseInterface $response ) : \Psr\Http\Message\ResponseInterface
 {
     // extract the order ID and latest status from the request
     $order = $this->getOrder( $orderid );
