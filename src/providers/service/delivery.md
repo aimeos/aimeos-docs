@@ -115,7 +115,8 @@ To be more precise, status updates sent synchronously via HTTP(S) are accepted b
 The *updatePush()* method is called by the application as soon as a status update request via HTTP(S) arrives. The sent GET/POST parameters as well as the request body are available in the [PSR-7 request](https://www.php-fig.org/psr/psr-7/) object:
 
 ```php
-public function updatePush( \Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response ) : \Psr\Http\Message\ResponseInterface
+public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
+    \Psr\Http\Message\ResponseInterface $response ) : \Psr\Http\Message\ResponseInterface
 {
     // extract the order ID and latest status from the request
     $order = $this->getOrder( $orderid );
