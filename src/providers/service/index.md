@@ -411,6 +411,48 @@ All settings entered by the editor are added automatically to the configuration 
 
 Both, delivery and payment service provider can implement some methods that are used to determine if the service provider is available at all, what it supports and to calculate an additional fee if the provider is used. All methods described here are optional and default implementations exist.
 
+# Error handling
+
+In case of an error, you often want to log an error message:
+
+```php
+$this->log( 'Error message' );
+```
+
+You can also log the result of an operation if it returns an array or object:
+
+```php
+$this->log( ['error' => 'Message', 'details' => [/* ... */]] );
+```
+
+If the message or object should be logged as warning or debug message, you can pass the log level as second parameter:
+
+```php
+$this->log( 'A warning', \Aimeos\MW\Logger\Base::WARN );
+$this->log( 'Some debug stuff', \Aimeos\MW\Logger\Base::DEBUG );
+```
+
+Most often, you also want to inform the user about the error in the frontend. Then, you should throw an exception:
+
+```php
+$this->throw( 'Item not found' );
+```
+
+To translate the message automatically to the language of the user, pass the translation domain as second parameter:
+
+```php
+$this->throw( 'Item not found', 'mshop' );
+```
+
+!!! note
+    When adding custom error messages, you have to care yourself about translating them to different languages! Check the pages for adding translations in [Laravel](../../laravel/customize.md#overwrite-translations), [Symfony](../../symfony/customize.md#overwrite-translations) and [TYPO3](../../typo3/customize.md#overwrite-translations).
+
+Logging and throwing an exception can be combined too but keep care of the order:
+
+```php
+$this->log( 'Error message' )->throw( 'Item not found' );
+```
+
 # Most often used
 
 ## Show or hide option
