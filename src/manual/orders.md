@@ -185,7 +185,7 @@ Type
 : If you have different channels besides the web interface like a call center using a different application, this contains where the order comes from. Its value depends on what the application sets during the order process.
 
 Payment (read-only)
-: The date and time when the payment status of the order was first set to anything else than "unfinished".
+: The date and time when the payment status of the order was first set.
 
 Payment status
 : Last payment status of the order. This can be changed manually or by automated processes.

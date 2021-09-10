@@ -81,7 +81,7 @@ Afterwards, you should update the order status so the order won't be passed agai
 There are several [delivery status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) available:
 
 STAT_UNFINISHED
-: The default status when nothing was done yet
+: Delivery is open and waiting for manual action
 
 STAT_DELETED
 : The delivery of the order was canceled manually

@@ -45,7 +45,7 @@ Payment service providers also [share some methods](index.md#most-often-used) wi
 
 # Process the payment
 
-The main method of every payment service provider is the *process()* method and it should be implemented so the provider can perform anything useful. There's a default implementation available but that only redirects the customer to the confirmation page, so the payment status will remain "unfinished".
+The main method of every payment service provider is the *process()* method and it should be implemented so the provider can perform anything useful. There's a default implementation available but that only redirects the customer to the confirmation page, so the payment status will remain NULL.
 
 The method will be called during the checkout process after the customer clicked on "Buy now" by the "process" subpart of the checkout component. There you can either display a payment form to collect the payment information from the customer, redirect the customer to the payment gateway or use the API of the payment gateway to execute the payment directly.
 
@@ -78,7 +78,7 @@ The call to the parent *process()* method will return the [form helper object](h
 There are several [payment status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) available:
 
 PAY_UNFINISHED
-: The default status when nothing has happend
+: Payment is open, no payment attempt has been made yet
 
 PAY_DELETED
 : The payment for the order was deleted manually
