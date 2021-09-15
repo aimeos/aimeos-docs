@@ -105,8 +105,8 @@ Then the response will contain an additional "relationships" entry in the basket
     },
     "links": {
         "self": {
-            "href": "http://localhost:8000/jsonapi/basket?id=default&related=product/",
-            "allow": ["DELETE","GET","PATCH"]
+            "href": "http://localhost:8000/jsonapi/basket?id=defaul",
+            "allow": ["DELETE","GET","PATCH", "POST"]
         }
     },
     "data": {
