@@ -341,7 +341,7 @@ For all existing routes, you can change the path and the default parameters by r
 Route::get('terms_and_conditions', [
     'as' => 'aimeos_shop_terms',
     'uses' => '\Aimeos\Shop\Controller\PageController@termsAction'
-));
+]);
 ```
 
 Similarly, changing the controller and action name to a custom one ("MyController" and "mytermsAction") implemented in your application is done by adapting the "uses" value in the second parameter of the route:
@@ -350,7 +350,7 @@ Similarly, changing the controller and action name to a custom one ("MyControlle
 Route::get('terms', [
     'as' => 'aimeos_shop_terms',
     'uses' => 'MyController@mytermsAction'
-));
+]);
 ```
 
 In this case, your controller must be placed in the `./app/Http/Controllers` directory. More details can be found in the [Laravel routing documentation](https://laravel.com/docs/master/routing).
