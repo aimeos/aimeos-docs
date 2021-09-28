@@ -19,7 +19,8 @@ markdown_extensions:
           options:
             startinline: true
   - pymdownx.superfences
-plugins: []
+plugins:
+  - algolia
 docs_dir: src
 theme:
   name: material
@@ -88,15 +89,15 @@ nav:
     - Pricing rules:
       - Available rules: manual/rules.md
       - Rule details: manual/rule-details.md
-      - Adding features: manual/rule-decorators.md
+      - Built-in extensions: manual/rule-decorators.md
     - Vouchers/Coupons:
       - Available coupon: manual/coupons.md
       - Coupon details: manual/coupon-details.md
-      - Adding features: manual/coupon-decorators.md
+      - Built-in extensions: manual/coupon-decorators.md
     - Payment/Delivery:
       - Available services: manual/services.md
       - Service details: manual/service-details.md
-      - Adding features: manual/service-decorators.md
+      - Built-in extensions: manual/service-decorators.md
     - Orders: manual/orders.md
     - Subscriptions: manual/subscriptions.md
     - Basket plugins:
