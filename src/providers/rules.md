@@ -21,11 +21,11 @@ class Myprovider
 }
 ```
 
-The filename must be the same as the class name (here: *Myprovider*). Of course you should use a more meaningful name for your plugin class and file. Be aware that all names are case sensitive. The new rule provider must be stored within your project specific [Aimeos extension](../developer/extensions.md) at this location:
+The filename must be the same as the class name (here: *Myprovider*). Of course you should use a more meaningful name for your class and file. Be aware that all names are case sensitive. The new rule provider must be stored within your project specific [Aimeos extension](../developer/extensions.md) at this location:
 
 ```php
 // Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Myprovider.php
+./<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Myprovider.php
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Myprovider.php
 ```
@@ -82,6 +82,12 @@ public function checkConfigBE( array $attributes ) : array
 public function getConfigBE() : array
 {
 	return array_merge( parent::getConfigBE(), $this->getConfigItems( $this->beConfig ) );
+}
+
+public function apply( \Aimeos\MShop\Product\Item\Iface $product ) : bool
+{
+	$min = $this->getConfigValue( 'myprovider.minprice', 0 );
+	return $product->getPrice()->getValue() > $min ? true : false;
 }
 ```
 
@@ -159,7 +165,7 @@ The new rule provider must be stored within your project specific [Aimeos extens
 
 ```php
 // Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Decorator/Mydecorator.php
+./<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Decorator/Mydecorator.php
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Decorator/Mydecorator.php
 ```
@@ -175,7 +181,7 @@ public function apply( \Aimeos\MShop\Product\Item\Iface $product ) : bool
     $result = $this->getProvider()->apply( $product );
     // do something after
 
-    return $result
+    return $result;
 }
 ```
 
