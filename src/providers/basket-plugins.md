@@ -31,7 +31,7 @@ The filename must be the same as the class name (here: *ExamplePlugin*). Of cour
 
 ```php
 // Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
+./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
 ```
@@ -174,7 +174,7 @@ The file *Example.php* holding this code would be located at e.g.
 
 ```
 // Laravel, Symfony
-./ext/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+./<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
 // TYPO3
 ./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
 ```
