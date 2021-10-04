@@ -177,6 +177,7 @@ nav:
       - Create decorators: providers/service/decorators.md
       - Write unit tests: providers/service/unittests.md
     - Basket plugins: providers/basket-plugins.md
+    - Coupon provider: providers/coupon.md
     - Pricing rules: providers/rules.md
   - Infrastructure:
     - Database: infrastructure/databases.md
