@@ -293,6 +293,7 @@ nav:
       - Review: config/admin-jqadm/review.md
       - Rule: config/admin-jqadm/rule.md
       - Service: config/admin-jqadm/service.md
+      - Settings: config/admin-jqadm/settings.md
       - Subscription: config/admin-jqadm/subscription.md
       - Supplier: config/admin-jqadm/supplier.md
       - Type: config/admin-jqadm/type.md
