@@ -763,6 +763,7 @@ Associative list of configuration options used for generating the URL
 ```
 client/html/checkout/confirm/url/config = Array
 (
+    [absoluteUri] => 1
 )
 ```
 

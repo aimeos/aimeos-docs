@@ -141,10 +141,10 @@ See also:
 E-Mail address used when sending product notification e-mails
 
 ```
-client/html/email/watch/from-email = me@localhost
+client/html/email/watch/from-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2014.03
 
@@ -436,10 +436,10 @@ or numbers. Avoid chamel case names like "MyWatch"!
 E-Mail address used by the customer when replying to product notification e-mails
 
 ```
-client/html/email/watch/reply-email = me@localhost
+client/html/email/watch/reply-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2014.03
 

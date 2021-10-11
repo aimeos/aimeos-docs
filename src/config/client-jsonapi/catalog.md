@@ -110,7 +110,7 @@ See also:
 Load the category tree instead of the nodes of the first level only
 
 ```
-client/jsonapi/catalog/deep = 
+client/jsonapi/catalog/deep = 1
 ```
 
 * Default: 

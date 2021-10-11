@@ -1236,10 +1236,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/catalog/lists/url/action = list
+client/html/catalog/lists/url/action = lists
 ```
 
-* Default: list
+* Default: lists
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -1291,10 +1291,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/catalog/lists/url/controller = catalog
+client/html/catalog/lists/url/controller = Catalog
 ```
 
-* Default: catalog
+* Default: Catalog
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -1307,6 +1307,17 @@ See also:
 * client/html/catalog/lists/url/target
 * client/html/catalog/lists/url/action
 * client/html/catalog/lists/url/config
+
+## filter
+
+```
+client/html/catalog/lists/url/filter = Array
+(
+)
+```
+
+* Default: Array
+
 
 ## target
 

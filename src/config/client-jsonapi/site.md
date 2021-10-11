@@ -110,7 +110,7 @@ See also:
 Load the site tree instead of the nodes of the first level only
 
 ```
-client/jsonapi/site/deep = 
+client/jsonapi/site/deep = 1
 ```
 
 * Default: 

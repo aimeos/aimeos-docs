@@ -107,6 +107,15 @@ of the core or the extensions. The configured path to the partial file must
 be relative to the templates/ folder, e.g. "partials/data-standard".
 
 
+## template-included
+
+```
+admin/jsonadm/partials/order/template-included = partials/order/included-standard
+```
+
+* Default: partials/included-standard
+
+
 # template-data
 
 Relative path to the data partial template file

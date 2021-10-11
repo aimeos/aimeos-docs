@@ -164,10 +164,10 @@ See also:
 E-Mail address used when sending payment e-mails
 
 ```
-client/html/email/payment/from-email = me@localhost
+client/html/email/payment/from-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2014.03
 
@@ -663,10 +663,10 @@ See also:
 E-Mail address used by the customer when replying to payment e-mails
 
 ```
-client/html/email/payment/reply-email = me@localhost
+client/html/email/payment/reply-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2014.03
 

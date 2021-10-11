@@ -196,6 +196,7 @@ controller/jobs/order/email/delivery/status = Array
 
 Notification e-mail about delivery status changes can be sent for these
 status values:
+
 * 0: deleted
 * 1: pending
 * 2: progress
@@ -409,6 +410,7 @@ controller/jobs/order/email/payment/status = Array
 
 Notification e-mail about payment status changes can be sent for these
 status values:
+
 * 0: deleted
 * 1: canceled
 * 2: refused
@@ -605,18 +607,15 @@ or numbers. Avoid chamel case names like "MyVoucher"!
 Only send e-mails containing voucher for these payment status values
 
 ```
-controller/jobs/order/email/voucher/status = Array
-(
-    [0] => 5
-    [1] => 6
-)
+controller/jobs/order/email/voucher/status = 6
 ```
 
-* Default: Array
+* Default: 6
 * Type: integer - Payment status constant
 * Since: 2018.07
 
 E-mail containing vouchers can be sent for these payment status values:
+
 * 0: deleted
 * 1: canceled
 * 2: refused

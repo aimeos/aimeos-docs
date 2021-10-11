@@ -66,13 +66,20 @@ admin/jqadm/resource/catalog/key = C
 # configuration
 ## groups
 
+List of user groups that are allowed to access the configuration menu
+
 ```
 admin/jqadm/resource/configuration/groups = Array
 (
+    [0] => admin
+    [1] => editor
+    [2] => super
 )
 ```
 
 * Default: Array
+* Type: array - List of user group names
+* Since: 2021.04
 
 
 # coupon
@@ -608,11 +615,28 @@ admin/jqadm/resource/service/key = S
 List of user groups that are allowed to access the settings submenu
 
 ```
-admin/jqadm/resource/settings/groups = 
+admin/jqadm/resource/settings/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
+```
+
+* Default: Array
+* Type: array - List of user group names
+* Since: 2021.07
+
+
+## key
+
+Shortcut key to switch to the rule panel by using the keyboard
+
+```
+admin/jqadm/resource/settings/key = T
 ```
 
 * Default: 
-* Type: array - List of user group names
+* Type: string - Single character in upper case
 * Since: 2021.04
 
 

@@ -145,7 +145,7 @@ See also:
 No more than this number of levels in the category tree should be displayed
 
 ```
-controller/frontend/catalog/levels-only = 
+controller/frontend/catalog/levels-only = 4
 ```
 
 * Default: 
