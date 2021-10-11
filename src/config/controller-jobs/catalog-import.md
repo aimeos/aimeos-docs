@@ -605,9 +605,9 @@ List of item domain names that should be retrieved along with the catalog items
 ```
 controller/jobs/catalog/import/xml/domains = Array
 (
-    [0] => media
-    [1] => product
-    [2] => text
+    [media] => media
+    [product] => product
+    [text] => text
 )
 ```
 

@@ -519,6 +519,17 @@ See also:
 * client/html/catalog/session/pinned/url/action
 * client/html/catalog/session/pinned/url/config
 
+## url/filter
+
+```
+client/html/catalog/session/pinned/url/filter = Array
+(
+)
+```
+
+* Default: Array
+
+
 ## url/target
 
 Destination of the URL where the controller specified in the URL is known

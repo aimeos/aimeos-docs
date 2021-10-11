@@ -141,10 +141,10 @@ See also:
 E-Mail address used when sending subscription e-mails
 
 ```
-client/html/email/subscription/from-email = me@localhost
+client/html/email/subscription/from-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2018.04
 
@@ -436,10 +436,10 @@ or numbers. Avoid chamel case names like "MySubscription"!
 E-Mail address used by the customer when replying to subscription e-mails
 
 ```
-client/html/email/subscription/reply-email = me@localhost
+client/html/email/subscription/reply-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2018.04
 

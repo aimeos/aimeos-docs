@@ -23,6 +23,8 @@ controller/common/media/extensions = Array
     [image/svg+xml] => svg
     [image/tiff] => tif
     [text/csv] => csv
+    [video/mp4] => mp4
+    [video/webm] => webm
 )
 ```
 
@@ -168,6 +170,7 @@ algorithm and the quality of the resulting images with
  	'image' => array(
  		'name' => 'Imagick',
  		'quality' => 75,
+			'background' => '#f8f8f8' // only if "force-size" is true
  	)
  )
 ```
@@ -187,6 +190,8 @@ controller/common/media/preview/allowedtypes = Array
     [3] => image/svg+xml
     [4] => application/pdf
     [5] => application/zip
+    [6] => video/mp4
+    [7] => video/webm
 )
 ```
 
@@ -210,21 +215,18 @@ controller/common/media/previews = Array
     [0] => Array
         (
             [maxwidth] => 32
-            [maxheight] => 320
             [force-size] => 
         )
 
     [1] => Array
         (
             [maxwidth] => 50
-            [maxheight] => 960
             [force-size] => 
         )
 
     [2] => Array
         (
-            [maxwidth] => 2160
-            [maxheight] => 2880
+            [maxwidth] => 1920
             [force-size] => 
         )
 
@@ -317,14 +319,14 @@ controller/common/media/product/default/previews = Array
 (
     [0] => Array
         (
-            [maxwidth] => 32
+            [maxwidth] => 240
             [maxheight] => 320
             [force-size] => 
         )
 
     [1] => Array
         (
-            [maxwidth] => 50
+            [maxwidth] => 720
             [maxheight] => 960
             [force-size] => 
         )
@@ -349,14 +351,14 @@ controller/common/media/product/previews = Array
 (
     [0] => Array
         (
-            [maxwidth] => 32
+            [maxwidth] => 240
             [maxheight] => 320
             [force-size] => 
         )
 
     [1] => Array
         (
-            [maxwidth] => 50
+            [maxwidth] => 720
             [maxheight] => 960
             [force-size] => 
         )

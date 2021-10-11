@@ -141,10 +141,10 @@ See also:
 E-Mail address used when sending voucher e-mails
 
 ```
-client/html/email/voucher/from-email = me@localhost
+client/html/email/voucher/from-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2018.07
 
@@ -436,10 +436,10 @@ or numbers. Avoid chamel case names like "MyVoucher"!
 E-Mail address used by the customer when replying to voucher e-mails
 
 ```
-client/html/email/voucher/reply-email = me@localhost
+client/html/email/voucher/reply-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2018.07
 

@@ -290,7 +290,7 @@ design.
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/supplier/detail/supid-default = 5
+client/html/supplier/detail/supid-default = 1
 ```
 
 * Default: 

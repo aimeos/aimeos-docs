@@ -614,10 +614,10 @@ List of item domain names that should be retrieved along with the supplier items
 ```
 controller/jobs/supplier/import/xml/domains = Array
 (
-    [0] => media
-    [1] => product
-    [2] => supplier/address
-    [3] => text
+    [supplier/address] => supplier/address
+    [media] => media
+    [product] => product
+    [text] => text
 )
 ```
 

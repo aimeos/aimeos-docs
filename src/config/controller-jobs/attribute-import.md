@@ -150,10 +150,10 @@ List of item domain names that should be retrieved along with the attribute item
 ```
 controller/jobs/attribute/import/xml/domains = Array
 (
-    [0] => attribute/property
-    [1] => media
-    [2] => price
-    [3] => text
+    [attribute/property] => attribute/property
+    [media] => media
+    [price] => price
+    [text] => text
 )
 ```
 

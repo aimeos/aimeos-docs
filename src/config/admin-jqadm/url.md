@@ -472,6 +472,17 @@ See also:
 * admin/jqadm/url/get/action
 * admin/jqadm/url/get/config
 
+## filter
+
+```
+admin/jqadm/url/get/filter = Array
+(
+)
+```
+
+* Default: Array
+
+
 ## target
 
 Destination of the URL where the controller specified in the URL is known

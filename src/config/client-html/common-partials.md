@@ -24,6 +24,31 @@ See also:
 
 * client/html/common/partials/selection
 
+# group
+
+Relative path to the group product partial template file
+
+```
+client/html/common/partials/group = 
+```
+
+* Default: 
+* Type: string - Relative path to the template file
+* Since: 2021.07
+
+Partials are templates which are reused in other templates and generate
+reoccuring blocks filled with data from the assigned values. The group
+partial creates an HTML block for a list of sub-products assigned to a
+group product a customer can select from.
+
+The partial template files are usually stored in the templates/partials/ folder
+of the core or the extensions. The configured path to the partial file must
+be relative to the templates/ folder, e.g. "common/partials/selection-list".
+
+See also:
+
+* client/html/common/partials/attribute
+
 # media
 
 Relative path to the media partial template file
@@ -102,7 +127,7 @@ assigned to a selection product a customer must select from.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/selection-standard.php".
+be relative to the templates/ folder, e.g. "common/partials/selection-standard".
 
 See also:
 

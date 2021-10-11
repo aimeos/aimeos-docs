@@ -2626,9 +2626,9 @@ Inserts a new supplier record into the product index database
 mshop/index/manager/supplier/insert/ansi = 
  INSERT INTO "mshop_index_supplier" (
  	"prodid", "supid", "listtype", "pos",
- 	"mtime", "siteid"
+ 	"latitude", "longitude", "mtime", "siteid"
  ) VALUES (
- 	?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
@@ -2668,18 +2668,18 @@ Inserts a new supplier record into the product index database
 mshop/index/manager/supplier/insert/mysql = 
  INSERT INTO "mshop_index_supplier" (
  	"prodid", "supid", "listtype", "pos",
- 	"mtime", "siteid"
+ 	"latitude", "longitude", "mtime", "siteid"
  ) VALUES (
- 	?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
 * Default: 
  INSERT INTO "mshop_index_supplier" (
  	"prodid", "supid", "listtype", "pos",
- 	"mtime", "siteid"
+ 	"latitude", "longitude", "mtime", "siteid"
  ) VALUES (
- 	?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?
  )
 
 

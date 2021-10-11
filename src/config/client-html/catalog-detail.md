@@ -1,4 +1,25 @@
 
+# 404
+
+Configures 404 handling for catalog detail pages
+
+```
+client/html/catalog/detail/404 = 
+```
+
+* Default: 
+* Type: bool - TRUE to return HTTP status code 404, FALSE to return an error message
+* Since: 2021.10
+
+By default, no HTTP 404 status code is returned to the browser, just
+an error message that the product could not be found. Changing this
+setting to TRUE will return a 404 page depending on the host application.
+
+See also:
+
+* client/html/catalog/detail/template-header
+* client/html/catalog/detail/template-body
+
 # basket-add
 
 Display the "add to basket" button for each suggested/bought-together product item
@@ -884,23 +905,6 @@ should support adding, removing or reordering content by a fluid like
 design.
 
 
-# supplier
-## name
-
-Name of the supplier part used by the catalog detail client implementation
-
-```
-client/html/catalog/detail/supplier/name = 
-```
-
-* Default: 
-* Type: string - Last part of the client class name
-* Since: 2014.03
-
-Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Detail\Supplier\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
 # template-body
 
 Relative path to the HTML body template of the catalog detail client.
@@ -928,6 +932,7 @@ should be replaced by the name of the new class.
 See also:
 
 * client/html/catalog/detail/template-header
+* client/html/catalog/detail/404
 
 # template-header
 
@@ -957,6 +962,7 @@ should be replaced by the name of the new class.
 See also:
 
 * client/html/catalog/detail/template-body
+* client/html/catalog/detail/404
 
 # url
 ## action

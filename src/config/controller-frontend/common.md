@@ -37,10 +37,10 @@ all controller instances in that order. The decorator classes would be
 Maximum number of items that can be fetched at once
 
 ```
-controller/frontend/common/max-size = 250
+controller/frontend/common/max-size = 500
 ```
 
-* Default: 250
+* Default: 500
 * Type: int - Number of items
 
 This setting limits the number of items that is returned to the frontend.

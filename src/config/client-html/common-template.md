@@ -4,10 +4,10 @@
 Absolute path to the themes folder for styling the e-mails
 
 ```
-client/html/common/template/baseurl = client/html/themes/elegance
+client/html/common/template/baseurl = client/html/themes/default
 ```
 
-* Default: client/html/themes/elegance
+* Default: client/html/themes/default
 * Type: string - Absolute path of the theme folder
 * Since: 2017.10
 

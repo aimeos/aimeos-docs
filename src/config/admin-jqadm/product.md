@@ -3309,6 +3309,33 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
+## types
+
+Type codes used for physical product properties values
+
+```
+admin/jqadm/product/physical/types = Array
+(
+    [package-length] => package-length
+    [package-height] => package-height
+    [package-width] => package-width
+    [package-weight] => package-weight
+)
+```
+
+* Default: Array
+* Type: array - List of product property type codes
+* Since: 2021.07
+
+Physical values like "package-length", "package-height", "package-width" and
+"package-weight" are stored as regular product properties. To avoid displaying
+them in the product characteristics tab too, these types are excluded there.
+
+You can add new physical types by adding additional type codes and insert the
+input fields for displaying and changing them in the product/item-physical-standard
+template.
+
+
 # price
 ## decorators/excludes
 

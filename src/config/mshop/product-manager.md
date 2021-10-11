@@ -62,6 +62,8 @@ See also:
 * mshop/product/manager/newid/ansi
 * mshop/product/manager/delete/ansi
 * mshop/product/manager/search/ansi
+* mshop/product/manager/rate/ansi
+* mshop/product/manager/stock/ansi
 
 ## mysql
 
@@ -243,6 +245,8 @@ See also:
 * mshop/product/manager/newid/ansi
 * mshop/product/manager/search/ansi
 * mshop/product/manager/count/ansi
+* mshop/product/manager/rate/ansi
+* mshop/product/manager/stock/ansi
 
 ## mysql
 
@@ -271,10 +275,10 @@ Inserts a new product record into the database table
 ```
 mshop/product/manager/insert/ansi = 
  INSERT INTO "mshop_product" ( :names
- 	"type", "code", "dataset", "label", "url", "status", "scale", "start", "end",
- 	"config", "target", "editor", "mtime", "ctime", "siteid"
+ 	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
+ 	"start", "end", "config", "target", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
@@ -306,6 +310,8 @@ See also:
 * mshop/product/manager/delete/ansi
 * mshop/product/manager/search/ansi
 * mshop/product/manager/count/ansi
+* mshop/product/manager/rate/ansi
+* mshop/product/manager/stock/ansi
 
 ## mysql
 
@@ -314,19 +320,19 @@ Inserts a new product record into the database table
 ```
 mshop/product/manager/insert/mysql = 
  INSERT INTO "mshop_product" ( :names
- 	"type", "code", "dataset", "label", "url", "status", "scale", "start", "end",
- 	"config", "target", "editor", "mtime", "ctime", "siteid"
+ 	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
+ 	"start", "end", "config", "target", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
 * Default: 
  INSERT INTO "mshop_product" ( :names
- 	"type", "code", "dataset", "label", "url", "status", "scale", "start", "end",
- 	"config", "target", "editor", "mtime", "ctime", "siteid"
+ 	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
+ 	"start", "end", "config", "target", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 
 
@@ -1779,6 +1785,8 @@ See also:
 * mshop/product/manager/delete/ansi
 * mshop/product/manager/search/ansi
 * mshop/product/manager/count/ansi
+* mshop/product/manager/rate/ansi
+* mshop/product/manager/stock/ansi
 
 ## mysql
 
@@ -3078,6 +3086,7 @@ See also:
 * mshop/product/manager/delete/ansi
 * mshop/product/manager/search/ansi
 * mshop/product/manager/count/ansi
+* mshop/product/manager/stock/ansi
 
 ## mysql
 
@@ -3116,14 +3125,16 @@ mshop/product/manager/search/ansi =
  	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
  	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
- 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings"
+ 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
+ 	mpro."instock" AS "product.instock"
  FROM "mshop_product" AS mpro
  :joins
  WHERE :cond
  GROUP BY :columns :group
  	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
  	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
- 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings"
+ 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings",
+ 	mpro."instock"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3178,6 +3189,8 @@ See also:
 * mshop/product/manager/newid/ansi
 * mshop/product/manager/delete/ansi
 * mshop/product/manager/count/ansi
+* mshop/product/manager/rate/ansi
+* mshop/product/manager/stock/ansi
 
 ## mysql
 
@@ -3194,7 +3207,8 @@ mshop/product/manager/search/mysql =
  	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
  	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
- 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings"
+ 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
+ 	mpro."instock" AS "product.instock"
  FROM "mshop_product" AS mpro
  :joins
  WHERE :cond
@@ -3213,14 +3227,16 @@ mshop/product/manager/search/mysql =
  	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
  	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
- 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings"
+ 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
+ 	mpro."instock" AS "product.instock"
  FROM "mshop_product" AS mpro
  :joins
  WHERE :cond
  GROUP BY :columns :group
  	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
  	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
- 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings"
+ 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings",
+ 	mpro."instock"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 
@@ -3265,6 +3281,64 @@ control over inheritance and aggregation in each domain.
 See also:
 
 * mshop/locale/manager/sitelevel
+
+# stock
+## ansi
+
+Updates the rating of the product in the database
+
+```
+mshop/product/manager/stock/ansi = 
+ UPDATE "mshop_product"
+ SET "instock" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: mshop/product/manager/stock
+* Type: string - SQL statement for update ratings
+* Since: 2021.10
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values for the rating to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the stock() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/product/manager/insert/ansi
+* mshop/product/manager/update/ansi
+* mshop/product/manager/newid/ansi
+* mshop/product/manager/delete/ansi
+* mshop/product/manager/search/ansi
+* mshop/product/manager/count/ansi
+* mshop/product/manager/rate/ansi
+
+## mysql
+
+Updates the rating of the product in the database
+
+```
+mshop/product/manager/stock/mysql = 
+ UPDATE "mshop_product"
+ SET "instock" = ?
+ WHERE "siteid" = ? AND "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_product"
+ SET "instock" = ?
+ WHERE "siteid" = ? AND "id" = ?
+
+
+See also:
+
+* mshop/product/manager/stock/ansi
 
 # strict-events
 
@@ -3946,8 +4020,9 @@ Updates an existing product record in the database
 mshop/product/manager/update/ansi = 
  UPDATE "mshop_product"
  SET :names
- 	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "status" = ?, "scale" = ?,
- 	"start" = ?, "end" = ?, "config" = ?, "target" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
+ 	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
+ 	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
+ 	"editor" = ?, "mtime" = ?, "ctime" = ?
  WHERE "siteid" = ? AND "id" = ?
 ```
 
@@ -3976,6 +4051,8 @@ See also:
 * mshop/product/manager/delete/ansi
 * mshop/product/manager/search/ansi
 * mshop/product/manager/count/ansi
+* mshop/product/manager/rate/ansi
+* mshop/product/manager/stock/ansi
 
 ## mysql
 
@@ -3985,16 +4062,18 @@ Updates an existing product record in the database
 mshop/product/manager/update/mysql = 
  UPDATE "mshop_product"
  SET :names
- 	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "status" = ?, "scale" = ?,
- 	"start" = ?, "end" = ?, "config" = ?, "target" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
+ 	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
+ 	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
+ 	"editor" = ?, "mtime" = ?, "ctime" = ?
  WHERE "siteid" = ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_product"
  SET :names
- 	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "status" = ?, "scale" = ?,
- 	"start" = ?, "end" = ?, "config" = ?, "target" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
+ 	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
+ 	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
+ 	"editor" = ?, "mtime" = ?, "ctime" = ?
  WHERE "siteid" = ? AND "id" = ?
 
 

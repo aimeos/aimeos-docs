@@ -7,9 +7,8 @@ List of salutions the customers can select from in the HTML frontend
 client/html/common/address/salutations = Array
 (
     [0] => 
-    [1] => company
-    [2] => mr
-    [3] => ms
+    [1] => mr
+    [2] => ms
 )
 ```
 

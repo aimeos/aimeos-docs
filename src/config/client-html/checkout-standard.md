@@ -178,7 +178,8 @@ See also:
 * client/html/checkout/standard/address/billing/salutations
 * client/html/checkout/standard/address/billing/mandatory
 * client/html/checkout/standard/address/billing/optional
-* client/html/checkout/standard/address/countries
+* common/countries
+* common/states
 
 ## billing/mandatory
 
@@ -232,8 +233,9 @@ See also:
 * client/html/checkout/standard/address/billing/salutations
 * client/html/checkout/standard/address/billing/optional
 * client/html/checkout/standard/address/billing/hidden
-* client/html/checkout/standard/address/countries
 * client/html/checkout/standard/address/validate
+* common/countries
+* common/states
 
 ## billing/name
 
@@ -302,8 +304,9 @@ See also:
 * client/html/checkout/standard/address/billing/salutations
 * client/html/checkout/standard/address/billing/mandatory
 * client/html/checkout/standard/address/billing/hidden
-* client/html/checkout/standard/address/countries
 * client/html/checkout/standard/address/validate
+* common/countries
+* common/states
 
 ## billing/salutations
 
@@ -313,9 +316,8 @@ List of salutions the customer can select from for the billing address
 client/html/checkout/standard/address/billing/salutations = Array
 (
     [0] => 
-    [1] => company
-    [2] => mr
-    [3] => ms
+    [1] => mr
+    [2] => ms
 )
 ```
 
@@ -339,8 +341,9 @@ See also:
 * client/html/checkout/standard/address/billing/mandatory
 * client/html/checkout/standard/address/billing/optional
 * client/html/checkout/standard/address/billing/hidden
-* client/html/checkout/standard/address/countries
 * client/html/common/address/salutations
+* common/countries
+* common/states
 
 ## billing/subparts
 
@@ -418,8 +421,6 @@ See also:
 * client/html/checkout/standard/address/billing/template-header
 
 ## countries
-
-List of available countries that that users can select from in the front-end
 
 ```
 client/html/checkout/standard/address/countries = Array
@@ -677,36 +678,7 @@ client/html/checkout/standard/address/countries = Array
 ```
 
 * Default: Array
-* Type: array - List of two letter ISO country codes
-* Since: 2015.02
 
-This configration option is used whenever a list of countries is
-shown in the front-end users can select from. It's used e.g.
-if the customer should select the country he is living in the
-checkout process. In case that the list is empty, no country
-selection is shown.
-
-Each list entry must be a two letter ISO country code that is then
-translated into its name. The codes have to be upper case
-characters like "DE" for Germany or "GB" for Great Britain, e.g.
-
-```
- array( 'DE', 'GB', ... )
-```
-
-To display the country selection, you have to add the key for the
-country ID (order.base.address.languageid) to the "mandatory" or
-"optional" configuration option for billing and delivery addresses.
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/countries" starting from 2014-03.
-
-See also:
-
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/optional
-* client/html/checkout/standard/address/delivery/mandatory
-* client/html/checkout/standard/address/delivery/optional
 
 ## decorators/excludes
 
@@ -985,7 +957,8 @@ See also:
 * client/html/checkout/standard/address/delivery/salutations
 * client/html/checkout/standard/address/delivery/mandatory
 * client/html/checkout/standard/address/delivery/optional
-* client/html/checkout/standard/address/countries
+* common/countries
+* common/states
 
 ## delivery/mandatory
 
@@ -1035,8 +1008,9 @@ See also:
 * client/html/checkout/standard/address/delivery/salutations
 * client/html/checkout/standard/address/delivery/optional
 * client/html/checkout/standard/address/delivery/hidden
-* client/html/checkout/standard/address/countries
 * client/html/checkout/standard/address/validate
+* common/countries
+* common/states
 
 ## delivery/name
 
@@ -1106,8 +1080,9 @@ See also:
 * client/html/checkout/standard/address/delivery/salutations
 * client/html/checkout/standard/address/delivery/mandatory
 * client/html/checkout/standard/address/delivery/hidden
-* client/html/checkout/standard/address/countries
 * client/html/checkout/standard/address/validate
+* common/countries
+* common/states
 
 ## delivery/salutations
 
@@ -1117,9 +1092,8 @@ List of salutions the customer can select from for the delivery address
 client/html/checkout/standard/address/delivery/salutations = Array
 (
     [0] => 
-    [1] => company
-    [2] => mr
-    [3] => ms
+    [1] => mr
+    [2] => ms
 )
 ```
 
@@ -1143,8 +1117,9 @@ See also:
 * client/html/checkout/standard/address/delivery/mandatory
 * client/html/checkout/standard/address/delivery/optional
 * client/html/checkout/standard/address/delivery/hidden
-* client/html/checkout/standard/address/countries
 * client/html/common/address/salutations
+* common/countries
+* common/states
 
 ## delivery/subparts
 
@@ -1239,8 +1214,6 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 
 ## states
 
-List of available states that that users can select from in the front-end
-
 ```
 client/html/checkout/standard/address/states = Array
 (
@@ -1248,50 +1221,7 @@ client/html/checkout/standard/address/states = Array
 ```
 
 * Default: Array
-* Type: array - Multi-dimensional list ISO country codes and state codes/names
-* Since: 2015.02
 
-This configration option is used whenever a list of states is
-shown in the front-end users can select from. It's used e.g.
-if the customer should select the state he is living in the
-checkout process. In case that the list is empty, no state
-selection is shown.
-
-A two letter ISO country code must be the key for the list of
-states that belong to this country. The list of states must then
-contain the state code as key and its name as values, e.g.
-
-```
- array(
-     'US' => array(
-         'CA' => 'California',
-         'NY' => 'New York',
-         ...
-     ),
-     ...
- );
-```
-
-The codes have to be upper case characters like "US" for the
-United States or "DE" for Germany. The order of the country and
-state codes determine the order of the states in the frontend and
-the state codes are later used for per state tax calculation.
-
-To display the country selection, you have to add the key for the
-state (order.base.address.state) to the "mandatory" or
-"optional" configuration option for billing and delivery addresses.
-You also need to add order.base.address.countryid as well because
-it is required to display the states that belong to this country.
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/states" starting from 2014-09.
-
-See also:
-
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/optional
-* client/html/checkout/standard/address/delivery/mandatory
-* client/html/checkout/standard/address/delivery/optional
 
 ## subparts
 

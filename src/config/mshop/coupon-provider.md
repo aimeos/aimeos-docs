@@ -6,7 +6,6 @@ Adds a list of decorators to all coupon provider objects automatcally
 ```
 mshop/coupon/provider/decorators = Array
 (
-    [0] => Example
 )
 ```
 

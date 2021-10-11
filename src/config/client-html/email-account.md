@@ -141,10 +141,10 @@ See also:
 E-Mail address used when sending account creation e-mails
 
 ```
-client/html/email/account/from-email = me@localhost
+client/html/email/account/from-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2015.09
 
@@ -436,10 +436,10 @@ or numbers. Avoid chamel case names like "MyAccount"!
 E-Mail address used by the customer when replying to account creation e-mails
 
 ```
-client/html/email/account/reply-email = me@localhost
+client/html/email/account/reply-email = me@example.com
 ```
 
-* Default: me@localhost
+* Default: me@example.com
 * Type: string - E-mail address
 * Since: 2015.09
 
