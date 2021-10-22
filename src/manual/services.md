@@ -354,17 +354,11 @@ It supports these configuration options:
 type (string, required)
 : Must be "Oppwa"
 
-onsite (boolean, required)
-: Must be "1"
-
-userId (string, required)
-: User identifier to authenticate against the payment gateway
-
-password (string, required)
-: Password to authenticate against the payment gateway
-
 entityId (string, required)
 : Unique identifier for the payment account
+
+token (string, required)
+: Access token for the payment account
 
 address (boolean, optional)
 : A value of "1" will send the customer address to the OPPWA server for additional verification
