@@ -146,22 +146,26 @@ routeEnhancers:
       - { routePath: '/watch/{wat_action}', _controller: 'Account::watch' }
       - { routePath: '/fav/{fav_action}/{fav_id}', _controller: 'Account::favorite' }
       - { routePath: '/fav/{fav_action}', _controller: 'Account::favorite' }
-      - { routePath: '/c/{f_name}~{f_catid}', _controller: 'Catalog::list' }
-      - { routePath: '/s/{s_name}/{f_supid}', _controller: 'Supplier::detail' }
+      - { routePath: '/c/{f_name}~{f_catid}/{f_sort}', _controller: 'Catalog::list' }
+      - { routePath: '/t/{f_name}~{f_catid}/{f_sort}', _controller: 'Catalog::tree' }
       - { routePath: '/p/{d_name}/{d_prodid}/{d_pos}', _controller: 'Catalog::detail' }
       - { routePath: '/d/{d_name}/{d_pos}', _controller: 'Catalog::detail' }
-      - { routePath: '/b/{b_action}', _controller: 'Basket::index' }
-      - { routePath: '/co/{c_step}', _controller: 'Checkout::index' }
       - { routePath: '/lt/{l_type}', _controller: 'Catalog::list' }
       - { routePath: '/lp/{l_page}', _controller: 'Catalog::list' }
+      - { routePath: '/ls/{f_sort}/{l_page}', _controller: 'Catalog::list' }
       - { routePath: '/l/{f_sort}', _controller: 'Catalog::list' }
+      - { routePath: '/b/{b_action}', _controller: 'Basket::index' }
+      - { routePath: '/co/{c_step}', _controller: 'Checkout::index' }
+      - { routePath: '/s/{s_name}/{f_supid}', _controller: 'Supplier::detail' }
     defaults:
+      b_action: ''
+      c_step: ''
       f_sort: ''
       d_pos: ''
 ```
 
 !!! warn
-    Only use the latest TYPO3 9 or 10 releases as older releases have several route enhancer related bugs and the TYPO3 route enhancer implementation is still not bug free!
+    Only use the latest TYPO3 10 and 11 releases as older releases have several route enhancer related bugs and the TYPO3 route enhancer implementation is still not bug free! Please watch for unexpected behavior and report them to the [TYPO3 project](https://forge.typo3.org/projects/typo3cms-core/issues)
 
 # Backend access
 
