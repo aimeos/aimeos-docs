@@ -53,6 +53,16 @@ If you want to upgrade from earlier versions, there are a few steps necessary to
 
 If you've created a custom Aimeos extension, please have a look into the Aimeos **changelog section** and search for changes that applies to your code.
 
+## Upgrade to 21.7+
+
+Since 21.7, installing Aimeos via composer requires composer 2.1+ and the official Aimeos extensions prefixed with "ai-" must be removed from the *./ext/* directory. Instead, they are installed into *./vendor/aimeos/* now. If you don't remove them with:
+
+```bash
+rm -rf ./ext/ai-*
+```
+
+from your installation after upgrading, you will get an error about these extensions are available twice (once in *./ext* and once in *./vendor/aimeos/*). Your custom extensions can still be placed in the ./ext directory to make development easier.
+
 # Cronjobs
 
 The *Scheduler* extension has to be installed in TYPO3, before any tasks can be configured. Furthermore, the script for running the scheduler tasks needs to be executed regularly. The best way is using the Unix crontab by adding this line:
