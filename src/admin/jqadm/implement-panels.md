@@ -523,7 +523,7 @@ return [
 ];
 ```
 
-Please have a look at the articles about how to overwrite the configuration in [Laravel](../../laravel/customize.md#change-configuration),  [Symfony](../../symfony/customize.md#change-configuration) and [TYPO3](../../typo3/customize.md#change-configuration).
+Please have a look at the articles about how to overwrite the configuration in [Laravel](../../laravel/customize.md#change-configuration) and [TYPO3](../../typo3/customize.md#change-configuration).
 
 ## Permissions
 
@@ -548,7 +548,7 @@ super
 
 You need to add at least the *super* group for your panel and you should either use `['editor', 'admin', 'super']`, `['admin', 'super']` or `['super']` for the *group* configuration.
 
-Please have a look at the articles about how to overwrite the configuration in [Laravel](../../laravel/customize.md#change-configuration),  [Symfony](../../symfony/customize.md#change-configuration) and [TYPO3](../../typo3/customize.md#change-configuration).
+Please have a look at the articles about how to overwrite the configuration in [Laravel](../../laravel/customize.md#change-configuration) and [TYPO3](../../typo3/customize.md#change-configuration).
 
 # Templates
 

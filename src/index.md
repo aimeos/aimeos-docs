@@ -3,10 +3,6 @@
         <img class="logo" src="https://aimeos.org/fileadmin/aimeos.org/icons/laravel.png" title="Laravel" />
         <span class="name">Laravel package</span>
     </a>
-    <a class="integration" href="symfony/">
-        <img class="logo" src="https://aimeos.org/fileadmin/aimeos.org/icons/symfony.png" title="Symfony" />
-        <span class="name">Symfony bundle</span>
-    </a>
     <a class="integration" href="typo3/">
         <img class="logo" src="https://aimeos.org/fileadmin/aimeos.org/icons/typo3.png" title="TYPO3" />
         <span class="name">TYPO3 extension</span>

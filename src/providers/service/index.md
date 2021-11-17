@@ -445,7 +445,7 @@ $this->throw( 'Item not found', 'mshop' );
 ```
 
 !!! note
-    When adding custom error messages, you have to care yourself about translating them to different languages! Check the pages for adding translations in [Laravel](../../laravel/customize.md#overwrite-translations), [Symfony](../../symfony/customize.md#overwrite-translations) and [TYPO3](../../typo3/customize.md#overwrite-translations).
+    When adding custom error messages, you have to care yourself about translating them to different languages! Check the pages for adding translations in [Laravel](../../laravel/customize.md#overwrite-translations) and [TYPO3](../../typo3/customize.md#overwrite-translations).
 
 Logging and throwing an exception can be combined too but keep care of the order:
 

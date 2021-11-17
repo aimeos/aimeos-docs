@@ -78,5 +78,4 @@ subscription/process/end
 Each application and framework offers means to execute them directly:
 
 * [Laravel](../laravel/setup.md#cronjobs)
-* [Symfony](../symfony/setup.md#cronjobs)
 * [TYPO3](../typo3/setup.md#scheduler)
