@@ -193,8 +193,8 @@ class ExampleController extends Controller
     {
         foreach( config( 'shop.page.mypage' ) as $name )
         {
-            $params['aiheader'][$name] = Shop::get( $name )->getHeader();
-            $params['aibody'][$name] = Shop::get( $name )->getBody();
+            $params['aiheader'][$name] = Shop::get( $name )->header();
+            $params['aibody'][$name] = Shop::get( $name )->body();
         }
         // do some more stuff
         return \View::make('mypagetmpl', $params);

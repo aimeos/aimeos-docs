@@ -75,7 +75,7 @@ If you pass the data to the template, the view will render the form fields for t
 public function copy() : ?string
 {
     $data = [];
-    $view = $this->getView();
+    $view = $this->view();
     $siteid = $this->getContext()->getLocale()->getSiteId();
     $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
 
@@ -108,7 +108,7 @@ The `create()` method must not add a new record in the storage. Instead, it's te
 ```php
 public function create() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
     $data = $view->param( 'mysubpanel', [] );
     $siteid = $this->getContext()->getLocale()->getSiteId();
 
@@ -139,7 +139,7 @@ public function delete() : ?string
 {
     parent::delete();
 
-    $itemId = $this->getView()->item->getId();
+    $itemId = $this->view()->item->getId();
 
     $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
     $filter = $manager->filter()->add( ['somedomain.foreignid' => $itemId] );
@@ -167,7 +167,7 @@ This method is used to retrive the data shown in the subpart of the detail view 
 public function get() : ?string
 {
     $data = [];
-    $view = $this->getView();
+    $view = $this->view();
     $context = $this->getContext();
     $siteId = $context->getLocale()->getSiteId();
 
@@ -199,7 +199,7 @@ Here, the newly entered or updated data from the form in the detail view is actu
 ```php
 public function save() : ?string
 {
-        $view = $this->getView();
+        $view = $this->view();
 
         $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
         $manager->begin();

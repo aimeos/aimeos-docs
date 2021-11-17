@@ -100,7 +100,7 @@ All methods beside the last two are optional and default implementations exist i
 When the class is instantiated, a view object containing the passed GET and POST parameters as well as the uploaded files is added to the object. It should also be used to render the template after more data has been assigned to the view. You can access the view and the parameters using:
 
 ```php
-$view = $this->getView();
+$view = $this->view();
 $param = $view->param(); // all parameters
 $array = $view->param( 'item', [] ); // all item[...] parameters sent or empty array
 $value = $view->param( 'item/mydomain.status', 1 ); // single value for item[mydomain.status]
@@ -109,7 +109,7 @@ $value = $view->param( 'item/mydomain.status', 1 ); // single value for item[myd
 To get the uploaded files use:
 
 ```php
-$view = $this->getView();
+$view = $this->view();
 $files = (array) $view->request()->getUploadedFiles();
 ```
 
@@ -143,7 +143,7 @@ If you pass the data to the template, the view will render the form for the deta
 ```php
 public function copy() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     try
     {
@@ -191,7 +191,7 @@ When the editor has filled in the required data into the input fields and click 
 ```php
 public function create() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     try
     {
@@ -234,7 +234,7 @@ To delete one or more items, their IDs must be passed by the HTML template. The 
 ```php
 public function delete() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
     $manager->begin();
@@ -288,7 +288,7 @@ Instead, you should send the request for exporting the data to a message queue a
 ```php
 public function export() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
     $context = $this->getContext();
 
     try
@@ -336,7 +336,7 @@ This method is used to retrive the data for the detail view of the panel. It's p
 ```php
 public function get() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     try
     {
@@ -371,7 +371,7 @@ This method actually adds or updates the item in the storage using the data pass
 ```php
 public function save() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
     $context = $this->getContext();
 
     $manager = \Aimeos\MShop::create( $context, 'mydomain' );
@@ -429,7 +429,7 @@ The `search()` method creates the list view and is also used for every default v
 ```php
 public function search() : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     try
     {

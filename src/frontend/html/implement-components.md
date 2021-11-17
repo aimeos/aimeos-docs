@@ -22,11 +22,11 @@ class Standard
     private $view;
 
 
-    public function getBody( $uid = '' ) : string
+    public function body( $uid = '' ) : string
     {
     }
 
-    public function getHeader( $uid = '' ) : ?string
+    public function header( $uid = '' ) : ?string
     {
     }
 
@@ -34,7 +34,7 @@ class Standard
     {
     }
 
-    public function process()
+    public function init()
     {
     }
 
@@ -48,22 +48,22 @@ Differences arise from the required code inside these methods as they have to ca
 
 The [getSubClient()](create-subparts.md#getSubClient) and [getSubClientNames()](create-subparts.md#getSubClientNames) methods are also exactly the same as in any other subpart and won't be described in this article again.
 
-# process()
+# init()
 
-This method is not affected by caching at all because its purpose is to execute code once during each request. The difference to `process()` methods of subclients is only that you need to catch thrown exceptions and assign error messages to the view if necessary.
+This method is not affected by caching at all because its purpose is to execute code once during each request. The difference to `init()` methods of subclients is only that you need to catch thrown exceptions and assign error messages to the view if necessary.
 
 If you don't need to process any input in your new component, you can copy & paste the code below into your new class:
 
 ```php
-public function process()
+public function init()
 {
     $context = $this->getContext();
-    $view = $this->getView();
+    $view = $this->view();
 
     try
     {
         // your required code
-        parent::process();
+        parent::init();
     }
     catch( \Aimeos\Client\Html\Exception $e )
     {
@@ -113,27 +113,27 @@ Remember to **adapt the parameter name** of `detailErrorList` to the name you've
 
 # No caching
 
-If the output of your new component isn't suitable for caching, things are a bit easier for the `getBody()` and `getHeader()` method because you only need to catch the exceptions as for the `process()` method.
+If the output of your new component isn't suitable for caching, things are a bit easier for the `body()` and `header()` method because you only need to catch the exceptions as for the `init()` method.
 
-## getBody()
+## body()
 
-Very similar to the `process()` method, you have to catch all exceptions, translate them if possible and assign them to the view so the visitors are notified about the errors. The example method below only contains the parts that are different to those of the [method from the subpart clients](create-subparts.md#getBody):
+Very similar to the `init()` method, you have to catch all exceptions, translate them if possible and assign them to the view so the visitors are notified about the errors. The example method below only contains the parts that are different to those of the [method from the subpart clients](create-subparts.md#body):
 
 ```php
-public function getBody( string $uid = '' ) : string
+public function body( string $uid = '' ) : string
 {
     $context = $this->getContext();
-    $view = $this->getView();
+    $view = $this->view();
 
     try
     {
         if( !isset( $this->view ) ) {
-            $view = $this->view = $this->getObject()->addData( $view, $this->tags, $this->expire );
+            $view = $this->view = $this->object()->data( $view, $this->tags, $this->expire );
         }
 
         $html = '';
         foreach( $this->getSubClients() as $subclient ) {
-            $html .= $subclient->setView( $view )->getBody( $uid );
+            $html .= $subclient->setView( $view )->body( $uid );
         }
         $view->detailBody = $html;
     }
@@ -168,26 +168,26 @@ public function getBody( string $uid = '' ) : string
 
 Don't forget to **adapt the `detailErrorList` view variable** to your component name. It must be the same as used in your error displaying code of your view.
 
-In doubt, have a look into a full example of a working [getBody() component method without caching](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Session/Standard.php).
+In doubt, have a look into a full example of a working [body() component method without caching](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Session/Standard.php).
 
-## getHeader()
+## header()
 
-Compared to the `getBody()` method, `getHeader()` is really simple because there's no way to display any errors that have been occured. Instead, you have to log them all and return no output. The code example below only contains the lines that are different from the [getHeader() method of a subpart client](create-subparts.md#getHeader):
+Compared to the `body()` method, `header()` is really simple because there's no way to display any errors that have been occured. Instead, you have to log them all and return no output. The code example below only contains the lines that are different from the [header() method of a subpart client](create-subparts.md#header):
 
 ```php
-public function getBody( string $uid = '' ) : string
+public function body( string $uid = '' ) : string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     try
     {
         if( !isset( $this->view ) ) {
-            $view = $this->view = $this->getObject()->addData( $view, $this->tags, $this->expire );
+            $view = $this->view = $this->object()->data( $view, $this->tags, $this->expire );
         }
 
         $html = '';
         foreach( $this->getSubClients() as $subclient ) {
-            $html .= $subclient->setView( $view )->getHeader( $uid );
+            $html .= $subclient->setView( $view )->header( $uid );
         }
         $view->detailHeader = $html;
     }
@@ -206,13 +206,13 @@ public function getBody( string $uid = '' ) : string
 }
 ```
 
-In doubt, have a look into a full example of a working [getHeader() component method without caching](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Session/Standard.php).
+In doubt, have a look into a full example of a working [header() component method without caching](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Session/Standard.php).
 
 # With content caching
 
 Components that can cache its output are extremely fast. Once the content is generated and stored, it can be retrieved within milliseconds and directly pushed to the browser. The downside is that some additional code is needed.
 
-## getBody()
+## body()
 
 When caching comes into play, the first thing you have to think about is: What does your output depend on? Usually, two external sources can influence what content needs to be generated: The request parameters and the configuration settings. Both has to be part of the cache key.
 
@@ -221,7 +221,7 @@ In an Aimeos component, it's not difficult to encode both sources into the cache
 You only need to specify the prefixes of the parameters your component listens to. The configuration settings are build hierarchically, so the prefix that is shared by all subclients of your component is required. The rest is simply calling the `getCached()` and `setCached()` method from the parent class.
 
 ```php
-public function getBody( string $uid = '' ) : string
+public function body( string $uid = '' ) : string
 {
     $prefixes = ['d'];
     $confkey = 'client/html/catalog/detail';
@@ -247,14 +247,14 @@ There's one thing to note when caching content: Sometimes, a subpart can't be ca
 
 The details for this are described in the article about [creating new subparts](create-subparts#modifyBody). The important thing here is to call the `modifyBody()` method provided by the parent class after successfully retrieving the cached content.
 
-In doubt, have a look into a full example of a working [getBody() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
+In doubt, have a look into a full example of a working [body() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
-## getHeader()
+## header()
 
-For `getHeader()`, implementing caching is very similar to the implementation of `getBody()`. You also have to specify which parameters are used in your component and what's the shared configuration prefix for all settings. The calls to `getCached()` and `setCached()` require "header" to be passed to ensure that the content is stored for the header.
+For `header()`, implementing caching is very similar to the implementation of `body()`. You also have to specify which parameters are used in your component and what's the shared configuration prefix for all settings. The calls to `getCached()` and `setCached()` require "header" to be passed to ensure that the content is stored for the header.
 
 ```php
-public function getHeader( string $uid = '' ) : string
+public function header( string $uid = '' ) : string
 {
     $prefixes = ['d'];
     $confkey = 'client/html/catalog/detail';
@@ -276,9 +276,9 @@ public function getHeader( string $uid = '' ) : string
 }
 ```
 
-In `getHeader()`, the exception handling is much simpler as you only need to log any exception. Only keep in mind that you also need to call the `modifyHeader()` method after successfully retrieving the cached content. This allows subclients of your component the chance to replace their sections with their new content.
+In `header()`, the exception handling is much simpler as you only need to log any exception. Only keep in mind that you also need to call the `modifyHeader()` method after successfully retrieving the cached content. This allows subclients of your component the chance to replace their sections with their new content.
 
-In doubt, have a look into a full example of a working [getHeader() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
+In doubt, have a look into a full example of a working [header() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
 # Factory class
 

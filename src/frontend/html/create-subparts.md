@@ -24,7 +24,7 @@ You can rename "Yourpart" to whatever you like but it must consist of characters
 
 # Basic class structure
 
-All HTML clients, either being a component or a subpart, need to extend from the common *\Aimeos\Client\Html\Base* class and implement the same methods. Especially the `getBody()` and `getHeader()` methods are important because they care about generating the HTML, XML, JS or whatever code which is sent to the browser.
+All HTML clients, either being a component or a subpart, need to extend from the common *\Aimeos\Client\Html\Base* class and implement the same methods. Especially the `body()` and `header()` methods are important because they care about generating the HTML, XML, JS or whatever code which is sent to the browser.
 
 The skeleton below is from the catalog detail service subpart and you can use it as reference for your own subpart implementation.
 
@@ -40,11 +40,11 @@ class Standard
     private $view;
 
 
-    public function getBody( $uid = '' ) : string
+    public function body( $uid = '' ) : string
     {
     }
 
-    public function getHeader( $uid = '' ) : ?string
+    public function header( $uid = '' ) : ?string
     {
     }
 
@@ -62,22 +62,22 @@ The only thing you have to do is to **rename the "Service" and "service" strings
 
 If you want to create a subpart one level below, you have to add the names of these levels in the class name, the `$subPartPath` variable and its documentation. You would replace "Service" to "Service\Yourpart" in your class name and */service/* to */service/yourpart/* in the `$subPartPath` variable for example.
 
-There are two private class variables in this skeleton: `$subPartPath` and `$subPartNames`. Both will be used in the `getSubClientNames()` method explained later. The last class variable `$view` will store the view to avoid retrieving the same data for `getBody()` and `getHeader()` twice.
+There are two private class variables in this skeleton: `$subPartPath` and `$subPartNames`. Both will be used in the `getSubClientNames()` method explained later. The last class variable `$view` will store the view to avoid retrieving the same data for `body()` and `header()` twice.
 
 # Mandatory methods
 
-## getBody()
+## body()
 
-The `getBody()` method is usually the most important one because it generates most of the output sent to the browser. It contains only a few lines, everything else is outsourced to other methods. The optional parameter `$uid` can contain a unique identifier if the method should generate different outputs on the same page.
+The `body()` method is usually the most important one because it generates most of the output sent to the browser. It contains only a few lines, everything else is outsourced to other methods. The optional parameter `$uid` can contain a unique identifier if the method should generate different outputs on the same page.
 
 ```php
-public function getBody( $uid = '' ) : string
+public function body( $uid = '' ) : string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     $html = *;
     foreach( $this->getSubClients() as $subclient ) {
-        $html .= $subclient->setView( $view )->getBody( $uid, $tags, $expire );
+        $html .= $subclient->setView( $view )->body( $uid, $tags, $expire );
     }
     $view->serviceBody = $html;
 
@@ -99,18 +99,18 @@ The default value consists of the component name (catalog/detail/) and the filen
 !!! note
     If your subpart client is located at a different level in the hierarchy, you must add all parts of the class name in lower case and separated by slashes (/) like "client/catalog/detail/service/additional/..." for the configuration values.
 
-## getHeader()
+## header()
 
-Similar to `getBody()`, the `getHeader()` method generates any output that should be part of the header section in the HTML document sent to the browser. The optional parameter `$uid` can contain a unique identifier if the method should generate different outputs on the same page.
+Similar to `body()`, the `header()` method generates any output that should be part of the header section in the HTML document sent to the browser. The optional parameter `$uid` can contain a unique identifier if the method should generate different outputs on the same page.
 
 ```php
-public function getHeader( string $uid = '' ) : ?string
+public function header( string $uid = '' ) : ?string
 {
-    $view = $this->getView();
+    $view = $this->view();
 
     $html = *;
     foreach( $this->getSubClients() as $subclient ) {
-        $html .= $subclient->setView( $view )->getHeader( $uid, $tags, $expire );
+        $html .= $subclient->setView( $view )->header( $uid, $tags, $expire );
     }
     $view->serviceHeader = $html;
 
@@ -121,7 +121,7 @@ public function getHeader( string $uid = '' ) : ?string
 }
 ```
 
-In the `getHeader()` method, the `foreach` block retrieves the output from the subclients. It assigns the result to the view as "...Header" variable and its name **must not collide with others**!
+In the `header()` method, the `foreach` block retrieves the output from the subclients. It assigns the result to the view as "...Header" variable and its name **must not collide with others**!
 
 The last lines for generating the output by the view are also very similar besides the fact that the string *header* is used instead of *body*. You must adapt the template configuration key and it's default value to the name of your class too.
 
@@ -166,9 +166,9 @@ Thus, you are able to provide strong defaults for the subparts and their order, 
 
 # Optional methods
 
-## addData()
+## data()
 
-This method can be called in both, the `getBody()` and `getHeader()` method. It assigns the required data to the given view. The method signature contains three parameters:
+This method can be called in both, the `body()` and `header()` method. It assigns the required data to the given view. The method signature contains three parameters:
 
 * view
 : The view object to which the necessary data should be assigned
@@ -180,7 +180,7 @@ This method can be called in both, the `getBody()` and `getHeader()` method. It 
 : expiration date in YYYY-MM-DD HH:mm:ss format for the assigned data
 
 ```php
-public function addData( Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : Aimeos\MW\View\Iface
+public function data( Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : Aimeos\MW\View\Iface
 {
     // use controller or manager to retrieve required data
 
@@ -215,7 +215,7 @@ The method needs two parameters in return:
 ```php
 public function modifyBody( string $content, string $uid ) : string
 {
-    return $this->replaceSection( $content, $this->getView()->csrf()->formfield(), 'catalog.detail.csrf' );
+    return $this->replaceSection( $content, $this->view()->csrf()->formfield(), 'catalog.detail.csrf' );
 }
 ```
 
@@ -260,21 +260,21 @@ In the template file, the marker is prefixed by `<!-- ` and postfixed by ` -->` 
 !!! warning
     Keep in mind that here the marker must be also always added unconditionally to your template to be able to replace sections with no output before!
 
-## process()
+## init()
 
-Subpart that actively modify data, it's required to do that only once per request and before the `getBody()` or `getHeader()` methods are called. For this case, a `process()` method can be used to e.g. add something to the basket or recalculate an existing value.
+Subpart that actively modify data, it's required to do that only once per request and before the `body()` or `header()` methods are called. For this case, a `init()` method can be used to e.g. add something to the basket or recalculate an existing value.
 
-It doesn't need any parameter but the view is available via `$this->getView()` including all parameters. Also, you can get the context by calling `$this->getContext()`.
+It doesn't need any parameter but the view is available via `$this->view()` including all parameters. Also, you can get the context by calling `$this->getContext()`.
 
 ```php
-public function process()
+public function init()
 {
     // do something only once
-    parent::process();
+    parent::init();
 }
 ```
 
-Examples for classes that uses the `process()` method to execute code only once are the [standard basket](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Basket/Standard/Standard.php) and the [class for the last seen products](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Seen/Standard.php).
+Examples for classes that uses the `init()` method to execute code only once are the [standard basket](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Basket/Standard/Standard.php) and the [class for the last seen products](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Seen/Standard.php).
 
 !!! warning
-    Always call `parent::process()` at the end of the method to execute the `process()` methods of the sub-clients as well! Otherwise, you would skip processing for all subclients below yours.
+    Always call `parent::init()` at the end of the method to execute the `init()` methods of the sub-clients as well! Otherwise, you would skip processing for all subclients below yours.

@@ -127,7 +127,7 @@ Working code for job controllers of different types can be found in the [control
 You can use views and templates for generating output in job controllers. They are used in the same way as for the HTML clients, for example:
 
 ```php
-$view = $this->getContext()->getView();
+$view = $this->getContext()->view();
 $view->items = [1, 2, 3];
 
 $tplconf = 'controller/jobs/product/export/template-items';
@@ -135,7 +135,7 @@ $default = 'product/export/items-body-default.xml';
 $result = $view->render( $view->config( $tplconf, $default ) ) );
 ```
 
-At first, you can retrieve a new view from the context object by using the `getView()` method. For repeated calls it always returns a clean object regardless of what has been done with previous object. You can assign data directly like shown above or assign multiple key/value pairs at once using the `assign()` method. It's signature and more useful methods can be found in the [view class](https://github.com/aimeos/ai-controller-jobs/tree/master/controller/jobs/src/Controller/Jobs).
+At first, you can retrieve a new view from the context object by using the `view()` method. For repeated calls it always returns a clean object regardless of what has been done with previous object. You can assign data directly like shown above or assign multiple key/value pairs at once using the `assign()` method. It's signature and more useful methods can be found in the [view class](https://github.com/aimeos/ai-controller-jobs/tree/master/controller/jobs/src/Controller/Jobs).
 
 To render the output and return the content, you should use the `render()` method of the view. It expects the path of the template that should be used to generate the content. In combination with `$view->config()` it also checks if there's another template configured that should be used instead of the default one and translates a relative path into an absolute one.
 

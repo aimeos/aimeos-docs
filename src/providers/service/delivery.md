@@ -52,7 +52,7 @@ public function processBatch( iterable $orders ) : \Aimeos\Map
 {
     // this is also the default implementation of processBatch()
     foreach( $orders as $order ) {
-        $this->getObject()->process( $order );
+        $this->object()->process( $order );
     }
 
     return map( $orders );

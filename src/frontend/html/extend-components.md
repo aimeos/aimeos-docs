@@ -28,19 +28,19 @@ Decorators wrap around existing components like layers of an onion and there's n
 
 Both, components and decorators must implement the same interface and therefore the same public methods. Thus, you can overwrite **any public method but no private or protected** ones. The list of public methods for both are:
 
-* addData()
+* data()
 : Adds the necessary data used in the template
 
-* getBody()
+* body()
 : Returns the HTML code for insertion into the body
 
-* getHeader()
+* header()
 : Returns the HTML string for insertion into the header
 
 * getSubClient()
 : Returns the sub-client given by its name
 
-* getView()
+* view()
 : Returns the view object that will generate the HTML output
 
 * modifyBody()
@@ -49,7 +49,7 @@ Both, components and decorators must implement the same interface and therefore 
 * modifyHeader()
 : Modifies the cached header content to replace content based on sessions or cookies
 
-* process()
+* init()
 : Processes the input, e.g. check and store the given values
 
 * setView()
@@ -62,10 +62,10 @@ The *modifyBody()* and *modifyHeadder()* methods are only used by **components t
 Decorators inherit all methods available in the components and subparts via the [\Aimeos\Client\Html\Base](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Base.php) class. There's one additional method exclusive to decorators named `getClient()`. It returns the HTML client or decorator representing the next layer in the onion down to the core object:
 
 ```php
-public function process()
+public function init()
 {
     // do something before
-    $this->getClient()->process();
+    $this->getClient()->init();
     // do something afterwards
 }
 ```
@@ -83,9 +83,9 @@ class Mydecorator
     extends \Aimeos\Client\Html\Common\Decorator\Base
     implements \Aimeos\Client\Html\Common\Decorator\Iface
 {
-    public function addData( \Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : \Aimeos\MW\View\Iface
+    public function data( \Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : \Aimeos\MW\View\Iface
     {
-        $view = parent::addData( $view, $tags, $expire );
+        $view = parent::data( $view, $tags, $expire );
 
         // access already added data
         $products = $view->get( 'listItems', map() );
