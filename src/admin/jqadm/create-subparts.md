@@ -212,7 +212,7 @@ public function save() : ?string
 
             foreach( $view->param( 'mysubpanel', [] ) as $entry )
             {
-                $id = $this->getValue( $entry, 'somedomain.id' );
+                $id = $this->val( $entry, 'somedomain.id' );
 
                 $list[] = $items->get( $id, $manager->create() )
                     ->fromArray( $entry )
