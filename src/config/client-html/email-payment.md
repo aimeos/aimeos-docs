@@ -45,6 +45,9 @@ order volumne is high or has peeks!
 This configuration option overwrites the e-mail address set via
 "client/html/email/bcc-email".
 
+!!! note
+    Please note that currently the Symfony Mailer package has a bug which discards BCC addresses in some configurations. This affects all frameworks using Symfony (e.g. Typo3) together with `sendmail -t` as MTA. Try to use `sendmail -bs` instead.
+
 See also:
 
 * client/html/email/bcc-email
