@@ -117,6 +117,17 @@ Each product that a customer shall be able to add to the basket must have at lea
 
 You can add multiple prices to a single product. Either enter different quantities for which the price is valid or choose between the available price types for the same currency. The "Standard" type and list type must be used for the regular price including tax (or excluding tax if all prices are net prices and the tax flag configuration is set accordingly).
 
+Each price can also have multiple tax rates, e.g. for state tax. To enable additional tax rates, use the `admin/tax` configuration. For using standard and state tax rates, the configuration should be:
+
+```
+admin/tax => ['pst']
+```
+
+Check the articles about how to set configuration for your environemnt:
+
+* [Laravel](../laravel/customize.md)
+* [TYPO3](../typo3/customize.md)
+
 Tax rate in % (required)
 : Tax rate in percent which is included in the price (gross prices) or added to the price (net prices). All prices have to be either gross or net prices depending on the tax flag configuration. If several tax rates are configured e.g. "GST" and "PST", then multiple tax rates can be entered
 

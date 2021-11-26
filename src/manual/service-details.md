@@ -71,3 +71,14 @@ Long description
 Each delivery or payment item must have one price associated - even if the shipping or payment is for free, in which case the price is displayed as 0.00.
 
 Depending on the configured decorators (see [Adding features](service-decorators.md)), the price may be changed dynamically based on the rules the decorator implements.
+
+Prices can also have multiple tax rates, e.g. for state tax. To enable additional tax rates, use the `admin/tax` configuration. For using standard and state tax rates, the configuration should be:
+
+```
+admin/tax => ['pst']
+```
+
+Check the articles about how to set configuration for your environemnt:
+
+* [Laravel](../laravel/customize.md)
+* [TYPO3](../typo3/customize.md)
