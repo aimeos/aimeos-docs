@@ -30,10 +30,10 @@ Repeat this for each language you need. There will be binary files without exten
 
 Strings can only be translated if they are wrapped by one of these methods:
 
-`$context->getI18n()->dt( '<domain>', '<singular>' )`
+`$context->translate( '<domain>', '<singular>' )`
 : Singular translations that can be used whenever the Aimeos context is available. That's not possible in item classes and templates
 
-`$context->getI18n()->dn( '<domain>', '<singular>', '<plural>', <number> )`
+`$context->translate( '<domain>', '<singular>', '<plural>', <number> )`
 : Singular or plural translation depending on the target language and the number argument. It can be used at the same locations like singular translations
 
 `$this->translate( '<domain>', '<singular>', '<plural>', <number> )`

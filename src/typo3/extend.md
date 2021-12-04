@@ -26,7 +26,7 @@ class YourController extends AbstractController
 $context = \Aimeos\Aimeos\Scheduler\Base::contex( $localConfigArray );
 
 // anywhere else
-$config = \Aimeos\Aimeos\Base::getConfig( $localConfigArray );
+$config = \Aimeos\Aimeos\Base::config( $localConfigArray );
 $context = \Aimeos\Aimeos\Base::contex( $config );
 ```
 

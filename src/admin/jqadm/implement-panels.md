@@ -16,7 +16,7 @@ class Factory
     public static function create( \Aimeos\MShop\Context\Item\Iface $context, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
     {
         if( $name === null ) {
-            $name = $context->getConfig()->get( 'admin/jqadm/mypanel/name', 'Standard' );
+            $name = $context->config()->get( 'admin/jqadm/mypanel/name', 'Standard' );
         }
 
         $iface = '\\Aimeos\\Admin\\JQAdm\\Iface';
@@ -88,7 +88,7 @@ class Standard
 
     protected function getSubClientNames() : array
     {
-        return $this->context()->getConfig()->get( 'admin/jqadm/mypanel/subparts', [] );
+        return $this->context()->config()->get( 'admin/jqadm/mypanel/subparts', [] );
     }
 }
 ```

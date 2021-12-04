@@ -67,22 +67,22 @@ public function init()
     }
     catch( \Aimeos\Client\Html\Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'client', $e->getMessage() )];
+        $error = [$context->translate( 'client', $e->getMessage() )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
     }
     catch( \Aimeos\Controller\Frontend\Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'controller/frontend', $e->getMessage() )];
+        $error = [$context->translate( 'controller/frontend', $e->getMessage() )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
     }
     catch( \Aimeos\MShop\Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'mshop', $e->getMessage() )];
+        $error = [$context->translate( 'mshop', $e->getMessage() )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
     }
     catch( \Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'client', 'A non-recoverable error occured' )];
+        $error = [$context->translate( 'client', 'A non-recoverable error occured' )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
         $this->logException( $e );
     }
@@ -139,22 +139,22 @@ public function body( string $uid = '' ) : string
     }
     catch( \Aimeos\Client\Html\Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'client', $e->getMessage() )];
+        $error = [$context->translate( 'client', $e->getMessage() )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
     }
     catch( \Aimeos\Controller\Frontend\Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'controller/frontend', $e->getMessage() )];
+        $error = [$context->translate( 'controller/frontend', $e->getMessage() )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
     }
     catch( \Aimeos\MShop\Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'mshop', $e->getMessage() )];
+        $error = [$context->translate( 'mshop', $e->getMessage() )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
     }
     catch( \Exception $e )
     {
-        $error = [$context->getI18n()->dt( 'client', 'A non-recoverable error occured' )];
+        $error = [$context->translate( 'client', 'A non-recoverable error occured' )];
         $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
         $this->logException( $e );
     }
@@ -294,7 +294,7 @@ class Factory
     public static function create( \Aimeos\MShop\Context\Item\Iface $context, array $paths, string $name = null ) : \Aimeos\Client\Html\Iface
     {
         if( $name null ) {
-            $name = $context->getConfig()->get( 'client/html/catalog/detail/name', 'Standard' );
+            $name = $context->config()->get( 'client/html/catalog/detail/name', 'Standard' );
         }
 
         $iface = '\\Aimeos\\Client\\Html\\Iface';

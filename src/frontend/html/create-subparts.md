@@ -156,7 +156,7 @@ The implementation for the `getSubClientNames()` helper method is a one-liner to
 ```php
 protected function getSubClientNames() : array
 {
-    return $this->context()->getConfig()->get( $this->subPartPath, $this->subPartNames );
+    return $this->context()->config()->get( $this->subPartPath, $this->subPartNames );
 }
 ```
 

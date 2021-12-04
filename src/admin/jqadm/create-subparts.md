@@ -55,7 +55,7 @@ class Standard
 
     protected function getSubClientNames() : array
     {
-        return $this->context()->getConfig()->get( 'admin/jqadm/mypanel/mysubpanel/subparts', [] );
+        return $this->context()->config()->get( 'admin/jqadm/mypanel/mysubpanel/subparts', [] );
     }
 }
 ```
