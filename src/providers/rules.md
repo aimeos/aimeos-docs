@@ -190,7 +190,7 @@ Thus, adding restrictions to the rule is simple. To check if the user is logged 
 ```php
 public function apply( \Aimeos\MShop\Product\Item\Iface $product ) : bool
 {
-	if( $this->getContext()->getUserId() ) {
+	if( $this->context()->getUserId() ) {
 	    return $this->getProvider()->apply( $product )
 	}
 

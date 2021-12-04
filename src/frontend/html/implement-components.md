@@ -57,7 +57,7 @@ If you don't need to process any input in your new component, you can copy & pas
 ```php
 public function init()
 {
-    $context = $this->getContext();
+    $context = $this->context();
     $view = $this->view();
 
     try
@@ -122,7 +122,7 @@ Very similar to the `init()` method, you have to catch all exceptions, translate
 ```php
 public function body( string $uid = '' ) : string
 {
-    $context = $this->getContext();
+    $context = $this->context();
     $view = $this->view();
 
     try
@@ -193,7 +193,7 @@ public function body( string $uid = '' ) : string
     }
     catch( Exception $e )
     {
-        $this->getContext()->getLogger()->log( $e->getMessage() . PHP_EOL . $e->getTraceAsString() );
+        $this->context()->getLogger()->log( $e->getMessage() . PHP_EOL . $e->getTraceAsString() );
         return;
     }
 

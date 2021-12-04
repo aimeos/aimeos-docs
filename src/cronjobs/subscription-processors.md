@@ -92,25 +92,25 @@ class Standard
 
     public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription )
     {
-        $context = $this->getContext();
+        $context = $this->context();
         // Code that is executed at the beginning of the subscription
     }
 
     public function renewBefore( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
     {
-        $context = $this->getContext();
+        $context = $this->context();
         // Code that is executed each time before the subscription is renewed
     }
 
     public function renewAfter( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
     {
-        $context = $this->getContext();
+        $context = $this->context();
         // Code that is executed each time after the subscription is renewed
     }
 
     public function end( \Aimeos\MShop\Subscription\Item\Iface $subscription )
     {
-        $context = $this->getContext();
+        $context = $this->context();
         // Code that is executed at the end of the subscription
     }
 }
@@ -153,7 +153,7 @@ class StandardTest extends \PHPUnit\Framework\TestCase
 
     public function testBegin()
     {
-        $context = \TestHelperCntl::getContext();
+        $context = \TestHelperCntl::context();
         $manager = \Aimeos\MShop::create( $context, 'subscription' );
         $object = new \Aimeos\Controller\Common\Subscription\Process\Processor\Myproc\Standard( $context );
         $object->begin( $manager->create() );

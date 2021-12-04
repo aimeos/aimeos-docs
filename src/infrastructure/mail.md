@@ -1,4 +1,4 @@
-For sending e-mails, you need the Aimeos [context](context.md) object, which is the dependency container of Aimeos. In manager, providers, controllers, client and admin objects, the context is always available via `getContext()`.
+For sending e-mails, you need the Aimeos [context](context.md) object, which is the dependency container of Aimeos. In manager, providers, controllers, client and admin objects, the context is always available via `context()`.
 
 If you want to use the Aimeos mailer in any other code, please have a look at the documentation for your host application how to get the context:
 

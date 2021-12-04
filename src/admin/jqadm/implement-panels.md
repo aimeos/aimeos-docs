@@ -88,7 +88,7 @@ class Standard
 
     protected function getSubClientNames() : array
     {
-        return $this->getContext()->getConfig()->get( 'admin/jqadm/mypanel/subparts', [] );
+        return $this->context()->getConfig()->get( 'admin/jqadm/mypanel/subparts', [] );
     }
 }
 ```
@@ -128,7 +128,7 @@ if( $file->getError() !== UPLOAD_ERR_NO_FILE
 You can use the Aimeos file system manager to store uploaded files regardless if it's on a local disc or in the cloud:
 
 ```php
-$fs = $this->getContext()->fs( 'fs-import' );
+$fs = $this->context()->fs( 'fs-import' );
 $fs->writes( '/path/to/file', $file->getStream()->detach() );
 ```
 
@@ -147,11 +147,11 @@ public function copy() : ?string
 
     try
     {
-        $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+        $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
         $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
 
         $data = $view->item->toArray( true );
-        $data['mydomain.siteid'] = $this->getContext()->locale()->getSiteId();
+        $data['mydomain.siteid'] = $this->context()->locale()->getSiteId();
         $data['mydomain.code'] = $data['mydomain.code'] . '_copy';
         $data['mydomain.id'] = '';
 
@@ -196,7 +196,7 @@ public function create() : ?string
     try
     {
         if( !isset( $view->item ) ) {
-            $view->item = \Aimeos\MShop::create( $this->getContext(), 'mydomain' )->create();
+            $view->item = \Aimeos\MShop::create( $this->context(), 'mydomain' )->create();
         }
 
         $data = $view->param( 'item', [] );
@@ -236,7 +236,7 @@ public function delete() : ?string
 {
     $view = $this->view();
 
-    $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+    $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
     $manager->begin();
 
     try
@@ -289,7 +289,7 @@ Instead, you should send the request for exporting the data to a message queue a
 public function export() : ?string
 {
     $view = $this->view();
-    $context = $this->getContext();
+    $context = $this->context();
 
     try
     {
@@ -340,7 +340,7 @@ public function get() : ?string
 
     try
     {
-        $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+        $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
 
         $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
         $view->itemData = $this->toArray( $view->item );
@@ -372,7 +372,7 @@ This method actually adds or updates the item in the storage using the data pass
 public function save() : ?string
 {
     $view = $this->view();
-    $context = $this->getContext();
+    $context = $this->context();
 
     $manager = \Aimeos\MShop::create( $context, 'mydomain' );
     $manager->begin();
@@ -435,7 +435,7 @@ public function search() : ?string
     {
         $total = 0;
         $params = $this->storeFilter( $view->param(), 'mydomain' );
-        $manager = \Aimeos\MShop::create( $this->getContext(), 'mydomain' );
+        $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
 
         $filter = $manager->filter()->sort( 'mydomain.id' );
         $filter = $this->initCriteria( $filter, $params );

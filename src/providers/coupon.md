@@ -191,7 +191,7 @@ Thus, adding restrictions to the coupon is simple. To check if the user is logge
 ```php
 public function isAvailable( \Aimeos\MShop\Order\Item\Base\Iface $base ) : bool
 {
-	if( $this->getContext()->getUserId() ) {
+	if( $this->context()->getUserId() ) {
 		return $this->getProvider()->isAvailable( $base );
 	}
 

@@ -64,7 +64,7 @@ $manager = \Aimeos\MAdmin::create( $context, 'log' );
 $manager = \Aimeos\MAdmin::create( $context, 'cache' );
 ```
 
-The necessary context object is available in all controllers and clients via `$this->getContext()`, but this doesn't apply to views!
+The necessary context object is available in all controllers and clients via `$this->context()`, but this doesn't apply to views!
 
 !!! note
     The "cache" and "log" managers are only necessary to have full access to their items. If you only want to [log](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php#L151) messages or [cache](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php#L36) some content, you should use the objects from the context instead!

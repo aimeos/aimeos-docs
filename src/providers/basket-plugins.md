@@ -117,7 +117,7 @@ The following implementation shows the important code blocks of the `update()` m
 ```php
 public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
 {
-    $context = $this->getContext();
+    $context = $this->context();
     $iface = '\Aimeos\MShop\Order\Item\Base\Iface';
 
     if( !( $basket instanceof $iface ) )
@@ -208,7 +208,7 @@ class ExampleTest extends \PHPUnit\Framework\TestCase
 
     protected function setUp() : void
     {
-        $context = \TestHelper::getContext();
+        $context = \TestHelper::context();
 
         $pluginManager = \Aimeos\MShop::create( $context, 'plugin' );
         $orderManager = \Aimeos\MShop::create( $context, 'order' );

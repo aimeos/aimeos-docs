@@ -89,7 +89,7 @@ These three lines would save any changes in the address and service items includ
 In cases you need to fetch items from other domains, the context object is necessary to instantiate the appropriate managers. Use it only if you really need it! The complete order can be fetched much simpler with the other support methods and the service item for the provider is already available. To get the context object, use:
 
 ```php
-$context = $this->getContext();
+$context = $this->context();
 ```
 
 Afterwards, you can use the *Aimeos\MShop* class to create the manager you need:
@@ -482,7 +482,7 @@ For each delivery and payment option, a service fee can be charged. By default, 
 public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : \Aimeos\MShop\Price\Item\Iface
 {
     $productTotal = ...; // Sum up the price of all products in $basket
-    $manager = \Aimeos\MShop::create( $this->getContext(], 'price' );
+    $manager = \Aimeos\MShop::create( $this->context(), 'price' );
 
     $price = $manager->create();
     $price->setCosts( '0.10' * $productTotal );

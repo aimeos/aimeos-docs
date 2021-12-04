@@ -20,7 +20,7 @@ class MyproviderTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $context = TestHelperMShop::getContext();
+        $context = TestHelperMShop::context();
 
         $serviceManager = Aimeos\MShop\Factory::createManager( $context, 'service' );
         $this->serviceItem = $serviceManager->create();
@@ -47,7 +47,7 @@ In the test methods you often need an order item but not in all. It would be too
 ```php
 protected function getOrderItem()
 {
-    $manager = \Aimeos\MShop\Factory::createManager( TestHelperMShop::getContext(), 'order' );
+    $manager = \Aimeos\MShop\Factory::createManager( TestHelperMShop::context(), 'order' );
 
     $search = $manager->filter();
     $search->setConditions( $search->compare( '==', 'order.datepayment', '2008-02-15 12:34:56' ) );

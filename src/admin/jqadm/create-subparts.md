@@ -55,7 +55,7 @@ class Standard
 
     protected function getSubClientNames() : array
     {
-        return $this->getContext()->getConfig()->get( 'admin/jqadm/mypanel/mysubpanel/subparts', [] );
+        return $this->context()->getConfig()->get( 'admin/jqadm/mypanel/mysubpanel/subparts', [] );
     }
 }
 ```
@@ -76,8 +76,8 @@ public function copy() : ?string
 {
     $data = [];
     $view = $this->view();
-    $siteid = $this->getContext()->getLocale()->getSiteId();
-    $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
+    $siteid = $this->context()->getLocale()->getSiteId();
+    $manager = \Aimeos\MShop::create( $this->context(), 'somedomain' );
 
     foreach( $manager->search( $manager->filter() ) as $item )
     {
@@ -110,7 +110,7 @@ public function create() : ?string
 {
     $view = $this->view();
     $data = $view->param( 'mysubpanel', [] );
-    $siteid = $this->getContext()->getLocale()->getSiteId();
+    $siteid = $this->context()->getLocale()->getSiteId();
 
     foreach( $view->value( $data, 'somedomain.id', [] ) as $idx => $value ) {
         $data[$idx]['mysubpanel.siteid'] = $siteid;
@@ -141,7 +141,7 @@ public function delete() : ?string
 
     $itemId = $this->view()->item->getId();
 
-    $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
+    $manager = \Aimeos\MShop::create( $this->context(), 'somedomain' );
     $filter = $manager->filter()->add( ['somedomain.foreignid' => $itemId] );
     $manager->delete( $manager->search( $filter ) );
 
@@ -168,7 +168,7 @@ public function get() : ?string
 {
     $data = [];
     $view = $this->view();
-    $context = $this->getContext();
+    $context = $this->context();
     $siteId = $context->getLocale()->getSiteId();
 
     $manager = \Aimeos\MShop::create( $context, 'somedomain' );
@@ -201,7 +201,7 @@ public function save() : ?string
 {
         $view = $this->view();
 
-        $manager = \Aimeos\MShop::create( $this->getContext(), 'somedomain' );
+        $manager = \Aimeos\MShop::create( $this->context(), 'somedomain' );
         $manager->begin();
 
         try

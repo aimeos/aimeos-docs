@@ -1,7 +1,7 @@
 The [context item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php) is the dependency container of Aimeos and gives you access to the host system, independent of the used framework or application. It's available in all classes of the [data access layer and above](../developer/architecture.md) except the items (and template files of course) by calling.
 
 ```php
-$this->getContext()
+$this->context()
 ```
 
 # Cache
@@ -9,7 +9,7 @@ $this->getContext()
 The caching framework can store arbitrary pairs of key/value and should be used to share content between requests and servers. It's not guaranteed that the cached data is available at all because the cache can be purged at any time. The content cache must be used with a fallback strategy if the cached item isn't available.
 
 ``` php
-$cache = $this->getContext()->cache()
+$cache = $this->context()->cache()
     ->set( 'myuniquekey', 'some content' )
     ->get( 'myuniquekey' );
 ```
@@ -21,7 +21,7 @@ The full description of its methods is available in the documentation of the [ca
 All configured settings are available in the config object and can be retrieved via their unique keys. These keys are built hierarchically and their parts are separated by slashes. The hierarchy matches the nested configuration arrays which can map to the configuration files in the config directories.
 
 ```php
-$config = $this->getContext()->config()
+$config = $this->context()->config()
     ->get( 'client/html/catalog/detail/subparts', [] );
 ```
 
@@ -37,7 +37,7 @@ By using the database manager, you can get access the configured database connec
 First you have to get the correct connection and release it again after you are done:
 
 ```php
-$db = $this->getContext()->db();
+$db = $this->context()->db();
 $conn = $db->acquire( 'db-product' );
 $conn->begin();
 
@@ -91,7 +91,7 @@ For detailed information about the available methods, please have a look into th
 The file system object gives you access to the configured parts of the storage. This may be the local file system but can be a remote FTP server or the AWS cloud too, depending on the configuration. You don't have to care about the details because the file system interface provides a way to work with any storage the same way.
 
 ```php
-$fs = $this->getContext()->fs( 'fs-secure' );
+$fs = $this->context()->fs( 'fs-secure' );
 $fs->write( 'somefile.txt', 'some content' );
 $content = $fs->read( 'somefile.txt' );
 ```
@@ -127,7 +127,7 @@ For detailed information about the available methods, please have a look into th
 To enable translation of strings to other languages than English, you should use he "i18n" (internationalization) object. You can translate both, singular and plural strings.
 
 ```php
-$i18n = $this->getContext()->i18n();
+$i18n = $this->context()->i18n();
 $str = $i18n->dt( 'client', 'One string' );
 $str = sprintf( $i18n->dn( 'client', 'One string', '%1$d strings', 5 ), 5 );
 ```
@@ -139,7 +139,7 @@ More information about the methods is available in the [translation interface](h
 The locale object contains the current site object including the site ID and the configuration key/value pairs for this site. Additionally, when created for the front-end it also contains the language and currency ID that should be used to filter language and currency specific data. In the backend, both values will be null.
 
 ```php
-$locale = $this->getContext()->locale();
+$locale = $this->context()->locale();
 $languageid = $locale->getLanguageId();
 $currencyid = $locale->getCurrencyId();
 $site = $locale->getSite();
@@ -152,7 +152,7 @@ More information about the methods is available in the [locale interface](https:
 Writing log entries is essential for reporting unexpected behavior. The logger object abstracts from the concrete log implementation, so you don't have to care about the details. By default, the *log()* method will write entries of priority "error" to the "message" facility. Depending on the log configuration, only log messages with priorities equal or higher to the one will be written to the log. Thus, on a development vhost a priority of "debug" makes sense, while on the production server it should be limited to "warning" or "notice". The facility can be used to log into different locations.
 
 ```php
-$logger = $this->getContext()->logger()
+$logger = $this->context()->logger()
     ->log( 'payment failed', \Aimeos\MW\Logger\Base::WARN, 'payment' )
     ->log( 'some message' );
 ```
@@ -164,7 +164,7 @@ More information about the methods is available in the [logger interface](https:
 Sometimes you need to send someone an e-mail for notification. The mail object offers a simple but yet powerful interface to the mail implementation of the host framework or application and its configuration. It's much more flexible than the PHP *mail()* function.
 
 ```php
-$this->getContext()->mail()
+$this->context()->mail()
     ->createMessage()
     ->addFrom( 'me@localhost' )
     ->addTo( 'me@example.com' )
@@ -186,7 +186,7 @@ If a request requires to do some tasks in the background, you can send it to a m
 To add a new job to the message queue "mq-email" configured in the resource configuration:
 
 ```php
-$queue = $this->getContext()
+$queue = $this->context()
     ->queue( 'mq-email', 'order/email/payment' )
     ->add( json_encode( ['email' => 'me@example.com'] ) );
 ```
@@ -194,7 +194,7 @@ $queue = $this->getContext()
 The second parameter can be any string, it's only important to know for the job controller:
 
 ```php
-$queue = $this->getContext()->queue( 'mq-email', 'order/email/payment' );
+$queue = $this->context()->queue( 'mq-email', 'order/email/payment' );
 
 while( $msg = $queue->get() )
 {
@@ -218,7 +218,7 @@ $fcn = function( \Aimeos\MShop\Context\Item\Iface $context, $data ) {
     echo $data;
 };
 
-$context = $this->getContext()
+$context = $this->context()
 $context->process()
     ->start( $fcn, [$context, 'data1'] )
     ->start( $fcn, [$context, 'data2'] )
@@ -234,7 +234,7 @@ Please have a look at the [article about parallel processing](../cronjobs/create
 If you need to store information about the users and retrieve it at a later request, you can utilize their user session for temporarily saving that information.
 
 ```php
-$session = $this->getContext()->session();
+$session = $this->context()->session();
 $session->set( 'myprefix/myvalue', 'some value' );
 $session->get( 'myprefix/myvalue' );
 ```
@@ -246,7 +246,7 @@ Details about the methods are available in the [session interface](https://githu
 The view object is a powerful way to render HTML for the front-end, XML for exports and content for e-mails. It encapsulates a complete template engine and offers view helpers for the most often used tasks. Depending on the framework or application, additionally to the Aimeos PHP template engine you have Blade in Laravel, Twig in Symfony and Fluid in TYPO3/Flow available.
 
 ```php
-$view = $this->getContext()->view();
+$view = $this->context()->view();
 $view->myvalue = 'some value';
 $content = $view->render( 'path/to/template.php' ); // Aimeos PHP
 $content = $view->render( 'path/to/template.blade.php' ); // Laravel
@@ -268,7 +268,7 @@ Details about the view methods and a list of view helpers is available in the [d
 The account name of the current user/editor or IP address if the user isn't logged in is available via
 
 ```php
-$this->getContext()->editor();
+$this->context()->editor();
 ```
 
 # User ID
@@ -276,7 +276,7 @@ $this->getContext()->editor();
 The ID of the current user/editor is available via
 
 ```php
-$this->getContext()->user();
+$this->context()->user();
 ```
 
 If the user isn't logged in, null is returned instead.
@@ -286,7 +286,7 @@ If the user isn't logged in, null is returned instead.
 The IDs of the groups the current user/editor is in is available via
 
 ```php
-$this->getContext()->groups();
+$this->context()->groups();
 ```
 
 If the user isn't logged in, an empty array is returned instead.

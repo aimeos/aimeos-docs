@@ -22,7 +22,7 @@ $container = \Aimeos\MW\Container\Factory::getContainer( $location, $containerTy
 To retrieve the configured values, use something like this code:
 
 ```php
-$config = $this->getContext()->getConfig();
+$config = $this->context()->getConfig();
 $location = $config->get( '.../location', '<default path>' );
 $containerType = $config->get( '.../type', '<default type>' );
 $containerFormat = $config->get( '.../format', '<default format>' );

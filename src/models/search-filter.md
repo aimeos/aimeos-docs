@@ -176,7 +176,7 @@ This will print all (nested) conditions of the filter that will be used by the m
 Retrieving records in the database is always done in bunches (default: 100 records/search, can be changed using `slice()`) and if you need to process more or all items, you have to repeatedly call `search()` of the manager. The most efficient code for this is:
 
 ```php
-$manager = \Aimeos\MShop::create( $this->getContext(), 'product' );
+$manager = \Aimeos\MShop::create( $this->context(), 'product' );
 $filter = $manager->filter();
 $start = 0;
 

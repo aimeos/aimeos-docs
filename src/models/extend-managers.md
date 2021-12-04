@@ -388,7 +388,7 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
 
     protected function setUp() : void
     {
-        $context = \TestHelperMShop::getContext();
+        $context = \TestHelperMShop::context();
         $this->object = new \Aimeos\MShop\Product\Manager\Standard( $context );
     }
 

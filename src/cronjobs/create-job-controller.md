@@ -56,12 +56,12 @@ class Standard
 {
     public function getName() : string
     {
-        return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Product export' );
+        return $this->context()->getI18n()->dt( 'controller/jobs', 'Product export' );
     }
 
      public function getDescription() : string
     {
-        return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Exports all available products' );
+        return $this->context()->getI18n()->dt( 'controller/jobs', 'Exports all available products' );
     }
 
      public function run()
@@ -93,7 +93,7 @@ Furthermore, you need to extend from the base abstract class *Aimeos\Controller\
 To be able to show a name in the language of the shop owner instead of the key (e.g. "product/export") for your job controller, the `getName()` method should return a string that can be translated. This is done by the `dt()` method of the internationalization/translation object that is part of the context item:
 
 ```php
-return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Product export' );
+return $this->context()->getI18n()->dt( 'controller/jobs', 'Product export' );
 ```
 
 There are several translation domains in the core but for job controllers you always need to use the "controller/jobs" translation domain as shown above. The second parameter of the `dt()` method is the name that should be translated, i.e. the name of your job controller in English.
@@ -103,7 +103,7 @@ There are several translation domains in the core but for job controllers you al
 A more descriptive message about the functionality of your job controller should be returned by the `getDescription()` method. In order to be able to translate it to language of the shop owner, you have to use the `dt()` method of the internationalization/translation object:
 
 ```php
-return $this->getContext()->getI18n()->dt( 'controller/jobs', 'Exports all available products' );
+return $this->context()->getI18n()->dt( 'controller/jobs', 'Exports all available products' );
 ```
 
 The translation domain is also "controller/jobs" like for the name. Descriptions should be short but descriptive enough so people not used to your job controller can understand what it does. Don't make it too long (more than 250 characters are to long for sure) because it depends on the application how the description is shown and there may be not enough space to display long texts.
@@ -113,7 +113,7 @@ The translation domain is also "controller/jobs" like for the name. Descriptions
 All the real work is done by the `run()` method of your job controller. This method performs the tasks that your job controller is implemented for. Normally, it makes use of the Aimeos managers to retrieve, store or delete data in the storage, e.g.
 
 ```php
-$manager = \Aimeos\MShop::create( $this->getContext(), 'product' );
+$manager = \Aimeos\MShop::create( $this->context(), 'product' );
 $filter = $manager->filter()->add( 'product.type.code', '==', 'selection' );
 $result = $manager->search( $filter, ['product', 'text'] );
 ```
@@ -127,7 +127,7 @@ Working code for job controllers of different types can be found in the [control
 You can use views and templates for generating output in job controllers. They are used in the same way as for the HTML clients, for example:
 
 ```php
-$view = $this->getContext()->view();
+$view = $this->context()->view();
 $view->items = [1, 2, 3];
 
 $tplconf = 'controller/jobs/product/export/template-items';
@@ -164,7 +164,7 @@ $fcn = function( \Aimeos\MShop\Context\Item\Iface $context, $data ) {
     echo $data;
 };
 
-$context = $this->getContext()
+$context = $this->context()
 $context->getProcess()
     ->start( $fcn, [$context, 'data1'] )
     ->start( $fcn, [$context, 'data2'] )
@@ -195,7 +195,7 @@ class StandardTest extends \PHPUnit\Framework\TestCase
     {
         \Aimeos\MShop::cache( true );
 
-        $this->context = \TestHelperJobs::getContext();
+        $this->context = \TestHelperJobs::context();
         $this->aimeos = \TestHelperJobs::getAimeos();
 
         $this->object = new \Aimeos\Controller\Jobs\Product\Export\Standard( $this->context, $this->aimeos );

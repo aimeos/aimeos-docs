@@ -18,16 +18,16 @@ use Aimeos\Aimeos\Controller\AbstractController;
 class YourController extends AbstractController
 {
     public function indexAction() {
-        $context = $this->getContext();
+        $context = $this->contex();
     }
 }
 
 // in a scheduler task
-$context = \Aimeos\Aimeos\Scheduler\Base::getContext( $localConfigArray );
+$context = \Aimeos\Aimeos\Scheduler\Base::contex( $localConfigArray );
 
 // anywhere else
 $config = \Aimeos\Aimeos\Base::getConfig( $localConfigArray );
-$context = \Aimeos\Aimeos\Base::getContext( $config );
+$context = \Aimeos\Aimeos\Base::contex( $config );
 ```
 
 In the MVC controller actions, where the required parameters for site, language and currency are available as part of the request, a locale object is added to the context automatically. Everywhere else, you need to retrieve this values from somewhere else, e.g. the configuration. Then, you can use the *bootstrap()* method of the [locale manager](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Locale/Manager/Iface.php) to retrieve the locale item yourself:

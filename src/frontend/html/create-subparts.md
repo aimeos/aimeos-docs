@@ -156,7 +156,7 @@ The implementation for the `getSubClientNames()` helper method is a one-liner to
 ```php
 protected function getSubClientNames() : array
 {
-    return $this->getContext()->getConfig()->get( $this->subPartPath, $this->subPartNames );
+    return $this->context()->getConfig()->get( $this->subPartPath, $this->subPartNames );
 }
 ```
 
@@ -264,7 +264,7 @@ In the template file, the marker is prefixed by `<!-- ` and postfixed by ` -->` 
 
 Subpart that actively modify data, it's required to do that only once per request and before the `body()` or `header()` methods are called. For this case, a `init()` method can be used to e.g. add something to the basket or recalculate an existing value.
 
-It doesn't need any parameter but the view is available via `$this->view()` including all parameters. Also, you can get the context by calling `$this->getContext()`.
+It doesn't need any parameter but the view is available via `$this->view()` including all parameters. Also, you can get the context by calling `$this->context()`.
 
 ```php
 public function init()
