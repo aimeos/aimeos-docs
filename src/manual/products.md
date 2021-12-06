@@ -38,6 +38,13 @@ Event products are similar to articles, but they have a start and end date assig
 Contrary to regular products, events are shown in the frontend catalog lists even if their start date is in the future. When their end date is reached, they won't be shown any more.
 
 
+## Group products
+
+If you like to group some articles together and display them in one detail page, groups products are the solution. They are similar to selection products but contrary to them, customers can also add more than one article to the basket at once. In the backend, group products are added in the same way as selections:
+
+![Group products](Admin-product-group.png)
+
+
 ## Selections
 
 If you have several variations of a single product that differ by the unique code and in the values of the associated attributes and you want to show them only once in the product lists, then you should use a product of type "Selection". It's an alternative to adding all attributes to one product which can only have one code/SKU and store the selected attributes in the order.
@@ -75,7 +82,6 @@ To each jeans article, you have to associate the combination of attributes that 
 After saving the selection product, you will find the articles that belongs to the selection produt in the product list as well. You can also open the product details for each article directly if you click on the eye symbol in the variants tab.
 
 Each selection article can have own prices and images like any other product. They will be shown/used if a customer selects the variant attributes that identify the article.
-
 
 ## Vouchers
 
