@@ -183,6 +183,7 @@ nav:
     - Database: infrastructure/databases.md
     - Migrations: infrastructure/schema-migrations.md
     - DI container: infrastructure/context.md
+    - Filesystems: infrastructure/filesystem.md
     - Read/write files: infrastructure/read-write-files.md
     - View and helpers: infrastructure/view-helpers.md
   - Configuration:
