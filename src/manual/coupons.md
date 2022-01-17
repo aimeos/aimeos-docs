@@ -46,6 +46,12 @@ percentrebate.productcode (required)
 percentrebate.rebate (required)
 : Rebate value in the percent that should be granted if customers enter a valid rebate code. The format of the value must be "x.xx" but the decimal point and two digits afterwards are optional. The value must not include a thousand separator or anything similar nor the percent symbol!
 
+percentrebate.precision (optional)
+: Number of decimal digits to round to. By default, the rebate is rounded to two decimal digits which results in "x.xx" rebate values like "1.75". If you change the setting to e.g. "1", than the rebate values will have only one decimal digit like "1.8". The last decimal digit is rounded down if it's "1" to "4" or up if it's "5" to "9" and thus, "1.75" is rounded up to "1.8". Using a value of "0" will result in rebate values with no decimal digits.
+
+percentrebate.roundvalue (optional)
+: Value to round the rebate up/down. If you set the option to "0.05" the rebate value is rounded to multiple of "0.05". Thus, all rebate values will be e.g. "1.70", "1.75" or "1.80" but not "1.71" or "1.78". A value of "0" disables rounding the values and only *percentrebate.precision* is applied.
+
 ## Present
 
 Adds a [reduction product](products.md#Default-articles) to the basket of the customer. This is very much like a normal product but isn't associated to a category like rebate products so it can't be added by customers directly. Of course, you can also use a product that's available for all customers but in this case it doesn't make sense to enter a coupon code for the customers.
