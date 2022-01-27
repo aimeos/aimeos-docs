@@ -16,10 +16,10 @@ All standard templates are stored in the [admin/jqadm/templates/](https://github
 The naming schema matches the hierarchy of the panels and their subparts, which is also reflected by the corresponding classes in the `src/` directory. Examples for this naming are:
 
 ```
-product/list-standard.php
-product/item-standard.php
-product/item-text-standard.php
-product/item-characteristics-property-standard.php
+product/list.php
+product/item.php
+product/item-text.php
+product/item-characteristics-property.php
 ```
 
 Own extensions that contain template files in the `admin/jqadm/templates/` directory which are named the same as the existing ones are used first. If no template files are found in own extensions, then the default ones from the ai-admin-jqadm extension are used.
@@ -37,13 +37,13 @@ Admin/JQAdm/Product/Characteristics/Property/Standard
 The JQAdm clients use these templates and assign:
 
 * Admin/JQAdm/Product/Standard
-    * template: product/item-standard.php
+    * template: product/item.php
     * assigns: itemData, etc.
 * Admin/JQAdm/Product/Text/Standard
-    * template: product/item-text-standard.php
+    * template: product/item-text.php
     * assigns: textData, etc.
 * Admin/JQAdm/Product/Characteristics/Property/Standard
-    * template: product/item-characteristics-property-standard.php
+    * template: product/item-characteristics-property.php
     * assigns: propertyData, propertyTypes, etc.
 
 In the template of the *Admin/JQAdm/Product/Characteristics/Property/Standard* JQAdm client, you have now access to *propertyData*, *propertyTypes* assigned by the own JQAdm class and *itemData* from the product JQAdm class. Take a look at the JQAdm classes to find out, which data they assign.

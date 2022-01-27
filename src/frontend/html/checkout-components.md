@@ -122,7 +122,7 @@ Address, delivery and payment on one page
 Full one page checkout including all steps
 : This is the real all in one checkout where customers have every information on one page. It's best suited if you need to display only a limited amount of information or show/hide the parts where users have to enter their data dynamically. To be legally on the safe side, your total order amount must not change any more as soon as this page is displayed. This means that shipping costs are fixed and no payment costs can be charged. Additionally, all drawbacks of the last option applies as well.
 
-When using a full one page checkout, you can limit the sections shown in the summary subpart as well. The blocks for the addresses and delivery/payment options are useless in this setup and should be removed from the [checkout summary template](https://github.com/aimeos/ai-client-html/blob/master/client/html/templates/checkout/summary-body-standard.php).
+When using a full one page checkout, you can limit the sections shown in the summary subpart as well. The blocks for the addresses and delivery/payment options are useless in this setup and should be removed from the [checkout summary template](https://github.com/aimeos/ai-client-html/blob/master/client/html/templates/checkout/summary-body.php).
 
 If only one shipping method is available, you can also hide it in the one page checkout but you shouldn't remove it. As long as it's part of the order, backend systems can work with that data. Instead, make it invisible by using CSS.
 

@@ -17,7 +17,7 @@ The naming of the template files in the directory structure is:
 The naming schema matches the hierarchy of the components and their subparts, which is also reflected by the corresponding classes in the `src/` directory. Examples for this naming are:
 
 ```
-catalog/detail/header-standard.php
+catalog/detail/header.php
 catalog/detail/service-body-mine.php
 ```
 
@@ -46,13 +46,13 @@ Client/Html/Checkout/Standard/Address/Billing/Standard
 The HTML clients use these templates and assign:
 
 * Client/Html/Checkout/Standard/Standard
-    * template: checkout/body-standard.php
+    * template: checkout/body.php
     * assigns: standardSteps, etc.
 * Client/Html/Checkout/Standard/Address/Standard
-    * template: checkout/address-body-standard.php
+    * template: checkout/address-body.php
     * assigns: addressCustomerItem, addressPaymentItem, etc.
 * Client/Html/Checkout/Standard/Address/Billing/Standard
-    * template: checkout/address-billing-body-standard.php
+    * template: checkout/address-billing-body.php
     * assigns: billingMandatory, billingOptional, etc.
 
 In the template of the *Client\Html\Checkout\Standard\Address\Billing\Standard* HTML client, you have now access to *standardSteps*, *addressCustomerItem*, *addressPaymentItem*, *billingMandatory*, *billingOptional*. Take a look at the templates and the HTML clients to find out, which data they assign.

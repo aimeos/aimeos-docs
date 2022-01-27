@@ -160,7 +160,7 @@ public function body( string $uid = '' ) : string
     }
 
     $tplconf = 'client/html/catalog/detail/template-body';
-    $default = 'catalog/detail/body-standard';
+    $default = 'catalog/detail/body';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }

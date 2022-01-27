@@ -1,6 +1,6 @@
 # List template
 
-The list template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/list-standard.php` and consists of the
+The list template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/list.php` and consists of the
 
 * navigation bar including the global search
 * top and bottom pagination
@@ -29,7 +29,7 @@ You can use this base template for your own one but you must replace "Mypanel" a
         </span>
 
         <?= $this->partial(
-            $this->config( 'admin/jqadm/partial/navsearch', 'common/partials/navsearch-standard' ), [
+            $this->config( 'admin/jqadm/partial/navsearch', 'common/partials/navsearch' ), [
                 'filter' => $this->session( 'aimeos/admin/jqadm/mypanel/filter', [] ),
                 'filterAttributes' => $this->get( 'filterAttributes', [] ),
                 'filterOperators' => $this->get( 'filterOperators', [] ),
@@ -39,7 +39,7 @@ You can use this base template for your own one but you must replace "Mypanel" a
     </nav>
 
     <?= $this->partial(
-            $this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination-standard' ),
+            $this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination' ),
             ['pageParams' => $params, 'pos' => 'top', 'total' => $this->get( 'total' ),
             'page' =>$this->session( 'aimeos/admin/jqadm/mypanel/page', [] )]
         );
@@ -62,7 +62,7 @@ You can use this base template for your own one but you must replace "Mypanel" a
     </form>
 
     <?= $this->partial(
-            $this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination-standard' ),
+            $this->config( 'admin/jqadm/partial/pagination', 'common/partials/pagination' ),
             ['pageParams' => $params, 'pos' => 'bottom', 'total' => $this->get( 'total' ),
             'page' => $this->session( 'aimeos/admin/jqadm/mypanel/page', [] )]
         );
@@ -70,7 +70,7 @@ You can use this base template for your own one but you must replace "Mypanel" a
 
 </div>
 <?php $this->block()->stop(); ?>
-<?= $this->render( $this->config( 'admin/jqadm/template/page', 'common/page-standard' ) ); ?>
+<?= $this->render( $this->config( 'admin/jqadm/template/page', 'common/page' ) ); ?>
 ```
 
 There are a few things to keep care of:
@@ -141,7 +141,7 @@ Use this partial as example, insert it instead of the `<!-- table header -->` ma
         </th>
 
         <?= $this->partial(
-                $this->config( 'admin/jqadm/partial/listhead', 'common/partials/listhead-standard' ),
+                $this->config( 'admin/jqadm/partial/listhead', 'common/partials/listhead' ),
                 ['fields' => $fields, 'params' => $params, 'data' => $columnList,
                 'sort' => $this->session( 'aimeos/admin/jqadm/mypanel/sort', 'mypanel.id' )]
             );
@@ -175,7 +175,7 @@ Use this partial as example, insert it instead of the `<!-- table header -->` ma
             </div>
 
             <?= $this->partial(
-                    $this->config( 'admin/jqadm/partial/columns', 'common/partials/columns-standard' ),
+                    $this->config( 'admin/jqadm/partial/columns', 'common/partials/columns' ),
                     ['fields' => $fields, 'data' => $columnList]
                 );
             ?>
@@ -230,7 +230,7 @@ You can adapt this partial to your needs, insert it instead of the `<!-- table b
 ?>
 <tbody>
     <?= $this->partial(
-        $this->config( 'admin/jqadm/partial/listsearch', 'common/partials/listsearch-standard' ), [
+        $this->config( 'admin/jqadm/partial/listsearch', 'common/partials/listsearch' ), [
             'fields' => array_merge( $fields, ['select'] ),
             'filter' => $this->session( 'aimeos/admin/jqadm/mypanel/filter', [] ),
             'data' => [
@@ -340,7 +340,7 @@ actions
 
 # Detail template
 
-The details template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/item-standard.php` and consists of the:
+The details template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/item.php` and consists of the:
 
 * navigation bar including Save/Cancel buttons
 * left sidebar with sub-panels
@@ -387,7 +387,7 @@ Use this as base template for your own one and replace "Mypanel" and "mypanel" w
             </span>
         </h1>
         <div class="item-actions">
-            <?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions-standard' ), ['params' => $params] ); ?>
+            <?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions' ), ['params' => $params] ); ?>
         </div>
     </nav>
     <div class="row item-container">
@@ -403,12 +403,12 @@ Use this as base template for your own one and replace "Mypanel" and "mypanel" w
             <?= $this->get( 'itemBody' ); ?>
         </div>
         <div class="item-actions">
-            <?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions-standard' ), ['params' => $params] ); ?>
+            <?= $this->partial( $this->config( 'admin/jqadm/partial/itemactions', 'common/partials/itemactions' ), ['params' => $params] ); ?>
         </div>
     </div>
 </form>
 <?php $this->block()->stop(); ?>
-<?= $this->render( $this->config( 'admin/jqadm/template/page', 'common/page-standard' ) ); ?>
+<?= $this->render( $this->config( 'admin/jqadm/template/page', 'common/page' ) ); ?>
 ```
 
 Notes for the detail template:
@@ -599,9 +599,9 @@ There are also [Vue.js components](https://github.com/aimeos/ai-admin-jqadm/blob
 
 Furthermore, the JQAdm code contains complete components for manging:
 
-* [addresses](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/customer/item-address-standard.php)
-* [images/media](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-media-standard.php)
-* [prices](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-price-standard.php)
-* [texts](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-text-standard.php)
+* [addresses](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/customer/item-address.php)
+* [images/media](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-media.php)
+* [prices](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-price.php)
+* [texts](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-text.php)
 
 They consist of [Vue.js code](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/themes/admin-aux.js) and HTML inline templates.

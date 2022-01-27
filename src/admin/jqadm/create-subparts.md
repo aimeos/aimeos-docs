@@ -91,7 +91,7 @@ public function copy() : ?string
     $view->mysubpanelBody = parent::copy();
 
     $tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
-    $default = 'mypanel/item-mysubpanel-standard';
+    $default = 'mypanel/item-mysubpanel';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }
@@ -120,7 +120,7 @@ public function create() : ?string
     $view->mysubpanelBody = parent::copy();
 
     $tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
-    $default = 'mypanel/item-mysubpanel-standard';
+    $default = 'mypanel/item-mysubpanel';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }
@@ -182,7 +182,7 @@ public function get() : ?string
     $view->mysubpanelBody = parent::get();
 
     $tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
-    $default = 'mypanel/item-mysubpanel-standard';
+    $default = 'mypanel/item-mysubpanel';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }

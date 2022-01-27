@@ -164,7 +164,7 @@ public function copy() : ?string
     }
 
     $tplconf = 'admin/jqadm/mypanel/template-item';
-    $default = 'mypanel/item-standard';
+    $default = 'mypanel/item';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }
@@ -211,7 +211,7 @@ public function create() : ?string
     }
 
     $tplconf = 'admin/jqadm/mypanel/template-item';
-    $default = 'mypanel/item-standard';
+    $default = 'mypanel/item';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }
@@ -352,7 +352,7 @@ public function get() : ?string
     }
 
     $tplconf = 'admin/jqadm/mypanel/template-item';
-    $default = 'mypanel/item-standard';
+    $default = 'mypanel/item';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }
@@ -452,7 +452,7 @@ public function search() : ?string
     }
 
     $tplconf = 'admin/jqadm/mypanel/template-list';
-    $default = 'mypanel/list-standard';
+    $default = 'mypanel/list';
 
     return $view->render( $view->config( $tplconf, $default ) );
 }
