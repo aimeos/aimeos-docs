@@ -4,10 +4,10 @@
 Display the "add to basket" button for each product item
 
 ```
-client/html/catalog/lists/basket-add = 
+client/html/catalog/lists/basket-add =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to display the button, false to hide it
 * Since: 2016.01
 
@@ -57,10 +57,10 @@ See also:
 The default category ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/catid-default = 
+client/html/catalog/lists/catid-default =
 ```
 
-* Default: 
+* Default:
 * Type: array|string - Category ID or IDs
 * Since: 2014.03
 
@@ -260,10 +260,10 @@ and texts of that type to some or all categories.
 Enables infinite scrolling in product catalog list
 
 ```
-client/html/catalog/lists/infinite-scroll = 
+client/html/catalog/lists/infinite-scroll =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to use infinite scrolling, false to disable it
 * Since: 2019.10
 
@@ -277,10 +277,10 @@ and added to the product list when the user reaches the list bottom.
 Excludes decorators added by the "common" option from the catalog list items html client
 
 ```
-client/html/catalog/lists/items/decorators/excludes = 
+client/html/catalog/lists/items/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -474,8 +474,7 @@ client/html/catalog/lists/items/template-body-list = catalog/lists/items-body-li
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
+the types are a-z and 0-9) The catalog list type subpart
 contains the template for switching between list types.
 
 See also:
@@ -527,8 +526,7 @@ client/html/catalog/lists/items/template-header-list = catalog/lists/items-heade
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
+the types are a-z and 0-9). The catalog list type subpart
 contains the template for switching between list types.
 
 See also:
@@ -717,10 +715,10 @@ if necessary.
 Excludes decorators added by the "common" option from the catalog list promo html client
 
 ```
-client/html/catalog/lists/promo/decorators/excludes = 
+client/html/catalog/lists/promo/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -752,10 +750,10 @@ See also:
 Adds a list of globally available decorators only to the catalog list promo html client
 
 ```
-client/html/catalog/lists/promo/decorators/global = 
+client/html/catalog/lists/promo/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -785,10 +783,10 @@ See also:
 Adds a list of local decorators only to the catalog list promo html client
 
 ```
-client/html/catalog/lists/promo/decorators/local = 
+client/html/catalog/lists/promo/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -818,10 +816,10 @@ See also:
 Name of the promotion part used by the catalog list client implementation
 
 ```
-client/html/catalog/lists/promo/name = 
+client/html/catalog/lists/promo/name =
 ```
 
-* Default: 
+* Default:
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -1121,10 +1119,10 @@ design.
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/supid-default = 
+client/html/catalog/lists/supid-default =
 ```
 
-* Default: 
+* Default:
 * Type: array|string - Supplier ID or IDs
 * Since: 2021.01
 
@@ -1324,10 +1322,10 @@ client/html/catalog/lists/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/lists/url/target = 
+client/html/catalog/lists/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 
