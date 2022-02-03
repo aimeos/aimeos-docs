@@ -928,8 +928,7 @@ client/html/catalog/lists/promo/template-body-list = catalog/lists/promo-body-li
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
+the types are a-z and 0-9). The catalog list type subpart
 contains the template for switching between list types.
 
 See also:
@@ -972,8 +971,7 @@ client/html/catalog/lists/promo/template-header-list = catalog/lists/promo-heade
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
+the types are a-z and 0-9). The catalog list type subpart
 contains the template for switching between list types.
 
 See also:
@@ -1175,8 +1173,7 @@ client/html/catalog/lists/template-body-list = catalog/lists/body-list.php
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
+the types are a-z and 0-9). The catalog list type subpart
 contains the template for switching between list types.
 
 See also:
@@ -1219,8 +1216,7 @@ client/html/catalog/lists/template-header-list = catalog/lists/header-list.php
 
 The argument is the relative path to the new template file. The type of
 the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9), which is also stored in the session so users
-will keep the view during their visit. The catalog list type subpart
+the types are a-z and 0-9). The catalog list type subpart
 contains the template for switching between list types.
 
 See also:
