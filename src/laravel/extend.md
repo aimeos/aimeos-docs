@@ -414,10 +414,37 @@ The "mycomponent" and "mypart" names must be replaced by the name of your Aimeos
 
 Aimeos and the Aimeos Laravel package are very powerful but there are numerous features that are only available through additional extensions. Often, your project also requires special features that makes it different from other web sites built with Aimeos.
 
-But changing or extending the Aimeos Laravel package itself is a bad idea because you will then lose the ability to update that extension. To solve this, the Aimeos Laravel package allows you to integrate additional Aimeos extensions. Simply place your additional extensions in the `./ext/` directory of your Laravel application.
+But changing or extending the Aimeos Laravel package itself is a bad idea because you will then lose the ability to update that extension. To solve this, the Aimeos Laravel package allows you to integrate additional Aimeos extensions.
 
 !!! tip
     You can easily create a new Aimeos extension by using the [extension generator](https://aimeos.org/extensions).
+
+Simply place your additional extensions in the `./packages/` directory of your Laravel application.
+
+* Create the directory for your extension by executing e.g. `mkdir -p packages/myextname`
+* Unzip the downloaded .zip extension package into that directory
+* The name entered during extension generation must be the same as the directory name
+
+Furthermore, you have to add a *repositories* section to the `composer.json` of your Laravel application which must contain these lines:
+
+```json
+    "repositories": [{
+        "type": "composer",
+        "url": "https://packages.aimeos.org/aimeoscom"
+    }, {
+        "type": "path",
+        "url": "packages/*"
+    }],
+```
+
+Finally, install your extension using:
+
+```
+composer req example/myextname
+```
+
+!!! tip
+    You should change the vendor name in the composer.json to your organization name.
 
 ## Use the Aimeos objects
 

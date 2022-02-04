@@ -410,6 +410,6 @@ To test your extension, you have to
 * checkout the [Aimeos core](https://github.com/aimeos/aimeos-core) in a separate directory
 * run **composer update** to install the required dependencies
 * configure your database in `./config/resources.php`
-* store your new extension in the `./ext/` sub-directory e.g. as `./ext/me-myproject/`
+* store your new extension in the `./ext/` sub-directory e.g. as `./ext/my-myproject/`
 * execute **./vendor/bin/phing setup** to create the tables and add the unittest data
 * execute **./vendor/bin/phing -Ddir=ext/me-myproject testext** to run your tests

@@ -5,44 +5,42 @@ Extensions are an easy way to add new features, change existing ones or manage c
 
 # Location
 
-Your new extension can be either placed into the `./ext` directory if your application or when installed via composer, it will be placed into the `./vendor/` directory. The easiest way is to create the `./ext/` folder and place your extension there if you are working with either Laravel or Symfony.
-
-CMS applications like TYPO3 require the Aimeos extension to be part of an application specific extension. The [Aimeos extension builder](https://aimeos.org/extensions) can create both at the same time, packaged together in one .zip file. The Aimeos extension is then placed in the appropriate sub-directory like `./Resources/Private/Extensions/` for TYPO3.
+Your new extension should be installed via composer and they will be added to the `./vendor/` directory by composer. CMS applications like TYPO3 require the Aimeos extension to be part of an application specific extension. The [Aimeos extension builder](https://aimeos.org/extensions) can create both at the same time, packaged together in one .zip file. The Aimeos extension is then placed in the appropriate sub-directory like `./Resources/Private/Extensions/` for TYPO3.
 
 !!! tip
     Create only one extension for your project and add all code that modifies and extends Aimeos to that project specific extension. The main advantage to this approach is that you will only have one place to look. It will also keep the response times low because less directories have to be looked at for templates, configuration settings, and translations.
 
-The extension files and directories have to be placed in a sub-directory of the Aimeos extension directory ( e.g. `./ext/myextname/`).  This applies to the generated .zip file too, which must be unpacked in your newly created sub-directory.
+For local only composer installations, you can add your theme package into the `./packages/` directory of your Laravel application.
 
-You can use your extension immediately to overwrite existing template with your own version. If you want to add classes to your extension adding new features, make sure they will be found by composer. If you add your Aimeos extension to an own repository and add that repository to your composer.json file, you are on the save side because composer automatically configures its class loader correctly.
+* Create the directory for your theme by executing e.g. `mkdir -p packages/myextension`
+* Unzip the downloaded .zip theme package into that directory
+* The name entered during extension generation must be the same as the directory name
 
-If you only copy your new Aimeos extension to the `./ext/` directory, your classes won't be found by composer. To make them known to composer, you need to add the directories to the composer.json autoload section:
+Furthermore, you have to add a *repositories* section to the `composer.json` of your Laravel application which must contain these lines:
 
-```php
-    "autoload": {
-        "classmap": [
-            "ext/<yourext>/lib/custom/src",
-            "ext/<yourext>/controller/common/src",
-            "ext/<yourext>/controller/frontend/src",
-            "ext/<yourext>/controller/jobs/src",
-            "ext/<yourext>/client/html/src",
-            "ext/<yourext>/client/jsonapi/src",
-            "ext/<yourext>/admin/html/src",
-            "ext/<yourext>/admin/jsonadm/src"
-        ]
-    },
+```json
+    "repositories": [{
+        "type": "composer",
+        "url": "https://packages.aimeos.org/aimeoscom"
+    }, {
+        "type": "path",
+        "url": "packages/*"
+    }],
 ```
 
-Afterwards, you have to run
+Finally, install your theme using:
+
+```
+composer req aimeos-extensions/<myextension>
+```
+
+You can use your extension immediately to overwrite existing template with your own version. If you want to add classes to your extension adding new features, make sure they will be found by composer. It may be necessary to run:
 
 ```bash
 composer dump-autoload
 ```
 
-to update the composer class map file for the autoloader.
-
-!!! warning
-    In case you forget to add the directories of your Aimeos extension to the composer.json of your application, you will get **class not found** errors!
+to update the composer autoloader.
 
 # Structure
 

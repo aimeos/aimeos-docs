@@ -6,7 +6,37 @@ Since 2020.10, there's a simple way to create new themes, install and configure 
 
 # Create extension
 
-To create a portable theme, you should generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Copy it to the `./ext/` directory of your application and you should also put that extension under version control, e.g. by adding it to a Git repository.
+To create a portable theme, you should generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Choose **Aimeos YYYY.x extension** suitable for your installed Aimeos version.
+
+Installation must be done via composer as this ensures that everything works out of the box for everyone automatically. This requires that you distribute your theme package via one of the [repository types supported by composer](https://getcomposer.org/doc/05-repositories.md). Then, you or your users just need to execute:
+
+```
+composer req aimeos-extensions/<mytheme>
+```
+
+For local installations only, you can add your theme package into the `./packages/` directory of your Laravel application.
+
+* Create the directory for your theme by executing e.g. `mkdir -p packages/mytheme`
+* Unzip the downloaded .zip theme package into that directory
+* The name entered during extension generation must be the same as the directory name
+
+Furthermore, you have to add a *repositories* section to the `composer.json` of your Laravel application which must contain these lines:
+
+```json
+    "repositories": [{
+        "type": "composer",
+        "url": "https://packages.aimeos.org/aimeoscom"
+    }, {
+        "type": "path",
+        "url": "packages/*"
+    }],
+```
+
+Finally, install your theme using:
+
+```
+composer req aimeos-extensions/<mytheme>
+```
 
 # Custom templates
 
@@ -31,11 +61,8 @@ cp -r ./client/html/themes/default/ ./client/html/themes/mytheme/
 
 How to deploy your files depends on your host application:
 
-Laravel
-: Run `composer up` or execute `cp -r ext/<themename>/client/html/themes/<themename> public/vendor/shop/themes/`
-
-Symfony
-: Run `composer up` or execute `cp -r ext/<themename>/client/html/themes/<themename> Resources/public/themes/`
+Laravel and Symfony
+: Run `composer up`
 
 TYPO3
 : Adapt the TypoScript constants offered by the Aimeos extension in the "Template" panel of the navigation bar
@@ -55,12 +82,12 @@ The simplest way is to copy the files from the default ["default" Aimeos theme](
 
 The CSS class names used in the templates are semantic, so you can add CSS styles for the shop components only. To learn more about semantic naming, please read the article about [theme basics](theme-basics.md#cascading-style-sheets).
 
-You can also add icons you need for your theme to the `./client/html/themes/<themename>/media/` directory and reference them in the CSS using:
+You can also add icons you need for your theme to the `./client/html/themes/<themename>/assets/` directory and reference them in the CSS using:
 
 ```css
-url(media/icon.png)
+url(assets/icon.png)
 ```
 
 ## Custom Javascript
 
-By default, there are two standard JS files included in the theme directories: *aimeos.js* and *aimeos-detail.js* (catalog detail page only). Both are offered by the Aimeos ai-client-html extension and are located in `./ext/ai-client-html/client/html/themes/default` of your installation. They contain the JS code for all dynamic features, which is described in the [theme basics article](theme-basics.md#javacript).
+By default, there are two standard JS files included in the theme directories: *aimeos.js* and *aimeos-detail.js* (catalog detail page only). Both are offered by the Aimeos ai-client-html extension and are located in `./vendor/aimeos/ai-client-html/client/html/themes/default` of your installation. They contain the JS code for all dynamic features, which is described in the [theme basics article](theme-basics.md#javacript).
