@@ -8,8 +8,6 @@ To create a distributable theme, you must generate an extension for your theme f
 
 # Installation
 
-## Composer installation
-
 To create a portable theme, you should generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Choose **Laravel theme YYYY.x extension** suitable for your installed Aimeos version.
 
 Installation must be done via composer as this ensures that everything works out of the box for everyone automatically. This requires that you distribute your theme package via one of the [repository types supported by composer](https://getcomposer.org/doc/05-repositories.md). Then, you or your users just need to execute:
