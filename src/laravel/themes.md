@@ -10,33 +10,33 @@ To create a distributable theme, you must generate an extension for your theme f
 
 ## Composer installation
 
-Installation via composer should be the preferred method as this ensures that everything works out of the box for everyone automatically. This requires that you distribute your theme package via one of the [repository types supported by composer](https://getcomposer.org/doc/05-repositories.md). Then, only change the package name in the `composer.json` and you or your users only need to run:
+To create a portable theme, you should generate an extension for your theme first using the [Aimeos extension generator](https://aimeos.org/extensions). Choose **Laravel theme YYYY.x extension** suitable for your installed Aimeos version.
+
+Installation must be done via composer as this ensures that everything works out of the box for everyone automatically. This requires that you distribute your theme package via one of the [repository types supported by composer](https://getcomposer.org/doc/05-repositories.md). Then, you or your users just need to execute:
 
 ```
-composer req <vendor>/<mytheme>
+composer req aimeos-themes/<mytheme>
 ```
-
-The name `<vendor>/<mytheme>` must be replaced with the name from the composer.json file of your theme package.
-
-## Manual installation
 
 For local installations only, you can add your theme package into the `./packages/` directory of your Laravel application.
 
 * Create the directory for your theme by executing e.g. `mkdir -p packages/mytheme`
 * Unzip the downloaded .zip theme package into that directory
+* The name entered during extension generation must be the same as the directory name
 
-Furthermore, you have to add a *repositories* section to the `composer.json` of your Laravel application which must contain these lines (replace "mytheme" with the name of your theme):
+Furthermore, you have to add a *repositories* section to the `composer.json` of your Laravel application which must contain these lines:
 
 ```json
-    "repositories": {
-        "mytheme": {
-            "type": "path",
-            "url": "packages/mytheme"
-        }
-    },
+    "repositories": [{
+        "type": "composer",
+        "url": "https://packages.aimeos.org/aimeoscom"
+    }, {
+        "type": "path",
+        "url": "packages/*"
+    }],
 ```
 
-Finally, set up your theme using:
+Finally, install your theme using:
 
 ```
 composer req aimeos-themes/<mytheme>
@@ -48,7 +48,7 @@ For Laravel, the Aimeos package includes structural templates for each page whic
 
 The `base.blade.php` template file is used by most templates and references the CSS and JS files of the theme. The `./catalog/list.blade.php` template uses the base template via `@extends('...')` and adds the output of the configured components to the sections defined in the `base.blade.php` layout template.
 
-If you want change the structure and use a one column layout for your list page, you must adapt the `./ext/<extname>/views/catalog/list.blade.php` file of your *Laravel theme YYYY.x extension* you've created and change the `aimeos_nav` and `aimeos_body` sections like in this example:
+If you want change the structure and use a one column layout for your list page, you must adapt the `./packages/<extname>/views/catalog/list.blade.php` file of your *Laravel theme YYYY.x extension* you've created and change the `aimeos_nav` and `aimeos_body` sections like in this example:
 
 ```blade
 @section('aimeos_nav')
@@ -73,6 +73,6 @@ Most often, you don't need to change the structure of the HTML templates because
 
 The files located in the `client/html/themes/<mytheme>` directory of your Aimeos theme extension for Laravel are distributed within the package but are not used. Instead, the will be automatically copied to the `./public/vendor/shop/<mytheme>` directory of your Laravel application by the last `composer` command.
 
-For development, you will change the files in the `./public/vendor/shop/<mytheme>` directory but for distributing them, you have to add them to the `./ext/<mytheme>/client/html/themes/<mytheme>` again and push their changes into the package repository.
+For development, you will change the files in the `./public/vendor/shop/<mytheme>` directory but for distributing them, you have to add them to the `./packages/<mytheme>/client/html/themes/<mytheme>` again and push their changes into the package repository.
 
 For more information about how to adapt the CSS and JS theme files, please read the article for [creating themes](../frontend/html/create-themes.md).

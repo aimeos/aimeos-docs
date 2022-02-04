@@ -19,7 +19,7 @@ Using Gettext, you can also create country specific translation files, e.g. "de_
 ## Replace translations
 
 To replace existing Aimeos core translations in your own extension, you need to follow these steps:
-1. Copy the existing .po file (e.g. de.po) to the same directory as in the core extensions, e.g. from "./ext/ai-client-html/client/i18n/de.po" to "./ext/myextname/client/i18n/de.po"
+1. Copy the existing .po file (e.g. de.po) to the same directory as in the core extensions, e.g. from "./vendor/aimeos/ai-client-html/client/i18n/de.po" to "./packages/myextname/client/i18n/de.po"
 2. Change the translations you want to replace
 3. Remove the strings/translations that should stay the same
 4. Execute in the directory of the .po file: `msgfmt --statistics -c -o de de.po`
