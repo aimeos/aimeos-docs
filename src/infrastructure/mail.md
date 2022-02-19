@@ -17,7 +17,7 @@ $context->mail()->create()
 	->subject( 'Order export' )
 	->text( 'Order export from ' . date( 'Y-m-d' ) )
 	->html( '<div>Order export from <b>' . date( 'Y-m-d' ) . '</b> </div>' )
-	->attach( "id,product,price\ni,test,1.99", 'text/csv', 'orders.csv' )
+	->attach( "id,product,price\n1,test,1.99", 'orders.csv', 'text/csv' )
 	->header( 'X-MailGenerator', 'Aimeos' )
 	->send();
 ```
@@ -61,8 +61,8 @@ Here you can see how those e-mail addresses are added to the message:
 
 ```php
 $msg->to( 'me@example.com' )->from( 'aimeos@example.com', 'Aimeos' );
-$msg->cc( 'someone@example.com' )->bcc( 'hidden@example.com' );
-$msg->replyTo( 'notme@example.com' );
+$msg->cc( 'someone@example.com' )->bcc( ['hidden@example.com'] );
+$msg->replyTo( 'notme@example.com', 'No reply' );
 ```
 
 You can pass a name as second parameter to each of the methods and it will be shown in the e-mail program (with the exception of `bcc()`). It's also possible to add several e-mail addresses by calling each method more than once:
@@ -113,15 +113,19 @@ The path must be relative to the template directories defined in the `manifest.p
 To attach a file to the e-mail, use the `attach()` method:
 
 ```php
-$msg->attach( $content, 'text/csv', 'orders.csv' );
+$msg->attach( $content );
+$msg->attach( $content, 'orders.csv' );
+$msg->attach( $content, 'orders.csv', 'text/csv' );
 ```
 
-Besides the content you want to attach, you have to pass the mime type of the content as second and the name of the file as third parameter. The last two parameters helps the e-mail client of the recipient to open or save the file.
+Besides the content you want to attach, you have to pass name of the file as second and the the mime type of the content as third parameter. The last two parameters helps the e-mail client of the recipient to open or save the file.
 
 In case you want to add an image to the e-mail that is shown in the rendered HTML view, you have to use `embed()` instead:
 
 ```html
-<img src="<?= $msg->embed( $content, 'image/png', 'logo.png' ) ?>" />
+<img src="<?= $msg->embed( $content, 'logo.png', 'image/png' ) ?>" />
+<img src="<?= $msg->embed( $content, 'logo.png' ) ?>" />
+<img src="<?= $msg->embed( $content ) ?>" />
 ```
 
 The method returns a content ID that must be added to the `src` attribute of the `img` tag.
