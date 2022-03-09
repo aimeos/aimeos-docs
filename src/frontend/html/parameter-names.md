@@ -65,14 +65,8 @@ b_attrconfid
 b_attrcustid
 : Associative list of IDs and values for the custom attributes
 
-b_siteid
-: Site ID which should be stored with the product in the basket
-
 b_stocktype
 : Stock type (warehouse code) the product should be sent from
-
-b_supplier
-: ID of the supplier the product is is available from
 
 b_position
 : Position of the product within the basket. This is required for "delete" and "edit" actions
@@ -97,8 +91,6 @@ b_prod[0][attrconfid][qty][]: 2
 b_prod[0][attrconfid][id][]: 18
 b_prod[0][attrcustid][36]: sometext
 b_prod[0][stocktype]: default
-b_prod[0][supplier]: 123
-b_prod[0][siteid]: 1.
 b_prod[1][prodid]: 23
 b_prod[1] ...
 ```
