@@ -137,10 +137,10 @@ This will generate a string of `/path/to/100width.jpg 100w, /path/to/300width.jp
 
 # link
 
-Generates an URL for the `url` configuration key, parameters and anchor fragments.
+Generates an URL for the `url` configuration key, parameters, additional configuration and trailing fragments.
 
 ```php
-<?= $this->link( 'client/html/catalog/detail/url', ['d_prodid' => 1], ['image', '2'] ) ?>
+<?= $this->link( 'client/html/catalog/detail/url', ['d_prodid' => 1], ['absoluteUri' => 1] ['image', '2'] ) ?>
 ```
 
 The first argument is the common prefix for:
