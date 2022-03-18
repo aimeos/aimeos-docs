@@ -210,7 +210,17 @@ A definition is always identified by an unique key which is identical to its **c
 
 The value for **internalcode** can be the name that is expected by the external service if you have to post the value directly to the gateway. Otherwise, it should be the same as the value for "code".
 
-**Label** is just an arbitrary name to know what the option is for. It can be displayed by the administration interface to the editors to explain what they have to enter.
+**Label** is just an arbitrary name to know what the option is for. It can be displayed by the administration interface to the editors to explain what they have to enter. You can add a translation for your new field (to show a specific value on the front-end) like this (Laravel `config/shop.php` example):
+
+```
+'i18n' => [
+  'en' => [
+    'client/code' => [
+      'myprovider.username' => ['User name']
+    ]
+  ]
+]
+```
 
 The **type** value must be one of the predefined strings that describe the allowed type. These types are available:
 
