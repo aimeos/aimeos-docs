@@ -79,7 +79,7 @@ By default, the checkout process consists of these steps in the following order:
 Depending on the type of product you sell, sometimes it is not necessary for the customer to choose e.g. a delivery option. Virtual products usually fall into this category. You can remove a step from the process completely by [modifying the subpart's configuration](../../config/client-html/checkout-standard.md#subparts) to:
 
 ```
-client/html/checkout/standard/subparts = ['address', 'payment', 'summary', 'order', 'process']
+client/html/checkout/subparts = ['address', 'payment', 'summary', 'order', 'process']
 ```
 
 This example would leave the order of the steps as is but removes the "delivery" step. Depending on the configuration of the plug-ins, **delivery and payment options may be enforced**. To change this behavior, you have to adapt the [ServicesAvailable basket plug-in](../../manual/plugins.md#ServicesAvailable).
