@@ -79,8 +79,10 @@ By default, the checkout process consists of these steps in the following order:
 Depending on the type of product you sell, sometimes it is not necessary for the customer to choose e.g. a delivery option. Virtual products usually fall into this category. You can remove a step from the process completely by [modifying the subpart's configuration](../../config/client-html/checkout-standard.md#subparts) to:
 
 ```
-client/html/checkout/subparts = ['address', 'payment', 'summary', 'order', 'process']
+client/html/checkout/subparts = ['address', 'payment', 'summary', 'process']
 ```
+
+**Note**: Default checkout subpart values can be found [here](https://github.com/aimeos/ai-client-html/blob/b53e2fa719d70bd6ad17cb15c03b4cd98818a348/client/html/src/Client/Html/Checkout/Standard/Standard.php#L114).
 
 This example would leave the order of the steps as is but removes the "delivery" step. Depending on the configuration of the plug-ins, **delivery and payment options may be enforced**. To change this behavior, you have to adapt the [ServicesAvailable basket plug-in](../../manual/plugins.md#ServicesAvailable).
 
