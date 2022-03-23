@@ -129,6 +129,8 @@ public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
 }
 ```
 
+**Note**: The URL forwarding requests to `updatePush()` depends on the host system and your configuration. For Laravel its `https://<domain>/update` and for TYPO3 `https://<domain>/shop/update` by default. As a minimum the parameter `code` must be passed as GET or POST parameter with the code value of your provider as set in the Service panel of the admin backend.
+
 First, you need to retrieve the order ID and the corresponding status value either from the given GET/POST parameters or from the request body. The way to extract this information totally depends on the external system sending the request.
 
 Based on this data, you can retrieve the order item from the database, map the status value sent by the external system to one of the [Aimeos delivery status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) also used in the *process()* method and [save the modified order](index.md#save-order-items) back to the database afterwards.
