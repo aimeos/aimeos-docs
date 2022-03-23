@@ -82,8 +82,6 @@ Depending on the type of product you sell, sometimes it is not necessary for the
 client/html/checkout/subparts = ['address', 'payment', 'summary', 'process']
 ```
 
-**Note**: Default checkout subpart values can be found [here](https://github.com/aimeos/ai-client-html/blob/b53e2fa719d70bd6ad17cb15c03b4cd98818a348/client/html/src/Client/Html/Checkout/Standard/Standard.php#L114).
-
 This example would leave the order of the steps as is but removes the "delivery" step. Depending on the configuration of the plug-ins, **delivery and payment options may be enforced**. To change this behavior, you have to adapt the [ServicesAvailable basket plug-in](../../manual/plugins.md#ServicesAvailable).
 
 !!! warning
