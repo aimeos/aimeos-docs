@@ -129,7 +129,7 @@ public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
 }
 ```
 
-**Note**: The default endpoint for this (if you don't use another prefix in the routes section of your config/shop.php) is `https://<domain>/update`. The routing for this can be seen [here](https://github.com/aimeos/aimeos-laravel/blob/master/src/routes.php#L144). As a minimum the variable `code` must be provided (as a GET or POST variable) with the code value for your provider (as per the Service Configuration in the Admin UI).
+**Note**: The URL forwarding requests to `updatePush()` depends on the host system and your configuration. For Laravel its `https://<domain>/update` and for TYPO3 https://<domain>/shop/update` by default. As a minimum the parameter `code` must be passed as GET or POST parameter with the code value of your provider as set in the Service panel of the admin backend.
 
 First, you need to retrieve the order ID and the corresponding status value either from the given GET/POST parameters or from the request body. The way to extract this information totally depends on the external system sending the request.
 
