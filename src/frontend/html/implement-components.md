@@ -236,16 +236,16 @@ public function body( string $uid = '' ) : string
     }
     else
     {
-        $html = $this->modifyBody( $html, $uid );
+        $html = $this->modify( $html, $uid );
     }
 
     return $html;
 }
 ```
 
-There's one thing to note when caching content: Sometimes, a subpart can't be cached because it depends on the sessions or cookies of the customers. In this case the whole content wouldn't be cachable at all. Fortunately, there's a solution for this problem: The `modifyBody()` method allows any subclient to replace a section in the cached content.
+There's one thing to note when caching content: Sometimes, a subpart can't be cached because it depends on the sessions or cookies of the customers. In this case the whole content wouldn't be cachable at all. Fortunately, there's a solution for this problem: The `modify()` method allows any subclient to replace a section in the cached content.
 
-The details for this are described in the article about [creating new subparts](create-subparts#modifyBody). The important thing here is to call the `modifyBody()` method provided by the parent class after successfully retrieving the cached content.
+The details for this are described in the article about [creating new subparts](create-subparts#modify). The important thing here is to call the `modify()` method provided by the parent class after successfully retrieving the cached content.
 
 In doubt, have a look into a full example of a working [body() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
@@ -269,14 +269,14 @@ public function header( string $uid = '' ) : string
     }
     else
     {
-        $html = $this->modifyHeader( $html, $uid );
+        $html = $this->modify( $html, $uid );
     }
 
     return $html;
 }
 ```
 
-In `header()`, the exception handling is much simpler as you only need to log any exception. Only keep in mind that you also need to call the `modifyHeader()` method after successfully retrieving the cached content. This allows subclients of your component the chance to replace their sections with their new content.
+Only keep in mind that you also need to call the `modify()` method after successfully retrieving the cached content. This allows subclients of your component the chance to replace their sections with their new content.
 
 In doubt, have a look into a full example of a working [header() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 

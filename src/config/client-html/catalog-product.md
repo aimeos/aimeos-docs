@@ -43,7 +43,7 @@ client/html/catalog/product/cache = 1
 
 Disable caching for components can be useful if you would have too much
 entries to cache or if the component contains non-cacheable parts that
-can't be replaced using the modifyBody() and modifyHeader() methods.
+can't be replaced using the `modify()` methods.
 
 See also:
 

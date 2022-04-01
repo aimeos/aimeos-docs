@@ -43,11 +43,8 @@ Both, components and decorators must implement the same interface and therefore 
 * view()
 : Returns the view object that will generate the HTML output
 
-* modifyBody()
-: Modifies the cached body content to replace content based on sessions or cookies
-
-* modifyHeader()
-: Modifies the cached header content to replace content based on sessions or cookies
+* modify()
+: Modifies the cached body or header content to replace content based on sessions or cookies
 
 * init()
 : Processes the input, e.g. check and store the given values
@@ -55,7 +52,7 @@ Both, components and decorators must implement the same interface and therefore 
 * setView()
 : Sets the view object that will generate the HTML output
 
-The *modifyBody()* and *modifyHeadder()* methods are only used by **components that implement content caching**, like the catalog filter, lists or detail component. Please have a look into the component you want to decorate if they support content caching and will call both methods.
+The `modify()` method is only used by **components that implement content caching**, like the catalog filter, lists or detail component. Please have a look into the component you want to decorate if they support content caching and will call both methods.
 
 # Supporting methods
 

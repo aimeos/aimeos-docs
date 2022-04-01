@@ -198,11 +198,11 @@ For cache control there's a nice helper functions that make calculation of the e
 
 Necessary data can be assigned directly to the view because the [magic methods](https://php.net/manual/en/language.oop5.overloading.php) `__get()` and `__set()` care about their handling in the view class.
 
-## modifyBody()
+## modify()
 
 When caching the complete output of a component, sooner or later there will be one part that depends on data that is different for every user, like something in their session. It's also conceivable that a parameter can have so many different values that hundreds or thousands cache entries for almost the same content needs to be generated.
 
-In both cases it's more efficient to generate only the part that depends on these data for every request and replacing this section in the cached component output. To replace a section of the cached body content, the `modifyBody()` method is called each time after an entry is retrieved from the cache. The clients are able to replace the old content and paste in the new one.
+In both cases it's more efficient to generate only the part that depends on these data for every request and replacing this section in the cached component output. To replace a section of the cached body content, the `modify()` method is called each time after an entry is retrieved from the cache. The clients are able to replace the old content and paste in the new one.
 
 The method needs two parameters in return:
 
@@ -213,9 +213,9 @@ The method needs two parameters in return:
 : Unique identifier if the content is placed more than once on the same page using different configuration values
 
 ```php
-public function modifyBody( string $content, string $uid ) : string
+public function modify( string $content, string $uid ) : string
 {
-    return $this->replaceSection( $content, $this->view()->csrf()->formfield(), 'catalog.detail.csrf' );
+    return $this->replaceSection( $content, $this->view()->csrf()->formfield(), 'checkout.standard.csrf' );
 }
 ```
 
@@ -231,34 +231,6 @@ In the template file, the marker is prefixed by `<!-- ` and postfixed by ` -->` 
 
 !!! warning
     The marker in the template must be always part of the cached output, so always add it unconditionally to your template! Otherwise, new content can't be added to the cache entry and you won't see the expected part in the resulting HTML page.
-
-## modifyHeader()
-
-Like for the body, the same is also possible for the header: Replace dynamic parts of a cached entry without losing the ability of caching at all. The `modifyHeader()` method is called after the cached header entry is retrieved and needs the same parameters:
-
-* content
-: The cached content including the beginning and end marker of the volatile section in the header
-
-* uid
-: Unique identifier if the content is placed more than once in the header of the same page using different configuration values
-
-```php
-public function modifyHeader( string $content, string $uid ) : string
-{
-    return $this->replaceSection( $content, '... user dependent value ...', '...' );
-}
-```
-
-In the template file, the marker is prefixed by `<!-- ` and postfixed by ` -->` to create a valid HTML/XML comment. You need that marker before and after the content you want to replace, e.g.:
-
-```html
-<!-- ... -->
-<p>... inital value ...</p>
-<!-- ... -->
-```
-
-!!! warning
-    Keep in mind that here the marker must be also always added unconditionally to your template to be able to replace sections with no output before!
 
 ## init()
 
