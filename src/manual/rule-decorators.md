@@ -29,3 +29,6 @@ Restricts rules to products which are assigned to one of the configured categori
 
 category.code (required)
 : The category code or a list of comma-separated category codes (e.g. home,men,shirts)
+
+!!! warning
+    You need to add `catalog` to the `client/html/catalog/domains` configuration setting so the *Category* rule decorator is used, e.g. `['catalog', 'media', 'media/property', 'price', 'text']`
