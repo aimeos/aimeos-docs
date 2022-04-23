@@ -36,8 +36,8 @@ quantity
 stocktype
 : Warehouse or local store where the product is available
 
-supplier
-: ID of the supplier if the product is available be more than one supplier
+vendor
+: Name of the vendor, e.g. the site name or the supplier name
 
 siteid
 : ID of the site whose vendor will ship the bought product (in multi-site environments)
@@ -146,7 +146,7 @@ Then the response will contain an additional "relationships" entry in the basket
             "order.base.product.id": null,
             "order.base.product.type": "default",
             "order.base.product.stocktype": "default",
-            "order.base.product.suppliercode": "",
+            "order.base.product.vendor": "",
             "order.base.product.productid": "7",
             "order.base.product.prodcode": "demo-article",
             "order.base.product.name": "Demo article",
@@ -738,7 +738,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
             "order.base.product.id": null,
             "order.base.product.type": "default",
             "order.base.product.stocktype": "default",
-            "order.base.product.suppliercode": "",
+            "order.base.product.vendor": "",
             "order.base.product.productid": "7",
             "order.base.product.prodcode": "demo-article",
             "order.base.product.name": "Demo article",
