@@ -13,9 +13,7 @@ The standard basket implementation is the main shopping cart the customers are i
 
 ![Aimeos basket standard](Aimeos-basket-standard.png)
 
-There's only the main component without subparts by default but you can add your own subparts using the [subpart configuration of the basket component](../../config/client-html/basket-standard.md#subparts).
-
-Most of the HTML layout code is located in the shared [common summary partials](https://github.com/aimeos/ai-client-html/tree/master/client/html/templates/common/summary) so you will have to revise it if you want to change the layout.
+Most of the HTML layout code is located in the shared [common summary partials](https://github.com/aimeos/ai-client-html/tree/master/templates/client/html/common/summary) so you will have to revise it if you want to change the layout.
 
 If you want to change the layout of the basket independently of the checkout summary and the confirmation e-mail, you can use the [client/html/basket/standard/summary/detail](../../config/client-html/basket-standard.md#detail) configuration setting to point to a different partial file.
 
@@ -56,7 +54,6 @@ To add products to the basket, at least the product ID is required. For all othe
 * `b_prod[<number>][attrconfid][]` (Attribute IDs for product options)
 * `b_prod[<number>][attrcustid][<attribute ID>]` (Attribute IDs and arbitrary values for custom product attributes)
 * `b_prod[<number>][stocktype]` (Warehouse code if several warehouses are available)
-* `b_prod[<number>][supplier]` (Code of the supplier the product is is available from)
 * `b_prod[<number>][siteid]` (Site ID which should be stored with the product in the basket)
 
 Adding two different products at once would be possible with these HTML input fields:
@@ -74,7 +71,6 @@ Adding two different products at once would be possible with these HTML input fi
 <input type="hidden" name="b_prod[0][attrcustid][40]" value="some text" />
 <input type="hidden" name="b_prod[0][attrcustid][41]" value="2000-01-01" />
 <input type="hidden" name="b_prod[0][stocktype]" value="berlin" />
-<input type="hidden" name="b_prod[0][supplier]" value="mybrand" />
 <input type="hidden" name="b_prod[0][siteid]" value="1." />
 <input type="hidden" name="b_prod[1][prodid]" value="2" />
 ```
@@ -138,23 +134,6 @@ and to delete it from the basket again use:
 
 Depending on the [number of allowed coupon codes](../../config/controller-frontend/basket.md#couponallowed) in the basket, you can add more than one code but only one at a time.
 
-## Location
-
-Other components need to link to the page which contains the basket or post data to modify the basket content. In order to offer the maximum possible flexibility, there are some configuration options available to specify the exact location of the basket inside the application:
-
-[target](../../config/client-html/basket-standard.md#target)
-: Page ID or route that points to the page with the basket component
-
-[controller](../../config/client-html/basket-standard.md#controller)
-: Name of the basket controller on the page (default: basket)
-
-[action](../../config/client-html/basket-standard.md#action)
-
-: Name of the basket action in the controller (default: index)
-
-[config](../../config/client-html/basket-standard.md#config)
-: Associative list of configuration options used when generating the URL
-
 ## Coupon
 
 Coupons are personal or shared codes for granting goodies, giving a price reduction or any other possibility that offers customers an additional advantage. The actions behind coupons are implemented by coupon providers in the MShop library, and they can modify the basket content in any way.
@@ -169,7 +148,7 @@ The small basket implementation is the one that can be shown on every page. It d
 
 ![Aimeos basket small](Aimeos-basket-small.png)
 
-By default, no subpart is included in the small basket component but you can add your own via its [subpart configuration](../../config/client-html/basket-mini.md#subparts). This component renders the most important basket information (the number of articles and maybe the total price) and will show the basket details in a drop-down when clicked.
+This component renders the most important basket information (the number of articles and maybe the total price) and will show the basket details in a drop-down when clicked.
 
 ## Templates
 
@@ -188,11 +167,7 @@ The "basket related" component enables shop owners to display additional content
 
 ![Aimeos basket related](Aimeos-basket-related.png)
 
-Currently, only one subpart is included in the "basket related" component, which can be controlled via its [subpart configuration](../../config/client-html/basket-related.md#subparts). This "bought" subpart displays products that have been bought together with the products added to the basket of the customer. You can extend it by further subparts using the [subparts setting for the "bought" section](../../config/client-html/basket-related.md#subparts).
-
-There's a default implementation for the "bought" section but you are able to replace or extend the existing implementation and configure an alternative class name:
-
-* [Bought section class name](../../config/client-html/basket-related.md#name)
+This "bought" subpart displays products that have been bought together with the products added to the basket of the customer.
 
 !!! note
     Products that should be suggested in the "bought" section must be calculated according to the orders of previous customers. Aimeos comes with a job controller named "product/bought" that does this for you automatically, but you need to run this job regularly, preferably once a day.
@@ -203,7 +178,6 @@ You can adapt the templates for the "basket related" component itself and its "b
 
 * [related header template](../../config/client-html/basket-related.md#template-header)
 * [related body template](../../config/client-html/basket-related.md#template-body)
-* [bought body template](../../config/client-html/basket-related.md#template-body)
 
 If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't loose essential functionality.
 
@@ -211,10 +185,13 @@ If you want to change the HTML structure of one of the templates, please have a 
 
 Some additional settings for the cross-selling subpart have been implemented to create a configurable implementation that can be adapted to the various needs of shop owners:
 
-[client/html/basket/related/bought/domains](../../config/client-html/basket-related.md#standarddomains)
+[client/html/basket/related/basket-add](../../config/client-html/basket-related.md#basket-add)
+: Enable adding products to basket directly
+
+[client/html/basket/related/bought/domains](../../config/client-html/basket-related.md#boughtdomains)
 : List of content types fetched from the database
 
-[client/html/basket/related/bought/limit](../../config/client-html/basket-related.md#standardlimit)
+[client/html/basket/related/bought/limit](../../config/client-html/basket-related.md#boughtlimit)
 : Maximum number of products displayed
 
 More configuration options are used while generating the list of products bought together. They are available in the documentation of the "product/bought" job controller.
