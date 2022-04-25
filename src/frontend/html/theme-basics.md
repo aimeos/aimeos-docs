@@ -1,22 +1,31 @@
 Themes are an easy way to adapt an existing design or to create a new one for an Aimeos online shop. A theme only consists of CSS and Javascript to style and animate the structural HTML. In combination with the possibility to rearrange the sub-parts of the front-end, it's a powerful way to completely redesign a shop without touching the HTML code.
 
-The default themes are located in the [client/html/themes](https://github.com/aimeos/ai-client-html/tree/master/client/html/themes) directory of the *aimeos/ai-client-html* extension. Each theme has its own directory containing the CSS and Javascript files as well as its images. The shared Javascript files are located in the base directory, which are used by all themes.
+The default themes are located in the [themes/client/html](https://github.com/aimeos/ai-client-html/tree/master/themes/client/html) directory of the *aimeos/ai-client-html* extension. Each theme has its own directory containing the CSS and Javascript files as well as its images. The shared Javascript files are located in the base directory, which are used by all themes.
 
 # Structure
 
-A theme must consist of these files and directories:
-
-email.css
-: Contains the CSS styles that are used by the HTML e-mails.
+A theme must consist at least of these files and directories:
 
 aimeos.css
-: All CSS styles which makes the theme unique. You may also include styles that are necessary for any jQuery plug-in that is used.
+: Common CSS styles which makes the theme unique. You may also include styles that are necessary for JS library that is used.
 
 aimeos.js
 : Additional Javascript code for animations or to modify the existing JS code.
 
-media/ (optional)
-: Directory for all images, fonts and other media items that are used by the theme. They must be referenced relative to the aimeos.css file like "url(images/aimeos.png)".
+assets/ (optional)
+: Directory for all images, fonts and other media items that are used by the theme. They must be referenced relative to the aimeos.css file like "url(assets/aimeos.png)".
+
+email.css
+: Contains the CSS styles that are used by the HTML e-mails.
+
+The CSS/JS for each component must be stored in an own file which is loaded by the browser only if the component is used at the page the customer is viewing. The files for the components are named like the components in lower case, i.e.:
+
+```
+catalog-detail.css
+catalog-detail.js
+```
+
+for the catalog detail component. Please have a look into the [default theme directory](https://github.com/aimeos/ai-client-html/tree/master/themes/client/html) to see which files are available there.
 
 # Cascading Style Sheets
 
@@ -83,31 +92,16 @@ Dump all thoughts about pixel perfect layouts immediately to the trash bin! Layo
 
 The Javascript code of a theme should only be used to improve site usability (by doing client side checks), to display necessary content, and to create animations. It should NOT be essential to use the shop! This usually results in poor usability for your site's visitors who do not use a mouse.
 
-It's guaranteed that these jQuery libraries are available and included before the aimeos.js file:
-
-* jQuery
-* jQuery-UI (customized, detail page only)
-
-The jQuery-UI package contains the following features:
-
-* core
-* widget
-* mouse
-* position
-* autocomplete
-* menu
-
-!!! tip
-    If you need additional jQuery-UI plug-ins for your theme, you can add them to the aimeos.js file of your theme. As they can be very big, you should be careful what you want to use in your theme. Otherwise, customers will be disappointed with the page load time.
-
-The Aimeos shared library files contains some objects that are named just like the HTML clients that are available as components:
+The Aimeos JS theme files contains some objects that are named just like the HTML clients that are available as components:
 
 * Aimeos
 * AimeosAccountHistory
 * AimeosAccountFavorite
 * AimeosAccountProfile
+* AimeosAccountReview
 * AimeosAccountSubscription
 * AimeosAccountWatch
+* AimeosBasket
 * AimeosBasketBulk
 * AimeosBasketMini
 * AimeosBasketRelated
@@ -121,6 +115,7 @@ The Aimeos shared library files contains some objects that are named just like t
 * AimeosCheckoutConfirm
 * AimeosCheckoutStandard
 * AimeosLocaleSelect
+* AimeosPage
 
 These Javascript objects are globally available and their methods are responsible for executing the implemented actions if the required HTML DOM nodes are available. You can extend or overwrite each method to perform additional action, another action, or no action at all. The article about [adapting existing themes](adapt-themes.md#Javascript) has more information and examples of how to do this in detail.
 
@@ -149,7 +144,7 @@ removeSpinner()
 loadImages()
 : Lazy load product image in list views
 
-setupContainerClose()
+onCloseContainer()
 : Sets up the ways to close the container by the user
 
 init()
@@ -159,7 +154,7 @@ init()
 
 Customers can save products and they will be listed in their personal accounts.
 
-setupProductRemoval()
+onRemoveProduct()
 : Deletes a favorite item without page reload
 
 init()
@@ -169,46 +164,51 @@ init()
 
 The account history is a feature for the personal account of each customer displaying their orders.
 
-setupOrderShow()
-: Shows order details without page reload
-
-setupOrderClose()
-: Closes the order details without page reload
+onToggleDetail()
+: Shows or hides the order details
 
 init()
 : Initializes the account history actions
 
 ## AimeosAccountProfile
 
-setupAddress()
+onAddress()
 : Reset and close the new address form
 
-setupAddressNew()
+onAddressNew()
 : Adds a new delivery address form
 
-setupMandatoryCheck()
+onCheckMandatory()
 : Checks address form for missing or wrong values
 
 ## AimeosAccountSubscription
 
-setupDetailShow()
-: Shows subscription details without page reload
-
-setupDetailClose()
-: Closes the order details without page reload
+onToggleDetail()
+: Shows or hides the subscription details
 
 ## AimeosAccountWatch
 
 Each customer has a personal watch list of products. If a product is added to the watch list, customers will be notified if the price of the product decreases or the product is back in stock again.
 
-setupProductRemoval()
+onRemoveProduct()
 : Deletes a watched item without page reload
 
-setupProductSave()
+onSaveProduct()
 : Saves a modifed watched item without page reload
 
 init()
 : Initializes the account watch actions
+
+## AimeosBasket
+
+onBack()
+: Goes back to underlying page when back or close button of the basket is clicked
+
+updateBasket(data)
+: Updates the basket without page reload
+
+init()
+: Initializes the common basket actions
 
 ## AimeosBasketBulk
 
@@ -221,7 +221,7 @@ autocomplete(node)
 add()
 : Adds a new line to the bulk order form
 
-delete()
+onDelete()
 : Deletes lines if clicked on the delete icon
 
 get(attr, included)
@@ -249,40 +249,30 @@ update()
 updateBasket()
 : Updates the basket mini content
 
-setupBasketDelete()
+onDelete()
 : Delete a product without page reload
 
-setupBasketToggle()
-: Displays or hides the small basket
+onHideBasket()
+: Hides the small basket
+
+onShowBasket()
+: Displays the small basket
 
 init()
 : Initializes the basket mini actions
-
-## AimeosBasketRelated
-
-The related basket component can be used to display e.g. products related to the basket content.
-
-init()
-: Initializes the basket related actions
 
 ## AimeosBasketStandard
 
 This is the standard basket component displaying all details of the products as well as the delivery and payment costs of the chosen service items and any redeemed coupon codes.
 
-updateBasket(data)
-: Updates the basket using the given HTML code without page reload
+onChange()
+: Updates quantity and deletes products without page reload
 
-setupBasketBack()
-: Goes back to underlying page when back or close button of the basket is clicked
-
-setupUpdateHide()
-: Hides the update button and show only on quantity change
-
-setupUpdateSubmit()
+onSubmit()
 : Updates basket without page reload
 
-setupUpdateChange()
-: Updates quantity and deletes products without page reload
+onQuantity()
+: Hides the update button and show only on quantity change
 
 init()
 : Initializes the basket standard actions
@@ -291,26 +281,29 @@ init()
 
 Contains common function uses in more than one catalog component.
 
-setupSelectionDependencies()
+isValidVariant(node)
+: Checks if all variant attributes of a variant article have been selected
+
+onSelectDependencies()
 : Evaluates the product variant dependencies
 
-setupSelectionContent()
+onSelectVariant()
 : Displays the associated stock level, price items and attributes for the selected product variant
 
-setupVariantCheck()
+onCheckVariant()
 : Checks if all required variant attributes are selected
 
-setupVariantImages()
+onImageVariant()
 : Shows the images associated to the variant attributes
 
-setupBasketAdd()
-: Adds products to the basket without page reload
-
-setupFavoriteAction()
+onFavoriteAction()
 : Adds a product to the favorite list without page reload
 
-setupWatchAction()
+onWatchAction()
 : Adds a product to the watch list without page reload
+
+toggleVariantData(item, prodId)
+: Shows the variant data for the given product ID and hides the rest
 
 init()
 : Initializes the common catalog actions
@@ -319,23 +312,41 @@ init()
 
 The catalog detail component shows all information that is available for a product.
 
-setupThumbnailSlider()
-: Initializes the slider for the thumbnail gallery (small images)
+addReviews(response, container)
+: Adds the reviews to the passed container
 
-setupImageSwap()
-: Displays the big image and highlight thumbnail after it was selected
+fetchReviews(container)
+: Fetches reviews for the product
 
-setupImageLightbox()
+updateReview(entry, template)
+: Renders the reviews in the page
+
+onOpenLightbox
 : Opens the lightbox with big images
 
-setupBlockPriceSlider()
+onSelectThumbnail()
+: Initializes the slider for the thumbnail gallery (small images)
+
+onTogglePrice()
 : Initializes the slide in/out for block prices
 
-setupServiceSlider()
+onToggleServices()
 : Initializes the slide in/out for delivery/payment services
 
-setupAdditionalContentSlider()
-: Initializes the slide in/out for additional content
+onShowReviews()
+: Initializes loading reviews
+
+onMoreReviews()
+: Initializes loading more reviews
+
+onSortReviews()
+: Initializes sorting reviews
+
+onExpandReviews()
+: Initializes expanding reviews
+
+onAddBasket()
+: Adds products to the basket without page reload
 
 init()
 : Initializes the catalog detail actions
@@ -344,38 +355,50 @@ init()
 
 For displaying categories, the full text search box and the faceted search, the catalog filter component is required.
 
-setupSearchAutocompletion()
+onMenuHover():
+: Show mega menu
+
+onHideCategories()
+: Hide category offscreen menu
+
+onShowCategories()
+: Show category offscreen menu
+
+onLoadSearch()
 : Autocompleter for quick search
 
-setupFormChecks()
+onResetSearch()
+: Registers events for the catalog filter search input reset
+
+onCheckForm()
 : Sets up the form checks
 
-setupListFadeout()
-: Sets up the fade out of the catalog list
-
-setupCategoryToggle()
-: Toggles the categories if hover isn't available
-
-setupAttributeToggle()
+onToggleAttribute()
 : Toggles the attribute filters if hover isn't available
 
-setupAttributeListsToggle()
+onToggleAttributes()
 : Toggles the attribute filters if hover isn't available
 
-setupAttributeListsEmtpy()
-: Hides the attribute filter if no products are available for
+onShowAttributes()
+: Shows the attribute filter if products are available for
 
-setupAttributeItemSubmit()
+onSubmitAttribute()
 : Submits the form when clicking on filter attribute names or counts
 
-setupSupplierToggle()
+onSyncPrice()
+: Syncs the price input field and slider
+
+onTogglePrice()
+: Toggles the price filters if hover isn't available
+
+onToggleSearch()
+: Toggles the search filters if hover isn't available
+
+onToggleSupplier()
 : Toggles the supplier filters if hover isn't available
 
-setupSupplierItemSubmit()
+onSubmitSupplier()
 : Submits the form when clicking on filter supplier names or counts
-
-setupSearchTextReset()
-: Registers events for the catalog filter search input reset
 
 init()
 : Initialize the catalog filter actions
@@ -384,11 +407,20 @@ init()
 
 All product lists are managed by the catalog list component.
 
-setupImageSwitch
-: Switches product images on hover
+showBasket(form)
+: Shows the basket after submitting the form
 
-setupInfiniteScroll
+setPinned()
+: Marks products as pinned
+
+onAddBasket()
+: Add to basket
+
+onScroll()
 : Enables infinite scroll if available
+
+onPin()
+: Add products to pinned list
 
 init()
 : Initializes the catalog list actions
@@ -397,15 +429,17 @@ init()
 
 The catalog session is user content related like for the last seen products.
 
+onToggleSeen()
+: Toggles the Last Seen filters if hover isn't available
+
+onTogglePinned()
+: Toggles pinned items
+
+onRemovePinned()
+: Delete a product without page reload
+
 init()
 : Initializes the catalog session actions
-
-## AimeosCatalogStage
-
-The catalog stage component is usually placed on top of the catalog list and detail views. It can display per-category images and the breadcrumb navigation.
-
-init()
-: Initializes the catalog stage actions
 
 ## AimeosCheckoutStandard
 
@@ -414,14 +448,8 @@ The checkout process is represented by the checkout standard component. It's one
 setupAddressForms()
 : Shows only selected address forms
 
-setupSalutationCompany()
-: Shows company and VAT ID fields if salutation is "company", otherwise hide the fields
-
 setupCountryState()
 : Shows states only from selected countries
-
-setupBirthdayPicker()
-: Shows date picker for birthday field
 
 setupServiceForms()
 : Shows only form fields of selected service option
@@ -435,13 +463,6 @@ setupPaymentRedirect()
 init()
 : Initializes the checkout standard section
 
-## AimeosCheckoutConfirm
-
-The last step of each successful order is the "thank you" page.
-
-init()
-: Initializes the checkout confirm section
-
 ## AimeosLocaleSelect
 
 To allow users to switch the used language and/or currency, the locale selector component provides a list of available languages and/or currencies. Both depend on the site of the shop and the combinations added by the shop owner.
@@ -451,6 +472,25 @@ setupMenuToggle()
 
 init()
 : Initializes the locale selector actions
+
+## AimeosPage
+
+This sections contains methods that are available at all pages.
+
+onLinkTop()
+: Link to top
+
+onMenuScroll()
+: Menu transition
+
+onHideOffscreen()
+: Close offscreen on overlay click
+
+setupOffscreen()
+: Initializes offscreen menus
+
+init()
+: Initializes the page actions
 
 ## New components
 
@@ -470,8 +510,8 @@ Aimeos<type><component> = {
 }
 ```
 
-Please replace the placeholders for <type> and <component> with the appropriate names, like "Catalog" (type) and "Mysubpart" (component) depending on the names you've used for the HTML client class so you get e.g.:
+Please replace the placeholders for <type> and <component> with the appropriate names, like "Catalog" (type) and "Mycomponent" (component) depending on the names you've used for the HTML client class so you get e.g.:
 
 ```javascript
-AimeosCatalogMysubpart = {}
+AimeosCatalogMycomponent = {}
 ```
