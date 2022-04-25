@@ -39,10 +39,10 @@ l_type
 
 # Product details
 
-d_name (mandatory)
+d_name (mandatory if no product ID available)
 : Product name
 
-d_prodid
+d_prodid (mandatory if no product name available)
 : Product ID, used if available
 
 d_pos
@@ -99,22 +99,6 @@ b_prod[1] ...
 
 c_step
 : Current step of the checkout process. If none is given the content of the first step that requires attention is displayed or the configured step (summary by default)
-
-# Subscriptions
-
-sub_action
-: Performed action, can only be "detail" to show the subscription details
-
-sub_id
-: Subscriptions ID referencing the ID in the "mshop_subscription" table, only available in combination with "sub_action"
-
-# Order history
-
-his_action
-: Performed action, can only be "detail" to show the order details
-
-his_id
-: Order ID referencing the ID in the "mshop_order" table, only available in combination with "his_action"
 
 # Favorite products
 
