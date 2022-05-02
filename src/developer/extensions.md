@@ -46,65 +46,70 @@ to update the composer autoloader.
 
 An Aimeos extension reflects the directory structure of the core and contains these main directories:
 
-* admin/jqadm
-* admin/jsonadm
-* client/html
-* client/jsonapi
-* controller/common
-* controller/frontend
-* controller/jobs
-* lib/custom
+* `config` (configuration for extension)
+* `i18n` (gettext translation files)
+* `setup` (setup tasks creating and updating the database tables)
+* `src` (PHP classes of the extension)
+* `templates` (templates file generating the output)
+* `themes` (default themes and shared JS files)
+* `tests` (unit tests for the PHP classes)
+* `phing.xml` (automated development task)
 
-## admin
+## Aimeos core
 
-There's a shared directory between all admin interfaces for translations:
+The code for the data access managers use:
 
+* `config/` (default configuration for the managers)
 * `i18n/` (gettext translation files)
+* `setup/` (setup tasks creating and updating the database tables)
+* `src/` (PHP manager, item and provider classes)
+* `templates/` (templates generating output)
+* `tests/` (unit tests for the classes)
+
+Tutorials:
+
+* [Database setup](../infrastructure/databases.md)
+* [Database migrations](../infrastructure/schema-migrations.md)
+* [Using managers and items](../models/managing-items.md)
+* [Implement payment/delivery providers](../providers/service/index.md)
+* [Implement basket plugins](../providers/basket-plugins.md)
 
 ## admin/jqadm
 
 
-The administration interface based on Bootstrap and JQuery including the classes plus templates generating the output. Also a default theme is included and it contains:
+The administration interface based on Bootstrap and VueJS including the classes plus templates generating the output. Also a default theme is included. Used directories are:
 
-* `src/` (PHP client classes of the extension)
-* `templates/` (html templates)
-* `tests/` (unit tests for the client classes)
-* `themes/` (default themes and shared JS files)
-* `build.xml` (automated development task)
-
-There's a shared directory between all admin interfaces for translations:
-
+* `config/admin.php` (configuration for extension)
 * `i18n/` (gettext translation files)
+* `src/` (PHP client classes of the extension)
+* `templates/admin/jqadm/` (html templates)
+* `themes/admin/jqadm/` (default themes and shared JS files)
+* `tests/` (unit tests for the client classes)
+
 
 ## admin/jsonadm
 
-The directory for the admin JSON REST API contains:
+The used directories for the admin JSON REST API are:
 
-* `src/` (PHP admin classes of the extension)
-* `templates/` (html templates)
-* `tests/` (unit tests for the admin classes)
+* `config/admin.php` (configuration for extension)
 * `i18n/` (gettext translation files)
-* `build.xml` (automated development task)
+* `src/` (PHP admin classes of the extension)
+* `templates/admin/jsonadm/` (html templates)
+* `tests/` (unit tests for the admin classes)
 
 Tutorials:
 
 * [Work with the admin JSON REST API](../admin/jsonadm/index.md)
 
-## client
-
-There's a shared directory between all clients for translations:
-
-* `i18n/` (gettext translation files)
-
 ## client/html
 
-The HTML front-end and the classes plus templates generating the HTML output. Also the default themes are included there and the directory contains:
+The HTML front-end and the classes plus templates generating the HTML output. Also the default themes are included there and this directories are used:
 
+* `config/client.php` (configuration for extension)
 * `src/` (PHP client classes of the extension)
-* `templates/` (html templates)
+* `templates/client/html/` (html templates)
+* `themes/client/html/` (default themes and shared JS files)
 * `tests/` (unit tests for the client classes)
-* `themes/` (default themes and shared JS files)
-* `build.xml` (automated development task)
 
 Tutorials:
 
@@ -127,64 +132,39 @@ Theme tutorials:
 
 The JSON REST API for the front-end and the classes plus templates generating the JSON output:
 
+* `config/client.php` (configuration for extension)
+* `i18n/` (gettext translation files)
 * `src/` (PHP client classes of the extension)
-* `templates/` (html templates)
+* `templates/client/jsonapi/` (html templates)
 * `tests/` (unit tests for the client classes)
-* `build.xml` (automated development task)
 
 Tutorials:
 
 * [How to use the JSON REST API](../frontend/jsonapi/index.md)
 
-## controller/common
-
-Code shared by more than one controller is located in the "common" directory. This includes mainly the media and order processing code as well as the CSV import processors and caches:
-
-* `config/` (default configuration for the controllers)
-* `src/` (PHP controller classes)
-* `tests/` (unit tests for the controller classes)
-* `build.xml` (automated development task)
-
 ## controller/frontend
 
-The front-end clients use these classes to perform standard actions like retrieving product lists, adding a product to the basket, or doing the necessary actions for a checkout. The directory layout includes:
+The front-end clients use these classes to perform standard actions like retrieving product lists, adding a product to the basket, or doing the necessary actions for a checkout. The directories used are:
 
+* `config/controller.php` (configuration for extension)
 * `i18n/` (gettext translation files)
 * `src/` (PHP front-end controller classes)
 * `tests/` (unit tests for the front-end controller classes)
-* `build.xml` (automated development task)
 
 ## controller/jobs
 
-A shop has to run several tasks in an asynchronous manner, like sending e-mails or payed orders to the ERP system. Each class in this part of the directory tree performs one task and they are located in:
+A shop has to run several tasks in an asynchronous manner, like sending e-mails or payed orders to the ERP system. Each class in this part of the directory tree performs one task and the directories used are:
 
+* `config/controller.php` (configuration for extension)
 * `i18n/` (gettext translation files)
 * `src/` (PHP job controller classes)
+* `templates/controller/jobs/` (html templates)
 * `tests/` (unit tests for the job controller classes)
 * `build.xml` (automated development task)
 
 Tutorials:
 
 * [Implement a job controller](../cronjobs/create-job-controller.md)
-
-## lib/custom
-
-For the low level layer of the core including the adapters and data access manager layer (`./lib/mwlib/` and `./lib/mshoplib/` in the core], the `./lib/custom/` directory is used and it contains:
-
-* `config/` (default configuration for the managers)
-* `i18n/` (gettext translation files)
-* `setup/` (setup tasks creating and updating the database tables)
-* `src/` (PHP manager, item and provider classes)
-* `tests/` (unit tests for the classes)
-* `build.xml` (automated development task)
-
-Tutorials:
-
-* [Database setup](../infrastructure/databases.md)
-* [Database migrations](../infrastructure/schema-migrations.md)
-* [Using managers and items](../models/managing-items.md)
-* [Implement payment/delivery providers](../providers/service/index.md)
-* [Implement basket plugins](../providers/basket-plugins.md)
 
 # Manifest
 
@@ -241,7 +221,7 @@ Aimeos is very flexible by using a lot of configuration, especially by avoiding 
 
 ```php
 'config' => [
-    'lib/custom/config',
+    'config',
 ],
 ```
 
@@ -252,12 +232,7 @@ The list of directories that contains the source code and which should be used b
 
 ```php
 'include' => [
-    'lib/custom/src',
-    'client/html/src',
-    'controller/frontend/src',
-    'controller/extjs/src',
-    'controller/jobs/src',
-    'admin/jqadm/src',
+    'src',
 ],
 ```
 
@@ -271,12 +246,13 @@ The "i18n" section of the manifest file lists the directories that contains .po 
 
 ```php
 'i18n' => [
-    'admin' => 'admin/i18n',
-    'client' => 'client/i18n',
-    'custom' => 'lib/custom/i18n',
-    'controller/frontend' => 'controller/frontend/i18n',
-    'controller/extjs' => 'controller/extjs/i18n',
-    'controller/jobs' => 'controller/jobs/i18n',
+    'admin' => 'i18n',
+    'client' => 'i18n',
+    'client/code' => 'i18n',
+    'controller/common' => 'i18n',
+    'controller/frontend' => 'i18n',
+    'controller/jobs' => 'i18n',
+    'mshop' => 'i18n',
 ],
 ```
 
@@ -286,34 +262,30 @@ Setup tasks are a great way to create and update your database structure. They a
 
 ```php
 'i18n' => [
-    'lib/custom/setup',
+    'setup',
 ],
 ```
 
-## custom
+## templates
 
-The "custom" section of the manifest.php is reserved for directory configurations that are specific for the different parts of the library. The directory must be the array key and the value must be the list of subdirectories or files that are required for the specific purpose. A full example would be:
+The "templates" section of the manifest.php is reserved for directory configurations that are specific for the different parts of the library. The directory must be the array key and the value must be the list of subdirectories or files that are required for the specific purpose. A full example would be:
 
 ```php
-'custom' => [
+'templates' => [
     'admin/jqadm/templates' => [
-        'admin/jqadm/templates',
+        'templates/admin/jqadm',
     ],
     'admin/jsonadm/templates' => [
-        'admin/jsonadm/templates',
-    ],
-    'client/html/templates' => [
-        'client/html/templates',
+        'templates/admin/jsonadm',
     ],
     'client/jsonapi/templates' => [
-        'client/jsonapi/templates',
+        'templates/client/jsonapi',
     ],
-    'controller/jobs' => [
-        'controller/jobs/src',
+    'client/html/templates' => [
+        'templates/client/html',
     ],
     'controller/jobs/templates' => [
-        'controller/jobs/templates',
-        'client/html/templates',
+        'templates/controller/jobs',
     ],
 ],
 ```
@@ -330,11 +302,28 @@ client/html/templates
 client/jsonapi/templates
 : List of directories that contains the template files for the front-end JSON REST API clients, either new ones or files with the same name of existing ones which will be used instead of the original ones.
 
-controller/jobs
-: Describes the source directory which should be used to generate a list of asynchronous tasks presented to the shop administrator.
-
 controller/jobs/templates
 : List of directories that contains the template files for the job controllers, either new ones or files with the same name of existing ones which will be used instead of the original ones.
+
+## custom
+
+
+```php
+'custom' => [
+    'admin/jqadm' => [
+        'manifest.jsb2',
+    ],
+    'controller/jobs' => [
+        'src',
+    ],
+],
+```
+
+admin/jqadm
+: Manifest file for including CSS and JS files
+
+controller/jobs
+: Describes the source directory which should be used to generate a list of asynchronous tasks presented to the shop administrator.
 
 # phing.xml
 
@@ -346,13 +335,11 @@ For an Aimeos extension it's not absolutely necessary but can help a lot during 
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="<extension name> extension" default="test">
   <target name="test" description="Executes all tests"></target>
-  <target name="testperf" description="Executes all performance tests"></target>
   <target name="coverage" description="Generates the code coverage report"></target>
   <target name="check" description="Executes all tests"></target>
   <target name="clean" description="Cleans up temporary files"></target>
   <target name="i18n" description="Creates all translation files"></target>
   <target name="build" description="Builds package for deployment"></target>
-  <target name="release" description="Creates new release" depends="build"></target>
 </project>
 ```
 
