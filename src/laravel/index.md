@@ -1,4 +1,4 @@
-The Aimeos Laravel package is a composer based extension for the Laravel web application framework. It integrates the core web shop component library into any Laravel 5.5+ based application and allows you to place the components on any page using Blade templates. Default templates for a quick start are already included.
+The Aimeos Laravel package is a composer based extension for the Laravel web application framework. It integrates the core web shop component library into any Laravel based application and allows you to place the components on any page using Blade templates. Default templates for a quick start are already included.
 
 If you like Aimeos: [Give a star](https://github.com/aimeos/aimeos-laravel)
 

@@ -71,8 +71,8 @@ Most often, you don't need to change the structure of the HTML templates because
 
 # CSS and JS files
 
-The files located in the `client/html/themes/<mytheme>` directory of your Aimeos theme extension for Laravel are distributed within the package but are not used. Instead, the will be automatically copied to the `./public/vendor/shop/<mytheme>` directory of your Laravel application by the last `composer` command.
+The files located in the `themes/client/html/<mytheme>` directory of your Aimeos theme extension for Laravel are distributed within the package but are not used. Instead, the will be automatically copied to the `./public/vendor/shop/<mytheme>` directory of your Laravel application by the last `composer` command.
 
-For development, you will change the files in the `./public/vendor/shop/<mytheme>` directory but for distributing them, you have to add them to the `./packages/<mytheme>/client/html/themes/<mytheme>` again and push their changes into the package repository.
+For development, you will change the files in the `./public/vendor/shop/<mytheme>` directory but for distributing them, you have to add them to the `./packages/<mytheme>/themes/client/html/<mytheme>` again and push their changes into the package repository.
 
 For more information about how to adapt the CSS and JS theme files, please read the article for [creating themes](../frontend/html/create-themes.md).

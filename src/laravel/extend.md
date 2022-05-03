@@ -33,9 +33,9 @@ This would overwrite the list of components for the "MyAccount" page from the Ai
 
 ## Aimeos Blade templates
 
-Another way you can adapt specific pages is by **rewriting existing templates** from the `vendor/aimeos/aimeos-laravel/src/views` directory. These templates can be overwritten by creating your own copies of these files into your Laravel application's `resources/views/vendor/shop` directory and sub-directories. These copies will overwrite the Aimeos vendor package's views.
+Another way you can adapt specific pages is by **rewriting existing templates** from the `vendor/aimeos/aimeos-laravel/src/views` directory. These templates can be overwritten by creating your own copies of these files into your Laravel application's `./resources/views/vendor/shop/` directory and sub-directories. These copies will overwrite the Aimeos vendor package's views.
 
-As stated in Laravel's documentation about [overriding package views](https://laravel.com/docs/master/packages#views), "When you use the loadViewsFrom method (inside of your service provider's boot method), Laravel actually registers two locations for your views: the application's `resources/views/vendor/` directory and the directory you specify."
+As stated in Laravel's documentation about [overriding package views](https://laravel.com/docs/master/packages#views), "When you use the loadViewsFrom method (inside of your service provider's boot method), Laravel actually registers two locations for your views: the application's `./resources/views/vendor/` directory and the directory you specify."
 
 ## Reorder components
 
@@ -97,7 +97,7 @@ By default, not all shop components are available on every page as this would cr
 ]
 ```
 
-Available components are listed for each controller action and they are identified using the [directory structure](https://github.com/aimeos/ai-client-html/tree/master/client/html/src/Client/Html) of the HTML clients in the core.
+Available components are listed for each controller action and they are identified using the [directory structure](https://github.com/aimeos/ai-client-html/tree/master/src/Client/Html) of the HTML clients in the core.
 
 Thus, the account history component in the "Client/Html/Account/History" directory is addressed via the string "account/history". Similarly, the product listing component is identified by "catalog/list" and the product detail component is identified by "catalog/detail". This works for all components besides the ones that are in the "Client/Html/Common" and "Client/Html/Email" directory.
 
@@ -231,7 +231,7 @@ Up to now, there would be no data in the aibody and aiheader arrays because you 
 
 Now you have told your controller action that the method using the "mypage" parameter (which in this case is the get() method) should render the body and header output for the "basket/mini" and the "catalog/session" components.
 
-Available components are identified using the [directory structure](https://github.com/aimeos/ai-client-html/tree/master/client/html/src/Client/Html) of the HTML clients.
+Available components are identified using the [directory structure](https://github.com/aimeos/ai-client-html/tree/master/src/Client/Html) of the HTML clients.
 
 Thus, the catalog session component in the "Client/Html/Catalog/Session" directory is addressed via the string "catalog/session". Similarly, the product listing component is identified by "catalog/list", and the product detail component is identified by "catalog/detail". This works for all components besides the ones that are in the "Client/Html/Common" and "Client/Html/Email" directory.
 
@@ -448,7 +448,7 @@ composer req example/myextname
 
 ## Use the Aimeos objects
 
-If you need to instantiate the Aimeos controllers or managers directly from your Laravel application and call their methods, you have to supply a [context object](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php).
+If you need to instantiate the Aimeos controllers or managers directly from your Laravel application and call their methods, you have to supply a [context object](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/ContextIface.php).
 
 This object is a dependency injection container that offers access to configuration settings, database connections, session and content cache as well as translation facilities. You can get an instance in Laravel via the "app" service container or the "App" facade:
 
@@ -461,7 +461,7 @@ $context = app('aimeos.context')->get(false);
 
 The parameter of the *get()* method determines if a locale object with site, language and currency based on the request parameters will be automatically added to the context together with the translation facilities. Certainly, this is only possible in MVC controller actions where the required parameters are available as part of the request.
 
-Everywhere else, you need to retrieve this values from somewhere else, e.g. the configuration. Then, you can use the *bootstrap()* method of the [locale manager](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Locale/Manager/Iface.php) to retrieve the locale item yourself:
+Everywhere else, you need to retrieve this values from somewhere else, e.g. the configuration. Then, you can use the *bootstrap()* method of the [locale manager](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Locale/Manager/Iface.php) to retrieve the locale item yourself:
 
 ```php
 $manager = \Aimeos\MShop::create( $context, 'locale' );
@@ -488,7 +488,7 @@ $context->setI18n( $this->app->make( 'aimeos.i18n' )->get( ['en'] ) );
 Alternatively, if you don't want any translation, you can add a "Null" object instead. It returns the singular or plural string untranslated and for this decision it needs the language ID to determine the right singular/plural rule:
 
 ```php
-$context->setI18n( ['en' => new \Aimeos\MW\Translation\None( 'en' )] );
+$context->setI18n( ['en' => new \Aimeos\Base\Translation\None( 'en' )] );
 ```
 
 Afterwards, you are able to create every object from the Aimeos core and save, retrieve or delete the stored data. You should never use the "new" operator to create a new objects because the implementation variant depends on the configuration and decorators are added automatically. Instead, use the *Aimeos\MShop* class or any more specific factory to create new objects, e.g.

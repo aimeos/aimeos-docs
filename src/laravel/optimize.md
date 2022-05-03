@@ -1,18 +1,3 @@
-# Security
-
-Modern browsers can be told to prevent execution of injected Javascript by an attacker. The technique is called "Content Security Policy" and can be activated by sending appropriate HTTP headers. You can add the required header via the [Response](https://laravel.com/docs/master/responses) object in your Laravel application:
-
-```php
-$response->header( "Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'" );
-$response->header( "X-Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'" );
-$response->header( "X-Webkit-CSP", "default-src 'self'; style-src 'self' 'unsafe-inline'" );
-```
-
-It tells the browser to allow only content (Javascript, CSS, images, etc.) from your own server and also inline CSS declarations (necessary for displaying the product pictures as scalable background).
-
-!!! note
-    If you are using a [different domain for serving static content](#different-domain-for-static-files), you have to add this domain to the `default-src` and `style-src` statement.
-
 # Databases
 
 The Aimeos web shop is able to use different databases for its data domains. Thus, you can configure a separate database e.g. for all customer or order related data. If no specific database is configured for a data domain, the default database will be used.
@@ -37,7 +22,7 @@ The default database configuration is defined in the `config/shop.php` file of t
 
 It defines the database location and credentials as well as the default statements that are executed when opening a connection ("stmt"), the maximum allowed connections to this database for the request ("limit") and if the database connection should persist between connections ("opt-persistent").
 
-You can define one database for each domain (e.g. order, customer, etc.) in the same way. To store all orders in a separate database, add another configuration block to your `config/shop.php` file:
+You can define one database for each domain (e.g. order, customer, etc.) in the same way. To store all orders in a separate database, add another configuration block to your `./config/shop.php` file:
 
 ```php
 'resource' => [
@@ -91,7 +76,7 @@ During development it's very useful to disable the internal content caching done
 
 Thus, new content is only generated if you flush the caches and/or delete the frontend cookie in your browser.
 
-To disable the content caching completely, add this to your `config/shop.php` file:
+To disable the content caching completely, add this to your `./config/shop.php` file:
 
 ```php
 'madmin' => [

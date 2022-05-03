@@ -3,7 +3,7 @@
 The core library contains a lot of configuration options documented in the "Configuration" section that can be changed in the `config/shop.php` file and they are displayed in the documentation like this:
 
 ```
-client/html/catalog/filter/default/button = 1
+client/html/catalog/filter/button = 1
 ```
 
 Laravel uses normal PHP arrays for configuration. As a rule of thumb, replace each part separated by a slash (/) by `'..' => ['...'],`:
@@ -200,7 +200,7 @@ The index "0" is always the singular translation and most languages only have on
 
 But some languages use several plural forms depending on the count given in the last parameter of the translation method. In this case, the index depends on the language and the count value passed as fourth parameter of *dn()* or *translate()*.
 
-To find out the right index for the language, you have to have a look into the [ *getPluralIndex()* method](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Translation/Base.php) that maps the count value to the index for the language you want to translate. An example for Czech would be:
+To find out the right index for the language, you have to have a look into the [ *getPluralIndex()* method](https://github.com/aimeos/aimeos-base/blob/master/src/Translation/Base.php) that maps the count value to the index for the language you want to translate. An example for Czech would be:
 
 ```php
 'i18n' => [
@@ -222,10 +222,10 @@ You can alternatively use Laravels Blade template engine for Aimeos templates ov
 
 # Blade templates
 
-To replace an Aimeos PHP template by our own Blade template, the Blade template needs to be stored at the same location as you would store the PHP template, i.e. the **./client/html/templates/** folder of your project-specific Aimeos extension. You should also keep the directory structure underneath and must save the file as **<template-name>.blade.php**, e.g.
+To replace an Aimeos PHP template by our own Blade template, the Blade template needs to be stored at the same location as you would store the PHP template, i.e. the **./templates/client/html/** folder of your project-specific Aimeos extension. You should also keep the directory structure underneath and must save the file as **<template-name>.blade.php**, e.g.
 
 ```
-./client/html/templates/catalog/detail/body-standard.blade.php
+./templates/client/html/catalog/detail/body.blade.php
 ```
 
 The file extension **.blade.php** is important to be recognized as template that should be processed by Laravels Blade engine.

@@ -35,9 +35,9 @@ There are three types of releases:
 
 As a rule of thumb:
 
-1. Update to the latest minor release, e.g. from 2020.04.1 to 2020.04.2 to get all bugfixes
-2. Update to the latest stable release, e.g. from 2020.07 to 2020.10 to get long term support for your major version
-3. Upgrade to the new major version e.g. from 2020.10 to 2021.10 if long term support has ended
+1. Update to the latest minor release, e.g. from 2022.04.1 to 2022.04.2 to get all bugfixes
+2. Update to the latest stable release, e.g. from 2022.07 to 2022.10 to get long term support for your major version
+3. Upgrade to the new major version e.g. from 2021.10 to 2022.10 if long term support has ended
 
 Instead of upgrading to a new LTS version, you can also buy an [extended long term support](https://aimeos.com/support) from the Aimeos company. They guarantee up to **five years support** for your used version.
 
@@ -80,10 +80,10 @@ Due to splitting uploaded files by site, the directory structure changed and tho
 
 In 2021.07+, the new paths are:
 
-* ./public/aimeos/1./files/...
-* ./public/aimeos/1./previews/...
-* ./public/aimeos/2./files/...
-* ./public/aimeos/2./previews/...
+* ./public/aimeos/1.d/files/...
+* ./public/aimeos/1.d/previews/...
+* ./public/aimeos/2.d/files/...
+* ./public/aimeos/2.d/previews/...
 
 Thus, old uploaded files will be only found if you move the old paths to the new *./public/aimeos* sub-directory:
 
@@ -111,29 +111,6 @@ jobs (mandatory)
 
 sites (standard is "default")
 : This must be one or more locale site codes that you have used in the administration interface. Several sites must be separated by a white space.
-
-## Configuration
-
-For some jobs (especially the tasks that are sending e-mails) a few configuration settings are required in the `config/shop.php` file of your application. This includes the e-mail address of your shop, the name displayed in the "From:" line of all sent e-mails and the base URL to the product images:
-
-```php
-'client' => array(
-    'html' => array(
-        'common' => array(
-            'template' => array(
-                 'baseurl' => public_path('vendor/shop/themes/elegance'),
-            ),
-        ),
-        'email' => array(
-            'from-email' => 'demo@aimeos.org',
-            'from-name' => 'Demo shop',
-        ),
-        ...
-    ),
-),
-```
-
-To use another theme CSS for the sent e-mails, you can set the [client/html/common/template/baseurl](../config/client-html/common-template.md#baseurl) parameter like shown above. As the job controller is executed via a cronjob, you must configure an **absolute path to the theme files**. The easiest way is to use the `public_path()` helper function which creates absolute paths to the `./public/` directory of your Laravel application.
 
 ## Every minute
 
@@ -176,6 +153,7 @@ These jobs should be executed once a day (best at times of low traffic):
 * Catalog import (import categories from CSV files)
 * Log cleanup (remove old log entries)
 * Removes unpaid orders (delete orders without payment)
+* Transfers money to vendors (for marketplace setups)
 * Product import (import products from CSV files)
 * Products bought together (automatically generated product suggestions)
 * Index rebuild (re-create the product index)
@@ -188,7 +166,7 @@ These jobs should be executed once a day (best at times of low traffic):
 The appropriate cronjob command is:
 
 ```
-0 1 * * * php /path/to/artisan aimeos:jobs "admin/cache admin/log catalog/import/csv order/cleanup/unpaid product/import/csv product/bought index/rebuild index/optimize product/export/sitemap subscription/process/begin subscription/process/renew subscription/process/end"
+0 1 * * * php /path/to/artisan aimeos:jobs "admin/cache admin/log catalog/import/csv order/cleanup/unpaid order/service/transfer product/import/csv product/bought index/rebuild index/optimize product/export/sitemap subscription/process/begin subscription/process/renew subscription/process/end"
 ```
 
 # Content Security Policy
