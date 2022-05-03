@@ -15,7 +15,7 @@ They are also used to write the default and unit test data to the database durin
 
 Updating an existing schema or adding a new table to an existing data domain (product, catalog, attribute, etc.) by using [Upscheme](https://upscheme.org) is very simple and described here. If you need to migrate data, want to add a new data domain or rename a table, you need to create your own [setup task](#migration).
 
-For already existing data domains, a schema file exists in the [./lib/mshoplib/setup/default/schema/](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/setup/default/schema) directory of the Aimeos core. It consists of the list of tables including their definitions. The *attribute.php* file contains these lines for example:
+For already existing data domains, a schema file exists in the [./setup/default/schema/](https://github.com/aimeos/aimeos-core/tree/master/setup/default/schema) directory of the Aimeos core. It consists of the list of tables including their definitions. The *attribute.php* file contains these lines for example:
 
 ```php
 return [
@@ -48,7 +48,7 @@ An anonymous function creates the table and adds the columns as well as the inde
 
 ## Add new tables
 
-In your own extension you have to create a PHP file with the same name as the file for the existing data domain, i.e. *attribute.php* in the *./lib/custom/setup/default/schema/* directory. This file can contain one or more anonymous functions for new tables of the same data domain. They are created by [Upscheme](https://upscheme.org) exactly like in the Aimeos core, e.g.
+In your own extension you have to create a PHP file with the same name as the file for the existing data domain, i.e. *attribute.php* in the *./setup/default/schema/* directory. This file can contain one or more anonymous functions for new tables of the same data domain. They are created by [Upscheme](https://upscheme.org) exactly like in the Aimeos core, e.g.
 
 ```php
 return [
@@ -70,7 +70,7 @@ return [
 
 It's possible to modify schema definitions of core tables via extensions. This enables your extension to add additional columns or indexes to core tables or change column options like their length or type. Your changes will be applied to the tables while the setup tasks are running as long as your extension is installed.
 
-You have to create a PHP file with the same name as the file for the existing data domain, i.e. *attribute.php* in the *./lib/custom/setup/default/schema/* directory - just like for adding a new table.
+You have to create a PHP file with the same name as the file for the existing data domain, i.e. *attribute.php* in the *./setup/default/schema/* directory - just like for adding a new table.
 
 The important difference compared to adding new tables is that the schema object already contains a table definition. The current table definition is passed to your function and you can use all methods offered by [Upscheme](https://upscheme.org) to modify or add columns/indexes/etc., e.g.:
 
@@ -90,7 +90,7 @@ return [
 
 ## Tables for new domains
 
-In order to create tables for a new data domain (not existing ones like "attribute", "product", "service", etc.], you need to create an [Upscheme](https://upscheme.org) setup task, too. This setup task must extend from the `Base` setup task class. For a new domain *mydomain* (defined in *setup/default/schema/mydomain.php*) create a file called *Mydomain.php* with content similar to this one:
+In order to create tables for a new data domain (not existing ones like "attribute", "product", "service", etc.], you need to create an [Upscheme](https://upscheme.org) setup task, too. This setup task must extend from the `Base` setup task class. For a new domain *mydomain* (defined in *./setup/default/schema/mydomain.php*) create a file called *Mydomain.php* with content similar to this one:
 
 ```php
 namespace Aimeos\Upscheme\Task;
@@ -118,7 +118,7 @@ class Mydomain extends Base
 
 In the *up()* method, you need to get the connection to the database where the table(s) should be created in using *$this->db('db-mydomain')*. If no connection for *db-mydomain* is configured, it will automatically fall back to the default connection.
 
-The file *default/schema/mydomain.php* contains your schema definition and the path must be relative to the *lib/custom/setup* directory of your extension.
+The file *default/schema/mydomain.php* contains your schema definition and the path must be relative to the *./setup* directory of your extension.
 
 Finally, the functions retrieved from the schema file(s) will be passed to the *$db->table()* method which will create the table definitions according to the schema file.
 
@@ -151,11 +151,11 @@ The following section describes how setup tasks can migrate data before or after
 
 ## Basics
 
-Migration tasks are setup tasks like the ones creating the database schema and stored in the **./lib/mshoplib/setup/** directory but instead of defining a table structure, they migrate the data in the existing tables to fit to the new schema. Tasks only relevant for a specific site (like for unit tests or performance tests) are located in sub-directories named after the site, i.e.
+Migration tasks are setup tasks like the ones creating the database schema and stored in the **./setup/** directory but instead of defining a table structure, they migrate the data in the existing tables to fit to the new schema. Tasks only relevant for a specific site (like for unit tests or performance tests) are located in sub-directories named after the site, i.e.
 
-* ./lib/mshoplib/setup/default/
-* ./lib/mshoplib/setup/unittest/
-* ./lib/mshoplib/setup/unitperf/
+* ./setup/default/
+* ./setup/unittest/
+* ./setup/unitperf/
 
 You can change the path, where the setup process looks for tasks to execute, within the *manifest.php* file of your extension. The default directory is:
 
@@ -163,7 +163,7 @@ You can change the path, where the setup process looks for tasks to execute, wit
 return [
     // ...
     'setup' => [
-        'lib/custom/setup',
+        'setup',
     ],
 ];
 ```

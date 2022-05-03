@@ -4,7 +4,7 @@ Things get more complicated if your files are very big because the product expor
 
 Implementation tend to get even more complicated when different file formats come into play. You want to create a CSV file, maybe as compressed .gz file or several files combined in one .zip file? Using only the PHP functions will get messy very soon!
 
-There are utility classes in the [*./lib/mwlib/src/MW*](https://github.com/aimeos/aimeos-core/tree/master/lib/mwlib/src/MW) directory of the core available that provide a single interface for handling container and content objects. Container could be anything that can store one or more content objects (e.g. files) like directories or Zip files. Content objects can be any binary or text files, CSV files or spreadsheets.
+There are utility classes in the [*./src/MW*](https://github.com/aimeos/aimeos-core/tree/master/src/MW) directory of the core available that provide a single interface for handling container and content objects. Container could be anything that can store one or more content objects (e.g. files) like directories or Zip files. Content objects can be any binary or text files, CSV files or spreadsheets.
 
 # Create files
 
