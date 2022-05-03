@@ -22,9 +22,6 @@ all (or no target)
 setup
 : Sets up the database and writes the unit test data to the database
 
-setupperf
-: Sets up the database and writes the perfomance test data to the database
-
 coverage
 : Generates a [code coverage report](https://en.wikipedia.org/wiki/Code_coverage)
 
@@ -36,9 +33,6 @@ test
 
 testext
 : Executes the unit tests for a specific extension directory given via "-Ddir=ext/<name>"
-
-testperf
-: Executes the performance tests
 
 check
 : Executes the [code sniffer](https://pear.php.net/manual/en/package.php.php-codesniffer.php)
@@ -57,9 +51,6 @@ i18n
 
 build
 : Generates all binary translation files and the compressed JS files
-
-deploy
-: Creates a .tar.bz2 package from the current repository
 
 createext
 : Creates new Aimeos extension
