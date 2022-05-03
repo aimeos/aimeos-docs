@@ -1,4 +1,4 @@
-The [context item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php) is the dependency container of Aimeos and gives you access to the host system, independent of the used framework or application. It's available in all classes of the [data access layer and above](../developer/architecture.md) except the items (and template files of course) by calling.
+The [context item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/ContextIface.php) is the dependency container of Aimeos and gives you access to the host system, independent of the used framework or application. It's available in all classes of the [data access layer and above](../developer/architecture.md) except the items (and template files of course) by calling.
 
 ```php
 $this->context()
@@ -14,7 +14,7 @@ $cache = $this->context()->cache()
     ->get( 'myuniquekey' );
 ```
 
-The full description of its methods is available in the documentation of the [cache interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Cache/Iface.php).
+The full description of its methods is available in the documentation of the [cache interface](https://github.com/aimeos/aimeos-base/blob/master/src/Cache/Iface.php).
 
 # Configuration
 
@@ -25,7 +25,7 @@ $config = $this->context()->config()
     ->get( 'client/html/catalog/detail/subparts', [] );
 ```
 
-The full description of its methods is available in the documentation of the [config interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Config/Iface.php).
+The full description of its methods is available in the documentation of the [config interface](https://github.com/aimeos/aimeos-base/blob/master/src/Config/Iface.php).
 
 # Database
 
@@ -37,22 +37,10 @@ By using the database manager, you can get access the configured database connec
 First you have to get the correct connection and release it again after you are done:
 
 ```php
-$db = $this->context()->db();
-$conn = $db->acquire( 'db-product' );
-$conn->begin();
-
-try {
-    // ...
-    $conn->commit();
-} catch( \Exception $e ) {
-    $conn->rollback();
-} finally {
-    $db->release( $conn, 'db-product' );
-}
+$conn = $this->context()->db(); // default database
+// or
+$conn = $this->context()->db( 'db-product' ); // product database
 ```
-
-!!! warning
-    It's extremely important that you release the database connection again using the same name as in *acquire()* because it's shared within the process. If you forget to do this, new connections will be opened until the connection limit is reached and an exception is thrown!
 
 With the connection object, you can execute a SQL statement:
 
@@ -81,17 +69,20 @@ while( $row = $result->fetch() ) {
 
 For detailed information about the available methods, please have a look into these interfaces:
 
-* [database manager](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/DB/Manager/Iface.php)
-* [connections](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/DB/Connection/Iface.php)
-* [statements](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/DB/Statement/Iface.php)
-* [result sets](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/DB/Result/Iface.php)
+* [database manager](https://github.com/aimeos/aimeos-base/blob/master/src/DB/Manager/Iface.php)
+* [connections](https://github.com/aimeos/aimeos-base/blob/master/src/DB/Connection/Iface.php)
+* [statements](https://github.com/aimeos/aimeos-base/blob/master/src/DB/Statement/Iface.php)
+* [result sets](https://github.com/aimeos/aimeos-base/blob/master/src/DB/Result/Iface.php)
 
 # File system
 
 The file system object gives you access to the configured parts of the storage. This may be the local file system but can be a remote FTP server or the AWS cloud too, depending on the configuration. You don't have to care about the details because the file system interface provides a way to work with any storage the same way.
 
 ```php
-$fs = $this->context()->fs( 'fs-secure' );
+$fs = $this->context()->fs(); // default file system
+// or
+$fs = $this->context()->fs( 'fs-secure' ); // other file system
+
 $fs->write( 'somefile.txt', 'some content' );
 $content = $fs->read( 'somefile.txt' );
 ```
@@ -118,9 +109,9 @@ if( $fs instanceof \Aimeos\MW\Filesystem\MetaIface ) {
 
 For detailed information about the available methods, please have a look into these interfaces:
 
-* [file system](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Filesystem/Iface.php)
-* [directories](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Filesystem/DirIface.php)
-* [meta data](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Filesystem/MetaIface.php)
+* [file system](https://github.com/aimeos/aimeos-base/blob/master/src/Filesystem/Iface.php)
+* [directories](https://github.com/aimeos/aimeos-base/blob/master/src/Filesystem/DirIface.php)
+* [meta data](https://github.com/aimeos/aimeos-base/blob/master/src/Filesystem/MetaIface.php)
 
 # I18n (Translation)
 
@@ -132,7 +123,7 @@ $str = $i18n->dt( 'client', 'One string' );
 $str = sprintf( $i18n->dn( 'client', 'One string', '%1$d strings', 5 ), 5 );
 ```
 
-More information about the methods is available in the [translation interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Translation/Iface.php).
+More information about the methods is available in the [translation interface](https://github.com/aimeos/aimeos-base/blob/master/src/Translation/Iface.php).
 
 # Locale
 
@@ -145,7 +136,7 @@ $currencyid = $locale->getCurrencyId();
 $site = $locale->getSite();
 ```
 
-More information about the methods is available in the [locale interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Locale/Item/Iface.php).
+More information about the methods is available in the [locale interface](https://github.com/aimeos/aimeos-base/blob/master/src/Locale/Item/Iface.php).
 
 # Logger
 
@@ -157,27 +148,26 @@ $logger = $this->context()->logger()
     ->log( 'some message' );
 ```
 
-More information about the methods is available in the [logger interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Logger/Iface.php). The constants for the second parameter are listed in the [logger base class](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Logger/Base.php).
+More information about the methods is available in the [logger interface](https://github.com/aimeos/aimeos-base/blob/master/src/Logger/Iface.php). The constants for the second parameter are listed in the [logger base class](https://github.com/aimeos/aimeos-base/blob/master/src/Logger/Base.php).
 
 # Mail
 
 Sometimes you need to send someone an e-mail for notification. The mail object offers a simple but yet powerful interface to the mail implementation of the host framework or application and its configuration. It's much more flexible than the PHP *mail()* function.
 
 ```php
-$this->context()->mail()
-    ->createMessage()
-    ->addFrom( 'me@localhost' )
-    ->addTo( 'me@example.com' )
-    ->setSubject( 'Important message' )
-    ->setBody( 'The text body' )
-    ->addAttachment( 'some data', 'text/plain', 'myfile.txt' )
+$this->context()->mail()->create()
+    ->from( 'me@localhost' )
+    ->to( 'me@example.com' )
+    ->subject( 'Important message' )
+    ->text( 'The text body' )
+    ->attach( 'some data', 'myfile.txt', 'text/plain' )
     ->send();
 ```
 
 For detailed information about the available methods, please have a look into these interfaces:
 
-* [mail interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Mail/Iface.php)
-* [message interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Mail/Message/Iface.php)
+* [mail interface](https://github.com/aimeos/aimeos-base/blob/master/src/Mail/Iface.php)
+* [message interface](https://github.com/aimeos/aimeos-base/blob/master/src/Mail/Message/Iface.php)
 
 # Message queues
 
@@ -204,9 +194,9 @@ while( $msg = $queue->get() )
 }
 ```
 
-More information about the available methods is available in the [message queue interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/MQueue/Queue/Iface.php).
+More information about the available methods is available in the [message queue interface](https://github.com/aimeos/aimeos-base/blob/master/src/MQueue/Queue/Iface.php).
 
-!!! waring
+!!! warning
     It's important to delete the message you've processed in the job controller afterwards! Otherwise, the message will be processed over and over again and will utilize all resources of the server.
 
 # Parallel processing
@@ -214,12 +204,11 @@ More information about the available methods is available in the [message queue 
 Aimeos offers the necessary infrastructure for processing tasks in parallel and therefore utilizing multi-core architectures of CPUs efficiently. This is only available in [job controllers](../cronjobs/create-job-controller.md) executed from the command line e.g. via scheduled cron jobs.
 
 ```php
-$fcn = function( \Aimeos\MShop\Context\Item\Iface $context, $data ) {
+$fcn = function( \Aimeos\MShop\ContextIface $context, $data ) {
     echo $data;
 };
 
-$context = $this->context()
-$context->process()
+$this->context()->process()
     ->start( $fcn, [$context, 'data1'] )
     ->start( $fcn, [$context, 'data2'] )
     ->wait();
@@ -239,7 +228,7 @@ $session->set( 'myprefix/myvalue', 'some value' );
 $session->get( 'myprefix/myvalue' );
 ```
 
-Details about the methods are available in the [session interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Session/Iface.php).
+Details about the methods are available in the [session interface](https://github.com/aimeos/aimeos-base/blob/master/src/Session/Iface.php).
 
 # Template view
 
@@ -250,7 +239,6 @@ $view = $this->context()->view();
 $view->myvalue = 'some value';
 $content = $view->render( 'path/to/template.php' ); // Aimeos PHP
 $content = $view->render( 'path/to/template.blade.php' ); // Laravel
-$content = $view->render( 'path/to/template.html.twig' ); // Symfony
 $content = $view->render( 'path/to/template.html' ); // TYPO3/Flow
 ```
 
@@ -261,7 +249,7 @@ The path of the templates is relative to the [configured directory in the manife
 <?= $this->number( 123.45 ) ?>
 ```
 
-Details about the view methods and a list of view helpers is available in the [documentation of the view interface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/View/Iface.php).
+Details about the view methods and a list of view helpers is available in the [documentation of the view interface](https://github.com/aimeos/aimeos-base/blob/master/src/View/Iface.php).
 
 # Editor
 
