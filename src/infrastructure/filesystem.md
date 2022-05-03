@@ -39,7 +39,7 @@ $fs->copy( 'a', 'b' )->move( 'b', 'c' )->rm( 'a' );
 $fs->mkdir( 'a' )->rmDir( 'a' );
 ```
 
-Whenever an error occurs, an `\Aimeos\MW\Filesystem\Exception` is thrown. To handle errors, use:
+Whenever an error occurs, an `\Aimeos\Base\Filesystem\Exception` is thrown. To handle errors, use:
 
 ```php
 try
@@ -48,7 +48,7 @@ try
 	// or better use
 	$fs->move( 'myfile', 'mydir/myfile' );
 }
-catch( \Aimeos\MW\Filesystem\Exception $e )
+catch( \Aimeos\Base\Filesystem\Exception $e )
 {
 	echo 'File operation not possible: ' . $e->getMessage();
 }
@@ -178,7 +178,7 @@ Some file systems like Amazon S3 doesn't support directories. Before using one o
 ```php
 $fs = $context->fs( 'fs-media' );
 
-if( $fs instanceof \Aimeos\MW\Filesystem\DirIface ) {
+if( $fs instanceof \Aimeos\Base\Filesystem\DirIface ) {
 	$fs->isDir( 'mydir' ) ?: $fs->mkdir( 'mydir' );
 }
 ```
@@ -224,7 +224,7 @@ Not all file systems support meta data and before using those methods, you need 
 ```php
 $fs = $context->fs( 'fs-media' );
 
-if( $fs instanceof \Aimeos\MW\Filesystem\MetaIface ) {
+if( $fs instanceof \Aimeos\Base\Filesystem\MetaIface ) {
 	$mtime = $fs->time( 'myfile' );
 	$size = $fs->size( 'myfile' );
 }
