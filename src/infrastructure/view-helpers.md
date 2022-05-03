@@ -8,7 +8,7 @@ $this->somekey // throws an exception if not available
 isset( $this->somekey ) // tests if the parameter is available
 ```
 
-Additionally, there are some [view helpers](https://github.com/aimeos/aimeos-core/tree/master/lib/mwlib/src/MW/View/Helper) available. To use the view helpers in the view, call e.g.
+Additionally, there are some [view helpers](https://github.com/aimeos/aimeos-core/tree/master/src/View/Helper) available. To use the view helpers in the view, call e.g.
 
 ```php
 <?= $this->url( $target, $controller, $action, $params, $trailing, $config ) ?>
@@ -161,7 +161,7 @@ Provides access to an e-mail message that can be filled with a message body.
 <?php $message = $this->mail(); ?>
 ```
 
-The available methods in the message object are available in the [Aimeos\MW\Mail\Message\Iface](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Mail/Message/Iface.php).
+The available methods in the message object are available in the [Aimeos\Base\Mail\Message\Iface](https://github.com/aimeos/aimeos-core/blob/master/src/Mail/Message/Iface.php).
 
 # number
 
@@ -275,7 +275,7 @@ The first argument is the array and the second one the path to the value separat
 
 The examples assume an array structure like this one.
 
-```
+```php
 ['path' => ['to' => ['key' => 'value']]]
 ```
 
