@@ -24,10 +24,10 @@ class Myprovider
 The filename must be the same as the class name (here: *Myprovider*). Of course you should use a more meaningful name for your class and file. Be aware that all names are case sensitive. The new rule provider must be stored within your project specific [Aimeos extension](../developer/extensions.md) at this location:
 
 ```php
-// Laravel, Symfony
-./<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Myprovider.php
+// Laravel
+./<yourext>/src/MShop/Rule/Provider/Catalog/Myprovider.php
 // TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Myprovider.php
+./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Rule/Provider/Catalog/Myprovider.php
 ```
 
 Once this is done, Aimeos detects the rule provider automatically and editors will now be able to add rules using the rule provider in the *Marketing* section of the *Aimeos* backend.
@@ -164,10 +164,10 @@ class Mydecorator
 The new rule provider must be stored within your project specific [Aimeos extension](../developer/extensions.md) at this location:
 
 ```php
-// Laravel, Symfony
-./<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Decorator/Mydecorator.php
+// Laravel
+./<yourext>/src/MShop/Rule/Provider/Catalog/Decorator/Mydecorator.php
 // TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Rule/Provider/Catalog/Decorator/Mydecorator.php
+./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Rule/Provider/Catalog/Decorator/Mydecorator.php
 ```
 
 It's only important to extend from the base decorator class and implement the decorator interface. The base class already contains default implementations for all rule provider methods.
