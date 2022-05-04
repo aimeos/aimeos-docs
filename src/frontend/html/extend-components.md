@@ -5,7 +5,7 @@ A far better way is creating an **HTML client decorator** and configure this dec
 The decorators you are implementing have to be stored in your own Aimeos extension in this directory:
 
 ```
-./client/html/src/Client/Html/Common/Decorator/
+./src/Client/Html/Common/Decorator/
 ```
 
 The directory matches the namespace of the decorator class.
@@ -56,7 +56,7 @@ The `modify()` method is only used by **components that implement content cachin
 
 # Supporting methods
 
-Decorators inherit all methods available in the components and subparts via the [\Aimeos\Client\Html\Base](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Base.php) class. There's one additional method exclusive to decorators named `getClient()`. It returns the HTML client or decorator representing the next layer in the onion down to the core object:
+Decorators inherit all methods available in the components and subparts via the [\Aimeos\Client\Html\Base](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Base.php) class. There's one additional method exclusive to decorators named `getClient()`. It returns the HTML client or decorator representing the next layer in the onion down to the core object:
 
 ```php
 public function init()

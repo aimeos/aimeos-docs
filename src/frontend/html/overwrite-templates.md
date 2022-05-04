@@ -7,7 +7,7 @@ Often, it's necessary to replace the templates of a component or subpart with a 
 
 The template views itself consist of HTML with [alternative PHP syntax](https://php.net/manual/en/control-structures.alternative-syntax.php). It's also possible to use the native template engine of your framework or application, i.e. Blade for Laravel, Twig for Symfony and Fluid for TYPO3. Please have a look at the "Get started" section to find out more.
 
-All standard templates are stored in the [client/html/templates/](https://github.com/aimeos/ai-client-html/tree/master/client/html/templates) directory of the ai-client-html extension. There are sub-directories for each component type and component implementation, e.g. the "catalog/detail" sub-directory for the catalog detail component. Below, the ".php" template files are stored for the component and all its subparts.
+All standard templates are stored in the [templates/client/html/](https://github.com/aimeos/ai-client-html/tree/master/templates/client/html) directory of the ai-client-html extension. There are sub-directories for each component type and component implementation, e.g. the "catalog/detail" sub-directory for the catalog detail component. Below, the ".php" template files are stored for the component and all its subparts.
 
 The naming of the template files in the directory structure is:
 ```
@@ -21,7 +21,7 @@ catalog/detail/header.php
 catalog/detail/service-body-mine.php
 ```
 
-Own extensions that contain template files in the `client/html/templates/` directory which are named the same as the existing ones are used first. If no template files are found in own extensions, then the default ones from the ai-client-html extension are used.
+Own extensions that contain template files in the `templates/client/html/` directory which are named the same as the existing ones are used first. If no template files are found in own extensions, then the default ones from the ai-client-html extension are used.
 
 !!! note
     The output of the **basket/mini** component is cached in the session of the user for performance reasons. If you change the templates, you will see changes only after the component is updated e.g. by adding a product. To ease development, you can [disable the basket cache](../../config/client-html/basket-cache#enable) in your Aimeos installation via configuration.

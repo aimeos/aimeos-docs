@@ -19,7 +19,7 @@ The checkout process is one of the hearts of a web shop. Aimeos contains a full-
 
 All steps are implemented as subparts of the "checkout standard" component. The difference between this component and others is that only the subpart is shown that matches the step in the URL parameter or the first one that requires attention if the page is called without parameter.
 
-Moving through the steps is done by instantiating all subparts, calling their `init()` methods and the one that requires some input will set the *standardStepActive* view variable to its own subpart name. This subpart is rendered afterwards and the [init() method of the address subpart](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Checkout/Standard/Address/Standard.php#L250-L278) is a good place to see how this works.
+Moving through the steps is done by instantiating all subparts, calling their `init()` methods and the one that requires some input will set the *standardStepActive* view variable to its own subpart name. This subpart is rendered afterwards and the [init() method of the address subpart](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Checkout/Standard/Address/Standard.php#L250-L278) is a good place to see how this works.
 
 If a customer is already logged in and the [Autofill basket plug-in](../../manual/plugins.md#autofill) is configured, then the address data as well as the chosen delivery and payment options are used from the last order. The steps that doesn't require any input are skipped and the [configured destination page](../../config/client-html/checkout-standard.md#step-active) (the summary page by default) is displayed directly to the customer.
 
