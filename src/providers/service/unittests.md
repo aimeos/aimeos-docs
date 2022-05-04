@@ -18,7 +18,7 @@ class MyproviderTest extends \PHPUnit_Framework_TestCase
     private $serviceItem;
 
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $context = TestHelperMShop::context();
 
@@ -77,12 +77,12 @@ public function testGetConfigBE()
     $this->assertArrayHasKey( 'myprovider.mykey', $result );
 
     foreach( $result as $attr ) {
-        $this->assertInstanceOf( '\Aimeos\MW\Criteria\Attribute\Iface', $attr );
+        $this->assertInstanceOf( '\Aimeos\Base\Criteria\Attribute\Iface', $attr );
     }
 }
 ```
 
-The output of the *getConfigBE()* and *getConfigFE()* methods must be an array of *Aimeos\MW\Criteria\Attribute\Iface* objects with the keys defined in your service provider. You should check if every key is available by using the *assertArrayHasKey()* method.
+The output of the *getConfigBE()* and *getConfigFE()* methods must be an array of *Aimeos\Base\Criteria\Attribute\Iface* objects with the keys defined in your service provider. You should check if every key is available by using the *assertArrayHasKey()* method.
 
 # Check front-end / back-end configuration
 
@@ -167,7 +167,7 @@ public function testUpdateSync()
 {
     $psr7stream = $this->getMockBuilder( '\Psr\Http\Message\StreamInterface' )->getMock();
     $psr7request = $this->getMockBuilder( '\Psr\Http\Message\ServerRequestInterface' )->getMock();
-    $psr7response = $this->getMockBuilder( '\Aimeos\MW\View\Helper\Response\Iface' )->getMock();
+    $psr7response = $this->getMockBuilder( '\Aimeos\Base\View\Helper\Response\Iface' )->getMock();
 
     $psr7request->expects( $this->once() )->method( 'getQueryParams' )
         ->will( $this->returnValue( ['key' => 'value'] ) );

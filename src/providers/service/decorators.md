@@ -45,4 +45,4 @@ public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : \Aime
 
 The code above intercepts the *calcPrice()* method for example. It receives the same parameters as the service provider and must return a value if this is documented in the interface describing the method. The underlying object is available via `$this->getProvider()` and it can be used to call any method of this object. Normally it's the same method as the implemented one but it can be another one too.
 
-For examples of decorators and their implementations, you should have a look at the [available decorators](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/src/MShop/Service/Provider/Decorator) in the Aimeos core.
+For examples of decorators and their implementations, you should have a look at the [available decorators](https://github.com/aimeos/aimeos-core/tree/master/src/MShop/Service/Provider/Decorator) in the Aimeos core.

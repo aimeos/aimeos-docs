@@ -72,10 +72,10 @@ In the first line, the [basic order information](index.md#retrieve-complete-orde
 
 In this example, you would use the API of the payment gateways to execute the payment directly and get an immediate response back from the gateway. Afterwards, you must update the payment status and [persist the change](index.md#save-order-items) in the database. This will automatically log the status change in the *mshop_order_status* table.
 
-The call to the parent *process()* method will return the [form helper object](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Common/Helper/Form/Iface.php) to redirect the customer to the confirmation page.
+The call to the parent *process()* method will return the [form helper object](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Common/Helper/Form/Iface.php) to redirect the customer to the confirmation page.
 
 
-There are several [payment status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) available:
+There are several [payment status values](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base.php) available:
 
 PAY_UNFINISHED
 : Payment is open, no payment attempt has been made yet
@@ -100,6 +100,9 @@ PAY_AUTHORIZED
 
 PAY_RECEIVED
 : The payment has been received and was added to the account of the shop owner
+
+PAY_TRANSFERRED
+: The payment has been transferred to the vendor (marketplaces only)
 
 Instead of an API call, you can also redirect the customer directly to the payment gateway and hand over the required data via GET or POST:
 
@@ -192,7 +195,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
 }
 ```
 
-If there's no parameter named "myprovider.accountno" available, a form will be generated and returned as [form helper object](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Common/Helper/Form/Iface.php).
+If there's no parameter named "myprovider.accountno" available, a form will be generated and returned as [form helper object](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Common/Helper/Form/Iface.php).
 
 After the customers entered their data, the information will be posted to the same page ("payment.url-self"), so the *process()* method of your payment service provider will be called again, now with the entered value passed in the "params" argument. This value or values can be saved as attribute along with the payment service data in the order.
 
@@ -223,7 +226,7 @@ public function updateSync( \Psr\Http\Message\ServerRequestInterface $request,
 
 You need to extract the status value either from the given GET/POST parameters or from the request body. The way to extract this information totally depends on the external system sending the request.
 
-Based on this data, you can map the status value sent by the payment gateway to one of the [Aimeos payment status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) also used in the *process()* method and [save the modified order](index.md#save-order-items) back to the database afterwards.
+Based on this data, you can map the status value sent by the payment gateway to one of the [Aimeos payment status values](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base.php) also used in the *process()* method and [save the modified order](index.md#save-order-items) back to the database afterwards.
 
 ## Push update
 
@@ -250,7 +253,7 @@ public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
 
 First, you need to retrieve the order ID and the corresponding status value either from the given GET/POST parameters or from the request body. The way to extract this information totally depends on the external system sending the request.
 
-Based on this data, you can retrieve the order item from the database, map the status value sent by the payment gateway to one of the [Aimeos payment status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) also used in the *process()* method and [save the modified order](index.md#save-order-items) back to the database afterwards.
+Based on this data, you can retrieve the order item from the database, map the status value sent by the payment gateway to one of the [Aimeos payment status values](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base.php) also used in the *process()* method and [save the modified order](index.md#save-order-items) back to the database afterwards.
 
 If the payment gateway needs more or a different acknowledgement then a HTTP status 200, then you can add any valid HTTP header and an appropriate response body to the *$response* parameter. The content of the response body can totally depend on what the external system expects and can be any string, XML or whatever format.
 
@@ -278,7 +281,7 @@ public function updateAsync() : bool
 }
 ```
 
-As batch files usually contain several updates at once, e.g. one at each line, extracting the list, looping over the entries and retrieving/updating each order item is a regular task. Also, you need to map the status value sent by the external system to one of the [Aimeos payment status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) and [save the modified order](#index.md#save-order-items) back to the database.
+As batch files usually contain several updates at once, e.g. one at each line, extracting the list, looping over the entries and retrieving/updating each order item is a regular task. Also, you need to map the status value sent by the external system to one of the [Aimeos payment status values](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base.php) and [save the modified order](#index.md#save-order-items) back to the database.
 
 !!! tip
     If your batch file contains some kind of CSV data, the easiest way to extract those data is by using the [container/content utility classes](../../infrastructure/read-write-files.md).
@@ -304,7 +307,7 @@ public function query( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\O
 }
 ```
 
-The available [payment status values](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base.php) are the same as described in the *process()* method and you have to save the order item too for persisting the [changed order item data](index.md#save-order-items) in the storage.
+The available [payment status values](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base.php) are the same as described in the *process()* method and you have to save the order item too for persisting the [changed order item data](index.md#save-order-items) in the storage.
 
 As the *query()* method isn't available by default, you have to tell the application using the service provider that your implementation supports it. Thus, you have to [overwrite the *isImplemented()* method](index.md#check-available-methods) and return true for the query feature:
 

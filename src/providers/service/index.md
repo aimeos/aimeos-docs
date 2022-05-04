@@ -5,11 +5,11 @@ In *Aimeos* the service providers are adapters between the shop interfaces for d
 Your service provider must be part of your project specific [*Aimeos* extension](../../developer/extensions.md) and be stored in
 
 ```
-./<yourext>/lib/custom/src/MShop/Service/Provider/Delivery/<classname>.php
+./<yourext>/src/MShop/Service/Provider/Delivery/<classname>.php
 ```
 or
 ```
-./<yourext>/lib/custom/src/MShop/Service/Provider/Payment/<classname>.php
+./<yourext>/src/MShop/Service/Provider/Payment/<classname>.php
 ```
 
 to be available in your *Aimeos* installation.
@@ -41,15 +41,13 @@ In the order item itself only some status values, dates and related IDs are stor
 $baseItem = $this->getOrderBase( $orderItem->getBaseId() );
 ```
 
-The [order base item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base/Iface.php) and its included objects from the sub-domains are in fact the same as the basket during the checkout of the customer. The line above would load the basic order data (price, locale, etc.) and the delivery/payment service related items including their attributes. If you need the addresses or products as well, you can define which parts should be loaded:
+The [order base item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base/Iface.php) and its included objects from the sub-domains are in fact the same as the basket during the checkout of the customer. The line above would load the basic order data (price, locale, etc.) and the delivery/payment service related items including their attributes. If you need the addresses or products as well, you can define which parts should be loaded:
 
 ```php
-$parts = \Aimeos\MShop\Order\Item\Base\Base::PARTS_ADDRESS;
-$parts |= \Aimeos\MShop\Order\Item\Base\Base::PARTS_PRODUCT;
-$baseItem = $this->getOrderBase( $orderItem->getBaseId(), $parts );
+$baseItem = $this->getOrderBase( $orderItem->getBaseId(), ['order/base/addres', 'order/base/product'] );
 ```
 
-These lines would load the basic order including the addresses and the products. You can find the complete list of constants in the class of the [order base item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base/Base.php).
+These lines would load the basic order including the addresses and the products. You can find the complete list of constants in the class of the [order base item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base/Base.php).
 
 !!! warning
     Loading the complete order is slow because it involves fetching many records from the database. Whenever possible, limit the related items to those you really need!
@@ -66,21 +64,13 @@ This saves the order item itself (not the complete order) and creates the necess
 
 ## Save complete order
 
-Saving the complete order (a.k.a. [basket](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base/Iface.php)) is very similar to retrieving it from the database:
+Saving the complete order (a.k.a. [basket](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base/Iface.php)) is very similar to retrieving it from the database:
 
 ```php
 $this->saveOrderBase( $baseItem );
 ```
 
-This would save changes in the service related items and attributes but wouldn't touch any of the product or address items in the database. In the unusual case you've modified one of those items as well and need to persist the changed, you have to tell the *saveOrderBase()* method which parts should be saved instead:
-
-```php
-$parts = \Aimeos\MShop\Order\Item\Base\Base::PARTS_ADDRESS;
-$parts |= \Aimeos\MShop\Order\Item\Base\Base::PARTS_SERVICE;
-$this->saveOrderBase( $baseItem, $parts );
-```
-
-These three lines would save any changes in the address and service items including the service attributes.
+This would save changes in the service related items and attributes.
 
 # Additonal data
 
@@ -105,7 +95,7 @@ The line above would create and return the stock manager using the given context
 When integrating external services you often want or have to store data returned by them for later or for reference. This may include transaction IDs, status codes or other related data. In these cases, you should store the data as service attributes attached to the delivery or payment service provider. The *setAttributes()* method simplifies the first step of adding new or updating existing attributes:
 
 ```php
-setAttributes( \Aimeos\MShop\Order\Item\Base\Service\Iface $item, array $attributes, $type );
+$this->setAttributes( \Aimeos\MShop\Order\Item\Base\Service\Iface $item, array $attributes, $type );
 ```
 
 It adds the key/value pairs in the second parameter with the specified type to the given order service item. If the attribute key/type combination already exists, the attribute value will be updated. The type is an arbitrary string but it's best to use the service provider name in lower case to quickly identify to which service provider it belongs. You can save one or more attribute like this:
@@ -351,7 +341,7 @@ The `$code` parameter of *getService()* will return the *Aimeos\MShop\Order\Item
 
 Most payment gateways require some values to be posted to their servers like the amount the customer has to pay, the currency and a few other necessary ones. Redirecting the customer to the payment gateways and handing over these values is done after the customer clicked on the "Buy now" button at the end of the checkout process.
 
-In the same way you've defined the front-end configuration, you can specify the form fields of the payment form too. Only the way how to pass them to the front-end is different because they have to be returned as part of a [form helper object](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Common/Helper/Form/Iface.php) by the *process()* method of your payment service provider. This doesn't apply to delivery service providers!
+In the same way you've defined the front-end configuration, you can specify the form fields of the payment form too. Only the way how to pass them to the front-end is different because they have to be returned as part of a [form helper object](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Common/Helper/Form/Iface.php) by the *process()* method of your payment service provider. This doesn't apply to delivery service providers!
 
 ```php
 public function process( \Aimeos\MShop\Order\Item\Iface $order,
@@ -368,7 +358,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
 }
 ```
 
-For example, the [OmniPay service provider](https://github.com/aimeoscom/ai-payments/blob/master/lib/custom/src/MShop/Service/Provider/Payment/OmniPay.php) makes heavy use of this. The *process()* method is a "dual use" method in the sense that it can return the definition of a payment form but also push the data forward to the payment gateway if the gateway uses a API reachable via an URL.
+For example, the [OmniPay service provider](https://github.com/aimeoscom/ai-payments/blob/master/src/MShop/Service/Provider/Payment/OmniPay.php) makes heavy use of this. The *process()* method is a "dual use" method in the sense that it can return the definition of a payment form but also push the data forward to the payment gateway if the gateway uses a API reachable via an URL.
 
 ## Admin interface
 
@@ -482,7 +472,7 @@ public function isAvailable( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : boo
 In the example method above, the delivery or payment option would only be available if the total value of the basket is less or equal than 1000. Above that value, the service option won't be shown to the customer. Usually, the customer address was already added before the delivery and payment methods will be displayed, so you can use those data as well.
 
 !!! tip
-    There are already decorators implemented that can hide service options based on the [country](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Decorator/Country.php) or the [number of previous orders](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Decorator/OrderCheck.php) of the customers.
+    There are already decorators implemented that can hide service options based on the [country](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Service/Provider/Decorator/Country.php) or the [number of previous orders](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Service/Provider/Decorator/OrderCheck.php) of the customers.
 
 ## Calculate a service fee
 
@@ -506,7 +496,7 @@ The example implementation above would add a service fee of 10% based on the tot
 This method must return a price item with the service fee set via the *setCosts()* method. If you add the service fee via the *setValue()* method of the price item, the amount will be displayed along with the product prices instead in the service section between the sub-total and the total price!
 
 !!! tip
-    There are already decorators implemented that can add percentage based service [costs](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Decorator/Costs.php) and [reductions](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Decorator/Reduction.php) for all delivery and payment providers.
+    There are already decorators implemented that can add percentage based service [costs](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Service/Provider/Decorator/Costs.php) and [reductions](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Service/Provider/Decorator/Reduction.php) for all delivery and payment providers.
 
 ## Check available methods
 
@@ -532,7 +522,7 @@ query
 : Ask for the current delivery status of an order
 
 
-To avoid the need to call the method and catch the exception afterwards, the *isImplemented()* method simplifies the handling in this case. There are `FEAT_*` constants defined for the methods that can be supported in the [delivery class](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Delivery/Base.php) and the [payment class](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Service/Provider/Payment/Base.php). These constants must be fed to the *isImplemented()* method to determine if the feature is supported or not:
+To avoid the need to call the method and catch the exception afterwards, the *isImplemented()* method simplifies the handling in this case. There are `FEAT_*` constants defined for the methods that can be supported in the [delivery class](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Service/Provider/Delivery/Base.php) and the [payment class](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Service/Provider/Payment/Base.php). These constants must be fed to the *isImplemented()* method to determine if the feature is supported or not:
 
 ```php
 public function isImplemented( int $what ) : bool
