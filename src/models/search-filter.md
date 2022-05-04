@@ -32,7 +32,7 @@ Available operators are:
 * **=~** (string starts with)
 * **~=** (string contains, slow!)
 
-The available search keys depend on the used manager and the item properties. Each manager defines its search keys in its class like the [product manager](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Product/Manager/Standard.php#L25). If the list of search keys depend on the implementation or is dynamic, you can retrieve the available search keys by using *getSearchAttribute()*.
+The available search keys depend on the used manager and the item properties. Each manager defines its search keys in its class like the [product manager](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Product/Manager/Standard.php#L30). If the list of search keys depend on the implementation or is dynamic, you can retrieve the available search keys by using *getSearchAttribute()*.
 
 Values for criteria can be more than single values. You can hand over a list of values as well:
 

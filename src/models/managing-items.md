@@ -1,4 +1,4 @@
-In *Aimeos*, all data like products, categories, texts, prices, attributes, etc. is managed by a persistence layer located in the *./lib/mshoplib/* directory of the *Aimeos* core.
+In *Aimeos*, all data like products, categories, texts, prices, attributes, etc. is managed by a persistence layer located in the *./src/* directory of the *Aimeos* core.
 
 Using managers and items which offer a common interface to the stored data allows accessing the data regardless of where and how it is stored. Thus, it doesn't matter if all data or parts of it is stored in a relational or document-oriented database, if it can be accessed via SQL or with a different query language.
 
@@ -23,6 +23,7 @@ These domains are part of the *Aimeos* core:
 * price (for items of other domains)
 * product (basic product and related data)
 * review (customer reviews)
+* rule (price rules)
 * service (delivery and payment options)
 * stock (product stock levels)
 * subscription (repeating customer subscriptions)
@@ -42,7 +43,7 @@ The available properties of each item class depend on the domain and are differe
 * mtime (modification date/time)
 * editor (last editor of the entry)
 
-For more information, please have a look into the available *getter* and *setter* methods for the domain items you are looking for, e.g. the [product item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Product/Item/Standard.php).
+For more information, please have a look into the available *getter* and *setter* methods for the domain items you are looking for, e.g. the [product item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Product/Item/Standard.php).
 
 # Managers
 
@@ -67,7 +68,7 @@ $manager = \Aimeos\MAdmin::create( $context, 'cache' );
 The necessary context object is available in all controllers and clients via `$this->context()`, but this doesn't apply to views!
 
 !!! note
-    The "cache" and "log" managers are only necessary to have full access to their items. If you only want to [log](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php#L151) messages or [cache](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php#L36) some content, you should use the objects from the context instead!
+    The "cache" and "log" managers are only necessary to have full access to their items. If you only want to [log](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/ContextIface.php#L147) messages or [cache](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/ContextIface.php#L25) some content, you should use the objects from the context instead!
 
 # Manager methods
 

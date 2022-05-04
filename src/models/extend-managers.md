@@ -4,8 +4,8 @@ To extend or overwrite existing classes, you have to:
 
 * Extend the database table (refer to [schema updates](../infrastructure/schema-migrations.md))
 * Create a new class in your project specific Aimeos extension
-* Store the class file in the `./lib/custom/src/` directory
-* Use the same directory structure as for the original class below the `./src` directory
+* Store the class file in the `./src/` directory
+* Use the same directory structure as for the original class below the `./src/` directory, e.g. `./src/MShop/Product/Manager/`
 * Give it a different name as the original class, e.g. *Myproject*
 * Extend from the original class
 
@@ -13,7 +13,7 @@ To extend or overwrite existing classes, you have to:
 
 If you need to store e.g. an arbitrary ID to another system in your product table, you can [extend the existing table](../infrastructure/schema-migrations.md) by adding a new field like described in the article about modifying existing tables.
 
-Let's name the new field "someid". Add a new `./<yourext>/lib/custom/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
+Let's name the new field "someid". Add a new `./<yourext>/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
 
 ```php
 return array(
@@ -36,9 +36,6 @@ To create the new column in the database, you have to execute the setup tasks:
 Laravel
 : **php artisan aimeos:setup**
 
-Symfony
-: **php bin/console aimeos:setup**
-
 TYPO3
 : **php vendor/bin/typo3 aimeos:setup** (or via the update script in the extension manager)
 
@@ -52,7 +49,7 @@ Implementing decorators is a great way to dynamically extend managers without in
 
 You need to create a decorator for the product manager that will care about the new column(s). A decorator has the advantage that you can add multiple decorators on top of the manager and 3rd party extensions can do that too.
 
-Your new product manager decorator class should be located in `./<yourext>/lib/custom/src/MShop/Product/Manager/Decorator/Myproject.php` and should contain:
+Your new product manager decorator class should be located in `./<yourext>/src/MShop/Product/Manager/Decorator/Myproject.php` and should contain:
 
 ```php
 namespace Aimeos\MShop\Product\Manager\Decorator;
@@ -88,7 +85,7 @@ The `$attr` array contains a definition of the column(s) and the requirements ar
 3. The value for *internalcode* must be SQL alias of the table, a dot and the column name enclosed in quotation marks (here: 'mpro."mycolumn"')
 
 !!! tip
-    For the SQL alias you have to use, please have a at into the SELECT statement of the domain in the [configuration](https://github.com/aimeos/aimeos-core/tree/master/lib/mshoplib/config/mshop).
+    For the SQL alias you have to use, please have a at into the SELECT statement of the domain in the [configuration](https://github.com/aimeos/aimeos-core/tree/master/config/mshop).
 
 The other values in the *$attr* array are optional:
 
@@ -150,7 +147,7 @@ To have full control over the implementation including those of the item, you ne
 
 ## Items
 
-The skeleton for your new product item class would be located in `./<yourext>/lib/custom/src/MShop/Product/Item/Myproject.php` and should contain:
+The skeleton for your new product item class would be located in `./<yourext>/src/MShop/Product/Item/Myproject.php` and should contain:
 
 ```php
 namespace Aimeos\MShop\Product\Item;
@@ -218,7 +215,7 @@ The *fromArray()* and *toArray()* methods are important if you need to manage yo
 
 ## Managers
 
-Your new product manager class should be stored in `./<yourext>/lib/custom/src/MShop/Product/Manager/Myproject.php` and usually contains:
+Your new product manager class should be stored in `./<yourext>/src/MShop/Product/Manager/Myproject.php` and usually contains:
 
 ```php
 namespace Aimeos\MShop\Product\Manager;
@@ -274,17 +271,15 @@ return [
     'product' => [
         'manager' => [
             'name' => 'Myproject',
-            'standard' => [
-                'insert' => [
-                    'ansi' => 'INSERT ... (with new column)',
-                ],
-                'update' => [
-                    'ansi' => 'UPDATE ... (with new column)',
-                ],
-                'search' => [
-                    'ansi' => 'SELECT ... (with new column)',
-                    'mysql' => 'SELECT ... (with new column)',
-                ],
+            'insert' => [
+                'ansi' => 'INSERT ... (with new column)',
+            ],
+            'update' => [
+                'ansi' => 'UPDATE ... (with new column)',
+            ],
+            'search' => [
+                'ansi' => 'SELECT ... (with new column)',
+                'mysql' => 'SELECT ... (with new column)',
             ],
         ],
     ],
@@ -293,11 +288,11 @@ return [
 
 The configuration of the new manager class does also work for sub-managers like the product lists type and all other sub-managers by using `mshop/<domain>/manager/<submanager>/<submanager>/name` instead, e.g. `mshop/product/manager/lists/type/name`.
 
-By adding a new SQL SELECT statement for `mshop/product/manager/search/ansi` and `mshop/product/manager/search/mysql`, the manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class. You can see the standard SQL statements for the product manager in the [product manager configuration](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/config/mshop/product.php#L489-L555) of the Aimeos core.
+By adding a new SQL SELECT statement for `mshop/product/manager/search/ansi` and `mshop/product/manager/search/mysql`, the manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class. You can see the standard SQL statements for the product manager in the [product manager configuration](https://github.com/aimeos/aimeos-core/blob/master/config/mshop/product.php#L489-L555) of the Aimeos core.
 
 ## Search functions
 
-It's not possible to e.g. use a column name as argument for conditions, only fixed values. This would be only possible in SQL but e.g. not in other storages like ElasticSearch. To support all type of storages, you have to add a "search function" like in the [product manager](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Product/Manager/Standard.php#L175-L183).
+It's not possible to e.g. use a column name as argument for conditions, only fixed values. This would be only possible in SQL but e.g. not in other storages like ElasticSearch. To support all type of storages, you have to add a "search function" like in the [product manager](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Product/Manager/Standard.php#L175-L183).
 
 It can contain storage (SQL) specific code and to compare two columns in the `mshop_stock` table for example you need to add this to your custom manager:
 
@@ -332,11 +327,11 @@ SELECT * FROM mshop_product WHERE (mpro."code" <> mpro."label") = true
 
 Because the expression in `internalcode` is always compared to some value, it must return something that is comparable to a value or NULL. In this case it's a boolean true/false value but in other cases, you need to add a subquery in `internalcode` to match that need and compare against a (not) NULL value.
 
-There's also more information available about [how to use search functions](https://aimeos.org/docs/latest/infrastructure/search-filter/#search-functions).
+There's also more information available about [how to use search functions](search-filter.md#search-functions).
 
 ## Testing
 
-All test class must be in the `./<yourext>/lib/custom/tests/` directory using the same directory structure as in `./src/`, e.g. `./<yourext>/lib/custom/tests/MShop/Product/Item/MyprojectTest.php` the `...Test.php` extension is important so PHPUnit will recognize these files as test classes. For items, they usually consist of
+All test class must be in the `./<yourext>/tests/` directory using the same directory structure as in `./src/`, e.g. `./<yourext>/tests/MShop/Product/Item/MyprojectTest.php` the `...Test.php` extension is important so PHPUnit will recognize these files as test classes. For items, they usually consist of
 
 ```php
 namespace Aimeos\MShop\Product\Item;
