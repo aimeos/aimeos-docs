@@ -30,10 +30,10 @@ As discussed in more detail below, `register()` and `update()` are required meth
 The filename must be the same as the class name (here: *ExamplePlugin*). Of course you should use a more meaningful name for your plugin class and file. Be aware that all names are case sensitive. The new basket plugin must be stored within your project specific [Aimeos extension](../developer/extensions.md) at this location:
 
 ```php
-// Laravel, Symfony
-./<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
+// Laravel
+./<yourext>/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
 // TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
+./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Plugin/Provider/Order/ExamplePlugin.php
 ```
 
 Once this is done, Aimeos detects the plugin automatically and editors of your shop site will now be able to insert the plugin in the *Plugins* section of the *Aimeos* backend.
@@ -73,7 +73,7 @@ deleteCoupon.before, deleteCoupon.after
 : Before and after the coupon has been deleted, plugin receives the coupon code
 
 check.before, check.after
-: Before and after the basket content has been checked, plugin receives the content types as bitmap (see [`PARTS_*` constants](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Base/Base.php))
+: Before and after the basket content has been checked, plugin receives the content types as array (e.g. `['order/base/address', 'order/base/coupon', 'order/base/product', 'order/base/service']`)
 
 setOrder.before
 : Before the order is stored in the database
@@ -107,7 +107,7 @@ Use plugin configuration values
 : The configuration consists of key/value pairs stored in an array. If a configuration value is required by the plugin, you should test for it and handle a missing value by either throwing an exception or using a reasonable default value. The configuration options can be set in the [administration interface](../manual/plugin-details.md).
 
 Throw exceptions
-: If something goes wrong, throw an exception of type *\Aimeos\MShop\Plugin\Provider\Exception*. This class has a special fourth parameter where specific information about the  problem occurred can be passed. Please have a look at the [AddressAvailable](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/AddressesAvailable.php) and [ProductGone](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/ProductGone.php) plugins for more details.
+: If something goes wrong, throw an exception of type *\Aimeos\MShop\Plugin\Provider\Exception*. This class has a special fourth parameter where specific information about the  problem occurred can be passed. Please have a look at the [AddressAvailable](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Plugin/Provider/Order/AddressesAvailable.php) and [ProductGone](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Plugin/Provider/Order/ProductGone.php) plugins for more details.
 
 Return a boolean value
 : The method should return true if everything worked fine. If false is returned, the execution of all following plugins for this event is skipped. The advantage is that the code execution is not aborted completely by throwing an exception. You have control over the order of the executed plugins by the "position" property in the [administration interface](../manual/plugin-details.md). The plugin with the lowest number is executed first. If two or more plugins share the same number, the order of these plugins is arbitrary.
@@ -174,13 +174,13 @@ The file *Example.php* holding this code would be located at e.g.
 
 ```
 // Laravel, Symfony
-./<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+./<yourext>/src/MShop/Plugin/Provider/Decorators/Example.php
 // TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Plugin/Provider/Decorators/Example.php
+./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Plugin/Provider/Decorators/Example.php
 ```
 
 !!! tip
-    Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Plugin/Provider/Order/Example.php)
+    Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Plugin/Provider/Order/Example.php)
 
 The advantage of this approach is that multiple decorators can be used for one plugin and that one decorator can be used by multiple plugins. This way the common rules are available for all plugins and you can add or remove those rules dynamically without touching the code of your plugins.
 
@@ -232,7 +232,7 @@ class ExampleTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
-You should implement more tests for the `update()` method until every line inside is executed at least once. For more information regarding unit tests have a look into the [PHPUnit documentation](https://phpunit.readthedocs.io/en/latest/writing-tests-for-phpunit.html). The chapter about [stubs and mocks](https://phpunit.readthedocs.io/en/latest/test-doubles.html) is especially useful if you want to replace the manager objects used in your plugin during the tests by injecting a mock object into the Aimeos manager factories via the [*inject()*](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop.php) method.
+You should implement more tests for the `update()` method until every line inside is executed at least once. For more information regarding unit tests have a look into the [PHPUnit documentation](https://phpunit.readthedocs.io/en/latest/writing-tests-for-phpunit.html). The chapter about [stubs and mocks](https://phpunit.readthedocs.io/en/latest/test-doubles.html) is especially useful if you want to replace the manager objects used in your plugin during the tests by injecting a mock object into the Aimeos manager factories via the [*inject()*](https://github.com/aimeos/aimeos-core/blob/master/src/MShop.php) method.
 
 # Configuration
 
