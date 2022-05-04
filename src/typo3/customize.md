@@ -3,7 +3,7 @@
 There are a lot of configuration options available and documented in the *Configuration* section. The keys in the configuration documentation are always in the form of:
 
 ```
-client/html/catalog/filter/default/button = 1
+client/html/catalog/filter/button = 1
 ```
 
 As a rule of thumb, replace the slashes (/) with dots (.) to use such keys in TypoScript:
@@ -91,14 +91,14 @@ It doesn't make sense to assign all frontend settings to the backend module, too
 All scheduler tasks allow adding specific TypoScript configuration for the jobs that should be executed. This is especially useful for setting or overwriting configuration values for e-mails that should be sent to customers. Use the configuration keys from the documentation like this:
 
 ```typoscript
-client.html.email.payment.template-body = email/payment/body-standard
+client.html.email.payment.template-body = email/payment/body
 ```
 
 The same works with arrays of values as well:
 
 ```typoscript
 client.html {
-    email.payment.template-body = email/payment/body-standard
+    email.payment.template-body = email/payment/body
 }
 controller.jobs.order.email.payment.status {
     0 = 5
@@ -214,7 +214,7 @@ plugin.tx_aimeos.settings.i18n.<ISO language code>.<number> {
 }
 ```
 
-The index "0" is always the singular translation. Most languages only have one plural form, so it must be defined by using the index "1". But some languages use several plural forms depending on the count given in the last parameter of the translation method. In this case, the index depends on the language and the value of *count*. To find out the right index for the language, you have to have a look into the [`getPluralIndex()` method](https://github.com/aimeos/aimeos-core/blob/master/lib/mwlib/src/MW/Translation/Base.php) that maps *count* to the index of the proper plural form of the language you want to translate to. An example for Czech would be:
+The index "0" is always the singular translation. Most languages only have one plural form, so it must be defined by using the index "1". But some languages use several plural forms depending on the count given in the last parameter of the translation method. In this case, the index depends on the language and the value of *count*. To find out the right index for the language, you have to have a look into the [`getPluralIndex()` method](https://github.com/aimeos/aimeos-base/blob/master/src/Translation/Base.php) that maps *count* to the index of the proper plural form of the language you want to translate to. An example for Czech would be:
 
 ```typoscript
 plugin.tx_aimeos.settings.i18n.cz.0 {
@@ -269,7 +269,7 @@ Alternatively, you can use the TYPO3 Fluid template engine for *Aimeos* template
 To replace an *Aimeos* PHP template by our own Fluid template, the Fluid template needs to be stored at the same location as the *Aimeos* PHP template, i.e. at the `./client/html/templates/` folder of your project-specific *Aimeos* extension. It is also required to preserve the underlying directory structure as well as to abide by the file naming convention (`<template-name>.html`), e.g.:
 
 ```
-./client/html/templates/catalog/detail/body-standard.html
+./client/html/templates/catalog/detail/body.html
 ```
 
 The file extension `.html` is important in order to be recognized as template that should be processed by the Fluid engine.

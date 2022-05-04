@@ -9,7 +9,7 @@ But extending the Aimeos TYPO3 extension itself is a bad thing, because you will
 
 # Aimeos objects
 
-If you need to instantiate the Aimeos controllers or managers directly in your TYPO3 extension and call their methods, you have to supply a [context object](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Context/Item/Iface.php). This object is a dependency injection container that offers access to configuration settings, database connections, session and content cache as well as translation facilities. You can get an instance in TYPO3 depending on your environment:
+If you need to instantiate the Aimeos controllers or managers directly in your TYPO3 extension and call their methods, you have to supply a [context object](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/ContextIface.php). This object is a dependency injection container that offers access to configuration settings, database connections, session and content cache as well as translation facilities. You can get an instance in TYPO3 depending on your environment:
 
 ```php
 // in a controller action
@@ -30,7 +30,7 @@ $config = \Aimeos\Aimeos\Base::config( $localConfigArray );
 $context = \Aimeos\Aimeos\Base::contex( $config );
 ```
 
-In the MVC controller actions, where the required parameters for site, language and currency are available as part of the request, a locale object is added to the context automatically. Everywhere else, you need to retrieve this values from somewhere else, e.g. the configuration. Then, you can use the *bootstrap()* method of the [locale manager](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Locale/Manager/Iface.php) to retrieve the locale item yourself:
+In the MVC controller actions, where the required parameters for site, language and currency are available as part of the request, a locale object is added to the context automatically. Everywhere else, you need to retrieve this values from somewhere else, e.g. the configuration. Then, you can use the *bootstrap()* method of the [locale manager](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Locale/Manager/Iface.php) to retrieve the locale item yourself:
 
 ```php
 $manager = \Aimeos\MShop::create( $context, 'locale' );

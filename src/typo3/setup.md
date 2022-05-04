@@ -35,9 +35,9 @@ There are three types of releases:
 
 As a rule of thumb:
 
-1. Update to the latest minor release, e.g. from 20.4.1 to 20.4.2 to get all bugfixes
-2. Update to the latest stable release, e.g. from 20.7 to 20.10 to get long term support for your major version
-3. Upgrade to the new major version e.g. from 20.10 to 21.10 if long term support has ended
+1. Update to the latest minor release, e.g. from 22.4.1 to 22.4.2 to get all bugfixes
+2. Update to the latest stable release, e.g. from 22.7 to 22.10 to get long term support for your major version
+3. Upgrade to the new major version e.g. from 21.10 to 22.10 if long term support has ended
 
 Instead of upgrading to a new LTS version, you can also buy an [extended long term support](https://aimeos.com/support) from the Aimeos company. They guarantee up to **five years support** for your used version.
 
@@ -156,8 +156,8 @@ routeEnhancers:
       - { routePath: '/watch/{wat_action}', _controller: 'Account::watch' }
       - { routePath: '/fav/{fav_action}/{fav_id}', _controller: 'Account::favorite' }
       - { routePath: '/fav/{fav_action}', _controller: 'Account::favorite' }
-      - { routePath: '/c/{f_name}~{f_catid}/{f_sort}', _controller: 'Catalog::list' }
-      - { routePath: '/t/{f_name}~{f_catid}/{f_sort}', _controller: 'Catalog::tree' }
+      - { routePath: '/c/{f_name}~{f_catid}', _controller: 'Catalog::list' }
+      - { routePath: '/t/{f_name}~{f_catid}', _controller: 'Catalog::tree' }
       - { routePath: '/p/{d_name}/{d_prodid}/{d_pos}', _controller: 'Catalog::detail' }
       - { routePath: '/d/{d_name}/{d_pos}', _controller: 'Catalog::detail' }
       - { routePath: '/lt/{l_type}', _controller: 'Catalog::list' }
