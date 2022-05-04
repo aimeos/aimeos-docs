@@ -9,7 +9,7 @@ madmin/log/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT malog."id"
- 	FROM "madmin_log" AS malog
+ 	FROM "madmin_log" malog
  	:joins
  	WHERE :cond
  	ORDER BY "id"
@@ -71,7 +71,7 @@ madmin/log/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT malog."id"
- 	FROM "madmin_log" AS malog
+ 	FROM "madmin_log" malog
  	:joins
  	WHERE :cond
  	ORDER BY "id"
@@ -83,7 +83,7 @@ madmin/log/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT malog."id"
- 	FROM "madmin_log" AS malog
+ 	FROM "madmin_log" malog
  	:joins
  	WHERE :cond
  	ORDER BY "id"
@@ -107,6 +107,9 @@ madmin/log/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -144,6 +147,9 @@ madmin/log/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -179,6 +185,9 @@ madmin/log/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -478,7 +487,7 @@ madmin/log/manager/search/ansi =
  	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
  	malog."priority" AS "log.priority", malog."message" AS "log.message",
  	malog."request" AS "log.request"
- FROM "madmin_log" AS malog
+ FROM "madmin_log" malog
  :joins
  WHERE :cond
  ORDER BY :order
@@ -547,7 +556,7 @@ madmin/log/manager/search/mysql =
  	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
  	malog."priority" AS "log.priority", malog."message" AS "log.message",
  	malog."request" AS "log.request"
- FROM "madmin_log" AS malog
+ FROM "madmin_log" malog
  :joins
  WHERE :cond
  ORDER BY :order
@@ -560,7 +569,7 @@ madmin/log/manager/search/mysql =
  	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
  	malog."priority" AS "log.priority", malog."message" AS "log.message",
  	malog."request" AS "log.request"
- FROM "madmin_log" AS malog
+ FROM "madmin_log" malog
  :joins
  WHERE :cond
  ORDER BY :order
@@ -582,6 +591,9 @@ madmin/log/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

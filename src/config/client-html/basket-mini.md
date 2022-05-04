@@ -11,6 +11,9 @@ client/html/basket/mini/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -48,6 +51,9 @@ client/html/basket/mini/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -83,6 +89,9 @@ client/html/basket/mini/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -163,6 +172,9 @@ client/html/basket/mini/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -204,10 +216,10 @@ design.
 Relative path to the HTML body template of the basket mini client.
 
 ```
-client/html/basket/mini/template-body = basket/mini/body-standard
+client/html/basket/mini/template-body = basket/mini/body
 ```
 
-* Default: basket/mini/body-standard
+* Default: basket/mini/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -218,10 +230,10 @@ to the templates directory (usually in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 See also:
 
@@ -232,10 +244,10 @@ See also:
 Relative path to the HTML header template of the basket mini client.
 
 ```
-client/html/basket/mini/template-header = basket/mini/header-standard
+client/html/basket/mini/template-header = basket/mini/header
 ```
 
-* Default: basket/mini/header-standard
+* Default: basket/mini/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -247,10 +259,10 @@ in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 See also:
 

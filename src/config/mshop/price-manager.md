@@ -9,7 +9,7 @@ mshop/price/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpri."id"
- 	FROM "mshop_price" AS mpri
+ 	FROM "mshop_price" mpri
  	:joins
  	WHERE :cond
  	GROUP BY mpri."id"
@@ -72,7 +72,7 @@ mshop/price/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpri."id"
- 	FROM "mshop_price" AS mpri
+ 	FROM "mshop_price" mpri
  	:joins
  	WHERE :cond
  	GROUP BY mpri."id"
@@ -85,7 +85,7 @@ mshop/price/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpri."id"
- 	FROM "mshop_price" AS mpri
+ 	FROM "mshop_price" mpri
  	:joins
  	WHERE :cond
  	GROUP BY mpri."id"
@@ -110,6 +110,9 @@ mshop/price/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -147,6 +150,9 @@ mshop/price/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -183,6 +189,9 @@ mshop/price/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -346,7 +355,7 @@ mshop/price/manager/lists/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_price_list" AS mprili
+ 	FROM "mshop_price_list" mprili
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mprili."id"
@@ -408,7 +417,7 @@ mshop/price/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_price_list" AS mprili
+ 	FROM "mshop_price_list" mprili
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mprili."id"
@@ -422,7 +431,7 @@ mshop/price/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_price_list" AS mprili
+ 	FROM "mshop_price_list" mprili
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mprili."id"
@@ -445,7 +454,7 @@ mshop/price/manager/lists/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprili."id"
- 	FROM "mshop_price_list" AS mprili
+ 	FROM "mshop_price_list" mprili
  	:joins
  	WHERE :cond
  	ORDER BY mprili."id"
@@ -508,7 +517,7 @@ mshop/price/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprili."id"
- 	FROM "mshop_price_list" AS mprili
+ 	FROM "mshop_price_list" mprili
  	:joins
  	WHERE :cond
  	ORDER BY mprili."id"
@@ -520,7 +529,7 @@ mshop/price/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprili."id"
- 	FROM "mshop_price_list" AS mprili
+ 	FROM "mshop_price_list" mprili
  	:joins
  	WHERE :cond
  	ORDER BY mprili."id"
@@ -543,6 +552,9 @@ mshop/price/manager/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -580,6 +592,9 @@ mshop/price/manager/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -617,6 +632,9 @@ mshop/price/manager/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -882,7 +900,7 @@ mshop/price/manager/lists/search/ansi =
  	mprili."config" AS "price.lists.config", mprili."pos" AS "price.lists.position",
  	mprili."status" AS "price.lists.status", mprili."mtime" AS "price.lists.mtime",
  	mprili."editor" AS "price.lists.editor", mprili."ctime" AS "price.lists.ctime"
- FROM "mshop_price_list" AS mprili
+ FROM "mshop_price_list" mprili
  :joins
  WHERE :cond
  ORDER BY :order
@@ -955,7 +973,7 @@ mshop/price/manager/lists/search/mysql =
  	mprili."config" AS "price.lists.config", mprili."pos" AS "price.lists.position",
  	mprili."status" AS "price.lists.status", mprili."mtime" AS "price.lists.mtime",
  	mprili."editor" AS "price.lists.editor", mprili."ctime" AS "price.lists.ctime"
- FROM "mshop_price_list" AS mprili
+ FROM "mshop_price_list" mprili
  :joins
  WHERE :cond
  ORDER BY :order
@@ -971,7 +989,7 @@ mshop/price/manager/lists/search/mysql =
  	mprili."config" AS "price.lists.config", mprili."pos" AS "price.lists.position",
  	mprili."status" AS "price.lists.status", mprili."mtime" AS "price.lists.mtime",
  	mprili."editor" AS "price.lists.editor", mprili."ctime" AS "price.lists.ctime"
- FROM "mshop_price_list" AS mprili
+ FROM "mshop_price_list" mprili
  :joins
  WHERE :cond
  ORDER BY :order
@@ -993,6 +1011,9 @@ mshop/price/manager/lists/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1016,7 +1037,7 @@ mshop/price/manager/lists/type/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprility."id"
- 	FROM "mshop_price_list_type" AS mprility
+ 	FROM "mshop_price_list_type" mprility
  	:joins
  	WHERE :cond
  	ORDER BY mprility."id"
@@ -1078,7 +1099,7 @@ mshop/price/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprility."id"
- 	FROM "mshop_price_list_type" AS mprility
+ 	FROM "mshop_price_list_type" mprility
  	:joins
  	WHERE :cond
  	ORDER BY mprility."id"
@@ -1090,7 +1111,7 @@ mshop/price/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprility."id"
- 	FROM "mshop_price_list_type" AS mprility
+ 	FROM "mshop_price_list_type" mprility
  	:joins
  	WHERE :cond
  	ORDER BY mprility."id"
@@ -1113,6 +1134,9 @@ mshop/price/manager/lists/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1150,6 +1174,9 @@ mshop/price/manager/lists/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1187,6 +1214,9 @@ mshop/price/manager/lists/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1447,7 +1477,7 @@ mshop/price/manager/lists/type/search/ansi =
  	mprility."label" AS "price.lists.type.label", mprility."status" AS "price.lists.type.status",
  	mprility."mtime" AS "price.lists.type.mtime", mprility."editor" AS "price.lists.type.editor",
  	mprility."ctime" AS "price.lists.type.ctime", mprility."pos" AS "price.lists.type.position"
- FROM "mshop_price_list_type" AS mprility
+ FROM "mshop_price_list_type" mprility
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1517,7 +1547,7 @@ mshop/price/manager/lists/type/search/mysql =
  	mprility."label" AS "price.lists.type.label", mprility."status" AS "price.lists.type.status",
  	mprility."mtime" AS "price.lists.type.mtime", mprility."editor" AS "price.lists.type.editor",
  	mprility."ctime" AS "price.lists.type.ctime", mprility."pos" AS "price.lists.type.position"
- FROM "mshop_price_list_type" AS mprility
+ FROM "mshop_price_list_type" mprility
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1531,7 +1561,7 @@ mshop/price/manager/lists/type/search/mysql =
  	mprility."label" AS "price.lists.type.label", mprility."status" AS "price.lists.type.status",
  	mprility."mtime" AS "price.lists.type.mtime", mprility."editor" AS "price.lists.type.editor",
  	mprility."ctime" AS "price.lists.type.ctime", mprility."pos" AS "price.lists.type.position"
- FROM "mshop_price_list_type" AS mprility
+ FROM "mshop_price_list_type" mprility
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1553,6 +1583,9 @@ mshop/price/manager/lists/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1806,7 +1839,7 @@ mshop/price/manager/property/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpripr."id"
- 	FROM "mshop_price_property" AS mpripr
+ 	FROM "mshop_price_property" mpripr
  	:joins
  	WHERE :cond
  	ORDER BY mpripr."id"
@@ -1868,7 +1901,7 @@ mshop/price/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpripr."id"
- 	FROM "mshop_price_property" AS mpripr
+ 	FROM "mshop_price_property" mpripr
  	:joins
  	WHERE :cond
  	ORDER BY mpripr."id"
@@ -1880,7 +1913,7 @@ mshop/price/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpripr."id"
- 	FROM "mshop_price_property" AS mpripr
+ 	FROM "mshop_price_property" mpripr
  	:joins
  	WHERE :cond
  	ORDER BY mpripr."id"
@@ -1903,6 +1936,9 @@ mshop/price/manager/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1940,6 +1976,9 @@ mshop/price/manager/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1977,6 +2016,9 @@ mshop/price/manager/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2237,7 +2279,7 @@ mshop/price/manager/property/search/ansi =
  	mpripr."langid" AS "price.property.languageid", mpripr."value" AS "price.property.value",
  	mpripr."mtime" AS "price.property.mtime", mpripr."editor" AS "price.property.editor",
  	mpripr."ctime" AS "price.property.ctime"
- FROM "mshop_price_property" AS mpripr
+ FROM "mshop_price_property" mpripr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2307,7 +2349,7 @@ mshop/price/manager/property/search/mysql =
  	mpripr."langid" AS "price.property.languageid", mpripr."value" AS "price.property.value",
  	mpripr."mtime" AS "price.property.mtime", mpripr."editor" AS "price.property.editor",
  	mpripr."ctime" AS "price.property.ctime"
- FROM "mshop_price_property" AS mpripr
+ FROM "mshop_price_property" mpripr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2321,7 +2363,7 @@ mshop/price/manager/property/search/mysql =
  	mpripr."langid" AS "price.property.languageid", mpripr."value" AS "price.property.value",
  	mpripr."mtime" AS "price.property.mtime", mpripr."editor" AS "price.property.editor",
  	mpripr."ctime" AS "price.property.ctime"
- FROM "mshop_price_property" AS mpripr
+ FROM "mshop_price_property" mpripr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2343,6 +2385,9 @@ mshop/price/manager/property/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2463,6 +2508,9 @@ mshop/price/manager/property/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2500,6 +2548,9 @@ mshop/price/manager/property/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2537,6 +2588,9 @@ mshop/price/manager/property/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2903,6 +2957,9 @@ mshop/price/manager/property/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -3061,7 +3118,7 @@ mshop/price/manager/search/ansi =
  	mpri."taxrate" AS "price.taxrates", mpri."status" AS "price.status",
  	mpri."mtime" AS "price.mtime", mpri."editor" AS "price.editor",
  	mpri."ctime" AS "price.ctime"
- FROM "mshop_price" AS mpri
+ FROM "mshop_price" mpri
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3138,7 +3195,7 @@ mshop/price/manager/search/mysql =
  	mpri."taxrate" AS "price.taxrates", mpri."status" AS "price.status",
  	mpri."mtime" AS "price.mtime", mpri."editor" AS "price.editor",
  	mpri."ctime" AS "price.ctime"
- FROM "mshop_price" AS mpri
+ FROM "mshop_price" mpri
  :joins
  WHERE :cond
  GROUP BY :group mpri."id"
@@ -3156,7 +3213,7 @@ mshop/price/manager/search/mysql =
  	mpri."taxrate" AS "price.taxrates", mpri."status" AS "price.status",
  	mpri."mtime" AS "price.mtime", mpri."editor" AS "price.editor",
  	mpri."ctime" AS "price.ctime"
- FROM "mshop_price" AS mpri
+ FROM "mshop_price" mpri
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3219,6 +3276,9 @@ mshop/price/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3243,7 +3303,7 @@ mshop/price/manager/type/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprity."id"
- 	FROM "mshop_price_type" AS mprity
+ 	FROM "mshop_price_type" mprity
  	:joins
  	WHERE :cond
  	ORDER BY mprity."id"
@@ -3305,7 +3365,7 @@ mshop/price/manager/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprity."id"
- 	FROM "mshop_price_type" AS mprity
+ 	FROM "mshop_price_type" mprity
  	:joins
  	WHERE :cond
  	ORDER BY mprity."id"
@@ -3317,7 +3377,7 @@ mshop/price/manager/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprity."id"
- 	FROM "mshop_price_type" AS mprity
+ 	FROM "mshop_price_type" mprity
  	:joins
  	WHERE :cond
  	ORDER BY mprity."id"
@@ -3340,6 +3400,9 @@ mshop/price/manager/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3377,6 +3440,9 @@ mshop/price/manager/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3414,6 +3480,9 @@ mshop/price/manager/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3674,7 +3743,7 @@ mshop/price/manager/type/search/ansi =
  	mprity."label" AS "price.type.label", mprity."status" AS "price.type.status",
  	mprity."mtime" AS "price.type.mtime", mprity."editor" AS "price.type.editor",
  	mprity."ctime" AS "price.type.ctime", mprity."pos" AS "price.type.position"
- FROM "mshop_price_type" AS mprity
+ FROM "mshop_price_type" mprity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3744,7 +3813,7 @@ mshop/price/manager/type/search/mysql =
  	mprity."label" AS "price.type.label", mprity."status" AS "price.type.status",
  	mprity."mtime" AS "price.type.mtime", mprity."editor" AS "price.type.editor",
  	mprity."ctime" AS "price.type.ctime", mprity."pos" AS "price.type.position"
- FROM "mshop_price_type" AS mprity
+ FROM "mshop_price_type" mprity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3758,7 +3827,7 @@ mshop/price/manager/type/search/mysql =
  	mprity."label" AS "price.type.label", mprity."status" AS "price.type.status",
  	mprity."mtime" AS "price.type.mtime", mprity."editor" AS "price.type.editor",
  	mprity."ctime" AS "price.type.ctime", mprity."pos" AS "price.type.position"
- FROM "mshop_price_type" AS mprity
+ FROM "mshop_price_type" mprity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3780,6 +3849,9 @@ mshop/price/manager/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

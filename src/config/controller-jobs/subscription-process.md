@@ -11,6 +11,9 @@ controller/jobs/subscription/process/begin/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -48,6 +51,9 @@ controller/jobs/subscription/process/begin/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -83,6 +89,9 @@ controller/jobs/subscription/process/begin/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -166,6 +175,9 @@ controller/jobs/subscription/process/end/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -203,6 +215,9 @@ controller/jobs/subscription/process/end/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -238,6 +253,9 @@ controller/jobs/subscription/process/end/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -321,6 +339,9 @@ controller/jobs/subscription/process/renew/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -358,6 +379,9 @@ controller/jobs/subscription/process/renew/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -393,6 +417,9 @@ controller/jobs/subscription/process/renew/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 

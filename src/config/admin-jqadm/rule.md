@@ -11,6 +11,9 @@ admin/jqadm/rule/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -48,6 +51,9 @@ admin/jqadm/rule/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -83,6 +89,9 @@ admin/jqadm/rule/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -122,6 +131,13 @@ admin/jqadm/rule/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => rule.status
+    [1] => rule.label
+    [2] => rule.provider
+    [3] => rule.position
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2021.04
 
@@ -189,6 +205,9 @@ admin/jqadm/rule/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -230,10 +249,10 @@ design.
 Relative path to the HTML body template for the rule item.
 
 ```
-admin/jqadm/rule/template-item = rule/item-standard
+admin/jqadm/rule/template-item = rule/item
 ```
 
-* Default: rule/item-standard
+* Default: rule/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -255,10 +274,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the rule list.
 
 ```
-admin/jqadm/rule/template-list = rule/list-standard
+admin/jqadm/rule/template-list = rule/list
 ```
 
-* Default: rule/list-standard
+* Default: rule/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 

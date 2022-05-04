@@ -34,6 +34,9 @@ controller/jobs/product/export/container/options = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of option name/value pairs
 * Since: 2015.01
 
@@ -83,6 +86,9 @@ controller/jobs/product/export/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -120,6 +126,9 @@ controller/jobs/product/export/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -155,6 +164,9 @@ controller/jobs/product/export/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -239,7 +251,7 @@ See also:
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/product/export/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/tmp
+controller/jobs/product/export/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/tmp
 ```
 
 * Default: 
@@ -527,6 +539,10 @@ controller/jobs/product/export/sitemap/container/options = Array
 ```
 
 * Default: Array
+(
+    [gzip-mode] => wb
+)
+
 * Type: array - Associative list of option name/value pairs
 * Since: 2015.01
 
@@ -557,6 +573,9 @@ controller/jobs/product/export/sitemap/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -594,6 +613,9 @@ controller/jobs/product/export/sitemap/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -629,6 +651,9 @@ controller/jobs/product/export/sitemap/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -667,6 +692,10 @@ controller/jobs/product/export/sitemap/domains = Array
 ```
 
 * Default: Array
+(
+    [0] => text
+)
+
 * Type: array - List of domain names
 * Since: 2018.07
 
@@ -683,12 +712,35 @@ See also:
 * controller/jobs/product/export/sitemap/max-query
 * controller/jobs/product/export/sitemap/changefreq
 
+## hidden
+
+Export hidden products in site map
+
+```
+controller/jobs/product/export/sitemap/hidden = 
+```
+
+* Default: 
+* Type: bool - TRUE to export hidden products, FALSE if not
+* Since: 2022.01
+
+The product site map contains no hidden products by default. If they
+should be part of the export, set this configuration option to TRUE.
+
+See also:
+
+* controller/jobs/product/export/sitemap/container/options
+* controller/jobs/product/export/sitemap/location
+* controller/jobs/product/export/sitemap/max-items
+* controller/jobs/product/export/sitemap/max-query
+* controller/jobs/product/export/sitemap/changefreq
+
 ## location
 
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/product/export/sitemap/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/tmp
+controller/jobs/product/export/sitemap/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/tmp
 ```
 
 * Default: 
@@ -1030,6 +1082,5 @@ should be replaced by the name of the new class.
 
 See also:
 
-* client/html/account/favorite/template-header
 * controller/jobs/product/export/template-footer
 * controller/jobs/product/export/template-index

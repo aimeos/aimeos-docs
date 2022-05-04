@@ -34,10 +34,28 @@ leaving the rest untouched:
 ```
 
 
+## color
+
+```
+client/html/catalog/selection/preselect/color = 
+```
+
+* Default: 
+
+
 ## length
 
 ```
 client/html/catalog/selection/preselect/length = 
+```
+
+* Default: 
+
+
+## size
+
+```
+client/html/catalog/selection/preselect/size = 
 ```
 
 * Default: 
@@ -94,6 +112,15 @@ See also:
 
 * client/html/catalog/attribute/type
 
+## color
+
+```
+client/html/catalog/selection/type/color = select
+```
+
+* Default: select
+
+
 ## length
 
 Layout types for the length selection
@@ -107,6 +134,15 @@ client/html/catalog/selection/type/length = select
 See also:
 
 * client/html/catalog/selection/type
+
+## size
+
+```
+client/html/catalog/selection/type/size = select
+```
+
+* Default: select
+
 
 ## width
 

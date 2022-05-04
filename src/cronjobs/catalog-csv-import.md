@@ -203,7 +203,7 @@ Additionally, you can import values for the catalog list relation as well:
 
 Here, the type (or typeid) is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of catalog list types that will be inserted, updated or deleted via the [controller/common/catalog/import/csv/processor/text/listtypes](../config/controller-common/catalog-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of catalog list types that will be inserted, updated or deleted via the [controller/jobs/catalog/import/csv/processor/text/listtypes](../config/controller-jobs/catalog-import.md#listtypes) setting.
 
 ## Media
 
@@ -245,7 +245,7 @@ Additionally, you can import values for the catalog list relation as well:
 
 Here, the type (or typeid) is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of catalog list types that will be inserted, updated or deleted via the [controller/common/catalog/import/csv/processor/media/listtypes](../config/controller-common/catalog-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of catalog list types that will be inserted, updated or deleted via the [controller/jobs/catalog/import/csv/processor/media/listtypes](../config/controller-jobs/catalog-import.md#listtypes) setting.
 
 # Data converters
 

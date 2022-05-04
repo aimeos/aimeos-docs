@@ -11,6 +11,9 @@ controller/jobs/product/bought/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -48,6 +51,9 @@ controller/jobs/product/bought/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -83,6 +89,9 @@ controller/jobs/product/bought/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 

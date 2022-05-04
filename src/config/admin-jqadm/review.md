@@ -11,6 +11,9 @@ admin/jqadm/review/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -48,6 +51,9 @@ admin/jqadm/review/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -83,6 +89,9 @@ admin/jqadm/review/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -119,6 +128,10 @@ admin/jqadm/review/domains = Array
 ```
 
 * Default: Array
+(
+    [0] => product
+)
+
 * Type: array - List of domains names
 * Since: 2020.10
 
@@ -142,6 +155,14 @@ admin/jqadm/review/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => review.status
+    [1] => review.rating
+    [2] => review.comment
+    [3] => review.response
+    [4] => review.ctime
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2020.10
 
@@ -209,6 +230,9 @@ admin/jqadm/review/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2020.10
 
@@ -250,10 +274,10 @@ design.
 Relative path to the HTML body template for the review item.
 
 ```
-admin/jqadm/review/template-item = review/item-standard
+admin/jqadm/review/template-item = review/item
 ```
 
-* Default: review/item-standard
+* Default: review/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -275,10 +299,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the review list.
 
 ```
-admin/jqadm/review/template-list = review/list-standard
+admin/jqadm/review/template-list = review/list
 ```
 
-* Default: review/list-standard
+* Default: review/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

@@ -11,6 +11,9 @@ client/jsonapi/stock/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -48,6 +51,9 @@ client/jsonapi/stock/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -85,6 +91,9 @@ client/jsonapi/stock/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 

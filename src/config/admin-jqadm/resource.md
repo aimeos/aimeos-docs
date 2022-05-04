@@ -14,6 +14,9 @@ admin/jqadm/resource/attribute/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -46,6 +49,9 @@ admin/jqadm/resource/catalog/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -63,13 +69,11 @@ admin/jqadm/resource/catalog/key = C
 * Since: 2017.10
 
 
-# configuration
+# cms
 ## groups
 
-List of user groups that are allowed to access the configuration menu
-
 ```
-admin/jqadm/resource/configuration/groups = Array
+admin/jqadm/resource/cms/groups = Array
 (
     [0] => admin
     [1] => editor
@@ -78,6 +82,30 @@ admin/jqadm/resource/configuration/groups = Array
 ```
 
 * Default: Array
+(
+)
+
+
+
+## key
+
+```
+admin/jqadm/resource/cms/key = M
+```
+
+* Default: 
+
+
+# configuration
+## groups
+
+List of user groups that are allowed to access the configuration menu
+
+```
+admin/jqadm/resource/configuration/groups = 
+```
+
+* Default: 
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -97,6 +125,9 @@ admin/jqadm/resource/coupon/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -129,6 +160,9 @@ admin/jqadm/resource/customer/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -161,6 +195,9 @@ admin/jqadm/resource/dashboard/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -193,6 +230,9 @@ admin/jqadm/resource/goods/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -211,6 +251,9 @@ admin/jqadm/resource/group/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -243,6 +286,9 @@ admin/jqadm/resource/language/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -260,6 +306,9 @@ admin/jqadm/resource/locale/currency/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -286,6 +335,9 @@ admin/jqadm/resource/locale/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -311,6 +363,9 @@ admin/jqadm/resource/locale/language/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -331,12 +386,14 @@ List of user groups that are allowed to access the locale site panel
 ```
 admin/jqadm/resource/locale/site/groups = Array
 (
-    [0] => admin
-    [1] => super
+    [0] => super
 )
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -364,6 +421,9 @@ admin/jqadm/resource/log/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2018.04
 
@@ -396,6 +456,9 @@ admin/jqadm/resource/marketing/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -415,6 +478,9 @@ admin/jqadm/resource/order/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -446,6 +512,9 @@ admin/jqadm/resource/plugin/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -478,6 +547,9 @@ admin/jqadm/resource/product/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -510,6 +582,9 @@ admin/jqadm/resource/review/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2020.10
 
@@ -542,6 +617,9 @@ admin/jqadm/resource/rule/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -574,6 +652,9 @@ admin/jqadm/resource/sales/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -592,6 +673,9 @@ admin/jqadm/resource/service/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -623,6 +707,9 @@ admin/jqadm/resource/settings/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2021.07
 
@@ -640,6 +727,21 @@ admin/jqadm/resource/settings/key = T
 * Since: 2021.04
 
 
+# setup
+## groups
+
+```
+admin/jqadm/resource/setup/groups = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
 # site
 ## groups
 
@@ -654,6 +756,9 @@ admin/jqadm/resource/site/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -673,6 +778,9 @@ admin/jqadm/resource/subscription/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2018.04
 
@@ -705,6 +813,9 @@ admin/jqadm/resource/supplier/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -737,6 +848,9 @@ admin/jqadm/resource/type/attribute/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -763,6 +877,9 @@ admin/jqadm/resource/type/attribute/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -789,6 +906,9 @@ admin/jqadm/resource/type/attribute/property/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -815,6 +935,9 @@ admin/jqadm/resource/type/catalog/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -823,6 +946,29 @@ admin/jqadm/resource/type/catalog/lists/groups = Array
 
 ```
 admin/jqadm/resource/type/catalog/lists/key = 
+```
+
+* Default: 
+
+
+## cms/lists/groups
+
+```
+admin/jqadm/resource/type/cms/lists/groups = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## cms/lists/key
+
+```
+admin/jqadm/resource/type/cms/lists/key = 
 ```
 
 * Default: 
@@ -841,6 +987,9 @@ admin/jqadm/resource/type/customer/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -867,6 +1016,9 @@ admin/jqadm/resource/type/customer/property/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2018.07
 
@@ -894,6 +1046,9 @@ admin/jqadm/resource/type/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -911,6 +1066,9 @@ admin/jqadm/resource/type/media/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -937,6 +1095,9 @@ admin/jqadm/resource/type/media/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -963,6 +1124,9 @@ admin/jqadm/resource/type/media/property/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -989,6 +1153,9 @@ admin/jqadm/resource/type/plugin/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1015,6 +1182,9 @@ admin/jqadm/resource/type/price/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1041,6 +1211,9 @@ admin/jqadm/resource/type/price/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1067,6 +1240,9 @@ admin/jqadm/resource/type/price/property/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2020.04
 
@@ -1093,6 +1269,9 @@ admin/jqadm/resource/type/product/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1119,6 +1298,9 @@ admin/jqadm/resource/type/product/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1146,6 +1328,9 @@ admin/jqadm/resource/type/product/property/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1172,6 +1357,9 @@ admin/jqadm/resource/type/service/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1198,6 +1386,9 @@ admin/jqadm/resource/type/service/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1224,6 +1415,9 @@ admin/jqadm/resource/type/stock/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1250,6 +1444,9 @@ admin/jqadm/resource/type/tag/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1276,6 +1473,9 @@ admin/jqadm/resource/type/text/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1302,6 +1502,9 @@ admin/jqadm/resource/type/text/lists/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1330,5 +1533,8 @@ admin/jqadm/resource/users/groups = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of user group names
 * Since: 2021.04

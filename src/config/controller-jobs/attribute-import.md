@@ -19,10 +19,11 @@ next file that is stored at the same location in the file system.
 You should use an absolute path to be sure but can be relative path
 if you absolutely know from where the job will be executed from. The
 name of the new backup location can contain placeholders understood
-by the PHP strftime() function to create dynamic paths, e.g. "backup/%Y-%m-%d"
-which would create "backup/2000-01-01". For more information about the
-strftime() placeholders, please have a look into the PHP documentation of
-the [strftime() function](http://php.net/manual/en/function.strftime.php).
+by the PHP DateTime::format() method (with percent signs prefix) to
+create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
+"backup/2000-01-01". For more information about the date() placeholders,
+please have a look  into the PHP documentation of the
+[format() method](https://www.php.net/manual/en/datetime.format.php).
 
 **Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
@@ -45,6 +46,9 @@ controller/jobs/attribute/import/xml/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -82,6 +86,9 @@ controller/jobs/attribute/import/xml/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -117,6 +124,9 @@ controller/jobs/attribute/import/xml/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -158,6 +168,9 @@ controller/jobs/attribute/import/xml/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -176,7 +189,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/attribute/import/xml/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/attribute/import/xml/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
 * Default: 
@@ -199,10 +212,10 @@ See also:
 Maximum number of XML nodes processed at once
 
 ```
-controller/jobs/attribute/import/xml/max-query = 1000
+controller/jobs/attribute/import/xml/max-query = 100
 ```
 
-* Default: 1000
+* Default: 100
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 

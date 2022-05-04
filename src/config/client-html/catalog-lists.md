@@ -1,13 +1,41 @@
 
+# attrid-default
+
+Additional attribute IDs used to limit search results
+
+```
+client/html/catalog/lists/attrid-default = 
+```
+
+* Default: 
+* Type: array|string - Attribute ID or IDs
+* Since: 2021.10
+
+Using this setting, products result lists can be limited by additional
+attributes. Then, only products which have associated the configured
+attribute IDs will be returned and shown in the frontend. The value
+can be either a single attribute ID or a list of attribute IDs.
+
+See also:
+
+* client/html/catalog/lists/sort
+* client/html/catalog/lists/size
+* client/html/catalog/lists/domains
+* client/html/catalog/lists/levels
+* client/html/catalog/lists/instock
+* client/html/catalog/lists/catid-default
+* client/html/catalog/lists/supid-default
+* client/html/catalog/detail/prodid-default
+
 # basket-add
 
 Display the "add to basket" button for each product item
 
 ```
-client/html/catalog/lists/basket-add =
+client/html/catalog/lists/basket-add = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to display the button, false to hide it
 * Since: 2016.01
 
@@ -44,7 +72,7 @@ client/html/catalog/lists/cache = 1
 
 Disable caching for components can be useful if you would have too much
 entries to cache or if the component contains non-cacheable parts that
-can't be replaced using the `modify()` methods.
+can't be replaced using the modify() method.
 
 See also:
 
@@ -57,10 +85,10 @@ See also:
 The default category ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/catid-default =
+client/html/catalog/lists/catid-default = 
 ```
 
-* Default:
+* Default: 
 * Type: array|string - Category ID or IDs
 * Since: 2014.03
 
@@ -77,13 +105,13 @@ See also:
 * client/html/catalog/lists/size
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
+* client/html/catalog/lists/attrid-default
 * client/html/catalog/detail/prodid-default
 * client/html/catalog/lists/supid-default
+* client/html/catalog/lists/instock
 
 # decorators
 ## excludes
-
-Excludes decorators added by the "common" option from the catalog list html client
 
 ```
 client/html/catalog/lists/decorators/excludes = Array
@@ -92,35 +120,12 @@ client/html/catalog/lists/decorators/excludes = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
-
-```
- client/html/catalog/lists/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/decorators/global
-* client/html/catalog/lists/decorators/local
 
 ## global
-
-Adds a list of globally available decorators only to the catalog list html client
 
 ```
 client/html/catalog/lists/decorators/global = Array
@@ -129,33 +134,12 @@ client/html/catalog/lists/decorators/global = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/catalog/lists/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/decorators/excludes
-* client/html/catalog/lists/decorators/local
 
 ## local
-
-Adds a list of local decorators only to the catalog list html client
 
 ```
 client/html/catalog/lists/decorators/local = Array
@@ -164,29 +148,10 @@ client/html/catalog/lists/decorators/local = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
-
-```
- client/html/catalog/lists/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/decorators/excludes
-* client/html/catalog/lists/decorators/global
 
 # domains
 
@@ -195,14 +160,25 @@ A list of domain names whose items should be available in the product list view 
 ```
 client/html/catalog/lists/domains = Array
 (
-    [0] => media
-    [1] => media/property
-    [2] => price
-    [3] => text
+    [0] => catalog
+    [1] => media
+    [2] => media/property
+    [3] => price
+    [4] => supplier
+    [5] => text
 )
 ```
 
 * Default: Array
+(
+    [0] => catalog
+    [1] => media
+    [2] => media/property
+    [3] => price
+    [4] => supplier
+    [5] => text
+)
+
 * Type: array - List of domain names
 * Since: 2014.03
 
@@ -223,47 +199,24 @@ See also:
 * client/html/catalog/domains
 * client/html/catalog/detail/domains
 * client/html/catalog/stage/domains
+* client/html/catalog/lists/attrid-default
 * client/html/catalog/lists/catid-default
 * client/html/catalog/lists/supid-default
 * client/html/catalog/lists/size
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/pages
-
-# head
-## text-types
-
-The list of text types that should be rendered in the catalog list head section
-
-```
-client/html/catalog/lists/head/text-types = Array
-(
-    [0] => long
-)
-```
-
-* Default: Array
-* Type: array - List of text type names
-* Since: 2014.03
-
-The head section of the catalog list view at least consists of the category
-name. By default, all short and long descriptions of the category are rendered
-as well.
-
-You can add more text types or remove ones that should be displayed by
-modifying these list of text types, e.g. if you've added a new text type
-and texts of that type to some or all categories.
-
+* client/html/catalog/lists/instock
 
 # infinite-scroll
 
 Enables infinite scrolling in product catalog list
 
 ```
-client/html/catalog/lists/infinite-scroll =
+client/html/catalog/lists/infinite-scroll = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to use infinite scrolling, false to disable it
 * Since: 2019.10
 
@@ -271,268 +224,35 @@ If set to true, products from the next page are loaded via XHR request
 and added to the product list when the user reaches the list bottom.
 
 
-# items
-## decorators/excludes
+# instock
 
-Excludes decorators added by the "common" option from the catalog list items html client
-
-```
-client/html/catalog/lists/items/decorators/excludes =
-```
-
-* Default:
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
+Show only products which are in stock
 
 ```
- client/html/catalog/lists/items/decorators/excludes = array( 'decorator1' )
+client/html/catalog/lists/instock = 
 ```
 
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
+* Default: 
+* Type: int - Zero to show all products, "1" to show only products with stock
+* Since: 2021.10
+
+This configuration option overwrites the "client/html/catalog/domains"
+option that allows to configure the domain names of the items fetched
+for all catalog related data.
 
 See also:
 
-* client/html/common/decorators/default
-* client/html/catalog/lists/items/decorators/global
-* client/html/catalog/lists/items/decorators/local
-
-## decorators/global
-
-Adds a list of globally available decorators only to the catalog list items html client
-
-```
-client/html/catalog/lists/items/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/catalog/lists/items/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/items/decorators/excludes
-* client/html/catalog/lists/items/decorators/local
-
-## decorators/local
-
-Adds a list of local decorators only to the catalog list items html client
-
-```
-client/html/catalog/lists/items/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
-
-```
- client/html/catalog/lists/items/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/items/decorators/excludes
-* client/html/catalog/lists/items/decorators/global
-
-## name
-
-Name of the items part used by the catalog list client implementation
-
-```
-client/html/catalog/lists/items/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the client class name
-* Since: 2014.03
-
-Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Lists\Items\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## subparts
-
-List of HTML sub-clients rendered within the catalog list items section
-
-```
-client/html/catalog/lists/items/subparts = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## template-body
-
-Relative path to the HTML body template of the catalog list items client.
-
-```
-client/html/catalog/lists/items/template-body = catalog/lists/items-body-standard
-```
-
-* Default: catalog/lists/items-body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-It's also possible to create a specific template for each type, e.g.
-for the grid, list or whatever view you want to offer your users. In
-that case, you can configure the template by adding "-<type>" to the
-configuration key. To configure an alternative list view template for
-example, use the key
-
-client/html/catalog/lists/items/template-body-list = catalog/lists/items-body-list.php
-
-The argument is the relative path to the new template file. The type of
-the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9) The catalog list type subpart
-contains the template for switching between list types.
-
-See also:
-
-* client/html/catalog/lists/items/template-header
-* client/html/catalog/lists/type/template-body
-
-## template-body-list
-
-```
-client/html/catalog/lists/items/template-body-list = catalog/lists/items-body-list
-```
-
-* Default: catalog/lists/items-body-standard
-
-
-## template-header
-
-Relative path to the HTML header template of the catalog list items client.
-
-```
-client/html/catalog/lists/items/template-header = catalog/lists/items-header-standard
-```
-
-* Default: catalog/lists/items-header-standard
-* Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the HTML code that is inserted into the HTML page header
-of the rendered page in the frontend. The configuration string is the
-path to the template file relative to the templates directory (usually
-in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-It's also possible to create a specific template for each type, e.g.
-for the grid, list or whatever view you want to offer your users. In
-that case, you can configure the template by adding "-<type>" to the
-configuration key. To configure an alternative list view template for
-example, use the key
-
-client/html/catalog/lists/items/template-header-list = catalog/lists/items-header-list.php
-
-The argument is the relative path to the new template file. The type of
-the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9). The catalog list type subpart
-contains the template for switching between list types.
-
-See also:
-
-* client/html/catalog/lists/items/template-body
-* client/html/catalog/lists/type/template-body
+* client/html/catalog/domains
+* client/html/catalog/lists/domains
+* client/html/catalog/detail/domains
+* client/html/catalog/stage/domains
+* client/html/catalog/lists/attrid-default
+* client/html/catalog/lists/catid-default
+* client/html/catalog/lists/supid-default
+* client/html/catalog/lists/size
+* client/html/catalog/lists/levels
+* client/html/catalog/lists/sort
+* client/html/catalog/lists/pages
 
 # levels
 
@@ -568,12 +288,14 @@ ones or during the product import automatically.
 
 See also:
 
+* client/html/catalog/lists/attrid-default
 * client/html/catalog/lists/catid-default
 * client/html/catalog/lists/supid-default
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/size
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/pages
+* client/html/catalog/lists/instock
 
 # metatags
 
@@ -664,20 +386,21 @@ allowed. The value can't be overwritten per request.
 
 See also:
 
+* client/html/catalog/lists/attrid-default
 * client/html/catalog/lists/catid-default
 * client/html/catalog/lists/supid-default
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/size
+* client/html/catalog/lists/instock
 
 # pagination
-## enable
 
 Enables or disables pagination in list views
 
 ```
-client/html/catalog/lists/pagination/enable = 1
+client/html/catalog/lists/pagination = 1
 ```
 
 * Default: 1
@@ -689,295 +412,6 @@ category or search result. But sometimes you don't want to show the pagination
 at all, e.g. if you implement infinite scrolling by loading more results
 dynamically using AJAX.
 
-
-# partials
-## pagination
-
-Relative path to the pagination partial template file for catalog lists
-
-```
-client/html/catalog/lists/partials/pagination = catalog/lists/pagination-standard
-```
-
-* Default: catalog/lists/pagination-standard
-* Type: string - Relative path to the template file
-* Since: 2017.01
-
-Partials are templates which are reused in other templates and generate
-reoccuring blocks filled with data from the assigned values. The pagination
-partial creates an HTML block containing a page browser and sorting links
-if necessary.
-
-
-# promo
-## decorators/excludes
-
-Excludes decorators added by the "common" option from the catalog list promo html client
-
-```
-client/html/catalog/lists/promo/decorators/excludes =
-```
-
-* Default:
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
-
-```
- client/html/catalog/lists/promo/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/promo/decorators/global
-* client/html/catalog/lists/promo/decorators/local
-
-## decorators/global
-
-Adds a list of globally available decorators only to the catalog list promo html client
-
-```
-client/html/catalog/lists/promo/decorators/global =
-```
-
-* Default:
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/catalog/lists/promo/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/promo/decorators/excludes
-* client/html/catalog/lists/promo/decorators/local
-
-## decorators/local
-
-Adds a list of local decorators only to the catalog list promo html client
-
-```
-client/html/catalog/lists/promo/decorators/local =
-```
-
-* Default:
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
-
-```
- client/html/catalog/lists/promo/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/lists/promo/decorators/excludes
-* client/html/catalog/lists/promo/decorators/global
-
-## name
-
-Name of the promotion part used by the catalog list client implementation
-
-```
-client/html/catalog/lists/promo/name =
-```
-
-* Default:
-* Type: string - Last part of the client class name
-* Since: 2014.03
-
-Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Lists\Promo\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## size
-
-The maximum number of products that should be shown in the promotion section
-
-```
-client/html/catalog/lists/promo/size = 6
-```
-
-* Default: 6
-* Type: integer - Number of promotion products
-* Since: 2014.03
-
-Each product list can render a list of promoted products on
-top if there are any products associated to that category whose
-list type is "promotion". This option limits the maximum number
-of products that are displayed. It takes only effect if more
-promotional products are added to this category than the set
-value.
-
-
-## subparts
-
-List of HTML sub-clients rendered within the catalog list promo section
-
-```
-client/html/catalog/lists/promo/subparts = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## template-body
-
-Relative path to the HTML body template of the catalog list promotion client.
-
-```
-client/html/catalog/lists/promo/template-body = catalog/lists/promo-body-standard
-```
-
-* Default: catalog/lists/promo-body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-It's also possible to create a specific template for each type, e.g.
-for the grid, list or whatever view you want to offer your users. In
-that case, you can configure the template by adding "-<type>" to the
-configuration key. To configure an alternative list view template for
-example, use the key
-
-client/html/catalog/lists/promo/template-body-list = catalog/lists/promo-body-list.php
-
-The argument is the relative path to the new template file. The type of
-the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9). The catalog list type subpart
-contains the template for switching between list types.
-
-See also:
-
-* client/html/catalog/lists/promo/template-header
-* client/html/catalog/lists/type/template-body
-
-## template-header
-
-Relative path to the HTML header template of the catalog list promotion client.
-
-```
-client/html/catalog/lists/promo/template-header = catalog/lists/promo-header-standard
-```
-
-* Default: catalog/lists/promo-header-standard
-* Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the HTML code that is inserted into the HTML page header
-of the rendered page in the frontend. The configuration string is the
-path to the template file relative to the templates directory (usually
-in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-It's also possible to create a specific template for each type, e.g.
-for the grid, list or whatever view you want to offer your users. In
-that case, you can configure the template by adding "-<type>" to the
-configuration key. To configure an alternative list view template for
-example, use the key
-
-client/html/catalog/lists/promo/template-header-list = catalog/lists/promo-header-list.php
-
-The argument is the relative path to the new template file. The type of
-the view is determined by the "l_type" parameter (allowed characters for
-the types are a-z and 0-9). The catalog list type subpart
-contains the template for switching between list types.
-
-See also:
-
-* client/html/catalog/lists/promo/template-body
-* client/html/catalog/lists/type/template-body
 
 # size
 
@@ -1003,12 +437,14 @@ per request if the "l_size" parameter is part of the URL.
 
 See also:
 
+* client/html/catalog/lists/attrid-default
 * client/html/catalog/lists/catid-default
 * client/html/catalog/lists/supid-default
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/pages
+* client/html/catalog/lists/instock
 
 # sort
 
@@ -1029,19 +465,20 @@ a descending order. By default, the sorting is ascending.
 
 See also:
 
+* client/html/catalog/lists/attrid-default
 * client/html/catalog/lists/catid-default
 * client/html/catalog/lists/supid-default
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/size
+* client/html/catalog/lists/instock
 
 # stock
-## enable
 
 Enables or disables displaying product stock levels in product list views
 
 ```
-client/html/catalog/lists/stock/enable = 1
+client/html/catalog/lists/stock = 1
 ```
 
 * Default: 1
@@ -1064,63 +501,15 @@ See also:
 * client/html/catalog/stock/url/action
 * client/html/catalog/stock/url/config
 
-# subparts
-
-List of HTML sub-clients rendered within the catalog list section
-
-```
-client/html/catalog/lists/subparts = Array
-(
-    [0] => items
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
 # supid-default
 
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/supid-default =
+client/html/catalog/lists/supid-default = 
 ```
 
-* Default:
+* Default: 
 * Type: array|string - Supplier ID or IDs
 * Since: 2021.01
 
@@ -1136,18 +525,20 @@ See also:
 * client/html/catalog/lists/size
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
+* client/html/catalog/lists/attrid-default
 * client/html/catalog/lists/catid-default
 * client/html/catalog/detail/prodid-default
+* client/html/catalog/lists/instock
 
 # template-body
 
 Relative path to the HTML body template of the catalog list client.
 
 ```
-client/html/catalog/lists/template-body = catalog/lists/body-standard
+client/html/catalog/lists/template-body = catalog/lists/body
 ```
 
-* Default: catalog/lists/body-standard
+* Default: catalog/lists/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1158,10 +549,10 @@ to the templates directory (usually in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 It's also possible to create a specific template for each type, e.g.
 for the grid, list or whatever view you want to offer your users. In
@@ -1186,10 +577,10 @@ See also:
 Relative path to the HTML header template of the catalog list client.
 
 ```
-client/html/catalog/lists/template-header = catalog/lists/header-standard
+client/html/catalog/lists/template-header = catalog/lists/header
 ```
 
-* Default: catalog/lists/header-standard
+* Default: catalog/lists/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -1201,10 +592,10 @@ in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 It's also possible to create a specific template for each type, e.g.
 for the grid, list or whatever view you want to offer your users. In
@@ -1258,6 +649,9 @@ client/html/catalog/lists/url/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -1311,6 +705,9 @@ client/html/catalog/lists/url/filter = Array
 ```
 
 * Default: Array
+(
+)
+
 
 
 ## target
@@ -1318,10 +715,10 @@ client/html/catalog/lists/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/lists/url/target =
+client/html/catalog/lists/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

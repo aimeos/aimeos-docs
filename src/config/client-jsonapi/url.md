@@ -32,6 +32,9 @@ client/jsonapi/url/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2017.03
 

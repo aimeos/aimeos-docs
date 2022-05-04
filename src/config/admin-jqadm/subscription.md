@@ -11,6 +11,9 @@ admin/jqadm/subscription/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -48,6 +51,9 @@ admin/jqadm/subscription/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -83,6 +89,9 @@ admin/jqadm/subscription/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -123,6 +132,14 @@ admin/jqadm/subscription/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => subscription.id
+    [1] => subscription.status
+    [2] => subscription.datenext
+    [3] => subscription.dateend
+    [4] => subscription.interval
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2018.04
 
@@ -190,6 +207,9 @@ admin/jqadm/subscription/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.04
 
@@ -231,10 +251,10 @@ design.
 Relative path to the HTML body template for the subscription item.
 
 ```
-admin/jqadm/subscription/template-item = subscription/item-standard
+admin/jqadm/subscription/template-item = subscription/item
 ```
 
-* Default: subscription/item-standard
+* Default: subscription/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -256,10 +276,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the subscription list.
 
 ```
-admin/jqadm/subscription/template-list = subscription/list-standard
+admin/jqadm/subscription/template-list = subscription/list
 ```
 
-* Default: subscription/list-standard
+* Default: subscription/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

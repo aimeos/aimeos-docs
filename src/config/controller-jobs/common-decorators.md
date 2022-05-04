@@ -1,14 +1,18 @@
 
-# decorators
-## default
+# default
 
 Configures the list of decorators applied to all job controllers
 
 ```
-controller/jobs/common/decorators/default = 
+controller/jobs/common/decorators/default = Array
+(
+)
 ```
 
-* Default: 
+* Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 

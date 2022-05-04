@@ -5,10 +5,10 @@
 Relative path to the data partial template file for the catalog client
 
 ```
-admin/jsonadm/partials/catalog/template-data = partials/catalog/data-standard
+admin/jsonadm/partials/catalog/template-data = partials/catalog/data
 ```
 
-* Default: partials/data-standard
+* Default: partials/data
 * Type: string - Relative path to the template file
 * Since: 2016.07
 
@@ -18,7 +18,7 @@ partial creates the "data" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/data-standard".
+be relative to the templates/ folder, e.g. "partials/data".
 
 
 # locale
@@ -40,7 +40,7 @@ partial creates the "data" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/data-standard".
+be relative to the templates/ folder, e.g. "partials/data".
 
 
 ## site/template-included
@@ -48,10 +48,10 @@ be relative to the templates/ folder, e.g. "partials/data-standard".
 Relative path to the included partial template file for the locale site  client
 
 ```
-admin/jsonadm/partials/locale/site/template-included = partials/included-standard
+admin/jsonadm/partials/locale/site/template-included = partials/included
 ```
 
-* Default: partials/included-standard
+* Default: partials/included
 * Type: string - Relative path to the template file
 * Since: 2021.04
 
@@ -61,7 +61,7 @@ partial creates the "included" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/included-standard".
+be relative to the templates/ folder, e.g. "partials/included".
 
 
 # order
@@ -70,10 +70,10 @@ be relative to the templates/ folder, e.g. "partials/included-standard".
 Relative path to the data partial template file for the order base client
 
 ```
-admin/jsonadm/partials/order/base/template-data = partials/order/base/data-standard
+admin/jsonadm/partials/order/base/template-data = partials/order/base/data
 ```
 
-* Default: partials/data-standard
+* Default: partials/data
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -83,7 +83,7 @@ partial creates the "data" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/data-standard".
+be relative to the templates/ folder, e.g. "partials/data".
 
 
 ## template-data
@@ -91,10 +91,10 @@ be relative to the templates/ folder, e.g. "partials/data-standard".
 Relative path to the data partial template file for the order client
 
 ```
-admin/jsonadm/partials/order/template-data = partials/order/data-standard
+admin/jsonadm/partials/order/template-data = partials/order/data
 ```
 
-* Default: partials/data-standard
+* Default: partials/data
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -104,16 +104,16 @@ partial creates the "data" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/data-standard".
+be relative to the templates/ folder, e.g. "partials/data".
 
 
 ## template-included
 
 ```
-admin/jsonadm/partials/order/template-included = partials/order/included-standard
+admin/jsonadm/partials/order/template-included = partials/order/included
 ```
 
-* Default: partials/included-standard
+* Default: partials/included
 
 
 # template-data
@@ -121,10 +121,10 @@ admin/jsonadm/partials/order/template-included = partials/order/included-standar
 Relative path to the data partial template file
 
 ```
-admin/jsonadm/partials/template-data = partials/data-standard
+admin/jsonadm/partials/template-data = partials/data
 ```
 
-* Default: partials/data-standard
+* Default: partials/data
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -134,7 +134,7 @@ partial creates the "data" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/data-standard.php".
+be relative to the templates/ folder, e.g. "partials/data.php".
 
 
 # template-errors
@@ -142,10 +142,10 @@ be relative to the templates/ folder, e.g. "partials/data-standard.php".
 Relative path to the error partial template file
 
 ```
-admin/jsonadm/partials/template-errors = partials/errors-standard
+admin/jsonadm/partials/template-errors = partials/errors
 ```
 
-* Default: partials/errors-standard
+* Default: partials/errors
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -155,7 +155,7 @@ partial creates the "error" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/error-standard.php".
+be relative to the templates/ folder, e.g. "partials/error.php".
 
 
 # template-included
@@ -163,10 +163,10 @@ be relative to the templates/ folder, e.g. "partials/error-standard.php".
 Relative path to the "included" partial template file
 
 ```
-admin/jsonadm/partials/template-included = partials/included-standard
+admin/jsonadm/partials/template-included = partials/included
 ```
 
-* Default: partials/included-standard
+* Default: partials/included
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -176,4 +176,4 @@ partial creates the "included" part for the JSON API response.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/included-standard.php".
+be relative to the templates/ folder, e.g. "partials/included.php".

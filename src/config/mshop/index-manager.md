@@ -9,7 +9,7 @@ mshop/index/manager/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val" :mincols
- 	FROM "mshop_product" AS mpro
+ 	FROM "mshop_product" mpro
  	:joins
  	WHERE :cond
  	GROUP BY :cols, :val, mpro."id"
@@ -68,7 +68,7 @@ mshop/index/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val" :mincols
- 	FROM "mshop_product" AS mpro
+ 	FROM "mshop_product" mpro
  	:joins
  	WHERE :cond
  	GROUP BY :cols, :val, mpro."id"
@@ -82,7 +82,7 @@ mshop/index/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val" :mincols
- 	FROM "mshop_product" AS mpro
+ 	FROM "mshop_product" mpro
  	:joins
  	WHERE :cond
  	GROUP BY :cols, :val, mpro."id"
@@ -226,6 +226,9 @@ mshop/index/manager/attribute/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -263,6 +266,9 @@ mshop/index/manager/attribute/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -300,6 +306,9 @@ mshop/index/manager/attribute/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -543,7 +552,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/attribute/search/ansi = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -607,7 +616,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/attribute/search/mysql = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -617,7 +626,7 @@ mshop/index/manager/attribute/search/mysql =
 
 * Default: 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -640,6 +649,9 @@ mshop/index/manager/attribute/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -787,6 +799,9 @@ mshop/index/manager/catalog/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -824,6 +839,9 @@ mshop/index/manager/catalog/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -861,6 +879,9 @@ mshop/index/manager/catalog/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1104,7 +1125,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/catalog/search/ansi = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -1168,7 +1189,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/catalog/search/mysql = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -1178,7 +1199,7 @@ mshop/index/manager/catalog/search/mysql =
 
 * Default: 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -1201,6 +1222,9 @@ mshop/index/manager/catalog/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -1256,7 +1280,7 @@ mshop/index/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpro."id"
- 	FROM "mshop_product" AS mpro
+ 	FROM "mshop_product" mpro
  	:joins
  	WHERE :cond
  	GROUP BY mpro."id"
@@ -1317,7 +1341,7 @@ mshop/index/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpro."id"
- 	FROM "mshop_product" AS mpro
+ 	FROM "mshop_product" mpro
  	:joins
  	WHERE :cond
  	GROUP BY mpro."id"
@@ -1330,7 +1354,7 @@ mshop/index/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpro."id"
- 	FROM "mshop_product" AS mpro
+ 	FROM "mshop_product" mpro
  	:joins
  	WHERE :cond
  	GROUP BY mpro."id"
@@ -1355,6 +1379,9 @@ mshop/index/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1392,6 +1419,9 @@ mshop/index/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1427,6 +1457,9 @@ mshop/index/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1460,21 +1493,27 @@ A list of domain names whose items should be retrieved together with the product
 mshop/index/manager/domains = Array
 (
     [attribute] => attribute
-    [product] => Array
-        (
-            [0] => default
-        )
-
+    [catalog] => catalog
     [price] => Array
         (
             [0] => default
         )
 
+    [product] => Array
+        (
+            [0] => default
+        )
+
+    [supplier] => supplier
+    [supplier/address] => supplier/address
     [text] => text
 )
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of MShop domain names
 * Since: 2014.09
 
@@ -1716,6 +1755,9 @@ mshop/index/manager/price/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1753,6 +1795,9 @@ mshop/index/manager/price/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1790,6 +1835,9 @@ mshop/index/manager/price/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2030,7 +2078,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/price/search/ansi = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2094,7 +2142,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/price/search/mysql = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2104,7 +2152,7 @@ mshop/index/manager/price/search/mysql =
 
 * Default: 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2127,6 +2175,9 @@ mshop/index/manager/price/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -2156,6 +2207,10 @@ mshop/index/manager/price/types = Array
 ```
 
 * Default: Array
+(
+    [0] => default
+)
+
 * Type: array - List of price types codes
 * Since: 2019.04
 
@@ -2174,7 +2229,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/search/ansi = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2238,7 +2293,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/search/mysql = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2248,7 +2303,7 @@ mshop/index/manager/search/mysql =
 
 * Default: 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2313,6 +2368,9 @@ mshop/index/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of index sub-manager names
 * Since: 2016.02
 
@@ -2466,6 +2524,9 @@ mshop/index/manager/supplier/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2503,6 +2564,9 @@ mshop/index/manager/supplier/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2540,6 +2604,9 @@ mshop/index/manager/supplier/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2783,7 +2850,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/supplier/search/ansi = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2847,7 +2914,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/supplier/search/mysql = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2857,7 +2924,7 @@ mshop/index/manager/supplier/search/mysql =
 
 * Default: 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -2880,6 +2947,9 @@ mshop/index/manager/supplier/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of index sub-manager names
 * Since: 2018.07
 * Since: 2018.07
@@ -2898,6 +2968,33 @@ See also:
 * mshop/index/manager/submanagers
 
 # text
+## attribute-types
+
+List of attribute types that should be added to the product index
+
+```
+mshop/index/manager/text/attribute-types = Array
+(
+    [0] => variant
+    [1] => default
+)
+```
+
+* Default: Array
+(
+    [0] => variant
+    [1] => default
+)
+
+* Type: array|string|null - Type name or list of type names, null for all
+* Since: 2020.10
+
+By default, hidden attributes are not displayed. This setting
+allows you to name only those attribute types that should be added. All
+others will be left out so products won't be found if users search
+for words that are part of those skipped attributes.
+
+
 ## cleanup/ansi
 
 Deletes the index text records that haven't been touched
@@ -3031,6 +3128,9 @@ mshop/index/manager/text/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3068,6 +3168,9 @@ mshop/index/manager/text/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3105,6 +3208,9 @@ mshop/index/manager/text/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3351,7 +3457,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/text/search/ansi = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -3418,7 +3524,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/index/manager/text/search/mysql = 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -3428,7 +3534,7 @@ mshop/index/manager/text/search/mysql =
 
 * Default: 
  SELECT mpro."id" :mincols
- FROM "mshop_product" AS mpro
+ FROM "mshop_product" mpro
  :joins
  WHERE :cond
  GROUP BY mpro."id"
@@ -3460,6 +3566,9 @@ mshop/index/manager/text/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09

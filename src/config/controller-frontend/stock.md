@@ -11,6 +11,9 @@ controller/frontend/stock/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -48,6 +51,9 @@ controller/frontend/stock/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -83,6 +89,9 @@ controller/frontend/stock/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 

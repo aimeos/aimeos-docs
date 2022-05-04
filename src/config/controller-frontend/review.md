@@ -11,6 +11,9 @@ controller/frontend/review/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -48,6 +51,9 @@ controller/frontend/review/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -83,6 +89,9 @@ controller/frontend/review/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 

@@ -4,10 +4,10 @@
 Relative path to the product attribute partial template file
 
 ```
-client/html/common/partials/attribute = common/partials/attribute-standard
+client/html/common/partials/attribute = common/partials/attribute
 ```
 
-* Default: common/partials/attribute-standard
+* Default: common/partials/attribute
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -18,46 +18,42 @@ customer can select from.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/attribute-standard.php".
+be relative to the templates/ folder, e.g. "partials/attribute.php".
 
 See also:
 
 * client/html/common/partials/selection
 
-# group
+# badges
 
-Relative path to the group product partial template file
+Relative path to the badges partial template file
 
 ```
-client/html/common/partials/group = 
+client/html/common/partials/badges = common/partials/badges
 ```
 
-* Default: 
+* Default: common/partials/badges
 * Type: string - Relative path to the template file
-* Since: 2021.07
+* Since: 2022.04
 
 Partials are templates which are reused in other templates and generate
-reoccuring blocks filled with data from the assigned values. The group
-partial creates an HTML block for a list of sub-products assigned to a
-group product a customer can select from.
+reoccuring blocks filled with data from the assigned values. The badges
+partial creates an HTML block for the product badges.
 
-The partial template files are usually stored in the templates/partials/ folder
+The partial template files are usually stored in the templates/common/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "common/partials/selection-list".
+be relative to the templates/ folder, e.g. "common/partials/badges.php".
 
-See also:
-
-* client/html/common/partials/attribute
 
 # media
 
 Relative path to the media partial template file
 
 ```
-client/html/common/partials/media = common/partials/media-standard
+client/html/common/partials/media = common/partials/media
 ```
 
-* Default: common/partials/media-standard
+* Default: common/partials/media
 * Type: string - Relative path to the template file
 * Since: 2015.08
 
@@ -67,7 +63,7 @@ partial creates an HTML block of for images, video, audio or other documents.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "common/partials/media-standard.php".
+be relative to the templates/ folder, e.g. "common/partials/media.php".
 
 
 # price
@@ -75,10 +71,10 @@ be relative to the templates/ folder, e.g. "common/partials/media-standard.php".
 Relative path to the price partial template file
 
 ```
-client/html/common/partials/price = common/partials/price-standard
+client/html/common/partials/price = common/partials/price
 ```
 
-* Default: common/partials/price-standard
+* Default: common/partials/price
 * Type: string - Relative path to the template file
 * Since: 2015.04
 
@@ -88,7 +84,7 @@ partial creates an HTML block for a list of price items.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/price-standard.php".
+be relative to the templates/ folder, e.g. "partials/price.php".
 
 
 # products
@@ -96,10 +92,10 @@ be relative to the templates/ folder, e.g. "partials/price-standard.php".
 Relative path to the products partial template file
 
 ```
-client/html/common/partials/products = common/partials/products-standard
+client/html/common/partials/products = common/partials/products
 ```
 
-* Default: common/partials/products-standard
+* Default: common/partials/products
 * Type: string - Relative path to the template file
 * Since: 2017.01
 
@@ -113,10 +109,10 @@ partial creates an HTML block for a product listing.
 Relative path to the variant attribute partial template file
 
 ```
-client/html/common/partials/selection = common/partials/selection-standard
+client/html/common/partials/selection = common/partials/selection
 ```
 
-* Default: common/partials/selection-standard
+* Default: common/partials/selection
 * Type: string - Relative path to the template file
 * Since: 2015.04
 
@@ -127,7 +123,7 @@ assigned to a selection product a customer must select from.
 
 The partial template files are usually stored in the templates/partials/ folder
 of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "common/partials/selection-standard".
+be relative to the templates/ folder, e.g. "common/partials/selection".
 
 See also:
 

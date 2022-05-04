@@ -9,7 +9,7 @@ mshop/coupon/manager/code/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcouco."id"
- 	FROM "mshop_coupon_code" AS mcouco
+ 	FROM "mshop_coupon_code" mcouco
  	:joins
  	WHERE :cond
  	ORDER BY mcouco."id"
@@ -72,7 +72,7 @@ mshop/coupon/manager/code/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcouco."id"
- 	FROM "mshop_coupon_code" AS mcouco
+ 	FROM "mshop_coupon_code" mcouco
  	:joins
  	WHERE :cond
  	ORDER BY mcouco."id"
@@ -84,7 +84,7 @@ mshop/coupon/manager/code/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcouco."id"
- 	FROM "mshop_coupon_code" AS mcouco
+ 	FROM "mshop_coupon_code" mcouco
  	:joins
  	WHERE :cond
  	ORDER BY mcouco."id"
@@ -168,6 +168,9 @@ mshop/coupon/manager/code/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -205,6 +208,9 @@ mshop/coupon/manager/code/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -241,6 +247,9 @@ mshop/coupon/manager/code/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -505,7 +514,7 @@ mshop/coupon/manager/code/search/ansi =
  	mcouco."count" AS "coupon.code.count", mcouco."ref" AS "coupon.code.ref",
  	mcouco."mtime" AS "coupon.code.mtime", mcouco."ctime" AS "coupon.code.ctime",
  	mcouco."editor" AS "coupon.code.editor"
- FROM "mshop_coupon_code" AS mcouco
+ FROM "mshop_coupon_code" mcouco
  :joins
  WHERE :cond
  ORDER BY :order
@@ -577,7 +586,7 @@ mshop/coupon/manager/code/search/mysql =
  	mcouco."count" AS "coupon.code.count", mcouco."ref" AS "coupon.code.ref",
  	mcouco."mtime" AS "coupon.code.mtime", mcouco."ctime" AS "coupon.code.ctime",
  	mcouco."editor" AS "coupon.code.editor"
- FROM "mshop_coupon_code" AS mcouco
+ FROM "mshop_coupon_code" mcouco
  :joins
  WHERE :cond
  ORDER BY :order
@@ -592,7 +601,7 @@ mshop/coupon/manager/code/search/mysql =
  	mcouco."count" AS "coupon.code.count", mcouco."ref" AS "coupon.code.ref",
  	mcouco."mtime" AS "coupon.code.mtime", mcouco."ctime" AS "coupon.code.ctime",
  	mcouco."editor" AS "coupon.code.editor"
- FROM "mshop_coupon_code" AS mcouco
+ FROM "mshop_coupon_code" mcouco
  :joins
  WHERE :cond
  ORDER BY :order
@@ -614,6 +623,9 @@ mshop/coupon/manager/code/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -703,7 +715,7 @@ mshop/coupon/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcou."id"
- 	FROM "mshop_coupon" AS mcou
+ 	FROM "mshop_coupon" mcou
  	:joins
  	WHERE :cond
  	GROUP BY mcou."id"
@@ -766,7 +778,7 @@ mshop/coupon/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcou."id"
- 	FROM "mshop_coupon" AS mcou
+ 	FROM "mshop_coupon" mcou
  	:joins
  	WHERE :cond
  	GROUP BY mcou."id"
@@ -779,7 +791,7 @@ mshop/coupon/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcou."id"
- 	FROM "mshop_coupon" AS mcou
+ 	FROM "mshop_coupon" mcou
  	:joins
  	WHERE :cond
  	GROUP BY mcou."id"
@@ -804,6 +816,9 @@ mshop/coupon/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -841,6 +856,9 @@ mshop/coupon/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -877,6 +895,9 @@ mshop/coupon/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1141,7 +1162,7 @@ mshop/coupon/manager/search/ansi =
  	mcou."config" AS "coupon.config", mcou."status" AS "coupon.status",
  	mcou."mtime" AS "coupon.mtime", mcou."editor" AS "coupon.editor",
  	mcou."ctime" AS "coupon.ctime"
- FROM "mshop_coupon" AS mcou
+ FROM "mshop_coupon" mcou
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -1215,7 +1236,7 @@ mshop/coupon/manager/search/mysql =
  	mcou."config" AS "coupon.config", mcou."status" AS "coupon.status",
  	mcou."mtime" AS "coupon.mtime", mcou."editor" AS "coupon.editor",
  	mcou."ctime" AS "coupon.ctime"
- FROM "mshop_coupon" AS mcou
+ FROM "mshop_coupon" mcou
  :joins
  WHERE :cond
  GROUP BY :group mcou."id"
@@ -1231,7 +1252,7 @@ mshop/coupon/manager/search/mysql =
  	mcou."config" AS "coupon.config", mcou."status" AS "coupon.status",
  	mcou."mtime" AS "coupon.mtime", mcou."editor" AS "coupon.editor",
  	mcou."ctime" AS "coupon.ctime"
- FROM "mshop_coupon" AS mcou
+ FROM "mshop_coupon" mcou
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -1294,6 +1315,10 @@ mshop/coupon/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+    [0] => code
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

@@ -9,7 +9,7 @@ mshop/supplier/manager/address/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupad."id"
- 	FROM "mshop_supplier_address" AS msupad
+ 	FROM "mshop_supplier_address" msupad
  	:joins
  	WHERE :cond
  	ORDER BY msupad."id"
@@ -71,7 +71,7 @@ mshop/supplier/manager/address/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupad."id"
- 	FROM "mshop_supplier_address" AS msupad
+ 	FROM "mshop_supplier_address" msupad
  	:joins
  	WHERE :cond
  	ORDER BY msupad."id"
@@ -83,7 +83,7 @@ mshop/supplier/manager/address/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupad."id"
- 	FROM "mshop_supplier_address" AS msupad
+ 	FROM "mshop_supplier_address" msupad
  	:joins
  	WHERE :cond
  	ORDER BY msupad."id"
@@ -106,6 +106,9 @@ mshop/supplier/manager/address/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -143,6 +146,9 @@ mshop/supplier/manager/address/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -180,6 +186,9 @@ mshop/supplier/manager/address/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -458,7 +467,7 @@ mshop/supplier/manager/address/search/ansi =
  	msupad."longitude" AS "supplier.address.longitude", msupad."latitude" AS "supplier.address.latitude",
  	msupad."mtime" AS "supplier.address.mtime", msupad."ctime" AS "supplier.address.ctime",
  	msupad."editor" AS "supplier.address.editor", msupad."birthday" AS "supplier.address.birthday"
- FROM "mshop_supplier_address" AS msupad
+ FROM "mshop_supplier_address" msupad
  :joins
  WHERE :cond
  ORDER BY :order
@@ -537,7 +546,7 @@ mshop/supplier/manager/address/search/mysql =
  	msupad."longitude" AS "supplier.address.longitude", msupad."latitude" AS "supplier.address.latitude",
  	msupad."mtime" AS "supplier.address.mtime", msupad."ctime" AS "supplier.address.ctime",
  	msupad."editor" AS "supplier.address.editor", msupad."birthday" AS "supplier.address.birthday"
- FROM "mshop_supplier_address" AS msupad
+ FROM "mshop_supplier_address" msupad
  :joins
  WHERE :cond
  ORDER BY :order
@@ -560,7 +569,7 @@ mshop/supplier/manager/address/search/mysql =
  	msupad."longitude" AS "supplier.address.longitude", msupad."latitude" AS "supplier.address.latitude",
  	msupad."mtime" AS "supplier.address.mtime", msupad."ctime" AS "supplier.address.ctime",
  	msupad."editor" AS "supplier.address.editor", msupad."birthday" AS "supplier.address.birthday"
- FROM "mshop_supplier_address" AS msupad
+ FROM "mshop_supplier_address" msupad
  :joins
  WHERE :cond
  ORDER BY :order
@@ -582,6 +591,9 @@ mshop/supplier/manager/address/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -682,7 +694,7 @@ mshop/supplier/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msup."id"
- 	FROM "mshop_supplier" AS msup
+ 	FROM "mshop_supplier" msup
  	:joins
  	WHERE :cond
  	GROUP BY msup."id"
@@ -745,7 +757,7 @@ mshop/supplier/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msup."id"
- 	FROM "mshop_supplier" AS msup
+ 	FROM "mshop_supplier" msup
  	:joins
  	WHERE :cond
  	GROUP BY msup."id"
@@ -758,7 +770,7 @@ mshop/supplier/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msup."id"
- 	FROM "mshop_supplier" AS msup
+ 	FROM "mshop_supplier" msup
  	:joins
  	WHERE :cond
  	GROUP BY msup."id"
@@ -783,6 +795,9 @@ mshop/supplier/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -820,6 +835,9 @@ mshop/supplier/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -856,6 +874,9 @@ mshop/supplier/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1013,7 +1034,7 @@ mshop/supplier/manager/lists/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_supplier_list" AS msupli
+ 	FROM "mshop_supplier_list" msupli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, msupli."id"
@@ -1075,7 +1096,7 @@ mshop/supplier/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_supplier_list" AS msupli
+ 	FROM "mshop_supplier_list" msupli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, msupli."id"
@@ -1089,7 +1110,7 @@ mshop/supplier/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_supplier_list" AS msupli
+ 	FROM "mshop_supplier_list" msupli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, msupli."id"
@@ -1112,7 +1133,7 @@ mshop/supplier/manager/lists/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupli."id"
- 	FROM "mshop_supplier_list" AS msupli
+ 	FROM "mshop_supplier_list" msupli
  	:joins
  	WHERE :cond
  	ORDER BY msupli."id"
@@ -1175,7 +1196,7 @@ mshop/supplier/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupli."id"
- 	FROM "mshop_supplier_list" AS msupli
+ 	FROM "mshop_supplier_list" msupli
  	:joins
  	WHERE :cond
  	ORDER BY msupli."id"
@@ -1187,7 +1208,7 @@ mshop/supplier/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupli."id"
- 	FROM "mshop_supplier_list" AS msupli
+ 	FROM "mshop_supplier_list" msupli
  	:joins
  	WHERE :cond
  	ORDER BY msupli."id"
@@ -1210,6 +1231,9 @@ mshop/supplier/manager/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1247,6 +1271,9 @@ mshop/supplier/manager/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1284,6 +1311,9 @@ mshop/supplier/manager/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1549,7 +1579,7 @@ mshop/supplier/manager/lists/search/ansi =
  	msupli."config" AS "supplier.lists.config", msupli."pos" AS "supplier.lists.position",
  	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
  	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
- FROM "mshop_supplier_list" AS msupli
+ FROM "mshop_supplier_list" msupli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1622,7 +1652,7 @@ mshop/supplier/manager/lists/search/mysql =
  	msupli."config" AS "supplier.lists.config", msupli."pos" AS "supplier.lists.position",
  	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
  	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
- FROM "mshop_supplier_list" AS msupli
+ FROM "mshop_supplier_list" msupli
  USE INDEX (unq_mssupli_pid_dm_sid_ty_rid, idx_mssupli_pid_dm_sid_pos_rid, idx_mssupli_rid_dom_sid_ty, idx_mssupli_key_sid)
  :joins
  WHERE :cond
@@ -1639,7 +1669,7 @@ mshop/supplier/manager/lists/search/mysql =
  	msupli."config" AS "supplier.lists.config", msupli."pos" AS "supplier.lists.position",
  	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
  	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
- FROM "mshop_supplier_list" AS msupli
+ FROM "mshop_supplier_list" msupli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1661,6 +1691,9 @@ mshop/supplier/manager/lists/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1684,7 +1717,7 @@ mshop/supplier/manager/lists/type/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" AS msuplity
+ 	FROM "mshop_supplier_list_type" msuplity
  	:joins
  	WHERE :cond
  	ORDER BY msuplity."id"
@@ -1746,7 +1779,7 @@ mshop/supplier/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" AS msuplity
+ 	FROM "mshop_supplier_list_type" msuplity
  	:joins
  	WHERE :cond
  	ORDER BY msuplity."id"
@@ -1758,7 +1791,7 @@ mshop/supplier/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" AS msuplity
+ 	FROM "mshop_supplier_list_type" msuplity
  	:joins
  	WHERE :cond
  	ORDER BY msuplity."id"
@@ -1781,6 +1814,9 @@ mshop/supplier/manager/lists/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1818,6 +1854,9 @@ mshop/supplier/manager/lists/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1855,6 +1894,9 @@ mshop/supplier/manager/lists/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2115,7 +2157,7 @@ mshop/supplier/manager/lists/type/search/ansi =
  	msuplity."label" AS "supplier.lists.type.label", msuplity."status" AS "supplier.lists.type.status",
  	msuplity."mtime" AS "supplier.lists.type.mtime", msuplity."editor" AS "supplier.lists.type.editor",
  	msuplity."ctime" AS "supplier.lists.type.ctime", msuplity."pos" AS "supplier.lists.type.position"
- FROM "mshop_supplier_list_type" AS msuplity
+ FROM "mshop_supplier_list_type" msuplity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2185,7 +2227,7 @@ mshop/supplier/manager/lists/type/search/mysql =
  	msuplity."label" AS "supplier.lists.type.label", msuplity."status" AS "supplier.lists.type.status",
  	msuplity."mtime" AS "supplier.lists.type.mtime", msuplity."editor" AS "supplier.lists.type.editor",
  	msuplity."ctime" AS "supplier.lists.type.ctime", msuplity."pos" AS "supplier.lists.type.position"
- FROM "mshop_supplier_list_type" AS msuplity
+ FROM "mshop_supplier_list_type" msuplity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2199,7 +2241,7 @@ mshop/supplier/manager/lists/type/search/mysql =
  	msuplity."label" AS "supplier.lists.type.label", msuplity."status" AS "supplier.lists.type.status",
  	msuplity."mtime" AS "supplier.lists.type.mtime", msuplity."editor" AS "supplier.lists.type.editor",
  	msuplity."ctime" AS "supplier.lists.type.ctime", msuplity."pos" AS "supplier.lists.type.position"
- FROM "mshop_supplier_list_type" AS msuplity
+ FROM "mshop_supplier_list_type" msuplity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2221,6 +2263,9 @@ mshop/supplier/manager/lists/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2476,7 +2521,7 @@ mshop/supplier/manager/search/ansi =
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
  	msup."status" AS "supplier.status", msup."mtime" AS "supplier.mtime",
  	msup."editor" AS "supplier.editor", msup."ctime" AS "supplier.ctime"
- FROM "mshop_supplier" AS msup
+ FROM "mshop_supplier" msup
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -2548,7 +2593,7 @@ mshop/supplier/manager/search/mysql =
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
  	msup."status" AS "supplier.status", msup."mtime" AS "supplier.mtime",
  	msup."editor" AS "supplier.editor", msup."ctime" AS "supplier.ctime"
- FROM "mshop_supplier" AS msup
+ FROM "mshop_supplier" msup
  :joins
  WHERE :cond
  GROUP BY :group msup."id"
@@ -2562,7 +2607,7 @@ mshop/supplier/manager/search/mysql =
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
  	msup."status" AS "supplier.status", msup."mtime" AS "supplier.mtime",
  	msup."editor" AS "supplier.editor", msup."ctime" AS "supplier.ctime"
- FROM "mshop_supplier" AS msup
+ FROM "mshop_supplier" msup
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -2625,6 +2670,10 @@ mshop/supplier/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+    [0] => address
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

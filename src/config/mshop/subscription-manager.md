@@ -9,7 +9,7 @@ mshop/subscription/manager/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_subscription" AS mord
+ 	FROM "mshop_subscription" mord
  	:joins
  	WHERE :cond
  	GROUP BY mord.id, :cols, :val
@@ -71,7 +71,7 @@ mshop/subscription/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_subscription" AS mord
+ 	FROM "mshop_subscription" mord
  	:joins
  	WHERE :cond
  	GROUP BY mord.id, :cols, :val
@@ -85,7 +85,7 @@ mshop/subscription/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_subscription" AS mord
+ 	FROM "mshop_subscription" mord
  	:joins
  	WHERE :cond
  	GROUP BY mord.id, :cols, :val
@@ -109,7 +109,7 @@ mshop/subscription/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mord."id"
- 	FROM "mshop_subscription" AS mord
+ 	FROM "mshop_subscription" mord
  	:joins
  	WHERE :cond
  	GROUP BY mord."id"
@@ -172,7 +172,7 @@ mshop/subscription/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mord."id"
- 	FROM "mshop_subscription" AS mord
+ 	FROM "mshop_subscription" mord
  	:joins
  	WHERE :cond
  	GROUP BY mord."id"
@@ -185,7 +185,7 @@ mshop/subscription/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mord."id"
- 	FROM "mshop_subscription" AS mord
+ 	FROM "mshop_subscription" mord
  	:joins
  	WHERE :cond
  	GROUP BY mord."id"
@@ -210,6 +210,9 @@ mshop/subscription/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -247,6 +250,9 @@ mshop/subscription/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -284,6 +290,9 @@ mshop/subscription/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -550,7 +559,7 @@ mshop/subscription/manager/search/ansi =
  	mord."productid" AS "subscription.productid", mord."period" AS "subscription.period",
  	mord."status" AS "subscription.status", mord."ctime" AS "subscription.ctime",
  	mord."mtime" AS "subscription.mtime", mord."editor" AS "subscription.editor"
- FROM "mshop_subscription" AS mord
+ FROM "mshop_subscription" mord
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -626,7 +635,7 @@ mshop/subscription/manager/search/mysql =
  	mord."productid" AS "subscription.productid", mord."period" AS "subscription.period",
  	mord."status" AS "subscription.status", mord."ctime" AS "subscription.ctime",
  	mord."mtime" AS "subscription.mtime", mord."editor" AS "subscription.editor"
- FROM "mshop_subscription" AS mord
+ FROM "mshop_subscription" mord
  :joins
  WHERE :cond
  GROUP BY :group mord."id"
@@ -643,7 +652,7 @@ mshop/subscription/manager/search/mysql =
  	mord."productid" AS "subscription.productid", mord."period" AS "subscription.period",
  	mord."status" AS "subscription.status", mord."ctime" AS "subscription.ctime",
  	mord."mtime" AS "subscription.mtime", mord."editor" AS "subscription.editor"
- FROM "mshop_subscription" AS mord
+ FROM "mshop_subscription" mord
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -707,6 +716,10 @@ mshop/subscription/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+    [0] => base
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.04
 

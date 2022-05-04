@@ -47,6 +47,9 @@ admin/jqadm/coupon/code/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -82,6 +85,9 @@ admin/jqadm/coupon/code/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -119,6 +125,11 @@ admin/jqadm/coupon/code/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => coupon.code.code
+    [1] => coupon.code.count
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -157,6 +168,9 @@ admin/jqadm/coupon/code/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -198,10 +212,10 @@ design.
 Relative path to the HTML body template of the code subpart for coupons.
 
 ```
-admin/jqadm/coupon/code/template-item = coupon/item-code-standard
+admin/jqadm/coupon/code/template-item = coupon/item-code
 ```
 
-* Default: coupon/item-code-standard
+* Default: coupon/item-code
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -230,6 +244,9 @@ admin/jqadm/coupon/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -267,6 +284,9 @@ admin/jqadm/coupon/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -302,6 +322,9 @@ admin/jqadm/coupon/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -340,6 +363,12 @@ admin/jqadm/coupon/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => coupon.status
+    [1] => coupon.label
+    [2] => coupon.provider
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -408,6 +437,9 @@ admin/jqadm/coupon/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -449,10 +481,10 @@ design.
 Relative path to the HTML body template for the coupon item.
 
 ```
-admin/jqadm/coupon/template-item = coupon/item-standard
+admin/jqadm/coupon/template-item = coupon/item
 ```
 
-* Default: coupon/item-standard
+* Default: coupon/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -474,10 +506,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the coupon list.
 
 ```
-admin/jqadm/coupon/template-list = coupon/list-standard
+admin/jqadm/coupon/template-list = coupon/list
 ```
 
-* Default: coupon/list-standard
+* Default: coupon/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

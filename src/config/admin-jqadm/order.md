@@ -11,6 +11,10 @@ admin/jqadm/order/actions = Array
 ```
 
 * Default: Array
+(
+    [0] => order-export
+)
+
 * Type: array - List of action queue names
 * Since: 2020.10
 
@@ -39,6 +43,9 @@ admin/jqadm/order/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -76,6 +83,9 @@ admin/jqadm/order/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -111,6 +121,9 @@ admin/jqadm/order/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -150,6 +163,13 @@ admin/jqadm/order/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => order.id
+    [1] => order.ctime
+    [2] => order.statuspayment
+    [3] => order.base.address.lastname
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -208,6 +228,9 @@ admin/jqadm/order/invoice/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -243,6 +266,9 @@ admin/jqadm/order/invoice/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -280,6 +306,11 @@ admin/jqadm/order/invoice/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => web
+    [1] => phone
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -318,6 +349,9 @@ admin/jqadm/order/invoice/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -359,10 +393,10 @@ design.
 Relative path to the HTML body template of the invoice subpart for orders.
 
 ```
-admin/jqadm/order/invoice/template-item = order/item-invoice-standard
+admin/jqadm/order/invoice/template-item = order/item-invoice
 ```
 
-* Default: order/item-invoice-standard
+* Default: order/item-invoice
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -454,6 +488,10 @@ admin/jqadm/order/service/delivery/attribute/suggest = Array
 ```
 
 * Default: Array
+(
+    [0] => trackingid
+)
+
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -476,6 +514,9 @@ admin/jqadm/order/service/payment/attribute/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -499,6 +540,9 @@ admin/jqadm/order/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -540,10 +584,10 @@ design.
 Relative path to the HTML body template for the order item.
 
 ```
-admin/jqadm/order/template-item = order/item-standard
+admin/jqadm/order/template-item = order/item
 ```
 
-* Default: order/item-standard
+* Default: order/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -565,10 +609,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the order list.
 
 ```
-admin/jqadm/order/template-list = order/list-standard
+admin/jqadm/order/template-list = order/list
 ```
 
-* Default: order/list-standard
+* Default: order/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

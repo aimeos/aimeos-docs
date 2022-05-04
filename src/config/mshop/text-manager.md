@@ -9,7 +9,7 @@ mshop/text/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtex."id"
- 	FROM "mshop_text" AS mtex
+ 	FROM "mshop_text" mtex
  	:joins
  	WHERE :cond
  	GROUP BY mtex."id"
@@ -72,7 +72,7 @@ mshop/text/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtex."id"
- 	FROM "mshop_text" AS mtex
+ 	FROM "mshop_text" mtex
  	:joins
  	WHERE :cond
  	GROUP BY mtex."id"
@@ -85,7 +85,7 @@ mshop/text/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtex."id"
- 	FROM "mshop_text" AS mtex
+ 	FROM "mshop_text" mtex
  	:joins
  	WHERE :cond
  	GROUP BY mtex."id"
@@ -110,6 +110,9 @@ mshop/text/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -147,6 +150,9 @@ mshop/text/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -183,6 +189,9 @@ mshop/text/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -343,7 +352,7 @@ mshop/text/manager/lists/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_text_list" AS mtexli
+ 	FROM "mshop_text_list" mtexli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mtexli."id"
@@ -405,7 +414,7 @@ mshop/text/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_text_list" AS mtexli
+ 	FROM "mshop_text_list" mtexli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mtexli."id"
@@ -419,7 +428,7 @@ mshop/text/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_text_list" AS mtexli
+ 	FROM "mshop_text_list" mtexli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mtexli."id"
@@ -442,7 +451,7 @@ mshop/text/manager/lists/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexli."id"
- 	FROM "mshop_text_list" AS mtexli
+ 	FROM "mshop_text_list" mtexli
  	:joins
  	WHERE :cond
  	ORDER BY mtexli."id"
@@ -505,7 +514,7 @@ mshop/text/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexli."id"
- 	FROM "mshop_text_list" AS mtexli
+ 	FROM "mshop_text_list" mtexli
  	:joins
  	WHERE :cond
  	ORDER BY mtexli."id"
@@ -517,7 +526,7 @@ mshop/text/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexli."id"
- 	FROM "mshop_text_list" AS mtexli
+ 	FROM "mshop_text_list" mtexli
  	:joins
  	WHERE :cond
  	ORDER BY mtexli."id"
@@ -540,6 +549,9 @@ mshop/text/manager/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -577,6 +589,9 @@ mshop/text/manager/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -613,6 +628,9 @@ mshop/text/manager/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -878,7 +896,7 @@ mshop/text/manager/lists/search/ansi =
  	mtexli."config" AS "text.lists.config", mtexli."pos" AS "text.lists.position",
  	mtexli."status" AS "text.lists.status", mtexli."mtime" AS "text.lists.mtime",
  	mtexli."editor" AS "text.lists.editor", mtexli."ctime" AS "text.lists.ctime"
- FROM "mshop_text_list" AS mtexli
+ FROM "mshop_text_list" mtexli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -951,7 +969,7 @@ mshop/text/manager/lists/search/mysql =
  	mtexli."config" AS "text.lists.config", mtexli."pos" AS "text.lists.position",
  	mtexli."status" AS "text.lists.status", mtexli."mtime" AS "text.lists.mtime",
  	mtexli."editor" AS "text.lists.editor", mtexli."ctime" AS "text.lists.ctime"
- FROM "mshop_text_list" AS mtexli
+ FROM "mshop_text_list" mtexli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -967,7 +985,7 @@ mshop/text/manager/lists/search/mysql =
  	mtexli."config" AS "text.lists.config", mtexli."pos" AS "text.lists.position",
  	mtexli."status" AS "text.lists.status", mtexli."mtime" AS "text.lists.mtime",
  	mtexli."editor" AS "text.lists.editor", mtexli."ctime" AS "text.lists.ctime"
- FROM "mshop_text_list" AS mtexli
+ FROM "mshop_text_list" mtexli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -989,6 +1007,9 @@ mshop/text/manager/lists/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1109,6 +1130,9 @@ mshop/text/manager/lists/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1146,6 +1170,9 @@ mshop/text/manager/lists/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1183,6 +1210,9 @@ mshop/text/manager/lists/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1443,7 +1473,7 @@ mshop/text/manager/lists/type/search/ansi =
  	mtexlity."label" AS "text.lists.type.label", mtexlity."status" AS "text.lists.type.status",
  	mtexlity."mtime" AS "text.lists.type.mtime", mtexlity."editor" AS "text.lists.type.editor",
  	mtexlity."ctime" AS "text.lists.type.ctime", mtexlity."pos" AS "text.lists.type.position"
- FROM "mshop_text_list_type" AS mtexlity
+ FROM "mshop_text_list_type" mtexlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1513,7 +1543,7 @@ mshop/text/manager/lists/type/search/mysql =
  	mtexlity."label" AS "text.lists.type.label", mtexlity."status" AS "text.lists.type.status",
  	mtexlity."mtime" AS "text.lists.type.mtime", mtexlity."editor" AS "text.lists.type.editor",
  	mtexlity."ctime" AS "text.lists.type.ctime", mtexlity."pos" AS "text.lists.type.position"
- FROM "mshop_text_list_type" AS mtexlity
+ FROM "mshop_text_list_type" mtexlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1527,7 +1557,7 @@ mshop/text/manager/lists/type/search/mysql =
  	mtexlity."label" AS "text.lists.type.label", mtexlity."status" AS "text.lists.type.status",
  	mtexlity."mtime" AS "text.lists.type.mtime", mtexlity."editor" AS "text.lists.type.editor",
  	mtexlity."ctime" AS "text.lists.type.ctime", mtexlity."pos" AS "text.lists.type.position"
- FROM "mshop_text_list_type" AS mtexlity
+ FROM "mshop_text_list_type" mtexlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1549,6 +1579,9 @@ mshop/text/manager/lists/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1806,7 +1839,7 @@ mshop/text/manager/search/ansi =
  	mtex."content" AS "text.content", mtex."status" AS "text.status",
  	mtex."mtime" AS "text.mtime", mtex."editor" AS "text.editor",
  	mtex."ctime" AS "text.ctime"
- FROM "mshop_text" AS mtex
+ FROM "mshop_text" mtex
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -1880,7 +1913,7 @@ mshop/text/manager/search/mysql =
  	mtex."content" AS "text.content", mtex."status" AS "text.status",
  	mtex."mtime" AS "text.mtime", mtex."editor" AS "text.editor",
  	mtex."ctime" AS "text.ctime"
- FROM "mshop_text" AS mtex
+ FROM "mshop_text" mtex
  :joins
  WHERE :cond
  GROUP BY :group mtex."id"
@@ -1896,7 +1929,7 @@ mshop/text/manager/search/mysql =
  	mtex."content" AS "text.content", mtex."status" AS "text.status",
  	mtex."mtime" AS "text.mtime", mtex."editor" AS "text.editor",
  	mtex."ctime" AS "text.ctime"
- FROM "mshop_text" AS mtex
+ FROM "mshop_text" mtex
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -1958,6 +1991,9 @@ mshop/text/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2079,6 +2115,9 @@ mshop/text/manager/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2116,6 +2155,9 @@ mshop/text/manager/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2152,6 +2194,9 @@ mshop/text/manager/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2518,6 +2563,9 @@ mshop/text/manager/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

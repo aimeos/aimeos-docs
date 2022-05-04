@@ -11,6 +11,9 @@ client/jsonapi/customer/address/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -48,6 +51,9 @@ client/jsonapi/customer/address/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -85,6 +91,9 @@ client/jsonapi/customer/address/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -193,6 +202,9 @@ client/jsonapi/customer/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -230,6 +242,9 @@ client/jsonapi/customer/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -267,6 +282,9 @@ client/jsonapi/customer/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -350,6 +368,9 @@ client/jsonapi/customer/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -387,6 +408,9 @@ client/jsonapi/customer/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -424,6 +448,9 @@ client/jsonapi/customer/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -532,6 +559,9 @@ client/jsonapi/customer/relationships/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -569,6 +599,9 @@ client/jsonapi/customer/relationships/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -606,6 +639,9 @@ client/jsonapi/customer/relationships/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -714,6 +750,9 @@ client/jsonapi/customer/review/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -751,6 +790,9 @@ client/jsonapi/customer/review/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -788,6 +830,9 @@ client/jsonapi/customer/review/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 

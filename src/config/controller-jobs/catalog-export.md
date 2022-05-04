@@ -80,6 +80,10 @@ controller/jobs/catalog/export/sitemap/container/options = Array
 ```
 
 * Default: Array
+(
+    [gzip-mode] => wb
+)
+
 * Type: array - Associative list of option name/value pairs
 * Since: 2019.02
 
@@ -110,6 +114,9 @@ controller/jobs/catalog/export/sitemap/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -147,6 +154,9 @@ controller/jobs/catalog/export/sitemap/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -182,6 +192,9 @@ controller/jobs/catalog/export/sitemap/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -220,6 +233,10 @@ controller/jobs/catalog/export/sitemap/domains = Array
 ```
 
 * Default: Array
+(
+    [0] => text
+)
+
 * Type: array - List of domain names
 * Since: 2019.02
 
@@ -227,6 +244,29 @@ Catalogs consist not only of the base data but also of texts, media and
 other details. Those information is associated to the catalog via their lists.
 Using the "domains" option you can make more or less associated items available
 in the template.
+
+See also:
+
+* controller/jobs/catalog/export/sitemap/container/options
+* controller/jobs/catalog/export/sitemap/location
+* controller/jobs/catalog/export/sitemap/max-items
+* controller/jobs/catalog/export/sitemap/max-query
+* controller/jobs/catalog/export/sitemap/changefreq
+
+## hidden
+
+Export hidden categories in site map
+
+```
+controller/jobs/catalog/export/sitemap/hidden = 
+```
+
+* Default: 
+* Type: bool - TRUE to export hidden categories, FALSE if not
+* Since: 2022.01
+
+The catalog site map contains no hidden categories by default. If they
+should be part of the export, set this configuration option to TRUE.
 
 See also:
 

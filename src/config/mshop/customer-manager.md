@@ -9,7 +9,7 @@ mshop/customer/manager/address/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusad."id"
- 	FROM "mshop_customer_address" AS mcusad
+ 	FROM "mshop_customer_address" mcusad
  	:joins
  	WHERE :cond
  	ORDER BY mcusad."id"
@@ -71,7 +71,7 @@ mshop/customer/manager/address/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusad."id"
- 	FROM "mshop_customer_address" AS mcusad
+ 	FROM "mshop_customer_address" mcusad
  	:joins
  	WHERE :cond
  	ORDER BY mcusad."id"
@@ -83,7 +83,7 @@ mshop/customer/manager/address/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusad."id"
- 	FROM "mshop_customer_address" AS mcusad
+ 	FROM "mshop_customer_address" mcusad
  	:joins
  	WHERE :cond
  	ORDER BY mcusad."id"
@@ -106,6 +106,9 @@ mshop/customer/manager/address/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -143,6 +146,9 @@ mshop/customer/manager/address/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -179,6 +185,9 @@ mshop/customer/manager/address/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -457,7 +466,7 @@ mshop/customer/manager/address/search/ansi =
  	mcusad."longitude" AS "customer.address.longitude", mcusad."latitude" AS "customer.address.latitude",
  	mcusad."mtime" AS "customer.address.mtime", mcusad."editor" AS "customer.address.editor",
  	mcusad."ctime" AS "customer.address.ctime", mcusad."birthday" AS "customer.address.birthday"
- FROM "mshop_customer_address" AS mcusad
+ FROM "mshop_customer_address" mcusad
  :joins
  WHERE :cond
  ORDER BY :order
@@ -536,7 +545,7 @@ mshop/customer/manager/address/search/mysql =
  	mcusad."longitude" AS "customer.address.longitude", mcusad."latitude" AS "customer.address.latitude",
  	mcusad."mtime" AS "customer.address.mtime", mcusad."editor" AS "customer.address.editor",
  	mcusad."ctime" AS "customer.address.ctime", mcusad."birthday" AS "customer.address.birthday"
- FROM "mshop_customer_address" AS mcusad
+ FROM "mshop_customer_address" mcusad
  :joins
  WHERE :cond
  ORDER BY :order
@@ -559,7 +568,7 @@ mshop/customer/manager/address/search/mysql =
  	mcusad."longitude" AS "customer.address.longitude", mcusad."latitude" AS "customer.address.latitude",
  	mcusad."mtime" AS "customer.address.mtime", mcusad."editor" AS "customer.address.editor",
  	mcusad."ctime" AS "customer.address.ctime", mcusad."birthday" AS "customer.address.birthday"
- FROM "mshop_customer_address" AS mcusad
+ FROM "mshop_customer_address" mcusad
  :joins
  WHERE :cond
  ORDER BY :order
@@ -581,6 +590,9 @@ mshop/customer/manager/address/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -681,7 +693,7 @@ mshop/customer/manager/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_customer" AS mcus
+ 	FROM "mshop_customer" mcus
  	:joins
  	WHERE :cond
  	GROUP BY mcus.id, :cols, :val
@@ -743,7 +755,7 @@ mshop/customer/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_customer" AS mcus
+ 	FROM "mshop_customer" mcus
  	:joins
  	WHERE :cond
  	GROUP BY mcus.id, :cols, :val
@@ -757,7 +769,7 @@ mshop/customer/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_customer" AS mcus
+ 	FROM "mshop_customer" mcus
  	:joins
  	WHERE :cond
  	GROUP BY mcus.id, :cols, :val
@@ -781,7 +793,7 @@ mshop/customer/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcus."id"
- 	FROM "mshop_customer" AS mcus
+ 	FROM "mshop_customer" mcus
  	:joins
  	WHERE :cond
  	GROUP BY mcus."id"
@@ -844,7 +856,7 @@ mshop/customer/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcus."id"
- 	FROM "mshop_customer" AS mcus
+ 	FROM "mshop_customer" mcus
  	:joins
  	WHERE :cond
  	GROUP BY mcus."id"
@@ -857,7 +869,7 @@ mshop/customer/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcus."id"
- 	FROM "mshop_customer" AS mcus
+ 	FROM "mshop_customer" mcus
  	:joins
  	WHERE :cond
  	GROUP BY mcus."id"
@@ -882,6 +894,9 @@ mshop/customer/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -919,6 +934,9 @@ mshop/customer/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -955,6 +973,9 @@ mshop/customer/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1034,118 +1055,6 @@ See also:
 
 * mshop/customer/manager/delete/ansi
 
-# fosuser
-## insert
-
-Inserts a new customer record into the database table
-
-```
-mshop/customer/manager/fosuser/insert = 
-```
-
-* Default: 
-* Type: string - SQL statement for inserting records
-* Since: 2015.01
-
-Items with no ID yet (i.e. the ID is NULL) will be created in
-the database and the newly created ID retrieved afterwards
-using the "newid" SQL statement.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the customer item to the statement before they are
-sent to the database server. The number of question marks must
-be the same as the number of columns listed in the INSERT
-statement. The order of the columns must correspond to the
-order in the save() method, so the correct values are
-bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/customer/manager/fosuser/update
-* mshop/customer/manager/fosuser/newid
-* mshop/customer/manager/fosuser/delete
-* mshop/customer/manager/fosuser/search
-* mshop/customer/manager/fosuser/count
-
-## newid
-
-Retrieves the ID generated by the database when inserting a new record
-
-```
-mshop/customer/manager/fosuser/newid = 
-```
-
-* Default: 
-* Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2015.01
-
-As soon as a new record is inserted into the database table,
-the database server generates a new and unique identifier for
-that record. This ID can be used for retrieving, updating and
-deleting that specific record from the table again.
-
-For MySQL:
-```
- SELECT LAST_INSERT_ID()
-For PostgreSQL:
- SELECT currval('seq_mcus_id')
-For SQL Server:
- SELECT SCOPE_IDENTITY()
-For Oracle:
- SELECT "seq_mcus_id".CURRVAL FROM DUAL
-```
-
-There's no way to retrive the new ID by a SQL statements that
-fits for most database servers as they implement their own
-specific way.
-
-See also:
-
-* mshop/customer/manager/fosuser/insert
-* mshop/customer/manager/fosuser/update
-* mshop/customer/manager/fosuser/delete
-* mshop/customer/manager/fosuser/search
-* mshop/customer/manager/fosuser/count
-
-## update
-
-Updates an existing customer record in the database
-
-```
-mshop/customer/manager/fosuser/update = 
-```
-
-* Default: 
-* Type: string - SQL statement for updating records
-* Since: 2015.01
-
-Items which already have an ID (i.e. the ID is not NULL) will
-be updated in the database.
-
-The SQL statement must be a string suitable for being used as
-prepared statement. It must include question marks for binding
-the values from the customer item to the statement before they are
-sent to the database server. The order of the columns must
-correspond to the order in the save() method, so the
-correct values are bound to the columns.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/customer/manager/fosuser/insert
-* mshop/customer/manager/fosuser/newid
-* mshop/customer/manager/fosuser/delete
-* mshop/customer/manager/fosuser/search
-* mshop/customer/manager/fosuser/count
-
 # group
 ## count/ansi
 
@@ -1156,7 +1065,7 @@ mshop/customer/manager/group/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusgr."id"
- 	FROM "mshop_customer_group" AS mcusgr
+ 	FROM "mshop_customer_group" mcusgr
  	:joins
  	WHERE :cond
  	ORDER BY mcusgr."id"
@@ -1218,7 +1127,7 @@ mshop/customer/manager/group/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusgr."id"
- 	FROM "mshop_customer_group" AS mcusgr
+ 	FROM "mshop_customer_group" mcusgr
  	:joins
  	WHERE :cond
  	ORDER BY mcusgr."id"
@@ -1230,7 +1139,7 @@ mshop/customer/manager/group/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusgr."id"
- 	FROM "mshop_customer_group" AS mcusgr
+ 	FROM "mshop_customer_group" mcusgr
  	:joins
  	WHERE :cond
  	ORDER BY mcusgr."id"
@@ -1253,6 +1162,9 @@ mshop/customer/manager/group/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1290,6 +1202,9 @@ mshop/customer/manager/group/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1326,6 +1241,9 @@ mshop/customer/manager/group/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1582,7 +1500,7 @@ mshop/customer/manager/group/search/ansi =
  	mcusgr."code" AS "customer.group.code", mcusgr."label" AS "customer.group.label",
  	mcusgr."mtime" AS "customer.group.mtime", mcusgr."editor" AS "customer.group.editor",
  	mcusgr."ctime" AS "customer.group.ctime"
- FROM "mshop_customer_group" AS mcusgr
+ FROM "mshop_customer_group" mcusgr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1651,7 +1569,7 @@ mshop/customer/manager/group/search/mysql =
  	mcusgr."code" AS "customer.group.code", mcusgr."label" AS "customer.group.label",
  	mcusgr."mtime" AS "customer.group.mtime", mcusgr."editor" AS "customer.group.editor",
  	mcusgr."ctime" AS "customer.group.ctime"
- FROM "mshop_customer_group" AS mcusgr
+ FROM "mshop_customer_group" mcusgr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1664,7 +1582,7 @@ mshop/customer/manager/group/search/mysql =
  	mcusgr."code" AS "customer.group.code", mcusgr."label" AS "customer.group.label",
  	mcusgr."mtime" AS "customer.group.mtime", mcusgr."editor" AS "customer.group.editor",
  	mcusgr."ctime" AS "customer.group.ctime"
- FROM "mshop_customer_group" AS mcusgr
+ FROM "mshop_customer_group" mcusgr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1686,6 +1604,9 @@ mshop/customer/manager/group/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2015.08
 
@@ -2352,7 +2273,7 @@ mshop/customer/manager/lists/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_customer_list" AS mcusli
+ 	FROM "mshop_customer_list" mcusli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mcusli."id"
@@ -2414,7 +2335,7 @@ mshop/customer/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_customer_list" AS mcusli
+ 	FROM "mshop_customer_list" mcusli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mcusli."id"
@@ -2428,7 +2349,7 @@ mshop/customer/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_customer_list" AS mcusli
+ 	FROM "mshop_customer_list" mcusli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mcusli."id"
@@ -2451,7 +2372,7 @@ mshop/customer/manager/lists/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusli."id"
- 	FROM "mshop_customer_list" AS mcusli
+ 	FROM "mshop_customer_list" mcusli
  	:joins
  	WHERE :cond
  	ORDER BY mcusli."id"
@@ -2514,7 +2435,7 @@ mshop/customer/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusli."id"
- 	FROM "mshop_customer_list" AS mcusli
+ 	FROM "mshop_customer_list" mcusli
  	:joins
  	WHERE :cond
  	ORDER BY mcusli."id"
@@ -2526,7 +2447,7 @@ mshop/customer/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusli."id"
- 	FROM "mshop_customer_list" AS mcusli
+ 	FROM "mshop_customer_list" mcusli
  	:joins
  	WHERE :cond
  	ORDER BY mcusli."id"
@@ -2549,6 +2470,9 @@ mshop/customer/manager/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2586,6 +2510,9 @@ mshop/customer/manager/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2623,6 +2550,9 @@ mshop/customer/manager/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2888,7 +2818,7 @@ mshop/customer/manager/lists/search/ansi =
  	mcusli."config" AS "customer.lists.config", mcusli."pos" AS "customer.lists.position",
  	mcusli."status" AS "customer.lists.status", mcusli."mtime" AS "customer.lists.mtime",
  	mcusli."editor" AS "customer.lists.editor", mcusli."ctime" AS "customer.lists.ctime"
- FROM "mshop_customer_list" AS mcusli
+ FROM "mshop_customer_list" mcusli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2961,7 +2891,7 @@ mshop/customer/manager/lists/search/mysql =
  	mcusli."config" AS "customer.lists.config", mcusli."pos" AS "customer.lists.position",
  	mcusli."status" AS "customer.lists.status", mcusli."mtime" AS "customer.lists.mtime",
  	mcusli."editor" AS "customer.lists.editor", mcusli."ctime" AS "customer.lists.ctime"
- FROM "mshop_customer_list" AS mcusli
+ FROM "mshop_customer_list" mcusli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2977,7 +2907,7 @@ mshop/customer/manager/lists/search/mysql =
  	mcusli."config" AS "customer.lists.config", mcusli."pos" AS "customer.lists.position",
  	mcusli."status" AS "customer.lists.status", mcusli."mtime" AS "customer.lists.mtime",
  	mcusli."editor" AS "customer.lists.editor", mcusli."ctime" AS "customer.lists.ctime"
- FROM "mshop_customer_list" AS mcusli
+ FROM "mshop_customer_list" mcusli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2999,6 +2929,9 @@ mshop/customer/manager/lists/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3119,6 +3052,9 @@ mshop/customer/manager/lists/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3156,6 +3092,9 @@ mshop/customer/manager/lists/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3193,6 +3132,9 @@ mshop/customer/manager/lists/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3453,7 +3395,7 @@ mshop/customer/manager/lists/type/search/ansi =
  	mcuslity."label" AS "customer.lists.type.label", mcuslity."status" AS "customer.lists.type.status",
  	mcuslity."mtime" AS "customer.lists.type.mtime", mcuslity."editor" AS "customer.lists.type.editor",
  	mcuslity."ctime" AS "customer.lists.type.ctime", mcuslity."pos" AS "customer.lists.type.position"
- FROM "mshop_customer_list_type" AS mcuslity
+ FROM "mshop_customer_list_type" mcuslity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3523,7 +3465,7 @@ mshop/customer/manager/lists/type/search/mysql =
  	mcuslity."label" AS "customer.lists.type.label", mcuslity."status" AS "customer.lists.type.status",
  	mcuslity."mtime" AS "customer.lists.type.mtime", mcuslity."editor" AS "customer.lists.type.editor",
  	mcuslity."ctime" AS "customer.lists.type.ctime", mcuslity."pos" AS "customer.lists.type.position"
- FROM "mshop_customer_list_type" AS mcuslity
+ FROM "mshop_customer_list_type" mcuslity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3537,7 +3479,7 @@ mshop/customer/manager/lists/type/search/mysql =
  	mcuslity."label" AS "customer.lists.type.label", mcuslity."status" AS "customer.lists.type.status",
  	mcuslity."mtime" AS "customer.lists.type.mtime", mcuslity."editor" AS "customer.lists.type.editor",
  	mcuslity."ctime" AS "customer.lists.type.ctime", mcuslity."pos" AS "customer.lists.type.position"
- FROM "mshop_customer_list_type" AS mcuslity
+ FROM "mshop_customer_list_type" mcuslity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3559,6 +3501,9 @@ mshop/customer/manager/lists/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3836,6 +3781,9 @@ mshop/customer/manager/password/options = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of key/value pairs
 * Since: 2015.01
 
@@ -3859,7 +3807,7 @@ mshop/customer/manager/property/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcuspr."id"
- 	FROM "mshop_customer_property" AS mcuspr
+ 	FROM "mshop_customer_property" mcuspr
  	:joins
  	WHERE :cond
  	ORDER BY mcuspr."id"
@@ -3921,7 +3869,7 @@ mshop/customer/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcuspr."id"
- 	FROM "mshop_customer_property" AS mcuspr
+ 	FROM "mshop_customer_property" mcuspr
  	:joins
  	WHERE :cond
  	ORDER BY mcuspr."id"
@@ -3933,7 +3881,7 @@ mshop/customer/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcuspr."id"
- 	FROM "mshop_customer_property" AS mcuspr
+ 	FROM "mshop_customer_property" mcuspr
  	:joins
  	WHERE :cond
  	ORDER BY mcuspr."id"
@@ -3956,6 +3904,9 @@ mshop/customer/manager/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -3993,6 +3944,9 @@ mshop/customer/manager/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -4030,6 +3984,9 @@ mshop/customer/manager/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -4290,7 +4247,7 @@ mshop/customer/manager/property/search/ansi =
  	mcuspr."langid" AS "customer.property.languageid", mcuspr."value" AS "customer.property.value",
  	mcuspr."mtime" AS "customer.property.mtime", mcuspr."editor" AS "customer.property.editor",
  	mcuspr."ctime" AS "customer.property.ctime"
- FROM "mshop_customer_property" AS mcuspr
+ FROM "mshop_customer_property" mcuspr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -4360,7 +4317,7 @@ mshop/customer/manager/property/search/mysql =
  	mcuspr."langid" AS "customer.property.languageid", mcuspr."value" AS "customer.property.value",
  	mcuspr."mtime" AS "customer.property.mtime", mcuspr."editor" AS "customer.property.editor",
  	mcuspr."ctime" AS "customer.property.ctime"
- FROM "mshop_customer_property" AS mcuspr
+ FROM "mshop_customer_property" mcuspr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -4374,7 +4331,7 @@ mshop/customer/manager/property/search/mysql =
  	mcuspr."langid" AS "customer.property.languageid", mcuspr."value" AS "customer.property.value",
  	mcuspr."mtime" AS "customer.property.mtime", mcuspr."editor" AS "customer.property.editor",
  	mcuspr."ctime" AS "customer.property.ctime"
- FROM "mshop_customer_property" AS mcuspr
+ FROM "mshop_customer_property" mcuspr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -4397,6 +4354,10 @@ mshop/customer/manager/property/submanagers = Array
 ```
 
 * Default: Array
+(
+    [0] => type
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.07
 
@@ -4517,6 +4478,9 @@ mshop/customer/manager/property/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -4554,6 +4518,9 @@ mshop/customer/manager/property/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -4591,6 +4558,9 @@ mshop/customer/manager/property/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -4957,6 +4927,9 @@ mshop/customer/manager/property/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.07
 
@@ -5146,7 +5119,7 @@ mshop/customer/manager/search/ansi =
  	mcus."vdate" AS "customer.dateverified", mcus."password" AS "customer.password",
  	mcus."ctime" AS "customer.ctime", mcus."mtime" AS "customer.mtime",
  	mcus."editor" AS "customer.editor"
- FROM "mshop_customer" AS mcus
+ FROM "mshop_customer" mcus
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -5234,7 +5207,7 @@ mshop/customer/manager/search/mysql =
  	mcus."vdate" AS "customer.dateverified", mcus."password" AS "customer.password",
  	mcus."ctime" AS "customer.ctime", mcus."mtime" AS "customer.mtime",
  	mcus."editor" AS "customer.editor"
- FROM "mshop_customer" AS mcus
+ FROM "mshop_customer" mcus
  :joins
  WHERE :cond
  GROUP BY :group mcus."id"
@@ -5260,7 +5233,7 @@ mshop/customer/manager/search/mysql =
  	mcus."vdate" AS "customer.dateverified", mcus."password" AS "customer.password",
  	mcus."ctime" AS "customer.ctime", mcus."mtime" AS "customer.mtime",
  	mcus."editor" AS "customer.editor"
- FROM "mshop_customer" AS mcus
+ FROM "mshop_customer" mcus
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -5327,6 +5300,10 @@ mshop/customer/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+    [0] => address
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

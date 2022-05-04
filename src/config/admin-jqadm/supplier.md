@@ -46,6 +46,9 @@ admin/jqadm/supplier/address/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -81,6 +84,9 @@ admin/jqadm/supplier/address/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -132,6 +138,9 @@ admin/jqadm/supplier/address/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -173,10 +182,10 @@ design.
 Relative path to the HTML body template of the address subpart for suppliers.
 
 ```
-admin/jqadm/supplier/address/template-item = supplier/item-address-standard
+admin/jqadm/supplier/address/template-item = supplier/item-address
 ```
 
-* Default: supplier/item-address-standard
+* Default: supplier/item-address
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -205,6 +214,9 @@ admin/jqadm/supplier/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -242,6 +254,9 @@ admin/jqadm/supplier/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -277,6 +292,9 @@ admin/jqadm/supplier/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -315,6 +333,9 @@ admin/jqadm/supplier/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of domain names
 * Since: 2017.10
 
@@ -337,6 +358,12 @@ admin/jqadm/supplier/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => supplier.status
+    [1] => supplier.code
+    [2] => supplier.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -360,6 +387,9 @@ admin/jqadm/supplier/item/media/config/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -378,6 +408,9 @@ admin/jqadm/supplier/item/text/config/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -432,6 +465,9 @@ admin/jqadm/supplier/media/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -467,6 +503,9 @@ admin/jqadm/supplier/media/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -553,6 +592,9 @@ admin/jqadm/supplier/media/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -588,6 +630,9 @@ admin/jqadm/supplier/media/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -639,6 +684,9 @@ admin/jqadm/supplier/media/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -680,10 +728,10 @@ design.
 Relative path to the HTML body template of the media subpart for suppliers.
 
 ```
-admin/jqadm/supplier/media/property/template-item = supplier/item-media-property-standard
+admin/jqadm/supplier/media/property/template-item = supplier/item-media-property
 ```
 
-* Default: supplier/item-media-property-standard
+* Default: supplier/item-media-property
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -712,6 +760,9 @@ admin/jqadm/supplier/media/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -753,10 +804,10 @@ design.
 Relative path to the HTML body template of the media subpart for suppliers.
 
 ```
-admin/jqadm/supplier/media/template-item = supplier/item-media-standard
+admin/jqadm/supplier/media/template-item = supplier/item-media
 ```
 
-* Default: supplier/item-media-standard
+* Default: supplier/item-media
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.07
 
@@ -865,6 +916,9 @@ admin/jqadm/supplier/product/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -900,6 +954,9 @@ admin/jqadm/supplier/product/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -931,14 +988,21 @@ List of supplier list and product columns that should be displayed in the suppli
 ```
 admin/jqadm/supplier/product/fields = Array
 (
-    [0] => supplier.lists.status
-    [1] => supplier.lists.type
-    [2] => supplier.lists.position
-    [3] => supplier.lists.refid
+    [0] => product.lists.status
+    [1] => product.lists.type
+    [2] => product.lists.position
+    [3] => product.lists.parentid
 )
 ```
 
 * Default: Array
+(
+    [0] => product.lists.status
+    [1] => product.lists.type
+    [2] => product.lists.position
+    [3] => product.lists.parentid
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -947,7 +1011,7 @@ supplier product view. The columns can be changed by the editor as required
 within the administraiton interface.
 
 The names of the colums are in fact the search keys defined by the managers,
-e.g. "supplier.lists.status" for the status value.
+e.g. "product.lists.status" for the status value.
 
 
 ## name
@@ -960,7 +1024,7 @@ admin/jqadm/supplier/product/name = Standard
 
 * Default: Standard
 * Type: string - Last part of the JQAdm class name
-* Since: 2017.10
+* Since: 2017.07
 
 Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Supplier\Product\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
@@ -977,6 +1041,9 @@ admin/jqadm/supplier/product/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1018,10 +1085,10 @@ design.
 Relative path to the HTML body template of the product subpart for suppliers.
 
 ```
-admin/jqadm/supplier/product/template-item = supplier/item-product-standard
+admin/jqadm/supplier/product/template-item = supplier/item-product
 ```
 
-* Default: supplier/item-product-standard
+* Default: supplier/item-product
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1053,6 +1120,9 @@ admin/jqadm/supplier/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1094,10 +1164,10 @@ design.
 Relative path to the HTML body template for the supplier item.
 
 ```
-admin/jqadm/supplier/template-item = supplier/item-standard
+admin/jqadm/supplier/template-item = supplier/item
 ```
 
-* Default: supplier/item-standard
+* Default: supplier/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1119,10 +1189,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the supplier list.
 
 ```
-admin/jqadm/supplier/template-list = supplier/list-standard
+admin/jqadm/supplier/template-list = supplier/list
 ```
 
-* Default: supplier/list-standard
+* Default: supplier/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1186,6 +1256,9 @@ admin/jqadm/supplier/text/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -1221,6 +1294,9 @@ admin/jqadm/supplier/text/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -1272,6 +1348,9 @@ admin/jqadm/supplier/text/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.07
 
@@ -1313,10 +1392,10 @@ design.
 Relative path to the HTML body template of the text subpart for suppliers.
 
 ```
-admin/jqadm/supplier/text/template-item = supplier/item-text-standard
+admin/jqadm/supplier/text/template-item = supplier/item-text
 ```
 
-* Default: supplier/item-text-standard
+* Default: supplier/item-text
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

@@ -11,6 +11,9 @@ admin/jqadm/catalog/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -48,6 +51,9 @@ admin/jqadm/catalog/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -83,6 +89,9 @@ admin/jqadm/catalog/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -121,6 +130,9 @@ admin/jqadm/catalog/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of domain names
 * Since: 2016.01
 
@@ -142,6 +154,10 @@ admin/jqadm/catalog/item/config/suggest = Array
 ```
 
 * Default: Array
+(
+    [0] => css-class
+)
+
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -163,6 +179,9 @@ admin/jqadm/catalog/item/media/config/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -181,6 +200,9 @@ admin/jqadm/catalog/item/text/config/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -235,6 +257,9 @@ admin/jqadm/catalog/media/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -270,6 +295,9 @@ admin/jqadm/catalog/media/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -356,6 +384,9 @@ admin/jqadm/catalog/media/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -391,6 +422,9 @@ admin/jqadm/catalog/media/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -442,6 +476,9 @@ admin/jqadm/catalog/media/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -483,10 +520,10 @@ design.
 Relative path to the HTML body template of the media subpart for catalogs.
 
 ```
-admin/jqadm/catalog/media/property/template-item = catalog/item-media-property-standard
+admin/jqadm/catalog/media/property/template-item = catalog/item-media-property
 ```
 
-* Default: catalog/item-media-property-standard
+* Default: catalog/item-media-property
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -515,6 +552,9 @@ admin/jqadm/catalog/media/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -556,10 +596,10 @@ design.
 Relative path to the HTML body template of the media subpart for catalogs.
 
 ```
-admin/jqadm/catalog/media/template-item = catalog/item-media-standard
+admin/jqadm/catalog/media/template-item = catalog/item-media
 ```
 
-* Default: catalog/item-media-standard
+* Default: catalog/item-media
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.07
 
@@ -664,11 +704,13 @@ Adds a list of globally available decorators only to the catalog JQAdm client
 ```
 admin/jqadm/catalog/product/decorators/global = Array
 (
-    [0] => Index
 )
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -704,6 +746,9 @@ admin/jqadm/catalog/product/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -735,14 +780,21 @@ List of catalog list and product columns that should be displayed in the catalog
 ```
 admin/jqadm/catalog/product/fields = Array
 (
-    [0] => catalog.lists.status
-    [1] => catalog.lists.type
-    [2] => catalog.lists.position
-    [3] => catalog.lists.refid
+    [0] => product.lists.status
+    [1] => product.lists.type
+    [2] => product.lists.position
+    [3] => product.lists.parentid
 )
 ```
 
 * Default: Array
+(
+    [0] => product.lists.status
+    [1] => product.lists.type
+    [2] => product.lists.position
+    [3] => product.lists.parentid
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -751,7 +803,7 @@ catalog product view. The columns can be changed by the editor as required
 within the administraiton interface.
 
 The names of the colums are in fact the search keys defined by the managers,
-e.g. "catalog.lists.status" for the status value.
+e.g. "product.lists.status" for the status value.
 
 
 ## name
@@ -781,6 +833,9 @@ admin/jqadm/catalog/product/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -822,10 +877,10 @@ design.
 Relative path to the HTML body template of the product subpart for catalogs.
 
 ```
-admin/jqadm/catalog/product/template-item = catalog/item-product-standard
+admin/jqadm/catalog/product/template-item = catalog/item-product
 ```
 
-* Default: catalog/item-product-standard
+* Default: catalog/item-product
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -856,6 +911,9 @@ admin/jqadm/catalog/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -897,10 +955,10 @@ design.
 Relative path to the HTML body template for the catalog item.
 
 ```
-admin/jqadm/catalog/template-item = catalog/item-standard
+admin/jqadm/catalog/template-item = catalog/item
 ```
 
-* Default: catalog/item-standard
+* Default: catalog/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -964,6 +1022,9 @@ admin/jqadm/catalog/text/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -999,6 +1060,9 @@ admin/jqadm/catalog/text/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1050,6 +1114,9 @@ admin/jqadm/catalog/text/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1091,10 +1158,10 @@ design.
 Relative path to the HTML body template of the text subpart for catalogs.
 
 ```
-admin/jqadm/catalog/text/template-item = catalog/item-text-standard
+admin/jqadm/catalog/text/template-item = catalog/item-text
 ```
 
-* Default: catalog/item-text-standard
+* Default: catalog/item-text
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

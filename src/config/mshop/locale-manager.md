@@ -9,10 +9,10 @@ mshop/locale/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloc."id"
- 	FROM "mshop_locale" AS mloc
- 	LEFT JOIN "mshop_locale_site" AS mlocsi ON (mloc."siteid" = mlocsi."siteid")
- 	LEFT JOIN "mshop_locale_language" AS mlocla ON (mloc."langid" = mlocla."id")
- 	LEFT JOIN "mshop_locale_currency" AS mloccu ON (mloc."currencyid" = mloccu."id")
+ 	FROM "mshop_locale" mloc
+ 	LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ 	LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ 	LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
  	WHERE :cond
  	GROUP BY mloc."id"
  	ORDER BY mloc."id"
@@ -66,10 +66,10 @@ mshop/locale/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloc."id"
- 	FROM "mshop_locale" AS mloc
- 	LEFT JOIN "mshop_locale_site" AS mlocsi ON (mloc."siteid" = mlocsi."siteid")
- 	LEFT JOIN "mshop_locale_language" AS mlocla ON (mloc."langid" = mlocla."id")
- 	LEFT JOIN "mshop_locale_currency" AS mloccu ON (mloc."currencyid" = mloccu."id")
+ 	FROM "mshop_locale" mloc
+ 	LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ 	LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ 	LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
  	WHERE :cond
  	GROUP BY mloc."id"
  	ORDER BY mloc."id"
@@ -81,10 +81,10 @@ mshop/locale/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloc."id"
- 	FROM "mshop_locale" AS mloc
- 	LEFT JOIN "mshop_locale_site" AS mlocsi ON (mloc."siteid" = mlocsi."siteid")
- 	LEFT JOIN "mshop_locale_language" AS mlocla ON (mloc."langid" = mlocla."id")
- 	LEFT JOIN "mshop_locale_currency" AS mloccu ON (mloc."currencyid" = mloccu."id")
+ 	FROM "mshop_locale" mloc
+ 	LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ 	LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ 	LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
  	WHERE :cond
  	GROUP BY mloc."id"
  	ORDER BY mloc."id"
@@ -106,7 +106,7 @@ mshop/locale/manager/currency/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloccu."id"
- 	FROM "mshop_locale_currency" AS mloccu
+ 	FROM "mshop_locale_currency" mloccu
  	WHERE :cond
  	ORDER BY mloccu."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
@@ -166,7 +166,7 @@ mshop/locale/manager/currency/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloccu."id"
- 	FROM "mshop_locale_currency" AS mloccu
+ 	FROM "mshop_locale_currency" mloccu
  	WHERE :cond
  	ORDER BY mloccu."id"
  	LIMIT 10000 OFFSET 0
@@ -177,7 +177,7 @@ mshop/locale/manager/currency/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloccu."id"
- 	FROM "mshop_locale_currency" AS mloccu
+ 	FROM "mshop_locale_currency" mloccu
  	WHERE :cond
  	ORDER BY mloccu."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
@@ -199,6 +199,9 @@ mshop/locale/manager/currency/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -236,6 +239,9 @@ mshop/locale/manager/currency/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -273,6 +279,9 @@ mshop/locale/manager/currency/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -465,7 +474,7 @@ mshop/locale/manager/currency/search/ansi =
  	mloccu."id" AS "locale.currency.id", mloccu."label" AS "locale.currency.label",
  	mloccu."status" AS "locale.currency.status", mloccu."mtime" AS "locale.currency.mtime",
  	mloccu."editor" AS "locale.currency.editor", mloccu."ctime" AS "locale.currency.ctime"
- FROM "mshop_locale_currency" AS mloccu
+ FROM "mshop_locale_currency" mloccu
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -531,7 +540,7 @@ mshop/locale/manager/currency/search/mysql =
  	mloccu."id" AS "locale.currency.id", mloccu."label" AS "locale.currency.label",
  	mloccu."status" AS "locale.currency.status", mloccu."mtime" AS "locale.currency.mtime",
  	mloccu."editor" AS "locale.currency.editor", mloccu."ctime" AS "locale.currency.ctime"
- FROM "mshop_locale_currency" AS mloccu
+ FROM "mshop_locale_currency" mloccu
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
@@ -542,7 +551,7 @@ mshop/locale/manager/currency/search/mysql =
  	mloccu."id" AS "locale.currency.id", mloccu."label" AS "locale.currency.label",
  	mloccu."status" AS "locale.currency.status", mloccu."mtime" AS "locale.currency.mtime",
  	mloccu."editor" AS "locale.currency.editor", mloccu."ctime" AS "locale.currency.ctime"
- FROM "mshop_locale_currency" AS mloccu
+ FROM "mshop_locale_currency" mloccu
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -563,6 +572,9 @@ mshop/locale/manager/currency/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -646,6 +658,9 @@ mshop/locale/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -683,6 +698,9 @@ mshop/locale/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -719,6 +737,9 @@ mshop/locale/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -807,9 +828,9 @@ Inserts a new locale record into the database table
 mshop/locale/manager/insert/ansi = 
  INSERT INTO "mshop_locale" ( :names
  	"langid", "currencyid", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
+ 	"mtime", "editor", "site_id", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
@@ -850,18 +871,18 @@ Inserts a new locale record into the database table
 mshop/locale/manager/insert/mysql = 
  INSERT INTO "mshop_locale" ( :names
  	"langid", "currencyid", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
+ 	"mtime", "editor", "site_id", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
 * Default: 
  INSERT INTO "mshop_locale" ( :names
  	"langid", "currencyid", "pos", "status",
- 	"mtime", "editor", "siteid", "ctime"
+ 	"mtime", "editor", "site_id", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 
 
@@ -879,7 +900,7 @@ mshop/locale/manager/language/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocla."id"
- 	FROM "mshop_locale_language" AS mlocla
+ 	FROM "mshop_locale_language" mlocla
  	WHERE :cond
  	ORDER BY mlocla."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
@@ -939,7 +960,7 @@ mshop/locale/manager/language/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocla."id"
- 	FROM "mshop_locale_language" AS mlocla
+ 	FROM "mshop_locale_language" mlocla
  	WHERE :cond
  	ORDER BY mlocla."id"
  	LIMIT 10000 OFFSET 0
@@ -950,7 +971,7 @@ mshop/locale/manager/language/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocla."id"
- 	FROM "mshop_locale_language" AS mlocla
+ 	FROM "mshop_locale_language" mlocla
  	WHERE :cond
  	ORDER BY mlocla."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
@@ -972,6 +993,9 @@ mshop/locale/manager/language/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1009,6 +1033,9 @@ mshop/locale/manager/language/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1046,6 +1073,9 @@ mshop/locale/manager/language/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1238,7 +1268,7 @@ mshop/locale/manager/language/search/ansi =
  	mlocla."id" AS "locale.language.id", mlocla."label" AS "locale.language.label",
  	mlocla."status" AS "locale.language.status", mlocla."mtime" AS "locale.language.mtime",
  	mlocla."editor" AS "locale.language.editor", mlocla."ctime" AS "locale.language.ctime"
- FROM "mshop_locale_language" AS mlocla
+ FROM "mshop_locale_language" mlocla
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -1304,7 +1334,7 @@ mshop/locale/manager/language/search/mysql =
  	mlocla."id" AS "locale.language.id", mlocla."label" AS "locale.language.label",
  	mlocla."status" AS "locale.language.status", mlocla."mtime" AS "locale.language.mtime",
  	mlocla."editor" AS "locale.language.editor", mlocla."ctime" AS "locale.language.ctime"
- FROM "mshop_locale_language" AS mlocla
+ FROM "mshop_locale_language" mlocla
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
@@ -1315,7 +1345,7 @@ mshop/locale/manager/language/search/mysql =
  	mlocla."id" AS "locale.language.id", mlocla."label" AS "locale.language.label",
  	mlocla."status" AS "locale.language.status", mlocla."mtime" AS "locale.language.mtime",
  	mlocla."editor" AS "locale.language.editor", mlocla."ctime" AS "locale.language.ctime"
- FROM "mshop_locale_language" AS mlocla
+ FROM "mshop_locale_language" mlocla
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -1336,6 +1366,9 @@ mshop/locale/manager/language/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1515,18 +1548,18 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/locale/manager/search/ansi = 
  SELECT :columns
- 	mloc."id" AS "locale.id", mloc."siteid" AS "locale.siteid",
+ 	mloc."id" AS "locale.id", mloc."siteid" AS "locale.siteid", mloc."site_id",
  	mloc."langid" AS "locale.languageid", mloc."currencyid" AS "locale.currencyid",
  	mloc."pos" AS "locale.position", mloc."status" AS "locale.status",
  	mloc."mtime" AS "locale.mtime", mloc."editor" AS "locale.editor",
  	mloc."ctime" AS "locale.ctime"
- FROM "mshop_locale" AS mloc
- LEFT JOIN "mshop_locale_site" AS mlocsi ON (mloc."siteid" = mlocsi."siteid")
- LEFT JOIN "mshop_locale_language" AS mlocla ON (mloc."langid" = mlocla."id")
- LEFT JOIN "mshop_locale_currency" AS mloccu ON (mloc."currencyid" = mloccu."id")
+ FROM "mshop_locale" mloc
+ LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
  WHERE :cond
  GROUP BY :columns :group
- 	mloc."id", mloc."siteid", mloc."langid", mloc."currencyid", mloc."pos",
+ 	mloc."id", mloc."siteid", mloc."site_id", mloc."langid", mloc."currencyid", mloc."pos",
  	mloc."status", mloc."mtime", mloc."editor", mloc."ctime"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -1582,15 +1615,15 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/locale/manager/search/mysql = 
  SELECT :columns
- 	mloc."id" AS "locale.id", mloc."siteid" AS "locale.siteid",
+ 	mloc."id" AS "locale.id", mloc."siteid" AS "locale.siteid", mloc."site_id",
  	mloc."langid" AS "locale.languageid", mloc."currencyid" AS "locale.currencyid",
  	mloc."pos" AS "locale.position", mloc."status" AS "locale.status",
  	mloc."mtime" AS "locale.mtime", mloc."editor" AS "locale.editor",
  	mloc."ctime" AS "locale.ctime"
- FROM "mshop_locale" AS mloc
- LEFT JOIN "mshop_locale_site" AS mlocsi ON (mloc."siteid" = mlocsi."siteid")
- LEFT JOIN "mshop_locale_language" AS mlocla ON (mloc."langid" = mlocla."id")
- LEFT JOIN "mshop_locale_currency" AS mloccu ON (mloc."currencyid" = mloccu."id")
+ FROM "mshop_locale" mloc
+ LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
  WHERE :cond
  GROUP BY :group mloc."id"
  ORDER BY :order
@@ -1599,18 +1632,18 @@ mshop/locale/manager/search/mysql =
 
 * Default: 
  SELECT :columns
- 	mloc."id" AS "locale.id", mloc."siteid" AS "locale.siteid",
+ 	mloc."id" AS "locale.id", mloc."siteid" AS "locale.siteid", mloc."site_id",
  	mloc."langid" AS "locale.languageid", mloc."currencyid" AS "locale.currencyid",
  	mloc."pos" AS "locale.position", mloc."status" AS "locale.status",
  	mloc."mtime" AS "locale.mtime", mloc."editor" AS "locale.editor",
  	mloc."ctime" AS "locale.ctime"
- FROM "mshop_locale" AS mloc
- LEFT JOIN "mshop_locale_site" AS mlocsi ON (mloc."siteid" = mlocsi."siteid")
- LEFT JOIN "mshop_locale_language" AS mlocla ON (mloc."langid" = mlocla."id")
- LEFT JOIN "mshop_locale_currency" AS mloccu ON (mloc."currencyid" = mloccu."id")
+ FROM "mshop_locale" mloc
+ LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
  WHERE :cond
  GROUP BY :columns :group
- 	mloc."id", mloc."siteid", mloc."langid", mloc."currencyid", mloc."pos",
+ 	mloc."id", mloc."siteid", mloc."site_id", mloc."langid", mloc."currencyid", mloc."pos",
  	mloc."status", mloc."mtime", mloc."editor", mloc."ctime"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -1635,6 +1668,9 @@ mshop/locale/manager/site/cleanup/admin/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of domain names in lower case
 * Since: 2014.03
 
@@ -1682,6 +1718,9 @@ mshop/locale/manager/site/cleanup/shop/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of domain names in lower case
 * Since: 2014.03
 
@@ -1709,7 +1748,7 @@ mshop/locale/manager/site/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocsi."id"
- 	FROM "mshop_locale_site" AS mlocsi
+ 	FROM "mshop_locale_site" mlocsi
  	WHERE :cond
  	ORDER BY mlocsi."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
@@ -1770,7 +1809,7 @@ mshop/locale/manager/site/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocsi."id"
- 	FROM "mshop_locale_site" AS mlocsi
+ 	FROM "mshop_locale_site" mlocsi
  	WHERE :cond
  	ORDER BY mlocsi."id"
  	LIMIT 10000 OFFSET 0
@@ -1781,7 +1820,7 @@ mshop/locale/manager/site/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocsi."id"
- 	FROM "mshop_locale_site" AS mlocsi
+ 	FROM "mshop_locale_site" mlocsi
  	WHERE :cond
  	ORDER BY mlocsi."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
@@ -1803,6 +1842,9 @@ mshop/locale/manager/site/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1840,6 +1882,9 @@ mshop/locale/manager/site/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1877,6 +1922,9 @@ mshop/locale/manager/site/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1964,7 +2012,7 @@ Inserts a new currency record into the database table
 mshop/locale/manager/site/insert/ansi = 
  INSERT INTO "mshop_locale_site" ( :names
  	"siteid", "code", "label", "config", "status", "icon", "logo",
- 	"supplierid", "theme", "editor", "mtime", "ctime", "parentid", "level",
+ 	"refid", "theme", "editor", "mtime", "ctime", "parentid", "level",
  	"nleft", "nright"
 
  )
@@ -2007,7 +2055,7 @@ Inserts a new currency record into the database table
 mshop/locale/manager/site/insert/mysql = 
  INSERT INTO "mshop_locale_site" ( :names
  	"siteid", "code", "label", "config", "status", "icon", "logo",
- 	"supplierid", "theme", "editor", "mtime", "ctime", "parentid", "level",
+ 	"refid", "theme", "editor", "mtime", "ctime", "parentid", "level",
  	"nleft", "nright"
 
  )
@@ -2020,7 +2068,7 @@ mshop/locale/manager/site/insert/mysql =
 * Default: 
  INSERT INTO "mshop_locale_site" ( :names
  	"siteid", "code", "label", "config", "status", "icon", "logo",
- 	"supplierid", "theme", "editor", "mtime", "ctime", "parentid", "level",
+ 	"refid", "theme", "editor", "mtime", "ctime", "parentid", "level",
  	"nleft", "nright"
 
  )
@@ -2144,10 +2192,10 @@ mshop/locale/manager/site/search/ansi =
  	mlocsi."code" AS "locale.site.code", mlocsi."label" AS "locale.site.label",
  	mlocsi."config" AS "locale.site.config", mlocsi."status" AS "locale.site.status",
  	mlocsi."icon" AS "locale.site.icon", mlocsi."logo" AS "locale.site.logo",
- 	mlocsi."supplierid" AS "locale.site.supplierid", mlocsi."theme" AS "locale.site.theme",
+ 	mlocsi."refid" AS "locale.site.refid", mlocsi."theme" AS "locale.site.theme",
  	mlocsi."editor" AS "locale.site.editor", mlocsi."mtime" AS "locale.site.mtime",
  	mlocsi."ctime" AS "locale.site.ctime"
- FROM "mshop_locale_site" AS mlocsi
+ FROM "mshop_locale_site" mlocsi
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -2215,10 +2263,10 @@ mshop/locale/manager/site/search/mysql =
  	mlocsi."code" AS "locale.site.code", mlocsi."label" AS "locale.site.label",
  	mlocsi."config" AS "locale.site.config", mlocsi."status" AS "locale.site.status",
  	mlocsi."icon" AS "locale.site.icon", mlocsi."logo" AS "locale.site.logo",
- 	mlocsi."supplierid" AS "locale.site.supplierid", mlocsi."theme" AS "locale.site.theme",
+ 	mlocsi."refid" AS "locale.site.refid", mlocsi."theme" AS "locale.site.theme",
  	mlocsi."editor" AS "locale.site.editor", mlocsi."mtime" AS "locale.site.mtime",
  	mlocsi."ctime" AS "locale.site.ctime"
- FROM "mshop_locale_site" AS mlocsi
+ FROM "mshop_locale_site" mlocsi
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
@@ -2230,10 +2278,10 @@ mshop/locale/manager/site/search/mysql =
  	mlocsi."code" AS "locale.site.code", mlocsi."label" AS "locale.site.label",
  	mlocsi."config" AS "locale.site.config", mlocsi."status" AS "locale.site.status",
  	mlocsi."icon" AS "locale.site.icon", mlocsi."logo" AS "locale.site.logo",
- 	mlocsi."supplierid" AS "locale.site.supplierid", mlocsi."theme" AS "locale.site.theme",
+ 	mlocsi."refid" AS "locale.site.refid", mlocsi."theme" AS "locale.site.theme",
  	mlocsi."editor" AS "locale.site.editor", mlocsi."mtime" AS "locale.site.mtime",
  	mlocsi."ctime" AS "locale.site.ctime"
- FROM "mshop_locale_site" AS mlocsi
+ FROM "mshop_locale_site" mlocsi
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
@@ -2254,6 +2302,9 @@ mshop/locale/manager/site/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2277,7 +2328,7 @@ mshop/locale/manager/site/update/ansi =
  UPDATE "mshop_locale_site"
  SET :names
  	"siteid" = ?, "code" = ?, "label" = ?, "config" = ?, "status" = ?,
- 	"icon" = ?, "logo" = ?, "supplierid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
+ 	"icon" = ?, "logo" = ?, "refid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
  WHERE id = ?
 ```
 
@@ -2313,7 +2364,7 @@ mshop/locale/manager/site/update/mysql =
  UPDATE "mshop_locale_site"
  SET :names
  	"siteid" = ?, "code" = ?, "label" = ?, "config" = ?, "status" = ?,
- 	"icon" = ?, "logo" = ?, "supplierid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
+ 	"icon" = ?, "logo" = ?, "refid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
  WHERE id = ?
 ```
 
@@ -2321,7 +2372,7 @@ mshop/locale/manager/site/update/mysql =
  UPDATE "mshop_locale_site"
  SET :names
  	"siteid" = ?, "code" = ?, "label" = ?, "config" = ?, "status" = ?,
- 	"icon" = ?, "logo" = ?, "supplierid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
+ 	"icon" = ?, "logo" = ?, "refid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
  WHERE id = ?
 
 
@@ -2343,6 +2394,12 @@ mshop/locale/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+    [0] => language
+    [1] => currency
+    [2] => site
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2367,7 +2424,7 @@ mshop/locale/manager/update/ansi =
  UPDATE "mshop_locale"
  SET :names
  	"langid" = ?, "currencyid" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
+ 	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
  WHERE "siteid" = ? AND "id" = ?
 ```
 
@@ -2406,7 +2463,7 @@ mshop/locale/manager/update/mysql =
  UPDATE "mshop_locale"
  SET :names
  	"langid" = ?, "currencyid" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
+ 	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
  WHERE "siteid" = ? AND "id" = ?
 ```
 
@@ -2414,7 +2471,7 @@ mshop/locale/manager/update/mysql =
  UPDATE "mshop_locale"
  SET :names
  	"langid" = ?, "currencyid" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?
+ 	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
  WHERE "siteid" = ? AND "id" = ?
 
 

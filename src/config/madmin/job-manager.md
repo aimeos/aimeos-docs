@@ -9,7 +9,7 @@ madmin/job/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT majob."id"
- 	FROM "madmin_job" AS majob
+ 	FROM "madmin_job" majob
  	:joins
  	WHERE :cond
  	ORDER BY "id"
@@ -71,7 +71,7 @@ madmin/job/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT majob."id"
- 	FROM "madmin_job" AS majob
+ 	FROM "madmin_job" majob
  	:joins
  	WHERE :cond
  	ORDER BY "id"
@@ -83,7 +83,7 @@ madmin/job/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT majob."id"
- 	FROM "madmin_job" AS majob
+ 	FROM "madmin_job" majob
  	:joins
  	WHERE :cond
  	ORDER BY "id"
@@ -107,6 +107,9 @@ madmin/job/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -144,6 +147,9 @@ madmin/job/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -179,6 +185,9 @@ madmin/job/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -441,7 +450,7 @@ madmin/job/manager/search/ansi =
  	majob."label" AS "job.label", majob."path" AS "job.path",
  	majob."status" AS "job.status", majob."editor" AS "job.editor",
  	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
- FROM "madmin_job" AS majob
+ FROM "madmin_job" majob
  :joins
  WHERE :cond
  ORDER BY :order
@@ -510,7 +519,7 @@ madmin/job/manager/search/mysql =
  	majob."label" AS "job.label", majob."path" AS "job.path",
  	majob."status" AS "job.status", majob."editor" AS "job.editor",
  	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
- FROM "madmin_job" AS majob
+ FROM "madmin_job" majob
  :joins
  WHERE :cond
  ORDER BY :order
@@ -523,7 +532,7 @@ madmin/job/manager/search/mysql =
  	majob."label" AS "job.label", majob."path" AS "job.path",
  	majob."status" AS "job.status", majob."editor" AS "job.editor",
  	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
- FROM "madmin_job" AS majob
+ FROM "madmin_job" majob
  :joins
  WHERE :cond
  ORDER BY :order
@@ -545,6 +554,9 @@ madmin/job/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

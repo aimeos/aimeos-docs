@@ -53,8 +53,6 @@ should be set to true.
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the basket standard html client
-
 ```
 client/html/basket/standard/decorators/excludes = Array
 (
@@ -62,35 +60,12 @@ client/html/basket/standard/decorators/excludes = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
-
-```
- client/html/basket/standard/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/basket/standard/decorators/global
-* client/html/basket/standard/decorators/local
 
 ## global
-
-Adds a list of globally available decorators only to the basket standard html client
 
 ```
 client/html/basket/standard/decorators/global = Array
@@ -99,33 +74,12 @@ client/html/basket/standard/decorators/global = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/basket/standard/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/basket/standard/decorators/excludes
-* client/html/basket/standard/decorators/local
 
 ## local
-
-Adds a list of local decorators only to the basket standard html client
 
 ```
 client/html/basket/standard/decorators/local = Array
@@ -134,29 +88,10 @@ client/html/basket/standard/decorators/local = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Basket\Decorator\*") around the html client.
-
-```
- client/html/basket/standard/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Basket\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/basket/standard/decorators/excludes
-* client/html/basket/standard/decorators/global
 
 # name
 
@@ -209,10 +144,10 @@ or numbers. Avoid chamel case names like "MyBasket"!
 Location of the detail partial template for the basket standard component
 
 ```
-client/html/basket/standard/summary/detail = common/summary/detail-standard
+client/html/basket/standard/summary/detail = common/summary/detail
 ```
 
-* Default: common/summary/detail-standard
+* Default: common/summary/detail
 * Type: string - Relative path to the detail partial
 * Since: 2017.01
 
@@ -228,10 +163,10 @@ product detail block in the basket standard component.
 Name of the action that should create the output
 
 ```
-client/html/basket/standard/url/action = index
+client/html/basket/standard/url/action = standard
 ```
 
-* Default: index
+* Default: standard
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -244,7 +179,6 @@ See also:
 * client/html/basket/standard/url/target
 * client/html/basket/standard/url/controller
 * client/html/basket/standard/url/config
-* client/html/basket/standard/url/site
 
 ## config
 
@@ -257,6 +191,9 @@ client/html/basket/standard/url/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -277,7 +214,6 @@ See also:
 * client/html/basket/standard/url/target
 * client/html/basket/standard/url/controller
 * client/html/basket/standard/url/action
-* client/html/basket/standard/url/site
 * client/html/url/config
 
 ## controller
@@ -285,10 +221,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/basket/standard/url/controller = basket
+client/html/basket/standard/url/controller = Basket
 ```
 
-* Default: basket
+* Default: Basket
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -301,7 +237,6 @@ See also:
 * client/html/basket/standard/url/target
 * client/html/basket/standard/url/action
 * client/html/basket/standard/url/config
-* client/html/basket/standard/url/site
 
 ## filter
 
@@ -312,30 +247,10 @@ client/html/basket/standard/url/filter = Array
 ```
 
 * Default: Array
+(
+)
 
 
-## site
-
-Locale site code where products will be added to the basket
-
-```
-client/html/basket/standard/url/site = 
-```
-
-* Default: 
-* Type: string - Code of the locale site
-* Since: 2018.04
-
-In more complex setups with several shop sites, this setting allows to to
-define the shop site that will manage the basket of the customer. For example
-in market place setups where all vendors have there own shop sites, the basket
-site should be the site code of the market place ("default" by default).
-
-See also:
-
-* client/html/basket/standard/url/target
-* client/html/basket/standard/url/controller
-* client/html/basket/standard/url/config
 
 ## target
 
@@ -358,4 +273,3 @@ See also:
 * client/html/basket/standard/url/controller
 * client/html/basket/standard/url/action
 * client/html/basket/standard/url/config
-* client/html/basket/standard/url/site

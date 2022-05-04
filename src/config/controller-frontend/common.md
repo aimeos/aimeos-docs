@@ -11,6 +11,9 @@ controller/frontend/common/decorators/default = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 

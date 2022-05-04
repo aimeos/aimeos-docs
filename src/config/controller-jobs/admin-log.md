@@ -42,6 +42,9 @@ controller/jobs/admin/log/container/options = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of options with the name as key and its value
 * Since: 2014.09
 
@@ -107,6 +110,9 @@ controller/jobs/admin/log/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -144,6 +150,9 @@ controller/jobs/admin/log/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -179,6 +188,9 @@ controller/jobs/admin/log/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -277,7 +289,7 @@ or numbers. Avoid chamel case names like "MyLog"!
 Path to a writable directory where the log archive files should be stored
 
 ```
-controller/jobs/admin/log/path = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/tmp
+controller/jobs/admin/log/path = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/tmp
 ```
 
 * Default: /tmp

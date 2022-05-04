@@ -11,6 +11,9 @@ client/jsonapi/review/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -48,6 +51,9 @@ client/jsonapi/review/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -85,6 +91,9 @@ client/jsonapi/review/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 

@@ -52,6 +52,9 @@ controller/jobs/subscription/export/csv/container/options = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of option name/value pairs
 * Since: 2015.05
 
@@ -102,6 +105,9 @@ controller/jobs/subscription/export/csv/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -139,6 +145,9 @@ controller/jobs/subscription/export/csv/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -174,6 +183,9 @@ controller/jobs/subscription/export/csv/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -254,6 +266,67 @@ controller/jobs/subscription/export/csv/mapping = Array
 ```
 
 * Default: Array
+(
+    [subscription] => Array
+        (
+            [2] => subscription.interval
+            [3] => subscription.datenext
+            [4] => subscription.dateend
+            [5] => subscription.period
+            [6] => subscription.status
+            [7] => subscription.ctime
+            [8] => subscription.ordbaseid
+        )
+
+    [address] => Array
+        (
+            [2] => order.base.address.type
+            [3] => order.base.address.salutation
+            [4] => order.base.address.company
+            [5] => order.base.address.vatid
+            [6] => order.base.address.title
+            [7] => order.base.address.firstname
+            [8] => order.base.address.lastname
+            [9] => order.base.address.address1
+            [10] => order.base.address.address2
+            [11] => order.base.address.address3
+            [12] => order.base.address.postal
+            [13] => order.base.address.city
+            [14] => order.base.address.state
+            [15] => order.base.address.countryid
+            [16] => order.base.address.languageid
+            [17] => order.base.address.telephone
+            [18] => order.base.address.telefax
+            [19] => order.base.address.email
+            [20] => order.base.address.website
+            [21] => order.base.address.longitude
+            [22] => order.base.address.latitude
+        )
+
+    [product] => Array
+        (
+            [2] => order.base.product.type
+            [3] => order.base.product.stocktype
+            [4] => order.base.product.vendor
+            [5] => order.base.product.prodcode
+            [6] => order.base.product.productid
+            [7] => order.base.product.quantity
+            [8] => order.base.product.name
+            [9] => order.base.product.mediaurl
+            [10] => order.base.product.price
+            [11] => order.base.product.costs
+            [12] => order.base.product.rebate
+            [13] => order.base.product.taxrate
+            [14] => order.base.product.status
+            [15] => order.base.product.position
+            [16] => order.base.product.attribute.type
+            [17] => order.base.product.attribute.code
+            [18] => order.base.product.attribute.name
+            [19] => order.base.product.attribute.value
+        )
+
+)
+
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2018.04
 

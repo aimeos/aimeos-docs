@@ -11,6 +11,9 @@ controller/jobs/customer/email/account/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -48,6 +51,9 @@ controller/jobs/customer/email/account/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -83,6 +89,9 @@ controller/jobs/customer/email/account/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -153,6 +162,52 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyAccount"!
 
 
+## template-html
+
+Relative path to the template for the HTML part of the account emails.
+
+```
+controller/jobs/customer/email/account/template-html = customer/email/account/html
+```
+
+* Default: customer/email/account/html
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/customer/email/account/template-text
+
+## template-text
+
+Relative path to the template for the text part of the account emails.
+
+```
+controller/jobs/customer/email/account/template-text = customer/email/account/text
+```
+
+* Default: customer/email/account/text
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the text and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/customer/email/account/template-html
+
 # watch
 ## decorators/excludes
 
@@ -165,6 +220,9 @@ controller/jobs/customer/email/watch/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -202,6 +260,9 @@ controller/jobs/customer/email/watch/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -237,6 +298,9 @@ controller/jobs/customer/email/watch/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -305,3 +369,50 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyWatch"!
+
+
+## template-html
+
+Relative path to the template for the HTML part of the watch emails.
+
+```
+controller/jobs/customer/email/watch/template-html = customer/email/watch/html
+```
+
+* Default: customer/email/watch/html
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/customer/email/watch/template-text
+
+## template-text
+
+Relative path to the template for the text part of the watch emails.
+
+```
+controller/jobs/customer/email/watch/template-text = customer/email/watch/text
+```
+
+* Default: customer/email/watch/text
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the text and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/customer/email/watch/template-html

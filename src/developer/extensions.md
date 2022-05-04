@@ -119,7 +119,6 @@ Tutorials:
 * [Adapt basket components](../frontend/html/basket-components.md)
 * [Adapt catalog components](../frontend/html/catalog-components.md)
 * [Adapt checkout components](../frontend/html/checkout-components.md)
-* [Adapt email components](../frontend/html/email-components.md)
 * [Adapt locale components](../frontend/html/locale-components.md)
 * [Used parameter names](../frontend/html/parameter-names.md)
 

@@ -11,6 +11,9 @@ admin/jqadm/group/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -48,6 +51,9 @@ admin/jqadm/group/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -83,6 +89,9 @@ admin/jqadm/group/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -121,6 +130,12 @@ admin/jqadm/group/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => customer.group.status
+    [1] => customer.group.label
+    [2] => customer.group.code
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2018.07
 
@@ -188,6 +203,9 @@ admin/jqadm/group/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.07
 
@@ -229,10 +247,10 @@ design.
 Relative path to the HTML body template for the group item.
 
 ```
-admin/jqadm/group/template-item = group/item-standard
+admin/jqadm/group/template-item = group/item
 ```
 
-* Default: group/item-standard
+* Default: group/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.07
 
@@ -254,10 +272,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the group list.
 
 ```
-admin/jqadm/group/template-list = group/list-standard
+admin/jqadm/group/template-list = group/list
 ```
 
-* Default: group/list-standard
+* Default: group/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.07
 

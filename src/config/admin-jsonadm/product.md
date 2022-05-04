@@ -12,6 +12,9 @@ admin/jsonadm/product/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -49,6 +52,9 @@ admin/jsonadm/product/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -86,6 +92,9 @@ admin/jsonadm/product/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 

@@ -36,7 +36,7 @@ client/html/catalog/home/cache = 1
 
 Disable caching for components can be useful if you would have too much
 entries to cache or if the component contains non-cacheable parts that
-can't be replaced using the `modify()` methods.
+can't be replaced using the modify() method.
 
 See also:
 
@@ -48,8 +48,6 @@ See also:
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the catalog home html client
-
 ```
 client/html/catalog/home/decorators/excludes = Array
 (
@@ -57,35 +55,12 @@ client/html/catalog/home/decorators/excludes = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2020.10
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
-
-```
- client/html/catalog/home/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/home/decorators/global
-* client/html/catalog/home/decorators/local
 
 ## global
-
-Adds a list of globally available decorators only to the catalog home html client
 
 ```
 client/html/catalog/home/decorators/global = Array
@@ -94,33 +69,12 @@ client/html/catalog/home/decorators/global = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2020.10
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/catalog/home/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/home/decorators/excludes
-* client/html/catalog/home/decorators/local
 
 ## local
-
-Adds a list of local decorators only to the catalog home html client
 
 ```
 client/html/catalog/home/decorators/local = Array
@@ -129,29 +83,10 @@ client/html/catalog/home/decorators/local = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2020.10
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
-
-```
- client/html/catalog/home/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/home/decorators/excludes
-* client/html/catalog/home/decorators/global
 
 # domains
 
@@ -160,10 +95,12 @@ A list of domain names whose items should be available in the catalog home view 
 ```
 client/html/catalog/home/domains = Array
 (
-    [0] => media
-    [1] => media/property
-    [2] => price
-    [3] => text
+    [0] => catalog
+    [1] => media
+    [2] => media/property
+    [3] => price
+    [4] => supplier
+    [5] => text
     [product] => Array
         (
             [0] => promotion
@@ -173,6 +110,20 @@ client/html/catalog/home/domains = Array
 ```
 
 * Default: Array
+(
+    [0] => catalog
+    [1] => media
+    [2] => media/property
+    [3] => price
+    [4] => supplier
+    [5] => text
+    [product] => Array
+        (
+            [0] => promotion
+        )
+
+)
+
 * Type: array - List of domain names
 * Since: 2020.10
 
@@ -297,10 +248,10 @@ or numbers. Avoid chamel case names like "MyHome"!
 Enables or disables displaying product stock levels in product list views
 
 ```
-client/html/catalog/home/stock/enable = 
+client/html/catalog/home/stock/enable = 1
 ```
 
-* Default: 
+* Default: 1
 * Type: boolean - Value of "1" to display stock levels, "0" to disable displaying them
 * Since: 2020.10
 
@@ -320,62 +271,15 @@ See also:
 * client/html/catalog/stock/url/action
 * client/html/catalog/stock/url/config
 
-# subparts
-
-List of HTML sub-clients rendered within the catalog home section
-
-```
-client/html/catalog/home/subparts = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2020.10
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
 # template-body
 
 Relative path to the HTML body template of the catalog home client.
 
 ```
-client/html/catalog/home/template-body = catalog/home/body-standard
+client/html/catalog/home/template-body = catalog/home/body
 ```
 
-* Default: catalog/home/body-standard
+* Default: catalog/home/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2020.10
 
@@ -386,10 +290,10 @@ to the templates directory (usually in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 See also:
 
@@ -400,10 +304,10 @@ See also:
 Relative path to the HTML header template of the catalog home client.
 
 ```
-client/html/catalog/home/template-header = catalog/home/header-standard
+client/html/catalog/home/template-header = catalog/home/header
 ```
 
-* Default: catalog/home/header-standard
+* Default: catalog/home/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2020.10
 
@@ -415,10 +319,10 @@ in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 See also:
 
@@ -443,6 +347,9 @@ client/html/catalog/home/url/config = Array
 ```
 
 * Default: Array
+(
+)
+
 
 
 ## controller

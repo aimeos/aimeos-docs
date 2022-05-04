@@ -11,6 +11,9 @@ admin/jqadm/plugin/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -48,6 +51,9 @@ admin/jqadm/plugin/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -83,6 +89,9 @@ admin/jqadm/plugin/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -122,6 +131,13 @@ admin/jqadm/plugin/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => plugin.status
+    [1] => plugin.label
+    [2] => plugin.provider
+    [3] => plugin.position
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -189,6 +205,9 @@ admin/jqadm/plugin/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -230,10 +249,10 @@ design.
 Relative path to the HTML body template for the plugin item.
 
 ```
-admin/jqadm/plugin/template-item = plugin/item-standard
+admin/jqadm/plugin/template-item = plugin/item
 ```
 
-* Default: plugin/item-standard
+* Default: plugin/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -255,10 +274,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the plugin list.
 
 ```
-admin/jqadm/plugin/template-list = plugin/list-standard
+admin/jqadm/plugin/template-list = plugin/list
 ```
 
-* Default: plugin/list-standard
+* Default: plugin/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

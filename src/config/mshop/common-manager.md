@@ -30,11 +30,15 @@ Configures the list of decorators applied to all shop managers
 ```
 mshop/common/manager/decorators/default = Array
 (
-    [depth] => Depth
+    [Depth] => Depth
+    [Lazy] => Lazy
 )
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 

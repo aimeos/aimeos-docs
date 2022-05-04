@@ -1,5 +1,5 @@
-site_dir: docs/2021.x
-site_url: https://aimeos.org/docs/2021.x/
+site_dir: docs/2022.x
+site_url: https://aimeos.org/docs/2022.x/
 
 
 site_name: Aimeos documentation
@@ -117,7 +117,6 @@ nav:
       - Basket components: frontend/html/basket-components.md
       - Catalog components: frontend/html/catalog-components.md
       - Checkout components: frontend/html/checkout-components.md
-      - E-Mail components: frontend/html/email-components.md
       - Locale components: frontend/html/locale-components.md
       - Adapt price format: frontend/html/adapt-price-format.md
       - Parameter names: frontend/html/parameter-names.md
@@ -186,7 +185,6 @@ nav:
       - Account download: config/client-html/account-download.md
       - Account favorite: config/client-html/account-favorite.md
       - Account history: config/client-html/account-history.md
-      - Account index: config/client-html/account-index.md
       - Account profile: config/client-html/account-profile.md
       - Account review: config/client-html/account-review.md
       - Account subscription: config/client-html/account-subscription.md
@@ -215,7 +213,6 @@ nav:
       - Catalog suggest: config/client-html/catalog-suggest.md
       - Catalog supplier: config/client-html/catalog-supplier.md
       - Catalog tree: config/client-html/catalog-tree.md
-      - Checkout address: config/client-html/checkout-address.md
       - Checkout confirm: config/client-html/checkout-confirm.md
       - Checkout standard: config/client-html/checkout-standard.md
       - Checkout update: config/client-html/checkout-update.md
@@ -224,20 +221,11 @@ nav:
       - Common decorators: config/client-html/common-decorators.md
       - Common partials: config/client-html/common-partials.md
       - Common summary: config/client-html/common-summary.md
-      - Common template: config/client-html/common-template.md
-      - E-mail account: config/client-html/email-account.md
-      - E-mail common: config/client-html/email-common.md
-      - E-mail delivery: config/client-html/email-delivery.md
-      - E-mail payment: config/client-html/email-payment.md
-      - E-mail subscription: config/client-html/email-subscription.md
-      - E-mail voucher: config/client-html/email-voucher.md
-      - E-mail watch: config/client-html/email-watch.md
       - Locale select: config/client-html/locale-select.md
       - Supplier detail: config/client-html/supplier-detail.md
     - JSON REST API:
       - Common: config/client-jsonapi/common.md
       - Decorators: config/client-jsonapi/decorators.md
-      - Standard: config/client-jsonapi/standard.md
       - URL: config/client-jsonapi/url.md
       - Attribute: config/client-jsonapi/attribute.md
       - Basket: config/client-jsonapi/basket.md
@@ -296,7 +284,6 @@ nav:
     - JsonAdm API:
       - Base: config/admin-jsonadm/index.md
       - Common: config/admin-jsonadm/common.md
-      - Standard: config/admin-jsonadm/standard.md
       - Decorators: config/admin-jsonadm/decorators.md
       - Permissions: config/admin-jsonadm/resource.md
       - URL: config/admin-jsonadm/url.md
@@ -322,11 +309,11 @@ nav:
       - Attribute import: config/controller-jobs/attribute-import.md
       - Catalog export: config/controller-jobs/catalog-export.md
       - Catalog import: config/controller-jobs/catalog-import.md
-      - Common: config/controller-jobs/common.md
       - Coupon import: config/controller-jobs/coupon-import.md
       - Customer email: config/controller-jobs/customer-email.md
       - Customer group: config/controller-jobs/customer-group.md
       - Customer import: config/controller-jobs/customer-import.md
+      - Decorators: config/controller-jobs/common-decorators.md
       - Index optimize: config/controller-jobs/index-optimize.md
       - Index rebuild: config/controller-jobs/index-rebuild.md
       - Media scale: config/controller-jobs/media-scale.md
@@ -334,28 +321,15 @@ nav:
       - Order email: config/controller-jobs/order-email.md
       - Order export: config/controller-jobs/order-export.md
       - Order service: config/controller-jobs/order-service.md
-      - product bought: config/controller-jobs/product-bought.md
-      - product export: config/controller-jobs/product-export.md
+      - Order status: config/controller-jobs/order-status.md
+      - Product bought: config/controller-jobs/product-bought.md
+      - Product export: config/controller-jobs/product-export.md
       - Product import: config/controller-jobs/product-import.md
       - Stock import: config/controller-jobs/stock-import.md
       - Subscription process: config/controller-jobs/subscription-process.md
       - Subscription export: config/controller-jobs/subscription-export.md
       - Supplier import: config/controller-jobs/supplier-import.md
       - XML import: config/controller-jobs/xml-import.md
-    - Common controller:
-      - Decorators: config/controller-jobs/common.md
-      - Media: config/controller-common/media.md
-      - Order: config/controller-common/order.md
-      - Catalog import: config/controller-common/catalog-import.md
-      - Common import: config/controller-common/common-import.md
-      - Coupon import: config/controller-common/coupon-import.md
-      - Customer import: config/controller-common/customer-import.md
-      - Order export: config/controller-common/order-export.md
-      - Product import: config/controller-common/product-import.md
-      - Stock import: config/controller-common/stock-import.md
-      - Subscription export: config/controller-common/subscription-export.md
-      - Subscription process: config/controller-common/subscription-process.md
-      - Supplier import: config/controller-common/supplier-import.md
     - MShop:
       - Attribute: config/mshop/attribute-manager.md
       - Catalog: config/mshop/catalog-manager.md

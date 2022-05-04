@@ -9,7 +9,7 @@ mshop/review/manager/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	ORDER BY mrev.id DESC
@@ -70,7 +70,7 @@ mshop/review/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	ORDER BY :order
@@ -83,7 +83,7 @@ mshop/review/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	ORDER BY mrev.id DESC
@@ -104,7 +104,7 @@ mshop/review/manager/aggregaterate/ansi =
  SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
  FROM (
  	SELECT :acols, mrev.rating AS "val"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	ORDER BY :order
@@ -123,7 +123,7 @@ mshop/review/manager/aggregaterate/mysql =
  SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
  FROM (
  	SELECT :acols, mrev.rating AS "val"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	ORDER BY :order
@@ -136,7 +136,7 @@ mshop/review/manager/aggregaterate/mysql =
  SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
  FROM (
  	SELECT :acols, mrev.rating AS "val"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	ORDER BY :order
@@ -156,7 +156,7 @@ mshop/review/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mrev."id"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	GROUP BY mrev."id"
@@ -219,7 +219,7 @@ mshop/review/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mrev."id"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	GROUP BY mrev."id"
@@ -232,7 +232,7 @@ mshop/review/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mrev."id"
- 	FROM "mshop_review" AS mrev
+ 	FROM "mshop_review" mrev
  	:joins
  	WHERE :cond
  	GROUP BY mrev."id"
@@ -257,6 +257,9 @@ mshop/review/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -294,6 +297,9 @@ mshop/review/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -331,6 +337,9 @@ mshop/review/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -597,7 +606,7 @@ mshop/review/manager/search/ansi =
  	mrev."response" AS "review.response", mrev."rating" AS "review.rating",
  	mrev."status" AS "review.status", mrev."ctime" AS "review.ctime",
  	mrev."mtime" AS "review.mtime", mrev."editor" AS "review.editor"
- FROM "mshop_review" AS mrev
+ FROM "mshop_review" mrev
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -673,7 +682,7 @@ mshop/review/manager/search/mysql =
  	mrev."response" AS "review.response", mrev."rating" AS "review.rating",
  	mrev."status" AS "review.status", mrev."ctime" AS "review.ctime",
  	mrev."mtime" AS "review.mtime", mrev."editor" AS "review.editor"
- FROM "mshop_review" AS mrev
+ FROM "mshop_review" mrev
  :joins
  WHERE :cond
  GROUP BY :group mrev."id"
@@ -690,7 +699,7 @@ mshop/review/manager/search/mysql =
  	mrev."response" AS "review.response", mrev."rating" AS "review.rating",
  	mrev."status" AS "review.status", mrev."ctime" AS "review.ctime",
  	mrev."mtime" AS "review.mtime", mrev."editor" AS "review.editor"
- FROM "mshop_review" AS mrev
+ FROM "mshop_review" mrev
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -753,6 +762,9 @@ mshop/review/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2020.10
 

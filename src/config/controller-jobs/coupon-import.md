@@ -33,6 +33,9 @@ controller/jobs/coupon/import/csv/code/container/options = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of option name/value pairs
 * Since: 2017.10
 
@@ -81,6 +84,9 @@ controller/jobs/coupon/import/csv/code/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -118,6 +124,9 @@ controller/jobs/coupon/import/csv/code/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -153,6 +162,9 @@ controller/jobs/coupon/import/csv/code/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -198,6 +210,17 @@ controller/jobs/coupon/import/csv/code/mapping = Array
 ```
 
 * Default: Array
+(
+    [code] => Array
+        (
+            [0] => coupon.code.code
+            [1] => coupon.code.count
+            [2] => coupon.code.datestart
+            [3] => coupon.code.dateend
+        )
+
+)
+
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2017.10
 

@@ -9,7 +9,7 @@ mshop/media/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmed."id"
- 	FROM "mshop_media" AS mmed
+ 	FROM "mshop_media" mmed
  	:joins
  	WHERE :cond
  	GROUP BY mmed."id"
@@ -72,7 +72,7 @@ mshop/media/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmed."id"
- 	FROM "mshop_media" AS mmed
+ 	FROM "mshop_media" mmed
  	:joins
  	WHERE :cond
  	GROUP BY mmed."id"
@@ -85,7 +85,7 @@ mshop/media/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmed."id"
- 	FROM "mshop_media" AS mmed
+ 	FROM "mshop_media" mmed
  	:joins
  	WHERE :cond
  	GROUP BY mmed."id"
@@ -110,6 +110,9 @@ mshop/media/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -147,6 +150,9 @@ mshop/media/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -183,6 +189,9 @@ mshop/media/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -270,10 +279,10 @@ Inserts a new media record into the database table
 ```
 mshop/media/manager/insert/ansi = 
  INSERT INTO "mshop_media" ( :names
- 	"langid", "type", "label", "mimetype", "link", "status",
+ 	"langid", "type", "label", "mimetype", "link", "status", "fsname",
  	"domain", "preview", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
@@ -313,19 +322,19 @@ Inserts a new media record into the database table
 ```
 mshop/media/manager/insert/mysql = 
  INSERT INTO "mshop_media" ( :names
- 	"langid", "type", "label", "mimetype", "link", "status",
+ 	"langid", "type", "label", "mimetype", "link", "status", "fsname",
  	"domain", "preview", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
 * Default: 
  INSERT INTO "mshop_media" ( :names
- 	"langid", "type", "label", "mimetype", "link", "status",
+ 	"langid", "type", "label", "mimetype", "link", "status", "fsname",
  	"domain", "preview", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 
 
@@ -343,7 +352,7 @@ mshop/media/manager/lists/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_media_list" AS mmedli
+ 	FROM "mshop_media_list" mmedli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mmedli."id"
@@ -405,7 +414,7 @@ mshop/media/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_media_list" AS mmedli
+ 	FROM "mshop_media_list" mmedli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mmedli."id"
@@ -419,7 +428,7 @@ mshop/media/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_media_list" AS mmedli
+ 	FROM "mshop_media_list" mmedli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mmedli."id"
@@ -442,7 +451,7 @@ mshop/media/manager/lists/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedli."id"
- 	FROM "mshop_media_list" AS mmedli
+ 	FROM "mshop_media_list" mmedli
  	:joins
  	WHERE :cond
  	ORDER BY mmedli."id"
@@ -505,7 +514,7 @@ mshop/media/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedli."id"
- 	FROM "mshop_media_list" AS mmedli
+ 	FROM "mshop_media_list" mmedli
  	:joins
  	WHERE :cond
  	ORDER BY mmedli."id"
@@ -517,7 +526,7 @@ mshop/media/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedli."id"
- 	FROM "mshop_media_list" AS mmedli
+ 	FROM "mshop_media_list" mmedli
  	:joins
  	WHERE :cond
  	ORDER BY mmedli."id"
@@ -540,6 +549,9 @@ mshop/media/manager/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -577,6 +589,9 @@ mshop/media/manager/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -614,6 +629,9 @@ mshop/media/manager/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -879,7 +897,7 @@ mshop/media/manager/lists/search/ansi =
  	mmedli."config" AS "media.lists.config", mmedli."pos" AS "media.lists.position",
  	mmedli."status" AS "media.lists.status", mmedli."mtime" AS "media.lists.mtime",
  	mmedli."editor" AS "media.lists.editor", mmedli."ctime" AS "media.lists.ctime"
- FROM "mshop_media_list" AS mmedli
+ FROM "mshop_media_list" mmedli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -952,7 +970,7 @@ mshop/media/manager/lists/search/mysql =
  	mmedli."config" AS "media.lists.config", mmedli."pos" AS "media.lists.position",
  	mmedli."status" AS "media.lists.status", mmedli."mtime" AS "media.lists.mtime",
  	mmedli."editor" AS "media.lists.editor", mmedli."ctime" AS "media.lists.ctime"
- FROM "mshop_media_list" AS mmedli
+ FROM "mshop_media_list" mmedli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -968,7 +986,7 @@ mshop/media/manager/lists/search/mysql =
  	mmedli."config" AS "media.lists.config", mmedli."pos" AS "media.lists.position",
  	mmedli."status" AS "media.lists.status", mmedli."mtime" AS "media.lists.mtime",
  	mmedli."editor" AS "media.lists.editor", mmedli."ctime" AS "media.lists.ctime"
- FROM "mshop_media_list" AS mmedli
+ FROM "mshop_media_list" mmedli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -990,6 +1008,9 @@ mshop/media/manager/lists/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1013,7 +1034,7 @@ mshop/media/manager/lists/type/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedlity."id"
- 	FROM "mshop_media_list_type" AS mmedlity
+ 	FROM "mshop_media_list_type" mmedlity
  	:joins
  	WHERE :cond
  	ORDER BY mmedlity."id"
@@ -1075,7 +1096,7 @@ mshop/media/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedlity."id"
- 	FROM "mshop_media_list_type" AS mmedlity
+ 	FROM "mshop_media_list_type" mmedlity
  	:joins
  	WHERE :cond
  	ORDER BY mmedlity."id"
@@ -1087,7 +1108,7 @@ mshop/media/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedlity."id"
- 	FROM "mshop_media_list_type" AS mmedlity
+ 	FROM "mshop_media_list_type" mmedlity
  	:joins
  	WHERE :cond
  	ORDER BY mmedlity."id"
@@ -1110,6 +1131,9 @@ mshop/media/manager/lists/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1147,6 +1171,9 @@ mshop/media/manager/lists/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1184,6 +1211,9 @@ mshop/media/manager/lists/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1444,7 +1474,7 @@ mshop/media/manager/lists/type/search/ansi =
  	mmedlity."label" AS "media.lists.type.label", mmedlity."status" AS "media.lists.type.status",
  	mmedlity."mtime" AS "media.lists.type.mtime", mmedlity."editor" AS "media.lists.type.editor",
  	mmedlity."ctime" AS "media.lists.type.ctime", mmedlity."pos" AS "media.lists.type.position"
- FROM "mshop_media_list_type" AS mmedlity
+ FROM "mshop_media_list_type" mmedlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1514,7 +1544,7 @@ mshop/media/manager/lists/type/search/mysql =
  	mmedlity."label" AS "media.lists.type.label", mmedlity."status" AS "media.lists.type.status",
  	mmedlity."mtime" AS "media.lists.type.mtime", mmedlity."editor" AS "media.lists.type.editor",
  	mmedlity."ctime" AS "media.lists.type.ctime", mmedlity."pos" AS "media.lists.type.position"
- FROM "mshop_media_list_type" AS mmedlity
+ FROM "mshop_media_list_type" mmedlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1528,7 +1558,7 @@ mshop/media/manager/lists/type/search/mysql =
  	mmedlity."label" AS "media.lists.type.label", mmedlity."status" AS "media.lists.type.status",
  	mmedlity."mtime" AS "media.lists.type.mtime", mmedlity."editor" AS "media.lists.type.editor",
  	mmedlity."ctime" AS "media.lists.type.ctime", mmedlity."pos" AS "media.lists.type.position"
- FROM "mshop_media_list_type" AS mmedlity
+ FROM "mshop_media_list_type" mmedlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1550,6 +1580,9 @@ mshop/media/manager/lists/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1803,7 +1836,7 @@ mshop/media/manager/property/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmedpr."id"
- 	FROM "mshop_media_property" AS mmedpr
+ 	FROM "mshop_media_property" mmedpr
  	:joins
  	WHERE :cond
  	ORDER BY mmedpr."id"
@@ -1865,7 +1898,7 @@ mshop/media/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmedpr."id"
- 	FROM "mshop_media_property" AS mmedpr
+ 	FROM "mshop_media_property" mmedpr
  	:joins
  	WHERE :cond
  	ORDER BY mmedpr."id"
@@ -1877,7 +1910,7 @@ mshop/media/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmedpr."id"
- 	FROM "mshop_media_property" AS mmedpr
+ 	FROM "mshop_media_property" mmedpr
  	:joins
  	WHERE :cond
  	ORDER BY mmedpr."id"
@@ -1900,6 +1933,9 @@ mshop/media/manager/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1937,6 +1973,9 @@ mshop/media/manager/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1974,6 +2013,9 @@ mshop/media/manager/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2234,7 +2276,7 @@ mshop/media/manager/property/search/ansi =
  	mmedpr."langid" AS "media.property.languageid", mmedpr."value" AS "media.property.value",
  	mmedpr."mtime" AS "media.property.mtime", mmedpr."editor" AS "media.property.editor",
  	mmedpr."ctime" AS "media.property.ctime"
- FROM "mshop_media_property" AS mmedpr
+ FROM "mshop_media_property" mmedpr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2304,7 +2346,7 @@ mshop/media/manager/property/search/mysql =
  	mmedpr."langid" AS "media.property.languageid", mmedpr."value" AS "media.property.value",
  	mmedpr."mtime" AS "media.property.mtime", mmedpr."editor" AS "media.property.editor",
  	mmedpr."ctime" AS "media.property.ctime"
- FROM "mshop_media_property" AS mmedpr
+ FROM "mshop_media_property" mmedpr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2318,7 +2360,7 @@ mshop/media/manager/property/search/mysql =
  	mmedpr."langid" AS "media.property.languageid", mmedpr."value" AS "media.property.value",
  	mmedpr."mtime" AS "media.property.mtime", mmedpr."editor" AS "media.property.editor",
  	mmedpr."ctime" AS "media.property.ctime"
- FROM "mshop_media_property" AS mmedpr
+ FROM "mshop_media_property" mmedpr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2340,6 +2382,9 @@ mshop/media/manager/property/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2460,6 +2505,9 @@ mshop/media/manager/property/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2497,6 +2545,9 @@ mshop/media/manager/property/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2534,6 +2585,9 @@ mshop/media/manager/property/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2900,6 +2954,9 @@ mshop/media/manager/property/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -3055,15 +3112,15 @@ mshop/media/manager/search/ansi =
  	mmed."link" AS "media.url", mmed."label" AS "media.label",
  	mmed."status" AS "media.status", mmed."mimetype" AS "media.mimetype",
  	mmed."domain" AS "media.domain", mmed."preview" AS "media.previews",
- 	mmed."mtime" AS "media.mtime", mmed."editor" AS "media.editor",
- 	mmed."ctime" AS "media.ctime"
- FROM "mshop_media" AS mmed
+ 	mmed."fsname" AS "media.filesystem", mmed."mtime" AS "media.mtime",
+ 	mmed."ctime" AS "media.ctime", mmed."editor" AS "media.editor"
+ FROM "mshop_media" mmed
  :joins
  WHERE :cond
  GROUP BY :columns :group
  	mmed."id", mmed."siteid", mmed."langid", mmed."type", mmed."link",
  	mmed."label", mmed."status", mmed."mimetype", mmed."domain", mmed."preview",
- 	mmed."mtime", mmed."editor", mmed."ctime"
+ 	mmed."fsname", mmed."mtime", mmed."editor", mmed."ctime"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3131,9 +3188,9 @@ mshop/media/manager/search/mysql =
  	mmed."link" AS "media.url", mmed."label" AS "media.label",
  	mmed."status" AS "media.status", mmed."mimetype" AS "media.mimetype",
  	mmed."domain" AS "media.domain", mmed."preview" AS "media.previews",
- 	mmed."mtime" AS "media.mtime", mmed."editor" AS "media.editor",
- 	mmed."ctime" AS "media.ctime"
- FROM "mshop_media" AS mmed
+ 	mmed."fsname" AS "media.filesystem", mmed."mtime" AS "media.mtime",
+ 	mmed."ctime" AS "media.ctime", mmed."editor" AS "media.editor"
+ FROM "mshop_media" mmed
  :joins
  WHERE :cond
  GROUP BY :group mmed."id"
@@ -3148,15 +3205,15 @@ mshop/media/manager/search/mysql =
  	mmed."link" AS "media.url", mmed."label" AS "media.label",
  	mmed."status" AS "media.status", mmed."mimetype" AS "media.mimetype",
  	mmed."domain" AS "media.domain", mmed."preview" AS "media.previews",
- 	mmed."mtime" AS "media.mtime", mmed."editor" AS "media.editor",
- 	mmed."ctime" AS "media.ctime"
- FROM "mshop_media" AS mmed
+ 	mmed."fsname" AS "media.filesystem", mmed."mtime" AS "media.mtime",
+ 	mmed."ctime" AS "media.ctime", mmed."editor" AS "media.editor"
+ FROM "mshop_media" mmed
  :joins
  WHERE :cond
  GROUP BY :columns :group
  	mmed."id", mmed."siteid", mmed."langid", mmed."type", mmed."link",
  	mmed."label", mmed."status", mmed."mimetype", mmed."domain", mmed."preview",
- 	mmed."mtime", mmed."editor", mmed."ctime"
+ 	mmed."fsname", mmed."mtime", mmed."editor", mmed."ctime"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 
@@ -3213,6 +3270,9 @@ mshop/media/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3334,6 +3394,9 @@ mshop/media/manager/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3371,6 +3434,9 @@ mshop/media/manager/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3408,6 +3474,9 @@ mshop/media/manager/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3774,6 +3843,9 @@ mshop/media/manager/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3861,8 +3933,8 @@ Updates an existing media record in the database
 mshop/media/manager/update/ansi = 
  UPDATE "mshop_media"
  SET :names
- 	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?,
- 	"status" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
+ 	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?, "status" = ?,
+ 	"fsname" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" = ? AND "id" = ?
 ```
 
@@ -3900,16 +3972,16 @@ Updates an existing media record in the database
 mshop/media/manager/update/mysql = 
  UPDATE "mshop_media"
  SET :names
- 	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?,
- 	"status" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
+ 	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?, "status" = ?,
+ 	"fsname" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" = ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_media"
  SET :names
- 	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?,
- 	"status" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
+ 	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?, "status" = ?,
+ 	"fsname" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" = ? AND "id" = ?
 
 

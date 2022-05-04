@@ -11,6 +11,9 @@ controller/jobs/index/optimize/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -48,6 +51,9 @@ controller/jobs/index/optimize/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -83,6 +89,9 @@ controller/jobs/index/optimize/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 

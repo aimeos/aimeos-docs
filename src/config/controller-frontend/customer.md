@@ -11,6 +11,9 @@ controller/frontend/customer/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -48,6 +51,9 @@ controller/frontend/customer/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -83,6 +89,9 @@ controller/frontend/customer/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -119,6 +128,9 @@ controller/frontend/customer/groupids = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of group IDs
 * Since: 2017.07
 

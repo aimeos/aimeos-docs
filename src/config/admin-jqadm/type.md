@@ -11,6 +11,9 @@ admin/jqadm/type/attribute/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -48,6 +51,9 @@ admin/jqadm/type/attribute/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -83,6 +89,9 @@ admin/jqadm/type/attribute/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -122,6 +131,13 @@ admin/jqadm/type/attribute/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => attribute.type.domain
+    [1] => attribute.type.status
+    [2] => attribute.type.code
+    [3] => attribute.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -144,6 +160,9 @@ admin/jqadm/type/attribute/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -181,6 +200,9 @@ admin/jqadm/type/attribute/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -216,6 +238,9 @@ admin/jqadm/type/attribute/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -255,6 +280,13 @@ admin/jqadm/type/attribute/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => attribute.lists.type.domain
+    [1] => attribute.lists.type.status
+    [2] => attribute.lists.type.code
+    [3] => attribute.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -322,6 +354,9 @@ admin/jqadm/type/attribute/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -363,10 +398,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/attribute/lists/template-item = type/attribute/lists/item-standard
+admin/jqadm/type/attribute/lists/template-item = type/attribute/lists/item
 ```
 
-* Default: type/attribute/lists/item-standard
+* Default: type/attribute/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -388,10 +423,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/attribute/lists/template-list = type/attribute/lists/list-standard
+admin/jqadm/type/attribute/lists/template-list = type/attribute/lists/list
 ```
 
-* Default: type/attribute/lists/list-standard
+* Default: type/attribute/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -464,6 +499,9 @@ admin/jqadm/type/attribute/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -501,6 +539,9 @@ admin/jqadm/type/attribute/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -536,6 +577,9 @@ admin/jqadm/type/attribute/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -575,6 +619,13 @@ admin/jqadm/type/attribute/property/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => attribute.property.type.domain
+    [1] => attribute.property.type.status
+    [2] => attribute.property.type.code
+    [3] => attribute.property.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -642,6 +693,9 @@ admin/jqadm/type/attribute/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -683,10 +737,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/attribute/property/template-item = type/attribute/property/item-standard
+admin/jqadm/type/attribute/property/template-item = type/attribute/property/item
 ```
 
-* Default: type/attribute/property/item-standard
+* Default: type/attribute/property/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.01
 
@@ -708,10 +762,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/attribute/property/template-list = type/attribute/property/list-standard
+admin/jqadm/type/attribute/property/template-list = type/attribute/property/list
 ```
 
-* Default: type/attribute/property/list-standard
+* Default: type/attribute/property/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -739,6 +793,9 @@ admin/jqadm/type/attribute/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -780,10 +837,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/attribute/template-item = type/attribute/item-standard
+admin/jqadm/type/attribute/template-item = type/attribute/item
 ```
 
-* Default: type/attribute/item-standard
+* Default: type/attribute/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -805,10 +862,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/attribute/template-list = type/attribute/list-standard
+admin/jqadm/type/attribute/template-list = type/attribute/list
 ```
 
-* Default: type/attribute/list-standard
+* Default: type/attribute/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -837,6 +894,9 @@ admin/jqadm/type/catalog/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -874,6 +934,9 @@ admin/jqadm/type/catalog/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -909,6 +972,9 @@ admin/jqadm/type/catalog/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -948,6 +1014,13 @@ admin/jqadm/type/catalog/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => catalog.lists.type.domain
+    [1] => catalog.lists.type.status
+    [2] => catalog.lists.type.code
+    [3] => catalog.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1015,6 +1088,9 @@ admin/jqadm/type/catalog/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1056,10 +1132,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/catalog/lists/template-item = type/catalog/lists/item-standard
+admin/jqadm/type/catalog/lists/template-item = type/catalog/lists/item
 ```
 
-* Default: type/catalog/lists/item-standard
+* Default: type/catalog/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -1081,10 +1157,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/catalog/lists/template-list = type/catalog/lists/list-standard
+admin/jqadm/type/catalog/lists/template-list = type/catalog/lists/list
 ```
 
-* Default: type/catalog/lists/list-standard
+* Default: type/catalog/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1113,6 +1189,9 @@ admin/jqadm/type/customer/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1150,6 +1229,9 @@ admin/jqadm/type/customer/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1185,6 +1267,9 @@ admin/jqadm/type/customer/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1224,6 +1309,13 @@ admin/jqadm/type/customer/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => customer.lists.type.domain
+    [1] => customer.lists.type.status
+    [2] => customer.lists.type.code
+    [3] => customer.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1291,6 +1383,9 @@ admin/jqadm/type/customer/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1332,10 +1427,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/customer/lists/template-item = type/customer/lists/item-standard
+admin/jqadm/type/customer/lists/template-item = type/customer/lists/item
 ```
 
-* Default: type/customer/lists/item-standard
+* Default: type/customer/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -1357,10 +1452,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/customer/lists/template-list = type/customer/lists/list-standard
+admin/jqadm/type/customer/lists/template-list = type/customer/lists/list
 ```
 
-* Default: type/customer/lists/list-standard
+* Default: type/customer/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1388,6 +1483,9 @@ admin/jqadm/type/customer/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1425,6 +1523,9 @@ admin/jqadm/type/customer/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1460,6 +1561,9 @@ admin/jqadm/type/customer/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1499,6 +1603,13 @@ admin/jqadm/type/customer/property/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => customer.property.type.domain
+    [1] => customer.property.type.status
+    [2] => customer.property.type.code
+    [3] => customer.property.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1566,6 +1677,9 @@ admin/jqadm/type/customer/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -1607,10 +1721,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/customer/property/template-item = type/customer/property/item-standard
+admin/jqadm/type/customer/property/template-item = type/customer/property/item
 ```
 
-* Default: type/customer/property/item-standard
+* Default: type/customer/property/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.01
 
@@ -1632,10 +1746,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/customer/property/template-list = type/customer/property/list-standard
+admin/jqadm/type/customer/property/template-list = type/customer/property/list
 ```
 
-* Default: type/customer/property/list-standard
+* Default: type/customer/property/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1664,6 +1778,9 @@ admin/jqadm/type/media/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1701,6 +1818,9 @@ admin/jqadm/type/media/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1736,6 +1856,9 @@ admin/jqadm/type/media/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1775,6 +1898,13 @@ admin/jqadm/type/media/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => media.type.domain
+    [1] => media.type.status
+    [2] => media.type.code
+    [3] => media.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1797,6 +1927,9 @@ admin/jqadm/type/media/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1834,6 +1967,9 @@ admin/jqadm/type/media/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1869,6 +2005,9 @@ admin/jqadm/type/media/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1908,6 +2047,13 @@ admin/jqadm/type/media/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => media.lists.type.domain
+    [1] => media.lists.type.status
+    [2] => media.lists.type.code
+    [3] => media.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1976,6 +2122,9 @@ admin/jqadm/type/media/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2017,10 +2166,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/media/lists/template-item = type/media/lists/item-standard
+admin/jqadm/type/media/lists/template-item = type/media/lists/item
 ```
 
-* Default: type/media/lists/item-standard
+* Default: type/media/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -2042,10 +2191,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/media/lists/template-list = type/media/lists/list-standard
+admin/jqadm/type/media/lists/template-list = type/media/lists/list
 ```
 
-* Default: type/media/lists/list-standard
+* Default: type/media/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2118,6 +2267,9 @@ admin/jqadm/type/media/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2155,6 +2307,9 @@ admin/jqadm/type/media/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2190,6 +2345,9 @@ admin/jqadm/type/media/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2229,6 +2387,13 @@ admin/jqadm/type/media/property/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => media.property.type.domain
+    [1] => media.property.type.status
+    [2] => media.property.type.code
+    [3] => media.property.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -2296,6 +2461,9 @@ admin/jqadm/type/media/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2337,10 +2505,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/media/property/template-item = type/media/property/item-standard
+admin/jqadm/type/media/property/template-item = type/media/property/item
 ```
 
-* Default: type/media/property/item-standard
+* Default: type/media/property/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -2362,10 +2530,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/media/property/template-list = type/media/property/list-standard
+admin/jqadm/type/media/property/template-list = type/media/property/list
 ```
 
-* Default: type/media/property/list-standard
+* Default: type/media/property/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2393,6 +2561,9 @@ admin/jqadm/type/media/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2434,10 +2605,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/media/template-item = type/media/item-standard
+admin/jqadm/type/media/template-item = type/media/item
 ```
 
-* Default: type/media/item-standard
+* Default: type/media/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -2459,10 +2630,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/media/template-list = type/media/list-standard
+admin/jqadm/type/media/template-list = type/media/list
 ```
 
-* Default: type/media/list-standard
+* Default: type/media/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2491,6 +2662,9 @@ admin/jqadm/type/plugin/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2528,6 +2702,9 @@ admin/jqadm/type/plugin/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2563,6 +2740,9 @@ admin/jqadm/type/plugin/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2602,6 +2782,13 @@ admin/jqadm/type/plugin/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => plugin.type.domain
+    [1] => plugin.type.status
+    [2] => plugin.type.code
+    [3] => plugin.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -2669,6 +2856,9 @@ admin/jqadm/type/plugin/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2710,10 +2900,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/plugin/template-item = type/plugin/item-standard
+admin/jqadm/type/plugin/template-item = type/plugin/item
 ```
 
-* Default: type/plugin/item-standard
+* Default: type/plugin/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -2735,10 +2925,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/plugin/template-list = type/plugin/list-standard
+admin/jqadm/type/plugin/template-list = type/plugin/list
 ```
 
-* Default: type/plugin/list-standard
+* Default: type/plugin/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2767,6 +2957,9 @@ admin/jqadm/type/price/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2804,6 +2997,9 @@ admin/jqadm/type/price/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2839,6 +3035,9 @@ admin/jqadm/type/price/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2878,6 +3077,13 @@ admin/jqadm/type/price/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => price.type.domain
+    [1] => price.type.status
+    [2] => price.type.code
+    [3] => price.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -2900,6 +3106,9 @@ admin/jqadm/type/price/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2937,6 +3146,9 @@ admin/jqadm/type/price/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2972,6 +3184,9 @@ admin/jqadm/type/price/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3011,6 +3226,13 @@ admin/jqadm/type/price/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => price.lists.type.domain
+    [1] => price.lists.type.status
+    [2] => price.lists.type.code
+    [3] => price.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3078,6 +3300,9 @@ admin/jqadm/type/price/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -3119,10 +3344,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/price/lists/template-item = type/price/lists/item-standard
+admin/jqadm/type/price/lists/template-item = type/price/lists/item
 ```
 
-* Default: type/price/lists/item-standard
+* Default: type/price/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -3144,10 +3369,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/price/lists/template-list = type/price/lists/list-standard
+admin/jqadm/type/price/lists/template-list = type/price/lists/list
 ```
 
-* Default: type/price/lists/list-standard
+* Default: type/price/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3220,6 +3445,9 @@ admin/jqadm/type/price/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3257,6 +3485,9 @@ admin/jqadm/type/price/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3292,6 +3523,9 @@ admin/jqadm/type/price/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3331,6 +3565,13 @@ admin/jqadm/type/price/property/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => price.property.type.domain
+    [1] => price.property.type.status
+    [2] => price.property.type.code
+    [3] => price.property.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3398,6 +3639,9 @@ admin/jqadm/type/price/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -3439,10 +3683,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/price/property/template-item = type/price/property/item-standard
+admin/jqadm/type/price/property/template-item = type/price/property/item
 ```
 
-* Default: type/price/property/item-standard
+* Default: type/price/property/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -3464,10 +3708,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/price/property/template-list = type/price/property/list-standard
+admin/jqadm/type/price/property/template-list = type/price/property/list
 ```
 
-* Default: type/price/property/list-standard
+* Default: type/price/property/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3495,6 +3739,9 @@ admin/jqadm/type/price/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -3536,10 +3783,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/price/template-item = type/price/item-standard
+admin/jqadm/type/price/template-item = type/price/item
 ```
 
-* Default: type/price/item-standard
+* Default: type/price/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -3561,10 +3808,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/price/template-list = type/price/list-standard
+admin/jqadm/type/price/template-list = type/price/list
 ```
 
-* Default: type/price/list-standard
+* Default: type/price/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3593,6 +3840,9 @@ admin/jqadm/type/product/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3630,6 +3880,9 @@ admin/jqadm/type/product/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3665,6 +3918,9 @@ admin/jqadm/type/product/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3704,6 +3960,13 @@ admin/jqadm/type/product/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => product.type.domain
+    [1] => product.type.status
+    [2] => product.type.code
+    [3] => product.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3726,6 +3989,9 @@ admin/jqadm/type/product/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3763,6 +4029,9 @@ admin/jqadm/type/product/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3798,6 +4067,9 @@ admin/jqadm/type/product/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3837,6 +4109,13 @@ admin/jqadm/type/product/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => product.lists.type.domain
+    [1] => product.lists.type.status
+    [2] => product.lists.type.code
+    [3] => product.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3905,6 +4184,9 @@ admin/jqadm/type/product/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -3946,10 +4228,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/product/lists/template-item = type/product/lists/item-standard
+admin/jqadm/type/product/lists/template-item = type/product/lists/item
 ```
 
-* Default: type/product/lists/item-standard
+* Default: type/product/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -3971,10 +4253,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/product/lists/template-list = type/product/lists/list-standard
+admin/jqadm/type/product/lists/template-list = type/product/lists/list
 ```
 
-* Default: type/product/lists/list-standard
+* Default: type/product/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4047,6 +4329,9 @@ admin/jqadm/type/product/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4084,6 +4369,9 @@ admin/jqadm/type/product/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4119,6 +4407,9 @@ admin/jqadm/type/product/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4158,6 +4449,13 @@ admin/jqadm/type/product/property/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => product.property.type.domain
+    [1] => product.property.type.status
+    [2] => product.property.type.code
+    [3] => product.property.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4225,6 +4523,9 @@ admin/jqadm/type/product/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -4266,10 +4567,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/product/property/template-item = type/product/property/item-standard
+admin/jqadm/type/product/property/template-item = type/product/property/item
 ```
 
-* Default: type/product/property/item-standard
+* Default: type/product/property/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -4291,10 +4592,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/product/property/template-list = type/product/property/list-standard
+admin/jqadm/type/product/property/template-list = type/product/property/list
 ```
 
-* Default: type/product/property/list-standard
+* Default: type/product/property/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4322,6 +4623,9 @@ admin/jqadm/type/product/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -4363,10 +4667,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/product/template-item = type/product/item-standard
+admin/jqadm/type/product/template-item = type/product/item
 ```
 
-* Default: type/product/item-standard
+* Default: type/product/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -4388,10 +4692,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/product/template-list = type/product/list-standard
+admin/jqadm/type/product/template-list = type/product/list
 ```
 
-* Default: type/product/list-standard
+* Default: type/product/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4420,6 +4724,9 @@ admin/jqadm/type/rule/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -4457,6 +4764,9 @@ admin/jqadm/type/rule/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -4492,6 +4802,9 @@ admin/jqadm/type/rule/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -4531,6 +4844,13 @@ admin/jqadm/type/rule/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => rule.type.domain
+    [1] => rule.type.status
+    [2] => rule.type.code
+    [3] => rule.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4598,6 +4918,9 @@ admin/jqadm/type/rule/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -4639,10 +4962,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/rule/template-item = type/rule/item-standard
+admin/jqadm/type/rule/template-item = type/rule/item
 ```
 
-* Default: type/rule/item-standard
+* Default: type/rule/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -4664,10 +4987,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/rule/template-list = type/rule/list-standard
+admin/jqadm/type/rule/template-list = type/rule/list
 ```
 
-* Default: type/rule/list-standard
+* Default: type/rule/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -4696,6 +5019,9 @@ admin/jqadm/type/service/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4733,6 +5059,9 @@ admin/jqadm/type/service/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4768,6 +5097,9 @@ admin/jqadm/type/service/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4807,6 +5139,13 @@ admin/jqadm/type/service/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => service.type.domain
+    [1] => service.type.status
+    [2] => service.type.code
+    [3] => service.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4934,6 +5273,13 @@ admin/jqadm/type/service/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => service.lists.type.domain
+    [1] => service.lists.type.status
+    [2] => service.lists.type.code
+    [3] => service.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4956,6 +5302,9 @@ admin/jqadm/type/service/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -4997,10 +5346,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/service/lists/template-item = type/service/lists/item-standard
+admin/jqadm/type/service/lists/template-item = type/service/lists/item
 ```
 
-* Default: type/service/lists/item-standard
+* Default: type/service/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -5022,10 +5371,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/service/lists/template-list = type/service/lists/list-standard
+admin/jqadm/type/service/lists/template-list = type/service/lists/list
 ```
 
-* Default: type/service/lists/list-standard
+* Default: type/service/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -5098,6 +5447,9 @@ admin/jqadm/type/service/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -5139,10 +5491,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/service/template-item = type/service/item-standard
+admin/jqadm/type/service/template-item = type/service/item
 ```
 
-* Default: type/service/item-standard
+* Default: type/service/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -5164,10 +5516,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/service/template-list = type/service/list-standard
+admin/jqadm/type/service/template-list = type/service/list
 ```
 
-* Default: type/service/list-standard
+* Default: type/service/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -5196,6 +5548,9 @@ admin/jqadm/type/stock/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5233,6 +5588,9 @@ admin/jqadm/type/stock/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5268,6 +5626,9 @@ admin/jqadm/type/stock/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5307,6 +5668,13 @@ admin/jqadm/type/stock/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => stock.type.domain
+    [1] => stock.type.status
+    [2] => stock.type.code
+    [3] => stock.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -5374,6 +5742,9 @@ admin/jqadm/type/stock/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -5415,10 +5786,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/stock/template-item = type/stock/item-standard
+admin/jqadm/type/stock/template-item = type/stock/item
 ```
 
-* Default: type/stock/item-standard
+* Default: type/stock/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -5440,10 +5811,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/stock/template-list = type/stock/list-standard
+admin/jqadm/type/stock/template-list = type/stock/list
 ```
 
-* Default: type/stock/list-standard
+* Default: type/stock/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -5472,6 +5843,9 @@ admin/jqadm/type/tag/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5509,6 +5883,9 @@ admin/jqadm/type/tag/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5544,6 +5921,9 @@ admin/jqadm/type/tag/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5583,6 +5963,13 @@ admin/jqadm/type/tag/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => tag.type.domain
+    [1] => tag.type.status
+    [2] => tag.type.code
+    [3] => tag.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -5650,6 +6037,9 @@ admin/jqadm/type/tag/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -5691,10 +6081,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/tag/template-item = type/tag/item-standard
+admin/jqadm/type/tag/template-item = type/tag/item
 ```
 
-* Default: type/tag/item-standard
+* Default: type/tag/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -5716,10 +6106,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/tag/template-list = type/tag/list-standard
+admin/jqadm/type/tag/template-list = type/tag/list
 ```
 
-* Default: type/tag/list-standard
+* Default: type/tag/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -5748,6 +6138,9 @@ admin/jqadm/type/text/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5785,6 +6178,9 @@ admin/jqadm/type/text/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5820,6 +6216,9 @@ admin/jqadm/type/text/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5859,6 +6258,13 @@ admin/jqadm/type/text/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => text.type.domain
+    [1] => text.type.status
+    [2] => text.type.code
+    [3] => text.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -5986,6 +6392,13 @@ admin/jqadm/type/text/lists/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => text.lists.type.domain
+    [1] => text.lists.type.status
+    [2] => text.lists.type.code
+    [3] => text.lists.type.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -6008,6 +6421,9 @@ admin/jqadm/type/text/lists/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -6049,10 +6465,10 @@ design.
 Relative path to the HTML body template for the list type item.
 
 ```
-admin/jqadm/type/text/lists/template-item = type/text/lists/item-standard
+admin/jqadm/type/text/lists/template-item = type/text/lists/item
 ```
 
-* Default: type/text/lists/item-standard
+* Default: type/text/lists/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -6074,10 +6490,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the list type list.
 
 ```
-admin/jqadm/type/text/lists/template-list = type/text/lists/list-standard
+admin/jqadm/type/text/lists/template-list = type/text/lists/list
 ```
 
-* Default: type/text/lists/list-standard
+* Default: type/text/lists/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -6150,6 +6566,9 @@ admin/jqadm/type/text/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -6191,10 +6610,10 @@ design.
 Relative path to the HTML body template for the type item.
 
 ```
-admin/jqadm/type/text/template-item = type/text/item-standard
+admin/jqadm/type/text/template-item = type/text/item
 ```
 
-* Default: type/text/item-standard
+* Default: type/text/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -6216,10 +6635,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the type list.
 
 ```
-admin/jqadm/type/text/template-list = type/text/list-standard
+admin/jqadm/type/text/template-list = type/text/list
 ```
 
-* Default: type/text/list-standard
+* Default: type/text/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

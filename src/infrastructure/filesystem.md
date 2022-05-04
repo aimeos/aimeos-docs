@@ -252,7 +252,7 @@ The timestamp is the number of seconds since 1970-01-01 00:00:00.
 
 # Create own adapter
 
-Custom filesystem adapters should be added to your own [Aimeos extension](../developer/extension.md) and placed into this directory within the extension:
+Custom filesystem adapters should be added to your own [Aimeos extension](../developer/extensions.md) and placed into this directory within the extension:
 
 ```
 src/Base/Filesystem/

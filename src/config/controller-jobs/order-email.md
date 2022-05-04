@@ -1,5 +1,56 @@
 
 # delivery
+## attachments
+
+List of file paths whose content should be attached to all delivery e-mails
+
+```
+controller/jobs/order/email/delivery/attachments = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+* Type: array - List of absolute file paths
+* Since: 2016.10
+
+This configuration option allows you to add files to the e-mails that are
+sent to the customer when the delivery status changes, e.g. for the order
+confirmation e-mail. These files can't be customer specific.
+
+See also:
+
+* controller/jobs/order/email/payment/attachments
+
+## bcc-email
+
+E-Mail address all delivery e-mails should be also sent to
+
+```
+controller/jobs/order/email/delivery/bcc-email = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+* Type: string|array - E-mail address or list of e-mail addresses
+* Since: 2014.03
+
+Using this option you can send a copy of all delivery related e-mails
+to a second e-mail account. This can be handy for testing and checking
+the e-mails sent to customers.
+
+It also allows shop owners with a very small volume of orders to be
+notified about delivery changes. Be aware that this isn't useful if the
+order volumne is high or has peeks!
+
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the order email delivery controllers
@@ -11,6 +62,9 @@ controller/jobs/order/email/delivery/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -48,6 +102,9 @@ controller/jobs/order/email/delivery/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -83,6 +140,9 @@ controller/jobs/order/email/delivery/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -191,6 +251,13 @@ controller/jobs/order/email/delivery/status = Array
 ```
 
 * Default: Array
+(
+    [0] => 2
+    [1] => 3
+    [2] => 6
+    [3] => 7
+)
+
 * Type: integer - Delivery status constant
 * Since: 2014.03
 
@@ -214,7 +281,104 @@ See also:
 * controller/jobs/order/email/payment/status
 * controller/jobs/order/email/delivery/limit-days
 
+## template-html
+
+Relative path to the template for the HTML part of the delivery emails.
+
+```
+controller/jobs/order/email/delivery/template-html = order/email/delivery/html
+```
+
+* Default: order/email/delivery/html
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/delivery/template-text
+
+## template-text
+
+Relative path to the template for the text part of the delivery emails.
+
+```
+controller/jobs/order/email/delivery/template-text = order/email/delivery/text
+```
+
+* Default: order/email/delivery/text
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the text and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/delivery/template-html
+
 # payment
+## attachments
+
+List of file paths whose content should be attached to all payment e-mails
+
+```
+controller/jobs/order/email/payment/attachments = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+* Type: array - List of absolute file paths
+* Since: 2016.10
+
+This configuration option allows you to add files to the e-mails that are
+sent to the customer when the payment status changes, e.g. for the order
+confirmation e-mail. These files can't be customer specific.
+
+See also:
+
+* controller/jobs/order/email/delivery/attachments
+
+## bcc-email
+
+E-Mail address all payment e-mails should be also sent to
+
+```
+controller/jobs/order/email/payment/bcc-email = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+* Type: string|array - E-mail address or list of e-mail addresses
+* Since: 2014.03
+
+Using this option you can send a copy of all payment related e-mails
+to a second e-mail account. This can be handy for testing and checking
+the e-mails sent to customers.
+
+It also allows shop owners with a very small volume of orders to be
+notified about payment changes. Be aware that this isn't useful if the
+order volumne is high or has peeks!
+
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the order email payment controllers
@@ -226,6 +390,9 @@ controller/jobs/order/email/payment/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -263,6 +430,9 @@ controller/jobs/order/email/payment/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -298,6 +468,9 @@ controller/jobs/order/email/payment/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -390,6 +563,40 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyPayment"!
 
 
+## pdf
+
+Enables attaching the order confirmation PDF to the payment e-mail
+
+```
+controller/jobs/order/email/payment/pdf = 1
+```
+
+* Default: 1
+* Type: bool - TRUE to enable attaching the PDF, FALSE to skip the PDF
+* Since: 2022.04
+
+The order confirmation PDF contains the same information like the
+HTML e-mail and can be also used as invoice if possible.
+
+
+## pdf-partial
+
+Location of the address partial template for the text e-mails
+
+```
+controller/jobs/order/email/payment/pdf-partial = order/email/summary-pdf
+```
+
+* Default: order/email/summary-pdf
+* Type: string - Relative path to the address partial
+* Since: 2020.07
+
+To configure an alternative template for the address partial, you
+have to configure its path relative to the template directory
+(usually controller/jobs/templates/). It's then used to display the
+payment or delivery address block in the text e-mails.
+
+
 ## status
 
 Only send order payment notification e-mails for these payment status values
@@ -405,6 +612,13 @@ controller/jobs/order/email/payment/status = Array
 ```
 
 * Default: Array
+(
+    [0] => 3
+    [1] => 4
+    [2] => 5
+    [3] => 6
+)
+
 * Type: integer - Payment status constant
 * Since: 2014.03
 
@@ -418,6 +632,7 @@ status values:
 * 4: pending
 * 5: authorized
 * 6: received
+* 7: transferred
 
 User-defined status values are possible but should be in the private
 block of values between 30000 and 32767.
@@ -426,6 +641,108 @@ See also:
 
 * controller/jobs/order/email/delivery/status
 * controller/jobs/order/email/payment/limit-days
+
+## template-html
+
+Relative path to the template for the HTML part of the payment emails.
+
+```
+controller/jobs/order/email/payment/template-html = order/email/payment/html
+```
+
+* Default: order/email/payment/html
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/payment/template-text
+
+## template-pdf
+
+```
+controller/jobs/order/email/payment/template-pdf = order/email/payment/pdf
+```
+
+* Default: order/email/payment/pdf
+
+
+## template-text
+
+Relative path to the template for the text part of the payment emails.
+
+```
+controller/jobs/order/email/payment/template-text = order/email/payment/text
+```
+
+* Default: order/email/payment/text
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the text and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/payment/template-html
+
+# subscription
+## template-html
+
+Relative path to the template for the HTML part of the subscription emails.
+
+```
+controller/jobs/order/email/subscription/template-html = order/email/subscription/html
+```
+
+* Default: order/email/subscription/html
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/subscription/template-text
+
+## template-text
+
+Relative path to the template for the text part of the subscription emails.
+
+```
+controller/jobs/order/email/subscription/template-text = order/email/subscription/text
+```
+
+* Default: order/email/subscription/text
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the text and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/subscription/template-html
 
 # voucher
 ## decorators/excludes
@@ -439,6 +756,9 @@ controller/jobs/order/email/voucher/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -476,6 +796,9 @@ controller/jobs/order/email/voucher/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -511,6 +834,9 @@ controller/jobs/order/email/voucher/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -627,3 +953,49 @@ E-mail containing vouchers can be sent for these payment status values:
 See also:
 
 * controller/jobs/order/email/voucher/limit-days
+
+## template-html
+
+Relative path to the template for the HTML part of the voucher emails.
+
+```
+controller/jobs/order/email/voucher/template-html = order/email/voucher/html
+```
+
+* Default: order/email/voucher/html
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/voucher/template-text
+
+## template-text
+
+Relative path to the template for the text part of the voucher emails.
+
+```
+controller/jobs/order/email/voucher/template-text = order/email/voucher/text
+```
+
+* Default: order/email/voucher/text
+* Type: string - Relative path to the template
+* Since: 2022.04
+
+The template file contains the text and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in controller/jobs/templates).
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+See also:
+
+* controller/jobs/order/email/voucher/template-html

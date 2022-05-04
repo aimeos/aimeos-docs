@@ -10,6 +10,9 @@ mshop/coupon/provider/decorators = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.05
 

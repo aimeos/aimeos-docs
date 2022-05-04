@@ -13,6 +13,12 @@ client/html/catalog/social/list = Array
 ```
 
 * Default: Array
+(
+    [0] => facebook
+    [1] => twitter
+    [2] => pinterest
+)
+
 * Type: array - List of social network names
 * Since: 2017.04
 

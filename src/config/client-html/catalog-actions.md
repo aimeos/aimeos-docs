@@ -13,6 +13,12 @@ client/html/catalog/actions/list = Array
 ```
 
 * Default: Array
+(
+    [0] => pin
+    [1] => watch
+    [2] => favorite
+)
+
 * Type: array - List of user action names
 * Since: 2017.04
 

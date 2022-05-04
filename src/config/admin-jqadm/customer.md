@@ -46,6 +46,9 @@ admin/jqadm/customer/address/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -81,6 +84,9 @@ admin/jqadm/customer/address/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -132,6 +138,9 @@ admin/jqadm/customer/address/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -173,10 +182,10 @@ design.
 Relative path to the HTML body template of the address subpart for customers.
 
 ```
-admin/jqadm/customer/address/template-item = customer/item-address-standard
+admin/jqadm/customer/address/template-item = customer/item-address
 ```
 
-* Default: customer/item-address-standard
+* Default: customer/item-address
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -205,6 +214,9 @@ admin/jqadm/customer/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -242,6 +254,9 @@ admin/jqadm/customer/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -277,6 +292,9 @@ admin/jqadm/customer/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -315,6 +333,9 @@ admin/jqadm/customer/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of domain names
 * Since: 2017.07
 
@@ -338,6 +359,13 @@ admin/jqadm/customer/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => customer.code
+    [1] => customer.lastname
+    [2] => customer.postal
+    [3] => customer.city
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -441,6 +469,9 @@ admin/jqadm/customer/order/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -476,6 +507,9 @@ admin/jqadm/customer/order/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -515,6 +549,13 @@ admin/jqadm/customer/order/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => order.id
+    [1] => order.datepayment
+    [2] => order.statuspayment
+    [3] => order.baseid
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -553,6 +594,9 @@ admin/jqadm/customer/order/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -594,10 +638,10 @@ design.
 Relative path to the HTML body template of the order subpart for customers.
 
 ```
-admin/jqadm/customer/order/template-item = customer/item-order-standard
+admin/jqadm/customer/order/template-item = customer/item-order
 ```
 
-* Default: customer/item-order-standard
+* Default: customer/item-order
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -662,6 +706,9 @@ admin/jqadm/customer/product/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -697,6 +744,9 @@ admin/jqadm/customer/product/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -736,6 +786,13 @@ admin/jqadm/customer/product/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => customer.lists.status
+    [1] => customer.lists.type
+    [2] => customer.lists.position
+    [3] => customer.lists.refid
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -774,6 +831,9 @@ admin/jqadm/customer/product/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -815,10 +875,10 @@ design.
 Relative path to the HTML body template of the product subpart for customers.
 
 ```
-admin/jqadm/customer/product/template-item = customer/item-product-standard
+admin/jqadm/customer/product/template-item = customer/item-product
 ```
 
-* Default: customer/item-product-standard
+* Default: customer/item-product
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -882,6 +942,9 @@ admin/jqadm/customer/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -917,6 +980,9 @@ admin/jqadm/customer/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -968,6 +1034,9 @@ admin/jqadm/customer/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.07
 
@@ -1009,10 +1078,10 @@ design.
 Relative path to the HTML body template of the property subpart for customers.
 
 ```
-admin/jqadm/customer/property/template-item = customer/item-property-standard
+admin/jqadm/customer/property/template-item = customer/item-property
 ```
 
-* Default: customer/item-property-standard
+* Default: customer/item-property
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.07
 
@@ -1044,6 +1113,9 @@ admin/jqadm/customer/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1085,10 +1157,10 @@ design.
 Relative path to the HTML body template for the customer item.
 
 ```
-admin/jqadm/customer/template-item = customer/item-standard
+admin/jqadm/customer/template-item = customer/item
 ```
 
-* Default: customer/item-standard
+* Default: customer/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1110,10 +1182,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the customer list.
 
 ```
-admin/jqadm/customer/template-list = customer/list-standard
+admin/jqadm/customer/template-list = customer/list
 ```
 
-* Default: customer/list-standard
+* Default: customer/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

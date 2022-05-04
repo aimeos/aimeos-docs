@@ -6,11 +6,15 @@ Configures the list of decorators applied to all html clients
 ```
 client/html/common/decorators/default = Array
 (
-    [0] => Context
+    [0] => Exceptions
+    [1] => Context
 )
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 

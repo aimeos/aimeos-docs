@@ -11,6 +11,9 @@ controller/jobs/xml/import/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -48,6 +51,9 @@ controller/jobs/xml/import/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -83,6 +89,9 @@ controller/jobs/xml/import/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 

@@ -33,6 +33,9 @@ admin/jqadm/url/copy/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -132,6 +135,9 @@ admin/jqadm/url/create/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -231,6 +237,9 @@ admin/jqadm/url/delete/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -330,6 +339,9 @@ admin/jqadm/url/export/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -429,6 +441,9 @@ admin/jqadm/url/get/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -481,6 +496,9 @@ admin/jqadm/url/get/filter = Array
 ```
 
 * Default: Array
+(
+)
+
 
 
 ## target
@@ -539,6 +557,9 @@ admin/jqadm/url/save/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -638,6 +659,9 @@ admin/jqadm/url/search/config = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -690,6 +714,9 @@ admin/jqadm/url/search/filter = Array
 ```
 
 * Default: Array
+(
+)
+
 
 
 ## target

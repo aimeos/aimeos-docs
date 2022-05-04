@@ -1,4 +1,22 @@
 
+# cleanup
+
+```
+madmin/cache/manager/cleanup = DELETE FROM "madmin_cache" WHERE "expire" < ?
+```
+
+* Default: 
+
+
+# clear
+
+```
+madmin/cache/manager/clear = DELETE FROM "madmin_cache"
+```
+
+* Default: 
+
+
 # count
 ## ansi
 
@@ -67,6 +85,9 @@ madmin/cache/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -104,6 +125,9 @@ madmin/cache/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -139,6 +163,9 @@ madmin/cache/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -165,171 +192,36 @@ See also:
 * madmin/cache/manager/decorators/global
 
 # delete
-## ansi
-
-Deletes the items matched by the given IDs from the database
 
 ```
-madmin/cache/manager/delete/ansi = 
- DELETE FROM "madmin_cache" WHERE :cond
-```
-
-* Default: madmin/cache/manager/delete
-* Type: string - SQL statement for deleting items
-* Since: 2014.03
-
-Removes the records specified by the given IDs from the cache database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the ID column and
-the given ID or list of IDs while the site ID is bound to the question
-mark.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/cache/manager/deletebytag/ansi
-* madmin/cache/manager/get/ansi
-* madmin/cache/manager/set/ansi
-* madmin/cache/manager/settag/ansi
-* madmin/cache/manager/search/ansi
-* madmin/cache/manager/count/ansi
-
-## mysql
-
-Deletes the items matched by the given IDs from the database
-
-```
-madmin/cache/manager/delete/mysql = 
- DELETE FROM "madmin_cache" WHERE :cond
+madmin/cache/manager/delete = DELETE FROM "madmin_cache" WHERE "id" IN (?)
 ```
 
 * Default: 
- DELETE FROM "madmin_cache" WHERE :cond
 
-
-See also:
-
-* madmin/cache/manager/delete/ansi
 
 # deletebytag
-## ansi
-
-Deletes the items from the database matched by the given tags
 
 ```
-madmin/cache/manager/deletebytag/ansi = 
- DELETE FROM "madmin_cache" WHERE id IN (
- 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
- )
-```
-
-* Default: madmin/cache/manager/deletebytag
-* Type: string - SQL statement for deleting items by tags
-* Since: 2014.03
-
-Removes the records specified by the given tags from the cache database.
-The records must be from the site that is configured via the
-context item.
-
-The ":cond" placeholder is replaced by the name of the tag column and
-the given tag or list of tags.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/cache/manager/delete/ansi
-* madmin/cache/manager/get/ansi
-* madmin/cache/manager/set/ansi
-* madmin/cache/manager/settag/ansi
-* madmin/cache/manager/search/ansi
-* madmin/cache/manager/count/ansi
-
-## mysql
-
-Deletes the items from the database matched by the given tags
-
-```
-madmin/cache/manager/deletebytag/mysql = 
- DELETE FROM "madmin_cache" WHERE id IN (
- 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
+madmin/cache/manager/deletebytag = 
+ DELETE FROM "madmin_cache" WHERE "id" IN (
+ 	SELECT "tid" FROM "madmin_cache_tag" WHERE "tname" IN (?)
  )
 ```
 
 * Default: 
- DELETE FROM "madmin_cache" WHERE id IN (
- 	SELECT "tid" FROM "madmin_cache_tag" WHERE :cond
- )
 
-
-See also:
-
-* madmin/cache/manager/deletebytag/ansi
 
 # get
-## ansi
-
-Retrieves the records matched by the given criteria in the database
 
 ```
-madmin/cache/manager/get/ansi = 
+madmin/cache/manager/get = 
  SELECT "id", "value", "expire" FROM "madmin_cache"
- WHERE :cond
-```
-
-* Default: madmin/cache/manager/get
-* Type: string - SQL statement for searching items
-* Since: 2014.03
-
-Fetches the records matched by the given criteria from the cache
-database. The records must be from the sites that is
-configured in the context item.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* madmin/cache/manager/delete/ansi
-* madmin/cache/manager/deletebytag/ansi
-* madmin/cache/manager/set/ansi
-* madmin/cache/manager/settag/ansi
-* madmin/cache/manager/search/ansi
-* madmin/cache/manager/count/ansi
-
-## mysql
-
-Retrieves the records matched by the given criteria in the database
-
-```
-madmin/cache/manager/get/mysql = 
- SELECT "id", "value", "expire" FROM "madmin_cache"
- WHERE :cond
+ WHERE ( "expire" >= ? OR "expire" IS NULL ) AND "id" IN (?)
 ```
 
 * Default: 
- SELECT "id", "value", "expire" FROM "madmin_cache"
- WHERE :cond
 
-
-See also:
-
-* madmin/cache/manager/get/ansi
 
 # name
 
@@ -450,12 +342,9 @@ See also:
 * madmin/cache/manager/search/ansi
 
 # set
-## ansi
-
-Inserts the cache entry into the database
 
 ```
-madmin/cache/manager/set/ansi = 
+madmin/cache/manager/set = 
  INSERT INTO "madmin_cache" (
  	"id", "expire", "value"
  ) VALUES (
@@ -463,7 +352,18 @@ madmin/cache/manager/set/ansi =
  )
 ```
 
-* Default: madmin/cache/manager/set
+* Default: 
+
+
+## ansi
+
+Inserts the cache entry into the database
+
+```
+madmin/cache/manager/set/ansi = 
+```
+
+* Default: 
 * Type: string - SQL statement for inserting a new cache entry
 * Since: 2014.03
 
@@ -499,32 +399,18 @@ Inserts the cache entry into the database
 
 ```
 madmin/cache/manager/set/mysql = 
- INSERT INTO "madmin_cache" (
- 	"id", "expire", "value"
- ) VALUES (
- 	?, ?, ?
- )
 ```
 
 * Default: 
- INSERT INTO "madmin_cache" (
- 	"id", "expire", "value"
- ) VALUES (
- 	?, ?, ?
- )
-
 
 See also:
 
 * madmin/cache/manager/set/ansi
 
 # settag
-## ansi
-
-Inserts a new tag to an existing cache entry
 
 ```
-madmin/cache/manager/settag/ansi = 
+madmin/cache/manager/settag = 
  INSERT INTO "madmin_cache_tag" (
  	"tid", "tname"
  ) VALUES (
@@ -532,7 +418,18 @@ madmin/cache/manager/settag/ansi =
  )
 ```
 
-* Default: madmin/cache/manager/settag
+* Default: 
+
+
+## ansi
+
+Inserts a new tag to an existing cache entry
+
+```
+madmin/cache/manager/settag/ansi = 
+```
+
+* Default: 
 * Type: string - SQL statement for inserting a new tag to an existing cache entry
 * Since: 2014.03
 
@@ -568,20 +465,9 @@ Inserts a new tag to an existing cache entry
 
 ```
 madmin/cache/manager/settag/mysql = 
- INSERT INTO "madmin_cache_tag" (
- 	"tid", "tname"
- ) VALUES (
- 	?, ?
- )
 ```
 
 * Default: 
- INSERT INTO "madmin_cache_tag" (
- 	"tid", "tname"
- ) VALUES (
- 	?, ?
- )
-
 
 See also:
 
@@ -598,6 +484,9 @@ madmin/cache/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

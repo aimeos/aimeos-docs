@@ -46,6 +46,9 @@ admin/jqadm/product/bundle/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -81,6 +84,9 @@ admin/jqadm/product/bundle/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -132,6 +138,9 @@ admin/jqadm/product/bundle/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -173,10 +182,10 @@ design.
 Relative path to the HTML body template of the bundle subpart for products.
 
 ```
-admin/jqadm/product/bundle/template-item = product/item-bundle-standard
+admin/jqadm/product/bundle/template-item = product/item-bundle
 ```
 
-* Default: product/item-bundle-standard
+* Default: product/item-bundle
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -240,6 +249,9 @@ admin/jqadm/product/category/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -275,6 +287,9 @@ admin/jqadm/product/category/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -326,6 +341,9 @@ admin/jqadm/product/category/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -367,10 +385,10 @@ design.
 Relative path to the HTML body template of the category subpart for products.
 
 ```
-admin/jqadm/product/category/template-item = product/item-category-standard
+admin/jqadm/product/category/template-item = product/item-category
 ```
 
-* Default: product/item-category-standard
+* Default: product/item-category
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -434,6 +452,9 @@ admin/jqadm/product/characteristic/attribute/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -469,6 +490,9 @@ admin/jqadm/product/characteristic/attribute/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -520,6 +544,9 @@ admin/jqadm/product/characteristic/attribute/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -561,10 +588,10 @@ design.
 Relative path to the HTML body template of the attribute characteristic subpart for products.
 
 ```
-admin/jqadm/product/characteristic/attribute/template-item = product/item-characteristic-attribute-standard
+admin/jqadm/product/characteristic/attribute/template-item = product/item-characteristic-attribute
 ```
 
-* Default: product/item-characteristic-attribute-standard
+* Default: product/item-characteristic-attribute
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -627,6 +654,9 @@ admin/jqadm/product/characteristic/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -662,6 +692,9 @@ admin/jqadm/product/characteristic/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -732,6 +765,9 @@ admin/jqadm/product/characteristic/hidden/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -767,6 +803,9 @@ admin/jqadm/product/characteristic/hidden/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -818,6 +857,9 @@ admin/jqadm/product/characteristic/hidden/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -859,10 +901,10 @@ design.
 Relative path to the HTML body template of the hidden characteristic subpart for products.
 
 ```
-admin/jqadm/product/characteristic/hidden/template-item = product/item-characteristic-hidden-standard
+admin/jqadm/product/characteristic/hidden/template-item = product/item-characteristic-hidden
 ```
 
-* Default: product/item-characteristic-hidden-standard
+* Default: product/item-characteristic-hidden
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -941,6 +983,9 @@ admin/jqadm/product/characteristic/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -976,6 +1021,9 @@ admin/jqadm/product/characteristic/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1027,6 +1075,9 @@ admin/jqadm/product/characteristic/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -1068,10 +1119,10 @@ design.
 Relative path to the HTML body template of the property characteristic subpart for products.
 
 ```
-admin/jqadm/product/characteristic/property/template-item = product/item-characteristic-property-standard
+admin/jqadm/product/characteristic/property/template-item = product/item-characteristic-property
 ```
 
-* Default: product/item-characteristic-property-standard
+* Default: product/item-characteristic-property
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1103,6 +1154,9 @@ admin/jqadm/product/characteristic/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -1144,10 +1198,10 @@ design.
 Relative path to the HTML body template of the characteristic subpart for products.
 
 ```
-admin/jqadm/product/characteristic/template-item = product/item-characteristic-standard
+admin/jqadm/product/characteristic/template-item = product/item-characteristic
 ```
 
-* Default: product/item-characteristic-standard
+* Default: product/item-characteristic
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1210,6 +1264,9 @@ admin/jqadm/product/characteristic/variant/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1245,6 +1302,9 @@ admin/jqadm/product/characteristic/variant/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1296,6 +1356,9 @@ admin/jqadm/product/characteristic/variant/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -1337,10 +1400,10 @@ design.
 Relative path to the HTML body template of the variant characteristic subpart for products.
 
 ```
-admin/jqadm/product/characteristic/variant/template-item = product/item-characteristic-variant-standard
+admin/jqadm/product/characteristic/variant/template-item = product/item-characteristic-variant
 ```
 
-* Default: product/item-characteristic-variant-standard
+* Default: product/item-characteristic-variant
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1369,6 +1432,9 @@ admin/jqadm/product/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1406,6 +1472,9 @@ admin/jqadm/product/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1441,6 +1510,9 @@ admin/jqadm/product/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1473,6 +1545,7 @@ List of domain items that should be fetched along with the product
 admin/jqadm/product/domains = Array
 (
     [attribute] => attribute
+    [catalog] => catalog
     [media] => media
     [media/property] => media/property
     [price] => price
@@ -1484,11 +1557,15 @@ admin/jqadm/product/domains = Array
             [0] => default
         )
 
+    [supplier] => supplier
     [text] => text
 )
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of domain names
 * Since: 2016.01
 
@@ -1544,6 +1621,9 @@ admin/jqadm/product/download/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.03
 
@@ -1579,6 +1659,9 @@ admin/jqadm/product/download/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.03
 
@@ -1630,6 +1713,9 @@ admin/jqadm/product/download/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.03
 
@@ -1671,10 +1757,10 @@ design.
 Relative path to the HTML body template of the download subpart for products.
 
 ```
-admin/jqadm/product/download/template-item = product/item-download-standard
+admin/jqadm/product/download/template-item = product/item-download
 ```
 
-* Default: product/item-download-standard
+* Default: product/item-download
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1708,6 +1794,15 @@ admin/jqadm/product/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => image
+    [1] => product.id
+    [2] => product.status
+    [3] => product.type
+    [4] => product.code
+    [5] => product.label
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2016.04
 
@@ -1732,6 +1827,10 @@ admin/jqadm/product/item/config/suggest = Array
 ```
 
 * Default: Array
+(
+    [0] => css-class
+)
+
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -1753,6 +1852,9 @@ admin/jqadm/product/item/media/config/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -1792,6 +1894,9 @@ admin/jqadm/product/item/price/config/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -1810,6 +1915,9 @@ admin/jqadm/product/item/text/config/suggest = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -1865,6 +1973,9 @@ admin/jqadm/product/media/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1900,6 +2011,9 @@ admin/jqadm/product/media/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1986,6 +2100,9 @@ admin/jqadm/product/media/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2021,6 +2138,9 @@ admin/jqadm/product/media/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2072,6 +2192,9 @@ admin/jqadm/product/media/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -2113,10 +2236,10 @@ design.
 Relative path to the HTML body template of the media subpart for products.
 
 ```
-admin/jqadm/product/media/property/template-item = product/item-media-property-standard
+admin/jqadm/product/media/property/template-item = product/item-media-property
 ```
 
-* Default: product/item-media-property-standard
+* Default: product/item-media-property
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2145,6 +2268,9 @@ admin/jqadm/product/media/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -2186,10 +2312,10 @@ design.
 Relative path to the HTML body template of the media subpart for products.
 
 ```
-admin/jqadm/product/media/template-item = product/item-media-standard
+admin/jqadm/product/media/template-item = product/item-media
 ```
 
-* Default: product/item-media-standard
+* Default: product/item-media
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.07
 
@@ -2298,6 +2424,9 @@ admin/jqadm/product/option/config/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -2333,6 +2462,9 @@ admin/jqadm/product/option/config/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -2369,6 +2501,9 @@ admin/jqadm/product/option/config/exclude = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of excluded attribute types
 * Since: 2020.04
 
@@ -2408,6 +2543,9 @@ admin/jqadm/product/option/config/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.03
 
@@ -2449,10 +2587,10 @@ design.
 Relative path to the HTML body template of the config option subpart for products.
 
 ```
-admin/jqadm/product/option/config/template-item = product/item-option-config-standard
+admin/jqadm/product/option/config/template-item = product/item-option-config
 ```
 
-* Default: product/item-option-config-standard
+* Default: product/item-option-config
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.03
 
@@ -2515,6 +2653,9 @@ admin/jqadm/product/option/custom/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -2550,6 +2691,9 @@ admin/jqadm/product/option/custom/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -2586,6 +2730,9 @@ admin/jqadm/product/option/custom/exclude = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of excluded attribute types
 * Since: 2020.04
 
@@ -2625,6 +2772,9 @@ admin/jqadm/product/option/custom/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.03
 
@@ -2666,10 +2816,10 @@ design.
 Relative path to the HTML body template of the custom option subpart for products.
 
 ```
-admin/jqadm/product/option/custom/template-item = product/item-option-custom-standard
+admin/jqadm/product/option/custom/template-item = product/item-option-custom
 ```
 
-* Default: product/item-option-custom-standard
+* Default: product/item-option-custom
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.03
 
@@ -2732,6 +2882,9 @@ admin/jqadm/product/option/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -2767,6 +2920,9 @@ admin/jqadm/product/option/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -2820,6 +2976,9 @@ admin/jqadm/product/option/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.03
 
@@ -2861,10 +3020,10 @@ design.
 Relative path to the HTML body template of the option subpart for products.
 
 ```
-admin/jqadm/product/option/template-item = product/item-option-standard
+admin/jqadm/product/option/template-item = product/item-option
 ```
 
-* Default: product/item-option-standard
+* Default: product/item-option
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.03
 
@@ -2930,6 +3089,9 @@ admin/jqadm/product/order/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -2967,6 +3129,9 @@ admin/jqadm/product/order/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3010,6 +3175,15 @@ admin/jqadm/product/order/fields = Array
 ```
 
 * Default: Array
+(
+    [0] => order.base.id
+    [1] => order.base.currencyid
+    [2] => order.base.price
+    [3] => order.base.address.firstname
+    [4] => order.base.address.lastname
+    [5] => order.base.address.city
+)
+
 * Type: array - List of field names, i.e. search keys
 * Since: 2019.10
 
@@ -3050,6 +3224,9 @@ admin/jqadm/product/order/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3093,10 +3270,10 @@ design.
 Relative path to the HTML body template of the order subpart for products.
 
 ```
-admin/jqadm/product/order/template-item = product/item-order-standard
+admin/jqadm/product/order/template-item = product/item-order
 ```
 
-* Default: product/item-order-standard
+* Default: product/item-order
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3162,6 +3339,9 @@ admin/jqadm/product/physical/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3197,6 +3377,9 @@ admin/jqadm/product/physical/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3248,6 +3431,9 @@ admin/jqadm/product/physical/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3289,10 +3475,10 @@ design.
 Relative path to the HTML body template of the physical subpart for products.
 
 ```
-admin/jqadm/product/physical/template-item = product/item-physical-standard
+admin/jqadm/product/physical/template-item = product/item-physical
 ```
 
-* Default: product/item-physical-standard
+* Default: product/item-physical
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3324,6 +3510,9 @@ admin/jqadm/product/physical/types = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of product property type codes
 * Since: 2021.07
 
@@ -3332,7 +3521,7 @@ Physical values like "package-length", "package-height", "package-width" and
 them in the product characteristics tab too, these types are excluded there.
 
 You can add new physical types by adding additional type codes and insert the
-input fields for displaying and changing them in the product/item-physical-standard
+input fields for displaying and changing them in the product/item-physical
 template.
 
 
@@ -3383,6 +3572,9 @@ admin/jqadm/product/price/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3418,6 +3610,9 @@ admin/jqadm/product/price/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3504,6 +3699,9 @@ admin/jqadm/product/price/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -3539,6 +3737,9 @@ admin/jqadm/product/price/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -3590,6 +3791,9 @@ admin/jqadm/product/price/property/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2019.07
 
@@ -3631,10 +3835,10 @@ design.
 Relative path to the HTML body template of the price subpart for products.
 
 ```
-admin/jqadm/product/price/property/template-item = product/item-price-property-standard
+admin/jqadm/product/price/property/template-item = product/item-price-property
 ```
 
-* Default: product/item-price-property-standard
+* Default: product/item-price-property
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2019.07
 
@@ -3663,6 +3867,9 @@ admin/jqadm/product/price/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3704,10 +3911,10 @@ design.
 Relative path to the HTML body template of the price subpart for products.
 
 ```
-admin/jqadm/product/price/template-item = product/item-price-standard
+admin/jqadm/product/price/template-item = product/item-price
 ```
 
-* Default: product/item-price-standard
+* Default: product/item-price
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3771,6 +3978,9 @@ admin/jqadm/product/related/bought/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3806,6 +4016,9 @@ admin/jqadm/product/related/bought/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3857,6 +4070,9 @@ admin/jqadm/product/related/bought/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3898,10 +4114,10 @@ design.
 Relative path to the HTML body template of the bought related subpart for products.
 
 ```
-admin/jqadm/product/related/bought/template-item = product/item-related-bought-standard
+admin/jqadm/product/related/bought/template-item = product/item-related-bought
 ```
 
-* Default: product/item-related-bought-standard
+* Default: product/item-related-bought
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3964,6 +4180,9 @@ admin/jqadm/product/related/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3999,6 +4218,9 @@ admin/jqadm/product/related/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4052,6 +4274,9 @@ admin/jqadm/product/related/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -4134,6 +4359,9 @@ admin/jqadm/product/related/suggest/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4169,6 +4397,9 @@ admin/jqadm/product/related/suggest/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4220,6 +4451,9 @@ admin/jqadm/product/related/suggest/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -4261,10 +4495,10 @@ design.
 Relative path to the HTML body template of the suggest related subpart for products.
 
 ```
-admin/jqadm/product/related/suggest/template-item = product/item-related-suggest-standard
+admin/jqadm/product/related/suggest/template-item = product/item-related-suggest
 ```
 
-* Default: product/item-related-suggest-standard
+* Default: product/item-related-suggest
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4286,10 +4520,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template of the related subpart for products.
 
 ```
-admin/jqadm/product/related/template-item = product/item-related-standard
+admin/jqadm/product/related/template-item = product/item-related
 ```
 
-* Default: product/item-related-standard
+* Default: product/item-related
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4353,6 +4587,9 @@ admin/jqadm/product/selection/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4388,6 +4625,9 @@ admin/jqadm/product/selection/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4439,6 +4679,9 @@ admin/jqadm/product/selection/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -4480,10 +4723,10 @@ design.
 Relative path to the HTML body template of the selection subpart for products.
 
 ```
-admin/jqadm/product/selection/template-item = product/item-selection-standard
+admin/jqadm/product/selection/template-item = product/item-selection
 ```
 
-* Default: product/item-selection-standard
+* Default: product/item-selection
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4547,6 +4790,9 @@ admin/jqadm/product/stock/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4582,6 +4828,9 @@ admin/jqadm/product/stock/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4633,6 +4882,9 @@ admin/jqadm/product/stock/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -4674,10 +4926,10 @@ design.
 Relative path to the HTML body template of the stock subpart for products.
 
 ```
-admin/jqadm/product/stock/template-item = product/item-stock-standard
+admin/jqadm/product/stock/template-item = product/item-stock
 ```
 
-* Default: product/item-stock-standard
+* Default: product/item-stock
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4720,6 +4972,9 @@ admin/jqadm/product/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -4803,6 +5058,9 @@ admin/jqadm/product/subscription/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -4838,6 +5096,9 @@ admin/jqadm/product/subscription/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -4889,6 +5150,9 @@ admin/jqadm/product/subscription/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2018.04
 
@@ -4930,10 +5194,10 @@ design.
 Relative path to the HTML body template of the subscription subpart for products.
 
 ```
-admin/jqadm/product/subscription/template-item = product/item-subscription-standard
+admin/jqadm/product/subscription/template-item = product/item-subscription
 ```
 
-* Default: product/item-subscription-standard
+* Default: product/item-subscription
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.04
 
@@ -4999,6 +5263,9 @@ admin/jqadm/product/supplier/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.04
 
@@ -5036,6 +5303,9 @@ admin/jqadm/product/supplier/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.04
 
@@ -5091,6 +5361,9 @@ admin/jqadm/product/supplier/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2020.04
 
@@ -5134,10 +5407,10 @@ design.
 Relative path to the HTML body template of the supplier subpart for products.
 
 ```
-admin/jqadm/product/supplier/template-item = product/item-supplier-standard
+admin/jqadm/product/supplier/template-item = product/item-supplier
 ```
 
-* Default: product/item-supplier-standard
+* Default: product/item-supplier
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2020.04
 
@@ -5161,10 +5434,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the product item.
 
 ```
-admin/jqadm/product/template-item = product/item-standard
+admin/jqadm/product/template-item = product/item
 ```
 
-* Default: product/item-standard
+* Default: product/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -5186,10 +5459,10 @@ should be replaced by the name of the new class.
 Relative path to the HTML body template for the product list.
 
 ```
-admin/jqadm/product/template-list = product/list-standard
+admin/jqadm/product/template-list = product/list
 ```
 
-* Default: product/list-standard
+* Default: product/list
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -5253,6 +5526,9 @@ admin/jqadm/product/text/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -5288,6 +5564,9 @@ admin/jqadm/product/text/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -5339,6 +5618,9 @@ admin/jqadm/product/text/subparts = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -5380,10 +5662,10 @@ design.
 Relative path to the HTML body template of the text subpart for products.
 
 ```
-admin/jqadm/product/text/template-item = product/item-text-standard
+admin/jqadm/product/text/template-item = product/item-text
 ```
 
-* Default: product/item-text-standard
+* Default: product/item-text
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

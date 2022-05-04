@@ -11,6 +11,9 @@ client/jsonapi/attribute/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -48,6 +51,9 @@ client/jsonapi/attribute/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -85,6 +91,9 @@ client/jsonapi/attribute/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -192,6 +201,9 @@ client/jsonapi/attribute/types = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of attribute type codes
 * Since: 2017.03
 

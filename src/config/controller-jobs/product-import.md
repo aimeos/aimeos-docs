@@ -19,10 +19,11 @@ next file that is stored at the same location in the file system.
 You should use an absolute path to be sure but can be relative path
 if you absolutely know from where the job will be executed from. The
 name of the new backup location can contain placeholders understood
-by the PHP strftime() function to create dynamic paths, e.g. "backup/%Y-%m-%d"
-which would create "backup/2000-01-01". For more information about the
-strftime() placeholders, please have a look into the PHP documentation of
-the [strftime() function](http://php.net/manual/en/function.strftime.php).
+by the PHP DateTime::format() method (with percent signs prefix) to
+create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
+"backup/2000-01-01". For more information about the date() placeholders,
+please have a look  into the PHP documentation of the
+[format() method](https://www.php.net/manual/en/datetime.format.php).
 
 **Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
@@ -72,6 +73,9 @@ controller/jobs/product/import/csv/container/options = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of option name/value pairs
 * Since: 2015.05
 
@@ -122,6 +126,9 @@ controller/jobs/product/import/csv/converter = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of position/converter name (or list of names) pairs
 * Since: 2015.05
 
@@ -150,6 +157,9 @@ controller/jobs/product/import/csv/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -187,6 +197,9 @@ controller/jobs/product/import/csv/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -222,6 +235,9 @@ controller/jobs/product/import/csv/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -265,6 +281,15 @@ controller/jobs/product/import/csv/domains = Array
 ```
 
 * Default: Array
+(
+    [attribute] => attribute
+    [media] => media
+    [price] => price
+    [product] => product
+    [product/property] => product/property
+    [text] => text
+)
+
 * Type: array - Associative list of MShop item domain names
 * Since: 2015.05
 
@@ -375,6 +400,62 @@ controller/jobs/product/import/csv/mapping = Array
 ```
 
 * Default: Array
+(
+    [item] => Array
+        (
+            [0] => product.code
+            [1] => product.label
+            [2] => product.type
+            [3] => product.status
+        )
+
+    [text] => Array
+        (
+            [4] => text.type
+            [5] => text.content
+            [6] => text.type
+            [7] => text.content
+        )
+
+    [media] => Array
+        (
+            [8] => media.url
+        )
+
+    [price] => Array
+        (
+            [9] => price.currencyid
+            [10] => price.quantity
+            [11] => price.value
+            [12] => price.taxrate
+        )
+
+    [attribute] => Array
+        (
+            [13] => attribute.code
+            [14] => attribute.type
+        )
+
+    [product] => Array
+        (
+            [15] => product.code
+            [16] => product.lists.type
+        )
+
+    [property] => Array
+        (
+            [17] => product.property.value
+            [18] => product.property.type
+        )
+
+    [catalog] => Array
+        (
+            [19] => catalog.code
+            [20] => catalog.lists.type
+        )
+
+)
+
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2015.05
 
@@ -464,34 +545,6 @@ See also:
 * controller/jobs/product/import/csv/backup
 * controller/common/product/import/csv/max-size
 
-## strict
-
-Log all columns from the file that are not mapped and therefore not imported
-
-```
-controller/jobs/product/import/csv/strict = 1
-```
-
-* Default: 1
-* Type: boolen - True if not imported columns should be logged, false if not
-* Since: 2015.08
-
-Depending on the mapping, there can be more columns in the CSV file
-than those which will be imported. This can be by purpose if you want
-to import only selected columns or if you've missed to configure one
-or more columns. This configuration option will log all columns that
-have not been imported if set to true. Otherwise, the left over fields
-in the imported line will be silently ignored.
-
-See also:
-
-* controller/jobs/product/import/csv/domains
-* controller/jobs/product/import/csv/mapping
-* controller/jobs/product/import/csv/skip-lines
-* controller/jobs/product/import/csv/converter
-* controller/jobs/product/import/csv/backup
-* controller/common/product/import/csv/max-size
-
 # xml
 ## backup
 
@@ -512,10 +565,11 @@ next file that is stored at the same location in the file system.
 You should use an absolute path to be sure but can be relative path
 if you absolutely know from where the job will be executed from. The
 name of the new backup location can contain placeholders understood
-by the PHP strftime() function to create dynamic paths, e.g. "backup/%Y-%m-%d"
-which would create "backup/2000-01-01". For more information about the
-strftime() placeholders, please have a look into the PHP documentation of
-the [strftime() function](http://php.net/manual/en/function.strftime.php).
+by the PHP DateTime::format() method (with percent signs prefix) to
+create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
+"backup/2000-01-01". For more information about the date() placeholders,
+please have a look  into the PHP documentation of the
+[format() method](https://www.php.net/manual/en/datetime.format.php).
 
 **Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
@@ -538,6 +592,9 @@ controller/jobs/product/import/xml/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -575,6 +632,9 @@ controller/jobs/product/import/xml/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -610,6 +670,9 @@ controller/jobs/product/import/xml/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -653,6 +716,9 @@ controller/jobs/product/import/xml/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -671,7 +737,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/product/import/xml/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/product/import/xml/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
 * Default: 
@@ -694,10 +760,10 @@ See also:
 Maximum number of XML nodes processed at once
 
 ```
-controller/jobs/product/import/xml/max-query = 1000
+controller/jobs/product/import/xml/max-query = 100
 ```
 
-* Default: 1000
+* Default: 100
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 

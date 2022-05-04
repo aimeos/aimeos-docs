@@ -4,10 +4,10 @@
 Relative path to the partial template for displaying the column selector in the list views
 
 ```
-admin/jqadm/partial/columns = common/partials/columns-standard
+admin/jqadm/partial/columns = columns
 ```
 
-* Default: common/partials/columns-standard
+* Default: columns
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.07
 
@@ -33,10 +33,10 @@ See also:
 Relative path to the partial template for displaying the confirmation dialog
 
 ```
-admin/jqadm/partial/confirm = common/partials/confirm-standard
+admin/jqadm/partial/confirm = confirm
 ```
 
-* Default: common/partials/confirm-standard
+* Default: confirm
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2016.04
 
@@ -63,10 +63,10 @@ See also:
 Relative path to the partial template for displaying notices
 
 ```
-admin/jqadm/partial/info = common/partials/info-standard
+admin/jqadm/partial/info = info
 ```
 
-* Default: common/partials/info-standard
+* Default: info
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.10
 
@@ -93,10 +93,10 @@ See also:
 Relative path to the partial template for displaying the available actions for the item
 
 ```
-admin/jqadm/partial/itemactions = common/partials/itemactions-standard
+admin/jqadm/partial/itemactions = itemactions
 ```
 
-* Default: common/partials/itemactions-standard
+* Default: itemactions
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.10
 
@@ -118,10 +118,10 @@ should be replaced by the name of the new class.
 Relative path to the partial template for displaying the table header in the list views
 
 ```
-admin/jqadm/partial/listhead = common/partials/listhead-standard
+admin/jqadm/partial/listhead = listhead
 ```
 
-* Default: common/partials/listhead-standard
+* Default: listhead
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.07
 
@@ -147,10 +147,10 @@ See also:
 Relative path to the partial template for displaying the table search row in the list views
 
 ```
-admin/jqadm/partial/listsearch = common/partials/listsearch-standard
+admin/jqadm/partial/listsearch = listsearch
 ```
 
-* Default: common/partials/listsearch-standard
+* Default: listsearch
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.07
 
@@ -176,10 +176,10 @@ See also:
 Relative path to the partial template for displaying the search filter in the navigation bar
 
 ```
-admin/jqadm/partial/navsearch = common/partials/navsearch-standard
+admin/jqadm/partial/navsearch = navsearch
 ```
 
-* Default: common/partials/navsearch-standard
+* Default: navsearch
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2016.04
 
@@ -205,10 +205,10 @@ See also:
 Relative path to the partial template for displaying the pagination
 
 ```
-admin/jqadm/partial/pagination = common/partials/pagination-standard
+admin/jqadm/partial/pagination = pagination
 ```
 
-* Default: common/partials/pagination-standard
+* Default: pagination
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2016.04
 
@@ -235,10 +235,10 @@ See also:
 Relative path to the partial template for displaying problems
 
 ```
-admin/jqadm/partial/problem = common/partials/problem-standard
+admin/jqadm/partial/problem = problem
 ```
 
-* Default: common/partials/problem-standard
+* Default: problem
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2019.04
 
@@ -260,10 +260,10 @@ See also:
 * admin/jqadm/partial/error
 * admin/jqadm/partial/info
 
-# productref
+# productlist
 
 ```
-admin/jqadm/partial/productref = common/partials/productref-standard
+admin/jqadm/partial/productlist = productlist
 ```
 
-* Default: common/partials/productref-standard
+* Default: productlist

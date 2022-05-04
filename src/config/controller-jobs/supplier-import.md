@@ -19,10 +19,11 @@ next file that is stored at the same location in the file system.
 You should use an absolute path to be sure but can be relative path
 if you absolutely know from where the job will be executed from. The
 name of the new backup location can contain placeholders understood
-by the PHP strftime() function to create dynamic paths, e.g. "backup/%Y-%m-%d"
-which would create "backup/2000-01-01". For more information about the
-strftime() placeholders, please have a look into the PHP documentation of
-the [strftime() function](http://php.net/manual/en/function.strftime.php).
+by the PHP DateTime::format() method (with percent signs prefix) to
+create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
+"backup/2000-01-01". For more information about the date() placeholders,
+please have a look  into the PHP documentation of the
+[format() method](https://www.php.net/manual/en/datetime.format.php).
 
 **Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
@@ -72,6 +73,9 @@ controller/jobs/supplier/import/csv/container/options = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of option name/value pairs
 * Since: 2020.07
 
@@ -122,6 +126,9 @@ controller/jobs/supplier/import/csv/converter = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of position/converter name (or list of names) pairs
 * Since: 2020.07
 
@@ -150,6 +157,9 @@ controller/jobs/supplier/import/csv/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -187,6 +197,9 @@ controller/jobs/supplier/import/csv/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -222,6 +235,9 @@ controller/jobs/supplier/import/csv/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -262,6 +278,12 @@ controller/jobs/supplier/import/csv/domains = Array
 ```
 
 * Default: Array
+(
+    [0] => media
+    [1] => text
+    [2] => supplier/address
+)
+
 * Type: array - Associative list of MShop item domain names
 * Since: 2020.07
 
@@ -346,6 +368,36 @@ controller/jobs/supplier/import/csv/mapping = Array
 ```
 
 * Default: Array
+(
+    [item] => Array
+        (
+            [0] => supplier.code
+            [1] => supplier.label
+            [2] => supplier.status
+        )
+
+    [text] => Array
+        (
+            [3] => text.languageid
+            [4] => text.type
+            [5] => text.content
+        )
+
+    [media] => Array
+        (
+            [6] => media.type
+            [7] => media.url
+        )
+
+    [address] => Array
+        (
+            [8] => supplier.address.languageid
+            [9] => supplier.address.countryid
+            [10] => supplier.address.city
+        )
+
+)
+
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2020.07
 
@@ -483,10 +535,11 @@ next file that is stored at the same location in the file system.
 You should use an absolute path to be sure but can be relative path
 if you absolutely know from where the job will be executed from. The
 name of the new backup location can contain placeholders understood
-by the PHP strftime() function to create dynamic paths, e.g. "backup/%Y-%m-%d"
-which would create "backup/2000-01-01". For more information about the
-strftime() placeholders, please have a look into the PHP documentation of
-the [strftime() function](http://php.net/manual/en/function.strftime.php).
+by the PHP DateTime::format() method (with percent signs prefix) to
+create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
+"backup/2000-01-01". For more information about the date() placeholders,
+please have a look  into the PHP documentation of the
+[format() method](https://www.php.net/manual/en/datetime.format.php).
 
 **Note:** If no backup name is configured, the file or directory
 won't be moved away. Please make also sure that the parent directory
@@ -509,6 +562,9 @@ controller/jobs/supplier/import/xml/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -546,6 +602,9 @@ controller/jobs/supplier/import/xml/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -581,6 +640,9 @@ controller/jobs/supplier/import/xml/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -622,6 +684,9 @@ controller/jobs/supplier/import/xml/domains = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -640,7 +705,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/supplier/import/xml/location = /var/www/aimeos/aimeos-core/ext/ai-controller-jobs/controller/jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/supplier/import/xml/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
 * Default: 
@@ -663,10 +728,10 @@ See also:
 Maximum number of XML nodes processed at once
 
 ```
-controller/jobs/supplier/import/xml/max-query = 1000
+controller/jobs/supplier/import/xml/max-query = 100
 ```
 
-* Default: 1000
+* Default: 100
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 

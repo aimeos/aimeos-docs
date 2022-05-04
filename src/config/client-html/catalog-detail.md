@@ -1,25 +1,4 @@
 
-# 404
-
-Configures 404 handling for catalog detail pages
-
-```
-client/html/catalog/detail/404 = 
-```
-
-* Default: 
-* Type: bool - TRUE to return HTTP status code 404, FALSE to return an error message
-* Since: 2021.10
-
-By default, no HTTP 404 status code is returned to the browser, just
-an error message that the product could not be found. Changing this
-setting to TRUE will return a 404 page depending on the host application.
-
-See also:
-
-* client/html/catalog/detail/template-header
-* client/html/catalog/detail/template-body
-
 # basket-add
 
 Display the "add to basket" button for each suggested/bought-together product item
@@ -62,7 +41,7 @@ client/html/catalog/detail/cache = 1
 
 Disable caching for components can be useful if you would have too much
 entries to cache or if the component contains non-cacheable parts that
-can't be replaced using the `modify()` methods.
+can't be replaced using the modify() method.
 
 See also:
 
@@ -73,8 +52,6 @@ See also:
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the catalog detail html client
-
 ```
 client/html/catalog/detail/decorators/excludes = Array
 (
@@ -82,35 +59,12 @@ client/html/catalog/detail/decorators/excludes = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
-
-```
- client/html/catalog/detail/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/decorators/global
-* client/html/catalog/detail/decorators/local
 
 ## global
-
-Adds a list of globally available decorators only to the catalog detail html client
 
 ```
 client/html/catalog/detail/decorators/global = Array
@@ -119,33 +73,12 @@ client/html/catalog/detail/decorators/global = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/catalog/detail/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/decorators/excludes
-* client/html/catalog/detail/decorators/local
 
 ## local
-
-Adds a list of local decorators only to the catalog detail html client
 
 ```
 client/html/catalog/detail/decorators/local = Array
@@ -154,29 +87,10 @@ client/html/catalog/detail/decorators/local = Array
 ```
 
 * Default: Array
-* Type: array - List of decorator names
-* Since: 2014.05
+(
+)
 
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
 
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
-
-```
- client/html/catalog/detail/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/decorators/excludes
-* client/html/catalog/detail/decorators/global
 
 # domains
 
@@ -186,23 +100,34 @@ A list of domain names whose items should be available in the product detail vie
 client/html/catalog/detail/domains = Array
 (
     [0] => attribute
-    [1] => media
-    [2] => media/property
-    [3] => price
-    [4] => product
-    [5] => product/property
-    [6] => text
-    [supplier] => Array
-        (
-            [0] => text
-            [1] => media
-            [2] => supplier/address
-        )
-
+    [1] => attribute/property
+    [2] => catalog
+    [3] => media
+    [4] => media/property
+    [5] => price
+    [6] => product
+    [7] => product/property
+    [8] => supplier
+    [9] => supplier/address
+    [10] => text
 )
 ```
 
 * Default: Array
+(
+    [0] => attribute
+    [1] => attribute/property
+    [2] => catalog
+    [3] => media
+    [4] => media/property
+    [5] => price
+    [6] => product
+    [7] => product/property
+    [8] => supplier
+    [9] => supplier/address
+    [10] => text
+)
+
 * Type: array - List of domain names
 * Since: 2014.03
 
@@ -292,21 +217,67 @@ or numbers. Avoid chamel case names like "MyDetail"!
 
 
 # partials
+## group
+
+Relative path to the group product partial template file
+
+```
+client/html/catalog/detail/partials/group = 
+```
+
+* Default: 
+* Type: string - Relative path to the template file
+* Since: 2021.07
+
+Partials are templates which are reused in other templates and generate
+reoccuring blocks filled with data from the assigned values. The group
+partial creates an HTML block for a list of sub-products assigned to a
+group product a customer can select from.
+
+See also:
+
+* client/html/common/partials/attribute
+
 ## image
 
 Relative path to the detail image partial template file
 
 ```
-client/html/catalog/detail/partials/image = catalog/detail/image-partial-standard
+client/html/catalog/detail/partials/image = catalog/detail/image
 ```
 
-* Default: catalog/detail/image-partial-standard
+* Default: catalog/detail/image
 * Type: string - Relative path to the template file
 * Since: 2017.01
 
 Partials are templates which are reused in other templates and generate
 reoccuring blocks filled with data from the assigned values. The image
 partial creates an HTML block for the catalog detail images.
+
+
+## seen
+
+Relative path to the HTML body template of the catalog detail seen client.
+
+```
+client/html/catalog/detail/partials/seen = catalog/detail/seen
+```
+
+* Default: catalog/detail/seen
+* Type: string - Relative path to the template creating the HTML fragment
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in client/html/templates).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 
 # prodcode-default
@@ -353,480 +324,6 @@ See also:
 * client/html/catalog/detail/prodid-default
 * client/html/catalog/lists/catid-default
 
-# seen
-## decorators/excludes
-
-Excludes decorators added by the "common" option from the catalog detail seen html client
-
-```
-client/html/catalog/detail/seen/decorators/excludes = 
-```
-
-* Default: 
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
-
-```
- client/html/catalog/detail/seen/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/seen/decorators/global
-* client/html/catalog/detail/seen/decorators/local
-
-## decorators/global
-
-Adds a list of globally available decorators only to the catalog detail seen html client
-
-```
-client/html/catalog/detail/seen/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/catalog/detail/seen/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/seen/decorators/excludes
-* client/html/catalog/detail/seen/decorators/local
-
-## decorators/local
-
-Adds a list of local decorators only to the catalog detail seen html client
-
-```
-client/html/catalog/detail/seen/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of decorator names
-* Since: 2015.08
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
-
-```
- client/html/catalog/detail/seen/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/seen/decorators/excludes
-* client/html/catalog/detail/seen/decorators/global
-
-## domains
-
-A list of domain names whose items should be available in the last seen view template for the product
-
-```
-client/html/catalog/detail/seen/domains = Array
-(
-    [0] => media
-    [1] => price
-    [2] => text
-)
-```
-
-* Default: Array
-* Type: array - List of domain names
-* Since: 2014.07
-
-The templates rendering product details usually add the images,
-prices and texts, etc. associated to the product
-item. If you want to display additional or less content, you can
-configure your own list of domains (attribute, media, price, product,
-text, etc. are domains) whose items are fetched from the storage.
-Please keep in mind that the more domains you add to the configuration,
-the more time is required for fetching the content!
-
-See also:
-
-* client/html/catalog/domains
-* client/html/catalog/lists/domains
-* client/html/catalog/detail/domains
-
-## name
-
-Name of the seen part used by the catalog detail client implementation
-
-```
-client/html/catalog/detail/seen/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the client class name
-* Since: 2014.03
-
-Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Detail\Seen\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## subparts
-
-List of HTML sub-clients rendered within the catalog detail seen section
-
-```
-client/html/catalog/detail/seen/subparts = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## template-body
-
-Relative path to the HTML body template of the catalog detail seen client.
-
-```
-client/html/catalog/detail/seen/template-body = catalog/detail/seen-partial-standard
-```
-
-* Default: catalog/detail/seen-partial-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/catalog/detail/seen/template-header
-
-# service
-## decorators/excludes
-
-Excludes decorators added by the "common" option from the catalog detail service html client
-
-```
-client/html/catalog/detail/service/decorators/excludes = 
-```
-
-* Default: 
-* Type: array - List of decorator names
-* Since: 2016.05
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"client/html/common/decorators/default" before they are wrapped
-around the html client.
-
-```
- client/html/catalog/detail/service/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
-"client/html/common/decorators/default" to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/service/decorators/global
-* client/html/catalog/detail/service/decorators/local
-
-## decorators/global
-
-Adds a list of globally available decorators only to the catalog detail service html client
-
-```
-client/html/catalog/detail/service/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of decorator names
-* Since: 2016.05
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
-
-```
- client/html/catalog/detail/service/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/service/decorators/excludes
-* client/html/catalog/detail/service/decorators/local
-
-## decorators/local
-
-Adds a list of local decorators only to the catalog detail service html client
-
-```
-client/html/catalog/detail/service/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of decorator names
-* Since: 2016.05
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
-
-```
- client/html/catalog/detail/service/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
-
-See also:
-
-* client/html/common/decorators/default
-* client/html/catalog/detail/service/decorators/excludes
-* client/html/catalog/detail/service/service/decorators/global
-
-## domains
-
-A list of domain names whose items should be available for the services
-in the services part of the catalog detail view templates
-
-```
-client/html/catalog/detail/service/domains = Array
-(
-    [0] => text
-    [1] => price
-)
-```
-
-* Default: Array
-* Type: array - List of domain names
-* Since: 2016.05
-
-Usually, service prices and texts are available in the templates
-rendering services related data. If you want to
-display additional content like the attributes, you can configure
-your own list of domains (attribute, media, price, text,
-etc. are domains) whose items are fetched from the storage.
-
-See also:
-
-* client/html/catalog/detail/service/types
-
-## name
-
-Name of the shipping cost part used by the catalog detail client implementation
-
-```
-client/html/catalog/detail/service/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the client class name
-* Since: 2017.01
-
-Use "Myname" if your class is named "\Aimeos\Client\Html\Catalog\Detail\Service\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## subparts
-
-List of HTML sub-clients rendered within the catalog detail service section
-
-```
-client/html/catalog/detail/service/subparts = Array
-(
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2016.05
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## template-body
-
-Relative path to the HTML body template of the catalog detail service client.
-
-```
-client/html/catalog/detail/service/template-body = catalog/detail/service-body-standard
-```
-
-* Default: catalog/detail/service-body-standard
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2016.05
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* client/html/catalog/detail/service/template-header
-
-## types
-
-The service types available in the service template
-
-```
-client/html/catalog/detail/service/types = Array
-(
-    [0] => delivery
-)
-```
-
-* Default: Array
-* Type: array - List of type codes
-* Since: 2016.05
-
-By default, only delivery services will be available in the
-template but you can extend the list to payment services too.
-
-See also:
-
-* client/html/catalog/detail/service/domains
-
 # stock
 ## enable
 
@@ -856,64 +353,15 @@ See also:
 * client/html/catalog/stock/url/action
 * client/html/catalog/stock/url/config
 
-# subparts
-
-List of HTML sub-clients rendered within the catalog detail section
-
-```
-client/html/catalog/detail/subparts = Array
-(
-    [0] => seen
-    [1] => service
-)
-```
-
-* Default: Array
-* Type: array - List of sub-client names
-* Since: 2014.03
-
-The output of the frontend is composed of the code generated by the HTML
-clients. Each HTML client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain HTML clients themselves and therefore a
-hierarchical tree of HTML clients is composed. Each HTML client creates
-the output that is placed inside the container of its parent.
-
-At first, always the HTML code generated by the parent is printed, then
-the HTML code of its sub-clients. The order of the HTML sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- client/html/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- client/html/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural HTML, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
 # template-body
 
 Relative path to the HTML body template of the catalog detail client.
 
 ```
-client/html/catalog/detail/template-body = catalog/detail/body-standard
+client/html/catalog/detail/template-body = catalog/detail/body
 ```
 
-* Default: catalog/detail/body-standard
+* Default: catalog/detail/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -924,10 +372,10 @@ to the templates directory (usually in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 See also:
 
@@ -939,10 +387,10 @@ See also:
 Relative path to the HTML header template of the catalog detail client.
 
 ```
-client/html/catalog/detail/template-header = catalog/detail/header-standard
+client/html/catalog/detail/template-header = catalog/detail/header
 ```
 
-* Default: catalog/detail/header-standard
+* Default: catalog/detail/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -954,15 +402,24 @@ in client/html/templates).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
+named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 See also:
 
 * client/html/catalog/detail/template-body
 * client/html/catalog/detail/404
+
+# template-navigator
+
+```
+client/html/catalog/detail/template-navigator = catalog/detail/navigator
+```
+
+* Default: catalog/detail/navigator
+
 
 # url
 ## action
@@ -1000,6 +457,10 @@ client/html/catalog/detail/url/config = Array
 ```
 
 * Default: Array
+(
+    [absoluteUri] => 1
+)
+
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -1058,6 +519,9 @@ client/html/catalog/detail/url/filter = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of parameter names to remove
 * Since: 2019.04
 

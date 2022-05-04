@@ -43,12 +43,6 @@ The Aimeos package also includes adapter classes for basic components used by an
 
 * [Configure profile behavior and templates](../frontend/html/account-components.md)
 
-## E-Mails
-
-* [Configure payment behavior and templates](../frontend/html/email-components.md#payment)
-* [Configure delivery behavior and templates](../frontend/html/email-components.md#delivery)
-* [Configure product notification behavior and templates](../frontend/html/email-components.md#product-watch)
-
 # Import data
 
 * [Import products from CSV](../cronjobs/product-csv-import.md)

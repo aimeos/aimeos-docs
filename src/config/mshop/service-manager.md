@@ -9,7 +9,7 @@ mshop/service/manager/count/ansi =
  SELECT count(*) as "count"
  FROM (
  	SELECT mser."id"
- 	FROM "mshop_service" AS mser
+ 	FROM "mshop_service" mser
  	:joins
  	WHERE :cond
  	GROUP BY mser."id"
@@ -72,7 +72,7 @@ mshop/service/manager/count/mysql =
  SELECT count(*) as "count"
  FROM (
  	SELECT mser."id"
- 	FROM "mshop_service" AS mser
+ 	FROM "mshop_service" mser
  	:joins
  	WHERE :cond
  	GROUP BY mser."id"
@@ -85,7 +85,7 @@ mshop/service/manager/count/mysql =
  SELECT count(*) as "count"
  FROM (
  	SELECT mser."id"
- 	FROM "mshop_service" AS mser
+ 	FROM "mshop_service" mser
  	:joins
  	WHERE :cond
  	GROUP BY mser."id"
@@ -110,6 +110,9 @@ mshop/service/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -147,6 +150,9 @@ mshop/service/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -183,6 +189,9 @@ mshop/service/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -343,7 +352,7 @@ mshop/service/manager/lists/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_service_list" AS mserli
+ 	FROM "mshop_service_list" mserli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mserli."id"
@@ -405,7 +414,7 @@ mshop/service/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_service_list" AS mserli
+ 	FROM "mshop_service_list" mserli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mserli."id"
@@ -419,7 +428,7 @@ mshop/service/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_service_list" AS mserli
+ 	FROM "mshop_service_list" mserli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mserli."id"
@@ -442,7 +451,7 @@ mshop/service/manager/lists/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserli."id"
- 	FROM "mshop_service_list" AS mserli
+ 	FROM "mshop_service_list" mserli
  	:joins
  	WHERE :cond
  	ORDER BY mserli."id"
@@ -505,7 +514,7 @@ mshop/service/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserli."id"
- 	FROM "mshop_service_list" AS mserli
+ 	FROM "mshop_service_list" mserli
  	:joins
  	WHERE :cond
  	ORDER BY mserli."id"
@@ -517,7 +526,7 @@ mshop/service/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserli."id"
- 	FROM "mshop_service_list" AS mserli
+ 	FROM "mshop_service_list" mserli
  	:joins
  	WHERE :cond
  	ORDER BY mserli."id"
@@ -540,6 +549,9 @@ mshop/service/manager/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -577,6 +589,9 @@ mshop/service/manager/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -614,6 +629,9 @@ mshop/service/manager/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -879,7 +897,7 @@ mshop/service/manager/lists/search/ansi =
  	mserli."config" AS "service.lists.config", mserli."pos" AS "service.lists.position",
  	mserli."status" AS "service.lists.status", mserli."mtime" AS "service.lists.mtime",
  	mserli."editor" AS "service.lists.editor", mserli."ctime" AS "service.lists.ctime"
- FROM "mshop_service_list" AS mserli
+ FROM "mshop_service_list" mserli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -952,7 +970,7 @@ mshop/service/manager/lists/search/mysql =
  	mserli."config" AS "service.lists.config", mserli."pos" AS "service.lists.position",
  	mserli."status" AS "service.lists.status", mserli."mtime" AS "service.lists.mtime",
  	mserli."editor" AS "service.lists.editor", mserli."ctime" AS "service.lists.ctime"
- FROM "mshop_service_list" AS mserli
+ FROM "mshop_service_list" mserli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -968,7 +986,7 @@ mshop/service/manager/lists/search/mysql =
  	mserli."config" AS "service.lists.config", mserli."pos" AS "service.lists.position",
  	mserli."status" AS "service.lists.status", mserli."mtime" AS "service.lists.mtime",
  	mserli."editor" AS "service.lists.editor", mserli."ctime" AS "service.lists.ctime"
- FROM "mshop_service_list" AS mserli
+ FROM "mshop_service_list" mserli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -990,6 +1008,9 @@ mshop/service/manager/lists/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1110,6 +1131,9 @@ mshop/service/manager/lists/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1147,6 +1171,9 @@ mshop/service/manager/lists/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1184,6 +1211,9 @@ mshop/service/manager/lists/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1444,7 +1474,7 @@ mshop/service/manager/lists/type/search/ansi =
  	mserlity."label" AS "service.lists.type.label", mserlity."status" AS "service.lists.type.status",
  	mserlity."mtime" AS "service.lists.type.mtime", mserlity."editor" AS "service.lists.type.editor",
  	mserlity."ctime" AS "service.lists.type.ctime", mserlity."pos" AS "service.lists.type.position"
- FROM "mshop_service_list_type" AS mserlity
+ FROM "mshop_service_list_type" mserlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1514,7 +1544,7 @@ mshop/service/manager/lists/type/search/mysql =
  	mserlity."label" AS "service.lists.type.label", mserlity."status" AS "service.lists.type.status",
  	mserlity."mtime" AS "service.lists.type.mtime", mserlity."editor" AS "service.lists.type.editor",
  	mserlity."ctime" AS "service.lists.type.ctime", mserlity."pos" AS "service.lists.type.position"
- FROM "mshop_service_list_type" AS mserlity
+ FROM "mshop_service_list_type" mserlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1528,7 +1558,7 @@ mshop/service/manager/lists/type/search/mysql =
  	mserlity."label" AS "service.lists.type.label", mserlity."status" AS "service.lists.type.status",
  	mserlity."mtime" AS "service.lists.type.mtime", mserlity."editor" AS "service.lists.type.editor",
  	mserlity."ctime" AS "service.lists.type.ctime", mserlity."pos" AS "service.lists.type.position"
- FROM "mshop_service_list_type" AS mserlity
+ FROM "mshop_service_list_type" mserlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1550,6 +1580,9 @@ mshop/service/manager/lists/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1808,7 +1841,7 @@ mshop/service/manager/search/ansi =
  	mser."start" AS "service.datestart", mser."end" AS "service.dateend",
  	mser."status" AS "service.status", mser."mtime" AS "service.mtime",
  	mser."editor" AS "service.editor",	mser."ctime" AS "service.ctime"
- FROM "mshop_service" AS mser
+ FROM "mshop_service" mser
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -1884,7 +1917,7 @@ mshop/service/manager/search/mysql =
  	mser."start" AS "service.datestart", mser."end" AS "service.dateend",
  	mser."status" AS "service.status", mser."mtime" AS "service.mtime",
  	mser."editor" AS "service.editor",	mser."ctime" AS "service.ctime"
- FROM "mshop_service" AS mser
+ FROM "mshop_service" mser
  :joins
  WHERE :cond
  GROUP BY :group mser."id"
@@ -1901,7 +1934,7 @@ mshop/service/manager/search/mysql =
  	mser."start" AS "service.datestart", mser."end" AS "service.dateend",
  	mser."status" AS "service.status", mser."mtime" AS "service.mtime",
  	mser."editor" AS "service.editor",	mser."ctime" AS "service.ctime"
- FROM "mshop_service" AS mser
+ FROM "mshop_service" mser
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -1964,6 +1997,9 @@ mshop/service/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1988,7 +2024,7 @@ mshop/service/manager/type/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserty."id"
- 	FROM "mshop_service_type" AS mserty
+ 	FROM "mshop_service_type" mserty
  	:joins
  	WHERE :cond
  	ORDER BY mserty."id"
@@ -2050,7 +2086,7 @@ mshop/service/manager/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserty."id"
- 	FROM "mshop_service_type" AS mserty
+ 	FROM "mshop_service_type" mserty
  	:joins
  	WHERE :cond
  	ORDER BY mserty."id"
@@ -2062,7 +2098,7 @@ mshop/service/manager/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserty."id"
- 	FROM "mshop_service_type" AS mserty
+ 	FROM "mshop_service_type" mserty
  	:joins
  	WHERE :cond
  	ORDER BY mserty."id"
@@ -2085,6 +2121,9 @@ mshop/service/manager/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2122,6 +2161,9 @@ mshop/service/manager/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2159,6 +2201,9 @@ mshop/service/manager/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2419,7 +2464,7 @@ mshop/service/manager/type/search/ansi =
  	mserty."label" AS "service.type.label", mserty."status" AS "service.type.status",
  	mserty."mtime" AS "service.type.mtime", mserty."editor" AS "service.type.editor",
  	mserty."ctime" AS "service.type.ctime", mserty."pos" AS "service.type.position"
- FROM "mshop_service_type" AS mserty
+ FROM "mshop_service_type" mserty
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2489,7 +2534,7 @@ mshop/service/manager/type/search/mysql =
  	mserty."label" AS "service.type.label", mserty."status" AS "service.type.status",
  	mserty."mtime" AS "service.type.mtime", mserty."editor" AS "service.type.editor",
  	mserty."ctime" AS "service.type.ctime", mserty."pos" AS "service.type.position"
- FROM "mshop_service_type" AS mserty
+ FROM "mshop_service_type" mserty
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2503,7 +2548,7 @@ mshop/service/manager/type/search/mysql =
  	mserty."label" AS "service.type.label", mserty."status" AS "service.type.status",
  	mserty."mtime" AS "service.type.mtime", mserty."editor" AS "service.type.editor",
  	mserty."ctime" AS "service.type.ctime", mserty."pos" AS "service.type.position"
- FROM "mshop_service_type" AS mserty
+ FROM "mshop_service_type" mserty
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2525,6 +2570,9 @@ mshop/service/manager/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

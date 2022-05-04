@@ -9,7 +9,7 @@ mshop/attribute/manager/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT matt."id"
- 	FROM "mshop_attribute" AS matt
+ 	FROM "mshop_attribute" matt
  	:joins
  	WHERE :cond
  	GROUP BY matt."id"
@@ -72,7 +72,7 @@ mshop/attribute/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT matt."id"
- 	FROM "mshop_attribute" AS matt
+ 	FROM "mshop_attribute" matt
  	:joins
  	WHERE :cond
  	GROUP BY matt."id"
@@ -85,7 +85,7 @@ mshop/attribute/manager/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT matt."id"
- 	FROM "mshop_attribute" AS matt
+ 	FROM "mshop_attribute" matt
  	:joins
  	WHERE :cond
  	GROUP BY matt."id"
@@ -110,6 +110,9 @@ mshop/attribute/manager/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -147,6 +150,9 @@ mshop/attribute/manager/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -182,6 +188,9 @@ mshop/attribute/manager/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -342,7 +351,7 @@ mshop/attribute/manager/lists/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_attribute_list" AS mattli
+ 	FROM "mshop_attribute_list" mattli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mattli."id"
@@ -404,7 +413,7 @@ mshop/attribute/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_attribute_list" AS mattli
+ 	FROM "mshop_attribute_list" mattli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mattli."id"
@@ -418,7 +427,7 @@ mshop/attribute/manager/lists/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
- 	FROM "mshop_attribute_list" AS mattli
+ 	FROM "mshop_attribute_list" mattli
  	:joins
  	WHERE :cond
  	GROUP BY :cols, mattli."id"
@@ -441,7 +450,7 @@ mshop/attribute/manager/lists/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattli."id"
- 	FROM "mshop_attribute_list" AS mattli
+ 	FROM "mshop_attribute_list" mattli
  	:joins
  	WHERE :cond
  	ORDER BY mattli."id"
@@ -504,7 +513,7 @@ mshop/attribute/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattli."id"
- 	FROM "mshop_attribute_list" AS mattli
+ 	FROM "mshop_attribute_list" mattli
  	:joins
  	WHERE :cond
  	ORDER BY mattli."id"
@@ -516,7 +525,7 @@ mshop/attribute/manager/lists/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattli."id"
- 	FROM "mshop_attribute_list" AS mattli
+ 	FROM "mshop_attribute_list" mattli
  	:joins
  	WHERE :cond
  	ORDER BY mattli."id"
@@ -539,6 +548,9 @@ mshop/attribute/manager/lists/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -576,6 +588,9 @@ mshop/attribute/manager/lists/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -613,6 +628,9 @@ mshop/attribute/manager/lists/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -878,7 +896,7 @@ mshop/attribute/manager/lists/search/ansi =
  	mattli."config" AS "attribute.lists.config", mattli."pos" AS "attribute.lists.position",
  	mattli."status" AS "attribute.lists.status", mattli."mtime" AS "attribute.lists.mtime",
  	mattli."ctime" AS "attribute.lists.ctime", mattli."editor" AS "attribute.lists.editor"
- FROM "mshop_attribute_list" AS mattli
+ FROM "mshop_attribute_list" mattli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -951,7 +969,7 @@ mshop/attribute/manager/lists/search/mysql =
  	mattli."config" AS "attribute.lists.config", mattli."pos" AS "attribute.lists.position",
  	mattli."status" AS "attribute.lists.status", mattli."mtime" AS "attribute.lists.mtime",
  	mattli."ctime" AS "attribute.lists.ctime", mattli."editor" AS "attribute.lists.editor"
- FROM "mshop_attribute_list" AS mattli
+ FROM "mshop_attribute_list" mattli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -967,7 +985,7 @@ mshop/attribute/manager/lists/search/mysql =
  	mattli."config" AS "attribute.lists.config", mattli."pos" AS "attribute.lists.position",
  	mattli."status" AS "attribute.lists.status", mattli."mtime" AS "attribute.lists.mtime",
  	mattli."ctime" AS "attribute.lists.ctime", mattli."editor" AS "attribute.lists.editor"
- FROM "mshop_attribute_list" AS mattli
+ FROM "mshop_attribute_list" mattli
  :joins
  WHERE :cond
  ORDER BY :order
@@ -989,6 +1007,9 @@ mshop/attribute/manager/lists/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1012,7 +1033,7 @@ mshop/attribute/manager/lists/type/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattlity."id"
- 	FROM "mshop_attribute_list_type" AS mattlity
+ 	FROM "mshop_attribute_list_type" mattlity
  	:joins
  	WHERE :cond
  	ORDER BY mattlity."id"
@@ -1074,7 +1095,7 @@ mshop/attribute/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattlity."id"
- 	FROM "mshop_attribute_list_type" AS mattlity
+ 	FROM "mshop_attribute_list_type" mattlity
  	:joins
  	WHERE :cond
  	ORDER BY mattlity."id"
@@ -1086,7 +1107,7 @@ mshop/attribute/manager/lists/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattlity."id"
- 	FROM "mshop_attribute_list_type" AS mattlity
+ 	FROM "mshop_attribute_list_type" mattlity
  	:joins
  	WHERE :cond
  	ORDER BY mattlity."id"
@@ -1109,6 +1130,9 @@ mshop/attribute/manager/lists/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1146,6 +1170,9 @@ mshop/attribute/manager/lists/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1183,6 +1210,9 @@ mshop/attribute/manager/lists/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1443,7 +1473,7 @@ mshop/attribute/manager/lists/type/search/ansi =
  	mattlity."label" AS "attribute.lists.type.label", mattlity."status" AS "attribute.lists.type.status",
  	mattlity."mtime" AS "attribute.lists.type.mtime", mattlity."ctime" AS "attribute.lists.type.ctime",
  	mattlity."editor" AS "attribute.lists.type.editor", mattlity."pos" AS "attribute.lists.type.position"
- FROM "mshop_attribute_list_type" AS mattlity
+ FROM "mshop_attribute_list_type" mattlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1513,7 +1543,7 @@ mshop/attribute/manager/lists/type/search/mysql =
  	mattlity."label" AS "attribute.lists.type.label", mattlity."status" AS "attribute.lists.type.status",
  	mattlity."mtime" AS "attribute.lists.type.mtime", mattlity."ctime" AS "attribute.lists.type.ctime",
  	mattlity."editor" AS "attribute.lists.type.editor", mattlity."pos" AS "attribute.lists.type.position"
- FROM "mshop_attribute_list_type" AS mattlity
+ FROM "mshop_attribute_list_type" mattlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1527,7 +1557,7 @@ mshop/attribute/manager/lists/type/search/mysql =
  	mattlity."label" AS "attribute.lists.type.label", mattlity."status" AS "attribute.lists.type.status",
  	mattlity."mtime" AS "attribute.lists.type.mtime", mattlity."ctime" AS "attribute.lists.type.ctime",
  	mattlity."editor" AS "attribute.lists.type.editor", mattlity."pos" AS "attribute.lists.type.position"
- FROM "mshop_attribute_list_type" AS mattlity
+ FROM "mshop_attribute_list_type" mattlity
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1549,6 +1579,9 @@ mshop/attribute/manager/lists/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1802,7 +1835,7 @@ mshop/attribute/manager/property/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattpr."id"
- 	FROM "mshop_attribute_property" AS mattpr
+ 	FROM "mshop_attribute_property" mattpr
  	:joins
  	WHERE :cond
  	ORDER BY mattpr."id"
@@ -1864,7 +1897,7 @@ mshop/attribute/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattpr."id"
- 	FROM "mshop_attribute_property" AS mattpr
+ 	FROM "mshop_attribute_property" mattpr
  	:joins
  	WHERE :cond
  	ORDER BY mattpr."id"
@@ -1876,7 +1909,7 @@ mshop/attribute/manager/property/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattpr."id"
- 	FROM "mshop_attribute_property" AS mattpr
+ 	FROM "mshop_attribute_property" mattpr
  	:joins
  	WHERE :cond
  	ORDER BY mattpr."id"
@@ -1899,6 +1932,9 @@ mshop/attribute/manager/property/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1936,6 +1972,9 @@ mshop/attribute/manager/property/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1973,6 +2012,9 @@ mshop/attribute/manager/property/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2233,7 +2275,7 @@ mshop/attribute/manager/property/search/ansi =
  	mattpr."langid" AS "attribute.property.languageid", mattpr."value" AS "attribute.property.value",
  	mattpr."mtime" AS "attribute.property.mtime", mattpr."editor" AS "attribute.property.editor",
  	mattpr."ctime" AS "attribute.property.ctime"
- FROM "mshop_attribute_property" AS mattpr
+ FROM "mshop_attribute_property" mattpr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2303,7 +2345,7 @@ mshop/attribute/manager/property/search/mysql =
  	mattpr."langid" AS "attribute.property.languageid", mattpr."value" AS "attribute.property.value",
  	mattpr."mtime" AS "attribute.property.mtime", mattpr."editor" AS "attribute.property.editor",
  	mattpr."ctime" AS "attribute.property.ctime"
- FROM "mshop_attribute_property" AS mattpr
+ FROM "mshop_attribute_property" mattpr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2317,7 +2359,7 @@ mshop/attribute/manager/property/search/mysql =
  	mattpr."langid" AS "attribute.property.languageid", mattpr."value" AS "attribute.property.value",
  	mattpr."mtime" AS "attribute.property.mtime", mattpr."editor" AS "attribute.property.editor",
  	mattpr."ctime" AS "attribute.property.ctime"
- FROM "mshop_attribute_property" AS mattpr
+ FROM "mshop_attribute_property" mattpr
  :joins
  WHERE :cond
  ORDER BY :order
@@ -2340,6 +2382,10 @@ mshop/attribute/manager/property/submanagers = Array
 ```
 
 * Default: Array
+(
+    [0] => type
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2460,6 +2506,9 @@ mshop/attribute/manager/property/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2497,6 +2546,9 @@ mshop/attribute/manager/property/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2534,6 +2586,9 @@ mshop/attribute/manager/property/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2900,6 +2955,9 @@ mshop/attribute/manager/property/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -3056,7 +3114,7 @@ mshop/attribute/manager/search/ansi =
  	matt."pos" AS "attribute.position", matt."label" AS "attribute.label",
  	matt."mtime" AS "attribute.mtime", matt."ctime" AS "attribute.ctime",
  	matt."editor" AS "attribute.editor"
- FROM "mshop_attribute" AS matt
+ FROM "mshop_attribute" matt
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3130,7 +3188,7 @@ mshop/attribute/manager/search/mysql =
  	matt."pos" AS "attribute.position", matt."label" AS "attribute.label",
  	matt."mtime" AS "attribute.mtime", matt."ctime" AS "attribute.ctime",
  	matt."editor" AS "attribute.editor"
- FROM "mshop_attribute" AS matt
+ FROM "mshop_attribute" matt
  :joins
  WHERE :cond
  GROUP BY :group matt."id"
@@ -3146,7 +3204,7 @@ mshop/attribute/manager/search/mysql =
  	matt."pos" AS "attribute.position", matt."label" AS "attribute.label",
  	matt."mtime" AS "attribute.mtime", matt."ctime" AS "attribute.ctime",
  	matt."editor" AS "attribute.editor"
- FROM "mshop_attribute" AS matt
+ FROM "mshop_attribute" matt
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3208,6 +3266,9 @@ mshop/attribute/manager/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3232,7 +3293,7 @@ mshop/attribute/manager/type/count/ansi =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattty."id"
- 	FROM "mshop_attribute_type" AS mattty
+ 	FROM "mshop_attribute_type" mattty
  	:joins
  	WHERE :cond
  	ORDER BY mattty."id"
@@ -3294,7 +3355,7 @@ mshop/attribute/manager/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattty."id"
- 	FROM "mshop_attribute_type" AS mattty
+ 	FROM "mshop_attribute_type" mattty
  	:joins
  	WHERE :cond
  	ORDER BY mattty."id"
@@ -3306,7 +3367,7 @@ mshop/attribute/manager/type/count/mysql =
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattty."id"
- 	FROM "mshop_attribute_type" AS mattty
+ 	FROM "mshop_attribute_type" mattty
  	:joins
  	WHERE :cond
  	ORDER BY mattty."id"
@@ -3329,6 +3390,9 @@ mshop/attribute/manager/type/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3366,6 +3430,9 @@ mshop/attribute/manager/type/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3403,6 +3470,9 @@ mshop/attribute/manager/type/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3663,7 +3733,7 @@ mshop/attribute/manager/type/search/ansi =
  	mattty."label" AS "attribute.type.label", mattty."status" AS "attribute.type.status",
  	mattty."mtime" AS "attribute.type.mtime", mattty."ctime" AS "attribute.type.ctime",
  	mattty."editor" AS "attribute.type.editor", mattty."pos" AS "attribute.type.position"
- FROM "mshop_attribute_type" AS mattty
+ FROM "mshop_attribute_type" mattty
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3733,7 +3803,7 @@ mshop/attribute/manager/type/search/mysql =
  	mattty."label" AS "attribute.type.label", mattty."status" AS "attribute.type.status",
  	mattty."mtime" AS "attribute.type.mtime", mattty."ctime" AS "attribute.type.ctime",
  	mattty."editor" AS "attribute.type.editor", mattty."pos" AS "attribute.type.position"
- FROM "mshop_attribute_type" AS mattty
+ FROM "mshop_attribute_type" mattty
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3747,7 +3817,7 @@ mshop/attribute/manager/type/search/mysql =
  	mattty."label" AS "attribute.type.label", mattty."status" AS "attribute.type.status",
  	mattty."mtime" AS "attribute.type.mtime", mattty."ctime" AS "attribute.type.ctime",
  	mattty."editor" AS "attribute.type.editor", mattty."pos" AS "attribute.type.position"
- FROM "mshop_attribute_type" AS mattty
+ FROM "mshop_attribute_type" mattty
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3769,6 +3839,9 @@ mshop/attribute/manager/type/submanagers = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

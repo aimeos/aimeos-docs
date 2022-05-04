@@ -13,6 +13,12 @@ client/html/common/address/salutations = Array
 ```
 
 * Default: Array
+(
+    [0] => 
+    [1] => mr
+    [2] => ms
+)
+
 * Type: array - List of available salutation codes
 * Since: 2021.04
 

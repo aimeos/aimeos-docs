@@ -11,6 +11,9 @@ admin/jqadm/settings/decorators/excludes = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -48,6 +51,9 @@ admin/jqadm/settings/decorators/global = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -83,6 +89,9 @@ admin/jqadm/settings/decorators/local = Array
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -106,6 +115,67 @@ See also:
 * admin/jqadm/common/decorators/default
 * admin/jqadm/settings/decorators/excludes
 * admin/jqadm/settings/decorators/global
+
+# mangopay
+## decorators/global
+
+```
+admin/jqadm/settings/mangopay/decorators/global = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## decorators/local
+
+```
+admin/jqadm/settings/mangopay/decorators/local = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## name
+
+```
+admin/jqadm/settings/mangopay/name = Standard
+```
+
+* Default: Standard
+
+
+## subparts
+
+```
+admin/jqadm/settings/mangopay/subparts = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## template-item
+
+```
+admin/jqadm/settings/mangopay/template-item = settings/item-mangopay
+```
+
+* Default: settings/item-mangopay
+
 
 # name
 
@@ -152,6 +222,53 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
+# stripe
+## decorators/global
+
+```
+admin/jqadm/settings/stripe/decorators/global = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## decorators/local
+
+```
+admin/jqadm/settings/stripe/decorators/local = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## name
+
+```
+admin/jqadm/settings/stripe/name = Standard
+```
+
+* Default: Standard
+
+
+## template-item
+
+```
+admin/jqadm/settings/stripe/template-item = settings/item-stripe
+```
+
+* Default: settings/item-stripe
+
+
 # subparts
 
 List of JQAdm sub-clients rendered within the settings section
@@ -159,10 +276,15 @@ List of JQAdm sub-clients rendered within the settings section
 ```
 admin/jqadm/settings/subparts = Array
 (
+    [mangopay] => mangopay
+    [stripe] => stripe
 )
 ```
 
 * Default: Array
+(
+)
+
 * Type: array - List of sub-client names
 * Since: 2021.07
 
@@ -204,10 +326,10 @@ design.
 Relative path to the HTML body template for the settings item.
 
 ```
-admin/jqadm/settings/template-item = settings/item-standard
+admin/jqadm/settings/template-item = settings/item
 ```
 
-* Default: settings/item-standard
+* Default: settings/item
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.07
 

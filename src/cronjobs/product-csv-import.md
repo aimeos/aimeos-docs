@@ -234,7 +234,7 @@ Additionally, you can import values for the product list relation as well:
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/text/listtypes](../config/controller-common/product-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/text/listtypes](../config/controller-jobs/product-import.md#listtypes) setting.
 
 ## Media
 
@@ -283,7 +283,7 @@ Additionally, you can import values for the product list relation as well:
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/media/listtypes](../config/controller-common/product-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/media/listtypes](../config/controller-jobs/product-import.md#listtypes) setting.
 
 ## Price
 
@@ -324,7 +324,7 @@ Additionally, you can import values for the product list relation as well:
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/price/listtypes](../config/controller-common/product-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/price/listtypes](../config/controller-jobs/product-import.md#listtypes) setting.
 
 ## Attribute
 
@@ -364,7 +364,7 @@ Additionally, you can import values for the product list relation as well:
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/attribute/listtypes](../config/controller-common/product-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/attribute/listtypes](../config/controller-jobs/product-import.md#listtypes) setting.
 
 ## Product
 
@@ -396,7 +396,7 @@ and it's also the minimum amount of data. The real power of the product relation
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/product/listtypes](../config/controller-common/product-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/product/listtypes](../config/controller-jobs/product-import.md#listtypes) setting.
 
 ## Property
 
@@ -443,7 +443,7 @@ and it's also the minimum amount of data. The real power of the catalog relation
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/catalog/listtypes](../config/controller-common/product-import.md#processorcataloglisttypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/catalog/listtypes](../config/controller-jobs/product-import.md#processorcataloglisttypes) setting.
 
 ## Supplier
 
@@ -474,7 +474,7 @@ and it's also the minimum amount of data. The real power of the supplier relatio
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/supplier/listtypes](../config/controller-common/product-import.md#processorsupplierlisttypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/supplier/listtypes](../config/controller-jobs/product-import.md#processorsupplierlisttypes) setting.
 
 ## Stock
 
@@ -496,7 +496,7 @@ The stock level is required as the minimum amount of data. If you don't have a C
 
 Not all data in the CSV file is already in the required format. Maybe the text encoding isn't UTF-8, the date is not in ISO format or something similar. In order to convert the data before it's imported, you can specify a list of converter objects that should be applied to the data from the CSV file.
 
-To each field in the CSV file, you can apply one or more converters, e.g. to encode a Latin text to UTF8 for the second CSV field via the [controller/common/product/import/csv/converter](../config/controller-common/product-import.md#converter) or - specific for the job controller - [controller/jobs/product/import/csv/converter](../config/controller-jobs/product-import.md#converter) settings:
+To each field in the CSV file, you can apply one or more converters, e.g. to encode a Latin text to UTF8 for the second CSV field via the [controller/jobs/product/import/csv/converter](../config/controller-jobs/product-import.md#converter) or - specific for the job controller - [controller/jobs/product/import/csv/converter](../config/controller-jobs/product-import.md#converter) settings:
 
 ```php
 [
