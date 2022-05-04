@@ -15,8 +15,6 @@ class Standard
     extends \Aimeos\Client\Html\Common\Client\Factory\Base
     implements Aimeos\Client\Html\Common\Client\Factory\Iface
 {
-    private $subPartPath = 'client/html/catalog/detail/subparts';
-    private $subPartNames = [];
     private $tags = [];
     private $expire;
     private $view;
@@ -24,22 +22,27 @@ class Standard
 
     public function body( $uid = '' ) : string
     {
+        // optional
     }
 
     public function header( $uid = '' ) : ?string
     {
-    }
-
-    public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
-    {
+        // optional
     }
 
     public function init()
     {
+        // optional
+    }
+
+    public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
+    {
+        // optional
     }
 
     protected function getSubClientNames() : array
     {
+        // optional
     }
 }
 ```
@@ -60,32 +63,8 @@ public function init()
     $context = $this->context();
     $view = $this->view();
 
-    try
-    {
-        // your required code
-        parent::init();
-    }
-    catch( \Aimeos\Client\Html\Exception $e )
-    {
-        $error = [$context->translate( 'client', $e->getMessage() )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-    }
-    catch( \Aimeos\Controller\Frontend\Exception $e )
-    {
-        $error = [$context->translate( 'controller/frontend', $e->getMessage() )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-    }
-    catch( \Aimeos\MShop\Exception $e )
-    {
-        $error = [$context->translate( 'mshop', $e->getMessage() )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-    }
-    catch( \Exception $e )
-    {
-        $error = [$context->translate( 'client', 'A non-recoverable error occured' )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-        $this->logException( $e );
-    }
+    // your required code
+    parent::init();
 }
 ```
 
@@ -97,116 +76,18 @@ You need to print these error messages in your component view which is described
 
 # Display error messages
 
-The exceptions caught in the methods and assigned to the view should be shown to the customers so they know what's going on. For this, you need to add a snippet similar to this one at the top of your component body view:
+The messages of the exceptions thrown in the different methods are assigned to the view using the `error` variable, which is an array of error messages. You need to add a snippet similar to this one at the top of your component body view:
 
 ```php
-<?php if( isset( $this->detailErrorList ) ) : ?>
+<?php if( isset( $this->errors ) ) : ?>
     <ul class="error-list">
-<?php foreach( (array) $this->detailErrorList as $errmsg ) : ?>
+<?php foreach( (array) $this->get( 'errors', [] ) as $errmsg ) : ?>
         <li class="error-item"><?= $this->encoder()->html( $errmsg ) ?></li>
 <?php endforeach ?>
     </ul>
 <?php endif ?>
 ```
-
-Remember to **adapt the parameter name** of `detailErrorList` to the name you've used in the methods of your new component class. These few lines of code create an HTML block that will contain all error messages. It will be styled by the used theme, so you don't have to care about this.
-
-# No caching
-
-If the output of your new component isn't suitable for caching, things are a bit easier for the `body()` and `header()` method because you only need to catch the exceptions as for the `init()` method.
-
-## body()
-
-Very similar to the `init()` method, you have to catch all exceptions, translate them if possible and assign them to the view so the visitors are notified about the errors. The example method below only contains the parts that are different to those of the [method from the subpart clients](create-subparts.md#body):
-
-```php
-public function body( string $uid = '' ) : string
-{
-    $context = $this->context();
-    $view = $this->view();
-
-    try
-    {
-        if( !isset( $this->view ) ) {
-            $view = $this->view = $this->object()->data( $view, $this->tags, $this->expire );
-        }
-
-        $html = '';
-        foreach( $this->getSubClients() as $subclient ) {
-            $html .= $subclient->setView( $view )->body( $uid );
-        }
-        $view->detailBody = $html;
-    }
-    catch( \Aimeos\Client\Html\Exception $e )
-    {
-        $error = [$context->translate( 'client', $e->getMessage() )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-    }
-    catch( \Aimeos\Controller\Frontend\Exception $e )
-    {
-        $error = [$context->translate( 'controller/frontend', $e->getMessage() )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-    }
-    catch( \Aimeos\MShop\Exception $e )
-    {
-        $error = [$context->translate( 'mshop', $e->getMessage() )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-    }
-    catch( \Exception $e )
-    {
-        $error = [$context->translate( 'client', 'A non-recoverable error occured' )];
-        $view->detailErrorList = array_merge( $view->get( 'detailErrorList', [] ), $error );
-        $this->logException( $e );
-    }
-
-    $tplconf = 'client/html/catalog/detail/template-body';
-    $default = 'catalog/detail/body';
-
-    return $view->render( $view->config( $tplconf, $default ) );
-}
-```
-
-Don't forget to **adapt the `detailErrorList` view variable** to your component name. It must be the same as used in your error displaying code of your view.
-
-In doubt, have a look into a full example of a working [body() component method without caching](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Session/Standard.php).
-
-## header()
-
-Compared to the `body()` method, `header()` is really simple because there's no way to display any errors that have been occured. Instead, you have to log them all and return no output. The code example below only contains the lines that are different from the [header() method of a subpart client](create-subparts.md#header):
-
-```php
-public function body( string $uid = '' ) : string
-{
-    $view = $this->view();
-
-    try
-    {
-        if( !isset( $this->view ) ) {
-            $view = $this->view = $this->object()->data( $view, $this->tags, $this->expire );
-        }
-
-        $html = '';
-        foreach( $this->getSubClients() as $subclient ) {
-            $html .= $subclient->setView( $view )->header( $uid );
-        }
-        $view->detailHeader = $html;
-    }
-    catch( Exception $e )
-    {
-        $this->context()->getLogger()->log( $e->getMessage() . PHP_EOL . $e->getTraceAsString() );
-        return;
-    }
-
-    $tplconf = 'client/html/catalog/detail/template-header';
-    $default = 'catalog/detail/header-stanard';
-
-    $html = $view->render( $view->config( $tplconf, $default ) );
-
-    return $html;
-}
-```
-
-In doubt, have a look into a full example of a working [header() component method without caching](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Session/Standard.php).
+These few lines of code create an HTML block that will contain all error messages. It will be styled by the used theme, so you don't have to care about this.
 
 # With content caching
 
@@ -223,23 +104,22 @@ You only need to specify the prefixes of the parameters your component listens t
 ```php
 public function body( string $uid = '' ) : string
 {
-    $prefixes = ['d'];
+    $view = $this->view();
+    $config = $this->context()->config();
+
+    $params = ['d_prodid', 'd_name'];
     $confkey = 'client/html/catalog/detail';
 
-    if( ( $html = $this->getCached( 'body', $uid, $prefixes, $confkey ) ) === null ) )
-    {
-        // code is the same as for the uncached variant
-
-        $html = $view->render( $view->config( $tplconf, $default ) );
-
-        $this->setCached( 'body', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
-    }
-    else
-    {
-        $html = $this->modify( $html, $uid );
+    if( $html = $this->cached( 'body', $uid, $params, $confkey ) ) {
+        return $this->modify( $html, $uid );
     }
 
-    return $html;
+    $template = $config->get( 'client/html/catalog/detail/template-body', 'catalog/detail/body' );
+
+    $view = $this->view = $this->view ?? $this->object()->data( $view, $this->tags, $this->expire );
+    $html = $this->modify( $view->render( $template ), $uid );
+
+    return $this->cache( 'body', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
 }
 ```
 
@@ -247,7 +127,7 @@ There's one thing to note when caching content: Sometimes, a subpart can't be ca
 
 The details for this are described in the article about [creating new subparts](create-subparts#modify). The important thing here is to call the `modify()` method provided by the parent class after successfully retrieving the cached content.
 
-In doubt, have a look into a full example of a working [body() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
+In doubt, have a look into a full example of a working [body() component method](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
 ## header()
 
@@ -256,29 +136,25 @@ For `header()`, implementing caching is very similar to the implementation of `b
 ```php
 public function header( string $uid = '' ) : string
 {
-    $prefixes = ['d'];
-    $confkey = 'client/html/catalog/detail';
+    $view = $this->view();
+    $config = $this->context()->config();
 
-    if( ( $html = $this->getCached( 'header', $uid, $prefixes, $confkey ) ) null )
-    {
-        // same code as for the uncached variant
-
-        $html = $view->render( $view->config( $tplconf, $default ) );
-
-        $this->setCached( 'header', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
-    }
-    else
-    {
-        $html = $this->modify( $html, $uid );
+    if( $html = $this->cached( 'header', $uid, $prefixes, $confkey ) ) {
+        return $this->modify( $html, $uid );
     }
 
-    return $html;
+    $template = $config->get( 'client/html/catalog/detail/template-header', 'catalog/detail/header' );
+
+    $view = $this->view = $this->view ?? $this->object()->data( $this->view(), $this->tags, $this->expire );
+    $html = $view->render( $template );
+
+    return $this->cache( 'header', $uid, $prefixes, $confkey, $html, $this->tags, $this->expire );
 }
 ```
 
 Only keep in mind that you also need to call the `modify()` method after successfully retrieving the cached content. This allows subclients of your component the chance to replace their sections with their new content.
 
-In doubt, have a look into a full example of a working [header() component method](https://github.com/aimeos/ai-client-html/blob/master/client/html/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
+In doubt, have a look into a full example of a working [header() component method](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
 # Factory class
 
@@ -326,4 +202,4 @@ Catalog\Detail -> Basket\Upsell
 catalog/detail -> basket/upsell
 ```
 
-The factory and the default implementation of your component must be saved to the appropriate directory, i.e. to the *./client/html/src/client/html/catalog/homepage* or *./client/html/src/client/html/basket/upsell* directory of your own extension.
+The factory and the default implementation of your component must be saved to the appropriate directory, i.e. to the *./src/Catalog/Homepage* or *./src/Basket/Upsell* directory of your own extension.
