@@ -8,7 +8,7 @@ Name of the backup for sucessfully imported files
 controller/jobs/catalog/import/csv/backup = tmp/notexist/import.zip
 ```
 
-* Default: 
+* Default:
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2018.04
 
@@ -307,7 +307,7 @@ File or directory where the content is stored which should be imported
 controller/jobs/catalog/import/csv/location = tmp/import.zip
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute file or directory path
 * Since: 2018.04
 
@@ -503,10 +503,10 @@ See also:
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/catalog/import/xml/backup = 
+controller/jobs/catalog/import/xml/backup =
 ```
 
-* Default: 
+* Default:
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2019.04
 
@@ -686,10 +686,10 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/catalog/import/xml/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/catalog/import/xml/location =
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute file or directory path
 * Since: 2019.04
 

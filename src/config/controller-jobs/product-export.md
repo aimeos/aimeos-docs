@@ -198,10 +198,10 @@ See also:
 List of associated items from other domains that should be exported too
 
 ```
-controller/jobs/product/export/domains = 
+controller/jobs/product/export/domains =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of domain names
 * Since: 2015.01
 
@@ -251,10 +251,10 @@ See also:
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/product/export/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/tmp
+controller/jobs/product/export/location =
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute directory to store the exported files into
 * Since: 2015.01
 
@@ -373,10 +373,10 @@ or numbers. Avoid chamel case names like "MyOptimizer"!
 Name of the partial used for exporting the attribute items into the product XML
 
 ```
-controller/jobs/product/export/partials/attribute = 
+controller/jobs/product/export/partials/attribute =
 ```
 
-* Default: 
+* Default:
 * Type: string - Name of the product attribute partial
 * Since: 2019.04
 
@@ -391,10 +391,10 @@ the XML tags for these items that will be inserted into the product XML.
 Name of the partial used for exporting the media items into the product XML
 
 ```
-controller/jobs/product/export/partials/media = 
+controller/jobs/product/export/partials/media =
 ```
 
-* Default: 
+* Default:
 * Type: string - Name of the product media partial
 * Since: 2019.04
 
@@ -409,10 +409,10 @@ the XML tags for these items that will be inserted into the product XML.
 Name of the partial used for exporting the price items into the product XML
 
 ```
-controller/jobs/product/export/partials/price = 
+controller/jobs/product/export/partials/price =
 ```
 
-* Default: 
+* Default:
 * Type: string - Name of the product price partial
 * Since: 2019.04
 
@@ -427,10 +427,10 @@ the XML tags for these items that will be inserted into the product XML.
 Name of the partial used for exporting the product items into the product XML
 
 ```
-controller/jobs/product/export/partials/product = 
+controller/jobs/product/export/partials/product =
 ```
 
-* Default: 
+* Default:
 * Type: string - Name of the product product partial
 * Since: 2019.04
 
@@ -445,10 +445,10 @@ the XML tags for these items that will be inserted into the product XML.
 Name of the partial used for exporting the text items into the product XML
 
 ```
-controller/jobs/product/export/partials/text = 
+controller/jobs/product/export/partials/text =
 ```
 
-* Default: 
+* Default:
 * Type: string - Name of the product text partial
 * Since: 2019.04
 
@@ -467,7 +467,7 @@ URL to the folder where the site maps can be accessed, without the filenames.
 controller/jobs/product/export/sitemap/baseurl = https://www.yourshop.com/sitemaps/
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute URL
 * Since: 2019.06
 
@@ -717,10 +717,10 @@ See also:
 Export hidden products in site map
 
 ```
-controller/jobs/product/export/sitemap/hidden = 
+controller/jobs/product/export/sitemap/hidden =
 ```
 
-* Default: 
+* Default:
 * Type: bool - TRUE to export hidden products, FALSE if not
 * Since: 2022.01
 
@@ -740,10 +740,10 @@ See also:
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/product/export/sitemap/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/tmp
+controller/jobs/product/export/sitemap/location =
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute directory to store the site maps into
 * Since: 2015.01
 

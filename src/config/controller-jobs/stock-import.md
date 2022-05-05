@@ -5,10 +5,10 @@
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/stock/import/csv/backup = 
+controller/jobs/stock/import/csv/backup =
 ```
 
-* Default: 
+* Default:
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2019.04
 
@@ -209,10 +209,10 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/stock/import/csv/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Stock/Import/Csv/_testfiles
+controller/jobs/stock/import/csv/location =
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute file or directory path
 * Since: 2019.04
 

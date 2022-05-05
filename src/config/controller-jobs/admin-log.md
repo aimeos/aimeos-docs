@@ -289,7 +289,7 @@ or numbers. Avoid chamel case names like "MyLog"!
 Path to a writable directory where the log archive files should be stored
 
 ```
-controller/jobs/admin/log/path = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/tmp
+controller/jobs/admin/log/path =
 ```
 
 * Default: /tmp

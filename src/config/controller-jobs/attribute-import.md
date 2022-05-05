@@ -5,10 +5,10 @@
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/attribute/import/xml/backup = 
+controller/jobs/attribute/import/xml/backup =
 ```
 
-* Default: 
+* Default:
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2019.04
 
@@ -189,10 +189,10 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/attribute/import/xml/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/attribute/import/xml/location =
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute file or directory path
 * Since: 2019.04
 
