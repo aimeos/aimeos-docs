@@ -88,7 +88,7 @@ To be implemented
 
 # Data access
 
-The second layer offers access to the data stored in relational database systems, NoSQL databases or provided by external (HTTP) APIs. It doesn't matter where the data is stored, the data access layer provides the same PHP API and semantics to the layers above regardless of the source. The implementation is located in the [Aimeos core](https://github.com/aimeos/aimeos-core/tree/master/src/MShop) "./lib/mshoplib/" or in extensions.
+The second layer offers access to the data stored in relational database systems, NoSQL databases or provided by external (HTTP) APIs. It doesn't matter where the data is stored, the data access layer provides the same PHP API and semantics to the layers above regardless of the source. The implementation is located in the [Aimeos core](https://github.com/aimeos/aimeos-core/tree/master/src/MShop) or in extensions.
 
 Aimeos is build on the principles of the domain driven design (DDD) and each data domain is self-contained. Within the access layer, separate domains care about specific data, e.g. the product domain manages only the product data while the order domain only cares about order data. There are currently 16 domains available that can be replaced by own implementations for different data sources.
 
@@ -126,9 +126,9 @@ Due to the strict separation it's possible to store each data in a [separate dom
 
 # Adapters
 
-The bottom layer in the Aimeos stack contains the adapters to integrate the e-commerce components into the host application or to provide common interfaces for implementations. They exist in the "Aimeos\Base" namespace located in the [Aimeos core](https://github.com/aimeos/aimeos-core/tree/master/src) or in extensions if they offer specific integrations.
+The bottom layer in the Aimeos stack contains the adapters to integrate the e-commerce components into the host application or to provide common interfaces for implementations. They exist in the "Aimeos\Base" namespace located in the [Aimeos base](https://github.com/aimeos/aimeos-base/tree/master/src) or in extensions if they offer specific integrations.
 
-Code: [Aimeos core](https://github.com/aimeos/aimeos-base/tree/master/src)
+Code: [Aimeos base](https://github.com/aimeos/aimeos-base/tree/master/src)
 
 Adapters for integration into the host application:
 
