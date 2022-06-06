@@ -128,6 +128,7 @@ These jobs should be executed once a day (best at times of low traffic):
 
 * Cache cleanup (remove old cache entries)
 * Catalog import (import categories from CSV files)
+* Catalog sitemap (generate sitemap with categories for search engines)
 * Log cleanup (remove old log entries)
 * Removes unpaid orders (delete orders without payment)
 * Product import (import products from CSV files)
