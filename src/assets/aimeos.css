@@ -13,7 +13,23 @@
 
   --md-text-link-color:              #ba9a5a;
   --md-typeset-a-color:              #ba9a5a;
+
+  --md-code-hl-variable-color:       #0550ae;
+  --md-code-hl-comment-color:        #6e7781;
 }
+
+.highlight :is(.nv,.vc,.vg,.vi) {
+  color: #24292f;
+}
+
+.highlight .nb {
+  color: #8250df;
+}
+
+.highlight .nx {
+  color: #953800;
+}
+
 
 .md-header {
   box-shadow: 0 0 10px 0 #ccc;
