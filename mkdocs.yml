@@ -173,11 +173,11 @@ nav:
     - Coupon provider: providers/coupon.md
     - Pricing rules: providers/rules.md
   - Infrastructure:
-    - Database: infrastructure/databases.md
-    - Migrations: infrastructure/schema-migrations.md
     - DI container: infrastructure/context.md
+    - Database: infrastructure/database.md
     - Filesystems: infrastructure/filesystem.md
     - Mails: infrastructure/mail.md
+    - Migrations: infrastructure/schema-migrations.md
     - Read/write files: infrastructure/read-write-files.md
     - View and helpers: infrastructure/view.md
   - Configuration:
