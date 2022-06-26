@@ -16,7 +16,7 @@ The Aimeos package also includes adapter classes for basic components used by an
 # HTML Frontend
 
 * [Overwrite existing templates](../frontend/html/overwrite-templates.md)
-* [Template syntax and view helper](../infrastructure/view-helpers.md)
+* [Template syntax and view helper](../infrastructure/view.md)
 * [Use Blade templates](customize.md#blade-templates)
 
 * [Create new subparts for existing components](../frontend/html/create-subparts.md)

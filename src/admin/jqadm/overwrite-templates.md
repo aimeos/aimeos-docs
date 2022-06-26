@@ -58,7 +58,7 @@ isset( $this->propertyTypes ) // tests if the parameter is available
 
 # View helpers
 
-For the list of available view helpers, how they work and what their parameters are, please have a look at the [view helper article](../../infrastructure/view-helpers.md).
+For the list of available view helpers, how they work and what their parameters are, please have a look at the [view helper article](../../infrastructure/view.md).
 
 Additionally, the JQAdm adds a few view helpers that are only available in JQAdm templates.
 

@@ -179,7 +179,7 @@ nav:
     - Filesystems: infrastructure/filesystem.md
     - Mails: infrastructure/mail.md
     - Read/write files: infrastructure/read-write-files.md
-    - View and helpers: infrastructure/view-helpers.md
+    - View and helpers: infrastructure/view.md
   - Configuration:
     - HTML clients:
       - Account download: config/client-html/account-download.md
