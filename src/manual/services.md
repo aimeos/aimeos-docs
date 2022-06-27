@@ -20,15 +20,19 @@ Each payment option requires its own configured payment provider that takes care
 
 Extensions implementing payment providers are available, especially those using payment gateways to handle payments of customers.
 
-!!! note
+!!! warning
     Please don't use any payment provider that stores credit card details locally in the shop system as long as you aren't certified as PCI-compliant. For more information take a look at the website of the [PCI Security Standards Council](https://www.pcisecuritystandards.org/).
 
 
 # Built-in delivery services
 
+The delivery service providers will be executed by the **order/service/delivery** job controller and you have to create a [Laravel cronjob](../laravel/setup.md#cronjobs) or a [TYPO3 scheduler task](../typo3/setup.md#cronjobs) that runs the job controller regularly!
+
 ## Email
 
 Sends e-mails to shop owners including the orders. Both, the e-mail content and the attachment with the orders can be customized using templates.
+
+![Email service delivery provider](Admin-service-delivery-email.webp)
 
 email.from (required)
 : E-Mail address the e-mails are sent from
@@ -52,6 +56,8 @@ Completely manual handling of orders without any notifications. It only sets the
 ## Xml
 
 XML based transfer of orders to a web service understanding the content of the XML.
+
+![XML service delivery provider](Admin-service-delivery-xml.webp)
 
 xml.backupdir (optional)
 : Relative or absolute path of the backup directory (with strftime() placeholders)
