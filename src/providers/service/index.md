@@ -278,7 +278,7 @@ public function getConfigFE( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : arr
     $list = [];
 
     foreach( $this->feconfig as $key => $config ) {
-        $list[$key] = new \Aimeos\MW\Criteria\Attribute\Standard( $config );
+        $list[$key] = new \Aimeos\Base\Criteria\Attribute\Standard( $config );
     }
 
     return $list;
@@ -350,7 +350,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
     $attr = [];
 
     foreach( $this->payconfig as $key => $config ) {
-        $attr[$key] = new \Aimeos\MW\Criteria\Attribute\Standard( $config );
+        $attr[$key] = new \Aimeos\Base\Criteria\Attribute\Standard( $config );
     }
 
     $url = $this->getConfigValue( [ 'payment.url-self' ) );
@@ -386,7 +386,7 @@ public function getConfigBE() : array
     $list = parent::getConfigBE();
 
     foreach( $this->beconfig as $key => $config ) {
-        $list[$key] = new \Aimeos\MW\Criteria\Attribute\Standard( $config );
+        $list[$key] = new \Aimeos\Base\Criteria\Attribute\Standard( $config );
     }
 
     return $list;
