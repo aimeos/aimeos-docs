@@ -9,6 +9,12 @@ Moreover, shop owners can recalculate the total price based on the used payment 
 
 # Basic skeleton
 
+The location of your new payment service provider must be:
+
+```
+./<yourext>/src/MShop/Service/Provider/Payment/<classname>.php
+```
+
 The skeleton for the most basic implementation of a payment service provider would be:
 
 ```php
