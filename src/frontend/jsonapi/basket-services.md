@@ -251,7 +251,7 @@ To add this service as delivery option to the current basket you should use:
     var params = {'data': [{
         'id': 'payment',
         'attributes': {
-            'service.id': '7', // from service response
+            'service.id': '1', // from service response
             'time.hourminute': '15:00', // key/value pairs of data entered by the customer
             'supplier.code': 'demo-test2'
         }
@@ -373,14 +373,14 @@ The response to this request would be similar to this:
                 "order.base.service.attribute.type": "delivery",
                 "order.base.service.attribute.name": "",
                 "order.base.service.attribute.code": "supplier.address",
-                "order.base.service.attribute.value": "Test supplier 2, Test company, Test road 10, 20000 Test town",
+                "order.base.service.attribute.value": "Test supplier 1\nTest company\nTest street 1\n10000 Test city\nNY US\ndemo1@example.com\n",
                 "order.base.service.attribute.quantity": 1
             }]
         },
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
-                "allow": ["DELETE"]
+                "allow": ["DELETE", "PATCH"]
             }
         }
     }]
@@ -472,10 +472,179 @@ The additional service attributes are then stored in the "attribute" section of 
     "order.base.service.attribute.type": "delivery",
     "order.base.service.attribute.name": "",
     "order.base.service.attribute.code": "supplier.address",
-    "order.base.service.attribute.value": "Test supplier 2, Test company, Test road 10, 20000 Test town",
+    "order.base.service.attribute.value": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n",
     "order.base.service.attribute.quantity": 1
 }]
 ```
+
+# Update services
+
+Replacing existing delivery/payment services in the basket with only one request is possible since 2022.07 by using the PATCH request of the basket service resource. It will remove the already available delivery or payment option (depending on the `relatedid` parameter) and add the new options afterwards from the body sent with the request.
+
+From the previous GET request or the response returned for your last request you know that the URL for modifying the basket delivery service options is e.g.:
+
+```
+http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery
+```
+
+To update the delivery service in the current basket you should use:
+
+=== "CURL"
+    ```bash
+    curl -b cookies.txt -c cookies.txt \
+    -X PATCH 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=...' \
+    -H 'Content-Type: application/json' \
+    -d '{"data": [{
+        "id": "delivery",
+        "attributes": {
+            "service.id": "1",
+            "time.hourminute": "17:00",
+            "supplier.code": "demo-test1"
+        }
+    }]}'
+    ```
+=== "jQuery"
+    ```javascript
+    var params = {'data': [{
+        'id': 'payment',
+        'attributes': {
+            'service.id': '1', // from service response
+            'time.hourminute': '17:00', // key/value pairs of data entered by the customer
+            'supplier.code': 'demo-test1'
+        }
+    }]};
+
+    var url = response['data'][0]['links']['basket/service']['href']; // from service response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        var csrf = {};
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value'];
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf);
+    }
+
+    $.ajax({
+        url: url,
+        method: "PATCH",
+        dataType: "json",
+        data: JSON.stringify(params)
+    }).done( function( result ) {
+        console.log( result );
+    });
+    ```
+
+It's important to add the **id: "delivery"** (or **"payment"**) and the service ID in the attributes section of the parameters sent to the server. The value for "id" is the service type while the value for "service.id" must be the ID of the service option that should be added as delivery or payment entry to the basket.
+
+The response to this request would be similar to this:
+
+```json
+{
+    "meta": {
+        "total": 1,
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000/",
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        }
+    },
+    "links": {
+        "self": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
+            "allow": ["DELETE","GET","PATCH","POST"]
+        },
+        "basket/product": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=product",
+            "allow": ["POST"]
+        },
+        "basket/service": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=service",
+            "allow": ["POST"]
+        },
+        "basket/address": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=address",
+            "allow": ["POST"]
+        },
+        "basket/coupon": {
+            "href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon",
+            "allow": ["POST"]
+        }
+    },
+    "data": {
+        "id": "default",
+        "type": "basket",
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default",
+                "allow": ["DELETE","GET","PATCH","POST"]
+            }
+        },
+        "attributes": {
+            "order.base.id": null,
+            "order.base.sitecode": "",
+            "order.base.customerid": "",
+            "order.base.languageid": "en",
+            "order.base.currencyid": "EUR",
+            "order.base.price": "0.00",
+            "order.base.costs": "0.00",
+            "order.base.rebate": "0.00",
+            "order.base.taxvalue": "0.0000",
+            "order.base.taxflag": true,
+            "order.base.customerref": "",
+            "order.base.comment": ""
+        },
+        "relationships": {
+            "basket\/service": {
+                "data": [{
+                    "type": "basket\/service",
+                    "id": "delivery"
+                }]
+            }
+        }
+    },
+    "included": [{
+        "id": "delivery",
+        "type": "basket\/service",
+        "attributes": {
+            "order.base.service.id": null,
+            "order.base.service.price": "0.00",
+            "order.base.service.costs": "0.00",
+            "order.base.service.rebate": "0.00",
+            "order.base.service.taxrate": "0.00",
+            "order.base.service.taxrates": {
+                "": "0.00"
+            },
+            "order.base.service.type": "delivery",
+            "order.base.service.code": "demo-pickup",
+            "order.base.service.name": "Click & Collect",
+            "order.base.service.position": null,
+            "order.base.service.mediaurl": "",
+            "attribute": [{
+                "order.base.service.attribute.id": null,
+                "order.base.service.attribute.type": "delivery",
+                "order.base.service.attribute.name": "",
+                "order.base.service.attribute.code": "time.hourminute",
+                "order.base.service.attribute.value": "17:00",
+                "order.base.service.attribute.quantity": 1
+            },{
+                "order.base.service.attribute.id": null,
+                "order.base.service.attribute.type": "delivery",
+                "order.base.service.attribute.name": "",
+                "order.base.service.attribute.code": "supplier.address",
+                "order.base.service.attribute.value": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n",
+                "order.base.service.attribute.quantity": 1
+            }]
+        },
+        "links": {
+            "self": {
+                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
+                "allow": ["DELETE", "PATCH"]
+            }
+        }
+    }]
+}
+```
+
+Aimeos also allows several delivery or payment option within the basket and there can be more than one delivery or payment option sent in the PATCH request. You can also mix delivery and payment option within one PATCH request but only the type passed in `relatedid` ("delivery" or "payment") is removed before the new ones are added.
 
 # Delete services
 
