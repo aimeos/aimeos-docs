@@ -245,7 +245,7 @@ class Myproject extends Standard
     {
         $list = parent::getSearchAttributes( $withsub );
         foreach( $this->searchConfig as $key => $fields ) {
-            $list[$key] = new \Aimeos\MW\Criteria\Attribute\Standard( $fields );
+            $list[$key] = new \Aimeos\Base\Criteria\Attribute\Standard( $fields );
         }
         return $list;
     }

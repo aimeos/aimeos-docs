@@ -1,5 +1,5 @@
-site_dir: docs/2022.x
-site_url: https://aimeos.org/docs/2022.x/
+site_dir: docs/master
+site_url: https://aimeos.org/docs/master/
 
 
 site_name: Aimeos documentation
@@ -20,7 +20,7 @@ markdown_extensions:
             startinline: true
   - pymdownx.superfences
 plugins:
-  - algolia
+#  - algolia
 docs_dir: src
 theme:
   name: material
@@ -173,13 +173,14 @@ nav:
     - Coupon provider: providers/coupon.md
     - Pricing rules: providers/rules.md
   - Infrastructure:
-    - Database: infrastructure/databases.md
-    - Migrations: infrastructure/schema-migrations.md
     - DI container: infrastructure/context.md
+    - Cache: infrastructure/cache.md
+    - Database: infrastructure/database.md
     - Filesystems: infrastructure/filesystem.md
     - Mails: infrastructure/mail.md
+    - Migrations: infrastructure/schema-migrations.md
     - Read/write files: infrastructure/read-write-files.md
-    - View and helpers: infrastructure/view-helpers.md
+    - View and helpers: infrastructure/view.md
   - Configuration:
     - HTML clients:
       - Account download: config/client-html/account-download.md

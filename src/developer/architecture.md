@@ -122,7 +122,7 @@ Shop domains:
 * tag : Tags for all items with a list table
 * text : All kind of texts referenced by other domains
 
-Due to the strict separation it's possible to store each data in a [separate domain database](../infrastructure/databases.md#multiple-databases).
+Due to the strict separation it's possible to store each data in a [separate domain database](../infrastructure/database.md#multiple-databases).
 
 # Adapters
 

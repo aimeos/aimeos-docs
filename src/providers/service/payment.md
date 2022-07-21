@@ -9,6 +9,12 @@ Moreover, shop owners can recalculate the total price based on the used payment 
 
 # Basic skeleton
 
+The location of your new payment service provider must be:
+
+```
+./<yourext>/src/MShop/Service/Provider/Payment/<classname>.php
+```
+
 The skeleton for the most basic implementation of a payment service provider would be:
 
 ```php
@@ -115,7 +121,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
 
     // define the payment information that should be sent to the external payment gateway
     $list = [
-        'myprovider.orderid' => new \Aimeos\MW\Criteria\Attribute\Standard( [
+        'myprovider.orderid' => new \Aimeos\Base\Criteria\Attribute\Standard( [
             'label' => 'Order ID',
             'code' => 'myprovider.orderid',
             'internalcode' => 'x_ref',
@@ -124,7 +130,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
             'default' => $order->getId(),
             'public' => false,
         ] ),
-        'myprovider.total' => new \Aimeos\MW\Criteria\Attribute\Standard( [
+        'myprovider.total' => new \Aimeos\Base\Criteria\Attribute\Standard( [
             'label' => 'Total value',
             'code' => 'myprovider.total',
             'internalcode' => 'x_total',
@@ -169,7 +175,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
     {
         // define the form to collect the payment data from the customer
         $list = [
-            'myprovider.accountno' => new \Aimeos\MW\Criteria\Attribute\Standard( [
+            'myprovider.accountno' => new \Aimeos\Base\Criteria\Attribute\Standard( [
                 'label' => 'Account number',
                 'code' => 'myprovider.accountno',
                 'internalcode' => 'myprovider.accountno',

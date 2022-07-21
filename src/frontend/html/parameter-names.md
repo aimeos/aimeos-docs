@@ -57,10 +57,10 @@ b_prodid
 : ID of the product to add to the basket
 
 b_attrvarid
-: Selected variant attributes to determine the article
+: Selected variant attributes to determine the article. The key must be the attribute type of the passed attribute ID.
 
 b_attrconfid
-: Associative list of IDs and quantities for the selected configurable attributes
+: Associative list of IDs and quantities for the selected configurable attributes. The configurable attriubutes must contain the *qty* (*b_attrconfid[qty]*) and *id* (*b_attrconfid[id]*) keys fields and below the quantity resp. ID with the same key so Aimeos knows they belong to together, e.g. *b_attrconfid[qty][0]* and *b_attrconfid[id][0]*.
 
 b_attrcustid
 : Associative list of IDs and values for the custom attributes

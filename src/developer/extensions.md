@@ -68,7 +68,7 @@ The code for the data access managers use:
 
 Tutorials:
 
-* [Database setup](../infrastructure/databases.md)
+* [Database setup](../infrastructure/database.md)
 * [Database migrations](../infrastructure/schema-migrations.md)
 * [Using managers and items](../models/managing-items.md)
 * [Implement payment/delivery providers](../providers/service/index.md)

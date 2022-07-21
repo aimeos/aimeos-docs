@@ -180,6 +180,8 @@ because it violates the following Content Security Policy directive:
 "default-src 'self' https://cdn.jsdelivr.net"
 ```
 
+## Frontend
+
 The default CSP is part of the [base.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/views/base.blade.php#L7) template and consists of:
 
 ```
@@ -215,3 +217,9 @@ Sometimes, several subdomains are used e.g. by Stripe and then you should add `h
 ```
 default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://cdn.jsdelivr.net https://*.stripe.com; style-src 'unsafe-inline' 'self' https://cdn.jsdelivr.net; img-src 'self' data: https://cdn.jsdelivr.net https://aimeos.org
 ```
+
+# Backend
+
+The backend uses it's own content security policy, which is located in the [index.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/views/jqadm/index.blade.php) template.
+
+To modify the CSP rules, copy the `index.blade.php` template from `./vendor/aimeos/aimeos-laravel/src/views/jqadm/index.blade.php` to `./resources/views/vendor/shop/jqadm/index.blade.php`. Then, you can add new CSP rules there, just like for the frontend.

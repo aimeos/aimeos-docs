@@ -60,7 +60,7 @@ return [
 ];
 ```
 
-More details about the available domains and the necessary configuration is available in the [database article](../infrastructure/databases.md).
+More details about the available domains and the necessary configuration is available in the [database article](../infrastructure/database.md).
 
 To avoid the install tool creating the tables in the TYPO3 database add the tables that are stored in other databases to the "DB" section of your `./typo3conf/LocalConfiguration.php`:
 

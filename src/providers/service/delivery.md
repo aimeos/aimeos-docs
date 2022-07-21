@@ -14,6 +14,12 @@ Examples of imaginable delivery configurations could be:
 
 # Basic skeleton
 
+The location of your new delivery service provider must be:
+
+```
+./<yourext>/src/MShop/Service/Provider/Delivery/<classname>.php
+```
+
 The skeleton for the most basic implementation of a delivery service provider would be:
 
 ```php
