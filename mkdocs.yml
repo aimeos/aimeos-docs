@@ -27,8 +27,7 @@ theme:
   custom_dir: theme
   favicon: assets/favicon.svg
   logo: https://aimeos.org/fileadmin/logos/logo-aimeos-blue.svgz
-  font:
-    text: Noto Sans
+  font: false
 extra_css:
   - assets/aimeos.css?v4
 extra_javascript:
