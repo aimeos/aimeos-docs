@@ -1,5 +1,5 @@
-site_dir: docs/2022
-site_url: https://aimeos.org/docs/2022/
+site_dir: docs/2022.x
+site_url: https://aimeos.org/docs/2022.x/
 
 
 site_name: Aimeos documentation
