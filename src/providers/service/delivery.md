@@ -74,7 +74,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop
     // send the order details to an external system
 
     $status = \Aimeos\MShop\Order\Item\Base::STAT_PROGRESS;
-    $order->setDeliveryStatus( $status );
+    $order->setStatusDelivery( $status );
 
     return $order;
 }
@@ -128,7 +128,7 @@ public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
     $order = $this->getOrder( $orderid );
     // map the status value to one of the Aimeos delivery status values
 
-    $order->setDeliveryStatus( $status );
+    $order->setStatusDelivery( $status );
     $this->saveOrder( $order );
 
     return $response;
@@ -162,7 +162,7 @@ public function updateAsync() : bool
         // map the status value to one of the Aimeos delivery status values
 
         $order = $this->getOrder( $orderid );
-        $order->setDeliveryStatus( $status );
+        $order->setStatusDelivery( $status );
         $this->saveOrder( $order );
     }
 
@@ -188,7 +188,7 @@ public function query( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\O
     // ask the external service for the current delivery status for the given order
 
     $status = \Aimeos\MShop\Order\Item\Base::STAT_DISPATCHED;
-    $order->setDeliveryStatus( $status );
+    $order->setStatusDelivery( $status );
     $this->saveOrder( $order );
 
     return $order;

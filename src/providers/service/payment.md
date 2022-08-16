@@ -67,7 +67,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
     // send the payment details to an external payment gateway
 
     $status = \Aimeos\MShop\Order\Item\Base::PAY_RECEIVED;
-    $order->setPaymentStatus( $status );
+    $order->setStatusPayment( $status );
     $this->saveOrder( $order );
 
     return parent::process( $order, $params );
@@ -223,7 +223,7 @@ public function updateSync( \Psr\Http\Message\ServerRequestInterface $request,
     // extract status from the request
     // map the status value to one of the Aimeos payment status values
 
-    $order->setPaymentStatus( $status );
+    $order->setStatusPayment( $status );
     $this->saveOrder( $order );
 
     return $order;
@@ -250,7 +250,7 @@ public function updatePush( \Psr\Http\Message\ServerRequestInterface $request,
     $order = $this->getOrder( $orderid );
     // map the status value to one of the Aimeos payment status values
 
-    $order->setPaymentStatus( $status );
+    $order->setStatusPayment( $status );
     $this->saveOrder( $order );
 
     return $response;
@@ -279,7 +279,7 @@ public function updateAsync() : bool
         // map the status value to one of the Aimeos payment status values
 
         $order = $this->getOrder( $orderid );
-        $order->setPaymentStatus( $status );
+        $order->setStatusPayment( $status );
         $this->saveOrder( $order );
     }
 
@@ -306,7 +306,7 @@ public function query( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\O
     $orderid = $order->getId();
     // ask the external service for the current payment status for the given order
 
-    $order->setPaymentStatus( $status );
+    $order->setStatusPayment( $status );
     $this->saveOrder( $order );
 
     return $order;
@@ -345,7 +345,7 @@ public function capture( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop
     // ask the payment gateway to capture the money for the given order
 
     $status = \Aimeos\MShop\Order\Item\Base::PAY_RECEIVED;
-    $order->setPaymentStatus( $status );
+    $order->setStatusPayment( $status );
     $this->saveOrder( $order );
 
     return $order;
@@ -382,7 +382,7 @@ public function cancel( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\
     // ask the payment gateway to cancel the payment for the given order
 
     $status = \Aimeos\MShop\Order\Item\Base::PAY_DELETED;
-    $order->setPaymentStatus( $status );
+    $order->setStatusPayment( $status );
     $this->saveOrder( $order );
 
     return $order;
@@ -421,7 +421,7 @@ public function refund( \Aimeos\MShop\Order\Item\Iface $order ) : \Aimeos\MShop\
     // ask the payment gateway to refund the complete payment for the given order
 
     $status = \Aimeos\MShop\Order\Item\Base::PAY_REFUND;
-    $order->setPaymentStatus( $status );
+    $order->setStatusPayment( $status );
     $this->saveOrder( $order );
 
     return $order;
