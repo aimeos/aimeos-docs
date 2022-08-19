@@ -195,7 +195,7 @@ The default implementation reveals the details of the [view object setup](https:
 
 ```php
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] =
-    function( \Aimeos\MW\View\Iface $view )
+    function( \Aimeos\Base\View\Iface $view )
     {
         $helper = new \Aimeos\MW\View\Helper\Access\All( $view );
         return $view->addHelper( 'access', $helper );
