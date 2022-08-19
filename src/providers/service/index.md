@@ -428,8 +428,8 @@ $this->log( ['error' => 'Message', 'details' => [/* ... */]] );
 If the message or object should be logged as warning or debug message, you can pass the log level as second parameter:
 
 ```php
-$this->log( 'A warning', \Aimeos\MW\Logger\Base::WARN );
-$this->log( 'Some debug stuff', \Aimeos\MW\Logger\Base::DEBUG );
+$this->log( 'A warning', \Aimeos\Base\Logger\Iface::WARN );
+$this->log( 'Some debug stuff', \Aimeos\Base\Logger\Iface::DEBUG );
 ```
 
 Most often, you also want to inform the user about the error in the frontend. Then, you should throw an exception:
