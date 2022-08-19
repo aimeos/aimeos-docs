@@ -47,7 +47,7 @@ With the connection object, you can execute a SQL statement:
 ```php
 $stmt = $conn->create( 'UPDATE "mytable" SET "mycol" = ? WHERE "myid"=?' )
     ->bind( 1, 'some value' );
-    ->bind( 2, 123, \Aimeos\MW\DB\Statement\Base::PARAM_INT );
+    ->bind( 2, 123, \Aimeos\Base\DB\Statement\Base::PARAM_INT );
     ->execute()
     ->finish();
 ```
@@ -90,7 +90,7 @@ $content = $fs->read( 'somefile.txt' );
 If directories are supported, you can create or delete them too:
 
 ```php
-if( $fs instanceof \Aimeos\MW\Filesystem\DirIface )
+if( $fs instanceof \Aimeos\Base\Filesystem\DirIface )
 {
     if( !$fs->isDir( 'mydir' ) ) {
         $fs->mkdir( 'mydir' );
@@ -102,7 +102,7 @@ if( $fs instanceof \Aimeos\MW\Filesystem\DirIface )
 Some file systems also support file meta data:
 
 ```php
-if( $fs instanceof \Aimeos\MW\Filesystem\MetaIface ) {
+if( $fs instanceof \Aimeos\Base\Filesystem\MetaIface ) {
     $size = $fs->size( 'myfile.txt' );
 }
 ```
@@ -144,7 +144,7 @@ Writing log entries is essential for reporting unexpected behavior. The logger o
 
 ```php
 $logger = $this->context()->logger()
-    ->log( 'payment failed', \Aimeos\MW\Logger\Base::WARN, 'payment' )
+    ->log( 'payment failed', \Aimeos\Base\Logger\Iface::WARN, 'payment' )
     ->log( 'some message' );
 ```
 

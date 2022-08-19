@@ -62,7 +62,7 @@ class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
             'internalcode' => 'mpro."mycolumn"',
             'label' => 'My new column',
             'type' => 'string',
-            'internaltype' => \Aimeos\MW\DB\Statement\Base::PARAM_STR,
+            'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_STR,
         ],
     ];
 
@@ -92,10 +92,10 @@ The other values in the *$attr* array are optional:
 * *label* is an arbitrary string that is shown in admin interface in the search bar
 * *type* is the type of the values that the column contains (default: 'string')
 * *internaltype* is the database type constant (default: PARAM_STR) and can be:
-    * \Aimeos\MW\DB\Statement\Base::PARAM_STR
-    * \Aimeos\MW\DB\Statement\Base::PARAM_INT
-    * \Aimeos\MW\DB\Statement\Base::PARAM_FLOAT
-    * \Aimeos\MW\DB\Statement\Base::PARAM_BOOL
+    * \Aimeos\Base\DB\Statement\Base::PARAM_STR
+    * \Aimeos\Base\DB\Statement\Base::PARAM_INT
+    * \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT
+    * \Aimeos\Base\DB\Statement\Base::PARAM_BOOL
 
 As last step, you have to add your decorator name to the list of local decorators for that manager in the `./<yourext>/config/mshop.php` file. For the product manager it's:
 
@@ -228,7 +228,7 @@ class Myproject extends Standard
             'internalcode' => 'mpro."myval"',
             'label' => 'Product MyValue',
             'type' => 'string', // integer, float, etc.
-            'internaltype' => \Aimeos\MW\DB\Statement\Base::PARAM_STR, // _INT, _FLOAT, etc.
+            'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_STR, // _INT, _FLOAT, etc.
         ],
     ];
 

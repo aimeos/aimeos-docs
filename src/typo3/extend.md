@@ -56,7 +56,7 @@ $context->setI18n( \Aimeos\Aimeos\Base::getI18n( ['en'] ) );
 Alternatively, if you don't want any translation, you can add a "Null" object instead. It returns the singular or plural string untranslated, and for this decision it needs the language ID to determine the right singular/plural rule:
 
 ```php
-$context->setI18n( ['en' => new \Aimeos\MW\Translation\None()] );
+$context->setI18n( ['en' => new \Aimeos\Base\Translation\None()] );
 ```
 
 Afterwards, you are able to create every object from the Aimeos core and save, retrieve or delete the stored data. You should never use the "new" operator to create a new object, because the implementation variant depends on the configuration and decorators are added automatically. Instead, use the *Aimeos\MShop* class or any more specific factory to create new objects, e.g.
@@ -118,7 +118,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view'] =
     ) {
         $view = \Aimeos\Aimeos\Base\View::get( $context, $uriBuilder, $templatePaths, $request, $langid );
         $service = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'ImageService' );
-        $helper = new \Aimeos\MW\View\Helper\Request\ImageService( $view, $service );
+        $helper = new \Aimeos\Base\View\Helper\Request\ImageService( $view, $service );
         $view->addHelper( 'imageservice', $helper );
         return $view;
 }
@@ -145,8 +145,8 @@ Please have a look into the default implementation of the [context object setup]
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_logger'] =
     function( \Aimeos\MShop\Context\Item\Iface $context )
     {
-        $loglevel = \Aimeos\MW\Logger\Base::DEBUG;
-        $logger = new \Aimeos\MW\Logger\File( '/tmp/aimeos.log', $loglevel );
+        $loglevel = \Aimeos\Base\Logger\Iface::DEBUG;
+        $logger = new \Aimeos\Base\Logger\File( '/tmp/aimeos.log', $loglevel );
 
         return $context->setLogger( $logger );
     };
@@ -195,9 +195,9 @@ The default implementation reveals the details of the [view object setup](https:
 
 ```php
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_view_access'] =
-    function( \Aimeos\MW\View\Iface $view )
+    function( \Aimeos\Base\View\Iface $view )
     {
-        $helper = new \Aimeos\MW\View\Helper\Access\All( $view );
+        $helper = new \Aimeos\Base\View\Helper\Access\All( $view );
         return $view->addHelper( 'access', $helper );
     };
 ```
@@ -233,7 +233,7 @@ You can change logging from the database to another target in  `ext_localconf.ph
 
 ```php
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['aimeos']['aimeos_context_logger'] = function( $context ) {
-    return $context->setLogger( new \Aimeos\MW\Logger\File( '/path/to/file', <loglevel>, [<facility>] ) );
+    return $context->setLogger( new \Aimeos\Base\Logger\File( '/path/to/file', <loglevel>, [<facility>] ) );
 }
 ```
 
@@ -252,16 +252,16 @@ The "facility" parameter limits the log messages to the list of given facilities
 
 The available logger implementations are:
 
-* File( $filename, $priority = \Aimeos\MW\Logger\Base::ERR, array $facilities = null )
-* Errorlog( $loglevel = \Aimeos\MW\Logger\Base::ERR, array $facilities = null )
+* File( $filename, $priority = \Aimeos\Base\Logger\Iface::ERR, array $facilities = null )
+* Errorlog( $loglevel = \Aimeos\Base\Logger\Iface::ERR, array $facilities = null )
 * Compose( array $loggers )
 
 The *Compose* logger can send log messages to different loggers, e.g. to the *File* logger and a self written logger:
 
 ```php
-new \Aimeos\MW\Logger\Compose( [
-    new \Aimeos\MW\Logger\File( '/path/to/file' ),
-    new \Aimeos\MW\Logger\MySmsLogger( '<number>', 2 ),
+new \Aimeos\Base\Logger\Compose( [
+    new \Aimeos\Base\Logger\File( '/path/to/file' ),
+    new \Aimeos\Base\Logger\MySmsLogger( '<number>', 2 ),
 ] );
 ```
 
