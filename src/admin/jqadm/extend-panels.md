@@ -61,16 +61,22 @@ class Mydecorator extends Base
 {
     public function delete() : ?string
     {
-        $item = $this->view()->item;
-        // notifiy the 3rd party system
-        return $this->getClient()->delete();
+        $params = $this->view()->params();
+        // do something
+        $result = $this->getClient()->delete();
+        // notify the 3rd party system
+        return $result;
     }
 
     public function save() : ?string
     {
+        $params = $this->view()->params();
+        // do something
+        $result = $this->getClient()->save();
+        // assigned by inner objects
         $item = $this->view()->item;
-        // notifiy the 3rd party system
-        return $this->getClient()->save();
+        // notify the 3rd party system
+        return $result;
     }
 }
 ```
