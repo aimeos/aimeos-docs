@@ -61,7 +61,7 @@ class Mydecorator extends Base
 {
     public function delete() : ?string
     {
-        $params = $this->view()->params();
+        $params = $this->view()->param();
         // do something
         $result = $this->getClient()->delete();
         // notify the 3rd party system
@@ -70,7 +70,7 @@ class Mydecorator extends Base
 
     public function save() : ?string
     {
-        $params = $this->view()->params();
+        $params = $this->view()->param();
         // do something
         $result = $this->getClient()->save();
         // assigned by inner objects
