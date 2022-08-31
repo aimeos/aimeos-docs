@@ -23,9 +23,9 @@ The filename must be the same as the class name (here: *Mycoupon*). Of course yo
 
 ```php
 // Laravel, Symfony
-./<yourext>/lib/custom/src/MShop/Coupon/Provider/Mycoupon.php
+./<yourext>/src/MShop/Coupon/Provider/Mycoupon.php
 // TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Coupon/Provider/Mycoupon.php
+./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Coupon/Provider/Mycoupon.php
 ```
 
 Now you can add a rebate of 1.00 EUR/USD/etc. to the basket for example:
@@ -166,9 +166,9 @@ The new coupon provider must be stored within your project specific [Aimeos exte
 
 ```php
 // Laravel, Symfony
-./<yourext>/lib/custom/src/MShop/Coupon/Provider/Decorator/Mydecorator.php
+./<yourext>/src/MShop/Coupon/Provider/Decorator/Mydecorator.php
 // TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/lib/custom/src/MShop/Coupon/Provider/Decorator/Mydecorator.php
+./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Coupon/Provider/Decorator/Mydecorator.php
 ```
 
 It's only important to extend from the base decorator class and implement the decorator interface. The base class already contains default implementations for all coupon provider methods.
