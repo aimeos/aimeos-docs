@@ -178,18 +178,27 @@ Retrieving records in the database is always done in bunches (default: 100 recor
 ```php
 $manager = \Aimeos\MShop::create( $this->context(), 'product' );
 $filter = $manager->filter();
-$start = 0;
 
-do
+while( !( $items = $manager->search( ( clone $filter )->add( 'product.id', '>', $lastId ?? 0 ), ['text'] ) )->isEmpty() )
 {
-    $result = $manager->search( $filter->slice( $start ) );
-
-    foreach ( $result as $item ) {
+    foreach ( $items as $item ) {
         // process items
     }
 
-    $count = count( $result );
-    $start += $count;
+    $lastId = $items->last()->getId();
 }
-while( $count == $filter->getLimit() );
+```
+
+Since 2022.10, some managers (e.g. index and product managers) are implementing the `iterator()` and `iterate()` methods which should be used if you need to fetch all records subsequently:
+
+```php
+$manager = \Aimeos\MShop::create( $this->context(), 'product' );
+$iterator = $manager->iterator( $manager->filter() );
+
+while( $items = $manager->iterate( $iterator, ['text'], 100 ) )
+{
+    foreach ( $items as $item ) {
+        // process items
+    }
+}
 ```
