@@ -216,6 +216,21 @@ The second argument lists the names of the associated domains whose items should
 
 The last argument is a value/result parameter which will contain the total number of items matching the search criteria. By default, only the first 100 items are returned.
 
+## Iterate items
+
+Some managers (e.g. index and product managers) are implementing the `iterator()` and `iterate()` methods which should be used if you need to fetch all records subsequently:
+
+```php
+$manager = \Aimeos\MShop::create( $this->context(), 'product' );
+$iterator = $manager->iterator( $manager->filter() );
+
+while( $items = $manager->iterate( $iterator, ['text'], 100 ) ) {
+    // process items
+}
+```
+
+First, you have to create an iterator object from the filter. The filter can contain all conditions and sorting possibilities also available when using `search()`. Pass this iterator to the `iterate()` method to retrieve all items subsequently. The second paramter contains the names of the associated domains whose items should be fetched, too. The third parameter is the maximum number of items which should be returned at once. Only the first parameter of `iterate()` is required, the other ones are optional.
+
 ## Delete items
 
 The last action in the life cycle of an item is to delete it from the storage if it's not needed anymore. Managers offer the method `delete()` to remove entries:
