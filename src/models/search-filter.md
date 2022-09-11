@@ -177,7 +177,7 @@ Retrieving records in the database is always done in bunches (default: 100 recor
 
 ```php
 $manager = \Aimeos\MShop::create( $this->context(), 'product' );
-$filter = $manager->filter();
+$filter = $manager->filter()->order( 'product.id' );
 
 while( !( $items = $manager->search( ( clone $filter )->add( 'product.id', '>', $lastId ?? 0 ), ['text'] ) )->isEmpty() )
 {
