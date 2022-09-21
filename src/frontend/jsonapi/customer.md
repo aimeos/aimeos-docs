@@ -261,7 +261,7 @@ If the user isn't logged in, it's possible to create a new customer by sending t
             "customer.state": "HH",
             "customer.countryid": "DE",
             "customer.languageid": "de",
-            "customer.telehone": "+4912345678",
+            "customer.telephone": "+4912345678",
             "customer.telefax": "+49123456789",
             "customer.email": "testuser@example.com",
             "customer.website": "https://example.com",
@@ -292,7 +292,7 @@ If the user isn't logged in, it's possible to create a new customer by sending t
             "customer.state": "HH", // (optional)
             "customer.countryid": "DE", // (optional)
             "customer.languageid": "de", // (required by many payment gateways)
-            "customer.telehone": "+4912345678", // (optional)
+            "customer.telephone": "+4912345678", // (optional)
             "customer.telefax": "+49123456789", // (optional)
             "customer.email": "testuser@example.com", // (required)
             "customer.website": "https://example.com", // (optional)
@@ -393,7 +393,7 @@ The request for changing data is very similar to creating a new user but it requ
             "customer.state": "HH",
             "customer.countryid": "DE",
             "customer.languageid": "de",
-            "customer.telehone": "+4912345678",
+            "customer.telephone": "+4912345678",
             "customer.telefax": "+49123456789",
             "customer.email": "testuser@example.com",
             "customer.website": "https://example.com",
@@ -424,7 +424,7 @@ The request for changing data is very similar to creating a new user but it requ
             "customer.state": "HH", // (optional)
             "customer.countryid": "DE", // (optional)
             "customer.languageid": "de", // (required by many payment gateways)
-            "customer.telehone": "+4912345678", // (optional)
+            "customer.telephone": "+4912345678", // (optional)
             "customer.telefax": "+49123456789", // (optional)
             "customer.email": "testuser@example.com", // (required)
             "customer.website": "https://example.com", // (optional)
@@ -496,7 +496,7 @@ The response will include the basic customer data including groups like in this 
             "customer.state": "HH",
             "customer.countryid": "DE",
             "customer.languageid": "de",
-            "customer.telehone": "+4912345678",
+            "customer.telephone": "+4912345678",
             "customer.telefax": "+49123456789",
             "customer.email": "testuser@example.com",
             "customer.website": "https://example.com",
