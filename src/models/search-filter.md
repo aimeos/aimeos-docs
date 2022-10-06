@@ -189,16 +189,13 @@ while( !( $items = $manager->search( ( clone $filter )->add( 'product.id', '>', 
 }
 ```
 
-Since 2022.10, some managers (e.g. index and product managers) are implementing the `iterator()` and `iterate()` methods which should be used if you need to fetch all records subsequently:
+Since 2022.10, all managers are implementing the `cursor()` and `iterate()` methods which should be used if you need to fetch all records subsequently:
 
 ```php
 $manager = \Aimeos\MShop::create( $this->context(), 'product' );
-$iterator = $manager->iterator( $manager->filter() );
+$cursor = $manager->cursor( $manager->filter() );
 
-while( $items = $manager->iterate( $iterator, ['text'], 100 ) )
-{
-    foreach ( $items as $item ) {
-        // process items
-    }
+while( $items = $manager->iterate( $cursor, ['text'] ) ) {
+    // process items
 }
 ```
