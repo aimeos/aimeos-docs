@@ -218,18 +218,18 @@ The last argument is a value/result parameter which will contain the total numbe
 
 ## Iterate items
 
-Some managers (e.g. index and product managers) are implementing the `iterator()` and `iterate()` methods which should be used if you need to fetch all records subsequently:
+Since 2022.10, all managers are implementing the `cursor()` and `iterate()` methods which should be used if you need to fetch all records subsequently:
 
 ```php
 $manager = \Aimeos\MShop::create( $this->context(), 'product' );
-$iterator = $manager->iterator( $manager->filter() );
+$cursor = $manager->cursor( $manager->filter() );
 
-while( $items = $manager->iterate( $iterator, ['text'], 100 ) ) {
+while( $items = $manager->iterate( $cursor, ['text'] ) ) {
     // process items
 }
 ```
 
-First, you have to create an iterator object from the filter. The filter can contain all conditions and sorting possibilities also available when using `search()`. Pass this iterator to the `iterate()` method to retrieve all items subsequently. The second paramter contains the names of the associated domains whose items should be fetched, too. The third parameter is the maximum number of items which should be returned at once. Only the first parameter of `iterate()` is required, the other ones are optional.
+First, you have to create an cursor object from the filter. The filter can contain all conditions and sorting possibilities also available when using `search()`. Pass this cursor to the `iterate()` method to retrieve all items subsequently. The second parameter contains the names of the associated domains whose items should be fetched, too. Only the first parameter of `iterate()` is required, the other ones are optional.
 
 ## Delete items
 
