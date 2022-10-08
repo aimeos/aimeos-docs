@@ -366,17 +366,17 @@ entityId (string, required)
 token (string, required)
 : Access token for the payment account
 
-address (boolean, optional)
-: A value of "1" will send the customer address to the OPPWA server for additional verification
+address (boolean, required)
+: Use "1" or "yes" to send the customer address to the OPPWA server for additional verification
+
+onsite (boolean, required)
+: Use "1" or "yes" to display the form for entering the credit card data
 
 authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
 createtoken (boolean, optional)
 : Use "1" to enable token based payments for subscriptions
-
-onsite (boolean, optional)
-: Not supported by that payment provider
 
 testmode (boolean, optional)
 : Use "1" for test payments without real money
