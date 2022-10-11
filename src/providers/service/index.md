@@ -353,7 +353,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
         $attr[$key] = new \Aimeos\Base\Criteria\Attribute\Standard( $config );
     }
 
-    $url = $this->getConfigValue( [ 'payment.url-self' ) );
+    $url = $this->getConfigValue( 'payment.url-self' );
     return new \Aimeos\MShop\Common\Item\Helper\Form\Standard( $url, 'POST', $attr, false );
 }
 ```
