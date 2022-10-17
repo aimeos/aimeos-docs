@@ -116,11 +116,28 @@ Afterwards, copy the Aimeos default theme files from the Aimeos extension to you
 typo3conf/ext/aimeos/Resources/Public/Themes/default/ -> typo3conf/ext/myext/Resources/Public/Themes/default/
 ```
 
-Then, configure your new theme location in your TypoScript file or in the *Setup* TypoScript section of your TYPO3 root page:
+Then, configure your new theme location in the `typo3conf/ext/myext/Resources/Private/Config/resource.php` file of your extension:
+
+```php
+<?php
+
+$publicPath = \TYPO3\CMS\Core\Core\Environment::getPublicPath();
+
+return [
+	'fs-theme' => [
+		'adapter' => 'Standard',
+		'baseurl' => '/typo3conf/ext/myext/Resources/Public/Themes',
+		'basedir' => $publicPath . '/typo3conf/ext/myext/Resources/Public/Themes',
+		'tempdir' => $publicPath . '/typo3temp',
+	],
+];
+```
+
+Also, include the Aimeos CSS/JS files with with the common styles and code:
 
 ```
-plugin.tx_aimeos.settings.resource.fs-theme.baseurl = /typo3conf/ext/myext/Resources/Public/Themes
-plugin.tx_aimeos.settings.resource.fs-theme.basedir = EXT:myext/Resources/Public/Themes
+plugin.tx_aimeos.theme.css.aimeos = EXT:myext/Resources/Public/Themes/default/aimeos.css
+plugin.tx_aimeos.theme.js.aimeos = EXT:myext/Resources/Public/Themes/default/aimeos.js
 ```
 
 !!! tip
