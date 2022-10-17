@@ -106,6 +106,26 @@ controller.jobs.order.email.payment.status {
 }
 ```
 
+# Custom theme
+
+To create a custom theme, you should create an Aimeos TYPO3 extension for your project first. There's an extension generator available at [https://aimeos.org/extensions](https://aimeos.org/extensions).
+
+Afterwards, copy the Aimeos default theme files from the Aimeos extension to your new extension:
+
+```
+typo3conf/ext/aimeos/Resources/Public/Themes/default/ -> typo3conf/ext/myext/Resources/Public/Themes/default/
+```
+
+Then, configure your new theme location in your TypoScript file or in the *Setup* TypoScript section of your TYPO3 root page:
+
+```
+plugin.tx_aimeos.settings.resource.fs-theme.baseurl = /typo3conf/ext/myext/Resources/Public/Themes
+plugin.tx_aimeos.settings.resource.fs-theme.basedir = EXT:myext/Resources/Public/Themes
+```
+
+!!! tip
+    If you only want to add and/or overwrite some CSS/JS from the Aimeos default theme (e.g. the CSS variables for colors, etc.), you can add a custom CSS and/or JS file in the *AIMEOS SHOP: THEME* section of the TypoScript constants editor (*Template* in the left navigation, shop page in the page tree, *Constant Editor* in the select box at the top of the content pane).
+
 # Overwrite translations
 
 There is the possibility to overwrite translations from the core or other *Aimeos* extensions via TypoScript. This is very comfortable if you only want to replace certain existing translations with your own ones. For each translation, you need the ISO language code, the translation domain, the original string and the new translation, e.g.:
