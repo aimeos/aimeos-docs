@@ -624,7 +624,7 @@ plugin.tx_aimeos.settings.client.html.checkout.standard.address {
 The list of countries is defined by the values added to the configuration key [client/html/checkout/address/countries](../../config/client-html/checkout-standard/#countries). The TypoScript below will add all countries worldwide to the select boxes for the billing and delivery address:
 
 ```typoscript
-plugin.tx_aimeos.settings.client.html.checkout.standard.address.countries {
+plugin.tx_aimeos.settings.common.countries {
      0 = AD
      # Andorra
      1 = AE
@@ -1131,7 +1131,7 @@ plugin.tx_aimeos.settings.client.html.checkout.standard.address.countries {
 For each country you can freely define a list of states or regions that can be used afterwards to calculate the final price for each delivery option. To define states or regions via TypoScript use something like this:
 
 ```typoscript
-plugin.tx_aimeos.settings.client.html.checkout.standard.address.states {
+plugin.tx_aimeos.settings.common.states {
     US {
         CA = California
         NY = New York
