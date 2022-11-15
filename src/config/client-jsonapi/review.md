@@ -180,7 +180,7 @@ client/jsonapi/review/template = review/standard
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -195,17 +195,17 @@ should be replaced by the name of the new class.
 Relative path to the review aggregate JSON API template
 
 ```
-client/jsonapi/review/template-aggregate = 
+client/jsonapi/review/template-aggregate =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating the list of aggregated review counts
 * Since: 2020.10
 
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

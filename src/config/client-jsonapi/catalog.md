@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/catalog/decorators/excludes = 
+client/jsonapi/catalog/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -40,10 +40,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/catalog/decorators/global = 
+client/jsonapi/catalog/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -75,10 +75,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/catalog/decorators/local = 
+client/jsonapi/catalog/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -113,7 +113,7 @@ Load the category tree instead of the nodes of the first level only
 client/jsonapi/catalog/deep = 1
 ```
 
-* Default: 
+* Default:
 * Type: bool - True for category tree, false for first level only
 * Since: 2020.10
 
@@ -192,7 +192,7 @@ client/jsonapi/catalog/template = catalog/standard
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

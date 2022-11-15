@@ -8,7 +8,7 @@ URL to the folder where the site maps can be accessed, without the filenames.
 controller/jobs/catalog/export/sitemap/baseurl = https://www.yourshop.com/sitemaps/
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute URL
 * Since: 2019.06
 
@@ -258,10 +258,10 @@ See also:
 Export hidden categories in site map
 
 ```
-controller/jobs/catalog/export/sitemap/hidden = 
+controller/jobs/catalog/export/sitemap/hidden =
 ```
 
-* Default: 
+* Default:
 * Type: bool - TRUE to export hidden categories, FALSE if not
 * Since: 2022.01
 
@@ -281,10 +281,10 @@ See also:
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/catalog/export/sitemap/location = 
+controller/jobs/catalog/export/sitemap/location =
 ```
 
-* Default: 
+* Default:
 * Type: string - Absolute directory to store the site maps into
 * Since: 2019.02
 
@@ -432,7 +432,7 @@ controller/jobs/catalog/export/sitemap/template-footer = catalog/export/sitemap-
 The template file contains the XML code and processing instructions
 to generate the site map footer. The configuration string is the path
 to the template file relative to the templates directory (usually in
-controller/jobs/templates).
+templates/controller/jobs).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -462,7 +462,7 @@ controller/jobs/catalog/export/sitemap/template-header = catalog/export/sitemap-
 The template file contains the XML code and processing instructions
 to generate the site map header. The configuration string is the path
 to the template file relative to the templates directory (usually in
-controller/jobs/templates).
+templates/controller/jobs).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -492,7 +492,7 @@ controller/jobs/catalog/export/sitemap/template-index = catalog/export/sitemap-i
 The template file contains the XML code and processing instructions
 to generate the site map index files. The configuration string is the path
 to the template file relative to the templates directory (usually in
-controller/jobs/templates).
+templates/controller/jobs).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -522,7 +522,7 @@ controller/jobs/catalog/export/sitemap/template-items = catalog/export/sitemap-i
 The template file contains the XML code and processing instructions
 to generate the site map files. The configuration string is the path
 to the template file relative to the templates directory (usually in
-controller/jobs/templates).
+templates/controller/jobs).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

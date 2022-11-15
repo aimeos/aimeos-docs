@@ -4,10 +4,10 @@
 Display the "add to basket" button for each product item in the catalog home component
 
 ```
-client/html/catalog/home/basket-add = 
+client/html/catalog/home/basket-add =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to display the button, false to hide it
 * Since: 2020.10
 
@@ -151,10 +151,10 @@ See also:
 Size hints for loading the appropriate catalog home image sizes
 
 ```
-client/html/catalog/home/imageset-sizes = 
+client/html/catalog/home/imageset-sizes =
 ```
 
-* Default: 
+* Default:
 * Type: string - HTML image "sizes" attribute
 * Since: 2021.04
 
@@ -286,7 +286,7 @@ client/html/catalog/home/template-body = catalog/home/body
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -315,7 +315,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -364,7 +364,7 @@ client/html/catalog/home/url/controller = catalog
 ## target
 
 ```
-client/html/catalog/home/url/target = 
+client/html/catalog/home/url/target =
 ```
 
-* Default: 
+* Default:

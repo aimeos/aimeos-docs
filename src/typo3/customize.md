@@ -303,10 +303,10 @@ Alternatively, you can use the TYPO3 Fluid template engine for *Aimeos* template
 !!! tip
     The *Aimeos* templates contain nested objects and their methods sometimes needs arguments. To be able to call these methods within Fluid templates, you need to install the [VHS view helper extension](https://typo3.org/extensions/repository/view/vhs) and use the `v:call()` view helper.
 
-To replace an *Aimeos* PHP template by our own Fluid template, the Fluid template needs to be stored at the same location as the *Aimeos* PHP template, i.e. at the `./client/html/templates/` folder of your project-specific *Aimeos* extension. It is also required to preserve the underlying directory structure as well as to abide by the file naming convention (`<template-name>.html`), e.g.:
+To replace an *Aimeos* PHP template by our own Fluid template, the Fluid template needs to be stored at the same location as the *Aimeos* PHP template, i.e. at the `./templates/client/html/` folder of your project-specific *Aimeos* extension. It is also required to preserve the underlying directory structure as well as to abide by the file naming convention (`<template-name>.html`), e.g.:
 
 ```
-./client/html/templates/catalog/detail/body.html
+./templates/client/html/catalog/detail/body.html
 ```
 
 The file extension `.html` is important in order to be recognized as template that should be processed by the Fluid engine.

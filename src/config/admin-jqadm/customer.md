@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/address/decorators/excludes = 
+admin/jqadm/customer/address/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -192,7 +192,7 @@ admin/jqadm/customer/address/template-item = customer/item-address
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -428,10 +428,10 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/order/decorators/excludes = 
+admin/jqadm/customer/order/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -648,7 +648,7 @@ admin/jqadm/customer/order/template-item = customer/item-order
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -664,10 +664,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/product/decorators/excludes = 
+admin/jqadm/customer/product/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -885,7 +885,7 @@ admin/jqadm/customer/product/template-item = customer/item-product
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -901,10 +901,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/property/decorators/excludes = 
+admin/jqadm/customer/property/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -1088,7 +1088,7 @@ admin/jqadm/customer/property/template-item = customer/item-property
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -1167,7 +1167,7 @@ admin/jqadm/customer/template-item = customer/item
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -1192,7 +1192,7 @@ admin/jqadm/customer/template-list = customer/list
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

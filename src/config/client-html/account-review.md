@@ -132,17 +132,17 @@ See also:
 Relative path to the HTML body template of the account review client.
 
 ```
-client/html/account/review/template-body = 
+client/html/account/review/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2020.10
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -160,10 +160,10 @@ See also:
 Relative path to the HTML header template of the account review client.
 
 ```
-client/html/account/review/template-header = 
+client/html/account/review/template-header =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2020.10
 
@@ -171,7 +171,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -298,10 +298,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/review/url/target = 
+client/html/account/review/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2020.10
 

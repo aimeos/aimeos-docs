@@ -180,7 +180,7 @@ client/jsonapi/customer/address/template = customer/address/standard
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -537,7 +537,7 @@ client/jsonapi/customer/property/template = customer/property/standard
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -728,7 +728,7 @@ client/jsonapi/customer/relationships/template = customer/relationships/standard
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -919,7 +919,7 @@ client/jsonapi/customer/review/template = customer/review/standard
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -944,7 +944,7 @@ client/jsonapi/customer/template = customer/standard
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/jsonapi/templates).
+to the templates directory (usually in templates/client/jsonapi).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

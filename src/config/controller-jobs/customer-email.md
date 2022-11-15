@@ -177,7 +177,7 @@ controller/jobs/customer/email/account/template-html = customer/email/account/ht
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -200,7 +200,7 @@ controller/jobs/customer/email/account/template-text = customer/email/account/te
 The template file contains the text and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -386,7 +386,7 @@ controller/jobs/customer/email/watch/template-html = customer/email/watch/html
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -409,7 +409,7 @@ controller/jobs/customer/email/watch/template-text = customer/email/watch/text
 The template file contains the text and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 

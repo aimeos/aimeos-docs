@@ -323,7 +323,7 @@ client/html/catalog/session/pinned/template-body = catalog/session/pinned-body
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -435,10 +435,10 @@ client/html/catalog/session/pinned/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/session/pinned/url/target = 
+client/html/catalog/session/pinned/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.09
 
@@ -572,7 +572,7 @@ client/html/catalog/session/seen/template-body = catalog/session/seen-body
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -644,17 +644,17 @@ design.
 Relative path to the HTML body template of the catalog session client.
 
 ```
-client/html/catalog/session/template-body = 
+client/html/catalog/session/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -672,10 +672,10 @@ See also:
 Relative path to the HTML header template of the catalog session client.
 
 ```
-client/html/catalog/session/template-header = 
+client/html/catalog/session/template-header =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -683,7 +683,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

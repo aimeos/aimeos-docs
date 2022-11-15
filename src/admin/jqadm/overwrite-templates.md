@@ -7,7 +7,7 @@ Often, it's necessary to replace the templates of a panel or subpart with a diff
 
 The template views itself consist of HTML with [alternative PHP syntax](https://php.net/manual/en/control-structures.alternative-syntax.php). It's also possible to use the native template engine of your framework or application, i.e. Blade for Laravel, Twig for Symfony and Fluid for TYPO3. Please have a look at the "Get started" section to find out more.
 
-All standard templates are stored in the [admin/jqadm/templates/](https://github.com/aimeos/ai-admin-jqadm/tree/master/admin/jqadm/templates) directory of the ai-admin-jqadm extension. There are sub-directories for each panel, e.g. the "product" sub-directory contains all templates related to the product panel and it's sub-panels:
+All standard templates are stored in the [templates/admin/jqadm/](https://github.com/aimeos/ai-admin-jqadm/tree/master/templates/admin/jqadm) directory of the ai-admin-jqadm extension. There are sub-directories for each panel, e.g. the "product" sub-directory contains all templates related to the product panel and it's sub-panels:
 
 ```
 <panel>/item[-<subpart>[-<sub-subpart>]]-<variant>.php
@@ -22,7 +22,7 @@ product/item-text.php
 product/item-characteristics-property.php
 ```
 
-Own extensions that contain template files in the `admin/jqadm/templates/` directory which are named the same as the existing ones are used first. If no template files are found in own extensions, then the default ones from the ai-admin-jqadm extension are used.
+Own extensions that contain template files in the `templates/admin/jqadm/` directory which are named the same as the existing ones are used first. If no template files are found in own extensions, then the default ones from the ai-admin-jqadm extension are used.
 
 # Data access
 

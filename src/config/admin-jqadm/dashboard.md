@@ -122,10 +122,10 @@ See also:
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/job/decorators/excludes = 
+admin/jqadm/dashboard/job/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.08
 
@@ -309,7 +309,7 @@ admin/jqadm/dashboard/job/template-list = dashboard/list-job
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -370,10 +370,10 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/notify/decorators/excludes = 
+admin/jqadm/dashboard/notify/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2022.04
 
@@ -604,7 +604,7 @@ admin/jqadm/dashboard/notify/template-list = dashboard/list-notify
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -620,10 +620,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/countcountry/decorators/excludes = 
+admin/jqadm/dashboard/order/countcountry/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -807,7 +807,7 @@ admin/jqadm/dashboard/order/countcountry/template-item = dashboard/item-order-co
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -822,10 +822,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/countday/decorators/excludes = 
+admin/jqadm/dashboard/order/countday/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1009,7 +1009,7 @@ admin/jqadm/dashboard/order/countday/template-item = dashboard/item-order-countd
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -1024,10 +1024,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/counthour/decorators/excludes = 
+admin/jqadm/dashboard/order/counthour/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1211,7 +1211,7 @@ admin/jqadm/dashboard/order/counthour/template-item = dashboard/item-order-count
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -1226,10 +1226,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/countpaystatus/decorators/excludes = 
+admin/jqadm/dashboard/order/countpaystatus/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1413,7 +1413,7 @@ admin/jqadm/dashboard/order/countpaystatus/template-item = dashboard/item-order-
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -1428,10 +1428,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/decorators/excludes = 
+admin/jqadm/dashboard/order/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1539,10 +1539,10 @@ See also:
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/latest/decorators/excludes = 
+admin/jqadm/dashboard/order/latest/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -1726,7 +1726,7 @@ admin/jqadm/dashboard/order/latest/template-item = dashboard/item-order-latest
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -1757,10 +1757,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/countcompleted/decorators/excludes = 
+admin/jqadm/dashboard/order/quick/countcompleted/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -1944,7 +1944,7 @@ admin/jqadm/dashboard/order/quick/countcompleted/template-item = dashboard/item-
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -1959,10 +1959,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/countcustomer/decorators/excludes = 
+admin/jqadm/dashboard/order/quick/countcustomer/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2146,7 +2146,7 @@ admin/jqadm/dashboard/order/quick/countcustomer/template-item = dashboard/item-o
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -2161,10 +2161,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/counttotal/decorators/excludes = 
+admin/jqadm/dashboard/order/quick/counttotal/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2348,7 +2348,7 @@ admin/jqadm/dashboard/order/quick/counttotal/template-item = dashboard/item-orde
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -2363,10 +2363,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/countunfinished/decorators/excludes = 
+admin/jqadm/dashboard/order/quick/countunfinished/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2550,7 +2550,7 @@ admin/jqadm/dashboard/order/quick/countunfinished/template-item = dashboard/item
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -2565,10 +2565,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/decorators/excludes = 
+admin/jqadm/dashboard/order/quick/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2756,7 +2756,7 @@ admin/jqadm/dashboard/order/quick/template-list = dashboard/item-order-quick
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -2771,10 +2771,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/salesday/decorators/excludes = 
+admin/jqadm/dashboard/order/salesday/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2958,7 +2958,7 @@ admin/jqadm/dashboard/order/salesday/template-item = dashboard/item-order-salesd
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -2973,10 +2973,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/salesmonth/decorators/excludes = 
+admin/jqadm/dashboard/order/salesmonth/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3160,7 +3160,7 @@ admin/jqadm/dashboard/order/salesmonth/template-item = dashboard/item-order-sale
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -3175,10 +3175,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/salesweekday/decorators/excludes = 
+admin/jqadm/dashboard/order/salesweekday/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3362,7 +3362,7 @@ admin/jqadm/dashboard/order/salesweekday/template-item = dashboard/item-order-sa
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -3377,10 +3377,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/servicedelivery/decorators/excludes = 
+admin/jqadm/dashboard/order/servicedelivery/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3564,7 +3564,7 @@ admin/jqadm/dashboard/order/servicedelivery/template-item = dashboard/item-order
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -3579,10 +3579,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/servicepayment/decorators/excludes = 
+admin/jqadm/dashboard/order/servicepayment/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3766,7 +3766,7 @@ admin/jqadm/dashboard/order/servicepayment/template-item = dashboard/item-order-
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -3852,7 +3852,7 @@ admin/jqadm/dashboard/order/template-list = dashboard/list-order
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -3868,10 +3868,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/setting/decorators/excludes = 
+admin/jqadm/dashboard/setting/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2020.01
 
@@ -4055,7 +4055,7 @@ admin/jqadm/dashboard/setting/template-list = dashboard/list-setting
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -4134,7 +4134,7 @@ admin/jqadm/dashboard/template-list = dashboard/list
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

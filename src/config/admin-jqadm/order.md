@@ -187,10 +187,10 @@ e.g. "order.id" for the order ID.
 Excludes decorators added by the "common" option from the order JQAdm client
 
 ```
-admin/jqadm/order/invoice/decorators/excludes = 
+admin/jqadm/order/invoice/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -403,7 +403,7 @@ admin/jqadm/order/invoice/template-item = order/item-invoice
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -418,10 +418,10 @@ should be replaced by the name of the new class.
 List of invoice source types that can be selected in the order invoice view
 
 ```
-admin/jqadm/order/invoice/types = 
+admin/jqadm/order/invoice/types =
 ```
 
-* Default: 
+* Default:
 * Type: array - List invoice source types
 * Since: 2017.07
 
@@ -594,7 +594,7 @@ admin/jqadm/order/template-item = order/item
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -619,7 +619,7 @@ admin/jqadm/order/template-list = order/list
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
