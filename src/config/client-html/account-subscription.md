@@ -102,7 +102,7 @@ client/html/account/subscription/summary/address = common/summary/address
 
 To configure an alternative template for the address partial, you
 have to configure its path relative to the template directory
-(usually client/html/templates/). It's then used to display the
+(usually templates/client/html/). It's then used to display the
 payment or delivery address block in the account subscription component.
 
 See also:
@@ -124,7 +124,7 @@ client/html/account/subscription/summary/detail = common/summary/detail
 
 To configure an alternative template for the detail partial, you
 have to configure its path relative to the template directory
-(usually client/html/templates/). It's then used to display the
+(usually templates/client/html/). It's then used to display the
 product detail block in the account subscription component.
 
 See also:
@@ -137,17 +137,17 @@ See also:
 Relative path to the HTML body template of the account subscription client.
 
 ```
-client/html/account/subscription/template-body = 
+client/html/account/subscription/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.04
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -165,10 +165,10 @@ See also:
 Relative path to the HTML header template of the account subscription client.
 
 ```
-client/html/account/subscription/template-header = 
+client/html/account/subscription/template-header =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2018.04
 
@@ -176,7 +176,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -289,10 +289,10 @@ client/html/account/subscription/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/subscription/url/target = 
+client/html/account/subscription/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2018.04
 

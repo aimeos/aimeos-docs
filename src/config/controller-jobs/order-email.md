@@ -296,7 +296,7 @@ controller/jobs/order/email/delivery/template-html = order/email/delivery/html
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -319,7 +319,7 @@ controller/jobs/order/email/delivery/template-text = order/email/delivery/text
 The template file contains the text and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -593,7 +593,7 @@ controller/jobs/order/email/payment/pdf-partial = order/email/summary-pdf
 
 To configure an alternative template for the address partial, you
 have to configure its path relative to the template directory
-(usually controller/jobs/templates/). It's then used to display the
+(usually templates/controller/jobs/). It's then used to display the
 payment or delivery address block in the text e-mails.
 
 
@@ -657,7 +657,7 @@ controller/jobs/order/email/payment/template-html = order/email/payment/html
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -689,7 +689,7 @@ controller/jobs/order/email/payment/template-text = order/email/payment/text
 The template file contains the text and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -713,7 +713,7 @@ controller/jobs/order/email/subscription/template-html = order/email/subscriptio
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -736,7 +736,7 @@ controller/jobs/order/email/subscription/template-text = order/email/subscriptio
 The template file contains the text and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -969,7 +969,7 @@ controller/jobs/order/email/voucher/template-html = order/email/voucher/html
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 
@@ -992,7 +992,7 @@ controller/jobs/order/email/voucher/template-text = order/email/voucher/text
 The template file contains the text and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in controller/jobs/templates).
+to the templates directory (usually in templates/controller/jobs).
 You can overwrite the template file configuration in extensions and
 provide alternative templates.
 

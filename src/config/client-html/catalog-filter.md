@@ -84,17 +84,17 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter attribute client.
 
 ```
-client/html/catalog/filter/attribute/template-body = 
+client/html/catalog/filter/attribute/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -455,17 +455,17 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter price client.
 
 ```
-client/html/catalog/filter/price/template-body = 
+client/html/catalog/filter/price/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -575,17 +575,17 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter search client.
 
 ```
-client/html/catalog/filter/search/template-body = 
+client/html/catalog/filter/search/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -742,17 +742,17 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter supplier client.
 
 ```
-client/html/catalog/filter/supplier/template-body = 
+client/html/catalog/filter/supplier/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.07
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -780,7 +780,7 @@ client/html/catalog/filter/template-body = catalog/filter/body
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -809,7 +809,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -893,10 +893,10 @@ See also:
 Use the current category in full text searches
 
 ```
-client/html/catalog/filter/tree/force-search = 
+client/html/catalog/filter/tree/force-search =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to enforce current category for search, false for full text search only
 * Since: 2015.10
 
@@ -947,10 +947,10 @@ partial creates an HTML block of nested lists for category trees.
 The ID of the category node that should be the root of the displayed category tree
 
 ```
-client/html/catalog/filter/tree/startid = 
+client/html/catalog/filter/tree/startid =
 ```
 
-* Default: 
+* Default:
 * Type: string - Category ID
 * Since: 2014.03
 
@@ -973,17 +973,17 @@ See also:
 Relative path to the HTML body template of the catalog filter tree client.
 
 ```
-client/html/catalog/filter/tree/template-body = 
+client/html/catalog/filter/tree/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

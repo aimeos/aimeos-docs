@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-admin/jsonadm/rule/config/decorators/excludes = 
+admin/jsonadm/rule/config/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -40,10 +40,10 @@ See also:
 Adds a list of globally available decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/rule/config/decorators/global = 
+admin/jsonadm/rule/config/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -75,10 +75,10 @@ See also:
 Adds a list of local decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/rule/config/decorators/local = 
+admin/jsonadm/rule/config/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -120,7 +120,7 @@ admin/jsonadm/rule/config/template-get = config
 The template file contains the code and processing instructions
 to generate the result shown in the JSON API body. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jsonadm/templates).
+to the templates directory (usually in templates/admin/jsonadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -136,10 +136,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-admin/jsonadm/rule/decorators/excludes = 
+admin/jsonadm/rule/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -171,10 +171,10 @@ See also:
 Adds a list of globally available decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/rule/decorators/global = 
+admin/jsonadm/rule/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -206,10 +206,10 @@ See also:
 Adds a list of local decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/rule/decorators/local = 
+admin/jsonadm/rule/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2021.04
 

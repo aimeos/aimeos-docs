@@ -139,9 +139,9 @@ At first, you can retrieve a new view from the context object by using the `view
 
 To render the output and return the content, you should use the `render()` method of the view. It expects the path of the template that should be used to generate the content. In combination with `$view->config()` it also checks if there's another template configured that should be used instead of the default one and translates a relative path into an absolute one.
 
-The templates are looked up in the list of directories provided in the `"custom" => "controller/jobs/templates"` section of the manifest.php file that is part of every extension.
+The templates are looked up in the list of directories provided in the `"custom" => "templates/controller/jobs"` section of the manifest.php file that is part of every extension.
 
-In the templates (usually in the sub-directories of "controller/jobs/templates"), the assigned data can be retrieved by using either:
+In the templates (usually in the sub-directories of "templates/controller/jobs"), the assigned data can be retrieved by using either:
 
 ```php
 $this->varname

@@ -4,10 +4,10 @@
 Display the "add to basket" button for each suggested/bought-together product item
 
 ```
-client/html/catalog/detail/basket-add = 
+client/html/catalog/detail/basket-add =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to display the button, false to hide it
 * Since: 2021.04
 
@@ -222,10 +222,10 @@ or numbers. Avoid chamel case names like "MyDetail"!
 Relative path to the group product partial template file
 
 ```
-client/html/catalog/detail/partials/group = 
+client/html/catalog/detail/partials/group =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template file
 * Since: 2021.07
 
@@ -270,7 +270,7 @@ client/html/catalog/detail/partials/seen = catalog/detail/seen
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -285,10 +285,10 @@ should be suffixed by the name of the new class.
 The default product code used if none is given as parameter
 
 ```
-client/html/catalog/detail/prodcode-default = 
+client/html/catalog/detail/prodcode-default =
 ```
 
-* Default: 
+* Default:
 * Type: string - Product code
 * Since: 2019.10
 
@@ -307,10 +307,10 @@ See also:
 The default product ID used if none is given as parameter
 
 ```
-client/html/catalog/detail/prodid-default = 
+client/html/catalog/detail/prodid-default =
 ```
 
-* Default: 
+* Default:
 * Type: string - Product ID
 * Since: 2016.01
 
@@ -368,7 +368,7 @@ client/html/catalog/detail/template-body = catalog/detail/body
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -398,7 +398,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -545,10 +545,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/detail/url/target = 
+client/html/catalog/detail/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 

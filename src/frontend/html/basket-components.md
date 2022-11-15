@@ -24,7 +24,7 @@ You can add other templates to the basket page by overwriting the templates in y
 * [basket header template](../../config/client-html/basket-standard.md#template-header)
 * [basket body template](../../config/client-html/basket-standard.md#template-body)
 
-Within the basket body template, the [common summary partials](https://github.com/aimeos/ai-client-html/tree/master/client/html/templates/common/summary) shared with other components (checkout, email) are used too. If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't lose essential functionality.
+Within the basket body template, the [common summary partials](https://github.com/aimeos/ai-client-html/tree/master/templates/client/html/common/summary) shared with other components (checkout, email) are used too. If you want to change the HTML structure of one of the templates, please have a look at the original versions to ensure that you don't lose essential functionality.
 
 ## Parameters
 

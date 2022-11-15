@@ -4,10 +4,10 @@
 Additional attribute IDs used to limit search results
 
 ```
-client/html/catalog/lists/attrid-default = 
+client/html/catalog/lists/attrid-default =
 ```
 
-* Default: 
+* Default:
 * Type: array|string - Attribute ID or IDs
 * Since: 2021.10
 
@@ -32,10 +32,10 @@ See also:
 Display the "add to basket" button for each product item
 
 ```
-client/html/catalog/lists/basket-add = 
+client/html/catalog/lists/basket-add =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to display the button, false to hide it
 * Since: 2016.01
 
@@ -85,10 +85,10 @@ See also:
 The default category ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/catid-default = 
+client/html/catalog/lists/catid-default =
 ```
 
-* Default: 
+* Default:
 * Type: array|string - Category ID or IDs
 * Since: 2014.03
 
@@ -213,10 +213,10 @@ See also:
 Enables infinite scrolling in product catalog list
 
 ```
-client/html/catalog/lists/infinite-scroll = 
+client/html/catalog/lists/infinite-scroll =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to use infinite scrolling, false to disable it
 * Since: 2019.10
 
@@ -229,10 +229,10 @@ and added to the product list when the user reaches the list bottom.
 Show only products which are in stock
 
 ```
-client/html/catalog/lists/instock = 
+client/html/catalog/lists/instock =
 ```
 
-* Default: 
+* Default:
 * Type: int - Zero to show all products, "1" to show only products with stock
 * Since: 2021.10
 
@@ -506,10 +506,10 @@ See also:
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/supid-default = 
+client/html/catalog/lists/supid-default =
 ```
 
-* Default: 
+* Default:
 * Type: array|string - Supplier ID or IDs
 * Since: 2021.01
 
@@ -545,7 +545,7 @@ client/html/catalog/lists/template-body = catalog/lists/body
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -588,7 +588,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -715,10 +715,10 @@ client/html/catalog/lists/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/lists/url/target = 
+client/html/catalog/lists/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 

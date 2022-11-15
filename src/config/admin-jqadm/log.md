@@ -249,17 +249,17 @@ design.
 Relative path to the HTML body template for the log item.
 
 ```
-admin/jqadm/log/template-item = 
+admin/jqadm/log/template-item =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -284,7 +284,7 @@ admin/jqadm/log/template-list = log/list
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be

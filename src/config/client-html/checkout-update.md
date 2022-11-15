@@ -92,17 +92,17 @@ or numbers. Avoid chamel case names like "MyUpdate"!
 Relative path to the HTML body template of the checkout update client.
 
 ```
-client/html/checkout/update/template-body = 
+client/html/checkout/update/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -120,10 +120,10 @@ See also:
 Relative path to the HTML header template of the checkout update client.
 
 ```
-client/html/checkout/update/template-header = 
+client/html/checkout/update/template-header =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -131,7 +131,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -150,10 +150,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/checkout/update/url/action = 
+client/html/checkout/update/url/action =
 ```
 
-* Default: 
+* Default:
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -172,10 +172,10 @@ See also:
 Associative list of configuration options used for generating the URL
 
 ```
-client/html/checkout/update/url/config = 
+client/html/checkout/update/url/config =
 ```
 
-* Default: 
+* Default:
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -203,10 +203,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/checkout/update/url/controller = 
+client/html/checkout/update/url/controller =
 ```
 
-* Default: 
+* Default:
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -225,10 +225,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/checkout/update/url/target = 
+client/html/checkout/update/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 

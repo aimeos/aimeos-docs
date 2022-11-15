@@ -170,7 +170,7 @@ The default supplier ID used if none is given as parameter
 client/html/supplier/detail/supid-default = 87
 ```
 
-* Default: 
+* Default:
 * Type: string - Supplier ID
 * Since: 2021.01
 
@@ -196,7 +196,7 @@ client/html/supplier/detail/template-body = supplier/detail/body
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in client/html/templates).
+to the templates directory (usually in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -225,7 +225,7 @@ The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
 of the rendered page in the frontend. The configuration string is the
 path to the template file relative to the templates directory (usually
-in client/html/templates).
+in templates/client/html).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -288,7 +288,7 @@ client/html/supplier/detail/url/filter = Array
 ## target
 
 ```
-client/html/supplier/detail/url/target = 
+client/html/supplier/detail/url/target =
 ```
 
-* Default: 
+* Default:

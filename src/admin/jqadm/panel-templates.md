@@ -1,6 +1,6 @@
 # List template
 
-The list template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/list.php` and consists of the
+The list template for a panel must be stored in your own Aimeos extension in `./templates/admin/jqadm/<panel name>/list.php` and consists of the
 
 * navigation bar including the global search
 * top and bottom pagination
@@ -340,7 +340,7 @@ actions
 
 # Detail template
 
-The details template for a panel must be stored in your own Aimeos extension in `./admin/jqadm/templates/<panel name>/item.php` and consists of the:
+The details template for a panel must be stored in your own Aimeos extension in `./templates/admin/jqadm/<panel name>/item.php` and consists of the:
 
 * navigation bar including Save/Cancel buttons
 * left sidebar with sub-panels
@@ -599,9 +599,9 @@ There are also [Vue.js components](https://github.com/aimeos/ai-admin-jqadm/blob
 
 Furthermore, the JQAdm code contains complete components for manging:
 
-* [addresses](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/customer/item-address.php)
-* [images/media](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-media.php)
-* [prices](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-price.php)
-* [texts](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/templates/product/item-text.php)
+* [addresses](https://github.com/aimeos/ai-admin-jqadm/blob/master/templates/admin/jqadm/customer/item-address.php)
+* [images/media](https://github.com/aimeos/ai-admin-jqadm/blob/master/templates/admin/jqadm/product/item-media.php)
+* [prices](https://github.com/aimeos/ai-admin-jqadm/blob/master/templates/admin/jqadm/product/item-price.php)
+* [texts](https://github.com/aimeos/ai-admin-jqadm/blob/master/templates/admin/jqadm/product/item-text.php)
 
 They consist of [Vue.js code](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/themes/admin-aux.js) and HTML inline templates.

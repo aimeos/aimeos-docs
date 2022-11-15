@@ -41,7 +41,7 @@ Replace previous coupon codes each time the user enters a new one
 client/html/basket/standard/coupon/overwrite = 1
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to overwrite a previous coupon, false to keep them
 * Since: 2020.04
 
@@ -153,7 +153,7 @@ client/html/basket/standard/summary/detail = common/summary/detail
 
 To configure an alternative template for the detail partial, you
 have to configure its path relative to the template directory
-(usually client/html/templates/). It's then used to display the
+(usually templates/client/html/). It's then used to display the
 product detail block in the basket standard component.
 
 
@@ -257,10 +257,10 @@ client/html/basket/standard/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/basket/standard/url/target = 
+client/html/basket/standard/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 

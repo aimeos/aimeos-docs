@@ -216,10 +216,10 @@ editors a hint which config keys are available and are used in the templates.
 Excludes decorators added by the "common" option from the catalog JQAdm client
 
 ```
-admin/jqadm/catalog/media/decorators/excludes = 
+admin/jqadm/catalog/media/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -343,10 +343,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Excludes decorators added by the "common" option from the catalog JQAdm client
 
 ```
-admin/jqadm/catalog/media/property/decorators/excludes = 
+admin/jqadm/catalog/media/property/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -530,7 +530,7 @@ admin/jqadm/catalog/media/property/template-item = catalog/item-media-property
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -606,7 +606,7 @@ admin/jqadm/catalog/media/template-item = catalog/item-media
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -667,10 +667,10 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the catalog JQAdm client
 
 ```
-admin/jqadm/catalog/product/decorators/excludes = 
+admin/jqadm/catalog/product/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -887,7 +887,7 @@ admin/jqadm/catalog/product/template-item = catalog/item-product
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -965,7 +965,7 @@ admin/jqadm/catalog/template-item = catalog/item
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
@@ -981,10 +981,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the catalog JQAdm client
 
 ```
-admin/jqadm/catalog/text/decorators/excludes = 
+admin/jqadm/catalog/text/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1168,7 +1168,7 @@ admin/jqadm/catalog/text/template-item = catalog/item-text
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
 configuration string is the path to the template file relative
-to the templates directory (usually in admin/jqadm/templates).
+to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
