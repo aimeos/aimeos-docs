@@ -182,6 +182,7 @@ nav:
     - View and helpers: infrastructure/view.md
   - Configuration:
     - HTML clients:
+      - Account basket: config/client-html/account-basket.md
       - Account download: config/client-html/account-download.md
       - Account favorite: config/client-html/account-favorite.md
       - Account history: config/client-html/account-history.md
