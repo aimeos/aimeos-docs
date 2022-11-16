@@ -1,118 +1,14 @@
 
-# container
-## format
-
-Format of the coupon code files to import
-
-```
-controller/jobs/admin/log/container/format = CSV
-```
-
-* Default: CSV
-* Type: string - Content file type
-* Since: 2014.09
-
-The coupon codes are stored in one or more files or content
-objects. The format of that file or content object can be configured
-with this option but most formats are bound to a specific container
-type.
-
-The formats that are supported by default are:
-
-* CSV (requires container type "Zip")
-
-Extensions implement other container types like spread sheets, XMLs or
-more advanced ways of handling the exported data.
-
-See also:
-
-* controller/jobs/admin/log/path
-* controller/jobs/admin/log/container/type
-* controller/jobs/admin/log/container/options
-* controller/jobs/admin/log/limit-days
-
-## options
-
-Options changing the expected format of the coupon codes to import
-
-```
-controller/jobs/admin/log/container/options = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - Associative list of options with the name as key and its value
-* Since: 2014.09
-
-Each content format may support some configuration options to change
-the output for that content type.
-
-The options for the CSV content format are:
-
-* csv-separator, default ','
-* csv-enclosure, default '"'
-* csv-escape, default '"'
-* csv-lineend, default '\n'
-
-For format options provided by other container types implemented by
-extensions, please have a look into the extension documentation.
-
-See also:
-
-* controller/jobs/admin/log/path
-* controller/jobs/admin/log/container/type
-* controller/jobs/admin/log/container/format
-* controller/jobs/admin/log/limit-days
-
-## type
-
-Container file type storing all coupon code files to import
-
-```
-controller/jobs/admin/log/container/type = Zip
-```
-
-* Default: Zip
-* Type: string - Container file type
-* Since: 2014.09
-
-All coupon code files or content objects must be put into one
-container file so editors don't have to upload one file for each
-coupon code file.
-
-The container file types that are supported by default are:
-
-* Zip
-
-Extensions implement other container types like spread sheets, XMLs or
-more advanced ways of handling the exported data.
-
-See also:
-
-* controller/jobs/admin/log/path
-* controller/jobs/admin/log/container/format
-* controller/jobs/admin/log/container/options
-* controller/jobs/admin/log/limit-days
-
 # decorators
 ## excludes
 
 Excludes decorators added by the "common" option from the admin log controllers
 
 ```
-controller/jobs/admin/log/decorators/excludes = Array
-(
-)
+controller/jobs/admin/log/decorators/excludes =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -144,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the admin log controllers
 
 ```
-controller/jobs/admin/log/decorators/global = Array
-(
-)
+controller/jobs/admin/log/decorators/global =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -182,15 +73,10 @@ See also:
 Adds a list of local decorators only to the admin log controllers
 
 ```
-controller/jobs/admin/log/decorators/local = Array
-(
-)
+controller/jobs/admin/log/decorators/local =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -229,25 +115,21 @@ controller/jobs/admin/log/limit-days = 0
 * Since: 2014.09
 
 This option specifies the number of days log entries will be kept in
-the database. Afterwards, they will be removed and archived if a
-path for storing the archive files is configured.
+the database. Afterwards, they will be removed and archived.
 
 See also:
 
 * controller/jobs/admin/log/path
-* controller/jobs/admin/log/container/type
-* controller/jobs/admin/log/container/format
-* controller/jobs/admin/log/container/options
 
 # name
 
 Class name of the used admin log scheduler controller implementation
 
 ```
-controller/jobs/admin/log/name = Standard
+controller/jobs/admin/log/name =
 ```
 
-* Default: Standard
+* Default:
 * Type: string - Last part of the class name
 * Since: 2014.09
 
@@ -289,31 +171,19 @@ or numbers. Avoid chamel case names like "MyLog"!
 Path to a writable directory where the log archive files should be stored
 
 ```
-controller/jobs/admin/log/path =
+controller/jobs/admin/log/path = logs
 ```
 
-* Default: /tmp
-* Type: string - Absolute file system path to a writable directory
+* Default: logs
+* Type: string - Relative file system path in the fs-admin filesystem
 * Since: 2014.09
 
 During normal operation, a lot of data can be logged, not only for
 errors that have occured. By default, these data is written into the
 log database and its size will grow if old log entries are not
 removed. There's a job controller available that can delete old log
-entries.
-
-If an absolute path to a writeable directory in the file system is
-set via this configuration option, the job controller will save the
-old log entries to a file in this path. They can be analysed later
-if required.
-
-The type and format of these files as well as the time frame after
-the log entries are removed from the log database can be configured
-too.
+entries and save the old log entries to the given relative path.
 
 See also:
 
-* controller/jobs/admin/log/container/type
-* controller/jobs/admin/log/container/format
-* controller/jobs/admin/log/container/options
 * controller/jobs/admin/log/limit-days

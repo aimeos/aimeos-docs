@@ -374,7 +374,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/review/manager/delete/ansi = 
  DELETE FROM "mshop_review"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/review/manager/delete
@@ -408,12 +408,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/review/manager/delete/mysql = 
  DELETE FROM "mshop_review"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_review"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:

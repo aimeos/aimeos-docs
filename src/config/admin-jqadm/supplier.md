@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/address/decorators/excludes =
+admin/jqadm/supplier/address/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -208,15 +208,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/decorators/excludes = Array
-(
-)
+admin/jqadm/supplier/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -248,15 +243,10 @@ See also:
 Adds a list of globally available decorators only to the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/decorators/global = Array
-(
-)
+admin/jqadm/supplier/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -286,15 +276,10 @@ See also:
 Adds a list of local decorators only to the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/decorators/local = Array
-(
-)
+admin/jqadm/supplier/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -351,17 +336,19 @@ List of supplier columns that should be displayed in the list view
 ```
 admin/jqadm/supplier/fields = Array
 (
-    [0] => supplier.status
-    [1] => supplier.code
-    [2] => supplier.label
+    [0] => image
+    [1] => supplier.status
+    [2] => supplier.code
+    [3] => supplier.label
 )
 ```
 
 * Default: Array
 (
-    [0] => supplier.status
-    [1] => supplier.code
-    [2] => supplier.label
+    [0] => image
+    [1] => supplier.status
+    [2] => supplier.code
+    [3] => supplier.label
 )
 
 * Type: array - List of field names, i.e. search keys
@@ -424,10 +411,10 @@ editors a hint which config keys are available and are used in the templates.
 Excludes decorators added by the "common" option from the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/media/decorators/excludes =
+admin/jqadm/supplier/media/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -551,10 +538,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Excludes decorators added by the "common" option from the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/media/property/decorators/excludes =
+admin/jqadm/supplier/media/property/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -829,10 +816,10 @@ should be replaced by the name of the new class.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/supplier/name = Standard
+admin/jqadm/supplier/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -875,10 +862,10 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/product/decorators/excludes =
+admin/jqadm/supplier/product/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1215,10 +1202,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the supplier JQAdm client
 
 ```
-admin/jqadm/supplier/text/decorators/excludes =
+admin/jqadm/supplier/text/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 

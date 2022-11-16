@@ -151,15 +151,10 @@ See also:
 Excludes decorators added by the "common" option from the supplier import CSV job controller
 
 ```
-controller/jobs/supplier/import/csv/decorators/excludes = Array
-(
-)
+controller/jobs/supplier/import/csv/decorators/excludes =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -191,15 +186,10 @@ See also:
 Adds a list of globally available decorators only to the supplier import CSV job controller
 
 ```
-controller/jobs/supplier/import/csv/decorators/global = Array
-(
-)
+controller/jobs/supplier/import/csv/decorators/global =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -229,15 +219,10 @@ See also:
 Adds a list of local decorators only to the supplier import CSV job controller
 
 ```
-controller/jobs/supplier/import/csv/decorators/local = Array
-(
-)
+controller/jobs/supplier/import/csv/decorators/local =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -420,10 +405,10 @@ See also:
 Class name of the used supplier suggestions scheduler controller implementation
 
 ```
-controller/jobs/supplier/import/csv/name = Standard
+controller/jobs/supplier/import/csv/name =
 ```
 
-* Default: Standard
+* Default:
 * Type: string - Last part of the class name
 * Since: 2020.07
 
@@ -705,7 +690,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/supplier/import/xml/location =
+controller/jobs/supplier/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
 * Default:

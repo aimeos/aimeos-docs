@@ -65,10 +65,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog count attribute client.
 
 ```
-client/html/catalog/count/attribute/template-body =
+client/html/catalog/count/attribute/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -94,15 +94,10 @@ See also:
 Excludes decorators added by the "common" option from the catalog count html client
 
 ```
-client/html/catalog/count/decorators/excludes = Array
-(
-)
+client/html/catalog/count/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -134,15 +129,10 @@ See also:
 Adds a list of globally available decorators only to the catalog count html client
 
 ```
-client/html/catalog/count/decorators/global = Array
-(
-)
+client/html/catalog/count/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -172,15 +162,10 @@ See also:
 Adds a list of local decorators only to the catalog count html client
 
 ```
-client/html/catalog/count/decorators/local = Array
-(
-)
+client/html/catalog/count/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -238,10 +223,10 @@ See also:
 Class name of the used catalog count client implementation
 
 ```
-client/html/catalog/count/name = Standard
+client/html/catalog/count/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -400,10 +385,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog count supplier client.
 
 ```
-client/html/catalog/count/supplier/template-body =
+client/html/catalog/count/supplier/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.07
 
@@ -428,10 +413,10 @@ See also:
 Relative path to the HTML body template of the catalog count client.
 
 ```
-client/html/catalog/count/template-body =
+client/html/catalog/count/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -456,10 +441,10 @@ See also:
 Relative path to the HTML header template of the catalog count client.
 
 ```
-client/html/catalog/count/template-header =
+client/html/catalog/count/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -546,10 +531,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog count tree client.
 
 ```
-client/html/catalog/count/tree/template-body =
+client/html/catalog/count/tree/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -669,10 +654,10 @@ client/html/catalog/count/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/count/url/target =
+client/html/catalog/count/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

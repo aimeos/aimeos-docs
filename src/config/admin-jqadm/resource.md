@@ -96,20 +96,6 @@ admin/jqadm/resource/cms/key = M
 * Default: 
 
 
-# configuration
-## groups
-
-List of user groups that are allowed to access the configuration menu
-
-```
-admin/jqadm/resource/configuration/groups = 
-```
-
-* Default: 
-* Type: array - List of user group names
-* Since: 2021.04
-
-
 # coupon
 ## groups
 
@@ -730,9 +716,13 @@ admin/jqadm/resource/settings/key = T
 # setup
 ## groups
 
+List of user groups that are allowed to access the setup menu
+
 ```
 admin/jqadm/resource/setup/groups = Array
 (
+    [0] => admin
+    [1] => super
 )
 ```
 
@@ -740,6 +730,8 @@ admin/jqadm/resource/setup/groups = Array
 (
 )
 
+* Type: array - List of user group names
+* Since: 2021.04
 
 
 # site

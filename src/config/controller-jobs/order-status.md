@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the order status CSV job controller
 
 ```
-controller/jobs/order/status/csv/decorators/excludes = Array
-(
-)
+controller/jobs/order/status/csv/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the order status CSV job controller
 
 ```
-controller/jobs/order/status/csv/decorators/global = Array
-(
-)
+controller/jobs/order/status/csv/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the order status CSV job controller
 
 ```
-controller/jobs/order/status/csv/decorators/local = Array
-(
-)
+controller/jobs/order/status/csv/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -163,10 +148,10 @@ status speed.
 Class name of the used order suggestions scheduler controller implementation
 
 ```
-controller/jobs/order/status/csv/name = Standard
+controller/jobs/order/status/csv/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.10
 

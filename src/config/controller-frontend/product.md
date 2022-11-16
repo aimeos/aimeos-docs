@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the product frontend controllers
 
 ```
-controller/frontend/product/decorators/excludes = Array
-(
-)
+controller/frontend/product/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the product frontend controllers
 
 ```
-controller/frontend/product/decorators/global = Array
-(
-)
+controller/frontend/product/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the product frontend controllers
 
 ```
-controller/frontend/product/decorators/local = Array
-(
-)
+controller/frontend/product/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -122,10 +107,10 @@ See also:
 Class name of the used product frontend controller implementation
 
 ```
-controller/frontend/product/name = Standard
+controller/frontend/product/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

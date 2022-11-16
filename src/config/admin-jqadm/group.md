@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/excludes = Array
-(
-)
+admin/jqadm/group/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/global = Array
-(
-)
+admin/jqadm/group/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/local = Array
-(
-)
+admin/jqadm/group/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -152,10 +137,10 @@ e.g. "group.id" for the group ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/group/name = Standard
+admin/jqadm/group/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.07
 

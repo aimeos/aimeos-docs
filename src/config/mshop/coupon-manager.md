@@ -283,7 +283,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/coupon/manager/code/delete/ansi = 
  DELETE FROM "mshop_coupon_code"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/coupon/manager/code/delete
@@ -318,12 +318,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/coupon/manager/code/delete/mysql = 
  DELETE FROM "mshop_coupon_code"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_coupon_code"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -650,7 +650,7 @@ mshop/coupon/manager/code/update/ansi =
  SET :names
  	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
  	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/coupon/manager/code/update
@@ -690,7 +690,7 @@ mshop/coupon/manager/code/update/mysql =
  SET :names
  	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
  	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -698,7 +698,7 @@ mshop/coupon/manager/code/update/mysql =
  SET :names
  	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
  	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -931,7 +931,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/coupon/manager/delete/ansi = 
  DELETE FROM "mshop_coupon"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/coupon/manager/delete
@@ -965,12 +965,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/coupon/manager/delete/mysql = 
  DELETE FROM "mshop_coupon"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_coupon"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1344,7 +1344,7 @@ mshop/coupon/manager/update/ansi =
  SET :names
  	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
  	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/coupon/manager/update
@@ -1383,7 +1383,7 @@ mshop/coupon/manager/update/mysql =
  SET :names
  	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
  	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1391,7 +1391,7 @@ mshop/coupon/manager/update/mysql =
  SET :names
  	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
  	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

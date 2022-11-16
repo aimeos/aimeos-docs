@@ -1,47 +1,4 @@
 
-# decorators
-## excludes
-
-```
-client/html/account/profile/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/account/profile/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/account/profile/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # domains
 
 A list of domain names whose items should be available in the account profile view template
@@ -72,10 +29,10 @@ etc. are domains) whose items are fetched from the storage.
 Class name of the used account profile client implementation
 
 ```
-client/html/account/profile/name = Standard
+client/html/account/profile/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.10
 
@@ -117,10 +74,10 @@ or numbers. Avoid chamel case names like "MyProfile"!
 Relative path to the HTML body template of the account profile client.
 
 ```
-client/html/account/profile/template-body =
+client/html/account/profile/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2016.10
 
@@ -145,10 +102,10 @@ See also:
 Relative path to the HTML header template of the account profile client.
 
 ```
-client/html/account/profile/template-header =
+client/html/account/profile/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2016.10
 
@@ -283,10 +240,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/profile/url/target =
+client/html/account/profile/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2019.10
 

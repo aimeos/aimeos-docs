@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the subscription frontend controllers
 
 ```
-controller/frontend/subscription/decorators/excludes = Array
-(
-)
+controller/frontend/subscription/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the subscription frontend controllers
 
 ```
-controller/frontend/subscription/decorators/global = Array
-(
-)
+controller/frontend/subscription/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the subscription frontend controllers
 
 ```
-controller/frontend/subscription/decorators/local = Array
-(
-)
+controller/frontend/subscription/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -122,10 +107,10 @@ See also:
 Class name of the used subscription frontend controller implementation
 
 ```
-controller/frontend/subscription/name = Standard
+controller/frontend/subscription/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 

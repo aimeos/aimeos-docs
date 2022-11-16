@@ -20,49 +20,6 @@ See also:
 * client/html/supplier/filter/cache
 * client/html/supplier/lists/cache
 
-# decorators
-## excludes
-
-```
-client/html/supplier/detail/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/supplier/detail/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/supplier/detail/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # domains
 
 A list of domain names whose items should be available in the supplier detail view template
@@ -122,10 +79,10 @@ See also:
 Class name of the used supplier detail client implementation
 
 ```
-client/html/supplier/detail/name = Standard
+client/html/supplier/detail/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2020.10
 
@@ -167,10 +124,10 @@ or numbers. Avoid chamel case names like "MyDetail"!
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/supplier/detail/supid-default = 87
+client/html/supplier/detail/supid-default = 99
 ```
 
-* Default:
+* Default: 
 * Type: string - Supplier ID
 * Since: 2021.01
 
@@ -288,7 +245,7 @@ client/html/supplier/detail/url/filter = Array
 ## target
 
 ```
-client/html/supplier/detail/url/target =
+client/html/supplier/detail/url/target = 
 ```
 
-* Default:
+* Default: 

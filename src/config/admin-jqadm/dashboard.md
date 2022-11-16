@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/decorators/excludes = Array
-(
-)
+admin/jqadm/dashboard/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/decorators/global = Array
-(
-)
+admin/jqadm/dashboard/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/decorators/local = Array
-(
-)
+admin/jqadm/dashboard/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -122,10 +107,10 @@ See also:
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/job/decorators/excludes =
+admin/jqadm/dashboard/job/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.08
 
@@ -324,10 +309,10 @@ should be replaced by the name of the new class.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/dashboard/name = Standard
+admin/jqadm/dashboard/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.07
 
@@ -370,10 +355,10 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/notify/decorators/excludes =
+admin/jqadm/dashboard/notify/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2022.04
 
@@ -492,52 +477,6 @@ Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Dashboard\Notify\Myname
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## stripe/decorators/global
-
-```
-admin/jqadm/dashboard/notify/stripe/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## stripe/decorators/local
-
-```
-admin/jqadm/dashboard/notify/stripe/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## stripe/name
-
-```
-admin/jqadm/dashboard/notify/stripe/name = Standard
-```
-
-* Default: Standard
-
-
-## stripe/template-item
-
-```
-admin/jqadm/dashboard/notify/stripe/template-item = dashboard/item-notify-stripe
-```
-
-* Default: dashboard/item-notify-stripe
-
-
 ## subparts
 
 List of JQAdm sub-clients rendered within the dashboard notify section
@@ -545,7 +484,6 @@ List of JQAdm sub-clients rendered within the dashboard notify section
 ```
 admin/jqadm/dashboard/notify/subparts = Array
 (
-    [stripe] => stripe
 )
 ```
 
@@ -620,10 +558,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/countcountry/decorators/excludes =
+admin/jqadm/dashboard/order/countcountry/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -822,10 +760,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/countday/decorators/excludes =
+admin/jqadm/dashboard/order/countday/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1024,10 +962,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/counthour/decorators/excludes =
+admin/jqadm/dashboard/order/counthour/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1226,10 +1164,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/countpaystatus/decorators/excludes =
+admin/jqadm/dashboard/order/countpaystatus/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1428,10 +1366,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/decorators/excludes =
+admin/jqadm/dashboard/order/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1539,10 +1477,10 @@ See also:
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/latest/decorators/excludes =
+admin/jqadm/dashboard/order/latest/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -1757,10 +1695,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/countcompleted/decorators/excludes =
+admin/jqadm/dashboard/order/quick/countcompleted/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -1959,10 +1897,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/countcustomer/decorators/excludes =
+admin/jqadm/dashboard/order/quick/countcustomer/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2161,10 +2099,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/counttotal/decorators/excludes =
+admin/jqadm/dashboard/order/quick/counttotal/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2363,10 +2301,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/countunfinished/decorators/excludes =
+admin/jqadm/dashboard/order/quick/countunfinished/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2565,10 +2503,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/quick/decorators/excludes =
+admin/jqadm/dashboard/order/quick/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2771,10 +2709,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/salesday/decorators/excludes =
+admin/jqadm/dashboard/order/salesday/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2973,10 +2911,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/salesmonth/decorators/excludes =
+admin/jqadm/dashboard/order/salesmonth/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3175,10 +3113,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/salesweekday/decorators/excludes =
+admin/jqadm/dashboard/order/salesweekday/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3377,10 +3315,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/servicedelivery/decorators/excludes =
+admin/jqadm/dashboard/order/servicedelivery/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3579,10 +3517,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/order/servicepayment/decorators/excludes =
+admin/jqadm/dashboard/order/servicepayment/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3868,10 +3806,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the dashboard JQAdm client
 
 ```
-admin/jqadm/dashboard/setting/decorators/excludes =
+admin/jqadm/dashboard/setting/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2020.01
 

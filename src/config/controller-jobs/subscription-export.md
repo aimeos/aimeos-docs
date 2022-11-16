@@ -99,15 +99,10 @@ See also:
 Excludes decorators added by the "common" option from the subscription export CSV job controller
 
 ```
-controller/jobs/subscription/export/csv/decorators/excludes = Array
-(
-)
+controller/jobs/subscription/export/csv/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -139,15 +134,10 @@ See also:
 Adds a list of globally available decorators only to the subscription export CSV job controller
 
 ```
-controller/jobs/subscription/export/csv/decorators/global = Array
-(
-)
+controller/jobs/subscription/export/csv/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -177,15 +167,10 @@ See also:
 Adds a list of local decorators only to the subscription export CSV job controller
 
 ```
-controller/jobs/subscription/export/csv/decorators/local = Array
-(
-)
+controller/jobs/subscription/export/csv/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -344,10 +329,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/export/csv/name = Standard
+controller/jobs/subscription/export/csv/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 

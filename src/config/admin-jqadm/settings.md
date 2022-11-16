@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the settings JQAdm client
 
 ```
-admin/jqadm/settings/decorators/excludes = Array
-(
-)
+admin/jqadm/settings/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the settings JQAdm client
 
 ```
-admin/jqadm/settings/decorators/global = Array
-(
-)
+admin/jqadm/settings/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the settings JQAdm client
 
 ```
-admin/jqadm/settings/decorators/local = Array
-(
-)
+admin/jqadm/settings/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -116,76 +101,15 @@ See also:
 * admin/jqadm/settings/decorators/excludes
 * admin/jqadm/settings/decorators/global
 
-# mangopay
-## decorators/global
-
-```
-admin/jqadm/settings/mangopay/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## decorators/local
-
-```
-admin/jqadm/settings/mangopay/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## name
-
-```
-admin/jqadm/settings/mangopay/name = Standard
-```
-
-* Default: Standard
-
-
-## subparts
-
-```
-admin/jqadm/settings/mangopay/subparts = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## template-item
-
-```
-admin/jqadm/settings/mangopay/template-item = settings/item-mangopay
-```
-
-* Default: settings/item-mangopay
-
-
 # name
 
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/settings/name = Standard
+admin/jqadm/settings/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.07
 
@@ -222,53 +146,6 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-# stripe
-## decorators/global
-
-```
-admin/jqadm/settings/stripe/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## decorators/local
-
-```
-admin/jqadm/settings/stripe/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## name
-
-```
-admin/jqadm/settings/stripe/name = Standard
-```
-
-* Default: Standard
-
-
-## template-item
-
-```
-admin/jqadm/settings/stripe/template-item = settings/item-stripe
-```
-
-* Default: settings/item-stripe
-
-
 # subparts
 
 List of JQAdm sub-clients rendered within the settings section
@@ -276,8 +153,7 @@ List of JQAdm sub-clients rendered within the settings section
 ```
 admin/jqadm/settings/subparts = Array
 (
-    [mangopay] => mangopay
-    [stripe] => stripe
+    [theme] => theme
 )
 ```
 
@@ -344,3 +220,50 @@ named like the default one but with the string "default" replaced by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
+
+
+# theme
+## decorators/global
+
+```
+admin/jqadm/settings/theme/decorators/global = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## decorators/local
+
+```
+admin/jqadm/settings/theme/decorators/local = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## name
+
+```
+admin/jqadm/settings/theme/name = Standard
+```
+
+* Default: Standard
+
+
+## template-item
+
+```
+admin/jqadm/settings/theme/template-item = settings/item-theme
+```
+
+* Default: settings/item-theme

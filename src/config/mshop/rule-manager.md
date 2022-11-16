@@ -222,7 +222,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/rule/manager/delete/ansi = 
  DELETE FROM "mshop_rule"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/rule/manager/delete
@@ -256,12 +256,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/rule/manager/delete/mysql = 
  DELETE FROM "mshop_rule"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_rule"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -841,7 +841,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/rule/manager/type/delete/ansi = 
  DELETE FROM "mshop_rule_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/rule/manager/type/delete
@@ -875,12 +875,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/rule/manager/type/delete/mysql = 
  DELETE FROM "mshop_rule_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_rule_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1201,7 +1201,7 @@ mshop/rule/manager/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/rule/manager/type/update
@@ -1240,7 +1240,7 @@ mshop/rule/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1248,7 +1248,7 @@ mshop/rule/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1266,7 +1266,7 @@ mshop/rule/manager/update/ansi =
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?, "start" = ?, "end" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/rule/manager/update
@@ -1305,7 +1305,7 @@ mshop/rule/manager/update/mysql =
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?, "start" = ?, "end" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1313,7 +1313,7 @@ mshop/rule/manager/update/mysql =
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?, "start" = ?, "end" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the catalog session html client
 
 ```
-client/html/catalog/session/decorators/excludes = Array
-(
-)
+client/html/catalog/session/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the catalog session html client
 
 ```
-client/html/catalog/session/decorators/global = Array
-(
-)
+client/html/catalog/session/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the catalog session html client
 
 ```
-client/html/catalog/session/decorators/local = Array
-(
-)
+client/html/catalog/session/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -121,10 +106,10 @@ See also:
 Class name of the used catalog session client implementation
 
 ```
-client/html/catalog/session/name = Standard
+client/html/catalog/session/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -435,10 +420,10 @@ client/html/catalog/session/pinned/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/session/pinned/url/target =
+client/html/catalog/session/pinned/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.09
 
@@ -453,28 +438,6 @@ See also:
 * client/html/catalog/session/pinned/url/config
 
 # seen
-
-All parameters defined for the catalog session seen subpart
-
-```
-client/html/catalog/session/seen = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - Associative list of name/value settings
-
-This returns all settings related to the catalog session seen subpart.
-Please refer to the single settings for details.
-
-See also:
-
-* client/html/catalog#session
-
 ## count/enable
 
 Displays the number of last seen products in the header of the last seen list
@@ -562,10 +525,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog session seen client.
 
 ```
-client/html/catalog/session/seen/template-body = catalog/session/seen-body
+client/html/catalog/session/seen/template-body = 
 ```
 
-* Default: catalog/session/seen-body
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -644,10 +607,10 @@ design.
 Relative path to the HTML body template of the catalog session client.
 
 ```
-client/html/catalog/session/template-body =
+client/html/catalog/session/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -672,10 +635,10 @@ See also:
 Relative path to the HTML header template of the catalog session client.
 
 ```
-client/html/catalog/session/template-header =
+client/html/catalog/session/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

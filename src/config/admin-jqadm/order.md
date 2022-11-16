@@ -37,15 +37,10 @@ entry must be created using the MAdmin Job manager.
 Excludes decorators added by the "common" option from the order JQAdm client
 
 ```
-admin/jqadm/order/decorators/excludes = Array
-(
-)
+admin/jqadm/order/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -77,15 +72,10 @@ See also:
 Adds a list of globally available decorators only to the order JQAdm client
 
 ```
-admin/jqadm/order/decorators/global = Array
-(
-)
+admin/jqadm/order/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -115,15 +105,10 @@ See also:
 Adds a list of local decorators only to the order JQAdm client
 
 ```
-admin/jqadm/order/decorators/local = Array
-(
-)
+admin/jqadm/order/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -187,10 +172,10 @@ e.g. "order.id" for the order ID.
 Excludes decorators added by the "common" option from the order JQAdm client
 
 ```
-admin/jqadm/order/invoice/decorators/excludes =
+admin/jqadm/order/invoice/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -418,10 +403,10 @@ should be replaced by the name of the new class.
 List of invoice source types that can be selected in the order invoice view
 
 ```
-admin/jqadm/order/invoice/types =
+admin/jqadm/order/invoice/types = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List invoice source types
 * Since: 2017.07
 
@@ -435,10 +420,10 @@ be longer than eight characters.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/order/name = Standard
+admin/jqadm/order/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.01
 

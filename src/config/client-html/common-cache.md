@@ -29,10 +29,10 @@ See also:
 Adds tags for all items used in a cache entry
 
 ```
-client/html/common/cache/tag-all = 
+client/html/common/cache/tag-all = 1
 ```
 
-* Default: 
+* Default: 1
 * Type: boolean - True to add tags for all items, false to use only a domain tag
 * Since: 2014.07
 

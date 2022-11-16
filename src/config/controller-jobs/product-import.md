@@ -151,15 +151,10 @@ See also:
 Excludes decorators added by the "common" option from the product import CSV job controller
 
 ```
-controller/jobs/product/import/csv/decorators/excludes = Array
-(
-)
+controller/jobs/product/import/csv/decorators/excludes =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -191,15 +186,10 @@ See also:
 Adds a list of globally available decorators only to the product import CSV job controller
 
 ```
-controller/jobs/product/import/csv/decorators/global = Array
-(
-)
+controller/jobs/product/import/csv/decorators/global =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -229,15 +219,10 @@ See also:
 Adds a list of local decorators only to the product import CSV job controller
 
 ```
-controller/jobs/product/import/csv/decorators/local = Array
-(
-)
+controller/jobs/product/import/csv/decorators/local =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -272,10 +257,12 @@ List of item domain names that should be retrieved along with the product items
 controller/jobs/product/import/csv/domains = Array
 (
     [attribute] => attribute
+    [catalog] => catalog
     [media] => media
     [price] => price
     [product] => product
     [product/property] => product/property
+    [supplier] => supplier
     [text] => text
 )
 ```
@@ -283,10 +270,12 @@ controller/jobs/product/import/csv/domains = Array
 * Default: Array
 (
     [attribute] => attribute
+    [catalog] => catalog
     [media] => media
     [price] => price
     [product] => product
     [product/property] => product/property
+    [supplier] => supplier
     [text] => text
 )
 
@@ -478,10 +467,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/import/csv/name = Standard
+controller/jobs/product/import/csv/name =
 ```
 
-* Default: Standard
+* Default:
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -707,10 +696,12 @@ List of item domain names that should be retrieved along with the product items
 controller/jobs/product/import/xml/domains = Array
 (
     [attribute] => attribute
+    [catalog] => catalog
     [media] => media
     [price] => price
     [product] => product
     [product/property] => product/property
+    [supplier] => supplier
     [text] => text
 )
 ```
@@ -737,7 +728,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/product/import/xml/location =
+controller/jobs/product/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
 * Default:

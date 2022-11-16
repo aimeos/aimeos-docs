@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the plugin JQAdm client
 
 ```
-admin/jqadm/plugin/decorators/excludes = Array
-(
-)
+admin/jqadm/plugin/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the plugin JQAdm client
 
 ```
-admin/jqadm/plugin/decorators/global = Array
-(
-)
+admin/jqadm/plugin/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the plugin JQAdm client
 
 ```
-admin/jqadm/plugin/decorators/local = Array
-(
-)
+admin/jqadm/plugin/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -154,10 +139,10 @@ e.g. "plugin.id" for the customer ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/plugin/name = Standard
+admin/jqadm/plugin/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.07
 

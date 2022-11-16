@@ -1,56 +1,13 @@
 
-# decorators
-## excludes
-
-```
-client/html/catalog/supplier/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/supplier/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/supplier/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used catalog supplier client implementation
 
 ```
-client/html/catalog/supplier/name = Standard
+client/html/catalog/supplier/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 

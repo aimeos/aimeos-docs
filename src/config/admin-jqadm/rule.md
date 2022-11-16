@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the rule JQAdm client
 
 ```
-admin/jqadm/rule/decorators/excludes = Array
-(
-)
+admin/jqadm/rule/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the rule JQAdm client
 
 ```
-admin/jqadm/rule/decorators/global = Array
-(
-)
+admin/jqadm/rule/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the rule JQAdm client
 
 ```
-admin/jqadm/rule/decorators/local = Array
-(
-)
+admin/jqadm/rule/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -154,10 +139,10 @@ e.g. "rule.id" for the customer ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/rule/name = Standard
+admin/jqadm/rule/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.04
 

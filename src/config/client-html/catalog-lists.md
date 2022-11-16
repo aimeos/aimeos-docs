@@ -4,10 +4,10 @@
 Additional attribute IDs used to limit search results
 
 ```
-client/html/catalog/lists/attrid-default =
+client/html/catalog/lists/attrid-default = 
 ```
 
-* Default:
+* Default: 
 * Type: array|string - Attribute ID or IDs
 * Since: 2021.10
 
@@ -22,20 +22,20 @@ See also:
 * client/html/catalog/lists/size
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
-* client/html/catalog/lists/instock
 * client/html/catalog/lists/catid-default
 * client/html/catalog/lists/supid-default
 * client/html/catalog/detail/prodid-default
+* client/html/catalog/instock
 
 # basket-add
 
 Display the "add to basket" button for each product item
 
 ```
-client/html/catalog/lists/basket-add =
+client/html/catalog/lists/basket-add = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to display the button, false to hide it
 * Since: 2016.01
 
@@ -85,10 +85,10 @@ See also:
 The default category ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/catid-default =
+client/html/catalog/lists/catid-default = 
 ```
 
-* Default:
+* Default: 
 * Type: array|string - Category ID or IDs
 * Since: 2014.03
 
@@ -108,50 +108,7 @@ See also:
 * client/html/catalog/lists/attrid-default
 * client/html/catalog/detail/prodid-default
 * client/html/catalog/lists/supid-default
-* client/html/catalog/lists/instock
-
-# decorators
-## excludes
-
-```
-client/html/catalog/lists/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/lists/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/lists/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
+* client/html/catalog/instock
 
 # domains
 
@@ -206,53 +163,23 @@ See also:
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/pages
-* client/html/catalog/lists/instock
+* client/html/catalog/instock
 
 # infinite-scroll
 
 Enables infinite scrolling in product catalog list
 
 ```
-client/html/catalog/lists/infinite-scroll =
+client/html/catalog/lists/infinite-scroll = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to use infinite scrolling, false to disable it
 * Since: 2019.10
 
 If set to true, products from the next page are loaded via XHR request
 and added to the product list when the user reaches the list bottom.
 
-
-# instock
-
-Show only products which are in stock
-
-```
-client/html/catalog/lists/instock =
-```
-
-* Default:
-* Type: int - Zero to show all products, "1" to show only products with stock
-* Since: 2021.10
-
-This configuration option overwrites the "client/html/catalog/domains"
-option that allows to configure the domain names of the items fetched
-for all catalog related data.
-
-See also:
-
-* client/html/catalog/domains
-* client/html/catalog/lists/domains
-* client/html/catalog/detail/domains
-* client/html/catalog/stage/domains
-* client/html/catalog/lists/attrid-default
-* client/html/catalog/lists/catid-default
-* client/html/catalog/lists/supid-default
-* client/html/catalog/lists/size
-* client/html/catalog/lists/levels
-* client/html/catalog/lists/sort
-* client/html/catalog/lists/pages
 
 # levels
 
@@ -295,7 +222,7 @@ See also:
 * client/html/catalog/lists/size
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/pages
-* client/html/catalog/lists/instock
+* client/html/catalog/instock
 
 # metatags
 
@@ -325,10 +252,10 @@ See also:
 Class name of the used catalog list client implementation
 
 ```
-client/html/catalog/lists/name = Standard
+client/html/catalog/lists/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -393,7 +320,7 @@ See also:
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/size
-* client/html/catalog/lists/instock
+* client/html/catalog/instock
 
 # pagination
 
@@ -444,7 +371,7 @@ See also:
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/sort
 * client/html/catalog/lists/pages
-* client/html/catalog/lists/instock
+* client/html/catalog/instock
 
 # sort
 
@@ -471,7 +398,7 @@ See also:
 * client/html/catalog/lists/domains
 * client/html/catalog/lists/levels
 * client/html/catalog/lists/size
-* client/html/catalog/lists/instock
+* client/html/catalog/instock
 
 # stock
 
@@ -506,10 +433,10 @@ See also:
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/catalog/lists/supid-default =
+client/html/catalog/lists/supid-default = 
 ```
 
-* Default:
+* Default: 
 * Type: array|string - Supplier ID or IDs
 * Since: 2021.01
 
@@ -528,7 +455,7 @@ See also:
 * client/html/catalog/lists/attrid-default
 * client/html/catalog/lists/catid-default
 * client/html/catalog/detail/prodid-default
-* client/html/catalog/lists/instock
+* client/html/catalog/instock
 
 # template-body
 
@@ -715,10 +642,10 @@ client/html/catalog/lists/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/lists/url/target =
+client/html/catalog/lists/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the order cleanup unfinished controllers
 
 ```
-controller/jobs/order/cleanup/unfinished/decorators/excludes = Array
-(
-)
+controller/jobs/order/cleanup/unfinished/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the order cleanup unfinished controllers
 
 ```
-controller/jobs/order/cleanup/unfinished/decorators/global = Array
-(
-)
+controller/jobs/order/cleanup/unfinished/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the order cleanup unfinished controllers
 
 ```
-controller/jobs/order/cleanup/unfinished/decorators/local = Array
-(
-)
+controller/jobs/order/cleanup/unfinished/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -146,10 +131,10 @@ The unfinished orders are deleted afterwards to keep the database clean.
 Class name of the used order cleanup unfinished scheduler controller implementation
 
 ```
-controller/jobs/order/cleanup/unfinished/name = Standard
+controller/jobs/order/cleanup/unfinished/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -192,15 +177,10 @@ or numbers. Avoid chamel case names like "MyUnfinished"!
 Excludes decorators added by the "common" option from the order cleanup unpaid controllers
 
 ```
-controller/jobs/order/cleanup/unpaid/decorators/excludes = Array
-(
-)
+controller/jobs/order/cleanup/unpaid/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -232,15 +212,10 @@ See also:
 Adds a list of globally available decorators only to the order cleanup unpaid controllers
 
 ```
-controller/jobs/order/cleanup/unpaid/decorators/global = Array
-(
-)
+controller/jobs/order/cleanup/unpaid/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -270,15 +245,10 @@ See also:
 Adds a list of local decorators only to the order cleanup unpaid controllers
 
 ```
-controller/jobs/order/cleanup/unpaid/decorators/local = Array
-(
-)
+controller/jobs/order/cleanup/unpaid/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -330,10 +300,10 @@ orders.
 Class name of the used order cleanup unpaid scheduler controller implementation
 
 ```
-controller/jobs/order/cleanup/unpaid/name = Standard
+controller/jobs/order/cleanup/unpaid/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.07
 

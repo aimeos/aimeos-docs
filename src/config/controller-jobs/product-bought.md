@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the product bought job controller
 
 ```
-controller/jobs/product/bought/decorators/excludes = Array
-(
-)
+controller/jobs/product/bought/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the product bought job controller
 
 ```
-controller/jobs/product/bought/decorators/global = Array
-(
-)
+controller/jobs/product/bought/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the product bought job controller
 
 ```
-controller/jobs/product/bought/decorators/local = Array
-(
-)
+controller/jobs/product/bought/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -123,10 +108,10 @@ See also:
 Only use orders placed in the past within the configured number of days for calculating bought together products
 
 ```
-controller/jobs/product/bought/limit-days = 180
+controller/jobs/product/bought/limit-days = 360
 ```
 
-* Default: 180
+* Default: 360
 * Type: integer - Number of days
 * Since: 2014.09
 
@@ -146,6 +131,7 @@ See also:
 * controller/jobs/product/bought/max-items
 * controller/jobs/product/bought/min-support
 * controller/jobs/product/bought/min-confidence
+* controller/jobs/product/bought/size
 
 # max-items
 
@@ -170,6 +156,7 @@ See also:
 * controller/jobs/product/bought/min-support
 * controller/jobs/product/bought/min-confidence
 * controller/jobs/product/bought/limit-days
+* controller/jobs/product/bought/size
 
 # min-confidence
 
@@ -200,6 +187,7 @@ See also:
 * controller/jobs/product/bought/max-items
 * controller/jobs/product/bought/min-support
 * controller/jobs/product/bought/limit-days
+* controller/jobs/product/bought/size
 
 # min-support
 
@@ -234,16 +222,17 @@ See also:
 * controller/jobs/product/bought/max-items
 * controller/jobs/product/bought/min-confidence
 * controller/jobs/product/bought/limit-days
+* controller/jobs/product/bought/size
 
 # name
 
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/bought/name = Standard
+controller/jobs/product/bought/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -278,3 +267,27 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyOptimizer"!
+
+
+# size
+
+Number of items processed at once
+
+```
+controller/jobs/product/bought/size = 100
+```
+
+* Default: 100
+* Type: integer - Number of items processed at once
+* Since: 2023.01
+
+The items which are bought together are processed in batches to reduce
+the time needed for associating all items. Higher numbers can improve
+the speed while requiring more memory.
+
+See also:
+
+* controller/jobs/product/bought/max-items
+* controller/jobs/product/bought/min-support
+* controller/jobs/product/bought/min-confidence
+* controller/jobs/product/bought/limit-days

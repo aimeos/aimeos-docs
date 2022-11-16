@@ -41,7 +41,7 @@ Replace previous coupon codes each time the user enters a new one
 client/html/basket/standard/coupon/overwrite = 1
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to overwrite a previous coupon, false to keep them
 * Since: 2020.04
 
@@ -50,58 +50,15 @@ previously entered one automatically, this configuration option
 should be set to true.
 
 
-# decorators
-## excludes
-
-```
-client/html/basket/standard/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/basket/standard/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/basket/standard/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used basket standard client implementation
 
 ```
-client/html/basket/standard/name = Standard
+client/html/basket/standard/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -257,10 +214,10 @@ client/html/basket/standard/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/basket/standard/url/target =
+client/html/basket/standard/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

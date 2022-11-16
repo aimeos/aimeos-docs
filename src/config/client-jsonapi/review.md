@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/review/decorators/excludes = Array
-(
-)
+client/jsonapi/review/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/review/decorators/global = Array
-(
-)
+client/jsonapi/review/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -85,15 +75,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/review/decorators/local = Array
-(
-)
+client/jsonapi/review/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -125,10 +110,10 @@ See also:
 Class name of the used review client implementation
 
 ```
-client/jsonapi/review/name = Standard
+client/jsonapi/review/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -195,10 +180,10 @@ should be replaced by the name of the new class.
 Relative path to the review aggregate JSON API template
 
 ```
-client/jsonapi/review/template-aggregate =
+client/jsonapi/review/template-aggregate = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating the list of aggregated review counts
 * Since: 2020.10
 

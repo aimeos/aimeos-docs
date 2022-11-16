@@ -80,15 +80,10 @@ See also:
 Excludes decorators added by the "common" option from the product export job controller
 
 ```
-controller/jobs/product/export/decorators/excludes = Array
-(
-)
+controller/jobs/product/export/decorators/excludes =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -120,15 +115,10 @@ See also:
 Adds a list of globally available decorators only to the product export job controller
 
 ```
-controller/jobs/product/export/decorators/global = Array
-(
-)
+controller/jobs/product/export/decorators/global =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -158,15 +148,10 @@ See also:
 Adds a list of local decorators only to the product export job controller
 
 ```
-controller/jobs/product/export/decorators/local = Array
-(
-)
+controller/jobs/product/export/decorators/local =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -251,7 +236,7 @@ See also:
 Directory where the generated site maps should be placed into
 
 ```
-controller/jobs/product/export/location =
+controller/jobs/product/export/location = /var/www/aimeos/ext/ai-controller-jobs/tests/tmp
 ```
 
 * Default:
@@ -327,10 +312,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/export/name = Standard
+controller/jobs/product/export/name =
 ```
 
-* Default: Standard
+* Default:
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -464,7 +449,7 @@ the XML tags for these items that will be inserted into the product XML.
 URL to the folder where the site maps can be accessed, without the filenames.
 
 ```
-controller/jobs/product/export/sitemap/baseurl = https://www.yourshop.com/sitemaps/
+controller/jobs/product/export/sitemap/baseurl =
 ```
 
 * Default:
@@ -492,90 +477,15 @@ See also:
 * controller/jobs/product/export/sitemap/changefreq
 * controller/jobs/product/export/sitemap/location
 
-## changefreq
-
-Change frequency of the products
-
-```
-controller/jobs/product/export/sitemap/changefreq = daily
-```
-
-* Default: daily
-* Type: string - One of the pre-defined strings (see description)
-* Since: 2015.01
-
-Depending on how often the product content changes (e.g. price updates)
-and the site map files are generated you can give search engines a
-hint how often they should reindex your site. The site map schema
-allows a few pre-defined strings for the change frequency:
-
-* always
-* hourly
-* daily
-* weekly
-* monthly
-* yearly
-* never
-
-More information can be found at
-[sitemap.org](http://www.sitemaps.org/protocol.html#xmlTagDefinitions)
-
-See also:
-
-* controller/jobs/product/export/sitemap/container/options
-* controller/jobs/product/export/sitemap/location
-* controller/jobs/product/export/sitemap/max-items
-* controller/jobs/product/export/sitemap/max-query
-
-## container/options
-
-List of file container options for the site map files
-
-```
-controller/jobs/product/export/sitemap/container/options = Array
-(
-    [gzip-mode] => wb
-)
-```
-
-* Default: Array
-(
-    [gzip-mode] => wb
-)
-
-* Type: array - Associative list of option name/value pairs
-* Since: 2015.01
-
-The directory and the generated site map files are stored using
-container/content objects from the core, namely the "Directory"
-container and the "Binary" content classes. Both implementations
-support some options:
-
-* dir-perm (default: 0755): Permissions if the directory must be created
-* gzip-level (default: 5): GZip compression level from 0 to 9 (0 = fast, 9 = best)
-* gzip-mode (default: "wb"): Overwrite existing files in binary mode
-
-See also:
-
-* controller/jobs/product/export/sitemap/location
-* controller/jobs/product/export/sitemap/max-items
-* controller/jobs/product/export/sitemap/max-query
-* controller/jobs/product/export/sitemap/changefreq
-
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the product export sitemap job controller
 
 ```
-controller/jobs/product/export/sitemap/decorators/excludes = Array
-(
-)
+controller/jobs/product/export/sitemap/decorators/excludes =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -607,15 +517,10 @@ See also:
 Adds a list of globally available decorators only to the product export sitemap job controller
 
 ```
-controller/jobs/product/export/sitemap/decorators/global = Array
-(
-)
+controller/jobs/product/export/sitemap/decorators/global =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -645,15 +550,10 @@ See also:
 Adds a list of local decorators only to the product export sitemap job controller
 
 ```
-controller/jobs/product/export/sitemap/decorators/local = Array
-(
-)
+controller/jobs/product/export/sitemap/decorators/local =
 ```
 
-* Default: Array
-(
-)
-
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -697,20 +597,16 @@ controller/jobs/product/export/sitemap/domains = Array
 )
 
 * Type: array - List of domain names
-* Since: 2018.07
+* Since: 2019.02
 
-Products consist not only of the base data but also of texts, media
-files, prices, attrbutes and other details. Those information is
-associated to the products via their lists. Using the "domains" option
-you can make more or less associated items available in the template.
+Catalogs consist not only of the base data but also of texts, media and
+other details. Those information is associated to the product via their lists.
+Using the "domains" option you can make more or less associated items available
+in the template.
 
 See also:
 
-* controller/jobs/product/export/sitemap/container/options
-* controller/jobs/product/export/sitemap/location
 * controller/jobs/product/export/sitemap/max-items
-* controller/jobs/product/export/sitemap/max-query
-* controller/jobs/product/export/sitemap/changefreq
 
 ## hidden
 
@@ -735,60 +631,22 @@ See also:
 * controller/jobs/product/export/sitemap/max-query
 * controller/jobs/product/export/sitemap/changefreq
 
-## location
-
-Directory where the generated site maps should be placed into
-
-```
-controller/jobs/product/export/sitemap/location =
-```
-
-* Default:
-* Type: string - Absolute directory to store the site maps into
-* Since: 2015.01
-
-The site maps must be publically available for download by the search
-engines. Therefore, you have to configure a directory for the site
-maps in your web space that is writeable by the process generating
-the files, e.g.
-
-The location of the site map index file should then be
-added to the robots.txt in the document root of your domain:
-
-Sitemap: https://www.yourshop.com/your/sitemap/path/aimeos-sitemap-index.xml
-
-The "sitemapindex-aimeos.xml" file is the site map index file that
-references the real site map files which contains the links to the
-products. Please make sure that the protocol and domain
-(https://www.yourshop.com/) is the same as the ones used in the
-product links!
-
-More details about site maps can be found at
-[sitemaps.org](http://www.sitemaps.org/protocol.html)
-
-See also:
-
-* controller/jobs/product/export/sitemap/container/options
-* controller/jobs/product/export/sitemap/max-items
-* controller/jobs/product/export/sitemap/max-query
-* controller/jobs/product/export/sitemap/changefreq
-
 ## max-items
 
-Maximum number of products per site map
+Maximum number of categories per site map
 
 ```
 controller/jobs/product/export/sitemap/max-items = 5
 ```
 
-* Default: 50000
-* Type: integer - Number of products per file
-* Since: 2015.01
+* Default: 10000
+* Type: integer - Number of categories per file
+* Since: 2019.02
 
 Each site map file must not contain more than 50,000 links and it's
 size must be less than 10MB. If your product URLs are rather long
 and one of your site map files is bigger than 10MB, you should set
-the number of products per file to a smaller value until each file
+the number of categories per file to a smaller value until each file
 is less than 10MB.
 
 More details about site maps can be found at
@@ -796,39 +654,6 @@ More details about site maps can be found at
 
 See also:
 
-* controller/jobs/product/export/sitemap/container/options
-* controller/jobs/product/export/sitemap/location
-* controller/jobs/product/export/sitemap/max-query
-* controller/jobs/product/export/sitemap/changefreq
-* controller/jobs/product/export/sitemap/domains
-
-## max-query
-
-Maximum number of products per query
-
-```
-controller/jobs/product/export/sitemap/max-query = 5
-```
-
-* Default: 1000
-* Type: integer - Number of products per query
-* Since: 2015.01
-
-The products are fetched from the database in bunches for efficient
-retrieval. The higher the value, the lower the total time the database
-is busy finding the records. Higher values also means that record
-updates in the tables need to wait longer and the memory consumption
-of the PHP process is higher.
-
-Note: The value of max-query must be smaller than or equal to
-{@see controller/jobs/product/export/sitemap/max-items max-items}
-
-See also:
-
-* controller/jobs/product/export/sitemap/container/options
-* controller/jobs/product/export/sitemap/location
-* controller/jobs/product/export/sitemap/max-items
-* controller/jobs/product/export/sitemap/changefreq
 * controller/jobs/product/export/sitemap/domains
 
 ## name
@@ -836,10 +661,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/export/sitemap/name = Standard
+controller/jobs/product/export/sitemap/name =
 ```
 
-* Default: Standard
+* Default:
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -876,20 +701,20 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MySitemap"!
 
 
-## template-footer
+## template
 
-Relative path to the XML site map footer template of the product site map job controller.
+Relative path to the XML template of the product site map job controller.
 
 ```
-controller/jobs/product/export/sitemap/template-footer = product/export/sitemap-items-footer-standard
+controller/jobs/product/export/sitemap/template = product/export/sitemap-items
 ```
 
-* Default: product/export/sitemap-items-footer-standard
-* Type: string - Relative path to the template creating XML code for the site map footer
-* Since: 2015.01
+* Default: product/export/sitemap-items
+* Type: string - Relative path to the template creating XML code for the site map
+* Since: 2022.10
 
 The template file contains the XML code and processing instructions
-to generate the site map footer. The configuration string is the path
+to generate the site map files. The configuration string is the path
 to the template file relative to the templates directory (usually in
 templates/controller/jobs).
 
@@ -900,51 +725,16 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "standard"
 should be replaced by the name of the new class.
 
-See also:
-
-* controller/jobs/product/export/sitemap/template-header
-* controller/jobs/product/export/sitemap/template-items
-* controller/jobs/product/export/sitemap/template-index
-
-## template-header
-
-Relative path to the XML site map header template of the product site map job controller.
-
-```
-controller/jobs/product/export/sitemap/template-header = product/export/sitemap-items-header-standard
-```
-
-* Default: product/export/sitemap-items-header-standard
-* Type: string - Relative path to the template creating XML code for the site map header
-* Since: 2015.01
-
-The template file contains the XML code and processing instructions
-to generate the site map header. The configuration string is the path
-to the template file relative to the templates directory (usually in
-templates/controller/jobs).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* controller/jobs/product/export/sitemap/template-items
-* controller/jobs/product/export/sitemap/template-footer
-* controller/jobs/product/export/sitemap/template-index
 
 ## template-index
 
 Relative path to the XML site map index template of the product site map job controller.
 
 ```
-controller/jobs/product/export/sitemap/template-index = product/export/sitemap-index-standard
+controller/jobs/product/export/sitemap/template-index = product/export/sitemap-index
 ```
 
-* Default: product/export/sitemap-index-standard
+* Default: product/export/sitemap-index
 * Type: string - Relative path to the template creating XML code for the site map index
 * Since: 2015.01
 
@@ -965,36 +755,6 @@ See also:
 * controller/jobs/product/export/sitemap/template-header
 * controller/jobs/product/export/sitemap/template-items
 * controller/jobs/product/export/sitemap/template-footer
-
-## template-items
-
-Relative path to the XML items template of the product site map job controller.
-
-```
-controller/jobs/product/export/sitemap/template-items = product/export/sitemap-items-body-standard
-```
-
-* Default: product/export/sitemap-items-body-standard
-* Type: string - Relative path to the template creating XML code for the site map items
-* Since: 2015.01
-
-The template file contains the XML code and processing instructions
-to generate the site map files. The configuration string is the path
-to the template file relative to the templates directory (usually in
-templates/controller/jobs).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* controller/jobs/product/export/sitemap/template-header
-* controller/jobs/product/export/sitemap/template-footer
-* controller/jobs/product/export/sitemap/template-index
 
 # template-footer
 

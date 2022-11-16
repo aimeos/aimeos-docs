@@ -16,6 +16,7 @@ controller/frontend/common/decorators/default = Array
 
 * Type: array - List of decorator names
 * Since: 2014.03
+* Since: 2014.03
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying

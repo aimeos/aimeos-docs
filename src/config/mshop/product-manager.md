@@ -228,7 +228,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/delete/ansi = 
  DELETE FROM "mshop_product"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/product/manager/delete
@@ -264,12 +264,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/delete/mysql = 
  DELETE FROM "mshop_product"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_product"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -285,9 +285,9 @@ Inserts a new product record into the database table
 mshop/product/manager/insert/ansi = 
  INSERT INTO "mshop_product" ( :names
  	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
- 	"start", "end", "config", "target", "editor", "mtime", "ctime", "siteid"
+ 	"start", "end", "config", "target", "boost", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
@@ -330,18 +330,18 @@ Inserts a new product record into the database table
 mshop/product/manager/insert/mysql = 
  INSERT INTO "mshop_product" ( :names
  	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
- 	"start", "end", "config", "target", "editor", "mtime", "ctime", "siteid"
+ 	"start", "end", "config", "target", "boost", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
 * Default: 
  INSERT INTO "mshop_product" ( :names
  	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
- 	"start", "end", "config", "target", "editor", "mtime", "ctime", "siteid"
+ 	"start", "end", "config", "target", "boost", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
 
 
@@ -672,7 +672,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/lists/delete/ansi = 
  DELETE FROM "mshop_product_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/product/manager/lists/delete
@@ -707,12 +707,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/lists/delete/mysql = 
  DELETE FROM "mshop_product_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_product_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1254,7 +1254,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_product_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/product/manager/lists/type/delete
@@ -1288,12 +1288,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_product_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_product_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1614,7 +1614,7 @@ mshop/product/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/lists/type/update
@@ -1653,7 +1653,7 @@ mshop/product/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1661,7 +1661,7 @@ mshop/product/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1678,7 +1678,7 @@ mshop/product/manager/lists/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/lists/update
@@ -1718,7 +1718,7 @@ mshop/product/manager/lists/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1726,7 +1726,7 @@ mshop/product/manager/lists/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2058,7 +2058,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/property/delete/ansi = 
  DELETE FROM "mshop_product_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/product/manager/property/delete
@@ -2092,12 +2092,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/property/delete/mysql = 
  DELETE FROM "mshop_product_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_product_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2630,7 +2630,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/property/type/delete/ansi = 
  DELETE FROM "mshop_product_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/product/manager/property/type/delete
@@ -2664,12 +2664,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/property/type/delete/mysql = 
  DELETE FROM "mshop_product_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_product_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2990,7 +2990,7 @@ mshop/product/manager/property/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/property/type/update
@@ -3029,7 +3029,7 @@ mshop/product/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3037,7 +3037,7 @@ mshop/product/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3054,7 +3054,7 @@ mshop/product/manager/property/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/property/update
@@ -3093,7 +3093,7 @@ mshop/product/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3101,7 +3101,7 @@ mshop/product/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3117,7 +3117,7 @@ Updates the rating of the product in the database
 mshop/product/manager/rate/ansi = 
  UPDATE "mshop_product"
  SET "rating" = ?, "ratings" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/rate
@@ -3153,13 +3153,13 @@ Updates the rating of the product in the database
 mshop/product/manager/rate/mysql = 
  UPDATE "mshop_product"
  SET "rating" = ?, "ratings" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_product"
  SET "rating" = ?, "ratings" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3183,7 +3183,7 @@ mshop/product/manager/search/ansi =
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
  	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
  	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
- 	mpro."instock" AS "product.instock"
+ 	mpro."instock" AS "product.instock", mpro."boost" AS "product.boost"
  FROM "mshop_product" mpro
  :joins
  WHERE :cond
@@ -3191,7 +3191,7 @@ mshop/product/manager/search/ansi =
  	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
  	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
  	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings",
- 	mpro."instock"
+ 	mpro."instock", mpro."boost"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3265,7 +3265,7 @@ mshop/product/manager/search/mysql =
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
  	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
  	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
- 	mpro."instock" AS "product.instock"
+ 	mpro."instock" AS "product.instock", mpro."boost" AS "product.boost"
  FROM "mshop_product" mpro
  :joins
  WHERE :cond
@@ -3285,7 +3285,7 @@ mshop/product/manager/search/mysql =
  	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
  	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
  	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
- 	mpro."instock" AS "product.instock"
+ 	mpro."instock" AS "product.instock", mpro."boost" AS "product.boost"
  FROM "mshop_product" mpro
  :joins
  WHERE :cond
@@ -3293,7 +3293,7 @@ mshop/product/manager/search/mysql =
  	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
  	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
  	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings",
- 	mpro."instock"
+ 	mpro."instock", mpro."boost"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 
@@ -3348,7 +3348,7 @@ Updates the rating of the product in the database
 mshop/product/manager/stock/ansi = 
  UPDATE "mshop_product"
  SET "instock" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/stock
@@ -3384,13 +3384,13 @@ Updates the rating of the product in the database
 mshop/product/manager/stock/mysql = 
  UPDATE "mshop_product"
  SET "instock" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_product"
  SET "instock" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3669,7 +3669,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/type/delete/ansi = 
  DELETE FROM "mshop_product_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/product/manager/type/delete
@@ -3703,12 +3703,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/product/manager/type/delete/mysql = 
  DELETE FROM "mshop_product_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_product_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -4029,7 +4029,7 @@ mshop/product/manager/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/type/update
@@ -4068,7 +4068,7 @@ mshop/product/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -4076,7 +4076,7 @@ mshop/product/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -4094,8 +4094,8 @@ mshop/product/manager/update/ansi =
  SET :names
  	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
  	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
- 	"editor" = ?, "mtime" = ?, "ctime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ 	"boost" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/product/manager/update
@@ -4136,8 +4136,8 @@ mshop/product/manager/update/mysql =
  SET :names
  	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
  	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
- 	"editor" = ?, "mtime" = ?, "ctime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ 	"boost" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -4145,8 +4145,8 @@ mshop/product/manager/update/mysql =
  SET :names
  	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
  	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
- 	"editor" = ?, "mtime" = ?, "ctime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ 	"boost" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

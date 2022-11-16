@@ -402,6 +402,23 @@ admin/jsonadm/resource/customer/property/type/groups = Array
 * Since: 2018.07
 
 
+# groups
+
+```
+admin/jsonadm/resource/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+(
+)
+
+
+
 # index
 ## attribute/groups
 

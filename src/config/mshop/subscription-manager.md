@@ -327,7 +327,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/subscription/manager/delete/ansi = 
  DELETE FROM "mshop_subscription"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/subscription/manager/delete
@@ -361,12 +361,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/subscription/manager/delete/mysql = 
  DELETE FROM "mshop_subscription"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_subscription"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -745,7 +745,7 @@ mshop/subscription/manager/update/ansi =
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
  	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/subscription/manager/update
@@ -784,7 +784,7 @@ mshop/subscription/manager/update/mysql =
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
  	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -792,7 +792,7 @@ mshop/subscription/manager/update/mysql =
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
  	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

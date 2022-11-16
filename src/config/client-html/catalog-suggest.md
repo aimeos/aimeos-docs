@@ -1,47 +1,4 @@
 
-# decorators
-## excludes
-
-```
-client/html/catalog/suggest/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/suggest/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/suggest/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # domains
 
 List of domain items that should be fetched along with the products
@@ -80,10 +37,10 @@ See also:
 Class name of the used catalog suggest client implementation
 
 ```
-client/html/catalog/suggest/name = Standard
+client/html/catalog/suggest/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2015.02
 
@@ -166,10 +123,10 @@ See also:
 Relative path to the HTML body template of the catalog suggest client.
 
 ```
-client/html/catalog/suggest/template-body =
+client/html/catalog/suggest/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2015.02
 
@@ -195,10 +152,10 @@ See also:
 Relative path to the HTML header template of the catalog suggest client.
 
 ```
-client/html/catalog/suggest/template-header =
+client/html/catalog/suggest/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2015.02
 
@@ -332,10 +289,10 @@ client/html/catalog/suggest/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/suggest/url/target =
+client/html/catalog/suggest/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 
