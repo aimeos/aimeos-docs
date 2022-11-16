@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the coupon JQAdm client
 
 ```
-admin/jqadm/coupon/code/decorators/excludes =
+admin/jqadm/coupon/code/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -238,15 +238,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the coupon JQAdm client
 
 ```
-admin/jqadm/coupon/decorators/excludes = Array
-(
-)
+admin/jqadm/coupon/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -278,15 +273,10 @@ See also:
 Adds a list of globally available decorators only to the coupon JQAdm client
 
 ```
-admin/jqadm/coupon/decorators/global = Array
-(
-)
+admin/jqadm/coupon/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -316,15 +306,10 @@ See also:
 Adds a list of local decorators only to the coupon JQAdm client
 
 ```
-admin/jqadm/coupon/decorators/local = Array
-(
-)
+admin/jqadm/coupon/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -385,10 +370,10 @@ e.g. "coupon.id" for the customer ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/coupon/name = Standard
+admin/jqadm/coupon/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.01
 

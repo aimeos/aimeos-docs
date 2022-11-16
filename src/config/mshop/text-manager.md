@@ -225,7 +225,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/delete/ansi = 
  DELETE FROM "mshop_text"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/text/manager/delete
@@ -259,12 +259,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/delete/mysql = 
  DELETE FROM "mshop_text"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_text"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -664,7 +664,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/lists/delete/ansi = 
  DELETE FROM "mshop_text_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/text/manager/lists/delete
@@ -699,12 +699,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/lists/delete/mysql = 
  DELETE FROM "mshop_text_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_text_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1246,7 +1246,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_text_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/text/manager/lists/type/delete
@@ -1280,12 +1280,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_text_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_text_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1606,7 +1606,7 @@ mshop/text/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/text/manager/lists/type/update
@@ -1645,7 +1645,7 @@ mshop/text/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1653,7 +1653,7 @@ mshop/text/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1670,7 +1670,7 @@ mshop/text/manager/lists/update/ansi =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/text/manager/lists/update
@@ -1710,7 +1710,7 @@ mshop/text/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1718,7 +1718,7 @@ mshop/text/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2230,7 +2230,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/type/delete/ansi = 
  DELETE FROM "mshop_text_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/text/manager/type/delete
@@ -2264,12 +2264,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/text/manager/type/delete/mysql = 
  DELETE FROM "mshop_text_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_text_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2590,7 +2590,7 @@ mshop/text/manager/type/update/ansi =
  SET :names
  	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?,"mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/text/manager/type/update
@@ -2629,7 +2629,7 @@ mshop/text/manager/type/update/mysql =
  SET :names
  	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?,"mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -2637,7 +2637,7 @@ mshop/text/manager/type/update/mysql =
  SET :names
  	"code"=?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?,"mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2655,7 +2655,7 @@ mshop/text/manager/update/ansi =
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
  	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/text/manager/update
@@ -2694,7 +2694,7 @@ mshop/text/manager/update/mysql =
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
  	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -2702,7 +2702,7 @@ mshop/text/manager/update/mysql =
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
  	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

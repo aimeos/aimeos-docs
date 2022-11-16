@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/catalog/decorators/excludes =
+client/jsonapi/catalog/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -40,10 +40,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/catalog/decorators/global =
+client/jsonapi/catalog/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -75,10 +75,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/catalog/decorators/local =
+client/jsonapi/catalog/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -113,7 +113,7 @@ Load the category tree instead of the nodes of the first level only
 client/jsonapi/catalog/deep = 1
 ```
 
-* Default:
+* Default: 
 * Type: bool - True for category tree, false for first level only
 * Since: 2020.10
 
@@ -137,10 +137,10 @@ See also:
 Class name of the used catalog client implementation
 
 ```
-client/jsonapi/catalog/name = Standard
+client/jsonapi/catalog/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

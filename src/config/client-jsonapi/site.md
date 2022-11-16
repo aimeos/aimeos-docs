@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/site/decorators/excludes =
+client/jsonapi/site/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -40,10 +40,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/site/decorators/global =
+client/jsonapi/site/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -75,10 +75,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/site/decorators/local =
+client/jsonapi/site/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -113,7 +113,7 @@ Load the site tree instead of the nodes of the first level only
 client/jsonapi/site/deep = 1
 ```
 
-* Default:
+* Default: 
 * Type: bool - True for site tree, false for first level only
 * Since: 2021.04
 
@@ -132,10 +132,10 @@ recommended for small site trees with a limited node size
 Class name of the used site client implementation
 
 ```
-client/jsonapi/site/name = Standard
+client/jsonapi/site/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.04
 

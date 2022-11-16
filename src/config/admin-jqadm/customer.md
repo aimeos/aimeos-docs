@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/address/decorators/excludes =
+admin/jqadm/customer/address/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -208,15 +208,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/decorators/excludes = Array
-(
-)
+admin/jqadm/customer/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -248,15 +243,10 @@ See also:
 Adds a list of globally available decorators only to the customer JQAdm client
 
 ```
-admin/jqadm/customer/decorators/global = Array
-(
-)
+admin/jqadm/customer/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -286,15 +276,10 @@ See also:
 Adds a list of local decorators only to the customer JQAdm client
 
 ```
-admin/jqadm/customer/decorators/local = Array
-(
-)
+admin/jqadm/customer/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -382,10 +367,10 @@ e.g. "customer.id" for the customer ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/customer/name = Standard
+admin/jqadm/customer/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.01
 
@@ -428,10 +413,10 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/order/decorators/excludes =
+admin/jqadm/customer/order/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -664,10 +649,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/product/decorators/excludes =
+admin/jqadm/customer/product/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -901,10 +886,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/property/decorators/excludes =
+admin/jqadm/customer/property/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 

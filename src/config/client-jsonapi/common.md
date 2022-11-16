@@ -16,6 +16,7 @@ client/jsonapi/common/decorators/default = Array
 
 * Type: array - List of decorator names
 * Since: 2015.12
+* Since: 2015.12
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying

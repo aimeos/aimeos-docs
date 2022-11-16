@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the log JQAdm client
 
 ```
-admin/jqadm/log/decorators/excludes = Array
-(
-)
+admin/jqadm/log/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the log JQAdm client
 
 ```
-admin/jqadm/log/decorators/global = Array
-(
-)
+admin/jqadm/log/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the log JQAdm client
 
 ```
-admin/jqadm/log/decorators/local = Array
-(
-)
+admin/jqadm/log/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -154,10 +139,10 @@ e.g. "log.facility" for the log facility.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/log/name = Standard
+admin/jqadm/log/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -249,10 +234,10 @@ design.
 Relative path to the HTML body template for the log item.
 
 ```
-admin/jqadm/log/template-item =
+admin/jqadm/log/template-item = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

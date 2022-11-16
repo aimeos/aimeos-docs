@@ -19,58 +19,15 @@ See also:
 
 * client/html/account/review/size
 
-# decorators
-## excludes
-
-```
-client/html/account/review/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/account/review/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/account/review/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used account review client implementation
 
 ```
-client/html/account/review/name = Standard
+client/html/account/review/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.10
 
@@ -132,10 +89,10 @@ See also:
 Relative path to the HTML body template of the account review client.
 
 ```
-client/html/account/review/template-body =
+client/html/account/review/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2020.10
 
@@ -160,10 +117,10 @@ See also:
 Relative path to the HTML header template of the account review client.
 
 ```
-client/html/account/review/template-header =
+client/html/account/review/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2020.10
 
@@ -298,10 +255,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/review/url/target =
+client/html/account/review/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2020.10
 

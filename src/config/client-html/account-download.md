@@ -1,47 +1,4 @@
 
-# decorators
-## excludes
-
-```
-client/html/account/download/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/account/download/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/account/download/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # error
 ## url/target
 
@@ -85,10 +42,10 @@ The default value of null enforces no limit.
 Class name of the used account download client implementation
 
 ```
-client/html/account/download/name = Standard
+client/html/account/download/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

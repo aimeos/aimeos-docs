@@ -222,7 +222,7 @@ Deletes the items matched by the given IDs from the database
 madmin/job/manager/delete/ansi = 
  DELETE FROM "madmin_job"
  WHERE :cond
- AND "siteid" = ?
+ AND "siteid" LIKE ?
 ```
 
 * Default: madmin/job/manager/delete
@@ -257,13 +257,13 @@ Deletes the items matched by the given IDs from the database
 madmin/job/manager/delete/mysql = 
  DELETE FROM "madmin_job"
  WHERE :cond
- AND "siteid" = ?
+ AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "madmin_job"
  WHERE :cond
- AND "siteid" = ?
+ AND "siteid" LIKE ?
 
 
 See also:
@@ -581,7 +581,7 @@ madmin/job/manager/update/ansi =
  UPDATE "madmin_job"
  SET :names
  	"label" = ?, "path" = ?, "status" = ?, "editor" = ?, "mtime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: madmin/job/manager/update
@@ -619,14 +619,14 @@ madmin/job/manager/update/mysql =
  UPDATE "madmin_job"
  SET :names
  	"label" = ?, "path" = ?, "status" = ?, "editor" = ?, "mtime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "madmin_job"
  SET :names
  	"label" = ?, "path" = ?, "status" = ?, "editor" = ?, "mtime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

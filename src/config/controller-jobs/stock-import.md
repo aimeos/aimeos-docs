@@ -91,15 +91,10 @@ See also:
 Excludes decorators added by the "common" option from the stock import CSV job controller
 
 ```
-controller/jobs/stock/import/csv/decorators/excludes = Array
-(
-)
+controller/jobs/stock/import/csv/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -131,15 +126,10 @@ See also:
 Adds a list of globally available decorators only to the stock import CSV job controller
 
 ```
-controller/jobs/stock/import/csv/decorators/global = Array
-(
-)
+controller/jobs/stock/import/csv/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -169,15 +159,10 @@ See also:
 Adds a list of local decorators only to the stock import CSV job controller
 
 ```
-controller/jobs/stock/import/csv/decorators/local = Array
-(
-)
+controller/jobs/stock/import/csv/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -209,7 +194,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/stock/import/csv/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Stock/Import/Csv/_testfiles
+controller/jobs/stock/import/csv/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Stock/Import/Csv/_testfiles
 ```
 
 * Default: 
@@ -232,10 +217,10 @@ See also:
 Class name of the used stock suggestions scheduler controller implementation
 
 ```
-controller/jobs/stock/import/csv/name = Standard
+controller/jobs/stock/import/csv/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2019.04
 

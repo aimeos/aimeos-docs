@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-admin/jsonadm/service/config/decorators/excludes =
+admin/jsonadm/service/config/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -40,10 +40,10 @@ See also:
 Adds a list of globally available decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/service/config/decorators/global =
+admin/jsonadm/service/config/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -75,10 +75,10 @@ See also:
 Adds a list of local decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/service/config/decorators/local =
+admin/jsonadm/service/config/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -136,10 +136,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-admin/jsonadm/service/decorators/excludes =
+admin/jsonadm/service/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -171,10 +171,10 @@ See also:
 Adds a list of globally available decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/service/decorators/global =
+admin/jsonadm/service/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -206,10 +206,10 @@ See also:
 Adds a list of local decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/service/decorators/local =
+admin/jsonadm/service/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 

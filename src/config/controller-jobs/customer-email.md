@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the customer email account controllers
 
 ```
-controller/jobs/customer/email/account/decorators/excludes = Array
-(
-)
+controller/jobs/customer/email/account/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the customer email account controllers
 
 ```
-controller/jobs/customer/email/account/decorators/global = Array
-(
-)
+controller/jobs/customer/email/account/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the customer email account controllers
 
 ```
-controller/jobs/customer/email/account/decorators/local = Array
-(
-)
+controller/jobs/customer/email/account/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -122,10 +107,10 @@ See also:
 Class name of the used product notification e-mail scheduler controller implementation
 
 ```
-controller/jobs/customer/email/account/name = Standard
+controller/jobs/customer/email/account/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.04
 
@@ -214,15 +199,10 @@ See also:
 Excludes decorators added by the "common" option from the customer email watch controllers
 
 ```
-controller/jobs/customer/email/watch/decorators/excludes = Array
-(
-)
+controller/jobs/customer/email/watch/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -254,15 +234,10 @@ See also:
 Adds a list of globally available decorators only to the customer email watch controllers
 
 ```
-controller/jobs/customer/email/watch/decorators/global = Array
-(
-)
+controller/jobs/customer/email/watch/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -292,15 +267,10 @@ See also:
 Adds a list of local decorators only to the customer email watch controllers
 
 ```
-controller/jobs/customer/email/watch/decorators/local = Array
-(
-)
+controller/jobs/customer/email/watch/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -331,10 +301,10 @@ See also:
 Class name of the used product notification e-mail scheduler controller implementation
 
 ```
-controller/jobs/customer/email/watch/name = Standard
+controller/jobs/customer/email/watch/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

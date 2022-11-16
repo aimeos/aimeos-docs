@@ -225,7 +225,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/delete/ansi = 
  DELETE FROM "mshop_price"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/price/manager/delete
@@ -259,12 +259,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/delete/mysql = 
  DELETE FROM "mshop_price"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_price"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -668,7 +668,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/lists/delete/ansi = 
  DELETE FROM "mshop_price_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/price/manager/lists/delete
@@ -703,12 +703,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/lists/delete/mysql = 
  DELETE FROM "mshop_price_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_price_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1250,7 +1250,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_price_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/price/manager/lists/type/delete
@@ -1284,12 +1284,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_price_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_price_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1610,7 +1610,7 @@ mshop/price/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/price/manager/lists/type/update
@@ -1649,7 +1649,7 @@ mshop/price/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1657,7 +1657,7 @@ mshop/price/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1674,7 +1674,7 @@ mshop/price/manager/lists/update/ansi =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/price/manager/lists/update
@@ -1714,7 +1714,7 @@ mshop/price/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1722,7 +1722,7 @@ mshop/price/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2052,7 +2052,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/property/delete/ansi = 
  DELETE FROM "mshop_price_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/price/manager/property/delete
@@ -2086,12 +2086,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/property/delete/mysql = 
  DELETE FROM "mshop_price_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_price_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2624,7 +2624,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/property/type/delete/ansi = 
  DELETE FROM "mshop_price_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/price/manager/property/type/delete
@@ -2658,12 +2658,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/property/type/delete/mysql = 
  DELETE FROM "mshop_price_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_price_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2984,7 +2984,7 @@ mshop/price/manager/property/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/price/manager/property/type/update
@@ -3023,7 +3023,7 @@ mshop/price/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3031,7 +3031,7 @@ mshop/price/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3048,7 +3048,7 @@ mshop/price/manager/property/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/price/manager/property/update
@@ -3087,7 +3087,7 @@ mshop/price/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3095,7 +3095,7 @@ mshop/price/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3516,7 +3516,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/type/delete/ansi = 
  DELETE FROM "mshop_price_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/price/manager/type/delete
@@ -3550,12 +3550,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/price/manager/type/delete/mysql = 
  DELETE FROM "mshop_price_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_price_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -3876,7 +3876,7 @@ mshop/price/manager/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/price/manager/type/update
@@ -3915,7 +3915,7 @@ mshop/price/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3923,7 +3923,7 @@ mshop/price/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3942,7 +3942,7 @@ mshop/price/manager/update/ansi =
  	"type" = ?, "currencyid" = ?, "domain" = ?, "label" = ?,
  	"quantity" = ?, "value" = ?, "costs" = ?, "rebate" = ?,
  	"taxrate" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/price/manager/update
@@ -3982,7 +3982,7 @@ mshop/price/manager/update/mysql =
  	"type" = ?, "currencyid" = ?, "domain" = ?, "label" = ?,
  	"quantity" = ?, "value" = ?, "costs" = ?, "rebate" = ?,
  	"taxrate" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3991,7 +3991,7 @@ mshop/price/manager/update/mysql =
  	"type" = ?, "currencyid" = ?, "domain" = ?, "label" = ?,
  	"quantity" = ?, "value" = ?, "costs" = ?, "rebate" = ?,
  	"taxrate" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

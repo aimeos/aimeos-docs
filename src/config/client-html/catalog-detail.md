@@ -4,10 +4,10 @@
 Display the "add to basket" button for each suggested/bought-together product item
 
 ```
-client/html/catalog/detail/basket-add =
+client/html/catalog/detail/basket-add = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to display the button, false to hide it
 * Since: 2021.04
 
@@ -48,49 +48,6 @@ See also:
 * client/html/catalog/filter/cache
 * client/html/catalog/lists/cache
 * client/html/catalog/stage/cache
-
-# decorators
-## excludes
-
-```
-client/html/catalog/detail/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/detail/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/detail/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
 
 # domains
 
@@ -176,10 +133,10 @@ See also:
 Class name of the used catalog detail client implementation
 
 ```
-client/html/catalog/detail/name = Standard
+client/html/catalog/detail/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -222,10 +179,10 @@ or numbers. Avoid chamel case names like "MyDetail"!
 Relative path to the group product partial template file
 
 ```
-client/html/catalog/detail/partials/group =
+client/html/catalog/detail/partials/group = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template file
 * Since: 2021.07
 
@@ -285,10 +242,10 @@ should be suffixed by the name of the new class.
 The default product code used if none is given as parameter
 
 ```
-client/html/catalog/detail/prodcode-default =
+client/html/catalog/detail/prodcode-default = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Product code
 * Since: 2019.10
 
@@ -307,10 +264,10 @@ See also:
 The default product ID used if none is given as parameter
 
 ```
-client/html/catalog/detail/prodid-default =
+client/html/catalog/detail/prodid-default = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Product ID
 * Since: 2016.01
 
@@ -545,10 +502,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/detail/url/target =
+client/html/catalog/detail/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

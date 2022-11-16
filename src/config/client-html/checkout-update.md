@@ -1,57 +1,15 @@
 
-# decorators
-## excludes
-
-```
-client/html/checkout/update/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/checkout/update/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/checkout/update/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used checkout update client implementation
 
 ```
-client/html/checkout/update/name = Standard
+client/html/checkout/update/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
+* Since: 2014.03
 * Since: 2014.03
 
 Each default HTML client can be replace by an alternative imlementation.
@@ -92,10 +50,10 @@ or numbers. Avoid chamel case names like "MyUpdate"!
 Relative path to the HTML body template of the checkout update client.
 
 ```
-client/html/checkout/update/template-body =
+client/html/checkout/update/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -120,10 +78,10 @@ See also:
 Relative path to the HTML header template of the checkout update client.
 
 ```
-client/html/checkout/update/template-header =
+client/html/checkout/update/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -150,10 +108,10 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/checkout/update/url/action =
+client/html/checkout/update/url/action = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -172,10 +130,10 @@ See also:
 Associative list of configuration options used for generating the URL
 
 ```
-client/html/checkout/update/url/config =
+client/html/checkout/update/url/config = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -203,10 +161,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/checkout/update/url/controller =
+client/html/checkout/update/url/controller = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -225,10 +183,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/checkout/update/url/target =
+client/html/checkout/update/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

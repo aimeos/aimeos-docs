@@ -1,45 +1,36 @@
 
-# decorators
-## excludes
+# domains
+
+A list of domain names whose items should be available in the account history view template
 
 ```
-client/html/account/history/decorators/excludes = Array
+client/html/account/history/domains = Array
 (
+    [0] => order/base
+    [1] => order/base/address
+    [2] => order/base/coupon
+    [3] => order/base/product
+    [4] => order/base/service
 )
 ```
 
 * Default: Array
 (
+    [0] => order/base
+    [1] => order/base/address
+    [2] => order/base/coupon
+    [3] => order/base/product
+    [4] => order/base/service
 )
 
+* Type: array - List of domain names
+* Since: 2022.10
 
-
-## global
-
-```
-client/html/account/history/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/account/history/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
+If you want to display additional or less content, you can configure
+your own list of domains (product, locale/site, etc. are
+domains) whose items are fetched from the storage. Please keep
+in mind that the more domains you add to the configuration, the
+more time is required for fetching the content!
 
 
 # name
@@ -47,10 +38,10 @@ client/html/account/history/decorators/local = Array
 Class name of the used account history client implementation
 
 ```
-client/html/account/history/name = Standard
+client/html/account/history/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -159,10 +150,10 @@ See also:
 Relative path to the HTML body template of the account history client.
 
 ```
-client/html/account/history/template-body =
+client/html/account/history/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -187,10 +178,10 @@ See also:
 Relative path to the HTML header template of the account history client.
 
 ```
-client/html/account/history/template-header =
+client/html/account/history/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -311,10 +302,10 @@ client/html/account/history/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/history/url/target =
+client/html/account/history/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

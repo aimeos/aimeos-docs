@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the review JQAdm client
 
 ```
-admin/jqadm/review/decorators/excludes = Array
-(
-)
+admin/jqadm/review/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the review JQAdm client
 
 ```
-admin/jqadm/review/decorators/global = Array
-(
-)
+admin/jqadm/review/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the review JQAdm client
 
 ```
-admin/jqadm/review/decorators/local = Array
-(
-)
+admin/jqadm/review/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -179,10 +164,10 @@ e.g. "review.id" for the customer ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/review/name = Standard
+admin/jqadm/review/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.07
 

@@ -225,7 +225,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/delete/ansi = 
  DELETE FROM "mshop_media"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/media/manager/delete
@@ -259,12 +259,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/delete/mysql = 
  DELETE FROM "mshop_media"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_media"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -665,7 +665,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/lists/delete/ansi = 
  DELETE FROM "mshop_media_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/media/manager/lists/delete
@@ -700,12 +700,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/lists/delete/mysql = 
  DELETE FROM "mshop_media_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_media_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1247,7 +1247,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_media_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/media/manager/lists/type/delete
@@ -1281,12 +1281,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_media_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_media_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1607,7 +1607,7 @@ mshop/media/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/media/manager/lists/type/update
@@ -1646,7 +1646,7 @@ mshop/media/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1654,7 +1654,7 @@ mshop/media/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1671,7 +1671,7 @@ mshop/media/manager/lists/update/ansi =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/media/manager/lists/update
@@ -1711,7 +1711,7 @@ mshop/media/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1719,7 +1719,7 @@ mshop/media/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2049,7 +2049,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/property/delete/ansi = 
  DELETE FROM "mshop_media_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/media/manager/property/delete
@@ -2083,12 +2083,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/property/delete/mysql = 
  DELETE FROM "mshop_media_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_media_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2621,7 +2621,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/property/type/delete/ansi = 
  DELETE FROM "mshop_media_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/media/manager/property/type/delete
@@ -2655,12 +2655,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/property/type/delete/mysql = 
  DELETE FROM "mshop_media_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_media_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2981,7 +2981,7 @@ mshop/media/manager/property/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/media/manager/property/type/update
@@ -3020,7 +3020,7 @@ mshop/media/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3028,7 +3028,7 @@ mshop/media/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3045,7 +3045,7 @@ mshop/media/manager/property/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/media/manager/property/update
@@ -3084,7 +3084,7 @@ mshop/media/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3092,7 +3092,7 @@ mshop/media/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3510,7 +3510,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/type/delete/ansi = 
  DELETE FROM "mshop_media_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/media/manager/type/delete
@@ -3544,12 +3544,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/media/manager/type/delete/mysql = 
  DELETE FROM "mshop_media_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_media_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -3870,7 +3870,7 @@ mshop/media/manager/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/media/manager/type/update
@@ -3909,7 +3909,7 @@ mshop/media/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3917,7 +3917,7 @@ mshop/media/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3935,7 +3935,7 @@ mshop/media/manager/update/ansi =
  SET :names
  	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?, "status" = ?,
  	"fsname" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/media/manager/update
@@ -3974,7 +3974,7 @@ mshop/media/manager/update/mysql =
  SET :names
  	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?, "status" = ?,
  	"fsname" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3982,7 +3982,7 @@ mshop/media/manager/update/mysql =
  SET :names
  	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?, "status" = ?,
  	"fsname" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

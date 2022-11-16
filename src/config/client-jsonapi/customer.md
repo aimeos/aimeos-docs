@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/customer/address/decorators/excludes = Array
-(
-)
+client/jsonapi/customer/address/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/address/decorators/global = Array
-(
-)
+client/jsonapi/customer/address/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -85,15 +75,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/address/decorators/local = Array
-(
-)
+client/jsonapi/customer/address/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -125,10 +110,10 @@ See also:
 Class name of the used customer/address client implementation
 
 ```
-client/jsonapi/customer/address/name = Standard
+client/jsonapi/customer/address/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -196,15 +181,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/customer/decorators/excludes = Array
-(
-)
+client/jsonapi/customer/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -236,15 +216,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/decorators/global = Array
-(
-)
+client/jsonapi/customer/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -276,15 +251,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/decorators/local = Array
-(
-)
+client/jsonapi/customer/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -316,10 +286,10 @@ See also:
 Class name of the used customer client implementation
 
 ```
-client/jsonapi/customer/name = Standard
+client/jsonapi/customer/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.04
 
@@ -362,15 +332,10 @@ or numbers. Avoid chamel case names like "MyCustomer"!
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/customer/property/decorators/excludes = Array
-(
-)
+client/jsonapi/customer/property/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -402,15 +367,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/property/decorators/global = Array
-(
-)
+client/jsonapi/customer/property/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -442,15 +402,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/property/decorators/local = Array
-(
-)
+client/jsonapi/customer/property/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -482,10 +437,10 @@ See also:
 Class name of the used customer/property client implementation
 
 ```
-client/jsonapi/customer/property/name = Standard
+client/jsonapi/customer/property/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -553,15 +508,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/customer/relationships/decorators/excludes = Array
-(
-)
+client/jsonapi/customer/relationships/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -593,15 +543,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/relationships/decorators/global = Array
-(
-)
+client/jsonapi/customer/relationships/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -633,15 +578,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/relationships/decorators/local = Array
-(
-)
+client/jsonapi/customer/relationships/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -673,10 +613,10 @@ See also:
 Class name of the used customer/relationships client implementation
 
 ```
-client/jsonapi/customer/relationships/name = Standard
+client/jsonapi/customer/relationships/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -744,15 +684,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/customer/review/decorators/excludes = Array
-(
-)
+client/jsonapi/customer/review/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -784,15 +719,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/review/decorators/global = Array
-(
-)
+client/jsonapi/customer/review/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -824,15 +754,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/customer/review/decorators/local = Array
-(
-)
+client/jsonapi/customer/review/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -864,10 +789,10 @@ See also:
 Class name of the used customer/review client implementation
 
 ```
-client/jsonapi/customer/review/name = Standard
+client/jsonapi/customer/review/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

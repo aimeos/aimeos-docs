@@ -221,7 +221,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/address/delete/ansi = 
  DELETE FROM "mshop_customer_address"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/customer/manager/address/delete
@@ -255,12 +255,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/address/delete/mysql = 
  DELETE FROM "mshop_customer_address"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_customer_address"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -620,8 +620,8 @@ mshop/customer/manager/address/update/ansi =
  	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
  	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
  	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?, "siteid" = ?
- WHERE "id" = ?
+ 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/customer/manager/address/update
@@ -663,8 +663,8 @@ mshop/customer/manager/address/update/mysql =
  	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
  	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
  	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?, "siteid" = ?
- WHERE "id" = ?
+ 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -675,8 +675,8 @@ mshop/customer/manager/address/update/mysql =
  	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
  	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
  	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?, "siteid" = ?
- WHERE "id" = ?
+ 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1009,7 +1009,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/delete/ansi = 
  DELETE FROM "mshop_customer"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/customer/manager/delete
@@ -1043,12 +1043,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/delete/mysql = 
  DELETE FROM "mshop_customer"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_customer"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1277,7 +1277,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/group/delete/ansi = 
  DELETE FROM "mshop_customer_group"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/customer/manager/group/delete
@@ -1311,12 +1311,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/group/delete/mysql = 
  DELETE FROM "mshop_customer_group"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_customer_group"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1954,7 +1954,7 @@ mshop/customer/manager/group/update/ansi =
  UPDATE "mshop_customer_group"
  SET :names
  	"code" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/customer/manager/group/update
@@ -1992,14 +1992,14 @@ mshop/customer/manager/group/update/mysql =
  UPDATE "mshop_customer_group"
  SET :names
  	"code" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_customer_group"
  SET :names
  	"code" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2586,7 +2586,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/lists/delete/ansi = 
  DELETE FROM "mshop_customer_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/customer/manager/lists/delete
@@ -2621,12 +2621,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/lists/delete/mysql = 
  DELETE FROM "mshop_customer_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_customer_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -3168,7 +3168,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_customer_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/customer/manager/lists/type/delete
@@ -3202,12 +3202,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_customer_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_customer_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -3528,7 +3528,7 @@ mshop/customer/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/customer/manager/lists/type/update
@@ -3567,7 +3567,7 @@ mshop/customer/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3575,7 +3575,7 @@ mshop/customer/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3592,7 +3592,7 @@ mshop/customer/manager/lists/update/ansi =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/customer/manager/lists/update
@@ -3632,7 +3632,7 @@ mshop/customer/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3640,7 +3640,7 @@ mshop/customer/manager/lists/update/mysql =
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -4020,7 +4020,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/property/delete/ansi = 
  DELETE FROM "mshop_customer_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/customer/manager/property/delete
@@ -4054,12 +4054,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/property/delete/mysql = 
  DELETE FROM "mshop_customer_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_customer_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -4594,7 +4594,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/property/type/delete/ansi = 
  DELETE FROM "mshop_customer_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/customer/manager/property/type/delete
@@ -4628,12 +4628,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/customer/manager/property/type/delete/mysql = 
  DELETE FROM "mshop_customer_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_customer_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -4954,7 +4954,7 @@ mshop/customer/manager/property/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/customer/manager/property/type/update
@@ -4993,7 +4993,7 @@ mshop/customer/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -5001,7 +5001,7 @@ mshop/customer/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -5018,7 +5018,7 @@ mshop/customer/manager/property/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/customer/manager/property/update
@@ -5057,7 +5057,7 @@ mshop/customer/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -5065,7 +5065,7 @@ mshop/customer/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -5533,7 +5533,7 @@ mshop/customer/manager/update/ansi =
  	"telephone" = ?, "email" = ?, "telefax" = ?, "website" = ?,
  	"longitude" = ?, "latitude" = ?, "birthday" = ?, "status" = ?,
  	"vdate" = ?, "password" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/customer/manager/update
@@ -5577,7 +5577,7 @@ mshop/customer/manager/update/mysql =
  	"telephone" = ?, "email" = ?, "telefax" = ?, "website" = ?,
  	"longitude" = ?, "latitude" = ?, "birthday" = ?, "status" = ?,
  	"vdate" = ?, "password" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -5590,7 +5590,7 @@ mshop/customer/manager/update/mysql =
  	"telephone" = ?, "email" = ?, "telefax" = ?, "website" = ?,
  	"longitude" = ?, "latitude" = ?, "birthday" = ?, "status" = ?,
  	"vdate" = ?, "password" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/excludes = Array
-(
-)
+controller/frontend/customer/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/global = Array
-(
-)
+controller/frontend/customer/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/local = Array
-(
-)
+controller/frontend/customer/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -191,10 +176,10 @@ See also:
 Class name of the used customer frontend controller implementation
 
 ```
-controller/frontend/customer/name = Standard
+controller/frontend/customer/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

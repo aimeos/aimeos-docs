@@ -1,56 +1,13 @@
 
-# decorators
-## excludes
-
-```
-client/html/basket/bulk/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/basket/bulk/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/basket/bulk/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used bulk order client implementation
 
 ```
-client/html/basket/bulk/name = Standard
+client/html/basket/bulk/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -109,10 +66,10 @@ using this configuration setting.
 Relative path to the HTML body template of the bulk order client.
 
 ```
-client/html/basket/bulk/template-body =
+client/html/basket/bulk/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2019.10
 
@@ -137,10 +94,10 @@ See also:
 Relative path to the HTML header template of the bulk order client.
 
 ```
-client/html/basket/bulk/template-header =
+client/html/basket/bulk/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2019.10
 

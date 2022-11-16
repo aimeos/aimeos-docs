@@ -129,15 +129,10 @@ in the "see also" section of this page.
 Excludes decorators added by the "common" option from the locale select html client
 
 ```
-client/html/locale/select/decorators/excludes = Array
-(
-)
+client/html/locale/select/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -169,15 +164,10 @@ See also:
 Adds a list of globally available decorators only to the locale select html client
 
 ```
-client/html/locale/select/decorators/global = Array
-(
-)
+client/html/locale/select/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -207,15 +197,10 @@ See also:
 Adds a list of local decorators only to the locale select html client
 
 ```
-client/html/locale/select/decorators/local = Array
-(
-)
+client/html/locale/select/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -369,10 +354,10 @@ in the "see also" section of this page.
 Class name of the used locale select client implementation
 
 ```
-client/html/locale/select/name = Standard
+client/html/locale/select/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

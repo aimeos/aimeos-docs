@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the supplier frontend controllers
 
 ```
-controller/frontend/supplier/decorators/excludes = Array
-(
-)
+controller/frontend/supplier/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the supplier frontend controllers
 
 ```
-controller/frontend/supplier/decorators/global = Array
-(
-)
+controller/frontend/supplier/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the supplier frontend controllers
 
 ```
-controller/frontend/supplier/decorators/local = Array
-(
-)
+controller/frontend/supplier/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -122,10 +107,10 @@ See also:
 Class name of the used supplier frontend controller implementation
 
 ```
-controller/frontend/supplier/name = Standard
+controller/frontend/supplier/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.07
 

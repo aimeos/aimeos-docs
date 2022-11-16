@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the service JQAdm client
 
 ```
-admin/jqadm/service/decorators/excludes = Array
-(
-)
+admin/jqadm/service/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the service JQAdm client
 
 ```
-admin/jqadm/service/decorators/global = Array
-(
-)
+admin/jqadm/service/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the service JQAdm client
 
 ```
-admin/jqadm/service/decorators/local = Array
-(
-)
+admin/jqadm/service/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -246,10 +231,10 @@ editors a hint which config keys are available and are used in the templates.
 Excludes decorators added by the "common" option from the service JQAdm client
 
 ```
-admin/jqadm/service/media/decorators/excludes =
+admin/jqadm/service/media/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -373,10 +358,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Excludes decorators added by the "common" option from the service JQAdm client
 
 ```
-admin/jqadm/service/media/property/decorators/excludes =
+admin/jqadm/service/media/property/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -651,10 +636,10 @@ should be replaced by the name of the new class.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/service/name = Standard
+admin/jqadm/service/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.07
 
@@ -697,10 +682,10 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the service JQAdm client
 
 ```
-admin/jqadm/service/price/decorators/excludes =
+admin/jqadm/service/price/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -824,10 +809,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Excludes decorators added by the "common" option from the service JQAdm client
 
 ```
-admin/jqadm/service/price/property/decorators/excludes =
+admin/jqadm/service/price/property/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1206,10 +1191,10 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the service JQAdm client
 
 ```
-admin/jqadm/service/text/decorators/excludes =
+admin/jqadm/service/text/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 

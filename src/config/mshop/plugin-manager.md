@@ -222,7 +222,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/plugin/manager/delete/ansi = 
  DELETE FROM "mshop_plugin"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/plugin/manager/delete
@@ -256,12 +256,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/plugin/manager/delete/mysql = 
  DELETE FROM "mshop_plugin"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_plugin"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -838,7 +838,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/plugin/manager/type/delete/ansi = 
  DELETE FROM "mshop_plugin_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/plugin/manager/type/delete
@@ -872,12 +872,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/plugin/manager/type/delete/mysql = 
  DELETE FROM "mshop_plugin_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_plugin_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1198,7 +1198,7 @@ mshop/plugin/manager/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/plugin/manager/type/update
@@ -1237,7 +1237,7 @@ mshop/plugin/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1245,7 +1245,7 @@ mshop/plugin/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1263,7 +1263,7 @@ mshop/plugin/manager/update/ansi =
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/plugin/manager/update
@@ -1302,7 +1302,7 @@ mshop/plugin/manager/update/mysql =
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1310,7 +1310,7 @@ mshop/plugin/manager/update/mysql =
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

@@ -224,7 +224,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/delete/ansi = 
  DELETE FROM "mshop_attribute"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/attribute/manager/delete
@@ -258,12 +258,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/delete/mysql = 
  DELETE FROM "mshop_attribute"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_attribute"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -664,7 +664,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/lists/delete/ansi = 
  DELETE FROM "mshop_attribute_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/attribute/manager/lists/delete
@@ -699,12 +699,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/lists/delete/mysql = 
  DELETE FROM "mshop_attribute_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_attribute_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1246,7 +1246,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_attribute_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/attribute/manager/lists/type/delete
@@ -1280,12 +1280,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_attribute_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_attribute_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1606,7 +1606,7 @@ mshop/attribute/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/attribute/manager/lists/type/update
@@ -1645,7 +1645,7 @@ mshop/attribute/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1653,7 +1653,7 @@ mshop/attribute/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1670,7 +1670,7 @@ mshop/attribute/manager/lists/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/attribute/manager/lists/update
@@ -1710,7 +1710,7 @@ mshop/attribute/manager/lists/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1718,7 +1718,7 @@ mshop/attribute/manager/lists/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2048,7 +2048,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/property/delete/ansi = 
  DELETE FROM "mshop_attribute_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/attribute/manager/property/delete
@@ -2082,12 +2082,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/property/delete/mysql = 
  DELETE FROM "mshop_attribute_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_attribute_property"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2622,7 +2622,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/property/type/delete/ansi = 
  DELETE FROM "mshop_attribute_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/attribute/manager/property/type/delete
@@ -2656,12 +2656,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/property/type/delete/mysql = 
  DELETE FROM "mshop_attribute_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_attribute_property_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2982,7 +2982,7 @@ mshop/attribute/manager/property/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/attribute/manager/property/type/update
@@ -3021,7 +3021,7 @@ mshop/attribute/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3029,7 +3029,7 @@ mshop/attribute/manager/property/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3046,7 +3046,7 @@ mshop/attribute/manager/property/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/attribute/manager/property/update
@@ -3085,7 +3085,7 @@ mshop/attribute/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3093,7 +3093,7 @@ mshop/attribute/manager/property/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3506,7 +3506,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/type/delete/ansi = 
  DELETE FROM "mshop_attribute_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/attribute/manager/type/delete
@@ -3540,12 +3540,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/attribute/manager/type/delete/mysql = 
  DELETE FROM "mshop_attribute_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_attribute_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -3866,7 +3866,7 @@ mshop/attribute/manager/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/attribute/manager/type/update
@@ -3905,7 +3905,7 @@ mshop/attribute/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3913,7 +3913,7 @@ mshop/attribute/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -3931,7 +3931,7 @@ mshop/attribute/manager/update/ansi =
  SET :names
  	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
  	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/attribute/manager/update
@@ -3970,7 +3970,7 @@ mshop/attribute/manager/update/mysql =
  SET :names
  	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
  	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -3978,7 +3978,7 @@ mshop/attribute/manager/update/mysql =
  SET :names
  	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
  	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

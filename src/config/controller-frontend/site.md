@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the site frontend controllers
 
 ```
-controller/frontend/site/decorators/excludes = Array
-(
-)
+controller/frontend/site/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the site frontend controllers
 
 ```
-controller/frontend/site/decorators/global = Array
-(
-)
+controller/frontend/site/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the site frontend controllers
 
 ```
-controller/frontend/site/decorators/local = Array
-(
-)
+controller/frontend/site/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -122,10 +107,10 @@ See also:
 Class name of the used site frontend controller implementation
 
 ```
-controller/frontend/site/name = Standard
+controller/frontend/site/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.04
 

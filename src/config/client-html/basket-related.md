@@ -4,10 +4,10 @@
 Display the "add to basket" button for each product item
 
 ```
-client/html/basket/related/basket-add =
+client/html/basket/related/basket-add = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to display the button, false to hide it
 * Since: 2020.10
 
@@ -84,58 +84,15 @@ the bought together products regularly to get up to date
 product suggestions.
 
 
-# decorators
-## excludes
-
-```
-client/html/basket/related/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/basket/related/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/basket/related/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used basket related client implementation
 
 ```
-client/html/basket/related/name = Standard
+client/html/basket/related/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -177,10 +134,10 @@ or numbers. Avoid chamel case names like "MyBasket"!
 Relative path to the HTML body template of the basket related client.
 
 ```
-client/html/basket/related/template-body =
+client/html/basket/related/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -205,10 +162,10 @@ See also:
 Relative path to the HTML header template of the basket related client.
 
 ```
-client/html/basket/related/template-header =
+client/html/basket/related/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

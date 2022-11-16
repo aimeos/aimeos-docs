@@ -1,47 +1,4 @@
 
-# decorators
-## excludes
-
-```
-client/html/account/watch/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/account/watch/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/account/watch/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # domains
 
 A list of domain names whose items should be available in the account watch view template
@@ -105,10 +62,10 @@ texts, prices and media.
 Class name of the used account watch client implementation
 
 ```
-client/html/account/watch/name = Standard
+client/html/account/watch/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

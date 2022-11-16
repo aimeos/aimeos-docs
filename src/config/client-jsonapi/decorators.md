@@ -84,10 +84,15 @@ See also:
 Adds a list of local decorators only to the Jsonadm client
 
 ```
-client/jsonapi/decorators/local = 
+client/jsonapi/decorators/local = Array
+(
+)
 ```
 
-* Default: 
+* Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2016.01
 

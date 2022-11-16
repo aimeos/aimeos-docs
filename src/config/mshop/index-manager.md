@@ -104,7 +104,7 @@ Deletes the index attribute records that haven't been touched
 ```
 mshop/index/manager/attribute/cleanup/ansi = 
  DELETE FROM "mshop_index_attribute"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/attribute/cleanup
@@ -138,12 +138,12 @@ Deletes the index attribute records that haven't been touched
 ```
 mshop/index/manager/attribute/cleanup/mysql = 
  DELETE FROM "mshop_index_attribute"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_attribute"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 
 
 See also:
@@ -342,7 +342,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/attribute/delete/ansi = 
  DELETE FROM "mshop_index_attribute"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/attribute/delete
@@ -375,12 +375,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/attribute/delete/mysql = 
  DELETE FROM "mshop_index_attribute"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_attribute"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -677,7 +677,7 @@ Deletes the index catalog records that haven't been touched
 ```
 mshop/index/manager/catalog/cleanup/ansi = 
  DELETE FROM "mshop_index_catalog"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/catalog/cleanup
@@ -711,12 +711,12 @@ Deletes the index catalog records that haven't been touched
 ```
 mshop/index/manager/catalog/cleanup/mysql = 
  DELETE FROM "mshop_index_catalog"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_catalog"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 
 
 See also:
@@ -915,7 +915,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/catalog/delete/ansi = 
  DELETE FROM "mshop_index_catalog"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/catalog/delete
@@ -948,12 +948,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/catalog/delete/mysql = 
  DELETE FROM "mshop_index_catalog"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_catalog"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1247,10 +1247,10 @@ See also:
 Number of products that should be indexed at once
 
 ```
-mshop/index/manager/chunksize = 1000
+mshop/index/manager/chunksize = 100
 ```
 
-* Default: 1000
+* Default: 100
 * Type: int - Number of products
 * Since: 2014.09
 
@@ -1285,7 +1285,7 @@ mshop/index/manager/count/ansi =
  	WHERE :cond
  	GROUP BY mpro."id"
  	ORDER BY mpro."id"
- 	OFFSET 0 ROWS FETCH NEXT 1000 ROWS ONLY
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
 ```
 
@@ -1346,7 +1346,7 @@ mshop/index/manager/count/mysql =
  	WHERE :cond
  	GROUP BY mpro."id"
  	ORDER BY mpro."id"
- 	LIMIT 1000 OFFSET 0
+ 	LIMIT 10000 OFFSET 0
  ) AS list
 ```
 
@@ -1359,7 +1359,7 @@ mshop/index/manager/count/mysql =
  	WHERE :cond
  	GROUP BY mpro."id"
  	ORDER BY mpro."id"
- 	OFFSET 0 ROWS FETCH NEXT 1000 ROWS ONLY
+ 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
 
 
@@ -1633,7 +1633,7 @@ Deletes the index price records that haven't been touched
 ```
 mshop/index/manager/price/cleanup/ansi = 
  DELETE FROM "mshop_index_price"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/price/cleanup
@@ -1667,12 +1667,12 @@ Deletes the index price records that haven't been touched
 ```
 mshop/index/manager/price/cleanup/mysql = 
  DELETE FROM "mshop_index_price"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_price"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 
 
 See also:
@@ -1871,7 +1871,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/price/delete/ansi = 
  DELETE FROM "mshop_index_price"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/price/delete
@@ -1904,12 +1904,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/price/delete/mysql = 
  DELETE FROM "mshop_index_price"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_price"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2402,7 +2402,7 @@ Deletes the index supplier records that haven't been touched
 ```
 mshop/index/manager/supplier/cleanup/ansi = 
  DELETE FROM "mshop_index_supplier"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/supplier/cleanup
@@ -2436,12 +2436,12 @@ Deletes the index supplier records that haven't been touched
 ```
 mshop/index/manager/supplier/cleanup/mysql = 
  DELETE FROM "mshop_index_supplier"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_supplier"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 
 
 See also:
@@ -2640,7 +2640,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/supplier/delete/ansi = 
  DELETE FROM "mshop_index_supplier"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/supplier/delete
@@ -2673,12 +2673,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/supplier/delete/mysql = 
  DELETE FROM "mshop_index_supplier"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_supplier"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -3002,7 +3002,7 @@ Deletes the index text records that haven't been touched
 ```
 mshop/index/manager/text/cleanup/ansi = 
  DELETE FROM "mshop_index_text"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/text/cleanup
@@ -3037,12 +3037,12 @@ Deletes the index text records that haven't been touched
 ```
 mshop/index/manager/text/cleanup/mysql = 
  DELETE FROM "mshop_index_text"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_text"
- WHERE "mtime" < ? AND "siteid" = ?
+ WHERE "mtime" < ? AND "siteid" LIKE ?
 
 
 See also:
@@ -3244,7 +3244,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/text/delete/ansi = 
  DELETE FROM "mshop_index_text"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/index/manager/text/delete
@@ -3278,12 +3278,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/index/manager/text/delete/mysql = 
  DELETE FROM "mshop_index_text"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_index_text"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:

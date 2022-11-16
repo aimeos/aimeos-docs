@@ -773,7 +773,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/locale/manager/delete/ansi = 
  DELETE FROM "mshop_locale"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/locale/manager/delete
@@ -807,12 +807,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/locale/manager/delete/mysql = 
  DELETE FROM "mshop_locale"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_locale"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1552,7 +1552,7 @@ mshop/locale/manager/search/ansi =
  	mloc."langid" AS "locale.languageid", mloc."currencyid" AS "locale.currencyid",
  	mloc."pos" AS "locale.position", mloc."status" AS "locale.status",
  	mloc."mtime" AS "locale.mtime", mloc."editor" AS "locale.editor",
- 	mloc."ctime" AS "locale.ctime"
+ 	mloc."ctime" AS "locale.ctime", mlocsi."code" AS "locale.sitecode"
  FROM "mshop_locale" mloc
  LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
  LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
@@ -1560,7 +1560,7 @@ mshop/locale/manager/search/ansi =
  WHERE :cond
  GROUP BY :columns :group
  	mloc."id", mloc."siteid", mloc."site_id", mloc."langid", mloc."currencyid", mloc."pos",
- 	mloc."status", mloc."mtime", mloc."editor", mloc."ctime"
+ 	mloc."status", mloc."mtime", mloc."editor", mloc."ctime", mlocsi."code"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -1619,7 +1619,7 @@ mshop/locale/manager/search/mysql =
  	mloc."langid" AS "locale.languageid", mloc."currencyid" AS "locale.currencyid",
  	mloc."pos" AS "locale.position", mloc."status" AS "locale.status",
  	mloc."mtime" AS "locale.mtime", mloc."editor" AS "locale.editor",
- 	mloc."ctime" AS "locale.ctime"
+ 	mloc."ctime" AS "locale.ctime", mlocsi."code" AS "locale.sitecode"
  FROM "mshop_locale" mloc
  LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
  LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
@@ -1636,7 +1636,7 @@ mshop/locale/manager/search/mysql =
  	mloc."langid" AS "locale.languageid", mloc."currencyid" AS "locale.currencyid",
  	mloc."pos" AS "locale.position", mloc."status" AS "locale.status",
  	mloc."mtime" AS "locale.mtime", mloc."editor" AS "locale.editor",
- 	mloc."ctime" AS "locale.ctime"
+ 	mloc."ctime" AS "locale.ctime", mlocsi."code" AS "locale.sitecode"
  FROM "mshop_locale" mloc
  LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
  LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
@@ -1644,7 +1644,7 @@ mshop/locale/manager/search/mysql =
  WHERE :cond
  GROUP BY :columns :group
  	mloc."id", mloc."siteid", mloc."site_id", mloc."langid", mloc."currencyid", mloc."pos",
- 	mloc."status", mloc."mtime", mloc."editor", mloc."ctime"
+ 	mloc."status", mloc."mtime", mloc."editor", mloc."ctime", mlocsi."code"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 
@@ -1703,6 +1703,7 @@ mshop/locale/manager/site/cleanup/shop/domains = Array
     [index] => index
     [media] => media
     [order] => order
+    [order/basket] => order/basket
     [plugin] => plugin
     [price] => price
     [product] => product
@@ -1984,6 +1985,7 @@ See also:
 * mshop/locale/manager/site/search/ansi
 * mshop/locale/manager/site/count/ansi
 * mshop/locale/manager/site/newid/ansi
+* mshop/locale/manager/site/rate/ansi
 
 ## delete/mysql
 
@@ -2046,6 +2048,7 @@ See also:
 * mshop/locale/manager/site/search/ansi
 * mshop/locale/manager/site/count/ansi
 * mshop/locale/manager/site/newid/ansi
+* mshop/locale/manager/site/rate/ansi
 
 ## insert/mysql
 
@@ -2166,6 +2169,7 @@ See also:
 * mshop/locale/manager/site/delete/ansi
 * mshop/locale/manager/site/search/ansi
 * mshop/locale/manager/site/count/ansi
+* mshop/locale/manager/site/rate/ansi
 
 ## newid/mysql
 
@@ -2181,6 +2185,61 @@ See also:
 
 * mshop/locale/manager/site/newid/ansi
 
+## rate/ansi
+
+Updates the rating of the product in the database
+
+```
+mshop/locale/manager/site/rate/ansi = 
+ UPDATE "mshop_locale_site"
+ SET "rating" = ?, "ratings" = ?
+ WHERE "id" = ?
+```
+
+* Default: mshop/locale/manager/site/rate
+* Type: string - SQL statement for update ratings
+* Since: 2022.10
+
+The SQL statement must be a string suitable for being used as
+prepared statement. It must include question marks for binding
+the values for the rating to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the rate() method, so the
+correct values are bound to the columns.
+
+The SQL statement should conform to the ANSI standard to be
+compatible with most relational database systems. This also
+includes using double quotes for table and column names.
+
+See also:
+
+* mshop/locale/manager/site/update/ansi
+* mshop/locale/manager/site/delete/ansi
+* mshop/locale/manager/site/search/ansi
+* mshop/locale/manager/site/count/ansi
+* mshop/locale/manager/site/newid/ansi
+
+## rate/mysql
+
+Updates the rating of the product in the database
+
+```
+mshop/locale/manager/site/rate/mysql = 
+ UPDATE "mshop_locale_site"
+ SET "rating" = ?, "ratings" = ?
+ WHERE "id" = ?
+```
+
+* Default: 
+ UPDATE "mshop_locale_site"
+ SET "rating" = ?, "ratings" = ?
+ WHERE "id" = ?
+
+
+See also:
+
+* mshop/locale/manager/site/rate/ansi
+
 ## search/ansi
 
 Retrieves the records matched by the given criteria in the database
@@ -2192,6 +2251,7 @@ mshop/locale/manager/site/search/ansi =
  	mlocsi."code" AS "locale.site.code", mlocsi."label" AS "locale.site.label",
  	mlocsi."config" AS "locale.site.config", mlocsi."status" AS "locale.site.status",
  	mlocsi."icon" AS "locale.site.icon", mlocsi."logo" AS "locale.site.logo",
+ 	mlocsi."rating" AS "locale.site.rating", mlocsi."ratings" AS "locale.site.ratings",
  	mlocsi."refid" AS "locale.site.refid", mlocsi."theme" AS "locale.site.theme",
  	mlocsi."editor" AS "locale.site.editor", mlocsi."mtime" AS "locale.site.mtime",
  	mlocsi."ctime" AS "locale.site.ctime"
@@ -2251,6 +2311,7 @@ See also:
 * mshop/locale/manager/site/delete/ansi
 * mshop/locale/manager/site/count/ansi
 * mshop/locale/manager/site/newid/ansi
+* mshop/locale/manager/site/rate/ansi
 
 ## search/mysql
 
@@ -2263,6 +2324,7 @@ mshop/locale/manager/site/search/mysql =
  	mlocsi."code" AS "locale.site.code", mlocsi."label" AS "locale.site.label",
  	mlocsi."config" AS "locale.site.config", mlocsi."status" AS "locale.site.status",
  	mlocsi."icon" AS "locale.site.icon", mlocsi."logo" AS "locale.site.logo",
+ 	mlocsi."rating" AS "locale.site.rating", mlocsi."ratings" AS "locale.site.ratings",
  	mlocsi."refid" AS "locale.site.refid", mlocsi."theme" AS "locale.site.theme",
  	mlocsi."editor" AS "locale.site.editor", mlocsi."mtime" AS "locale.site.mtime",
  	mlocsi."ctime" AS "locale.site.ctime"
@@ -2278,6 +2340,7 @@ mshop/locale/manager/site/search/mysql =
  	mlocsi."code" AS "locale.site.code", mlocsi."label" AS "locale.site.label",
  	mlocsi."config" AS "locale.site.config", mlocsi."status" AS "locale.site.status",
  	mlocsi."icon" AS "locale.site.icon", mlocsi."logo" AS "locale.site.logo",
+ 	mlocsi."rating" AS "locale.site.rating", mlocsi."ratings" AS "locale.site.ratings",
  	mlocsi."refid" AS "locale.site.refid", mlocsi."theme" AS "locale.site.theme",
  	mlocsi."editor" AS "locale.site.editor", mlocsi."mtime" AS "locale.site.mtime",
  	mlocsi."ctime" AS "locale.site.ctime"
@@ -2425,7 +2488,7 @@ mshop/locale/manager/update/ansi =
  SET :names
  	"langid" = ?, "currencyid" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/locale/manager/update
@@ -2464,7 +2527,7 @@ mshop/locale/manager/update/mysql =
  SET :names
  	"langid" = ?, "currencyid" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -2472,7 +2535,7 @@ mshop/locale/manager/update/mysql =
  SET :names
  	"langid" = ?, "currencyid" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

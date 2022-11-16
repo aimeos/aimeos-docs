@@ -4,10 +4,10 @@
 Display the "add to basket" button for each product item in the catalog home component
 
 ```
-client/html/catalog/home/basket-add =
+client/html/catalog/home/basket-add = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to display the button, false to hide it
 * Since: 2020.10
 
@@ -44,49 +44,6 @@ See also:
 * client/html/catalog/filter/cache
 * client/html/catalog/stage/cache
 * client/html/catalog/list/cache
-
-# decorators
-## excludes
-
-```
-client/html/catalog/home/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/home/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/home/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
 
 # domains
 
@@ -151,10 +108,10 @@ See also:
 Size hints for loading the appropriate catalog home image sizes
 
 ```
-client/html/catalog/home/imageset-sizes =
+client/html/catalog/home/imageset-sizes = 
 ```
 
-* Default:
+* Default: 
 * Type: string - HTML image "sizes" attribute
 * Since: 2021.04
 
@@ -202,10 +159,10 @@ See also:
 Class name of the used catalog home client implementation
 
 ```
-client/html/catalog/home/name = Standard
+client/html/catalog/home/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2019.06
 
@@ -364,7 +321,7 @@ client/html/catalog/home/url/controller = catalog
 ## target
 
 ```
-client/html/catalog/home/url/target =
+client/html/catalog/home/url/target = 
 ```
 
-* Default:
+* Default: 

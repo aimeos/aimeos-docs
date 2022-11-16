@@ -4,10 +4,10 @@
 Display the "add to basket" button for each product item
 
 ```
-client/html/catalog/product/basket-add =
+client/html/catalog/product/basket-add = 
 ```
 
-* Default:
+* Default: 
 * Type: boolean - True to display the button, false to hide it
 * Since: 2019.10
 
@@ -51,49 +51,6 @@ See also:
 * client/html/catalog/filter/cache
 * client/html/catalog/stage/cache
 * client/html/catalog/list/cache
-
-# decorators
-## excludes
-
-```
-client/html/catalog/product/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/product/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/product/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
 
 # domains
 
@@ -148,10 +105,10 @@ See also:
 Class name of the used catalog product client implementation
 
 ```
-client/html/catalog/product/name = Standard
+client/html/catalog/product/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2019.06
 

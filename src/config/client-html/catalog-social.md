@@ -9,6 +9,7 @@ client/html/catalog/social/list = Array
     [0] => facebook
     [1] => twitter
     [2] => pinterest
+    [3] => whatsapp
 )
 ```
 
@@ -17,6 +18,7 @@ client/html/catalog/social/list = Array
     [0] => facebook
     [1] => twitter
     [2] => pinterest
+    [3] => whatsapp
 )
 
 * Type: array - List of social network names
@@ -135,10 +137,10 @@ See also:
 URL for sharing product links over WhatsApp
 
 ```
-client/html/catalog/social/url/whatsapp = 
+client/html/catalog/social/url/whatsapp = https://wa.me/?text=%2$s+%1$s
 ```
 
-* Default: 
+* Default: https://wa.me/?text=%2$s+%1$s
 * Type: string - URL to share products on Facebook
 * Since: 2020.01
 

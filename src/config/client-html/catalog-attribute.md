@@ -1,56 +1,13 @@
 
-# decorators
-## excludes
-
-```
-client/html/catalog/attribute/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/attribute/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/attribute/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used catalog attribute client implementation
 
 ```
-client/html/catalog/attribute/name = Standard
+client/html/catalog/attribute/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 

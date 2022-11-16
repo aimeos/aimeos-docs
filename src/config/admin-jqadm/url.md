@@ -1,4 +1,60 @@
 
+# batch
+## action
+
+```
+admin/jqadm/url/batch/action = batch
+```
+
+* Default: batch
+
+
+## config
+
+```
+admin/jqadm/url/batch/config = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## controller
+
+```
+admin/jqadm/url/batch/controller = Url
+```
+
+* Default: Url
+
+
+## filter
+
+```
+admin/jqadm/url/batch/filter = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## target
+
+```
+admin/jqadm/url/batch/target = 
+```
+
+* Default: 
+
+
 # copy
 ## action
 
@@ -62,10 +118,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/copy/controller = Jqadm
+admin/jqadm/url/copy/controller = Url
 ```
 
-* Default: Jqadm
+* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -78,6 +134,20 @@ See also:
 * admin/jqadm/url/copy/target
 * admin/jqadm/url/copy/action
 * admin/jqadm/url/copy/config
+
+## filter
+
+```
+admin/jqadm/url/copy/filter = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
 
 ## target
 
@@ -164,10 +234,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/create/controller = Jqadm
+admin/jqadm/url/create/controller = Url
 ```
 
-* Default: Jqadm
+* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -180,6 +250,20 @@ See also:
 * admin/jqadm/url/create/target
 * admin/jqadm/url/create/action
 * admin/jqadm/url/create/config
+
+## filter
+
+```
+admin/jqadm/url/create/filter = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
 
 ## target
 
@@ -266,10 +350,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/delete/controller = Jqadm
+admin/jqadm/url/delete/controller = Url
 ```
 
-* Default: Jqadm
+* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -282,6 +366,20 @@ See also:
 * admin/jqadm/url/delete/target
 * admin/jqadm/url/delete/action
 * admin/jqadm/url/delete/config
+
+## filter
+
+```
+admin/jqadm/url/delete/filter = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
 
 ## target
 
@@ -368,10 +466,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/export/controller = Jqadm
+admin/jqadm/url/export/controller = Url
 ```
 
-* Default: Jqadm
+* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -384,6 +482,20 @@ See also:
 * admin/jqadm/url/export/target
 * admin/jqadm/url/export/action
 * admin/jqadm/url/export/config
+
+## filter
+
+```
+admin/jqadm/url/export/filter = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
 
 ## target
 
@@ -470,10 +582,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/get/controller = Jqadm
+admin/jqadm/url/get/controller = Url
 ```
 
-* Default: Jqadm
+* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -586,10 +698,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/save/controller = Jqadm
+admin/jqadm/url/save/controller = Url
 ```
 
-* Default: Jqadm
+* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -602,6 +714,20 @@ See also:
 * admin/jqadm/url/save/target
 * admin/jqadm/url/save/action
 * admin/jqadm/url/save/config
+
+## filter
+
+```
+admin/jqadm/url/save/filter = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
 
 ## target
 
@@ -688,10 +814,10 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/search/controller = Jqadm
+admin/jqadm/url/search/controller = Url
 ```
 
-* Default: Jqadm
+* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 

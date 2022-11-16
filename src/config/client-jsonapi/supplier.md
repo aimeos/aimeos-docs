@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-client/jsonapi/supplier/decorators/excludes = Array
-(
-)
+client/jsonapi/supplier/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the JsonApi client
 
 ```
-client/jsonapi/supplier/decorators/global = Array
-(
-)
+client/jsonapi/supplier/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -85,15 +75,10 @@ See also:
 Adds a list of local decorators only to the JsonApi client
 
 ```
-client/jsonapi/supplier/decorators/local = Array
-(
-)
+client/jsonapi/supplier/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -125,10 +110,10 @@ See also:
 Class name of the used supplier client implementation
 
 ```
-client/jsonapi/supplier/name = Standard
+client/jsonapi/supplier/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

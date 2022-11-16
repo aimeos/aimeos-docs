@@ -189,7 +189,7 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/attribute/import/xml/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/attribute/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
 * Default: 

@@ -35,12 +35,54 @@ See also:
 * controller/jobs/customer/group/import/xml/domains
 * controller/jobs/customer/group/import/xml/max-query
 
+## xml/decorators/excludes
+
+```
+controller/jobs/customer/group/import/xml/decorators/excludes = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## xml/decorators/global
+
+```
+controller/jobs/customer/group/import/xml/decorators/global = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
+## xml/decorators/local
+
+```
+controller/jobs/customer/group/import/xml/decorators/local = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+
+
 ## xml/location
 
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/customer/group/import/xml/location = /home/nose/Aimeos/src/core/aimeos-extensions/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/customer/group/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
 * Default: 
@@ -80,3 +122,11 @@ See also:
 
 * controller/jobs/customer/group/import/xml/domains
 * controller/jobs/customer/group/import/xml/backup
+
+## xml/name
+
+```
+controller/jobs/customer/group/import/xml/name = Standard
+```
+
+* Default: Standard

@@ -5,15 +5,10 @@
 Excludes decorators added by the "common" option from the subscription JQAdm client
 
 ```
-admin/jqadm/subscription/decorators/excludes = Array
-(
-)
+admin/jqadm/subscription/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -45,15 +40,10 @@ See also:
 Adds a list of globally available decorators only to the subscription JQAdm client
 
 ```
-admin/jqadm/subscription/decorators/global = Array
-(
-)
+admin/jqadm/subscription/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -83,15 +73,10 @@ See also:
 Adds a list of local decorators only to the subscription JQAdm client
 
 ```
-admin/jqadm/subscription/decorators/local = Array
-(
-)
+admin/jqadm/subscription/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -156,10 +141,10 @@ e.g. "subscription.id" for the subscription ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/subscription/name = Standard
+admin/jqadm/subscription/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 

@@ -1,47 +1,4 @@
 
-# decorators
-## excludes
-
-```
-client/html/catalog/stock/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/stock/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/stock/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # level
 ## low
 
@@ -83,10 +40,10 @@ See also:
 Class name of the used catalog stock client implementation
 
 ```
-client/html/catalog/stock/name = Standard
+client/html/catalog/stock/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -156,10 +113,10 @@ See also:
 Relative path to the HTML body template of the catalog stock client.
 
 ```
-client/html/catalog/stock/template-body =
+client/html/catalog/stock/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -184,10 +141,10 @@ See also:
 Relative path to the HTML header template of the catalog stock client.
 
 ```
-client/html/catalog/stock/template-header =
+client/html/catalog/stock/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -334,10 +291,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/catalog/stock/url/target =
+client/html/catalog/stock/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

@@ -20,49 +20,6 @@ See also:
 * client/html/catalog/filter/cache
 * client/html/catalog/lists/cache
 
-# decorators
-## excludes
-
-```
-client/html/catalog/stage/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/catalog/stage/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/catalog/stage/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # domains
 
 A list of domain names whose items should be available in the catalog stage view template
@@ -110,10 +67,10 @@ See also:
 Class name of the used catalog stage client implementation
 
 ```
-client/html/catalog/stage/name = Standard
+client/html/catalog/stage/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

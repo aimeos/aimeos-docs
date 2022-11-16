@@ -222,7 +222,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/address/delete/ansi = 
  DELETE FROM "mshop_supplier_address"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/supplier/manager/address/delete
@@ -256,12 +256,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/address/delete/mysql = 
  DELETE FROM "mshop_supplier_address"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_supplier_address"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -622,7 +622,7 @@ mshop/supplier/manager/address/update/ansi =
  	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
  	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
  	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/supplier/manager/address/update
@@ -665,7 +665,7 @@ mshop/supplier/manager/address/update/mysql =
  	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
  	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
  	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -677,7 +677,7 @@ mshop/supplier/manager/address/update/mysql =
  	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?,
  	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
  	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -910,7 +910,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/delete/ansi = 
  DELETE FROM "mshop_supplier"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/supplier/manager/delete
@@ -944,12 +944,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/delete/mysql = 
  DELETE FROM "mshop_supplier"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_supplier"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -964,9 +964,9 @@ Inserts a new supplier record into the database table
 ```
 mshop/supplier/manager/insert/ansi = 
  INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
+ 	"code", "label", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
@@ -1006,17 +1006,17 @@ Inserts a new supplier record into the database table
 ```
 mshop/supplier/manager/insert/mysql = 
  INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
+ 	"code", "label", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?
  )
 ```
 
 * Default: 
  INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "status", "mtime", "editor", "siteid", "ctime"
+ 	"code", "label", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?
+ 	?, ?, ?, ?, ?, ?, ?, ?
  )
 
 
@@ -1347,7 +1347,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/lists/delete/ansi = 
  DELETE FROM "mshop_supplier_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/supplier/manager/lists/delete
@@ -1382,12 +1382,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/lists/delete/mysql = 
  DELETE FROM "mshop_supplier_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_supplier_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1653,7 +1653,6 @@ mshop/supplier/manager/lists/search/mysql =
  	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
  	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
  FROM "mshop_supplier_list" msupli
- USE INDEX (unq_mssupli_pid_dm_sid_ty_rid, idx_mssupli_pid_dm_sid_pos_rid, idx_mssupli_rid_dom_sid_ty, idx_mssupli_key_sid)
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1930,7 +1929,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/supplier/manager/lists/type/delete
@@ -1964,12 +1963,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/supplier/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -2290,7 +2289,7 @@ mshop/supplier/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/supplier/manager/lists/type/update
@@ -2329,7 +2328,7 @@ mshop/supplier/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -2337,7 +2336,7 @@ mshop/supplier/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2354,7 +2353,7 @@ mshop/supplier/manager/lists/update/ansi =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/supplier/manager/lists/update
@@ -2394,7 +2393,7 @@ mshop/supplier/manager/lists/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -2402,7 +2401,7 @@ mshop/supplier/manager/lists/update/mysql =
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2519,14 +2518,15 @@ mshop/supplier/manager/search/ansi =
  SELECT :columns
  	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
- 	msup."status" AS "supplier.status", msup."mtime" AS "supplier.mtime",
- 	msup."editor" AS "supplier.editor", msup."ctime" AS "supplier.ctime"
+ 	msup."pos" AS "supplier.position", msup."status" AS "supplier.status",
+ 	msup."mtime" AS "supplier.mtime", msup."ctime" AS "supplier.ctime",
+ 	msup."editor" AS "supplier.editor"
  FROM "mshop_supplier" msup
  :joins
  WHERE :cond
  GROUP BY :columns :group
- 	msup."id", msup."siteid", msup."code", msup."label", msup."status", msup."mtime",
- 	msup."editor", msup."ctime"
+ 	msup."id", msup."siteid", msup."code", msup."label", msup."pos", msup."status",
+ 	msup."mtime", msup."editor", msup."ctime"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -2591,8 +2591,9 @@ mshop/supplier/manager/search/mysql =
  SELECT :columns
  	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
- 	msup."status" AS "supplier.status", msup."mtime" AS "supplier.mtime",
- 	msup."editor" AS "supplier.editor", msup."ctime" AS "supplier.ctime"
+ 	msup."pos" AS "supplier.position", msup."status" AS "supplier.status",
+ 	msup."mtime" AS "supplier.mtime", msup."ctime" AS "supplier.ctime",
+ 	msup."editor" AS "supplier.editor"
  FROM "mshop_supplier" msup
  :joins
  WHERE :cond
@@ -2605,14 +2606,15 @@ mshop/supplier/manager/search/mysql =
  SELECT :columns
  	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
  	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
- 	msup."status" AS "supplier.status", msup."mtime" AS "supplier.mtime",
- 	msup."editor" AS "supplier.editor", msup."ctime" AS "supplier.ctime"
+ 	msup."pos" AS "supplier.position", msup."status" AS "supplier.status",
+ 	msup."mtime" AS "supplier.mtime", msup."ctime" AS "supplier.ctime",
+ 	msup."editor" AS "supplier.editor"
  FROM "mshop_supplier" msup
  :joins
  WHERE :cond
  GROUP BY :columns :group
- 	msup."id", msup."siteid", msup."code", msup."label", msup."status", msup."mtime",
- 	msup."editor", msup."ctime"
+ 	msup."id", msup."siteid", msup."code", msup."label", msup."pos", msup."status",
+ 	msup."mtime", msup."editor", msup."ctime"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 
@@ -2697,8 +2699,8 @@ Updates an existing supplier record in the database
 mshop/supplier/manager/update/ansi = 
  UPDATE "mshop_supplier"
  SET :names
- 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ 	"code" = ?, "label" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/supplier/manager/update
@@ -2735,15 +2737,15 @@ Updates an existing supplier record in the database
 mshop/supplier/manager/update/mysql = 
  UPDATE "mshop_supplier"
  SET :names
- 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ 	"code" = ?, "label" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_supplier"
  SET :names
- 	"code" = ?, "label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ 	"code" = ?, "label" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

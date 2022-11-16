@@ -464,7 +464,7 @@ Updates the config, editor, ctime and mtime value of an inserted record
 mshop/catalog/manager/insert-usage/ansi = 
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?, "ctime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/catalog/manager/insert-usage
@@ -510,13 +510,13 @@ Updates the config, editor, ctime and mtime value of an inserted record
 mshop/catalog/manager/insert-usage/mysql = 
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?, "ctime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?, "ctime" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -923,7 +923,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/catalog/manager/lists/delete/ansi = 
  DELETE FROM "mshop_catalog_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/catalog/manager/lists/delete
@@ -958,12 +958,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/catalog/manager/lists/delete/mysql = 
  DELETE FROM "mshop_catalog_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_catalog_list"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1229,7 +1229,6 @@ mshop/catalog/manager/lists/search/mysql =
  	mcatli."status" AS "catalog.lists.status", mcatli."mtime" AS "catalog.lists.mtime",
  	mcatli."editor" AS "catalog.lists.editor", mcatli."ctime" AS "catalog.lists.ctime"
  FROM "mshop_catalog_list" mcatli
- USE INDEX (unq_mscatli_pid_dm_sid_ty_rid, idx_mscatli_pid_dm_sid_pos_rid, idx_mscatli_rid_dom_sid_ty, idx_mscatli_key_sid)
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1505,7 +1504,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/catalog/manager/lists/type/delete/ansi = 
  DELETE FROM "mshop_catalog_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/catalog/manager/lists/type/delete
@@ -1539,12 +1538,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/catalog/manager/lists/type/delete/mysql = 
  DELETE FROM "mshop_catalog_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_catalog_list_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1865,7 +1864,7 @@ mshop/catalog/manager/lists/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/catalog/manager/lists/type/update
@@ -1904,7 +1903,7 @@ mshop/catalog/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1912,7 +1911,7 @@ mshop/catalog/manager/lists/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1929,7 +1928,7 @@ mshop/catalog/manager/lists/update/ansi =
  SET :names
  		"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  		"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/catalog/manager/lists/update
@@ -1969,7 +1968,7 @@ mshop/catalog/manager/lists/update/mysql =
  SET :names
  		"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  		"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1977,7 +1976,7 @@ mshop/catalog/manager/lists/update/mysql =
  SET :names
  		"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  		"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -2474,10 +2473,10 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/catalog/manager/sitemode = 3
+mshop/catalog/manager/sitemode = 1
 ```
 
-* Default: 3
+* Default: 1
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -2642,7 +2641,7 @@ Updates the config, editor and mtime value of an updated record
 mshop/catalog/manager/update-usage/ansi = 
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/catalog/manager/update-usage
@@ -2688,13 +2687,13 @@ Updates the config, editor and mtime value of an updated record
 mshop/catalog/manager/update-usage/mysql = 
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

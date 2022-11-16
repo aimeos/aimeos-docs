@@ -56,15 +56,10 @@ order volumne is high or has peeks!
 Excludes decorators added by the "common" option from the order email delivery controllers
 
 ```
-controller/jobs/order/email/delivery/decorators/excludes = Array
-(
-)
+controller/jobs/order/email/delivery/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -96,15 +91,10 @@ See also:
 Adds a list of globally available decorators only to the order email delivery controllers
 
 ```
-controller/jobs/order/email/delivery/decorators/global = Array
-(
-)
+controller/jobs/order/email/delivery/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -134,15 +124,10 @@ See also:
 Adds a list of local decorators only to the order email delivery controllers
 
 ```
-controller/jobs/order/email/delivery/decorators/local = Array
-(
-)
+controller/jobs/order/email/delivery/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -196,10 +181,10 @@ See also:
 Class name of the used order email delivery scheduler controller implementation
 
 ```
-controller/jobs/order/email/delivery/name = Standard
+controller/jobs/order/email/delivery/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -384,15 +369,10 @@ order volumne is high or has peeks!
 Excludes decorators added by the "common" option from the order email payment controllers
 
 ```
-controller/jobs/order/email/payment/decorators/excludes = Array
-(
-)
+controller/jobs/order/email/payment/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -424,15 +404,10 @@ See also:
 Adds a list of globally available decorators only to the order email payment controllers
 
 ```
-controller/jobs/order/email/payment/decorators/global = Array
-(
-)
+controller/jobs/order/email/payment/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -462,15 +437,10 @@ See also:
 Adds a list of local decorators only to the order email payment controllers
 
 ```
-controller/jobs/order/email/payment/decorators/local = Array
-(
-)
+controller/jobs/order/email/payment/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -523,10 +493,10 @@ See also:
 Class name of the used order email payment scheduler controller implementation
 
 ```
-controller/jobs/order/email/payment/name = Standard
+controller/jobs/order/email/payment/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -750,15 +720,10 @@ See also:
 Excludes decorators added by the "common" option from the order email voucher controllers
 
 ```
-controller/jobs/order/email/voucher/decorators/excludes = Array
-(
-)
+controller/jobs/order/email/voucher/decorators/excludes = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -790,15 +755,10 @@ See also:
 Adds a list of globally available decorators only to the order email voucher controllers
 
 ```
-controller/jobs/order/email/voucher/decorators/global = Array
-(
-)
+controller/jobs/order/email/voucher/decorators/global = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -828,15 +788,10 @@ See also:
 Adds a list of local decorators only to the order email voucher controllers
 
 ```
-controller/jobs/order/email/voucher/decorators/local = Array
-(
-)
+controller/jobs/order/email/voucher/decorators/local = 
 ```
 
-* Default: Array
-(
-)
-
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -888,10 +843,10 @@ See also:
 Class name of the used order email voucher scheduler controller implementation
 
 ```
-controller/jobs/order/email/voucher/name = Standard
+controller/jobs/order/email/voucher/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -926,6 +881,21 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyVoucher"!
+
+
+## pdf
+
+Enables attaching a PDF to the voucher e-mail
+
+```
+controller/jobs/order/email/voucher/pdf = 1
+```
+
+* Default: 1
+* Type: bool - TRUE to enable attaching the PDF, FALSE to skip the PDF
+* Since: 2022.10
+
+The voucher PDF contains the same information like the HTML e-mail.
 
 
 ## status
@@ -976,6 +946,15 @@ provide alternative templates.
 See also:
 
 * controller/jobs/order/email/voucher/template-text
+
+## template-pdf
+
+```
+controller/jobs/order/email/voucher/template-pdf = order/email/voucher/pdf
+```
+
+* Default: order/email/voucher/pdf
+
 
 ## template-text
 

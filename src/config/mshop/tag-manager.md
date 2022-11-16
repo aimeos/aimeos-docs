@@ -98,7 +98,7 @@ See also:
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the tag manager
+Excludes decorators added by the "common" option from the tag tag manager
 
 ```
 mshop/tag/manager/decorators/excludes = Array
@@ -121,7 +121,7 @@ modify what is returned to the caller.
 
 This option allows you to remove a decorator added via
 "mshop/common/manager/decorators/default" before they are wrapped
-around the tag manager.
+around the tag tag manager.
 
 ```
  mshop/tag/manager/decorators/excludes = array( 'decorator1' )
@@ -129,7 +129,7 @@ around the tag manager.
 
 This would remove the decorator named "decorator1" from the list of
 common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
-"mshop/common/manager/decorators/default" for the tag manager.
+"mshop/common/manager/decorators/default" for the tag tag manager.
 
 See also:
 
@@ -142,7 +142,7 @@ See also:
 
 ## global
 
-Adds a list of globally available decorators only to the tag manager
+Adds a list of globally available decorators only to the tag tag manager
 
 ```
 mshop/tag/manager/decorators/global = Array
@@ -164,15 +164,14 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag tag manager.
 
 ```
  mshop/tag/manager/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the tag
-manager.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the tag controller.
 
 See also:
 
@@ -185,7 +184,7 @@ See also:
 
 ## local
 
-Adds a list of local decorators only to the tag manager
+Adds a list of local decorators only to the tag tag manager
 
 ```
 mshop/tag/manager/decorators/local = Array
@@ -207,15 +206,15 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Tag\Manager\Decorator\*") around the tag manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag tag manager.
 
 ```
  mshop/tag/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Tag\Manager\Decorator\Decorator2" only to the tag
-manager.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator2" only to the tag
+controller.
 
 See also:
 
@@ -234,7 +233,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/tag/manager/delete/ansi = 
  DELETE FROM "mshop_tag"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/tag/manager/delete
@@ -268,12 +267,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/tag/manager/delete/mysql = 
  DELETE FROM "mshop_tag"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_tag"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -353,7 +352,7 @@ See also:
 
 # name
 
-Class name of the used tag manager implementation
+Class name of the used tag tag manager implementation
 
 ```
 mshop/tag/manager/name = Standard
@@ -364,7 +363,7 @@ mshop/tag/manager/name = Standard
 * Since: 2015.12
 * Since: 2015.12
 
-Each default manager can be replace by an alternative imlementation.
+Each default tag tag manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
 name as configuration value so the manager factory knows which class it
 has to instantiate.
@@ -378,13 +377,13 @@ For example, if the name of the default class is
 and you want to replace it with your own version named
 
 ```
- \Aimeos\MShop\Tag\Manager\Mymanager
+ \Aimeos\MShop\Tag\Manager\Mytag
 ```
 
 then you have to set the this configuration option:
 
 ```
- mshop/tag/manager/name = Mymanager
+ mshop/tag/manager/name = Mytag
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -394,7 +393,7 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MyManager"!
+or numbers. Avoid chamel case names like "MyTag"!
 
 
 # newid
@@ -847,7 +846,7 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/tag/manager/type/delete/ansi = 
  DELETE FROM "mshop_tag_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: mshop/tag/manager/type/delete
@@ -881,12 +880,12 @@ Deletes the items matched by the given IDs from the database
 ```
 mshop/tag/manager/type/delete/mysql = 
  DELETE FROM "mshop_tag_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "mshop_tag_type"
- WHERE :cond AND siteid = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -1207,7 +1206,7 @@ mshop/tag/manager/type/update/ansi =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/tag/manager/type/update
@@ -1246,7 +1245,7 @@ mshop/tag/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
@@ -1254,7 +1253,7 @@ mshop/tag/manager/type/update/mysql =
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:
@@ -1271,7 +1270,7 @@ mshop/tag/manager/update/ansi =
  UPDATE "mshop_tag"
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: mshop/tag/manager/update
@@ -1309,14 +1308,14 @@ mshop/tag/manager/update/mysql =
  UPDATE "mshop_tag"
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "mshop_tag"
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

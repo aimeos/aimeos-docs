@@ -1,15 +1,15 @@
 
 # name
 
-Class name of the used account subscription client implementation
+Class name of the used account basket client implementation
 
 ```
-client/html/account/subscription/name = 
+client/html/account/basket/name = 
 ```
 
 * Default: 
 * Type: string - Last part of the class name
-* Since: 2018.04
+* Since: 2022.10
 
 Each default HTML client can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -19,19 +19,19 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Client\Html\Account\Subscription\Standard
+ \Aimeos\Client\Html\Account\Basket\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Client\Html\Account\Subscription\Mysubscription
+ \Aimeos\Client\Html\Account\Basket\Mybasket
 ```
 
 then you have to set the this configuration option:
 
 ```
- client/html/account/subscription/name = Mysubscription
+ client/html/account/basket/name = Mybasket
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -41,65 +41,30 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MySubscription"!
+or numbers. Avoid chamel case names like "MyBasket"!
 
 
 # summary
-## address
-
-Location of the address partial template for the account subscription component
-
-```
-client/html/account/subscription/summary/address = common/summary/address
-```
-
-* Default: common/summary/address
-* Type: string - Relative path to the address partial
-* Since: 2018.04
-
-To configure an alternative template for the address partial, you
-have to configure its path relative to the template directory
-(usually templates/client/html/). It's then used to display the
-payment or delivery address block in the account subscription component.
-
-See also:
-
-* client/html/account/subscription/summary/detail
-* client/html/account/subscription/summary/service
-
 ## detail
 
-Location of the detail partial template for the account subscription component
-
 ```
-client/html/account/subscription/summary/detail = common/summary/detail
+client/html/account/basket/summary/detail = common/summary/detail
 ```
 
 * Default: common/summary/detail
-* Type: string - Relative path to the detail partial
-* Since: 2018.04
 
-To configure an alternative template for the detail partial, you
-have to configure its path relative to the template directory
-(usually templates/client/html/). It's then used to display the
-product detail block in the account subscription component.
-
-See also:
-
-* client/html/account/subscription/summary/address
-* client/html/account/subscription/summary/service
 
 # template-body
 
-Relative path to the HTML body template of the account subscription client.
+Relative path to the HTML body template of the account basket client.
 
 ```
-client/html/account/subscription/template-body = 
+client/html/account/basket/template-body = 
 ```
 
 * Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2018.04
+* Since: 2022.10
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
@@ -115,19 +80,19 @@ should be suffixed by the name of the new class.
 
 See also:
 
-* client/html/account/subscription/template-header
+* client/html/account/basket/template-header
 
 # template-header
 
-Relative path to the HTML header template of the account subscription client.
+Relative path to the HTML header template of the account basket client.
 
 ```
-client/html/account/subscription/template-header = 
+client/html/account/basket/template-header = 
 ```
 
 * Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2018.04
+* Since: 2022.10
 
 The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
@@ -144,7 +109,7 @@ should be suffixed by the name of the new class.
 
 See also:
 
-* client/html/account/subscription/template-body
+* client/html/account/basket/template-body
 
 # url
 ## action
@@ -152,12 +117,12 @@ See also:
 Name of the action that should create the output
 
 ```
-client/html/account/subscription/url/action = subscription
+client/html/account/basket/url/action = basket
 ```
 
-* Default: subscription
+* Default: basket
 * Type: string - Name of the action
-* Since: 2018.04
+* Since: 2022.10
 
 In Model-View-Controller (MVC) applications, actions are the methods of a
 controller that create parts of the output displayed in the generated HTML page.
@@ -165,16 +130,16 @@ Action names are usually alpha-numeric.
 
 See also:
 
-* client/html/account/subscription/url/target
-* client/html/account/subscription/url/controller
-* client/html/account/subscription/url/config
+* client/html/account/basket/url/target
+* client/html/account/basket/url/controller
+* client/html/account/basket/url/config
 
 ## config
 
 Associative list of configuration options used for generating the URL
 
 ```
-client/html/account/subscription/url/config = Array
+client/html/account/basket/url/config = Array
 (
 )
 ```
@@ -184,7 +149,7 @@ client/html/account/subscription/url/config = Array
 )
 
 * Type: string - Associative list of configuration options
-* Since: 2018.04
+* Since: 2022.10
 
 You can specify additional options as key/value pairs used when generating
 the URLs, like
@@ -200,9 +165,9 @@ in the "see also" section of this page.
 
 See also:
 
-* client/html/account/subscription/url/target
-* client/html/account/subscription/url/controller
-* client/html/account/subscription/url/action
+* client/html/account/basket/url/target
+* client/html/account/basket/url/controller
+* client/html/account/basket/url/action
 * client/html/url/config
 
 ## controller
@@ -210,12 +175,12 @@ See also:
 Name of the controller whose action should be called
 
 ```
-client/html/account/subscription/url/controller = Account
+client/html/account/basket/url/controller = Account
 ```
 
 * Default: Account
 * Type: string - Name of the controller
-* Since: 2018.04
+* Since: 2022.10
 
 In Model-View-Controller (MVC) applications, the controller contains the methods
 that create parts of the output displayed in the generated HTML page. Controller
@@ -223,14 +188,14 @@ names are usually alpha-numeric.
 
 See also:
 
-* client/html/account/subscription/url/target
-* client/html/account/subscription/url/action
-* client/html/account/subscription/url/config
+* client/html/account/basket/url/target
+* client/html/account/basket/url/action
+* client/html/account/basket/url/config
 
 ## filter
 
 ```
-client/html/account/subscription/url/filter = Array
+client/html/account/basket/url/filter = Array
 (
 )
 ```
@@ -246,12 +211,12 @@ client/html/account/subscription/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/subscription/url/target = 
+client/html/account/basket/url/target = 
 ```
 
 * Default: 
 * Type: string - Destination of the URL
-* Since: 2018.04
+* Since: 2022.10
 
 The destination can be a page ID like in a content management system or the
 module of a software development framework. This "target" must contain or know
@@ -259,6 +224,6 @@ the controller that should be called by the generated URL.
 
 See also:
 
-* client/html/account/subscription/url/controller
-* client/html/account/subscription/url/action
-* client/html/account/subscription/url/config
+* client/html/account/basket/url/controller
+* client/html/account/basket/url/action
+* client/html/account/basket/url/config

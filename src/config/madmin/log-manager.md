@@ -221,7 +221,7 @@ Deletes the items matched by the given IDs from the database
 ```
 madmin/log/manager/delete/ansi = 
  DELETE FROM "madmin_log"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: madmin/log/manager/delete
@@ -255,12 +255,12 @@ Deletes the items matched by the given IDs from the database
 ```
 madmin/log/manager/delete/mysql = 
  DELETE FROM "madmin_log"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Default: 
  DELETE FROM "madmin_log"
- WHERE :cond AND "siteid" = ?
+ WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
@@ -618,7 +618,7 @@ madmin/log/manager/update/ansi =
  UPDATE "madmin_log"
  SET :names
  	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: madmin/log/manager/update
@@ -656,14 +656,14 @@ madmin/log/manager/update/mysql =
  UPDATE "madmin_log"
  SET :names
  	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Default: 
  UPDATE "madmin_log"
  SET :names
  	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
- WHERE "siteid" = ? AND "id" = ?
+ WHERE "siteid" LIKE ? AND "id" = ?
 
 
 See also:

@@ -1,57 +1,13 @@
 
-# decorators
-## excludes
-
-```
-client/html/checkout/confirm/decorators/excludes = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## global
-
-```
-client/html/checkout/confirm/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## local
-
-```
-client/html/checkout/confirm/decorators/local = Array
-(
-    [0] => Mangopay
-)
-```
-
-* Default: Array
-(
-)
-
-
-
 # name
 
 Class name of the used checkout confirm client implementation
 
 ```
-client/html/checkout/confirm/name = Standard
+client/html/checkout/confirm/name = 
 ```
 
-* Default: Standard
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -162,10 +118,10 @@ See also:
 Relative path to the HTML body template of the checkout confirm client.
 
 ```
-client/html/checkout/confirm/template-body =
+client/html/checkout/confirm/template-body = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -190,10 +146,10 @@ See also:
 Relative path to the HTML header template of the checkout confirm client.
 
 ```
-client/html/checkout/confirm/template-header =
+client/html/checkout/confirm/template-header = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -302,10 +258,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/checkout/confirm/url/target =
+client/html/checkout/confirm/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 
