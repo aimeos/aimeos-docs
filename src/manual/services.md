@@ -381,6 +381,13 @@ createtoken (boolean, optional)
 testmode (boolean, optional)
 : Use "1" for test payments without real money
 
+!!! warning
+    The OPPWA server redirects the customer to the success URL and adds the GET parameters "id" and "resourcePath" to the URL. This leads to a wrong page lookup in TYPO3 because it uses that parameter for the page ID. To circumvent the problem, you have to configure your web server to remove those parameters before passing the URL to TYPO3. For Apache, mod_rewrite must be enabled and this rule added:
+    ```
+    RewriteCond "%{QUERY_STRING}" "(.*(?:^|&))id=[^&]+&resourcePath=.*$"
+    RewriteRule "(.*)"            "$1?%1" [PT]
+    ```
+    Both parameters are unused by the Omnipay OPPWA driver so this doesn't have any negative effect.
 
 ## Payone
 
