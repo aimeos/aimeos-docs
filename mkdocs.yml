@@ -361,6 +361,7 @@ nav:
       - Job: config/madmin/job-manager.md
       - Log: config/madmin/log-manager.md
   - Changelog:
+    - 2022.x -> 2023.x : changelog/2023.x.md
     - 2021.x -> 2022.x : changelog/2022.x.md
     - 2020.x -> 2021.x : changelog/2021.x.md
     - 2019.x -> 2020.x : changelog/2020.x.md
