@@ -23,54 +23,28 @@ In order to make things as easy as possible, the base service provider class off
 
 # Working with orders
 
-## Fetch order item
-
-If the order item isn't passed to the method directly, there's sometimes the need to the retrieve it from the database. You only need to know the ID of the order you wish to fetch:
+By default, the complete order is passed to almost all service provider methods including the addresses, products and services. You can get the items inside an order using:
 
 ```php
-$orderItem = $this->getOrder( $id );
+$basket = $order->getBaseItem();
+
+$coupons = $basket->getCoupons();
+$products = $basket->getProducts();
+
+$paymentAddresses = $basket->getAddress( 'payment' );
+$deliveryAddresses = $basket->getAddress( 'delivery' );
+
+$paymentServices = $basket->getService( 'payment' );
+$deliveryServices = $basket->getService( 'delivery' );
 ```
 
-Keep in mind that the order needs to belong to the same site or one of its descendants. You can't fetch an order from another shop instance!
-
-## Retrieve complete order
-
-In the order item itself only some status values, dates and related IDs are stored. Most often you need to get the service data stored in the order because there you can add data related to the payment gateway (e.g. transaction references) and fetch them later if you need them again:
+All passed orders are saved automatically by the calling object, which is usually a job controller. If you need to set the delivery/payment status of an order and throw an exception afterwards, you have to save the order yourself using:
 
 ```php
-$baseItem = $this->getOrderBase( $orderItem->getBaseId() );
+$this->saveOrder( $order );
 ```
 
-The [order base item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base/Iface.php) and its included objects from the sub-domains are in fact the same as the basket during the checkout of the customer. The line above would load the basic order data (price, locale, etc.) and the delivery/payment service related items including their attributes. If you need the addresses or products as well, you can define which parts should be loaded:
-
-```php
-$baseItem = $this->getOrderBase( $orderItem->getBaseId(), ['order/base/addres', 'order/base/product'] );
-```
-
-These lines would load the basic order including the addresses and the products. You can find the complete list of constants in the class of the [order base item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base/Base.php).
-
-!!! warning
-    Loading the complete order is slow because it involves fetching many records from the database. Whenever possible, limit the related items to those you really need!
-
-## Save order items
-
-After modifying an order item by setting a new status or changing another value, you need to store the item back to the database if the modification shouldn't be lost. You can do this by one line too:
-
-```php
-$this->saveOrder( $orderItem );
-```
-
-This saves the order item itself (not the complete order) and creates the necessary entries in the *mshop_order_status* table if one of the status values have been changed.
-
-## Save complete order
-
-Saving the complete order (a.k.a. [basket](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Base/Iface.php)) is very similar to retrieving it from the database:
-
-```php
-$this->saveOrderBase( $baseItem );
-```
-
-This would save changes in the service related items and attributes.
+This saves the order item including the complete order content and creates the necessary entries in the *mshop_order_status* table if one of the status values have been changed.
 
 # Additonal data
 
@@ -90,34 +64,47 @@ $manager = \Aimeos\MShop::create( $context, 'stock' );
 
 The line above would create and return the stock manager using the given context.
 
-## Store data
+## Store order data
 
-When integrating external services you often want or have to store data returned by them for later or for reference. This may include transaction IDs, status codes or other related data. In these cases, you should store the data as service attributes attached to the delivery or payment service provider. The *setAttributes()* method simplifies the first step of adding new or updating existing attributes:
+When integrating external services you often want or have to store data returned by them for later or for reference. This may include transaction IDs, status codes or other related data. In these cases, you should store the data as service attributes attached to the delivery or payment service provider:
 
 ```php
-$this->setAttributes( \Aimeos\MShop\Order\Item\Base\Service\Iface $item, array $attributes, $type );
+$orderServiceItem->addAttributeItems( $this->attributes( $attributes ), $type );
 ```
 
-It adds the key/value pairs in the second parameter with the specified type to the given order service item. If the attribute key/type combination already exists, the attribute value will be updated. The type is an arbitrary string but it's best to use the service provider name in lower case to quickly identify to which service provider it belongs. You can save one or more attribute like this:
+It adds the key/value pairs in the `$attributes` parameter with the specified type to the given order service item. If the attribute key/type combination already exists, the attribute value will be updated. The type is an arbitrary string but it's best to use the service provider name in lower case to quickly identify to which service provider it belongs. You can save one or more attribute like this:
 
 ```php
 $attributes = ['transactionid' => 123];
 
 $serviceType = \Aimeos\MShop\Order\Manager\Base\Base::TYPE_PAYMENT;
-$orderServiceItem = $orderBaseItem->getService( $serviceType );
+$orderServiceItem = $order->getBaseItem()->getService( $serviceType );
 
-$this->setAttributes( $orderServiceItem, $attributes, 'myprovider' );
-$this->saveOrderBase( $baseItem );
+$orderServiceItem->addAttributeItems( $$this->attributes( $attributes ), 'myprovider' );
 ```
 
-The *setAttributes()* method only adds the attribute to the order service item but to persist it in the database, you have to save the order base item (a.k.a. basket) and the attached items to the storage, which is done by the *saveOrderBase()* method call. To fetch the attribute again, you can use the *getAttribute()* or *getAttributeItem()* method of the order service item object:
+To fetch the attribute again, you can use the *getAttribute()* or *getAttributeItem()* method of the order service item object:
 
 ```php
 $serviceType = \Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_PAYMENT;
-$orderServiceItem = $orderBaseItem->getService( $serviceType );
+$orderServiceItem = $$order->getBaseItem()->getService( $serviceType );
 
 $value = $orderServiceItem->getAttribute( 'transactionid', 'myprovider' );
 $attrItem = $orderServiceItem->getAttributeItem( 'transactionid', 'myprovider' );
+```
+
+## Store customer data
+
+You can also store data related to a customer using the `setData()` method. It's a simple key/value store which can be used for e.g. tokens for repeated payments:
+
+```php
+$this->setData( $customerId, 'token', '...' );
+```
+
+The method expects the ID of the customer, the key and the associated value. Similarly, you can retrieve the data again using:
+
+```php
+$token = $this->data( $customerId, 'token' );
 ```
 
 # Configuration
@@ -323,13 +310,10 @@ If you need to retrieve data from the fields you defined at your feconfig you ca
 public function process( \Aimeos\MShop\Order\Item\Iface $order,
     array $params = [] ) : \Aimeos\MShop\Order\Item\Iface
 {
-    $parts = \Aimeos\MShop\Order\Manager\Base\Base::PARTS_ALL;
-    $orderBaseItem = $this->getOrderBase( $order->getBaseId(], $parts );
-
     $type = \Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_PAYMENT;
     $code = $this->getServiceItem()->getCode(); // code of the service payment
 
-    foreach( $orderBaseItem->getService( $type, $code )->getAttributes() as $attr ) {
+    foreach( $$order->getBaseItem()->getService( $type, $code )->getAttributes() as $attr ) {
         // $attr->getCode() . ': ' . $attr->getValue();
     }
 }
