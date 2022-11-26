@@ -11,7 +11,8 @@ markdown_extensions:
       permalink: '#'
   - def_list
   - admonition
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.highlight:
       extend_pygments_lang:
         - name: php
