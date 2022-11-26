@@ -30,10 +30,10 @@ theme:
   logo: https://aimeos.org/fileadmin/logos/logo-aimeos-blue.svgz
   font: false
 extra_css:
-  - assets/aimeos.css?v5
+  - assets/aimeos.css?v6
 extra_javascript:
-  - assets/aimeos.js?v5
-  - /docs/versions.js?v5
+  - assets/aimeos.js?v6
+  - /docs/versions.js?v6
 extra:
   disqus: aimeos
   social:
