@@ -78,18 +78,14 @@
 }
 
 .md-search__form {
-  background-color: none !important;
+  background-color: transparent !important;
   border-radius: 1rem !important;
   height: auto !important;
 }
 
-@media screen and (min-width: 60em) {
-  .md-search__inner {
-    float: none;
-    padding: 0;
-    position: static;
-    transition: width .25s cubic-bezier(.1,.7,.1,1);
-    width: auto;
+@media screen and (max-width: 59.9375em) {
+  .md-search__form {
+    padding: 0.4rem;
   }
 }
 
@@ -255,8 +251,16 @@ select.md-header-nav__button:focus {
   text-align: center;
 }
 
+.md-nav--secondary .md-nav__title {
+  text-align: left;
+}
+
 .md-nav__list {
   margin-top: 1rem;
+}
+
+.md-nav__list .md-nav__list {
+  margin-top: 0;
 }
 
 .md-nav--primary .md-nav__title~.md-nav__list {
