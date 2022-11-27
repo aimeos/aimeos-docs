@@ -42,18 +42,37 @@ class Standard
 
     public function body( $uid = '' ) : string
     {
+        // optional
     }
 
     public function header( $uid = '' ) : ?string
     {
+        // optional
     }
 
     public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
     {
+        // optional
     }
 
     protected function getSubClientNames() : array
     {
+        // optional
+    }
+
+    public function init()
+    {
+        // optional
+    }
+
+    public function modify( string $content, string $uid ) : string
+    {
+        // optional
+    }
+
+    public function data( Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : Aimeos\MW\View\Iface
+    {
+        // optional
     }
 }
 ```

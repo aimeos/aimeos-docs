@@ -30,11 +30,6 @@ class Standard
         // optional
     }
 
-    public function init()
-    {
-        // optional
-    }
-
     public function getSubClient( string $type, string $name = null ) : \Aimeos\Client\Html\Iface
     {
         // optional
@@ -44,56 +39,31 @@ class Standard
     {
         // optional
     }
+
+    public function init()
+    {
+        // optional
+    }
+
+    public function modify()
+    {
+        // optional
+    }
+
+    public function data( Aimeos\MW\View\Iface $view, array &$tags = [], string &$expire = null ) : Aimeos\MW\View\Iface
+    {
+        // optional
+    }
 }
 ```
 
-Differences arise from the required code inside these methods as they have to care about caching (if you want to) and exception handling. A component can implement the same optional methods as any subpart. For a detailed description of these methods, please refer to the article about [creating new subparts](create-subparts.md#optional-methods).
+A component can implement the same optional methods as any subpart. For a detailed description of these methods, please refer to the article about [creating new subparts](create-subparts.md#optional-methods).
 
-The [getSubClient()](create-subparts.md#getSubClient) and [getSubClientNames()](create-subparts.md#getSubClientNames) methods are also exactly the same as in any other subpart and won't be described in this article again.
+The [data()](create-subparts.md#data), [getSubClient()](create-subparts.md#getSubClient), [getSubClientNames()](create-subparts.md#getSubClientNames) and [modify()](create-subparts.md#modify) methods are also exactly the same as in any other subpart and won't be described in this article again.
 
-# init()
+Differences arise from the required code inside these methods as they have to care about caching (if you want to). Components that can cache its output are extremely fast. Once the content is generated and stored, it can be retrieved within milliseconds and directly pushed to the browser. The downside is that some additional code is needed.
 
-This method is not affected by caching at all because its purpose is to execute code once during each request. The difference to `init()` methods of subclients is only that you need to catch thrown exceptions and assign error messages to the view if necessary.
-
-If you don't need to process any input in your new component, you can copy & paste the code below into your new class:
-
-```php
-public function init()
-{
-    $context = $this->context();
-    $view = $this->view();
-
-    // your required code
-    parent::init();
-}
-```
-
-The only thing you have to **adapt is the name of the error list** assigned to the view. It should be named after your class name to something like `$view->...ErrorList`.
-
-The cascade of `catch()` statements ensures that all exceptions are caught. Furthermore, all error messages translated that are passed to the view and shown to the customers. Unspecific exceptions are logged and only a generic error message is shown in the front-end to avoid giving away sensitive information.
-
-You need to print these error messages in your component view which is described in the next section.
-
-# Display error messages
-
-The messages of the exceptions thrown in the different methods are assigned to the view using the `error` variable, which is an array of error messages. You need to add a snippet similar to this one at the top of your component body view:
-
-```php
-<?php if( isset( $this->errors ) ) : ?>
-    <ul class="error-list">
-<?php foreach( (array) $this->get( 'errors', [] ) as $errmsg ) : ?>
-        <li class="error-item"><?= $this->encoder()->html( $errmsg ) ?></li>
-<?php endforeach ?>
-    </ul>
-<?php endif ?>
-```
-These few lines of code create an HTML block that will contain all error messages. It will be styled by the used theme, so you don't have to care about this.
-
-# With content caching
-
-Components that can cache its output are extremely fast. Once the content is generated and stored, it can be retrieved within milliseconds and directly pushed to the browser. The downside is that some additional code is needed.
-
-## body()
+# body()
 
 When caching comes into play, the first thing you have to think about is: What does your output depend on? Usually, two external sources can influence what content needs to be generated: The request parameters and the configuration settings. Both has to be part of the cache key.
 
@@ -129,7 +99,7 @@ The details for this are described in the article about [creating new subparts](
 
 In doubt, have a look into a full example of a working [body() component method](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
-## header()
+# header()
 
 For `header()`, implementing caching is very similar to the implementation of `body()`. You also have to specify which parameters are used in your component and what's the shared configuration prefix for all settings. The calls to `getCached()` and `setCached()` require "header" to be passed to ensure that the content is stored for the header.
 
@@ -156,50 +126,17 @@ Only keep in mind that you also need to call the `modify()` method after success
 
 In doubt, have a look into a full example of a working [header() component method](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 
-# Factory class
+# Display error messages
 
-All components are instantiated by factories which care about creating the HTML client and decorating it with additional classes added via configuration. The factory class is a rather simple piece of code that contains only a `create()` method:
+The messages of the exceptions thrown in the different methods are assigned to the view using the `error` variable, which is an array of error messages. You need to add a snippet similar to this one at the top of your component body view:
 
 ```php
-namespace Aimeos\Client\Html\Catalog\Detail;
-
-class Factory
-    extends \Aimeos\Client\Html\Common\Factory\Base
-    implements \Aimeos\Client\Html\Common\Factory\Iface
-{
-    public static function create( \Aimeos\MShop\Context\Item\Iface $context, array $paths, string $name = null ) : \Aimeos\Client\Html\Iface
-    {
-        if( $name null ) {
-            $name = $context->config()->get( 'client/html/catalog/detail/name', 'Standard' );
-        }
-
-        $iface = '\\Aimeos\\Client\\Html\\Iface';
-        $classname = '\\Aimeos\\Client\\Html\\Catalog\\Detail\\' . $name;
-
-        if( ctype_alnum( $name ) === false ) {
-            throw new \Aimeos\Client\Html\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
-        }
-
-        $client = self::createClient( $context, $classname, $iface );
-        $client = self::addClientDecorators( $context, $client, 'catalog/detail' );
-
-        return $client->setObject( $client );
-    }
-}
+<?php if( isset( $this->errors ) ) : ?>
+    <ul class="error-list">
+<?php foreach( (array) $this->get( 'errors', [] ) as $errmsg ) : ?>
+        <li class="error-item"><?= $this->encoder()->html( $errmsg ) ?></li>
+<?php endforeach ?>
+    </ul>
+<?php endif ?>
 ```
-
-The code above is a factory for the catalog detail client. You can copy the code and replace the "Catalog\Detail" and "catalog/detail" strings with the name of your own component. For example, if you want to create a new "catalog homepage" component, you should replace the strings like this:
-
-```
-Catalog\Detail -> Catalog\Homepage
-catalog/detail -> catalog/homepage
-```
-
-Component factories for other purposes can created the same way, e.g. for a "basket upsell" component, replace the strings in that way:
-
-```
-Catalog\Detail -> Basket\Upsell
-catalog/detail -> basket/upsell
-```
-
-The factory and the default implementation of your component must be saved to the appropriate directory, i.e. to the *./src/Catalog/Homepage* or *./src/Basket/Upsell* directory of your own extension.
+These few lines of code create an HTML block that will contain all error messages. It will be styled by the used theme, so you don't have to care about this.
