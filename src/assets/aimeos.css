@@ -162,6 +162,15 @@
   background-color: var(--md-accent-fg-color--transparent, #ba9a5a20);
 }
 
+.algolia-autocomplete aa-dropdown-menu {
+  height: calc(100vh - 2rem);
+}
+
+.algolia-autocomplete .aa-dataset-1 {
+  height: calc(100vh - 2rem);
+  overflow-y: scroll;
+}
+
 .algolia-autocomplete .search-result-empty {
   padding: 1rem;
 }
