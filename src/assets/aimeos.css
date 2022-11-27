@@ -86,6 +86,7 @@
 @media screen and (max-width: 59.9375em) {
   .md-search__form {
     padding: 0.4rem;
+    margin: 0.5rem;
   }
 }
 
@@ -159,6 +160,15 @@
   font-style: normal;
   background-color: #ba9a5a20;
   background-color: var(--md-accent-fg-color--transparent, #ba9a5a20);
+}
+
+.algolia-autocomplete aa-dropdown-menu {
+  height: calc(100vh - 2rem);
+}
+
+.algolia-autocomplete .aa-dataset-1 {
+  height: calc(100vh - 2rem);
+  overflow-y: scroll;
 }
 
 .algolia-autocomplete .search-result-empty {
