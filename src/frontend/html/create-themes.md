@@ -111,6 +111,48 @@ How to deploy your files depends on your host application:
 Laravel and Symfony
 : Run `composer up`
 
+To avoid having to use `composer update` or `composer up` when changing the CSS and JS (development environment) files in the theme extension, a symbolic link can be made with the following command:
+```bash
+ln -s /packages/<extname>/themes/client/html/<extname> /public/vendor/shop/themes/<extname>
+```
+
+With this, the changes you make to your package will be published automatically.
+
+Also, you can implement "hot reload" with Laravel Mix and Browser Sync:
+
+```bash
+npm install laravel-mix --save-dev
+```
+```bash
+npm install -g browser-sync
+```
+
+webpack.mix.js:
+```javascript
+mix.browserSync({
+    injectChanges: true,
+    proxy: 'example.com',
+    hostname: 'example.com',
+    port: 3000,
+    ignored: /node_modules/,
+    files: [
+        'config/shop.php',
+        'packages/bxtheme/config/*.php',
+        'public/**/*.css',
+        'resources/**/*',
+        'lang/*.json',
+        'packages/bxtheme/templates/admin/jqadm/**/*.php',
+        'packages/bxtheme/views/*.php',
+        'packages/bxtheme/templates/client/html/**/**/*.php',
+        'packages/bxtheme/templates/client/html/**/**/**/*.php',
+        'packages/bxtheme/themes/client/html/bxtheme/*.css',
+        'packages/bxtheme/themes/client/html/bxtheme/*.js',
+        'packages/bxtheme/themes/admin/jqadm/*.css',
+        'packages/bxtheme/themes/admin/jqadm/*.js'
+    ]
+});
+```
+
 TYPO3
 : Adapt the TypoScript constants offered by the Aimeos extension in the "Template" panel of the navigation bar
 
