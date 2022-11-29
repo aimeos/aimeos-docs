@@ -137,18 +137,18 @@ mix.browserSync({
     ignored: /node_modules/,
     files: [
         'config/shop.php',
-        'packages/bxtheme/config/*.php',
+        'packages/**/config/*.php',
         'public/**/*.css',
         'resources/**/*',
         'lang/*.json',
-        'packages/bxtheme/templates/admin/jqadm/**/*.php',
-        'packages/bxtheme/views/*.php',
-        'packages/bxtheme/templates/client/html/**/**/*.php',
-        'packages/bxtheme/templates/client/html/**/**/**/*.php',
-        'packages/bxtheme/themes/client/html/bxtheme/*.css',
-        'packages/bxtheme/themes/client/html/bxtheme/*.js',
-        'packages/bxtheme/themes/admin/jqadm/*.css',
-        'packages/bxtheme/themes/admin/jqadm/*.js'
+        'packages/**/templates/admin/jqadm/**/*.php',
+        'packages/**/views/*.php',
+        'packages/**/templates/client/html/**/**/*.php',
+        'packages/**/templates/client/html/**/**/**/*.php',
+        'packages/**/themes/client/html/**/*.css',
+        'packages/**/themes/client/html/**/*.js',
+        'packages/**/themes/admin/jqadm/*.css',
+        'packages/**/themes/admin/jqadm/*.js'
     ]
 });
 ```
