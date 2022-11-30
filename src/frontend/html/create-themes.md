@@ -137,18 +137,10 @@ mix.browserSync({
     ignored: /node_modules/,
     files: [
         'config/shop.php',
-        'packages/**/config/*.php',
         'public/**/*.css',
         'resources/**/*',
         'lang/*.json',
-        'packages/**/templates/admin/jqadm/**/*.php',
-        'packages/**/views/*.php',
-        'packages/**/templates/client/html/**/**/*.php',
-        'packages/**/templates/client/html/**/**/**/*.php',
-        'packages/**/themes/client/html/**/*.css',
-        'packages/**/themes/client/html/**/*.js',
-        'packages/**/themes/admin/jqadm/*.css',
-        'packages/**/themes/admin/jqadm/*.js'
+        'packages/**/*.{php,css,js}'
     ]
 });
 ```
