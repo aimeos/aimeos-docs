@@ -169,8 +169,9 @@
 }
 
 .algolia-autocomplete .aa-dataset-1 {
-  height: calc(100vh - 2rem);
+  height: calc(100vh - 4rem);
   overflow-y: scroll;
+  box-shadow: 1px 2px 7px #3838383b;
 }
 
 .algolia-autocomplete .search-result-empty {
