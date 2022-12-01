@@ -106,28 +106,31 @@ For the start, you can copy the existing ["default" Aimeos theme](https://github
 cp -r ./themes/client/html/default/ ./themes/client/html/mytheme/
 ```
 
+## Deployment
+
 How to deploy your files depends on your host application:
 
-Laravel and Symfony
+TYPO3
+: Adapt the TypoScript constants offered by the Aimeos extension in the "Template" panel of the navigation bar
+
+Laravel
 : Run `composer up`
 
-To avoid having to use `composer update` or `composer up` when changing the CSS and JS (development environment) files in the theme extension, a symbolic link can be made with the following command:
+For Laravel, to avoid having to use `composer update` or `composer up` when changing the CSS and JS (development environment) files in the theme extension, a symbolic link can be made with the following command:
+
 ```bash
-ln -s /packages/<extname>/themes/client/html/<extname> /public/vendor/shop/themes/<extname>
+ln -s ./packages/<extname>/themes/client/html/<extname> ./public/vendor/shop/themes/<extname>
 ```
 
-With this, the changes you make to your package will be published automatically.
-
-Also, you can implement "hot reload" with Laravel Mix and Browser Sync:
+With this, the changes you make to your package will be published automatically. Also, you can use "hot reload" of changed files with Laravel Mix and Browser Sync:
 
 ```bash
 npm install laravel-mix --save-dev
-```
-```bash
 npm install -g browser-sync
 ```
 
-webpack.mix.js:
+In your webpack.mix.js, you need to add these directories:
+
 ```javascript
 mix.browserSync({
     injectChanges: true,
@@ -144,11 +147,6 @@ mix.browserSync({
     ]
 });
 ```
-
-TYPO3
-: Adapt the TypoScript constants offered by the Aimeos extension in the "Template" panel of the navigation bar
-
-For Laravel and Symfony, you have to adapt the `client/html/common/template/baseurl` setting to point to your new theme. The value must be the absolute directory to your theme and it's required to fetch the styling for the e-mail templates.
 
 ## Custom CSS styles
 
