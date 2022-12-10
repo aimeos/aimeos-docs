@@ -60,10 +60,10 @@ XML based transfer of orders to a web service understanding the content of the X
 ![XML service delivery provider](Admin-service-delivery-xml.webp)
 
 xml.backupdir (optional)
-: Relative or absolute path of the backup directory (with strftime() placeholders)
+: Relative or absolute path of the backup directory (with date_format() placeholders)
 
 xml.exportpath (required)
-: Relative or absolute path and name of the XML files (with strftime() placeholders)
+: Relative or absolute path and name of the XML files (with date_format() placeholders)
 
 xml.template (optional)
 : Relative path of the template file name
