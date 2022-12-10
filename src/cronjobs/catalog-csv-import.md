@@ -303,7 +303,7 @@ The `reverse()` method isn't necessary for the catalog importer, but the convert
 
 After a CSV file was imported successfully, you can move it to another location, so it won't be imported again and isn't overwritten by the next file that is stored at the same location in the file system. You should use an absolute path for the [controller/jobs/catalog/import/csv/backup](../config/controller-jobs/catalog-import.md#backup) setting to be sure but can be relative path if you absolutely know from where the job will be executed from.
 
-The name of the new backup location can contain placeholders understood by the PHP `strftime()` function to create dynamic paths, e.g. "backup/%Y-%m-%d" which would create "backup/2000-01-01". For more information about the strftime() placeholders, please have a look into the PHP documentation of [strftime() function](https://php.net/manual/en/function.strftime.php).
+The name of the new backup location can contain placeholders understood by the PHP `date_format()` function to create dynamic paths, e.g. "backup/%Y-%m-%d" which would create "backup/2000-01-01". For more information about the date_format() placeholders, please have a look into the PHP documentation of [date_format() function](https://www.php.net/manual/en/datetime.format.php).
 
 !!! note
     If no backup name is configured, the file or directory won't be moved away. Please make also sure that the parent directory and the new directory are writable so the file or directory could be moved.
