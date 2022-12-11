@@ -1,38 +1,5 @@
 You can implement a new panel for managing additional data of a new data domain you've created or for a foreign table editors should be able to administrate. In the first case, you need to [create the manager and item](../../models/managing-items.md) first. To manage a foreign table, you can also use the raw database connection from the [Aimeos context](../../infrastructure/context.md) if you want.
 
-# Factory class
-
-First you need to create a `Factory.php` class in the `./admin/jqadm/src/Admin/JQAdm/Mypanel/` directory. It's reponsible for instantiating the panel class, allows replacing your class by configuration and add configured decorators to the instantiated object.
-
-Use this example factory and replace `Mypanel` and `mypanel` by the name of your panel. The first character of the name in the namespace and classname part must be upper case, all other occurences must be in lower case.
-
-```php
-namespace Aimeos\Admin\JQAdm\Mypanel;
-
-class Factory
-    extends \Aimeos\Admin\JQAdm\Common\Factory\Base
-    implements \Aimeos\Admin\JQAdm\Common\Factory\Iface
-{
-    public static function create( \Aimeos\MShop\Context\Item\Iface $context, string $name = null ) : \Aimeos\Admin\JQAdm\Iface
-    {
-        if( $name === null ) {
-            $name = $context->config()->get( 'admin/jqadm/mypanel/name', 'Standard' );
-        }
-
-        $iface = '\\Aimeos\\Admin\\JQAdm\\Iface';
-        $classname = '\\Aimeos\\Admin\\JQAdm\\Mypanel\\' . $name;
-
-        if( ctype_alnum( $name ) === false ) {
-            throw new \Aimeos\Admin\JQAdm\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
-        }
-
-        $client = self::createAdmin( $context, $classname, $iface );
-
-        return self::addClientDecorators( $context, $client, 'mypanel' );
-    }
-}
-```
-
 # Class structure
 
 The panel class will do the real work. Create a `Standard.php` class in the `./admin/jqadm/src/Admin/JQAdm/Mypanel/` directory like this skeleton class. Also, replace `Mypanel` and `mypanel` by the name of your panel like in the factory class.
