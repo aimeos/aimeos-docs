@@ -6,14 +6,32 @@ admin/cache
 admin/log
 : Remove old log entries
 
+attribute/import/xml
+: Import attributes from XML files
+
+catalog/export/sitemap
+: Create a sitemap for categories
+
 catalog/import/csv
 : Import categories from CSV files
+
+catalog/import/xml
+: Import categories from XML files
+
+coupon/import/csv/code
+: Import coupon codes from CSV files
 
 customer/email/account
 : Create new customer accounts and send e-mails
 
 customer/email/watch
 : Customer notification e-mails on product updates
+
+customer/group/import/xml
+: Import customer groups from XML files
+
+customer/import/xml
+: Import customers from XML files
 
 index/optimize
 : Optimize the product index for fastest access
@@ -51,6 +69,12 @@ order/service/delivery
 order/service/payment
 : Capture authorized payments
 
+order/service/transfer
+: Transfer money of completed orders to connected accounts in payment gateways
+
+order/status/csv
+: Import order status values from CSV files
+
 product/bought
 : Automatically generated product suggestions
 
@@ -63,17 +87,32 @@ product/export/sitemap
 product/import/csv
 : Import products from CSV files
 
+product/import/xml
+: Import products from XML files
+
+stock/import/csv
+: Import product stock levels from CSV files
+
 subscription/export/csv
 : Export subscriptions in admin interface
 
 subscription/process/begin
 : Start subscription period and add permissions if applicable
 
+subscription/process/end
+: Finish subscription period and revoke permissions if applicable
+
 subscription/process/renew
 : Renew subscriptions on next date
 
-subscription/process/end
-: Finish subscription period and revoke permissions if applicable
+supplier/import/csv
+: Import suppliers from CSV files
+
+supplier/import/xml
+: Import suppliers from XML files
+
+xml/import
+: Import all XML files and rebuild product index
 
 Each application and framework offers means to execute them directly:
 
