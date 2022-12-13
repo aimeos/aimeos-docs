@@ -35,7 +35,7 @@ Furthermore, you have to add a *repositories* section to the `composer.json` of 
 Finally, install your theme using:
 
 ```
-composer req aimeos-extensions/<mytheme>
+composer req aimeos-themes/<mytheme>
 ```
 
 # Custom templates
