@@ -5,13 +5,13 @@ Most of the time, you already have an ERP system which manages all your products
 
 # Available configuration
 
-[controller/jobs/catalog/import/xml/backup](../config/controller-jobs/catalog-import#backup)
+[controller/jobs/catalog/import/xml/backup](../config/controller-jobs/catalog-import.md#backup)
 : Directory for storing imported files
 
-[controller/jobs/catalog/import/xml/domains](../config/controller-jobs/catalog-import#domains)
+[controller/jobs/catalog/import/xml/domains](../config/controller-jobs/catalog-import.md#domains)
 : List of domain names that should be retrieved along with the catalog items
 
-[controller/jobs/catalog/import/xml/location](../config/controller-jobs/catalog-import#location)
+[controller/jobs/catalog/import/xml/location](../config/controller-jobs/catalog-import.md#location)
 : Path to the directory with the XML files
 
 # Structure
