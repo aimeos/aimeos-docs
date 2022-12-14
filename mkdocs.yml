@@ -158,6 +158,7 @@ nav:
     - Category CSV import: cronjobs/catalog-csv-import.md
     - Attribute XML import: cronjobs/attribute-xml-import.md
     - Category XML import: cronjobs/catalog-xml-import.md
+    - Customer XML import: cronjobs/customer-xml-import.md
     - Create job controller: cronjobs/create-job-controller.md
     - Subscription processors: cronjobs/subscription-processors.md
   - Models:
