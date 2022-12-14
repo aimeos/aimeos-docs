@@ -154,10 +154,11 @@ nav:
       - Error handling: admin/jsonadm/error-handling.md
   - Cronjobs:
     - Available cronjobs: cronjobs/index.md
-    - Create job controller: cronjobs/create-job-controller.md
     - Product CSV import: cronjobs/product-csv-import.md
     - Category CSV import: cronjobs/catalog-csv-import.md
     - Attribute XML import: cronjobs/attribute-xml-import.md
+    - Category XML import: cronjobs/catalog-xml-import.md
+    - Create job controller: cronjobs/create-job-controller.md
     - Subscription processors: cronjobs/subscription-processors.md
   - Models:
     - Managing items: models/managing-items.md
