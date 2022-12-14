@@ -5,16 +5,16 @@ Most of the time, you already have an ERP system which manages all your products
 
 # Available configuration
 
-[controller/jobs/attribute/import/xml/backup](../config/controller-jobs/attribute-import#backup)
+[controller/jobs/attribute/import/xml/backup](../config/controller-jobs/attribute-import.md#backup)
 : Directory for storing imported files
 
-[controller/jobs/attribute/import/xml/domains](../config/controller-jobs/attribute-import#domains)
+[controller/jobs/attribute/import/xml/domains](../config/controller-jobs/attribute-import.md#domains)
 : List of domain names that should be retrieved along with the attribute items
 
-[controller/jobs/attribute/import/xml/location](../config/controller-jobs/attribute-import#location)
+[controller/jobs/attribute/import/xml/location](../config/controller-jobs/attribute-import.md#location)
 : Path to the directory with the XML files
 
-[controller/jobs/attribute/import/xml/max-query](../config/controller-jobs/attribute-import#max-query)
+[controller/jobs/attribute/import/xml/max-query](../config/controller-jobs/attribute-import.md#max-query)
 : Maximum number of XML nodes processed at once
 
 # Structure
