@@ -2,46 +2,13 @@ These tasks are implemented as job controllers, PHP classes which can be execute
 
 # Location
 
-The job implementations are grouped together, e.g. all administrative tasks are located in the "Admin" sub-directory of the *controller/jobs/src/Controller/Jobs* directory in the ai-controller-jobs extension. All order related jobs can be found in the "Order" sub-directory.
+The job implementations are grouped together, e.g. all administrative tasks are located in the "Admin" sub-directory of the *src/Controller/Jobs* directory in the ai-controller-jobs extension. All order related jobs can be found in the "Order" sub-directory.
 
 Depending on the type of task you need to implement, e.g if it depends on another one like the "product/export/sitemap" job controller, you may place your implementation in a sub-directory of one of the existing directories.
 
-The first part of the job controller key (e.g. "product" in "product/export") corresponds to the domain of the managers in the *lib/mshoplib/src* directory of the Aimeos core. The term "domain" refers all classes that care about the same kind of data like the "order" domain for all order related data: Ordered products, customer addresses, used delivery and payment in orders and basic order information.
+The first part of the job controller key (e.g. "product" in "product/export") corresponds to the domain of the managers in the *src/MShop* directory of the Aimeos core. The term "domain" refers all classes that care about the same kind of data like the "order" domain for all order related data: Ordered products, customer addresses, used delivery and payment in orders and basic order information.
 
 If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *Controller/Jobs/Media* and then call it by pressing the "media/..." key.
-
-# Factory
-
-If you create a new job controller that doesn't extend an existing one, you need to implement a factory that cares about creating the job controller object. It will also wrap the decorators around if there are any configured. The factory only contains the static `create()` method with those few lines:
-
-```php
-namespace Aimeos\Controller\Jobs\Product\Export;
-
-class Factory
-    extends \Aimeos\Controller\Jobs\Common\Factory\Base
-    implements \Aimeos\Controller\Jobs\Common\Factory\Iface
-{
-    public static function create( \Aimeos\MShop\Context\Item\Iface $context, \Aimeos\Bootstrap $aimeos, string $name = null ) : \Aimeos\Controller\Jobs\Iface
-    {
-        if( $name === null ) {
-            $name = $context->config()->get( 'controller/jobs/product/export/name', 'Standard' );
-        }
-
-        $iface = '\\Aimeos\\Controller\\Jobs\\Iface';
-        $classname = '\\Aimeos\\Controller\\Jobs\\Product\\Export\\' . $name;
-
-        if( ctype_alnum( $name ) === false ) {
-            throw new \Aimeos\Controller\Jobs\Exception( sprintf( 'Invalid characters in class name "%1$s"', $classname ) );
-        }
-
-        $controller = self::createController( $context, $aimeos, $classname, $iface );
-
-        return self::addControllerDecorators( $context, $aimeos, $controller, 'product/export' );
-    }
-}
-```
-
-The example is from the product export job controller. You need to replace all occurrences of "product", "Product", "export" and "Export" by the names that match your directories below *controller/jobs/src/Controller/Jobs/* in your Aimeos extension. If you want more than two levels, e.g. "product/export/sitemap", please extend the namespace, paths and class names by that last part.
 
 # Skeleton
 
