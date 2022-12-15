@@ -47,23 +47,6 @@ Most of the time, you already have an ERP system which manages all your products
     <!-- Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the product is available to -->
     <product.dateend><![CDATA[2000-01-01T23:59:59]]></product.dateend>
 
-    <catalog>
-      <!-- lists.type: Optional, possible values: "default" (default) or any other available list type -->
-      <!-- lists.config: Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
-      <!-- lists.position: Optional, position of the text if multiple items are available for the the same text type and list type -->
-      <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
-      <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
-      <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
-      <catalogitem ref="CATEGORY-CODE" lists.type="default">
-      <catalogitem ref="CATEGORY-CODE-2"
-        lists.type="promotion"
-        lists.config="{&quot;key&quot;: &quot;value&quot;}"
-        lists.position="0"
-        lists.status="1"
-        lists.datestart="2000-01-01T00:00:00"
-        lists.dateend="2000-01-01T23:59:59">
-    </catalog>
-
     <!-- Optional, items associated to the product -->
     <lists>
 
@@ -374,6 +357,27 @@ Most of the time, you already have an ERP system which manages all your products
 
       </attribute>
 
+      <!-- Optional, list of catalog items -->
+      <catalog>
+
+        <!-- ref: Required, unique catalog code -->
+        <!-- lists.type: Optional, possible values: "default" and "promotion" (promotional products) -->
+        <!-- lists.config: Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
+        <!-- lists.position: Optional, position of the text if multiple items are available for the the same text type and list type -->
+        <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
+        <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
+        <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
+        <catalogitem ref="CATALOG-CODE"
+          lists.type="default"
+          lists.config="{&quot;key&quot;: &quot;value&quot;}"
+          lists.position="0"
+          lists.status="1"
+          lists.datestart="2000-01-01T00:00:00"
+          lists.dateend="2000-01-01T23:59:59" />
+        <!-- more catalog items -->
+
+      </catalog>
+
       <!-- Optional, list of product items -->
       <product>
 
@@ -394,6 +398,27 @@ Most of the time, you already have an ERP system which manages all your products
         <!-- more product items -->
 
       </product>
+
+      <!-- Optional, list of supplier items -->
+      <supplier>
+
+        <!-- ref: Required, unique supplier code -->
+        <!-- lists.type: Optional, possible values: "default" -->
+        <!-- lists.config: Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
+        <!-- lists.position: Optional, position of the text if multiple items are available for the the same text type and list type -->
+        <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
+        <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
+        <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
+        <supplieritem ref="SUPPLIER-CODE"
+          lists.type="default"
+          lists.config="{&quot;key&quot;: &quot;value&quot;}"
+          lists.position="0"
+          lists.status="1"
+          lists.datestart="2000-01-01T00:00:00"
+          lists.dateend="2000-01-01T23:59:59" />
+        <!-- more supplier items -->
+
+      </supplier>
 
       <!-- Optional, list of customer items -->
       <customer>
