@@ -1,4 +1,12 @@
-A shop needs to execute several tasks in an asynchronous manner, like sending out e-mails, importing or exporting data as well as rebuilding indexes. The tasks included in Aimeos that can be referred to by these keys:
+A shop needs to execute several tasks in an asynchronous manner, like sending out e-mails, importing or exporting data as well as rebuilding indexes.
+
+!!! note
+    Each application and framework offers means to execute them directly:
+
+    * [Laravel](../laravel/setup.md#cronjobs)
+    * [TYPO3](../typo3/setup.md#scheduler)
+
+The tasks included in Aimeos that can be referred to by these keys:
 
 admin/cache
 : Remove old cache entries
@@ -37,7 +45,7 @@ index/optimize
 : Optimize the product index for fastest access
 
 index/rebuild
-: Rebuilds the product index)
+: Rebuilds the product index
 
 media/scale
 : rescales the product images to the new sizes
@@ -113,8 +121,3 @@ supplier/import/xml
 
 xml/import
 : Import all XML files and rebuild product index
-
-Each application and framework offers means to execute them directly:
-
-* [Laravel](../laravel/setup.md#cronjobs)
-* [TYPO3](../typo3/setup.md#scheduler)
