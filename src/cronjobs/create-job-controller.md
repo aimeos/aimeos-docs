@@ -2,13 +2,23 @@ These tasks are implemented as job controllers, PHP classes which can be execute
 
 # Location
 
-The job implementations are grouped together, e.g. all administrative tasks are located in the "Admin" sub-directory of the *src/Controller/Jobs* directory in the ai-controller-jobs extension. All order related jobs can be found in the "Order" sub-directory.
+The job implementations are grouped together, e.g. all administrative tasks are located in the "Admin" sub-directory of the *./src/Controller/Jobs/* directory in the ai-controller-jobs extension. All order related jobs can be found in the "Order" sub-directory, i.e.
 
-Depending on the type of task you need to implement, e.g if it depends on another one like the "product/export/sitemap" job controller, you may place your implementation in a sub-directory of one of the existing directories.
+```
+./src/Controller/Jobs/Admin/
+./src/Controller/Jobs/Product/
+./src/Controller/Jobs/Order/
+```
+
+Depending on the type of task you need to implement, e.g if it uses code from another one like the "product/export" job controller, you may place your implementation in a sub-directory in your own project-specific [Aimeos extension](../developer/extensions.md):
+
+```
+./src/Controller/Jobs/Product/Export/Sitemap/ -> product/export/sitemap
+```
 
 The first part of the job controller key (e.g. "product" in "product/export") corresponds to the domain of the managers in the *src/MShop* directory of the Aimeos core. The term "domain" refers all classes that care about the same kind of data like the "order" domain for all order related data: Ordered products, customer addresses, used delivery and payment in orders and basic order information.
 
-If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *Controller/Jobs/Media* and then call it by pressing the "media/..." key.
+If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *./src/Controller/Jobs/Media/* and then call it by pressing the "media/..." key.
 
 # Skeleton
 
