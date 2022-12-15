@@ -1,7 +1,7 @@
 Most of the time, you already have an CRM system which manages all your customers and most of the information required to create user accounts in your shop are stored there. In this case, most often you want to bulk import the customer information from the CRM system into your shop and update it regularly. You can use the customer import job controller for XML files to import/update the customers.
 
 !!! note
-  The customer import is triggered via a cronjob/scheduler that executes the "customer/import/xml" job controller.
+    The customer import is triggered via a cronjob/scheduler that executes the "customer/import/xml" job controller.
 
 # Available configuration
 

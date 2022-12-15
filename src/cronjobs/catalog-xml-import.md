@@ -1,7 +1,7 @@
 Most of the time, you already have an ERP system which manages all your products and most of the information required to fill your shop are stored there. In this case, most often you want to bulk import the categories information from the ERP system into your shop and update it regularly. You can use the category import job controller for XML files to import/update the categories.
 
 !!! note
-  The category import is triggered via a cronjob/scheduler that executes the "catalog/import/xml" job controller.
+    The category import is triggered via a cronjob/scheduler that executes the "catalog/import/xml" job controller.
 
 # Available configuration
 
