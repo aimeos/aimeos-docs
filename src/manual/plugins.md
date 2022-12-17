@@ -129,6 +129,12 @@ total-value-max (optional)
 
 The plug-in checks if the price of the products the customer would like to order have changed. If this is the case, the customer is informed about the price update in his basket. This plug-in is applied in the basket and at the end of the checkout process. It doesn't have any options.
 
+warn (optional, default=0)
+: Display a hint to the customer that the price of a product has been changed
+
+ignore-modified (optional, default=1)
+: Ignore order items with a modified price, e.g. by another plugin
+
 
 ## ProductStock
 
