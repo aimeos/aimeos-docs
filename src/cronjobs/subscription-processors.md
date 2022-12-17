@@ -4,10 +4,10 @@ When a customer has bought a product including a subscription interval, you can 
 
 These processors are included in the Aimeos core:
 
-* [Cgroup](https://github.com/aimeos/ai-controller-jobs/blob/master/controller/common/src/Controller/Common/Subscription/Process/Processor/Cgroup/Standard.php)
+[Cgroup](https://github.com/aimeos/ai-controller-jobs/blob/master/controller/common/src/Controller/Common/Subscription/Process/Processor/Cgroup/Standard.php)
 : Add/remove user groups from customer account
 
-* [Email](https://github.com/aimeos/ai-client-html/blob/master/controller/common/src/Controller/Common/Subscription/Process/Processor/Email/Standard.php)
+[Email](https://github.com/aimeos/ai-client-html/blob/master/controller/common/src/Controller/Common/Subscription/Process/Processor/Email/Standard.php)
 : Send e-mails to customers if subscription renewal fails
 
 By default, no processor is used by the subscription job controllers. To add the *Cgroup* processor for example, you have to use this configuration option:
