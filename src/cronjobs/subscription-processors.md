@@ -118,19 +118,13 @@ class Standard
 
 You can remove each method you don't want to implement because there are default implementations available in the base class in this case.
 
-Each method receives the [subscription item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Subscription/Item/Iface.php) as first parameter. It contains the IDs of the original order and the subscription product. You can load the complete order using:
+Each method receives the [subscription item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Subscription/Item/Iface.php) as first parameter. It contains the IDs of the original order and the subscription product. You can get the complete order using:
 
 ```php
-$manager = \Aimeos\MShop::create( $context, 'order/base' );
-$order = $manager->load( $subscription->getOrderBaseId() );
+$order = $subscriptionItem->getOrder();
 ```
 
-The `renew()` method also receives the new [order item](https://github.com/aimeos/aimeos-core/blob/master/lib/mshoplib/src/MShop/Order/Item/Iface.php) that is created by job controller. You can use it to load the newly created order too:
-
-```php
-$manager = \Aimeos\MShop::create( $context, 'order/base' );
-$order = $manager->load( $order->getBaseId() );
-```
+The `renew()` method also receives the new [order item](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Order/Item/Iface.php) that is created by job controller.
 
 # Unit tests
 

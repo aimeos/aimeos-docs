@@ -31,7 +31,7 @@ The first step to create an order is to persist the basket of the customer. This
     });
     ```
 
-The response will then contain a basket ID value which is equivalent to the "order.base.id" attribute. Furthermore, it contains the link to create the order invoice in **response['links']['order']['href']**:
+The response will then contain a basket ID value which is equivalent to the "order.id" attribute. Furthermore, it contains the link to create the order invoice in **response['links']['order']['href']**:
 
 ```json
 {
@@ -60,16 +60,16 @@ The response will then contain a basket ID value which is equivalent to the "ord
             }
         },
         "attributes": {
-            "order.base.id": "123",
-            "order.base.customerid": "321",
-            "order.base.sitecode": "default",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "1.00",
-            "order.base.costs": "0.00",
-            "order.base.rebate": "0.00",
-            "order.base.status": 0,
-            "order.base.comment": "just a comment"
+            "order.id": "123",
+            "order.customerid": "321",
+            "order.sitecode": "default",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "1.00",
+            "order.costs": "0.00",
+            "order.rebate": "0.00",
+            "order.status": 0,
+            "order.comment": "just a comment"
         },
         "relationships": {
         }
@@ -86,7 +86,7 @@ To mitigate DoS attacks, you can only create a limited number of orders from one
 
 # Create order invoice
 
-After saving the basket, you need to create an order invoice. For this, you must send a POST request to the "order" link listed in the response of the saved basket. In that request, the ID of the saved basket needs to be added as "order.baseid" value within the parameters sent with the POST request:
+After saving the basket, you need to create an order invoice. For this, you must send a POST request to the "order" link listed in the response of the saved basket. In that request, the ID of the saved basket needs to be added as "order.parentid" value within the parameters sent with the POST request:
 
 === "CURL"
     ```bash
@@ -95,7 +95,7 @@ After saving the basket, you need to create an order invoice. For this, you must
     -H 'Content-Type: application/json' \
     -d '{"data": {
         "attributes": {
-            "order.baseid": "..."
+            "order.parentid": "..."
         }
     }}'
     ```
@@ -103,7 +103,7 @@ After saving the basket, you need to create an order invoice. For this, you must
     ```javascript
     var params = {'data': {
         'attributes': {
-            "order.baseid": response["data"]["id"], // generated ID returned in the basket POST response
+            "order.parentid": response["data"]["id"], // generated ID returned in the basket POST response
         }
     }};
 
@@ -169,10 +169,10 @@ The response will contain the data of the created order invoice item as well as 
         },
         "attributes": {
             "order.id": "321",
-            "order.baseid": "123",
+            "order.parentid": "123",
             "order.statusdelivery": -1,
             "order.statuspayment": -1,
-            "order.base.currencyid": "EUR",
+            "order.currencyid": "EUR",
             "order.datepayment": "2000-01-01 00:00:00",
             "order.datedelivery": null,
             "order.relatedid": null
@@ -277,19 +277,19 @@ Then, you can retrieve the list of orders using the "order" endpoint:
 To retrieve a single order only, you need to use the "self" link of the order item returned by the previous response. You can get the full order details by passing:
 
 ```
-order/base,order/base/address,order/base/coupon,order/base/product,order/base/service
+order/address,order/coupon,order/product,order/service
 ```
 
 as *include* parameter:
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/order?id=...&include=order/base,order/base/address,order/base/coupon,order/base/product,order/base/service'
+    curl -X GET 'http://localhost:8000/jsonapi/order?id=...&include=order/address,order/coupon,order/product,order/service'
     ```
 === "jQuery"
     ```javascript
     var args = {
-        include: "order/base,order/base/address,order/base/coupon,order/base/product,order/base/service"
+        include: "order/address,order/coupon,order/product,order/service"
     };
     var params = {};
 

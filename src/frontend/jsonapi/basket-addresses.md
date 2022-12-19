@@ -6,11 +6,11 @@ To add one or more addresses you have to pass the data including the "id" and th
 
 There are some address attributes that are required when adding or replacing an address:
 
-* order.base.address.lastname (last name or full name)
-* order.base.address.address1 (most of the time the street name)
-* order.base.address.city (town or city name)
-* order.base.address.languageid (language the customer prefers)
-* order.base.address.email (account e-mail address)
+* order.address.lastname (last name or full name)
+* order.address.address1 (most of the time the street name)
+* order.address.city (town or city name)
+* order.address.languageid (language the customer prefers)
+* order.address.email (account e-mail address)
 
 The request for creating a new address in the basket could look like this:
 
@@ -22,27 +22,27 @@ The request for creating a new address in the basket could look like this:
     -d '{"data": [{
         "id": "payment",
         "attributes": {
-            "order.base.address.addressid": "...",
-            "order.base.address.salutation": "mr",
-            "order.base.address.company": "Example company",
-            "order.base.address.vatid": "DE123456789",
-            "order.base.address.title": "Dr.",
-            "order.base.address.firstname": "Test",
-            "order.base.address.lastname": "User",
-            "order.base.address.address1": "Test street",
-            "order.base.address.address2": "1",
-            "order.base.address.address3": "",
-            "order.base.address.postal": "12345",
-            "order.base.address.city": "Test city",
-            "order.base.address.state": "HH",
-            "order.base.address.countryid": "DE",
-            "order.base.address.languageid": "de",
-            "order.base.address.telephone": "+4912345678",
-            "order.base.address.telefax": "+49123456789",
-            "order.base.address.email": "test@example.com",
-            "order.base.address.website": "https://example.com",
-            "order.base.address.longitude": 10.0,
-            "order.base.address.latitude": 50.0
+            "order.address.addressid": "...",
+            "order.address.salutation": "mr",
+            "order.address.company": "Example company",
+            "order.address.vatid": "DE123456789",
+            "order.address.title": "Dr.",
+            "order.address.firstname": "Test",
+            "order.address.lastname": "User",
+            "order.address.address1": "Test street",
+            "order.address.address2": "1",
+            "order.address.address3": "",
+            "order.address.postal": "12345",
+            "order.address.city": "Test city",
+            "order.address.state": "HH",
+            "order.address.countryid": "DE",
+            "order.address.languageid": "de",
+            "order.address.telephone": "+4912345678",
+            "order.address.telefax": "+49123456789",
+            "order.address.email": "test@example.com",
+            "order.address.website": "https://example.com",
+            "order.address.longitude": 10.0,
+            "order.address.latitude": 50.0
         }
     }]}'
     ```
@@ -51,27 +51,27 @@ The request for creating a new address in the basket could look like this:
     var params = {'data': [{
         'id': 'payment', // or 'delivery'
         'attributes': {
-            'order.base.address.addressid': '...', // customer address ID (optional)
-            'order.base.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
-            'order.base.address.company': 'Example company', // (optional)
-            'order.base.address.vatid': 'DE123456789', // (optional)
-            'order.base.address.title': 'Dr.', // (optional)
-            'order.base.address.firstname': 'Test', // (optional)
-            'order.base.address.lastname': 'User', // (required)
-            'order.base.address.address1': 'Test street', // (required)
-            'order.base.address.address2': '1', // (optional)
-            'order.base.address.address3': '', // (optional)
-            'order.base.address.postal': '12345', // (optional)
-            'order.base.address.city': 'Test city', // (required)
-            'order.base.address.state': 'HH', // (optional)
-            'order.base.address.countryid': 'DE', // (optional)
-            'order.base.address.languageid': 'de', // (required by many payment gateways)
-            'order.base.address.telephone': '+4912345678', // (optional)
-            'order.base.address.telefax': '+49123456789', // (optional)
-            'order.base.address.email': 'test@example.com', // (required)
-            'order.base.address.website': 'https://example.com', // (optional)
-            'order.base.address.longitude': 10.0, // (optional, float value)
-            'order.base.address.latitude': 50.0 // (optional, float value)
+            'order.address.addressid': '...', // customer address ID (optional)
+            'order.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
+            'order.address.company': 'Example company', // (optional)
+            'order.address.vatid': 'DE123456789', // (optional)
+            'order.address.title': 'Dr.', // (optional)
+            'order.address.firstname': 'Test', // (optional)
+            'order.address.lastname': 'User', // (required)
+            'order.address.address1': 'Test street', // (required)
+            'order.address.address2': '1', // (optional)
+            'order.address.address3': '', // (optional)
+            'order.address.postal': '12345', // (optional)
+            'order.address.city': 'Test city', // (required)
+            'order.address.state': 'HH', // (optional)
+            'order.address.countryid': 'DE', // (optional)
+            'order.address.languageid': 'de', // (required by many payment gateways)
+            'order.address.telephone': '+4912345678', // (optional)
+            'order.address.telefax': '+49123456789', // (optional)
+            'order.address.email': 'test@example.com', // (required)
+            'order.address.website': 'https://example.com', // (optional)
+            'order.address.longitude': 10.0, // (optional, float value)
+            'order.address.latitude': 50.0 // (optional, float value)
         }
     }]};
 
@@ -118,15 +118,15 @@ The response will then contain an additional "relationships" section in the bask
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.customerid": "",
-            "order.base.sitecode": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "0.00",
-            "order.base.costs": "0.00",
-            "order.base.rebate": "0.00",
-            "order.base.comment": ""
+            "order.id": null,
+            "order.customerid": "",
+            "order.sitecode": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "0.00",
+            "order.costs": "0.00",
+            "order.rebate": "0.00",
+            "order.comment": ""
         },
         "relationships": {
             "basket/address": {
@@ -141,30 +141,30 @@ The response will then contain an additional "relationships" section in the bask
         "id": "payment",
         "type": "basket/address",
         "attributes": {
-            "order.base.address.id": null,
-            "order.base.address.addressid": "...",
-            "order.base.address.salutation": "mr",
-            "order.base.address.company": "Example company",
-            "order.base.address.vatid": "DE12345678",
-            "order.base.address.title": "Dr.",
-            "order.base.address.firstname": "Test",
-            "order.base.address.lastname": "User",
-            "order.base.address.address1": "Test street",
-            "order.base.address.address2": "1",
-            "order.base.address.address3": "",
-            "order.base.address.postal": "12345",
-            "order.base.address.city": "Test city",
-            "order.base.address.state": "HH",
-            "order.base.address.countryid": "DE",
-            "order.base.address.languageid": "de",
-            "order.base.address.telephone": "+4912345678",
-            "order.base.address.telefax": "+49123456789",
-            "order.base.address.email": "test@example.com",
-            "order.base.address.website": "https://example.com",
-            "order.base.address.longitude": 10.0,
-            "order.base.address.latitude": 50.0,
-            "order.base.address.position": 0,
-            "order.base.address.type": "payment"
+            "order.address.id": null,
+            "order.address.addressid": "...",
+            "order.address.salutation": "mr",
+            "order.address.company": "Example company",
+            "order.address.vatid": "DE12345678",
+            "order.address.title": "Dr.",
+            "order.address.firstname": "Test",
+            "order.address.lastname": "User",
+            "order.address.address1": "Test street",
+            "order.address.address2": "1",
+            "order.address.address3": "",
+            "order.address.postal": "12345",
+            "order.address.city": "Test city",
+            "order.address.state": "HH",
+            "order.address.countryid": "DE",
+            "order.address.languageid": "de",
+            "order.address.telephone": "+4912345678",
+            "order.address.telefax": "+49123456789",
+            "order.address.email": "test@example.com",
+            "order.address.website": "https://example.com",
+            "order.address.longitude": 10.0,
+            "order.address.latitude": 50.0,
+            "order.address.position": 0,
+            "order.address.type": "payment"
         },
         "links": {
             "self": {
@@ -198,27 +198,27 @@ To update the payment address in the current basket you should use:
     -d '{"data": [{
         "id": "payment",
         "attributes": {
-            "order.base.address.addressid": "...",
-            "order.base.address.salutation": "mr",
-            "order.base.address.company": "Example company",
-            "order.base.address.vatid": "DE123456789",
-            "order.base.address.title": "Dr.",
-            "order.base.address.firstname": "Test",
-            "order.base.address.lastname": "User",
-            "order.base.address.address1": "Test way",
-            "order.base.address.address2": "2",
-            "order.base.address.address3": "",
-            "order.base.address.postal": "54321",
-            "order.base.address.city": "Test town",
-            "order.base.address.state": "HH",
-            "order.base.address.countryid": "DE",
-            "order.base.address.languageid": "de",
-            "order.base.address.telephone": "+4912345678",
-            "order.base.address.telefax": "+49123456789",
-            "order.base.address.email": "test@example.com",
-            "order.base.address.website": "https://example.com",
-            "order.base.address.longitude": 10.0,
-            "order.base.address.latitude": 50.0
+            "order.address.addressid": "...",
+            "order.address.salutation": "mr",
+            "order.address.company": "Example company",
+            "order.address.vatid": "DE123456789",
+            "order.address.title": "Dr.",
+            "order.address.firstname": "Test",
+            "order.address.lastname": "User",
+            "order.address.address1": "Test way",
+            "order.address.address2": "2",
+            "order.address.address3": "",
+            "order.address.postal": "54321",
+            "order.address.city": "Test town",
+            "order.address.state": "HH",
+            "order.address.countryid": "DE",
+            "order.address.languageid": "de",
+            "order.address.telephone": "+4912345678",
+            "order.address.telefax": "+49123456789",
+            "order.address.email": "test@example.com",
+            "order.address.website": "https://example.com",
+            "order.address.longitude": 10.0,
+            "order.address.latitude": 50.0
         }
     }]}'
     ```
@@ -227,27 +227,27 @@ To update the payment address in the current basket you should use:
     var params = {'data': [{
         'id': 'payment', // or 'delivery'
         'attributes': {
-            'order.base.address.addressid': '...', // customer address ID (optional)
-            'order.base.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
-            'order.base.address.company': 'Example company', // (optional)
-            'order.base.address.vatid': 'DE123456789', // (optional)
-            'order.base.address.title': 'Dr.', // (optional)
-            'order.base.address.firstname': 'Test', // (optional)
-            'order.base.address.lastname': 'User', // (required)
-            'order.base.address.address1': 'Test way', // (required)
-            'order.base.address.address2': '2', // (optional)
-            'order.base.address.address3': '', // (optional)
-            'order.base.address.postal': '54321', // (optional)
-            'order.base.address.city': 'Test town', // (required)
-            'order.base.address.state': 'HH', // (optional)
-            'order.base.address.countryid': 'DE', // (optional)
-            'order.base.address.languageid': 'de', // (required by many payment gateways)
-            'order.base.address.telephone': '+4912345678', // (optional)
-            'order.base.address.telefax': '+49123456789', // (optional)
-            'order.base.address.email': 'test@example.com', // (required)
-            'order.base.address.website': 'https://example.com', // (optional)
-            'order.base.address.longitude': 10.0, // (optional, float value)
-            'order.base.address.latitude': 50.0 // (optional, float value)
+            'order.address.addressid': '...', // customer address ID (optional)
+            'order.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
+            'order.address.company': 'Example company', // (optional)
+            'order.address.vatid': 'DE123456789', // (optional)
+            'order.address.title': 'Dr.', // (optional)
+            'order.address.firstname': 'Test', // (optional)
+            'order.address.lastname': 'User', // (required)
+            'order.address.address1': 'Test way', // (required)
+            'order.address.address2': '2', // (optional)
+            'order.address.address3': '', // (optional)
+            'order.address.postal': '54321', // (optional)
+            'order.address.city': 'Test town', // (required)
+            'order.address.state': 'HH', // (optional)
+            'order.address.countryid': 'DE', // (optional)
+            'order.address.languageid': 'de', // (required by many payment gateways)
+            'order.address.telephone': '+4912345678', // (optional)
+            'order.address.telefax': '+49123456789', // (optional)
+            'order.address.email': 'test@example.com', // (required)
+            'order.address.website': 'https://example.com', // (optional)
+            'order.address.longitude': 10.0, // (optional, float value)
+            'order.address.latitude': 50.0 // (optional, float value)
         }
     }]};
 
@@ -296,15 +296,15 @@ The response to this request would be similar to this:
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.customerid": "",
-            "order.base.sitecode": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "0.00",
-            "order.base.costs": "0.00",
-            "order.base.rebate": "0.00",
-            "order.base.comment": ""
+            "order.id": null,
+            "order.customerid": "",
+            "order.sitecode": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "0.00",
+            "order.costs": "0.00",
+            "order.rebate": "0.00",
+            "order.comment": ""
         },
         "relationships": {
             "basket/address": {
@@ -319,30 +319,30 @@ The response to this request would be similar to this:
         "id": "payment",
         "type": "basket/address",
         "attributes": {
-            "order.base.address.id": null,
-            "order.base.address.addressid": "...",
-            "order.base.address.salutation": "mr",
-            "order.base.address.company": "Example company",
-            "order.base.address.vatid": "DE12345678",
-            "order.base.address.title": "Dr.",
-            "order.base.address.firstname": "Test",
-            "order.base.address.lastname": "User",
-            "order.base.address.address1": "Test way",
-            "order.base.address.address2": "2",
-            "order.base.address.address3": "",
-            "order.base.address.postal": "54321",
-            "order.base.address.city": "Test town",
-            "order.base.address.state": "HH",
-            "order.base.address.countryid": "DE",
-            "order.base.address.languageid": "de",
-            "order.base.address.telephone": "+4912345678",
-            "order.base.address.telefax": "+49123456789",
-            "order.base.address.email": "test@example.com",
-            "order.base.address.website": "https://example.com",
-            "order.base.address.longitude": 10.0,
-            "order.base.address.latitude": 50.0,
-            "order.base.address.position": 0,
-            "order.base.address.type": "payment"
+            "order.address.id": null,
+            "order.address.addressid": "...",
+            "order.address.salutation": "mr",
+            "order.address.company": "Example company",
+            "order.address.vatid": "DE12345678",
+            "order.address.title": "Dr.",
+            "order.address.firstname": "Test",
+            "order.address.lastname": "User",
+            "order.address.address1": "Test way",
+            "order.address.address2": "2",
+            "order.address.address3": "",
+            "order.address.postal": "54321",
+            "order.address.city": "Test town",
+            "order.address.state": "HH",
+            "order.address.countryid": "DE",
+            "order.address.languageid": "de",
+            "order.address.telephone": "+4912345678",
+            "order.address.telefax": "+49123456789",
+            "order.address.email": "test@example.com",
+            "order.address.website": "https://example.com",
+            "order.address.longitude": 10.0,
+            "order.address.latitude": 50.0,
+            "order.address.position": 0,
+            "order.address.type": "payment"
         },
         "links": {
             "self": {

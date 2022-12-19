@@ -8,7 +8,7 @@ Collapse all lines in the subscription export on only one line
 controller/jobs/subscription/export/csv/collapse = 1
 ```
 
-* Default: 
+* Default:
 * Type: bool - True to collapse all lines of one subscription, false for separate lines
 * Since: 2020.07
 
@@ -99,10 +99,10 @@ See also:
 Excludes decorators added by the "common" option from the subscription export CSV job controller
 
 ```
-controller/jobs/subscription/export/csv/decorators/excludes = 
+controller/jobs/subscription/export/csv/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -134,10 +134,10 @@ See also:
 Adds a list of globally available decorators only to the subscription export CSV job controller
 
 ```
-controller/jobs/subscription/export/csv/decorators/global = 
+controller/jobs/subscription/export/csv/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -167,10 +167,10 @@ See also:
 Adds a list of local decorators only to the subscription export CSV job controller
 
 ```
-controller/jobs/subscription/export/csv/decorators/local = 
+controller/jobs/subscription/export/csv/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -237,14 +237,14 @@ controller/jobs/subscription/export/csv/mapping = Array
 
     [address] => Array
         (
-            [3] => order.base.address.firstname
-            [4] => order.base.address.lastname
+            [3] => order.address.firstname
+            [4] => order.address.lastname
         )
 
     [product] => Array
         (
-            [5] => order.base.product.prodcode
-            [6] => order.base.product.price
+            [5] => order.product.prodcode
+            [6] => order.product.price
         )
 
 )
@@ -265,49 +265,49 @@ controller/jobs/subscription/export/csv/mapping = Array
 
     [address] => Array
         (
-            [2] => order.base.address.type
-            [3] => order.base.address.salutation
-            [4] => order.base.address.company
-            [5] => order.base.address.vatid
-            [6] => order.base.address.title
-            [7] => order.base.address.firstname
-            [8] => order.base.address.lastname
-            [9] => order.base.address.address1
-            [10] => order.base.address.address2
-            [11] => order.base.address.address3
-            [12] => order.base.address.postal
-            [13] => order.base.address.city
-            [14] => order.base.address.state
-            [15] => order.base.address.countryid
-            [16] => order.base.address.languageid
-            [17] => order.base.address.telephone
-            [18] => order.base.address.telefax
-            [19] => order.base.address.email
-            [20] => order.base.address.website
-            [21] => order.base.address.longitude
-            [22] => order.base.address.latitude
+            [2] => order.address.type
+            [3] => order.address.salutation
+            [4] => order.address.company
+            [5] => order.address.vatid
+            [6] => order.address.title
+            [7] => order.address.firstname
+            [8] => order.address.lastname
+            [9] => order.address.address1
+            [10] => order.address.address2
+            [11] => order.address.address3
+            [12] => order.address.postal
+            [13] => order.address.city
+            [14] => order.address.state
+            [15] => order.address.countryid
+            [16] => order.address.languageid
+            [17] => order.address.telephone
+            [18] => order.address.telefax
+            [19] => order.address.email
+            [20] => order.address.website
+            [21] => order.address.longitude
+            [22] => order.address.latitude
         )
 
     [product] => Array
         (
-            [2] => order.base.product.type
-            [3] => order.base.product.stocktype
-            [4] => order.base.product.vendor
-            [5] => order.base.product.prodcode
-            [6] => order.base.product.productid
-            [7] => order.base.product.quantity
-            [8] => order.base.product.name
-            [9] => order.base.product.mediaurl
-            [10] => order.base.product.price
-            [11] => order.base.product.costs
-            [12] => order.base.product.rebate
-            [13] => order.base.product.taxrate
-            [14] => order.base.product.status
-            [15] => order.base.product.position
-            [16] => order.base.product.attribute.type
-            [17] => order.base.product.attribute.code
-            [18] => order.base.product.attribute.name
-            [19] => order.base.product.attribute.value
+            [2] => order.product.type
+            [3] => order.product.stocktype
+            [4] => order.product.vendor
+            [5] => order.product.prodcode
+            [6] => order.product.productid
+            [7] => order.product.quantity
+            [8] => order.product.name
+            [9] => order.product.mediaurl
+            [10] => order.product.price
+            [11] => order.product.costs
+            [12] => order.product.rebate
+            [13] => order.product.taxrate
+            [14] => order.product.status
+            [15] => order.product.position
+            [16] => order.product.attribute.type
+            [17] => order.product.attribute.code
+            [18] => order.product.attribute.name
+            [19] => order.product.attribute.value
         )
 
 )
@@ -329,10 +329,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/export/csv/name = 
+controller/jobs/subscription/export/csv/name =
 ```
 
-* Default: 
+* Default:
 * Type: string - Last part of the class name
 * Since: 2018.04
 

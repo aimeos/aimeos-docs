@@ -27,10 +27,10 @@ be relative to the templates/ folder, e.g. "partials/data".
 Relative path to the data partial template file for the locale site  client
 
 ```
-admin/jsonadm/partials/locale/site/template-data = 
+admin/jsonadm/partials/locale/site/template-data =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template file
 * Since: 2016.07
 
@@ -65,27 +65,6 @@ be relative to the templates/ folder, e.g. "partials/included".
 
 
 # order
-## base/template-data
-
-Relative path to the data partial template file for the order base client
-
-```
-admin/jsonadm/partials/order/base/template-data = partials/order/base/data
-```
-
-* Default: partials/data
-* Type: string - Relative path to the template file
-* Since: 2016.01
-
-Partials are templates which are reused in other templates and generate
-reoccuring blocks filled with data from the assigned values. The data
-partial creates the "data" part for the JSON API response.
-
-The partial template files are usually stored in the templates/partials/ folder
-of the core or the extensions. The configured path to the partial file must
-be relative to the templates/ folder, e.g. "partials/data".
-
-
 ## template-data
 
 Relative path to the data partial template file for the order client

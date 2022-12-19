@@ -33,10 +33,10 @@ client/html/checkout/standard/address/billing/decorators/local = Array
 Disables the option to enter a new billing address for an order
 
 ```
-client/html/checkout/standard/address/billing/disable-new = 
+client/html/checkout/standard/address/billing/disable-new =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - A value of "1" to disable, "0" enables the billing address form
 * Since: 2015.02
 
@@ -75,23 +75,23 @@ You can configure the list of billing address fields that
 are hidden when a customer enters his new billing address.
 Available field keys are:
 
-* order.base.address.company
-* order.base.address.vatid
-* order.base.address.salutation
-* order.base.address.firstname
-* order.base.address.lastname
-* order.base.address.address1
-* order.base.address.address2
-* order.base.address.address3
-* order.base.address.postal
-* order.base.address.city
-* order.base.address.state
-* order.base.address.languageid
-* order.base.address.countryid
-* order.base.address.telephone
-* order.base.address.telefax
-* order.base.address.email
-* order.base.address.website
+* order.address.company
+* order.address.vatid
+* order.address.salutation
+* order.address.firstname
+* order.address.lastname
+* order.address.address1
+* order.address.address2
+* order.address.address3
+* order.address.postal
+* order.address.city
+* order.address.state
+* order.address.languageid
+* order.address.countryid
+* order.address.telephone
+* order.address.telefax
+* order.address.email
+* order.address.website
 
 Caution: Only hide fields that don't require any input
 
@@ -114,25 +114,25 @@ List of billing address input fields that are required
 ```
 client/html/checkout/standard/address/billing/mandatory = Array
 (
-    [0] => order.base.address.firstname
-    [1] => order.base.address.lastname
-    [2] => order.base.address.address1
-    [3] => order.base.address.postal
-    [4] => order.base.address.city
-    [5] => order.base.address.languageid
-    [6] => order.base.address.email
+    [0] => order.address.firstname
+    [1] => order.address.lastname
+    [2] => order.address.address1
+    [3] => order.address.postal
+    [4] => order.address.city
+    [5] => order.address.languageid
+    [6] => order.address.email
 )
 ```
 
 * Default: Array
 (
-    [0] => order.base.address.firstname
-    [1] => order.base.address.lastname
-    [2] => order.base.address.address1
-    [3] => order.base.address.postal
-    [4] => order.base.address.city
-    [5] => order.base.address.languageid
-    [6] => order.base.address.email
+    [0] => order.address.firstname
+    [1] => order.address.lastname
+    [2] => order.address.address1
+    [3] => order.address.postal
+    [4] => order.address.city
+    [5] => order.address.languageid
+    [6] => order.address.email
 )
 
 * Type: array - List of field keys
@@ -142,23 +142,23 @@ You can configure the list of billing address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
 
-* order.base.address.company
-* order.base.address.vatid
-* order.base.address.salutation
-* order.base.address.firstname
-* order.base.address.lastname
-* order.base.address.address1
-* order.base.address.address2
-* order.base.address.address3
-* order.base.address.postal
-* order.base.address.city
-* order.base.address.state
-* order.base.address.languageid
-* order.base.address.countryid
-* order.base.address.telephone
-* order.base.address.telefax
-* order.base.address.email
-* order.base.address.website
+* order.address.company
+* order.address.vatid
+* order.address.salutation
+* order.address.firstname
+* order.address.lastname
+* order.address.address1
+* order.address.address2
+* order.address.address3
+* order.address.postal
+* order.address.city
+* order.address.state
+* order.address.languageid
+* order.address.countryid
+* order.address.telephone
+* order.address.telefax
+* order.address.email
+* order.address.website
 
 Until 2015-02, the configuration option was available as
 "client/html/common/address/billing/mandatory" starting from 2014-03.
@@ -196,23 +196,23 @@ List of billing address input fields that are optional
 ```
 client/html/checkout/standard/address/billing/optional = Array
 (
-    [0] => order.base.address.salutation
-    [1] => order.base.address.company
-    [2] => order.base.address.vatid
-    [3] => order.base.address.address2
-    [4] => order.base.address.countryid
-    [5] => order.base.address.state
+    [0] => order.address.salutation
+    [1] => order.address.company
+    [2] => order.address.vatid
+    [3] => order.address.address2
+    [4] => order.address.countryid
+    [5] => order.address.state
 )
 ```
 
 * Default: Array
 (
-    [0] => order.base.address.salutation
-    [1] => order.base.address.company
-    [2] => order.base.address.vatid
-    [3] => order.base.address.address2
-    [4] => order.base.address.countryid
-    [5] => order.base.address.state
+    [0] => order.address.salutation
+    [1] => order.address.company
+    [2] => order.address.vatid
+    [3] => order.address.address2
+    [4] => order.address.countryid
+    [5] => order.address.state
 )
 
 * Type: array - List of field keys
@@ -222,23 +222,23 @@ You can configure the list of billing address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
 
-* order.base.address.company
-* order.base.address.vatid
-* order.base.address.salutation
-* order.base.address.firstname
-* order.base.address.lastname
-* order.base.address.address1
-* order.base.address.address2
-* order.base.address.address3
-* order.base.address.postal
-* order.base.address.city
-* order.base.address.state
-* order.base.address.languageid
-* order.base.address.countryid
-* order.base.address.telephone
-* order.base.address.telefax
-* order.base.address.email
-* order.base.address.website
+* order.address.company
+* order.address.vatid
+* order.address.salutation
+* order.address.firstname
+* order.address.lastname
+* order.address.address1
+* order.address.address2
+* order.address.address3
+* order.address.postal
+* order.address.city
+* order.address.state
+* order.address.languageid
+* order.address.countryid
+* order.address.telephone
+* order.address.telefax
+* order.address.email
+* order.address.website
 
 Until 2015-02, the configuration option was available as
 "client/html/common/address/billing/optional" starting from 2014-03.
@@ -260,7 +260,7 @@ List of salutions the customer can select from for the billing address
 ```
 client/html/checkout/standard/address/billing/salutations = Array
 (
-    [0] => 
+    [0] =>
     [1] => mr
     [2] => ms
 )
@@ -268,7 +268,7 @@ client/html/checkout/standard/address/billing/salutations = Array
 
 * Default: Array
 (
-    [0] => 
+    [0] =>
     [1] => mr
     [2] => ms
 )
@@ -301,10 +301,10 @@ See also:
 Relative path to the HTML body template of the checkout standard address billing client.
 
 ```
-client/html/checkout/standard/address/billing/template-body = 
+client/html/checkout/standard/address/billing/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -592,10 +592,10 @@ client/html/checkout/standard/address/countries = Array
 Excludes decorators added by the "common" option from the checkout standard address html client
 
 ```
-client/html/checkout/standard/address/decorators/excludes = 
+client/html/checkout/standard/address/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -731,10 +731,10 @@ client/html/checkout/standard/address/delivery/decorators/local = Array
 Disables the option to enter a different delivery address for an order
 
 ```
-client/html/checkout/standard/address/delivery/disable-new = 
+client/html/checkout/standard/address/delivery/disable-new =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - A value of "1" to disable, "0" enables the delivery address form
 * Since: 2015.02
 
@@ -770,23 +770,23 @@ You can configure the list of delivery address fields that
 are hidden when a customer enters his delivery address.
 Available field keys are:
 
-* order.base.address.company
-* order.base.address.vatid
-* order.base.address.salutation
-* order.base.address.firstname
-* order.base.address.lastname
-* order.base.address.address1
-* order.base.address.address2
-* order.base.address.address3
-* order.base.address.postal
-* order.base.address.city
-* order.base.address.state
-* order.base.address.languageid
-* order.base.address.countryid
-* order.base.address.telephone
-* order.base.address.telefax
-* order.base.address.email
-* order.base.address.website
+* order.address.company
+* order.address.vatid
+* order.address.salutation
+* order.address.firstname
+* order.address.lastname
+* order.address.address1
+* order.address.address2
+* order.address.address3
+* order.address.postal
+* order.address.city
+* order.address.state
+* order.address.languageid
+* order.address.countryid
+* order.address.telephone
+* order.address.telefax
+* order.address.email
+* order.address.website
 
 Caution: Only hide fields that don't require any input
 
@@ -806,23 +806,23 @@ List of delivery address input fields that are required
 ```
 client/html/checkout/standard/address/delivery/mandatory = Array
 (
-    [0] => order.base.address.firstname
-    [1] => order.base.address.lastname
-    [2] => order.base.address.address1
-    [3] => order.base.address.postal
-    [4] => order.base.address.city
-    [5] => order.base.address.languageid
+    [0] => order.address.firstname
+    [1] => order.address.lastname
+    [2] => order.address.address1
+    [3] => order.address.postal
+    [4] => order.address.city
+    [5] => order.address.languageid
 )
 ```
 
 * Default: Array
 (
-    [0] => order.base.address.firstname
-    [1] => order.base.address.lastname
-    [2] => order.base.address.address1
-    [3] => order.base.address.postal
-    [4] => order.base.address.city
-    [5] => order.base.address.languageid
+    [0] => order.address.firstname
+    [1] => order.address.lastname
+    [2] => order.address.address1
+    [3] => order.address.postal
+    [4] => order.address.city
+    [5] => order.address.languageid
 )
 
 * Type: array - List of field keys
@@ -832,23 +832,23 @@ You can configure the list of delivery address fields that are
 necessary and must be filled by the customer before he can
 continue the checkout process. Available field keys are:
 
-* order.base.address.company
-* order.base.address.vatid
-* order.base.address.salutation
-* order.base.address.firstname
-* order.base.address.lastname
-* order.base.address.address1
-* order.base.address.address2
-* order.base.address.address3
-* order.base.address.postal
-* order.base.address.city
-* order.base.address.state
-* order.base.address.languageid
-* order.base.address.countryid
-* order.base.address.telephone
-* order.base.address.telefax
-* order.base.address.email
-* order.base.address.website
+* order.address.company
+* order.address.vatid
+* order.address.salutation
+* order.address.firstname
+* order.address.lastname
+* order.address.address1
+* order.address.address2
+* order.address.address3
+* order.address.postal
+* order.address.city
+* order.address.state
+* order.address.languageid
+* order.address.countryid
+* order.address.telephone
+* order.address.telefax
+* order.address.email
+* order.address.website
 
 See also:
 
@@ -883,23 +883,23 @@ List of delivery address input fields that are optional
 ```
 client/html/checkout/standard/address/delivery/optional = Array
 (
-    [0] => order.base.address.salutation
-    [1] => order.base.address.company
-    [2] => order.base.address.vatid
-    [3] => order.base.address.address2
-    [4] => order.base.address.countryid
-    [5] => order.base.address.state
+    [0] => order.address.salutation
+    [1] => order.address.company
+    [2] => order.address.vatid
+    [3] => order.address.address2
+    [4] => order.address.countryid
+    [5] => order.address.state
 )
 ```
 
 * Default: Array
 (
-    [0] => order.base.address.salutation
-    [1] => order.base.address.company
-    [2] => order.base.address.vatid
-    [3] => order.base.address.address2
-    [4] => order.base.address.countryid
-    [5] => order.base.address.state
+    [0] => order.address.salutation
+    [1] => order.address.company
+    [2] => order.address.vatid
+    [3] => order.address.address2
+    [4] => order.address.countryid
+    [5] => order.address.state
 )
 
 * Type: array - List of field keys
@@ -909,23 +909,23 @@ You can configure the list of delivery address fields that
 customers can fill but don't have to before they can
 continue the checkout process. Available field keys are:
 
-* order.base.address.company
-* order.base.address.vatid
-* order.base.address.salutation
-* order.base.address.firstname
-* order.base.address.lastname
-* order.base.address.address1
-* order.base.address.address2
-* order.base.address.address3
-* order.base.address.postal
-* order.base.address.city
-* order.base.address.state
-* order.base.address.languageid
-* order.base.address.countryid
-* order.base.address.telephone
-* order.base.address.telefax
-* order.base.address.email
-* order.base.address.website
+* order.address.company
+* order.address.vatid
+* order.address.salutation
+* order.address.firstname
+* order.address.lastname
+* order.address.address1
+* order.address.address2
+* order.address.address3
+* order.address.postal
+* order.address.city
+* order.address.state
+* order.address.languageid
+* order.address.countryid
+* order.address.telephone
+* order.address.telefax
+* order.address.email
+* order.address.website
 * nostore
 
 Using the "nostore" field displays the option to avoid storing the
@@ -948,7 +948,7 @@ List of salutions the customer can select from for the delivery address
 ```
 client/html/checkout/standard/address/delivery/salutations = Array
 (
-    [0] => 
+    [0] =>
     [1] => mr
     [2] => ms
 )
@@ -956,7 +956,7 @@ client/html/checkout/standard/address/delivery/salutations = Array
 
 * Default: Array
 (
-    [0] => 
+    [0] =>
     [1] => mr
     [2] => ms
 )
@@ -989,10 +989,10 @@ See also:
 Relative path to the HTML body template of the checkout standard address delivery client.
 
 ```
-client/html/checkout/standard/address/delivery/template-body = 
+client/html/checkout/standard/address/delivery/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1101,10 +1101,10 @@ design.
 Relative path to the HTML body template of the checkout standard address client.
 
 ```
-client/html/checkout/standard/address/template-body = 
+client/html/checkout/standard/address/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1129,10 +1129,10 @@ See also:
 List of regular expressions to validate the data of the address fields
 
 ```
-client/html/checkout/standard/address/validate = 
+client/html/checkout/standard/address/validate =
 ```
 
-* Default: 
+* Default:
 * Type: array - Associative list of field names and regular expressions
 * Since: 2014.09
 
@@ -1140,44 +1140,44 @@ To validate the address input data of the customer, an individual
 [Perl compatible regular expression](http://php.net/manual/en/pcre.pattern.php)
 can be applied to each field. Available fields are:
 
-* order.base.address.company
-* order.base.address.vatid
-* order.base.address.salutation
-* order.base.address.firstname
-* order.base.address.lastname
-* order.base.address.address1
-* order.base.address.address2
-* order.base.address.address3
-* order.base.address.postal
-* order.base.address.city
-* order.base.address.state
-* order.base.address.languageid
-* order.base.address.countryid
-* order.base.address.telephone
-* order.base.address.telefax
-* order.base.address.email
-* order.base.address.website
+* order.address.company
+* order.address.vatid
+* order.address.salutation
+* order.address.firstname
+* order.address.lastname
+* order.address.address1
+* order.address.address2
+* order.address.address3
+* order.address.postal
+* order.address.city
+* order.address.state
+* order.address.languageid
+* order.address.countryid
+* order.address.telephone
+* order.address.telefax
+* order.address.email
+* order.address.website
 
 Some fields are validated automatically because they are not
 dependent on a country specific rule. These fields are:
 
-* order.base.address.salutation
-* order.base.address.email
-* order.base.address.website
+* order.address.salutation
+* order.address.email
+* order.address.website
 
 To validate e.g the postal/zip code, you can define a regular
 expression like this if you want to allow only digits:
 
 ```
- client/html/checkout/standard/address/validate/order.base.address.postal = '^[0-9]+$'
+ client/html/checkout/standard/address/validate/order.address.postal = '^[0-9]+$'
 ```
 
 Several regular expressions can be defined line this:
 
 ```
  client/html/checkout/standard/address/validate = array(
-     'order.base.address.postal' = '^[0-9]+$',
-     'order.base.address.vatid' = '^[A-Z]{2}[0-9]{8}$',
+     'order.address.postal' = '^[0-9]+$',
+     'order.address.vatid' = '^[A-Z]{2}[0-9]{8}$',
  )
 ```
 
@@ -1201,10 +1201,10 @@ See also:
 Regular expression to check the "address1" address value
 
 ```
-client/html/checkout/standard/address/validate/address1 = 
+client/html/checkout/standard/address/validate/address1 =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1216,10 +1216,10 @@ See also:
 Regular expression to check the "address2" address value
 
 ```
-client/html/checkout/standard/address/validate/address2 = 
+client/html/checkout/standard/address/validate/address2 =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1231,10 +1231,10 @@ See also:
 Regular expression to check the "address3" address value
 
 ```
-client/html/checkout/standard/address/validate/address3 = 
+client/html/checkout/standard/address/validate/address3 =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1246,10 +1246,10 @@ See also:
 Regular expression to check the "city" address value
 
 ```
-client/html/checkout/standard/address/validate/city = 
+client/html/checkout/standard/address/validate/city =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1261,10 +1261,10 @@ See also:
 Regular expression to check the "company" address value
 
 ```
-client/html/checkout/standard/address/validate/company = 
+client/html/checkout/standard/address/validate/company =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1276,10 +1276,10 @@ See also:
 Regular expression to check the "countryid" address value
 
 ```
-client/html/checkout/standard/address/validate/countryid = 
+client/html/checkout/standard/address/validate/countryid =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1306,10 +1306,10 @@ See also:
 Regular expression to check the "firstname" address value
 
 ```
-client/html/checkout/standard/address/validate/firstname = 
+client/html/checkout/standard/address/validate/firstname =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1321,10 +1321,10 @@ See also:
 Regular expression to check the "languageid" address value
 
 ```
-client/html/checkout/standard/address/validate/languageid = 
+client/html/checkout/standard/address/validate/languageid =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1336,10 +1336,10 @@ See also:
 Regular expression to check the "lastname" address value
 
 ```
-client/html/checkout/standard/address/validate/lastname = 
+client/html/checkout/standard/address/validate/lastname =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1351,10 +1351,10 @@ See also:
 Regular expression to check the "postal" address value
 
 ```
-client/html/checkout/standard/address/validate/postal = 
+client/html/checkout/standard/address/validate/postal =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1366,10 +1366,10 @@ See also:
 Regular expression to check the "salutation" address value
 
 ```
-client/html/checkout/standard/address/validate/salutation = 
+client/html/checkout/standard/address/validate/salutation =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1381,10 +1381,10 @@ See also:
 Regular expression to check the "state" address value
 
 ```
-client/html/checkout/standard/address/validate/state = 
+client/html/checkout/standard/address/validate/state =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1396,10 +1396,10 @@ See also:
 Regular expression to check the "telefax" address value
 
 ```
-client/html/checkout/standard/address/validate/telefax = 
+client/html/checkout/standard/address/validate/telefax =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1411,10 +1411,10 @@ See also:
 Regular expression to check the "telephone" address value
 
 ```
-client/html/checkout/standard/address/validate/telephone = 
+client/html/checkout/standard/address/validate/telephone =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1426,10 +1426,10 @@ See also:
 Regular expression to check the "vatid" address value
 
 ```
-client/html/checkout/standard/address/validate/vatid = 
+client/html/checkout/standard/address/validate/vatid =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
@@ -1457,10 +1457,10 @@ See also:
 Excludes decorators added by the "common" option from the checkout standard html client
 
 ```
-client/html/checkout/standard/decorators/excludes = 
+client/html/checkout/standard/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -1492,10 +1492,10 @@ See also:
 Adds a list of globally available decorators only to the checkout standard html client
 
 ```
-client/html/checkout/standard/decorators/global = 
+client/html/checkout/standard/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -1525,10 +1525,10 @@ See also:
 Adds a list of local decorators only to the checkout standard html client
 
 ```
-client/html/checkout/standard/decorators/local = 
+client/html/checkout/standard/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -1636,10 +1636,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the checkout standard delivery client.
 
 ```
-client/html/checkout/standard/delivery/template-body = 
+client/html/checkout/standard/delivery/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1664,10 +1664,10 @@ See also:
 Class name of the used checkout standard client implementation
 
 ```
-client/html/checkout/standard/name = 
+client/html/checkout/standard/name =
 ```
 
-* Default: 
+* Default:
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1888,10 +1888,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the checkout standard payment client.
 
 ```
-client/html/checkout/standard/payment/template-body = 
+client/html/checkout/standard/payment/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -2005,10 +2005,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Excludes decorators added by the "common" option from the checkout standard process html client
 
 ```
-client/html/checkout/standard/process/decorators/excludes = 
+client/html/checkout/standard/process/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -2186,10 +2186,10 @@ design.
 Relative path to the HTML body template of the checkout standard process client.
 
 ```
-client/html/checkout/standard/process/template-body = 
+client/html/checkout/standard/process/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -2513,10 +2513,10 @@ client/html/checkout/standard/summary/option/terms/cancel/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/checkout/standard/summary/option/terms/cancel/url/target = 
+client/html/checkout/standard/summary/option/terms/cancel/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 
@@ -2629,10 +2629,10 @@ client/html/checkout/standard/summary/option/terms/privacy/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/checkout/standard/summary/option/terms/privacy/url/target = 
+client/html/checkout/standard/summary/option/terms/privacy/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 
@@ -2745,10 +2745,10 @@ client/html/checkout/standard/summary/option/terms/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/checkout/standard/summary/option/terms/url/target = 
+client/html/checkout/standard/summary/option/terms/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 
@@ -2814,10 +2814,10 @@ See also:
 Relative path to the HTML body template of the checkout standard summary client.
 
 ```
-client/html/checkout/standard/summary/template-body = 
+client/html/checkout/standard/summary/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -2842,10 +2842,10 @@ See also:
 Relative path to the HTML body template of the checkout standard client.
 
 ```
-client/html/checkout/standard/template-body = 
+client/html/checkout/standard/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -2870,10 +2870,10 @@ See also:
 Relative path to the HTML header template of the checkout standard client.
 
 ```
-client/html/checkout/standard/template-header = 
+client/html/checkout/standard/template-header =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -3037,10 +3037,10 @@ See also:
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/checkout/standard/url/target = 
+client/html/checkout/standard/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 * Since: 2014.03

@@ -6,21 +6,21 @@ A list of domain names whose items should be available in the account history vi
 ```
 client/html/account/history/domains = Array
 (
-    [0] => order/base
-    [1] => order/base/address
-    [2] => order/base/coupon
-    [3] => order/base/product
-    [4] => order/base/service
+    [0] => order
+    [1] => order/address
+    [2] => order/coupon
+    [3] => order/product
+    [4] => order/service
 )
 ```
 
 * Default: Array
 (
-    [0] => order/base
-    [1] => order/base/address
-    [2] => order/base/coupon
-    [3] => order/base/product
-    [4] => order/base/service
+    [0] => order
+    [1] => order/address
+    [2] => order/coupon
+    [3] => order/product
+    [4] => order/service
 )
 
 * Type: array - List of domain names
@@ -38,10 +38,10 @@ more time is required for fetching the content!
 Class name of the used account history client implementation
 
 ```
-client/html/account/history/name = 
+client/html/account/history/name =
 ```
 
-* Default: 
+* Default:
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -150,10 +150,10 @@ See also:
 Relative path to the HTML body template of the account history client.
 
 ```
-client/html/account/history/template-body = 
+client/html/account/history/template-body =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -178,10 +178,10 @@ See also:
 Relative path to the HTML header template of the account history client.
 
 ```
-client/html/account/history/template-header = 
+client/html/account/history/template-header =
 ```
 
-* Default: 
+* Default:
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -302,10 +302,10 @@ client/html/account/history/url/filter = Array
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/history/url/target = 
+client/html/account/history/url/target =
 ```
 
-* Default: 
+* Default:
 * Type: string - Destination of the URL
 * Since: 2014.03
 

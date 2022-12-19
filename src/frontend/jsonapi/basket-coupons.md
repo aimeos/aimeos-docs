@@ -60,16 +60,16 @@ The response will then contain a new "relationships" section in the basket data 
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.customerid": "",
-            "order.base.sitecode": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "0.00",
-            "order.base.costs": "0.00",
-            "order.base.rebate": "0.00",
-            "order.base.status": 0,
-            "order.base.comment": ""
+            "order.id": null,
+            "order.customerid": "",
+            "order.sitecode": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "0.00",
+            "order.costs": "0.00",
+            "order.rebate": "0.00",
+            "order.status": 0,
+            "order.comment": ""
         },
         "relationships": {
             "basket/service": {

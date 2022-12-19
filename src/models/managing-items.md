@@ -175,7 +175,7 @@ You can also retrieve items stored in the same domain, e.g. product properties o
 
 ```php
 $item = $productManager->get( $id, ['product/property'] );
-$item = $orderBaseManager->get( $id, ['order/base/address', 'order/base/product'] );
+$item = $orderManager->get( $id, ['order/address', 'order/product'] );
 ```
 
 ## Find item

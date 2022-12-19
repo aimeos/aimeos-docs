@@ -38,10 +38,10 @@ See also:
 Excludes decorators added by the "common" option from the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/begin/decorators/excludes = 
+controller/jobs/subscription/process/begin/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -73,10 +73,10 @@ See also:
 Adds a list of globally available decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/begin/decorators/global = 
+controller/jobs/subscription/process/begin/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -106,10 +106,10 @@ See also:
 Adds a list of local decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/begin/decorators/local = 
+controller/jobs/subscription/process/begin/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -141,10 +141,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/process/begin/name = 
+controller/jobs/subscription/process/begin/name =
 ```
 
-* Default: 
+* Default:
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -188,21 +188,21 @@ Associated items that should be available too in the subscription
 ```
 controller/jobs/subscription/process/domains = Array
 (
-    [0] => order/base
-    [1] => order/base/address
-    [2] => order/base/coupon
-    [3] => order/base/product
-    [4] => order/base/service
+    [0] => order
+    [1] => order/address
+    [2] => order/coupon
+    [3] => order/product
+    [4] => order/service
 )
 ```
 
 * Default: Array
 (
-    [0] => order/base
-    [1] => order/base/address
-    [2] => order/base/coupon
-    [3] => order/base/product
-    [4] => order/base/service
+    [0] => order
+    [1] => order/address
+    [2] => order/coupon
+    [3] => order/product
+    [4] => order/service
 )
 
 * Type: array - Referenced domain names
@@ -213,11 +213,11 @@ Orders consist of address, coupons, products and services. They can be
 fetched together with the subscription items and passed to the processor.
 Available domains for those items are:
 
-- order/base
-- order/base/address
-- order/base/coupon
-- order/base/product
-- order/base/service
+- order
+- order/address
+- order/coupon
+- order/product
+- order/service
 
 See also:
 
@@ -232,10 +232,10 @@ See also:
 Excludes decorators added by the "common" option from the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/end/decorators/excludes = 
+controller/jobs/subscription/process/end/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -267,10 +267,10 @@ See also:
 Adds a list of globally available decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/end/decorators/global = 
+controller/jobs/subscription/process/end/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -300,10 +300,10 @@ See also:
 Adds a list of local decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/end/decorators/local = 
+controller/jobs/subscription/process/end/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -335,10 +335,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/process/end/name = 
+controller/jobs/subscription/process/end/name =
 ```
 
-* Default: 
+* Default:
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -380,10 +380,10 @@ or numbers. Avoid chamel case names like "MyEnd"!
 Number of days to wait for the payment until subscription is removed
 
 ```
-controller/jobs/subscription/process/payment-days = 
+controller/jobs/subscription/process/payment-days =
 ```
 
-* Default: 
+* Default:
 * Type: float - Number of days
 * Since: 2018.07
 
@@ -467,10 +467,10 @@ See also:
 Excludes decorators added by the "common" option from the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/renew/decorators/excludes = 
+controller/jobs/subscription/process/renew/decorators/excludes =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -502,10 +502,10 @@ See also:
 Adds a list of globally available decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/renew/decorators/global = 
+controller/jobs/subscription/process/renew/decorators/global =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -535,10 +535,10 @@ See also:
 Adds a list of local decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/renew/decorators/local = 
+controller/jobs/subscription/process/renew/decorators/local =
 ```
 
-* Default: 
+* Default:
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -570,10 +570,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/process/renew/name = 
+controller/jobs/subscription/process/renew/name =
 ```
 
-* Default: 
+* Default:
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -615,10 +615,10 @@ or numbers. Avoid chamel case names like "MyRenew"!
 Applies the coupons of the previous order also to the new one
 
 ```
-controller/jobs/subscription/process/renew/use-coupons = 
+controller/jobs/subscription/process/renew/use-coupons =
 ```
 
-* Default: 
+* Default:
 * Type: boolean - True to reuse coupon codes, false to remove coupons
 * Since: 2018.10
 

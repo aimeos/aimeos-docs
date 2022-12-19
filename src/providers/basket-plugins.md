@@ -73,7 +73,7 @@ deleteCoupon.before, deleteCoupon.after
 : Before and after the coupon has been deleted, plugin receives the coupon code
 
 check.before, check.after
-: Before and after the basket content has been checked, plugin receives the content types as array (e.g. `['order/base/address', 'order/base/coupon', 'order/base/product', 'order/base/service']`)
+: Before and after the basket content has been checked, plugin receives the content types as array (e.g. `['order/address', 'order/coupon', 'order/product', 'order/service']`)
 
 setOrder.before
 : Before the order is stored in the database
@@ -212,9 +212,8 @@ class ExampleTest extends \PHPUnit\Framework\TestCase
 
         $pluginManager = \Aimeos\MShop::create( $context, 'plugin' );
         $orderManager = \Aimeos\MShop::create( $context, 'order' );
-        $orderBaseManager = $orderManager->getSubManager( 'base' );
 
-        $this->basket = $orderBaseManager->create();
+        $this->basket = $orderManager->create();
         $plugin = $pluginManager->create();
 
         $this->object = new \Aimeos\MShop\Plugin\Provider\Order\Example( $context, $plugin );

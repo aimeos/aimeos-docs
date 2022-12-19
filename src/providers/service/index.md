@@ -26,16 +26,14 @@ In order to make things as easy as possible, the base service provider class off
 By default, the complete order is passed to almost all service provider methods including the addresses, products and services. You can get the items inside an order using:
 
 ```php
-$basket = $order->getBaseItem();
+$coupons = $order->getCoupons();
+$products = $order->getProducts();
 
-$coupons = $basket->getCoupons();
-$products = $basket->getProducts();
+$paymentAddresses = $order->getAddress( 'payment' );
+$deliveryAddresses = $order->getAddress( 'delivery' );
 
-$paymentAddresses = $basket->getAddress( 'payment' );
-$deliveryAddresses = $basket->getAddress( 'delivery' );
-
-$paymentServices = $basket->getService( 'payment' );
-$deliveryServices = $basket->getService( 'delivery' );
+$paymentServices = $order->getService( 'payment' );
+$deliveryServices = $order->getService( 'delivery' );
 ```
 
 All passed orders are saved automatically by the calling object, which is usually a job controller. If you need to set the delivery/payment status of an order and throw an exception afterwards, you have to save the order yourself using:
@@ -78,7 +76,7 @@ It adds the key/value pairs in the `$attributes` parameter with the specified ty
 $attributes = ['transactionid' => 123];
 
 $serviceType = \Aimeos\MShop\Order\Manager\Base\Base::TYPE_PAYMENT;
-$orderServiceItem = $order->getBaseItem()->getService( $serviceType );
+$orderServiceItem = $order->getService( $serviceType );
 
 $orderServiceItem->addAttributeItems( $$this->attributes( $attributes ), 'myprovider' );
 ```
@@ -87,7 +85,7 @@ To fetch the attribute again, you can use the *getAttribute()* or *getAttributeI
 
 ```php
 $serviceType = \Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_PAYMENT;
-$orderServiceItem = $$order->getBaseItem()->getService( $serviceType );
+$orderServiceItem = $$order->getService( $serviceType );
 
 $value = $orderServiceItem->getAttribute( 'transactionid', 'myprovider' );
 $attrItem = $orderServiceItem->getAttributeItem( 'transactionid', 'myprovider' );
@@ -313,7 +311,7 @@ public function process( \Aimeos\MShop\Order\Item\Iface $order,
     $type = \Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_PAYMENT;
     $code = $this->getServiceItem()->getCode(); // code of the service payment
 
-    foreach( $$order->getBaseItem()->getService( $type, $code )->getAttributes() as $attr ) {
+    foreach( $$order->getService( $type, $code )->getAttributes() as $attr ) {
         // $attr->getCode() . ': ' . $attr->getValue();
     }
 }

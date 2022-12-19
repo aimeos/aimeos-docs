@@ -119,16 +119,16 @@ Then the response will contain an additional "relationships" entry in the basket
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.customerid": "",
-            "order.base.sitecode": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "100.00",
-            "order.base.costs": "5.00",
-            "order.base.rebate": "0.00",
-            "order.base.status": 0,
-            "order.base.comment": ""
+            "order.id": null,
+            "order.customerid": "",
+            "order.sitecode": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "100.00",
+            "order.costs": "5.00",
+            "order.rebate": "0.00",
+            "order.status": 0,
+            "order.comment": ""
         },
         "relationships": {
             "basket\/product": {
@@ -143,22 +143,22 @@ Then the response will contain an additional "relationships" entry in the basket
         "id": 0,
         "type": "basket\/product",
         "attributes": {
-            "order.base.product.id": null,
-            "order.base.product.type": "default",
-            "order.base.product.stocktype": "default",
-            "order.base.product.vendor": "",
-            "order.base.product.productid": "7",
-            "order.base.product.prodcode": "demo-article",
-            "order.base.product.name": "Demo article",
-            "order.base.product.mediaurl": "http:\/\/demo.aimeos.org\/media\/1.jpg",
-            "order.base.product.position": null,
-            "order.base.product.price": "100.00",
-            "order.base.product.costs": "5.00",
-            "order.base.product.rebate": "0.00",
-            "order.base.product.taxrate": "20.00",
-            "order.base.product.quantity": 1,
-            "order.base.product.status": -1,
-            "order.base.product.flags": 0
+            "order.product.id": null,
+            "order.product.type": "default",
+            "order.product.stocktype": "default",
+            "order.product.vendor": "",
+            "order.product.productid": "7",
+            "order.product.prodcode": "demo-article",
+            "order.product.name": "Demo article",
+            "order.product.mediaurl": "http:\/\/demo.aimeos.org\/media\/1.jpg",
+            "order.product.position": null,
+            "order.product.price": "100.00",
+            "order.product.costs": "5.00",
+            "order.product.rebate": "0.00",
+            "order.product.taxrate": "20.00",
+            "order.product.quantity": 1,
+            "order.product.status": -1,
+            "order.product.flags": 0
         },
         "links": {
             "self": {
@@ -711,16 +711,16 @@ The PATCH requests will change primarily the product data in the basket. Dependi
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.customerid": "",
-            "order.base.sitecode": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "200.00",
-            "order.base.costs": "10.00",
-            "order.base.rebate": "0.00",
-            "order.base.status": 0,
-            "order.base.comment": ""
+            "order.id": null,
+            "order.customerid": "",
+            "order.sitecode": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "200.00",
+            "order.costs": "10.00",
+            "order.rebate": "0.00",
+            "order.status": 0,
+            "order.comment": ""
         },
         "relationships": {
             "basket\/product": {
@@ -735,22 +735,22 @@ The PATCH requests will change primarily the product data in the basket. Dependi
         "id": 0,
         "type": "basket\/product",
         "attributes": {
-            "order.base.product.id": null,
-            "order.base.product.type": "default",
-            "order.base.product.stocktype": "default",
-            "order.base.product.vendor": "",
-            "order.base.product.productid": "7",
-            "order.base.product.prodcode": "demo-article",
-            "order.base.product.name": "Demo article",
-            "order.base.product.mediaurl": "http:\/\/demo.aimeos.org\/media\/1.jpg",
-            "order.base.product.position": null,
-            "order.base.product.price": "100.00",
-            "order.base.product.costs": "5.00",
-            "order.base.product.rebate": "0.00",
-            "order.base.product.taxrate": "20.00",
-            "order.base.product.quantity": 2,
-            "order.base.product.status": -1,
-            "order.base.product.flags": 0
+            "order.product.id": null,
+            "order.product.type": "default",
+            "order.product.stocktype": "default",
+            "order.product.vendor": "",
+            "order.product.productid": "7",
+            "order.product.prodcode": "demo-article",
+            "order.product.name": "Demo article",
+            "order.product.mediaurl": "http:\/\/demo.aimeos.org\/media\/1.jpg",
+            "order.product.position": null,
+            "order.product.price": "100.00",
+            "order.product.costs": "5.00",
+            "order.product.rebate": "0.00",
+            "order.product.taxrate": "20.00",
+            "order.product.quantity": 2,
+            "order.product.status": -1,
+            "order.product.flags": 0
         },
         "links": {
             "self": {

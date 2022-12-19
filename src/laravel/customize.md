@@ -440,7 +440,7 @@ Route::group(['domain' => '{site}', 'middleware' => ['web']], function () {
 
 If you want to ship your products to several countries or you need to know from which countries your customers are, you have to enable the country selection in the address page of the checkout process.
 
-By default, the country list is hidden for the billing and delivery address in the checkout process. To make show them and make them mandatory you need to add "order.base.address.countryid" to the list of values defined in
+By default, the country list is hidden for the billing and delivery address in the checkout process. To make show them and make them mandatory you need to add "order.address.countryid" to the list of values defined in
 
 * [client/html/checkout/address/billing/mandatory](../config/client-html/checkout-standard.md#billingmandatory)
 * [client/html/checkout/address/delivery/mandatory](../config/client-html/checkout-standard.md#deliverymandatory)
@@ -455,28 +455,28 @@ In the Aimeos package this is configured for billing and delivery addresses in t
                 'address' => [
                     'billing' => [
                         'mandatory' => [
-                            'order.base.address.salutation',
-                            'order.base.address.firstname',
-                            'order.base.address.lastname',
-                            'order.base.address.address1',
-                            'order.base.address.postal',
-                            'order.base.address.city',
-                            'order.base.address.languageid',
-                            'order.base.address.email',
-                            'order.base.address.countryid',
+                            'order.address.salutation',
+                            'order.address.firstname',
+                            'order.address.lastname',
+                            'order.address.address1',
+                            'order.address.postal',
+                            'order.address.city',
+                            'order.address.languageid',
+                            'order.address.email',
+                            'order.address.countryid',
                         ],
                     ],
                     'delivery' => [
                         'mandatory' => [
-                            'order.base.address.salutation',
-                            'order.base.address.firstname',
-                            'order.base.address.lastname',
-                            'order.base.address.address1',
-                            'order.base.address.postal',
-                            'order.base.address.city',
-                            'order.base.address.languageid',
-                            'order.base.address.email',
-                            'order.base.address.countryid',
+                            'order.address.salutation',
+                            'order.address.firstname',
+                            'order.address.lastname',
+                            'order.address.address1',
+                            'order.address.postal',
+                            'order.address.city',
+                            'order.address.languageid',
+                            'order.address.email',
+                            'order.address.countryid',
                         ],
                     ],
                 ],
@@ -504,13 +504,13 @@ To make the country for billing and delivery addresses optional, use this config
                     'billing' => [
                         'optional' => [
                             // ... other optional fields ...
-                            'order.base.address.countryid',
+                            'order.address.countryid',
                         ],
                     ],
                     'delivery' => [
                         'optional' => [
                             // ... other optional fields ...
-                            'order.base.address.countryid',
+                            'order.address.countryid',
                         ],
                     ],
                 ],

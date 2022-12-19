@@ -5,7 +5,7 @@
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/aggregate/ansi = 
+mshop/order/manager/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
@@ -67,7 +67,7 @@ See also:
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/aggregate/mysql = 
+mshop/order/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
@@ -81,7 +81,7 @@ mshop/order/manager/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
@@ -105,10 +105,10 @@ See also:
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/aggregateavg/ansi = 
+mshop/order/manager/aggregateavg/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order items and computing the average value
 * Since: 2017.10
 
@@ -121,10 +121,10 @@ See also:
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/aggregateavg/mysql = 
+mshop/order/manager/aggregateavg/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order items and computing the average value
 * Since: 2017.10
 
@@ -139,10 +139,10 @@ See also:
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/aggregatesum/ansi = 
+mshop/order/manager/aggregatesum/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order items and computing the sum
 * Since: 2017.10
 
@@ -155,10 +155,10 @@ See also:
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/aggregatesum/mysql = 
+mshop/order/manager/aggregatesum/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order items and computing the sum
 * Since: 2017.10
 
@@ -173,11 +173,11 @@ See also:
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/address/aggregate/ansi = 
+mshop/order/manager/address/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_address" mordbaad
+ 	FROM "mshop_order_address" mordbaad
  	:joins
  	WHERE :cond
  	GROUP BY mordbaad.id, :cols
@@ -187,7 +187,7 @@ mshop/order/manager/base/address/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/order/manager/base/address/aggregate
+* Default: mshop/order/manager/address/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -223,23 +223,23 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/address/insert/ansi
-* mshop/order/manager/base/address/update/ansi
-* mshop/order/manager/base/address/newid/ansi
-* mshop/order/manager/base/address/delete/ansi
-* mshop/order/manager/base/address/search/ansi
-* mshop/order/manager/base/address/count/ansi
+* mshop/order/manager/address/insert/ansi
+* mshop/order/manager/address/update/ansi
+* mshop/order/manager/address/newid/ansi
+* mshop/order/manager/address/delete/ansi
+* mshop/order/manager/address/search/ansi
+* mshop/order/manager/address/count/ansi
 
 ## address/aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/address/aggregate/mysql = 
+mshop/order/manager/address/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_address" mordbaad
+ 	FROM "mshop_order_address" mordbaad
  	:joins
  	WHERE :cond
  	GROUP BY mordbaad.id, :cols
@@ -249,11 +249,11 @@ mshop/order/manager/base/address/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_address" mordbaad
+ 	FROM "mshop_order_address" mordbaad
  	:joins
  	WHERE :cond
  	GROUP BY mordbaad.id, :cols
@@ -265,21 +265,21 @@ mshop/order/manager/base/address/aggregate/mysql =
 
 See also:
 
-* mshop/order/manager/base/address/aggregate/ansi
+* mshop/order/manager/address/aggregate/ansi
 
 ## address/count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/address/count/ansi = 
+mshop/order/manager/address/count/ansi =
  SELECT COUNT( DISTINCT mordbaad."id" ) AS "count"
- FROM "mshop_order_base_address" mordbaad
+ FROM "mshop_order_address" mordbaad
  :joins
  WHERE :cond
 ```
 
-* Default: mshop/order/manager/base/address/count
+* Default: mshop/order/manager/address/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -318,41 +318,41 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/address/insert/ansi
-* mshop/order/manager/base/address/update/ansi
-* mshop/order/manager/base/address/newid/ansi
-* mshop/order/manager/base/address/delete/ansi
-* mshop/order/manager/base/address/search/ansi
+* mshop/order/manager/address/insert/ansi
+* mshop/order/manager/address/update/ansi
+* mshop/order/manager/address/newid/ansi
+* mshop/order/manager/address/delete/ansi
+* mshop/order/manager/address/search/ansi
 
 ## address/count/mysql
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/address/count/mysql = 
+mshop/order/manager/address/count/mysql =
  SELECT COUNT( DISTINCT mordbaad."id" ) AS "count"
- FROM "mshop_order_base_address" mordbaad
+ FROM "mshop_order_address" mordbaad
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordbaad."id" ) AS "count"
- FROM "mshop_order_base_address" mordbaad
+ FROM "mshop_order_address" mordbaad
  :joins
  WHERE :cond
 
 
 See also:
 
-* mshop/order/manager/base/address/count/ansi
+* mshop/order/manager/address/count/ansi
 
 ## address/decorators/excludes
 
 Excludes decorators added by the "common" option from the order base address manager
 
 ```
-mshop/order/manager/base/address/decorators/excludes = Array
+mshop/order/manager/address/decorators/excludes = Array
 (
 )
 ```
@@ -374,7 +374,7 @@ This option allows you to remove a decorator added via
 around the order base address manager.
 
 ```
- mshop/order/manager/base/address/decorators/excludes = array( 'decorator1' )
+ mshop/order/manager/address/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -384,15 +384,15 @@ common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/address/decorators/global
-* mshop/order/manager/base/address/decorators/local
+* mshop/order/manager/address/decorators/global
+* mshop/order/manager/address/decorators/local
 
 ## address/decorators/global
 
 Adds a list of globally available decorators only to the order base address manager
 
 ```
-mshop/order/manager/base/address/decorators/global = Array
+mshop/order/manager/address/decorators/global = Array
 (
 )
 ```
@@ -414,7 +414,7 @@ This option allows you to wrap global decorators
 address manager.
 
 ```
- mshop/order/manager/base/address/decorators/global = array( 'decorator1' )
+ mshop/order/manager/address/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -424,15 +424,15 @@ address manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/address/decorators/excludes
-* mshop/order/manager/base/address/decorators/local
+* mshop/order/manager/address/decorators/excludes
+* mshop/order/manager/address/decorators/local
 
 ## address/decorators/local
 
 Adds a list of local decorators only to the order base address manager
 
 ```
-mshop/order/manager/base/address/decorators/local = Array
+mshop/order/manager/address/decorators/local = Array
 (
 )
 ```
@@ -454,7 +454,7 @@ This option allows you to wrap local decorators
 order base address manager.
 
 ```
- mshop/order/manager/base/address/decorators/local = array( 'decorator2' )
+ mshop/order/manager/address/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
@@ -464,20 +464,20 @@ to the order base address manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/address/decorators/excludes
-* mshop/order/manager/base/address/decorators/global
+* mshop/order/manager/address/decorators/excludes
+* mshop/order/manager/address/decorators/global
 
 ## address/delete/ansi
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/address/delete/ansi = 
- DELETE FROM "mshop_order_base_address"
+mshop/order/manager/address/delete/ansi =
+ DELETE FROM "mshop_order_address"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/order/manager/base/address/delete
+* Default: mshop/order/manager/address/delete
 * Type: string - SQL statement for deleting items
 * Since: 2014.03
 
@@ -495,38 +495,38 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/address/insert/ansi
-* mshop/order/manager/base/address/update/ansi
-* mshop/order/manager/base/address/newid/ansi
-* mshop/order/manager/base/address/search/ansi
-* mshop/order/manager/base/address/count/ansi
+* mshop/order/manager/address/insert/ansi
+* mshop/order/manager/address/update/ansi
+* mshop/order/manager/address/newid/ansi
+* mshop/order/manager/address/search/ansi
+* mshop/order/manager/address/count/ansi
 
 ## address/delete/mysql
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/address/delete/mysql = 
- DELETE FROM "mshop_order_base_address"
+mshop/order/manager/address/delete/mysql =
+ DELETE FROM "mshop_order_address"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
- DELETE FROM "mshop_order_base_address"
+* Default:
+ DELETE FROM "mshop_order_address"
  WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
 
-* mshop/order/manager/base/address/delete/ansi
+* mshop/order/manager/address/delete/ansi
 
 ## address/insert/ansi
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/address/insert/ansi = 
- INSERT INTO "mshop_order_base_address" ( :names
+mshop/order/manager/address/insert/ansi =
+ INSERT INTO "mshop_order_address" ( :names
  	"baseid", "addrid", "type", "company", "vatid", "salutation",
  	"title", "firstname", "lastname", "address1", "address2",
  	"address3", "postal", "city", "state", "countryid", "langid",
@@ -537,7 +537,7 @@ mshop/order/manager/base/address/insert/ansi =
  )
 ```
 
-* Default: mshop/order/manager/base/address/insert
+* Default: mshop/order/manager/address/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -560,19 +560,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/address/update/ansi
-* mshop/order/manager/base/address/newid/ansi
-* mshop/order/manager/base/address/delete/ansi
-* mshop/order/manager/base/address/search/ansi
-* mshop/order/manager/base/address/count/ansi
+* mshop/order/manager/address/update/ansi
+* mshop/order/manager/address/newid/ansi
+* mshop/order/manager/address/delete/ansi
+* mshop/order/manager/address/search/ansi
+* mshop/order/manager/address/count/ansi
 
 ## address/insert/mysql
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/address/insert/mysql = 
- INSERT INTO "mshop_order_base_address" ( :names
+mshop/order/manager/address/insert/mysql =
+ INSERT INTO "mshop_order_address" ( :names
  	"baseid", "addrid", "type", "company", "vatid", "salutation",
  	"title", "firstname", "lastname", "address1", "address2",
  	"address3", "postal", "city", "state", "countryid", "langid",
@@ -583,8 +583,8 @@ mshop/order/manager/base/address/insert/mysql =
  )
 ```
 
-* Default: 
- INSERT INTO "mshop_order_base_address" ( :names
+* Default:
+ INSERT INTO "mshop_order_address" ( :names
  	"baseid", "addrid", "type", "company", "vatid", "salutation",
  	"title", "firstname", "lastname", "address1", "address2",
  	"address3", "postal", "city", "state", "countryid", "langid",
@@ -597,14 +597,14 @@ mshop/order/manager/base/address/insert/mysql =
 
 See also:
 
-* mshop/order/manager/base/address/insert/ansi
+* mshop/order/manager/address/insert/ansi
 
 ## address/name
 
 Class name of the used order base address manager implementation
 
 ```
-mshop/order/manager/base/address/name = Standard
+mshop/order/manager/address/name = Standard
 ```
 
 * Default: Standard
@@ -631,7 +631,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- mshop/order/manager/base/address/name = Myaddress
+ mshop/order/manager/address/name = Myaddress
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -649,10 +649,10 @@ or numbers. Avoid chamel case names like "MyAddress"!
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/address/newid/ansi = mshop/order/manager/base/address/newid
+mshop/order/manager/address/newid/ansi = mshop/order/manager/address/newid
 ```
 
-* Default: mshop/order/manager/base/address/newid
+* Default: mshop/order/manager/address/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -678,56 +678,56 @@ specific way.
 
 See also:
 
-* mshop/order/manager/base/address/insert/ansi
-* mshop/order/manager/base/address/update/ansi
-* mshop/order/manager/base/address/delete/ansi
-* mshop/order/manager/base/address/search/ansi
-* mshop/order/manager/base/address/count/ansi
+* mshop/order/manager/address/insert/ansi
+* mshop/order/manager/address/update/ansi
+* mshop/order/manager/address/delete/ansi
+* mshop/order/manager/address/search/ansi
+* mshop/order/manager/address/count/ansi
 
 ## address/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/address/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/order/manager/address/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/order/manager/base/address/newid
+* Default: mshop/order/manager/address/newid
 
 See also:
 
-* mshop/order/manager/base/address/newid/ansi
+* mshop/order/manager/address/newid/ansi
 
 ## address/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/address/search/ansi = 
+mshop/order/manager/address/search/ansi =
  SELECT :columns
- 	mordbaad."id" AS "order.base.address.id", mordbaad."baseid" AS "order.base.address.baseid",
- 	mordbaad."siteid" AS "order.base.address.siteid", mordbaad."addrid" AS "order.base.address.addressid",
- 	mordbaad."type" AS "order.base.address.type", mordbaad."company" AS "order.base.address.company",
- 	mordbaad."vatid" AS "order.base.address.vatid", mordbaad."salutation" AS "order.base.address.salutation",
- 	mordbaad."title" AS "order.base.address.title", mordbaad."firstname" AS "order.base.address.firstname",
- 	mordbaad."lastname" AS "order.base.address.lastname", mordbaad."address1" AS "order.base.address.address1",
- 	mordbaad."address2" AS "order.base.address.address2", mordbaad."address3" AS "order.base.address.address3",
- 	mordbaad."postal" AS "order.base.address.postal", mordbaad."city" AS "order.base.address.city",
- 	mordbaad."state" AS "order.base.address.state", mordbaad."countryid" AS "order.base.address.countryid",
- 	mordbaad."langid" AS "order.base.address.languageid", mordbaad."telephone" AS "order.base.address.telephone",
- 	mordbaad."email" AS "order.base.address.email", mordbaad."telefax" AS "order.base.address.telefax",
- 	mordbaad."website" AS "order.base.address.website", mordbaad."longitude" AS "order.base.address.longitude",
- 	mordbaad."latitude" AS "order.base.address.latitude", mordbaad."pos" AS "order.base.address.position",
- 	mordbaad."mtime" AS "order.base.address.mtime", mordbaad."editor" AS "order.base.address.editor",
- 	mordbaad."ctime" AS "order.base.address.ctime", mordbaad."birthday" AS "order.base.address.birthday"
- FROM "mshop_order_base_address" mordbaad
+ 	mordbaad."id" AS "order.address.id", mordbaad."baseid" AS "order.address.parentid",
+ 	mordbaad."siteid" AS "order.address.siteid", mordbaad."addrid" AS "order.address.addressid",
+ 	mordbaad."type" AS "order.address.type", mordbaad."company" AS "order.address.company",
+ 	mordbaad."vatid" AS "order.address.vatid", mordbaad."salutation" AS "order.address.salutation",
+ 	mordbaad."title" AS "order.address.title", mordbaad."firstname" AS "order.address.firstname",
+ 	mordbaad."lastname" AS "order.address.lastname", mordbaad."address1" AS "order.address.address1",
+ 	mordbaad."address2" AS "order.address.address2", mordbaad."address3" AS "order.address.address3",
+ 	mordbaad."postal" AS "order.address.postal", mordbaad."city" AS "order.address.city",
+ 	mordbaad."state" AS "order.address.state", mordbaad."countryid" AS "order.address.countryid",
+ 	mordbaad."langid" AS "order.address.languageid", mordbaad."telephone" AS "order.address.telephone",
+ 	mordbaad."email" AS "order.address.email", mordbaad."telefax" AS "order.address.telefax",
+ 	mordbaad."website" AS "order.address.website", mordbaad."longitude" AS "order.address.longitude",
+ 	mordbaad."latitude" AS "order.address.latitude", mordbaad."pos" AS "order.address.position",
+ 	mordbaad."mtime" AS "order.address.mtime", mordbaad."editor" AS "order.address.editor",
+ 	mordbaad."ctime" AS "order.address.ctime", mordbaad."birthday" AS "order.address.birthday"
+ FROM "mshop_order_address" mordbaad
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/order/manager/base/address/search
+* Default: mshop/order/manager/address/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -772,59 +772,59 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/address/insert/ansi
-* mshop/order/manager/base/address/update/ansi
-* mshop/order/manager/base/address/newid/ansi
-* mshop/order/manager/base/address/delete/ansi
-* mshop/order/manager/base/address/count/ansi
+* mshop/order/manager/address/insert/ansi
+* mshop/order/manager/address/update/ansi
+* mshop/order/manager/address/newid/ansi
+* mshop/order/manager/address/delete/ansi
+* mshop/order/manager/address/count/ansi
 
 ## address/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/address/search/mysql = 
+mshop/order/manager/address/search/mysql =
  SELECT :columns
- 	mordbaad."id" AS "order.base.address.id", mordbaad."baseid" AS "order.base.address.baseid",
- 	mordbaad."siteid" AS "order.base.address.siteid", mordbaad."addrid" AS "order.base.address.addressid",
- 	mordbaad."type" AS "order.base.address.type", mordbaad."company" AS "order.base.address.company",
- 	mordbaad."vatid" AS "order.base.address.vatid", mordbaad."salutation" AS "order.base.address.salutation",
- 	mordbaad."title" AS "order.base.address.title", mordbaad."firstname" AS "order.base.address.firstname",
- 	mordbaad."lastname" AS "order.base.address.lastname", mordbaad."address1" AS "order.base.address.address1",
- 	mordbaad."address2" AS "order.base.address.address2", mordbaad."address3" AS "order.base.address.address3",
- 	mordbaad."postal" AS "order.base.address.postal", mordbaad."city" AS "order.base.address.city",
- 	mordbaad."state" AS "order.base.address.state", mordbaad."countryid" AS "order.base.address.countryid",
- 	mordbaad."langid" AS "order.base.address.languageid", mordbaad."telephone" AS "order.base.address.telephone",
- 	mordbaad."email" AS "order.base.address.email", mordbaad."telefax" AS "order.base.address.telefax",
- 	mordbaad."website" AS "order.base.address.website", mordbaad."longitude" AS "order.base.address.longitude",
- 	mordbaad."latitude" AS "order.base.address.latitude", mordbaad."pos" AS "order.base.address.position",
- 	mordbaad."mtime" AS "order.base.address.mtime", mordbaad."editor" AS "order.base.address.editor",
- 	mordbaad."ctime" AS "order.base.address.ctime", mordbaad."birthday" AS "order.base.address.birthday"
- FROM "mshop_order_base_address" mordbaad
+ 	mordbaad."id" AS "order.address.id", mordbaad."baseid" AS "order.address.parentid",
+ 	mordbaad."siteid" AS "order.address.siteid", mordbaad."addrid" AS "order.address.addressid",
+ 	mordbaad."type" AS "order.address.type", mordbaad."company" AS "order.address.company",
+ 	mordbaad."vatid" AS "order.address.vatid", mordbaad."salutation" AS "order.address.salutation",
+ 	mordbaad."title" AS "order.address.title", mordbaad."firstname" AS "order.address.firstname",
+ 	mordbaad."lastname" AS "order.address.lastname", mordbaad."address1" AS "order.address.address1",
+ 	mordbaad."address2" AS "order.address.address2", mordbaad."address3" AS "order.address.address3",
+ 	mordbaad."postal" AS "order.address.postal", mordbaad."city" AS "order.address.city",
+ 	mordbaad."state" AS "order.address.state", mordbaad."countryid" AS "order.address.countryid",
+ 	mordbaad."langid" AS "order.address.languageid", mordbaad."telephone" AS "order.address.telephone",
+ 	mordbaad."email" AS "order.address.email", mordbaad."telefax" AS "order.address.telefax",
+ 	mordbaad."website" AS "order.address.website", mordbaad."longitude" AS "order.address.longitude",
+ 	mordbaad."latitude" AS "order.address.latitude", mordbaad."pos" AS "order.address.position",
+ 	mordbaad."mtime" AS "order.address.mtime", mordbaad."editor" AS "order.address.editor",
+ 	mordbaad."ctime" AS "order.address.ctime", mordbaad."birthday" AS "order.address.birthday"
+ FROM "mshop_order_address" mordbaad
  :joins
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mordbaad."id" AS "order.base.address.id", mordbaad."baseid" AS "order.base.address.baseid",
- 	mordbaad."siteid" AS "order.base.address.siteid", mordbaad."addrid" AS "order.base.address.addressid",
- 	mordbaad."type" AS "order.base.address.type", mordbaad."company" AS "order.base.address.company",
- 	mordbaad."vatid" AS "order.base.address.vatid", mordbaad."salutation" AS "order.base.address.salutation",
- 	mordbaad."title" AS "order.base.address.title", mordbaad."firstname" AS "order.base.address.firstname",
- 	mordbaad."lastname" AS "order.base.address.lastname", mordbaad."address1" AS "order.base.address.address1",
- 	mordbaad."address2" AS "order.base.address.address2", mordbaad."address3" AS "order.base.address.address3",
- 	mordbaad."postal" AS "order.base.address.postal", mordbaad."city" AS "order.base.address.city",
- 	mordbaad."state" AS "order.base.address.state", mordbaad."countryid" AS "order.base.address.countryid",
- 	mordbaad."langid" AS "order.base.address.languageid", mordbaad."telephone" AS "order.base.address.telephone",
- 	mordbaad."email" AS "order.base.address.email", mordbaad."telefax" AS "order.base.address.telefax",
- 	mordbaad."website" AS "order.base.address.website", mordbaad."longitude" AS "order.base.address.longitude",
- 	mordbaad."latitude" AS "order.base.address.latitude", mordbaad."pos" AS "order.base.address.position",
- 	mordbaad."mtime" AS "order.base.address.mtime", mordbaad."editor" AS "order.base.address.editor",
- 	mordbaad."ctime" AS "order.base.address.ctime", mordbaad."birthday" AS "order.base.address.birthday"
- FROM "mshop_order_base_address" mordbaad
+ 	mordbaad."id" AS "order.address.id", mordbaad."baseid" AS "order.address.parentid",
+ 	mordbaad."siteid" AS "order.address.siteid", mordbaad."addrid" AS "order.address.addressid",
+ 	mordbaad."type" AS "order.address.type", mordbaad."company" AS "order.address.company",
+ 	mordbaad."vatid" AS "order.address.vatid", mordbaad."salutation" AS "order.address.salutation",
+ 	mordbaad."title" AS "order.address.title", mordbaad."firstname" AS "order.address.firstname",
+ 	mordbaad."lastname" AS "order.address.lastname", mordbaad."address1" AS "order.address.address1",
+ 	mordbaad."address2" AS "order.address.address2", mordbaad."address3" AS "order.address.address3",
+ 	mordbaad."postal" AS "order.address.postal", mordbaad."city" AS "order.address.city",
+ 	mordbaad."state" AS "order.address.state", mordbaad."countryid" AS "order.address.countryid",
+ 	mordbaad."langid" AS "order.address.languageid", mordbaad."telephone" AS "order.address.telephone",
+ 	mordbaad."email" AS "order.address.email", mordbaad."telefax" AS "order.address.telefax",
+ 	mordbaad."website" AS "order.address.website", mordbaad."longitude" AS "order.address.longitude",
+ 	mordbaad."latitude" AS "order.address.latitude", mordbaad."pos" AS "order.address.position",
+ 	mordbaad."mtime" AS "order.address.mtime", mordbaad."editor" AS "order.address.editor",
+ 	mordbaad."ctime" AS "order.address.ctime", mordbaad."birthday" AS "order.address.birthday"
+ FROM "mshop_order_address" mordbaad
  :joins
  WHERE :cond
  ORDER BY :order
@@ -833,14 +833,14 @@ mshop/order/manager/base/address/search/mysql =
 
 See also:
 
-* mshop/order/manager/base/address/search/ansi
+* mshop/order/manager/address/search/ansi
 
 ## address/submanagers
 
 List of manager names that can be instantiated by the order base address manager
 
 ```
-mshop/order/manager/base/address/submanagers = Array
+mshop/order/manager/address/submanagers = Array
 (
 )
 ```
@@ -868,8 +868,8 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/address/update/ansi = 
- UPDATE "mshop_order_base_address"
+mshop/order/manager/address/update/ansi =
+ UPDATE "mshop_order_address"
  SET :names
  	"baseid" = ?, "addrid" = ?, "type" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
  	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?, "address2" = ?,
@@ -879,7 +879,7 @@ mshop/order/manager/base/address/update/ansi =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: mshop/order/manager/base/address/update
+* Default: mshop/order/manager/address/update
 * Type: string - SQL statement for updating records
 * Since: 2014.03
 
@@ -899,19 +899,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/address/insert/ansi
-* mshop/order/manager/base/address/newid/ansi
-* mshop/order/manager/base/address/delete/ansi
-* mshop/order/manager/base/address/search/ansi
-* mshop/order/manager/base/address/count/ansi
+* mshop/order/manager/address/insert/ansi
+* mshop/order/manager/address/newid/ansi
+* mshop/order/manager/address/delete/ansi
+* mshop/order/manager/address/search/ansi
+* mshop/order/manager/address/count/ansi
 
 ## address/update/mysql
 
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/address/update/mysql = 
- UPDATE "mshop_order_base_address"
+mshop/order/manager/address/update/mysql =
+ UPDATE "mshop_order_address"
  SET :names
  	"baseid" = ?, "addrid" = ?, "type" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
  	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?, "address2" = ?,
@@ -921,8 +921,8 @@ mshop/order/manager/base/address/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
- UPDATE "mshop_order_base_address"
+* Default:
+ UPDATE "mshop_order_address"
  SET :names
  	"baseid" = ?, "addrid" = ?, "type" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
  	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?, "address2" = ?,
@@ -934,18 +934,18 @@ mshop/order/manager/base/address/update/mysql =
 
 See also:
 
-* mshop/order/manager/base/address/update/ansi
+* mshop/order/manager/address/update/ansi
 
 ## aggregate/ansi
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/aggregate/ansi = 
+mshop/order/manager/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base" mordba
+ 	FROM "mshop_order" mordba
  	:joins
  	WHERE :cond
  	GROUP BY mordba.id, :cols
@@ -955,7 +955,7 @@ mshop/order/manager/base/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/order/manager/base/aggregate
+* Default: mshop/order/manager/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -991,23 +991,23 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/insert/ansi
-* mshop/order/manager/base/update/ansi
-* mshop/order/manager/base/newid/ansi
-* mshop/order/manager/base/delete/ansi
-* mshop/order/manager/base/search/ansi
-* mshop/order/manager/base/count/ansi
+* mshop/order/manager/insert/ansi
+* mshop/order/manager/update/ansi
+* mshop/order/manager/newid/ansi
+* mshop/order/manager/delete/ansi
+* mshop/order/manager/search/ansi
+* mshop/order/manager/count/ansi
 
 ## aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/aggregate/mysql = 
+mshop/order/manager/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base" mordba
+ 	FROM "mshop_order" mordba
  	:joins
  	WHERE :cond
  	GROUP BY mordba.id, :cols
@@ -1017,11 +1017,11 @@ mshop/order/manager/base/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base" mordba
+ 	FROM "mshop_order" mordba
  	:joins
  	WHERE :cond
  	GROUP BY mordba.id, :cols
@@ -1033,87 +1033,87 @@ mshop/order/manager/base/aggregate/mysql =
 
 See also:
 
-* mshop/order/manager/base/aggregate/ansi
+* mshop/order/manager/aggregate/ansi
 
 ## aggregateavg/ansi
 
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/aggregateavg/ansi = 
+mshop/order/manager/aggregateavg/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order base items and computing the average value
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/aggregate/ansi
+* mshop/order/manager/aggregate/ansi
 
 ## aggregateavg/mysql
 
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/aggregateavg/mysql = 
+mshop/order/manager/aggregateavg/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order base items and computing the average value
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/aggregateavg/ansi
-* mshop/order/manager/base/aggregate/mysql
+* mshop/order/manager/aggregateavg/ansi
+* mshop/order/manager/aggregate/mysql
 
 ## aggregatesum/ansi
 
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/aggregatesum/ansi = 
+mshop/order/manager/aggregatesum/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order base items and computing the sum
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/aggregate/ansi
+* mshop/order/manager/aggregate/ansi
 
 ## aggregatesum/mysql
 
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/aggregatesum/mysql = 
+mshop/order/manager/aggregatesum/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order base items and computing the sum
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/aggregatesum/ansi
-* mshop/order/manager/base/aggregate/mysql
+* mshop/order/manager/aggregatesum/ansi
+* mshop/order/manager/aggregate/mysql
 
 ## count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/count/ansi = 
+mshop/order/manager/count/ansi =
  SELECT COUNT( DISTINCT mordba."id" ) AS "count"
- FROM "mshop_order_base" mordba
+ FROM "mshop_order" mordba
  :joins
  WHERE :cond
 ```
 
-* Default: mshop/order/manager/base/count
+* Default: mshop/order/manager/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -1152,45 +1152,45 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/insert/ansi
-* mshop/order/manager/base/update/ansi
-* mshop/order/manager/base/newid/ansi
-* mshop/order/manager/base/delete/ansi
-* mshop/order/manager/base/search/ansi
+* mshop/order/manager/insert/ansi
+* mshop/order/manager/update/ansi
+* mshop/order/manager/newid/ansi
+* mshop/order/manager/delete/ansi
+* mshop/order/manager/search/ansi
 
 ## count/mysql
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/count/mysql = 
+mshop/order/manager/count/mysql =
  SELECT COUNT( DISTINCT mordba."id" ) AS "count"
- FROM "mshop_order_base" mordba
+ FROM "mshop_order" mordba
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordba."id" ) AS "count"
- FROM "mshop_order_base" mordba
+ FROM "mshop_order" mordba
  :joins
  WHERE :cond
 
 
 See also:
 
-* mshop/order/manager/base/count/ansi
+* mshop/order/manager/count/ansi
 
 ## coupon/aggregate/ansi
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/coupon/aggregate/ansi = 
+mshop/order/manager/coupon/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_coupon" mordbaco
+ 	FROM "mshop_order_coupon" mordbaco
  	:joins
  	WHERE :cond
  	GROUP BY mordbaco.id, :cols
@@ -1200,7 +1200,7 @@ mshop/order/manager/base/coupon/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/order/manager/base/coupon/aggregate
+* Default: mshop/order/manager/coupon/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -1236,23 +1236,23 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/coupon/insert/ansi
-* mshop/order/manager/base/coupon/update/ansi
-* mshop/order/manager/base/coupon/newid/ansi
-* mshop/order/manager/base/coupon/delete/ansi
-* mshop/order/manager/base/coupon/search/ansi
-* mshop/order/manager/base/coupon/count/ansi
+* mshop/order/manager/coupon/insert/ansi
+* mshop/order/manager/coupon/update/ansi
+* mshop/order/manager/coupon/newid/ansi
+* mshop/order/manager/coupon/delete/ansi
+* mshop/order/manager/coupon/search/ansi
+* mshop/order/manager/coupon/count/ansi
 
 ## coupon/aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/coupon/aggregate/mysql = 
+mshop/order/manager/coupon/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_coupon" mordbaco
+ 	FROM "mshop_order_coupon" mordbaco
  	:joins
  	WHERE :cond
  	GROUP BY mordbaco.id, :cols
@@ -1262,11 +1262,11 @@ mshop/order/manager/base/coupon/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_coupon" mordbaco
+ 	FROM "mshop_order_coupon" mordbaco
  	:joins
  	WHERE :cond
  	GROUP BY mordbaco.id, :cols
@@ -1278,21 +1278,21 @@ mshop/order/manager/base/coupon/aggregate/mysql =
 
 See also:
 
-* mshop/order/manager/base/coupon/aggregate/ansi
+* mshop/order/manager/coupon/aggregate/ansi
 
 ## coupon/count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/coupon/count/ansi = 
+mshop/order/manager/coupon/count/ansi =
  SELECT COUNT( DISTINCT mordbaco."id" ) AS "count"
- FROM "mshop_order_base_coupon" mordbaco
+ FROM "mshop_order_coupon" mordbaco
  :joins
  WHERE :cond
 ```
 
-* Default: mshop/order/manager/base/coupon/count
+* Default: mshop/order/manager/coupon/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -1331,41 +1331,41 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/coupon/insert/ansi
-* mshop/order/manager/base/coupon/update/ansi
-* mshop/order/manager/base/coupon/newid/ansi
-* mshop/order/manager/base/coupon/delete/ansi
-* mshop/order/manager/base/coupon/search/ansi
+* mshop/order/manager/coupon/insert/ansi
+* mshop/order/manager/coupon/update/ansi
+* mshop/order/manager/coupon/newid/ansi
+* mshop/order/manager/coupon/delete/ansi
+* mshop/order/manager/coupon/search/ansi
 
 ## coupon/count/mysql
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/coupon/count/mysql = 
+mshop/order/manager/coupon/count/mysql =
  SELECT COUNT( DISTINCT mordbaco."id" ) AS "count"
- FROM "mshop_order_base_coupon" mordbaco
+ FROM "mshop_order_coupon" mordbaco
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordbaco."id" ) AS "count"
- FROM "mshop_order_base_coupon" mordbaco
+ FROM "mshop_order_coupon" mordbaco
  :joins
  WHERE :cond
 
 
 See also:
 
-* mshop/order/manager/base/coupon/count/ansi
+* mshop/order/manager/coupon/count/ansi
 
 ## coupon/decorators/excludes
 
 Excludes decorators added by the "common" option from the order base coupon manager
 
 ```
-mshop/order/manager/base/coupon/decorators/excludes = Array
+mshop/order/manager/coupon/decorators/excludes = Array
 (
 )
 ```
@@ -1387,7 +1387,7 @@ This option allows you to remove a decorator added via
 around the order base coupon manager.
 
 ```
- mshop/order/manager/base/coupon/decorators/excludes = array( 'decorator1' )
+ mshop/order/manager/coupon/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -1397,15 +1397,15 @@ common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/coupon/decorators/global
-* mshop/order/manager/base/coupon/decorators/local
+* mshop/order/manager/coupon/decorators/global
+* mshop/order/manager/coupon/decorators/local
 
 ## coupon/decorators/global
 
 Adds a list of globally available decorators only to the order base coupon manager
 
 ```
-mshop/order/manager/base/coupon/decorators/global = Array
+mshop/order/manager/coupon/decorators/global = Array
 (
 )
 ```
@@ -1427,7 +1427,7 @@ This option allows you to wrap global decorators
 manager.
 
 ```
- mshop/order/manager/base/coupon/decorators/global = array( 'decorator1' )
+ mshop/order/manager/coupon/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -1437,15 +1437,15 @@ base coupon manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/coupon/decorators/excludes
-* mshop/order/manager/base/coupon/decorators/local
+* mshop/order/manager/coupon/decorators/excludes
+* mshop/order/manager/coupon/decorators/local
 
 ## coupon/decorators/local
 
 Adds a list of local decorators only to the order base coupon manager
 
 ```
-mshop/order/manager/base/coupon/decorators/local = Array
+mshop/order/manager/coupon/decorators/local = Array
 (
 )
 ```
@@ -1467,7 +1467,7 @@ This option allows you to wrap local decorators
 base coupon manager.
 
 ```
- mshop/order/manager/base/coupon/decorators/local = array( 'decorator2' )
+ mshop/order/manager/coupon/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
@@ -1477,20 +1477,20 @@ to the order base coupon manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/coupon/decorators/excludes
-* mshop/order/manager/base/coupon/decorators/global
+* mshop/order/manager/coupon/decorators/excludes
+* mshop/order/manager/coupon/decorators/global
 
 ## coupon/delete/ansi
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/coupon/delete/ansi = 
- DELETE FROM "mshop_order_base_coupon"
+mshop/order/manager/coupon/delete/ansi =
+ DELETE FROM "mshop_order_coupon"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/order/manager/base/coupon/delete
+* Default: mshop/order/manager/coupon/delete
 * Type: string - SQL statement for deleting items
 * Since: 2014.03
 
@@ -1508,45 +1508,45 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/coupon/insert/ansi
-* mshop/order/manager/base/coupon/update/ansi
-* mshop/order/manager/base/coupon/newid/ansi
-* mshop/order/manager/base/coupon/search/ansi
-* mshop/order/manager/base/coupon/count/ansi
+* mshop/order/manager/coupon/insert/ansi
+* mshop/order/manager/coupon/update/ansi
+* mshop/order/manager/coupon/newid/ansi
+* mshop/order/manager/coupon/search/ansi
+* mshop/order/manager/coupon/count/ansi
 
 ## coupon/delete/mysql
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/coupon/delete/mysql = 
- DELETE FROM "mshop_order_base_coupon"
+mshop/order/manager/coupon/delete/mysql =
+ DELETE FROM "mshop_order_coupon"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
- DELETE FROM "mshop_order_base_coupon"
+* Default:
+ DELETE FROM "mshop_order_coupon"
  WHERE :cond AND "siteid" LIKE ?
- 
+
 
 See also:
 
-* mshop/order/manager/base/coupon/delete/ansi
+* mshop/order/manager/coupon/delete/ansi
 
 ## coupon/insert/ansi
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/coupon/insert/ansi = 
- INSERT INTO "mshop_order_base_coupon" ( :names
+mshop/order/manager/coupon/insert/ansi =
+ INSERT INTO "mshop_order_coupon" ( :names
  	"baseid", "ordprodid", "code", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?
  )
 ```
 
-* Default: mshop/order/manager/base/coupon/insert
+* Default: mshop/order/manager/coupon/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -1569,27 +1569,27 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/coupon/update/ansi
-* mshop/order/manager/base/coupon/newid/ansi
-* mshop/order/manager/base/coupon/delete/ansi
-* mshop/order/manager/base/coupon/search/ansi
-* mshop/order/manager/base/coupon/count/ansi
+* mshop/order/manager/coupon/update/ansi
+* mshop/order/manager/coupon/newid/ansi
+* mshop/order/manager/coupon/delete/ansi
+* mshop/order/manager/coupon/search/ansi
+* mshop/order/manager/coupon/count/ansi
 
 ## coupon/insert/mysql
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/coupon/insert/mysql = 
- INSERT INTO "mshop_order_base_coupon" ( :names
+mshop/order/manager/coupon/insert/mysql =
+ INSERT INTO "mshop_order_coupon" ( :names
  	"baseid", "ordprodid", "code", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?
  )
 ```
 
-* Default: 
- INSERT INTO "mshop_order_base_coupon" ( :names
+* Default:
+ INSERT INTO "mshop_order_coupon" ( :names
  	"baseid", "ordprodid", "code", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?
@@ -1598,14 +1598,14 @@ mshop/order/manager/base/coupon/insert/mysql =
 
 See also:
 
-* mshop/order/manager/base/coupon/insert/ansi
+* mshop/order/manager/coupon/insert/ansi
 
 ## coupon/name
 
 Class name of the used order base coupon manager implementation
 
 ```
-mshop/order/manager/base/coupon/name = Standard
+mshop/order/manager/coupon/name = Standard
 ```
 
 * Default: Standard
@@ -1632,7 +1632,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- mshop/order/manager/base/coupon/name = Mycoupon
+ mshop/order/manager/coupon/name = Mycoupon
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -1650,10 +1650,10 @@ or numbers. Avoid chamel case names like "MyCoupon"!
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/coupon/newid/ansi = mshop/order/manager/base/coupon/newid
+mshop/order/manager/coupon/newid/ansi = mshop/order/manager/coupon/newid
 ```
 
-* Default: mshop/order/manager/base/coupon/newid
+* Default: mshop/order/manager/coupon/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -1679,45 +1679,45 @@ specific way.
 
 See also:
 
-* mshop/order/manager/base/coupon/insert/ansi
-* mshop/order/manager/base/coupon/update/ansi
-* mshop/order/manager/base/coupon/delete/ansi
-* mshop/order/manager/base/coupon/search/ansi
-* mshop/order/manager/base/coupon/count/ansi
+* mshop/order/manager/coupon/insert/ansi
+* mshop/order/manager/coupon/update/ansi
+* mshop/order/manager/coupon/delete/ansi
+* mshop/order/manager/coupon/search/ansi
+* mshop/order/manager/coupon/count/ansi
 
 ## coupon/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/coupon/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/order/manager/coupon/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/order/manager/base/coupon/newid
+* Default: mshop/order/manager/coupon/newid
 
 See also:
 
-* mshop/order/manager/base/coupon/newid/ansi
+* mshop/order/manager/coupon/newid/ansi
 
 ## coupon/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/coupon/search/ansi = 
+mshop/order/manager/coupon/search/ansi =
  SELECT :columns
- 	mordbaco."id" AS "order.base.coupon.id", mordbaco."baseid" AS "order.base.coupon.baseid",
- 	mordbaco."siteid" AS "order.base.coupon.siteid", mordbaco."ordprodid" AS "order.base.coupon.ordprodid",
- 	mordbaco."code" AS "order.base.coupon.code", mordbaco."mtime" AS "order.base.coupon.mtime",
- 	mordbaco."editor" AS "order.base.coupon.editor", mordbaco."ctime" AS "order.base.coupon.ctime"
- FROM "mshop_order_base_coupon" mordbaco
+ 	mordbaco."id" AS "order.coupon.id", mordbaco."baseid" AS "order.coupon.parentid",
+ 	mordbaco."siteid" AS "order.coupon.siteid", mordbaco."ordprodid" AS "order.coupon.ordprodid",
+ 	mordbaco."code" AS "order.coupon.code", mordbaco."mtime" AS "order.coupon.mtime",
+ 	mordbaco."editor" AS "order.coupon.editor", mordbaco."ctime" AS "order.coupon.ctime"
+ FROM "mshop_order_coupon" mordbaco
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/order/manager/base/coupon/search
+* Default: mshop/order/manager/coupon/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -1762,37 +1762,37 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/coupon/insert/ansi
-* mshop/order/manager/base/coupon/update/ansi
-* mshop/order/manager/base/coupon/newid/ansi
-* mshop/order/manager/base/coupon/delete/ansi
-* mshop/order/manager/base/coupon/count/ansi
+* mshop/order/manager/coupon/insert/ansi
+* mshop/order/manager/coupon/update/ansi
+* mshop/order/manager/coupon/newid/ansi
+* mshop/order/manager/coupon/delete/ansi
+* mshop/order/manager/coupon/count/ansi
 
 ## coupon/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/coupon/search/mysql = 
+mshop/order/manager/coupon/search/mysql =
  SELECT :columns
- 	mordbaco."id" AS "order.base.coupon.id", mordbaco."baseid" AS "order.base.coupon.baseid",
- 	mordbaco."siteid" AS "order.base.coupon.siteid", mordbaco."ordprodid" AS "order.base.coupon.ordprodid",
- 	mordbaco."code" AS "order.base.coupon.code", mordbaco."mtime" AS "order.base.coupon.mtime",
- 	mordbaco."editor" AS "order.base.coupon.editor", mordbaco."ctime" AS "order.base.coupon.ctime"
- FROM "mshop_order_base_coupon" mordbaco
+ 	mordbaco."id" AS "order.coupon.id", mordbaco."baseid" AS "order.coupon.parentid",
+ 	mordbaco."siteid" AS "order.coupon.siteid", mordbaco."ordprodid" AS "order.coupon.ordprodid",
+ 	mordbaco."code" AS "order.coupon.code", mordbaco."mtime" AS "order.coupon.mtime",
+ 	mordbaco."editor" AS "order.coupon.editor", mordbaco."ctime" AS "order.coupon.ctime"
+ FROM "mshop_order_coupon" mordbaco
  :joins
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mordbaco."id" AS "order.base.coupon.id", mordbaco."baseid" AS "order.base.coupon.baseid",
- 	mordbaco."siteid" AS "order.base.coupon.siteid", mordbaco."ordprodid" AS "order.base.coupon.ordprodid",
- 	mordbaco."code" AS "order.base.coupon.code", mordbaco."mtime" AS "order.base.coupon.mtime",
- 	mordbaco."editor" AS "order.base.coupon.editor", mordbaco."ctime" AS "order.base.coupon.ctime"
- FROM "mshop_order_base_coupon" mordbaco
+ 	mordbaco."id" AS "order.coupon.id", mordbaco."baseid" AS "order.coupon.parentid",
+ 	mordbaco."siteid" AS "order.coupon.siteid", mordbaco."ordprodid" AS "order.coupon.ordprodid",
+ 	mordbaco."code" AS "order.coupon.code", mordbaco."mtime" AS "order.coupon.mtime",
+ 	mordbaco."editor" AS "order.coupon.editor", mordbaco."ctime" AS "order.coupon.ctime"
+ FROM "mshop_order_coupon" mordbaco
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1801,14 +1801,14 @@ mshop/order/manager/base/coupon/search/mysql =
 
 See also:
 
-* mshop/order/manager/base/coupon/search/ansi
+* mshop/order/manager/coupon/search/ansi
 
 ## coupon/submanagers
 
 List of manager names that can be instantiated by the order base coupon manager
 
 ```
-mshop/order/manager/base/coupon/submanagers = Array
+mshop/order/manager/coupon/submanagers = Array
 (
 )
 ```
@@ -1836,14 +1836,14 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/coupon/update/ansi = 
- UPDATE "mshop_order_base_coupon"
+mshop/order/manager/coupon/update/ansi =
+ UPDATE "mshop_order_coupon"
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "code" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: mshop/order/manager/base/coupon/update
+* Default: mshop/order/manager/coupon/update
 * Type: string - SQL statement for updating records
 * Since: 2014.03
 
@@ -1863,26 +1863,26 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/coupon/insert/ansi
-* mshop/order/manager/base/coupon/newid/ansi
-* mshop/order/manager/base/coupon/delete/ansi
-* mshop/order/manager/base/coupon/search/ansi
-* mshop/order/manager/base/coupon/count/ansi
+* mshop/order/manager/coupon/insert/ansi
+* mshop/order/manager/coupon/newid/ansi
+* mshop/order/manager/coupon/delete/ansi
+* mshop/order/manager/coupon/search/ansi
+* mshop/order/manager/coupon/count/ansi
 
 ## coupon/update/mysql
 
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/coupon/update/mysql = 
- UPDATE "mshop_order_base_coupon"
+mshop/order/manager/coupon/update/mysql =
+ UPDATE "mshop_order_coupon"
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "code" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
- UPDATE "mshop_order_base_coupon"
+* Default:
+ UPDATE "mshop_order_coupon"
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "code" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
@@ -1890,14 +1890,14 @@ mshop/order/manager/base/coupon/update/mysql =
 
 See also:
 
-* mshop/order/manager/base/coupon/update/ansi
+* mshop/order/manager/coupon/update/ansi
 
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the order base manager
 
 ```
-mshop/order/manager/base/decorators/excludes = Array
+mshop/order/manager/decorators/excludes = Array
 (
 )
 ```
@@ -1919,7 +1919,7 @@ This option allows you to remove a decorator added via
 around the order base manager.
 
 ```
- mshop/order/manager/base/decorators/excludes = array( 'decorator1' )
+ mshop/order/manager/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -1929,15 +1929,15 @@ common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/decorators/global
-* mshop/order/manager/base/decorators/local
+* mshop/order/manager/decorators/global
+* mshop/order/manager/decorators/local
 
 ## decorators/global
 
 Adds a list of globally available decorators only to the order base manager
 
 ```
-mshop/order/manager/base/decorators/global = Array
+mshop/order/manager/decorators/global = Array
 (
 )
 ```
@@ -1959,7 +1959,7 @@ This option allows you to wrap global decorators
 manager.
 
 ```
- mshop/order/manager/base/decorators/global = array( 'decorator1' )
+ mshop/order/manager/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -1969,15 +1969,15 @@ base manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/decorators/excludes
-* mshop/order/manager/base/decorators/local
+* mshop/order/manager/decorators/excludes
+* mshop/order/manager/decorators/local
 
 ## decorators/local
 
 Adds a list of local decorators only to the order base manager
 
 ```
-mshop/order/manager/base/decorators/local = Array
+mshop/order/manager/decorators/local = Array
 (
 )
 ```
@@ -1999,7 +1999,7 @@ This option allows you to wrap local decorators
 manager.
 
 ```
- mshop/order/manager/base/decorators/local = array( 'decorator2' )
+ mshop/order/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
@@ -2009,20 +2009,20 @@ order base manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/decorators/excludes
-* mshop/order/manager/base/decorators/global
+* mshop/order/manager/decorators/excludes
+* mshop/order/manager/decorators/global
 
 ## delete/ansi
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/delete/ansi = 
- DELETE FROM "mshop_order_base"
+mshop/order/manager/delete/ansi =
+ DELETE FROM "mshop_order"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/order/manager/base/delete
+* Default: mshop/order/manager/delete
 * Type: string - SQL statement for deleting items
 * Since: 2014.03
 
@@ -2040,38 +2040,38 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/insert/ansi
-* mshop/order/manager/base/update/ansi
-* mshop/order/manager/base/newid/ansi
-* mshop/order/manager/base/search/ansi
-* mshop/order/manager/base/count/ansi
+* mshop/order/manager/insert/ansi
+* mshop/order/manager/update/ansi
+* mshop/order/manager/newid/ansi
+* mshop/order/manager/search/ansi
+* mshop/order/manager/count/ansi
 
 ## delete/mysql
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/delete/mysql = 
- DELETE FROM "mshop_order_base"
+mshop/order/manager/delete/mysql =
+ DELETE FROM "mshop_order"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
- DELETE FROM "mshop_order_base"
+* Default:
+ DELETE FROM "mshop_order"
  WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
 
-* mshop/order/manager/base/delete/ansi
+* mshop/order/manager/delete/ansi
 
 ## insert/ansi
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/insert/ansi = 
- INSERT INTO "mshop_order_base" ( :names
+mshop/order/manager/insert/ansi =
+ INSERT INTO "mshop_order" ( :names
  	"customerid", "sitecode", "langid", "currencyid",
  	"price", "costs", "rebate", "tax", "taxflag", "customerref",
  	"comment", "mtime", "editor", "siteid", "ctime"
@@ -2080,7 +2080,7 @@ mshop/order/manager/base/insert/ansi =
  )
 ```
 
-* Default: mshop/order/manager/base/insert
+* Default: mshop/order/manager/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -2103,19 +2103,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/update/ansi
-* mshop/order/manager/base/newid/ansi
-* mshop/order/manager/base/delete/ansi
-* mshop/order/manager/base/search/ansi
-* mshop/order/manager/base/count/ansi
+* mshop/order/manager/update/ansi
+* mshop/order/manager/newid/ansi
+* mshop/order/manager/delete/ansi
+* mshop/order/manager/search/ansi
+* mshop/order/manager/count/ansi
 
 ## insert/mysql
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/insert/mysql = 
- INSERT INTO "mshop_order_base" ( :names
+mshop/order/manager/insert/mysql =
+ INSERT INTO "mshop_order" ( :names
  	"customerid", "sitecode", "langid", "currencyid",
  	"price", "costs", "rebate", "tax", "taxflag", "customerref",
  	"comment", "mtime", "editor", "siteid", "ctime"
@@ -2124,8 +2124,8 @@ mshop/order/manager/base/insert/mysql =
  )
 ```
 
-* Default: 
- INSERT INTO "mshop_order_base" ( :names
+* Default:
+ INSERT INTO "mshop_order" ( :names
  	"customerid", "sitecode", "langid", "currencyid",
  	"price", "costs", "rebate", "tax", "taxflag", "customerref",
  	"comment", "mtime", "editor", "siteid", "ctime"
@@ -2136,14 +2136,14 @@ mshop/order/manager/base/insert/mysql =
 
 See also:
 
-* mshop/order/manager/base/insert/ansi
+* mshop/order/manager/insert/ansi
 
 ## name
 
 Class name of the used order base manager implementation
 
 ```
-mshop/order/manager/base/name = Standard
+mshop/order/manager/name = Standard
 ```
 
 * Default: Standard
@@ -2170,7 +2170,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- mshop/order/manager/base/name = Mybase
+ mshop/order/manager/name = Mybase
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -2188,10 +2188,10 @@ or numbers. Avoid chamel case names like "MyBase"!
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/newid/ansi = mshop/order/manager/base/newid
+mshop/order/manager/newid/ansi = mshop/order/manager/newid
 ```
 
-* Default: mshop/order/manager/base/newid
+* Default: mshop/order/manager/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -2217,36 +2217,36 @@ specific way.
 
 See also:
 
-* mshop/order/manager/base/insert/ansi
-* mshop/order/manager/base/update/ansi
-* mshop/order/manager/base/delete/ansi
-* mshop/order/manager/base/search/ansi
-* mshop/order/manager/base/count/ansi
+* mshop/order/manager/insert/ansi
+* mshop/order/manager/update/ansi
+* mshop/order/manager/delete/ansi
+* mshop/order/manager/search/ansi
+* mshop/order/manager/count/ansi
 
 ## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/order/manager/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/order/manager/base/newid
+* Default: mshop/order/manager/newid
 
 See also:
 
-* mshop/order/manager/base/newid/ansi
+* mshop/order/manager/newid/ansi
 
 ## product/aggregate/ansi
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/aggregate/ansi = 
+mshop/order/manager/product/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_product" mordbapr
+ 	FROM "mshop_order_product" mordbapr
  	:joins
  	WHERE :cond
  	GROUP BY mordbapr.id, :cols
@@ -2256,7 +2256,7 @@ mshop/order/manager/base/product/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/order/manager/base/product/aggregate
+* Default: mshop/order/manager/product/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -2292,23 +2292,23 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/insert/ansi
-* mshop/order/manager/base/product/update/ansi
-* mshop/order/manager/base/product/newid/ansi
-* mshop/order/manager/base/product/delete/ansi
-* mshop/order/manager/base/product/search/ansi
-* mshop/order/manager/base/product/count/ansi
+* mshop/order/manager/product/insert/ansi
+* mshop/order/manager/product/update/ansi
+* mshop/order/manager/product/newid/ansi
+* mshop/order/manager/product/delete/ansi
+* mshop/order/manager/product/search/ansi
+* mshop/order/manager/product/count/ansi
 
 ## product/aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/aggregate/mysql = 
+mshop/order/manager/product/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_product" mordbapr
+ 	FROM "mshop_order_product" mordbapr
  	:joins
  	WHERE :cond
  	GROUP BY mordbapr.id, :cols
@@ -2318,11 +2318,11 @@ mshop/order/manager/base/product/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_product" mordbapr
+ 	FROM "mshop_order_product" mordbapr
  	:joins
  	WHERE :cond
  	GROUP BY mordbapr.id, :cols
@@ -2334,84 +2334,84 @@ mshop/order/manager/base/product/aggregate/mysql =
 
 See also:
 
-* mshop/order/manager/base/product/aggregate/ansi
+* mshop/order/manager/product/aggregate/ansi
 
 ## product/aggregateavg/ansi
 
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/aggregateavg/ansi = 
+mshop/order/manager/product/aggregateavg/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order product items and computing the average value
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/product/aggregate/ansi
+* mshop/order/manager/product/aggregate/ansi
 
 ## product/aggregateavg/mysql
 
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/aggregateavg/mysql = 
+mshop/order/manager/product/aggregateavg/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order product items and computing the average value
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/product/aggregateavg/ansi
-* mshop/order/manager/base/product/aggregate/mysql
+* mshop/order/manager/product/aggregateavg/ansi
+* mshop/order/manager/product/aggregate/mysql
 
 ## product/aggregatesum/ansi
 
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/aggregatesum/ansi = 
+mshop/order/manager/product/aggregatesum/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order product items and computing the sum
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/product/aggregate/ansi
+* mshop/order/manager/product/aggregate/ansi
 
 ## product/aggregatesum/mysql
 
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/aggregatesum/mysql = 
+mshop/order/manager/product/aggregatesum/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order product items and computing the sum
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/product/aggregatesum/ansi
-* mshop/order/manager/base/product/aggregate/mysql
+* mshop/order/manager/product/aggregatesum/ansi
+* mshop/order/manager/product/aggregate/mysql
 
 ## product/attribute/aggregate/ansi
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/attribute/aggregate/ansi = 
+mshop/order/manager/product/attribute/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_product_attr" mordbaprat
+ 	FROM "mshop_order_product_attr" mordbaprat
  	:joins
  	WHERE :cond
  	GROUP BY mordbaprat.id, :cols
@@ -2421,7 +2421,7 @@ mshop/order/manager/base/product/attribute/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/order/manager/base/product/attribute/aggregate
+* Default: mshop/order/manager/product/attribute/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -2457,23 +2457,23 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/attribute/insert/ansi
-* mshop/order/manager/base/product/attribute/update/ansi
-* mshop/order/manager/base/product/attribute/newid/ansi
-* mshop/order/manager/base/product/attribute/delete/ansi
-* mshop/order/manager/base/product/attribute/search/ansi
-* mshop/order/manager/base/product/attribute/count/ansi
+* mshop/order/manager/product/attribute/insert/ansi
+* mshop/order/manager/product/attribute/update/ansi
+* mshop/order/manager/product/attribute/newid/ansi
+* mshop/order/manager/product/attribute/delete/ansi
+* mshop/order/manager/product/attribute/search/ansi
+* mshop/order/manager/product/attribute/count/ansi
 
 ## product/attribute/aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/product/attribute/aggregate/mysql = 
+mshop/order/manager/product/attribute/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_product_attr" mordbaprat
+ 	FROM "mshop_order_product_attr" mordbaprat
  	:joins
  	WHERE :cond
  	GROUP BY mordbaprat.id, :cols
@@ -2483,11 +2483,11 @@ mshop/order/manager/base/product/attribute/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_product_attr" mordbaprat
+ 	FROM "mshop_order_product_attr" mordbaprat
  	:joins
  	WHERE :cond
  	GROUP BY mordbaprat.id, :cols
@@ -2499,21 +2499,21 @@ mshop/order/manager/base/product/attribute/aggregate/mysql =
 
 See also:
 
-* mshop/order/manager/base/product/attribute/aggregate/ansi
+* mshop/order/manager/product/attribute/aggregate/ansi
 
 ## product/attribute/count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/attribute/count/ansi = 
+mshop/order/manager/product/attribute/count/ansi =
  SELECT COUNT( DISTINCT mordbaprat."id" ) AS "count"
- FROM "mshop_order_base_product_attr" mordbaprat
+ FROM "mshop_order_product_attr" mordbaprat
  :joins
  WHERE :cond
 ```
 
-* Default: mshop/order/manager/base/product/attribute/count
+* Default: mshop/order/manager/product/attribute/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -2552,41 +2552,41 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/attribute/insert/ansi
-* mshop/order/manager/base/product/attribute/update/ansi
-* mshop/order/manager/base/product/attribute/newid/ansi
-* mshop/order/manager/base/product/attribute/delete/ansi
-* mshop/order/manager/base/product/attribute/search/ansi
+* mshop/order/manager/product/attribute/insert/ansi
+* mshop/order/manager/product/attribute/update/ansi
+* mshop/order/manager/product/attribute/newid/ansi
+* mshop/order/manager/product/attribute/delete/ansi
+* mshop/order/manager/product/attribute/search/ansi
 
 ## product/attribute/count/mysql
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/attribute/count/mysql = 
+mshop/order/manager/product/attribute/count/mysql =
  SELECT COUNT( DISTINCT mordbaprat."id" ) AS "count"
- FROM "mshop_order_base_product_attr" mordbaprat
+ FROM "mshop_order_product_attr" mordbaprat
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordbaprat."id" ) AS "count"
- FROM "mshop_order_base_product_attr" mordbaprat
+ FROM "mshop_order_product_attr" mordbaprat
  :joins
  WHERE :cond
 
 
 See also:
 
-* mshop/order/manager/base/product/attribute/count/ansi
+* mshop/order/manager/product/attribute/count/ansi
 
 ## product/attribute/decorators/excludes
 
 Excludes decorators added by the "common" option from the order base product attribute manager
 
 ```
-mshop/order/manager/base/product/attribute/decorators/excludes = Array
+mshop/order/manager/product/attribute/decorators/excludes = Array
 (
 )
 ```
@@ -2608,7 +2608,7 @@ This option allows you to remove a decorator added via
 around the order base product attribute manager.
 
 ```
- mshop/order/manager/base/product/attribute/decorators/excludes = array( 'decorator1' )
+ mshop/order/manager/product/attribute/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -2618,15 +2618,15 @@ common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/product/attribute/decorators/global
-* mshop/order/manager/base/product/attribute/decorators/local
+* mshop/order/manager/product/attribute/decorators/global
+* mshop/order/manager/product/attribute/decorators/local
 
 ## product/attribute/decorators/global
 
 Adds a list of globally available decorators only to the order base product attribute manager
 
 ```
-mshop/order/manager/base/product/attribute/decorators/global = Array
+mshop/order/manager/product/attribute/decorators/global = Array
 (
 )
 ```
@@ -2648,7 +2648,7 @@ This option allows you to wrap global decorators
 product attribute manager.
 
 ```
- mshop/order/manager/base/product/attribute/decorators/global = array( 'decorator1' )
+ mshop/order/manager/product/attribute/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -2658,15 +2658,15 @@ base product attribute manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/product/attribute/decorators/excludes
-* mshop/order/manager/base/product/attribute/decorators/local
+* mshop/order/manager/product/attribute/decorators/excludes
+* mshop/order/manager/product/attribute/decorators/local
 
 ## product/attribute/decorators/local
 
 Adds a list of local decorators only to the order base product attribute manager
 
 ```
-mshop/order/manager/base/product/attribute/decorators/local = Array
+mshop/order/manager/product/attribute/decorators/local = Array
 (
 )
 ```
@@ -2688,7 +2688,7 @@ This option allows you to wrap local decorators
 around the order base product attribute manager.
 
 ```
- mshop/order/manager/base/product/attribute/decorators/local = array( 'decorator2' )
+ mshop/order/manager/product/attribute/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
@@ -2698,20 +2698,20 @@ only to the order base product attribute manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/product/attribute/decorators/excludes
-* mshop/order/manager/base/product/attribute/decorators/global
+* mshop/order/manager/product/attribute/decorators/excludes
+* mshop/order/manager/product/attribute/decorators/global
 
 ## product/attribute/delete/ansi
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/product/attribute/delete/ansi = 
- DELETE FROM "mshop_order_base_product_attr"
+mshop/order/manager/product/attribute/delete/ansi =
+ DELETE FROM "mshop_order_product_attr"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/order/manager/base/product/attribute/delete
+* Default: mshop/order/manager/product/attribute/delete
 * Type: string - SQL statement for deleting items
 * Since: 2014.03
 
@@ -2729,38 +2729,38 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/attribute/insert/ansi
-* mshop/order/manager/base/product/attribute/update/ansi
-* mshop/order/manager/base/product/attribute/newid/ansi
-* mshop/order/manager/base/product/attribute/search/ansi
-* mshop/order/manager/base/product/attribute/count/ansi
+* mshop/order/manager/product/attribute/insert/ansi
+* mshop/order/manager/product/attribute/update/ansi
+* mshop/order/manager/product/attribute/newid/ansi
+* mshop/order/manager/product/attribute/search/ansi
+* mshop/order/manager/product/attribute/count/ansi
 
 ## product/attribute/delete/mysql
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/product/attribute/delete/mysql = 
- DELETE FROM "mshop_order_base_product_attr"
+mshop/order/manager/product/attribute/delete/mysql =
+ DELETE FROM "mshop_order_product_attr"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
- DELETE FROM "mshop_order_base_product_attr"
+* Default:
+ DELETE FROM "mshop_order_product_attr"
  WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
 
-* mshop/order/manager/base/product/attribute/delete/ansi
+* mshop/order/manager/product/attribute/delete/ansi
 
 ## product/attribute/insert/ansi
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/product/attribute/insert/ansi = 
- INSERT INTO "mshop_order_base_product_attr" ( :names
+mshop/order/manager/product/attribute/insert/ansi =
+ INSERT INTO "mshop_order_product_attr" ( :names
  	"attrid", "parentid", "type", "code", "value",
  	"quantity", "price", "name", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -2768,7 +2768,7 @@ mshop/order/manager/base/product/attribute/insert/ansi =
  )
 ```
 
-* Default: mshop/order/manager/base/product/attribute/insert
+* Default: mshop/order/manager/product/attribute/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -2791,19 +2791,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/attribute/update/ansi
-* mshop/order/manager/base/product/attribute/newid/ansi
-* mshop/order/manager/base/product/attribute/delete/ansi
-* mshop/order/manager/base/product/attribute/search/ansi
-* mshop/order/manager/base/product/attribute/count/ansi
+* mshop/order/manager/product/attribute/update/ansi
+* mshop/order/manager/product/attribute/newid/ansi
+* mshop/order/manager/product/attribute/delete/ansi
+* mshop/order/manager/product/attribute/search/ansi
+* mshop/order/manager/product/attribute/count/ansi
 
 ## product/attribute/insert/mysql
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/product/attribute/insert/mysql = 
- INSERT INTO "mshop_order_base_product_attr" ( :names
+mshop/order/manager/product/attribute/insert/mysql =
+ INSERT INTO "mshop_order_product_attr" ( :names
  	"attrid", "parentid", "type", "code", "value",
  	"quantity", "price", "name", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -2811,8 +2811,8 @@ mshop/order/manager/base/product/attribute/insert/mysql =
  )
 ```
 
-* Default: 
- INSERT INTO "mshop_order_base_product_attr" ( :names
+* Default:
+ INSERT INTO "mshop_order_product_attr" ( :names
  	"attrid", "parentid", "type", "code", "value",
  	"quantity", "price", "name", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -2822,14 +2822,14 @@ mshop/order/manager/base/product/attribute/insert/mysql =
 
 See also:
 
-* mshop/order/manager/base/product/attribute/insert/ansi
+* mshop/order/manager/product/attribute/insert/ansi
 
 ## product/attribute/name
 
 Class name of the used order base product attribute manager implementation
 
 ```
-mshop/order/manager/base/product/attribute/name = Standard
+mshop/order/manager/product/attribute/name = Standard
 ```
 
 * Default: Standard
@@ -2856,7 +2856,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- mshop/order/manager/base/product/attribute/name = Myattribute
+ mshop/order/manager/product/attribute/name = Myattribute
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -2874,10 +2874,10 @@ or numbers. Avoid chamel case names like "MyAttribute"!
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/product/attribute/newid/ansi = mshop/order/manager/base/product/attribute/newid
+mshop/order/manager/product/attribute/newid/ansi = mshop/order/manager/product/attribute/newid
 ```
 
-* Default: mshop/order/manager/base/product/attribute/newid
+* Default: mshop/order/manager/product/attribute/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -2903,48 +2903,48 @@ specific way.
 
 See also:
 
-* mshop/order/manager/base/product/attribute/insert/ansi
-* mshop/order/manager/base/product/attribute/update/ansi
-* mshop/order/manager/base/product/attribute/delete/ansi
-* mshop/order/manager/base/product/attribute/search/ansi
-* mshop/order/manager/base/product/attribute/count/ansi
+* mshop/order/manager/product/attribute/insert/ansi
+* mshop/order/manager/product/attribute/update/ansi
+* mshop/order/manager/product/attribute/delete/ansi
+* mshop/order/manager/product/attribute/search/ansi
+* mshop/order/manager/product/attribute/count/ansi
 
 ## product/attribute/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/product/attribute/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/order/manager/product/attribute/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/order/manager/base/product/attribute/newid
+* Default: mshop/order/manager/product/attribute/newid
 
 See also:
 
-* mshop/order/manager/base/product/attribute/newid/ansi
+* mshop/order/manager/product/attribute/newid/ansi
 
 ## product/attribute/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/attribute/search/ansi = 
+mshop/order/manager/product/attribute/search/ansi =
  SELECT :columns
- 	mordbaprat."id" AS "order.base.product.attribute.id", mordbaprat."siteid" AS "order.base.product.attribute.siteid",
- 	mordbaprat."attrid" AS "order.base.product.attribute.attributeid", mordbaprat."parentid" AS "order.base.product.attribute.parentid",
- 	mordbaprat."type" AS "order.base.product.attribute.type", mordbaprat."code" AS "order.base.product.attribute.code",
- 	mordbaprat."value" AS "order.base.product.attribute.value", mordbaprat."quantity" AS "order.base.product.attribute.quantity",
- 	mordbaprat."name" AS "order.base.product.attribute.name", mordbaprat."mtime" AS "order.base.product.attribute.mtime",
- 	mordbaprat."editor" AS "order.base.product.attribute.editor", mordbaprat."ctime" AS "order.base.product.attribute.ctime",
- 	mordbaprat."price" AS "order.base.product.attribute.price"
- FROM "mshop_order_base_product_attr" mordbaprat
+ 	mordbaprat."id" AS "order.product.attribute.id", mordbaprat."siteid" AS "order.product.attribute.siteid",
+ 	mordbaprat."attrid" AS "order.product.attribute.attributeid", mordbaprat."parentid" AS "order.product.attribute.parentid",
+ 	mordbaprat."type" AS "order.product.attribute.type", mordbaprat."code" AS "order.product.attribute.code",
+ 	mordbaprat."value" AS "order.product.attribute.value", mordbaprat."quantity" AS "order.product.attribute.quantity",
+ 	mordbaprat."name" AS "order.product.attribute.name", mordbaprat."mtime" AS "order.product.attribute.mtime",
+ 	mordbaprat."editor" AS "order.product.attribute.editor", mordbaprat."ctime" AS "order.product.attribute.ctime",
+ 	mordbaprat."price" AS "order.product.attribute.price"
+ FROM "mshop_order_product_attr" mordbaprat
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/order/manager/base/product/attribute/search
+* Default: mshop/order/manager/product/attribute/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -2989,43 +2989,43 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/attribute/insert/ansi
-* mshop/order/manager/base/product/attribute/update/ansi
-* mshop/order/manager/base/product/attribute/newid/ansi
-* mshop/order/manager/base/product/attribute/delete/ansi
-* mshop/order/manager/base/product/attribute/count/ansi
+* mshop/order/manager/product/attribute/insert/ansi
+* mshop/order/manager/product/attribute/update/ansi
+* mshop/order/manager/product/attribute/newid/ansi
+* mshop/order/manager/product/attribute/delete/ansi
+* mshop/order/manager/product/attribute/count/ansi
 
 ## product/attribute/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/attribute/search/mysql = 
+mshop/order/manager/product/attribute/search/mysql =
  SELECT :columns
- 	mordbaprat."id" AS "order.base.product.attribute.id", mordbaprat."siteid" AS "order.base.product.attribute.siteid",
- 	mordbaprat."attrid" AS "order.base.product.attribute.attributeid", mordbaprat."parentid" AS "order.base.product.attribute.parentid",
- 	mordbaprat."type" AS "order.base.product.attribute.type", mordbaprat."code" AS "order.base.product.attribute.code",
- 	mordbaprat."value" AS "order.base.product.attribute.value", mordbaprat."quantity" AS "order.base.product.attribute.quantity",
- 	mordbaprat."name" AS "order.base.product.attribute.name", mordbaprat."mtime" AS "order.base.product.attribute.mtime",
- 	mordbaprat."editor" AS "order.base.product.attribute.editor", mordbaprat."ctime" AS "order.base.product.attribute.ctime",
- 	mordbaprat."price" AS "order.base.product.attribute.price"
- FROM "mshop_order_base_product_attr" mordbaprat
+ 	mordbaprat."id" AS "order.product.attribute.id", mordbaprat."siteid" AS "order.product.attribute.siteid",
+ 	mordbaprat."attrid" AS "order.product.attribute.attributeid", mordbaprat."parentid" AS "order.product.attribute.parentid",
+ 	mordbaprat."type" AS "order.product.attribute.type", mordbaprat."code" AS "order.product.attribute.code",
+ 	mordbaprat."value" AS "order.product.attribute.value", mordbaprat."quantity" AS "order.product.attribute.quantity",
+ 	mordbaprat."name" AS "order.product.attribute.name", mordbaprat."mtime" AS "order.product.attribute.mtime",
+ 	mordbaprat."editor" AS "order.product.attribute.editor", mordbaprat."ctime" AS "order.product.attribute.ctime",
+ 	mordbaprat."price" AS "order.product.attribute.price"
+ FROM "mshop_order_product_attr" mordbaprat
  :joins
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mordbaprat."id" AS "order.base.product.attribute.id", mordbaprat."siteid" AS "order.base.product.attribute.siteid",
- 	mordbaprat."attrid" AS "order.base.product.attribute.attributeid", mordbaprat."parentid" AS "order.base.product.attribute.parentid",
- 	mordbaprat."type" AS "order.base.product.attribute.type", mordbaprat."code" AS "order.base.product.attribute.code",
- 	mordbaprat."value" AS "order.base.product.attribute.value", mordbaprat."quantity" AS "order.base.product.attribute.quantity",
- 	mordbaprat."name" AS "order.base.product.attribute.name", mordbaprat."mtime" AS "order.base.product.attribute.mtime",
- 	mordbaprat."editor" AS "order.base.product.attribute.editor", mordbaprat."ctime" AS "order.base.product.attribute.ctime",
- 	mordbaprat."price" AS "order.base.product.attribute.price"
- FROM "mshop_order_base_product_attr" mordbaprat
+ 	mordbaprat."id" AS "order.product.attribute.id", mordbaprat."siteid" AS "order.product.attribute.siteid",
+ 	mordbaprat."attrid" AS "order.product.attribute.attributeid", mordbaprat."parentid" AS "order.product.attribute.parentid",
+ 	mordbaprat."type" AS "order.product.attribute.type", mordbaprat."code" AS "order.product.attribute.code",
+ 	mordbaprat."value" AS "order.product.attribute.value", mordbaprat."quantity" AS "order.product.attribute.quantity",
+ 	mordbaprat."name" AS "order.product.attribute.name", mordbaprat."mtime" AS "order.product.attribute.mtime",
+ 	mordbaprat."editor" AS "order.product.attribute.editor", mordbaprat."ctime" AS "order.product.attribute.ctime",
+ 	mordbaprat."price" AS "order.product.attribute.price"
+ FROM "mshop_order_product_attr" mordbaprat
  :joins
  WHERE :cond
  ORDER BY :order
@@ -3034,14 +3034,14 @@ mshop/order/manager/base/product/attribute/search/mysql =
 
 See also:
 
-* mshop/order/manager/base/product/attribute/search/ansi
+* mshop/order/manager/product/attribute/search/ansi
 
 ## product/attribute/submanagers
 
 List of manager names that can be instantiated by the order base product attribute manager
 
 ```
-mshop/order/manager/base/product/attribute/submanagers = Array
+mshop/order/manager/product/attribute/submanagers = Array
 (
 )
 ```
@@ -3069,10 +3069,10 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/product/attribute/update/ansi = 
+mshop/order/manager/product/attribute/update/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for updating records
 * Since: 2014.03
 
@@ -3092,39 +3092,39 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/attribute/insert/ansi
-* mshop/order/manager/base/product/attribute/newid/ansi
-* mshop/order/manager/base/product/attribute/delete/ansi
-* mshop/order/manager/base/product/attribute/search/ansi
-* mshop/order/manager/base/product/attribute/count/ansi
+* mshop/order/manager/product/attribute/insert/ansi
+* mshop/order/manager/product/attribute/newid/ansi
+* mshop/order/manager/product/attribute/delete/ansi
+* mshop/order/manager/product/attribute/search/ansi
+* mshop/order/manager/product/attribute/count/ansi
 
 ## product/attribute/update/mysql
 
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/product/attribute/update/mysql = 
+mshop/order/manager/product/attribute/update/mysql =
 ```
 
-* Default: 
+* Default:
 
 See also:
 
-* mshop/order/manager/base/product/attribute/update/ansi
+* mshop/order/manager/product/attribute/update/ansi
 
 ## product/count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/count/ansi = 
+mshop/order/manager/product/count/ansi =
  SELECT COUNT( DISTINCT mordbapr."id" ) AS "count"
- FROM "mshop_order_base_product" mordbapr
+ FROM "mshop_order_product" mordbapr
  :joins
  WHERE :cond
 ```
 
-* Default: mshop/order/manager/base/product/count
+* Default: mshop/order/manager/product/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -3163,41 +3163,41 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/insert/ansi
-* mshop/order/manager/base/product/update/ansi
-* mshop/order/manager/base/product/newid/ansi
-* mshop/order/manager/base/product/delete/ansi
-* mshop/order/manager/base/product/search/ansi
+* mshop/order/manager/product/insert/ansi
+* mshop/order/manager/product/update/ansi
+* mshop/order/manager/product/newid/ansi
+* mshop/order/manager/product/delete/ansi
+* mshop/order/manager/product/search/ansi
 
 ## product/count/mysql
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/count/mysql = 
+mshop/order/manager/product/count/mysql =
  SELECT COUNT( DISTINCT mordbapr."id" ) AS "count"
- FROM "mshop_order_base_product" mordbapr
+ FROM "mshop_order_product" mordbapr
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordbapr."id" ) AS "count"
- FROM "mshop_order_base_product" mordbapr
+ FROM "mshop_order_product" mordbapr
  :joins
  WHERE :cond
 
 
 See also:
 
-* mshop/order/manager/base/product/count/ansi
+* mshop/order/manager/product/count/ansi
 
 ## product/decorators/excludes
 
 Excludes decorators added by the "common" option from the order base product manager
 
 ```
-mshop/order/manager/base/product/decorators/excludes = Array
+mshop/order/manager/product/decorators/excludes = Array
 (
 )
 ```
@@ -3219,7 +3219,7 @@ This option allows you to remove a decorator added via
 around the order base product manager.
 
 ```
- mshop/order/manager/base/product/decorators/excludes = array( 'decorator1' )
+ mshop/order/manager/product/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -3229,15 +3229,15 @@ common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/product/decorators/global
-* mshop/order/manager/base/product/decorators/local
+* mshop/order/manager/product/decorators/global
+* mshop/order/manager/product/decorators/local
 
 ## product/decorators/global
 
 Adds a list of globally available decorators only to the order base product manager
 
 ```
-mshop/order/manager/base/product/decorators/global = Array
+mshop/order/manager/product/decorators/global = Array
 (
 )
 ```
@@ -3259,7 +3259,7 @@ This option allows you to wrap global decorators
 product manager.
 
 ```
- mshop/order/manager/base/product/decorators/global = array( 'decorator1' )
+ mshop/order/manager/product/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -3269,15 +3269,15 @@ base product manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/product/decorators/excludes
-* mshop/order/manager/base/product/decorators/local
+* mshop/order/manager/product/decorators/excludes
+* mshop/order/manager/product/decorators/local
 
 ## product/decorators/local
 
 Adds a list of local decorators only to the order base product manager
 
 ```
-mshop/order/manager/base/product/decorators/local = Array
+mshop/order/manager/product/decorators/local = Array
 (
 )
 ```
@@ -3299,7 +3299,7 @@ This option allows you to wrap local decorators
 order base product manager.
 
 ```
- mshop/order/manager/base/product/decorators/local = array( 'decorator2' )
+ mshop/order/manager/product/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
@@ -3309,20 +3309,20 @@ to the order base product manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/product/decorators/excludes
-* mshop/order/manager/base/product/decorators/global
+* mshop/order/manager/product/decorators/excludes
+* mshop/order/manager/product/decorators/global
 
 ## product/delete/ansi
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/product/delete/ansi = 
- DELETE FROM "mshop_order_base_product"
+mshop/order/manager/product/delete/ansi =
+ DELETE FROM "mshop_order_product"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/order/manager/base/product/delete
+* Default: mshop/order/manager/product/delete
 * Type: string - SQL statement for deleting items
 * Since: 2014.03
 
@@ -3340,38 +3340,38 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/insert/ansi
-* mshop/order/manager/base/product/update/ansi
-* mshop/order/manager/base/product/newid/ansi
-* mshop/order/manager/base/product/search/ansi
-* mshop/order/manager/base/product/count/ansi
+* mshop/order/manager/product/insert/ansi
+* mshop/order/manager/product/update/ansi
+* mshop/order/manager/product/newid/ansi
+* mshop/order/manager/product/search/ansi
+* mshop/order/manager/product/count/ansi
 
 ## product/delete/mysql
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/product/delete/mysql = 
- DELETE FROM "mshop_order_base_product"
+mshop/order/manager/product/delete/mysql =
+ DELETE FROM "mshop_order_product"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
- DELETE FROM "mshop_order_base_product"
+* Default:
+ DELETE FROM "mshop_order_product"
  WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
 
-* mshop/order/manager/base/product/delete/ansi
+* mshop/order/manager/product/delete/ansi
 
 ## product/insert/ansi
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/product/insert/ansi = 
- INSERT INTO "mshop_order_base_product" ( :names
+mshop/order/manager/product/insert/ansi =
+ INSERT INTO "mshop_order_product" ( :names
  	"baseid", "ordprodid", "ordaddrid", "type", "parentprodid", "prodid", "prodcode",
  	"vendor", "stocktype", "name", "description", "mediaurl", "timeframe",
  	"quantity", "currencyid", "price", "costs", "rebate", "tax", "taxrate", "taxflag",
@@ -3382,7 +3382,7 @@ mshop/order/manager/base/product/insert/ansi =
  )
 ```
 
-* Default: mshop/order/manager/base/product/insert
+* Default: mshop/order/manager/product/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -3405,19 +3405,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/update/ansi
-* mshop/order/manager/base/product/newid/ansi
-* mshop/order/manager/base/product/delete/ansi
-* mshop/order/manager/base/product/search/ansi
-* mshop/order/manager/base/product/count/ansi
+* mshop/order/manager/product/update/ansi
+* mshop/order/manager/product/newid/ansi
+* mshop/order/manager/product/delete/ansi
+* mshop/order/manager/product/search/ansi
+* mshop/order/manager/product/count/ansi
 
 ## product/insert/mysql
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/product/insert/mysql = 
- INSERT INTO "mshop_order_base_product" ( :names
+mshop/order/manager/product/insert/mysql =
+ INSERT INTO "mshop_order_product" ( :names
  	"baseid", "ordprodid", "ordaddrid", "type", "parentprodid", "prodid", "prodcode",
  	"vendor", "stocktype", "name", "description", "mediaurl", "timeframe",
  	"quantity", "currencyid", "price", "costs", "rebate", "tax", "taxrate", "taxflag",
@@ -3428,8 +3428,8 @@ mshop/order/manager/base/product/insert/mysql =
  )
 ```
 
-* Default: 
- INSERT INTO "mshop_order_base_product" ( :names
+* Default:
+ INSERT INTO "mshop_order_product" ( :names
  	"baseid", "ordprodid", "ordaddrid", "type", "parentprodid", "prodid", "prodcode",
  	"vendor", "stocktype", "name", "description", "mediaurl", "timeframe",
  	"quantity", "currencyid", "price", "costs", "rebate", "tax", "taxrate", "taxflag",
@@ -3442,14 +3442,14 @@ mshop/order/manager/base/product/insert/mysql =
 
 See also:
 
-* mshop/order/manager/base/product/insert/ansi
+* mshop/order/manager/product/insert/ansi
 
 ## product/name
 
 Class name of the used order base product manager implementation
 
 ```
-mshop/order/manager/base/product/name = Standard
+mshop/order/manager/product/name = Standard
 ```
 
 * Default: Standard
@@ -3476,7 +3476,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- mshop/order/manager/base/product/name = Myproduct
+ mshop/order/manager/product/name = Myproduct
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -3494,10 +3494,10 @@ or numbers. Avoid chamel case names like "MyProduct"!
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/product/newid/ansi = mshop/order/manager/base/product/newid
+mshop/order/manager/product/newid/ansi = mshop/order/manager/product/newid
 ```
 
-* Default: mshop/order/manager/base/product/newid
+* Default: mshop/order/manager/product/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -3523,51 +3523,51 @@ specific way.
 
 See also:
 
-* mshop/order/manager/base/product/insert/ansi
-* mshop/order/manager/base/product/update/ansi
-* mshop/order/manager/base/product/delete/ansi
-* mshop/order/manager/base/product/search/ansi
-* mshop/order/manager/base/product/count/ansi
+* mshop/order/manager/product/insert/ansi
+* mshop/order/manager/product/update/ansi
+* mshop/order/manager/product/delete/ansi
+* mshop/order/manager/product/search/ansi
+* mshop/order/manager/product/count/ansi
 
 ## product/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/product/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/order/manager/product/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/order/manager/base/product/newid
+* Default: mshop/order/manager/product/newid
 
 See also:
 
-* mshop/order/manager/base/product/newid/ansi
+* mshop/order/manager/product/newid/ansi
 
 ## product/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/search/ansi = 
+mshop/order/manager/product/search/ansi =
  SELECT :columns
- 	mordbapr."id" AS "order.base.product.id", mordbapr."baseid" AS "order.base.product.baseid",
- 	mordbapr."siteid" AS "order.base.product.siteid", mordbapr."ordprodid" AS "order.base.product.orderproductid",
- 	mordbapr."prodid" AS "order.base.product.productid", mordbapr."prodcode" AS "order.base.product.prodcode",
- 	mordbapr."description" AS "order.base.product.description", mordbapr."stocktype" AS "order.base.product.stocktype",
- 	mordbapr."type" AS "order.base.product.type", mordbapr."name" AS "order.base.product.name",
- 	mordbapr."mediaurl" AS "order.base.product.mediaurl", mordbapr."timeframe" AS "order.base.product.timeframe",
- 	mordbapr."quantity" AS "order.base.product.quantity", mordbapr."currencyid" AS "order.base.product.currencyid",
- 	mordbapr."price" AS "order.base.product.price", mordbapr."costs" AS "order.base.product.costs",
- 	mordbapr."rebate" AS "order.base.product.rebate", mordbapr."tax" AS "order.base.product.taxvalue",
- 	mordbapr."taxrate" AS "order.base.product.taxrates", mordbapr."taxflag" AS "order.base.product.taxflag",
- 	mordbapr."flags" AS "order.base.product.flags", mordbapr."statusdelivery" AS "order.base.product.statusdelivery",
- 	mordbapr."pos" AS "order.base.product.position", mordbapr."mtime" AS "order.base.product.mtime",
- 	mordbapr."editor" AS "order.base.product.editor", mordbapr."ctime" AS "order.base.product.ctime",
- 	mordbapr."target" AS "order.base.product.target", mordbapr."ordaddrid" AS "order.base.product.orderaddressid",
- 	mordbapr."vendor" AS "order.base.product.vendor", mordbapr."scale" AS "order.base.product.scale",
- 	mordbapr."qtyopen" AS "order.base.product.qtyopen", mordbapr."notes" AS "order.base.product.notes",
- 	mordbapr."statuspayment" AS "order.base.product.statuspayment", mordbapr."parentprodid" AS "order.base.product.parentproductid"
- FROM "mshop_order_base_product" mordbapr
+ 	mordbapr."id" AS "order.product.id", mordbapr."baseid" AS "order.product.parentid",
+ 	mordbapr."siteid" AS "order.product.siteid", mordbapr."ordprodid" AS "order.product.orderproductid",
+ 	mordbapr."prodid" AS "order.product.productid", mordbapr."prodcode" AS "order.product.prodcode",
+ 	mordbapr."description" AS "order.product.description", mordbapr."stocktype" AS "order.product.stocktype",
+ 	mordbapr."type" AS "order.product.type", mordbapr."name" AS "order.product.name",
+ 	mordbapr."mediaurl" AS "order.product.mediaurl", mordbapr."timeframe" AS "order.product.timeframe",
+ 	mordbapr."quantity" AS "order.product.quantity", mordbapr."currencyid" AS "order.product.currencyid",
+ 	mordbapr."price" AS "order.product.price", mordbapr."costs" AS "order.product.costs",
+ 	mordbapr."rebate" AS "order.product.rebate", mordbapr."tax" AS "order.product.taxvalue",
+ 	mordbapr."taxrate" AS "order.product.taxrates", mordbapr."taxflag" AS "order.product.taxflag",
+ 	mordbapr."flags" AS "order.product.flags", mordbapr."statusdelivery" AS "order.product.statusdelivery",
+ 	mordbapr."pos" AS "order.product.position", mordbapr."mtime" AS "order.product.mtime",
+ 	mordbapr."editor" AS "order.product.editor", mordbapr."ctime" AS "order.product.ctime",
+ 	mordbapr."target" AS "order.product.target", mordbapr."ordaddrid" AS "order.product.orderaddressid",
+ 	mordbapr."vendor" AS "order.product.vendor", mordbapr."scale" AS "order.product.scale",
+ 	mordbapr."qtyopen" AS "order.product.qtyopen", mordbapr."notes" AS "order.product.notes",
+ 	mordbapr."statuspayment" AS "order.product.statuspayment", mordbapr."parentprodid" AS "order.product.parentproductid"
+ FROM "mshop_order_product" mordbapr
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3583,7 +3583,7 @@ mshop/order/manager/base/product/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/order/manager/base/product/search
+* Default: mshop/order/manager/product/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -3628,37 +3628,37 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/insert/ansi
-* mshop/order/manager/base/product/update/ansi
-* mshop/order/manager/base/product/newid/ansi
-* mshop/order/manager/base/product/delete/ansi
-* mshop/order/manager/base/product/count/ansi
+* mshop/order/manager/product/insert/ansi
+* mshop/order/manager/product/update/ansi
+* mshop/order/manager/product/newid/ansi
+* mshop/order/manager/product/delete/ansi
+* mshop/order/manager/product/count/ansi
 
 ## product/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/product/search/mysql = 
+mshop/order/manager/product/search/mysql =
  SELECT :columns
- 	mordbapr."id" AS "order.base.product.id", mordbapr."baseid" AS "order.base.product.baseid",
- 	mordbapr."siteid" AS "order.base.product.siteid", mordbapr."ordprodid" AS "order.base.product.orderproductid",
- 	mordbapr."prodid" AS "order.base.product.productid", mordbapr."prodcode" AS "order.base.product.prodcode",
- 	mordbapr."description" AS "order.base.product.description", mordbapr."stocktype" AS "order.base.product.stocktype",
- 	mordbapr."type" AS "order.base.product.type", mordbapr."name" AS "order.base.product.name",
- 	mordbapr."mediaurl" AS "order.base.product.mediaurl", mordbapr."timeframe" AS "order.base.product.timeframe",
- 	mordbapr."quantity" AS "order.base.product.quantity", mordbapr."currencyid" AS "order.base.product.currencyid",
- 	mordbapr."price" AS "order.base.product.price", mordbapr."costs" AS "order.base.product.costs",
- 	mordbapr."rebate" AS "order.base.product.rebate", mordbapr."tax" AS "order.base.product.taxvalue",
- 	mordbapr."taxrate" AS "order.base.product.taxrates", mordbapr."taxflag" AS "order.base.product.taxflag",
- 	mordbapr."flags" AS "order.base.product.flags", mordbapr."statusdelivery" AS "order.base.product.statusdelivery",
- 	mordbapr."pos" AS "order.base.product.position", mordbapr."mtime" AS "order.base.product.mtime",
- 	mordbapr."editor" AS "order.base.product.editor", mordbapr."ctime" AS "order.base.product.ctime",
- 	mordbapr."target" AS "order.base.product.target", mordbapr."ordaddrid" AS "order.base.product.orderaddressid",
- 	mordbapr."vendor" AS "order.base.product.vendor", mordbapr."scale" AS "order.base.product.scale",
- 	mordbapr."qtyopen" AS "order.base.product.qtyopen", mordbapr."notes" AS "order.base.product.notes",
- 	mordbapr."statuspayment" AS "order.base.product.statuspayment", mordbapr."parentprodid" AS "order.base.product.parentproductid"
- FROM "mshop_order_base_product" mordbapr
+ 	mordbapr."id" AS "order.product.id", mordbapr."baseid" AS "order.product.parentid",
+ 	mordbapr."siteid" AS "order.product.siteid", mordbapr."ordprodid" AS "order.product.orderproductid",
+ 	mordbapr."prodid" AS "order.product.productid", mordbapr."prodcode" AS "order.product.prodcode",
+ 	mordbapr."description" AS "order.product.description", mordbapr."stocktype" AS "order.product.stocktype",
+ 	mordbapr."type" AS "order.product.type", mordbapr."name" AS "order.product.name",
+ 	mordbapr."mediaurl" AS "order.product.mediaurl", mordbapr."timeframe" AS "order.product.timeframe",
+ 	mordbapr."quantity" AS "order.product.quantity", mordbapr."currencyid" AS "order.product.currencyid",
+ 	mordbapr."price" AS "order.product.price", mordbapr."costs" AS "order.product.costs",
+ 	mordbapr."rebate" AS "order.product.rebate", mordbapr."tax" AS "order.product.taxvalue",
+ 	mordbapr."taxrate" AS "order.product.taxrates", mordbapr."taxflag" AS "order.product.taxflag",
+ 	mordbapr."flags" AS "order.product.flags", mordbapr."statusdelivery" AS "order.product.statusdelivery",
+ 	mordbapr."pos" AS "order.product.position", mordbapr."mtime" AS "order.product.mtime",
+ 	mordbapr."editor" AS "order.product.editor", mordbapr."ctime" AS "order.product.ctime",
+ 	mordbapr."target" AS "order.product.target", mordbapr."ordaddrid" AS "order.product.orderaddressid",
+ 	mordbapr."vendor" AS "order.product.vendor", mordbapr."scale" AS "order.product.scale",
+ 	mordbapr."qtyopen" AS "order.product.qtyopen", mordbapr."notes" AS "order.product.notes",
+ 	mordbapr."statuspayment" AS "order.product.statuspayment", mordbapr."parentprodid" AS "order.product.parentproductid"
+ FROM "mshop_order_product" mordbapr
  :joins
  WHERE :cond
  GROUP BY :group mordbapr."id"
@@ -3666,26 +3666,26 @@ mshop/order/manager/base/product/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mordbapr."id" AS "order.base.product.id", mordbapr."baseid" AS "order.base.product.baseid",
- 	mordbapr."siteid" AS "order.base.product.siteid", mordbapr."ordprodid" AS "order.base.product.orderproductid",
- 	mordbapr."prodid" AS "order.base.product.productid", mordbapr."prodcode" AS "order.base.product.prodcode",
- 	mordbapr."description" AS "order.base.product.description", mordbapr."stocktype" AS "order.base.product.stocktype",
- 	mordbapr."type" AS "order.base.product.type", mordbapr."name" AS "order.base.product.name",
- 	mordbapr."mediaurl" AS "order.base.product.mediaurl", mordbapr."timeframe" AS "order.base.product.timeframe",
- 	mordbapr."quantity" AS "order.base.product.quantity", mordbapr."currencyid" AS "order.base.product.currencyid",
- 	mordbapr."price" AS "order.base.product.price", mordbapr."costs" AS "order.base.product.costs",
- 	mordbapr."rebate" AS "order.base.product.rebate", mordbapr."tax" AS "order.base.product.taxvalue",
- 	mordbapr."taxrate" AS "order.base.product.taxrates", mordbapr."taxflag" AS "order.base.product.taxflag",
- 	mordbapr."flags" AS "order.base.product.flags", mordbapr."statusdelivery" AS "order.base.product.statusdelivery",
- 	mordbapr."pos" AS "order.base.product.position", mordbapr."mtime" AS "order.base.product.mtime",
- 	mordbapr."editor" AS "order.base.product.editor", mordbapr."ctime" AS "order.base.product.ctime",
- 	mordbapr."target" AS "order.base.product.target", mordbapr."ordaddrid" AS "order.base.product.orderaddressid",
- 	mordbapr."vendor" AS "order.base.product.vendor", mordbapr."scale" AS "order.base.product.scale",
- 	mordbapr."qtyopen" AS "order.base.product.qtyopen", mordbapr."notes" AS "order.base.product.notes",
- 	mordbapr."statuspayment" AS "order.base.product.statuspayment", mordbapr."parentprodid" AS "order.base.product.parentproductid"
- FROM "mshop_order_base_product" mordbapr
+ 	mordbapr."id" AS "order.product.id", mordbapr."baseid" AS "order.product.parentid",
+ 	mordbapr."siteid" AS "order.product.siteid", mordbapr."ordprodid" AS "order.product.orderproductid",
+ 	mordbapr."prodid" AS "order.product.productid", mordbapr."prodcode" AS "order.product.prodcode",
+ 	mordbapr."description" AS "order.product.description", mordbapr."stocktype" AS "order.product.stocktype",
+ 	mordbapr."type" AS "order.product.type", mordbapr."name" AS "order.product.name",
+ 	mordbapr."mediaurl" AS "order.product.mediaurl", mordbapr."timeframe" AS "order.product.timeframe",
+ 	mordbapr."quantity" AS "order.product.quantity", mordbapr."currencyid" AS "order.product.currencyid",
+ 	mordbapr."price" AS "order.product.price", mordbapr."costs" AS "order.product.costs",
+ 	mordbapr."rebate" AS "order.product.rebate", mordbapr."tax" AS "order.product.taxvalue",
+ 	mordbapr."taxrate" AS "order.product.taxrates", mordbapr."taxflag" AS "order.product.taxflag",
+ 	mordbapr."flags" AS "order.product.flags", mordbapr."statusdelivery" AS "order.product.statusdelivery",
+ 	mordbapr."pos" AS "order.product.position", mordbapr."mtime" AS "order.product.mtime",
+ 	mordbapr."editor" AS "order.product.editor", mordbapr."ctime" AS "order.product.ctime",
+ 	mordbapr."target" AS "order.product.target", mordbapr."ordaddrid" AS "order.product.orderaddressid",
+ 	mordbapr."vendor" AS "order.product.vendor", mordbapr."scale" AS "order.product.scale",
+ 	mordbapr."qtyopen" AS "order.product.qtyopen", mordbapr."notes" AS "order.product.notes",
+ 	mordbapr."statuspayment" AS "order.product.statuspayment", mordbapr."parentprodid" AS "order.product.parentproductid"
+ FROM "mshop_order_product" mordbapr
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3703,14 +3703,14 @@ mshop/order/manager/base/product/search/mysql =
 
 See also:
 
-* mshop/order/manager/base/product/search/ansi
+* mshop/order/manager/product/search/ansi
 
 ## product/submanagers
 
 List of manager names that can be instantiated by the order base product manager
 
 ```
-mshop/order/manager/base/product/submanagers = Array
+mshop/order/manager/product/submanagers = Array
 (
     [0] => attribute
 )
@@ -3740,8 +3740,8 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/product/update/ansi = 
- UPDATE "mshop_order_base_product"
+mshop/order/manager/product/update/ansi =
+ UPDATE "mshop_order_product"
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "ordaddrid" = ?, "type" = ?, "parentprodid" = ?,
  	"prodid" = ?, "prodcode" = ?, "vendor" = ?, "stocktype" = ?,
@@ -3752,7 +3752,7 @@ mshop/order/manager/base/product/update/ansi =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: mshop/order/manager/base/product/update
+* Default: mshop/order/manager/product/update
 * Type: string - SQL statement for updating records
 * Since: 2014.03
 
@@ -3772,19 +3772,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/product/insert/ansi
-* mshop/order/manager/base/product/newid/ansi
-* mshop/order/manager/base/product/delete/ansi
-* mshop/order/manager/base/product/search/ansi
-* mshop/order/manager/base/product/count/ansi
+* mshop/order/manager/product/insert/ansi
+* mshop/order/manager/product/newid/ansi
+* mshop/order/manager/product/delete/ansi
+* mshop/order/manager/product/search/ansi
+* mshop/order/manager/product/count/ansi
 
 ## product/update/mysql
 
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/product/update/mysql = 
- UPDATE "mshop_order_base_product"
+mshop/order/manager/product/update/mysql =
+ UPDATE "mshop_order_product"
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "ordaddrid" = ?, "type" = ?, "parentprodid" = ?,
  	"prodid" = ?, "prodcode" = ?, "vendor" = ?, "stocktype" = ?,
@@ -3795,8 +3795,8 @@ mshop/order/manager/base/product/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
- UPDATE "mshop_order_base_product"
+* Default:
+ UPDATE "mshop_order_product"
  SET :names
  	"baseid" = ?, "ordprodid" = ?, "ordaddrid" = ?, "type" = ?, "parentprodid" = ?,
  	"prodid" = ?, "prodcode" = ?, "vendor" = ?, "stocktype" = ?,
@@ -3809,24 +3809,24 @@ mshop/order/manager/base/product/update/mysql =
 
 See also:
 
-* mshop/order/manager/base/product/update/ansi
+* mshop/order/manager/product/update/ansi
 
 ## search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/search/ansi = 
+mshop/order/manager/search/ansi =
  SELECT :columns
- 	mordba."id" AS "order.base.id", mordba."siteid" AS "order.base.siteid",
- 	mordba."sitecode" AS "order.base.sitecode", mordba."customerid" AS "order.base.customerid",
- 	mordba."langid" AS "order.base.languageid", mordba."currencyid" AS "order.base.currencyid",
- 	mordba."price" AS "order.base.price", mordba."costs" AS "order.base.costs",
- 	mordba."rebate" AS "order.base.rebate", mordba."tax" AS "order.base.taxvalue",
- 	mordba."taxflag" AS "order.base.taxflag", mordba."customerref" AS "order.base.customerref",
- 	mordba."comment" AS "order.base.comment", mordba."mtime" AS "order.base.mtime",
- 	mordba."ctime" AS "order.base.ctime", mordba."editor" AS "order.base.editor"
- FROM "mshop_order_base" mordba
+ 	mordba."id" AS "order.id", mordba."siteid" AS "order.siteid",
+ 	mordba."sitecode" AS "order.sitecode", mordba."customerid" AS "order.customerid",
+ 	mordba."langid" AS "order.languageid", mordba."currencyid" AS "order.currencyid",
+ 	mordba."price" AS "order.price", mordba."costs" AS "order.costs",
+ 	mordba."rebate" AS "order.rebate", mordba."tax" AS "order.taxvalue",
+ 	mordba."taxflag" AS "order.taxflag", mordba."customerref" AS "order.customerref",
+ 	mordba."comment" AS "order.comment", mordba."mtime" AS "order.mtime",
+ 	mordba."ctime" AS "order.ctime", mordba."editor" AS "order.editor"
+ FROM "mshop_order" mordba
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3838,7 +3838,7 @@ mshop/order/manager/base/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/order/manager/base/search
+* Default: mshop/order/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -3883,28 +3883,28 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/insert/ansi
-* mshop/order/manager/base/update/ansi
-* mshop/order/manager/base/newid/ansi
-* mshop/order/manager/base/delete/ansi
-* mshop/order/manager/base/count/ansi
+* mshop/order/manager/insert/ansi
+* mshop/order/manager/update/ansi
+* mshop/order/manager/newid/ansi
+* mshop/order/manager/delete/ansi
+* mshop/order/manager/count/ansi
 
 ## search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/search/mysql = 
+mshop/order/manager/search/mysql =
  SELECT :columns
- 	mordba."id" AS "order.base.id", mordba."siteid" AS "order.base.siteid",
- 	mordba."sitecode" AS "order.base.sitecode", mordba."customerid" AS "order.base.customerid",
- 	mordba."langid" AS "order.base.languageid", mordba."currencyid" AS "order.base.currencyid",
- 	mordba."price" AS "order.base.price", mordba."costs" AS "order.base.costs",
- 	mordba."rebate" AS "order.base.rebate", mordba."tax" AS "order.base.taxvalue",
- 	mordba."taxflag" AS "order.base.taxflag", mordba."customerref" AS "order.base.customerref",
- 	mordba."comment" AS "order.base.comment", mordba."mtime" AS "order.base.mtime",
- 	mordba."ctime" AS "order.base.ctime", mordba."editor" AS "order.base.editor"
- FROM "mshop_order_base" mordba
+ 	mordba."id" AS "order.id", mordba."siteid" AS "order.siteid",
+ 	mordba."sitecode" AS "order.sitecode", mordba."customerid" AS "order.customerid",
+ 	mordba."langid" AS "order.languageid", mordba."currencyid" AS "order.currencyid",
+ 	mordba."price" AS "order.price", mordba."costs" AS "order.costs",
+ 	mordba."rebate" AS "order.rebate", mordba."tax" AS "order.taxvalue",
+ 	mordba."taxflag" AS "order.taxflag", mordba."customerref" AS "order.customerref",
+ 	mordba."comment" AS "order.comment", mordba."mtime" AS "order.mtime",
+ 	mordba."ctime" AS "order.ctime", mordba."editor" AS "order.editor"
+ FROM "mshop_order" mordba
  :joins
  WHERE :cond
  GROUP BY :group mordba."id"
@@ -3912,17 +3912,17 @@ mshop/order/manager/base/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mordba."id" AS "order.base.id", mordba."siteid" AS "order.base.siteid",
- 	mordba."sitecode" AS "order.base.sitecode", mordba."customerid" AS "order.base.customerid",
- 	mordba."langid" AS "order.base.languageid", mordba."currencyid" AS "order.base.currencyid",
- 	mordba."price" AS "order.base.price", mordba."costs" AS "order.base.costs",
- 	mordba."rebate" AS "order.base.rebate", mordba."tax" AS "order.base.taxvalue",
- 	mordba."taxflag" AS "order.base.taxflag", mordba."customerref" AS "order.base.customerref",
- 	mordba."comment" AS "order.base.comment", mordba."mtime" AS "order.base.mtime",
- 	mordba."ctime" AS "order.base.ctime", mordba."editor" AS "order.base.editor"
- FROM "mshop_order_base" mordba
+ 	mordba."id" AS "order.id", mordba."siteid" AS "order.siteid",
+ 	mordba."sitecode" AS "order.sitecode", mordba."customerid" AS "order.customerid",
+ 	mordba."langid" AS "order.languageid", mordba."currencyid" AS "order.currencyid",
+ 	mordba."price" AS "order.price", mordba."costs" AS "order.costs",
+ 	mordba."rebate" AS "order.rebate", mordba."tax" AS "order.taxvalue",
+ 	mordba."taxflag" AS "order.taxflag", mordba."customerref" AS "order.customerref",
+ 	mordba."comment" AS "order.comment", mordba."mtime" AS "order.mtime",
+ 	mordba."ctime" AS "order.ctime", mordba."editor" AS "order.editor"
+ FROM "mshop_order" mordba
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -3936,18 +3936,18 @@ mshop/order/manager/base/search/mysql =
 
 See also:
 
-* mshop/order/manager/base/search/ansi
+* mshop/order/manager/search/ansi
 
 ## service/aggregate/ansi
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/aggregate/ansi = 
+mshop/order/manager/service/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_service" mordbase
+ 	FROM "mshop_order_service" mordbase
  	:joins
  	WHERE :cond
  	GROUP BY mordbase.id, :cols
@@ -3957,7 +3957,7 @@ mshop/order/manager/base/service/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/order/manager/base/service/aggregate
+* Default: mshop/order/manager/service/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -3993,23 +3993,23 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/insert/ansi
-* mshop/order/manager/base/service/update/ansi
-* mshop/order/manager/base/service/newid/ansi
-* mshop/order/manager/base/service/delete/ansi
-* mshop/order/manager/base/service/search/ansi
-* mshop/order/manager/base/service/count/ansi
+* mshop/order/manager/service/insert/ansi
+* mshop/order/manager/service/update/ansi
+* mshop/order/manager/service/newid/ansi
+* mshop/order/manager/service/delete/ansi
+* mshop/order/manager/service/search/ansi
+* mshop/order/manager/service/count/ansi
 
 ## service/aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/aggregate/mysql = 
+mshop/order/manager/service/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_service" mordbase
+ 	FROM "mshop_order_service" mordbase
  	:joins
  	WHERE :cond
  	GROUP BY mordbase.id, :cols
@@ -4019,11 +4019,11 @@ mshop/order/manager/base/service/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_service" mordbase
+ 	FROM "mshop_order_service" mordbase
  	:joins
  	WHERE :cond
  	GROUP BY mordbase.id, :cols
@@ -4035,84 +4035,84 @@ mshop/order/manager/base/service/aggregate/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/aggregate/ansi
+* mshop/order/manager/service/aggregate/ansi
 
 ## service/aggregateavg/ansi
 
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/aggregateavg/ansi = 
+mshop/order/manager/service/aggregateavg/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order service items and computing the average value
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/service/aggregate/ansi
+* mshop/order/manager/service/aggregate/ansi
 
 ## service/aggregateavg/mysql
 
 Computes the average of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/aggregateavg/mysql = 
+mshop/order/manager/service/aggregateavg/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order service items and computing the average value
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/service/aggregateavg/ansi
-* mshop/order/manager/base/service/aggregate/mysql
+* mshop/order/manager/service/aggregateavg/ansi
+* mshop/order/manager/service/aggregate/mysql
 
 ## service/aggregatesum/ansi
 
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/aggregatesum/ansi = 
+mshop/order/manager/service/aggregatesum/ansi =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order service items and computing the sum
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/service/aggregate/ansi
+* mshop/order/manager/service/aggregate/ansi
 
 ## service/aggregatesum/mysql
 
 Computes the sum of all values grouped by the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/aggregatesum/mysql = 
+mshop/order/manager/service/aggregatesum/mysql =
 ```
 
-* Default: 
+* Default:
 * Type: string - SQL statement for aggregating the order service items and computing the sum
 * Since: 2017.10
 
 See also:
 
-* mshop/order/manager/base/service/aggregatesum/ansi
-* mshop/order/manager/base/service/aggregate/mysql
+* mshop/order/manager/service/aggregatesum/ansi
+* mshop/order/manager/service/aggregate/mysql
 
 ## service/attribute/aggregate/ansi
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/attribute/aggregate/ansi = 
+mshop/order/manager/service/attribute/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_service_attr" mordbaseat
+ 	FROM "mshop_order_service_attr" mordbaseat
  	:joins
  	WHERE :cond
  	GROUP BY mordbaseat.id, :cols
@@ -4122,7 +4122,7 @@ mshop/order/manager/base/service/attribute/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/order/manager/base/service/attribute/aggregate
+* Default: mshop/order/manager/service/attribute/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -4158,23 +4158,23 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/attribute/insert/ansi
-* mshop/order/manager/base/service/attribute/update/ansi
-* mshop/order/manager/base/service/attribute/newid/ansi
-* mshop/order/manager/base/service/attribute/delete/ansi
-* mshop/order/manager/base/service/attribute/search/ansi
-* mshop/order/manager/base/service/attribute/count/ansi
+* mshop/order/manager/service/attribute/insert/ansi
+* mshop/order/manager/service/attribute/update/ansi
+* mshop/order/manager/service/attribute/newid/ansi
+* mshop/order/manager/service/attribute/delete/ansi
+* mshop/order/manager/service/attribute/search/ansi
+* mshop/order/manager/service/attribute/count/ansi
 
 ## service/attribute/aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/base/service/attribute/aggregate/mysql = 
+mshop/order/manager/service/attribute/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_service_attr" mordbaseat
+ 	FROM "mshop_order_service_attr" mordbaseat
  	:joins
  	WHERE :cond
  	GROUP BY mordbaseat.id, :cols
@@ -4184,11 +4184,11 @@ mshop/order/manager/base/service/attribute/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
- 	FROM "mshop_order_base_service_attr" mordbaseat
+ 	FROM "mshop_order_service_attr" mordbaseat
  	:joins
  	WHERE :cond
  	GROUP BY mordbaseat.id, :cols
@@ -4200,21 +4200,21 @@ mshop/order/manager/base/service/attribute/aggregate/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/attribute/aggregate/ansi
+* mshop/order/manager/service/attribute/aggregate/ansi
 
 ## service/attribute/count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/attribute/count/ansi = 
+mshop/order/manager/service/attribute/count/ansi =
  SELECT COUNT( DISTINCT mordbaseat."id" ) AS "count"
- FROM "mshop_order_base_service_attr" mordbaseat
+ FROM "mshop_order_service_attr" mordbaseat
  :joins
  WHERE :cond
 ```
 
-* Default: mshop/order/manager/base/service/attribute/count
+* Default: mshop/order/manager/service/attribute/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -4253,41 +4253,41 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/attribute/insert/ansi
-* mshop/order/manager/base/service/attribute/update/ansi
-* mshop/order/manager/base/service/attribute/newid/ansi
-* mshop/order/manager/base/service/attribute/delete/ansi
-* mshop/order/manager/base/service/attribute/search/ansi
+* mshop/order/manager/service/attribute/insert/ansi
+* mshop/order/manager/service/attribute/update/ansi
+* mshop/order/manager/service/attribute/newid/ansi
+* mshop/order/manager/service/attribute/delete/ansi
+* mshop/order/manager/service/attribute/search/ansi
 
 ## service/attribute/count/mysql
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/attribute/count/mysql = 
+mshop/order/manager/service/attribute/count/mysql =
  SELECT COUNT( DISTINCT mordbaseat."id" ) AS "count"
- FROM "mshop_order_base_service_attr" mordbaseat
+ FROM "mshop_order_service_attr" mordbaseat
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordbaseat."id" ) AS "count"
- FROM "mshop_order_base_service_attr" mordbaseat
+ FROM "mshop_order_service_attr" mordbaseat
  :joins
  WHERE :cond
 
 
 See also:
 
-* mshop/order/manager/base/service/attribute/count/ansi
+* mshop/order/manager/service/attribute/count/ansi
 
 ## service/attribute/decorators/excludes
 
 Excludes decorators added by the "common" option from the order base service attribute manager
 
 ```
-mshop/order/manager/base/service/attribute/decorators/excludes = Array
+mshop/order/manager/service/attribute/decorators/excludes = Array
 (
 )
 ```
@@ -4309,7 +4309,7 @@ This option allows you to remove a decorator added via
 around the order base service attribute manager.
 
 ```
- mshop/order/manager/base/service/attribute/decorators/excludes = array( 'decorator1' )
+ mshop/order/manager/service/attribute/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -4319,15 +4319,15 @@ common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/service/attribute/decorators/global
-* mshop/order/manager/base/service/attribute/decorators/local
+* mshop/order/manager/service/attribute/decorators/global
+* mshop/order/manager/service/attribute/decorators/local
 
 ## service/attribute/decorators/global
 
 Adds a list of globally available decorators only to the order base service attribute manager
 
 ```
-mshop/order/manager/base/service/attribute/decorators/global = Array
+mshop/order/manager/service/attribute/decorators/global = Array
 (
 )
 ```
@@ -4349,7 +4349,7 @@ This option allows you to wrap global decorators
 service attribute manager.
 
 ```
- mshop/order/manager/base/service/attribute/decorators/global = array( 'decorator1' )
+ mshop/order/manager/service/attribute/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -4359,15 +4359,15 @@ base service attribute manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/service/attribute/decorators/excludes
-* mshop/order/manager/base/service/attribute/decorators/local
+* mshop/order/manager/service/attribute/decorators/excludes
+* mshop/order/manager/service/attribute/decorators/local
 
 ## service/attribute/decorators/local
 
 Adds a list of local decorators only to the order base service attribute manager
 
 ```
-mshop/order/manager/base/service/attribute/decorators/local = Array
+mshop/order/manager/service/attribute/decorators/local = Array
 (
 )
 ```
@@ -4389,7 +4389,7 @@ This option allows you to wrap local decorators
 around the order base service attribute manager.
 
 ```
- mshop/order/manager/base/service/attribute/decorators/local = array( 'decorator2' )
+ mshop/order/manager/service/attribute/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
@@ -4399,20 +4399,20 @@ only to the order base service attribute manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/service/attribute/decorators/excludes
-* mshop/order/manager/base/service/attribute/decorators/global
+* mshop/order/manager/service/attribute/decorators/excludes
+* mshop/order/manager/service/attribute/decorators/global
 
 ## service/attribute/delete/ansi
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/service/attribute/delete/ansi = 
- DELETE FROM "mshop_order_base_service_attr"
+mshop/order/manager/service/attribute/delete/ansi =
+ DELETE FROM "mshop_order_service_attr"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/order/manager/base/service/attribute/delete
+* Default: mshop/order/manager/service/attribute/delete
 * Type: string - SQL statement for deleting items
 * Since: 2014.03
 
@@ -4430,38 +4430,38 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/attribute/insert/ansi
-* mshop/order/manager/base/service/attribute/update/ansi
-* mshop/order/manager/base/service/attribute/newid/ansi
-* mshop/order/manager/base/service/attribute/search/ansi
-* mshop/order/manager/base/service/attribute/count/ansi
+* mshop/order/manager/service/attribute/insert/ansi
+* mshop/order/manager/service/attribute/update/ansi
+* mshop/order/manager/service/attribute/newid/ansi
+* mshop/order/manager/service/attribute/search/ansi
+* mshop/order/manager/service/attribute/count/ansi
 
 ## service/attribute/delete/mysql
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/service/attribute/delete/mysql = 
- DELETE FROM "mshop_order_base_service_attr"
+mshop/order/manager/service/attribute/delete/mysql =
+ DELETE FROM "mshop_order_service_attr"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
- DELETE FROM "mshop_order_base_service_attr"
+* Default:
+ DELETE FROM "mshop_order_service_attr"
  WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
 
-* mshop/order/manager/base/service/attribute/delete/ansi
+* mshop/order/manager/service/attribute/delete/ansi
 
 ## service/attribute/insert/ansi
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/service/attribute/insert/ansi = 
- INSERT INTO "mshop_order_base_service_attr" ( :names
+mshop/order/manager/service/attribute/insert/ansi =
+ INSERT INTO "mshop_order_service_attr" ( :names
  	"attrid", "parentid", "type", "code", "value",
  	"quantity", "price", "name", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -4469,7 +4469,7 @@ mshop/order/manager/base/service/attribute/insert/ansi =
  )
 ```
 
-* Default: mshop/order/manager/base/service/attribute/insert
+* Default: mshop/order/manager/service/attribute/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -4492,19 +4492,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/attribute/update/ansi
-* mshop/order/manager/base/service/attribute/newid/ansi
-* mshop/order/manager/base/service/attribute/delete/ansi
-* mshop/order/manager/base/service/attribute/search/ansi
-* mshop/order/manager/base/service/attribute/count/ansi
+* mshop/order/manager/service/attribute/update/ansi
+* mshop/order/manager/service/attribute/newid/ansi
+* mshop/order/manager/service/attribute/delete/ansi
+* mshop/order/manager/service/attribute/search/ansi
+* mshop/order/manager/service/attribute/count/ansi
 
 ## service/attribute/insert/mysql
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/service/attribute/insert/mysql = 
- INSERT INTO "mshop_order_base_service_attr" ( :names
+mshop/order/manager/service/attribute/insert/mysql =
+ INSERT INTO "mshop_order_service_attr" ( :names
  	"attrid", "parentid", "type", "code", "value",
  	"quantity", "price", "name", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -4512,8 +4512,8 @@ mshop/order/manager/base/service/attribute/insert/mysql =
  )
 ```
 
-* Default: 
- INSERT INTO "mshop_order_base_service_attr" ( :names
+* Default:
+ INSERT INTO "mshop_order_service_attr" ( :names
  	"attrid", "parentid", "type", "code", "value",
  	"quantity", "price", "name", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -4523,14 +4523,14 @@ mshop/order/manager/base/service/attribute/insert/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/attribute/insert/ansi
+* mshop/order/manager/service/attribute/insert/ansi
 
 ## service/attribute/name
 
 Class name of the used order base service attribute manager implementation
 
 ```
-mshop/order/manager/base/service/attribute/name = Standard
+mshop/order/manager/service/attribute/name = Standard
 ```
 
 * Default: Standard
@@ -4557,7 +4557,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- mshop/order/manager/base/service/attribute/name = Myattribute
+ mshop/order/manager/service/attribute/name = Myattribute
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -4575,10 +4575,10 @@ or numbers. Avoid chamel case names like "MyAttribute"!
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/service/attribute/newid/ansi = mshop/order/manager/base/service/attribute/newid
+mshop/order/manager/service/attribute/newid/ansi = mshop/order/manager/service/attribute/newid
 ```
 
-* Default: mshop/order/manager/base/service/attribute/newid
+* Default: mshop/order/manager/service/attribute/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -4604,48 +4604,48 @@ specific way.
 
 See also:
 
-* mshop/order/manager/base/service/attribute/insert/ansi
-* mshop/order/manager/base/service/attribute/update/ansi
-* mshop/order/manager/base/service/attribute/delete/ansi
-* mshop/order/manager/base/service/attribute/search/ansi
-* mshop/order/manager/base/service/attribute/count/ansi
+* mshop/order/manager/service/attribute/insert/ansi
+* mshop/order/manager/service/attribute/update/ansi
+* mshop/order/manager/service/attribute/delete/ansi
+* mshop/order/manager/service/attribute/search/ansi
+* mshop/order/manager/service/attribute/count/ansi
 
 ## service/attribute/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/service/attribute/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/order/manager/service/attribute/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/order/manager/base/service/attribute/newid
+* Default: mshop/order/manager/service/attribute/newid
 
 See also:
 
-* mshop/order/manager/base/service/attribute/newid/ansi
+* mshop/order/manager/service/attribute/newid/ansi
 
 ## service/attribute/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/attribute/search/ansi = 
+mshop/order/manager/service/attribute/search/ansi =
  SELECT :columns
- 	mordbaseat."id" AS "order.base.service.attribute.id", mordbaseat."siteid" AS "order.base.service.attribute.siteid",
- 	mordbaseat."attrid" AS "order.base.service.attribute.attributeid", mordbaseat."parentid" AS "order.base.service.attribute.parentid",
- 	mordbaseat."type" AS "order.base.service.attribute.type", mordbaseat."code" AS "order.base.service.attribute.code",
- 	mordbaseat."value" AS "order.base.service.attribute.value", mordbaseat."quantity" AS "order.base.service.attribute.quantity",
- 	mordbaseat."name" AS "order.base.service.attribute.name", mordbaseat."mtime" AS "order.base.service.attribute.mtime",
- 	mordbaseat."ctime" AS "order.base.service.attribute.ctime", mordbaseat."editor" AS "order.base.service.attribute.editor",
- 	mordbaseat."price" AS "order.base.service.attribute.price"
- FROM "mshop_order_base_service_attr" mordbaseat
+ 	mordbaseat."id" AS "order.service.attribute.id", mordbaseat."siteid" AS "order.service.attribute.siteid",
+ 	mordbaseat."attrid" AS "order.service.attribute.attributeid", mordbaseat."parentid" AS "order.service.attribute.parentid",
+ 	mordbaseat."type" AS "order.service.attribute.type", mordbaseat."code" AS "order.service.attribute.code",
+ 	mordbaseat."value" AS "order.service.attribute.value", mordbaseat."quantity" AS "order.service.attribute.quantity",
+ 	mordbaseat."name" AS "order.service.attribute.name", mordbaseat."mtime" AS "order.service.attribute.mtime",
+ 	mordbaseat."ctime" AS "order.service.attribute.ctime", mordbaseat."editor" AS "order.service.attribute.editor",
+ 	mordbaseat."price" AS "order.service.attribute.price"
+ FROM "mshop_order_service_attr" mordbaseat
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/order/manager/base/service/attribute/search
+* Default: mshop/order/manager/service/attribute/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -4690,43 +4690,43 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/attribute/insert/ansi
-* mshop/order/manager/base/service/attribute/update/ansi
-* mshop/order/manager/base/service/attribute/newid/ansi
-* mshop/order/manager/base/service/attribute/delete/ansi
-* mshop/order/manager/base/service/attribute/count/ansi
+* mshop/order/manager/service/attribute/insert/ansi
+* mshop/order/manager/service/attribute/update/ansi
+* mshop/order/manager/service/attribute/newid/ansi
+* mshop/order/manager/service/attribute/delete/ansi
+* mshop/order/manager/service/attribute/count/ansi
 
 ## service/attribute/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/attribute/search/mysql = 
+mshop/order/manager/service/attribute/search/mysql =
  SELECT :columns
- 	mordbaseat."id" AS "order.base.service.attribute.id", mordbaseat."siteid" AS "order.base.service.attribute.siteid",
- 	mordbaseat."attrid" AS "order.base.service.attribute.attributeid", mordbaseat."parentid" AS "order.base.service.attribute.parentid",
- 	mordbaseat."type" AS "order.base.service.attribute.type", mordbaseat."code" AS "order.base.service.attribute.code",
- 	mordbaseat."value" AS "order.base.service.attribute.value", mordbaseat."quantity" AS "order.base.service.attribute.quantity",
- 	mordbaseat."name" AS "order.base.service.attribute.name", mordbaseat."mtime" AS "order.base.service.attribute.mtime",
- 	mordbaseat."ctime" AS "order.base.service.attribute.ctime", mordbaseat."editor" AS "order.base.service.attribute.editor",
- 	mordbaseat."price" AS "order.base.service.attribute.price"
- FROM "mshop_order_base_service_attr" mordbaseat
+ 	mordbaseat."id" AS "order.service.attribute.id", mordbaseat."siteid" AS "order.service.attribute.siteid",
+ 	mordbaseat."attrid" AS "order.service.attribute.attributeid", mordbaseat."parentid" AS "order.service.attribute.parentid",
+ 	mordbaseat."type" AS "order.service.attribute.type", mordbaseat."code" AS "order.service.attribute.code",
+ 	mordbaseat."value" AS "order.service.attribute.value", mordbaseat."quantity" AS "order.service.attribute.quantity",
+ 	mordbaseat."name" AS "order.service.attribute.name", mordbaseat."mtime" AS "order.service.attribute.mtime",
+ 	mordbaseat."ctime" AS "order.service.attribute.ctime", mordbaseat."editor" AS "order.service.attribute.editor",
+ 	mordbaseat."price" AS "order.service.attribute.price"
+ FROM "mshop_order_service_attr" mordbaseat
  :joins
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mordbaseat."id" AS "order.base.service.attribute.id", mordbaseat."siteid" AS "order.base.service.attribute.siteid",
- 	mordbaseat."attrid" AS "order.base.service.attribute.attributeid", mordbaseat."parentid" AS "order.base.service.attribute.parentid",
- 	mordbaseat."type" AS "order.base.service.attribute.type", mordbaseat."code" AS "order.base.service.attribute.code",
- 	mordbaseat."value" AS "order.base.service.attribute.value", mordbaseat."quantity" AS "order.base.service.attribute.quantity",
- 	mordbaseat."name" AS "order.base.service.attribute.name", mordbaseat."mtime" AS "order.base.service.attribute.mtime",
- 	mordbaseat."ctime" AS "order.base.service.attribute.ctime", mordbaseat."editor" AS "order.base.service.attribute.editor",
- 	mordbaseat."price" AS "order.base.service.attribute.price"
- FROM "mshop_order_base_service_attr" mordbaseat
+ 	mordbaseat."id" AS "order.service.attribute.id", mordbaseat."siteid" AS "order.service.attribute.siteid",
+ 	mordbaseat."attrid" AS "order.service.attribute.attributeid", mordbaseat."parentid" AS "order.service.attribute.parentid",
+ 	mordbaseat."type" AS "order.service.attribute.type", mordbaseat."code" AS "order.service.attribute.code",
+ 	mordbaseat."value" AS "order.service.attribute.value", mordbaseat."quantity" AS "order.service.attribute.quantity",
+ 	mordbaseat."name" AS "order.service.attribute.name", mordbaseat."mtime" AS "order.service.attribute.mtime",
+ 	mordbaseat."ctime" AS "order.service.attribute.ctime", mordbaseat."editor" AS "order.service.attribute.editor",
+ 	mordbaseat."price" AS "order.service.attribute.price"
+ FROM "mshop_order_service_attr" mordbaseat
  :joins
  WHERE :cond
  ORDER BY :order
@@ -4735,14 +4735,14 @@ mshop/order/manager/base/service/attribute/search/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/attribute/search/ansi
+* mshop/order/manager/service/attribute/search/ansi
 
 ## service/attribute/submanagers
 
 List of manager names that can be instantiated by the order base service attribute manager
 
 ```
-mshop/order/manager/base/service/attribute/submanagers = Array
+mshop/order/manager/service/attribute/submanagers = Array
 (
 )
 ```
@@ -4770,15 +4770,15 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/service/attribute/update/ansi = 
- UPDATE "mshop_order_base_service_attr"
+mshop/order/manager/service/attribute/update/ansi =
+ UPDATE "mshop_order_service_attr"
  SET :names
  	"attrid" = ?, "parentid" = ?, "type" = ?, "code" = ?, "value" = ?,
  	"quantity" = ?, "price" = ?, "name" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: mshop/order/manager/base/service/attribute/update
+* Default: mshop/order/manager/service/attribute/update
 * Type: string - SQL statement for updating records
 * Since: 2014.03
 
@@ -4798,27 +4798,27 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/attribute/insert/ansi
-* mshop/order/manager/base/service/attribute/newid/ansi
-* mshop/order/manager/base/service/attribute/delete/ansi
-* mshop/order/manager/base/service/attribute/search/ansi
-* mshop/order/manager/base/service/attribute/count/ansi
+* mshop/order/manager/service/attribute/insert/ansi
+* mshop/order/manager/service/attribute/newid/ansi
+* mshop/order/manager/service/attribute/delete/ansi
+* mshop/order/manager/service/attribute/search/ansi
+* mshop/order/manager/service/attribute/count/ansi
 
 ## service/attribute/update/mysql
 
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/service/attribute/update/mysql = 
- UPDATE "mshop_order_base_service_attr"
+mshop/order/manager/service/attribute/update/mysql =
+ UPDATE "mshop_order_service_attr"
  SET :names
  	"attrid" = ?, "parentid" = ?, "type" = ?, "code" = ?, "value" = ?,
  	"quantity" = ?, "price" = ?, "name" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
- UPDATE "mshop_order_base_service_attr"
+* Default:
+ UPDATE "mshop_order_service_attr"
  SET :names
  	"attrid" = ?, "parentid" = ?, "type" = ?, "code" = ?, "value" = ?,
  	"quantity" = ?, "price" = ?, "name" = ?, "mtime" = ?, "editor" = ?
@@ -4827,21 +4827,21 @@ mshop/order/manager/base/service/attribute/update/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/attribute/update/ansi
+* mshop/order/manager/service/attribute/update/ansi
 
 ## service/count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/count/ansi = 
+mshop/order/manager/service/count/ansi =
  SELECT COUNT( DISTINCT mordbase."id" ) AS "count"
- FROM "mshop_order_base_service" mordbase
+ FROM "mshop_order_service" mordbase
  :joins
  WHERE :cond
 ```
 
-* Default: mshop/order/manager/base/service/count
+* Default: mshop/order/manager/service/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -4880,41 +4880,41 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/insert/ansi
-* mshop/order/manager/base/service/update/ansi
-* mshop/order/manager/base/service/newid/ansi
-* mshop/order/manager/base/service/delete/ansi
-* mshop/order/manager/base/service/search/ansi
+* mshop/order/manager/service/insert/ansi
+* mshop/order/manager/service/update/ansi
+* mshop/order/manager/service/newid/ansi
+* mshop/order/manager/service/delete/ansi
+* mshop/order/manager/service/search/ansi
 
 ## service/count/mysql
 
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/count/mysql = 
+mshop/order/manager/service/count/mysql =
  SELECT COUNT( DISTINCT mordbase."id" ) AS "count"
- FROM "mshop_order_base_service" mordbase
+ FROM "mshop_order_service" mordbase
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordbase."id" ) AS "count"
- FROM "mshop_order_base_service" mordbase
+ FROM "mshop_order_service" mordbase
  :joins
  WHERE :cond
 
 
 See also:
 
-* mshop/order/manager/base/service/count/ansi
+* mshop/order/manager/service/count/ansi
 
 ## service/decorators/excludes
 
 Excludes decorators added by the "common" option from the order base service manager
 
 ```
-mshop/order/manager/base/service/decorators/excludes = Array
+mshop/order/manager/service/decorators/excludes = Array
 (
 )
 ```
@@ -4936,7 +4936,7 @@ This option allows you to remove a decorator added via
 around the order base service manager.
 
 ```
- mshop/order/manager/base/service/decorators/excludes = array( 'decorator1' )
+ mshop/order/manager/service/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -4946,15 +4946,15 @@ common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/service/decorators/global
-* mshop/order/manager/base/service/decorators/local
+* mshop/order/manager/service/decorators/global
+* mshop/order/manager/service/decorators/local
 
 ## service/decorators/global
 
 Adds a list of globally available decorators only to the order base service manager
 
 ```
-mshop/order/manager/base/service/decorators/global = Array
+mshop/order/manager/service/decorators/global = Array
 (
 )
 ```
@@ -4976,7 +4976,7 @@ This option allows you to wrap global decorators
 service manager.
 
 ```
- mshop/order/manager/base/service/decorators/global = array( 'decorator1' )
+ mshop/order/manager/service/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -4986,15 +4986,15 @@ base service manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/service/decorators/excludes
-* mshop/order/manager/base/service/decorators/local
+* mshop/order/manager/service/decorators/excludes
+* mshop/order/manager/service/decorators/local
 
 ## service/decorators/local
 
 Adds a list of local decorators only to the order base service manager
 
 ```
-mshop/order/manager/base/service/decorators/local = Array
+mshop/order/manager/service/decorators/local = Array
 (
 )
 ```
@@ -5016,7 +5016,7 @@ This option allows you to wrap local decorators
 order base service manager.
 
 ```
- mshop/order/manager/base/service/decorators/local = array( 'decorator2' )
+ mshop/order/manager/service/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
@@ -5026,20 +5026,20 @@ to the order base service manager.
 See also:
 
 * mshop/common/manager/decorators/default
-* mshop/order/manager/base/service/decorators/excludes
-* mshop/order/manager/base/service/decorators/global
+* mshop/order/manager/service/decorators/excludes
+* mshop/order/manager/service/decorators/global
 
 ## service/delete/ansi
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/service/delete/ansi = 
- DELETE FROM "mshop_order_base_service"
+mshop/order/manager/service/delete/ansi =
+ DELETE FROM "mshop_order_service"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/order/manager/base/service/delete
+* Default: mshop/order/manager/service/delete
 * Type: string - SQL statement for deleting items
 * Since: 2014.03
 
@@ -5057,38 +5057,38 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/insert/ansi
-* mshop/order/manager/base/service/update/ansi
-* mshop/order/manager/base/service/newid/ansi
-* mshop/order/manager/base/service/search/ansi
-* mshop/order/manager/base/service/count/ansi
+* mshop/order/manager/service/insert/ansi
+* mshop/order/manager/service/update/ansi
+* mshop/order/manager/service/newid/ansi
+* mshop/order/manager/service/search/ansi
+* mshop/order/manager/service/count/ansi
 
 ## service/delete/mysql
 
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/base/service/delete/mysql = 
- DELETE FROM "mshop_order_base_service"
+mshop/order/manager/service/delete/mysql =
+ DELETE FROM "mshop_order_service"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
- DELETE FROM "mshop_order_base_service"
+* Default:
+ DELETE FROM "mshop_order_service"
  WHERE :cond AND "siteid" LIKE ?
 
 
 See also:
 
-* mshop/order/manager/base/service/delete/ansi
+* mshop/order/manager/service/delete/ansi
 
 ## service/insert/ansi
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/service/insert/ansi = 
- INSERT INTO "mshop_order_base_service" ( :names
+mshop/order/manager/service/insert/ansi =
+ INSERT INTO "mshop_order_service" ( :names
  	"baseid", "servid", "type", "code", "name", "mediaurl",
  	"currencyid", "price", "costs", "rebate", "tax", "taxrate",
  	"taxflag", "pos", "mtime", "editor", "siteid", "ctime"
@@ -5097,7 +5097,7 @@ mshop/order/manager/base/service/insert/ansi =
  )
 ```
 
-* Default: mshop/order/manager/base/service/insert
+* Default: mshop/order/manager/service/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -5120,19 +5120,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/update/ansi
-* mshop/order/manager/base/service/newid/ansi
-* mshop/order/manager/base/service/delete/ansi
-* mshop/order/manager/base/service/search/ansi
-* mshop/order/manager/base/service/count/ansi
+* mshop/order/manager/service/update/ansi
+* mshop/order/manager/service/newid/ansi
+* mshop/order/manager/service/delete/ansi
+* mshop/order/manager/service/search/ansi
+* mshop/order/manager/service/count/ansi
 
 ## service/insert/mysql
 
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/base/service/insert/mysql = 
- INSERT INTO "mshop_order_base_service" ( :names
+mshop/order/manager/service/insert/mysql =
+ INSERT INTO "mshop_order_service" ( :names
  	"baseid", "servid", "type", "code", "name", "mediaurl",
  	"currencyid", "price", "costs", "rebate", "tax", "taxrate",
  	"taxflag", "pos", "mtime", "editor", "siteid", "ctime"
@@ -5141,8 +5141,8 @@ mshop/order/manager/base/service/insert/mysql =
  )
 ```
 
-* Default: 
- INSERT INTO "mshop_order_base_service" ( :names
+* Default:
+ INSERT INTO "mshop_order_service" ( :names
  	"baseid", "servid", "type", "code", "name", "mediaurl",
  	"currencyid", "price", "costs", "rebate", "tax", "taxrate",
  	"taxflag", "pos", "mtime", "editor", "siteid", "ctime"
@@ -5153,14 +5153,14 @@ mshop/order/manager/base/service/insert/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/insert/ansi
+* mshop/order/manager/service/insert/ansi
 
 ## service/name
 
 Class name of the used order base service manager implementation
 
 ```
-mshop/order/manager/base/service/name = Standard
+mshop/order/manager/service/name = Standard
 ```
 
 * Default: Standard
@@ -5187,7 +5187,7 @@ and you want to replace it with your own version named
 then you have to set the this configuration option:
 
 ```
- mshop/order/manager/base/service/name = Myservice
+ mshop/order/manager/service/name = Myservice
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -5205,10 +5205,10 @@ or numbers. Avoid chamel case names like "MyService"!
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/service/newid/ansi = mshop/order/manager/base/service/newid
+mshop/order/manager/service/newid/ansi = mshop/order/manager/service/newid
 ```
 
-* Default: mshop/order/manager/base/service/newid
+* Default: mshop/order/manager/service/newid
 * Type: string - SQL statement for retrieving the last inserted record ID
 * Since: 2014.03
 
@@ -5234,44 +5234,44 @@ specific way.
 
 See also:
 
-* mshop/order/manager/base/service/insert/ansi
-* mshop/order/manager/base/service/update/ansi
-* mshop/order/manager/base/service/delete/ansi
-* mshop/order/manager/base/service/search/ansi
-* mshop/order/manager/base/service/count/ansi
+* mshop/order/manager/service/insert/ansi
+* mshop/order/manager/service/update/ansi
+* mshop/order/manager/service/delete/ansi
+* mshop/order/manager/service/search/ansi
+* mshop/order/manager/service/count/ansi
 
 ## service/newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/order/manager/base/service/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/order/manager/service/newid/mysql = SELECT LAST_INSERT_ID()
 ```
 
-* Default: mshop/order/manager/base/service/newid
+* Default: mshop/order/manager/service/newid
 
 See also:
 
-* mshop/order/manager/base/service/newid/ansi
+* mshop/order/manager/service/newid/ansi
 
 ## service/search/ansi
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/search/ansi = 
+mshop/order/manager/service/search/ansi =
  SELECT :columns
- 	mordbase."id" AS "order.base.service.id", mordbase."baseid" AS "order.base.service.baseid",
- 	mordbase."siteid" AS "order.base.service.siteid", mordbase."servid" AS "order.base.service.serviceid",
- 	mordbase."type" AS "order.base.service.type", mordbase."code" AS "order.base.service.code",
- 	mordbase."name" AS "order.base.service.name", mordbase."mediaurl" AS "order.base.service.mediaurl",
- 	mordbase."currencyid" AS "order.base.service.currencyid", mordbase."price" AS "order.base.service.price",
- 	mordbase."costs" AS "order.base.service.costs", mordbase."rebate" AS "order.base.service.rebate",
- 	mordbase."tax" AS "order.base.service.taxvalue", mordbase."taxrate" AS "order.base.service.taxrates",
- 	mordbase."taxflag" AS "order.base.service.taxflag", mordbase."pos" AS "order.base.service.position",
- 	mordbase."mtime" AS "order.base.service.mtime", mordbase."editor" AS "order.base.service.editor",
- 	mordbase."ctime" AS "order.base.service.ctime"
- FROM "mshop_order_base_service" mordbase
+ 	mordbase."id" AS "order.service.id", mordbase."baseid" AS "order.service.parentid",
+ 	mordbase."siteid" AS "order.service.siteid", mordbase."servid" AS "order.service.serviceid",
+ 	mordbase."type" AS "order.service.type", mordbase."code" AS "order.service.code",
+ 	mordbase."name" AS "order.service.name", mordbase."mediaurl" AS "order.service.mediaurl",
+ 	mordbase."currencyid" AS "order.service.currencyid", mordbase."price" AS "order.service.price",
+ 	mordbase."costs" AS "order.service.costs", mordbase."rebate" AS "order.service.rebate",
+ 	mordbase."tax" AS "order.service.taxvalue", mordbase."taxrate" AS "order.service.taxrates",
+ 	mordbase."taxflag" AS "order.service.taxflag", mordbase."pos" AS "order.service.position",
+ 	mordbase."mtime" AS "order.service.mtime", mordbase."editor" AS "order.service.editor",
+ 	mordbase."ctime" AS "order.service.ctime"
+ FROM "mshop_order_service" mordbase
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -5283,7 +5283,7 @@ mshop/order/manager/base/service/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/order/manager/base/service/search
+* Default: mshop/order/manager/service/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -5328,30 +5328,30 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/insert/ansi
-* mshop/order/manager/base/service/update/ansi
-* mshop/order/manager/base/service/newid/ansi
-* mshop/order/manager/base/service/delete/ansi
-* mshop/order/manager/base/service/count/ansi
+* mshop/order/manager/service/insert/ansi
+* mshop/order/manager/service/update/ansi
+* mshop/order/manager/service/newid/ansi
+* mshop/order/manager/service/delete/ansi
+* mshop/order/manager/service/count/ansi
 
 ## service/search/mysql
 
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/base/service/search/mysql = 
+mshop/order/manager/service/search/mysql =
  SELECT :columns
- 	mordbase."id" AS "order.base.service.id", mordbase."baseid" AS "order.base.service.baseid",
- 	mordbase."siteid" AS "order.base.service.siteid", mordbase."servid" AS "order.base.service.serviceid",
- 	mordbase."type" AS "order.base.service.type", mordbase."code" AS "order.base.service.code",
- 	mordbase."name" AS "order.base.service.name", mordbase."mediaurl" AS "order.base.service.mediaurl",
- 	mordbase."currencyid" AS "order.base.service.currencyid", mordbase."price" AS "order.base.service.price",
- 	mordbase."costs" AS "order.base.service.costs", mordbase."rebate" AS "order.base.service.rebate",
- 	mordbase."tax" AS "order.base.service.taxvalue", mordbase."taxrate" AS "order.base.service.taxrates",
- 	mordbase."taxflag" AS "order.base.service.taxflag", mordbase."pos" AS "order.base.service.position",
- 	mordbase."mtime" AS "order.base.service.mtime", mordbase."editor" AS "order.base.service.editor",
- 	mordbase."ctime" AS "order.base.service.ctime"
- FROM "mshop_order_base_service" mordbase
+ 	mordbase."id" AS "order.service.id", mordbase."baseid" AS "order.service.parentid",
+ 	mordbase."siteid" AS "order.service.siteid", mordbase."servid" AS "order.service.serviceid",
+ 	mordbase."type" AS "order.service.type", mordbase."code" AS "order.service.code",
+ 	mordbase."name" AS "order.service.name", mordbase."mediaurl" AS "order.service.mediaurl",
+ 	mordbase."currencyid" AS "order.service.currencyid", mordbase."price" AS "order.service.price",
+ 	mordbase."costs" AS "order.service.costs", mordbase."rebate" AS "order.service.rebate",
+ 	mordbase."tax" AS "order.service.taxvalue", mordbase."taxrate" AS "order.service.taxrates",
+ 	mordbase."taxflag" AS "order.service.taxflag", mordbase."pos" AS "order.service.position",
+ 	mordbase."mtime" AS "order.service.mtime", mordbase."editor" AS "order.service.editor",
+ 	mordbase."ctime" AS "order.service.ctime"
+ FROM "mshop_order_service" mordbase
  :joins
  WHERE :cond
  GROUP BY :group mordbase."id"
@@ -5359,19 +5359,19 @@ mshop/order/manager/base/service/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mordbase."id" AS "order.base.service.id", mordbase."baseid" AS "order.base.service.baseid",
- 	mordbase."siteid" AS "order.base.service.siteid", mordbase."servid" AS "order.base.service.serviceid",
- 	mordbase."type" AS "order.base.service.type", mordbase."code" AS "order.base.service.code",
- 	mordbase."name" AS "order.base.service.name", mordbase."mediaurl" AS "order.base.service.mediaurl",
- 	mordbase."currencyid" AS "order.base.service.currencyid", mordbase."price" AS "order.base.service.price",
- 	mordbase."costs" AS "order.base.service.costs", mordbase."rebate" AS "order.base.service.rebate",
- 	mordbase."tax" AS "order.base.service.taxvalue", mordbase."taxrate" AS "order.base.service.taxrates",
- 	mordbase."taxflag" AS "order.base.service.taxflag", mordbase."pos" AS "order.base.service.position",
- 	mordbase."mtime" AS "order.base.service.mtime", mordbase."editor" AS "order.base.service.editor",
- 	mordbase."ctime" AS "order.base.service.ctime"
- FROM "mshop_order_base_service" mordbase
+ 	mordbase."id" AS "order.service.id", mordbase."baseid" AS "order.service.parentid",
+ 	mordbase."siteid" AS "order.service.siteid", mordbase."servid" AS "order.service.serviceid",
+ 	mordbase."type" AS "order.service.type", mordbase."code" AS "order.service.code",
+ 	mordbase."name" AS "order.service.name", mordbase."mediaurl" AS "order.service.mediaurl",
+ 	mordbase."currencyid" AS "order.service.currencyid", mordbase."price" AS "order.service.price",
+ 	mordbase."costs" AS "order.service.costs", mordbase."rebate" AS "order.service.rebate",
+ 	mordbase."tax" AS "order.service.taxvalue", mordbase."taxrate" AS "order.service.taxrates",
+ 	mordbase."taxflag" AS "order.service.taxflag", mordbase."pos" AS "order.service.position",
+ 	mordbase."mtime" AS "order.service.mtime", mordbase."editor" AS "order.service.editor",
+ 	mordbase."ctime" AS "order.service.ctime"
+ FROM "mshop_order_service" mordbase
  :joins
  WHERE :cond
  GROUP BY :columns :group
@@ -5385,14 +5385,14 @@ mshop/order/manager/base/service/search/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/search/ansi
+* mshop/order/manager/service/search/ansi
 
 ## service/submanagers
 
 List of manager names that can be instantiated by the order base service manager
 
 ```
-mshop/order/manager/base/service/submanagers = Array
+mshop/order/manager/service/submanagers = Array
 (
     [0] => attribute
 )
@@ -5422,8 +5422,8 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/service/update/ansi = 
- UPDATE "mshop_order_base_service"
+mshop/order/manager/service/update/ansi =
+ UPDATE "mshop_order_service"
  SET :names
  	"baseid" = ?, "servid" = ?, "type" = ?, "code" = ?,
  	"name" = ?, "mediaurl" = ?, "currencyid" = ?, "price" = ?,
@@ -5432,7 +5432,7 @@ mshop/order/manager/base/service/update/ansi =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: mshop/order/manager/base/service/update
+* Default: mshop/order/manager/service/update
 * Type: string - SQL statement for updating records
 * Since: 2014.03
 
@@ -5452,19 +5452,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/service/insert/ansi
-* mshop/order/manager/base/service/newid/ansi
-* mshop/order/manager/base/service/delete/ansi
-* mshop/order/manager/base/service/search/ansi
-* mshop/order/manager/base/service/count/ansi
+* mshop/order/manager/service/insert/ansi
+* mshop/order/manager/service/newid/ansi
+* mshop/order/manager/service/delete/ansi
+* mshop/order/manager/service/search/ansi
+* mshop/order/manager/service/count/ansi
 
 ## service/update/mysql
 
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/service/update/mysql = 
- UPDATE "mshop_order_base_service"
+mshop/order/manager/service/update/mysql =
+ UPDATE "mshop_order_service"
  SET :names
  	"baseid" = ?, "servid" = ?, "type" = ?, "code" = ?,
  	"name" = ?, "mediaurl" = ?, "currencyid" = ?, "price" = ?,
@@ -5473,8 +5473,8 @@ mshop/order/manager/base/service/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
- UPDATE "mshop_order_base_service"
+* Default:
+ UPDATE "mshop_order_service"
  SET :names
  	"baseid" = ?, "servid" = ?, "type" = ?, "code" = ?,
  	"name" = ?, "mediaurl" = ?, "currencyid" = ?, "price" = ?,
@@ -5485,14 +5485,14 @@ mshop/order/manager/base/service/update/mysql =
 
 See also:
 
-* mshop/order/manager/base/service/update/ansi
+* mshop/order/manager/service/update/ansi
 
 ## submanagers
 
 List of manager names that can be instantiated by the order base manager
 
 ```
-mshop/order/manager/base/submanagers = Array
+mshop/order/manager/submanagers = Array
 (
     [0] => address
     [1] => coupon
@@ -5528,8 +5528,8 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/update/ansi = 
- UPDATE "mshop_order_base"
+mshop/order/manager/update/ansi =
+ UPDATE "mshop_order"
  SET :names
  	"customerid" = ?, "sitecode" = ?, "langid" = ?, "currencyid" = ?,
  	"price" = ?, "costs" = ?, "rebate" = ?, "tax" = ?, "taxflag" = ?,
@@ -5537,7 +5537,7 @@ mshop/order/manager/base/update/ansi =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: mshop/order/manager/base/update
+* Default: mshop/order/manager/update
 * Type: string - SQL statement for updating records
 * Since: 2014.03
 
@@ -5557,19 +5557,19 @@ includes using double quotes for table and column names.
 
 See also:
 
-* mshop/order/manager/base/insert/ansi
-* mshop/order/manager/base/newid/ansi
-* mshop/order/manager/base/delete/ansi
-* mshop/order/manager/base/search/ansi
-* mshop/order/manager/base/count/ansi
+* mshop/order/manager/insert/ansi
+* mshop/order/manager/newid/ansi
+* mshop/order/manager/delete/ansi
+* mshop/order/manager/search/ansi
+* mshop/order/manager/count/ansi
 
 ## update/mysql
 
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/base/update/mysql = 
- UPDATE "mshop_order_base"
+mshop/order/manager/update/mysql =
+ UPDATE "mshop_order"
  SET :names
  	"customerid" = ?, "sitecode" = ?, "langid" = ?, "currencyid" = ?,
  	"price" = ?, "costs" = ?, "rebate" = ?, "tax" = ?, "taxflag" = ?,
@@ -5577,8 +5577,8 @@ mshop/order/manager/base/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
- UPDATE "mshop_order_base"
+* Default:
+ UPDATE "mshop_order"
  SET :names
  	"customerid" = ?, "sitecode" = ?, "langid" = ?, "currencyid" = ?,
  	"price" = ?, "costs" = ?, "rebate" = ?, "tax" = ?, "taxflag" = ?,
@@ -5588,7 +5588,7 @@ mshop/order/manager/base/update/mysql =
 
 See also:
 
-* mshop/order/manager/base/update/ansi
+* mshop/order/manager/update/ansi
 
 # basket
 ## count/ansi
@@ -5596,7 +5596,7 @@ See also:
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/basket/count/ansi = 
+mshop/order/manager/basket/count/ansi =
  SELECT COUNT( DISTINCT mordba."id" ) AS "count"
  FROM "mshop_order_basket" mordba
  :joins
@@ -5653,14 +5653,14 @@ See also:
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/basket/count/mysql = 
+mshop/order/manager/basket/count/mysql =
  SELECT COUNT( DISTINCT mordba."id" ) AS "count"
  FROM "mshop_order_basket" mordba
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordba."id" ) AS "count"
  FROM "mshop_order_basket" mordba
  :joins
@@ -5796,7 +5796,7 @@ See also:
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/basket/delete/ansi = 
+mshop/order/manager/basket/delete/ansi =
  DELETE FROM "mshop_order_basket"
  WHERE :cond AND "siteid" LIKE ?
 ```
@@ -5830,12 +5830,12 @@ See also:
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/basket/delete/mysql = 
+mshop/order/manager/basket/delete/mysql =
  DELETE FROM "mshop_order_basket"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default:
  DELETE FROM "mshop_order_basket"
  WHERE :cond AND "siteid" LIKE ?
 
@@ -5858,7 +5858,7 @@ mshop/order/manager/basket/insert/ansi = mshop/order/manager/basket/insert
 Inserts a new basket record into the database table or updates an existing one
 
 ```
-mshop/order/manager/basket/insert/mysql = 
+mshop/order/manager/basket/insert/mysql =
  INSERT INTO "mshop_order_basket" (
  	"customerid", "content", "name", "mtime", "editor", "siteid", "ctime", "id"
  ) VALUES (
@@ -5941,7 +5941,7 @@ or numbers. Avoid chamel case names like "MyBasket"!
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/basket/search/ansi = 
+mshop/order/manager/basket/search/ansi =
  SELECT :columns
  	mordba."id" AS "order.basket.id", mordba."siteid" AS "order.basket.siteid",
  	mordba."customerid" AS "order.basket.customerid", mordba."name" AS "order.basket.name",
@@ -6010,7 +6010,7 @@ See also:
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/basket/search/mysql = 
+mshop/order/manager/basket/search/mysql =
  SELECT :columns
  	mordba."id" AS "order.basket.id", mordba."siteid" AS "order.basket.siteid",
  	mordba."customerid" AS "order.basket.customerid", mordba."name" AS "order.basket.name",
@@ -6023,7 +6023,7 @@ mshop/order/manager/basket/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
  	mordba."id" AS "order.basket.id", mordba."siteid" AS "order.basket.siteid",
  	mordba."customerid" AS "order.basket.customerid", mordba."name" AS "order.basket.name",
@@ -6074,7 +6074,7 @@ retrieved list of items.
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/count/ansi = 
+mshop/order/manager/count/ansi =
  SELECT COUNT( DISTINCT mord."id" ) AS "count"
  FROM "mshop_order" mord
  :joins
@@ -6131,14 +6131,14 @@ See also:
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/count/mysql = 
+mshop/order/manager/count/mysql =
  SELECT COUNT( DISTINCT mord."id" ) AS "count"
  FROM "mshop_order" mord
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mord."id" ) AS "count"
  FROM "mshop_order" mord
  :joins
@@ -6274,7 +6274,7 @@ See also:
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/delete/ansi = 
+mshop/order/manager/delete/ansi =
  DELETE FROM "mshop_order"
  WHERE :cond AND "siteid" LIKE ?
 ```
@@ -6308,12 +6308,12 @@ See also:
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/delete/mysql = 
+mshop/order/manager/delete/mysql =
  DELETE FROM "mshop_order"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default:
  DELETE FROM "mshop_order"
  WHERE :cond AND "siteid" LIKE ?
 
@@ -6328,7 +6328,7 @@ See also:
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/insert/ansi = 
+mshop/order/manager/insert/ansi =
  INSERT INTO "mshop_order" ( :names
  	"baseid", "invoiceno", "channel", "datepayment", "datedelivery",
  	"statusdelivery", "statuspayment", "relatedid", "mtime",
@@ -6372,7 +6372,7 @@ See also:
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/insert/mysql = 
+mshop/order/manager/insert/mysql =
  INSERT INTO "mshop_order" ( :names
  	"baseid", "invoiceno", "channel", "datepayment", "datedelivery",
  	"statusdelivery", "statuspayment", "relatedid", "mtime",
@@ -6382,7 +6382,7 @@ mshop/order/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default:
  INSERT INTO "mshop_order" ( :names
  	"baseid", "invoiceno", "channel", "datepayment", "datedelivery",
  	"statusdelivery", "statuspayment", "relatedid", "mtime",
@@ -6502,9 +6502,9 @@ See also:
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/search/ansi = 
+mshop/order/manager/search/ansi =
  SELECT :columns
- 	mord."id" AS "order.id", mord."baseid" AS "order.baseid", mord."channel" AS "order.channel",
+ 	mord."id" AS "order.id", mord."baseid" AS "order.parentid", mord."channel" AS "order.channel",
  	mord."siteid" AS "order.siteid", mord."invoiceno" AS "order.invoiceno",
  	mord."datepayment" AS "order.datepayment", mord."datedelivery" AS "order.datedelivery",
  	mord."statuspayment" AS "order.statuspayment", mord."statusdelivery" AS "order.statusdelivery",
@@ -6577,9 +6577,9 @@ See also:
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/search/mysql = 
+mshop/order/manager/search/mysql =
  SELECT :columns
- 	mord."id" AS "order.id", mord."baseid" AS "order.baseid", mord."channel" AS "order.channel",
+ 	mord."id" AS "order.id", mord."baseid" AS "order.parentid", mord."channel" AS "order.channel",
  	mord."siteid" AS "order.siteid", mord."invoiceno" AS "order.invoiceno",
  	mord."datepayment" AS "order.datepayment", mord."datedelivery" AS "order.datedelivery",
  	mord."statuspayment" AS "order.statuspayment", mord."statusdelivery" AS "order.statusdelivery",
@@ -6593,9 +6593,9 @@ mshop/order/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
- 	mord."id" AS "order.id", mord."baseid" AS "order.baseid", mord."channel" AS "order.channel",
+ 	mord."id" AS "order.id", mord."baseid" AS "order.parentid", mord."channel" AS "order.channel",
  	mord."siteid" AS "order.siteid", mord."invoiceno" AS "order.invoiceno",
  	mord."datepayment" AS "order.datepayment", mord."datedelivery" AS "order.datedelivery",
  	mord."statuspayment" AS "order.statuspayment", mord."statusdelivery" AS "order.statusdelivery",
@@ -6659,7 +6659,7 @@ See also:
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/status/aggregate/ansi = 
+mshop/order/manager/status/aggregate/ansi =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
@@ -6721,7 +6721,7 @@ See also:
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/order/manager/status/aggregate/mysql = 
+mshop/order/manager/status/aggregate/mysql =
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
@@ -6735,7 +6735,7 @@ mshop/order/manager/status/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default:
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :type(:val) AS "val"
@@ -6758,7 +6758,7 @@ See also:
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/status/count/ansi = 
+mshop/order/manager/status/count/ansi =
  SELECT COUNT( DISTINCT mordst."id" ) AS "count"
  FROM "mshop_order_status" mordst
  :joins
@@ -6815,14 +6815,14 @@ See also:
 Counts the number of records matched by the given criteria in the database
 
 ```
-mshop/order/manager/status/count/mysql = 
+mshop/order/manager/status/count/mysql =
  SELECT COUNT( DISTINCT mordst."id" ) AS "count"
  FROM "mshop_order_status" mordst
  :joins
  WHERE :cond
 ```
 
-* Default: 
+* Default:
  SELECT COUNT( DISTINCT mordst."id" ) AS "count"
  FROM "mshop_order_status" mordst
  :joins
@@ -6958,7 +6958,7 @@ See also:
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/status/delete/ansi = 
+mshop/order/manager/status/delete/ansi =
  DELETE FROM "mshop_order_status"
  WHERE :cond AND "siteid" LIKE ?
 ```
@@ -6992,12 +6992,12 @@ See also:
 Deletes the items matched by the given IDs from the database
 
 ```
-mshop/order/manager/status/delete/mysql = 
+mshop/order/manager/status/delete/mysql =
  DELETE FROM "mshop_order_status"
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default:
  DELETE FROM "mshop_order_status"
  WHERE :cond AND "siteid" LIKE ?
 
@@ -7011,7 +7011,7 @@ See also:
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/status/insert/ansi = 
+mshop/order/manager/status/insert/ansi =
  INSERT INTO "mshop_order_status" ( :names
  	"parentid", "type", "value", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -7053,7 +7053,7 @@ See also:
 Inserts a new order record into the database table
 
 ```
-mshop/order/manager/status/insert/mysql = 
+mshop/order/manager/status/insert/mysql =
  INSERT INTO "mshop_order_status" ( :names
  	"parentid", "type", "value", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -7061,7 +7061,7 @@ mshop/order/manager/status/insert/mysql =
  )
 ```
 
-* Default: 
+* Default:
  INSERT INTO "mshop_order_status" ( :names
  	"parentid", "type", "value", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
@@ -7177,7 +7177,7 @@ See also:
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/status/search/ansi = 
+mshop/order/manager/status/search/ansi =
  SELECT :columns
  	mordst."id" AS "order.status.id", mordst."siteid" AS "order.status.siteid",
  	mordst."parentid" AS "order.status.parentid", mordst."type" AS "order.status.type",
@@ -7246,7 +7246,7 @@ See also:
 Retrieves the records matched by the given criteria in the database
 
 ```
-mshop/order/manager/status/search/mysql = 
+mshop/order/manager/status/search/mysql =
  SELECT :columns
  	mordst."id" AS "order.status.id", mordst."siteid" AS "order.status.siteid",
  	mordst."parentid" AS "order.status.parentid", mordst."type" AS "order.status.type",
@@ -7259,7 +7259,7 @@ mshop/order/manager/status/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default:
  SELECT :columns
  	mordst."id" AS "order.status.id", mordst."siteid" AS "order.status.siteid",
  	mordst."parentid" AS "order.status.parentid", mordst."type" AS "order.status.type",
@@ -7309,7 +7309,7 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/status/update/ansi = 
+mshop/order/manager/status/update/ansi =
  UPDATE "mshop_order_status"
  SET :names
  	"parentid" = ?, "type" = ?, "value" = ?, "mtime" = ?, "editor" = ?
@@ -7347,14 +7347,14 @@ See also:
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/status/update/mysql = 
+mshop/order/manager/status/update/mysql =
  UPDATE "mshop_order_status"
  SET :names
  	"parentid" = ?, "type" = ?, "value" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default:
  UPDATE "mshop_order_status"
  SET :names
  	"parentid" = ?, "type" = ?, "value" = ?, "mtime" = ?, "editor" = ?
@@ -7403,7 +7403,7 @@ retrieved list of items.
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/update/ansi = 
+mshop/order/manager/update/ansi =
  UPDATE "mshop_order"
  SET :names
  	"baseid" = ?, "invoiceno" = ?, "channel" = ?, "datepayment" = ?, "datedelivery" = ?,
@@ -7442,7 +7442,7 @@ See also:
 Updates an existing order record in the database
 
 ```
-mshop/order/manager/update/mysql = 
+mshop/order/manager/update/mysql =
  UPDATE "mshop_order"
  SET :names
  	"baseid" = ?, "invoiceno" = ?, "channel" = ?, "datepayment" = ?, "datedelivery" = ?,
@@ -7450,7 +7450,7 @@ mshop/order/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default:
  UPDATE "mshop_order"
  SET :names
  	"baseid" = ?, "invoiceno" = ?, "channel" = ?, "datepayment" = ?, "datedelivery" = ?,

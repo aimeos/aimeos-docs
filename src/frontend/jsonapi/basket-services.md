@@ -322,18 +322,18 @@ The response to this request would be similar to this:
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.sitecode": "",
-            "order.base.customerid": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "0.00",
-            "order.base.costs": "0.00",
-            "order.base.rebate": "0.00",
-            "order.base.taxvalue": "0.0000",
-            "order.base.taxflag": true,
-            "order.base.customerref": "",
-            "order.base.comment": ""
+            "order.id": null,
+            "order.sitecode": "",
+            "order.customerid": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "0.00",
+            "order.costs": "0.00",
+            "order.rebate": "0.00",
+            "order.taxvalue": "0.0000",
+            "order.taxflag": true,
+            "order.customerref": "",
+            "order.comment": ""
         },
         "relationships": {
             "basket\/service": {
@@ -348,33 +348,33 @@ The response to this request would be similar to this:
         "id": "delivery",
         "type": "basket\/service",
         "attributes": {
-            "order.base.service.id": null,
-            "order.base.service.price": "0.00",
-            "order.base.service.costs": "0.00",
-            "order.base.service.rebate": "0.00",
-            "order.base.service.taxrate": "0.00",
-            "order.base.service.taxrates": {
+            "order.service.id": null,
+            "order.service.price": "0.00",
+            "order.service.costs": "0.00",
+            "order.service.rebate": "0.00",
+            "order.service.taxrate": "0.00",
+            "order.service.taxrates": {
                 "": "0.00"
             },
-            "order.base.service.type": "delivery",
-            "order.base.service.code": "demo-pickup",
-            "order.base.service.name": "Click & Collect",
-            "order.base.service.position": null,
-            "order.base.service.mediaurl": "",
+            "order.service.type": "delivery",
+            "order.service.code": "demo-pickup",
+            "order.service.name": "Click & Collect",
+            "order.service.position": null,
+            "order.service.mediaurl": "",
             "attribute": [{
-                "order.base.service.attribute.id": null,
-                "order.base.service.attribute.type": "delivery",
-                "order.base.service.attribute.name": "",
-                "order.base.service.attribute.code": "time.hourminute",
-                "order.base.service.attribute.value": "15:00",
-                "order.base.service.attribute.quantity": 1
+                "order.service.attribute.id": null,
+                "order.service.attribute.type": "delivery",
+                "order.service.attribute.name": "",
+                "order.service.attribute.code": "time.hourminute",
+                "order.service.attribute.value": "15:00",
+                "order.service.attribute.quantity": 1
             },{
-                "order.base.service.attribute.id": null,
-                "order.base.service.attribute.type": "delivery",
-                "order.base.service.attribute.name": "",
-                "order.base.service.attribute.code": "supplier.address",
-                "order.base.service.attribute.value": "Test supplier 1\nTest company\nTest street 1\n10000 Test city\nNY US\ndemo1@example.com\n",
-                "order.base.service.attribute.quantity": 1
+                "order.service.attribute.id": null,
+                "order.service.attribute.type": "delivery",
+                "order.service.attribute.name": "",
+                "order.service.attribute.code": "supplier.address",
+                "order.service.attribute.value": "Test supplier 1\nTest company\nTest street 1\n10000 Test city\nNY US\ndemo1@example.com\n",
+                "order.service.attribute.quantity": 1
             }]
         },
         "links": {
@@ -461,19 +461,19 @@ The additional service attributes are then stored in the "attribute" section of 
 
 ```json
 "attribute": [{
-    "order.base.service.attribute.id": null,
-    "order.base.service.attribute.type": "delivery",
-    "order.base.service.attribute.name": "",
-    "order.base.service.attribute.code": "time.hourminute",
-    "order.base.service.attribute.value": "15:00",
-    "order.base.service.attribute.quantity": 1
+    "order.service.attribute.id": null,
+    "order.service.attribute.type": "delivery",
+    "order.service.attribute.name": "",
+    "order.service.attribute.code": "time.hourminute",
+    "order.service.attribute.value": "15:00",
+    "order.service.attribute.quantity": 1
 },{
-    "order.base.service.attribute.id": null,
-    "order.base.service.attribute.type": "delivery",
-    "order.base.service.attribute.name": "",
-    "order.base.service.attribute.code": "supplier.address",
-    "order.base.service.attribute.value": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n",
-    "order.base.service.attribute.quantity": 1
+    "order.service.attribute.id": null,
+    "order.service.attribute.type": "delivery",
+    "order.service.attribute.name": "",
+    "order.service.attribute.code": "supplier.address",
+    "order.service.attribute.value": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n",
+    "order.service.attribute.quantity": 1
 }]
 ```
 
@@ -579,18 +579,18 @@ The response to this request would be similar to this:
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.sitecode": "",
-            "order.base.customerid": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "0.00",
-            "order.base.costs": "0.00",
-            "order.base.rebate": "0.00",
-            "order.base.taxvalue": "0.0000",
-            "order.base.taxflag": true,
-            "order.base.customerref": "",
-            "order.base.comment": ""
+            "order.id": null,
+            "order.sitecode": "",
+            "order.customerid": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "0.00",
+            "order.costs": "0.00",
+            "order.rebate": "0.00",
+            "order.taxvalue": "0.0000",
+            "order.taxflag": true,
+            "order.customerref": "",
+            "order.comment": ""
         },
         "relationships": {
             "basket\/service": {
@@ -605,33 +605,33 @@ The response to this request would be similar to this:
         "id": "delivery",
         "type": "basket\/service",
         "attributes": {
-            "order.base.service.id": null,
-            "order.base.service.price": "0.00",
-            "order.base.service.costs": "0.00",
-            "order.base.service.rebate": "0.00",
-            "order.base.service.taxrate": "0.00",
-            "order.base.service.taxrates": {
+            "order.service.id": null,
+            "order.service.price": "0.00",
+            "order.service.costs": "0.00",
+            "order.service.rebate": "0.00",
+            "order.service.taxrate": "0.00",
+            "order.service.taxrates": {
                 "": "0.00"
             },
-            "order.base.service.type": "delivery",
-            "order.base.service.code": "demo-pickup",
-            "order.base.service.name": "Click & Collect",
-            "order.base.service.position": null,
-            "order.base.service.mediaurl": "",
+            "order.service.type": "delivery",
+            "order.service.code": "demo-pickup",
+            "order.service.name": "Click & Collect",
+            "order.service.position": null,
+            "order.service.mediaurl": "",
             "attribute": [{
-                "order.base.service.attribute.id": null,
-                "order.base.service.attribute.type": "delivery",
-                "order.base.service.attribute.name": "",
-                "order.base.service.attribute.code": "time.hourminute",
-                "order.base.service.attribute.value": "17:00",
-                "order.base.service.attribute.quantity": 1
+                "order.service.attribute.id": null,
+                "order.service.attribute.type": "delivery",
+                "order.service.attribute.name": "",
+                "order.service.attribute.code": "time.hourminute",
+                "order.service.attribute.value": "17:00",
+                "order.service.attribute.quantity": 1
             },{
-                "order.base.service.attribute.id": null,
-                "order.base.service.attribute.type": "delivery",
-                "order.base.service.attribute.name": "",
-                "order.base.service.attribute.code": "supplier.address",
-                "order.base.service.attribute.value": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n",
-                "order.base.service.attribute.quantity": 1
+                "order.service.attribute.id": null,
+                "order.service.attribute.type": "delivery",
+                "order.service.attribute.name": "",
+                "order.service.attribute.code": "supplier.address",
+                "order.service.attribute.value": "Test supplier 2\nTest company\nTest road 10\n20000 Test town\nNY US\ndemo2@example.com\n",
+                "order.service.attribute.quantity": 1
             }]
         },
         "links": {

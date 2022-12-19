@@ -89,18 +89,18 @@ If the basket is empty, it will return only the basic basket properties but no p
             }
         },
         "attributes": {
-            "order.base.id": null,
-            "order.base.customerid": "",
-            "order.base.sitecode": "",
-            "order.base.languageid": "en",
-            "order.base.currencyid": "EUR",
-            "order.base.price": "0.00",
-            "order.base.costs": "0.00",
-            "order.base.rebate": "0.00",
-            "order.base.taxvalue": "0.0000",
-            "order.base.taxflag": true,
-            "order.base.comment": "",
-            "order.base.customerref": ""
+            "order.id": null,
+            "order.customerid": "",
+            "order.sitecode": "",
+            "order.languageid": "en",
+            "order.currencyid": "EUR",
+            "order.price": "0.00",
+            "order.costs": "0.00",
+            "order.rebate": "0.00",
+            "order.taxvalue": "0.0000",
+            "order.taxflag": true,
+            "order.comment": "",
+            "order.customerref": ""
         },
         "relationships": []
     },
@@ -119,9 +119,9 @@ If the basket is empty, it will return only the basic basket properties but no p
 
 There are three values that you can update using a PATCH request to the basket:
 
-* order.base.customerid (ID of the customer to show the order in her/his account history)
-* order.base.comment (customer comment for this order)
-* order.base.customerref (own reference of the customer for this order)
+* order.customerid (ID of the customer to show the order in her/his account history)
+* order.comment (customer comment for this order)
+* order.customerref (own reference of the customer for this order)
 
 To update the basket you have to use the "self" link from a previous GET request:
 
@@ -132,9 +132,9 @@ To update the basket you have to use the "self" link from a previous GET request
     -b cookies.txt -c cookies.txt \
     -d '{"data": {
         "attributes": {
-            "order.base.customerid": "...",
-            "order.base.comment": "test comment",
-            "order.base.customerref": "ABCD-1234"
+            "order.customerid": "...",
+            "order.comment": "test comment",
+            "order.customerref": "ABCD-1234"
         }
     }}'
     ```
@@ -142,9 +142,9 @@ To update the basket you have to use the "self" link from a previous GET request
     ```javascript
     var params = {'data': {
         'attributes': {
-            'order.base.customerid': '...', // from customer response (optional)
-            'order.base.comment': 'test comment', // (optional)
-            'order.base.customerref': 'ABCD-1234' // (optional)
+            'order.customerid': '...', // from customer response (optional)
+            'order.comment': 'test comment', // (optional)
+            'order.customerref': 'ABCD-1234' // (optional)
         }
     }};
 

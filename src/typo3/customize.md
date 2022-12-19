@@ -573,7 +573,7 @@ Now the small basket should be displayed in the navigation bar on top of your si
 
 If you want to ship your products to several countries or you need to know from which countries your customers are, you have to enable the country selection in the address page of the checkout process.
 
-By default, the country list is hidden for the billing and delivery address in the checkout process. To display them as mandatory fields you need to add "order.base.address.countryid" to the list of values defined in
+By default, the country list is hidden for the billing and delivery address in the checkout process. To display them as mandatory fields you need to add "order.address.countryid" to the list of values defined in
 
 * [client/html/checkout/address/billing/mandatory](../../config/client-html/checkout-standard/#billingmandatory)
 * [client/html/checkout/address/delivery/mandatory](../../config/client-html/checkout-standard/#deliverymandatory)
@@ -583,15 +583,15 @@ In TYPO3 this is configured for billing and delivery addresses via TypoScript:
 ```typoscript
 plugin.tx_aimeos.settings.client.html.checkout.standard.address {
     billing.mandatory {
-        0 = order.base.address.salutation
-        1 = order.base.address.firstname
-        2 = order.base.address.lastname
-        3 = order.base.address.address1
-        4 = order.base.address.postal
-        5 = order.base.address.city
-        6 = order.base.address.languageid
-        7 = order.base.address.email
-        8 = order.base.address.countryid
+        0 = order.address.salutation
+        1 = order.address.firstname
+        2 = order.address.lastname
+        3 = order.address.address1
+        4 = order.address.postal
+        5 = order.address.city
+        6 = order.address.languageid
+        7 = order.address.email
+        8 = order.address.countryid
     }
     delivery.mandatory < .billing.mandatory
 }
@@ -607,15 +607,15 @@ To define the country for billing and delivery addresses as optional, use this T
 ```typoscript
 plugin.tx_aimeos.settings.client.html.checkout.standard.address {
     billing.optional {
-        0 = order.base.address.salutation
-        1 = order.base.address.firstname
-        2 = order.base.address.lastname
-        3 = order.base.address.address1
-        4 = order.base.address.postal
-        5 = order.base.address.city
-        6 = order.base.address.languageid
-        7 = order.base.address.email
-        8 = order.base.address.countryid
+        0 = order.address.salutation
+        1 = order.address.firstname
+        2 = order.address.lastname
+        3 = order.address.address1
+        4 = order.address.postal
+        5 = order.address.city
+        6 = order.address.languageid
+        7 = order.address.email
+        8 = order.address.countryid
     }
     delivery.optional < .billing.optional
 }

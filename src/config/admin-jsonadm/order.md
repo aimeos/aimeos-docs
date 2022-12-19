@@ -5,7 +5,7 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-admin/jsonadm/order/base/decorators/excludes = Array
+admin/jsonadm/order/decorators/excludes = Array
 (
 )
 ```
@@ -37,15 +37,15 @@ common decorators ("\Aimeos\Admin\JsonAdm\Common\Decorator\*") added via
 See also:
 
 * admin/jsonadm/common/decorators/default
-* admin/jsonadm/order/base/decorators/global
-* admin/jsonadm/order/base/decorators/local
+* admin/jsonadm/order/decorators/global
+* admin/jsonadm/order/decorators/local
 
 ## decorators/global
 
 Adds a list of globally available decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/order/base/decorators/global = Array
+admin/jsonadm/order/decorators/global = Array
 (
 )
 ```
@@ -67,25 +67,25 @@ This option allows you to wrap global decorators
 client.
 
 ```
- admin/jsonadm/order/base/decorators/global = array( 'decorator1' )
+ admin/jsonadm/order/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
 "\Aimeos\Admin\Jsonadm\Common\Decorator\Decorator1" only to the
-"order/base" Jsonadm client.
+"order" Jsonadm client.
 
 See also:
 
 * admin/jsonadm/common/decorators/default
-* admin/jsonadm/order/base/decorators/excludes
-* admin/jsonadm/order/base/decorators/local
+* admin/jsonadm/order/decorators/excludes
+* admin/jsonadm/order/decorators/local
 
 ## decorators/local
 
 Adds a list of local decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/order/base/decorators/local = Array
+admin/jsonadm/order/decorators/local = Array
 (
 )
 ```
@@ -107,23 +107,23 @@ This option allows you to wrap local decorators
 client.
 
 ```
- admin/jsonadm/order/base/decorators/local = array( 'decorator2' )
+ admin/jsonadm/order/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
 "\Aimeos\Admin\Jsonadm\Order\Base\Decorator\Decorator2" only to the
-"order/base" Jsonadm client.
+"order" Jsonadm client.
 
 See also:
 
 * admin/jsonadm/common/decorators/default
-* admin/jsonadm/order/base/decorators/excludes
-* admin/jsonadm/order/base/decorators/global
+* admin/jsonadm/order/decorators/excludes
+* admin/jsonadm/order/decorators/global
 
 ## name
 
 ```
-admin/jsonadm/order/base/name = Standard
+admin/jsonadm/order/name = Standard
 ```
 
 * Default: Standard
