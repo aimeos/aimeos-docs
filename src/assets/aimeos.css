@@ -239,7 +239,7 @@ select.md-header-nav__button:focus {
 
 .md-sidebar__scrollwrap {
   scrollbar-color: var(--md-default-fg-color--lightest, #10305040);
-  padding: 0 1rem;
+  padding: 0;
   margin: 0;
 }
 
@@ -256,7 +256,7 @@ select.md-header-nav__button:focus {
 }
 
 .md-nav__title {
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   font-size: 0.8rem;
   text-align: center;
 }
@@ -295,17 +295,13 @@ select.md-header-nav__button:focus {
   border-top-color: var(--md-default-fg-color--lightest, #10305040);
 }
 
-.md-nav--secondary .md-nav__item {
-  padding: 0.25rem 0;
-}
-
 .md-nav__list .md-nav__list .md-nav__item {
   color: var(--md-default-fg-color--light, #103050b0);
   padding-bottom: 0;
 }
 
 .md-nav__link {
-  padding: 0.33rem 0.75rem !important;
+  padding: 0.33rem 0;
   margin: 0;
 }
 
