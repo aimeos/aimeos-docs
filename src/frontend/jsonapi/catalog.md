@@ -100,9 +100,9 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "product.config": []
         },
         "relationships": {
-            "product\/property": {
+            "product.property": {
                 "data": [
-                    {"id": "12", "type": "product\/property"}
+                    {"id": "12", "type": "product.property"}
                 ]
             },
             "attribute": {
@@ -148,7 +148,7 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
     }],
     "included": [{
         "id": "12",
-        "type": "product\/property",
+        "type": "product.property",
         "attributes": {
             "product.property.id": "12",
             "product.property.typename": "Package length",

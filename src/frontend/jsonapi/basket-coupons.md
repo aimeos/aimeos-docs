@@ -72,9 +72,9 @@ The response will then contain a new "relationships" section in the basket data 
             "order.comment": ""
         },
         "relationships": {
-            "basket/service": {
+            "basket.coupon": {
                 "data": [{
-                    "type": "basket/coupon",
+                    "type": "basket.coupon",
                     "id": "fixed"
                 }]
             }
@@ -82,7 +82,7 @@ The response will then contain a new "relationships" section in the basket data 
     },
     "included": [{
         "id": "fixed",
-        "type": "basket/coupon"
+        "type": "basket.coupon"
         },
         "links": {
             "self": {

@@ -133,7 +133,7 @@ The response will look similar to this one if at least one relationship is avail
     },
     "data": [{
         "id": "1",
-        "type": "customer\/lists",
+        "type": "customer.lists",
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=relationships&relatedid=1",

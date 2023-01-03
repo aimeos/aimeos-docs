@@ -64,7 +64,7 @@ If there's at least one delivery address available, the response looks like this
     },
     "data": [{
         "id": "2",
-        "type": "customer\/address",
+        "type": "customer.address",
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=address&relatedid=2",

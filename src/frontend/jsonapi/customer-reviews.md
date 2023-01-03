@@ -65,7 +65,7 @@ When at least one review is available, the response will be similar to this one:
     },
     "data": [{
         "id": "1",
-        "type": "customer\/review",
+        "type": "customer.review",
         "links": {
             "self": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=review&relatedid=1",
