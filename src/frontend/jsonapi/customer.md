@@ -184,10 +184,10 @@ The response of an authenticated user contains the account data and the groups a
             "customer.birthday": "2000-01-01",
         },
         "relationships": {
-            "customer\/group": {
+            "customer.group": {
                 "data": [{
                     "id": "1",
-                    "type": "customer\/group",
+                    "type": "customer.group",
                     "attributes": {
                         "customer.lists.id": "1",
                         "customer.lists.domain": "customer\/group",
@@ -211,7 +211,7 @@ The response of an authenticated user contains the account data and the groups a
     },
     "included": [{
         "id": "1",
-        "type": "customer\/group",
+        "type": "customer.group",
         "attributes": {
             "customer.group.id": "1",
             "customer.group.code": "admin",
@@ -507,10 +507,10 @@ The response will include the basic customer data including groups like in this 
             "customer.groups": ["1"]
         },
         "relationships": {
-            "customer\/group": {
+            "customer.group": {
                 "data": [{
                     "id": "1",
-                    "type": "customer\/group",
+                    "type": "customer.group",
                     "attributes": {
                         "customer.lists.id": "1",
                         "customer.lists.domain": "customer\/group",
@@ -534,7 +534,7 @@ The response will include the basic customer data including groups like in this 
     },
     "included": [{
         "id": "1",
-        "type": "customer\/group",
+        "type": "customer.group",
         "attributes": {
         "customer.group.id": "1",
         "customer.group.code": "customer",

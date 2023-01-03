@@ -129,9 +129,9 @@ The response will then contain an additional "relationships" section in the bask
             "order.base.comment": ""
         },
         "relationships": {
-            "basket/address": {
+            "basket.address": {
                 "data": [{
-                    "type": "basket/address",
+                    "type": "basket.address",
                     "id": "payment"
                 }]
             }
@@ -139,7 +139,7 @@ The response will then contain an additional "relationships" section in the bask
     },
     "included": [{
         "id": "payment",
-        "type": "basket/address",
+        "type": "basket.address",
         "attributes": {
             "order.base.address.id": null,
             "order.base.address.addressid": "...",
@@ -307,9 +307,9 @@ The response to this request would be similar to this:
             "order.base.comment": ""
         },
         "relationships": {
-            "basket/address": {
+            "basket.address": {
                 "data": [{
-                    "type": "basket/address",
+                    "type": "basket.address",
                     "id": "payment"
                 }]
             }
@@ -317,7 +317,7 @@ The response to this request would be similar to this:
     },
     "included": [{
         "id": "payment",
-        "type": "basket/address",
+        "type": "basket.address",
         "attributes": {
             "order.base.address.id": null,
             "order.base.address.addressid": "...",

@@ -59,7 +59,7 @@ This returns the list of payment or delivery options (or both if the "filter" pa
                 "href": "http:\/\/localhost:8000\/jsonapi\/service?id=1",
                 "allow": ["GET"]
             },
-            "basket\/service": {
+            "basket.service": {
                 "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
                 "allow": ["POST"],
                 "meta": {
@@ -336,9 +336,9 @@ The response to this request would be similar to this:
             "order.base.comment": ""
         },
         "relationships": {
-            "basket\/service": {
+            "basket.service": {
                 "data": [{
-                    "type": "basket\/service",
+                    "type": "basket.service",
                     "id": "delivery"
                 }]
             }
@@ -346,7 +346,7 @@ The response to this request would be similar to this:
     },
     "included": [{
         "id": "delivery",
-        "type": "basket\/service",
+        "type": "basket.service",
         "attributes": {
             "order.base.service.id": null,
             "order.base.service.price": "0.00",
@@ -593,9 +593,9 @@ The response to this request would be similar to this:
             "order.base.comment": ""
         },
         "relationships": {
-            "basket\/service": {
+            "basket.service": {
                 "data": [{
-                    "type": "basket\/service",
+                    "type": "basket.service",
                     "id": "delivery"
                 }]
             }
@@ -603,7 +603,7 @@ The response to this request would be similar to this:
     },
     "included": [{
         "id": "delivery",
-        "type": "basket\/service",
+        "type": "basket.service",
         "attributes": {
             "order.base.service.id": null,
             "order.base.service.price": "0.00",

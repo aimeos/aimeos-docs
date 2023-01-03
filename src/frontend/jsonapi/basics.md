@@ -34,10 +34,10 @@ All GET requests will return a JSON object with the structure defined by [jsonap
             "self": "http://localhost:8000/jsonapi/product/1"
         },
         "relationships": {
-            "product/property": [{
+            "product.property": [{
                 "data": {
                     "id": "12",
-                    "type": "product/property"
+                    "type": "product.property"
                 }
             }],
             "text": [{
@@ -54,7 +54,7 @@ All GET requests will return a JSON object with the structure defined by [jsonap
     }],
     "included": [{
         "id": "12",
-        "type": "product/property",
+        "type": "product.property",
         "attributes": {
             "product.property.id": "12",
             "product.property.value": "1234-ABCD-5678"
@@ -453,14 +453,17 @@ If you only need the values of a few fields and want to reduce the amount of dat
 === "CURL"
     ```bash
     # product => product.id,product.label
+    # product.property => product.property.type,product.property.value
     # stock => stock.stocklevel
-    curl -X GET 'http://localhost:8000/jsonapi/product?fields[product]=product.id,product.label&fields[stock]=stock.stocklevel&include=stock'
+    curl -X GET 'http://localhost:8000/jsonapi/product?fields[product]=product.id,product.label&fields[product.property]=product.property.type,product.property.value&fields[stock]=stock.stocklevel&include=stock,product.property'
     ```
 === "jQuery"
     ```javascript
     var args = {
         'fields': {
             'product': 'product.id,product.label'
+            'product.property': 'product.property.type,product.property.value'
+            'stock': 'stock.stocklevel'
         }
     };
     var params = {};
@@ -492,12 +495,12 @@ To minimize the number of requests, the Aimeos JSON API can add related resource
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/product?include=text'
+    curl -X GET 'http://localhost:8000/jsonapi/product?include=product.text'
     ```
 === "jQuery"
     ```javascript
     var args = {
-        'include': 'text'
+        'include': 'product.text'
     };
     var params = {};
 
@@ -625,7 +628,7 @@ This returns the product or products as well as the texts associated with the pr
 }
 ```
 
-You can use the "include" parameter for all items that are associated, via the lists, with one of these items:
+You can use the "include" parameter for all domain items that are associated, via the lists, with one of these items:
 
 * catalog (categories)
 * product
@@ -635,16 +638,19 @@ You can use the "include" parameter for all items that are associated, via the l
 * price
 * text
 
+!!! note
+    You can use `include=product.text` and `include=text` as parameter. The difference is that `include=product.text` will only fetch product texts while e.g. `include=attribute,text` will fetch all products, the related product texts and attributes as well as the attribute texts. To reduce the size of the response, you should prefer `product.text` over `text`. This applies to all related domain items which can be included.
+
 This does also work for items from the same domain that have a parent/child relationship like product properties:
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/product?include=product/property'
+    curl -X GET 'http://localhost:8000/jsonapi/product?include=product.property'
     ```
 === "jQuery"
     ```javascript
     var args = {
-        'include': 'product/property'
+        'include': 'product.property'
     };
     var params = {};
 
@@ -685,26 +691,26 @@ Then, the properties directly attached to the products will be returned:
             "product.ctime": "2020-07-28 08:41:18"
         },
         "relationships": {
-            "product\/property": {
+            "product.property": {
                 "data": [{
                     "id": "1",
-                    "type": "product\/property"
+                    "type": "product.property"
                 },{
                     "id": "2",
-                    "type": "product\/property"
+                    "type": "product.property"
                 },{
                     "id": "3",
-                    "type": "product\/property"
+                    "type": "product.property"
                 },{
                     "id": "4",
-                    "type": "product\/property"
+                    "type": "product.property"
                 }]
             }
         }
     }],
     "included": [{
         "id": "1",
-        "type": "product\/property",
+        "type": "product.property",
         "attributes": {
             "product.property.id": "1",
             "product.property.languageid": null,
@@ -713,7 +719,7 @@ Then, the properties directly attached to the products will be returned:
         }
     },{
         "id": "2",
-        "type": "product\/property",
+        "type": "product.property",
         "attributes": {
             "product.property.id": "2",
             "product.property.languageid": null,
@@ -722,7 +728,7 @@ Then, the properties directly attached to the products will be returned:
         }
     },{
         "id": "3",
-        "type": "product\/property",
+        "type": "product.property",
         "attributes": {
             "product.property.id": "3",
             "product.property.languageid": null,
@@ -731,7 +737,7 @@ Then, the properties directly attached to the products will be returned:
         }
     },{
         "id": "4",
-        "type": "product\/property",
+        "type": "product.property",
         "attributes": {
             "product.property.id": "4",
             "product.property.languageid": null,

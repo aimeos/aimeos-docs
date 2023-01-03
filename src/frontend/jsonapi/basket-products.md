@@ -12,7 +12,7 @@ Each listed product will contain the link how it could be added to the basket:
                 "href": "http://localhost:8000/jsonapi/product?id=1",
                 "allow": ["GET"]
             },
-            "basket\/product": {
+            "basket.product": {
                 "href": "http://localhost:8000/jsonapi/basket?id=default&related=product",
                 "allow": ["POST"]
             }
@@ -131,9 +131,9 @@ Then the response will contain an additional "relationships" entry in the basket
             "order.base.comment": ""
         },
         "relationships": {
-            "basket\/product": {
+            "basket.product": {
                 "data": [{
-                    "type": "basket\/product",
+                    "type": "basket.product",
                     "id": 0
                 }]
             }
@@ -141,7 +141,7 @@ Then the response will contain an additional "relationships" entry in the basket
     },
     "included": [{
         "id": 0,
-        "type": "basket\/product",
+        "type": "basket.product",
         "attributes": {
             "order.base.product.id": null,
             "order.base.product.type": "default",
@@ -723,9 +723,9 @@ The PATCH requests will change primarily the product data in the basket. Dependi
             "order.base.comment": ""
         },
         "relationships": {
-            "basket\/product": {
+            "basket.product": {
                 "data": [{
-                    "type": "basket\/product",
+                    "type": "basket.product",
                     "id": 0
                 }]
             }
@@ -733,7 +733,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
     },
     "included": [{
         "id": 0,
-        "type": "basket\/product",
+        "type": "basket.product",
         "attributes": {
             "order.base.product.id": null,
             "order.base.product.type": "default",
