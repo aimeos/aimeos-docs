@@ -50,11 +50,8 @@ d_pos
 
 # Basket
 
-b_action
+b_action (mandatory)
 : Performed action, can be "add", "delete", "edit" or "coupon-delete"
-
-b_prodid
-: ID of the product to add to the basket
 
 b_attrvarid
 : Selected variant attributes to determine the article. The key must be the attribute type of the passed attribute ID.
@@ -65,17 +62,23 @@ b_attrconfid
 b_attrcustid
 : Associative list of IDs and values for the custom attributes
 
-b_stocktype
-: Stock type (warehouse code) the product should be sent from
+b_coupon
+: Coupon code that is entered or should be removed
 
 b_position
 : Position of the product within the basket. This is required for "delete" and "edit" actions
 
+b_prodid (mandatory)
+: ID of the product to add to the basket
+
 b_quantity
 : New number of products for the basket entry referenced by "b_position"
 
-b_coupon
-: Coupon code that is entered or should be removed
+b_siteid
+: ID of the site the product should be bought from (if not from product site)
+
+b_stocktype
+: Stock type (warehouse code) the product should be sent from
 
 b_prod
 : Multi-dimensional array of indexes and product  for adding multiple products at once
@@ -91,6 +94,7 @@ b_prod[0][attrconfid][qty][]: 2
 b_prod[0][attrconfid][id][]: 18
 b_prod[0][attrcustid][36]: sometext
 b_prod[0][stocktype]: default
+b_prod[0][siteid]: '1.'
 b_prod[1][prodid]: 23
 b_prod[1] ...
 ```
