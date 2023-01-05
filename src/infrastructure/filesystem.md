@@ -19,10 +19,12 @@ This will return the default file system which is always available. There are al
 
 * `fs` : Default file system and fallback if requested file system does not exist
 * `fs-admin` : Contains files that are created based on action in the admin backend
+* `fs-export` : File system where exported data should be stored
 * `fs-import` : Files which are going to be imported should be stored there
 * `fs-media` : For all media files incl. images, documents, etc.
 * `fs-mimeicon` : Read-only file system that contains the icons for the available mime types
 * `fs-secure` : File system not accessible from outside for securely storing files
+* `fs-theme` : Read-only file system for CSS, JS and image files related to Aimeos themes
 
 For example:
 
