@@ -380,6 +380,7 @@ To use subdomains use this configuration:
 'routes' => [
     'admin' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'admin', 'middleware' => ['web']],
     'jqadm' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'admin/jqadm', 'middleware' => ['web', 'auth']],
+    'graphql' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'admin/graphql', 'middleware' => ['web', 'auth']],
     'jsonadm' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'admin/jsonadm', 'middleware' => ['web', 'auth']],
     'jsonapi' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'jsonapi', 'middleware' => ['web', 'api']],
     'account' => ['domain' => '{site}.yourdomain.com', 'prefix' => 'profile', 'middleware' => ['web', 'auth']],
@@ -388,12 +389,16 @@ To use subdomains use this configuration:
 ],
 ```
 
+!!! warning
+    Don't forget to add the `{site}` placeholder to the authentication routes like `/login`, `/register`, etc. in your `./routes/web.php` file!
+
 The site code you've entered for the *aimeos:setup* command will be used as the subdomain in that case. For custom domains, configure your routes like this:
 
 ```php
 'routes' => [
     'admin' => ['domain' => '{site}', 'prefix' => 'admin', 'middleware' => ['web']],
     'jqadm' => ['domain' => '{site}', 'prefix' => 'admin/jqadm', 'middleware' => ['web', 'auth']],
+    'graphql' => ['domain' => '{site}', 'prefix' => 'admin/graphql', 'middleware' => ['web', 'auth']],
     'jsonadm' => ['domain' => '{site}', 'prefix' => 'admin/jsonadm', 'middleware' => ['web', 'auth']],
     'jsonapi' => ['domain' => '{site}', 'prefix' => 'jsonapi', 'middleware' => ['web', 'api']],
     'account' => ['domain' => '{site}', 'prefix' => 'profile', 'middleware' => ['web', 'auth']],
@@ -402,12 +407,19 @@ The site code you've entered for the *aimeos:setup* command will be used as the 
 ],
 ```
 
+!!! warning
+    Don't forget to add the `{site}` placeholder to the authentication routes like `/login`, `/register`, etc. in your `./routes/web.php` file!
+
 Now, the site code is used as domain for the shops and you must enter the domain name as site code when creating a new site, e.g.
 
 ```bash
 php artisan aimeos:setup shop.mydomain.com
 php artisan aimeos:setup myshop.com
 ```
+
+!!! note
+    Using the `{site}` placeholder in the domain or sub-domain for the *jqadm*, *grapql* and *jsonadm* routes prevents super users from switching to sub-sites in the admin backend because the site isn't a parameter of the URL any more. Super users have to go to the domains or sub-domains manually in that case.
+    If you need that feature for super users, you should leave the prefixes *jqadm*, *graphql* and *jsonadm* to `admin/{site}/...` and don't use `domain` key/value pairs.
 
 ## Homepage
 
