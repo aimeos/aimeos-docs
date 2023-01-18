@@ -147,6 +147,7 @@ nav:
     - GraphQL API:
       - Overview: admin/graphql/index.md
       - Attribute: admin/graphql/attribute.md
+      - Customer: admin/graphql/customer.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
       - Retrieve metadata: admin/jsonadm/metadata.md
