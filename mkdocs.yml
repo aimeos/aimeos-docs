@@ -144,6 +144,8 @@ nav:
       - Create subparts: admin/jqadm/create-subparts.md
       - Extend panels: admin/jqadm/extend-panels.md
       - Customize: admin/jqadm/customize.md
+    - GraphQL API:
+      - Overview: admin/graphql/index.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
       - Retrieve metadata: admin/jsonadm/metadata.md
