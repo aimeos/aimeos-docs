@@ -146,8 +146,9 @@ nav:
       - Customize: admin/jqadm/customize.md
     - GraphQL API:
       - Overview: admin/graphql/index.md
-      - Attribute: admin/graphql/attribute.md
-      - Customer: admin/graphql/customer.md
+      - Attributes: admin/graphql/attribute.md
+      - Customers: admin/graphql/customer.md
+      - Products: admin/graphql/product.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
       - Retrieve metadata: admin/jsonadm/metadata.md
