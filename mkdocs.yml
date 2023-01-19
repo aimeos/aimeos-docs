@@ -151,6 +151,7 @@ nav:
       - Media: admin/graphql/media.md
       - Products: admin/graphql/product.md
       - Services: admin/graphql/service.md
+      - Suppliers: admin/graphql/supplier.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
       - Retrieve metadata: admin/jsonadm/metadata.md
