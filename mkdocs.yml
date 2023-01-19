@@ -148,6 +148,7 @@ nav:
       - Overview: admin/graphql/index.md
       - Attributes: admin/graphql/attribute.md
       - Customers: admin/graphql/customer.md
+      - Media: admin/graphql/media.md
       - Products: admin/graphql/product.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
