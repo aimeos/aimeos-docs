@@ -149,6 +149,7 @@ nav:
       - Attributes: admin/graphql/attribute.md
       - Customers: admin/graphql/customer.md
       - Media: admin/graphql/media.md
+      - Prices: admin/graphql/price.md
       - Products: admin/graphql/product.md
       - Services: admin/graphql/service.md
       - Suppliers: admin/graphql/supplier.md
