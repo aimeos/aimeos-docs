@@ -147,6 +147,7 @@ nav:
     - GraphQL API:
       - Overview: admin/graphql/index.md
       - Attributes: admin/graphql/attribute.md
+      - Categories: admin/graphql/catalog.md
       - Customers: admin/graphql/customer.md
       - Media: admin/graphql/media.md
       - Prices: admin/graphql/price.md
