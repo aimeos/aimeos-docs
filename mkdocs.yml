@@ -150,6 +150,7 @@ nav:
       - Categories: admin/graphql/catalog.md
       - Customers: admin/graphql/customer.md
       - Media: admin/graphql/media.md
+      - Plugins: admin/graphql/plugin.md
       - Prices: admin/graphql/price.md
       - Products: admin/graphql/product.md
       - Reviews: admin/graphql/review.md
