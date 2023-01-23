@@ -152,6 +152,7 @@ nav:
       - Media: admin/graphql/media.md
       - Prices: admin/graphql/price.md
       - Products: admin/graphql/product.md
+      - Rules: admin/graphql/rule.md
       - Services: admin/graphql/service.md
       - Suppliers: admin/graphql/supplier.md
     - JsonAdm API:
