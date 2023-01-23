@@ -118,7 +118,7 @@ Response:
 === "Javascript"
     ```javascript
     let filter = {
-        "=~": {"price.code":"demo-"}
+        "=~": {"price.label":"Demo"}
     };
     const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
     const body = JSON.stringify({'query':
