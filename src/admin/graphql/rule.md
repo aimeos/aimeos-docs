@@ -148,23 +148,20 @@ Response:
 {
   "data": {
     "searchRules": [
-    {
-      "data": {
-        "getRule": {
-          "id": "1",
-          "siteid": "1.",
-          "type": "catalog",
-          "label": "+10% Test",
-          "provider": "Percent",
-          "datestart": null,
-          "dateend": null,
-          "config": "{\"last-rule\":0,\"percent\":10}",
-          "position": 0,
-          "status": 1,
-          "mtime": "2022-12-22 09:51:38",
-          "ctime": "2022-06-21 13:36:28",
-          "editor": "aimeos@aimeos.org"
-        }
+      {
+        "id": "1",
+        "siteid": "1.",
+        "type": "catalog",
+        "label": "+10% Test",
+        "provider": "Percent",
+        "datestart": null,
+        "dateend": null,
+        "config": "{\"last-rule\":0,\"percent\":10}",
+        "position": 0,
+        "status": 1,
+        "mtime": "2022-12-22 09:51:38",
+        "ctime": "2022-06-21 13:36:28",
+        "editor": "aimeos@aimeos.org"
       }
     ]
   }
