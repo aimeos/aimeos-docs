@@ -148,6 +148,7 @@ nav:
       - Overview: admin/graphql/index.md
       - Attributes: admin/graphql/attribute.md
       - Categories: admin/graphql/catalog.md
+      - Coupons: admin/graphql/coupon.md
       - Customers: admin/graphql/customer.md
       - Media: admin/graphql/media.md
       - Plugins: admin/graphql/plugin.md
