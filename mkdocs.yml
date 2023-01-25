@@ -157,6 +157,7 @@ nav:
       - Reviews: admin/graphql/review.md
       - Rules: admin/graphql/rule.md
       - Services: admin/graphql/service.md
+      - Stocks: admin/graphql/stock.md
       - Suppliers: admin/graphql/supplier.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
