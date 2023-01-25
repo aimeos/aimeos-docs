@@ -110,7 +110,7 @@ Response:
 === "Javascript"
     ```javascript
     let filter = {
-        "=~": {"subscription.period":1}
+        "==": {"subscription.period":1}
     };
     const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
     const body = JSON.stringify({'query':
@@ -210,9 +210,6 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveSubscription(input: {
-        code: "test"
-        label: "Test subscription"
-      }) {
         orderid: 1
         ordprodid: 1
         productid: "1"
