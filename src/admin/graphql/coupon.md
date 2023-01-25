@@ -251,7 +251,7 @@ Response:
       },{
         label: "Test coupon 3"
         provider: "FixedRebate,BasketValues"
-        config: "{\"fixedrebate.productcode\":\"demo-rebate\",\"fixedrebate.rebate\":{\"EUR\":"10.00"},\"basket.total-value-min\":{\"EUR\":100}}",,
+        config: "{\"fixedrebate.productcode\":\"demo-rebate\",\"fixedrebate.rebate\":{\"EUR\":"10.00"},\"basket.total-value-min\":{\"EUR\":100}}",
       }]) {
         id
       }
