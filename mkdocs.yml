@@ -160,6 +160,7 @@ nav:
       - Stocks: admin/graphql/stock.md
       - Subscriptions: admin/graphql/subscription.md
       - Suppliers: admin/graphql/supplier.md
+      - Texts: admin/graphql/text.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
       - Retrieve metadata: admin/jsonadm/metadata.md
