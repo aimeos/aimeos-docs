@@ -150,8 +150,9 @@ nav:
       - Categories: admin/graphql/catalog.md
       - Coupons: admin/graphql/coupon.md
       - Customers: admin/graphql/customer.md
-      - Orders: admin/graphql/order.md
+      - Locales: admin/graphql/locale.md
       - Media: admin/graphql/media.md
+      - Orders: admin/graphql/order.md
       - Plugins: admin/graphql/plugin.md
       - Prices: admin/graphql/price.md
       - Products: admin/graphql/product.md
