@@ -151,6 +151,7 @@ nav:
       - Coupons: admin/graphql/coupon.md
       - Currencies: admin/graphql/locale-currency.md
       - Customers: admin/graphql/customer.md
+      - Languages: admin/graphql/locale-language.md
       - Locales: admin/graphql/locale.md
       - Media: admin/graphql/media.md
       - Orders: admin/graphql/order.md
