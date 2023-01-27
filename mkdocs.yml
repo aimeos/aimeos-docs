@@ -163,6 +163,7 @@ nav:
       - Subscriptions: admin/graphql/subscription.md
       - Suppliers: admin/graphql/supplier.md
       - Texts: admin/graphql/text.md
+      - Types: admin/graphql/type.md
     - JsonAdm API:
       - Overview: admin/jsonadm/index.md
       - Retrieve metadata: admin/jsonadm/metadata.md
