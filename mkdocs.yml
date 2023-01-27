@@ -149,6 +149,7 @@ nav:
       - Attributes: admin/graphql/attribute.md
       - Categories: admin/graphql/catalog.md
       - Coupons: admin/graphql/coupon.md
+      - Currencies: admin/graphql/locale-currency.md
       - Customers: admin/graphql/customer.md
       - Locales: admin/graphql/locale.md
       - Media: admin/graphql/media.md
