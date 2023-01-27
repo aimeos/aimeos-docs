@@ -1,16 +1,13 @@
-This article contains all actions for retrieving and managing locales.
+This article contains all actions for retrieving and managing currencies.
 
-# Get locale by ID
+# Get currency by ID
 
 === "Query"
     ```graphql
     query {
-      getLocale(id: "1") {
+      getLocaleCurrency(id: "EUR") {
         id
-        siteid
-        languageid
-        currencyid
-        position
+        label
         status
         mtime
         ctime
@@ -22,12 +19,9 @@ This article contains all actions for retrieving and managing locales.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getLocale(id: "1") {
+      getLocaleCurrency(id: "EUR") {
         id
-        siteid
-        languageid
-        currencyid
-        position
+        label
         status
         mtime
         ctime
@@ -54,32 +48,26 @@ Response:
 ```json
 {
   "data": {
-    "getLocale": {
-      "id": "1",
-      "siteid": "1.",
-      "languageid": "en",
-      "currencyid": "EUR",
-      "position": 0,
+    "getLocaleCurrency": {
+      "id": "EUR",
+      "label": "Euro",
       "status": 1,
-      "mtime": "2022-06-20 15:18:08",
-      "ctime": "2022-05-28 06:26:35",
-      "editor": "aimeos@aimeos.org"
+      "mtime": "2022-05-28 06:26:34",
+      "ctime": "2022-05-28 06:26:34",
+      "editor": "setup"
     }
   }
 }
 ```
 
-# Search locales
+# Search currencies
 
 === "Query"
     ```graphql
     query {
-      searchLocales(filter: "{\"==\": {\"locale.currencyid\":\"EUR\"}}") {
+      searchLocaleCurrencys(filter: "{\"==\": {\"locale.currency.status\":1}}") {
         id
-        siteid
-        languageid
-        currencyid
-        position
+        label
         status
         mtime
         ctime
@@ -90,17 +78,14 @@ Response:
 === "Javascript"
     ```javascript
     let filter = {
-        "==": {"locale.currencyid":"EUR"}
+        "==": {"locale.currency.status":1}
     };
     const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
     const body = JSON.stringify({'query':
     `query {
-      searchLocales(filter: "` + fstr + `") {
+      searchLocaleCurrencys(filter: "` + fstr + `") {
         id
-        siteid
-        languageid
-        currencyid
-        position
+        label
         status
         mtime
         ctime
@@ -127,44 +112,36 @@ Response:
 ```json
 {
   "data": {
-    "searchLocales": [
+    "searchLocaleCurrencys": [
       {
-        "id": "1",
-        "siteid": "1.",
-        "languageid": "en",
-        "currencyid": "EUR",
-        "position": 0,
+        "id": "EUR",
+        "label": "Euro",
         "status": 1,
-        "mtime": "2022-06-20 15:18:08",
-        "ctime": "2022-05-28 06:26:35",
-        "editor": "aimeos@aimeos.org"
+        "mtime": "2022-05-28 06:26:34",
+        "ctime": "2022-05-28 06:26:34",
+        "editor": "setup"
       },
       {
-        "id": "3",
-        "siteid": "1.",
-        "languageid": "de",
-        "currencyid": "EUR",
-        "position": 2,
+        "id": "USD",
+        "label": "US dollar",
         "status": 1,
-        "mtime": "2022-06-20 15:15:14",
+        "mtime": "2022-05-28 06:26:35",
         "ctime": "2022-05-28 06:26:35",
-        "editor": "aimeos@aimeos.org"
+        "editor": "setup"
       }
     ]
   }
 }
 ```
 
-# Save single locale
+# Save single currency
 
 === "Mutation"
     ```graphql
     mutation {
-      saveLocale(input: {
-        siteid: "1."
-        languageid: "fr"
-        currencyid: "EUR"
-        position: 2
+      saveLocaleCurrency(input: {
+        code: "XH1"
+        label: "Test currency"
       }) {
         id
       }
@@ -174,11 +151,9 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `mutation {
-      saveLocale(input: {
-        siteid: "1."
-        languageid: "fr"
-        currencyid: "EUR"
-        position: 2
+      saveLocaleCurrency(input: {
+        code: "XH1"
+        label: "Test currency"
       }) {
         id
       }
@@ -203,28 +178,24 @@ Response:
 ```json
 {
   "data": {
-    "saveLocale": {
-      "id": "4"
+    "saveLocaleCurrency": {
+      "id": "XH1"
     }
   }
 }
 ```
 
-# Save multiple locales
+# Save multiple currencies
 
 === "Mutation"
     ```graphql
     mutation {
-      saveLocales(input: [{
-        siteid: "1."
-        languageid: "it"
-        currencyid: "EUR"
-        position: 3
+      saveLocaleCurrencys(input: [{
+        code: "XH2"
+        label: "Test currency 2"
       },{
-        siteid: "1."
-        languageid: "es"
-        currencyid: "EUR"
-        position: 4
+        code: "XH3"
+        label: "Test currency 3"
       }]) {
         id
       }
@@ -234,16 +205,12 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `mutation {
-      saveLocales(input: [{
-        siteid: "1."
-        languageid: "it"
-        currencyid: "EUR"
-        position: 3
+      saveLocaleCurrencys(input: [{
+        code: "XH2"
+        label: "Test currency 2"
       },{
-        siteid: "1."
-        languageid: "es"
-        currencyid: "EUR"
-        position: 4
+        code: "XH3"
+        label: "Test currency 3"
       }]) {
         id
       }
@@ -268,31 +235,31 @@ Response:
 ```json
 {
   "data": {
-    "saveLocales": [
+    "saveLocaleCurrencys": [
       {
-        "id": "5"
+        "id": "XH2"
       },
       {
-        "id": "6"
+        "id": "XH3"
       }
     ]
   }
 }
 ```
 
-# Delete single locale
+# Delete single currency
 
 === "Mutation"
     ```graphql
     mutation {
-      deleteLocale(id: "3")
+      deleteLocaleCurrency(id: "XH1")
     }
     ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
     `mutation {
-      deleteLocale(id: "3")
+      deleteLocaleCurrency(id: "XH1")
     }`});
 
     fetch($('.aimeos').data('graphql'), {
@@ -314,24 +281,24 @@ Response:
 ```json
 {
   "data": {
-    "deleteLocale": "3"
+    "deleteLocaleCurrency": "XH1"
   }
 }
 ```
 
-# Delete multiple locales
+# Delete multiple currencies
 
 === "Mutation"
     ```graphql
     mutation {
-      deleteLocales(id: ["4", "5"])
+      deleteLocaleCurrencys(id: ["XH2", "XH3"])
     }
     ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
     `mutation {
-      deleteLocales(id: ["4", "5"])
+      deleteLocaleCurrencys(id: ["XH2", "XH3"])
     }`});
 
     fetch($('.aimeos').data('graphql'), {
@@ -353,9 +320,9 @@ Response:
 ```json
 {
   "data": {
-    "deleteLocales": [
-      "4",
-      "5"
+    "deleteLocaleCurrencys": [
+      "XH2",
+      "XH3"
     ]
   }
 }
