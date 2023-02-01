@@ -146,6 +146,7 @@ nav:
       - Customize: admin/jqadm/customize.md
     - GraphQL API:
       - Overview: admin/graphql/index.md
+      - Basics: admin/graphql/basic.md
       - Attributes: admin/graphql/attribute.md
       - Categories: admin/graphql/catalog.md
       - Coupons: admin/graphql/coupon.md
