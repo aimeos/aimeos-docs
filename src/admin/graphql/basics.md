@@ -507,3 +507,121 @@ You can also create more complicated statements by nesting them like:
     ```
 
 It combines all three expressions by using the AND operator. In the first expression we tell the server that we want to get all items whose code doesn't start with "demo-s". The second expression in this case is an OR expression that specifies that "product.datestart" can either be a null value or the start date must be a date after the beginning of the year 2000.
+
+# Sorting the result set
+
+You can use the **sort** parameter for all **search*()** query requests to pass the list of items keys to sort by, e.g.:
+
+=== "CURL"
+    ```graphql
+    query {
+      searchProducts(filter: "{}", sort: ["product.label"]) {
+        id
+        type
+        code
+        label
+      }
+    }
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      searchProducts(filter: "{}", sort: ["product.label"]) {
+        id
+        type
+        code
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+This will return the results ordered by the product label. You can also tell the server to sort the result set in the reverse order by adding a minus symbol in front of the sort key:
+
+=== "CURL"
+    ```graphql
+    query {
+      searchProducts(filter: "{}", sort: ["-product.label"]) {
+        id
+        type
+        code
+        label
+      }
+    }
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      searchProducts(filter: "{}", sort: ["-product.label"]) {
+        id
+        type
+        code
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Sorting by several keys is also possible if they are separated by a comma:
+
+=== "CURL"
+    ```graphql
+    query {
+      searchProducts(filter: "{}", sort: ["-product.status", "product.id"]) {
+        id
+        type
+        code
+        label
+      }
+    }
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      searchProducts(filter: "{}", sort: ["-product.status", "product.id"]) {
+        id
+        type
+        code
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Here the result set is sorted by the product status (descending) and the product ID.
