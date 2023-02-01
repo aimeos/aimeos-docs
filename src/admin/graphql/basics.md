@@ -625,3 +625,45 @@ Sorting by several keys is also possible if they are separated by a comma:
     ```
 
 Here the result set is sorted by the product status (descending) and the product ID.
+
+# Retrieve slices of the result
+
+By default, only the first 100 items are returned if nothing else is specified. To get more or less items and step through the result set, the Aimeos GraphQL API uses the **offset** and **limit** parameter:
+
+=== "CURL"
+    ```graphql
+    query {
+      searchProducts(filter: "{}", offset: 10, limit: 5) {
+        id
+        type
+        code
+        label
+      }
+    }
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      searchProducts(filter: "{}", offset: 10, limit: 5) {
+        id
+        type
+        code
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+This will retrieve only 5 items starting from offset 10.
