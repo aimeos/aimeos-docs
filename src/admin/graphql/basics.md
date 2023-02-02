@@ -453,9 +453,9 @@ You can also create more complicated statements by nesting them like:
 === "GraphQL"
     ```graphql
     query {
-      # filter[&&][0][!][][=~][product.label]=demo
-      # &filter[&&][1][||][][==][product.datestart]=
-      # &filter[&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
+      # [&&][0][!][][=~][product.label]=demo
+      # [&&][1][||][][==][product.datestart]=
+      # [&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
 
       searchProducts(filter: "{\"&&\":[{\"!\":[{\"=~\":{\"product.code\":\"demo-s\"}}]},{\"||\": [{\"==\": {\"product.datestart\": null}},{\">\": {\"product.datestart\": \"2000-01-01 00:00:00\"}}]}]}") {
         id
@@ -522,6 +522,7 @@ You can use the **sort** parameter for all **search*()** query requests to pass 
         label
       }
     }
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -560,6 +561,7 @@ This will return the results ordered by the product label. You can also tell the
         label
       }
     }
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -598,6 +600,7 @@ Sorting by several keys is also possible if they are separated by a comma:
         label
       }
     }
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -640,6 +643,7 @@ By default, only the first 100 items are returned if nothing else is specified. 
         label
       }
     }
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
