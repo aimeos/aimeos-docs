@@ -2,13 +2,17 @@
 
 Everyone is invited to improve the documentation! :-)
 
+## How to contribute
+
 Just fork the repository, edit and add files, commit your changes and create a pull request:
 
 ![Fork Aimeos docs](https://aimeos.org/fileadmin/user_upload/aimeos-docs-repo.png)
 
+## Local setup (optional)
+
 Read on, if you want to know, how to edit the documentation locally using Git and preview your changes on your local machine.
 
-## Setting up a git workflow
+### Setting up a git workflow
 
 - Create a free github account, if you do not already have one
 - Go to `https://github.com/aimeos/aimeos-docs` and fork the repo (click on the "Fork" button on the top right, see image above)
@@ -89,7 +93,7 @@ Read on, if you want to know, how to edit the documentation locally using Git an
   > git push
   ```
 
-## Build and live reload your local clone (optional)
+### Build and live reload your local clone (optional)
 
 Contributing to *aimeos-docs* does not require anything else but editing the markdown
 files. However, if you would like to run a local version of the generated docs, you
@@ -97,12 +101,12 @@ need Python 3. This enables the local generation of the complete *aimeos-docs* a
 as running a local development server that reloads automatically as soon as changes
 to the repository files are detected.
 
-### Install Python 3
+#### Install Python 3
 
 Please refer to sources on the internet for explanations on how to install Python 3 on
 your operating system. One such resource would be [Real Python: Installing Python](https://realpython.com/installing-python/).
 
-### Install mkdocs and required dependencies
+#### Install mkdocs and required dependencies
 
 *aimeos-docs* uses [mkdocs](https://www.mkdocs.org/) to create static html files from
 markdown files. Install `mkdocs` and the dependencies required by *aimeos-docs* with `pip`:
@@ -111,17 +115,17 @@ markdown files. Install `mkdocs` and the dependencies required by *aimeos-docs* 
 pip install mkdocs mkdocs-material
 ```
 
-### Start the local server
+#### Start the local server
 
 Run `mkdocs serve` to start a local server on `http://127.0.0.1:8000`. Now, whenever you make
 changes to any file, the server will automatically reload and display your edited version.
 
-### Build the docs
+#### Build the docs
 
 To build the *aimeos-docs* locally, use `mkdocs build`. You can now open the documentation
 in your browser from the newly generated `<your-aimeos-docs-clone-folder>/docs`´s index.html.
 
-### Troubleshooting
+#### Troubleshooting
 
 Due to some configuration limits, `mkdocs serve` will tell you that it couldn't find `versions.js`.
 Also, `mkdocs serve` as well as `mkdocs build` might warn about an unknown `analytics` configuration
