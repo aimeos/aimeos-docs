@@ -674,7 +674,11 @@ This will retrieve only 5 items starting from offset 10.
 
 # Include related resources
 
-To minimize the number of requests, the Aimeos GraphQL API can add related resources to the response. For example, you can tell the server that it should not only return the list of products but also the attributes associated with these products. The GraphQL API uses the parameter "include" to specify the related resources:
+To minimize the number of requests, the Aimeos GraphQL API can add related resources to the response.
+
+## Foreign domains
+
+You can tell the server that it should not only return the list of products but also the attributes associated with these products. The GraphQL API uses the parameter "include" to specify the related resources:
 
 === "GraphQL"
     ```graphql
@@ -831,13 +835,13 @@ You can use the "include" parameter for all domain items that are associated, vi
 !!! note
     You can use e.g. `["product/text"]` or `["text"]` as parameter. The difference is that `["product/text"]` will only fetch product texts while `["attribute","text"]` will fetch all products, the related product texts and attributes as well as the attribute texts. To reduce the response times, you should prefer `["product/text"]` over `["text"]`. This applies to all related domain items which can be included.
 
-The `lists` key in the request must contain the domain name you want to retrieve (it's always e.g. `text`, not the more limiting `product/text`) and can contain two optional attributes:
+The `lists` key in the request must contain the domain name you want to retrieve (it's always e.g. `text`, not the more limiting `product/text`) and can contain two optional parameters:
 
-: **listype**
-Type of the relation itself which can be used as a sub-type, e.g. `variant` is a list type for fetching only variant attributes instead of all.
+**listype**
+: Type of the relation itself which can be used as a sub-type, e.g. `variant` is a list type for fetching only variant attributes instead of all.
 
-: **type**
-Type of the domain item if it contains one to distinguish different types like text of type, *name*, *short* or *long*
+**type**
+: Type of the domain item if it contains one to distinguish different types (like *name*, *short* or *long* text types)
 
 All keys below the domain will fetch the list item properties which are:
 
@@ -857,6 +861,8 @@ All keys below the domain will fetch the list item properties which are:
 
 The `item` key contains the fields of the domain item itself. In the example there are *type*, *domain* and *label* specified. Please have a look at the articles for the domains to see what fields are available.
 
+## Child resources
+
 Fetching related items does also work for items from the same domain that have a parent/child relationship like product properties:
 
 === "GraphQL"
@@ -865,7 +871,7 @@ Fetching related items does also work for items from the same domain that have a
       searchProducts(filter: "{}", include: ["product/property"]) {
         id
         label
-        property {
+        property(type: "package-weight") {
             id
             siteid
             parentid
@@ -887,7 +893,7 @@ Fetching related items does also work for items from the same domain that have a
       searchProducts(filter: "{}", include: ["product/property"]) {
         id
         label
-        property {
+        property(type: "package-weight") {
             id
             siteid
             parentid
@@ -926,39 +932,6 @@ Then, the properties directly attached to the products will be returned:
         "label": "Demo article",
         "property": [
           {
-            "id": "37",
-            "siteid": "1.",
-            "parentid": 113,
-            "type": "package-length",
-            "languageid": null,
-            "value": "20.00",
-            "ctime": "2022-12-01 11:59:05",
-            "mtime": "2022-12-01 11:59:05",
-            "editor": "core"
-          },
-          {
-            "id": "38",
-            "siteid": "1.",
-            "parentid": 113,
-            "type": "package-width",
-            "languageid": null,
-            "value": "10.00",
-            "ctime": "2022-12-01 11:59:05",
-            "mtime": "2022-12-01 11:59:05",
-            "editor": "core"
-          },
-          {
-            "id": "39",
-            "siteid": "1.",
-            "parentid": 113,
-            "type": "package-height",
-            "languageid": null,
-            "value": "5.00",
-            "ctime": "2022-12-01 11:59:05",
-            "mtime": "2022-12-01 11:59:05",
-            "editor": "core"
-          },
-          {
             "id": "40",
             "siteid": "1.",
             "parentid": 113,
@@ -971,6 +944,15 @@ Then, the properties directly attached to the products will be returned:
           }
         ]
       }
+    ]
   }
 }
 ```
+
+!!! note
+    The name must be always e.g. `["product/property"]` not `["property"]` as parameter!
+
+The `property` key can contain an optional parameter:
+
+**type**
+: Type of the property item to filter for
