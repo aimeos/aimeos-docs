@@ -671,3 +671,306 @@ By default, only the first 100 items are returned if nothing else is specified. 
     ```
 
 This will retrieve only 5 items starting from offset 10.
+
+# Include related resources
+
+To minimize the number of requests, the Aimeos GraphQL API can add related resources to the response. For example, you can tell the server that it should not only return the list of products but also the attributes associated with these products. The GraphQL API uses the parameter "include" to specify the related resources:
+
+=== "GraphQL"
+    ```graphql
+    query {
+      searchProducts(filter: "{}", include: ["product/text"]) {
+        id
+        type
+        code
+        label
+        lists {
+          text(listtype: "default", type: "name") {
+            id
+            siteid
+            parentid
+            refid
+            domain
+            type
+            config
+            datestart
+            dateend
+            status
+            ctime
+            mtime
+            editor
+            item {
+              type
+              domain
+              label
+            }
+          }
+        }
+      }
+    }
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+    query {
+      searchProducts(filter: "{}", include: ["product/text"]) {
+        id
+        type
+        code
+        label
+        lists {
+          text(listtype: "default", type: "name") {
+            id
+            siteid
+            parentid
+            refid
+            domain
+            type
+            config
+            datestart
+            dateend
+            status
+            ctime
+            mtime
+            editor
+            item {
+              type
+              domain
+              label
+            }
+          }
+        }
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+This returns the product or products as well as the attributes associated with the products within the same request:
+
+```json
+{
+  "data": {
+    "searchProducts": [
+      {
+        "id": "118",
+        "type": "select",
+        "code": "demo-selection-article",
+        "label": "Demo selection article",
+        "lists": {
+          "text": [
+            {
+              "id": "1442",
+              "siteid": "1.",
+              "parentid": 118,
+              "refid": "1689",
+              "domain": "text",
+              "type": "default",
+              "config": "{}",
+              "datestart": null,
+              "dateend": null,
+              "status": 1,
+              "ctime": "2022-12-01 11:59:05",
+              "mtime": "2022-12-01 11:59:05",
+              "editor": "core",
+              "item": {
+                "type": "name",
+                "domain": "product",
+                "label": "Demo name/de: Demoartikel mit Auswahl"
+              }
+            },
+            {
+              "id": "1446",
+              "siteid": "1.",
+              "parentid": 118,
+              "refid": "1693",
+              "domain": "text",
+              "type": "default",
+              "config": "{}",
+              "datestart": null,
+              "dateend": null,
+              "status": 1,
+              "ctime": "2022-12-01 11:59:05",
+              "mtime": "2022-12-01 11:59:05",
+              "editor": "core",
+              "item": {
+                "type": "name",
+                "domain": "product",
+                "label": "Demo name/en: Demo selection article"
+              }
+            }
+          ]
+        }
+      }
+    ]
+}
+```
+
+You can use the "include" parameter for all domain items that are associated, via the lists, with one of these items:
+
+* catalog (categories)
+* product
+* service
+* attribute
+* media
+* price
+* text
+
+!!! note
+    You can use e.g. `["product/text"]` or `["text"]` as parameter. The difference is that `["product/text"]` will only fetch product texts while `["attribute","text"]` will fetch all products, the related product texts and attributes as well as the attribute texts. To reduce the response times, you should prefer `["product/text"]` over `["text"]`. This applies to all related domain items which can be included.
+
+The `lists` key in the request must contain the domain name you want to retrieve (it's always e.g. `text`, not the more limiting `product/text`) and can contain two optional attributes:
+
+: **listype**
+Type of the relation itself which can be used as a sub-type, e.g. `variant` is a list type for fetching only variant attributes instead of all.
+
+: **type**
+Type of the domain item if it contains one to distinguish different types like text of type, *name*, *short* or *long*
+
+All keys below the domain will fetch the list item properties which are:
+
+* id
+* siteid
+* parentid
+* refid
+* domain
+* type
+* config
+* datestart
+* dateend
+* status
+* ctime
+* mtime
+* editor
+
+The `item` key contains the fields of the domain item itself. In the example there are *type*, *domain* and *label* specified. Please have a look at the articles for the domains to see what fields are available.
+
+Fetching related items does also work for items from the same domain that have a parent/child relationship like product properties:
+
+=== "GraphQL"
+    ```graphql
+    query {
+      searchProducts(filter: "{}", include: ["product/property"]) {
+        id
+        label
+        property {
+            id
+            siteid
+            parentid
+            type
+            languageid
+            value
+            ctime
+            mtime
+            editor
+        }
+      }
+    }
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+    query {
+      searchProducts(filter: "{}", include: ["product/property"]) {
+        id
+        label
+        property {
+            id
+            siteid
+            parentid
+            type
+            languageid
+            value
+            ctime
+            mtime
+            editor
+        }
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Then, the properties directly attached to the products will be returned:
+
+```json
+{
+  "data": {
+    "searchProducts": [
+      {
+        "id": "113",
+        "label": "Demo article",
+        "property": [
+          {
+            "id": "37",
+            "siteid": "1.",
+            "parentid": 113,
+            "type": "package-length",
+            "languageid": null,
+            "value": "20.00",
+            "ctime": "2022-12-01 11:59:05",
+            "mtime": "2022-12-01 11:59:05",
+            "editor": "core"
+          },
+          {
+            "id": "38",
+            "siteid": "1.",
+            "parentid": 113,
+            "type": "package-width",
+            "languageid": null,
+            "value": "10.00",
+            "ctime": "2022-12-01 11:59:05",
+            "mtime": "2022-12-01 11:59:05",
+            "editor": "core"
+          },
+          {
+            "id": "39",
+            "siteid": "1.",
+            "parentid": 113,
+            "type": "package-height",
+            "languageid": null,
+            "value": "5.00",
+            "ctime": "2022-12-01 11:59:05",
+            "mtime": "2022-12-01 11:59:05",
+            "editor": "core"
+          },
+          {
+            "id": "40",
+            "siteid": "1.",
+            "parentid": 113,
+            "type": "package-weight",
+            "languageid": null,
+            "value": "2.5",
+            "ctime": "2022-12-01 11:59:05",
+            "mtime": "2022-12-01 11:59:05",
+            "editor": "core"
+          }
+        ]
+      }
+  }
+}
+```
