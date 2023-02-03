@@ -491,6 +491,8 @@ The generated request will then only return the ID and label of product items.
 
 # Include related resources
 
+## Foreign domains
+
 To minimize the number of requests, the Aimeos JSON API can add related resources to the response. For example, you can tell the server that it should not only return the list of products but also the texts associated with these products. The JSON API uses the parameter "include" to specify the related resources:
 
 === "CURL"
@@ -640,6 +642,8 @@ You can use the "include" parameter for all domain items that are associated, vi
 
 !!! note
     You can use `include=product.text` and `include=text` as parameter. The difference is that `include=product.text` will only fetch product texts while e.g. `include=attribute,text` will fetch all products, the related product texts and attributes as well as the attribute texts. To reduce the size of the response, you should prefer `product.text` over `text`. This applies to all related domain items which can be included.
+
+## Child resources
 
 This does also work for items from the same domain that have a parent/child relationship like product properties:
 
