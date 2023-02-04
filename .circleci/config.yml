@@ -1,0 +1,24 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2.1
+
+jobs:
+  "docs":
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: sudo apt-get -y update
+      - run: sudo apt-get -y install tnftp python3-pip
+      - run: pip install mkdocs mkdocs-material
+      - run: mkdocs build
+      - run: tar czf $CIRCLE_BRANCH.tar.gz docs/$CIRCLE_BRANCH
+      - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.tar.gz
+
+workflows:
+  version: 2
+  unittest:
+    jobs:
+      - "docs"
