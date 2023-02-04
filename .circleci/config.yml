@@ -15,7 +15,7 @@ jobs:
       - run: pip install mkdocs mkdocs-material
       - run: mkdocs build
       - run: tar czf $CIRCLE_BRANCH.tar.gz docs/$CIRCLE_BRANCH
-      - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.tar.gz
+      - run: /usr/bin/ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.tar.gz
 
 workflows:
   version: 2
