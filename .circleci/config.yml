@@ -12,10 +12,12 @@ jobs:
       - checkout
       - run: sudo apt-get -y update
       - run: sudo apt-get -y install ftp python3-pip
+      - run: dpkg -l | grep ftp
+      - run: which ftp
       - run: pip install mkdocs mkdocs-material
       - run: mkdocs build
       - run: tar czf $CIRCLE_BRANCH.tar.gz docs/$CIRCLE_BRANCH
-      - run: put $CIRCLE_BRANCH.tar.gz | ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/$CIRCLE_BRANCH.tar.gz
+      - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.tar.gz
 
 workflows:
   version: 2
