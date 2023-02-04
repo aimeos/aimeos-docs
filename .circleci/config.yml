@@ -10,6 +10,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - run: sudo apt-get -y update
       - run: sudo apt-get -y install ftp python3-pip
       - run: pip install mkdocs mkdocs-material
       - run: mkdocs build
