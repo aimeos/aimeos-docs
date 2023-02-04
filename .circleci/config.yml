@@ -12,8 +12,6 @@ jobs:
       - checkout
       - run: sudo apt-get -y update
       - run: sudo apt-get -y install tnftp python3-pip
-      - run: dpkg -l | grep ftp
-      - run: which ftp
       - run: pip install mkdocs mkdocs-material
       - run: mkdocs build
       - run: tar czf $CIRCLE_BRANCH.tar.gz docs/$CIRCLE_BRANCH
