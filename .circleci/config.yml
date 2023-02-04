@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run: sudo apt-get -y update
       - run: sudo apt-get -y install tnftp python3-pip
-      - run: pip install mkdocs mkdocs-material==8.5.10
+      - run: pip install mkdocs mkdocs-material==8.3.9
       - run: mkdocs build
       - run: tar czf $CIRCLE_BRANCH.tar.gz docs/$CIRCLE_BRANCH
       - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.tar.gz
