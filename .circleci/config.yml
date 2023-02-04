@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get -y update
-      - run: sudo apt-get -y install ftp python3-pip
+      - run: sudo apt-get -y install tnftp python3-pip
       - run: dpkg -l | grep ftp
       - run: which ftp
       - run: pip install mkdocs mkdocs-material
