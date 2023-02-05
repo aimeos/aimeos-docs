@@ -1,6 +1,6 @@
 {% if config.analytics.url %}
 {% set siteid = config.analytics.siteid  or "1" %}
-<script type="text/javascript">
+<script type="text/javascript" defer>
   var _paq = _paq || [];
   _paq.push(["disableCookies"]);
   _paq.push(["trackPageView"]);
@@ -13,5 +13,4 @@
     g.defer=true; g.async=true; g.src="{{ config.analytics.url }}/piwik.js"; s.parentNode.insertBefore(g,s);
   })();
 </script>
-<noscript><img src="https://aimeos.org/stats/piwik.php?idsite=1&amp;rec=1" style="border:0" alt="" /></noscript>
 {% endif %}
