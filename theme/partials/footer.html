@@ -51,7 +51,7 @@
         </ul>
       </div>
       <div class="md-footer-social">
-        <img class="logo" src="https://aimeos.org/fileadmin/logos/logo-aimeos-blue.svgz" alt="Aimeos logo" />
+        {% include "partials/logo.html" %}
         {% for social in config.extra.social %}
           {% set title = social.name %}
           {% if not title and "//" in social.link %}
