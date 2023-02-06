@@ -276,6 +276,8 @@ Response:
 
 # Search customers
 
+The filter parameter is explained in the [filter section](basics.md#filtering-the-result) of the [GraphQL basics](basics.md) article.
+
 === "Query"
     ```graphql
     query {
