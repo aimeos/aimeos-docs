@@ -13,9 +13,9 @@ $('.aimeos').data('graphql')
 ```
 
 !!! note
-    Because you have access to all shop content, the GraphQL API is protected and the administrative users must be logged in before they can use the API.
+    Because you can retrieve and modify all shop content, the GraphQL API is protected and requires an administrative users to be logged in before they can use the API. What actions the GraphQL API allows depends on the permissions the user has (superuser, admin or editor). You can adapt the permissions by configuring the `admin/graphql/resource/` sections. Take a look at the [default permissions](https://github.com/aimeos/ai-admin-graphql/blob/master/config/admin/graphql/resource.php) for reference.
 
-To authenticate, you have to send the cookies with each request and (for Laravel only) the `X-CSRF-TOKEN`:
+To authenticate, you have to send the cookies with each request and (for Laravel only) the `X-CSRF-TOKEN` as header:
 
 ```javascript
 const body = JSON.stringify({'query':
