@@ -1,5 +1,8 @@
 This article contains all actions for retrieving and managing categories.
 
+!!! tip
+    The catalog domains supports [fetching related resources](basics.md#include-related-resources).
+
 # Get category by ID
 
 === "Query"

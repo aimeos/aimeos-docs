@@ -678,7 +678,18 @@ To minimize the number of requests, the Aimeos GraphQL API can add related resou
 
 ## Foreign domains
 
-You can tell the server that it should not only return the list of products but also the attributes associated with these products. The GraphQL API uses the parameter "include" to specify the related resources:
+You can tell the server that it should not only return the list of products but also the attributes associated with these products. It's is available for these types of queries:
+
+getX()
+: e.g. *getProduct()*, *getAttribute()*, etc.
+
+findX()
+: e.g. *findProduct()*, *findAttribute()*, etc.
+
+searchX()
+: e.g. *searchProducts()*, *searchAttributes()*, etc.
+
+The GraphQL API uses the parameter "include" to specify the related resources:
 
 === "GraphQL"
     ```graphql
@@ -824,13 +835,14 @@ This returns the product or products as well as the attributes associated with t
 
 You can use the "include" parameter for all domain items that are associated, via the lists, with one of these items:
 
-* catalog (categories)
-* product
-* service
 * attribute
-* media
+* catalog (categories)
+* media (images and files)
 * price
+* product
+* service (delivery/payment)
 * text
+* cms (only if ai-cms-grapesjs is installed)
 
 !!! note
     You can use e.g. `["product/text"]` or `["text"]` as parameter. The difference is that `["product/text"]` will only fetch product texts while `["attribute","text"]` will fetch all products, the related product texts and attributes as well as the attribute texts. To reduce the response times, you should prefer `["product/text"]` over `["text"]`. This applies to all related domain items which can be included.
