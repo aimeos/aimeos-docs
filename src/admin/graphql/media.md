@@ -1,5 +1,8 @@
 This article contains all actions for retrieving and managing media.
 
+!!! tip
+    The media domain supports [fetching related resources](basics.md#include-related-resources).
+
 # Get media by ID
 
 === "Query"

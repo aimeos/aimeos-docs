@@ -1,5 +1,8 @@
 This article contains all actions for retrieving and managing attributes.
 
+!!! tip
+    The attribute domain supports [fetching related resources](basics.md#include-related-resources).
+
 # Get attribute by ID
 
 === "Query"

@@ -1,5 +1,8 @@
 This article contains all actions for retrieving and managing texts.
 
+!!! tip
+    The text domain supports [fetching related resources](basics.md#include-related-resources).
+
 # Get text by ID
 
 === "Query"
