@@ -240,7 +240,7 @@ If the user isn't logged in, it's possible to create a new customer by sending t
 
 === "CURL"
     ```bash
-    curl-b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X POST 'http://localhost:8000/jsonapi/customer?_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
@@ -372,7 +372,7 @@ The request for changing data is very similar to creating a new user but it requ
 
 === "CURL"
     ```bash
-    curl-b cookies.txt -c cookies.txt \
+    curl -b cookies.txt -c cookies.txt \
     -X PATCH 'http://localhost:8000/jsonapi/customer?_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
