@@ -231,13 +231,12 @@ select.md-header-nav__button:focus {
   flex-shrink: 0;
   padding: 0;
   height: 100%;
-  width: max(18%, 12.1rem);
+  width: max(15%, 12.1rem);
 }
 
 .md-sidebar--primary {
-  border-right: 1px solid #eaecef;
-  background-color: #2b2b4b;
-  color: #c1cddb;
+  background-color: var(--md-default-fg-color, #103050);
+  color: #c0d0e0;
 }
 
 .md-sidebar__scrollwrap {
@@ -299,12 +298,11 @@ select.md-header-nav__button:focus {
 .md-nav--primary > .md-nav__list > .md-nav__item:nth-of-type(11) {
   padding-top: 0.75rem;
   border-top: 1px solid #10305040;
-  border-top-color: #eaecef;
 }
 
 .md-nav__list .md-nav__list .md-nav__item {
+  color: var(--md-default-bg-color, #fff);
   padding-bottom: 0;
-  color: #FFFFFF;
 }
 
 .md-nav__link {
