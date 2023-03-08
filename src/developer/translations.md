@@ -19,7 +19,8 @@ Using Gettext, you can also create country specific translation files, e.g. "de_
 ## Replace translations
 
 To replace existing Aimeos core translations in your own extension, you need to follow these steps:
-1. Copy the existing .po file (e.g. de.po) to the same directory as in the core extensions, e.g. from "./vendor/aimeos/ai-client-html/client/i18n/de.po" to "./packages/myextname/client/i18n/de.po"
+
+1. Copy the existing .po file (e.g. de.po) to the same directory as in the core extensions, e.g. from "./vendor/aimeos/ai-client-html/i18n/de.po" to "./packages/myextname/i18n/client/de.po"
 2. Change the translations you want to replace
 3. Remove the strings/translations that should stay the same
 4. Execute in the directory of the .po file: `msgfmt --statistics -c -o de de.po`
@@ -45,6 +46,7 @@ Strings can only be translated if they are wrapped by one of these methods:
 The "domain" argument determines the Gettext domain of the translation. In Aimeos translation domains like "mshop", "client" or "controller/jobs" are used. They correspond to the core and extension directory where the "./i18n/" sub-directory is located at. Translation domains separate translations into different files, so two translation domains can contain the same source string but different translations.
 
 To translate new strings, follow these steps:
+
 1. Change to the directory of your extension
 2. Execute `phing -f phing.xml i18n` on the command line
 3. Copy the new .pot file in the "./i18n/" directory to a .po file, e.g. de.po (two letter ISO code in lower case)
