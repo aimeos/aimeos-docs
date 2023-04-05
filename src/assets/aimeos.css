@@ -48,6 +48,7 @@
 .md-nav--primary .md-nav__title[for="__drawer"] {
   background-color: var(--md-default-bg-color, #fff);
   color: var(--md-default-fg-color, #103050);
+  min-height: 62.5px;
 }
 
 .md-header nav {
