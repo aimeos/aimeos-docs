@@ -140,7 +140,7 @@ This will generate a string of `/path/to/100width.jpg 100w, /path/to/300width.jp
 Generates an URL for the `url` configuration key, parameters, additional configuration and trailing fragments.
 
 ```php
-<?= $this->link( 'client/html/catalog/detail/url', ['d_prodid' => 1], ['absoluteUri' => 1] ['image', '2'] ) ?>
+<?= $this->link( 'client/html/catalog/detail/url', ['d_prodid' => 1], ['absoluteUri' => 1], ['image', '2'] ) ?>
 ```
 
 The first argument is the common prefix for:
@@ -151,7 +151,7 @@ The first argument is the common prefix for:
 * client/html/catalog/detail/url/config
 * client/html/catalog/detail/url/filter
 
-The second one contains the parameters that should be part of the URL and the third are the fragments that creates the anchor links.
+The second one contains the parameters that should be part of the URL and the third are configuration settings for generating the link like `absoluteUri` to create absolute URLs. The last argument are fragments that creates the anchors, e.g. `#image-2`.
 
 # mail
 
