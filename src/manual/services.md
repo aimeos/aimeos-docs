@@ -20,8 +20,11 @@ Each payment option requires its own configured payment provider that takes care
 
 Extensions implementing payment providers are available, especially those using payment gateways to handle payments of customers.
 
+!!! note
+    The payment extensions are only suitable if you use the Aimeos HTML frontend or a combination of the HTML frontend and the JSON API because they render e.g. forms and require certain frontend routes. If you want to use the Aimeos headless distribution but build a single page application (SPA) in ReactJS, VueJS or similar Javascript frameworks, you need to integrate pure JS payment solutions like [StripeJS](https://stripe.com/docs/stripe-js/react) yourself.
+
 !!! warning
-    Please don't use any payment provider that stores credit card details locally in the shop system as long as you aren't certified as PCI-compliant. For more information take a look at the website of the [PCI Security Standards Council](https://www.pcisecuritystandards.org/).
+    Don't use any payment provider that stores credit card details locally in the shop system as long as you aren't certified as PCI-compliant! For more information take a look at the website of the [PCI Security Standards Council](https://www.pcisecuritystandards.org/).
 
 
 # Built-in delivery services
