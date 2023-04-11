@@ -75,7 +75,7 @@ The request for creating a new address in the basket could look like this:
         }
     }]};
 
-    var url = response['links']['basket/address']['href']; // from basket response
+    var url = response['links']['basket.address']['href']; // from basket response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};

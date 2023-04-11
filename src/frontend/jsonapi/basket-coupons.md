@@ -1,6 +1,6 @@
 # Add coupons
 
-Coupon (or voucher) codes can be added to the basket by using the "basket/coupon" URL that is sent with every basket response. The data objects only need the code passed in the "id" parameter like this:
+Coupon (or voucher) codes can be added to the basket by using the "basket.coupon" URL that is sent with every basket response. The data objects only need the code passed in the "id" parameter like this:
 
 === "CURL"
     ```bash
@@ -17,7 +17,7 @@ Coupon (or voucher) codes can be added to the basket by using the "basket/coupon
         "id": "fixed", // coupon code entered by the customer
     }]};
 
-    var url = response['links']['basket/coupon']['href']; // from basket response
+    var url = response['links']['basket.coupon']['href']; // from basket response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};

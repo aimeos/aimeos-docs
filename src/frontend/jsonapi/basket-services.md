@@ -224,7 +224,7 @@ This returns the list of payment or delivery options (or both if the "filter" pa
 
 # Add delivery/payment
 
-To add a service to the basket you need the "basket/service" URL from the service resource response. In our previous example, the URL of the first delivery option that would add this service to the basket is:
+To add a service to the basket you need the "basket.service" URL from the service resource response. In our previous example, the URL of the first delivery option that would add this service to the basket is:
 
 ```
 http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery
@@ -257,7 +257,7 @@ To add this service as delivery option to the current basket you should use:
         }
     }]};
 
-    var url = response['data'][0]['links']['basket/service']['href']; // from service response
+    var url = response['data'][0]['links']['basket.service']['href']; // from service response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};
@@ -295,19 +295,19 @@ The response to this request would be similar to this:
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
             "allow": ["DELETE","GET","PATCH","POST"]
         },
-        "basket/product": {
+        "basket.product": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=product",
             "allow": ["POST"]
         },
-        "basket/service": {
+        "basket.service": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=service",
             "allow": ["POST"]
         },
-        "basket/address": {
+        "basket.address": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=address",
             "allow": ["POST"]
         },
-        "basket/coupon": {
+        "basket.coupon": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon",
             "allow": ["POST"]
         }
@@ -394,7 +394,7 @@ It contains an additional "relationships" entry for the basket which points to t
 
 ## Passing additional data
 
-The "attributes" section in "data" can contain additional key/value pairs whose values are entered by the customer. Here the "pickup time" and "location" are passed. The available keys are listed in the "meta" section of the "basket/service" link of each entry returned by the service response:
+The "attributes" section in "data" can contain additional key/value pairs whose values are entered by the customer. Here the "pickup time" and "location" are passed. The available keys are listed in the "meta" section of the "basket.service" link of each entry returned by the service response:
 
 ```json
 "meta": {
@@ -514,7 +514,7 @@ To update the delivery service in the current basket you should use:
         }
     }]};
 
-    var url = response['data'][0]['links']['basket/service']['href']; // from service response
+    var url = response['data'][0]['links']['basket.service']['href']; // from service response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};
@@ -552,19 +552,19 @@ The response to this request would be similar to this:
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
             "allow": ["DELETE","GET","PATCH","POST"]
         },
-        "basket/product": {
+        "basket.product": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=product",
             "allow": ["POST"]
         },
-        "basket/service": {
+        "basket.service": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=service",
             "allow": ["POST"]
         },
-        "basket/address": {
+        "basket.address": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=address",
             "allow": ["POST"]
         },
-        "basket/coupon": {
+        "basket.coupon": {
             "href": "http://localhost:8000/jsonapi/basket?id=default&related=coupon",
             "allow": ["POST"]
         }

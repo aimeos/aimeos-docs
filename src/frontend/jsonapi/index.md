@@ -2,6 +2,12 @@ Since 2017.04, Aimeos contains a front-end JSON API modeled after the guidelines
 
 The entry point to access the Aimeos JSON API depends on the host application you use (Laravel, Symfony, TYPO3). You have to retrieve the initial base URL from a configuration setting or somewhere else. The resource URLs are different depending on the environment, but you can get the available ones by querying the meta data from the base URL (via the HTTP OPTIONS method).
 
+!!! warning
+    Since 2023.04, the JSON API isn't compatible with the releases before due to the following changes:
+
+    * Merged order and order/base data in basket and order resources
+    * Related resource use "." (a dot) as separator compared to "/" (slash) before
+
 # Retrieve meta data
 
 The offered URLs to the resources depend on the application that hosts the Aimeos components. Therefore, you can't use fixed URLs like `http://localhost:8000/jsonapi/product?id=1`. Instead you need to configure the base URL to the Aimeos JSON API of the instance you want to connect to in your client application. Afterwards you must use the OPTIONS method to retrieve the service description with the list of resources and their URLs, e.g.

@@ -21,7 +21,7 @@ Each listed product will contain the link how it could be added to the basket:
 }
 ```
 
-The URL to add the product to the basket is in `data['links']['basket/product']['href']`
+The URL to add the product to the basket is in `data['links']['basket.product']['href']`
 
 !!! warning
     Don't take these URLs for granted! They change depending on the route configuration and the application.
@@ -73,7 +73,7 @@ To add a simple product to the basket may look like this:
         }
     }]};
 
-    var url = response['data'][0]['links']['basket/product']['href']; // from product response
+    var url = response['data'][0]['links']['basket.product']['href']; // from product response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};
@@ -333,7 +333,7 @@ is **variant** in the included articles. Pass the ID of the variant attribute th
         }
     }]};
 
-    var url = response['data'][0]['links']['basket/product']['href']; // from product response
+    var url = response['data'][0]['links']['basket.product']['href']; // from product response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};
@@ -459,7 +459,7 @@ is **config**. Now add all of those configurable attribute IDs and their quantit
         }
     }]};
 
-    var url = response['data'][0]['links']['basket/product']['href']; // from product response
+    var url = response['data'][0]['links']['basket.product']['href']; // from product response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};
@@ -612,7 +612,7 @@ is **custom**. To add all of those configurable attribute IDs and their values (
         }
     }]};
 
-    var url = response['data'][0]['links']['basket/product']['href']; // from product response
+    var url = response['data'][0]['links']['basket.product']['href']; // from product response
 
     if(response['meta']['csrf']) { // add CSRF token if available and therefore required
         var csrf = {};
