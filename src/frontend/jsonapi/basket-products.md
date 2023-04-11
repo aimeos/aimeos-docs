@@ -36,9 +36,6 @@ quantity
 stocktype
 : Warehouse or local store where the product is available
 
-vendor
-: Name of the vendor, e.g. the site name or the supplier name
-
 siteid
 : ID of the site whose vendor will ship the bought product (in multi-site environments)
 
