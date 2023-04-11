@@ -301,7 +301,7 @@ select.md-header-nav__button:focus {
   border-top: 1px solid #10305040;
 }
 
-.md-nav__list .md-nav__list .md-nav__item {
+.md-nav--primary > .md-nav__list .md-nav__list .md-nav__item {
   color: var(--md-default-bg-color, #fff);
   padding-bottom: 0;
 }
