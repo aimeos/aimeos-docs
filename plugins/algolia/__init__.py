@@ -61,7 +61,7 @@ class MarkdownExportPlugin(BasePlugin):
 
   def on_post_build(self, config):
 
-    path = os.path.join(os.getcwd(), 'export.json')
+    path = os.path.join(os.getcwd(), config.site_dir.split('/')[-1] + '.json')
 
     if os.path.exists(path):
       os.remove(path)

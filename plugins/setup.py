@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="algolia",
-    version="0.1.0",
+    version="0.1.2",
     description="Algolia export for MKDocs",
     keywords="mkdocs algolia export",
     packages=['algolia'],

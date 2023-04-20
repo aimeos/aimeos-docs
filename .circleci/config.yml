@@ -17,6 +17,7 @@ jobs:
       - run: mkdocs build
       - run: tar czf $CIRCLE_BRANCH.tar.gz docs/$CIRCLE_BRANCH
       - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.tar.gz
+      - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.json
 
 workflows:
   version: 2
