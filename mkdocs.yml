@@ -1,5 +1,5 @@
-site_dir: docs/master
-site_url: https://aimeos.org/docs/master/
+site_dir: docs/2023.x
+site_url: https://aimeos.org/docs/2023.x/
 
 
 site_name: Aimeos documentation
