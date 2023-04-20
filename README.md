@@ -109,6 +109,7 @@ markdown files. Install `mkdocs` and the dependencies required by *aimeos-docs* 
 
 ```bash
 pip install mkdocs mkdocs-material
+pip install plugins/
 ```
 
 ### Start the local server
@@ -125,5 +126,4 @@ in your browser from the newly generated `<your-aimeos-docs-clone-folder>/docs`Â
 
 Due to some configuration limits, `mkdocs serve` will tell you that it couldn't find `versions.js`.
 Also, `mkdocs serve` as well as `mkdocs build` might warn about an unknown `analytics` configuration
-attribute.
-You can safely ignore these warnings.
+attribute. You can safely ignore these warnings.
