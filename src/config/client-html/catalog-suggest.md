@@ -123,10 +123,10 @@ See also:
 Relative path to the HTML body template of the catalog suggest client.
 
 ```
-client/html/catalog/suggest/template-body = 
+client/html/catalog/suggest/template-body = catalog/suggest/body
 ```
 
-* Default: 
+* Default: catalog/suggest/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2015.02
 
@@ -152,10 +152,10 @@ See also:
 Relative path to the HTML header template of the catalog suggest client.
 
 ```
-client/html/catalog/suggest/template-header = 
+client/html/catalog/suggest/template-header = catalog/suggest/header
 ```
 
-* Default: 
+* Default: catalog/suggest/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2015.02
 
@@ -202,7 +202,7 @@ See also:
 * client/html/catalog/suggest/url/target
 * client/html/catalog/suggest/url/controller
 * client/html/catalog/suggest/url/config
-* client/html/catalog/listsimple/url/action
+* client/html/catalog/suggest/url/filter
 
 ## config
 
@@ -241,8 +241,7 @@ See also:
 * client/html/catalog/suggest/url/target
 * client/html/catalog/suggest/url/controller
 * client/html/catalog/suggest/url/action
-* client/html/url/config
-* client/html/catalog/listsimple/url/config
+* client/html/catalog/suggest/url/filter
 
 ## controller
 
@@ -268,9 +267,11 @@ See also:
 * client/html/catalog/suggest/url/target
 * client/html/catalog/suggest/url/action
 * client/html/catalog/suggest/url/config
-* client/html/catalog/listsimple/url/controller
+* client/html/catalog/suggest/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/catalog/suggest/url/filter = Array
@@ -282,7 +283,18 @@ client/html/catalog/suggest/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/catalog/suggest/url/target
+* client/html/catalog/suggest/url/controller
+* client/html/catalog/suggest/url/action
+* client/html/catalog/suggest/url/config
 
 ## target
 
@@ -308,4 +320,4 @@ See also:
 * client/html/catalog/suggest/url/controller
 * client/html/catalog/suggest/url/action
 * client/html/catalog/suggest/url/config
-* client/html/catalog/listsimple/url/target
+* client/html/catalog/suggest/url/filter

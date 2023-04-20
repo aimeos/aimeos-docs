@@ -352,20 +352,9 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/price/manager/lists/aggregate/ansi = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_price_list" mprili
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, mprili."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
 ```
 
-* Default: mshop/price/manager/lists/aggregate
+* Default: 
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.07
 
@@ -414,32 +403,9 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/price/manager/lists/aggregate/mysql = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_price_list" mprili
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, mprili."id"
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY :keys
 ```
 
 * Default: 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_price_list" mprili
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, mprili."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
-
 
 See also:
 
@@ -3101,6 +3067,29 @@ mshop/price/manager/property/update/mysql =
 See also:
 
 * mshop/price/manager/property/update/ansi
+
+# resource
+
+Name of the database connection resource to use
+
+```
+mshop/price/manager/resource = db-price
+```
+
+* Default: db-price
+* Type: string - Database connection name
+* Since: 2023.04
+* Since: 2023.04
+* Since: 2023.04
+* Since: 2023.04
+* Since: 2023.04
+* Since: 2023.04
+
+You can configure a different database connection for each data domain
+and if no such connection name exists, the "db" connection will be used.
+It's also possible to use the same database connection for different
+data domains by configuring the same connection name using this setting.
+
 
 # search
 ## ansi

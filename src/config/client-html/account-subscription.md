@@ -94,10 +94,10 @@ See also:
 Relative path to the HTML body template of the account subscription client.
 
 ```
-client/html/account/subscription/template-body = 
+client/html/account/subscription/template-body = account/subscription/body
 ```
 
-* Default: 
+* Default: account/subscription/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.04
 
@@ -122,10 +122,10 @@ See also:
 Relative path to the HTML header template of the account subscription client.
 
 ```
-client/html/account/subscription/template-header = 
+client/html/account/subscription/template-header = account/subscription/header
 ```
 
-* Default: 
+* Default: account/subscription/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2018.04
 
@@ -168,6 +168,7 @@ See also:
 * client/html/account/subscription/url/target
 * client/html/account/subscription/url/controller
 * client/html/account/subscription/url/config
+* client/html/account/subscription/url/filter
 
 ## config
 
@@ -203,7 +204,7 @@ See also:
 * client/html/account/subscription/url/target
 * client/html/account/subscription/url/controller
 * client/html/account/subscription/url/action
-* client/html/url/config
+* client/html/account/subscription/url/filter
 
 ## controller
 
@@ -226,8 +227,11 @@ See also:
 * client/html/account/subscription/url/target
 * client/html/account/subscription/url/action
 * client/html/account/subscription/url/config
+* client/html/account/subscription/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/account/subscription/url/filter = Array
@@ -239,7 +243,18 @@ client/html/account/subscription/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/account/subscription/url/target
+* client/html/account/subscription/url/controller
+* client/html/account/subscription/url/action
+* client/html/account/subscription/url/config
 
 ## target
 
@@ -262,3 +277,4 @@ See also:
 * client/html/account/subscription/url/controller
 * client/html/account/subscription/url/action
 * client/html/account/subscription/url/config
+* client/html/account/subscription/url/filter

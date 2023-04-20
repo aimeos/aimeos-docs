@@ -45,13 +45,79 @@ or numbers. Avoid chamel case names like "MyBasket"!
 
 
 # summary
+## address
+
+Relative path to the HTML template of the account basket address partial.
+
+```
+client/html/account/basket/summary/address = 
+```
+
+* Default: 
+* Type: string - Relative path to the template creating the HTML fragment
+* Since: 2022.10
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
+
+
 ## detail
+
+Relative path to the HTML template of the account basket details partial.
 
 ```
 client/html/account/basket/summary/detail = common/summary/detail
 ```
 
 * Default: common/summary/detail
+* Type: string - Relative path to the template creating the HTML fragment
+* Since: 2022.10
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
+
+
+## service
+
+Relative path to the HTML template of the account basket service partial.
+
+```
+client/html/account/basket/summary/service = 
+```
+
+* Default: 
+* Type: string - Relative path to the template creating the HTML fragment
+* Since: 2022.10
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 
 # template-body
@@ -59,10 +125,10 @@ client/html/account/basket/summary/detail = common/summary/detail
 Relative path to the HTML body template of the account basket client.
 
 ```
-client/html/account/basket/template-body = 
+client/html/account/basket/template-body = account/basket/body
 ```
 
-* Default: 
+* Default: account/basket/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2022.10
 
@@ -87,10 +153,10 @@ See also:
 Relative path to the HTML header template of the account basket client.
 
 ```
-client/html/account/basket/template-header = 
+client/html/account/basket/template-header = account/basket/header
 ```
 
-* Default: 
+* Default: account/basket/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2022.10
 
@@ -133,6 +199,7 @@ See also:
 * client/html/account/basket/url/target
 * client/html/account/basket/url/controller
 * client/html/account/basket/url/config
+* client/html/account/basket/url/filter
 
 ## config
 
@@ -168,7 +235,7 @@ See also:
 * client/html/account/basket/url/target
 * client/html/account/basket/url/controller
 * client/html/account/basket/url/action
-* client/html/url/config
+* client/html/account/basket/url/filter
 
 ## controller
 
@@ -191,8 +258,11 @@ See also:
 * client/html/account/basket/url/target
 * client/html/account/basket/url/action
 * client/html/account/basket/url/config
+* client/html/account/basket/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/account/basket/url/filter = Array
@@ -204,7 +274,18 @@ client/html/account/basket/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/account/basket/url/target
+* client/html/account/basket/url/controller
+* client/html/account/basket/url/action
+* client/html/account/basket/url/config
 
 ## target
 
@@ -227,3 +308,4 @@ See also:
 * client/html/account/basket/url/controller
 * client/html/account/basket/url/action
 * client/html/account/basket/url/config
+* client/html/account/basket/url/filter

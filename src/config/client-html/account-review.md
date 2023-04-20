@@ -89,10 +89,10 @@ See also:
 Relative path to the HTML body template of the account review client.
 
 ```
-client/html/account/review/template-body = 
+client/html/account/review/template-body = account/review/body
 ```
 
-* Default: 
+* Default: account/review/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2020.10
 
@@ -117,10 +117,10 @@ See also:
 Relative path to the HTML header template of the account review client.
 
 ```
-client/html/account/review/template-header = 
+client/html/account/review/template-header = account/review/header
 ```
 
-* Default: 
+* Default: account/review/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2020.10
 

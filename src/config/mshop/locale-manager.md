@@ -1540,6 +1540,27 @@ See also:
 
 * mshop/locale/manager/newid/ansi
 
+# resource
+
+Name of the database connection resource to use
+
+```
+mshop/locale/manager/resource = db-locale
+```
+
+* Default: db-locale
+* Type: string - Database connection name
+* Since: 2023.04
+* Since: 2023.04
+* Since: 2023.04
+* Since: 2023.04
+
+You can configure a different database connection for each data domain
+and if no such connection name exists, the "db" connection will be used.
+It's also possible to use the same database connection for different
+data domains by configuring the same connection name using this setting.
+
+
 # search
 ## ansi
 
@@ -1715,6 +1736,7 @@ mshop/locale/manager/site/cleanup/shop/domains = Array
     [subscription] => subscription
     [supplier] => supplier
     [text] => text
+    [cms] => cms
 )
 ```
 

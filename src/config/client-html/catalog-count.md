@@ -65,10 +65,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog count attribute client.
 
 ```
-client/html/catalog/count/attribute/template-body = 
+client/html/catalog/count/attribute/template-body = catalog/count/attribute-body
 ```
 
-* Default: 
+* Default: catalog/count/attribute-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -217,6 +217,7 @@ See also:
 * client/html/catalog/count/url/controller
 * client/html/catalog/count/url/action
 * client/html/catalog/count/url/config
+* client/html/catalog/count/url/filter
 
 # name
 
@@ -385,10 +386,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog count supplier client.
 
 ```
-client/html/catalog/count/supplier/template-body = 
+client/html/catalog/count/supplier/template-body = catalog/count/supplier-body
 ```
 
-* Default: 
+* Default: catalog/count/supplier-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.07
 
@@ -413,10 +414,10 @@ See also:
 Relative path to the HTML body template of the catalog count client.
 
 ```
-client/html/catalog/count/template-body = 
+client/html/catalog/count/template-body = catalog/count/body
 ```
 
-* Default: 
+* Default: catalog/count/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -441,10 +442,10 @@ See also:
 Relative path to the HTML header template of the catalog count client.
 
 ```
-client/html/catalog/count/template-header = 
+client/html/catalog/count/template-header = catalog/count/header
 ```
 
-* Default: 
+* Default: catalog/count/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -531,10 +532,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog count tree client.
 
 ```
-client/html/catalog/count/tree/template-body = 
+client/html/catalog/count/tree/template-body = catalog/count/tree-body
 ```
 
-* Default: 
+* Default: catalog/count/tree-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -576,6 +577,7 @@ See also:
 * client/html/catalog/count/url/target
 * client/html/catalog/count/url/controller
 * client/html/catalog/count/url/config
+* client/html/catalog/count/url/filter
 
 ## config
 
@@ -611,7 +613,7 @@ See also:
 * client/html/catalog/count/url/target
 * client/html/catalog/count/url/controller
 * client/html/catalog/count/url/action
-* client/html/url/config
+* client/html/catalog/count/url/filter
 
 ## controller
 
@@ -634,8 +636,11 @@ See also:
 * client/html/catalog/count/url/target
 * client/html/catalog/count/url/action
 * client/html/catalog/count/url/config
+* client/html/catalog/count/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/catalog/count/url/filter = Array
@@ -647,7 +652,18 @@ client/html/catalog/count/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/catalog/count/url/target
+* client/html/catalog/count/url/controller
+* client/html/catalog/count/url/action
+* client/html/catalog/count/url/config
 
 ## target
 
@@ -670,3 +686,4 @@ See also:
 * client/html/catalog/count/url/controller
 * client/html/catalog/count/url/action
 * client/html/catalog/count/url/config
+* client/html/catalog/count/url/filter

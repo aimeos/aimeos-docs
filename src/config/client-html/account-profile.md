@@ -74,10 +74,10 @@ or numbers. Avoid chamel case names like "MyProfile"!
 Relative path to the HTML body template of the account profile client.
 
 ```
-client/html/account/profile/template-body = 
+client/html/account/profile/template-body = account/profile/body
 ```
 
-* Default: 
+* Default: account/profile/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2016.10
 
@@ -102,10 +102,10 @@ See also:
 Relative path to the HTML header template of the account profile client.
 
 ```
-client/html/account/profile/template-header = 
+client/html/account/profile/template-header = account/profile/header
 ```
 
-* Default: 
+* Default: account/profile/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2016.10
 

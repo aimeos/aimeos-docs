@@ -288,14 +288,30 @@ See also:
 # url
 ## action
 
+Name of the action that should create the output
+
 ```
 client/html/catalog/home/url/action = home
 ```
 
 * Default: home
+* Type: string - Name of the action
+* Since: 2020.10
 
+In Model-View-Controller (MVC) applications, actions are the methods of a
+controller that create parts of the output displayed in the generated HTML page.
+Action names are usually alpha-numeric.
+
+See also:
+
+* client/html/catalog/home/url/target
+* client/html/catalog/home/url/controller
+* client/html/catalog/home/url/config
+* client/html/catalog/home/url/filter
 
 ## config
+
+Associative list of configuration options used for generating the URL
 
 ```
 client/html/catalog/home/url/config = Array
@@ -307,21 +323,97 @@ client/html/catalog/home/url/config = Array
 (
 )
 
+* Type: string - Associative list of configuration options
+* Since: 2020.10
 
+You can specify additional options as key/value pairs used when generating
+the URLs, like
+
+```
+ client/html/<clientname>/url/config = array( 'absoluteUri' => true )
+```
+
+The available key/value pairs depend on the application that embeds the e-commerce
+framework. This is because the infrastructure of the application is used for
+generating the URLs. The full list of available config options is referenced
+in the "see also" section of this page.
+
+See also:
+
+* client/html/catalog/home/url/target
+* client/html/catalog/home/url/controller
+* client/html/catalog/home/url/action
+* client/html/catalog/home/url/filter
 
 ## controller
 
+Name of the controller whose action should be called
+
 ```
-client/html/catalog/home/url/controller = catalog
+client/html/catalog/home/url/controller = Catalog
 ```
 
-* Default: catalog
+* Default: Catalog
+* Type: string - Name of the controller
+* Since: 2020.10
 
+In Model-View-Controller (MVC) applications, the controller contains the methods
+that create parts of the output displayed in the generated HTML page. Controller
+names are usually alpha-numeric.
+
+See also:
+
+* client/html/catalog/home/url/target
+* client/html/catalog/home/url/action
+* client/html/catalog/home/url/config
+* client/html/catalog/home/url/filter
+
+## filter
+
+Removes parameters for the detail page before generating the URL
+
+```
+client/html/catalog/home/url/filter = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+* Type: array - List of parameter names to remove
+* Since: 2022.10
+
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/catalog/home/url/target
+* client/html/catalog/home/url/controller
+* client/html/catalog/home/url/action
+* client/html/catalog/home/url/config
 
 ## target
+
+Destination of the URL where the controller specified in the URL is known
 
 ```
 client/html/catalog/home/url/target = 
 ```
 
 * Default: 
+* Type: string - Destination of the URL
+* Since: 2020.10
+
+The destination can be a page ID like in a content management system or the
+module of a software development framework. This "target" must contain or know
+the controller that should be called by the generated URL.
+
+See also:
+
+* client/html/catalog/home/url/controller
+* client/html/catalog/home/url/action
+* client/html/catalog/home/url/config
+* client/html/catalog/home/url/filter

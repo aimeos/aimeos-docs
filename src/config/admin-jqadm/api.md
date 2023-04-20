@@ -1,4 +1,26 @@
 
+# openai
+
+Configuration for ChatGPT API to generate texts
+
+```
+admin/jqadm/api/openai = 
+```
+
+* Default: 
+* Type: array - Associative list of key/value pairs
+* Since: 2022.10
+
+Contains the required settings for configuring the ChatGPT API.
+The necessary settings for ChatGPT are:
+
+```
+ [
+   'key' => '<your-OpenAI-API-key>',
+ ]
+```
+
+
 # translate
 
 Configuration for realtime online translation service

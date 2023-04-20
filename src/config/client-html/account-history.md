@@ -7,20 +7,20 @@ A list of domain names whose items should be available in the account history vi
 client/html/account/history/domains = Array
 (
     [0] => order
-    [1] => order/address
-    [2] => order/coupon
-    [3] => order/product
-    [4] => order/service
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
 )
 ```
 
 * Default: Array
 (
     [0] => order
-    [1] => order/address
-    [2] => order/coupon
-    [3] => order/product
-    [4] => order/service
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
 )
 
 * Type: array - List of domain names
@@ -38,10 +38,10 @@ more time is required for fetching the content!
 Class name of the used account history client implementation
 
 ```
-client/html/account/history/name =
+client/html/account/history/name = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -150,10 +150,10 @@ See also:
 Relative path to the HTML body template of the account history client.
 
 ```
-client/html/account/history/template-body =
+client/html/account/history/template-body = account/history/body
 ```
 
-* Default:
+* Default: account/history/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -178,10 +178,10 @@ See also:
 Relative path to the HTML header template of the account history client.
 
 ```
-client/html/account/history/template-header =
+client/html/account/history/template-header = account/history/header
 ```
 
-* Default:
+* Default: account/history/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -224,6 +224,7 @@ See also:
 * client/html/account/history/url/target
 * client/html/account/history/url/controller
 * client/html/account/history/url/config
+* client/html/account/history/url/filter
 
 ## config
 
@@ -259,7 +260,7 @@ See also:
 * client/html/account/history/url/target
 * client/html/account/history/url/controller
 * client/html/account/history/url/action
-* client/html/url/config
+* client/html/account/history/url/filter
 
 ## controller
 
@@ -282,8 +283,11 @@ See also:
 * client/html/account/history/url/target
 * client/html/account/history/url/action
 * client/html/account/history/url/config
+* client/html/account/history/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/account/history/url/filter = Array
@@ -295,17 +299,28 @@ client/html/account/history/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/account/history/url/target
+* client/html/account/history/url/controller
+* client/html/account/history/url/action
+* client/html/account/history/url/config
 
 ## target
 
 Destination of the URL where the controller specified in the URL is known
 
 ```
-client/html/account/history/url/target =
+client/html/account/history/url/target = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 
@@ -318,3 +333,4 @@ See also:
 * client/html/account/history/url/controller
 * client/html/account/history/url/action
 * client/html/account/history/url/config
+* client/html/account/history/url/filter

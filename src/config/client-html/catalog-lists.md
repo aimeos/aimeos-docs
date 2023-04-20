@@ -564,6 +564,7 @@ See also:
 * client/html/catalog/lists/url/target
 * client/html/catalog/lists/url/controller
 * client/html/catalog/lists/url/config
+* client/html/catalog/lists/url/filter
 
 ## config
 
@@ -599,7 +600,7 @@ See also:
 * client/html/catalog/lists/url/target
 * client/html/catalog/lists/url/controller
 * client/html/catalog/lists/url/action
-* client/html/url/config
+* client/html/catalog/lists/url/filter
 
 ## controller
 
@@ -622,8 +623,11 @@ See also:
 * client/html/catalog/lists/url/target
 * client/html/catalog/lists/url/action
 * client/html/catalog/lists/url/config
+* client/html/catalog/lists/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/catalog/lists/url/filter = Array
@@ -635,7 +639,18 @@ client/html/catalog/lists/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/catalog/lists/url/target
+* client/html/catalog/lists/url/controller
+* client/html/catalog/lists/url/action
+* client/html/catalog/lists/url/config
 
 ## target
 
@@ -658,3 +673,4 @@ See also:
 * client/html/catalog/lists/url/controller
 * client/html/catalog/lists/url/action
 * client/html/catalog/lists/url/config
+* client/html/catalog/lists/url/filter

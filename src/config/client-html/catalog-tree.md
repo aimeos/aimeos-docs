@@ -66,6 +66,7 @@ See also:
 * client/html/catalog/tree/url/target
 * client/html/catalog/tree/url/controller
 * client/html/catalog/tree/url/config
+* client/html/catalog/tree/url/filter
 
 ## config
 
@@ -101,7 +102,7 @@ See also:
 * client/html/catalog/tree/url/target
 * client/html/catalog/tree/url/controller
 * client/html/catalog/tree/url/action
-* client/html/url/config
+* client/html/catalog/tree/url/filter
 
 ## controller
 
@@ -124,8 +125,11 @@ See also:
 * client/html/catalog/tree/url/target
 * client/html/catalog/tree/url/action
 * client/html/catalog/tree/url/config
+* client/html/catalog/tree/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/catalog/tree/url/filter = Array
@@ -137,7 +141,18 @@ client/html/catalog/tree/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/catalog/tree/url/target
+* client/html/catalog/tree/url/controller
+* client/html/catalog/tree/url/action
+* client/html/catalog/tree/url/config
 
 ## target
 
@@ -160,3 +175,4 @@ See also:
 * client/html/catalog/tree/url/controller
 * client/html/catalog/tree/url/action
 * client/html/catalog/tree/url/config
+* client/html/catalog/tree/url/filter

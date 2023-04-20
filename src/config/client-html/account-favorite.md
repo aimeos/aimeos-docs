@@ -49,17 +49,19 @@ A list of domain names whose items should be available in the account favorite v
 ```
 client/html/account/favorite/domains = Array
 (
-    [0] => text
-    [1] => price
-    [2] => media
+    [0] => catalog
+    [1] => text
+    [2] => price
+    [3] => media
 )
 ```
 
 * Default: Array
 (
-    [0] => text
-    [1] => price
-    [2] => media
+    [0] => catalog
+    [1] => text
+    [2] => price
+    [3] => media
 )
 
 * Type: array - List of domain names
@@ -164,6 +166,63 @@ See also:
 
 * client/html/catalog/lists/size
 
+# template-body
+
+Relative path to the HTML body template of the account favorite client.
+
+```
+client/html/account/favorite/template-body = account/favorite/body
+```
+
+* Default: account/favorite/body
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2015.10
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
+
+See also:
+
+* client/html/account/favorite/template-header
+
+# template-header
+
+Relative path to the HTML header template of the account favorite client.
+
+```
+client/html/account/favorite/template-header = account/favorite/header
+```
+
+* Default: account/favorite/header
+* Type: string - Relative path to the template creating code for the HTML page head
+* Since: 2015.10
+
+The template file contains the HTML code and processing instructions
+to generate the HTML code that is inserted into the HTML page header
+of the rendered page in the frontend. The configuration string is the
+path to the template file relative to the templates directory (usually
+in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
+
+See also:
+
+* client/html/account/favorite/template-body
+
 # url
 ## action
 
@@ -186,6 +245,7 @@ See also:
 * client/html/account/favorite/url/target
 * client/html/account/favorite/url/controller
 * client/html/account/favorite/url/config
+* client/html/account/favorite/url/filter
 
 ## config
 
@@ -221,7 +281,7 @@ See also:
 * client/html/account/favorite/url/target
 * client/html/account/favorite/url/controller
 * client/html/account/favorite/url/action
-* client/html/url/config
+* client/html/account/favorite/url/filter
 
 ## controller
 
@@ -244,8 +304,11 @@ See also:
 * client/html/account/favorite/url/target
 * client/html/account/favorite/url/action
 * client/html/account/favorite/url/config
+* client/html/account/favorite/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/account/favorite/url/filter = Array
@@ -257,7 +320,18 @@ client/html/account/favorite/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/account/favorite/url/target
+* client/html/account/favorite/url/controller
+* client/html/account/favorite/url/action
+* client/html/account/favorite/url/config
 
 ## target
 
@@ -280,3 +354,4 @@ See also:
 * client/html/account/favorite/url/controller
 * client/html/account/favorite/url/action
 * client/html/account/favorite/url/config
+* client/html/account/favorite/url/filter

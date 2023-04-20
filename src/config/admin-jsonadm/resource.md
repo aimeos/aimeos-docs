@@ -800,7 +800,7 @@ admin/jsonadm/resource/order/coupon/groups = Array
 
 ## groups
 
-List of user groups that are allowed to manage order base items
+List of user groups that are allowed to manage order items
 
 ```
 admin/jsonadm/resource/order/groups = Array
@@ -888,27 +888,6 @@ List of user groups that are allowed to manage order service items
 
 ```
 admin/jsonadm/resource/order/service/groups = Array
-(
-    [0] => admin
-    [1] => editor
-    [2] => super
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of user group names
-* Since: 2017.10
-
-
-## groups
-
-List of user groups that are allowed to manage order items
-
-```
-admin/jsonadm/resource/order/groups = Array
 (
     [0] => admin
     [1] => editor
@@ -1558,10 +1537,10 @@ admin/jsonadm/resource/supplier/lists/type/groups = Array
 List of user groups that are allowed to manage supplier type items
 
 ```
-admin/jsonadm/resource/supplier/type/groups =
+admin/jsonadm/resource/supplier/type/groups = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1593,10 +1572,10 @@ admin/jsonadm/resource/tag/groups = Array
 List of user groups that are allowed to manage tag type items
 
 ```
-admin/jsonadm/resource/tag/type/groups =
+admin/jsonadm/resource/tag/type/groups = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of user group names
 * Since: 2017.10
 

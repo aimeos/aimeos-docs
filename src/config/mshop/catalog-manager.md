@@ -243,6 +243,7 @@ Adds a list of local decorators only to the catalog manager
 ```
 mshop/catalog/manager/decorators/local = Array
 (
+    [Search] => Search
 )
 ```
 
@@ -608,20 +609,9 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/catalog/manager/lists/aggregate/ansi = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_catalog_list" mcatli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, mcatli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
 ```
 
-* Default: mshop/catalog/manager/lists/aggregate
+* Default: 
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.07
 
@@ -670,32 +660,9 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/catalog/manager/lists/aggregate/mysql = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_catalog_list" mcatli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, mcatli."id"
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY :keys
 ```
 
 * Default: 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_catalog_list" mcatli
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, mcatli."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
-
 
 See also:
 
@@ -2255,6 +2222,26 @@ mshop/catalog/manager/newid/mysql = SELECT LAST_INSERT_ID()
 See also:
 
 * mshop/catalog/manager/newid/ansi
+
+# resource
+
+Name of the database connection resource to use
+
+```
+mshop/catalog/manager/resource = db-catalog
+```
+
+* Default: db-catalog
+* Type: string - Database connection name
+* Since: 2023.04
+* Since: 2023.04
+* Since: 2023.04
+
+You can configure a different database connection for each data domain
+and if no such connection name exists, the "db" connection will be used.
+It's also possible to use the same database connection for different
+data domains by configuring the same connection name using this setting.
+
 
 # search-item
 ## ansi

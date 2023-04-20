@@ -5,7 +5,7 @@
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/catalog/import/csv/backup = tmp/notexist/import.zip
+controller/jobs/catalog/import/csv/backup = backup-%Y-%m-%d.csv
 ```
 
 * Default: 
@@ -25,126 +25,16 @@ create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
 please have a look  into the PHP documentation of the
 [format() method](https://www.php.net/manual/en/datetime.format.php).
 
-**Note:** If no backup name is configured, the file or directory
-won't be moved away. Please make also sure that the parent directory
-and the new directory are writable so the file or directory could be
-moved.
+**Note:** If no backup name is configured, the file will be removed!
 
 See also:
 
-* controller/jobs/catalog/import/csv/domains
-* controller/jobs/catalog/import/csv/mapping
-* controller/jobs/catalog/import/csv/skip-lines
 * controller/jobs/catalog/import/csv/converter
-* controller/jobs/catalog/import/csv/strict
-* controller/common/catalog/import/csv/max-size
-
-## container/content
-
-Name of the content type inside the container to read the data from
-
-```
-controller/jobs/catalog/import/csv/container/content = CSV
-```
-
-* Default: CSV
-* Type: array - Content type name
-* Since: 2018.04
-
-The content type must always be a CSV-like format and there are
-currently two format types that are supported:
-
-* CSV
-
-See also:
-
-* controller/jobs/catalog/import/csv/location
-* controller/jobs/catalog/import/csv/container/type
-* controller/jobs/catalog/import/csv/container/options
-
-## container/options
-
-List of file container options for the catalog import files
-
-```
-controller/jobs/catalog/import/csv/container/options = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - Associative list of option name/value pairs
-* Since: 2018.04
-
-Some container/content type allow you to hand over additional settings
-for configuration. Please have a look at the article about
-[container/content files](http://aimeos.org/docs/Developers/Utility/Create_and_read_files)
-for more information.
-
-See also:
-
-* controller/jobs/catalog/import/csv/location
-* controller/jobs/catalog/import/csv/container/content
-* controller/jobs/catalog/import/csv/container/type
-
-## container/type
-
-Nave of the container type to read the data from
-
-```
-controller/jobs/catalog/import/csv/container/type = Zip
-```
-
-* Default: Directory
-* Type: string - Container type name
-* Since: 2018.04
-
-The container type tells the importer how it should retrieve the data.
-There are currently three container types that support the necessary
-CSV content:
-
-* Directory
-* Zip
-
-See also:
-
-* controller/jobs/catalog/import/csv/location
-* controller/jobs/catalog/import/csv/container/content
-* controller/jobs/catalog/import/csv/container/options
-
-## converter
-
-List of converter names for the values at the position in the CSV file
-
-```
-controller/jobs/catalog/import/csv/converter = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - Associative list of position/converter name (or list of names) pairs
-* Since: 2018.04
-
-This configuration setting overwrites the shared option
-"controller/common/catalog/import/csv/converter" if you need a
-specific setting for the job controller. Otherwise, you should
-use the shared option for consistency.
-
-See also:
-
 * controller/jobs/catalog/import/csv/domains
+* controller/jobs/catalog/import/csv/location
 * controller/jobs/catalog/import/csv/mapping
+* controller/jobs/catalog/import/csv/max-size
 * controller/jobs/catalog/import/csv/skip-lines
-* controller/jobs/catalog/import/csv/strict
-* controller/jobs/catalog/import/csv/backup
-* controller/common/catalog/import/csv/max-size
 
 ## decorators/excludes
 
@@ -270,48 +160,47 @@ controller/jobs/catalog/import/csv/domains = Array
 * Type: array - Associative list of MShop item domain names
 * Since: 2018.04
 
-This configuration setting overwrites the shared option
-"controller/common/catalog/import/csv/domains" if you need a
-specific setting for the job controller. Otherwise, you should
-use the shared option for consistency.
+For efficient processing, the items associated to the catalogs can be
+fetched to, minimizing the number of database queries required. To be
+most effective, the list of item domain names should be used in the
+mapping configuration too, so the retrieved items will be used during
+the import.
 
 See also:
 
-* controller/jobs/catalog/import/csv/mapping
-* controller/jobs/catalog/import/csv/skip-lines
-* controller/jobs/catalog/import/csv/converter
-* controller/jobs/catalog/import/csv/strict
 * controller/jobs/catalog/import/csv/backup
-* controller/common/catalog/import/csv/max-size
+* controller/jobs/catalog/import/csv/converter
+* controller/jobs/catalog/import/csv/location
+* controller/jobs/catalog/import/csv/mapping
+* controller/jobs/catalog/import/csv/max-size
+* controller/jobs/catalog/import/csv/skip-lines
 
 ## location
 
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/catalog/import/csv/location = tmp/import.zip
+controller/jobs/catalog/import/csv/location = catalog
 ```
 
-* Default: 
-* Type: string - Absolute file or directory path
-* Since: 2018.04
+* Default: catalog
+* Type: string - Relative path to the CSV files
+* Since: 2015.08
 
-You need to configure the file or directory that acts as container
-for the CSV files that should be imported. It should be an absolute
-path to be sure but can be relative path if you absolutely know from
-where the job will be executed from.
-
-The path can point to any supported container format as long as the
-content is in CSV format, e.g.
-
-* Directory container / CSV file
-* Zip container / compressed CSV file
+You need to configure the CSV file or directory with the CSV files that
+should be imported. It should be an absolute path to be sure but can be
+relative path if you absolutely know from where the job will be executed
+from.
 
 See also:
 
-* controller/jobs/catalog/import/csv/container/type
-* controller/jobs/catalog/import/csv/container/content
-* controller/jobs/catalog/import/csv/container/options
+* controller/jobs/catalog/import/csv/backup
+* controller/jobs/catalog/import/csv/converter
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/catalog/import/csv/location
+* controller/jobs/catalog/import/csv/mapping
+* controller/jobs/catalog/import/csv/max-size
+* controller/jobs/catalog/import/csv/skip-lines
 
 ## mapping
 
@@ -368,23 +257,58 @@ controller/jobs/catalog/import/csv/mapping = Array
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2018.04
 
-This configuration setting overwrites the shared option
-"controller/common/catalog/import/csv/mapping" if you need a
-specific setting for the job controller. Otherwise, you should
-use the shared option for consistency.
+The importer have to know which data is at which position in the CSV
+file. Therefore, you need to specify a mapping between each position
+and the MShop domain item key (e.g. "catalog.code") it represents.
+
+You can use all domain item keys which are used in the fromArray()
+methods of the item classes.
+
+These mappings are grouped together by their processor names, which
+are responsible for importing the data, e.g. all mappings in "item"
+will be processed by the base catalog importer while the mappings in
+"text" will be imported by the text processor.
 
 See also:
 
-* controller/jobs/catalog/import/csv/domains
-* controller/jobs/catalog/import/csv/skip-lines
-* controller/jobs/catalog/import/csv/converter
-* controller/jobs/catalog/import/csv/strict
 * controller/jobs/catalog/import/csv/backup
-* controller/common/catalog/import/csv/max-size
+* controller/jobs/catalog/import/csv/converter
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/catalog/import/csv/location
+* controller/jobs/catalog/import/csv/max-size
+* controller/jobs/catalog/import/csv/skip-lines
+
+## max-size
+
+Maximum number of CSV rows to import at once
+
+```
+controller/jobs/catalog/import/csv/max-size = 1000
+```
+
+* Default: 1000
+* Type: integer - Number of rows
+* Since: 2018.04
+
+It's more efficient to read and import more than one row at a time
+to speed up the import. Usually, the bigger the chunk that is imported
+at once, the less time the importer will need. The downside is that
+the amount of memory required by the import process will increase as
+well. Therefore, it's a trade-off between memory consumption and
+import speed.
+
+See also:
+
+* controller/jobs/catalog/import/csv/backup
+* controller/jobs/catalog/import/csv/converter
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/catalog/import/csv/location
+* controller/jobs/catalog/import/csv/mapping
+* controller/jobs/catalog/import/csv/skip-lines
 
 ## name
 
-Class name of the used catalog suggestions scheduler controller implementation
+Class name of the used catalog CSV importer implementation
 
 ```
 controller/jobs/catalog/import/csv/name = 
@@ -447,40 +371,12 @@ begins.
 
 See also:
 
-* controller/jobs/catalog/import/csv/domains
-* controller/jobs/catalog/import/csv/mapping
-* controller/jobs/catalog/import/csv/converter
-* controller/jobs/catalog/import/csv/strict
 * controller/jobs/catalog/import/csv/backup
-* controller/common/catalog/import/csv/max-size
-
-## strict
-
-Log all columns from the file that are not mapped and therefore not imported
-
-```
-controller/jobs/catalog/import/csv/strict = 1
-```
-
-* Default: 1
-* Type: boolen - True if not imported columns should be logged, false if not
-* Since: 2015.08
-
-Depending on the mapping, there can be more columns in the CSV file
-than those which will be imported. This can be by purpose if you want
-to import only selected columns or if you've missed to configure one
-or more columns. This configuration option will log all columns that
-have not been imported if set to true. Otherwise, the left over fields
-in the imported line will be silently ignored.
-
-See also:
-
-* controller/jobs/catalog/import/csv/domains
-* controller/jobs/catalog/import/csv/mapping
-* controller/jobs/catalog/import/csv/skip-lines
 * controller/jobs/catalog/import/csv/converter
-* controller/jobs/catalog/import/csv/backup
-* controller/common/catalog/import/csv/max-size
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/catalog/import/csv/location
+* controller/jobs/catalog/import/csv/mapping
+* controller/jobs/catalog/import/csv/max-size
 
 # xml
 ## backup
@@ -508,14 +404,12 @@ create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
 please have a look  into the PHP documentation of the
 [format() method](https://www.php.net/manual/en/datetime.format.php).
 
-**Note:** If no backup name is configured, the file or directory
-won't be moved away. Please make also sure that the parent directory
-and the new directory are writable so the file or directory could be
-moved.
+**Note:** If no backup name is configured, the file will be removed!
 
 See also:
 
 * controller/jobs/catalog/import/xml/domains
+* controller/jobs/catalog/import/xml/location
 * controller/jobs/catalog/import/xml/max-query
 
 ## decorators/excludes
@@ -651,19 +545,23 @@ controller/jobs/catalog/import/xml/domains = Array
 
 * Default: Array
 (
+    [0] => media
+    [1] => text
 )
 
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
-This configuration setting overwrites the shared option
-"controller/common/catalog/import/xml/domains" if you need a
-specific setting for the job controller. Otherwise, you should
-use the shared option for consistency.
+For efficient processing, the items associated to the products can be
+fetched to, minimizing the number of database queries required. To be
+most effective, the list of item domain names should be used in the
+mapping configuration too, so the retrieved items will be used during
+the import.
 
 See also:
 
 * controller/jobs/catalog/import/xml/backup
+* controller/jobs/catalog/import/xml/location
 * controller/jobs/catalog/import/xml/max-query
 
 ## location
@@ -674,8 +572,8 @@ File or directory where the content is stored which should be imported
 controller/jobs/catalog/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: 
-* Type: string - Absolute file or directory path
+* Default: catalog
+* Type: string - Relative path to the XML files
 * Since: 2019.04
 
 You need to configure the XML file or directory with the XML files that
@@ -685,9 +583,9 @@ from.
 
 See also:
 
-* controller/jobs/catalog/import/xml/container/type
-* controller/jobs/catalog/import/xml/container/content
-* controller/jobs/catalog/import/xml/container/options
+* controller/jobs/catalog/import/xml/backup
+* controller/jobs/catalog/import/xml/domains
+* controller/jobs/catalog/import/xml/max-query
 
 ## name
 

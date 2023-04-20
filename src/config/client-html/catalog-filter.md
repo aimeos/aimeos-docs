@@ -84,10 +84,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter attribute client.
 
 ```
-client/html/catalog/filter/attribute/template-body = 
+client/html/catalog/filter/attribute/template-body = catalog/filter/attribute-body
 ```
 
-* Default: 
+* Default: catalog/filter/attribute-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -455,10 +455,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter price client.
 
 ```
-client/html/catalog/filter/price/template-body = 
+client/html/catalog/filter/price/template-body = catalog/filter/price-body
 ```
 
-* Default: 
+* Default: catalog/filter/price-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -575,10 +575,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter search client.
 
 ```
-client/html/catalog/filter/search/template-body = 
+client/html/catalog/filter/search/template-body = catalog/filter/search-body
 ```
 
-* Default: 
+* Default: catalog/filter/search-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -742,10 +742,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog filter supplier client.
 
 ```
-client/html/catalog/filter/supplier/template-body = 
+client/html/catalog/filter/supplier/template-body = catalog/filter/supplier-body
 ```
 
-* Default: 
+* Default: catalog/filter/supplier-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.07
 
@@ -973,10 +973,10 @@ See also:
 Relative path to the HTML body template of the catalog filter tree client.
 
 ```
-client/html/catalog/filter/tree/template-body = 
+client/html/catalog/filter/tree/template-body = catalog/filter/tree-body
 ```
 
-* Default: 
+* Default: catalog/filter/tree-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 

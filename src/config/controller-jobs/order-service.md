@@ -5,10 +5,10 @@
 Excludes decorators added by the "common" option from the order service async controllers
 
 ```
-controller/jobs/order/service/async/decorators/excludes =
+controller/jobs/order/service/async/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -40,10 +40,10 @@ See also:
 Adds a list of globally available decorators only to the order service async controllers
 
 ```
-controller/jobs/order/service/async/decorators/global =
+controller/jobs/order/service/async/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -73,10 +73,10 @@ See also:
 Adds a list of local decorators only to the order service async controllers
 
 ```
-controller/jobs/order/service/async/decorators/local =
+controller/jobs/order/service/async/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -107,10 +107,10 @@ See also:
 Class name of the used order service async scheduler controller implementation
 
 ```
-controller/jobs/order/service/async/name =
+controller/jobs/order/service/async/name = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.07
 
@@ -178,10 +178,10 @@ See also:
 Excludes decorators added by the "common" option from the order service delivery controllers
 
 ```
-controller/jobs/order/service/delivery/decorators/excludes =
+controller/jobs/order/service/delivery/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -213,10 +213,10 @@ See also:
 Adds a list of globally available decorators only to the order service delivery controllers
 
 ```
-controller/jobs/order/service/delivery/decorators/global =
+controller/jobs/order/service/delivery/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -246,10 +246,10 @@ See also:
 Adds a list of local decorators only to the order service delivery controllers
 
 ```
-controller/jobs/order/service/delivery/decorators/local =
+controller/jobs/order/service/delivery/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -282,21 +282,19 @@ Associated items that should be available too in the order
 ```
 controller/jobs/order/service/delivery/domains = Array
 (
-    [0] => order
-    [1] => order/address
-    [2] => order/coupon
-    [3] => order/product
-    [4] => order/service
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
 )
 ```
 
 * Default: Array
 (
-    [0] => order
-    [1] => order/address
-    [2] => order/coupon
-    [3] => order/product
-    [4] => order/service
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
 )
 
 * Type: array - Referenced domain names
@@ -306,7 +304,6 @@ Orders consist of address, coupons, products and services. They can be
 fetched together with the order items and passed to the delivery service
 providers. Available domains for those items are:
 
-- order
 - order/address
 - order/coupon
 - order/product
@@ -344,10 +341,10 @@ See also:
 Class name of the used order service delivery scheduler controller implementation
 
 ```
-controller/jobs/order/service/delivery/name =
+controller/jobs/order/service/delivery/name = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -390,10 +387,10 @@ or numbers. Avoid chamel case names like "MyDelivery"!
 Automatically capture payments after the configured amount of days
 
 ```
-controller/jobs/order/service/payment/capture-days =
+controller/jobs/order/service/payment/capture-days = 
 ```
 
-* Default:
+* Default: 
 * Type: integer - Number of days
 * Since: 2014.07
 
@@ -408,10 +405,10 @@ by the aquirers after some time (usually seven days).
 Excludes decorators added by the "common" option from the order service payment controllers
 
 ```
-controller/jobs/order/service/payment/decorators/excludes =
+controller/jobs/order/service/payment/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -443,10 +440,10 @@ See also:
 Adds a list of globally available decorators only to the order service payment controllers
 
 ```
-controller/jobs/order/service/payment/decorators/global =
+controller/jobs/order/service/payment/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -476,10 +473,10 @@ See also:
 Adds a list of local decorators only to the order service payment controllers
 
 ```
-controller/jobs/order/service/payment/decorators/local =
+controller/jobs/order/service/payment/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -510,10 +507,10 @@ See also:
 Associated items that should be available too in the order
 
 ```
-controller/jobs/order/service/payment/domains =
+controller/jobs/order/service/payment/domains = 
 ```
 
-* Default:
+* Default: 
 * Type: array - Referenced domain names
 * Since: 2022.04
 
@@ -521,7 +518,6 @@ Orders consist of address, coupons, products and services. They can be
 fetched together with the order items and passed to the payment service
 providers. Available domains for those items are:
 
-- order
 - order/address
 - order/coupon
 - order/product
@@ -555,10 +551,10 @@ of old orders would be captured now.
 Class name of the used order service payment scheduler controller implementation
 
 ```
-controller/jobs/order/service/payment/name =
+controller/jobs/order/service/payment/name = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.07
 
@@ -623,10 +619,10 @@ See also:
 Excludes decorators added by the "common" option from the order service transfer controllers
 
 ```
-controller/jobs/order/service/transfer/decorators/excludes =
+controller/jobs/order/service/transfer/decorators/excludes = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -658,10 +654,10 @@ See also:
 Adds a list of globally available decorators only to the order service transfer controllers
 
 ```
-controller/jobs/order/service/transfer/decorators/global =
+controller/jobs/order/service/transfer/decorators/global = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -691,10 +687,10 @@ See also:
 Adds a list of local decorators only to the order service transfer controllers
 
 ```
-controller/jobs/order/service/transfer/decorators/local =
+controller/jobs/order/service/transfer/decorators/local = 
 ```
 
-* Default:
+* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -727,21 +723,19 @@ Associated items that should be available too in the order
 ```
 controller/jobs/order/service/transfer/domains = Array
 (
-    [0] => order
-    [1] => order/address
-    [2] => order/coupon
-    [3] => order/product
-    [4] => order/service
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
 )
 ```
 
 * Default: Array
 (
-    [0] => order
-    [1] => order/address
-    [2] => order/coupon
-    [3] => order/product
-    [4] => order/service
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
 )
 
 * Type: array - Referenced domain names
@@ -751,7 +745,6 @@ Orders consist of address, coupons, products and services. They can be
 fetched together with the order items and passed to the payment service
 providers. Available domains for those items are:
 
-- order
 - order/address
 - order/coupon
 - order/product
@@ -763,10 +756,10 @@ providers. Available domains for those items are:
 Class name of the used order service transfer scheduler controller implementation
 
 ```
-controller/jobs/order/service/transfer/name =
+controller/jobs/order/service/transfer/name = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.10
 

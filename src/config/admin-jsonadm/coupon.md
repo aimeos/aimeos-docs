@@ -5,10 +5,15 @@
 Excludes decorators added by the "common" option from the JSON API clients
 
 ```
-admin/jsonadm/coupon/config/decorators/excludes = 
+admin/jsonadm/coupon/config/decorators/excludes = Array
+(
+)
 ```
 
-* Default: 
+* Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -40,10 +45,15 @@ See also:
 Adds a list of globally available decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/coupon/config/decorators/global = 
+admin/jsonadm/coupon/config/decorators/global = Array
+(
+)
 ```
 
-* Default: 
+* Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -75,10 +85,15 @@ See also:
 Adds a list of local decorators only to the Jsonadm client
 
 ```
-admin/jsonadm/coupon/config/decorators/local = 
+admin/jsonadm/coupon/config/decorators/local = Array
+(
+)
 ```
 
-* Default: 
+* Default: Array
+(
+)
+
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -104,6 +119,15 @@ See also:
 * admin/jsonadm/common/decorators/default
 * admin/jsonadm/coupon/config/decorators/excludes
 * admin/jsonadm/coupon/config/decorators/global
+
+## name
+
+```
+admin/jsonadm/coupon/config/name = Standard
+```
+
+* Default: Standard
+
 
 ## template-get
 

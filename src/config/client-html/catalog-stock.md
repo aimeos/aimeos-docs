@@ -113,10 +113,10 @@ See also:
 Relative path to the HTML body template of the catalog stock client.
 
 ```
-client/html/catalog/stock/template-body = 
+client/html/catalog/stock/template-body = catalog/stock/body
 ```
 
-* Default: 
+* Default: catalog/stock/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -141,10 +141,10 @@ See also:
 Relative path to the HTML header template of the catalog stock client.
 
 ```
-client/html/catalog/stock/template-header = 
+client/html/catalog/stock/template-header = catalog/stock/header
 ```
 
-* Default: 
+* Default: catalog/stock/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -187,6 +187,7 @@ See also:
 * client/html/catalog/stock/url/target
 * client/html/catalog/stock/url/controller
 * client/html/catalog/stock/url/config
+* client/html/catalog/stock/url/filter
 * client/html/catalog/stock/url/max-items
 
 ## config
@@ -223,6 +224,7 @@ See also:
 * client/html/catalog/stock/url/target
 * client/html/catalog/stock/url/controller
 * client/html/catalog/stock/url/action
+* client/html/catalog/stock/url/filter
 * client/html/catalog/stock/url/max-items
 
 ## controller
@@ -246,9 +248,12 @@ See also:
 * client/html/catalog/stock/url/target
 * client/html/catalog/stock/url/action
 * client/html/catalog/stock/url/config
+* client/html/catalog/stock/url/filter
 * client/html/catalog/stock/url/max-items
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/catalog/stock/url/filter = Array
@@ -260,7 +265,19 @@ client/html/catalog/stock/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/catalog/stock/url/target
+* client/html/catalog/stock/url/controller
+* client/html/catalog/stock/url/action
+* client/html/catalog/stock/url/config
+* client/html/catalog/stock/url/max-items
 
 ## max-items
 
@@ -307,4 +324,5 @@ See also:
 * client/html/catalog/stock/url/controller
 * client/html/catalog/stock/url/action
 * client/html/catalog/stock/url/config
+* client/html/catalog/stock/url/filter
 * client/html/catalog/stock/url/max-items

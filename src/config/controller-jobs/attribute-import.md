@@ -25,19 +25,17 @@ create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
 please have a look  into the PHP documentation of the
 [format() method](https://www.php.net/manual/en/datetime.format.php).
 
-**Note:** If no backup name is configured, the file or directory
-won't be moved away. Please make also sure that the parent directory
-and the new directory are writable so the file or directory could be
-moved.
+**Note:** If no backup name is configured, the file will be removed!
 
 See also:
 
 * controller/jobs/attribute/import/xml/domains
+* controller/jobs/attribute/import/xml/location
 * controller/jobs/attribute/import/xml/max-query
 
 ## decorators/excludes
 
-Excludes decorators added by the "common" option from the attribute import CSV job controller
+Excludes decorators added by the "common" option from the attribute import XML job controller
 
 ```
 controller/jobs/attribute/import/xml/decorators/excludes = Array
@@ -77,7 +75,7 @@ See also:
 
 ## decorators/global
 
-Adds a list of globally available decorators only to the attribute import CSV job controller
+Adds a list of globally available decorators only to the attribute import XML job controller
 
 ```
 controller/jobs/attribute/import/xml/decorators/global = Array
@@ -115,7 +113,7 @@ See also:
 
 ## decorators/local
 
-Adds a list of local decorators only to the attribute import CSV job controller
+Adds a list of local decorators only to the attribute import XML job controller
 
 ```
 controller/jobs/attribute/import/xml/decorators/local = Array
@@ -169,19 +167,25 @@ controller/jobs/attribute/import/xml/domains = Array
 
 * Default: Array
 (
+    [0] => attribute/property
+    [1] => media
+    [2] => price
+    [3] => text
 )
 
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
-This configuration setting overwrites the shared option
-"controller/common/attribute/import/xml/domains" if you need a
-specific setting for the job controller. Otherwise, you should
-use the shared option for consistency.
+For efficient processing, the items associated to the products can be
+fetched to, minimizing the number of database queries required. To be
+most effective, the list of item domain names should be used in the
+mapping configuration too, so the retrieved items will be used during
+the import.
 
 See also:
 
 * controller/jobs/attribute/import/xml/backup
+* controller/jobs/attribute/import/xml/location
 * controller/jobs/attribute/import/xml/max-query
 
 ## location
@@ -192,8 +196,8 @@ File or directory where the content is stored which should be imported
 controller/jobs/attribute/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: 
-* Type: string - Absolute file or directory path
+* Default: attribute
+* Type: string - Relative path to the XML files
 * Since: 2019.04
 
 You need to configure the XML file or directory with the XML files that
@@ -203,9 +207,9 @@ from.
 
 See also:
 
-* controller/jobs/attribute/import/xml/container/type
-* controller/jobs/attribute/import/xml/container/content
-* controller/jobs/attribute/import/xml/container/options
+* controller/jobs/attribute/import/xml/backup
+* controller/jobs/attribute/import/xml/domains
+* controller/jobs/attribute/import/xml/max-query
 
 ## max-query
 
@@ -228,11 +232,12 @@ limit of the PHP process.
 See also:
 
 * controller/jobs/attribute/import/xml/domains
+* controller/jobs/attribute/import/xml/location
 * controller/jobs/attribute/import/xml/backup
 
 ## name
 
-Class name of the used attribute suggestions scheduler controller implementation
+Class name of the used attribute XML importer implementation
 
 ```
 controller/jobs/attribute/import/xml/name = Standard

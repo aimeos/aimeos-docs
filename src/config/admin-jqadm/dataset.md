@@ -26,14 +26,12 @@ A template definition may look like this in the PHP configuration:
 ```
  [
    'T-Shirt' => [
-     'characteristic' => [
-       'variant' => [['attribute.type' => 'color'], ['attribute.type' => 'size']],
-       'attribute' => [['attribute.type' => 'material']],
-     ],
-     'option' => [
-       'config' => [['attribute.type' => 'sticker']],
-       'custom' => [['attribute.type' => 'print']],
-     ],
+     'characteristic/variant' => [['attribute.type' => 'color'], ['attribute.type' => 'size']],
+     'characteristic/attribute' => [['attribute.type' => 'material']],
+     'option/config' => [['attribute.type' => 'sticker']],
+     'option/custom' => [['attribute.type' => 'print']],
+     'price' => [['price.currencyid' => 'EUR', 'price.taxrates' => ['' => '19.00']]],
+     'stock' => [['stock.type' => 'default']],
      'price' => [['price.currencyid' => 'EUR', 'price.taxrates' => ['' => '19.00']]],
      'stock' => [['stock.type' => 'default']],
    ],
@@ -55,17 +53,11 @@ You can also define a template for a book with a totally different data set:
 ```
  [
    'Book' => [
-     'characteristic' => [
-       'attribute' => [['attribute.type' => 'binding']],
-       'property' => [['product.property.type' => 'isbn']],
-     ],
-     'related' => [
-       'suggest' => [[], []],
-     ],
-     'catalog' => [
-       'default' => [[]],
-       'promotion' => [[]],
-     ],
+     'characteristic/attribute' => [['attribute.type' => 'binding']],
+     'characteristic/property' => [['product.property.type' => 'isbn']],
+     'related/suggest' => [[], []],
+     'catalog/default' => [[]],
+     'catalog/promotion' => [[]],
      'media' => [['media.type' => 'default'], ['media.type' => 'download']],
      'text' => [
        ['text.type' => 'name', 'text.languageid' => 'en'],

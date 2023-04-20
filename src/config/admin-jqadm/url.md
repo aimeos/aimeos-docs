@@ -2,14 +2,30 @@
 # batch
 ## action
 
+Name of the action that should create the output
+
 ```
 admin/jqadm/url/batch/action = batch
 ```
 
 * Default: batch
+* Type: string - Name of the action
+* Since: 2022.10
 
+In Model-View-Controller (MVC) applications, actions are the methods of a
+controller that create parts of the output displayed in the generated HTML page.
+Action names are usually alpha-numeric.
+
+See also:
+
+* admin/jqadm/url/batch/target
+* admin/jqadm/url/batch/controller
+* admin/jqadm/url/batch/config
+* admin/jqadm/url/batch/filter
 
 ## config
+
+Associative list of configuration options used for generating the URL
 
 ```
 admin/jqadm/url/batch/config = Array
@@ -21,18 +37,54 @@ admin/jqadm/url/batch/config = Array
 (
 )
 
+* Type: string - Associative list of configuration options
+* Since: 2022.10
 
+You can specify additional options as key/value pairs used when generating
+the URLs, like
+
+```
+ admin/jqadm/url/batch/config = ['absoluteUri' => true]
+```
+
+The available key/value pairs depend on the application that embeds the e-commerce
+framework. This is because the infrastructure of the application is used for
+generating the URLs. The full list of available config options is referenced
+in the "see also" section of this page.
+
+See also:
+
+* admin/jqadm/url/batch/target
+* admin/jqadm/url/batch/controller
+* admin/jqadm/url/batch/action
+* admin/jqadm/url/batch/filter
 
 ## controller
+
+Name of the controller whose action should be called
 
 ```
 admin/jqadm/url/batch/controller = Url
 ```
 
 * Default: Url
+* Type: string - Name of the controller
+* Since: 2022.10
 
+In Model-View-Controller (MVC) applications, the controller contains the methods
+that create parts of the output displayed in the generated HTML page. Controller
+names are usually alpha-numeric.
+
+See also:
+
+* admin/jqadm/url/batch/target
+* admin/jqadm/url/batch/action
+* admin/jqadm/url/batch/config
+* admin/jqadm/url/batch/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 admin/jqadm/url/batch/filter = Array
@@ -44,16 +96,41 @@ admin/jqadm/url/batch/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/batch/target
+* admin/jqadm/url/batch/controller
+* admin/jqadm/url/batch/action
+* admin/jqadm/url/batch/config
 
 ## target
+
+Destination of the URL where the controller specified in the URL is known
 
 ```
 admin/jqadm/url/batch/target = 
 ```
 
 * Default: 
+* Type: string - Destination of the URL
+* Since: 2022.10
 
+The destination can be a page ID like in a content management system or the
+module of a software development framework. This "target" must contain or know
+the controller that should be called by the generated URL.
+
+See also:
+
+* admin/jqadm/url/batch/controller
+* admin/jqadm/url/batch/action
+* admin/jqadm/url/batch/config
+* admin/jqadm/url/batch/filter
 
 # copy
 ## action
@@ -77,6 +154,7 @@ See also:
 * admin/jqadm/url/copy/target
 * admin/jqadm/url/copy/controller
 * admin/jqadm/url/copy/config
+* admin/jqadm/url/copy/filter
 
 ## config
 
@@ -112,6 +190,7 @@ See also:
 * admin/jqadm/url/copy/target
 * admin/jqadm/url/copy/controller
 * admin/jqadm/url/copy/action
+* admin/jqadm/url/copy/filter
 
 ## controller
 
@@ -134,8 +213,11 @@ See also:
 * admin/jqadm/url/copy/target
 * admin/jqadm/url/copy/action
 * admin/jqadm/url/copy/config
+* admin/jqadm/url/copy/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 admin/jqadm/url/copy/filter = Array
@@ -147,7 +229,18 @@ admin/jqadm/url/copy/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2016.04
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/copy/target
+* admin/jqadm/url/copy/controller
+* admin/jqadm/url/copy/action
+* admin/jqadm/url/copy/config
 
 ## target
 
@@ -170,6 +263,7 @@ See also:
 * admin/jqadm/url/copy/controller
 * admin/jqadm/url/copy/action
 * admin/jqadm/url/copy/config
+* admin/jqadm/url/copy/filter
 
 # create
 ## action
@@ -193,6 +287,7 @@ See also:
 * admin/jqadm/url/create/target
 * admin/jqadm/url/create/controller
 * admin/jqadm/url/create/config
+* admin/jqadm/url/create/filter
 
 ## config
 
@@ -228,6 +323,7 @@ See also:
 * admin/jqadm/url/create/target
 * admin/jqadm/url/create/controller
 * admin/jqadm/url/create/action
+* admin/jqadm/url/create/filter
 
 ## controller
 
@@ -250,8 +346,11 @@ See also:
 * admin/jqadm/url/create/target
 * admin/jqadm/url/create/action
 * admin/jqadm/url/create/config
+* admin/jqadm/url/create/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 admin/jqadm/url/create/filter = Array
@@ -263,7 +362,18 @@ admin/jqadm/url/create/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2016.04
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/create/target
+* admin/jqadm/url/create/controller
+* admin/jqadm/url/create/action
+* admin/jqadm/url/create/config
 
 ## target
 
@@ -286,6 +396,7 @@ See also:
 * admin/jqadm/url/create/controller
 * admin/jqadm/url/create/action
 * admin/jqadm/url/create/config
+* admin/jqadm/url/create/filter
 
 # delete
 ## action
@@ -309,6 +420,7 @@ See also:
 * admin/jqadm/url/delete/target
 * admin/jqadm/url/delete/controller
 * admin/jqadm/url/delete/config
+* admin/jqadm/url/delete/filter
 
 ## config
 
@@ -344,6 +456,7 @@ See also:
 * admin/jqadm/url/delete/target
 * admin/jqadm/url/delete/controller
 * admin/jqadm/url/delete/action
+* admin/jqadm/url/delete/filter
 
 ## controller
 
@@ -366,8 +479,11 @@ See also:
 * admin/jqadm/url/delete/target
 * admin/jqadm/url/delete/action
 * admin/jqadm/url/delete/config
+* admin/jqadm/url/delete/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 admin/jqadm/url/delete/filter = Array
@@ -379,7 +495,18 @@ admin/jqadm/url/delete/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2016.04
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/delete/target
+* admin/jqadm/url/delete/controller
+* admin/jqadm/url/delete/action
+* admin/jqadm/url/delete/config
 
 ## target
 
@@ -402,6 +529,7 @@ See also:
 * admin/jqadm/url/delete/controller
 * admin/jqadm/url/delete/action
 * admin/jqadm/url/delete/config
+* admin/jqadm/url/delete/filter
 
 # export
 ## action
@@ -485,6 +613,8 @@ See also:
 
 ## filter
 
+Removes parameters for the detail page before generating the URL
+
 ```
 admin/jqadm/url/export/filter = Array
 (
@@ -495,7 +625,18 @@ admin/jqadm/url/export/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2016.04
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/export/target
+* admin/jqadm/url/export/controller
+* admin/jqadm/url/export/action
+* admin/jqadm/url/export/config
 
 ## target
 
@@ -541,6 +682,7 @@ See also:
 * admin/jqadm/url/get/target
 * admin/jqadm/url/get/controller
 * admin/jqadm/url/get/config
+* admin/jqadm/url/get/filter
 
 ## config
 
@@ -576,6 +718,7 @@ See also:
 * admin/jqadm/url/get/target
 * admin/jqadm/url/get/controller
 * admin/jqadm/url/get/action
+* admin/jqadm/url/get/filter
 
 ## controller
 
@@ -598,8 +741,11 @@ See also:
 * admin/jqadm/url/get/target
 * admin/jqadm/url/get/action
 * admin/jqadm/url/get/config
+* admin/jqadm/url/get/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 admin/jqadm/url/get/filter = Array
@@ -611,7 +757,18 @@ admin/jqadm/url/get/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2016.04
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/get/target
+* admin/jqadm/url/get/controller
+* admin/jqadm/url/get/action
+* admin/jqadm/url/get/config
 
 ## target
 
@@ -634,6 +791,7 @@ See also:
 * admin/jqadm/url/get/controller
 * admin/jqadm/url/get/action
 * admin/jqadm/url/get/config
+* admin/jqadm/url/get/filter
 
 # save
 ## action
@@ -717,6 +875,8 @@ See also:
 
 ## filter
 
+Removes parameters for the detail page before generating the URL
+
 ```
 admin/jqadm/url/save/filter = Array
 (
@@ -727,7 +887,18 @@ admin/jqadm/url/save/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/save/target
+* admin/jqadm/url/save/controller
+* admin/jqadm/url/save/action
+* admin/jqadm/url/save/config
 
 ## target
 
@@ -773,6 +944,7 @@ See also:
 * admin/jqadm/url/search/target
 * admin/jqadm/url/search/controller
 * admin/jqadm/url/search/config
+* admin/jqadm/url/search/filter
 
 ## config
 
@@ -808,6 +980,7 @@ See also:
 * admin/jqadm/url/search/target
 * admin/jqadm/url/search/controller
 * admin/jqadm/url/search/action
+* admin/jqadm/url/search/filter
 
 ## controller
 
@@ -830,8 +1003,11 @@ See also:
 * admin/jqadm/url/search/target
 * admin/jqadm/url/search/action
 * admin/jqadm/url/search/config
+* admin/jqadm/url/search/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 admin/jqadm/url/search/filter = Array
@@ -843,7 +1019,18 @@ admin/jqadm/url/search/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2016.04
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/search/target
+* admin/jqadm/url/search/controller
+* admin/jqadm/url/search/action
+* admin/jqadm/url/search/config
 
 ## target
 
@@ -866,3 +1053,4 @@ See also:
 * admin/jqadm/url/search/controller
 * admin/jqadm/url/search/action
 * admin/jqadm/url/search/config
+* admin/jqadm/url/search/filter

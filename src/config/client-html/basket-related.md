@@ -134,10 +134,10 @@ or numbers. Avoid chamel case names like "MyBasket"!
 Relative path to the HTML body template of the basket related client.
 
 ```
-client/html/basket/related/template-body = 
+client/html/basket/related/template-body = basket/related/body
 ```
 
-* Default: 
+* Default: basket/related/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -162,10 +162,10 @@ See also:
 Relative path to the HTML header template of the basket related client.
 
 ```
-client/html/basket/related/template-header = 
+client/html/basket/related/template-header = basket/related/header
 ```
 
-* Default: 
+* Default: basket/related/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

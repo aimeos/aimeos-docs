@@ -66,10 +66,10 @@ using this configuration setting.
 Relative path to the HTML body template of the bulk order client.
 
 ```
-client/html/basket/bulk/template-body = 
+client/html/basket/bulk/template-body = basket/bulk/body
 ```
 
-* Default: 
+* Default: basket/bulk/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2019.10
 
@@ -94,10 +94,10 @@ See also:
 Relative path to the HTML header template of the bulk order client.
 
 ```
-client/html/basket/bulk/template-header = 
+client/html/basket/bulk/template-header = basket/bulk/header
 ```
 
-* Default: 
+* Default: basket/bulk/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2019.10
 

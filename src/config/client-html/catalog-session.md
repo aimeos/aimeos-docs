@@ -225,17 +225,19 @@ A list of domain names whose items should be available in the pinned view templa
 ```
 client/html/catalog/session/pinned/domains = Array
 (
-    [0] => media
-    [1] => price
-    [2] => text
+    [0] => catalog
+    [1] => media
+    [2] => price
+    [3] => text
 )
 ```
 
 * Default: Array
 (
-    [0] => media
-    [1] => price
-    [2] => text
+    [0] => catalog
+    [1] => media
+    [2] => price
+    [3] => text
 )
 
 * Type: array - List of domain names
@@ -342,6 +344,7 @@ See also:
 * client/html/catalog/session/pinned/url/target
 * client/html/catalog/session/pinned/url/controller
 * client/html/catalog/session/pinned/url/config
+* client/html/catalog/session/url/filter
 
 ## url/config
 
@@ -377,7 +380,7 @@ See also:
 * client/html/catalog/session/pinned/url/target
 * client/html/catalog/session/pinned/url/controller
 * client/html/catalog/session/pinned/url/action
-* client/html/url/config
+* client/html/catalog/session/url/filter
 
 ## url/controller
 
@@ -400,8 +403,11 @@ See also:
 * client/html/catalog/session/pinned/url/target
 * client/html/catalog/session/pinned/url/action
 * client/html/catalog/session/pinned/url/config
+* client/html/catalog/session/url/filter
 
 ## url/filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/catalog/session/pinned/url/filter = Array
@@ -413,7 +419,18 @@ client/html/catalog/session/pinned/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/catalog/session/pinned/url/target
+* client/html/catalog/session/pinned/url/controller
+* client/html/catalog/session/pinned/url/action
+* client/html/catalog/session/pinned/url/config
 
 ## url/target
 
@@ -436,6 +453,7 @@ See also:
 * client/html/catalog/session/pinned/url/controller
 * client/html/catalog/session/pinned/url/action
 * client/html/catalog/session/pinned/url/config
+* client/html/catalog/session/url/filter
 
 # seen
 ## count/enable
@@ -525,10 +543,10 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 Relative path to the HTML body template of the catalog session seen client.
 
 ```
-client/html/catalog/session/seen/template-body = 
+client/html/catalog/session/seen/template-body = catalog/session/seen-body
 ```
 
-* Default: 
+* Default: catalog/session/seen-body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -607,10 +625,10 @@ design.
 Relative path to the HTML body template of the catalog session client.
 
 ```
-client/html/catalog/session/template-body = 
+client/html/catalog/session/template-body = catalog/session/body
 ```
 
-* Default: 
+* Default: catalog/session/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -635,10 +653,10 @@ See also:
 Relative path to the HTML header template of the catalog session client.
 
 ```
-client/html/catalog/session/template-header = 
+client/html/catalog/session/template-header = catalog/session/header
 ```
 
-* Default: 
+* Default: catalog/session/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

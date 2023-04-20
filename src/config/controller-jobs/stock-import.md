@@ -25,66 +25,13 @@ create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
 please have a look  into the PHP documentation of the
 [format() method](https://www.php.net/manual/en/datetime.format.php).
 
-**Note:** If no backup name is configured, the file or directory
-won't be moved away. Please make also sure that the parent directory
-and the new directory are writable so the file or directory could be
-moved.
+**Note:** If no backup name is configured, the file will be removed!
 
 See also:
 
-* controller/common/stock/import/csv/max-size
+* controller/jobs/stock/import/csv/location
+* controller/jobs/stock/import/csv/max-size
 * controller/jobs/stock/import/csv/skip-lines
-
-## container/options
-
-List of file container options for the stock import files
-
-```
-controller/jobs/stock/import/csv/container/options = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - Associative list of option name/value pairs
-* Since: 2019.04
-
-Some container/content type allow you to hand over additional settings
-for configuration. Please have a look at the article about
-[container/content files](http://aimeos.org/docs/Developers/Utility/Create_and_read_files)
-for more information.
-
-See also:
-
-* controller/jobs/stock/import/csv/location
-* controller/jobs/stock/import/csv/container/type
-
-## container/type
-
-Nave of the container type to read the data from
-
-```
-controller/jobs/stock/import/csv/container/type = File
-```
-
-* Default: File
-* Type: string - Container type name
-* Since: 2019.04
-
-The container type tells the importer how it should retrieve the data.
-There are currently two container types that support the necessary
-CSV content:
-
-* File
-* Zip
-
-See also:
-
-* controller/jobs/stock/import/csv/location
-* controller/jobs/stock/import/csv/container/options
 
 ## decorators/excludes
 
@@ -194,11 +141,11 @@ See also:
 File or directory where the content is stored which should be imported
 
 ```
-controller/jobs/stock/import/csv/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Stock/Import/Csv/_testfiles
+controller/jobs/stock/import/csv/location = stock
 ```
 
-* Default: 
-* Type: string - Absolute file or directory path
+* Default: stock
+* Type: string - Relative path to the CSV files
 * Since: 2019.04
 
 You need to configure the CSV file or directory with the CSV files that
@@ -208,9 +155,34 @@ from.
 
 See also:
 
-* controller/jobs/stock/import/csv/container/type
-* controller/jobs/stock/import/csv/container/content
-* controller/jobs/stock/import/csv/container/options
+* controller/jobs/stock/import/csv/backup
+* controller/jobs/stock/import/csv/max-size
+* controller/jobs/stock/import/csv/skip-lines
+
+## max-size
+
+Maximum number of CSV rows to import at once
+
+```
+controller/jobs/stock/import/csv/max-size = 1000
+```
+
+* Default: 1000
+* Type: integer - Number of rows
+* Since: 2019.04
+
+It's more efficient to read and import more than one row at a time
+to speed up the import. Usually, the bigger the chunk that is imported
+at once, the less time the importer will need. The downside is that
+the amount of memory required by the import process will increase as
+well. Therefore, it's a trade-off between memory consumption and
+import speed.
+
+See also:
+
+* controller/jobs/stock/import/csv/backup
+* controller/jobs/stock/import/csv/location
+* controller/jobs/stock/import/csv/skip-lines
 
 ## name
 
@@ -278,4 +250,5 @@ begins.
 See also:
 
 * controller/jobs/stock/import/csv/backup
-* controller/common/stock/import/csv/max-size
+* controller/jobs/stock/import/csv/location
+* controller/jobs/stock/import/csv/max-size

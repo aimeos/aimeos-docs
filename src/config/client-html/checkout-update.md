@@ -50,10 +50,10 @@ or numbers. Avoid chamel case names like "MyUpdate"!
 Relative path to the HTML body template of the checkout update client.
 
 ```
-client/html/checkout/update/template-body = 
+client/html/checkout/update/template-body = checkout/update/body
 ```
 
-* Default: 
+* Default: checkout/update/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -78,10 +78,10 @@ See also:
 Relative path to the HTML header template of the checkout update client.
 
 ```
-client/html/checkout/update/template-header = 
+client/html/checkout/update/template-header = checkout/update/header
 ```
 
-* Default: 
+* Default: checkout/update/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

@@ -455,6 +455,25 @@ See also:
 
 * mshop/stock/manager/newid/ansi
 
+# resource
+
+Name of the database connection resource to use
+
+```
+mshop/stock/manager/resource = db-stock
+```
+
+* Default: db-stock
+* Type: string - Database connection name
+* Since: 2023.04
+* Since: 2023.04
+
+You can configure a different database connection for each data domain
+and if no such connection name exists, the "db" connection will be used.
+It's also possible to use the same database connection for different
+data domains by configuring the same connection name using this setting.
+
+
 # search
 ## ansi
 
@@ -465,7 +484,7 @@ mshop/stock/manager/search/ansi =
  SELECT :columns
  	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
  	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
- 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.backdate",
+ 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.dateback",
  	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
  	msto."ctime" AS "stock.ctime", msto."editor" AS "stock.editor"
  FROM "mshop_stock" msto
@@ -536,7 +555,7 @@ mshop/stock/manager/search/mysql =
  SELECT :columns
  	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
  	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
- 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.backdate",
+ 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.dateback",
  	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
  	msto."ctime" AS "stock.ctime", msto."editor" AS "stock.editor"
  FROM "mshop_stock" msto
@@ -550,7 +569,7 @@ mshop/stock/manager/search/mysql =
  SELECT :columns
  	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
  	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
- 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.backdate",
+ 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.dateback",
  	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
  	msto."ctime" AS "stock.ctime", msto."editor" AS "stock.editor"
  FROM "mshop_stock" msto

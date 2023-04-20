@@ -118,10 +118,10 @@ See also:
 Relative path to the HTML body template of the checkout confirm client.
 
 ```
-client/html/checkout/confirm/template-body = 
+client/html/checkout/confirm/template-body = checkout/confirm/body
 ```
 
-* Default: 
+* Default: checkout/confirm/body
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -146,10 +146,10 @@ See also:
 Relative path to the HTML header template of the checkout confirm client.
 
 ```
-client/html/checkout/confirm/template-header = 
+client/html/checkout/confirm/template-header = checkout/confirm/header
 ```
 
-* Default: 
+* Default: checkout/confirm/header
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

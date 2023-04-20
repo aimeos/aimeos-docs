@@ -6,17 +6,19 @@ A list of domain names whose items should be available in the account watch view
 ```
 client/html/account/watch/domains = Array
 (
-    [0] => text
-    [1] => price
-    [2] => media
+    [0] => catalog
+    [1] => text
+    [2] => price
+    [3] => media
 )
 ```
 
 * Default: Array
 (
-    [0] => text
-    [1] => price
-    [2] => media
+    [0] => catalog
+    [1] => text
+    [2] => price
+    [3] => media
 )
 
 * Type: array - List of domain names
@@ -67,7 +69,7 @@ client/html/account/watch/name =
 
 * Default: 
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default HTML client can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -128,6 +130,63 @@ See also:
 
 * client/html/catalog/lists/size
 
+# template-body
+
+Relative path to the HTML body template of the account watch client.
+
+```
+client/html/account/watch/template-body = account/watch/body
+```
+
+* Default: account/watch/body
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2015.10
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
+
+See also:
+
+* client/html/account/watch/template-header
+
+# template-header
+
+Relative path to the HTML header template of the account watch client.
+
+```
+client/html/account/watch/template-header = account/watch/header
+```
+
+* Default: account/watch/header
+* Type: string - Relative path to the template creating code for the HTML page head
+* Since: 2015.10
+
+The template file contains the HTML code and processing instructions
+to generate the HTML code that is inserted into the HTML page header
+of the rendered page in the frontend. The configuration string is the
+path to the template file relative to the templates directory (usually
+in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
+
+See also:
+
+* client/html/account/watch/template-body
+
 # url
 ## action
 
@@ -150,6 +209,7 @@ See also:
 * client/html/account/watch/url/target
 * client/html/account/watch/url/controller
 * client/html/account/watch/url/config
+* client/html/account/watch/url/filter
 
 ## config
 
@@ -185,7 +245,7 @@ See also:
 * client/html/account/watch/url/target
 * client/html/account/watch/url/controller
 * client/html/account/watch/url/action
-* client/html/url/config
+* client/html/account/watch/url/filter
 
 ## controller
 
@@ -208,8 +268,11 @@ See also:
 * client/html/account/watch/url/target
 * client/html/account/watch/url/action
 * client/html/account/watch/url/config
+* client/html/account/watch/url/filter
 
 ## filter
+
+Removes parameters for the detail page before generating the URL
 
 ```
 client/html/account/watch/url/filter = Array
@@ -221,7 +284,18 @@ client/html/account/watch/url/filter = Array
 (
 )
 
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/account/watch/url/target
+* client/html/account/watch/url/controller
+* client/html/account/watch/url/action
+* client/html/account/watch/url/config
 
 ## target
 
@@ -244,3 +318,4 @@ See also:
 * client/html/account/watch/url/controller
 * client/html/account/watch/url/action
 * client/html/account/watch/url/config
+* client/html/account/watch/url/filter

@@ -25,14 +25,12 @@ create dynamic paths, e.g. "backup/%Y-%m-%d" which would create
 please have a look  into the PHP documentation of the
 [format() method](https://www.php.net/manual/en/datetime.format.php).
 
-**Note:** If no backup name is configured, the file or directory
-won't be moved away. Please make also sure that the parent directory
-and the new directory are writable so the file or directory could be
-moved.
+**Note:** If no backup name is configured, the file will be removed!
 
 See also:
 
 * controller/jobs/customer/import/xml/domains
+* controller/jobs/customer/import/xml/location
 * controller/jobs/customer/import/xml/max-query
 
 ## decorators/excludes
@@ -50,7 +48,6 @@ controller/jobs/customer/import/xml/decorators/excludes = Array
 )
 
 * Type: array - List of decorator names
-* Since: 2019.04
 * Since: 2019.04
 
 Decorators extend the functionality of a class by adding new aspects
@@ -75,9 +72,6 @@ See also:
 * controller/jobs/common/decorators/default
 * controller/jobs/customer/import/xml/decorators/global
 * controller/jobs/customer/import/xml/decorators/local
-* controller/jobs/common/decorators/default
-* controller/jobs/customer/import/xml/decorators/global
-* controller/jobs/customer/import/xml/decorators/local
 
 ## decorators/global
 
@@ -94,7 +88,6 @@ controller/jobs/customer/import/xml/decorators/global = Array
 )
 
 * Type: array - List of decorator names
-* Since: 2019.04
 * Since: 2019.04
 
 Decorators extend the functionality of a class by adding new aspects
@@ -117,9 +110,6 @@ See also:
 * controller/jobs/common/decorators/default
 * controller/jobs/customer/import/xml/decorators/excludes
 * controller/jobs/customer/import/xml/decorators/local
-* controller/jobs/common/decorators/default
-* controller/jobs/customer/import/xml/decorators/excludes
-* controller/jobs/customer/import/xml/decorators/local
 
 ## decorators/local
 
@@ -137,7 +127,6 @@ controller/jobs/customer/import/xml/decorators/local = Array
 
 * Type: array - List of decorator names
 * Since: 2019.04
-* Since: 2019.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -145,7 +134,7 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Decorator\*") around the job
+("\Aimeos\Controller\Jobs\Customer\Import\Xml\Decorator\*") around the job
 controller.
 
 ```
@@ -153,7 +142,7 @@ controller.
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Decorator\Decorator2"
+"\Aimeos\Controller\Jobs\Customer\Import\Xml\Decorator\Decorator2"
 only to the job controller.
 
 See also:
@@ -161,49 +150,46 @@ See also:
 * controller/jobs/common/decorators/default
 * controller/jobs/customer/import/xml/decorators/excludes
 * controller/jobs/customer/import/xml/decorators/global
-* controller/jobs/common/decorators/default
-* controller/jobs/customer/import/xml/decorators/excludes
-* controller/jobs/customer/import/xml/decorators/global
 
 ## domains
 
-List of item domain names that should be retrieved along with the customer items
+List of item domain names that should be retrieved along with the attribute items
 
 ```
 controller/jobs/customer/import/xml/domains = Array
 (
-    [0] => customer
-    [1] => customer/address
+    [0] => customer/address
+    [1] => customer/group
     [2] => customer/property
-    [3] => customer/group
-    [4] => media
-    [5] => product
-    [6] => text
+    [3] => media
+    [4] => product
+    [5] => text
 )
 ```
 
 * Default: Array
 (
-    [0] => customer
-    [1] => customer/address
+    [0] => customer/address
+    [1] => customer/group
     [2] => customer/property
-    [3] => customer/group
-    [4] => media
-    [5] => product
-    [6] => text
+    [3] => media
+    [4] => product
+    [5] => text
 )
 
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
-This configuration setting overwrites the shared option
-"controller/common/customer/import/xml/domains" if you need a
-specific setting for the job controller. Otherwise, you should
-use the shared option for consistency.
+For efficient processing, the items associated to the customers can be
+fetched to, minimizing the number of database queries required. To be
+most effective, the list of item domain names should be used in the
+mapping configuration too, so the retrieved items will be used during
+the import.
 
 See also:
 
 * controller/jobs/customer/import/xml/backup
+* controller/jobs/customer/import/xml/location
 * controller/jobs/customer/import/xml/max-query
 
 ## location
@@ -214,8 +200,8 @@ File or directory where the content is stored which should be imported
 controller/jobs/customer/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: 
-* Type: string - Absolute file or directory path
+* Default: customer
+* Type: string - Relative path to the XML files
 * Since: 2019.04
 
 You need to configure the XML file or directory with the XML files that
@@ -225,9 +211,9 @@ from.
 
 See also:
 
-* controller/jobs/customer/import/xml/container/type
-* controller/jobs/customer/import/xml/container/content
-* controller/jobs/customer/import/xml/container/options
+* controller/jobs/customer/import/xml/backup
+* controller/jobs/customer/import/xml/domains
+* controller/jobs/customer/import/xml/max-query
 
 ## max-query
 
@@ -241,7 +227,7 @@ controller/jobs/customer/import/xml/max-query = 100
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 
-Processing and fetching several customer items at once speeds up importing
+Processing and fetching several attribute items at once speeds up importing
 the XML files. The more items can be processed at once, the faster the
 import. More items also increases the memory usage of the importer and
 thus, this parameter should be low enough to avoid reaching the memory
@@ -250,6 +236,7 @@ limit of the PHP process.
 See also:
 
 * controller/jobs/customer/import/xml/domains
+* controller/jobs/customer/import/xml/location
 * controller/jobs/customer/import/xml/backup
 
 ## name
@@ -263,7 +250,6 @@ controller/jobs/customer/import/xml/name = Standard
 * Default: Standard
 * Type: string - Last part of the class name
 * Since: 2019.04
-* Since: 2019.04
 
 Each default job controller can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -273,13 +259,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Standard
+ \Aimeos\Controller\Jobs\Customer\Import\Xml\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Myxml
+ \Aimeos\Controller\Jobs\Customer\Import\Xml\Myxml
 ```
 
 then you have to set the this configuration option:

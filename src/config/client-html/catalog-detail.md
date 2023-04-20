@@ -67,6 +67,7 @@ client/html/catalog/detail/domains = Array
     [8] => supplier
     [9] => supplier/address
     [10] => text
+    [11] => stock
 )
 ```
 
@@ -83,6 +84,7 @@ client/html/catalog/detail/domains = Array
     [8] => supplier
     [9] => supplier/address
     [10] => text
+    [11] => stock
 )
 
 * Type: array - List of domain names
@@ -214,7 +216,7 @@ partial creates an HTML block for the catalog detail images.
 
 ## seen
 
-Relative path to the HTML body template of the catalog detail seen client.
+Relative path to the HTML template of the catalog detail seen partial.
 
 ```
 client/html/catalog/detail/partials/seen = catalog/detail/seen
@@ -371,11 +373,27 @@ See also:
 
 # template-navigator
 
+Relative path to the HTML template of the catalog detail navigator partial.
+
 ```
 client/html/catalog/detail/template-navigator = catalog/detail/navigator
 ```
 
 * Default: catalog/detail/navigator
+* Type: string - Relative path to the template creating the HTML fragment
+* Since: 2022.10
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
 
 
 # url

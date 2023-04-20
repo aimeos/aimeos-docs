@@ -27,10 +27,10 @@ be relative to the templates/ folder, e.g. "partials/data".
 Relative path to the data partial template file for the locale site  client
 
 ```
-admin/jsonadm/partials/locale/site/template-data =
+admin/jsonadm/partials/locale/site/template-data = 
 ```
 
-* Default:
+* Default: 
 * Type: string - Relative path to the template file
 * Since: 2016.07
 

@@ -1,78 +1,5 @@
 
 # csv
-## code/container/content
-
-Name of the content type inside the container to read the data from
-
-```
-controller/jobs/coupon/import/csv/code/container/content = CSV
-```
-
-* Default: CSV
-* Type: array - Content type name
-* Since: 2017.10
-
-The content type must always be a CSV-like format and there are
-currently two format types that are supported:
-
-* CSV
-
-See also:
-
-* controller/jobs/coupon/import/csv/code/container/type
-* controller/jobs/coupon/import/csv/code/container/options
-
-## code/container/options
-
-List of file container options for the coupon import files
-
-```
-controller/jobs/coupon/import/csv/code/container/options = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - Associative list of option name/value pairs
-* Since: 2017.10
-
-Some container/content type allow you to hand over additional settings
-for configuration. Please have a look at the article about
-[container/content files](http://aimeos.org/docs/Developers/Utility/Create_and_read_files)
-for more information.
-
-See also:
-
-* controller/jobs/coupon/import/csv/code/container/content
-* controller/jobs/coupon/import/csv/code/container/type
-
-## code/container/type
-
-Name of the container type to read the data from
-
-```
-controller/jobs/coupon/import/csv/code/container/type = File
-```
-
-* Default: File
-* Type: string - Container type name
-* Since: 2017.10
-
-The container type tells the importer how it should retrieve the data.
-There are currently three container types that support the necessary
-CSV content:
-
-* File (plain)
-* Zip
-
-See also:
-
-* controller/jobs/coupon/import/csv/code/container/content
-* controller/jobs/coupon/import/csv/code/container/options
-
 ## code/decorators/excludes
 
 Excludes decorators added by the "common" option from the coupon code import CSV job controller
@@ -293,7 +220,7 @@ or numbers. Avoid chamel case names like "MyCsv"!
 Number of rows skipped in front of each CSV files
 
 ```
-controller/jobs/coupon/import/csv/code/skip-lines = 0
+controller/jobs/coupon/import/csv/code/skip-lines = 1
 ```
 
 * Default: 0
