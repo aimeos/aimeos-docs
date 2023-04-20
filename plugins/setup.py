@@ -1,11 +1,14 @@
-from setuptools import setup
+import setuptools
 
-setup(
-    name='algolia',
-    keywords='mkdocs algolia export',
-    entrypoints={
+setuptools.setup(
+    name="algolia",
+    version="0.1.0",
+    description="Algolia export for MKDocs",
+    keywords="mkdocs algolia export",
+    packages=['algolia'],
+    entry_points={
         'mkdocs.plugins': [
-            'algolia=aimeos.algolia:MarkdownExportPlugin'
+            'algolia = algolia:MarkdownExportPlugin'
         ]
     }
 )

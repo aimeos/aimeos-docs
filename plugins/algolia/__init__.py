@@ -1,3 +1,5 @@
+__version__ = '0.1.0'
+
 from mkdocs.plugins import BasePlugin
 import json
 import os
