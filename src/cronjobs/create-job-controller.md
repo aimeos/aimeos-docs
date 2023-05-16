@@ -18,7 +18,15 @@ Depending on the type of task you need to implement, e.g if it uses code from an
 
 The first part of the job controller key (e.g. "product" in "product/export") corresponds to the domain of the managers in the *src/MShop* directory of the Aimeos core. The term "domain" refers all classes that care about the same kind of data like the "order" domain for all order related data: Ordered products, customer addresses, used delivery and payment in orders and basic order information.
 
-If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *./src/Controller/Jobs/Media/* and then call it by pressing the "media/..." key.
+If you want to implement a job controller that mainly works with data from a domain like "media", you can create your controller in the directory *./src/Controller/Jobs/Media/*.
+
+To execute your job controller (from *./src/Controller/Jobs/Product/Export/Sitemap/* in this example) on the command line use:
+
+```
+php artisan aimeos:jobs product/export/sitemap # Laravel
+php console/bin aimeos:jobs product/export/sitemap # Symfony
+php vendor/bin/typo3 aimeos:jobs product/export/sitemap # TYPO3
+```
 
 # Skeleton
 
