@@ -1,6 +1,6 @@
-Creating orders requires a complete basket, i.e. it contains at least one product, the billing address and a payment and delivery entry. Then it's a three-way step to create the required database entries and redirect to the payment gateway or the "Thank You" page.
+Creating orders requires a complete basket, i.e. it contains at least one product, the billing address and a payment and delivery entry. Then it's a two-way step to create the order and redirect to the payment gateway or the "Thank You" page.
 
-# Save basket
+# Create order
 
 The first step to create an order is to persist the basket of the customer. This is done by a POST request to the basket URL. You obtain this URL either from the resource list of an OPTIONS response or from the basket response.
 
