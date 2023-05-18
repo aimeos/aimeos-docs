@@ -84,9 +84,9 @@ To mitigate DoS attacks, you can only create a limited number of orders from one
 * [controller/frontend/basket/limit-count](../../config/controller-frontend/basket.md#limit-count)
 * [controller/frontend/basket/limit-seconds](../../config/controller-frontend/basket.md#limit-seconds)
 
-# Create order invoice
+# Redirect to payment gateway
 
-After saving the basket, you need to create an order invoice. For this, you must send a POST request to the "order" link listed in the response of the saved basket. In that request, the ID of the saved basket needs to be added as "order.parentid" value within the parameters sent with the POST request:
+After saving the basket, you may need to redirect the customer to an external payment gateway. For this, you must send a POST request to the "order" link listed in the response of the saved basket. In that request, the ID of the saved basket needs to be added as "order.id" value within the parameters sent with the POST request:
 
 === "CURL"
     ```bash
@@ -95,7 +95,7 @@ After saving the basket, you need to create an order invoice. For this, you must
     -H 'Content-Type: application/json' \
     -d '{"data": {
         "attributes": {
-            "order.parentid": "..."
+            "order.id": "..."
         }
     }}'
     ```
@@ -103,7 +103,7 @@ After saving the basket, you need to create an order invoice. For this, you must
     ```javascript
     var params = {'data': {
         'attributes': {
-            "order.parentid": response["data"]["id"], // generated ID returned in the basket POST response
+            "order.id": response["data"]["id"], // generated ID returned in the basket POST response
         }
     }};
 
@@ -126,7 +126,7 @@ After saving the basket, you need to create an order invoice. For this, you must
     });
     ```
 
-The response will contain the data of the created order invoice item as well as the link to the next step. This can either be the URL to the payment gateway or to the "Thank You" page and can be found in **response['links']['process']['href']**:
+The response will contain the data with a link to the next step. This can either be the URL to the payment gateway or to the "Thank You" page and can be found in **response['links']['process']['href']**:
 
 ```json
 {
@@ -139,7 +139,7 @@ The response will contain the data of the created order invoice item as well as 
         "self": { "href": "http://localhost:8000/jsonapi/order" }
     },
     "data": {
-        "id": "321",
+        "id": "123",
         "type": "order",
         "links": {
             "self": {
@@ -168,8 +168,8 @@ The response will contain the data of the created order invoice item as well as 
             }
         },
         "attributes": {
-            "order.id": "321",
-            "order.parentid": "123",
+            "order.id": "123",
+            "order.customerid": "321",
             "order.statusdelivery": -1,
             "order.statuspayment": -1,
             "order.currencyid": "EUR",
@@ -181,16 +181,7 @@ The response will contain the data of the created order invoice item as well as 
 }
 ```
 
-Depending on the chosen payment, there might be entries in the "meta" section of the "process" URL. They will be relevant for the next step when you redirect the customer to the payment gateway.
-
-To mitigate DoS attacks, you can only create a limited number of invoices from one IP address. The default configuration is 5 orders within 15 minutes. If you try to create more orders within this time frame, an error will be returned.
-
-* [controller/frontend/order/limit-count](../../config/controller-frontend/order.md#limit-count)
-* [controller/frontend/order/limit-seconds](../../config/controller-frontend/order.md#limit-seconds)
-
-# Redirect to payment gateway
-
-For the payment, customers have to be redirected most of the time to the server of the payment provider. The response when creating the order invoice contains a description of all necessary information in the **response['links']['process']['meta']** section that is required by the payment gateway.
+Depending on the chosen payment, the response contains a description of all necessary information in the **response['links']['process']['meta']** section that is required by the payment gateway.
 
 As you can see in the response above, the description of the required parameters looks like this:
 
@@ -198,7 +189,7 @@ As you can see in the response above, the description of the required parameters
 "invoiceid": {
     "code": "invoiceid",
     "required": true,
-    "default": 321,
+    "default": 123,
     "public": false,
     "type": "string"
 },
