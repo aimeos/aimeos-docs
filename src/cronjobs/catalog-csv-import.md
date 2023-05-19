@@ -42,7 +42,7 @@ You can freely configure how your data is organized in the CSV file but for a qu
 ```php
 [
     'item' => [
-        0 => 'catalog.code', // e.g. unique EAN code
+        0 => 'catalog.code', // e.g. unique category code
         1 => 'catalog.parent', // Code of parent catalog node
         2 => 'catalog.label', // UTF-8 encoded text, also used as catalog name
         3 => 'catalog.status', // If category should be shown in the frontend
@@ -168,16 +168,15 @@ Several catalog related texts can be part of each CSV line. Supported domain ite
 [
     'text' => [
         0 => 'text.languageid',
-        1 => 'text.typeid',
-        2 => 'text.type',
-        3 => 'text.label',
-        4 => 'text.content',
-        5 => 'text.status',
+        1 => 'text.type',
+        2 => 'text.label',
+        3 => 'text.content',
+        4 => 'text.status',
     ],
 ]
 ```
 
-The content and the type (or typeid) is required as the minimum amount of data. If you don't have a CSV field for the language ID, the text is imported with the language of the first locale item of the site the importer is running for. Similarly, the label will be the content shorten to max. 255 bytes and the status is set to enabled ("1") if not available.
+The content and the type is required as the minimum amount of data. If you don't have a CSV field for the language ID, the text is imported with the language of the first locale item of the site the importer is running for. Similarly, the label will be the content shorten to max. 255 bytes and the status is set to enabled ("1") if not available.
 
 Additionally, you can import values for the catalog list relation as well:
 
@@ -185,7 +184,6 @@ Additionally, you can import values for the catalog list relation as well:
 [
     'text' => [
         // ...
-        6 => 'catalog.lists.typeid',
         7 => 'catalog.lists.type',
         8 => 'catalog.lists.datestart',
         9 => 'catalog.lists.dateend',
@@ -196,7 +194,7 @@ Additionally, you can import values for the catalog list relation as well:
 ]
 ```
 
-Here, the type (or typeid) is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
+Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
 If one or more relations should stay untouched, you can explicitly configure the list of catalog list types that will be inserted, updated or deleted via the [controller/jobs/catalog/import/csv/processor/text/listtypes](../config/controller-jobs/catalog-import.md#listtypes) setting.
 
@@ -207,19 +205,18 @@ Several catalog related images and other media types can be part of each CSV lin
 ```php
 [
     'media' => [
-         0 => 'media.languageid',
-        1 => 'media.typeid',
-        2 => 'media.type',
-        3 => 'media.label',
-        4 => 'media.mimetype',
-        5 => 'media.preview',
-        6 => 'media.url',
-        7 => 'media.status',
+        0 => 'media.languageid',
+        1 => 'media.type',
+        2 => 'media.label',
+        3 => 'media.mimetype',
+        4 => 'media.preview',
+        5 => 'media.url',
+        6 => 'media.status',
     ],
 ]
 ```
 
-The URL and the type (or typeid) is required as the minimum amount of data. If you don't have a CSV field for the language ID, the media item is imported with no language and is then considered language independent. The label and preview fields will be filled with the URL and the status is set to enabled ("1") if not available.
+The URL and the type is required as the minimum amount of data. If you don't have a CSV field for the language ID, the media item is imported with no language and is then considered language independent. The label and preview fields will be filled with the URL and the status is set to enabled ("1") if not available.
 
 Additionally, you can import values for the catalog list relation as well:
 
@@ -227,7 +224,6 @@ Additionally, you can import values for the catalog list relation as well:
 [
      'media' => [
         // ...
-        8 => 'catalog.lists.typeid',
         9 => 'catalog.lists.type',
         10 => 'catalog.lists.datestart',
         11 => 'catalog.lists.dateend',
@@ -238,7 +234,7 @@ Additionally, you can import values for the catalog list relation as well:
 ]
 ```
 
-Here, the type (or typeid) is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
+Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
 If one or more relations should stay untouched, you can explicitly configure the list of catalog list types that will be inserted, updated or deleted via the [controller/jobs/catalog/import/csv/processor/media/listtypes](../config/controller-jobs/catalog-import.md#listtypes) setting.
 
