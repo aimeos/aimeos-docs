@@ -5,14 +5,12 @@ Most of the time, you already have an ERP system which manages all your products
 
 # Data location and format
 
-When you export your product data from your ERP system, you need to store the files in a location where they are accessible by the importer. This location has to be configured by the [controller/jobs/product/import/csv/location](../config/controller-jobs/product-import.md#location) setting and it must point to the import file or directory (depending on the container type you would like to use).
+When you export your products from your ERP system, you need to store the files in a location where they are accessible by the importer. The default location where the importer expects them is:
 
-Several container types are supported as long as their content consists of CSV-like data:
+* Laravel: ./storage/import/product/
+* TYPO3: /uploads/tx_aimeos/.secure/import/product/
 
-* Directory container / CSV files
-* Zip container / compressed CSV files
-
-You can configure the container type and content format via the [controller/jobs/product/import/csv/container/type](../config/controller-jobs/product-import.md#type) and [controller/jobs/product/import/csv/container/content](../config/controller-jobs/product-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md).
+The relative directory inside the "fs-import" file system ("product") can be configured by the [controller/jobs/product/import/csv/location](../config/controller-jobs/product-import.md#location) setting.
 
 For CSV files, there exists a wide range of possibilities about their format because it's not standardized besides the fact that fields are separated by comma (,) but even that isn't set in stone. As a guideline, you should use the following format, which is able to handle all edge cases:
 
