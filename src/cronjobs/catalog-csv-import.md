@@ -247,58 +247,6 @@ Here, the type (or typeid) is absolutely necessary. If no value for the position
 
 If one or more relations should stay untouched, you can explicitly configure the list of catalog list types that will be inserted, updated or deleted via the [controller/jobs/catalog/import/csv/processor/media/listtypes](../config/controller-jobs/catalog-import.md#listtypes) setting.
 
-# Data converters
-
-Not all data in the CSV file is already in the required format. Maybe the text encoding isn't UTF-8, the date is not in ISO format or something similar. In order to convert the data before it's imported, you can specify a list of converter objects that should be applied to the data from the CSV file.
-
-To each field in the CSV file, you can apply one or more converters, e.g. to encode a Latin text to UTF8 for the second CSV field via the [controller/jobs/catalog/import/csv/converter](../config/controller-jobs/catalog-import.md#converter) settings:
-
-```php
-[
-    1 => 'Text/LatinUTF8'
-]
-```
-
-Similarly, you can also apply several converters at once to the same field:
-
-```php
-[
-    1 => [
-        'Text/LatinUTF8',
-        'DateTime/EnglishISO'
-    )
-]
-```
-
-It would convert the data of the second CSV field first to UTF-8 and afterwards try to translate it to an ISO date format.
-
-!!! note
-    Keep in mind that the position of the CSV fields start at zero (0). If you only need to convert a few fields, you don't have to configure all fields. Only specify the positions in the array you really need!
-
-
-The available converter objects are named `Aimeos\MW\Convert\<type>\<conversion>` where `<type>` is the data type and `<conversion>` the way of the conversion. In the configuration, the type and conversion must be separated by a slash (`<type>/<conversion>`).
-
-To create your own custom converter, you can use the UTF-8 converter class as skeleton:
-
-```php
-namespace Aimeos\MW\Convert\Text;
-
-class LatinUTF8 implements \Aimeos\MW\Convert\Interface
-{
-    public function translate( $value )
-    {
-        return utf8_encode( $value );
-    }
-
-    public function reverse( $value )
-    {
-        return utf8_decode( $value );
-    }
-}
-```
-
-The `reverse()` method isn't necessary for the catalog importer, but the converter classes are used for the search plugins as well which translates data to keep the defined semantics.
-
 # Backups
 
 After a CSV file was imported successfully, you can move it to another location, so it won't be imported again and isn't overwritten by the next file that is stored at the same location in the file system. You should use an absolute path for the [controller/jobs/catalog/import/csv/backup](../config/controller-jobs/catalog-import.md#backup) setting to be sure but can be relative path if you absolutely know from where the job will be executed from.
