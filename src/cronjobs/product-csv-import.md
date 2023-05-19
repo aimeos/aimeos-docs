@@ -445,12 +445,14 @@ If one or more relations should stay untouched, you can explicitly configure the
 
 ## Supplier
 
-Several supplier relations can be part of each CSV line. Supported domain item key is only:
+Several supplier relations can be part of each CSV line. Supported domain item keys are:
 
 ```php
 [
     'supplier' => [
         0 => 'supplier.code',
+        1 => 'supplier.label',
+        2 => 'supplier.status',
     ],
 ]
 ```
