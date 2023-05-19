@@ -5,17 +5,12 @@ If you already manage your categories in an ERP system you want to bulk import t
 
 # Data location and format
 
-When you export your categories from your ERP system, you need to store the files in a location where they are accessible by the importer. This location has to be configured by the [controller/jobs/catalog/import/csv/location](../config/controller-jobs/catalog-import.md#location) setting and it must point to the import file or directory (depending on the container type you would like to use).
+When you export your categories from your ERP system, you need to store the files in a location where they are accessible by the importer. The default location where the importer expects them is:
 
-Several container types are supported as long as their content consists of CSV-like data:
+* Laravel: ./storage/import/catalog/
+* TYPO3: /uploads/tx_aimeos/.secure/import/catalog/
 
-* Directory container / CSV files
-* Zip container / compressed CSV files
-
-You can configure the container type and content format via the [controller/jobs/catalog/import/csv/container/type](../config/controller-jobs/catalog-import.md#type) and [controller/jobs/catalog/import/csv/container/content](../config/controller-jobs/catalog-import.md#content) settings. Depending on the container/content, you are able to use additional options which are described in the article about creating and reading [container/content files](../infrastructure/read-write-files.md).
-
-!!! note
-    The default container type is "directory", so you need to configure a directory where one or more import files are stored.
+The relative directory inside the "fs-import" file system ("catalog") can be configured by the [controller/jobs/catalog/import/csv/location](../config/controller-jobs/catalog-import.md#location) setting.
 
 For CSV files, there exists a wide range of possibilities about their format because it's not standardized besides the fact that fields are separated by comma (,) but even that isn't set in stone. As a guideline, you should use the following format, which is able to handle all edge cases and which can be also created by Excel/OpenOffice as well:
 
