@@ -424,24 +424,24 @@ Several category relations can be part of each CSV line. Supported domain item k
 ]
 ```
 
-and it's also the minimum amount of data. The real power of the catalog relations is in the values for the catalog list relation:
+and it's also the minimum amount of data. The real power of the catalog relations is in the values for the product list relation:
 
 ```php
 [
     'catalog' => [
-        1 => 'catalog.lists.type',
-        2 => 'catalog.lists.datestart',
-        3 => 'catalog.lists.dateend',
-        4 => 'catalog.lists.config',
-        5 => 'catalog.lists.position',
-        6 => 'catalog.lists.status',
+        1 => 'product.lists.type',
+        2 => 'product.lists.datestart',
+        3 => 'product.lists.dateend',
+        4 => 'product.lists.config',
+        5 => 'product.lists.position',
+        6 => 'product.lists.status',
     ],
 ]
 ```
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/catalog/listtypes](../config/controller-jobs/product-import.md#processorcataloglisttypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/catalog/listtypes](../config/controller-common/product-import.md#processorcataloglisttypes) setting.
 
 ## Supplier
 
@@ -455,24 +455,24 @@ Several supplier relations can be part of each CSV line. Supported domain item k
 ]
 ```
 
-and it's also the minimum amount of data. The real power of the supplier relations is in the values for the supplier list relation:
+and it's also the minimum amount of data. The real power of the supplier relations is in the values for the product list relation:
 
 ```php
 [
     'supplier' => [
-        1 => 'supplier.lists.type',
-        2 => 'supplier.lists.datestart',
-        3 => 'supplier.lists.dateend',
-        4 => 'supplier.lists.config',
-        5 => 'supplier.lists.position',
-        6 => 'supplier.lists.status',
+        1 => 'product.lists.type',
+        2 => 'product.lists.datestart',
+        3 => 'product.lists.dateend',
+        4 => 'product.lists.config',
+        5 => 'product.lists.position',
+        6 => 'product.lists.status',
     ],
 ]
 ```
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/jobs/product/import/csv/processor/supplier/listtypes](../config/controller-jobs/product-import.md#processorsupplierlisttypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of product list types that will be inserted, updated or deleted via the [controller/common/product/import/csv/processor/supplier/listtypes](../config/controller-common/product-import.md#processorsupplierlisttypes) setting.
 
 ## Stock
 
