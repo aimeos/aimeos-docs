@@ -499,6 +499,9 @@ This will return the root catalog node and its direct children as well as their 
 
 If you wish to display the children's children of a specific category, use the URL that is provided by the **links[self]** key in the "included" section.
 
+!!! tip
+    To retrieve the whole category tree instead of just the children, use the [client/jsonapi/catalog/deep](../../config/client-jsonapi/catalog.md#deep) setting but beware: Allow retrieving all categories only if your category tree contains only a limited number of nodes! Otherwise, malicious users can easily create denial of service attacks!
+
 # Get products by category
 
 To get the products for a category, use the *f_catid* filter parameter:
