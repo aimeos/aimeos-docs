@@ -48,12 +48,11 @@ You can freely configure how your data is organized in the CSV file but for a qu
         3 => 'catalog.status', // If category should be shown in the frontend
     ],
     'text' => [
-        4 => 'text.languageid', // ISO language codes, e.g. "en"
-        5 => 'text.type', // e.g. "short" for short description
-        6 => 'text.content', // UTF-8 encoded text
+        4 => 'text.type', // e.g. "short" for short description
+        5 => 'text.content', // UTF-8 encoded text
     ],
     'media' => [
-        7 => 'media.url', // relative URL of the catalog image on the server
+        6 => 'media.url', // relative URL of the catalog image on the server
     ],
 ]
 ```
