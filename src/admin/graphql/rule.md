@@ -170,6 +170,69 @@ Response:
 }
 ```
 
+# Fetch rule configuration
+
+To retrieve the backend configuration for a rule provider and the added decorators use:
+
+=== "Query"
+    ```graphql
+    query {
+      getRuleConfig(provider: "Percent,Category", type: "catalog") {
+        code
+        type
+        label
+      }
+    }
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      getRuleConfig(provider: "Percent,Category", type: "catalog") {
+        code
+        type
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Response:
+
+```json
+{
+  "data": {
+    "getRuleConfig": [
+      {
+        "code":"last-rule",
+        "type":"boolean",
+        "label":"Don't execute subsequent rules"
+      },{
+        "code":"percent",
+        "type":"number",
+        "label":"Percentage to add or subtract"
+      },{
+        "code":"category.code",
+        "type":"string",
+        "label":"Category codes"
+      }
+    ]
+  }
+}
+```
+
 # Save single rule
 
 === "Mutation"
