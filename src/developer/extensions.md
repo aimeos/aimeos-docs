@@ -267,10 +267,10 @@ Setup tasks are a great way to create and update your database structure. They a
 
 ## templates
 
-The "templates" section of the manifest.php is reserved for directory configurations that are specific for the different parts of the library. The directory must be the array key and the value must be the list of subdirectories or files that are required for the specific purpose. A full example would be:
+The "template" section of the manifest.php is reserved for directory configurations that are specific for the different parts of the library. The directory must be the array key and the value must be the list of subdirectories or files that are required for the specific purpose. A full example would be:
 
 ```php
-'templates' => [
+'template' => [
     'admin/jqadm/templates' => [
         'templates/admin/jqadm',
     ],
