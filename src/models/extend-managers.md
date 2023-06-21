@@ -123,11 +123,11 @@ $item->mycolumn;
 You can also register new methods in each item class which transforms the values to enforcing types for example:
 
 ```php
-\Aimeos\MShop\Product\Item\Standard::method( 'getMycolumn', function() {
+\Aimeos\MShop\Product\Item\Standard::macro( 'getMycolumn', function() {
     return (int) $this->get( 'mycolumn' );
 } );
 
-\Aimeos\MShop\Product\Item\Standard::method( 'setMycolumn', function( $value ) {
+\Aimeos\MShop\Product\Item\Standard::macro( 'setMycolumn', function( $value ) {
     return $this->set( 'mycolumn', (int) $value );
 } );
 ```
@@ -135,7 +135,7 @@ You can also register new methods in each item class which transforms the values
 It's also possible to add new methods that combine several values like:
 
 ```php
-\Aimeos\MShop\Customer\Item\Standard::method( 'getFullName', function() {
+\Aimeos\MShop\Customer\Item\Standard::macro( 'getFullName', function() {
     return $this->get( 'customer.firstname' ) . ' ' . $this->get( 'customer.lastname' );
 } );
 ```
