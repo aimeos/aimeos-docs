@@ -71,15 +71,6 @@ The *Scheduler* extension has to be installed in TYPO3, before any tasks can be 
 * * * * * /path/to/vendor/bin/typo3 scheduler:run
 ```
 
-## Setup scheduler user
-
-Before the TYPO3 scheduler can be triggered by a cronjob (which has to be created separately and executing the scheduler every minute), a user for the scheduler has to be created:
-
-1. Admin Tools::Scheduler:
-    * switch to submodule *Setup check*
-2. submodule *Setup check*, section *TYPO3 Scheduler back end user*:
-    * click *Create the user now* in red box to create user "_cli_scheduler" for the Scheduler
-
 ## Create Aimeos tasks
 
 After installing the Aimeos TYPO3 extension, a new scheduler task named "Aimeos scheduler" is available. It's capable of executing one or more Aimeos jobs for one or more sites. Normally, you will need to add the Aimeos scheduler task several times with different jobs. To add a new task, click on the icon with the plus symbol (green one in the upper left corner / above the list of configured tasks):
