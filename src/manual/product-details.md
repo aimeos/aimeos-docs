@@ -204,7 +204,7 @@ You can add attributes by clicking on the "+" symbol in the upper right corner o
 
 Product properties are not shared across products but only available for that single product. A good example is e.g. the ISBN number books which belongs only to that book. Most data should be stored as product properties because they are very fast.
 
-Artilces which are part of a selection product need at least one variant attribute that distinguishes it from the other atrticles of the selection product. The variant attribute or the combination of several variant attributes must identify the article unique within the selection product.
+Articles which are part of a selection product need at least one variant attribute that distinguishes it from the other atrticles of the selection product. The variant attribute or the combination of several variant attributes must identify the article unique within the selection product.
 
 Each product can have an unlimited number of regular attributes. Clothing for example usually has an attribute like color. Attributes are shared between products and if you change the attribute value, it will be the same for all other products referencing this attribute too. Additionally, you can use all attributes to build filters in a facetted search.
 
