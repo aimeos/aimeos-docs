@@ -15,7 +15,7 @@ All Aimeos pages can contain a list of pre-defined sections:
 * **aimeos_body** (main content for product lists, details or the checkout process)
 * **aimeos_aside** (user related content, e.g. last seen products)
 
-The templates used by the controller actions decides if there's some content inside these sections. You can find these templates in the [src/views](https://github.com/aimeos/aimeos-laravel/tree/master/src/views) directory and its sub-directories of the Aimeos e-commerce package.
+The templates used by the controller actions decides if there's some content inside these sections. You can find these templates in the [views](https://github.com/aimeos/aimeos-laravel/tree/master/views) directory and its sub-directories of the Aimeos e-commerce package.
 
 ## Don't change the package
 
