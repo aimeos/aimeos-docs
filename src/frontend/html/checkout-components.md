@@ -193,18 +193,18 @@ Defined validation rules are applied to both, billing and delivery address field
 
 ## Countries, regions and states
 
-When shipping to different countries, you need to know which country or region your customer is living or where the parcel should be shipped to. This may affect the shipping costs. Therefore, you should define the countryid field as mandatory in both the [billing](../../config/client-html/checkout-standard.md#billingmandatory) and [delivery](../../config/client-html/checkout-standard.md#deliverymandatory) address. Afterwards, you can [configure the countries or regions](../../config/client-html/checkout-standard.md#countries) that will be available for selection by the customer:
+When shipping to different countries, you need to know which country or region your customer is living or where the parcel should be shipped to. This may affect the shipping costs. Therefore, you should define the countryid field as mandatory in both the [billing](../../config/client-html/checkout-standard.md#billingmandatory) and [delivery](../../config/client-html/checkout-standard.md#deliverymandatory) address. Afterwards, you can configure the countries or regions that will be available for selection by the customer:
 
 ```
-client/html/checkout/address/countries = ['DE', 'FR', 'ES']
+common/countries = ['DE', 'FR', 'ES']
 ```
 
 Usually, these are the two letter ISO country codes but you are able to choose any two letter code for describing e.g. a region like "EU" for Europe or "WE" and "EE" for western and eastern Europe.
 
-Each country or region can be divided into states which is often used in the US. States are country or region specific so each list of states must belong to a country or region. Thus, the [state](../../config/client-html/checkout-standard.md#states) list needs the country or region code as key:
+Each country or region can be divided into states which is often used in the US. States are country or region specific so each list of states must belong to a country or region. Thus, the state list needs the country or region code as key:
 
 ```
-client/html/checkout/address/states = array(
+common/states = array(
     'US' => array(
         'CA' => 'California',
         'NY' => 'New York',
