@@ -26,8 +26,8 @@ class MyproviderTest extends \PHPUnit_Framework_TestCase
         $this->serviceItem = $serviceManager->create();
 
         $this->object = $this->getMockBuilder( 'Aimeos\MShop\Service\Provider\Payment\Myprovider' )
-            ->setMethods( ['getOrder', 'getOrderBase', 'saveOrder', 'saveOrderBase', 'myConnection'] )
             ->setConstructorArgs( [$context, $this->serviceItem] )
+            ->setMethods( ['save', 'myConnection'] )
             ->getMock();
     }
 }
@@ -47,18 +47,10 @@ In the test methods you often need an order item but not in all. It would be too
 ```php
 protected function getOrderItem()
 {
-    $manager = \Aimeos\MShop\Factory::createManager( TestHelperMShop::context(), 'order' );
+    $manager = \Aimeos\MShop::create( \TestHelper::context(), 'order' );
+    $filter = $manager->filter()->add( 'order.datepayment', '==', '2008-02-15 12:34:56' );
 
-    $search = $manager->filter();
-    $search->setConditions( $search->compare( '==', 'order.datepayment', '2008-02-15 12:34:56' ) );
-
-    $result = $manager->search( $search );
-
-    if( ( $item = reset( $result ) ) === false ) {
-        throw new Exception( 'No order found' );
-    }
-
-    return $item;
+    $return $manager->search( $filter )->first( new \Exception( 'No order found' ) );
 }
 ```
 
@@ -137,7 +129,7 @@ This test example covers the two assertions that will be most often required: Ch
 
 # Direct status update
 
-Testing direct status updates involves retrieving the order and saving the modified order back to the database. To decouple the test from the database so no test data will be changed, you should make use of the stubbed *saveOrder()* method.
+Testing direct status updates involves retrieving the order and saving the modified order back to the database. To decouple the test from the database so no test data will be changed, you should make use of the stubbed *save()* method.
 
 ```php
 public function testUpdateSync()
@@ -156,11 +148,11 @@ public function testUpdateSync()
 }
 ```
 
-You can tell the stubbed methods to return a value of your choice, e.g. the required GET parameter. The expectation for *saveOrder()* will test if the method is called but won't change anything in the database.
+You can tell the stubbed methods to return a value of your choice, e.g. the required GET parameter. The expectation for *save()* will test if the method is called but won't change anything in the database.
 
 # Notification status update
 
-Testing status updates sent via notification requests requires working with PSR-7 request and response objects. Also, you need to stub the *saveOrder()* method like for direct status update to prevent changing the test data in the database.
+Testing status updates sent via notification requests requires working with PSR-7 request and response objects. Also, you need to stub the *save()* method like for direct status update to prevent changing the test data in the database.
 
 ```php
 public function testUpdateSync()
@@ -187,7 +179,7 @@ public function testUpdateSync()
 }
 ```
 
-When stubbing PSR-7 objects, you have to make sure that all methods changing the state of the object will return the (modified) object again! In this example, this the case for *withBody()* and *withHeader()* if you use them in your payment provider. The *createStreamFromString()* method is an addition in Aimeos to prevent being dependent on a concrete stream implementation. The expectation for *saveOrder()* will test if the method is called but won't change anything in the database.
+When stubbing PSR-7 objects, you have to make sure that all methods changing the state of the object will return the (modified) object again! In this example, this the case for *withBody()* and *withHeader()* if you use them in your payment provider. The *createStreamFromString()* method is an addition in Aimeos to prevent being dependent on a concrete stream implementation. The expectation for *save()* will test if the method is called but won't change anything in the database.
 
 # Batch status update
 
@@ -200,15 +192,13 @@ public function testUpdateAsync()
 
     $this->serviceItem()->setConfig( array( /* ... */ ) );
 
-    $this->object->expects( $this->atLeastOnce() )->method( 'getOrder' )
-        ->will( $this->returnValue( $this->getOrderItem() ) );
-    $this->object->expects( $this->atLeastOnce() )->method( 'saveOrder' );
+    $this->object->expects( $this->atLeastOnce() )->method( 'save' );
 
     $result = $this->object->updateAsync();
 }
 ```
 
-The rest of the test case is much like in the *updateSync()* method to prevent changes in the database. Depending on how much data is in your test file, the *getOrder()* and *saveOrder()* methods will be called more than once which is covered by the *atLeastOnce()* expectation.
+The rest of the test case is much like in the *updateSync()* method to prevent changes in the database. Depending on how much data is in your test file, the *getOrder()* and *save()* methods will be called more than once which is covered by the *atLeastOnce()* expectation.
 
 # Test optional methods
 

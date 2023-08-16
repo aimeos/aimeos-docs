@@ -39,7 +39,7 @@ $deliveryServices = $order->getService( 'delivery' );
 All passed orders are saved automatically by the calling object, which is usually a job controller. If you need to set the delivery/payment status of an order and throw an exception afterwards, you have to save the order yourself using:
 
 ```php
-$this->saveOrder( $order );
+$this->save( $order );
 ```
 
 This saves the order item including the complete order content and creates the necessary entries in the *mshop_order_status* table if one of the status values have been changed.
@@ -74,19 +74,14 @@ It adds the key/value pairs in the `$attributes` parameter with the specified ty
 
 ```php
 $attributes = ['transactionid' => 123];
-
-$serviceType = \Aimeos\MShop\Order\Manager\Base\Base::TYPE_PAYMENT;
-$orderServiceItem = $order->getService( $serviceType );
-
-$orderServiceItem->addAttributeItems( $$this->attributes( $attributes ), 'myprovider' );
+$orderServiceItem = $order->getService( 'payment' );
+$orderServiceItem->addAttributeItems( $this->attributes( $attributes ), 'myprovider' );
 ```
 
 To fetch the attribute again, you can use the *getAttribute()* or *getAttributeItem()* method of the order service item object:
 
 ```php
-$serviceType = \Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_PAYMENT;
-$orderServiceItem = $$order->getService( $serviceType );
-
+$orderServiceItem = $order->getService( 'payment' );
 $value = $orderServiceItem->getAttribute( 'transactionid', 'myprovider' );
 $attrItem = $orderServiceItem->getAttributeItem( 'transactionid', 'myprovider' );
 ```
@@ -301,23 +296,6 @@ All values can be used later on in the back-end systems but don't have any furth
 
 !!! note
     *Aimeos* don't offer a payment service provider that stores any credit card data. This was an explicit design decision to prevent credit card theft. Please use a payment gateway instead that processes credit card data in a PCI compliant environment.
-
-If you need to retrieve data from the fields you defined at your feconfig you can use this code at your Payment Provider:
-
-```php
-public function process( \Aimeos\MShop\Order\Item\Iface $order,
-    array $params = [] ) : \Aimeos\MShop\Order\Item\Iface
-{
-    $type = \Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_PAYMENT;
-    $code = $this->getServiceItem()->getCode(); // code of the service payment
-
-    foreach( $$order->getService( $type, $code )->getAttributes() as $attr ) {
-        // $attr->getCode() . ': ' . $attr->getValue();
-    }
-}
-```
-
-The `$code` parameter of *getService()* will return the *Aimeos\MShop\Order\Item\Base\Service\Standard* object the code belongs to. If you leave it out, you will get an array of all order service items of that type which have been added to the order during the checkout process.
 
 ## Payment form
 
