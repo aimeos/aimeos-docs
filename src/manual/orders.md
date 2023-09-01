@@ -15,13 +15,6 @@ The format of the export can be configured using the [controller/jobs/order/expo
 
 # Order details
 
-The orders created by the Aimeos e-commerce framework are split into two areas:
-
-* order details
-* invoice data
-
-The difference is that an order can have several invoices, e.g. if orders have to be split or if customers are able to order the same products again with one click.
-
 ![Basic order details](Admin-order-detail-basic.png)
 
 On top of the order detail view some general order information is listed:
@@ -29,8 +22,26 @@ On top of the order detail view some general order information is listed:
 Site (read-only)
 : Code of the site the order was created in. If you have only one shop, this is usually "default", the codes for other sites depends on what was entered when the site was created.
 
-Language
-: The language that is used within the order. For e-mails sent to the customers, the language field in their addresses has priority if available
+Channel
+: If you have different channels besides the web interface like a call center using a different application, this contains where the order comes from. Its value depends on what the application sets during the order process.
+
+Payment
+: The date and time when the payment status of the order was first set.
+
+Payment status
+: Last payment status of the order. This can be changed manually or by automated processes.
+
+Delivery
+: The date and time when the order was shipped to the customer. Usually, it's the date when the parcel was handed over to the logistic partner.
+
+Delivery status
+: Last delivery status of the order. This can be changed manually or by automated processes.
+
+Invoice number (read-only)
+: Unique invoice ID. This value is generated automatically based on the sequential number stored in the *mshop_locale_site* table.
+
+Related ID
+: Another invoice ID as reference If this invoice is related to another one
 
 Customer ID (read-only)
 : Unique ID of the customer if he has created a permanent account in the shop.
@@ -40,6 +51,32 @@ Customer
 
 Customer reference
 : Arbitrary string customers uses to identify their orders in their systems (often used for B2B sales)
+
+Language
+: The language that is used within the order. For e-mails sent to the customers, the language field in their addresses has priority if available
+
+The available payment status values are:
+
+* unfinished : Still unfinished
+* deleted : Deleted by the shop owner
+* canceled : Canceled by the customer
+* refused : Refused by the payment provider
+* refund : Refund by the shop owner
+* pending : Waiting on the payment
+* authorized : Shop owner is authorized to get the money from the customer
+* received : Money received by the shop owner
+
+The available delivery status values are:
+
+* unfinished : Still unfinished
+* deleted : Deleted by the shop owner
+* pending : Waiting for further actions
+* progress : Delivery is in progress (internally)
+* dispatched : Parcel was handed over to the logistic partner
+* delivered : Customer received the parcel
+* lost : Parcel is lost on the way to the customer
+* refused : Parcel was refused by the customer
+* returned : Parcel was returned to the shop owner
 
 ## Products
 
@@ -169,64 +206,3 @@ You can add new lines by clicking on the "+" symbol in the list header and remov
 In the summary section, the sub-total of all ordered products is displayed. This includes granted rebates. The shipping costs (and payment costs if there are any) are printed below before the order total is summed up. The included tax (or additional one in B2B mode) is listed separately just as the value of the included rebates.
 
 ![Order summary](Admin-order-detail-summary.png)
-
-# Invoices
-
-The invoice sub-panel contains information about the invoices related to that order. To change any value of the invoice data, you have to click on the pencil icon on the right first.
-
-![Invoice details](Admin-order-detail-invoice.png)
-
-Their purposes are:
-
-ID (read-only)
-: Unique invoice ID. This value is generated automatically.
-
-Type
-: If you have different channels besides the web interface like a call center using a different application, this contains where the order comes from. Its value depends on what the application sets during the order process.
-
-Payment (read-only)
-: The date and time when the payment status of the order was first set.
-
-Payment status
-: Last payment status of the order. This can be changed manually or by automated processes.
-
-Delivery
-: The date and time when the order was shipped to the customer. Usually, it's the date when the parcel was handed over to the logistic partner.
-
-Delivery status
-: Last delivery status of the order. This can be changed manually or by automated processes.
-
-Related ID
-: Another invoice ID as reference If this invoice is related to another one
-
-Created (read-only)
-: Date and time when the entry was added. This value is set automatically.
-
-Modified (read-only)
-: Last date and time when the entry was edited last time. This value is set automatically.
-
-Editor (read-only)
-: Last user who added or modified the entry. This value is set automatically.
-
-The available payment status values are:
-
-* unfinished : Still unfinished
-* deleted : Deleted by the shop owner
-* canceled : Canceled by the customer
-* refused : Refused by the payment provider
-* refund : Refund by the shop owner
-* pending : Waiting on the payment
-* authorized : Shop owner is authorized to get the money from the customer
-* received : Money received by the shop owner
-
-The available delivery status values are:
-
-* unfinished : Still unfinished
-* deleted : Deleted by the shop owner
-* pending : Waiting for further actions
-* progress : Delivery is in progress (internally)
-* dispatched : Parcel was handed over to the logistic partner
-* delivered : Customer received the parcel
-* lost : Parcel is lost on the way to the customer
-* refused : Parcel was refused by the customer
-* returned : Parcel was returned to the shop owner
