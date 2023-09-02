@@ -18,11 +18,8 @@ Let's name the new field "someid". Add a new `./<yourext>/setup/default/schema/p
 ```php
 return array(
   'table' => array(
-    'mshop_product' => function ( \Doctrine\DBAL\Schema\Schema $schema ) {
-
-        $table = $schema->getTable( 'mshop_product' );
-        $table->addColumn(  'someid', 'string', array( 'length' => 32, 'notnull' => false ) );
-        return $schema;
+    'mshop_product' => function ( \Aimeos\Upscheme\Schema\Table $table ) {
+        $table->string( 'someid', 32 )->null( true );
     },
   ),
 );
