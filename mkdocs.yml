@@ -192,6 +192,7 @@ nav:
   - Models:
     - Managing items: models/managing-items.md
     - Filtering items: models/search-filter.md
+    - Create managers: models/create-managers.md
     - Extend managers: models/extend-managers.md
   - Providers:
     - Service provider:
