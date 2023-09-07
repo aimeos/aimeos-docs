@@ -1,3 +1,5 @@
+Sometimes you need to store data that can't be stored in existing tables or existing tables are not optimal for the required data. In that case, you should create a database migration and a new manager that cares about saving/retrieving/deleting the data in that domain.
+
 # Database setup
 
 If you want to add a table for your manager to an existing data domain, then read the article about [adding new tables](../infrastructure/schema-migrations.md#add-new-tables).
@@ -20,7 +22,7 @@ For example, let's add a table to the **product** domain named *mshop_product_te
 ```php
 return array(
     'table' => array(
-        'mshop_product_test' => function ( \Aimeos\Upscheme\Schema\Table $table ) {
+        'mshop_product_test' => function( \Aimeos\Upscheme\Schema\Table $table ) {
             $table->engine = 'InnoDB';
 
             $table->id()->primary( 'pk_msprote_id' );
@@ -178,13 +180,49 @@ protected function getTable() : string
 }
 ```
 
+## Find by code
+
+Provided your new table contains rows with unique code values, you can also implement the *find()* method to retrieve this items by their code. Your class should implement the *Find* interface in that case too:
+
+```php
+class Standard
+	extends \Aimeos\MShop\Common\Manager\Base
+	implements \Aimeos\MShop\Common\Manager\Iface, \Aimeos\MShop\Common\Manager\Find\Iface
+{
+	public function getSaveAttributes() : array
+	{
+        // see above
+    }
+
+
+    public function find( string $code, array $ref = [], string $domain = null, string $type = null,
+        ?bool $default = false ) : \Aimeos\MShop\Common\Item\Iface
+    {
+        return $this->findBase( ['code' => $code], $ref, $default );
+    }
+}
+```
+
+The *domain* and *type* arguments are only used if the *code* alone isn't unique but the combination with one or both of the other arguments are. The attribute manager is currently the only one which requires *domain* and *type* arguments and they are passed within the first argument of *findBase()* as additional filter arguments:
+
+```php
+public function find( string $code, array $ref = [], string $domain = null, string $type = null,
+    ?bool $default = false ) : \Aimeos\MShop\Common\Item\Iface
+{
+    return $this->findBase( ['code' => $code, 'domain' => $domain, 'type' => $type], $ref, $default );
+}
+```
+
+The keys of the array passed as first arguement are the same as the keys you've defined in *getSaveAttributes()*.
+
 ## Using the manager
 
 Afterwards, you can create your new manager using the MShop factory and use all methods provided by managers like *create()*, *cursor()*, *delete()*, *filter()*, *get()*, *iterate()*, *save()* and *search()*
 
 ```php
+// sub-manager of existing domain
 $manager = \Aimeos\MShop::create( $this->context(), 'product/test' );
-// or
+// new data domain
 $manager = \Aimeos\MShop::create( $this->context(), 'test' )
 
 $item = $manager->create()
@@ -195,9 +233,18 @@ $item = $manager->create()
 $item = $manager->save( $item );
 $item = $manager->get( $item->getId() );
 
+$label = $item->label;
+// or using get() with default value
+$label = $item->get( 'label', 'default value' );
+
+// standard methods
+$id = $item->getId();
+$siteid = $item->getSiteId();
+$ctime = $item->getTimeCreated();
+$mtime = $item->getTimeModified();
+$editor = $item->getEditor();
+
 $items = $manager->search( $manager->filter() );
 
 $manager->delete( $items );
 ```
-
-If you need *aggregate()* and *find()*, you have to implement them in your manager class because there are no default implmentations available.
