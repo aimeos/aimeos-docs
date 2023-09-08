@@ -58,13 +58,13 @@ setAddress.before, setAddress.after
 : Before and after the address item has been added, plugin receives the order address item
 
 deleteAddress.before, deleteAddress.after
-: Before and after the address item has been deleted, plugin receives the address type before (usually *\Aimeos\MShop\Order\Item\Base\Address\Base::TYPE_DELIVERY* or *\Aimeos\MShop\Order\Item\Base\Address\Base::TYPE_PAYMENT*) and the deleted order address item afterwards
+: Before and after the address item has been deleted, plugin receives the address type before (usually *\Aimeos\MShop\Order\Item\Address\Base::TYPE_DELIVERY* or *\Aimeos\MShop\Order\Item\Address\Base::TYPE_PAYMENT*) and the deleted order address item afterwards
 
 setService.before, setService.after
 : Before and after the delivery/payment service item has been added, plugin receives the order service item
 
 deleteService.before, deleteService.after
-: Before and after the delivery/payment service item has been deleted, plugin receives the service type before (usually *\Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_DELIVERY* or *\Aimeos\MShop\Order\Item\Base\Service\Base::TYPE_PAYMENT*) and the deleted order service item afterwards
+: Before and after the delivery/payment service item has been deleted, plugin receives the service type before (usually *\Aimeos\MShop\Order\Item\Service\Base::TYPE_DELIVERY* or *\Aimeos\MShop\Order\Item\Service\Base::TYPE_PAYMENT*) and the deleted order service item afterwards
 
 addCoupon.before, addCoupon.after
 : Before and after the coupon has been added, plugin receives the list of order product items that are associated to the code before and the coupon code afterwards
@@ -78,7 +78,7 @@ check.before, check.after
 setOrder.before
 : Before the order is stored in the database
 
-To listen for such an event, your plugin has to register itself at the publisher object which is the basket (or `\Aimeos\MShop\Order\Item\Base\Standard` to be more precise). This is done by calling the `attach()` method of the publisher:
+To listen for such an event, your plugin has to register itself at the publisher object which is the basket (or `\Aimeos\MShop\Order\Item\Standard` to be more precise). This is done by calling the `attach()` method of the publisher:
 
 ```php
 public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
@@ -98,7 +98,7 @@ This would register the plugin (the `$this` object) as listener for the `addProd
 The `update()` method of a plugin is executed by the basket as soon as an event occurred to which the plugin is registered. Thus you have to put the code that should manipulate the basket into this method. There are some things you should take care of:
 
 Check passed order object
-: It must implement *\Aimeos\MShop\Order\Item\Base\Iface*, otherwise you must throw an exception. This protects you against bugs in other extensions.
+: It must implement *\Aimeos\MShop\Order\Item\Iface*, otherwise you must throw an exception. This protects you against bugs in other extensions.
 
 Protect against multiple invocations
 : In event driven systems, your `update()` method can be called more than once if other plugins generate events that maniulate the basket, too. If your code should only be executed once, set a singleton value in your class the first time it is called, and skip the code in subsequent calls.
@@ -118,7 +118,7 @@ The following implementation shows the important code blocks of the `update()` m
 public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
 {
     $context = $this->context();
-    $iface = '\Aimeos\MShop\Order\Item\Base\Iface';
+    $iface = '\Aimeos\MShop\Order\Item\Iface';
 
     if( !( $basket instanceof $iface ) )
     {
