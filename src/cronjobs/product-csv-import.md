@@ -37,6 +37,18 @@ For additional tuning of the CSV import, the [controller/common/product/import/c
 !!! tip
     If something goes wrong or for the progress status when importing big files, messages will be written to the "madmin_log" table in your database. You can see them in the "Log" panel located in the extended left navigation bar of the administration interface.
 
+# Test import
+
+You can test the CSV import using the example file and default mapping: [product-import-example.csv](https://aimeos.org/fileadmin/download/products-import-example.csv)
+
+Before you start, add these settings to your configuration:
+
+* [controller/jobs/product/import/csv/location](../config/controller-jobs/product-import.md#location) = <absolute path to the directory with the file>
+* [controller/jobs/product/import/csv/skip-lines](../config/controller-jobs/product-import.md#skip-lines) = 1
+
+!!! warning
+    The CSV file must be the only file in your configured directory. If you are using TYPO3, the configuration must be added to the TS-Config field of the scheduler task.
+
 # Default mapping
 
 You can freely configure how your data is organized in the CSV file but for a quick start, there's a default mapping available that can also be used as example:
@@ -84,18 +96,6 @@ You can freely configure how your data is organized in the CSV file but for a qu
 ```
 
 As you can see, the data from the CSV file is mapped according to its field position in the line to the key of a MShop domain item (e.g. "product.code"). Additionally, fields that belong together are grouped together. The keys of these groups are the names of the data processors that cares about importing the data.
-
-# Test import
-
-You can test the CSV import using the example file and default mapping: [product-import-example.csv](https://aimeos.org/fileadmin/download/products-import-example.csv)
-
-Before you start, add these settings to your configuration:
-
-* [controller/jobs/product/import/csv/location](../config/controller-jobs/product-import.md#location) = <absolute path to the directory with the file>
-* [controller/jobs/product/import/csv/skip-lines](../config/controller-jobs/product-import.md#skip-lines) = 1
-
-!!! warning
-    The CSV file must be the only file in your configured directory. If you are using TYPO3, the configuration must be added to the TS-Config field of the scheduler task.
 
 # Adapt the mapping
 
