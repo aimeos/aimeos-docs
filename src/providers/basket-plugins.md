@@ -81,13 +81,14 @@ setOrder.before
 To listen for such an event, your plugin has to register itself at the publisher object which is the basket (or `\Aimeos\MShop\Order\Item\Standard` to be more precise). This is done by calling the `attach()` method of the publisher:
 
 ```php
-public function register( \Aimeos\MW\Observer\Publisher\Iface $p )
+public function register( \Aimeos\MW\Observer\Publisher\Iface $p ) : \Aimeos\MW\Observer\Listener\Iface
 {
     $plugin = $this->object();
 
     $p->attach( $plugin, 'addProduct.after' );
     $p->attach( $plugin, 'deleteProduct.after' );
     // ...
+    return $this;
 }
 ```
 
@@ -155,7 +156,7 @@ All you need to do is to extend from the *\Aimeos\MShop\Plugin\Provider\Decorato
 ```php
 namespace \Aimeos\MShop\Plugin\Provider\Decorator;
 
-class Example
+class ExampleDecorator
     extends \Aimeos\MShop\Plugin\Provider\Decorator\Base
     implements \Aimeos\MShop\Plugin\Provider\Decorator\Iface
 {
@@ -170,17 +171,17 @@ class Example
 }
 ```
 
-The file *Example.php* holding this code would be located at e.g.
+The file *ExampleDecorator.php* holding this code would be located at e.g.
 
 ```
 // Laravel, Symfony
-./<yourext>/src/MShop/Plugin/Provider/Decorators/Example.php
+./<yourext>/src/MShop/Plugin/Provider/Decorators/ExampleDecorator.php
 // TYPO3
-./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Plugin/Provider/Decorators/Example.php
+./<yourext>/Resources/Private/Extensions/<yourext>/src/MShop/Plugin/Provider/Decorators/ExampleDecorator.php
 ```
 
 !!! tip
-    Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Plugin/Provider/Order/Example.php)
+    Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Plugin/Provider/Order/Decorator/Example.php)
 
 The advantage of this approach is that multiple decorators can be used for one plugin and that one decorator can be used by multiple plugins. This way the common rules are available for all plugins and you can add or remove those rules dynamically without touching the code of your plugins.
 
@@ -201,7 +202,7 @@ A test skeleton for a plugin or decorator is:
 ```php
 namespace \Aimeos\MShop\Plugin\Provider\Order;
 
-class ExampleTest extends \PHPUnit\Framework\TestCase
+class ExamplePluginTest extends \PHPUnit\Framework\TestCase
 {
     private $object;
     private $basket;
@@ -216,7 +217,7 @@ class ExampleTest extends \PHPUnit\Framework\TestCase
         $this->basket = $orderManager->create();
         $plugin = $pluginManager->create();
 
-        $this->object = new \Aimeos\MShop\Plugin\Provider\Order\Example( $context, $plugin );
+        $this->object = new \Aimeos\MShop\Plugin\Provider\Order\ExamplePlugin( $context, $plugin );
     }
 
     public function testRegister()
