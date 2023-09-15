@@ -20,7 +20,7 @@ class ExamplePlugin
 
     public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $value = null )
     {
-        return true;
+        return $value;
     }
 }
 ```
@@ -135,7 +135,7 @@ public function update( \Aimeos\MW\Observer\Publisher\Iface $basket, $event, $va
         $this->singleton = true;
     }
 
-    return true;
+    return $value;
 }
 ```
 
@@ -166,7 +166,7 @@ class ExampleDecorator
             return $this->getProvider()->update( $order, $action, $value );
         }
 
-        return true;
+        return $value;
     }
 }
 ```
@@ -227,7 +227,7 @@ class ExamplePluginTest extends \PHPUnit\Framework\TestCase
 
     public function testUpdate()
     {
-        $this->assertTrue( $this->object->update( $this->basket, 'check.after' ) );
+        $this->assertNull( $this->object->update( $this->basket, 'check.after' ) );
     }
 }
 ```
