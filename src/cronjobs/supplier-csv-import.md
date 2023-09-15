@@ -2,8 +2,12 @@ If you already manage your categories in an ERP system you want to bulk import t
 
 !!! note
     The supplier import is triggered via a cronjob/scheduler that executes the "supplier/import/csv" job controller.
+    If you are using TYPO3, you have to put all configuration into the TSConfig field of the appropriate scheduler task. For all other frameworks, the settings must be added to the configuration file.
 
-# Data location and format
+!!! tip
+    If something goes wrong or for the progress status when importing big files, messages will be written to the "madmin_log" table in your database. You can see them in the "Log" panel of the administration interface if you have access to.
+
+# File location
 
 When you export your categories from your ERP system, you need to store the files in a location where they are accessible by the importer. The default location where the importer expects them is:
 
@@ -11,6 +15,8 @@ When you export your categories from your ERP system, you need to store the file
 * TYPO3: /uploads/tx_aimeos/.secure/import/supplier/
 
 The relative directory inside the "fs-import" file system ("supplier") can be configured by the [controller/jobs/supplier/import/csv/location](../config/controller-jobs/supplier-import.md#location) setting.
+
+# File format
 
 For CSV files, there exists a wide range of possibilities about their format because it's not standardized besides the fact that fields are separated by comma (,) but even that isn't set in stone. As a guideline, you should use the following format, which is able to handle all edge cases and which can be also created by Excel/OpenOffice as well:
 
@@ -29,13 +35,7 @@ The basic rules are:
 
 Your CSV files can **start with a header** describing the columns, so they are more readable by humans. In this case, you need to configure the import to **skip these lines** using the [controller/jobs/supplier/import/csv/skip-lines](../config/controller-jobs/supplier-import.md#skip-lines) configuration.
 
-!!! note
-    If you are using TYPO3, you have to put all configuration into the TSConfig field of the appropriate scheduler task. For all other frameworks, the settings must be added to the configuration file.
-
-!!! tip
-    If something goes wrong or for the progress status when importing big files, messages will be written to the "madmin_log" table in your database. You can see them in the "Log" panel of the administration interface if you have access to.
-
-# Default mapping
+# Column mapping
 
 You can freely configure how your data is organized in the CSV file but for a quick start, there's a default mapping available that can also be used as example:
 
@@ -278,9 +278,9 @@ There are no fields that must be filled.
 
 # Backups
 
-After a CSV file was imported successfully, you can move it to another location, so it won't be imported again and isn't overwritten by the next file that is stored at the same location in the file system. You should use an absolute path for the [controller/jobs/supplier/import/csv/backup](../config/controller-jobs/supplier-import.md#backup) setting to be sure but can be relative path if you absolutely know from where the job will be executed from.
+After a CSV file was imported successfully, you can move it to another location, so it won't be imported again and isn't overwritten by the next file that is stored at the same location in the file system. You must use a path for the [controller/jobs/supplier/import/csv/backup](../config/controller-jobs/supplier-import.md#backup) setting relative to the `fs-import` virtual file system.
 
 The name of the new backup location can contain placeholders understood by the PHP `date_format()` function to create dynamic paths, e.g. "backup/%Y-%m-%d" which would create "backup/2000-01-01". For more information about the date_format() placeholders, please have a look into the PHP documentation of [date_format() function](https://www.php.net/manual/en/datetime.format.php).
 
-!!! note
-    If no backup name is configured, the file or directory won't be moved away. Please make also sure that the parent directory and the new directory are writable so the file or directory could be moved.
+!!! warning
+    If no backup name is configured, the file will be deleted.
