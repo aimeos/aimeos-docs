@@ -368,6 +368,7 @@ nav:
     - MShop:
       - Attribute: config/mshop/attribute-manager.md
       - Catalog: config/mshop/catalog-manager.md
+      - CMS: config/mshop/cms-manager.md
       - Common: config/mshop/common-manager.md
       - Coupon: config/mshop/coupon-manager.md
       - Customer: config/mshop/customer-manager.md
