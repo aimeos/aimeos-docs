@@ -48,29 +48,44 @@ setCustomerId.before, setCustomerId.after
 setLocale.before, setLocale.after
 : Before and after the locale item with site, language and currency has been added, plugin receives the locale item
 
+addAddress.before, addAddress.after
+: Before and after the address item has been added, plugin receives the order address item
+
+deleteAddress.before, deleteAddress.after
+: Before and after the address item has been deleted, plugin receives the (to be) removed address item
+
+setAddresses.before, setAddresses.after
+: Before and after all address items are replaced, plugin receives an array or map with the address type as key and the list of address items as value (new ones before, old ones after)
+
+addCoupon.before, addCoupon.after
+: Before and after the coupon has been added, plugin receives the coupon code
+
+deleteCoupon.before, deleteCoupon.after
+: Before and after the coupon has been deleted, plugin receives the (to be) removed array or map with coupon code as key and the list of order product items as value
+
+setCoupon.before, setCoupon.after
+: Before and after the coupon is replaced, plugin receives the array or map with coupon code as key and the list of order product items as value
+
+setCoupons.before, setCoupons.after
+: Before and after all coupons are replaced, plugin receives the array or map with coupon codes as key and the list of order product items as values (new ones before, old ones after)
+
 addProduct.before, addProduct.after
 : Before and after the product item has been added, plugin receives the order product item
 
 deleteProduct.before, deleteProduct.after
-: Before and after the product item has been deleted, plugin receives the position of the product in the basket before and the deleted order product item afterwards
+: Before and after the product item has been deleted, plugin receives the (to be) removed order product item
 
-setAddress.before, setAddress.after
-: Before and after the address item has been added, plugin receives the order address item
+setProducts.before, setProducts.after
+: Before and after all product items are replaced, plugin receives an array or map with the order product items as value (new ones before, old ones after)
 
-deleteAddress.before, deleteAddress.after
-: Before and after the address item has been deleted, plugin receives the address type before (usually *\Aimeos\MShop\Order\Item\Address\Base::TYPE_DELIVERY* or *\Aimeos\MShop\Order\Item\Address\Base::TYPE_PAYMENT*) and the deleted order address item afterwards
-
-setService.before, setService.after
-: Before and after the delivery/payment service item has been added, plugin receives the order service item
+addService.before, addService.after
+: Before and after the service item has been added, plugin receives the order service item
 
 deleteService.before, deleteService.after
-: Before and after the delivery/payment service item has been deleted, plugin receives the service type before (usually *\Aimeos\MShop\Order\Item\Service\Base::TYPE_DELIVERY* or *\Aimeos\MShop\Order\Item\Service\Base::TYPE_PAYMENT*) and the deleted order service item afterwards
+: Before and after the service item has been deleted, plugin receives the (to be) removed service item
 
-addCoupon.before, addCoupon.after
-: Before and after the coupon has been added, plugin receives the list of order product items that are associated to the code before and the coupon code afterwards
-
-deleteCoupon.before, deleteCoupon.after
-: Before and after the coupon has been deleted, plugin receives the coupon code
+setServices.before, setServices.after
+: Before and after all service items are replaced, plugin receives an array or map with the service type as key and the list of service items as value (new ones before, old ones after)
 
 check.before, check.after
 : Before and after the basket content has been checked, plugin receives the content types as array (e.g. `['order/address', 'order/coupon', 'order/product', 'order/service']`)
@@ -78,7 +93,7 @@ check.before, check.after
 setOrder.before
 : Before the order is stored in the database
 
-To listen for such an event, your plugin has to register itself at the publisher object which is the basket (or `\Aimeos\MShop\Order\Item\Standard` to be more precise). This is done by calling the `attach()` method of the publisher:
+To listen for such an event, your plugin has to register itself at the publisher object which is the basket (or `\Aimeos\MShop\Order\Item\Iface` to be more precise). This is done by calling the `attach()` method of the publisher:
 
 ```php
 public function register( \Aimeos\MW\Observer\Publisher\Iface $p ) : \Aimeos\MW\Observer\Listener\Iface
