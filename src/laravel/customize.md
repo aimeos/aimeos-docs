@@ -410,6 +410,9 @@ The site code you've entered for the *aimeos:setup* command will be used as the 
 !!! warning
     Don't forget to add the `{site}` placeholder to the authentication routes like `/login`, `/register`, etc. in your `./routes/web.php` file!
 
+!!! tip
+    Don't set `ASSET_URL` in your `.env` file if you use multiple (sub-)domains! Otherwise, CSS/JS files won't be loaded because they will be from the `ASSET_URL` domain and not from the current (sub-)domain.
+
 Now, the site code is used as domain for the shops and you must enter the domain name as site code when creating a new site, e.g.
 
 ```bash
