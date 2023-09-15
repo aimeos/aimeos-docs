@@ -181,6 +181,7 @@ nav:
     - Product CSV import: cronjobs/product-csv-import.md
     - Category CSV import: cronjobs/catalog-csv-import.md
     - Supplier CSV import: cronjobs/supplier-csv-import.md
+    - Stock CSV import: cronjobs/stock-csv-import.md
     - Attribute XML import: cronjobs/attribute-xml-import.md
     - Category XML import: cronjobs/catalog-xml-import.md
     - Customer XML import: cronjobs/customer-xml-import.md
