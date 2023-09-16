@@ -4,9 +4,6 @@ There are many select and input fields in the left section of the detail view th
 
 The purpose of the available fields are:
 
-Dataset (optional)
-: List of pre-configured data sets to simplify creating new products for editors
-
 Status (required)
 : Controls the global visibility of the product. There are several status values available but the product will only be shown in the frontend if the status is "enabled"
 
