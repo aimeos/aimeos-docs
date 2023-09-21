@@ -404,6 +404,9 @@ The site code you've entered for the *aimeos:setup* command will be used as the 
     'account' => ['domain' => '{site}', 'prefix' => 'profile', 'middleware' => ['web', 'auth']],
     'default' => ['domain' => '{site}', 'prefix' => 'shop', 'middleware' => ['web']],
     'update' => ['domain' => '{site}'],
+    'home' => ['domain' => '{site}', 'middleware' => ['web']],
+    'page' => ['domain' => '{site}/p', 'middleware' => ['web']],
+    'supplier' => ['domain' => '{site}/s', 'middleware' => ['web']],
 ],
 ```
 
