@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the dashboard JQAdm client
 admin/jqadm/dashboard/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the dashboard JQAdm client
 admin/jqadm/dashboard/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -110,7 +107,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/job/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.08
 
@@ -312,7 +308,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/dashboard/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.07
 
@@ -358,7 +353,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/notify/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2022.04
 
@@ -561,7 +555,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/countcountry/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -763,7 +756,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/countday/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -965,7 +957,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/counthour/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1167,7 +1158,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/countpaystatus/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1369,7 +1359,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1480,7 +1469,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/latest/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -1698,7 +1686,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/quick/countcompleted/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -1900,7 +1887,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/quick/countcustomer/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2102,7 +2088,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/quick/counttotal/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2304,7 +2289,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/quick/countunfinished/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2506,7 +2490,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/quick/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2712,7 +2695,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/salesday/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2914,7 +2896,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/salesmonth/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3116,7 +3097,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/salesweekday/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3318,7 +3298,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/servicedelivery/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3520,7 +3499,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/order/servicepayment/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3809,7 +3787,6 @@ Excludes decorators added by the "common" option from the dashboard JQAdm client
 admin/jqadm/dashboard/setting/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.01
 

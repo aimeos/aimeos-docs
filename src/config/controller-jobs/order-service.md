@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the order service async co
 controller/jobs/order/service/async/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the order service async con
 controller/jobs/order/service/async/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the order service async controllers
 controller/jobs/order/service/async/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -110,7 +107,6 @@ Class name of the used order service async scheduler controller implementation
 controller/jobs/order/service/async/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.07
 
@@ -181,7 +177,6 @@ Excludes decorators added by the "common" option from the order service delivery
 controller/jobs/order/service/delivery/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -216,7 +211,6 @@ Adds a list of globally available decorators only to the order service delivery 
 controller/jobs/order/service/delivery/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -249,7 +243,6 @@ Adds a list of local decorators only to the order service delivery controllers
 controller/jobs/order/service/delivery/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -344,7 +337,6 @@ Class name of the used order service delivery scheduler controller implementatio
 controller/jobs/order/service/delivery/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -390,7 +382,6 @@ Automatically capture payments after the configured amount of days
 controller/jobs/order/service/payment/capture-days = 
 ```
 
-* Default: 
 * Type: integer - Number of days
 * Since: 2014.07
 
@@ -408,7 +399,6 @@ Excludes decorators added by the "common" option from the order service payment 
 controller/jobs/order/service/payment/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -443,7 +433,6 @@ Adds a list of globally available decorators only to the order service payment c
 controller/jobs/order/service/payment/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -476,7 +465,6 @@ Adds a list of local decorators only to the order service payment controllers
 controller/jobs/order/service/payment/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -510,7 +498,6 @@ Associated items that should be available too in the order
 controller/jobs/order/service/payment/domains = 
 ```
 
-* Default: 
 * Type: array - Referenced domain names
 * Since: 2022.04
 
@@ -554,7 +541,6 @@ Class name of the used order service payment scheduler controller implementation
 controller/jobs/order/service/payment/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.07
 
@@ -622,7 +608,6 @@ Excludes decorators added by the "common" option from the order service transfer
 controller/jobs/order/service/transfer/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -657,7 +642,6 @@ Adds a list of globally available decorators only to the order service transfer 
 controller/jobs/order/service/transfer/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -690,7 +674,6 @@ Adds a list of local decorators only to the order service transfer controllers
 controller/jobs/order/service/transfer/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -759,7 +742,6 @@ Class name of the used order service transfer scheduler controller implementatio
 controller/jobs/order/service/transfer/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.10
 

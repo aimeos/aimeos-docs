@@ -279,6 +279,81 @@ Response:
 }
 ```
 
+# Fetch service configuration
+
+To retrieve the backend configuration for a service provider and the added decorators use:
+
+=== "Query"
+    ```graphql
+    query {
+      getServiceConfig(provider: "Xml,BasketValues", type: "delivery") {
+        code
+        type
+        label
+      }
+    }
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      getServiceConfig(provider: "Xml,BasketValues", type: "delivery") {
+        code
+        type
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Response:
+
+```json
+{
+  "data": {
+    "getServiceConfig": [
+      {
+        "code":"xml.backupdir",
+        "type":"string",
+        "label":"Relative or absolute path of the backup directory (with date() placeholders)"
+      },{
+        "code":"xml.exportpath",
+        "type":"string",
+        "label":"Relative or absolute path and name of the XML files (with date() placeholders)"
+      },{
+        "code":"xml.template",
+        "type":"string",
+        "label":"Relative path of the template file name"
+      },{
+        "code":"xml.updatedir",
+        "type":"string",
+        "label":"Relative or absolute path and name of the order update XML files"
+      },{
+        "code":"basketvalues.total-value-min",
+        "type":"map",
+        "label":"Minimum total value of the basket"
+      },{
+        "code":"basketvalues.total-value-max",
+        "type":"map",
+        "label":"Maximum total value of the basket"
+      }
+    ]
+  }
+}
+```
+
 # Save single service
 
 === "Mutation"

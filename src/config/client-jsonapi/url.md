@@ -86,7 +86,6 @@ Destination of the URL where the client specified in the URL is known
 client/jsonapi/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2017.03
 

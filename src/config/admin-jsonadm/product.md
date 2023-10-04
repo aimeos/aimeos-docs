@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 admin/jsonadm/product/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the Jsonadm client
 admin/jsonadm/product/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -78,7 +76,6 @@ Adds a list of local decorators only to the Jsonadm client
 admin/jsonadm/product/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 

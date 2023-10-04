@@ -7,7 +7,6 @@ Pre-select first item in selection list
 client/html/catalog/selection/preselect = 
 ```
 
-* Default: 
 * Type: boolean - True to select the first option by default, false to display the select hint
 * Since: 2016.07
 
@@ -60,7 +59,6 @@ List of layout types for the variant attributes
 client/html/catalog/selection/type = 
 ```
 
-* Default: 
 * Type: array - List of attribute types as key and layout types as value, e.g. "select" or "radio"
 * Since: 2015.10
 

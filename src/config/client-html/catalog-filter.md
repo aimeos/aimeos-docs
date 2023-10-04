@@ -950,7 +950,6 @@ The ID of the category node that should be the root of the displayed category tr
 client/html/catalog/filter/tree/startid = 
 ```
 
-* Default: 
 * Type: string - Category ID
 * Since: 2014.03
 

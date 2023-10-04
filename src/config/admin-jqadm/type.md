@@ -157,7 +157,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/attribute/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -192,7 +191,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/attribute/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -225,7 +223,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/attribute/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -436,7 +433,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/attribute/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -471,7 +467,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/attribute/property/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -504,7 +499,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/attribute/property/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -771,7 +765,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/catalog/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -806,7 +799,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/catalog/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -839,7 +831,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/catalog/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -905,7 +896,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/catalog/lists/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -1051,7 +1041,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/customer/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1086,7 +1075,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/customer/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1119,7 +1107,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/customer/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1185,7 +1172,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/customer/lists/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -1330,7 +1316,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/customer/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1365,7 +1350,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/customer/property/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1398,7 +1382,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/customer/property/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1464,7 +1447,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/customer/property/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -1610,7 +1592,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/media/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1645,7 +1626,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/media/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1678,7 +1658,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/media/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1744,7 +1723,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/media/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1779,7 +1757,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/media/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1812,7 +1789,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/media/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -1878,7 +1854,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/media/lists/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 * Since: 2017.10
@@ -2024,7 +1999,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/media/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -2069,7 +2043,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/media/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2104,7 +2077,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/media/property/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2137,7 +2109,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/media/property/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2203,7 +2174,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/media/property/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -2449,7 +2419,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/plugin/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2484,7 +2453,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/plugin/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2517,7 +2485,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/plugin/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2583,7 +2550,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/plugin/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -2729,7 +2695,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/price/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2764,7 +2729,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/price/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2797,7 +2761,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/price/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2863,7 +2826,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/price/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2898,7 +2860,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/price/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2931,7 +2892,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/price/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -2997,7 +2957,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/price/lists/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -3142,7 +3101,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/price/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -3187,7 +3145,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/price/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3222,7 +3179,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/price/property/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3255,7 +3211,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/price/property/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3321,7 +3276,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/price/property/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -3567,7 +3521,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/product/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3602,7 +3555,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/product/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3635,7 +3587,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/product/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3701,7 +3652,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/product/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3736,7 +3686,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/product/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3769,7 +3718,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/product/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -3835,7 +3783,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/product/lists/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 * Since: 2017.10
@@ -3981,7 +3928,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/product/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -4026,7 +3972,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/product/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4061,7 +4006,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/product/property/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4094,7 +4038,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/product/property/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4160,7 +4103,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/product/property/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -4406,7 +4348,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/rule/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -4441,7 +4382,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/rule/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -4474,7 +4414,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/rule/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -4540,7 +4479,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/rule/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.04
 
@@ -4686,7 +4624,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/service/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4721,7 +4658,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/service/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4754,7 +4690,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/service/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4820,7 +4755,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/service/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4855,7 +4789,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/service/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -4888,7 +4821,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/service/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5054,7 +4986,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/service/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -5200,7 +5131,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/stock/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5235,7 +5165,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/stock/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5268,7 +5197,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/stock/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5334,7 +5262,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/stock/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -5480,7 +5407,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/tag/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5515,7 +5441,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/tag/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5548,7 +5473,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/tag/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5614,7 +5538,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/tag/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -5760,7 +5683,6 @@ Excludes decorators added by the "common" option from the type JQAdm client
 admin/jqadm/type/text/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5795,7 +5717,6 @@ Adds a list of globally available decorators only to the type JQAdm client
 admin/jqadm/type/text/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5828,7 +5749,6 @@ Adds a list of local decorators only to the type JQAdm client
 admin/jqadm/type/text/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5894,7 +5814,6 @@ Excludes decorators added by the "common" option from the list type JQAdm client
 admin/jqadm/type/text/lists/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5929,7 +5848,6 @@ Adds a list of globally available decorators only to the list type JQAdm client
 admin/jqadm/type/text/lists/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -5962,7 +5880,6 @@ Adds a list of local decorators only to the list type JQAdm client
 admin/jqadm/type/text/lists/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -6128,7 +6045,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/type/text/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 

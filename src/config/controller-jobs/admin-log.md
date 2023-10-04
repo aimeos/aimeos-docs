@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the admin log controllers
 controller/jobs/admin/log/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the admin log controllers
 controller/jobs/admin/log/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the admin log controllers
 controller/jobs/admin/log/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -129,7 +126,6 @@ Class name of the used admin log scheduler controller implementation
 controller/jobs/admin/log/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.09
 

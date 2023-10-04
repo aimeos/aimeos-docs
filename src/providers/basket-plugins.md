@@ -64,7 +64,7 @@ deleteCoupon.before, deleteCoupon.after
 : Before and after the coupon has been deleted, plugin receives the (to be) removed array or map with coupon code as key and the list of order product items as value
 
 setCoupon.before, setCoupon.after
-: Before and after the coupon is replaced, plugin receives the array or map with coupon code as key and the list of order product items as value
+: Before and after the coupon is replaced, plugin receives the array or map with coupon code as key and the list of order product items as value (new one before, old one after)
 
 setCoupons.before, setCoupons.after
 : Before and after all coupons are replaced, plugin receives the array or map with coupon codes as key and the list of order product items as values (new ones before, old ones after)

@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the attribute frontend con
 controller/frontend/attribute/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the attribute frontend cont
 controller/frontend/attribute/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the attribute frontend controllers
 controller/frontend/attribute/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -110,7 +107,6 @@ Class name of the used attribute frontend controller implementation
 controller/frontend/attribute/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

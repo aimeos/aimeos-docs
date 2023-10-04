@@ -1,4 +1,4 @@
-from setuptools import setup
+import setuptools
 
 setuptools.setup(
     name="algolia",
@@ -8,7 +8,7 @@ setuptools.setup(
     packages=['algolia'],
     entry_points={
         'mkdocs.plugins': [
-            'algolia=algolia:MarkdownExportPlugin'
+            'algolia = algolia:MarkdownExportPlugin'
         ]
     }
 )

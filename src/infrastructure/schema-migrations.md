@@ -53,7 +53,8 @@ In your own extension you have to create a PHP file with the same name as the fi
 ```php
 return [
   'table' => [
-    'mshop_attribute_mytable' => function ( \Aimeos\Upscheme\Schema\Table $table ) {
+    'mshop_attribute_mytable' => function( \Aimeos\Upscheme\Schema\Table $table ) {
+        $table->engine = 'InnoDB';
 
         $table->id()->primary( 'pk_msattmy_id' );
         $table->string( 'siteid' );
@@ -77,7 +78,7 @@ The important difference compared to adding new tables is that the schema object
 ```php
 return [
   'table' => [
-    'mshop_attribute_type' => function ( \Aimeos\Upscheme\Schema\Table $table ) {
+    'mshop_attribute_type' => function( \Aimeos\Upscheme\Schema\Table $table ) {
 
         $table->string(  'domain', 64] );
         $table->int( 'pos' )->default( 0 );
@@ -90,7 +91,7 @@ return [
 
 ## Tables for new domains
 
-In order to create tables for a new data domain (not existing ones like "attribute", "product", "service", etc.], you need to create an [Upscheme](https://upscheme.org) setup task, too. This setup task must extend from the `Base` setup task class. For a new domain *mydomain* (defined in *./setup/default/schema/mydomain.php*) create a file called *Mydomain.php* with content similar to this one:
+In order to create tables for a new data domain (not existing ones like "attribute", "product", "service", etc.), you need to create an [Upscheme](https://upscheme.org) setup task, too. This setup task must extend from the `Base` setup task class. For a new domain *mydomain* create a file called *./setup/Mydomain.php* with content similar to this one:
 
 ```php
 namespace Aimeos\Upscheme\Task;
@@ -100,27 +101,22 @@ class Mydomain extends Base
     public function up()
     {
         $this->info( 'Creating mydomain schema', 'v' );
-        $db = $this->db( 'db-mydomain' );
 
-        foreach( $this->paths( 'default/schema/mydomain.php' ) as $filepath )
-        {
-            if( ( $list = include( $filepath ) ) === false ) {
-                throw new \RuntimeException( sprintf( 'Unable to get schema from file "%1$s"', $filepath ) );
-            }
+        $this->db( 'db-mydomain' )->table( $name, function( \Aimeos\Upscheme\Schema\Table $table ) {
+        $table->engine = 'InnoDB';
 
-            foreach( $list['table'] ?? [] as $name => $fcn ) {
-                $db->table( $name, $fcn );
-            }
-        }
+        $table->id()->primary( 'pk_msmyd_id' );
+        $table->string( 'siteid' );
+        $table->string( 'myvalue', 'string' )->null( true );
+        $table->meta();
+
+        $table->unique( ['siteid', 'myvalue'], 'unq_msmyd_sid_myval' );
+    } );
     }
 }
 ```
 
 In the *up()* method, you need to get the connection to the database where the table(s) should be created in using *$this->db('db-mydomain')*. If no connection for *db-mydomain* is configured, it will automatically fall back to the default connection.
-
-The file *default/schema/mydomain.php* contains your schema definition and the path must be relative to the *./setup* directory of your extension.
-
-Finally, the functions retrieved from the schema file(s) will be passed to the *$db->table()* method which will create the table definitions according to the schema file.
 
 ## Platform specific
 

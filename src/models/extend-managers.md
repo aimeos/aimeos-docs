@@ -55,11 +55,9 @@ class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
 {
     private $attr = [
         'mycolumn' => [
-            'code' => 'mycolumn',
             'internalcode' => 'mpro."mycolumn"',
             'label' => 'My new column',
-            'type' => 'string',
-            'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_STR,
+            'type' => 'string', // optional
         ],
     ];
 
@@ -77,9 +75,8 @@ class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
 
 The `$attr` array contains a definition of the column(s) and the requirements are:
 
-1. The key must be exactly the name of your column in the database (here: 'mycolumn')
-2. The value for *code* must be exactly the name of your column in the database (here: 'mycolumn')
-3. The value for *internalcode* must be SQL alias of the table, a dot and the column name enclosed in quotation marks (here: 'mpro."mycolumn"')
+* The key must be exactly the name of your column in the database (here: 'mycolumn')
+* The value for *internalcode* must be SQL alias of the table, a dot and the column name enclosed in quotation marks (here: 'mpro."mycolumn"')
 
 !!! tip
     For the SQL alias you have to use, please have a at into the SELECT statement of the domain in the [configuration](https://github.com/aimeos/aimeos-core/tree/master/config/mshop).
@@ -87,12 +84,15 @@ The `$attr` array contains a definition of the column(s) and the requirements ar
 The other values in the *$attr* array are optional:
 
 * *label* is an arbitrary string that is shown in admin interface in the search bar
-* *type* is the type of the values that the column contains (default: 'string')
-* *internaltype* is the database type constant (default: PARAM_STR) and can be:
-    * \Aimeos\Base\DB\Statement\Base::PARAM_STR
-    * \Aimeos\Base\DB\Statement\Base::PARAM_INT
-    * \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT
-    * \Aimeos\Base\DB\Statement\Base::PARAM_BOOL
+* *type* is the type of the values that the column contains (default: 'string') and can be:
+    * bool
+    * date
+    * datetime
+    * decimal
+    * float
+    * int
+    * json
+    * string
 
 As last step, you have to add your decorator name to the list of local decorators for that manager in the `./<yourext>/config/mshop.php` file. For the product manager it's:
 
@@ -221,11 +221,9 @@ class Myproject extends Standard
 {
     private $searchConfig = [
         'product.myvalue' => [
-            'code' => 'product.myvalue',
             'internalcode' => 'mpro."myval"',
             'label' => 'Product MyValue',
-            'type' => 'string', // integer, float, etc.
-            'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_STR, // _INT, _FLOAT, etc.
+            'type' => 'string', // int, float, etc.
         ],
     ];
 
@@ -240,11 +238,7 @@ class Myproject extends Standard
 
     public function getSearchAttributes( bool $withsub = true ) : array
     {
-        $list = parent::getSearchAttributes( $withsub );
-        foreach( $this->searchConfig as $key => $fields ) {
-            $list[$key] = new \Aimeos\Base\Criteria\Attribute\Standard( $fields );
-        }
-        return $list;
+        return parent::getSearchAttributes( $withsub ) + $this->createAttributes( $this->attr );
     }
 
 	protected function createItemBase( array $values = [], array $listItems = [],

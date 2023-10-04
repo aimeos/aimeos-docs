@@ -8,7 +8,6 @@ Name of the backup for sucessfully imported files
 controller/jobs/customer/import/xml/backup = 
 ```
 
-* Default: 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2019.04
 
@@ -194,7 +193,7 @@ See also:
 
 ## location
 
-File or directory where the content is stored which should be imported
+Directory where the CSV files are stored which should be imported
 
 ```
 controller/jobs/customer/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
@@ -204,10 +203,11 @@ controller/jobs/customer/import/xml/location = /var/www/aimeos/ext/ai-controller
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
-You need to configure the XML file or directory with the XML files that
-should be imported. It should be an absolute path to be sure but can be
-relative path if you absolutely know from where the job will be executed
-from.
+It's the relative path inside the "fs-import" virtual file system
+configuration. The default location of the "fs-import" file system is:
+
+* Laravel: ./storage/import/
+* TYPO3: /uploads/tx_aimeos/.secure/import/
 
 See also:
 

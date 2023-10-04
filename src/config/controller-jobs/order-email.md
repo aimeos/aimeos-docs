@@ -59,7 +59,6 @@ Excludes decorators added by the "common" option from the order email delivery c
 controller/jobs/order/email/delivery/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -94,7 +93,6 @@ Adds a list of globally available decorators only to the order email delivery co
 controller/jobs/order/email/delivery/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -127,7 +125,6 @@ Adds a list of local decorators only to the order email delivery controllers
 controller/jobs/order/email/delivery/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -184,7 +181,6 @@ Class name of the used order email delivery scheduler controller implementation
 controller/jobs/order/email/delivery/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -372,7 +368,6 @@ Excludes decorators added by the "common" option from the order email payment co
 controller/jobs/order/email/payment/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -407,7 +402,6 @@ Adds a list of globally available decorators only to the order email payment con
 controller/jobs/order/email/payment/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -440,7 +434,6 @@ Adds a list of local decorators only to the order email payment controllers
 controller/jobs/order/email/payment/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -496,7 +489,6 @@ Class name of the used order email payment scheduler controller implementation
 controller/jobs/order/email/payment/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -738,7 +730,6 @@ Excludes decorators added by the "common" option from the order email voucher co
 controller/jobs/order/email/voucher/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -773,7 +764,6 @@ Adds a list of globally available decorators only to the order email voucher con
 controller/jobs/order/email/voucher/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -806,7 +796,6 @@ Adds a list of local decorators only to the order email voucher controllers
 controller/jobs/order/email/voucher/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -861,7 +850,6 @@ Class name of the used order email voucher scheduler controller implementation
 controller/jobs/order/email/voucher/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

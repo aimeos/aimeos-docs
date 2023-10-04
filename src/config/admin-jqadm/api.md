@@ -7,7 +7,6 @@ Configuration for ChatGPT API to generate texts
 admin/jqadm/api/openai = 
 ```
 
-* Default: 
 * Type: array - Associative list of key/value pairs
 * Since: 2022.10
 

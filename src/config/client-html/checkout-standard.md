@@ -90,6 +90,7 @@ Available field keys are:
 * order.address.countryid
 * order.address.telephone
 * order.address.telefax
+* order.address.mobile
 * order.address.email
 * order.address.website
 
@@ -157,6 +158,7 @@ continue the checkout process. Available field keys are:
 * order.address.countryid
 * order.address.telephone
 * order.address.telefax
+* order.address.mobile
 * order.address.email
 * order.address.website
 
@@ -237,6 +239,7 @@ continue the checkout process. Available field keys are:
 * order.address.countryid
 * order.address.telephone
 * order.address.telefax
+* order.address.mobile
 * order.address.email
 * order.address.website
 
@@ -324,277 +327,6 @@ See also:
 
 * client/html/checkout/standard/address/billing/template-header
 
-## countries
-
-A list of ISO country codes which should be available in the checkout address step.
-
-```
-client/html/checkout/standard/address/countries = Array
-(
-    [0] => AD
-    [1] => AE
-    [2] => AF
-    [3] => AG
-    [4] => AI
-    [5] => AL
-    [6] => AM
-    [7] => AO
-    [8] => AQ
-    [9] => AR
-    [10] => AS
-    [11] => AT
-    [12] => AU
-    [13] => AW
-    [14] => AX
-    [15] => AZ
-    [16] => BA
-    [17] => BB
-    [18] => BD
-    [19] => BE
-    [20] => BF
-    [21] => BG
-    [22] => BH
-    [23] => BI
-    [24] => BJ
-    [25] => BL
-    [26] => BM
-    [27] => BN
-    [28] => BO
-    [29] => BQ
-    [30] => BR
-    [31] => BS
-    [32] => BT
-    [33] => BV
-    [34] => BW
-    [35] => BY
-    [36] => BZ
-    [37] => CA
-    [38] => CC
-    [39] => CD
-    [40] => CF
-    [41] => CG
-    [42] => CH
-    [43] => CI
-    [44] => CK
-    [45] => CL
-    [46] => CM
-    [47] => CN
-    [48] => CO
-    [49] => CR
-    [50] => CU
-    [51] => CV
-    [52] => CW
-    [53] => CX
-    [54] => CY
-    [55] => CZ
-    [56] => DE
-    [57] => DJ
-    [58] => DK
-    [59] => DM
-    [60] => DO
-    [61] => DZ
-    [62] => EC
-    [63] => EE
-    [64] => EG
-    [65] => EH
-    [66] => ER
-    [67] => ES
-    [68] => ET
-    [69] => FI
-    [70] => FJ
-    [71] => FK
-    [72] => FM
-    [73] => FO
-    [74] => FR
-    [75] => GA
-    [76] => GB
-    [77] => GD
-    [78] => GE
-    [79] => GF
-    [80] => GG
-    [81] => GH
-    [82] => GI
-    [83] => GL
-    [84] => GM
-    [85] => GN
-    [86] => GP
-    [87] => GQ
-    [88] => GR
-    [89] => GS
-    [90] => GT
-    [91] => GU
-    [92] => GW
-    [93] => GY
-    [94] => HK
-    [95] => HM
-    [96] => HN
-    [97] => HR
-    [98] => HT
-    [99] => HU
-    [100] => ID
-    [101] => IE
-    [102] => IL
-    [103] => IM
-    [104] => IN
-    [105] => IO
-    [106] => IQ
-    [107] => IR
-    [108] => IS
-    [109] => IT
-    [110] => JE
-    [111] => JM
-    [112] => JO
-    [113] => JP
-    [114] => KE
-    [115] => KG
-    [116] => KH
-    [117] => KI
-    [118] => KM
-    [119] => KN
-    [120] => KP
-    [121] => KR
-    [122] => KW
-    [123] => KY
-    [124] => KZ
-    [125] => LA
-    [126] => LB
-    [127] => LC
-    [128] => LI
-    [129] => LK
-    [130] => LR
-    [131] => LS
-    [132] => LT
-    [133] => LU
-    [134] => LV
-    [135] => LY
-    [136] => MA
-    [137] => MC
-    [138] => MD
-    [139] => ME
-    [140] => MF
-    [141] => MG
-    [142] => MH
-    [143] => MK
-    [144] => ML
-    [145] => MM
-    [146] => MN
-    [147] => MO
-    [148] => MP
-    [149] => MQ
-    [150] => MR
-    [151] => MS
-    [152] => MT
-    [153] => MU
-    [154] => MV
-    [155] => MW
-    [156] => MX
-    [157] => MY
-    [158] => MZ
-    [159] => NA
-    [160] => NC
-    [161] => NE
-    [162] => NF
-    [163] => NG
-    [164] => NI
-    [165] => NL
-    [166] => NO
-    [167] => NP
-    [168] => NR
-    [169] => NU
-    [170] => NZ
-    [171] => OM
-    [172] => PA
-    [173] => PE
-    [174] => PF
-    [175] => PG
-    [176] => PH
-    [177] => PK
-    [178] => PL
-    [179] => PM
-    [180] => PN
-    [181] => PR
-    [182] => PS
-    [183] => PT
-    [184] => PW
-    [185] => PY
-    [186] => QA
-    [187] => RE
-    [188] => RO
-    [189] => RS
-    [190] => RU
-    [191] => RW
-    [192] => SA
-    [193] => SB
-    [194] => SC
-    [195] => SD
-    [196] => SE
-    [197] => SG
-    [198] => SH
-    [199] => SI
-    [200] => SJ
-    [201] => SK
-    [202] => SL
-    [203] => SM
-    [204] => SN
-    [205] => SO
-    [206] => SR
-    [207] => SS
-    [208] => ST
-    [209] => SV
-    [210] => SX
-    [211] => SY
-    [212] => SZ
-    [213] => TC
-    [214] => TD
-    [215] => TF
-    [216] => TG
-    [217] => TH
-    [218] => TJ
-    [219] => TK
-    [220] => TL
-    [221] => TM
-    [222] => TN
-    [223] => TO
-    [224] => TR
-    [225] => TT
-    [226] => TV
-    [227] => TW
-    [228] => TZ
-    [229] => UA
-    [230] => UG
-    [231] => UM
-    [232] => US
-    [233] => UY
-    [234] => UZ
-    [235] => VA
-    [236] => VC
-    [237] => VE
-    [238] => VG
-    [239] => VI
-    [240] => VN
-    [241] => VU
-    [242] => WF
-    [243] => WS
-    [244] => YE
-    [245] => YT
-    [246] => ZA
-    [247] => ZM
-    [248] => ZW
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of two letter ISO country codes
-* Since: 2021.04
-
-If you want to ship your products to several countries or you need
-to know from which countries your customers are, you have to enable
-the country selection in the address page of the checkout process.
-
-
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the checkout standard address html client
@@ -603,7 +335,6 @@ Excludes decorators added by the "common" option from the checkout standard addr
 client/html/checkout/standard/address/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1030,48 +761,9 @@ client/html/checkout/standard/address/name = Standard
 
 * Default: Standard
 * Type: string - Last part of the client class name
-* Since: 2014.03
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Address\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## states
-
-A list of ISO country codes which should be available in the checkout address step.
-
-```
-client/html/checkout/standard/address/states = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of two letter ISO country codes
-* Since: 2021.04
-
-For each country you can freely define a list of states or regions
-that can be used afterwards to calculate the final price for each
-delivery option.
-
-To define states or regions use something like this:
-
-```
- [
-	'US' => [
-		'CA' => 'California',
-		'NY' => 'New York',
-		// ...
-	'EU' => [
-		'W' => 'Western Europe',
-		'C' => 'Central Europe',
-		// ...
-	],
-],
-```
 
 
 ## subparts
@@ -1164,7 +856,6 @@ List of regular expressions to validate the data of the address fields
 client/html/checkout/standard/address/validate = 
 ```
 
-* Default: 
 * Type: array - Associative list of field names and regular expressions
 * Since: 2014.09
 
@@ -1187,6 +878,7 @@ can be applied to each field. Available fields are:
 * order.address.countryid
 * order.address.telephone
 * order.address.telefax
+* order.address.mobile
 * order.address.email
 * order.address.website
 
@@ -1236,7 +928,6 @@ Regular expression to check the "address1" address value
 client/html/checkout/standard/address/validate/address1 = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1251,7 +942,6 @@ Regular expression to check the "address2" address value
 client/html/checkout/standard/address/validate/address2 = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1266,7 +956,6 @@ Regular expression to check the "address3" address value
 client/html/checkout/standard/address/validate/address3 = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1281,7 +970,6 @@ Regular expression to check the "city" address value
 client/html/checkout/standard/address/validate/city = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1296,7 +984,6 @@ Regular expression to check the "company" address value
 client/html/checkout/standard/address/validate/company = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1311,7 +998,6 @@ Regular expression to check the "countryid" address value
 client/html/checkout/standard/address/validate/countryid = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1341,7 +1027,6 @@ Regular expression to check the "firstname" address value
 client/html/checkout/standard/address/validate/firstname = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1356,7 +1041,6 @@ Regular expression to check the "languageid" address value
 client/html/checkout/standard/address/validate/languageid = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1371,11 +1055,23 @@ Regular expression to check the "lastname" address value
 client/html/checkout/standard/address/validate/lastname = 
 ```
 
-* Default: 
 
 See also:
 
 * client/html/checkout/standard/address/validate
+* client/html/checkout/standard/address/validate
+
+## validate/mobile
+
+Regular expression to check the "mobile" address value
+
+```
+client/html/checkout/standard/address/validate/mobile = 
+```
+
+
+See also:
+
 * client/html/checkout/standard/address/validate
 
 ## validate/postal
@@ -1386,7 +1082,6 @@ Regular expression to check the "postal" address value
 client/html/checkout/standard/address/validate/postal = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1401,7 +1096,6 @@ Regular expression to check the "salutation" address value
 client/html/checkout/standard/address/validate/salutation = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1416,7 +1110,6 @@ Regular expression to check the "state" address value
 client/html/checkout/standard/address/validate/state = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1431,7 +1124,6 @@ Regular expression to check the "telefax" address value
 client/html/checkout/standard/address/validate/telefax = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1446,7 +1138,6 @@ Regular expression to check the "telephone" address value
 client/html/checkout/standard/address/validate/telephone = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1461,7 +1152,6 @@ Regular expression to check the "vatid" address value
 client/html/checkout/standard/address/validate/vatid = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1492,9 +1182,7 @@ Excludes decorators added by the "common" option from the checkout standard html
 client/html/checkout/standard/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
-* Since: 2014.05
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1527,9 +1215,7 @@ Adds a list of globally available decorators only to the checkout standard html 
 client/html/checkout/standard/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
-* Since: 2014.05
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1560,9 +1246,7 @@ Adds a list of local decorators only to the checkout standard html client
 client/html/checkout/standard/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
-* Since: 2014.05
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1657,7 +1341,6 @@ client/html/checkout/standard/delivery/name = Standard
 
 * Default: Standard
 * Type: string - Last part of the client class name
-* Since: 2014.03
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Delivery\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
@@ -1699,9 +1382,7 @@ Class name of the used checkout standard client implementation
 client/html/checkout/standard/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
-* Since: 2014.03
 
 Each default HTML client can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1751,7 +1432,6 @@ client/html/checkout/standard/onepage = Array
 )
 
 * Type: array - List of checkout subparts name
-* Since: 2015.05
 
 Normally, the checkout process is divided into several steps for entering
 addresses, select delivery and payment options as well as showing the
@@ -1909,7 +1589,6 @@ client/html/checkout/standard/payment/name = Standard
 
 * Default: Standard
 * Type: string - Last part of the client class name
-* Since: 2014.03
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Payment\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
@@ -2040,7 +1719,6 @@ Excludes decorators added by the "common" option from the checkout standard proc
 client/html/checkout/standard/process/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -2153,7 +1831,6 @@ client/html/checkout/standard/process/name = Standard
 
 * Default: Standard
 * Type: string - Last part of the client class name
-* Since: 2015.07
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Process\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
@@ -2319,7 +1996,6 @@ client/html/checkout/standard/subparts = Array
 )
 
 * Type: array - List of sub-client names
-* Since: 2014.03
 
 The output of the frontend is composed of the code generated by the HTML
 clients. Each HTML client can consist of serveral (or none) sub-clients
@@ -2440,7 +2116,6 @@ client/html/checkout/standard/summary/name = Standard
 
 * Default: Standard
 * Type: string - Last part of the client class name
-* Since: 2014.03
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Summary\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
@@ -2563,7 +2238,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/checkout/standard/summary/option/terms/cancel/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 
@@ -2695,7 +2369,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/checkout/standard/summary/option/terms/privacy/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 
@@ -2827,7 +2500,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/checkout/standard/summary/option/terms/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 
@@ -2927,7 +2599,6 @@ client/html/checkout/standard/template-body = checkout/standard/body
 
 * Default: checkout/standard/body
 * Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
@@ -2955,7 +2626,6 @@ client/html/checkout/standard/template-header = checkout/standard/header
 
 * Default: checkout/standard/header
 * Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
@@ -2985,7 +2655,6 @@ client/html/checkout/standard/url/action = standard
 
 * Default: standard
 * Type: string - Name of the action
-* Since: 2014.03
 * Since: 2014.03
 
 In Model-View-Controller (MVC) applications, actions are the methods of a
@@ -3017,7 +2686,6 @@ client/html/checkout/standard/url/config = Array
 )
 
 * Type: string - Associative list of configuration options
-* Since: 2014.03
 * Since: 2014.03
 
 You can specify additional options as key/value pairs used when generating
@@ -3053,7 +2721,6 @@ client/html/checkout/standard/url/controller = Checkout
 
 * Default: Checkout
 * Type: string - Name of the controller
-* Since: 2014.03
 * Since: 2014.03
 
 In Model-View-Controller (MVC) applications, the controller contains the methods
@@ -3107,7 +2774,6 @@ client/html/checkout/standard/url/step-active = summary
 
 * Default: summary
 * Type: string - Name of the confirm standard HTML client
-* Since: 2014.07
 
 The checkout process consists of several steps which are usually
 displayed one by another to the customer. If the data of a step
@@ -3135,9 +2801,7 @@ Destination of the URL where the controller specified in the URL is known
 client/html/checkout/standard/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
-* Since: 2014.03
 * Since: 2014.03
 
 The destination can be a page ID like in a content management system or the

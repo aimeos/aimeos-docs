@@ -51,7 +51,6 @@ mshop/cms/manager/delete/ansi =
  WHERE :cond AND siteid LIKE ?
 ```
 
-* Default: mshop/cms/manager/delete
 
 
 ## mysql
@@ -119,7 +118,6 @@ mshop/cms/manager/lists/delete/ansi =
  WHERE :cond AND siteid LIKE ?
 ```
 
-* Default: mshop/cms/manager/lists/delete
 
 
 ## delete/mysql
@@ -211,7 +209,6 @@ mshop/cms/manager/lists/type/delete/ansi =
  WHERE :cond AND siteid LIKE ?
 ```
 
-* Default: mshop/cms/manager/lists/type/delete
 
 
 ## type/delete/mysql

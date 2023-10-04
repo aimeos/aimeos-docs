@@ -181,6 +181,7 @@ nav:
     - Product CSV import: cronjobs/product-csv-import.md
     - Category CSV import: cronjobs/catalog-csv-import.md
     - Supplier CSV import: cronjobs/supplier-csv-import.md
+    - Stock CSV import: cronjobs/stock-csv-import.md
     - Attribute XML import: cronjobs/attribute-xml-import.md
     - Category XML import: cronjobs/catalog-xml-import.md
     - Customer XML import: cronjobs/customer-xml-import.md
@@ -192,6 +193,7 @@ nav:
   - Models:
     - Managing items: models/managing-items.md
     - Filtering items: models/search-filter.md
+    - Create managers: models/create-managers.md
     - Extend managers: models/extend-managers.md
   - Providers:
     - Service provider:
@@ -366,6 +368,7 @@ nav:
     - MShop:
       - Attribute: config/mshop/attribute-manager.md
       - Catalog: config/mshop/catalog-manager.md
+      - CMS: config/mshop/cms-manager.md
       - Common: config/mshop/common-manager.md
       - Coupon: config/mshop/coupon-manager.md
       - Customer: config/mshop/customer-manager.md

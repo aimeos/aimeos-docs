@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the attribute JQAdm client
 admin/jqadm/attribute/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the attribute JQAdm client
 admin/jqadm/attribute/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the attribute JQAdm client
 admin/jqadm/attribute/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -235,7 +232,6 @@ Excludes decorators added by the "common" option from the attribute JQAdm client
 admin/jqadm/attribute/media/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -362,7 +358,6 @@ Excludes decorators added by the "common" option from the attribute JQAdm client
 admin/jqadm/attribute/media/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -640,7 +635,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/attribute/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.07
 
@@ -686,7 +680,6 @@ Excludes decorators added by the "common" option from the attribute JQAdm client
 admin/jqadm/attribute/price/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -813,7 +806,6 @@ Excludes decorators added by the "common" option from the attribute JQAdm client
 admin/jqadm/attribute/price/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -1092,7 +1084,6 @@ Excludes decorators added by the "common" option from the attribute JQAdm client
 admin/jqadm/attribute/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1399,7 +1390,6 @@ Excludes decorators added by the "common" option from the attribute JQAdm client
 admin/jqadm/attribute/text/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 

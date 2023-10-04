@@ -9,6 +9,7 @@ client/html/supplier/detail/cache = 1
 
 * Default: 1
 * Type: boolean - True to enable caching, false to disable
+* Since: 2020.10
 
 Disable caching for components can be useful if you would have too much
 entries to cache or if the component contains non-cacheable parts that
@@ -19,6 +20,105 @@ See also:
 * client/html/supplier/detail/cache
 * client/html/supplier/filter/cache
 * client/html/supplier/lists/cache
+
+# decorators
+## excludes
+
+Excludes decorators added by the "common" option from the supplier detail html client
+
+```
+client/html/supplier/detail/decorators/excludes = 
+```
+
+* Type: array - List of decorator names
+* Since: 2020.10
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/html/common/decorators/default" before they are wrapped
+around the html client.
+
+```
+ client/html/supplier/detail/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
+"client/html/common/decorators/default" to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/supplier/detail/decorators/global
+* client/html/supplier/detail/decorators/local
+
+## global
+
+Adds a list of globally available decorators only to the supplier detail html client
+
+```
+client/html/supplier/detail/decorators/global = 
+```
+
+* Type: array - List of decorator names
+* Since: 2020.10
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
+
+```
+ client/html/supplier/detail/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/supplier/detail/decorators/excludes
+* client/html/supplier/detail/decorators/local
+
+## local
+
+Adds a list of local decorators only to the supplier detail html client
+
+```
+client/html/supplier/detail/decorators/local = 
+```
+
+* Type: array - List of decorator names
+* Since: 2020.10
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Client\Html\Supplier\Decorator\*") around the html client.
+
+```
+ client/html/supplier/detail/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Client\Html\Supplier\Decorator\Decorator2" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/supplier/detail/decorators/excludes
+* client/html/supplier/detail/decorators/global
 
 # domains
 
@@ -82,7 +182,6 @@ Class name of the used supplier detail client implementation
 client/html/supplier/detail/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2020.10
 
@@ -124,10 +223,9 @@ or numbers. Avoid chamel case names like "MyDetail"!
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/supplier/detail/supid-default = 84
+client/html/supplier/detail/supid-default = 175
 ```
 
-* Default: 
 * Type: string - Supplier ID
 * Since: 2021.01
 
@@ -313,7 +411,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/supplier/detail/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2020.10
 

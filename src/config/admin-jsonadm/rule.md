@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 admin/jsonadm/rule/config/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the Jsonadm client
 admin/jsonadm/rule/config/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -78,7 +76,6 @@ Adds a list of local decorators only to the Jsonadm client
 admin/jsonadm/rule/config/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -139,7 +136,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 admin/jsonadm/rule/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -174,7 +170,6 @@ Adds a list of globally available decorators only to the Jsonadm client
 admin/jsonadm/rule/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -209,7 +204,6 @@ Adds a list of local decorators only to the Jsonadm client
 admin/jsonadm/rule/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.04
 

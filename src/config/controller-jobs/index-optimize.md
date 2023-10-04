@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the catalog index optimize
 controller/jobs/index/optimize/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the catalog index optimize 
 controller/jobs/index/optimize/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the catalog index optimize controllers
 controller/jobs/index/optimize/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -110,7 +107,6 @@ Class name of the used catalog index optimize scheduler controller implementatio
 controller/jobs/index/optimize/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

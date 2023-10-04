@@ -83,7 +83,6 @@ Excludes decorators added by the "common" option from the product export job con
 controller/jobs/product/export/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -118,7 +117,6 @@ Adds a list of globally available decorators only to the product export job cont
 controller/jobs/product/export/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -151,7 +149,6 @@ Adds a list of local decorators only to the product export job controller
 controller/jobs/product/export/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -186,7 +183,6 @@ List of associated items from other domains that should be exported too
 controller/jobs/product/export/domains = 
 ```
 
-* Default: 
 * Type: array - List of domain names
 * Since: 2015.01
 
@@ -239,7 +235,6 @@ Directory where the generated site maps should be placed into
 controller/jobs/product/export/location = /var/www/aimeos/ext/ai-controller-jobs/tests/tmp
 ```
 
-* Default: 
 * Type: string - Absolute directory to store the exported files into
 * Since: 2015.01
 
@@ -315,7 +310,6 @@ Class name of the used product suggestions scheduler controller implementation
 controller/jobs/product/export/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -361,7 +355,6 @@ Name of the partial used for exporting the attribute items into the product XML
 controller/jobs/product/export/partials/attribute = 
 ```
 
-* Default: 
 * Type: string - Name of the product attribute partial
 * Since: 2019.04
 
@@ -379,7 +372,6 @@ Name of the partial used for exporting the media items into the product XML
 controller/jobs/product/export/partials/media = 
 ```
 
-* Default: 
 * Type: string - Name of the product media partial
 * Since: 2019.04
 
@@ -397,7 +389,6 @@ Name of the partial used for exporting the price items into the product XML
 controller/jobs/product/export/partials/price = 
 ```
 
-* Default: 
 * Type: string - Name of the product price partial
 * Since: 2019.04
 
@@ -415,7 +406,6 @@ Name of the partial used for exporting the product items into the product XML
 controller/jobs/product/export/partials/product = 
 ```
 
-* Default: 
 * Type: string - Name of the product product partial
 * Since: 2019.04
 
@@ -433,7 +423,6 @@ Name of the partial used for exporting the text items into the product XML
 controller/jobs/product/export/partials/text = 
 ```
 
-* Default: 
 * Type: string - Name of the product text partial
 * Since: 2019.04
 
@@ -452,7 +441,6 @@ URL to the folder where the site maps can be accessed, without the filenames.
 controller/jobs/product/export/sitemap/baseurl = 
 ```
 
-* Default: 
 * Type: string - Absolute URL
 * Since: 2019.06
 
@@ -485,7 +473,6 @@ Excludes decorators added by the "common" option from the product export sitemap
 controller/jobs/product/export/sitemap/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -520,7 +507,6 @@ Adds a list of globally available decorators only to the product export sitemap 
 controller/jobs/product/export/sitemap/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -553,7 +539,6 @@ Adds a list of local decorators only to the product export sitemap job controlle
 controller/jobs/product/export/sitemap/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -664,7 +649,6 @@ Class name of the used product suggestions scheduler controller implementation
 controller/jobs/product/export/sitemap/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2015.01
 

@@ -5,10 +5,9 @@
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/batch/action = batch
+admin/jqadm/url/batch/action = 
 ```
 
-* Default: batch
 * Type: string - Name of the action
 * Since: 2022.10
 
@@ -64,10 +63,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/batch/controller = Url
+admin/jqadm/url/batch/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2022.10
 
@@ -117,7 +115,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/batch/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2022.10
 
@@ -138,10 +135,9 @@ See also:
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/copy/action = copy
+admin/jqadm/url/copy/action = 
 ```
 
-* Default: copy
 * Type: string - Name of the action
 * Since: 2016.04
 
@@ -197,10 +193,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/copy/controller = Url
+admin/jqadm/url/copy/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -250,7 +245,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/copy/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2016.04
 
@@ -271,10 +265,9 @@ See also:
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/create/action = create
+admin/jqadm/url/create/action = 
 ```
 
-* Default: create
 * Type: string - Name of the action
 * Since: 2016.04
 
@@ -330,10 +323,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/create/controller = Url
+admin/jqadm/url/create/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -383,7 +375,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/create/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2016.04
 
@@ -404,10 +395,9 @@ See also:
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/delete/action = delete
+admin/jqadm/url/delete/action = 
 ```
 
-* Default: delete
 * Type: string - Name of the action
 * Since: 2016.04
 
@@ -463,10 +453,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/delete/controller = Url
+admin/jqadm/url/delete/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -516,7 +505,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/delete/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2016.04
 
@@ -537,10 +525,9 @@ See also:
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/export/action = export
+admin/jqadm/url/export/action = 
 ```
 
-* Default: export
 * Type: string - Name of the action
 * Since: 2016.04
 
@@ -594,10 +581,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/export/controller = Url
+admin/jqadm/url/export/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -646,7 +632,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/export/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2017.10
 
@@ -666,10 +651,9 @@ See also:
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/get/action = get
+admin/jqadm/url/get/action = 
 ```
 
-* Default: get
 * Type: string - Name of the action
 * Since: 2016.04
 
@@ -725,10 +709,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/get/controller = Url
+admin/jqadm/url/get/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -778,7 +761,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/get/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2016.04
 
@@ -799,10 +781,9 @@ See also:
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/save/action = save
+admin/jqadm/url/save/action = 
 ```
 
-* Default: save
 * Type: string - Name of the action
 * Since: 2016.04
 
@@ -856,10 +837,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/save/controller = Url
+admin/jqadm/url/save/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -908,7 +888,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/save/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2016.04
 
@@ -928,10 +907,9 @@ See also:
 Name of the action that should create the output
 
 ```
-admin/jqadm/url/search/action = search
+admin/jqadm/url/search/action = 
 ```
 
-* Default: search
 * Type: string - Name of the action
 * Since: 2016.04
 
@@ -987,10 +965,9 @@ See also:
 Name of the controller whose action should be called
 
 ```
-admin/jqadm/url/search/controller = Url
+admin/jqadm/url/search/controller = 
 ```
 
-* Default: Url
 * Type: string - Name of the controller
 * Since: 2016.04
 
@@ -1040,7 +1017,6 @@ Destination of the URL where the controller specified in the URL is known
 admin/jqadm/url/search/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2016.04
 

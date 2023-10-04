@@ -19,6 +19,105 @@ See also:
 
 * client/html/account/review/size
 
+# decorators
+## excludes
+
+Excludes decorators added by the "common" option from the account review html client
+
+```
+client/html/account/review/decorators/excludes = 
+```
+
+* Type: array - List of decorator names
+* Since: 2020.10
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/html/common/decorators/default" before they are wrapped
+around the html client.
+
+```
+ client/html/account/review/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
+"client/html/common/decorators/default" to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/account/review/decorators/global
+* client/html/account/review/decorators/local
+
+## global
+
+Adds a list of globally available decorators only to the account review html client
+
+```
+client/html/account/review/decorators/global = 
+```
+
+* Type: array - List of decorator names
+* Since: 2020.10
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
+
+```
+ client/html/account/review/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/account/review/decorators/excludes
+* client/html/account/review/decorators/local
+
+## local
+
+Adds a list of local decorators only to the account review html client
+
+```
+client/html/account/review/decorators/local = 
+```
+
+* Type: array - List of decorator names
+* Since: 2020.10
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Client\Html\Account\Decorator\*") around the html client.
+
+```
+ client/html/account/review/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Client\Html\Account\Decorator\Decorator2" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/account/review/decorators/excludes
+* client/html/account/review/decorators/global
+
 # name
 
 Class name of the used account review client implementation
@@ -27,7 +126,6 @@ Class name of the used account review client implementation
 client/html/account/review/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.10
 
@@ -258,7 +356,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/account/review/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2020.10
 

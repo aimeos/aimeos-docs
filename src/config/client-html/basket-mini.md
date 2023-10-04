@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the basket mini html clien
 client/html/basket/mini/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the basket mini html client
 client/html/basket/mini/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the basket mini html client
 client/html/basket/mini/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -109,7 +106,6 @@ Class name of the used basket mini client implementation
 client/html/basket/mini/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

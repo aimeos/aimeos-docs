@@ -162,6 +162,89 @@ Response:
 }
 ```
 
+# Fetch plugin configuration
+
+To retrieve the backend configuration for a plugin provider and the added decorators use:
+
+=== "Query"
+    ```graphql
+    query {
+      getPluginConfig(provider: "Autofill", type: "order") {
+        code
+        type
+        label
+      }
+    }
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      getPluginConfig(provider: "Autofill", type: "order") {
+        code
+        type
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Response:
+
+```json
+{
+  "data": {
+    "getPluginConfig": [
+      {
+        "code":"address",
+        "type":"boolean",
+        "label":"Add customer address automatically"
+      },{
+        "code":"delivery",
+        "type":"boolean",
+        "label":"Add delivery option automatically"
+      },{
+        "code":"deliverycode",
+        "type":"string",
+        "label":"Add delivery by code"
+      },{
+        "code":"payment",
+        "type":"boolean",
+        "label":"Add payment option automatically"
+      },{
+        "code":"paymentcode",
+        "type":"string",
+        "label":"Add payment by code"
+      },{
+        "code":"useorder",
+        "type":"boolean",
+        "label":"Add from last order"
+      },{
+        "code":"orderaddress",
+        "type":"boolean",
+        "label":"Add address from last order"
+      },{
+        "code":"orderservice",
+        "type":"boolean",
+        "label":"Add delivery\/payment from last order"
+      }
+    ]
+  }
+}
+```
+
 # Save single plugin
 
 === "Mutation"

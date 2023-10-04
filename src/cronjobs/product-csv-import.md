@@ -2,8 +2,10 @@ Most of the time, you already have an ERP system which manages all your products
 
 !!! note
     The product import is triggered via a cronjob/scheduler that executes the "product/import/csv" job controller.
+    If you are using TYPO3, you have to put all configuration into the TSConfig field of the appropriate scheduler task. For all other frameworks, the settings must be added to the configuration file.
 
-# Data location and format
+!!! tip
+    If something goes wrong or for the progress status when importing big files, messages will be written to the "madmin_log" table in your database. You can see them in the "Log" panel located in the extended left navigation bar of the administration interface.
 
 When you export your products from your ERP system, you need to store the files in a location where they are accessible by the importer. The default location where the importer expects them is:
 
@@ -29,15 +31,22 @@ The basic rules are:
 
 Your CSV files can **start with a header** describing the columns, so they are more readable by humans. In this case, you need to configure the import to **skip these lines** using the [controller/jobs/product/import/csv/skip-lines](../config/controller-jobs/product-import.md#skip-lines) configuration.
 
-For additional tuning of the CSV import, the [controller/common/product/import/csv/max-size](../config/controller-jobs/product-import.md#max-size) setting can help you to speed up the import or to reduce the memory consumption of the importer. If you set the number of CSV lines processed in one chunk higher, it will save some database queries at the cost of more memory required to cache the result sets. Similarly, lower values will result in more database queries but also to less allocated memory, which is useful if you have a hard memory limit.
+For additional tuning of the CSV import, the [controller/jobs/product/import/csv/max-size](../config/controller-jobs/product-import.md#max-size) setting can help you to speed up the import or to reduce the memory consumption of the importer. If you set the number of CSV lines processed in one chunk higher, it will save some database queries at the cost of more memory required to cache the result sets. Similarly, lower values will result in more database queries but also to less allocated memory, which is useful if you have a hard memory limit.
 
-!!! note
-    If you are using TYPO3, you have to put all configuration into the TSConfig field of the appropriate scheduler task. For all other frameworks, the settings must be added to the configuration file.
+# Test import
 
-!!! tip
-    If something goes wrong or for the progress status when importing big files, messages will be written to the "madmin_log" table in your database. You can see them in the "Log" panel located in the extended left navigation bar of the administration interface.
+You can test the CSV import using the example file and default mapping: [product-import-example.csv](https://aimeos.org/fileadmin/download/products-import-example.csv)
 
-# Default mapping
+Before you start, add these settings to your configuration:
+
+* [controller/jobs/product/import/csv/skip-lines](../config/controller-jobs/product-import.md#skip-lines) = 1
+
+Store the file in the ./product/ directory of the `fs-import` [virtual file system](#file-location) and run the "product/csv/import job controller".
+
+!!! warning
+    If you are using TYPO3, the configuration must be added to the TS-Config field of the scheduler task.
+
+# Column mapping
 
 You can freely configure how your data is organized in the CSV file but for a quick start, there's a default mapping available that can also be used as example:
 
@@ -84,18 +93,6 @@ You can freely configure how your data is organized in the CSV file but for a qu
 ```
 
 As you can see, the data from the CSV file is mapped according to its field position in the line to the key of a MShop domain item (e.g. "product.code"). Additionally, fields that belong together are grouped together. The keys of these groups are the names of the data processors that cares about importing the data.
-
-# Test import
-
-You can test the CSV import using the example file and default mapping: [product-import-example.csv](https://aimeos.org/fileadmin/download/products-import-example.csv)
-
-Before you start, add these settings to your configuration:
-
-* [controller/jobs/product/import/csv/location](../config/controller-jobs/product-import.md#location) = <absolute path to the directory with the file>
-* [controller/jobs/product/import/csv/skip-lines](../config/controller-jobs/product-import.md#skip-lines) = 1
-
-!!! warning
-    The CSV file must be the only file in your configured directory. If you are using TYPO3, the configuration must be added to the TS-Config field of the scheduler task.
 
 # Adapt the mapping
 
@@ -494,9 +491,9 @@ The stock level is required as the minimum amount of data. If you don't have a C
 
 # Backups
 
-After a CSV file was imported successfully, you can move it to another location, so it won't be imported again and isn't overwritten by the next file that is stored at the same location in the file system. You should use an absolute path for the [controller/jobs/product/import/csv/backup](../config/controller-jobs/product-import.md#backup) setting to be sure but can be relative path if you absolutely know from where the job will be executed from.
+After a CSV file was imported successfully, you can move it to another location, so it won't be imported again and isn't overwritten by the next file that is stored at the same location in the file system. You must use a path for the [controller/jobs/product/import/csv/backup](../config/controller-jobs/product-import.md#backup) setting relative to the `fs-import` virtual file system.
 
 The name of the new backup location can contain placeholders understood by the PHP `date_format()` function to create dynamic paths, e.g. `backup/%Y-%m-%d` which would create "backup/2000-01-01". For more information about the date_format() placeholders, please have a look into the PHP documentation of [date_format() function](https://www.php.net/manual/en/datetime.format.php).
 
-!!! note
-    If no backup name is configured, the file or directory won't be moved away. Please make also sure that the parent directory and the new directory are writable so the file or directory could be moved.
+!!! warning
+    If no backup name is configured, the file will be deleted.

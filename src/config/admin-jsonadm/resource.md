@@ -1540,7 +1540,6 @@ List of user groups that are allowed to manage supplier type items
 admin/jsonadm/resource/supplier/type/groups = 
 ```
 
-* Default: 
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1575,7 +1574,6 @@ List of user groups that are allowed to manage tag type items
 admin/jsonadm/resource/tag/type/groups = 
 ```
 
-* Default: 
 * Type: array - List of user group names
 * Since: 2017.10
 

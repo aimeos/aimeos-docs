@@ -20,6 +20,102 @@ See also:
 * client/html/catalog/filter/cache
 * client/html/catalog/lists/cache
 
+# decorators
+## excludes
+
+Excludes decorators added by the "common" option from the catalog stage html client
+
+```
+client/html/catalog/stage/decorators/excludes = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/html/common/decorators/default" before they are wrapped
+around the html client.
+
+```
+ client/html/catalog/stage/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
+"client/html/common/decorators/default" to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/catalog/stage/decorators/global
+* client/html/catalog/stage/decorators/local
+
+## global
+
+Adds a list of globally available decorators only to the catalog stage html client
+
+```
+client/html/catalog/stage/decorators/global = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
+
+```
+ client/html/catalog/stage/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/catalog/stage/decorators/excludes
+* client/html/catalog/stage/decorators/local
+
+## local
+
+Adds a list of local decorators only to the catalog stage html client
+
+```
+client/html/catalog/stage/decorators/local = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
+
+```
+ client/html/catalog/stage/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/catalog/stage/decorators/excludes
+* client/html/catalog/stage/decorators/global
+
 # domains
 
 A list of domain names whose items should be available in the catalog stage view template
@@ -70,7 +166,6 @@ Class name of the used catalog stage client implementation
 client/html/catalog/stage/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

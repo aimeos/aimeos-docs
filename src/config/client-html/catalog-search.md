@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the catalog filter search 
 client/html/catalog/search/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the catalog filter search h
 client/html/catalog/search/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the catalog filter search html client
 client/html/catalog/search/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -109,7 +106,6 @@ Class name of the used catalog search client implementation
 client/html/catalog/search/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 

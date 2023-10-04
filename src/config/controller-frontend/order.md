@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the order frontend control
 controller/frontend/order/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the order frontend controll
 controller/frontend/order/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the order frontend controllers
 controller/frontend/order/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -110,7 +107,6 @@ Class name of the used order frontend controller implementation
 controller/frontend/order/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

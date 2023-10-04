@@ -41,7 +41,6 @@ Excludes decorators added by the "common" option from the subscription process C
 controller/jobs/subscription/process/begin/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -76,7 +75,6 @@ Adds a list of globally available decorators only to the subscription process CS
 controller/jobs/subscription/process/begin/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -109,7 +107,6 @@ Adds a list of local decorators only to the subscription process CSV job control
 controller/jobs/subscription/process/begin/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -144,7 +141,6 @@ Class name of the used subscription suggestions scheduler controller implementat
 controller/jobs/subscription/process/begin/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -241,7 +237,6 @@ Excludes decorators added by the "common" option from the subscription process C
 controller/jobs/subscription/process/end/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -276,7 +271,6 @@ Adds a list of globally available decorators only to the subscription process CS
 controller/jobs/subscription/process/end/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -309,7 +303,6 @@ Adds a list of local decorators only to the subscription process CSV job control
 controller/jobs/subscription/process/end/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -344,7 +337,6 @@ Class name of the used subscription suggestions scheduler controller implementat
 controller/jobs/subscription/process/end/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -389,7 +381,6 @@ Number of days to wait for the payment until subscription is removed
 controller/jobs/subscription/process/payment-days = 
 ```
 
-* Default: 
 * Type: float - Number of days
 * Since: 2018.07
 
@@ -477,7 +468,6 @@ Excludes decorators added by the "common" option from the subscription process C
 controller/jobs/subscription/process/renew/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -512,7 +502,6 @@ Adds a list of globally available decorators only to the subscription process CS
 controller/jobs/subscription/process/renew/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -545,7 +534,6 @@ Adds a list of local decorators only to the subscription process CSV job control
 controller/jobs/subscription/process/renew/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -580,7 +568,6 @@ Class name of the used subscription suggestions scheduler controller implementat
 controller/jobs/subscription/process/renew/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 

@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the review frontend contro
 controller/frontend/review/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the review frontend control
 controller/frontend/review/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the review frontend controllers
 controller/frontend/review/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -110,7 +107,6 @@ Class name of the used review frontend controller implementation
 controller/frontend/review/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2020.10
 

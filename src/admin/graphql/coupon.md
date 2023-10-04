@@ -171,6 +171,69 @@ Response:
 }
 ```
 
+# Fetch coupon configuration
+
+To retrieve the backend configuration for a coupon provider and the added decorators use:
+
+=== "Query"
+    ```graphql
+    query {
+      getCouponConfig(provider: "Voucher,Basket") {
+        code
+        type
+        label
+      }
+    }
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      getCouponConfig(provider: "Voucher,Basket") {
+        code
+        type
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Response:
+
+```json
+{
+  "data": {
+    "getCouponConfig": [
+      {
+        "code":"voucher.productcode",
+        "type":"string",
+        "label":"Product code of the rebate product"
+      },{
+        "code":"basket.total-value-min",
+        "type":"map",
+        "label":"Minimum total value of the basket"
+      },{
+        "code":"basket.total-value-max",
+        "type":"map",
+        "label":"Maximum total value of the basket"
+      }
+    ]
+  }
+}
+```
+
 # Save single coupon
 
 === "Mutation"

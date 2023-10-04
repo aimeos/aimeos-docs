@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the media scale controller
 controller/jobs/media/scale/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the media scale controllers
 controller/jobs/media/scale/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the media scale controllers
 controller/jobs/media/scale/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -128,7 +125,6 @@ Class name of the used media scale job controller implementation
 controller/jobs/media/scale/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.01
 

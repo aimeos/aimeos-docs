@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the product bought job con
 controller/jobs/product/bought/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the product bought job cont
 controller/jobs/product/bought/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the product bought job controller
 controller/jobs/product/bought/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -232,7 +229,6 @@ Class name of the used product suggestions scheduler controller implementation
 controller/jobs/product/bought/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the customer email account
 controller/jobs/customer/email/account/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the customer email account 
 controller/jobs/customer/email/account/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the customer email account controllers
 controller/jobs/customer/email/account/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -110,7 +107,6 @@ Class name of the used product notification e-mail scheduler controller implemen
 controller/jobs/customer/email/account/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.04
 
@@ -202,7 +198,6 @@ Excludes decorators added by the "common" option from the customer email watch c
 controller/jobs/customer/email/watch/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -237,7 +232,6 @@ Adds a list of globally available decorators only to the customer email watch co
 controller/jobs/customer/email/watch/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -270,7 +264,6 @@ Adds a list of local decorators only to the customer email watch controllers
 controller/jobs/customer/email/watch/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -304,7 +297,6 @@ Class name of the used product notification e-mail scheduler controller implemen
 controller/jobs/customer/email/watch/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

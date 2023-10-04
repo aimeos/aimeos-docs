@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/bundle/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -211,7 +210,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/category/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -414,7 +412,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/characteristic/attribute/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -616,7 +613,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/characteristic/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -719,208 +715,6 @@ See also:
 * admin/jqadm/product/characteristic/decorators/excludes
 * admin/jqadm/product/characteristic/decorators/global
 
-## hidden/decorators/excludes
-
-Excludes decorators added by the "common" option from the product JQAdm client
-
-```
-admin/jqadm/product/characteristic/hidden/decorators/excludes = 
-```
-
-* Default: 
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"admin/jqadm/common/decorators/default" before they are wrapped
-around the JQAdm client.
-
-```
- admin/jqadm/product/characteristic/hidden/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
-"admin/jqadm/common/decorators/default" to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/characteristic/hidden/decorators/global
-* admin/jqadm/product/characteristic/hidden/decorators/local
-
-## hidden/decorators/global
-
-Adds a list of globally available decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/characteristic/hidden/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/characteristic/hidden/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/characteristic/hidden/decorators/excludes
-* admin/jqadm/product/characteristic/hidden/decorators/local
-
-## hidden/decorators/local
-
-Adds a list of local decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/characteristic/hidden/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/characteristic/hidden/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Decorator\Decorator2" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/characteristic/hidden/decorators/excludes
-* admin/jqadm/product/characteristic/hidden/decorators/global
-
-## hidden/name
-
-Name of the characteristic/hidden subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/characteristic/hidden/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2018.01
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Characteristic\Hidden\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## hidden/subparts
-
-List of JQAdm sub-clients rendered within the product hidden characteristics section
-
-```
-admin/jqadm/product/characteristic/hidden/subparts = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of sub-client names
-* Since: 2016.01
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## hidden/template-item
-
-Relative path to the HTML body template of the hidden characteristic subpart for products.
-
-```
-admin/jqadm/product/characteristic/hidden/template-item = product/item-characteristic-hidden
-```
-
-* Default: product/item-characteristic-hidden
-* Type: string - Relative path to the template creating the HTML code
-* Since: 2016.04
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/admin/jqadm).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
-
-
 ## name
 
 Name of the characteristic subpart used by the JQAdm product implementation
@@ -945,7 +739,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/characteristic/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1147,9 +940,7 @@ List of JQAdm sub-clients rendered within the product characteristic section
 admin/jqadm/product/characteristic/subparts = Array
 (
     [property] => property
-    [variant] => variant
     [attribute] => attribute
-    [hidden] => hidden
 )
 ```
 
@@ -1202,208 +993,6 @@ admin/jqadm/product/characteristic/template-item = product/item-characteristic
 ```
 
 * Default: product/item-characteristic
-* Type: string - Relative path to the template creating the HTML code
-* Since: 2016.04
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/admin/jqadm).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
-
-
-## variant/decorators/excludes
-
-Excludes decorators added by the "common" option from the product JQAdm client
-
-```
-admin/jqadm/product/characteristic/variant/decorators/excludes = 
-```
-
-* Default: 
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"admin/jqadm/common/decorators/default" before they are wrapped
-around the JQAdm client.
-
-```
- admin/jqadm/product/characteristic/variant/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
-"admin/jqadm/common/decorators/default" to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/characteristic/variant/decorators/global
-* admin/jqadm/product/characteristic/variant/decorators/local
-
-## variant/decorators/global
-
-Adds a list of globally available decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/characteristic/variant/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/characteristic/variant/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/characteristic/variant/decorators/excludes
-* admin/jqadm/product/characteristic/variant/decorators/local
-
-## variant/decorators/local
-
-Adds a list of local decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/characteristic/variant/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/characteristic/variant/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Decorator\Decorator2" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/characteristic/variant/decorators/excludes
-* admin/jqadm/product/characteristic/variant/decorators/global
-
-## variant/name
-
-Name of the characteristic/variant subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/characteristic/variant/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2018.07
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Characteristic\Variant\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## variant/subparts
-
-List of JQAdm sub-clients rendered within the product variant characteristics section
-
-```
-admin/jqadm/product/characteristic/variant/subparts = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of sub-client names
-* Since: 2016.01
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## variant/template-item
-
-Relative path to the HTML body template of the variant characteristic subpart for products.
-
-```
-admin/jqadm/product/characteristic/variant/template-item = product/item-characteristic-variant
-```
-
-* Default: product/item-characteristic-variant
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1583,7 +1172,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/download/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.03
 
@@ -1815,6 +1403,31 @@ e.g. "product.id" for the product ID.
 
 
 # item
+## characteristic/attribute/config/suggest
+
+Suggested keys for attribute configuration in product characteristics
+
+```
+admin/jqadm/product/item/characteristic/attribute/config/suggest = Array
+(
+)
+```
+
+* Default: Array
+(
+)
+
+* Type: array - List of key names
+* Since: 2023.10
+
+The names of the keys that are suggested in the product characteristics
+sub-panel for the configuration key/value pairs.
+
+See also:
+
+* admin/jqadm/product/item/config/suggest
+* admin/jqadm/catalog/item/config/suggest
+
 ## config/suggest
 
 List of suggested configuration keys in product item panel
@@ -1840,6 +1453,7 @@ a hint which config keys are available and are used in the templates.
 See also:
 
 * admin/jqadm/catalog/item/config/suggest
+* admin/jqadm/product/item/characteristic/attribute/config/suggest
 
 ## media/config/suggest
 
@@ -1934,7 +1548,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/media/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -2062,7 +1675,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/media/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2377,669 +1989,6 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyFavorite"!
 
 
-# option
-## config/decorators/excludes
-
-Excludes decorators added by the "common" option from the product JQAdm client
-
-```
-admin/jqadm/product/option/config/decorators/excludes = 
-```
-
-* Default: 
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"admin/jqadm/common/decorators/default" before they are wrapped
-around the JQAdm client.
-
-```
- admin/jqadm/product/option/config/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
-"admin/jqadm/common/decorators/default" to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/config/decorators/global
-* admin/jqadm/product/option/config/decorators/local
-
-## config/decorators/global
-
-Adds a list of globally available decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/option/config/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/option/config/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/config/decorators/excludes
-* admin/jqadm/product/option/config/decorators/local
-
-## config/decorators/local
-
-Adds a list of local decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/option/config/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/option/config/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Decorator\Decorator2" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/config/decorators/excludes
-* admin/jqadm/product/option/config/decorators/global
-
-## config/exclude
-
-List of attribute types that shouldn't be managed by the product options client
-
-```
-admin/jqadm/product/option/config/exclude = Array
-(
-    [interval] => interval
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of excluded attribute types
-* Since: 2020.04
-
-If certain attribute types which are referenced using the "config"
-list type will be managed by other clients, this setting excludes
-the attribute items from being added and removed by the product
-config client.
-
-See also:
-
-* admin/jqadm/product/option/custom/exclude
-
-## config/name
-
-Name of the option/config subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/option/config/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2017.03
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Config\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## config/subparts
-
-List of JQAdm sub-clients rendered within the product config section
-
-```
-admin/jqadm/product/option/config/subparts = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of sub-client names
-* Since: 2017.03
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## config/template-item
-
-Relative path to the HTML body template of the config option subpart for products.
-
-```
-admin/jqadm/product/option/config/template-item = product/item-option-config
-```
-
-* Default: product/item-option-config
-* Type: string - Relative path to the template creating the HTML code
-* Since: 2017.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/admin/jqadm).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
-
-
-## custom/decorators/excludes
-
-Excludes decorators added by the "common" option from the product JQAdm client
-
-```
-admin/jqadm/product/option/custom/decorators/excludes = 
-```
-
-* Default: 
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"admin/jqadm/common/decorators/default" before they are wrapped
-around the JQAdm client.
-
-```
- admin/jqadm/product/option/custom/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
-"admin/jqadm/common/decorators/default" to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/custom/decorators/global
-* admin/jqadm/product/option/custom/decorators/local
-
-## custom/decorators/global
-
-Adds a list of globally available decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/option/custom/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/option/custom/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/custom/decorators/excludes
-* admin/jqadm/product/option/custom/decorators/local
-
-## custom/decorators/local
-
-Adds a list of local decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/option/custom/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/option/custom/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Decorator\Decorator2" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/custom/decorators/excludes
-* admin/jqadm/product/option/custom/decorators/global
-
-## custom/exclude
-
-List of attribute types that shouldn't be managed by the product options client
-
-```
-admin/jqadm/product/option/custom/exclude = Array
-(
-    [price] => price
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of excluded attribute types
-* Since: 2020.04
-
-If certain attribute types which are referenced using the "custom"
-list type will be managed by other clients, this setting excludes
-the attribute items from being added and removed by the product
-custom client.
-
-See also:
-
-* admin/jqadm/product/option/custom/exclude
-
-## custom/name
-
-Name of the option/custom subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/option/custom/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2017.03
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Custom\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## custom/subparts
-
-List of JQAdm sub-clients rendered within the product custom section
-
-```
-admin/jqadm/product/option/custom/subparts = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of sub-client names
-* Since: 2017.03
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## custom/template-item
-
-Relative path to the HTML body template of the custom option subpart for products.
-
-```
-admin/jqadm/product/option/custom/template-item = product/item-option-custom
-```
-
-* Default: product/item-option-custom
-* Type: string - Relative path to the template creating the HTML code
-* Since: 2017.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/admin/jqadm).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
-
-
-## decorators/excludes
-
-Excludes decorators added by the "common" option from the product JQAdm client
-
-```
-admin/jqadm/product/option/decorators/excludes = 
-```
-
-* Default: 
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"admin/jqadm/common/decorators/default" before they are wrapped
-around the JQAdm client.
-
-```
- admin/jqadm/product/option/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
-"admin/jqadm/common/decorators/default" to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/decorators/global
-* admin/jqadm/product/option/decorators/local
-
-## decorators/global
-
-Adds a list of globally available decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/option/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/option/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/decorators/excludes
-* admin/jqadm/product/option/decorators/local
-
-## decorators/local
-
-Adds a list of local decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/option/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2017.03
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/option/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Decorator\Decorator2" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/option/decorators/excludes
-* admin/jqadm/product/option/decorators/global
-
-## name
-
-Name of the option subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/option/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2017.03
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Option\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## subparts
-
-List of JQAdm sub-clients rendered within the product option section
-
-```
-admin/jqadm/product/option/subparts = Array
-(
-    [config] => config
-    [custom] => custom
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of sub-client names
-* Since: 2017.03
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## template-item
-
-Relative path to the HTML body template of the option subpart for products.
-
-```
-admin/jqadm/product/option/template-item = product/item-option
-```
-
-* Default: product/item-option
-* Type: string - Relative path to the template creating the HTML code
-* Since: 2017.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/admin/jqadm).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
-
-
 # order
 ## decorators/excludes
 
@@ -3049,7 +1998,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/order/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3301,7 +2249,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/physical/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3534,7 +2481,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/price/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3661,7 +2607,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/price/property/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -3940,7 +2885,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/related/bought/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4142,7 +3086,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/related/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4321,7 +3264,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/related/suggest/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4549,7 +3491,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/selection/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4752,7 +3693,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/stock/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -4961,7 +3901,6 @@ admin/jqadm/product/subparts = Array
     [stock] => stock
     [category] => category
     [characteristic] => characteristic
-    [option] => option
     [related] => related
     [supplier] => supplier
     [physical] => physical
@@ -5020,7 +3959,6 @@ Excludes decorators added by the "common" subscription from the product JQAdm cl
 admin/jqadm/product/subscription/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -5223,7 +4161,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/supplier/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.04
 
@@ -5488,7 +4425,6 @@ Excludes decorators added by the "common" option from the product JQAdm client
 admin/jqadm/product/text/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 

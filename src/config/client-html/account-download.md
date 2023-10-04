@@ -1,4 +1,100 @@
 
+# decorators
+## excludes
+
+Excludes decorators added by the "common" option from the account download html client
+
+```
+client/html/account/download/decorators/excludes = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/html/common/decorators/default" before they are wrapped
+around the html client.
+
+```
+ client/html/account/download/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
+"client/html/common/decorators/default" to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/account/download/decorators/global
+* client/html/account/download/decorators/local
+
+## global
+
+Adds a list of globally available decorators only to the account download html client
+
+```
+client/html/account/download/decorators/global = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
+
+```
+ client/html/account/download/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/account/download/decorators/excludes
+* client/html/account/download/decorators/local
+
+## local
+
+Adds a list of local decorators only to the account download html client
+
+```
+client/html/account/download/decorators/local = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Client\Html\Account\Decorator\*") around the html client.
+
+```
+ client/html/account/download/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Client\Html\Account\Decorator\Decorator2" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/account/download/decorators/excludes
+* client/html/account/download/decorators/global
+
 # error
 ## url/target
 
@@ -8,7 +104,6 @@ Destination of the URL to redirect the customer if the file download isn't allow
 client/html/account/download/error/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2019.04
 
@@ -25,7 +120,6 @@ Maximum number of file downloads allowed for an ordered product
 client/html/account/download/maxcount = 0
 ```
 
-* Default: 
 * Type: integer - Maximum number of downloads
 * Since: 2016.02
 
@@ -45,7 +139,6 @@ Class name of the used account download client implementation
 client/html/account/download/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -91,7 +184,6 @@ Name of the action that should create the output
 client/html/account/download/url/action = 
 ```
 
-* Default: 
 * Type: string - Name of the action
 * Since: 2016.02
 
@@ -113,7 +205,6 @@ Associative list of configuration options used for generating the URL
 client/html/account/download/url/config = 
 ```
 
-* Default: 
 * Type: string - Associative list of configuration options
 * Since: 2016.02
 
@@ -143,7 +234,6 @@ Name of the controller whose action should be called
 client/html/account/download/url/controller = 
 ```
 
-* Default: 
 * Type: string - Name of the controller
 * Since: 2016.02
 
@@ -165,7 +255,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/account/download/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2016.02
 

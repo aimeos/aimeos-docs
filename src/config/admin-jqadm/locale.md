@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the locale JQAdm client
 admin/jqadm/locale/currency/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the locale JQAdm client
 admin/jqadm/locale/currency/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the locale JQAdm client
 admin/jqadm/locale/currency/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -140,7 +137,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/locale/currency/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -286,7 +282,6 @@ Excludes decorators added by the "common" option from the locale JQAdm client
 admin/jqadm/locale/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -321,7 +316,6 @@ Adds a list of globally available decorators only to the locale JQAdm client
 admin/jqadm/locale/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -354,7 +348,6 @@ Adds a list of local decorators only to the locale JQAdm client
 admin/jqadm/locale/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -421,7 +414,6 @@ Excludes decorators added by the "common" option from the locale JQAdm client
 admin/jqadm/locale/language/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -456,7 +448,6 @@ Adds a list of globally available decorators only to the locale JQAdm client
 admin/jqadm/locale/language/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -489,7 +480,6 @@ Adds a list of local decorators only to the locale JQAdm client
 admin/jqadm/locale/language/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -553,7 +543,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/locale/language/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -698,7 +687,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/locale/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -744,7 +732,6 @@ Excludes decorators added by the "common" option from the locale JQAdm client
 admin/jqadm/locale/site/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -779,7 +766,6 @@ Adds a list of globally available decorators only to the locale JQAdm client
 admin/jqadm/locale/site/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -812,7 +798,6 @@ Adds a list of local decorators only to the locale JQAdm client
 admin/jqadm/locale/site/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -899,7 +884,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/locale/site/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 
