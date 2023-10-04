@@ -97,7 +97,6 @@ Excludes decorators added by the "common" option from the catalog count html cli
 client/html/catalog/count/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -132,7 +131,6 @@ Adds a list of globally available decorators only to the catalog count html clie
 client/html/catalog/count/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -165,7 +163,6 @@ Adds a list of local decorators only to the catalog count html client
 client/html/catalog/count/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -227,7 +224,6 @@ Class name of the used catalog count client implementation
 client/html/catalog/count/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -673,7 +669,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/catalog/count/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

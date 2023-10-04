@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the stock frontend control
 controller/frontend/stock/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the stock frontend controll
 controller/frontend/stock/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the stock frontend controllers
 controller/frontend/stock/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -110,7 +107,6 @@ Class name of the used stock frontend controller implementation
 controller/frontend/stock/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

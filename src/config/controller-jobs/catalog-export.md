@@ -8,7 +8,6 @@ URL to the folder where the site maps can be accessed, without the filenames.
 controller/jobs/catalog/export/sitemap/baseurl = 
 ```
 
-* Default: 
 * Type: string - Absolute URL
 * Since: 2019.06
 
@@ -41,7 +40,6 @@ Excludes decorators added by the "common" option from the catalog export sitemap
 controller/jobs/catalog/export/sitemap/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -76,7 +74,6 @@ Adds a list of globally available decorators only to the catalog export sitemap 
 controller/jobs/catalog/export/sitemap/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -109,7 +106,6 @@ Adds a list of local decorators only to the catalog export sitemap job controlle
 controller/jobs/catalog/export/sitemap/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -220,7 +216,6 @@ Class name of the used catalog sitemap export scheduler controller implementatio
 controller/jobs/catalog/export/sitemap/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2019.02
 

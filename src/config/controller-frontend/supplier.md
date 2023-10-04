@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the supplier frontend cont
 controller/frontend/supplier/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the supplier frontend contr
 controller/frontend/supplier/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the supplier frontend controllers
 controller/frontend/supplier/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -110,7 +107,6 @@ Class name of the used supplier frontend controller implementation
 controller/frontend/supplier/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.07
 

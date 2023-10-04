@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the customer frontend cont
 controller/frontend/customer/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the customer frontend contr
 controller/frontend/customer/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the customer frontend controllers
 controller/frontend/customer/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -179,7 +176,6 @@ Class name of the used customer frontend controller implementation
 controller/frontend/customer/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

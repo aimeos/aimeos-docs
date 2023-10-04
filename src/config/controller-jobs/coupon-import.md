@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the coupon code import CSV
 controller/jobs/coupon/import/csv/code/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the coupon code import CSV 
 controller/jobs/coupon/import/csv/code/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the coupon code import CSV job controlle
 controller/jobs/coupon/import/csv/code/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -178,7 +175,6 @@ Class name of the used coupon code import job controller implementation
 controller/jobs/coupon/import/csv/code/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.10
 

@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the product frontend contr
 controller/frontend/product/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the product frontend contro
 controller/frontend/product/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the product frontend controllers
 controller/frontend/product/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.03
 
@@ -110,7 +107,6 @@ Class name of the used product frontend controller implementation
 controller/frontend/product/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

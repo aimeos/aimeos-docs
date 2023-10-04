@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 client/jsonapi/order/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the JsonApi client
 client/jsonapi/order/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -78,7 +76,6 @@ Adds a list of local decorators only to the JsonApi client
 client/jsonapi/order/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -113,7 +110,6 @@ Class name of the used order client implementation
 client/jsonapi/order/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

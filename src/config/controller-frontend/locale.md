@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the locale frontend contro
 controller/frontend/locale/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the locale frontend control
 controller/frontend/locale/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the locale frontend controllers
 controller/frontend/locale/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -110,7 +107,6 @@ Class name of the used locale frontend controller implementation
 controller/frontend/locale/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

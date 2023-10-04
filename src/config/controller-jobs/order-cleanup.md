@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the order cleanup unfinish
 controller/jobs/order/cleanup/unfinished/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the order cleanup unfinishe
 controller/jobs/order/cleanup/unfinished/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the order cleanup unfinished controllers
 controller/jobs/order/cleanup/unfinished/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -134,7 +131,6 @@ Class name of the used order cleanup unfinished scheduler controller implementat
 controller/jobs/order/cleanup/unfinished/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -180,7 +176,6 @@ Excludes decorators added by the "common" option from the order cleanup unpaid c
 controller/jobs/order/cleanup/unpaid/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -215,7 +210,6 @@ Adds a list of globally available decorators only to the order cleanup unpaid co
 controller/jobs/order/cleanup/unpaid/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -248,7 +242,6 @@ Adds a list of local decorators only to the order cleanup unpaid controllers
 controller/jobs/order/cleanup/unpaid/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -303,7 +296,6 @@ Class name of the used order cleanup unpaid scheduler controller implementation
 controller/jobs/order/cleanup/unpaid/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.07
 

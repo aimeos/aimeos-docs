@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the coupon JQAdm client
 admin/jqadm/coupon/code/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -241,7 +240,6 @@ Excludes decorators added by the "common" option from the coupon JQAdm client
 admin/jqadm/coupon/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -276,7 +274,6 @@ Adds a list of globally available decorators only to the coupon JQAdm client
 admin/jqadm/coupon/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -309,7 +306,6 @@ Adds a list of local decorators only to the coupon JQAdm client
 admin/jqadm/coupon/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -373,7 +369,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/coupon/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2016.01
 

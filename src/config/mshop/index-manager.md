@@ -19,7 +19,6 @@ mshop/index/manager/aggregate/ansi =
  GROUP BY :keys
 ```
 
-* Default: mshop/index/manager/aggregate
 * Type: string - SQL statement for aggregating order items
 * Since: 2014.09
 
@@ -107,7 +106,6 @@ mshop/index/manager/attribute/cleanup/ansi =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/attribute/cleanup
 * Type: string - SQL statement for deleting the outdated attribute index records
 * Since: 2014.03
 
@@ -158,7 +156,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/attribute/count/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -209,7 +206,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/attribute/count/mysql = 
 ```
 
-* Default: 
 
 See also:
 
@@ -345,7 +341,6 @@ mshop/index/manager/attribute/delete/ansi =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/attribute/delete
 * Type: string - SQL statement for deleting index attribute records
 * Since: 2014.03
 
@@ -401,7 +396,6 @@ mshop/index/manager/attribute/insert/ansi =
  )
 ```
 
-* Default: mshop/index/manager/attribute/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -506,10 +500,9 @@ or numbers. Avoid chamel case names like "MyAttribute"!
 Optimizes the stored attribute data for retrieving the records faster
 
 ```
-mshop/index/manager/attribute/optimize/ansi = mshop/index/manager/attribute/optimize
+mshop/index/manager/attribute/optimize/ansi = 
 ```
 
-* Default: mshop/index/manager/attribute/optimize
 * Type: string - SQL statement for optimizing the stored attribute data
 * Since: 2014.09
 
@@ -539,7 +532,6 @@ mshop/index/manager/attribute/optimize/mysql = Array
 )
 ```
 
-* Default: mshop/index/manager/attribute/optimize
 
 See also:
 
@@ -560,7 +552,6 @@ mshop/index/manager/attribute/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/index/manager/attribute/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -680,7 +671,6 @@ mshop/index/manager/catalog/cleanup/ansi =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/catalog/cleanup
 * Type: string - SQL statement for deleting the outdated index records
 * Since: 2014.03
 
@@ -731,7 +721,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/catalog/count/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -782,7 +771,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/catalog/count/mysql = 
 ```
 
-* Default: 
 
 See also:
 
@@ -918,7 +906,6 @@ mshop/index/manager/catalog/delete/ansi =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/catalog/delete
 * Type: string - SQL statement for deleting index catalog records
 * Since: 2014.03
 
@@ -974,7 +961,6 @@ mshop/index/manager/catalog/insert/ansi =
  )
 ```
 
-* Default: mshop/index/manager/catalog/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -1079,10 +1065,9 @@ or numbers. Avoid chamel case names like "MyCatalog"!
 Optimizes the stored catalog data for retrieving the records faster
 
 ```
-mshop/index/manager/catalog/optimize/ansi = mshop/index/manager/catalog/optimize
+mshop/index/manager/catalog/optimize/ansi = 
 ```
 
-* Default: mshop/index/manager/catalog/optimize
 * Type: string - SQL statement for optimizing the stored catalog data
 * Since: 2014.09
 
@@ -1112,7 +1097,6 @@ mshop/index/manager/catalog/optimize/mysql = Array
 )
 ```
 
-* Default: mshop/index/manager/catalog/optimize
 
 See also:
 
@@ -1133,7 +1117,6 @@ mshop/index/manager/catalog/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/index/manager/catalog/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -1289,7 +1272,6 @@ mshop/index/manager/count/ansi =
  ) AS list
 ```
 
-* Default: mshop/index/manager/count
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -1585,10 +1567,9 @@ or numbers. Avoid chamel case names like "MyManager"!
 Optimizes the stored product data for retrieving the records faster
 
 ```
-mshop/index/manager/optimize/ansi = mshop/index/manager/optimize
+mshop/index/manager/optimize/ansi = 
 ```
 
-* Default: mshop/index/manager/optimize
 * Type: string - SQL statement for optimizing the stored product data
 * Since: 2014.09
 
@@ -1619,7 +1600,6 @@ mshop/index/manager/optimize/mysql = Array
 )
 ```
 
-* Default: mshop/index/manager/optimize
 
 See also:
 
@@ -1636,7 +1616,6 @@ mshop/index/manager/price/cleanup/ansi =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/price/cleanup
 * Type: string - SQL statement for deleting the outdated price index records
 * Since: 2014.03
 
@@ -1687,7 +1666,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/price/count/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -1738,7 +1716,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/price/count/mysql = 
 ```
 
-* Default: 
 
 See also:
 
@@ -1874,7 +1851,6 @@ mshop/index/manager/price/delete/ansi =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/price/delete
 * Type: string - SQL statement for deleting index price records
 * Since: 2014.03
 
@@ -1929,7 +1905,6 @@ mshop/index/manager/price/insert/ansi =
  )
 ```
 
-* Default: mshop/index/manager/price/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -2032,10 +2007,9 @@ or numbers. Avoid chamel case names like "MyPrice"!
 Optimizes the stored price data for retrieving the records faster
 
 ```
-mshop/index/manager/price/optimize/ansi = mshop/index/manager/price/optimize
+mshop/index/manager/price/optimize/ansi = 
 ```
 
-* Default: mshop/index/manager/price/optimize
 * Type: string - SQL statement for optimizing the stored price data
 * Since: 2014.09
 
@@ -2065,7 +2039,6 @@ mshop/index/manager/price/optimize/mysql = Array
 )
 ```
 
-* Default: mshop/index/manager/price/optimize
 
 See also:
 
@@ -2086,7 +2059,6 @@ mshop/index/manager/price/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/index/manager/price/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -2255,7 +2227,6 @@ mshop/index/manager/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/index/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -2423,7 +2394,6 @@ mshop/index/manager/supplier/cleanup/ansi =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/supplier/cleanup
 * Type: string - SQL statement for deleting the outdated index records
 * Since: 2018.07
 
@@ -2474,7 +2444,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/supplier/count/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for counting items
 * Since: 2018.07
 
@@ -2525,7 +2494,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/supplier/count/mysql = 
 ```
 
-* Default: 
 
 See also:
 
@@ -2661,7 +2629,6 @@ mshop/index/manager/supplier/delete/ansi =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/supplier/delete
 * Type: string - SQL statement for deleting index supplier records
 * Since: 2018.07
 
@@ -2717,7 +2684,6 @@ mshop/index/manager/supplier/insert/ansi =
  )
 ```
 
-* Default: mshop/index/manager/supplier/insert
 * Type: string - SQL statement for inserting records
 * Since: 2018.07
 
@@ -2822,10 +2788,9 @@ or numbers. Avoid chamel case names like "MySupplier"!
 Optimizes the stored supplier data for retrieving the records faster
 
 ```
-mshop/index/manager/supplier/optimize/ansi = mshop/index/manager/supplier/optimize
+mshop/index/manager/supplier/optimize/ansi = 
 ```
 
-* Default: mshop/index/manager/supplier/optimize
 * Type: string - SQL statement for optimizing the stored supplier data
 * Since: 2018.07
 
@@ -2855,7 +2820,6 @@ mshop/index/manager/supplier/optimize/mysql = Array
 )
 ```
 
-* Default: mshop/index/manager/supplier/optimize
 
 See also:
 
@@ -2876,7 +2840,6 @@ mshop/index/manager/supplier/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/index/manager/supplier/search
 * Type: string - SQL statement for searching items
 * Since: 2018.07
 
@@ -3023,7 +2986,6 @@ mshop/index/manager/text/cleanup/ansi =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/text/cleanup
 * Type: string - SQL statement for deleting the outdated text index records
 * Since: 2014.03
 
@@ -3075,7 +3037,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/text/count/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for counting items
 * Since: 2014.03
 
@@ -3129,7 +3090,6 @@ Counts the number of records matched by the given criteria in the database
 mshop/index/manager/text/count/mysql = 
 ```
 
-* Default: 
 
 See also:
 
@@ -3265,7 +3225,6 @@ mshop/index/manager/text/delete/ansi =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/index/manager/text/delete
 * Type: string - SQL statement for deleting index text records
 * Since: 2014.03
 
@@ -3321,7 +3280,6 @@ mshop/index/manager/text/insert/ansi =
  )
 ```
 
-* Default: mshop/index/manager/text/insert
 * Type: string - SQL statement for inserting records
 * Since: 2014.03
 
@@ -3426,10 +3384,9 @@ or numbers. Avoid chamel case names like "MyText"!
 Optimizes the stored text data for retrieving the records faster
 
 ```
-mshop/index/manager/text/optimize/ansi = mshop/index/manager/text/optimize
+mshop/index/manager/text/optimize/ansi = 
 ```
 
-* Default: mshop/index/manager/text/optimize
 * Type: string - SQL statement for optimizing the stored text data
 * Since: 2014.09
 
@@ -3462,7 +3419,6 @@ mshop/index/manager/text/optimize/mysql = Array
 )
 ```
 
-* Default: mshop/index/manager/text/optimize
 
 See also:
 
@@ -3483,7 +3439,6 @@ mshop/index/manager/text/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: mshop/index/manager/text/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -3612,7 +3567,6 @@ List of text types that should be added to the product index
 mshop/index/manager/text/types = 
 ```
 
-* Default: 
 * Type: array|string|null - Type name or list of type names, null for all
 * Since: 2019.04
 

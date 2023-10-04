@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the catalog frontend contr
 controller/frontend/catalog/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the catalog frontend contro
 controller/frontend/catalog/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the catalog frontend controllers
 controller/frontend/catalog/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -110,7 +107,6 @@ The number of levels in the category tree that should be always displayed
 controller/frontend/catalog/levels-always = 
 ```
 
-* Default: 
 * Type: integer - Number of tree levels
 * Since: 2019.04
 
@@ -142,7 +138,6 @@ No more than this number of levels in the category tree should be displayed
 controller/frontend/catalog/levels-only = 4
 ```
 
-* Default: 
 * Type: integer - Number of tree levels
 * Since: 2014.03
 
@@ -171,7 +166,6 @@ Class name of the used catalog frontend controller implementation
 controller/frontend/catalog/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

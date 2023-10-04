@@ -29,9 +29,42 @@ Shortcut key to switch to the attribute panel by using the keyboard
 admin/jqadm/resource/attribute/key = A
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
+
+
+# basket
+## groups
+
+List of user groups that are allowed to access the basket panel
+
+```
+admin/jqadm/resource/basket/groups = Array
+(
+    [0] => admin
+    [1] => editor
+    [2] => super
+)
+```
+
+* Default: Array
+(
+)
+
+* Type: array - List of user group names
+* Since: 2017.10
+
+
+## key
+
+Shortcut key to switch to the basket panel by using the keyboard
+
+```
+admin/jqadm/resource/basket/key = B
+```
+
+* Type: string - Single character in upper case
+* Since: 2023.10
 
 
 # catalog
@@ -64,13 +97,14 @@ Shortcut key to switch to the catalog panel by using the keyboard
 admin/jqadm/resource/catalog/key = C
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
 
 # cms
 ## groups
+
+List of user groups that are allowed to access the CMS panel
 
 ```
 admin/jqadm/resource/cms/groups = Array
@@ -85,15 +119,21 @@ admin/jqadm/resource/cms/groups = Array
 (
 )
 
+* Type: array - List of user group names
+* Since: 2021.04
+* Since: 2021.04
 
 
 ## key
+
+Shortcut key to switch to the CMS panel by using the keyboard
 
 ```
 admin/jqadm/resource/cms/key = M
 ```
 
-* Default: 
+* Type: string - Single character in upper case
+* Since: 2021.04
 
 
 # coupon
@@ -126,7 +166,6 @@ Shortcut key to switch to the voucher panel by using the keyboard
 admin/jqadm/resource/coupon/key = V
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -161,7 +200,6 @@ Shortcut key to switch to the user panel by using the keyboard
 admin/jqadm/resource/customer/key = U
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -196,7 +234,6 @@ Shortcut key to switch to the dashboard by using the keyboard
 admin/jqadm/resource/dashboard/key = D
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -252,7 +289,6 @@ Shortcut key to switch to the group panel by using the keyboard
 admin/jqadm/resource/group/key = G
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2018.07
 
@@ -305,7 +341,6 @@ admin/jqadm/resource/locale/currency/groups = Array
 admin/jqadm/resource/locale/currency/key = 
 ```
 
-* Default: 
 
 
 ## groups
@@ -334,7 +369,6 @@ admin/jqadm/resource/locale/groups = Array
 admin/jqadm/resource/locale/key = 
 ```
 
-* Default: 
 
 
 ## language/groups
@@ -362,7 +396,6 @@ admin/jqadm/resource/locale/language/groups = Array
 admin/jqadm/resource/locale/language/key = 
 ```
 
-* Default: 
 
 
 ## site/groups
@@ -390,7 +423,6 @@ admin/jqadm/resource/locale/site/groups = Array
 admin/jqadm/resource/locale/site/key = 
 ```
 
-* Default: 
 
 
 # log
@@ -422,7 +454,6 @@ Shortcut key to switch to the log panel by using the keyboard
 admin/jqadm/resource/log/key = L
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2018.04
 
@@ -479,7 +510,6 @@ Shortcut key to switch to the order panel by using the keyboard
 admin/jqadm/resource/order/key = O
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -513,7 +543,6 @@ Shortcut key to switch to the plugin panel by using the keyboard
 admin/jqadm/resource/plugin/key = N
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -548,7 +577,6 @@ Shortcut key to switch to the product panel by using the keyboard
 admin/jqadm/resource/product/key = P
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -583,7 +611,6 @@ Shortcut key to switch to the review panel by using the keyboard
 admin/jqadm/resource/review/key = R
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2020.10
 
@@ -618,7 +645,6 @@ Shortcut key to switch to the rule panel by using the keyboard
 admin/jqadm/resource/rule/key = E
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2021.04
 
@@ -674,7 +700,6 @@ Shortcut key to switch to the service panel by using the keyboard
 admin/jqadm/resource/service/key = S
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -708,7 +733,6 @@ Shortcut key to switch to the rule panel by using the keyboard
 admin/jqadm/resource/settings/key = T
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2021.04
 
@@ -782,10 +806,9 @@ admin/jqadm/resource/subscription/groups = Array
 Shortcut key to switch to the subscription panel by using the keyboard
 
 ```
-admin/jqadm/resource/subscription/key = B
+admin/jqadm/resource/subscription/key = X
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2018.04
 
@@ -820,7 +843,6 @@ Shortcut key to switch to the supplier panel by using the keyboard
 admin/jqadm/resource/supplier/key = I
 ```
 
-* Default: 
 * Type: string - Single character in upper case
 * Since: 2017.10
 
@@ -853,7 +875,6 @@ admin/jqadm/resource/type/attribute/groups = Array
 admin/jqadm/resource/type/attribute/key = 
 ```
 
-* Default: 
 
 
 ## attribute/lists/groups
@@ -882,7 +903,6 @@ admin/jqadm/resource/type/attribute/lists/groups = Array
 admin/jqadm/resource/type/attribute/lists/key = 
 ```
 
-* Default: 
 
 
 ## attribute/property/groups
@@ -911,7 +931,6 @@ admin/jqadm/resource/type/attribute/property/groups = Array
 admin/jqadm/resource/type/attribute/property/key = 
 ```
 
-* Default: 
 
 
 ## catalog/lists/groups
@@ -940,7 +959,6 @@ admin/jqadm/resource/type/catalog/lists/groups = Array
 admin/jqadm/resource/type/catalog/lists/key = 
 ```
 
-* Default: 
 
 
 ## cms/lists/groups
@@ -963,7 +981,6 @@ admin/jqadm/resource/type/cms/lists/groups = Array
 admin/jqadm/resource/type/cms/lists/key = 
 ```
 
-* Default: 
 
 
 ## customer/lists/groups
@@ -992,7 +1009,6 @@ admin/jqadm/resource/type/customer/lists/groups = Array
 admin/jqadm/resource/type/customer/lists/key = 
 ```
 
-* Default: 
 
 
 ## customer/property/groups
@@ -1021,7 +1037,6 @@ admin/jqadm/resource/type/customer/property/groups = Array
 admin/jqadm/resource/type/customer/property/key = 
 ```
 
-* Default: 
 
 
 ## groups
@@ -1071,7 +1086,6 @@ admin/jqadm/resource/type/media/groups = Array
 admin/jqadm/resource/type/media/key = 
 ```
 
-* Default: 
 
 
 ## media/lists/groups
@@ -1100,7 +1114,6 @@ admin/jqadm/resource/type/media/lists/groups = Array
 admin/jqadm/resource/type/media/lists/key = 
 ```
 
-* Default: 
 
 
 ## media/property/groups
@@ -1129,7 +1142,6 @@ admin/jqadm/resource/type/media/property/groups = Array
 admin/jqadm/resource/type/media/property/key = 
 ```
 
-* Default: 
 
 
 ## plugin/groups
@@ -1158,7 +1170,6 @@ admin/jqadm/resource/type/plugin/groups = Array
 admin/jqadm/resource/type/plugin/key = 
 ```
 
-* Default: 
 
 
 ## price/groups
@@ -1187,7 +1198,6 @@ admin/jqadm/resource/type/price/groups = Array
 admin/jqadm/resource/type/price/key = 
 ```
 
-* Default: 
 
 
 ## price/lists/groups
@@ -1216,7 +1226,6 @@ admin/jqadm/resource/type/price/lists/groups = Array
 admin/jqadm/resource/type/price/lists/key = 
 ```
 
-* Default: 
 
 
 ## price/property/groups
@@ -1245,7 +1254,6 @@ admin/jqadm/resource/type/price/property/groups = Array
 admin/jqadm/resource/type/price/property/key = 
 ```
 
-* Default: 
 
 
 ## product/groups
@@ -1274,7 +1282,6 @@ admin/jqadm/resource/type/product/groups = Array
 admin/jqadm/resource/type/product/key = 
 ```
 
-* Default: 
 
 
 ## product/lists/groups
@@ -1303,7 +1310,6 @@ admin/jqadm/resource/type/product/lists/groups = Array
 admin/jqadm/resource/type/product/lists/key = 
 ```
 
-* Default: 
 
 
 ## product/property/groups
@@ -1333,7 +1339,6 @@ admin/jqadm/resource/type/product/property/groups = Array
 admin/jqadm/resource/type/product/property/key = 
 ```
 
-* Default: 
 
 
 ## service/groups
@@ -1362,7 +1367,6 @@ admin/jqadm/resource/type/service/groups = Array
 admin/jqadm/resource/type/service/key = 
 ```
 
-* Default: 
 
 
 ## service/lists/groups
@@ -1391,7 +1395,6 @@ admin/jqadm/resource/type/service/lists/groups = Array
 admin/jqadm/resource/type/service/lists/key = 
 ```
 
-* Default: 
 
 
 ## stock/groups
@@ -1420,7 +1423,6 @@ admin/jqadm/resource/type/stock/groups = Array
 admin/jqadm/resource/type/stock/key = 
 ```
 
-* Default: 
 
 
 ## tag/groups
@@ -1449,7 +1451,6 @@ admin/jqadm/resource/type/tag/groups = Array
 admin/jqadm/resource/type/tag/key = 
 ```
 
-* Default: 
 
 
 ## text/groups
@@ -1478,7 +1479,6 @@ admin/jqadm/resource/type/text/groups = Array
 admin/jqadm/resource/type/text/key = 
 ```
 
-* Default: 
 
 
 ## text/lists/groups
@@ -1507,7 +1507,6 @@ admin/jqadm/resource/type/text/lists/groups = Array
 admin/jqadm/resource/type/text/lists/key = 
 ```
 
-* Default: 
 
 
 # users

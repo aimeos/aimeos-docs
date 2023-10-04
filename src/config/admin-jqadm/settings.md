@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the settings JQAdm client
 admin/jqadm/settings/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the settings JQAdm client
 admin/jqadm/settings/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the settings JQAdm client
 admin/jqadm/settings/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.07
 
@@ -109,7 +106,6 @@ Class name of the used account favorite client implementation
 admin/jqadm/settings/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.07
 
@@ -231,7 +227,6 @@ Excludes decorators added by the "common" option from the settings JQAdm client
 admin/jqadm/settings/theme/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2022.10
 

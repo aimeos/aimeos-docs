@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 client/jsonapi/basket/address/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the JsonApi client
 client/jsonapi/basket/address/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -78,7 +76,6 @@ Adds a list of local decorators only to the JsonApi client
 client/jsonapi/basket/address/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -113,7 +110,6 @@ Class name of the used basket/address client implementation
 client/jsonapi/basket/address/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -159,7 +155,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 client/jsonapi/basket/coupon/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -194,7 +189,6 @@ Adds a list of globally available decorators only to the JsonApi client
 client/jsonapi/basket/coupon/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -229,7 +223,6 @@ Adds a list of local decorators only to the JsonApi client
 client/jsonapi/basket/coupon/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -264,7 +257,6 @@ Class name of the used basket/coupon client implementation
 client/jsonapi/basket/coupon/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -310,7 +302,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 client/jsonapi/basket/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -345,7 +336,6 @@ Adds a list of globally available decorators only to the JsonApi client
 client/jsonapi/basket/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -380,7 +370,6 @@ Adds a list of local decorators only to the JsonApi client
 client/jsonapi/basket/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -415,7 +404,6 @@ Class name of the used basket client implementation
 client/jsonapi/basket/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -461,7 +449,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 client/jsonapi/basket/product/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -496,7 +483,6 @@ Adds a list of globally available decorators only to the JsonApi client
 client/jsonapi/basket/product/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -531,7 +517,6 @@ Adds a list of local decorators only to the JsonApi client
 client/jsonapi/basket/product/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -566,7 +551,6 @@ Class name of the used basket/product client implementation
 client/jsonapi/basket/product/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -612,7 +596,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 client/jsonapi/basket/service/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -647,7 +630,6 @@ Adds a list of globally available decorators only to the JsonApi client
 client/jsonapi/basket/service/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -682,7 +664,6 @@ Adds a list of local decorators only to the JsonApi client
 client/jsonapi/basket/service/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -717,7 +698,6 @@ Class name of the used basket/service client implementation
 client/jsonapi/basket/service/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

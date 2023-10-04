@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the order status CSV job c
 controller/jobs/order/status/csv/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the order status CSV job co
 controller/jobs/order/status/csv/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the order status CSV job controller
 controller/jobs/order/status/csv/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -151,7 +148,6 @@ Class name of the used order suggestions scheduler controller implementation
 controller/jobs/order/status/csv/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2021.10
 

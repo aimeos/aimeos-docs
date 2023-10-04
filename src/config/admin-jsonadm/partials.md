@@ -30,7 +30,6 @@ Relative path to the data partial template file for the locale site  client
 admin/jsonadm/partials/locale/site/template-data = 
 ```
 
-* Default: 
 * Type: string - Relative path to the template file
 * Since: 2016.07
 

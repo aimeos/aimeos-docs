@@ -8,7 +8,6 @@ Name of the backup for sucessfully imported files
 controller/jobs/supplier/import/csv/backup = backup-%Y-%m-%d.csv
 ```
 
-* Default: 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2020.07
 
@@ -44,7 +43,6 @@ Excludes decorators added by the "common" option from the supplier import CSV jo
 controller/jobs/supplier/import/csv/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -79,7 +77,6 @@ Adds a list of globally available decorators only to the supplier import CSV job
 controller/jobs/supplier/import/csv/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -112,7 +109,6 @@ Adds a list of local decorators only to the supplier import CSV job controller
 controller/jobs/supplier/import/csv/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -147,7 +143,6 @@ List of item domain names that should be retrieved along with the supplier items
 controller/jobs/supplier/import/csv/domains = 
 ```
 
-* Default: 
 * Type: array - Associative list of MShop item domain names
 * Since: 2020.07
 
@@ -168,7 +163,7 @@ See also:
 
 ## location
 
-File or directory where the content is stored which should be imported
+Directory where the CSV files are stored which should be imported
 
 ```
 controller/jobs/supplier/import/csv/location = supplier
@@ -178,16 +173,11 @@ controller/jobs/supplier/import/csv/location = supplier
 * Type: string - Relative path to the CSV files
 * Since: 2020.07
 
-You need to configure the file or directory that acts as container
-for the CSV files that should be imported. It should be an absolute
-path to be sure but can be relative path if you absolutely know from
-where the job will be executed from.
+It's the relative path inside the "fs-import" virtual file system
+configuration. The default location of the "fs-import" file system is:
 
-The path can point to any supported container format as long as the
-content is in CSV format, e.g.
-
-* Directory container / CSV file
-* Zip container / compressed CSV file
+* Laravel: ./storage/import/
+* TYPO3: /uploads/tx_aimeos/.secure/import/
 
 See also:
 
@@ -325,7 +315,6 @@ Class name of the used supplier suggestions scheduler controller implementation
 controller/jobs/supplier/import/csv/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2020.07
 
@@ -398,7 +387,6 @@ Name of the backup for sucessfully imported files
 controller/jobs/supplier/import/xml/backup = 
 ```
 
-* Default: 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2019.04
 
@@ -579,7 +567,7 @@ See also:
 
 ## location
 
-File or directory where the content is stored which should be imported
+Directory where the CSV files are stored which should be imported
 
 ```
 controller/jobs/supplier/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
@@ -589,10 +577,11 @@ controller/jobs/supplier/import/xml/location = /var/www/aimeos/ext/ai-controller
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
-You need to configure the XML file or directory with the XML files that
-should be imported. It should be an absolute path to be sure but can be
-relative path if you absolutely know from where the job will be executed
-from.
+It's the relative path inside the "fs-import" virtual file system
+configuration. The default location of the "fs-import" file system is:
+
+* Laravel: ./storage/import/
+* TYPO3: /uploads/tx_aimeos/.secure/import/
 
 See also:
 

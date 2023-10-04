@@ -1,4 +1,100 @@
 
+# decorators
+## excludes
+
+Excludes decorators added by the "common" option from the catalog attribute html client
+
+```
+client/html/catalog/attribute/decorators/excludes = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/html/common/decorators/default" before they are wrapped
+around the html client.
+
+```
+ client/html/catalog/attribute/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
+"client/html/common/decorators/default" to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/catalog/attribute/decorators/global
+* client/html/catalog/attribute/decorators/local
+
+## global
+
+Adds a list of globally available decorators only to the catalog attribute html client
+
+```
+client/html/catalog/attribute/decorators/global = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
+
+```
+ client/html/catalog/attribute/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/catalog/attribute/decorators/excludes
+* client/html/catalog/attribute/decorators/local
+
+## local
+
+Adds a list of local decorators only to the catalog attribute html client
+
+```
+client/html/catalog/attribute/decorators/local = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Client\Html\Catalog\Decorator\*") around the html client.
+
+```
+ client/html/catalog/attribute/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Client\Html\Catalog\Decorator\Decorator2" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/catalog/attribute/decorators/excludes
+* client/html/catalog/attribute/decorators/global
+
 # name
 
 Class name of the used catalog attribute client implementation
@@ -7,7 +103,6 @@ Class name of the used catalog attribute client implementation
 client/html/catalog/attribute/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -52,7 +147,6 @@ Pre-select first item in selection list
 client/html/catalog/attribute/preselect = 
 ```
 
-* Default: 
 * Type: boolean - True to select the first option by default, false to display the select hint
 * Since: 2017.04
 
@@ -114,7 +208,6 @@ List of layout types for the optional attributes
 client/html/catalog/attribute/type = 
 ```
 
-* Default: 
 * Type: array - List of attribute types as key and layout types as value, e.g. "select" or "radio"
 * Since: 2015.10
 

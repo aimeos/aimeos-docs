@@ -5,7 +5,6 @@
 madmin/cache/manager/cleanup = DELETE FROM "madmin_cache" WHERE "expire" < ?
 ```
 
-* Default: 
 
 
 # clear
@@ -14,7 +13,6 @@ madmin/cache/manager/cleanup = DELETE FROM "madmin_cache" WHERE "expire" < ?
 madmin/cache/manager/clear = DELETE FROM "madmin_cache"
 ```
 
-* Default: 
 
 
 # count
@@ -26,7 +24,6 @@ Retrieves the records matched by the given criteria in the database
 madmin/cache/manager/count/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -67,7 +64,6 @@ Retrieves the records matched by the given criteria in the database
 madmin/cache/manager/count/mysql = 
 ```
 
-* Default: 
 
 See also:
 
@@ -197,7 +193,6 @@ See also:
 madmin/cache/manager/delete = DELETE FROM "madmin_cache" WHERE "id" IN (?)
 ```
 
-* Default: 
 
 
 # deletebytag
@@ -209,7 +204,6 @@ madmin/cache/manager/deletebytag =
  )
 ```
 
-* Default: 
 
 
 # get
@@ -220,7 +214,6 @@ madmin/cache/manager/get =
  WHERE ( "expire" >= ? OR "expire" IS NULL ) AND "id" IN (?)
 ```
 
-* Default: 
 
 
 # name
@@ -300,7 +293,6 @@ madmin/cache/manager/search/ansi =
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
-* Default: madmin/cache/manager/search
 * Type: string - SQL statement for searching items
 * Since: 2014.03
 
@@ -370,7 +362,6 @@ madmin/cache/manager/set =
  )
 ```
 
-* Default: 
 
 
 ## ansi
@@ -381,7 +372,6 @@ Inserts the cache entry into the database
 madmin/cache/manager/set/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for inserting a new cache entry
 * Since: 2014.03
 
@@ -419,7 +409,6 @@ Inserts the cache entry into the database
 madmin/cache/manager/set/mysql = 
 ```
 
-* Default: 
 
 See also:
 
@@ -436,7 +425,6 @@ madmin/cache/manager/settag =
  )
 ```
 
-* Default: 
 
 
 ## ansi
@@ -447,7 +435,6 @@ Inserts a new tag to an existing cache entry
 madmin/cache/manager/settag/ansi = 
 ```
 
-* Default: 
 * Type: string - SQL statement for inserting a new tag to an existing cache entry
 * Since: 2014.03
 
@@ -485,7 +472,6 @@ Inserts a new tag to an existing cache entry
 madmin/cache/manager/settag/mysql = 
 ```
 
-* Default: 
 
 See also:
 

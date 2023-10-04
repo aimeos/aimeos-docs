@@ -2,14 +2,14 @@
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the product import CSV job controller
+Excludes decorators added by the "common" option from the basket cleanup controllers
 
 ```
-controller/jobs/xml/import/decorators/excludes = 
+controller/jobs/basket/cleanup/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
-* Since: 2019.04
+* Since: 2023.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -21,29 +21,29 @@ This option allows you to remove a decorator added via
 around the job controller.
 
 ```
- controller/jobs/xml/import/decorators/excludes = array( 'decorator1' )
+ controller/jobs/basket/cleanup/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
 common decorators ("\Aimeos\Controller\Jobs\Common\Decorator\*") added via
-"controller/jobs/common/decorators/default" to the job controller.
+"controller/jobs/common/decorators/default" to this job controller.
 
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/xml/import/decorators/global
-* controller/jobs/xml/import/decorators/local
+* controller/jobs/basket/cleanup/decorators/global
+* controller/jobs/basket/cleanup/decorators/local
 
 ## global
 
-Adds a list of globally available decorators only to the product import CSV job controller
+Adds a list of globally available decorators only to the basket cleanup controllers
 
 ```
-controller/jobs/xml/import/decorators/global = 
+controller/jobs/basket/cleanup/decorators/global = 
 ```
 
 * Type: array - List of decorator names
-* Since: 2019.04
+* Since: 2023.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -54,28 +54,28 @@ This option allows you to wrap global decorators
 ("\Aimeos\Controller\Jobs\Common\Decorator\*") around the job controller.
 
 ```
- controller/jobs/xml/import/decorators/global = array( 'decorator1' )
+ controller/jobs/basket/cleanup/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
-"\Aimeos\Controller\Jobs\Common\Decorator\Decorator1" only to the job controller.
+"\Aimeos\Controller\Jobs\Common\Decorator\Decorator1" only to this job controller.
 
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/xml/import/decorators/excludes
-* controller/jobs/xml/import/decorators/local
+* controller/jobs/basket/cleanup/decorators/excludes
+* controller/jobs/basket/cleanup/decorators/local
 
 ## local
 
-Adds a list of local decorators only to the product import CSV job controller
+Adds a list of local decorators only to the basket cleanup controllers
 
 ```
-controller/jobs/xml/import/decorators/local = 
+controller/jobs/basket/cleanup/decorators/local = 
 ```
 
 * Type: array - List of decorator names
-* Since: 2019.04
+* Since: 2023.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -83,35 +83,53 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Controller\Jobs\Xml\Import\Decorator\*") around the job
-controller.
+("\Aimeos\Controller\Jobs\Basket\Cleanup\Decorator\*") around this job controller.
 
 ```
- controller/jobs/xml/import/decorators/local = array( 'decorator2' )
+ controller/jobs/basket/cleanup/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Controller\Jobs\Xml\Import\Decorator\Decorator2"
-only to the job controller.
+"\Aimeos\Controller\Jobs\Basket\Cleanup\Decorator\Decorator2" only to this job
+controller.
 
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/xml/import/decorators/excludes
-* controller/jobs/xml/import/decorators/global
+* controller/jobs/basket/cleanup/decorators/excludes
+* controller/jobs/basket/cleanup/decorators/global
+
+# limit-days
+
+Only remove log entries that were created berore the configured number of days
+
+```
+controller/jobs/basket/cleanup/limit-days = 30
+```
+
+* Default: 30
+* Type: integer - Number of days
+* Since: 2023.10
+
+This option specifies the number of days log entries will be kept in
+the database. Afterwards, they will be removed and archived.
+
+See also:
+
+* controller/jobs/basket/cleanup/path
 
 # name
 
-Class name of the used product suggestions scheduler controller implementation
+Class name of the used basket cleanup scheduler controller implementation
 
 ```
-controller/jobs/xml/import/name = 
+controller/jobs/basket/cleanup/name = 
 ```
 
 * Type: string - Last part of the class name
-* Since: 2019.04
+* Since: 2023.10
 
-Each default job controller can be replace by an alternative imlementation.
+Each default log controller can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
 name as configuration value so the controller factory knows which class it
 has to instantiate.
@@ -119,19 +137,19 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Controller\Jobs\Xml\Import\Standard
+ \Aimeos\Controller\Jobs\Basket\Cleanup\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Controller\Jobs\Xml\Import\Myxml
+ \Aimeos\Controller\Jobs\Basket\Cleanup\Mylog
 ```
 
 then you have to set the this configuration option:
 
 ```
- controller/jobs/xml/import/name = Myxml
+ controller/jobs/basket/cleanup/name = Mylog
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -141,4 +159,4 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MyXml"!
+or numbers. Avoid chamel case names like "MyLog"!

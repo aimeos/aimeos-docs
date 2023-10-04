@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the JSON API clients
 client/jsonapi/catalog/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the JsonApi client
 client/jsonapi/catalog/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -78,7 +76,6 @@ Adds a list of local decorators only to the JsonApi client
 client/jsonapi/catalog/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -140,7 +137,6 @@ Class name of the used catalog client implementation
 client/jsonapi/catalog/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2017.03
 

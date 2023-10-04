@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the admin cache controller
 controller/jobs/admin/cache/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the admin cache controllers
 controller/jobs/admin/cache/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the admin cache controllers
 controller/jobs/admin/cache/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -110,7 +107,6 @@ Class name of the used admin cache scheduler controller implementation
 controller/jobs/admin/cache/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

@@ -1,4 +1,100 @@
 
+# decorators
+## excludes
+
+Excludes decorators added by the "common" option from the checkout update html client
+
+```
+client/html/checkout/update/decorators/excludes = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/html/common/decorators/default" before they are wrapped
+around the html client.
+
+```
+ client/html/checkout/update/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
+"client/html/common/decorators/default" to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/checkout/update/decorators/global
+* client/html/checkout/update/decorators/local
+
+## global
+
+Adds a list of globally available decorators only to the checkout update html client
+
+```
+client/html/checkout/update/decorators/global = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
+
+```
+ client/html/checkout/update/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/checkout/update/decorators/excludes
+* client/html/checkout/update/decorators/local
+
+## local
+
+Adds a list of local decorators only to the checkout update html client
+
+```
+client/html/checkout/update/decorators/local = 
+```
+
+* Type: array - List of decorator names
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Client\Html\Checkout\Decorator\*") around the html client.
+
+```
+ client/html/checkout/update/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Client\Html\Checkout\Decorator\Decorator2" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/checkout/update/decorators/excludes
+* client/html/checkout/update/decorators/global
+
 # name
 
 Class name of the used checkout update client implementation
@@ -7,10 +103,7 @@ Class name of the used checkout update client implementation
 client/html/checkout/update/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
-* Since: 2014.03
-* Since: 2014.03
 
 Each default HTML client can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -55,7 +148,6 @@ client/html/checkout/update/template-body = checkout/update/body
 
 * Default: checkout/update/body
 * Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the result shown in the body of the frontend. The
@@ -83,7 +175,6 @@ client/html/checkout/update/template-header = checkout/update/header
 
 * Default: checkout/update/header
 * Type: string - Relative path to the template creating code for the HTML page head
-* Since: 2014.03
 
 The template file contains the HTML code and processing instructions
 to generate the HTML code that is inserted into the HTML page header
@@ -111,7 +202,6 @@ Name of the action that should create the output
 client/html/checkout/update/url/action = 
 ```
 
-* Default: 
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -133,7 +223,6 @@ Associative list of configuration options used for generating the URL
 client/html/checkout/update/url/config = 
 ```
 
-* Default: 
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -164,7 +253,6 @@ Name of the controller whose action should be called
 client/html/checkout/update/url/controller = 
 ```
 
-* Default: 
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -186,7 +274,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/checkout/update/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 

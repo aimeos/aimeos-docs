@@ -8,7 +8,6 @@ Excludes decorators added by the "common" option from the catalog session html c
 client/html/catalog/session/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -43,7 +42,6 @@ Adds a list of globally available decorators only to the catalog session html cl
 client/html/catalog/session/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -76,7 +74,6 @@ Adds a list of local decorators only to the catalog session html client
 client/html/catalog/session/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -109,7 +106,6 @@ Class name of the used catalog session client implementation
 client/html/catalog/session/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -440,7 +436,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/catalog/session/pinned/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.09
 

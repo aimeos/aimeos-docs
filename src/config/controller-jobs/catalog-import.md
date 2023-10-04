@@ -8,7 +8,6 @@ Name of the backup for sucessfully imported files
 controller/jobs/catalog/import/csv/backup = backup-%Y-%m-%d.csv
 ```
 
-* Default: 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2018.04
 
@@ -44,7 +43,6 @@ Excludes decorators added by the "common" option from the catalog import CSV job
 controller/jobs/catalog/import/csv/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -79,7 +77,6 @@ Adds a list of globally available decorators only to the catalog import CSV job 
 controller/jobs/catalog/import/csv/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -112,7 +109,6 @@ Adds a list of local decorators only to the catalog import CSV job controller
 controller/jobs/catalog/import/csv/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -177,7 +173,7 @@ See also:
 
 ## location
 
-File or directory where the content is stored which should be imported
+Directory where the CSV files are stored which should be imported
 
 ```
 controller/jobs/catalog/import/csv/location = catalog
@@ -187,10 +183,11 @@ controller/jobs/catalog/import/csv/location = catalog
 * Type: string - Relative path to the CSV files
 * Since: 2015.08
 
-You need to configure the CSV file or directory with the CSV files that
-should be imported. It should be an absolute path to be sure but can be
-relative path if you absolutely know from where the job will be executed
-from.
+It's the relative path inside the "fs-import" virtual file system
+configuration. The default location of the "fs-import" file system is:
+
+* Laravel: ./storage/import/
+* TYPO3: /uploads/tx_aimeos/.secure/import/
 
 See also:
 
@@ -314,7 +311,6 @@ Class name of the used catalog CSV importer implementation
 controller/jobs/catalog/import/csv/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -387,7 +383,6 @@ Name of the backup for sucessfully imported files
 controller/jobs/catalog/import/xml/backup = 
 ```
 
-* Default: 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2019.04
 
@@ -566,7 +561,7 @@ See also:
 
 ## location
 
-File or directory where the content is stored which should be imported
+Directory where the CSV files are stored which should be imported
 
 ```
 controller/jobs/catalog/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
@@ -576,10 +571,11 @@ controller/jobs/catalog/import/xml/location = /var/www/aimeos/ext/ai-controller-
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
-You need to configure the XML file or directory with the XML files that
-should be imported. It should be an absolute path to be sure but can be
-relative path if you absolutely know from where the job will be executed
-from.
+It's the relative path inside the "fs-import" virtual file system
+configuration. The default location of the "fs-import" file system is:
+
+* Laravel: ./storage/import/
+* TYPO3: /uploads/tx_aimeos/.secure/import/
 
 See also:
 

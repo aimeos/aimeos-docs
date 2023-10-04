@@ -132,9 +132,7 @@ Excludes decorators added by the "common" option from the locale select html cli
 client/html/locale/select/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
-* Since: 2014.05
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -167,9 +165,7 @@ Adds a list of globally available decorators only to the locale select html clie
 client/html/locale/select/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
-* Since: 2014.05
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -200,9 +196,7 @@ Adds a list of local decorators only to the locale select html client
 client/html/locale/select/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
-* Since: 2014.05
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -357,7 +351,6 @@ Class name of the used locale select client implementation
 client/html/locale/select/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 

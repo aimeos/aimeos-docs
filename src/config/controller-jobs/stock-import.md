@@ -8,7 +8,6 @@ Name of the backup for sucessfully imported files
 controller/jobs/stock/import/csv/backup = 
 ```
 
-* Default: 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
 * Since: 2019.04
 
@@ -41,7 +40,6 @@ Excludes decorators added by the "common" option from the stock import CSV job c
 controller/jobs/stock/import/csv/decorators/excludes = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -76,7 +74,6 @@ Adds a list of globally available decorators only to the stock import CSV job co
 controller/jobs/stock/import/csv/decorators/global = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -109,7 +106,6 @@ Adds a list of local decorators only to the stock import CSV job controller
 controller/jobs/stock/import/csv/decorators/local = 
 ```
 
-* Default: 
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -138,7 +134,7 @@ See also:
 
 ## location
 
-File or directory where the content is stored which should be imported
+Directory where the CSV files are stored which should be imported
 
 ```
 controller/jobs/stock/import/csv/location = stock
@@ -148,10 +144,11 @@ controller/jobs/stock/import/csv/location = stock
 * Type: string - Relative path to the CSV files
 * Since: 2019.04
 
-You need to configure the CSV file or directory with the CSV files that
-should be imported. It should be an absolute path to be sure but can be
-relative path if you absolutely know from where the job will be executed
-from.
+It's the relative path inside the "fs-import" virtual file system
+configuration. The default location of the "fs-import" file system is:
+
+* Laravel: ./storage/import/
+* TYPO3: /uploads/tx_aimeos/.secure/import/
 
 See also:
 
@@ -192,7 +189,6 @@ Class name of the used stock suggestions scheduler controller implementation
 controller/jobs/stock/import/csv/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2019.04
 

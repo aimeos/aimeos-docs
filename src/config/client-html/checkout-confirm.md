@@ -1,4 +1,137 @@
 
+# decorators
+## excludes
+
+Excludes decorators added by the "common" option from the checkout confirm html client
+
+```
+client/html/checkout/confirm/decorators/excludes = 
+```
+
+* Type: array - List of decorator names
+* Since: 2014.05
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"client/html/common/decorators/default" before they are wrapped
+around the html client.
+
+```
+ client/html/checkout/confirm/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Client\Html\Common\Decorator\*") added via
+"client/html/common/decorators/default" to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/checkout/confirm/decorators/global
+* client/html/checkout/confirm/decorators/local
+
+## global
+
+Adds a list of globally available decorators only to the checkout confirm html client
+
+```
+client/html/checkout/confirm/decorators/global = 
+```
+
+* Type: array - List of decorator names
+* Since: 2014.05
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Client\Html\Common\Decorator\*") around the html client.
+
+```
+ client/html/checkout/confirm/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Client\Html\Common\Decorator\Decorator1" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/checkout/confirm/decorators/excludes
+* client/html/checkout/confirm/decorators/local
+
+## local
+
+Adds a list of local decorators only to the checkout confirm html client
+
+```
+client/html/checkout/confirm/decorators/local = 
+```
+
+* Type: array - List of decorator names
+* Since: 2014.05
+
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Client\Html\Checkout\Decorator\*") around the html client.
+
+```
+ client/html/checkout/confirm/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Client\Html\Checkout\Decorator\Decorator2" only to the html client.
+
+See also:
+
+* client/html/common/decorators/default
+* client/html/checkout/confirm/decorators/excludes
+* client/html/checkout/confirm/decorators/global
+
+# domains
+
+List of domains to fetch items related to the order
+
+```
+client/html/checkout/confirm/domains = Array
+(
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
+)
+```
+
+* Default: Array
+(
+    [order/address] => order/address
+    [order/coupon] => order/coupon
+    [order/product] => order/product
+    [order/service] => order/service
+)
+
+* Type: array - List of domain names
+* Since: 2023.07
+
+To adapt the order data loaded for displaying at the checkout confirmation
+page, add or remove the names of the domains using this setting. By default,
+all order sub-domains are included (order/address, order/coupon, order/product
+and order/service) and you can remove unused domains or add additional ones
+like "product" to get the original product items for the bought order products.
+You can also add domains related to e.g. products like "catalog" for the
+categories the products are assigned to.
+
+
 # name
 
 Class name of the used checkout confirm client implementation
@@ -7,7 +140,6 @@ Class name of the used checkout confirm client implementation
 client/html/checkout/confirm/name = 
 ```
 
-* Default: 
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -261,7 +393,6 @@ Destination of the URL where the controller specified in the URL is known
 client/html/checkout/confirm/url/target = 
 ```
 
-* Default: 
 * Type: string - Destination of the URL
 * Since: 2014.03
 
