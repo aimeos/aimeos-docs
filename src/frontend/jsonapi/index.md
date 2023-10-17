@@ -124,7 +124,26 @@ Also, the JSON API standard specifies an "errors" section in the JSON response t
 }
 ```
 
-Each error item contains a "title" attribute that contains the error message for the user and the "detail" attribute including the stack trace for developers. You should show the error details because they are only helpful for developers.
+Each error item contains a "title" attribute that contains the error message for the user and the "detail" attribute including the stack trace for developers. You should show the error details because they are only helpful for developers:
+
+```js
+const promise = fetch('/jsonapi?...', {
+    method: 'GET', // or DELETE, OPTIONS, POST, PATCH
+    credentials: 'same-origin',
+}).then(response => {
+    if(!response.ok) {
+        throw new Error(response.statusText)
+    }
+    return response.json();
+}).then(result => {
+    if(result.errors) {
+        throw result.errors
+    }
+    return result
+}).catch(err => {
+    console.error(err)
+})
+```
 
 !!! note
     The stack trace is only included if you enable debugging by configuring:

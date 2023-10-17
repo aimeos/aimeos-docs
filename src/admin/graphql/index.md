@@ -33,9 +33,17 @@ fetch($('.aimeos').data('graphql'), {
 	},
 	body: body
 }).then(response => {
+    if(!response.ok) {
+        throw new Error(response.statusText)
+    }
 	return response.json();
-}).then(data => {
-	console.log(data);
+}).then(result => {
+    if(result.errors) {
+        throw result.errors
+    }
+    return result
+}).catch(err => {
+    console.error(err)
 });
 ```
 
