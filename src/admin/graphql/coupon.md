@@ -102,10 +102,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "~=": {"coupon.label":"demo"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchCoupons(filter: "` + fstr + `") {
+      searchCoupons(filter: ` + fstr + `) {
         id
         siteid
         label

@@ -117,10 +117,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "=~": {"media.code":"demo-"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchMedias(filter: "` + fstr + `") {
+      searchMedias(filter: ` + fstr + `) {
         id
         siteid
         type

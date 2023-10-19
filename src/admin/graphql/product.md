@@ -229,10 +229,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "=~": {"product.code":"demo-"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: "` + fstr + `") {
+      searchProducts(filter: ` + fstr + `) {
         id
         siteid
         type

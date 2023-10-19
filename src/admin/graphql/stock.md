@@ -98,10 +98,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "~=": {"stock.type":"default"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchStocks(filter: "` + fstr + `") {
+      searchStocks(filter: ` + fstr + `) {
         id
         siteid
         type

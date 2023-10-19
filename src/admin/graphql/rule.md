@@ -110,10 +110,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "~=": {"rule.label":"Test"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchRules(filter: "` + fstr + `") {
+      searchRules(filter: ` + fstr + `) {
         id
         siteid
         type

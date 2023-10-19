@@ -102,10 +102,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "==": {"coupon.code.count":1000}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchCouponCodes(filter: "` + fstr + `") {
+      searchCouponCodes(filter: ` + fstr + `) {
         id
         siteid
         parentid

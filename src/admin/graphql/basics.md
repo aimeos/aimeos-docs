@@ -300,7 +300,7 @@ To get all product items which are selections for example, you can use this quer
     };
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: "` + JSON.stringify(filter).replace(/"/g, '\\"') + `") {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
         id
         type
         code
@@ -371,7 +371,7 @@ To combine several conditions, you can combine two or more "compare" expressions
     };
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: "` + JSON.stringify(filter).replace(/"/g, '\\"') + `") {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
         id
         type
         code
@@ -426,7 +426,7 @@ The negation is a special case because it only accepts one "compare" condition w
     };
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: "` + JSON.stringify(filter).replace(/"/g, '\\"') + `") {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
         id
         type
         code
@@ -484,7 +484,7 @@ You can also create more complicated statements by nesting them like:
     };
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: "` + JSON.stringify(filter).replace(/"/g, '\\"') + `") {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
         id
         type
         code
