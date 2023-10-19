@@ -104,10 +104,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "~=": {"plugin.label":"Product"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchPlugins(filter: "` + fstr + `") {
+      searchPlugins(filter: ` + fstr + `) {
         id
         siteid
         type

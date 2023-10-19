@@ -178,10 +178,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "=~": {"attribute.code":"demo-"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchAttributes(filter: "` + fstr + `") {
+      searchAttributes(filter: ` + fstr + `) {
         id
         type
         siteid

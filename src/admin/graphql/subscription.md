@@ -114,10 +114,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "==": {"subscription.period":1}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchSubscriptions(filter: "` + fstr + `") {
+      searchSubscriptions(filter: ` + fstr + `) {
         id
         siteid
         orderid

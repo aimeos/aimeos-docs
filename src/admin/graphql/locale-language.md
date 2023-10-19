@@ -82,10 +82,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "==": {"locale.language.status":1}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchLocaleLanguages(filter: "` + fstr + `") {
+      searchLocaleLanguages(filter: ` + fstr + `) {
         id
         label
         status

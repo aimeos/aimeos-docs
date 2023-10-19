@@ -166,10 +166,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "=~": {"supplier.code":"demo-"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchSuppliers(filter: "` + fstr + `") {
+      searchSuppliers(filter: ` + fstr + `) {
         id
         siteid
         code

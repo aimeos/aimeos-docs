@@ -201,10 +201,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "=~": {"service.code":"demo-"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchServices(filter: "` + fstr + `") {
+      searchServices(filter: ` + fstr + `) {
         id
         siteid
         type

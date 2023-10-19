@@ -114,10 +114,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "=~": {"review.code":"demo-"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchReviews(filter: "` + fstr + `") {
+      searchReviews(filter: ` + fstr + `) {
         id
         siteid
         customerid

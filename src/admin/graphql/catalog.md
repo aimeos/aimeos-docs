@@ -347,10 +347,10 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     let filter = {
         "=~": {"catalog.code":"demo-"}
     };
-    const fstr = JSON.stringify(filter).replace(/"/g, '\\"');
+    const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchCatalogs(filter: "` + fstr + `") {
+      searchCatalogs(filter: ` + fstr + `) {
         id
         siteid
         parentid
