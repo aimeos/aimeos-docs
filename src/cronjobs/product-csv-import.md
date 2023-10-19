@@ -39,7 +39,7 @@ For additional tuning of the CSV import, the [controller/jobs/product/import/csv
 
 # Test import
 
-You can test the CSV import using the example file and default mapping: [product-import-example.csv](https://aimeos.org/fileadmin/download/products-import-example.csv)
+You can test the CSV import using the example file and default mapping: [product-import-example-2024.csv](https://aimeos.org/fileadmin/download/products-import-example-2024.csv)
 
 Before you start, add these settings to your configuration:
 
@@ -78,20 +78,21 @@ You can freely configure how your data is organized in the CSV file but for a qu
         12 => 'price.taxrate', // tax rate with decimals separated by a dot
     ],
     'attribute' => [
-        13 => 'attribute.code', // code of an attribute, will be created if not exists
-        14 => 'attribute.type', // e.g. "size", "length", "width", "color", etc.
+        13 => 'product.lists.type', // e.g. "variant", "default", etc.
+        14 => 'attribute.code', // code of an attribute, will be created if not exists
+        15 => 'attribute.type', // e.g. "size", "length", "width", "color", etc.
     ],
     'product' => [
-        15 => 'product.code', // e.g. EAN code of another product
-        16 => 'product.lists.type', // e.g. "suggestion" for suggested product
+        16 => 'product.code', // e.g. EAN code of another product
+        17 => 'product.lists.type', // e.g. "suggestion" for suggested product
     ],
     'property' => [
-        17 => 'product.property.value', // arbitrary value for the corresponding type
-        18 => 'product.property.type', // e.g. "package-weight"
+        18 => 'product.property.value', // arbitrary value for the corresponding type
+        19 => 'product.property.type', // e.g. "package-weight"
     ],
     'catalog' => [
-        19 => 'catalog.code', // e.g. Unique category code
-        20 => 'catalog.lists.type', // e.g. "promotion" for top seller products
+        20 => 'catalog.code', // e.g. Unique category code
+        21 => 'catalog.lists.type', // e.g. "promotion" for top seller products
     ],
 ]
 ```
