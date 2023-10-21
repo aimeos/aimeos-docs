@@ -5,7 +5,7 @@
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/customer/group/import/xml/backup = 
+controller/jobs/group/import/xml/backup =
 ```
 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
@@ -28,16 +28,16 @@ please have a look  into the PHP documentation of the
 
 See also:
 
-* controller/jobs/customer/group/import/xml/domains
-* controller/jobs/customer/group/import/xml/location
-* controller/jobs/customer/group/import/xml/max-query
+* controller/jobs/group/import/xml/domains
+* controller/jobs/group/import/xml/location
+* controller/jobs/group/import/xml/max-query
 
 ## xml/decorators/excludes
 
 Excludes decorators added by the "common" option from the customer import CSV job controller
 
 ```
-controller/jobs/customer/group/import/xml/decorators/excludes = Array
+controller/jobs/group/import/xml/decorators/excludes = Array
 (
 )
 ```
@@ -77,7 +77,7 @@ See also:
 Adds a list of globally available decorators only to the customer import CSV job controller
 
 ```
-controller/jobs/customer/group/import/xml/decorators/global = Array
+controller/jobs/group/import/xml/decorators/global = Array
 (
 )
 ```
@@ -115,7 +115,7 @@ See also:
 Adds a list of local decorators only to the customer import CSV job controller
 
 ```
-controller/jobs/customer/group/import/xml/decorators/local = Array
+controller/jobs/group/import/xml/decorators/local = Array
 (
 )
 ```
@@ -155,10 +155,10 @@ See also:
 Directory where the CSV files are stored which should be imported
 
 ```
-controller/jobs/customer/group/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
+controller/jobs/group/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: customergroup
+* Default: group
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
@@ -170,16 +170,16 @@ configuration. The default location of the "fs-import" file system is:
 
 See also:
 
-* controller/jobs/customer/group/import/xml/backup
-* controller/jobs/customer/group/import/xml/domains
-* controller/jobs/customer/group/import/xml/max-query
+* controller/jobs/group/import/xml/backup
+* controller/jobs/group/import/xml/domains
+* controller/jobs/group/import/xml/max-query
 
 ## xml/max-query
 
 Maximum number of XML nodes processed at once
 
 ```
-controller/jobs/customer/group/import/xml/max-query = 100
+controller/jobs/group/import/xml/max-query = 100
 ```
 
 * Default: 100
@@ -194,16 +194,16 @@ limit of the PHP process.
 
 See also:
 
-* controller/jobs/customer/group/import/xml/domains
-* controller/jobs/customer/group/import/xml/location
-* controller/jobs/customer/group/import/xml/backup
+* controller/jobs/group/import/xml/domains
+* controller/jobs/group/import/xml/location
+* controller/jobs/group/import/xml/backup
 
 ## xml/name
 
 Class name of the used customer suggestions scheduler controller implementation
 
 ```
-controller/jobs/customer/group/import/xml/name = Standard
+controller/jobs/group/import/xml/name = Standard
 ```
 
 * Default: Standard

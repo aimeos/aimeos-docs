@@ -109,7 +109,7 @@ If the customer didn't authenticate herself/himself yet, an empty customer item 
             "customer.code": "",
             "customer.birthday": null,
             "customer.status": 1,
-            "customer.groups": []
+            "groups": []
         }
     },
     "included": []
@@ -184,10 +184,10 @@ The response of an authenticated user contains the account data and the groups a
             "customer.birthday": "2000-01-01",
         },
         "relationships": {
-            "customer.group": {
+            "group": {
                 "data": [{
                     "id": "1",
-                    "type": "customer.group",
+                    "type": "group",
                     "attributes": {
                         "customer.lists.id": "1",
                         "customer.lists.domain": "customer\/group",
@@ -211,11 +211,11 @@ The response of an authenticated user contains the account data and the groups a
     },
     "included": [{
         "id": "1",
-        "type": "customer.group",
+        "type": "group",
         "attributes": {
-            "customer.group.id": "1",
-            "customer.group.code": "admin",
-            "customer.group.label": "Administrator"
+            "group.id": "1",
+            "group.code": "admin",
+            "group.label": "Administrator"
         }
     }]
 }
@@ -321,7 +321,7 @@ If the user isn't logged in, it's possible to create a new customer by sending t
     });
     ```
 
-You can't set the "customer.status" and "customer.groups" properties for an account using the JSON API. If you do so, they will be ignored because, obviously, this would enable attackers to re-enable their disabled account or gain additional privileges.
+You can't set the "customer.status" and "groups" properties for an account using the JSON API. If you do so, they will be ignored because, obviously, this would enable attackers to re-enable their disabled account or gain additional privileges.
 
 In case the new account has been successfully created, the response will be similar to this one:
 
@@ -504,13 +504,13 @@ The response will include the basic customer data including groups like in this 
             "customer.latitude": 50.0,
             "customer.birthday": "2000-01-01",
             "customer.status": 1,
-            "customer.groups": ["1"]
+            "groups": ["1"]
         },
         "relationships": {
-            "customer.group": {
+            "group": {
                 "data": [{
                     "id": "1",
-                    "type": "customer.group",
+                    "type": "group",
                     "attributes": {
                         "customer.lists.id": "1",
                         "customer.lists.domain": "customer\/group",
@@ -534,11 +534,11 @@ The response will include the basic customer data including groups like in this 
     },
     "included": [{
         "id": "1",
-        "type": "customer.group",
+        "type": "group",
         "attributes": {
-        "customer.group.id": "1",
-        "customer.group.code": "customer",
-        "customer.group.label": "Customer"
+        "group.id": "1",
+        "group.code": "customer",
+        "group.label": "Customer"
         }
     }]
 }

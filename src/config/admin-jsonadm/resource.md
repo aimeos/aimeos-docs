@@ -281,7 +281,7 @@ admin/jsonadm/resource/customer/address/groups = Array
 List of user groups that are allowed to manage customer group items
 
 ```
-admin/jsonadm/resource/customer/group/groups = Array
+admin/jsonadm/resource/group/groups = Array
 (
     [0] => admin
     [1] => editor
@@ -302,7 +302,7 @@ admin/jsonadm/resource/customer/group/groups = Array
 List of user groups that are allowed to manage customer items
 
 ```
-admin/jsonadm/resource/customer/groups = Array
+admin/jsonadm/resource/groups = Array
 (
     [0] => admin
     [1] => editor
@@ -1537,7 +1537,7 @@ admin/jsonadm/resource/supplier/lists/type/groups = Array
 List of user groups that are allowed to manage supplier type items
 
 ```
-admin/jsonadm/resource/supplier/type/groups = 
+admin/jsonadm/resource/supplier/type/groups =
 ```
 
 * Type: array - List of user group names
@@ -1571,7 +1571,7 @@ admin/jsonadm/resource/tag/groups = Array
 List of user groups that are allowed to manage tag type items
 
 ```
-admin/jsonadm/resource/tag/type/groups = 
+admin/jsonadm/resource/tag/type/groups =
 ```
 
 * Type: array - List of user group names

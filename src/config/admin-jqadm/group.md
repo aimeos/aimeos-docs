@@ -5,7 +5,7 @@
 Excludes decorators added by the "common" option from the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/excludes = 
+admin/jqadm/group/decorators/excludes =
 ```
 
 * Type: array - List of decorator names
@@ -39,7 +39,7 @@ See also:
 Adds a list of globally available decorators only to the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/global = 
+admin/jqadm/group/decorators/global =
 ```
 
 * Type: array - List of decorator names
@@ -71,7 +71,7 @@ See also:
 Adds a list of local decorators only to the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/local = 
+admin/jqadm/group/decorators/local =
 ```
 
 * Type: array - List of decorator names
@@ -105,17 +105,17 @@ List of group columns that should be displayed in the list view
 ```
 admin/jqadm/group/fields = Array
 (
-    [0] => customer.group.status
-    [1] => customer.group.label
-    [2] => customer.group.code
+    [0] => group.status
+    [1] => group.label
+    [2] => group.code
 )
 ```
 
 * Default: Array
 (
-    [0] => customer.group.status
-    [1] => customer.group.label
-    [2] => customer.group.code
+    [0] => group.status
+    [1] => group.label
+    [2] => group.code
 )
 
 * Type: array - List of field names, i.e. search keys
@@ -134,7 +134,7 @@ e.g. "group.id" for the group ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/group/name = 
+admin/jqadm/group/name =
 ```
 
 * Type: string - Last part of the class name

@@ -5,7 +5,7 @@
 Excludes decorators added by the "common" option from the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/excludes = 
+controller/frontend/customer/decorators/excludes =
 ```
 
 * Type: array - List of decorator names
@@ -39,7 +39,7 @@ See also:
 Adds a list of globally available decorators only to the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/global = 
+controller/frontend/customer/decorators/global =
 ```
 
 * Type: array - List of decorator names
@@ -71,7 +71,7 @@ See also:
 Adds a list of local decorators only to the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/local = 
+controller/frontend/customer/decorators/local =
 ```
 
 * Type: array - List of decorator names
@@ -104,7 +104,7 @@ See also:
 List of groups new customers should be assigned to
 
 ```
-controller/frontend/customer/groupids = Array
+controller/frontend/groupids = Array
 (
 )
 ```
@@ -173,7 +173,7 @@ See also:
 Class name of the used customer frontend controller implementation
 
 ```
-controller/frontend/customer/name = 
+controller/frontend/customer/name =
 ```
 
 * Type: string - Last part of the class name

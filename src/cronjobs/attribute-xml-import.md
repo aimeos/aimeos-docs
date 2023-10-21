@@ -104,7 +104,7 @@ Most of the time, you already have an ERP system which manages all your products
             <!-- more customer items -->
 
             <!-- Optional, list of customer group items -->
-            <customergroup>
+            <group>
 
               <!-- ref: Required, unique code of the customer group -->
               <!-- lists.type: Optional, possible values: "default" (default) or any other available list type -->
@@ -113,7 +113,7 @@ Most of the time, you already have an ERP system which manages all your products
               <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
               <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
               <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
-              <customergroupitem ref="groupcode"
+              <groupitem ref="groupcode"
                 lists.type="default"
                 lists.config="{&quot;key&quot;: &quot;value&quot;}"
                 lists.position="0"
@@ -121,8 +121,8 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
-            </customergroup>
-            <!-- more customer/group items -->
+            </group>
+            <!-- more group items -->
 
           </lists>
         </textitem>
@@ -192,7 +192,7 @@ Most of the time, you already have an ERP system which manages all your products
             <!-- more customer items -->
 
             <!-- Optional, list of customer group items -->
-            <customergroup>
+            <group>
 
               <!-- ref: Required, unique code of the customer group -->
               <!-- lists.type: Optional, possible values: "default" (default) or any other available list type -->
@@ -201,7 +201,7 @@ Most of the time, you already have an ERP system which manages all your products
               <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
               <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
               <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
-              <customergroupitem ref="groupcode"
+              <groupitem ref="groupcode"
                 lists.type="default"
                 lists.config="{&quot;key&quot;: &quot;value&quot;}"
                 lists.position="0"
@@ -209,8 +209,8 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
-            </customergroup>
-            <!-- more customer/group items -->
+            </group>
+            <!-- more group items -->
 
           </lists>
 
@@ -306,7 +306,7 @@ Most of the time, you already have an ERP system which manages all your products
             <!-- more customer items -->
 
             <!-- Optional, list of customer group items -->
-            <customergroup>
+            <group>
 
               <!-- ref: Required, unique code of the customer group -->
               <!-- lists.type: Optional, possible values: "default" (default) or any other available list type -->
@@ -315,7 +315,7 @@ Most of the time, you already have an ERP system which manages all your products
               <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
               <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
               <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
-              <customergroupitem ref="groupcode"
+              <groupitem ref="groupcode"
                 lists.type="default"
                 lists.config="{&quot;key&quot;: &quot;value&quot;}"
                 lists.position="0"
@@ -323,8 +323,8 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
-            </customergroup>
-            <!-- more customer/group items -->
+            </group>
+            <!-- more group items -->
 
           </lists>
         </priceitem>
@@ -354,7 +354,7 @@ Most of the time, you already have an ERP system which manages all your products
       <!-- more customer items -->
 
       <!-- Optional, list of customer group items -->
-      <customergroup>
+      <group>
 
         <!-- ref: Required, unique code of the customer group -->
         <!-- lists.type: Optional, possible values: "default" (default) or any other available list type -->
@@ -363,7 +363,7 @@ Most of the time, you already have an ERP system which manages all your products
         <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
         <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
         <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
-        <customergroupitem ref="groupcode"
+        <groupitem ref="groupcode"
           lists.type="default"
           lists.config="{&quot;key&quot;: &quot;value&quot;}"
           lists.position="0"
@@ -371,8 +371,8 @@ Most of the time, you already have an ERP system which manages all your products
           lists.datestart="2000-01-01T00:00:00"
           lists.dateend="2000-01-01T23:59:59" />
 
-      </customergroup>
-      <!-- more customer/group items -->
+      </group>
+      <!-- more group items -->
 
     </lists>
 

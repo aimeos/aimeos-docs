@@ -176,7 +176,7 @@ admin/jqadm/resource/coupon/key = V
 List of user groups that are allowed to access the customer panel
 
 ```
-admin/jqadm/resource/customer/groups = Array
+admin/jqadm/resource/groups = Array
 (
     [0] => admin
     [1] => editor
@@ -338,7 +338,7 @@ admin/jqadm/resource/locale/currency/groups = Array
 ## currency/key
 
 ```
-admin/jqadm/resource/locale/currency/key = 
+admin/jqadm/resource/locale/currency/key =
 ```
 
 
@@ -366,7 +366,7 @@ admin/jqadm/resource/locale/groups = Array
 ## key
 
 ```
-admin/jqadm/resource/locale/key = 
+admin/jqadm/resource/locale/key =
 ```
 
 
@@ -393,7 +393,7 @@ admin/jqadm/resource/locale/language/groups = Array
 ## language/key
 
 ```
-admin/jqadm/resource/locale/language/key = 
+admin/jqadm/resource/locale/language/key =
 ```
 
 
@@ -420,7 +420,7 @@ admin/jqadm/resource/locale/site/groups = Array
 ## site/key
 
 ```
-admin/jqadm/resource/locale/site/key = 
+admin/jqadm/resource/locale/site/key =
 ```
 
 
@@ -872,7 +872,7 @@ admin/jqadm/resource/type/attribute/groups = Array
 ## attribute/key
 
 ```
-admin/jqadm/resource/type/attribute/key = 
+admin/jqadm/resource/type/attribute/key =
 ```
 
 
@@ -900,7 +900,7 @@ admin/jqadm/resource/type/attribute/lists/groups = Array
 ## attribute/lists/key
 
 ```
-admin/jqadm/resource/type/attribute/lists/key = 
+admin/jqadm/resource/type/attribute/lists/key =
 ```
 
 
@@ -928,7 +928,7 @@ admin/jqadm/resource/type/attribute/property/groups = Array
 ## attribute/property/key
 
 ```
-admin/jqadm/resource/type/attribute/property/key = 
+admin/jqadm/resource/type/attribute/property/key =
 ```
 
 
@@ -956,7 +956,7 @@ admin/jqadm/resource/type/catalog/lists/groups = Array
 ## catalog/lists/key
 
 ```
-admin/jqadm/resource/type/catalog/lists/key = 
+admin/jqadm/resource/type/catalog/lists/key =
 ```
 
 
@@ -978,7 +978,7 @@ admin/jqadm/resource/type/cms/lists/groups = Array
 ## cms/lists/key
 
 ```
-admin/jqadm/resource/type/cms/lists/key = 
+admin/jqadm/resource/type/cms/lists/key =
 ```
 
 
@@ -1006,7 +1006,7 @@ admin/jqadm/resource/type/customer/lists/groups = Array
 ## customer/lists/key
 
 ```
-admin/jqadm/resource/type/customer/lists/key = 
+admin/jqadm/resource/type/customer/lists/key =
 ```
 
 
@@ -1034,7 +1034,7 @@ admin/jqadm/resource/type/customer/property/groups = Array
 ## customer/property/key
 
 ```
-admin/jqadm/resource/type/customer/property/key = 
+admin/jqadm/resource/type/customer/property/key =
 ```
 
 
@@ -1083,7 +1083,7 @@ admin/jqadm/resource/type/media/groups = Array
 ## media/key
 
 ```
-admin/jqadm/resource/type/media/key = 
+admin/jqadm/resource/type/media/key =
 ```
 
 
@@ -1111,7 +1111,7 @@ admin/jqadm/resource/type/media/lists/groups = Array
 ## media/lists/key
 
 ```
-admin/jqadm/resource/type/media/lists/key = 
+admin/jqadm/resource/type/media/lists/key =
 ```
 
 
@@ -1139,7 +1139,7 @@ admin/jqadm/resource/type/media/property/groups = Array
 ## media/property/key
 
 ```
-admin/jqadm/resource/type/media/property/key = 
+admin/jqadm/resource/type/media/property/key =
 ```
 
 
@@ -1167,7 +1167,7 @@ admin/jqadm/resource/type/plugin/groups = Array
 ## plugin/key
 
 ```
-admin/jqadm/resource/type/plugin/key = 
+admin/jqadm/resource/type/plugin/key =
 ```
 
 
@@ -1195,7 +1195,7 @@ admin/jqadm/resource/type/price/groups = Array
 ## price/key
 
 ```
-admin/jqadm/resource/type/price/key = 
+admin/jqadm/resource/type/price/key =
 ```
 
 
@@ -1223,7 +1223,7 @@ admin/jqadm/resource/type/price/lists/groups = Array
 ## price/lists/key
 
 ```
-admin/jqadm/resource/type/price/lists/key = 
+admin/jqadm/resource/type/price/lists/key =
 ```
 
 
@@ -1251,7 +1251,7 @@ admin/jqadm/resource/type/price/property/groups = Array
 ## price/property/key
 
 ```
-admin/jqadm/resource/type/price/property/key = 
+admin/jqadm/resource/type/price/property/key =
 ```
 
 
@@ -1279,7 +1279,7 @@ admin/jqadm/resource/type/product/groups = Array
 ## product/key
 
 ```
-admin/jqadm/resource/type/product/key = 
+admin/jqadm/resource/type/product/key =
 ```
 
 
@@ -1307,7 +1307,7 @@ admin/jqadm/resource/type/product/lists/groups = Array
 ## product/lists/key
 
 ```
-admin/jqadm/resource/type/product/lists/key = 
+admin/jqadm/resource/type/product/lists/key =
 ```
 
 
@@ -1336,7 +1336,7 @@ admin/jqadm/resource/type/product/property/groups = Array
 ## product/property/key
 
 ```
-admin/jqadm/resource/type/product/property/key = 
+admin/jqadm/resource/type/product/property/key =
 ```
 
 
@@ -1364,7 +1364,7 @@ admin/jqadm/resource/type/service/groups = Array
 ## service/key
 
 ```
-admin/jqadm/resource/type/service/key = 
+admin/jqadm/resource/type/service/key =
 ```
 
 
@@ -1392,7 +1392,7 @@ admin/jqadm/resource/type/service/lists/groups = Array
 ## service/lists/key
 
 ```
-admin/jqadm/resource/type/service/lists/key = 
+admin/jqadm/resource/type/service/lists/key =
 ```
 
 
@@ -1420,7 +1420,7 @@ admin/jqadm/resource/type/stock/groups = Array
 ## stock/key
 
 ```
-admin/jqadm/resource/type/stock/key = 
+admin/jqadm/resource/type/stock/key =
 ```
 
 
@@ -1448,7 +1448,7 @@ admin/jqadm/resource/type/tag/groups = Array
 ## tag/key
 
 ```
-admin/jqadm/resource/type/tag/key = 
+admin/jqadm/resource/type/tag/key =
 ```
 
 
@@ -1476,7 +1476,7 @@ admin/jqadm/resource/type/text/groups = Array
 ## text/key
 
 ```
-admin/jqadm/resource/type/text/key = 
+admin/jqadm/resource/type/text/key =
 ```
 
 
@@ -1504,7 +1504,7 @@ admin/jqadm/resource/type/text/lists/groups = Array
 ## text/lists/key
 
 ```
-admin/jqadm/resource/type/text/lists/key = 
+admin/jqadm/resource/type/text/lists/key =
 ```
 
 

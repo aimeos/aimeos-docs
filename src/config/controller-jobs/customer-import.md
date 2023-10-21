@@ -5,7 +5,7 @@
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/customer/import/xml/backup = 
+controller/jobs/customer/import/xml/backup =
 ```
 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
@@ -158,7 +158,7 @@ List of item domain names that should be retrieved along with the attribute item
 controller/jobs/customer/import/xml/domains = Array
 (
     [0] => customer/address
-    [1] => customer/group
+    [1] => group
     [2] => customer/property
     [3] => media
     [4] => product
@@ -169,7 +169,7 @@ controller/jobs/customer/import/xml/domains = Array
 * Default: Array
 (
     [0] => customer/address
-    [1] => customer/group
+    [1] => group
     [2] => customer/property
     [3] => media
     [4] => product

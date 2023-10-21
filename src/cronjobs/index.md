@@ -35,7 +35,7 @@ customer/email/account
 customer/email/watch
 : Customer notification e-mails on product updates
 
-customer/group/import/xml
+group/import/xml
 : Import customer groups from XML files
 
 customer/import/xml
