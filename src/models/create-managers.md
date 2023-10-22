@@ -59,18 +59,18 @@ class Test extends Base
         $this->info( 'Creating test schema', 'v' );
 
         $this->db( 'db-test' )->table( $name, function( \Aimeos\Upscheme\Schema\Table $table ) {
-        $table->engine = 'InnoDB';
+            $table->engine = 'InnoDB';
 
-        $table->id()->primary( 'pk_mstes_id' );
-        $table->string( 'siteid' );
-        $table->string( 'label' )->default( '' );
-        $table->int( 'position' )->default( 0 );
-        $table->smallint( 'status' )->default( 1 );
-        $table->meta();
+            $table->id()->primary( 'pk_mstes_id' );
+            $table->string( 'siteid' );
+            $table->string( 'label' )->default( '' );
+            $table->int( 'position' )->default( 0 );
+            $table->smallint( 'status' )->default( 1 );
+            $table->meta();
 
-        $table->index( ['status', 'siteid', 'position'], 'idx_mstes_status_sid_pos' );
-        $table->index( ['label', 'siteid'], 'idx_mstes_label_sid' );
-    } );
+            $table->index( ['status', 'siteid', 'position'], 'idx_mstes_status_sid_pos' );
+            $table->index( ['label', 'siteid'], 'idx_mstes_label_sid' );
+        } );
     }
 }
 ```
@@ -111,6 +111,7 @@ class Standard
 			],
 		] );
 	}
+}
 ```
 
 You must name the class *Standard.php* because it's the name the factories will use by default. Otherwise, you need to set the name of the manager using the *mshop/product/manager/test/name* configuration. Also extend your class from the *\Aimeos\MShop\Common\Manager\Base* class and implement the *\Aimeos\MShop\Common\Manager\Iface*!
@@ -140,6 +141,7 @@ class Standard
 			],
 		] );
 	}
+}
 ```
 
 By default, you only have to implement the *getSaveAttributes()* method which must return the list of properties that can be managed by the class and stored in the corresponding table. The *id*, *siteid*, *ctime*, *mtime* and *editor* properties are added by default.
