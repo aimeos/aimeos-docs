@@ -21,6 +21,12 @@ JSON REST API for retrieving and managing add shop data from remote or from the 
 
 Code: [ai-admin-jsonadm extension](https://github.com/aimeos/ai-admin-jsonadm)
 
+## GraphQL API
+
+GraphQL API for retrieving and managing add shop data from remote or from the JQAdm interface.
+
+Code: [ai-admin-graphql extension](https://github.com/aimeos/ai-admin-graphql)
+
 
 # Client endpoints
 
@@ -80,10 +86,6 @@ Jobs care about:
 * Updating order status from exernal sources
 * Subscription handling
 * Sending e-mails
-
-## Admin controllers
-
-To be implemented
 
 
 # Data access
