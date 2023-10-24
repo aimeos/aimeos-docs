@@ -15,7 +15,13 @@ Standard Aimeos admin interface for managing all data that is required or genera
 
 Code: [ai-admin-jqadm extension](https://github.com/aimeos/ai-admin-jqadm)
 
-## JsonAdm API
+## GraphQL API
+
+GraphQL API for retrieving and managing add shop data from remote or from the JQAdm interface.
+
+Code: [ai-admin-graphql extension](https://github.com/aimeos/ai-admin-graphql)
+
+## JsonAdm API (deprecated)
 
 JSON REST API for retrieving and managing add shop data from remote or from the JQAdm interface.
 
@@ -80,10 +86,6 @@ Jobs care about:
 * Updating order status from exernal sources
 * Subscription handling
 * Sending e-mails
-
-## Admin controllers
-
-To be implemented
 
 
 # Data access
