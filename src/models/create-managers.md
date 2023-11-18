@@ -148,11 +148,12 @@ By default, you only have to implement the *getSaveAttributes()* method which mu
 
 ## Define the properties
 
-The array returned by *getSaveAttributes()* must contain the column name as key, all properties in the array assigned to the key are optional and the **default type** of the column is assumed to be **string**. Available array properties for each key are:
+The array returned by *getSaveAttributes()* must contain the **database column name as key**, all properties in the array assigned to the key are optional and the **default type** of the column is assumed to be **string**. Available array properties for each key are:
 
+* *code* : String the database column name will be mapped to in the item, e.g. *test.label*
+* *internalcode* : String that will be used instead of the key name as column name, e.g. *mtes."label"*
 * *label* : Label used in the search box of the admin backend
-* *public* : Property is shown in the admin backend and assigned in the *fromArray()* method of the item
-* *internalcode* : String that will be used instead of the key name as column name
+* *public* : Property is shown in the search box of the admin backend and assigned by the *fromArray()* method of the item when used in the frontend
 * *type* : Type of the database column which can be:
     * bool
     * date
@@ -163,7 +164,19 @@ The array returned by *getSaveAttributes()* must contain the column name as key,
     * json
     * string
 
-If one of your column names is a reserved word in the database, you must put the column name into quotes, e.g.:
+A full example would be:
+
+```php
+'label' => [
+    'code' => 'test.label',
+    'internalcode' => 'mtes."label"',
+    'label' => 'Label of the test records'
+    'type' => 'string,'
+    'public' => true
+],
+```
+
+If one of your column names is a reserved word in the database, you **must** put the column name into quotes, e.g.:
 
 ```php
 'key' => [
