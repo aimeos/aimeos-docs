@@ -34,7 +34,7 @@ class Myprovider
      *
      * @param \Aimeos\MShop\Order\Item\Iface $order Order invoice object to process
      */
-    public function push( iterable $orders ) : \Aimeos\Map;
+    public function push( iterable $orders ) : \Aimeos\Map
     {
         return map( $orders );
     }
