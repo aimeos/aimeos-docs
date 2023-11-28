@@ -33,7 +33,7 @@ This would overwrite the list of components for the "MyAccount" page from the Ai
 
 ## Aimeos Blade templates
 
-Another way you can adapt specific pages is by **rewriting existing templates** from the `vendor/aimeos/aimeos-laravel/src/views` directory. These templates can be overwritten by creating your own copies of these files into your Laravel application's `./resources/views/vendor/shop/` directory and sub-directories. These copies will overwrite the Aimeos vendor package's views.
+Another way you can adapt specific pages is by **rewriting existing templates** from the `vendor/aimeos/aimeos-laravel/views` directory. These templates can be overwritten by creating your own copies of these files into your Laravel application's `./resources/views/vendor/shop/` directory and sub-directories. These copies will overwrite the Aimeos vendor package's views.
 
 As stated in Laravel's documentation about [overriding package views](https://laravel.com/docs/master/packages#views), "When you use the loadViewsFrom method (inside of your service provider's boot method), Laravel actually registers two locations for your views: the application's `./resources/views/vendor/` directory and the directory you specify."
 
