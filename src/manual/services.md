@@ -578,4 +578,8 @@ testmode (boolean, optional)
 : Use "1" for test payments without real money
 
 !!! warning
-    Stripe requires external Javascript and for Laravel, it needs a customized [Content Security Policy](../laravel/setup.md#content-security-policy)!
+    Stripe requires external Javascript and you need a customized [Content Security Policy](../laravel/setup.md#content-security-policy):
+    ```html
+    <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}'; style-src 'unsafe-inline' 'self'; img-src 'self' data: https://*.stripe.com; frame-src https://*.stripe.com https://www.youtube.com; script-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://*.stripe.com">
+    ```
+
