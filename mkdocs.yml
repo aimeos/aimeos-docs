@@ -299,6 +299,7 @@ nav:
       - Template: config/admin-jqadm/template.md
       - URL: config/admin-jqadm/url.md
       - Attribute: config/admin-jqadm/attribute.md
+      - Basket: config/admin-jqadm/basket.md
       - Catalog: config/admin-jqadm/catalog.md
       - Coupon: config/admin-jqadm/coupon.md
       - Customer: config/admin-jqadm/customer.md
@@ -342,6 +343,7 @@ nav:
       - Admin cache: config/controller-jobs/admin-cache.md
       - Admin log: config/controller-jobs/admin-log.md
       - Attribute import: config/controller-jobs/attribute-import.md
+      - Basket cleanup: config/controller-jobs/basket-cleanup.md
       - Catalog export: config/controller-jobs/catalog-export.md
       - Catalog import: config/controller-jobs/catalog-import.md
       - Coupon import: config/controller-jobs/coupon-import.md
