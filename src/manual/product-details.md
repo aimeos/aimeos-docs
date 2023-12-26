@@ -204,23 +204,15 @@ You can add attributes by clicking on the "+" symbol in the upper right corner o
 
 Product properties are not shared across products but only available for that single product. A good example is e.g. the ISBN number books which belongs only to that book. Most data should be stored as product properties because they are very fast.
 
-Articles which are part of a selection product need at least one variant attribute that distinguishes it from the other atrticles of the selection product. The variant attribute or the combination of several variant attributes must identify the article unique within the selection product.
+Each product type can have configurable optional parts like an additional printing on a T-Shirt. They are realized by product attributes, which can have their own text, image and price. Customers can also choose to add options more than once if the frontend offers an input field for the quantity.
+
+With customizable product options, customers can enter custom values into the provided input fields and these values will be stored along with the order. In the T-Shirt example, customers could enter the text that should be printed on the T-Shirt. Custom options can also be dates, e.g. for training courses. It's possible to create more customizable option types but the handling has to be implemented in addition. The [example products from the demo](http://laravel.demo.aimeos.org/default/en/EUR/) shows the basic usage.
 
 Each product can have an unlimited number of regular attributes. Clothing for example usually has an attribute like color. Attributes are shared between products and if you change the attribute value, it will be the same for all other products referencing this attribute too. Additionally, you can use all attributes to build filters in a facetted search.
 
 Hidden attributes are not shown in the frontend but are stored along with the ordered product. You can use them to pass data to the fulfillment or any other backend system that shouldn't be displayed to customers.
 
-
-# Options
-
-You can add product options by clicking on the "+" symbol in the upper right corner of the list. This will add a combobox which will display a list of the first 20 options. You can enter the first characters of an attribute label into the input field to filter the list of shown options to the ones you are looking for.
-
-![Associate options to a product](Admin-product-detail-options.png)
-
-Each product type can have configurable optional parts like an additional printing on a T-Shirt. They are realized by product attributes, which can have their own text, image and price. Customers can also choose to add options more than once if the frontend offers an input field for the quantity.
-
-With customizable product options, customers can enter custom values into the provided input fields and these values will be stored along with the order. In the T-Shirt example, customers could enter the text that should be printed on the T-Shirt. Custom options can also be dates, e.g. for training courses. It's possible to create more customizable option types but the handling has to be implemented in addition. The [example products from the demo](http://laravel.demo.aimeos.org/default/en/EUR/) shows the basic usage.
-
+Articles which are part of a selection product need at least one variant attribute that distinguishes it from the other atrticles of the selection product. The variant attribute or the combination of several variant attributes must identify the article unique within the selection product.
 
 # Products
 
