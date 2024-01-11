@@ -19,6 +19,7 @@ This article contains all actions for retrieving and managing sites.
         refid
         rating
         ratings
+        hasChildren
         mtime
         ctime
         editor
@@ -43,6 +44,7 @@ This article contains all actions for retrieving and managing sites.
         refid
         rating
         ratings
+        hasChildren
         mtime
         ctime
         editor
@@ -82,6 +84,7 @@ Response:
       "refid": "",
       "rating": "5.0",
       "ratings": 1,
+      "hasChildren": false,
       "mtime": "2022-05-28 06:26:33",
       "ctime": "2022-05-28 06:26:33",
       "editor": "setup"
@@ -111,6 +114,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         refid
         rating
         ratings
+        hasChildren
         mtime
         ctime
         editor
@@ -139,6 +143,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         refid
         rating
         ratings
+        hasChildren
         mtime
         ctime
         editor
@@ -179,6 +184,7 @@ Response:
         "refid": "",
         "rating": "5.0",
         "ratings": 1,
+        "hasChildren": false,
         "mtime": "2022-05-28 06:26:33",
         "ctime": "2022-05-28 06:26:33",
         "editor": "setup"
@@ -197,6 +203,7 @@ Response:
         "refid": "",
         "rating": "0.0",
         "ratings": 0,
+        "hasChildren": false,
         "mtime": "2022-05-28 06:26:33",
         "ctime": "2022-05-28 06:26:33",
         "editor": "setup"
