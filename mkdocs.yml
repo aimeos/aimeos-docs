@@ -166,6 +166,7 @@ nav:
       - Reviews: admin/graphql/review.md
       - Rules: admin/graphql/rule.md
       - Services: admin/graphql/service.md
+      - Sites: admin/graphql/locale-site.md
       - Stocks: admin/graphql/stock.md
       - Subscriptions: admin/graphql/subscription.md
       - Suppliers: admin/graphql/supplier.md
