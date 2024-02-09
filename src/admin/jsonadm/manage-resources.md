@@ -254,6 +254,27 @@ The JSON encoded request body must contain a "data" section that contains the re
 }
 ```
 
+Or you can add relationships to an item. For example to add categories to a product:
+
+```json
+{
+    "data": {
+        "id": "1",
+        "type": "product",
+        "relationships": {
+            "catalog": {
+                "data": [
+                    {
+                        "id": "48",
+                        "type": "catalog"
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
 It's also possible to update several new items at once. Simply send a list inside the "data" section and use the resource URL returned by the initial OPTIONS response instead:
 
 ```json
