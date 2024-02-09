@@ -239,7 +239,20 @@ You can also update the attributes of existing items via PATCH requests. As URLs
     });
     ```
 
-The JSON encoded request body must contain a "data" section that contains the resource ID, its type ("product" in this case) and the list of attributes that should be updated.
+The JSON encoded request body must contain a "data" section that contains the resource ID, its type ("product" in this case) and the list of attributes that should be updated:
+
+```json
+{
+    "data": {
+        "id": "1",
+        "type": "product",
+        "attributes": {
+            "product.label": "My test product",
+            "product.status": "1"
+        }
+    }
+}
+```
 
 Or you can add relationships to an item. For example to add categories to a product:
 
