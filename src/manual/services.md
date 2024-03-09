@@ -154,6 +154,12 @@ authorizenet.header (string, optional)
 authorizenet.body (string, optional)
 : The HTTP body sent by the checkout update component after updating the order successfully ("success" by default). This could be a complete HTML page too that is shown to the customer and offering a link to the confirm page (authorizenet.header must be a empty value in this case)
 
+address (boolean, optional)
+: Not supported by that payment provider
+
+authorize (boolean, optional)
+: Not supported by that payment provider
+
 createtoken (boolean, optional)
 : Not supported by that payment provider
 
@@ -198,6 +204,12 @@ authorizenet.header (string, optional)
 authorizenet.body (string, optional)
 : The HTTP body sent by the checkout update component after updating the order successfully ("success" by default). This could be a complete HTML page too that is shown to the customer and offering a link to the confirm page (authorizenet.header must be a empty value in this case)
 
+address (boolean, optional)
+: Not supported by that payment provider
+
+authorize (boolean, optional)
+: Not supported by that payment provider
+
 createtoken (boolean, optional)
 : Not supported by that payment provider
 
@@ -233,6 +245,12 @@ cardsave.address (boolean, optional)
 cardsave.authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
+address (boolean, optional)
+: Not supported by that payment provider
+
+authorize (boolean, optional)
+: Not supported by that payment provider
+
 createtoken (boolean, optional)
 : Not supported by that payment provider
 
@@ -253,6 +271,9 @@ composer req aimeos/ai-payments academe/omnipay-datatrans
 
 The available configuration options are:
 
+type (string, required)
+: Use "Datatrans"
+
 merchantId (string, required)
 : Your merchant ID
 
@@ -261,6 +282,15 @@ sign (string, required)
 
 hmacKey1 (string, optional)
 : The SHA256 pre-shared key for signing requests. It's recommended adding the key to increase security
+
+password (string, optional)
+: Password for server to server connections
+
+address (boolean, optional)
+: Not supported by that payment provider
+
+authorize (boolean, optional)
+: Not supported by that payment provider
 
 createtoken (boolean, optional)
 : Not supported by that payment provider
@@ -290,6 +320,12 @@ apiKey (string, required)
 
 mollie.address (boolean, optional)
 : A value of "1" will send the customer address to the Mollie server for additional verification
+
+address (boolean, optional)
+: Not supported by that payment provider
+
+authorize (boolean, optional)
+: Not supported by that payment provider
 
 createtoken (boolean, optional)
 : Not supported by that payment provider
@@ -401,6 +437,9 @@ type (string, required)
 address (boolean, optional)
 : A value of "1" to pass the billing address to the payment gateway
 
+address (boolean, optional)
+: Not supported by that payment provider
+
 merchantId (string, required)
 : Your merchant ID available in your Payone account
 
@@ -442,6 +481,9 @@ clientid (string, required)
 secret (string, required)
 : Your PayPal REST secret you've created in your [PayPal developer account](https://developer.paypal.com/developer/applications/)
 
+address (boolean, optional)
+: Not supported by that payment provider
+
 authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
 
@@ -476,6 +518,9 @@ type (string, required)
 
 address (boolean, optional)
 : A value of "1" to pass the billing address to the payment gateway
+
+authorize (boolean, optional)
+: Not supported by that payment provider
 
 pspId (string, required)
 : Your merchant ID you use to log into your Postfinance account
@@ -567,6 +612,12 @@ stripe.address (boolean, optional)
 
 stripe.authorize (boolean, optional)
 : Use "1" if you want to get an authorization first and capture the payment after the parcel has been dispatched or the product delivered according to the delivery status of the order. Leave this setting out for immediate payments
+
+address (boolean, optional)
+: Not supported by that payment provider
+
+authorize (boolean, optional)
+: Not supported by that payment provider
 
 createtoken (boolean, optional)
 : Use "1" to enable token based payments for subscriptions
