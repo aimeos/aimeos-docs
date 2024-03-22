@@ -136,7 +136,7 @@ The response will look similar to this one if at least one relationship is avail
         "type": "customer.lists",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=relationships&relatedid=1",
+                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=relationships&relatedid=1&include=product",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -273,7 +273,7 @@ To add a product as favorite to the customer account, use:
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X POST 'http://localhost:8000/jsonapi/customer?related=relationships&_token=...' \
+    -X POST 'http://localhost:8000/jsonapi/customer?related=relationships&include=product&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": [{
         "attributes": {
@@ -343,7 +343,7 @@ pricevalue
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X POST 'http://localhost:8000/jsonapi/customer?related=relationships&_token=...' \
+    -X POST 'http://localhost:8000/jsonapi/customer?related=relationships&include=product&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": [{
         "attributes": {
@@ -410,7 +410,7 @@ To change a relation of the authenticated customer, perform a PATCH request. The
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X PATCH 'http://localhost:8000/jsonapi/customer?related=relationships&relatedid=...&_token=...' \
+    -X PATCH 'http://localhost:8000/jsonapi/customer?related=relationships&relatedid=...&include=product&_token=...' \
     -H 'Content-Type: application/json' \
     -d '{"data": {
         "attributes": {
@@ -464,7 +464,7 @@ To change a relation of the authenticated customer, perform a PATCH request. The
 Removing relations from the user account is possible by performing a DELETE request to the URL of the relation. In our first response above, the URL is:
 
 ```
-http://localhost:8000/jsonapi/customer?id=2&related=relationships&relatedid=1
+http://localhost:8000/jsonapi/customer?id=2&related=relationships&relatedid=1&include=product
 ```
 
 A DELETE request is performed by:
@@ -472,7 +472,7 @@ A DELETE request is performed by:
 === "CURL"
     ```bash
     curl -b cookies.txt -c cookies.txt \
-    -X DELETE 'http://localhost:8000/jsonapi/customer?related=relationships&relatedid=...&_token=...'
+    -X DELETE 'http://localhost:8000/jsonapi/customer?related=relationships&relatedid=...&include=product&_token=...'
     ```
 === "jQuery"
     ```javascript
