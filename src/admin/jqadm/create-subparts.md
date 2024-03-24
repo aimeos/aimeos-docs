@@ -2,7 +2,7 @@ Implementing subparts is a great way to allow editors to manage additional data 
 
 # Class structure
 
-The sub-panel class structure is the same as for the panel itself. Create a `Standard.php` class in the `./admin/jqadm/src/Admin/JQAdm/Mypanel/Mysubpanel` directory like this skeleton class. Also, replace `Mysubpanel` and `mysubpanel` by the name of your panel.
+The sub-panel class structure is the same as for the panel itself. Create a `Standard.php` class in the `./src/Admin/JQAdm/Mypanel/Mysubpanel` directory like this skeleton class. Also, replace `Mysubpanel` and `mysubpanel` by the name of your panel.
 
 ```php
 namespace Aimeos\Admin\JQAdm\Mypanel\Mysubpanel;

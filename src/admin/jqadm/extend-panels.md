@@ -5,7 +5,7 @@ A far better way is creating a **decorator** and configure this decorator for th
 The decorators you are implementing have to be stored in your own Aimeos extension in this directory:
 
 ```
-./admin/jqadm/src/Admin/JQAdm/Common/Decorator/
+./src/Admin/JQAdm/Common/Decorator/
 ```
 
 The directory matches the namespace of the decorator class.
