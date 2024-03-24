@@ -105,7 +105,7 @@ $result = $manager->search( $filter, ['product', 'text'] );
 
 The controller should not care about the used site as the defined by the cronjob. This also means that you don't have access to data across all shops but only to the data of the current site. Depending on the tasks your code has to do, you can alter the current language and currency in the site item stored in the context or set it to **null to get items of all languages and currencies**.
 
-Working code for job controllers of different types can be found in the [controller/jobs/src/Controller/Jobs](https://github.com/aimeos/ai-controller-jobs/tree/master/controller/jobs/src/Controller/Jobs) directory of the core.
+Working code for job controllers of different types can be found in the [src/Controller/Jobs](https://github.com/aimeos/ai-controller-jobs/tree/master/src/Controller/Jobs) directory of the ai-controller-jobs package.
 
 # Templates
 
@@ -120,7 +120,7 @@ $default = 'product/export/items-body-default.xml';
 $result = $view->render( $view->config( $tplconf, $default ) ) );
 ```
 
-At first, you can retrieve a new view from the context object by using the `view()` method. For repeated calls it always returns a clean object regardless of what has been done with previous object. You can assign data directly like shown above or assign multiple key/value pairs at once using the `assign()` method. It's signature and more useful methods can be found in the [view class](https://github.com/aimeos/ai-controller-jobs/tree/master/controller/jobs/src/Controller/Jobs).
+At first, you can retrieve a new view from the context object by using the `view()` method. For repeated calls it always returns a clean object regardless of what has been done with previous object. You can assign data directly like shown above or assign multiple key/value pairs at once using the `assign()` method. It's signature and more useful methods can be found in the [view class](https://github.com/aimeos/ai-controller-jobs/tree/master/src/Controller/Jobs).
 
 To render the output and return the content, you should use the `render()` method of the view. It expects the path of the template that should be used to generate the content. In combination with `$view->config()` it also checks if there's another template configured that should be used instead of the default one and translates a relative path into an absolute one.
 

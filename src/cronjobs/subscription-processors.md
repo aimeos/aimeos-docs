@@ -4,10 +4,10 @@ When a customer has bought a product including a subscription interval, you can 
 
 These processors are included in the Aimeos core:
 
-[Cgroup](https://github.com/aimeos/ai-controller-jobs/blob/master/controller/common/src/Controller/Common/Subscription/Process/Processor/Cgroup/Standard.php)
+[Cgroup](https://github.com/aimeos/ai-controller-jobs/blob/master/src/Controller/Common/Subscription/Process/Processor/Cgroup/Standard.php)
 : Add/remove user groups from customer account
 
-[Email](https://github.com/aimeos/ai-client-html/blob/master/controller/common/src/Controller/Common/Subscription/Process/Processor/Email/Standard.php)
+[Email](https://github.com/aimeos/ai-client-html/blob/master/src/Controller/Common/Subscription/Process/Processor/Email/Standard.php)
 : Send e-mails to customers if subscription renewal fails
 
 By default, no processor is used by the subscription job controllers. To add the *Cgroup* processor for example, you have to use this configuration option:
@@ -26,7 +26,7 @@ This setting requires an array of processor names that should be executed. Pleas
 If you want to modify an existing processor implementation, e.g the *Cgroup* implementation that adds/removes groups to/from the customer, use the same directory but a different file/class name. The file  must be located in your own Aimeos extension:
 
 ```
-./controller/common/src/Controller/Common/Subscription/Process/Processor/Cgroup/<name>.php
+./src/Controller/Common/Subscription/Process/Processor/Cgroup/<name>.php
 ```
 
 That class must extend from the existing class and only contain the methods you want to modifiy. For the *Cgroup* example and a file named *Mygroup.php* this can look like:
@@ -60,13 +60,13 @@ The directory name *Cgroup* corresponds to the *cgroup* part of the configuratio
 To create a new subscription processor, the file for the class must be located in your own Aimeos extension in that directory structure:
 
 ```
-./controller/common/src/Controller/Common/Subscription/Process/Processor/<name>/Standard.php
+./src/Controller/Common/Subscription/Process/Processor/<name>/Standard.php
 ```
 
 Please replace the "<type>" placeholder with the name of the task your processor handles, e.g. "Ldap" if it connects to an LDAP server to manage authorization information. The example below uses the type *Myproc*, so the file location in your own Aimeos extension would be:
 
 ```
-./controller/common/src/Controller/Common/Subscription/Process/Processor/Myproc/Standard.php
+./src/Controller/Common/Subscription/Process/Processor/Myproc/Standard.php
 ```
 
 Your new processor class should be used by the subscription job controllers and the appropriate method should be executed depending on the stage of the subscription. For that, you have to make your class known to the job controllers by adding this configuration option:

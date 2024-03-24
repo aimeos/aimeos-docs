@@ -2,7 +2,7 @@ You can implement a new panel for managing additional data of a new data domain 
 
 # Class structure
 
-The panel class will do the real work. Create a `Standard.php` class in the `./admin/jqadm/src/Admin/JQAdm/Mypanel/` directory like this skeleton class. Also, replace `Mypanel` and `mypanel` by the name of your panel like in the factory class.
+The panel class will do the real work. Create a `Standard.php` class in the `./src/Admin/JQAdm/Mypanel/` directory like this skeleton class. Also, replace `Mypanel` and `mypanel` by the name of your panel like in the factory class.
 
 ```php
 namespace Aimeos\Admin\JQAdm\Mypanel;
