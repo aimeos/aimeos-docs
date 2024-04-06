@@ -28,10 +28,16 @@ Furthermore, you have to add a *repositories* section to the `composer.json` of 
     }],
 ```
 
-Finally, install your theme using:
+Finally, install your own Aimeos extension using:
 
 ```
 composer req aimeos-extensions/<myextension>
+```
+
+To install your Aimeos Laravel theme instead use:
+
+```
+composer req aimeos-themes/<myextension>
 ```
 
 You can use your extension immediately to overwrite existing template with your own version. If you want to add classes to your extension adding new features, make sure they will be found by composer. It may be necessary to run:
