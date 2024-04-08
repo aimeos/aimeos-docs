@@ -298,7 +298,7 @@ Most of the time, you already have an ERP system which manages all your products
   <!-- Optional, list of catalog items -->
   <catalog>
 
-    <catalogitem>
+    <catalogitem ref="TEST-SUBCATEGORY">
 
       <!-- Required, unique code to identify the category -->
       <catalog.code><![CDATA[TEST-SUBCATEGORY]]></catalog.code>
@@ -321,7 +321,7 @@ Most of the time, you already have an ERP system which manages all your products
 
     <!-- Optional, list of sub-category items for the previous catalogitem -->
     <catalog>
-      <catalogitem>
+      <catalogitem ref="TEST-SUBSUBCATEGORY-2">
         <catalog.code><![CDATA[TEST-SUBSUBCATEGORY-2]]></catalog.code>
         <catalog.label><![CDATA[Test 2nd level sub-category]]></catalog.label>
         <lists>
@@ -333,7 +333,7 @@ Most of the time, you already have an ERP system which manages all your products
       </catalog>
     </catalog>
 
-    <catalogitem>
+    <catalogitem ref="TEST-SUBCATEGORY-2">
       <catalog.code><![CDATA[TEST-SUBCATEGORY-2]]></catalog.code>
       <catalog.label><![CDATA[Test sub-category 2]]></catalog.label>
       <lists>
