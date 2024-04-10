@@ -318,9 +318,6 @@ The available configuration options are:
 apiKey (string, required)
 : The API key string from your Mollie account
 
-mollie.address (boolean, optional)
-: A value of "1" will send the customer address to the Mollie server for additional verification
-
 address (boolean, optional)
 : Not supported by that payment provider
 
