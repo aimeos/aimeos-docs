@@ -7,7 +7,7 @@ Alters the behavior of the product checks before continuing with the checkout
 client/html/basket/standard/check = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: integer - One of the allowed values (0, 1 or 2)
 * Since: 2016.08
 
@@ -41,7 +41,7 @@ Replace previous coupon codes each time the user enters a new one
 client/html/basket/standard/coupon/overwrite = 1
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to overwrite a previous coupon, false to keep them
 * Since: 2020.04
 
@@ -202,7 +202,7 @@ Location of the detail partial template for the basket standard component
 client/html/basket/standard/summary/detail = common/summary/detail
 ```
 
-* Default: common/summary/detail
+* Default: `common/summary/detail`
 * Type: string - Relative path to the detail partial
 * Since: 2017.01
 
@@ -220,7 +220,7 @@ Relative path to the HTML body template of the basket standard client.
 client/html/basket/standard/template-body = basket/standard/body
 ```
 
-* Default: basket/standard/body
+* Default: `basket/standard/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -248,7 +248,7 @@ Relative path to the HTML header template of the basket standard client.
 client/html/basket/standard/template-header = basket/standard/header
 ```
 
-* Default: basket/standard/header
+* Default: `basket/standard/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -278,7 +278,7 @@ Name of the action that should create the output
 client/html/basket/standard/url/action = standard
 ```
 
-* Default: standard
+* Default: `standard`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -303,10 +303,10 @@ client/html/basket/standard/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -337,7 +337,7 @@ Name of the controller whose action should be called
 client/html/basket/standard/url/controller = Basket
 ```
 
-* Default: Basket
+* Default: `Basket`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -362,10 +362,10 @@ client/html/basket/standard/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

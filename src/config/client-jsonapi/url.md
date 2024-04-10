@@ -7,7 +7,7 @@ Name of the action that should create the output
 client/jsonapi/url/action = options
 ```
 
-* Default: options
+* Default: `options`
 * Type: string - Name of the action
 * Since: 2017.03
 
@@ -31,10 +31,10 @@ client/jsonapi/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2017.03
 
@@ -64,7 +64,7 @@ Name of the client whose action should be called
 client/jsonapi/url/controller = jsonapi
 ```
 
-* Default: jsonapi
+* Default: `jsonapi`
 * Type: string - Name of the client
 * Since: 2017.03
 

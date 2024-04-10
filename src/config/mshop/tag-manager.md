@@ -78,7 +78,7 @@ mshop/tag/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtag."id"
@@ -88,7 +88,7 @@ mshop/tag/manager/count/mysql =
  	ORDER BY mtag."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -105,10 +105,10 @@ mshop/tag/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.12
 * Since: 2015.12
@@ -149,10 +149,10 @@ mshop/tag/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.12
 * Since: 2015.12
@@ -191,10 +191,10 @@ mshop/tag/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.12
 * Since: 2015.12
@@ -268,10 +268,10 @@ mshop/tag/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_tag"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -334,14 +334,14 @@ mshop/tag/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_tag" ( :names
  	"langid", "type", "domain", "label",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -355,7 +355,7 @@ Class name of the used tag tag manager implementation
 mshop/tag/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.12
 * Since: 2015.12
@@ -454,7 +454,7 @@ Name of the database connection resource to use
 mshop/tag/manager/resource = db-tag
 ```
 
-* Default: db-tag
+* Default: `db-tag`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -473,11 +473,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/tag/manager/search/ansi = 
  SELECT :columns
- 	mtag."id" AS "tag.id", mtag."siteid" AS "tag.siteid",
- 	mtag."type" AS "tag.type", mtag."langid" AS "tag.languageid",
- 	mtag."domain" AS "tag.domain", mtag."label" AS "tag.label",
- 	mtag."mtime" AS "tag.mtime", mtag."editor" AS "tag.editor",
- 	mtag."ctime" AS "tag.ctime"
  FROM "mshop_tag" mtag
  :joins
  WHERE :cond
@@ -542,11 +537,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/tag/manager/search/mysql = 
  SELECT :columns
- 	mtag."id" AS "tag.id", mtag."siteid" AS "tag.siteid",
- 	mtag."type" AS "tag.type", mtag."langid" AS "tag.languageid",
- 	mtag."domain" AS "tag.domain", mtag."label" AS "tag.label",
- 	mtag."mtime" AS "tag.mtime", mtag."editor" AS "tag.editor",
- 	mtag."ctime" AS "tag.ctime"
  FROM "mshop_tag" mtag
  :joins
  WHERE :cond
@@ -554,19 +544,14 @@ mshop/tag/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mtag."id" AS "tag.id", mtag."siteid" AS "tag.siteid",
- 	mtag."type" AS "tag.type", mtag."langid" AS "tag.languageid",
- 	mtag."domain" AS "tag.domain", mtag."label" AS "tag.label",
- 	mtag."mtime" AS "tag.mtime", mtag."editor" AS "tag.editor",
- 	mtag."ctime" AS "tag.ctime"
  FROM "mshop_tag" mtag
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -580,7 +565,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/tag/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -619,10 +604,10 @@ mshop/tag/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2015.12
 
@@ -716,7 +701,7 @@ mshop/tag/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtagty."id"
@@ -726,7 +711,7 @@ mshop/tag/manager/type/count/mysql =
  	ORDER BY mtagty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -742,10 +727,10 @@ mshop/tag/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.12
 
@@ -782,10 +767,10 @@ mshop/tag/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.12
 
@@ -821,10 +806,10 @@ mshop/tag/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.12
 
@@ -894,10 +879,10 @@ mshop/tag/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_tag_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -959,14 +944,14 @@ mshop/tag/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_tag_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -980,7 +965,7 @@ Class name of the used tag type manager implementation
 mshop/tag/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.12
 
@@ -1076,12 +1061,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/tag/manager/type/search/ansi = 
  SELECT :columns
- 	mtagty."id" AS "tag.type.id", mtagty."siteid" AS "tag.type.siteid",
- 	mtagty."code" AS "tag.type.code", mtagty."domain" AS "tag.type.domain",
- 	mtagty."label" AS "tag.type.label", mtagty."status" AS "tag.type.status",
- 	mtagty."mtime" AS "tag.type.mtime", mtagty."editor" AS "tag.type.editor",
- 	mtagty."ctime" AS "tag.type.ctime", mtagty."pos" AS "tag.type.position",
- 	mtagty."i18n" AS "tag.type.i18n"
  FROM "mshop_tag_type" mtagty
  :joins
  WHERE :cond
@@ -1146,12 +1125,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/tag/manager/type/search/mysql = 
  SELECT :columns
- 	mtagty."id" AS "tag.type.id", mtagty."siteid" AS "tag.type.siteid",
- 	mtagty."code" AS "tag.type.code", mtagty."domain" AS "tag.type.domain",
- 	mtagty."label" AS "tag.type.label", mtagty."status" AS "tag.type.status",
- 	mtagty."mtime" AS "tag.type.mtime", mtagty."editor" AS "tag.type.editor",
- 	mtagty."ctime" AS "tag.type.ctime", mtagty."pos" AS "tag.type.position",
- 	mtagty."i18n" AS "tag.type.i18n"
  FROM "mshop_tag_type" mtagty
  :joins
  WHERE :cond
@@ -1159,20 +1132,14 @@ mshop/tag/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mtagty."id" AS "tag.type.id", mtagty."siteid" AS "tag.type.siteid",
- 	mtagty."code" AS "tag.type.code", mtagty."domain" AS "tag.type.domain",
- 	mtagty."label" AS "tag.type.label", mtagty."status" AS "tag.type.status",
- 	mtagty."mtime" AS "tag.type.mtime", mtagty."editor" AS "tag.type.editor",
- 	mtagty."ctime" AS "tag.type.ctime", mtagty."pos" AS "tag.type.position",
- 	mtagty."i18n" AS "tag.type.i18n"
  FROM "mshop_tag_type" mtagty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1188,10 +1155,10 @@ mshop/tag/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2015.12
 
@@ -1257,13 +1224,13 @@ mshop/tag/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_tag_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1319,12 +1286,12 @@ mshop/tag/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_tag"
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

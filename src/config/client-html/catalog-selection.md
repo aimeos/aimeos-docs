@@ -39,7 +39,7 @@ leaving the rest untouched:
 client/html/catalog/selection/preselect/length = 
 ```
 
-* Default: 
+* Default: ``
 
 
 ## width
@@ -48,7 +48,7 @@ client/html/catalog/selection/preselect/length =
 client/html/catalog/selection/preselect/width = 
 ```
 
-* Default: 
+* Default: ``
 
 
 # type
@@ -100,7 +100,7 @@ Layout types for the length selection
 client/html/catalog/selection/type/length = select
 ```
 
-* Default: select
+* Default: `select`
 
 See also:
 
@@ -114,7 +114,7 @@ Layout types for the width selection
 client/html/catalog/selection/type/width = select
 ```
 
-* Default: select
+* Default: `select`
 
 See also:
 

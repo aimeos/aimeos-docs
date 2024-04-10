@@ -78,7 +78,7 @@ mshop/review/manager/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default: `
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
@@ -89,7 +89,7 @@ mshop/review/manager/aggregate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-
+`
 
 See also:
 
@@ -130,7 +130,7 @@ mshop/review/manager/aggregaterate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default: `
  SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
  FROM (
  	SELECT :acols, mrev.rating AS "val"
@@ -141,7 +141,7 @@ mshop/review/manager/aggregaterate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-
+`
 
 
 # count
@@ -225,7 +225,7 @@ mshop/review/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mrev."id"
@@ -236,7 +236,7 @@ mshop/review/manager/count/mysql =
  	ORDER BY mrev."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -253,10 +253,10 @@ mshop/review/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -293,10 +293,10 @@ mshop/review/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -333,10 +333,10 @@ mshop/review/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -407,10 +407,10 @@ mshop/review/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_review"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -473,14 +473,14 @@ mshop/review/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_review" ( :names
  	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
  	"rating", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -494,7 +494,7 @@ Class name of the used review manager implementation
 mshop/review/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2020.10
 
@@ -592,7 +592,7 @@ Name of the database connection resource to use
 mshop/review/manager/resource = db-review
 ```
 
-* Default: db-review
+* Default: `db-review`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -610,20 +610,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/review/manager/search/ansi = 
  SELECT :columns
- 	mrev."id" AS "review.id", mrev."siteid" AS "review.siteid",
- 	mrev."domain" AS "review.domain", mrev."refid" AS "review.refid",
- 	mrev."customerid" AS "review.customerid", mrev."ordprodid" AS "review.orderproductid",
- 	mrev."name" AS "review.name", mrev."comment" AS "review.comment",
- 	mrev."response" AS "review.response", mrev."rating" AS "review.rating",
- 	mrev."status" AS "review.status", mrev."ctime" AS "review.ctime",
- 	mrev."mtime" AS "review.mtime", mrev."editor" AS "review.editor"
  FROM "mshop_review" mrev
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mrev."id", mrev."siteid", mrev."domain", mrev."refid", mrev."customerid", mrev."ordprodid",
- 	mrev."name", mrev."comment", mrev."response", mrev."rating", mrev."status", mrev."ctime",
- 	mrev."mtime", mrev."editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -685,40 +675,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/review/manager/search/mysql = 
  SELECT :columns
- 	mrev."id" AS "review.id", mrev."siteid" AS "review.siteid",
- 	mrev."domain" AS "review.domain", mrev."refid" AS "review.refid",
- 	mrev."customerid" AS "review.customerid", mrev."ordprodid" AS "review.orderproductid",
- 	mrev."name" AS "review.name", mrev."comment" AS "review.comment",
- 	mrev."response" AS "review.response", mrev."rating" AS "review.rating",
- 	mrev."status" AS "review.status", mrev."ctime" AS "review.ctime",
- 	mrev."mtime" AS "review.mtime", mrev."editor" AS "review.editor"
  FROM "mshop_review" mrev
  :joins
  WHERE :cond
- GROUP BY :group mrev."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mrev."id" AS "review.id", mrev."siteid" AS "review.siteid",
- 	mrev."domain" AS "review.domain", mrev."refid" AS "review.refid",
- 	mrev."customerid" AS "review.customerid", mrev."ordprodid" AS "review.orderproductid",
- 	mrev."name" AS "review.name", mrev."comment" AS "review.comment",
- 	mrev."response" AS "review.response", mrev."rating" AS "review.rating",
- 	mrev."status" AS "review.status", mrev."ctime" AS "review.ctime",
- 	mrev."mtime" AS "review.mtime", mrev."editor" AS "review.editor"
  FROM "mshop_review" mrev
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mrev."id", mrev."siteid", mrev."domain", mrev."refid", mrev."customerid", mrev."ordprodid",
- 	mrev."name", mrev."comment", mrev."response", mrev."rating", mrev."status", mrev."ctime",
- 	mrev."mtime", mrev."editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -732,7 +705,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/review/manager/sitemode = 2
 ```
 
-* Default: 2
+* Default: `2`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2020.10
 
@@ -771,10 +744,10 @@ mshop/review/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2020.10
 

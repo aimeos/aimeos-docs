@@ -44,10 +44,10 @@ admin/jqadm/product/bundle/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -82,10 +82,10 @@ admin/jqadm/product/bundle/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -118,7 +118,7 @@ Name of the bundle subpart used by the JQAdm product implementation
 admin/jqadm/product/bundle/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -136,10 +136,10 @@ admin/jqadm/product/bundle/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -184,7 +184,7 @@ Relative path to the HTML body template of the bundle subpart for products.
 admin/jqadm/product/bundle/template-item = product/item-bundle
 ```
 
-* Default: product/item-bundle
+* Default: `product/item-bundle`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -246,10 +246,10 @@ admin/jqadm/product/category/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -284,10 +284,10 @@ admin/jqadm/product/category/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -320,7 +320,7 @@ Name of the category subpart used by the JQAdm product implementation
 admin/jqadm/product/category/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -338,10 +338,10 @@ admin/jqadm/product/category/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -386,7 +386,7 @@ Relative path to the HTML body template of the category subpart for products.
 admin/jqadm/product/category/template-item = product/item-category
 ```
 
-* Default: product/item-category
+* Default: `product/item-category`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -448,10 +448,10 @@ admin/jqadm/product/characteristic/attribute/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -486,10 +486,10 @@ admin/jqadm/product/characteristic/attribute/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -522,7 +522,7 @@ Name of the characteristic/attribute subpart used by the JQAdm product implement
 admin/jqadm/product/characteristic/attribute/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -540,10 +540,10 @@ admin/jqadm/product/characteristic/attribute/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -588,7 +588,7 @@ Relative path to the HTML body template of the attribute characteristic subpart 
 admin/jqadm/product/characteristic/attribute/template-item = product/item-characteristic-attribute
 ```
 
-* Default: product/item-characteristic-attribute
+* Default: `product/item-characteristic-attribute`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -649,10 +649,10 @@ admin/jqadm/product/characteristic/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -687,10 +687,10 @@ admin/jqadm/product/characteristic/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -723,7 +723,7 @@ Name of the characteristic subpart used by the JQAdm product implementation
 admin/jqadm/product/characteristic/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -775,10 +775,10 @@ admin/jqadm/product/characteristic/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -813,10 +813,10 @@ admin/jqadm/product/characteristic/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -849,7 +849,7 @@ Name of the characteristic/property subpart used by the JQAdm product implementa
 admin/jqadm/product/characteristic/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -867,10 +867,10 @@ admin/jqadm/product/characteristic/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -915,7 +915,7 @@ Relative path to the HTML body template of the property characteristic subpart f
 admin/jqadm/product/characteristic/property/template-item = product/item-characteristic-property
 ```
 
-* Default: product/item-characteristic-property
+* Default: `product/item-characteristic-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -944,10 +944,10 @@ admin/jqadm/product/characteristic/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -992,7 +992,7 @@ Relative path to the HTML body template of the characteristic subpart for produc
 admin/jqadm/product/characteristic/template-item = product/item-characteristic
 ```
 
-* Default: product/item-characteristic
+* Default: `product/item-characteristic`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1020,10 +1020,10 @@ admin/jqadm/product/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1060,10 +1060,10 @@ admin/jqadm/product/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1098,10 +1098,10 @@ admin/jqadm/product/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -1151,10 +1151,10 @@ admin/jqadm/product/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of domain names
 * Since: 2016.01
 
@@ -1208,10 +1208,10 @@ admin/jqadm/product/download/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.03
 
@@ -1246,10 +1246,10 @@ admin/jqadm/product/download/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.03
 
@@ -1282,7 +1282,7 @@ Name of the download subpart used by the JQAdm product implementation
 admin/jqadm/product/download/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -1300,10 +1300,10 @@ admin/jqadm/product/download/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.03
 
@@ -1348,7 +1348,7 @@ Relative path to the HTML body template of the download subpart for products.
 admin/jqadm/product/download/template-item = product/item-download
 ```
 
-* Default: product/item-download
+* Default: `product/item-download`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1381,7 +1381,7 @@ admin/jqadm/product/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => image
     [1] => product.id
@@ -1390,7 +1390,7 @@ admin/jqadm/product/fields = Array
     [4] => product.code
     [5] => product.label
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2016.04
 
@@ -1413,10 +1413,10 @@ admin/jqadm/product/item/characteristic/attribute/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of key names
 * Since: 2023.10
 
@@ -1439,11 +1439,11 @@ admin/jqadm/product/item/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => css-class
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -1465,10 +1465,10 @@ admin/jqadm/product/item/media/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -1484,7 +1484,7 @@ Number of sub-part links in the product sidebar shown by default
 admin/jqadm/product/item/navbar-limit = 7
 ```
 
-* Default: 7
+* Default: `7`
 * Type: integer - Number of product sub-part links
 * Since: 2020.10
 
@@ -1507,10 +1507,10 @@ admin/jqadm/product/item/price/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -1528,10 +1528,10 @@ admin/jqadm/product/item/text/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -1585,10 +1585,10 @@ admin/jqadm/product/media/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1623,10 +1623,10 @@ admin/jqadm/product/media/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1659,7 +1659,7 @@ Name of the media subpart used by the JQAdm product implementation
 admin/jqadm/product/media/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -1711,10 +1711,10 @@ admin/jqadm/product/media/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1749,10 +1749,10 @@ admin/jqadm/product/media/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1785,7 +1785,7 @@ Name of the property subpart used by the JQAdm product media implementation
 admin/jqadm/product/media/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.04
 
@@ -1803,10 +1803,10 @@ admin/jqadm/product/media/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -1851,7 +1851,7 @@ Relative path to the HTML body template of the media subpart for products.
 admin/jqadm/product/media/property/template-item = product/item-media-property
 ```
 
-* Default: product/item-media-property
+* Default: `product/item-media-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1879,10 +1879,10 @@ admin/jqadm/product/media/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1927,7 +1927,7 @@ Relative path to the HTML body template of the media subpart for products.
 admin/jqadm/product/media/template-item = product/item-media
 ```
 
-* Default: product/item-media
+* Default: `product/item-media`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.07
 
@@ -1952,7 +1952,7 @@ Class name of the used account favorite client implementation
 admin/jqadm/product/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2016.01
 
@@ -2036,10 +2036,10 @@ admin/jqadm/product/order/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -2076,10 +2076,10 @@ admin/jqadm/product/order/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -2122,7 +2122,7 @@ admin/jqadm/product/order/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => order.id
     [1] => order.currencyid
@@ -2131,7 +2131,7 @@ admin/jqadm/product/order/fields = Array
     [4] => order.address.lastname
     [5] => order.address.city
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2019.10
 
@@ -2151,7 +2151,7 @@ Name of the order subpart used by the JQAdm product implementation
 admin/jqadm/product/order/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -2171,10 +2171,10 @@ admin/jqadm/product/order/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -2221,7 +2221,7 @@ Relative path to the HTML body template of the order subpart for products.
 admin/jqadm/product/order/template-item = product/item-order
 ```
 
-* Default: product/item-order
+* Default: `product/item-order`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2285,10 +2285,10 @@ admin/jqadm/product/physical/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -2323,10 +2323,10 @@ admin/jqadm/product/physical/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -2359,7 +2359,7 @@ Name of the physical subpart used by the JQAdm product implementation
 admin/jqadm/product/physical/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -2377,10 +2377,10 @@ admin/jqadm/product/physical/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -2425,7 +2425,7 @@ Relative path to the HTML body template of the physical subpart for products.
 admin/jqadm/product/physical/template-item = product/item-physical
 ```
 
-* Default: product/item-physical
+* Default: `product/item-physical`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2456,10 +2456,10 @@ admin/jqadm/product/physical/types = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of product property type codes
 * Since: 2021.07
 
@@ -2517,10 +2517,10 @@ admin/jqadm/product/price/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -2555,10 +2555,10 @@ admin/jqadm/product/price/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -2591,7 +2591,7 @@ Name of the price subpart used by the JQAdm product implementation
 admin/jqadm/product/price/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -2643,10 +2643,10 @@ admin/jqadm/product/price/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -2681,10 +2681,10 @@ admin/jqadm/product/price/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -2717,7 +2717,7 @@ Name of the property subpart used by the JQAdm product price implementation
 admin/jqadm/product/price/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2019.07
 
@@ -2735,10 +2735,10 @@ admin/jqadm/product/price/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2019.07
 
@@ -2783,7 +2783,7 @@ Relative path to the HTML body template of the price subpart for products.
 admin/jqadm/product/price/property/template-item = product/item-price-property
 ```
 
-* Default: product/item-price-property
+* Default: `product/item-price-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2019.07
 
@@ -2811,10 +2811,10 @@ admin/jqadm/product/price/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -2859,7 +2859,7 @@ Relative path to the HTML body template of the price subpart for products.
 admin/jqadm/product/price/template-item = product/item-price
 ```
 
-* Default: product/item-price
+* Default: `product/item-price`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -2877,207 +2877,6 @@ should be replaced by the name of the new class.
 
 
 # related
-## bought/decorators/excludes
-
-Excludes decorators added by the "common" option from the product JQAdm client
-
-```
-admin/jqadm/product/related/bought/decorators/excludes = 
-```
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"admin/jqadm/common/decorators/default" before they are wrapped
-around the JQAdm client.
-
-```
- admin/jqadm/product/related/bought/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
-"admin/jqadm/common/decorators/default" to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/related/bought/decorators/global
-* admin/jqadm/product/related/bought/decorators/local
-
-## bought/decorators/global
-
-Adds a list of globally available decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/related/bought/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/related/bought/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/related/bought/decorators/excludes
-* admin/jqadm/product/related/bought/decorators/local
-
-## bought/decorators/local
-
-Adds a list of local decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/related/bought/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/related/bought/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Decorator\Decorator2" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/related/bought/decorators/excludes
-* admin/jqadm/product/related/bought/decorators/global
-
-## bought/name
-
-Name of the related/bought subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/related/bought/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2017.07
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Product\Bought\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## bought/subparts
-
-List of JQAdm sub-clients rendered within the product bought section
-
-```
-admin/jqadm/product/related/bought/subparts = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of sub-client names
-* Since: 2016.01
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## bought/template-item
-
-Relative path to the HTML body template of the bought related subpart for products.
-
-```
-admin/jqadm/product/related/bought/template-item = product/item-related-bought
-```
-
-* Default: product/item-related-bought
-* Type: string - Relative path to the template creating the HTML code
-* Since: 2016.04
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/admin/jqadm).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
-
-
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the product JQAdm client
@@ -3122,10 +2921,10 @@ admin/jqadm/product/related/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3160,10 +2959,10 @@ admin/jqadm/product/related/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3196,7 +2995,7 @@ Name of the related subpart used by the JQAdm product implementation
 admin/jqadm/product/related/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.03
 
@@ -3211,15 +3010,13 @@ List of JQAdm sub-clients rendered within the product related section
 ```
 admin/jqadm/product/related/subparts = Array
 (
-    [suggest] => suggest
-    [bought] => bought
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3254,207 +3051,6 @@ You can also remove one or more parts if they shouldn't be rendered:
 As the clients only generates structural JQAdm, the layout defined via CSS
 should support adding, removing or reordering content by a fluid like
 design.
-
-
-## suggest/decorators/excludes
-
-Excludes decorators added by the "common" option from the product JQAdm client
-
-```
-admin/jqadm/product/related/suggest/decorators/excludes = 
-```
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to remove a decorator added via
-"admin/jqadm/common/decorators/default" before they are wrapped
-around the JQAdm client.
-
-```
- admin/jqadm/product/related/suggest/decorators/excludes = array( 'decorator1' )
-```
-
-This would remove the decorator named "decorator1" from the list of
-common decorators ("\Aimeos\Admin\JQAdm\Common\Decorator\*") added via
-"admin/jqadm/common/decorators/default" to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/related/suggest/decorators/global
-* admin/jqadm/product/related/suggest/decorators/local
-
-## suggest/decorators/global
-
-Adds a list of globally available decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/related/suggest/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap global decorators
-("\Aimeos\Admin\JQAdm\Common\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/related/suggest/decorators/global = array( 'decorator1' )
-```
-
-This would add the decorator named "decorator1" defined by
-"\Aimeos\Admin\JQAdm\Common\Decorator\Decorator1" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/related/suggest/decorators/excludes
-* admin/jqadm/product/related/suggest/decorators/local
-
-## suggest/decorators/local
-
-Adds a list of local decorators only to the product JQAdm client
-
-```
-admin/jqadm/product/related/suggest/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of decorator names
-* Since: 2016.01
-
-Decorators extend the functionality of a class by adding new aspects
-(e.g. log what is currently done), executing the methods of the underlying
-class only in certain conditions (e.g. only for logged in users) or
-modify what is returned to the caller.
-
-This option allows you to wrap local decorators
-("\Aimeos\Admin\JQAdm\Product\Decorator\*") around the JQAdm client.
-
-```
- admin/jqadm/product/related/suggest/decorators/local = array( 'decorator2' )
-```
-
-This would add the decorator named "decorator2" defined by
-"\Aimeos\Admin\JQAdm\Product\Decorator\Decorator2" only to the JQAdm client.
-
-See also:
-
-* admin/jqadm/common/decorators/default
-* admin/jqadm/product/related/suggest/decorators/excludes
-* admin/jqadm/product/related/suggest/decorators/global
-
-## suggest/name
-
-Name of the related/suggest subpart used by the JQAdm product implementation
-
-```
-admin/jqadm/product/related/suggest/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the JQAdm class name
-* Since: 2017.07
-
-Use "Myname" if your class is named "\Aimeos\Admin\Jqadm\Product\Product\Suggest\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## suggest/subparts
-
-List of JQAdm sub-clients rendered within the product suggest section
-
-```
-admin/jqadm/product/related/suggest/subparts = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of sub-client names
-* Since: 2016.01
-
-The output of the frontend is composed of the code generated by the JQAdm
-clients. Each JQAdm client can consist of serveral (or none) sub-clients
-that are responsible for rendering certain sub-parts of the output. The
-sub-clients can contain JQAdm clients themselves and therefore a
-hierarchical tree of JQAdm clients is composed. Each JQAdm client creates
-the output that is placed inside the container of its parent.
-
-At first, always the JQAdm code generated by the parent is printed, then
-the JQAdm code of its sub-clients. The order of the JQAdm sub-clients
-determines the order of the output of these sub-clients inside the parent
-container. If the configured list of clients is
-
-```
- array( "subclient1", "subclient2" )
-```
-
-you can easily change the order of the output by reordering the subparts:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1", "subclient2" )
-```
-
-You can also remove one or more parts if they shouldn't be rendered:
-
-```
- admin/jqadm/<clients>/subparts = array( "subclient1" )
-```
-
-As the clients only generates structural JQAdm, the layout defined via CSS
-should support adding, removing or reordering content by a fluid like
-design.
-
-
-## suggest/template-item
-
-Relative path to the HTML body template of the suggest related subpart for products.
-
-```
-admin/jqadm/product/related/suggest/template-item = product/item-related-suggest
-```
-
-* Default: product/item-related-suggest
-* Type: string - Relative path to the template creating the HTML code
-* Since: 2016.04
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/admin/jqadm).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
 
 
 ## template-item
@@ -3465,7 +3061,7 @@ Relative path to the HTML body template of the related subpart for products.
 admin/jqadm/product/related/template-item = product/item-related
 ```
 
-* Default: product/item-related
+* Default: `product/item-related`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3527,10 +3123,10 @@ admin/jqadm/product/selection/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3565,10 +3161,10 @@ admin/jqadm/product/selection/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3601,7 +3197,7 @@ Name of the selection subpart used by the JQAdm product implementation
 admin/jqadm/product/selection/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -3619,10 +3215,10 @@ admin/jqadm/product/selection/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3667,7 +3263,7 @@ Relative path to the HTML body template of the selection subpart for products.
 admin/jqadm/product/selection/template-item = product/item-selection
 ```
 
-* Default: product/item-selection
+* Default: `product/item-selection`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3729,10 +3325,10 @@ admin/jqadm/product/stock/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3767,10 +3363,10 @@ admin/jqadm/product/stock/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -3803,7 +3399,7 @@ Name of the stock subpart used by the JQAdm product implementation
 admin/jqadm/product/stock/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -3821,10 +3417,10 @@ admin/jqadm/product/stock/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3869,7 +3465,7 @@ Relative path to the HTML body template of the stock subpart for products.
 admin/jqadm/product/stock/template-item = product/item-stock
 ```
 
-* Default: product/item-stock
+* Default: `product/item-stock`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3910,10 +3506,10 @@ admin/jqadm/product/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -3995,10 +3591,10 @@ admin/jqadm/product/subscription/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -4033,10 +3629,10 @@ admin/jqadm/product/subscription/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -4069,7 +3665,7 @@ Name of the subscription subpart used by the JQAdm product implementation
 admin/jqadm/product/subscription/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.04
 
@@ -4087,10 +3683,10 @@ admin/jqadm/product/subscription/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.04
 
@@ -4135,7 +3731,7 @@ Relative path to the HTML body template of the subscription subpart for products
 admin/jqadm/product/subscription/template-item = product/item-subscription
 ```
 
-* Default: product/item-subscription
+* Default: `product/item-subscription`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.04
 
@@ -4199,10 +3795,10 @@ admin/jqadm/product/supplier/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2020.04
 
@@ -4239,10 +3835,10 @@ admin/jqadm/product/supplier/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2020.04
 
@@ -4277,7 +3873,7 @@ Name of the supplier subpart used by the JQAdm product implementation
 admin/jqadm/product/supplier/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2020.04
 
@@ -4297,10 +3893,10 @@ admin/jqadm/product/supplier/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2020.04
 
@@ -4347,7 +3943,7 @@ Relative path to the HTML body template of the supplier subpart for products.
 admin/jqadm/product/supplier/template-item = product/item-supplier
 ```
 
-* Default: product/item-supplier
+* Default: `product/item-supplier`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2020.04
 
@@ -4374,7 +3970,7 @@ Relative path to the HTML body template for the product item.
 admin/jqadm/product/template-item = product/item
 ```
 
-* Default: product/item
+* Default: `product/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4399,7 +3995,7 @@ Relative path to the HTML body template for the product list.
 admin/jqadm/product/template-list = product/list
 ```
 
-* Default: product/list
+* Default: `product/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -4461,10 +4057,10 @@ admin/jqadm/product/text/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -4499,10 +4095,10 @@ admin/jqadm/product/text/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -4535,7 +4131,7 @@ Name of the text subpart used by the JQAdm product implementation
 admin/jqadm/product/text/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.04
 
@@ -4553,10 +4149,10 @@ admin/jqadm/product/text/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -4601,7 +4197,7 @@ Relative path to the HTML body template of the text subpart for products.
 admin/jqadm/product/text/template-item = product/item-text
 ```
 
-* Default: product/item-text
+* Default: `product/item-text`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

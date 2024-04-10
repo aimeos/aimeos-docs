@@ -7,7 +7,7 @@ Number of days after the product can be reviewed
 client/html/account/review/days-after = 0
 ```
 
-* Default: 0
+* Default: `0`
 * Type: int - Number of days
 * Since: 2020.10
 
@@ -170,7 +170,7 @@ Maximum number of products shown for review
 client/html/account/review/size = 10
 ```
 
-* Default: 10
+* Default: `10`
 * Type: int - Number of products
 * Since: 2020.10
 
@@ -190,7 +190,7 @@ Relative path to the HTML body template of the account review client.
 client/html/account/review/template-body = account/review/body
 ```
 
-* Default: account/review/body
+* Default: `account/review/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2020.10
 
@@ -218,7 +218,7 @@ Relative path to the HTML header template of the account review client.
 client/html/account/review/template-header = account/review/header
 ```
 
-* Default: account/review/header
+* Default: `account/review/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2020.10
 
@@ -248,7 +248,7 @@ Name of the action that should create the output
 client/html/account/review/url/action = review
 ```
 
-* Default: review
+* Default: `review`
 * Type: string - Name of the action
 * Since: 2020.10
 
@@ -272,10 +272,10 @@ client/html/account/review/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2020.10
 
@@ -306,7 +306,7 @@ Name of the controller whose action should be called
 client/html/account/review/url/controller = Account
 ```
 
-* Default: Account
+* Default: `Account`
 * Type: string - Name of the controller
 * Since: 2020.10
 
@@ -330,10 +330,10 @@ client/html/account/review/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2020.10
 

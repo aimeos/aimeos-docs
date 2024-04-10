@@ -5,7 +5,7 @@
 Excludes decorators added by the "common" option from the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/excludes =
+admin/jqadm/group/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
@@ -39,7 +39,7 @@ See also:
 Adds a list of globally available decorators only to the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/global =
+admin/jqadm/group/decorators/global = 
 ```
 
 * Type: array - List of decorator names
@@ -71,7 +71,7 @@ See also:
 Adds a list of local decorators only to the group JQAdm client
 
 ```
-admin/jqadm/group/decorators/local =
+admin/jqadm/group/decorators/local = 
 ```
 
 * Type: array - List of decorator names
@@ -111,13 +111,13 @@ admin/jqadm/group/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => group.status
     [1] => group.label
     [2] => group.code
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2018.07
 
@@ -134,7 +134,7 @@ e.g. "group.id" for the group ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/group/name =
+admin/jqadm/group/name = 
 ```
 
 * Type: string - Last part of the class name
@@ -183,10 +183,10 @@ admin/jqadm/group/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.07
 
@@ -231,7 +231,7 @@ Relative path to the HTML body template for the group item.
 admin/jqadm/group/template-item = group/item
 ```
 
-* Default: group/item
+* Default: `group/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.07
 
@@ -256,7 +256,7 @@ Relative path to the HTML body template for the group list.
 admin/jqadm/group/template-list = group/list
 ```
 
-* Default: group/list
+* Default: `group/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.07
 

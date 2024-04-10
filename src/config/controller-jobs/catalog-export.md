@@ -1,45 +1,19 @@
 
 # sitemap
-## baseurl
-
-URL to the folder where the site maps can be accessed, without the filenames.
-
-```
-controller/jobs/catalog/export/sitemap/baseurl = 
-```
-
-* Type: string - Absolute URL
-* Since: 2019.06
-
-The site maps must be publically available for download by the search
-engines. Individual site map files need a fully qualified URL in the index file.
-
-https://www.yourshop.com/your/sitemap/path/
-
-The location of the site map index file should then be
-added to the robots.txt in the document root of your domain:
-
-Sitemap: https://www.yourshop.com/your/sitemap/path/aimeos-catalog-sitemap-index.xml
-
-More details about site maps can be found at
-[sitemaps.org](http://www.sitemaps.org/protocol.html)
-
-See also:
-
-* controller/jobs/catalog/export/sitemap/container/options
-* controller/jobs/catalog/export/sitemap/max-items
-* controller/jobs/catalog/export/sitemap/max-query
-* controller/jobs/catalog/export/sitemap/changefreq
-* controller/jobs/catalog/export/sitemap/location
-
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the catalog export sitemap job controller
 
 ```
-controller/jobs/catalog/export/sitemap/decorators/excludes = 
+controller/jobs/catalog/export/sitemap/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -71,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the catalog export sitemap job controller
 
 ```
-controller/jobs/catalog/export/sitemap/decorators/global = 
+controller/jobs/catalog/export/sitemap/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -103,9 +83,15 @@ See also:
 Adds a list of local decorators only to the catalog export sitemap job controller
 
 ```
-controller/jobs/catalog/export/sitemap/decorators/local = 
+controller/jobs/catalog/export/sitemap/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -143,11 +129,11 @@ controller/jobs/catalog/export/sitemap/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2019.02
 
@@ -168,7 +154,7 @@ Export hidden categories in site map
 controller/jobs/catalog/export/sitemap/hidden = 
 ```
 
-* Default: 
+* Default: ``
 * Type: bool - TRUE to export hidden categories, FALSE if not
 * Since: 2022.01
 
@@ -191,7 +177,7 @@ Maximum number of categories per site map
 controller/jobs/catalog/export/sitemap/max-items = 10
 ```
 
-* Default: 10000
+* Default: `10000`
 * Type: integer - Number of categories per file
 * Since: 2019.02
 
@@ -213,9 +199,10 @@ See also:
 Class name of the used catalog sitemap export scheduler controller implementation
 
 ```
-controller/jobs/catalog/export/sitemap/name = 
+controller/jobs/catalog/export/sitemap/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.02
 
@@ -260,7 +247,7 @@ Relative path to the XML template of the catalog site map job controller.
 controller/jobs/catalog/export/sitemap/template = catalog/export/sitemap-items
 ```
 
-* Default: catalog/export/sitemap-items
+* Default: `catalog/export/sitemap-items`
 * Type: string - Relative path to the template creating XML code for the site map
 * Since: 2022.10
 
@@ -285,9 +272,9 @@ Relative path to the XML site map index template of the catalog site map job con
 controller/jobs/catalog/export/sitemap/template-index = catalog/export/sitemap-index
 ```
 
-* Default: catalog/export/sitemap-index
+* Default: `catalog/export/sitemap-index`
 * Type: string - Relative path to the template creating XML code for the site map index
-* Since: 2019.02
+* Since: 2015.01
 
 The template file contains the XML code and processing instructions
 to generate the site map index files. The configuration string is the path
@@ -303,6 +290,4 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/catalog/export/sitemap/template-header
 * controller/jobs/catalog/export/sitemap/template-items
-* controller/jobs/catalog/export/sitemap/template-footer

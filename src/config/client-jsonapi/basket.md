@@ -742,7 +742,7 @@ Relative path to the basket JSON API template
 client/jsonapi/basket/template = basket/standard
 ```
 
-* Default: basket/standard
+* Default: `basket/standard`
 * Type: string - Relative path to the template creating the body for the JSON API
 * Since: 2017.04
 

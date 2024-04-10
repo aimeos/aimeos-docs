@@ -5,13 +5,13 @@ Most of the time, you already have an CRM system which manages all your customer
 
 # Available configuration
 
-[controller/jobs/group/import/xml/backup](../config/controller-jobs/group.md#xmlbackup)
+[controller/jobs/group/import/xml/backup](../config/controller-jobs/group-import.md#xmlbackup)
 : Directory for storing imported files
 
-[controller/jobs/group/import/xml/location](../config/controller-jobs/group.md#xmllocation)
+[controller/jobs/group/import/xml/location](../config/controller-jobs/group-import.md#xmllocation)
 : Path to the directory with the XML files
 
-[controller/jobs/group/import/xml/max-query](../config/controller-jobs/group.md#xmlmax-query)
+[controller/jobs/group/import/xml/max-query](../config/controller-jobs/group-import.md#xmlmax-query)
 : Maximum number of XML nodes processed at once
 
 # Structure

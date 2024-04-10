@@ -13,14 +13,14 @@ client/html/catalog/social/list = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => facebook
     [1] => twitter
     [2] => pinterest
     [3] => whatsapp
 )
-
+`
 * Type: array - List of social network names
 * Since: 2017.04
 
@@ -59,7 +59,7 @@ URL for sharing product links on Facebook
 client/html/catalog/social/url/facebook = https://www.facebook.com/sharer.php?u=%1$s&t=%2$s
 ```
 
-* Default: https://www.facebook.com/sharer.php?u=%1$s&t=%2$s
+* Default: `https://www.facebook.com/sharer.php?u=%1$s&t=%2$s`
 * Type: string - URL to share products on Facebook
 * Since: 2017.04
 
@@ -86,7 +86,7 @@ URL for sharing product links on Pinterest
 client/html/catalog/social/url/pinterest = https://pinterest.com/pin/create/button/?url=%1$s&description=%2$s&media=%3$s
 ```
 
-* Default: https://pinterest.com/pin/create/button/?url=%1$s&description=%2$s&media=%3$s
+* Default: `https://pinterest.com/pin/create/button/?url=%1$s&description=%2$s&media=%3$s`
 * Type: string - URL to share products on Pinterest
 * Since: 2017.04
 
@@ -113,7 +113,7 @@ URL for sharing product links on Twitter
 client/html/catalog/social/url/twitter = https://twitter.com/share?url=%1$s&text=%2$s
 ```
 
-* Default: https://twitter.com/share?url=%1$s&text=%2$s
+* Default: `https://twitter.com/share?url=%1$s&text=%2$s`
 * Type: string - URL to share products on Twitter
 * Since: 2017.04
 
@@ -140,7 +140,7 @@ URL for sharing product links over WhatsApp
 client/html/catalog/social/url/whatsapp = https://wa.me/?text=%2$s+%1$s
 ```
 
-* Default: https://wa.me/?text=%2$s+%1$s
+* Default: `https://wa.me/?text=%2$s+%1$s`
 * Type: string - URL to share products on Facebook
 * Since: 2020.01
 

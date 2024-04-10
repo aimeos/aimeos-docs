@@ -10,10 +10,10 @@ client/jsonapi/product/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -50,10 +50,10 @@ client/jsonapi/product/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -90,10 +90,10 @@ client/jsonapi/product/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -128,7 +128,7 @@ Include products of sub-categories in the product list of the current category
 client/jsonapi/product/levels = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: integer - Tree level constant
 * Since: 2017.03
 
@@ -160,7 +160,7 @@ Class name of the used product client implementation
 client/jsonapi/product/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2017.03
 
@@ -205,7 +205,7 @@ Relative path to the product JSON API template
 client/jsonapi/product/template = product/standard
 ```
 
-* Default: product/standard
+* Default: `product/standard`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2017.03
 
@@ -230,7 +230,7 @@ Relative path to the product aggregate JSON API template
 client/jsonapi/product/template-aggregate = aggregate-standard
 ```
 
-* Default: aggregate-standard
+* Default: `aggregate-standard`
 * Type: string - Relative path to the template creating the list of aggregated product counts
 * Since: 2017.03
 

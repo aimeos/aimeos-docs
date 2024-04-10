@@ -40,9 +40,15 @@ See also:
 Excludes decorators added by the "common" option from the catalog import CSV job controller
 
 ```
-controller/jobs/catalog/import/csv/decorators/excludes = 
+controller/jobs/catalog/import/csv/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -74,9 +80,15 @@ See also:
 Adds a list of globally available decorators only to the catalog import CSV job controller
 
 ```
-controller/jobs/catalog/import/csv/decorators/global = 
+controller/jobs/catalog/import/csv/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -106,9 +118,15 @@ See also:
 Adds a list of local decorators only to the catalog import CSV job controller
 
 ```
-controller/jobs/catalog/import/csv/decorators/local = 
+controller/jobs/catalog/import/csv/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -147,12 +165,12 @@ controller/jobs/catalog/import/csv/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => media
     [1] => text
 )
-
+`
 * Type: array - Associative list of MShop item domain names
 * Since: 2018.04
 
@@ -179,7 +197,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/catalog/import/csv/location = catalog
 ```
 
-* Default: catalog
+* Default: `catalog`
 * Type: string - Relative path to the CSV files
 * Since: 2015.08
 
@@ -228,7 +246,7 @@ controller/jobs/catalog/import/csv/mapping = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [item] => Array
         (
@@ -250,7 +268,7 @@ controller/jobs/catalog/import/csv/mapping = Array
         )
 
 )
-
+`
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2018.04
 
@@ -283,7 +301,7 @@ Maximum number of CSV rows to import at once
 controller/jobs/catalog/import/csv/max-size = 1000
 ```
 
-* Default: 1000
+* Default: `1000`
 * Type: integer - Number of rows
 * Since: 2018.04
 
@@ -308,9 +326,10 @@ See also:
 Class name of the used catalog CSV importer implementation
 
 ```
-controller/jobs/catalog/import/csv/name = 
+controller/jobs/catalog/import/csv/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -347,6 +366,121 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyCsv"!
 
 
+## processor/media/listtypes
+
+Names of the catalog list types for media that are updated or removed
+
+```
+controller/jobs/catalog/import/csv/processor/media/listtypes = Array
+(
+    [0] => default
+)
+```
+
+* Type: array|null - List of catalog list type names or null for all
+* Since: 2018.04
+
+If you want to associate media items manually via the administration
+interface to catalogs and don't want these to be touched during the
+import, you can specify the catalog list types for these media
+that shouldn't be updated or removed.
+
+See also:
+
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/catalog/import/csv/processor/attribute/listtypes
+* controller/jobs/catalog/import/csv/processor/catalog/listtypes
+* controller/jobs/catalog/import/csv/processor/catalog/listtypes
+* controller/jobs/catalog/import/csv/processor/price/listtypes
+* controller/jobs/catalog/import/csv/processor/text/listtypes
+
+## processor/media/name
+
+Name of the media processor implementation
+
+```
+controller/jobs/catalog/import/csv/processor/media/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2018.04
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Catalog\Import\Csv\Processor\Media\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/text/listtypes
+
+Names of the catalog list types for texts that are updated or removed
+
+```
+controller/jobs/catalog/import/csv/processor/text/listtypes = Array
+(
+    [0] => default
+)
+```
+
+* Type: array|null - List of catalog list type names or null for all
+* Since: 2018.04
+
+If you want to associate text items manually via the administration
+interface to catalogs and don't want these to be touched during the
+import, you can specify the catalog list types for these texts
+that shouldn't be updated or removed.
+
+See also:
+
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/catalog/import/csv/processor/attribute/listtypes
+* controller/jobs/catalog/import/csv/processor/catalog/listtypes
+* controller/jobs/catalog/import/csv/processor/media/listtypes
+* controller/jobs/catalog/import/csv/processor/price/listtypes
+* controller/jobs/catalog/import/csv/processor/catalog/listtypes
+
+## processor/text/name
+
+Name of the text processor implementation
+
+```
+controller/jobs/catalog/import/csv/processor/text/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2018.04
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Catalog\Import\Csv\Processor\Text\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## separator
+
+Single separator character for multiple entries in one field of the import file
+
+```
+controller/jobs/catalog/import/csv/separator = 
+```
+
+* Default: `
+`
+* Type: string - Single separator character
+* Since: 2018.04
+
+The catalog importer is able split the content of a field from the import
+file into several entries based on the given separator character. Thus,
+you can create more compact import files and handle a variable range
+of entries better. The default separator character is a new line.
+
+'''Caution:''' The separator character must not be part of any entry
+in the field. Otherwise, you will get invalid entries and the importer
+may fail!
+
+See also:
+
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/supplier/import/csv/domains
+
 ## skip-lines
 
 Number of rows skipped in front of each CSV files
@@ -355,7 +489,7 @@ Number of rows skipped in front of each CSV files
 controller/jobs/catalog/import/csv/skip-lines = 1
 ```
 
-* Default: 0
+* Default: `0`
 * Type: integer - Number of rows
 * Since: 2015.08
 
@@ -417,10 +551,10 @@ controller/jobs/catalog/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -457,10 +591,10 @@ controller/jobs/catalog/import/xml/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -495,10 +629,10 @@ controller/jobs/catalog/import/xml/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -538,12 +672,12 @@ controller/jobs/catalog/import/xml/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => media
     [1] => text
 )
-
+`
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -567,7 +701,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/catalog/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: catalog
+* Default: `catalog`
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
@@ -591,7 +725,7 @@ Class name of the used catalog suggestions scheduler controller implementation
 controller/jobs/catalog/import/xml/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 

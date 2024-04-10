@@ -78,7 +78,7 @@ madmin/job/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT majob."id"
@@ -88,7 +88,7 @@ madmin/job/manager/count/mysql =
  	ORDER BY "id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -105,10 +105,10 @@ madmin/job/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -145,10 +145,10 @@ madmin/job/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -183,10 +183,10 @@ madmin/job/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -258,11 +258,11 @@ madmin/job/manager/delete/mysql =
  AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "madmin_job"
  WHERE :cond
  AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -323,13 +323,13 @@ madmin/job/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "madmin_job" ( :names
  	"label", "path", "status", "editor", "mtime", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -343,7 +343,7 @@ Class name of the used job manager implementation
 madmin/job/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -441,7 +441,7 @@ Name of the database connection resource to use
 madmin/job/manager/resource = db-job
 ```
 
-* Default: db-job
+* Default: `db-job`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -459,10 +459,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 madmin/job/manager/search/ansi = 
  SELECT :columns
- 	majob."id" AS "job.id", majob."siteid" AS "job.siteid",
- 	majob."label" AS "job.label", majob."path" AS "job.path",
- 	majob."status" AS "job.status", majob."editor" AS "job.editor",
- 	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
  FROM "madmin_job" majob
  :joins
  WHERE :cond
@@ -527,10 +523,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 madmin/job/manager/search/mysql = 
  SELECT :columns
- 	majob."id" AS "job.id", majob."siteid" AS "job.siteid",
- 	majob."label" AS "job.label", majob."path" AS "job.path",
- 	majob."status" AS "job.status", majob."editor" AS "job.editor",
- 	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
  FROM "madmin_job" majob
  :joins
  WHERE :cond
@@ -538,18 +530,14 @@ madmin/job/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	majob."id" AS "job.id", majob."siteid" AS "job.siteid",
- 	majob."label" AS "job.label", majob."path" AS "job.path",
- 	majob."status" AS "job.status", majob."editor" AS "job.editor",
- 	majob."mtime" AS "job.mtime", majob."ctime" AS "job.ctime"
  FROM "madmin_job" majob
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -565,10 +553,10 @@ madmin/job/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -633,12 +621,12 @@ madmin/job/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "madmin_job"
  SET :names
  	"label" = ?, "path" = ?, "status" = ?, "editor" = ?, "mtime" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the order cleanup unfinished controllers
 
 ```
-controller/jobs/order/cleanup/unfinished/decorators/excludes = 
+controller/jobs/order/cleanup/unfinished/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the order cleanup unfinished controllers
 
 ```
-controller/jobs/order/cleanup/unfinished/decorators/global = 
+controller/jobs/order/cleanup/unfinished/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the order cleanup unfinished controllers
 
 ```
-controller/jobs/order/cleanup/unfinished/decorators/local = 
+controller/jobs/order/cleanup/unfinished/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -107,7 +125,7 @@ Release the ordered products after the configured time if no payment was confirm
 controller/jobs/order/cleanup/unfinished/keep-hours = 24
 ```
 
-* Default: 24
+* Default: `24`
 * Type: integer - Number of hours
 * Since: 2014.07
 
@@ -128,9 +146,10 @@ The unfinished orders are deleted afterwards to keep the database clean.
 Class name of the used order cleanup unfinished scheduler controller implementation
 
 ```
-controller/jobs/order/cleanup/unfinished/name = 
+controller/jobs/order/cleanup/unfinished/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -173,9 +192,15 @@ or numbers. Avoid chamel case names like "MyUnfinished"!
 Excludes decorators added by the "common" option from the order cleanup unpaid controllers
 
 ```
-controller/jobs/order/cleanup/unpaid/decorators/excludes = 
+controller/jobs/order/cleanup/unpaid/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -207,9 +232,15 @@ See also:
 Adds a list of globally available decorators only to the order cleanup unpaid controllers
 
 ```
-controller/jobs/order/cleanup/unpaid/decorators/global = 
+controller/jobs/order/cleanup/unpaid/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -239,9 +270,15 @@ See also:
 Adds a list of local decorators only to the order cleanup unpaid controllers
 
 ```
-controller/jobs/order/cleanup/unpaid/decorators/local = 
+controller/jobs/order/cleanup/unpaid/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -275,7 +312,7 @@ Removes all orders from the database that are unpaid
 controller/jobs/order/cleanup/unpaid/keep-days = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: integer - Number of days
 * Since: 2014.07
 
@@ -293,9 +330,10 @@ orders.
 Class name of the used order cleanup unpaid scheduler controller implementation
 
 ```
-controller/jobs/order/cleanup/unpaid/name = 
+controller/jobs/order/cleanup/unpaid/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.07
 

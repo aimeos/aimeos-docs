@@ -8,7 +8,7 @@ Limits the number of records that are used when aggregating items
 mshop/common/manager/aggregate/limit = 10000
 ```
 
-* Default: 10000
+* Default: `10000`
 * Type: integer - Number of records
 * Since: 2021.04
 
@@ -101,10 +101,10 @@ mshop/common/manager/decorators/default = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -135,7 +135,7 @@ mshop/common/manager/delete/ansi =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: mshop/test/manager/delete
+* Default: `mshop/test/manager/delete`
 
 
 ## mysql
@@ -146,10 +146,10 @@ mshop/common/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM ":table"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 
 # insert
@@ -168,7 +168,7 @@ mshop/common/manager/insert/ansi =
  )
 ```
 
-* Default: mshop/test/manager/insert
+* Default: `mshop/test/manager/insert`
 * Type: string - SQL statement for inserting records
 * Since: 2023.10
 
@@ -212,7 +212,7 @@ mshop/common/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO ":table" (
  	:names
  	"mtime", "editor", "siteid", "ctime"
@@ -220,7 +220,7 @@ mshop/common/manager/insert/mysql =
  	:values
  	?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -234,7 +234,7 @@ Maximum level of recursion for retrieving referenced items
 mshop/common/manager/maxdepth = 2
 ```
 
-* Default: 2
+* Default: `2`
 * Type: int - Number of levels
 * Since: 2019.04
 
@@ -308,11 +308,11 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/common/manager/search/ansi = 
- SELECT :columns "id", "siteid", "ctime", "mtime", "editor"
+ SELECT :columns
  FROM ":table"
  :joins
  WHERE :cond
- GROUP BY :columns :group "id", "siteid", "ctime", "mtime", "editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -373,24 +373,24 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/common/manager/search/mysql = 
- SELECT :columns "id", "siteid", "ctime", "mtime", "editor"
+ SELECT :columns
  FROM ":table"
  :joins
  WHERE :cond
- GROUP BY :group "id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
- SELECT :columns "id", "siteid", "ctime", "mtime", "editor"
+* Default: `
+ SELECT :columns
  FROM ":table"
  :joins
  WHERE :cond
- GROUP BY :columns :group "id", "siteid", "ctime", "mtime", "editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 

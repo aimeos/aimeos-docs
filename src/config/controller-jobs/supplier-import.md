@@ -40,9 +40,15 @@ See also:
 Excludes decorators added by the "common" option from the supplier import CSV job controller
 
 ```
-controller/jobs/supplier/import/csv/decorators/excludes = 
+controller/jobs/supplier/import/csv/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -74,9 +80,15 @@ See also:
 Adds a list of globally available decorators only to the supplier import CSV job controller
 
 ```
-controller/jobs/supplier/import/csv/decorators/global = 
+controller/jobs/supplier/import/csv/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -106,9 +118,15 @@ See also:
 Adds a list of local decorators only to the supplier import CSV job controller
 
 ```
-controller/jobs/supplier/import/csv/decorators/local = 
+controller/jobs/supplier/import/csv/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -169,7 +187,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/supplier/import/csv/location = supplier
 ```
 
-* Default: supplier
+* Default: `supplier`
 * Type: string - Relative path to the CSV files
 * Since: 2020.07
 
@@ -225,7 +243,7 @@ controller/jobs/supplier/import/csv/mapping = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [item] => Array
         (
@@ -255,7 +273,7 @@ controller/jobs/supplier/import/csv/mapping = Array
         )
 
 )
-
+`
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2020.07
 
@@ -288,7 +306,7 @@ Maximum number of CSV rows to import at once
 controller/jobs/supplier/import/csv/max-size = 1000
 ```
 
-* Default: 1000
+* Default: `1000`
 * Type: integer - Number of rows
 * Since: 2020.07
 
@@ -312,9 +330,10 @@ See also:
 Class name of the used supplier suggestions scheduler controller implementation
 
 ```
-controller/jobs/supplier/import/csv/name = 
+controller/jobs/supplier/import/csv/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2020.07
 
@@ -351,6 +370,131 @@ name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyCsv"!
 
 
+## processor/address/name
+
+Name of the address processor implementation
+
+```
+controller/jobs/supplier/import/csv/processor/address/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2020.07
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Supplier\Import\Csv\Processor\Address\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/media/listtypes
+
+Names of the supplier list types for media that are updated or removed
+
+```
+controller/jobs/supplier/import/csv/processor/media/listtypes = 
+```
+
+* Type: array|null - List of supplier list type names or null for all
+* Since: 2020.07
+
+If you want to associate media items manually via the administration
+interface to suppliers and don't want these to be touched during the
+import, you can specify the supplier list types for these media
+that shouldn't be updated or removed.
+
+See also:
+
+* controller/jobs/supplier/import/csv/domains
+* controller/jobs/supplier/import/csv/processor/attribute/listtypes
+* controller/jobs/supplier/import/csv/processor/supplier/listtypes
+* controller/jobs/supplier/import/csv/processor/supplier/listtypes
+* controller/jobs/supplier/import/csv/processor/price/listtypes
+* controller/jobs/supplier/import/csv/processor/text/listtypes
+
+## processor/media/name
+
+Name of the media processor implementation
+
+```
+controller/jobs/supplier/import/csv/processor/media/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2020.07
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Supplier\Import\Csv\Processor\Media\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/text/listtypes
+
+Names of the supplier list types for texts that are updated or removed
+
+```
+controller/jobs/supplier/import/csv/processor/text/listtypes = 
+```
+
+* Type: array|null - List of supplier list type names or null for all
+* Since: 2020.07
+
+If you want to associate text items manually via the administration
+interface to suppliers and don't want these to be touched during the
+import, you can specify the supplier list types for these texts
+that shouldn't be updated or removed.
+
+See also:
+
+* controller/jobs/supplier/import/csv/domains
+* controller/jobs/supplier/import/csv/processor/attribute/listtypes
+* controller/jobs/supplier/import/csv/processor/supplier/listtypes
+* controller/jobs/supplier/import/csv/processor/media/listtypes
+* controller/jobs/supplier/import/csv/processor/price/listtypes
+* controller/jobs/supplier/import/csv/processor/supplier/listtypes
+
+## processor/text/name
+
+Name of the text processor implementation
+
+```
+controller/jobs/supplier/import/csv/processor/text/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2020.07
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Supplier\Import\Csv\Processor\Text\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## separator
+
+Single separator character for multiple entries in one field of the import file
+
+```
+controller/jobs/supplier/import/csv/separator = 
+```
+
+* Default: `
+`
+* Type: string - Single separator character
+* Since: 2015.07
+
+The supplier importer is able split the content of a field from the import
+file into several entries based on the given separator character. Thus,
+you can create more compact import files and handle a variable range
+of entries better. The default separator character is a new line.
+
+'''Caution:''' The separator character must not be part of any entry
+in the field. Otherwise, you will get invalid entries and the importer
+may fail!
+
+See also:
+
+* controller/jobs/catalog/import/csv/domains
+* controller/jobs/product/import/csv/domains
+
 ## skip-lines
 
 Number of rows skipped in front of each CSV files
@@ -359,7 +503,7 @@ Number of rows skipped in front of each CSV files
 controller/jobs/supplier/import/csv/skip-lines = 1
 ```
 
-* Default: 0
+* Default: `0`
 * Type: integer - Number of rows
 * Since: 2020.07
 
@@ -421,10 +565,10 @@ controller/jobs/supplier/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -461,10 +605,10 @@ controller/jobs/supplier/import/xml/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -499,10 +643,10 @@ controller/jobs/supplier/import/xml/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -543,13 +687,13 @@ controller/jobs/supplier/import/xml/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => supplier/address
     [1] => media
     [2] => text
 )
-
+`
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -573,7 +717,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/supplier/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: supplier
+* Default: `supplier`
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
@@ -597,7 +741,7 @@ Maximum number of XML nodes processed at once
 controller/jobs/supplier/import/xml/max-query = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 
@@ -621,7 +765,7 @@ Class name of the used supplier suggestions scheduler controller implementation
 controller/jobs/supplier/import/xml/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 

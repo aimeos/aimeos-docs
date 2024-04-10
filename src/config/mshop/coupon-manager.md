@@ -79,7 +79,7 @@ mshop/coupon/manager/code/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcouco."id"
@@ -89,7 +89,7 @@ mshop/coupon/manager/code/count/mysql =
  	ORDER BY mcouco."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -145,11 +145,11 @@ mshop/coupon/manager/code/counter/mysql =
  WHERE :cond AND "code" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_coupon_code"
  SET	"count" = "count" + ?, "mtime" = ?, "editor" = ?
  WHERE :cond AND "code" = ?
-
+`
 
 See also:
 
@@ -165,10 +165,10 @@ mshop/coupon/manager/code/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -205,10 +205,10 @@ mshop/coupon/manager/code/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -244,10 +244,10 @@ mshop/coupon/manager/code/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -318,10 +318,10 @@ mshop/coupon/manager/code/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_coupon_code"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -384,14 +384,14 @@ mshop/coupon/manager/code/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_coupon_code" ( :names
  	"parentid", "code", "start", "end", "count", "ref",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -405,7 +405,7 @@ Class name of the used coupon code manager implementation
 mshop/coupon/manager/code/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -502,12 +502,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/coupon/manager/code/search/ansi = 
  SELECT :columns
- 	mcouco."id" AS "coupon.code.id", mcouco."parentid" AS "coupon.code.parentid",
- 	mcouco."siteid" AS "coupon.code.siteid", mcouco."code" AS "coupon.code.code",
- 	mcouco."start" AS "coupon.code.datestart", mcouco."end" AS "coupon.code.dateend",
- 	mcouco."count" AS "coupon.code.count", mcouco."ref" AS "coupon.code.ref",
- 	mcouco."mtime" AS "coupon.code.mtime", mcouco."ctime" AS "coupon.code.ctime",
- 	mcouco."editor" AS "coupon.code.editor"
  FROM "mshop_coupon_code" mcouco
  :joins
  WHERE :cond
@@ -573,12 +567,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/coupon/manager/code/search/mysql = 
  SELECT :columns
- 	mcouco."id" AS "coupon.code.id", mcouco."parentid" AS "coupon.code.parentid",
- 	mcouco."siteid" AS "coupon.code.siteid", mcouco."code" AS "coupon.code.code",
- 	mcouco."start" AS "coupon.code.datestart", mcouco."end" AS "coupon.code.dateend",
- 	mcouco."count" AS "coupon.code.count", mcouco."ref" AS "coupon.code.ref",
- 	mcouco."mtime" AS "coupon.code.mtime", mcouco."ctime" AS "coupon.code.ctime",
- 	mcouco."editor" AS "coupon.code.editor"
  FROM "mshop_coupon_code" mcouco
  :joins
  WHERE :cond
@@ -586,20 +574,14 @@ mshop/coupon/manager/code/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mcouco."id" AS "coupon.code.id", mcouco."parentid" AS "coupon.code.parentid",
- 	mcouco."siteid" AS "coupon.code.siteid", mcouco."code" AS "coupon.code.code",
- 	mcouco."start" AS "coupon.code.datestart", mcouco."end" AS "coupon.code.dateend",
- 	mcouco."count" AS "coupon.code.count", mcouco."ref" AS "coupon.code.ref",
- 	mcouco."mtime" AS "coupon.code.mtime", mcouco."ctime" AS "coupon.code.ctime",
- 	mcouco."editor" AS "coupon.code.editor"
  FROM "mshop_coupon_code" mcouco
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -615,10 +597,10 @@ mshop/coupon/manager/code/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -685,13 +667,13 @@ mshop/coupon/manager/code/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_coupon_code"
  SET :names
  	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
  	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -778,7 +760,7 @@ mshop/coupon/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcou."id"
@@ -789,7 +771,7 @@ mshop/coupon/manager/count/mysql =
  	ORDER BY mcou."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -806,10 +788,10 @@ mshop/coupon/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -846,10 +828,10 @@ mshop/coupon/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -885,10 +867,10 @@ mshop/coupon/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -958,10 +940,10 @@ mshop/coupon/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_coupon"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1024,14 +1006,14 @@ mshop/coupon/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_coupon" ( :names
  	"label", "provider", "config", "start", "end",
  	"status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1045,7 +1027,7 @@ Class name of the used coupon manager implementation
 mshop/coupon/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1143,7 +1125,7 @@ Name of the database connection resource to use
 mshop/coupon/manager/resource = db-coupon
 ```
 
-* Default: db-coupon
+* Default: `db-coupon`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -1162,18 +1144,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/coupon/manager/search/ansi = 
  SELECT :columns
- 	mcou."id" AS "coupon.id", mcou."siteid" AS "coupon.siteid",
- 	mcou."label" AS "coupon.label", mcou."provider" AS "coupon.provider",
- 	mcou."start" AS "coupon.datestart", mcou."end" AS "coupon.dateend",
- 	mcou."config" AS "coupon.config", mcou."status" AS "coupon.status",
- 	mcou."mtime" AS "coupon.mtime", mcou."editor" AS "coupon.editor",
- 	mcou."ctime" AS "coupon.ctime"
  FROM "mshop_coupon" mcou
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mcou."id", mcou."siteid", mcou."label", mcou."provider", mcou."start", mcou."end",
- 	mcou."config", mcou."status", mcou."mtime", mcou."editor", mcou."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -1235,37 +1209,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/coupon/manager/search/mysql = 
  SELECT :columns
- 	mcou."id" AS "coupon.id", mcou."siteid" AS "coupon.siteid",
- 	mcou."label" AS "coupon.label", mcou."provider" AS "coupon.provider",
- 	mcou."start" AS "coupon.datestart", mcou."end" AS "coupon.dateend",
- 	mcou."config" AS "coupon.config", mcou."status" AS "coupon.status",
- 	mcou."mtime" AS "coupon.mtime", mcou."editor" AS "coupon.editor",
- 	mcou."ctime" AS "coupon.ctime"
  FROM "mshop_coupon" mcou
  :joins
  WHERE :cond
- GROUP BY :group mcou."id"
+ GROUP BY mcou."id"
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mcou."id" AS "coupon.id", mcou."siteid" AS "coupon.siteid",
- 	mcou."label" AS "coupon.label", mcou."provider" AS "coupon.provider",
- 	mcou."start" AS "coupon.datestart", mcou."end" AS "coupon.dateend",
- 	mcou."config" AS "coupon.config", mcou."status" AS "coupon.status",
- 	mcou."mtime" AS "coupon.mtime", mcou."editor" AS "coupon.editor",
- 	mcou."ctime" AS "coupon.ctime"
  FROM "mshop_coupon" mcou
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mcou."id", mcou."siteid", mcou."label", mcou."provider", mcou."start", mcou."end",
- 	mcou."config", mcou."status", mcou."mtime", mcou."editor", mcou."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1279,7 +1239,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/coupon/manager/sitemode = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -1319,11 +1279,11 @@ mshop/coupon/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => code
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1390,13 +1350,13 @@ mshop/coupon/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_coupon"
  SET :names
  	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
  	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

@@ -153,11 +153,11 @@ client/html/catalog/search/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => search
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.04
 

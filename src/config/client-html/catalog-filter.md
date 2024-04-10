@@ -8,10 +8,10 @@ client/html/catalog/filter/attribute/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -22,10 +22,10 @@ client/html/catalog/filter/attribute/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## domains
@@ -41,13 +41,13 @@ client/html/catalog/filter/attribute/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => text
     [1] => media
     [2] => media/property
 )
-
+`
 * Type: array - List of domain item names
 * Since: 2015.05
 
@@ -71,7 +71,7 @@ Name of the attribute part used by the catalog filter client implementation
 client/html/catalog/filter/attribute/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -87,7 +87,7 @@ Relative path to the HTML body template of the catalog filter attribute client.
 client/html/catalog/filter/attribute/template-body = catalog/filter/attribute-body
 ```
 
-* Default: catalog/filter/attribute-body
+* Default: `catalog/filter/attribute-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -117,10 +117,10 @@ client/html/catalog/filter/attribute/types = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of attribute type codes
 * Since: 2015.05
 
@@ -151,10 +151,10 @@ client/html/catalog/filter/attribute/types-oneof = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of attribute type codes
 * Since: 2016.10
 
@@ -181,10 +181,10 @@ client/html/catalog/filter/attribute/types-option = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of attribute type codes
 * Since: 2016.10
 
@@ -211,7 +211,7 @@ Displays the "Search" button in the catalog filter if Javascript is disabled
 client/html/catalog/filter/button = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - A value of "1" to enable the button, "0" to disable it
 * Since: 2014.03
 
@@ -230,7 +230,7 @@ Enables or disables caching only for the catalog filter component
 client/html/catalog/filter/cache = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to enable caching, false to disable
 
 Disable caching for components can be useful if you would have too much
@@ -254,10 +254,10 @@ client/html/catalog/filter/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -294,10 +294,10 @@ client/html/catalog/filter/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -332,10 +332,10 @@ client/html/catalog/filter/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -368,7 +368,7 @@ Class name of the used catalog filter client implementation
 client/html/catalog/filter/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -414,10 +414,10 @@ client/html/catalog/filter/price/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -428,10 +428,10 @@ client/html/catalog/filter/price/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## name
@@ -442,7 +442,7 @@ Name of the price part used by the catalog filter client implementation
 client/html/catalog/filter/price/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2020.10
 
@@ -458,7 +458,7 @@ Relative path to the HTML body template of the catalog filter price client.
 client/html/catalog/filter/price/template-body = catalog/filter/price-body
 ```
 
-* Default: catalog/filter/price-body
+* Default: `catalog/filter/price-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -489,11 +489,11 @@ client/html/catalog/filter/remove-params = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => f_sort
 )
-
+`
 * Type: array - List of parameter names
 * Since: 2020.04
 
@@ -514,10 +514,10 @@ client/html/catalog/filter/search/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -528,10 +528,10 @@ client/html/catalog/filter/search/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## force-search
@@ -542,7 +542,7 @@ Always reuse the current input for full text searches
 client/html/catalog/filter/search/force-search = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to reuse the search string, false to clear after each search
 * Since: 2020.04
 
@@ -562,7 +562,7 @@ Name of the search part used by the catalog filter client implementation
 client/html/catalog/filter/search/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -578,7 +578,7 @@ Relative path to the HTML body template of the catalog filter search client.
 client/html/catalog/filter/search/template-body = catalog/filter/search-body
 ```
 
-* Default: catalog/filter/search-body
+* Default: `catalog/filter/search-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -612,7 +612,7 @@ client/html/catalog/filter/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => tree
     [1] => search
@@ -620,7 +620,7 @@ client/html/catalog/filter/subparts = Array
     [3] => supplier
     [4] => attribute
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -666,10 +666,10 @@ client/html/catalog/filter/supplier/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -680,10 +680,10 @@ client/html/catalog/filter/supplier/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## domains
@@ -699,13 +699,13 @@ client/html/catalog/filter/supplier/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => text
     [1] => media
     [2] => media/property
 )
-
+`
 * Type: array - List of domain item names
 * Since: 2018.07
 
@@ -729,7 +729,7 @@ Name of the supplier part used by the catalog filter client implementation
 client/html/catalog/filter/supplier/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2018.07
 
@@ -745,7 +745,7 @@ Relative path to the HTML body template of the catalog filter supplier client.
 client/html/catalog/filter/supplier/template-body = catalog/filter/supplier-body
 ```
 
-* Default: catalog/filter/supplier-body
+* Default: `catalog/filter/supplier-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.07
 
@@ -773,7 +773,7 @@ Relative path to the HTML body template of the catalog filter client.
 client/html/catalog/filter/template-body = catalog/filter/body
 ```
 
-* Default: catalog/filter/body
+* Default: `catalog/filter/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -801,7 +801,7 @@ Relative path to the HTML header template of the catalog filter client.
 client/html/catalog/filter/template-header = catalog/filter/header
 ```
 
-* Default: catalog/filter/header
+* Default: `catalog/filter/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -831,10 +831,10 @@ client/html/catalog/filter/tree/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -845,10 +845,10 @@ client/html/catalog/filter/tree/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## domains
@@ -864,13 +864,13 @@ client/html/catalog/filter/tree/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => text
     [1] => media
     [2] => media/property
 )
-
+`
 * Type: array - List of domain item names
 * Since: 2014.03
 
@@ -896,7 +896,7 @@ Use the current category in full text searches
 client/html/catalog/filter/tree/force-search = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to enforce current category for search, false for full text search only
 * Since: 2015.10
 
@@ -917,7 +917,7 @@ Name of the tree part used by the catalog filter client implementation
 client/html/catalog/filter/tree/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -933,7 +933,7 @@ Relative path to the category tree partial template file
 client/html/catalog/filter/tree/partial = catalog/filter/tree-partial
 ```
 
-* Default: catalog/filter/tree-partial
+* Default: `catalog/filter/tree-partial`
 * Type: string - Relative path to the template file
 * Since: 2022.04
 
@@ -975,7 +975,7 @@ Relative path to the HTML body template of the catalog filter tree client.
 client/html/catalog/filter/tree/template-body = catalog/filter/tree-body
 ```
 
-* Default: catalog/filter/tree-body
+* Default: `catalog/filter/tree-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 

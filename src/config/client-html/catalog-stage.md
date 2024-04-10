@@ -7,7 +7,7 @@ Enables or disables caching only for the catalog stage component
 client/html/catalog/stage/cache = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to enable caching, false to disable
 
 Disable caching for components can be useful if you would have too much
@@ -130,14 +130,14 @@ client/html/catalog/stage/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => attribute
     [1] => media
     [2] => media/property
     [3] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2014.03
 
@@ -210,7 +210,7 @@ Relative path to the HTML body template of the catalog stage client.
 client/html/catalog/stage/template-body = catalog/stage/body
 ```
 
-* Default: catalog/stage/body
+* Default: `catalog/stage/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -238,7 +238,7 @@ Relative path to the HTML header template of the catalog stage client.
 client/html/catalog/stage/template-header = catalog/stage/header
 ```
 
-* Default: catalog/stage/header
+* Default: `catalog/stage/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

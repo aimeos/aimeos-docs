@@ -80,7 +80,7 @@ mshop/subscription/manager/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default: `
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
@@ -92,7 +92,7 @@ mshop/subscription/manager/aggregate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-
+`
 
 See also:
 
@@ -181,7 +181,7 @@ mshop/subscription/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msub."id"
@@ -193,7 +193,7 @@ mshop/subscription/manager/count/mysql =
  	ORDER BY msub."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -210,10 +210,10 @@ mshop/subscription/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -250,10 +250,10 @@ mshop/subscription/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -290,10 +290,10 @@ mshop/subscription/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -364,10 +364,10 @@ mshop/subscription/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_subscription"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -430,14 +430,14 @@ mshop/subscription/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_subscription" ( :names
  	"orderid", "ordprodid", "next", "end", "interval", "productid", "period",
  	"reason", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -451,7 +451,7 @@ Class name of the used subscription manager implementation
 mshop/subscription/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -549,7 +549,7 @@ Name of the database connection resource to use
 mshop/subscription/manager/resource = db-order
 ```
 
-* Default: db-order
+* Default: `db-order`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -567,21 +567,11 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/subscription/manager/search/ansi = 
  SELECT :columns
- 	msub."id" AS "subscription.id", msub."orderid" AS "subscription.orderid",
- 	msub."ordprodid" AS "subscription.ordprodid", msub."siteid" AS "subscription.siteid",
- 	msub."next" AS "subscription.datenext", msub."end" AS "subscription.dateend",
- 	msub."interval" AS "subscription.interval", msub."reason" AS "subscription.reason",
- 	msub."productid" AS "subscription.productid", msub."period" AS "subscription.period",
- 	msub."status" AS "subscription.status", msub."ctime" AS "subscription.ctime",
- 	msub."mtime" AS "subscription.mtime", msub."editor" AS "subscription.editor"
  FROM "mshop_subscription" msub
  JOIN "mshop_order" mord ON msub."orderid" = mord."id"
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	msub."id", msub."orderid", msub."ordprodid", msub."siteid", msub."next", msub."end",
- 	msub."interval", msub."reason", msub."productid", msub."period", msub."status", msub."ctime",
- 	msub."mtime", msub."editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -643,42 +633,25 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/subscription/manager/search/mysql = 
  SELECT :columns
- 	msub."id" AS "subscription.id", msub."orderid" AS "subscription.orderid",
- 	msub."ordprodid" AS "subscription.ordprodid", msub."siteid" AS "subscription.siteid",
- 	msub."next" AS "subscription.datenext", msub."end" AS "subscription.dateend",
- 	msub."interval" AS "subscription.interval", msub."reason" AS "subscription.reason",
- 	msub."productid" AS "subscription.productid", msub."period" AS "subscription.period",
- 	msub."status" AS "subscription.status", msub."ctime" AS "subscription.ctime",
- 	msub."mtime" AS "subscription.mtime", msub."editor" AS "subscription.editor"
  FROM "mshop_subscription" msub
  JOIN "mshop_order" mord ON msub."orderid" = mord."id"
  :joins
  WHERE :cond
- GROUP BY :group msub."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	msub."id" AS "subscription.id", msub."orderid" AS "subscription.orderid",
- 	msub."ordprodid" AS "subscription.ordprodid", msub."siteid" AS "subscription.siteid",
- 	msub."next" AS "subscription.datenext", msub."end" AS "subscription.dateend",
- 	msub."interval" AS "subscription.interval", msub."reason" AS "subscription.reason",
- 	msub."productid" AS "subscription.productid", msub."period" AS "subscription.period",
- 	msub."status" AS "subscription.status", msub."ctime" AS "subscription.ctime",
- 	msub."mtime" AS "subscription.mtime", msub."editor" AS "subscription.editor"
  FROM "mshop_subscription" msub
  JOIN "mshop_order" mord ON msub."orderid" = mord."id"
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	msub."id", msub."orderid", msub."ordprodid", msub."siteid", msub."next", msub."end",
- 	msub."interval", msub."reason", msub."productid", msub."period", msub."status", msub."ctime",
- 	msub."mtime", msub."editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -692,7 +665,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/subscription/manager/sitemode = 2
 ```
 
-* Default: 2
+* Default: `2`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.04
 
@@ -731,10 +704,10 @@ mshop/subscription/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2018.04
 
@@ -801,13 +774,13 @@ mshop/subscription/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_subscription"
  SET :names
  	"orderid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
  	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

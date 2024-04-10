@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the coupon code import CSV job controller
 
 ```
-controller/jobs/coupon/import/csv/code/decorators/excludes = 
+controller/jobs/coupon/import/csv/code/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the coupon code import CSV job controller
 
 ```
-controller/jobs/coupon/import/csv/code/decorators/global = 
+controller/jobs/coupon/import/csv/code/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the coupon code import CSV job controller
 
 ```
-controller/jobs/coupon/import/csv/code/decorators/local = 
+controller/jobs/coupon/import/csv/code/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -100,6 +118,30 @@ See also:
 * controller/jobs/coupon/import/csv/code/decorators/excludes
 * controller/jobs/coupon/import/csv/code/decorators/global
 
+## code/location
+
+Directory where the CSV files are stored which should be imported
+
+```
+controller/jobs/coupon/import/csv/code/location = couponcode
+```
+
+* Default: `couponcode`
+* Type: string - Relative path to the CSV files
+* Since: 2024.04
+
+It's the relative path inside the "fs-import" virtual file system
+configuration. The default location of the "fs-import" file system is:
+
+* Laravel: ./storage/import/
+* TYPO3: /uploads/tx_aimeos/.secure/import/
+
+See also:
+
+* controller/jobs/coupon/import/csv/code/mapping
+* controller/jobs/coupon/import/csv/code/max-size
+* controller/jobs/coupon/import/csv/code/skip-lines
+
 ## code/mapping
 
 List of mappings between the position in the CSV file and item keys
@@ -118,7 +160,7 @@ controller/jobs/coupon/import/csv/code/mapping = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [code] => Array
         (
@@ -129,19 +171,20 @@ controller/jobs/coupon/import/csv/code/mapping = Array
         )
 
 )
-
+`
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2017.10
 
 This configuration setting overwrites the shared option
-"controller/common/coupon/import/csv/mapping" if you need a
+"controller/jobs/coupon/import/csv/mapping" if you need a
 specific setting for the job controller. Otherwise, you should
 use the shared option for consistency.
 
 See also:
 
-* controller/jobs/coupon/import/csv/code/skip-lines
+* controller/jobs/coupon/import/csv/code/location
 * controller/jobs/coupon/import/csv/code/max-size
+* controller/jobs/coupon/import/csv/code/skip-lines
 
 ## code/max-size
 
@@ -151,7 +194,7 @@ Maximum number of CSV rows to import at once
 controller/jobs/coupon/import/csv/code/max-size = 1000
 ```
 
-* Default: 1000
+* Default: `1000`
 * Type: integer - Number of rows
 * Since: 2017.10
 
@@ -164,17 +207,19 @@ import speed.
 
 See also:
 
-* controller/jobs/coupon/import/csv/code/skip-lines
+* controller/jobs/coupon/import/csv/code/location
 * controller/jobs/coupon/import/csv/code/mapping
+* controller/jobs/coupon/import/csv/code/skip-lines
 
 ## code/name
 
 Class name of the used coupon code import job controller implementation
 
 ```
-controller/jobs/coupon/import/csv/code/name = 
+controller/jobs/coupon/import/csv/code/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2017.10
 
@@ -219,7 +264,7 @@ Number of rows skipped in front of each CSV files
 controller/jobs/coupon/import/csv/code/skip-lines = 1
 ```
 
-* Default: 0
+* Default: `0`
 * Type: integer - Number of rows
 * Since: 2015.08
 
@@ -231,5 +276,21 @@ begins.
 
 See also:
 
+* controller/jobs/coupon/import/csv/code/location
 * controller/jobs/coupon/import/csv/code/mapping
 * controller/jobs/coupon/import/csv/code/max-size
+
+## processor/code/name
+
+Name of the coupon code processor implementation
+
+```
+controller/jobs/coupon/import/csv/processor/code/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2017.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Coupon\Import\Csv\Processor\Code\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".

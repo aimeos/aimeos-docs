@@ -154,7 +154,7 @@ Relative path to the subscription JSON API template
 client/jsonapi/subscription/template = subscription/standard
 ```
 
-* Default: subscription/standard
+* Default: `subscription/standard`
 * Type: string - Relative path to the template creating the body of the JSON API
 * Since: 2017.03
 

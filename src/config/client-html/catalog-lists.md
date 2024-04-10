@@ -34,7 +34,7 @@ Display the "add to basket" button for each product item
 client/html/catalog/lists/basket-add = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to display the button, false to hide it
 * Since: 2016.01
 
@@ -66,7 +66,7 @@ Enables or disables caching only for the catalog lists component
 client/html/catalog/lists/cache = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to enable caching, false to disable
 
 Disable caching for components can be useful if you would have too much
@@ -220,7 +220,7 @@ client/html/catalog/lists/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => catalog
     [1] => media
@@ -229,7 +229,7 @@ client/html/catalog/lists/domains = Array
     [4] => supplier
     [5] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2014.03
 
@@ -267,7 +267,7 @@ Enables infinite scrolling in product catalog list
 client/html/catalog/lists/infinite-scroll = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to use infinite scrolling, false to disable it
 * Since: 2019.10
 
@@ -283,7 +283,7 @@ Include products of sub-categories in the product list of the current category
 client/html/catalog/lists/levels = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: integer - Tree level constant
 * Since: 2015.11
 
@@ -326,7 +326,7 @@ Adds the title, meta and link tags to the HTML header
 client/html/catalog/lists/metatags = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to display the meta tags, false to hide it
 * Since: 2017.01
 
@@ -393,7 +393,7 @@ Maximum number of product pages shown in pagination
 client/html/catalog/lists/pages = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of pages
 * Since: 2019.04
 
@@ -423,7 +423,7 @@ Enables or disables pagination in list views
 client/html/catalog/lists/pagination = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True for enabling, false for disabling pagination
 * Since: 2019.04
 
@@ -441,7 +441,7 @@ The number of products shown in a list page
 client/html/catalog/lists/size = 48
 ```
 
-* Default: 48
+* Default: `48`
 * Type: integer - Number of products
 * Since: 2014.03
 
@@ -474,7 +474,7 @@ Default sorting of product list if no other sorting is given by parameter
 client/html/catalog/lists/sort = relevance
 ```
 
-* Default: relevance
+* Default: `relevance`
 * Type: string - Sort code "relevance", "name", "-name", "price", "-price", "ctime" or "-ctime"
 * Since: 2018.07
 
@@ -501,7 +501,7 @@ Enables or disables displaying product stock levels in product list views
 client/html/catalog/lists/stock = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Value of "1" to display stock levels, "0" to disable displaying them
 * Since: 2014.03
 
@@ -557,7 +557,7 @@ Relative path to the HTML body template of the catalog list client.
 client/html/catalog/lists/template-body = catalog/lists/body
 ```
 
-* Default: catalog/lists/body
+* Default: `catalog/lists/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -599,7 +599,7 @@ Relative path to the HTML header template of the catalog list client.
 client/html/catalog/lists/template-header = catalog/lists/header
 ```
 
-* Default: catalog/lists/header
+* Default: `catalog/lists/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -643,7 +643,7 @@ Name of the action that should create the output
 client/html/catalog/lists/url/action = lists
 ```
 
-* Default: lists
+* Default: `lists`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -668,10 +668,10 @@ client/html/catalog/lists/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -702,7 +702,7 @@ Name of the controller whose action should be called
 client/html/catalog/lists/url/controller = Catalog
 ```
 
-* Default: Catalog
+* Default: `Catalog`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -727,10 +727,10 @@ client/html/catalog/lists/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

@@ -32,10 +32,10 @@ admin/jqadm/url/batch/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2022.10
 
@@ -90,10 +90,10 @@ admin/jqadm/url/batch/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -162,10 +162,10 @@ admin/jqadm/url/copy/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -220,10 +220,10 @@ admin/jqadm/url/copy/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -292,10 +292,10 @@ admin/jqadm/url/create/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -350,10 +350,10 @@ admin/jqadm/url/create/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -422,10 +422,10 @@ admin/jqadm/url/delete/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -480,10 +480,10 @@ admin/jqadm/url/delete/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -551,10 +551,10 @@ admin/jqadm/url/export/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -607,10 +607,10 @@ admin/jqadm/url/export/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -678,10 +678,10 @@ admin/jqadm/url/get/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -736,10 +736,10 @@ admin/jqadm/url/get/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -775,6 +775,136 @@ See also:
 * admin/jqadm/url/get/config
 * admin/jqadm/url/get/filter
 
+# import
+## action
+
+Name of the action that should create the output
+
+```
+admin/jqadm/url/import/action = 
+```
+
+* Type: string - Name of the action
+* Since: 2023.10
+
+In Model-View-Controller (MVC) applications, actions are the methods of a
+controller that create parts of the output displayed in the generated HTML page.
+Action names are usually alpha-numeric.
+
+See also:
+
+* admin/jqadm/url/import/target
+* admin/jqadm/url/import/controller
+* admin/jqadm/url/import/config
+* admin/jqadm/url/import/filter
+
+## config
+
+Associative list of configuration options used for generating the URL
+
+```
+admin/jqadm/url/import/config = Array
+(
+)
+```
+
+* Default: `Array
+(
+)
+`
+* Type: string - Associative list of configuration options
+* Since: 2023.10
+
+You can specify additional options as key/value pairs used when generating
+the URLs, like
+
+```
+ admin/jqadm/url/import/config = ['absoluteUri' => true )
+```
+
+The available key/value pairs depend on the application that embeds the e-commerce
+framework. This is because the infrastructure of the application is used for
+generating the URLs. The full list of available config options is referenced
+in the "see also" section of this page.
+
+See also:
+
+* admin/jqadm/url/import/target
+* admin/jqadm/url/import/controller
+* admin/jqadm/url/import/action
+* admin/jqadm/url/import/filter
+
+## controller
+
+Name of the controller whose action should be called
+
+```
+admin/jqadm/url/import/controller = 
+```
+
+* Type: string - Name of the controller
+* Since: 2023.10
+
+In Model-View-Controller (MVC) applications, the controller contains the methods
+that create parts of the output displayed in the generated HTML page. Controller
+names are usually alpha-numeric.
+
+See also:
+
+* admin/jqadm/url/import/target
+* admin/jqadm/url/import/action
+* admin/jqadm/url/import/config
+* admin/jqadm/url/import/filter
+
+## filter
+
+Removes parameters for the detail page before generating the URL
+
+```
+admin/jqadm/url/import/filter = Array
+(
+)
+```
+
+* Default: `Array
+(
+)
+`
+* Type: array - List of parameter names to remove
+* Since: 2023.10
+
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* admin/jqadm/url/import/target
+* admin/jqadm/url/import/controller
+* admin/jqadm/url/import/action
+* admin/jqadm/url/import/config
+
+## target
+
+Destination of the URL where the controller specified in the URL is known
+
+```
+admin/jqadm/url/import/target = 
+```
+
+* Type: string - Destination of the URL
+* Since: 2023.10
+
+The destination can be a page ID like in a content management system or the
+module of a software development framework. This "target" must contain or know
+the controller that should be called by the generated URL.
+
+See also:
+
+* admin/jqadm/url/import/controller
+* admin/jqadm/url/import/action
+* admin/jqadm/url/import/config
+* admin/jqadm/url/import/filter
+
 # save
 ## action
 
@@ -807,10 +937,10 @@ admin/jqadm/url/save/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -863,10 +993,10 @@ admin/jqadm/url/save/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -934,10 +1064,10 @@ admin/jqadm/url/search/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -992,10 +1122,10 @@ admin/jqadm/url/search/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 

@@ -110,7 +110,7 @@ Relative path to the JSON API template for GET requests
 admin/jsonadm/plugin/config/template-get = config
 ```
 
-* Default: config
+* Default: `config`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2017.07
 

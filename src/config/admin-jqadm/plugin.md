@@ -112,14 +112,14 @@ admin/jqadm/plugin/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => plugin.status
     [1] => plugin.label
     [2] => plugin.provider
     [3] => plugin.position
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -185,10 +185,10 @@ admin/jqadm/plugin/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -233,7 +233,7 @@ Relative path to the HTML body template for the plugin item.
 admin/jqadm/plugin/template-item = plugin/item
 ```
 
-* Default: plugin/item
+* Default: `plugin/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -258,7 +258,7 @@ Relative path to the HTML body template for the plugin list.
 admin/jqadm/plugin/template-list = plugin/list
 ```
 
-* Default: plugin/list
+* Default: `plugin/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

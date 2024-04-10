@@ -7,7 +7,7 @@ Relative path to the catalog actions partial template file
 client/html/catalog/partials/actions = catalog/actions
 ```
 
-* Default: catalog/actions
+* Default: `catalog/actions`
 * Type: string - Relative path to the template file
 * Since: 2017.04
 
@@ -25,7 +25,7 @@ Relative path to the social partial template file
 client/html/catalog/partials/social = catalog/social
 ```
 
-* Default: catalog/social
+* Default: `catalog/social`
 * Type: string - Relative path to the template file
 * Since: 2017.04
 

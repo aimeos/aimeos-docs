@@ -37,9 +37,15 @@ See also:
 Excludes decorators added by the "common" option from the stock import CSV job controller
 
 ```
-controller/jobs/stock/import/csv/decorators/excludes = 
+controller/jobs/stock/import/csv/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -71,9 +77,15 @@ See also:
 Adds a list of globally available decorators only to the stock import CSV job controller
 
 ```
-controller/jobs/stock/import/csv/decorators/global = 
+controller/jobs/stock/import/csv/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -103,9 +115,15 @@ See also:
 Adds a list of local decorators only to the stock import CSV job controller
 
 ```
-controller/jobs/stock/import/csv/decorators/local = 
+controller/jobs/stock/import/csv/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -140,7 +158,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/stock/import/csv/location = stock
 ```
 
-* Default: stock
+* Default: `stock`
 * Type: string - Relative path to the CSV files
 * Since: 2019.04
 
@@ -164,7 +182,7 @@ Maximum number of CSV rows to import at once
 controller/jobs/stock/import/csv/max-size = 1000
 ```
 
-* Default: 1000
+* Default: `1000`
 * Type: integer - Number of rows
 * Since: 2019.04
 
@@ -186,9 +204,10 @@ See also:
 Class name of the used stock suggestions scheduler controller implementation
 
 ```
-controller/jobs/stock/import/csv/name = 
+controller/jobs/stock/import/csv/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 
@@ -233,7 +252,7 @@ Number of rows skipped in front of each CSV files
 controller/jobs/stock/import/csv/skip-lines = 0
 ```
 
-* Default: 0
+* Default: `0`
 * Type: integer - Number of rows
 * Since: 2019.04
 

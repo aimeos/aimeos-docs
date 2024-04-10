@@ -8,7 +8,7 @@ Disables the basket limits check
 mshop/plugin/provider/order/complete/disable = 
 ```
 
-* Default: 
+* Default: ``
 * Type: bool - True to disable the check, false to keep it enabled
 * Since: 2014.03
 
@@ -33,10 +33,10 @@ mshop/plugin/provider/order/decorators = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 

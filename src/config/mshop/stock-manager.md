@@ -79,7 +79,7 @@ mshop/stock/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msto."id"
@@ -89,7 +89,7 @@ mshop/stock/manager/count/mysql =
  	ORDER BY msto."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -106,10 +106,10 @@ mshop/stock/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.01
 * Since: 2017.01
@@ -150,10 +150,10 @@ mshop/stock/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.01
 * Since: 2017.01
@@ -192,10 +192,10 @@ mshop/stock/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.01
 * Since: 2017.01
@@ -270,10 +270,10 @@ mshop/stock/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_stock"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -337,14 +337,14 @@ mshop/stock/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_stock" ( :names
  	"prodid", "type", "stocklevel", "backdate",
  	"timeframe", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -358,7 +358,7 @@ Class name of the used product stock manager implementation
 mshop/stock/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2017.01
 * Since: 2017.01
@@ -458,7 +458,7 @@ Name of the database connection resource to use
 mshop/stock/manager/resource = db-stock
 ```
 
-* Default: db-stock
+* Default: `db-stock`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -477,11 +477,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/stock/manager/search/ansi = 
  SELECT :columns
- 	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
- 	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
- 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.dateback",
- 	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
- 	msto."ctime" AS "stock.ctime", msto."editor" AS "stock.editor"
  FROM "mshop_stock" msto
  :joins
  WHERE :cond
@@ -547,11 +542,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/stock/manager/search/mysql = 
  SELECT :columns
- 	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
- 	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
- 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.dateback",
- 	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
- 	msto."ctime" AS "stock.ctime", msto."editor" AS "stock.editor"
  FROM "mshop_stock" msto
  :joins
  WHERE :cond
@@ -559,19 +549,14 @@ mshop/stock/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	msto."id" AS "stock.id", msto."prodid" AS "stock.productid",
- 	msto."siteid" AS "stock.siteid", msto."type" AS "stock.type",
- 	msto."stocklevel" AS "stock.stocklevel", msto."backdate" AS "stock.dateback",
- 	msto."timeframe" AS "stock.timeframe", msto."mtime" AS "stock.mtime",
- 	msto."ctime" AS "stock.ctime", msto."editor" AS "stock.editor"
  FROM "mshop_stock" msto
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -585,7 +570,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/stock/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -664,11 +649,11 @@ mshop/stock/manager/stocklevel/mysql =
  WHERE "prodid" = ? AND "type" = ? AND :cond
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_stock"
  SET "stocklevel" = "stocklevel" - ?, "mtime" = ?, "editor" = ?
  WHERE "prodid" = ? AND "type" = ? AND :cond
-
+`
 
 See also:
 
@@ -684,10 +669,10 @@ mshop/stock/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2017.01
 
@@ -781,7 +766,7 @@ mshop/stock/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mstoty."id"
@@ -791,7 +776,7 @@ mshop/stock/manager/type/count/mysql =
  	ORDER BY mstoty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -807,10 +792,10 @@ mshop/stock/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.01
 
@@ -847,10 +832,10 @@ mshop/stock/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.01
 
@@ -887,10 +872,10 @@ mshop/stock/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.01
 
@@ -960,10 +945,10 @@ mshop/stock/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_stock_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1025,14 +1010,14 @@ mshop/stock/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_stock_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1046,7 +1031,7 @@ Class name of the used stock type manager implementation
 mshop/stock/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2017.01
 
@@ -1142,12 +1127,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/stock/manager/type/search/ansi = 
  SELECT :columns
- 	mstoty."id" AS "stock.type.id", mstoty."siteid" AS "stock.type.siteid",
- 	mstoty."code" AS "stock.type.code", mstoty."domain" AS "stock.type.domain",
- 	mstoty."label" AS "stock.type.label", mstoty."status" AS "stock.type.status",
- 	mstoty."mtime" AS "stock.type.mtime", mstoty."editor" AS "stock.type.editor",
- 	mstoty."ctime" AS "stock.type.ctime", mstoty."pos" AS "stock.type.position",
- 	mstoty."i18n" AS "stock.type.i18n"
  FROM "mshop_stock_type" mstoty
  :joins
  WHERE :cond
@@ -1212,12 +1191,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/stock/manager/type/search/mysql = 
  SELECT :columns
- 	mstoty."id" AS "stock.type.id", mstoty."siteid" AS "stock.type.siteid",
- 	mstoty."code" AS "stock.type.code", mstoty."domain" AS "stock.type.domain",
- 	mstoty."label" AS "stock.type.label", mstoty."status" AS "stock.type.status",
- 	mstoty."mtime" AS "stock.type.mtime", mstoty."editor" AS "stock.type.editor",
- 	mstoty."ctime" AS "stock.type.ctime", mstoty."pos" AS "stock.type.position",
- 	mstoty."i18n" AS "stock.type.i18n"
  FROM "mshop_stock_type" mstoty
  :joins
  WHERE :cond
@@ -1225,20 +1198,14 @@ mshop/stock/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mstoty."id" AS "stock.type.id", mstoty."siteid" AS "stock.type.siteid",
- 	mstoty."code" AS "stock.type.code", mstoty."domain" AS "stock.type.domain",
- 	mstoty."label" AS "stock.type.label", mstoty."status" AS "stock.type.status",
- 	mstoty."mtime" AS "stock.type.mtime", mstoty."editor" AS "stock.type.editor",
- 	mstoty."ctime" AS "stock.type.ctime", mstoty."pos" AS "stock.type.position",
- 	mstoty."i18n" AS "stock.type.i18n"
  FROM "mshop_stock_type" mstoty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1254,10 +1221,10 @@ mshop/stock/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2017.01
 
@@ -1323,13 +1290,13 @@ mshop/stock/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_stock_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1388,13 +1355,13 @@ mshop/stock/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_stock"
  SET :names
  	"prodid" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
  	"timeframe" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

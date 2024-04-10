@@ -143,10 +143,10 @@ admin/jqadm/dashboard/job/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.08
 
@@ -181,10 +181,10 @@ admin/jqadm/dashboard/job/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.08
 
@@ -217,7 +217,7 @@ Name of the job subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/job/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.08
 
@@ -235,10 +235,10 @@ admin/jqadm/dashboard/job/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.08
 
@@ -283,7 +283,7 @@ Relative path to the HTML body template of the job subpart for the dashboard.
 admin/jqadm/dashboard/job/template-list = dashboard/list-job
 ```
 
-* Default: dashboard/list-job
+* Default: `dashboard/list-job`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.08
 
@@ -389,10 +389,10 @@ admin/jqadm/dashboard/notify/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2022.04
 
@@ -427,10 +427,10 @@ admin/jqadm/dashboard/notify/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2022.04
 
@@ -463,7 +463,7 @@ Name of the notify subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/notify/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2022.04
 
@@ -481,10 +481,10 @@ admin/jqadm/dashboard/notify/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2022.04
 
@@ -529,7 +529,7 @@ Relative path to the HTML body template of the notify subpart for the dashboard.
 admin/jqadm/dashboard/notify/template-list = dashboard/list-notify
 ```
 
-* Default: dashboard/list-notify
+* Default: `dashboard/list-notify`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2022.04
 
@@ -591,10 +591,10 @@ admin/jqadm/dashboard/order/countcountry/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -629,10 +629,10 @@ admin/jqadm/dashboard/order/countcountry/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -665,7 +665,7 @@ Name of the order countcountry subpart used by the JQAdm dashboard implementatio
 admin/jqadm/dashboard/order/countcountry/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2021.04
 
@@ -683,10 +683,10 @@ admin/jqadm/dashboard/order/countcountry/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -731,7 +731,7 @@ Relative path to the HTML body template of the order per countcountry subpart fo
 admin/jqadm/dashboard/order/countcountry/template-item = dashboard/item-order-countcountry
 ```
 
-* Default: dashboard/item-order-countcountry
+* Default: `dashboard/item-order-countcountry`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -792,10 +792,10 @@ admin/jqadm/dashboard/order/countday/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -830,10 +830,10 @@ admin/jqadm/dashboard/order/countday/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -866,7 +866,7 @@ Name of the order countday subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/order/countday/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -884,10 +884,10 @@ admin/jqadm/dashboard/order/countday/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -932,7 +932,7 @@ Relative path to the HTML body template of the order per countday subpart for th
 admin/jqadm/dashboard/order/countday/template-item = dashboard/item-order-countday
 ```
 
-* Default: dashboard/item-order-countday
+* Default: `dashboard/item-order-countday`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -993,10 +993,10 @@ admin/jqadm/dashboard/order/counthour/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1031,10 +1031,10 @@ admin/jqadm/dashboard/order/counthour/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1067,7 +1067,7 @@ Name of the order counthour subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/order/counthour/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -1085,10 +1085,10 @@ admin/jqadm/dashboard/order/counthour/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -1133,7 +1133,7 @@ Relative path to the HTML body template of the order per counthour subpart for t
 admin/jqadm/dashboard/order/counthour/template-item = dashboard/item-order-counthour
 ```
 
-* Default: dashboard/item-order-counthour
+* Default: `dashboard/item-order-counthour`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1194,10 +1194,10 @@ admin/jqadm/dashboard/order/countpaystatus/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1232,10 +1232,10 @@ admin/jqadm/dashboard/order/countpaystatus/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1268,7 +1268,7 @@ Name of the order countpaystatus subpart used by the JQAdm dashboard implementat
 admin/jqadm/dashboard/order/countpaystatus/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -1286,10 +1286,10 @@ admin/jqadm/dashboard/order/countpaystatus/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -1334,7 +1334,7 @@ Relative path to the HTML body template of the order per countpaystatus subpart 
 admin/jqadm/dashboard/order/countpaystatus/template-item = dashboard/item-order-countpaystatus
 ```
 
-* Default: dashboard/item-order-countpaystatus
+* Default: `dashboard/item-order-countpaystatus`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1395,10 +1395,10 @@ admin/jqadm/dashboard/order/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1433,10 +1433,10 @@ admin/jqadm/dashboard/order/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1505,10 +1505,10 @@ admin/jqadm/dashboard/order/latest/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -1543,10 +1543,10 @@ admin/jqadm/dashboard/order/latest/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.07
 
@@ -1579,7 +1579,7 @@ Name of the order latest subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/order/latest/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -1597,10 +1597,10 @@ admin/jqadm/dashboard/order/latest/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.07
 
@@ -1645,7 +1645,7 @@ Relative path to the HTML body template of the latest orders subpart for the das
 admin/jqadm/dashboard/order/latest/template-item = dashboard/item-order-latest
 ```
 
-* Default: dashboard/item-order-latest
+* Default: `dashboard/item-order-latest`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1670,7 +1670,7 @@ Name of the order subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/order/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.07
 
@@ -1722,10 +1722,10 @@ admin/jqadm/dashboard/order/quick/countcompleted/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -1760,10 +1760,10 @@ admin/jqadm/dashboard/order/quick/countcompleted/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -1796,7 +1796,7 @@ Name of the order quick/countcompleted subpart used by the JQAdm dashboard imple
 admin/jqadm/dashboard/order/quick/countcompleted/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2021.04
 
@@ -1814,10 +1814,10 @@ admin/jqadm/dashboard/order/quick/countcompleted/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -1862,7 +1862,7 @@ Relative path to the HTML body template of the order per quick/countcompleted su
 admin/jqadm/dashboard/order/quick/countcompleted/template-item = dashboard/item-order-quick-countcompleted
 ```
 
-* Default: dashboard/item-order-quick-countcompleted
+* Default: `dashboard/item-order-quick-countcompleted`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -1923,10 +1923,10 @@ admin/jqadm/dashboard/order/quick/countcustomer/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -1961,10 +1961,10 @@ admin/jqadm/dashboard/order/quick/countcustomer/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -1997,7 +1997,7 @@ Name of the order quick/countcustomer subpart used by the JQAdm dashboard implem
 admin/jqadm/dashboard/order/quick/countcustomer/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2021.04
 
@@ -2015,10 +2015,10 @@ admin/jqadm/dashboard/order/quick/countcustomer/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -2063,7 +2063,7 @@ Relative path to the HTML body template of the order per quick/countcustomer sub
 admin/jqadm/dashboard/order/quick/countcustomer/template-item = dashboard/item-order-quick-countcustomer
 ```
 
-* Default: dashboard/item-order-quick-countcustomer
+* Default: `dashboard/item-order-quick-countcustomer`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -2124,10 +2124,10 @@ admin/jqadm/dashboard/order/quick/counttotal/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2162,10 +2162,10 @@ admin/jqadm/dashboard/order/quick/counttotal/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2198,7 +2198,7 @@ Name of the order quick/counttotal subpart used by the JQAdm dashboard implement
 admin/jqadm/dashboard/order/quick/counttotal/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2021.04
 
@@ -2216,10 +2216,10 @@ admin/jqadm/dashboard/order/quick/counttotal/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -2264,7 +2264,7 @@ Relative path to the HTML body template of the order per quick/counttotal subpar
 admin/jqadm/dashboard/order/quick/counttotal/template-item = dashboard/item-order-quick-counttotal
 ```
 
-* Default: dashboard/item-order-quick-counttotal
+* Default: `dashboard/item-order-quick-counttotal`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -2325,10 +2325,10 @@ admin/jqadm/dashboard/order/quick/countunfinished/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2363,10 +2363,10 @@ admin/jqadm/dashboard/order/quick/countunfinished/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2021.04
 
@@ -2399,7 +2399,7 @@ Name of the order quick/countunfinished subpart used by the JQAdm dashboard impl
 admin/jqadm/dashboard/order/quick/countunfinished/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2021.04
 
@@ -2417,10 +2417,10 @@ admin/jqadm/dashboard/order/quick/countunfinished/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -2465,7 +2465,7 @@ Relative path to the HTML body template of the order per quick/countunfinished s
 admin/jqadm/dashboard/order/quick/countunfinished/template-item = dashboard/item-order-quick-countunfinished
 ```
 
-* Default: dashboard/item-order-quick-countunfinished
+* Default: `dashboard/item-order-quick-countunfinished`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -2526,10 +2526,10 @@ admin/jqadm/dashboard/order/quick/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2564,10 +2564,10 @@ admin/jqadm/dashboard/order/quick/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2600,7 +2600,7 @@ Name of the quick order subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/order/quick/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2016.07
 
@@ -2622,10 +2622,10 @@ admin/jqadm/dashboard/order/quick/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -2670,7 +2670,7 @@ Relative path to the HTML body template of the order quick subpart for the dashb
 admin/jqadm/dashboard/order/quick/template-list = dashboard/item-order-quick
 ```
 
-* Default: dashboard/item-order-quick
+* Default: `dashboard/item-order-quick`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.01
 
@@ -2731,10 +2731,10 @@ admin/jqadm/dashboard/order/salesday/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2769,10 +2769,10 @@ admin/jqadm/dashboard/order/salesday/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2805,7 +2805,7 @@ Name of the order salesday subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/order/salesday/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -2823,10 +2823,10 @@ admin/jqadm/dashboard/order/salesday/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -2871,7 +2871,7 @@ Relative path to the HTML body template of the order per salesday subpart for th
 admin/jqadm/dashboard/order/salesday/template-item = dashboard/item-order-salesday
 ```
 
-* Default: dashboard/item-order-salesday
+* Default: `dashboard/item-order-salesday`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.01
 
@@ -2932,10 +2932,10 @@ admin/jqadm/dashboard/order/salesmonth/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2970,10 +2970,10 @@ admin/jqadm/dashboard/order/salesmonth/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3006,7 +3006,7 @@ Name of the order salesmonth subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/order/salesmonth/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -3024,10 +3024,10 @@ admin/jqadm/dashboard/order/salesmonth/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -3072,7 +3072,7 @@ Relative path to the HTML body template of the order per salesmonth subpart for 
 admin/jqadm/dashboard/order/salesmonth/template-item = dashboard/item-order-salesmonth
 ```
 
-* Default: dashboard/item-order-salesmonth
+* Default: `dashboard/item-order-salesmonth`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.01
 
@@ -3133,10 +3133,10 @@ admin/jqadm/dashboard/order/salesweekday/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3171,10 +3171,10 @@ admin/jqadm/dashboard/order/salesweekday/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3207,7 +3207,7 @@ Name of the order salesweekday subpart used by the JQAdm dashboard implementatio
 admin/jqadm/dashboard/order/salesweekday/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -3225,10 +3225,10 @@ admin/jqadm/dashboard/order/salesweekday/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -3273,7 +3273,7 @@ Relative path to the HTML body template of the order per salesweekday subpart fo
 admin/jqadm/dashboard/order/salesweekday/template-item = dashboard/item-order-salesweekday
 ```
 
-* Default: dashboard/item-order-salesweekday
+* Default: `dashboard/item-order-salesweekday`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3334,10 +3334,10 @@ admin/jqadm/dashboard/order/servicedelivery/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3372,10 +3372,10 @@ admin/jqadm/dashboard/order/servicedelivery/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3408,7 +3408,7 @@ Name of the order deliverytype subpart used by the JQAdm dashboard implementatio
 admin/jqadm/dashboard/order/servicedelivery/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -3426,10 +3426,10 @@ admin/jqadm/dashboard/order/servicedelivery/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -3474,7 +3474,7 @@ Relative path to the HTML body template of the order per servicedelivery subpart
 admin/jqadm/dashboard/order/servicedelivery/template-item = dashboard/item-order-servicedelivery
 ```
 
-* Default: dashboard/item-order-servicedelivery
+* Default: `dashboard/item-order-servicedelivery`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3535,10 +3535,10 @@ admin/jqadm/dashboard/order/servicepayment/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3573,10 +3573,10 @@ admin/jqadm/dashboard/order/servicepayment/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -3609,7 +3609,7 @@ Name of the order servicepayment subpart used by the JQAdm dashboard implementat
 admin/jqadm/dashboard/order/servicepayment/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.01
 
@@ -3627,10 +3627,10 @@ admin/jqadm/dashboard/order/servicepayment/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -3675,7 +3675,7 @@ Relative path to the HTML body template of the order per servicepayment subpart 
 admin/jqadm/dashboard/order/servicepayment/template-item = dashboard/item-order-servicepayment
 ```
 
-* Default: dashboard/item-order-servicepayment
+* Default: `dashboard/item-order-servicepayment`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -3713,10 +3713,10 @@ admin/jqadm/dashboard/order/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -3761,7 +3761,7 @@ Relative path to the HTML body template of the order subpart for the dashboard.
 admin/jqadm/dashboard/order/template-list = dashboard/list-order
 ```
 
-* Default: dashboard/list-order
+* Default: `dashboard/list-order`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.01
 
@@ -3823,10 +3823,10 @@ admin/jqadm/dashboard/setting/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2020.01
 
@@ -3861,10 +3861,10 @@ admin/jqadm/dashboard/setting/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2020.01
 
@@ -3897,7 +3897,7 @@ Name of the setting subpart used by the JQAdm dashboard implementation
 admin/jqadm/dashboard/setting/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2020.01
 
@@ -3915,10 +3915,10 @@ admin/jqadm/dashboard/setting/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2020.01
 
@@ -3963,7 +3963,7 @@ Relative path to the HTML body template of the setting subpart for the dashboard
 admin/jqadm/dashboard/setting/template-list = dashboard/list-setting
 ```
 
-* Default: dashboard/list-setting
+* Default: `dashboard/list-setting`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2020.01
 
@@ -3994,10 +3994,10 @@ admin/jqadm/dashboard/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.07
 
@@ -4042,7 +4042,7 @@ Relative path to the HTML body template of the dashboard.
 admin/jqadm/dashboard/template-list = dashboard/list
 ```
 
-* Default: dashboard/list
+* Default: `dashboard/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

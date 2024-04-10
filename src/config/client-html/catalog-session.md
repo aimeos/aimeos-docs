@@ -152,10 +152,10 @@ client/html/catalog/session/pinned = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Associative list of name/value settings
 
 This returns all settings related to the catalog session pinned subpart.
@@ -173,7 +173,7 @@ Displays the number of pinned products in the header of the pinned list
 client/html/catalog/session/pinned/count/enable = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: integer - Zero to disable the counter, one to enable it
 * Since: 2014.09
 
@@ -194,10 +194,10 @@ client/html/catalog/session/pinned/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -208,10 +208,10 @@ client/html/catalog/session/pinned/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## domains
@@ -228,14 +228,14 @@ client/html/catalog/session/pinned/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => catalog
     [1] => media
     [2] => price
     [3] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2015.04
 
@@ -261,7 +261,7 @@ Maximum number of products displayed in the "pinned" section
 client/html/catalog/session/pinned/maxitems = 50
 ```
 
-* Default: 50
+* Default: `50`
 * Type: integer - Number of products
 * Since: 2014.09
 
@@ -283,7 +283,7 @@ Name of the pinned part used by the catalog session client implementation
 client/html/catalog/session/pinned/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.09
 
@@ -299,7 +299,7 @@ Relative path to the HTML body template of the catalog session pinned client.
 client/html/catalog/session/pinned/template-body = catalog/session/pinned-body
 ```
 
-* Default: catalog/session/pinned-body
+* Default: `catalog/session/pinned-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -327,7 +327,7 @@ Name of the action that should create the output
 client/html/catalog/session/pinned/url/action = session
 ```
 
-* Default: session
+* Default: `session`
 * Type: string - Name of the action
 * Since: 2014.09
 
@@ -352,10 +352,10 @@ client/html/catalog/session/pinned/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -386,7 +386,7 @@ Name of the controller whose action should be called
 client/html/catalog/session/pinned/url/controller = Catalog
 ```
 
-* Default: Catalog
+* Default: `Catalog`
 * Type: string - Name of the controller
 * Since: 2014.09
 
@@ -411,10 +411,10 @@ client/html/catalog/session/pinned/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -459,7 +459,7 @@ Displays the number of last seen products in the header of the last seen list
 client/html/catalog/session/seen/count/enable = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: integer - Zero to disable the counter, one to enable it
 * Since: 2014.09
 
@@ -480,10 +480,10 @@ client/html/catalog/session/seen/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -494,10 +494,10 @@ client/html/catalog/session/seen/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## maxitems
@@ -508,7 +508,7 @@ Maximum number of products displayed in the "last seen" section
 client/html/catalog/session/seen/maxitems = 6
 ```
 
-* Default: 6
+* Default: `6`
 * Type: integer - Number of products
 * Since: 2014.03
 
@@ -525,7 +525,7 @@ Name of the seen part used by the catalog session client implementation
 client/html/catalog/session/seen/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -541,7 +541,7 @@ Relative path to the HTML body template of the catalog session seen client.
 client/html/catalog/session/seen/template-body = catalog/session/seen-body
 ```
 
-* Default: catalog/session/seen-body
+* Default: `catalog/session/seen-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -573,12 +573,12 @@ client/html/catalog/session/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => pinned
     [1] => seen
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -623,7 +623,7 @@ Relative path to the HTML body template of the catalog session client.
 client/html/catalog/session/template-body = catalog/session/body
 ```
 
-* Default: catalog/session/body
+* Default: `catalog/session/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -651,7 +651,7 @@ Relative path to the HTML header template of the catalog session client.
 client/html/catalog/session/template-header = catalog/session/header
 ```
 
-* Default: catalog/session/header
+* Default: `catalog/session/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

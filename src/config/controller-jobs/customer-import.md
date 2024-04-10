@@ -5,7 +5,7 @@
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/customer/import/xml/backup =
+controller/jobs/customer/import/xml/backup = 
 ```
 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
@@ -42,10 +42,10 @@ controller/jobs/customer/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -82,10 +82,10 @@ controller/jobs/customer/import/xml/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -120,10 +120,10 @@ controller/jobs/customer/import/xml/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -166,7 +166,7 @@ controller/jobs/customer/import/xml/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => customer/address
     [1] => group
@@ -175,7 +175,7 @@ controller/jobs/customer/import/xml/domains = Array
     [4] => product
     [5] => text
 )
-
+`
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -199,7 +199,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/customer/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: customer
+* Default: `customer`
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
@@ -223,7 +223,7 @@ Maximum number of XML nodes processed at once
 controller/jobs/customer/import/xml/max-query = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 
@@ -247,7 +247,7 @@ Class name of the used customer suggestions scheduler controller implementation
 controller/jobs/customer/import/xml/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 
@@ -282,3 +282,18 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyXml"!
+
+
+## processor/group/name
+
+Name of the group processor implementation
+
+```
+controller/jobs/customer/import/xml/processor/group/name = 
+```
+
+* Type: string - Last part of the processor class name
+* Since: 2019.04
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Customer\Import\Xml\Processor\Group\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".

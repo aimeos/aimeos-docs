@@ -110,7 +110,7 @@ Load the category tree instead of the nodes of the first level only
 client/jsonapi/catalog/deep = 1
 ```
 
-* Default: 
+* Default: ``
 * Type: bool - True for category tree, false for first level only
 * Since: 2020.10
 
@@ -181,7 +181,7 @@ Relative path to the catalog lists JSON API template
 client/jsonapi/catalog/template = catalog/standard
 ```
 
-* Default: catalog/standard
+* Default: `catalog/standard`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2017.03
 

@@ -78,7 +78,7 @@ mshop/supplier/manager/address/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupad."id"
@@ -88,7 +88,7 @@ mshop/supplier/manager/address/count/mysql =
  	ORDER BY msupad."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -104,10 +104,10 @@ mshop/supplier/manager/address/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -144,10 +144,10 @@ mshop/supplier/manager/address/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -184,10 +184,10 @@ mshop/supplier/manager/address/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -257,10 +257,10 @@ mshop/supplier/manager/address/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_supplier_address"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -328,7 +328,7 @@ mshop/supplier/manager/address/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_supplier_address" ( :names
  	"parentid", "company", "vatid", "salutation", "title",
  	"firstname", "lastname", "address1", "address2", "address3",
@@ -338,7 +338,7 @@ mshop/supplier/manager/address/insert/mysql =
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -352,7 +352,7 @@ Class name of the used supplier address manager implementation
 mshop/supplier/manager/address/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -448,21 +448,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/address/search/ansi = 
  SELECT :columns
- 	msupad."id" AS "supplier.address.id", msupad."siteid" AS "supplier.address.siteid",
- 	msupad."parentid" AS "supplier.address.parentid", msupad."pos" AS "supplier.address.position",
- 	msupad."company" AS "supplier.address.company", msupad."vatid" AS "supplier.address.vatid",
- 	msupad."salutation" AS "supplier.address.salutation", msupad."title" AS "supplier.address.title",
- 	msupad."firstname" AS "supplier.address.firstname", msupad."lastname" AS "supplier.address.lastname",
- 	msupad."address1" AS "supplier.address.address1", msupad."address2" AS "supplier.address.address2",
- 	msupad."address3" AS "supplier.address.address3", msupad."postal" AS "supplier.address.postal",
- 	msupad."city" AS "supplier.address.city", msupad."state" AS "supplier.address.state",
- 	msupad."countryid" AS "supplier.address.countryid", msupad."langid" AS "supplier.address.languageid",
- 	msupad."telephone" AS "supplier.address.telephone", msupad."email" AS "supplier.address.email",
- 	msupad."telefax" AS "supplier.address.telefax", msupad."website" AS "supplier.address.website",
- 	msupad."longitude" AS "supplier.address.longitude", msupad."latitude" AS "supplier.address.latitude",
- 	msupad."mtime" AS "supplier.address.mtime", msupad."ctime" AS "supplier.address.ctime",
- 	msupad."editor" AS "supplier.address.editor", msupad."birthday" AS "supplier.address.birthday",
- 	msupad."mobile" AS "supplier.address.mobile"
  FROM "mshop_supplier_address" msupad
  :joins
  WHERE :cond
@@ -527,21 +512,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/address/search/mysql = 
  SELECT :columns
- 	msupad."id" AS "supplier.address.id", msupad."siteid" AS "supplier.address.siteid",
- 	msupad."parentid" AS "supplier.address.parentid", msupad."pos" AS "supplier.address.position",
- 	msupad."company" AS "supplier.address.company", msupad."vatid" AS "supplier.address.vatid",
- 	msupad."salutation" AS "supplier.address.salutation", msupad."title" AS "supplier.address.title",
- 	msupad."firstname" AS "supplier.address.firstname", msupad."lastname" AS "supplier.address.lastname",
- 	msupad."address1" AS "supplier.address.address1", msupad."address2" AS "supplier.address.address2",
- 	msupad."address3" AS "supplier.address.address3", msupad."postal" AS "supplier.address.postal",
- 	msupad."city" AS "supplier.address.city", msupad."state" AS "supplier.address.state",
- 	msupad."countryid" AS "supplier.address.countryid", msupad."langid" AS "supplier.address.languageid",
- 	msupad."telephone" AS "supplier.address.telephone", msupad."email" AS "supplier.address.email",
- 	msupad."telefax" AS "supplier.address.telefax", msupad."website" AS "supplier.address.website",
- 	msupad."longitude" AS "supplier.address.longitude", msupad."latitude" AS "supplier.address.latitude",
- 	msupad."mtime" AS "supplier.address.mtime", msupad."ctime" AS "supplier.address.ctime",
- 	msupad."editor" AS "supplier.address.editor", msupad."birthday" AS "supplier.address.birthday",
- 	msupad."mobile" AS "supplier.address.mobile"
  FROM "mshop_supplier_address" msupad
  :joins
  WHERE :cond
@@ -549,29 +519,14 @@ mshop/supplier/manager/address/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	msupad."id" AS "supplier.address.id", msupad."siteid" AS "supplier.address.siteid",
- 	msupad."parentid" AS "supplier.address.parentid", msupad."pos" AS "supplier.address.position",
- 	msupad."company" AS "supplier.address.company", msupad."vatid" AS "supplier.address.vatid",
- 	msupad."salutation" AS "supplier.address.salutation", msupad."title" AS "supplier.address.title",
- 	msupad."firstname" AS "supplier.address.firstname", msupad."lastname" AS "supplier.address.lastname",
- 	msupad."address1" AS "supplier.address.address1", msupad."address2" AS "supplier.address.address2",
- 	msupad."address3" AS "supplier.address.address3", msupad."postal" AS "supplier.address.postal",
- 	msupad."city" AS "supplier.address.city", msupad."state" AS "supplier.address.state",
- 	msupad."countryid" AS "supplier.address.countryid", msupad."langid" AS "supplier.address.languageid",
- 	msupad."telephone" AS "supplier.address.telephone", msupad."email" AS "supplier.address.email",
- 	msupad."telefax" AS "supplier.address.telefax", msupad."website" AS "supplier.address.website",
- 	msupad."longitude" AS "supplier.address.longitude", msupad."latitude" AS "supplier.address.latitude",
- 	msupad."mtime" AS "supplier.address.mtime", msupad."ctime" AS "supplier.address.ctime",
- 	msupad."editor" AS "supplier.address.editor", msupad."birthday" AS "supplier.address.birthday",
- 	msupad."mobile" AS "supplier.address.mobile"
  FROM "mshop_supplier_address" msupad
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -587,10 +542,10 @@ mshop/supplier/manager/address/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -664,7 +619,7 @@ mshop/supplier/manager/address/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_supplier_address"
  SET :names
  	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
@@ -674,7 +629,7 @@ mshop/supplier/manager/address/update/mysql =
  	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
  	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -761,7 +716,7 @@ mshop/supplier/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msup."id"
@@ -772,7 +727,7 @@ mshop/supplier/manager/count/mysql =
  	ORDER BY msup."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -789,10 +744,10 @@ mshop/supplier/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -829,10 +784,10 @@ mshop/supplier/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -869,10 +824,10 @@ mshop/supplier/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -942,10 +897,10 @@ mshop/supplier/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_supplier"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1006,13 +961,13 @@ mshop/supplier/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_supplier" ( :names
  	"code", "label", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1161,7 +1116,7 @@ mshop/supplier/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msupli."id"
@@ -1171,7 +1126,7 @@ mshop/supplier/manager/lists/count/mysql =
  	ORDER BY msupli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1187,10 +1142,10 @@ mshop/supplier/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1227,10 +1182,10 @@ mshop/supplier/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1267,10 +1222,10 @@ mshop/supplier/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1341,10 +1296,10 @@ mshop/supplier/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_supplier_list"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1407,14 +1362,14 @@ mshop/supplier/manager/lists/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_supplier_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1428,7 +1383,7 @@ Class name of the used supplier list manager implementation
 mshop/supplier/manager/lists/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1525,13 +1480,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/lists/search/ansi = 
  SELECT :columns
- 	msupli."id" AS "supplier.lists.id", msupli."parentid" AS "supplier.lists.parentid",
- 	msupli."siteid" AS "supplier.lists.siteid", msupli."type" AS "supplier.lists.type",
- 	msupli."domain" AS "supplier.lists.domain", msupli."refid" AS "supplier.lists.refid",
- 	msupli."start" AS "supplier.lists.datestart", msupli."end" AS "supplier.lists.dateend",
- 	msupli."config" AS "supplier.lists.config", msupli."pos" AS "supplier.lists.position",
- 	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
- 	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
  FROM "mshop_supplier_list" msupli
  :joins
  WHERE :cond
@@ -1597,13 +1545,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/lists/search/mysql = 
  SELECT :columns
- 	msupli."id" AS "supplier.lists.id", msupli."parentid" AS "supplier.lists.parentid",
- 	msupli."siteid" AS "supplier.lists.siteid", msupli."type" AS "supplier.lists.type",
- 	msupli."domain" AS "supplier.lists.domain", msupli."refid" AS "supplier.lists.refid",
- 	msupli."start" AS "supplier.lists.datestart", msupli."end" AS "supplier.lists.dateend",
- 	msupli."config" AS "supplier.lists.config", msupli."pos" AS "supplier.lists.position",
- 	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
- 	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
  FROM "mshop_supplier_list" msupli
  :joins
  WHERE :cond
@@ -1611,21 +1552,14 @@ mshop/supplier/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	msupli."id" AS "supplier.lists.id", msupli."parentid" AS "supplier.lists.parentid",
- 	msupli."siteid" AS "supplier.lists.siteid", msupli."type" AS "supplier.lists.type",
- 	msupli."domain" AS "supplier.lists.domain", msupli."refid" AS "supplier.lists.refid",
- 	msupli."start" AS "supplier.lists.datestart", msupli."end" AS "supplier.lists.dateend",
- 	msupli."config" AS "supplier.lists.config", msupli."pos" AS "supplier.lists.position",
- 	msupli."status" AS "supplier.lists.status", msupli."mtime" AS "supplier.lists.mtime",
- 	msupli."editor" AS "supplier.lists.editor", msupli."ctime" AS "supplier.lists.ctime"
  FROM "mshop_supplier_list" msupli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1641,10 +1575,10 @@ mshop/supplier/manager/lists/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1737,7 +1671,7 @@ mshop/supplier/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msuplity."id"
@@ -1747,7 +1681,7 @@ mshop/supplier/manager/lists/type/count/mysql =
  	ORDER BY msuplity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1763,10 +1697,10 @@ mshop/supplier/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1803,10 +1737,10 @@ mshop/supplier/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1843,10 +1777,10 @@ mshop/supplier/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1916,10 +1850,10 @@ mshop/supplier/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_supplier_list_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1981,14 +1915,14 @@ mshop/supplier/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_supplier_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2002,7 +1936,7 @@ Class name of the used supplier list type manager implementation
 mshop/supplier/manager/lists/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -2098,12 +2032,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/lists/type/search/ansi = 
  SELECT :columns
- 	msuplity."id" AS "supplier.lists.type.id", msuplity."siteid" AS "supplier.lists.type.siteid",
- 	msuplity."code" AS "supplier.lists.type.code", msuplity."domain" AS "supplier.lists.type.domain",
- 	msuplity."label" AS "supplier.lists.type.label", msuplity."status" AS "supplier.lists.type.status",
- 	msuplity."mtime" AS "supplier.lists.type.mtime", msuplity."editor" AS "supplier.lists.type.editor",
- 	msuplity."ctime" AS "supplier.lists.type.ctime", msuplity."pos" AS "supplier.lists.type.position",
- 	msuplity."i18n" AS "supplier.lists.type.i18n"
  FROM "mshop_supplier_list_type" msuplity
  :joins
  WHERE :cond
@@ -2168,12 +2096,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/lists/type/search/mysql = 
  SELECT :columns
- 	msuplity."id" AS "supplier.lists.type.id", msuplity."siteid" AS "supplier.lists.type.siteid",
- 	msuplity."code" AS "supplier.lists.type.code", msuplity."domain" AS "supplier.lists.type.domain",
- 	msuplity."label" AS "supplier.lists.type.label", msuplity."status" AS "supplier.lists.type.status",
- 	msuplity."mtime" AS "supplier.lists.type.mtime", msuplity."editor" AS "supplier.lists.type.editor",
- 	msuplity."ctime" AS "supplier.lists.type.ctime", msuplity."pos" AS "supplier.lists.type.position",
- 	msuplity."i18n" AS "supplier.lists.type.i18n"
  FROM "mshop_supplier_list_type" msuplity
  :joins
  WHERE :cond
@@ -2181,20 +2103,14 @@ mshop/supplier/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	msuplity."id" AS "supplier.lists.type.id", msuplity."siteid" AS "supplier.lists.type.siteid",
- 	msuplity."code" AS "supplier.lists.type.code", msuplity."domain" AS "supplier.lists.type.domain",
- 	msuplity."label" AS "supplier.lists.type.label", msuplity."status" AS "supplier.lists.type.status",
- 	msuplity."mtime" AS "supplier.lists.type.mtime", msuplity."editor" AS "supplier.lists.type.editor",
- 	msuplity."ctime" AS "supplier.lists.type.ctime", msuplity."pos" AS "supplier.lists.type.position",
- 	msuplity."i18n" AS "supplier.lists.type.i18n"
  FROM "mshop_supplier_list_type" msuplity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2210,10 +2126,10 @@ mshop/supplier/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2279,13 +2195,13 @@ mshop/supplier/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_supplier_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -2343,13 +2259,13 @@ mshop/supplier/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_supplier_list"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -2363,7 +2279,7 @@ Class name of the used supplier manager implementation
 mshop/supplier/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -2461,7 +2377,7 @@ Name of the database connection resource to use
 mshop/supplier/manager/resource = db-supplier
 ```
 
-* Default: db-supplier
+* Default: `db-supplier`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -2482,17 +2398,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/search/ansi = 
  SELECT :columns
- 	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
- 	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
- 	msup."pos" AS "supplier.position", msup."status" AS "supplier.status",
- 	msup."mtime" AS "supplier.mtime", msup."ctime" AS "supplier.ctime",
- 	msup."editor" AS "supplier.editor"
  FROM "mshop_supplier" msup
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	msup."id", msup."siteid", msup."code", msup."label", msup."pos", msup."status",
- 	msup."mtime", msup."editor", msup."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -2554,35 +2463,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/supplier/manager/search/mysql = 
  SELECT :columns
- 	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
- 	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
- 	msup."pos" AS "supplier.position", msup."status" AS "supplier.status",
- 	msup."mtime" AS "supplier.mtime", msup."ctime" AS "supplier.ctime",
- 	msup."editor" AS "supplier.editor"
  FROM "mshop_supplier" msup
  :joins
  WHERE :cond
- GROUP BY :group msup."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	msup."id" AS "supplier.id", msup."siteid" AS "supplier.siteid",
- 	msup."code" AS "supplier.code", msup."label" AS "supplier.label",
- 	msup."pos" AS "supplier.position", msup."status" AS "supplier.status",
- 	msup."mtime" AS "supplier.mtime", msup."ctime" AS "supplier.ctime",
- 	msup."editor" AS "supplier.editor"
  FROM "mshop_supplier" msup
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	msup."id", msup."siteid", msup."code", msup."label", msup."pos", msup."status",
- 	msup."mtime", msup."editor", msup."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2596,7 +2493,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/supplier/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -2636,11 +2533,11 @@ mshop/supplier/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => address
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2705,12 +2602,12 @@ mshop/supplier/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_supplier"
  SET :names
  	"code" = ?, "label" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

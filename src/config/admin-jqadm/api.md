@@ -30,10 +30,10 @@ admin/jqadm/api/translate = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Associative list of key/value pairs
 * Since: 2019.10
 

@@ -78,7 +78,7 @@ mshop/plugin/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mplu."id"
@@ -88,7 +88,7 @@ mshop/plugin/manager/count/mysql =
  	ORDER BY mplu."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -105,10 +105,10 @@ mshop/plugin/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -145,10 +145,10 @@ mshop/plugin/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -184,10 +184,10 @@ mshop/plugin/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -257,10 +257,10 @@ mshop/plugin/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_plugin"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -323,14 +323,14 @@ mshop/plugin/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_plugin" ( :names
  	"type", "label", "provider", "config", "pos",
  	"status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -344,7 +344,7 @@ Class name of the used plugin manager implementation
 mshop/plugin/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -442,7 +442,7 @@ Name of the database connection resource to use
 mshop/plugin/manager/resource = db-plugin
 ```
 
-* Default: db-plugin
+* Default: `db-plugin`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -461,12 +461,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/plugin/manager/search/ansi = 
  SELECT :columns
- 	mplu."id" AS "plugin.id", mplu."siteid" AS "plugin.siteid",
- 	mplu."type" AS "plugin.type", mplu."label" AS "plugin.label",
- 	mplu."provider" AS "plugin.provider", mplu."config" AS "plugin.config",
- 	mplu."pos" AS "plugin.position", mplu."status" AS "plugin.status",
- 	mplu."mtime" AS "plugin.mtime", mplu."editor" AS "plugin.editor",
- 	mplu."ctime" AS "plugin.ctime"
  FROM "mshop_plugin" mplu
  :joins
  WHERE :cond
@@ -531,12 +525,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/plugin/manager/search/mysql = 
  SELECT :columns
- 	mplu."id" AS "plugin.id", mplu."siteid" AS "plugin.siteid",
- 	mplu."type" AS "plugin.type", mplu."label" AS "plugin.label",
- 	mplu."provider" AS "plugin.provider", mplu."config" AS "plugin.config",
- 	mplu."pos" AS "plugin.position", mplu."status" AS "plugin.status",
- 	mplu."mtime" AS "plugin.mtime", mplu."editor" AS "plugin.editor",
- 	mplu."ctime" AS "plugin.ctime"
  FROM "mshop_plugin" mplu
  :joins
  WHERE :cond
@@ -544,20 +532,14 @@ mshop/plugin/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mplu."id" AS "plugin.id", mplu."siteid" AS "plugin.siteid",
- 	mplu."type" AS "plugin.type", mplu."label" AS "plugin.label",
- 	mplu."provider" AS "plugin.provider", mplu."config" AS "plugin.config",
- 	mplu."pos" AS "plugin.position", mplu."status" AS "plugin.status",
- 	mplu."mtime" AS "plugin.mtime", mplu."editor" AS "plugin.editor",
- 	mplu."ctime" AS "plugin.ctime"
  FROM "mshop_plugin" mplu
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -571,7 +553,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/plugin/manager/sitemode = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -610,10 +592,10 @@ mshop/plugin/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -707,7 +689,7 @@ mshop/plugin/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpluty."id"
@@ -717,7 +699,7 @@ mshop/plugin/manager/type/count/mysql =
  	ORDER BY mpluty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -733,10 +715,10 @@ mshop/plugin/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -773,10 +755,10 @@ mshop/plugin/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -813,10 +795,10 @@ mshop/plugin/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -886,10 +868,10 @@ mshop/plugin/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_plugin_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -951,14 +933,14 @@ mshop/plugin/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_plugin_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -972,7 +954,7 @@ Class name of the used plugin type manager implementation
 mshop/plugin/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1068,12 +1050,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/plugin/manager/type/search/ansi = 
  SELECT :columns
- 	mpluty."id" AS "plugin.type.id", mpluty."siteid" AS "plugin.type.siteid",
- 	mpluty."code" AS "plugin.type.code", mpluty."domain" AS "plugin.type.domain",
- 	mpluty."label" AS "plugin.type.label", mpluty."status" AS "plugin.type.status",
- 	mpluty."mtime" AS "plugin.type.mtime", mpluty."editor" AS "plugin.type.editor",
- 	mpluty."ctime" AS "plugin.type.ctime", mpluty."pos" AS "plugin.type.position",
- 	mpluty."i18n" AS "plugin.type.i18n"
  FROM "mshop_plugin_type" mpluty
  :joins
  WHERE :cond
@@ -1138,12 +1114,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/plugin/manager/type/search/mysql = 
  SELECT :columns
- 	mpluty."id" AS "plugin.type.id", mpluty."siteid" AS "plugin.type.siteid",
- 	mpluty."code" AS "plugin.type.code", mpluty."domain" AS "plugin.type.domain",
- 	mpluty."label" AS "plugin.type.label", mpluty."status" AS "plugin.type.status",
- 	mpluty."mtime" AS "plugin.type.mtime", mpluty."editor" AS "plugin.type.editor",
- 	mpluty."ctime" AS "plugin.type.ctime", mpluty."pos" AS "plugin.type.position",
- 	mpluty."i18n" AS "plugin.type.i18n"
  FROM "mshop_plugin_type" mpluty
  :joins
  WHERE :cond
@@ -1151,20 +1121,14 @@ mshop/plugin/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mpluty."id" AS "plugin.type.id", mpluty."siteid" AS "plugin.type.siteid",
- 	mpluty."code" AS "plugin.type.code", mpluty."domain" AS "plugin.type.domain",
- 	mpluty."label" AS "plugin.type.label", mpluty."status" AS "plugin.type.status",
- 	mpluty."mtime" AS "plugin.type.mtime", mpluty."editor" AS "plugin.type.editor",
- 	mpluty."ctime" AS "plugin.type.ctime", mpluty."pos" AS "plugin.type.position",
- 	mpluty."i18n" AS "plugin.type.i18n"
  FROM "mshop_plugin_type" mpluty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1180,10 +1144,10 @@ mshop/plugin/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1249,13 +1213,13 @@ mshop/plugin/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_plugin_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1313,13 +1277,13 @@ mshop/plugin/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_plugin"
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

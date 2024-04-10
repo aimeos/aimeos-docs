@@ -10,10 +10,10 @@ mshop/service/provider/delivery/decorators = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -48,10 +48,10 @@ mshop/service/provider/payment/decorators = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 

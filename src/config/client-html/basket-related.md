@@ -7,7 +7,7 @@ Display the "add to basket" button for each product item
 client/html/basket/related/basket-add = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to display the button, false to hide it
 * Since: 2020.10
 
@@ -40,7 +40,7 @@ client/html/basket/related/bought/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => catalog
     [1] => media
@@ -49,7 +49,7 @@ client/html/basket/related/bought/domains = Array
     [4] => supplier
     [5] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2014.09
 
@@ -70,7 +70,7 @@ Number of items in the list of bought together products
 client/html/basket/related/bought/limit = 6
 ```
 
-* Default: 6
+* Default: `6`
 * Type: integer - Number of products
 * Since: 2014.09
 
@@ -235,7 +235,7 @@ Relative path to the HTML body template of the basket related client.
 client/html/basket/related/template-body = basket/related/body
 ```
 
-* Default: basket/related/body
+* Default: `basket/related/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -263,7 +263,7 @@ Relative path to the HTML header template of the basket related client.
 client/html/basket/related/template-header = basket/related/header
 ```
 
-* Default: basket/related/header
+* Default: `basket/related/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

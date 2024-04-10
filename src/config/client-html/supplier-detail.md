@@ -7,7 +7,7 @@ Enables or disables caching only for the supplier detail component
 client/html/supplier/detail/cache = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to enable caching, false to disable
 * Since: 2020.10
 
@@ -133,13 +133,13 @@ client/html/supplier/detail/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => supplier/address
     [1] => media
     [2] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2020.10
 
@@ -159,7 +159,7 @@ Adds the title, meta and link tags to the HTML header
 client/html/supplier/detail/metatags = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to display the meta tags, false to hide it
 * Since: 2021.01
 
@@ -223,7 +223,7 @@ or numbers. Avoid chamel case names like "MyDetail"!
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/supplier/detail/supid-default = 175
+client/html/supplier/detail/supid-default = 253
 ```
 
 * Type: string - Supplier ID
@@ -244,7 +244,7 @@ Relative path to the HTML body template of the supplier detail client.
 client/html/supplier/detail/template-body = supplier/detail/body
 ```
 
-* Default: supplier/detail/body
+* Default: `supplier/detail/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2020.10
 
@@ -272,7 +272,7 @@ Relative path to the HTML header template of the supplier detail client.
 client/html/supplier/detail/template-header = supplier/detail/header
 ```
 
-* Default: supplier/detail/header
+* Default: `supplier/detail/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2020.10
 
@@ -302,7 +302,7 @@ Name of the action that should create the output
 client/html/supplier/detail/url/action = detail
 ```
 
-* Default: detail
+* Default: `detail`
 * Type: string - Name of the action
 * Since: 2020.10
 
@@ -327,10 +327,10 @@ client/html/supplier/detail/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2020.10
 
@@ -361,7 +361,7 @@ Name of the controller whose action should be called
 client/html/supplier/detail/url/controller = Supplier
 ```
 
-* Default: Supplier
+* Default: `Supplier`
 * Type: string - Name of the controller
 * Since: 2020.10
 
@@ -386,10 +386,10 @@ client/html/supplier/detail/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

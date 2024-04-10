@@ -10,10 +10,10 @@ controller/jobs/order/email/delivery/attachments = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of absolute file paths
 * Since: 2016.10
 
@@ -27,7 +27,7 @@ See also:
 
 ## bcc-email
 
-E-Mail address all delivery e-mails should be also sent to
+Hidden e-mail address all delivery e-mails should be also sent to
 
 ```
 controller/jobs/order/email/delivery/bcc-email = Array
@@ -35,12 +35,32 @@ controller/jobs/order/email/delivery/bcc-email = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string|array - E-mail address or list of e-mail addresses
 * Since: 2014.03
+
+Using this option you can send a copy of all delivery related e-mails
+to a second e-mail account. This can be handy for testing and checking
+the e-mails sent to customers.
+
+It also allows shop owners with a very small volume of orders to be
+notified about delivery changes. Be aware that this isn't useful if the
+order volumne is high or has peeks!
+
+
+## cc-email
+
+E-Mail address all delivery e-mails should be also sent to
+
+```
+controller/jobs/order/email/delivery/cc-email = 
+```
+
+* Type: string - E-mail address or list of e-mail addresses
+* Since: 2023.10
 
 Using this option you can send a copy of all delivery related e-mails
 to a second e-mail account. This can be handy for testing and checking
@@ -56,9 +76,15 @@ order volumne is high or has peeks!
 Excludes decorators added by the "common" option from the order email delivery controllers
 
 ```
-controller/jobs/order/email/delivery/decorators/excludes = 
+controller/jobs/order/email/delivery/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -90,9 +116,15 @@ See also:
 Adds a list of globally available decorators only to the order email delivery controllers
 
 ```
-controller/jobs/order/email/delivery/decorators/global = 
+controller/jobs/order/email/delivery/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -122,9 +154,15 @@ See also:
 Adds a list of local decorators only to the order email delivery controllers
 
 ```
-controller/jobs/order/email/delivery/decorators/local = 
+controller/jobs/order/email/delivery/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -158,7 +196,7 @@ Only send delivery e-mails of orders that were created in the past within the co
 controller/jobs/order/email/delivery/limit-days = 90
 ```
 
-* Default: 90
+* Default: `90`
 * Type: integer - Number of days
 * Since: 2014.03
 
@@ -169,8 +207,7 @@ confusion of customers.
 
 See also:
 
-* controller/jobs/order/email/delivery/status
-* controller/jobs/order/email/payment/limit-days
+* controller/jobs/order/email/delivery/limit-days
 * controller/jobs/service/delivery/process/limit-days
 
 ## name
@@ -178,9 +215,10 @@ See also:
 Class name of the used order email delivery scheduler controller implementation
 
 ```
-controller/jobs/order/email/delivery/name = 
+controller/jobs/order/email/delivery/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -231,14 +269,14 @@ controller/jobs/order/email/delivery/status = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => 2
     [1] => 3
     [2] => 6
     [3] => 7
 )
-
+`
 * Type: integer - Delivery status constant
 * Since: 2014.03
 
@@ -270,7 +308,7 @@ Relative path to the template for the HTML part of the delivery emails.
 controller/jobs/order/email/delivery/template-html = order/email/delivery/html
 ```
 
-* Default: order/email/delivery/html
+* Default: `order/email/delivery/html`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -293,7 +331,7 @@ Relative path to the template for the text part of the delivery emails.
 controller/jobs/order/email/delivery/template-text = order/email/delivery/text
 ```
 
-* Default: order/email/delivery/text
+* Default: `order/email/delivery/text`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -319,10 +357,10 @@ controller/jobs/order/email/payment/attachments = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of absolute file paths
 * Since: 2016.10
 
@@ -336,7 +374,7 @@ See also:
 
 ## bcc-email
 
-E-Mail address all payment e-mails should be also sent to
+Hidden e-mail address all payment e-mails should be also sent to
 
 ```
 controller/jobs/order/email/payment/bcc-email = Array
@@ -344,12 +382,32 @@ controller/jobs/order/email/payment/bcc-email = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string|array - E-mail address or list of e-mail addresses
 * Since: 2014.03
+
+Using this option you can send a copy of all payment related e-mails
+to a second e-mail account. This can be handy for testing and checking
+the e-mails sent to customers.
+
+It also allows shop owners with a very small volume of orders to be
+notified about payment changes. Be aware that this isn't useful if the
+order volumne is high or has peeks!
+
+
+## cc-email
+
+E-Mail address all payment e-mails should be also sent to
+
+```
+controller/jobs/order/email/payment/cc-email = 
+```
+
+* Type: string - E-mail address or list of e-mail addresses
+* Since: 2023.10
 
 Using this option you can send a copy of all payment related e-mails
 to a second e-mail account. This can be handy for testing and checking
@@ -365,9 +423,15 @@ order volumne is high or has peeks!
 Excludes decorators added by the "common" option from the order email payment controllers
 
 ```
-controller/jobs/order/email/payment/decorators/excludes = 
+controller/jobs/order/email/payment/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -399,9 +463,15 @@ See also:
 Adds a list of globally available decorators only to the order email payment controllers
 
 ```
-controller/jobs/order/email/payment/decorators/global = 
+controller/jobs/order/email/payment/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -431,9 +501,15 @@ See also:
 Adds a list of local decorators only to the order email payment controllers
 
 ```
-controller/jobs/order/email/payment/decorators/local = 
+controller/jobs/order/email/payment/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -467,7 +543,7 @@ Only send payment e-mails of orders that were created in the past within the con
 controller/jobs/order/email/payment/limit-days = 30
 ```
 
-* Default: 30
+* Default: `30`
 * Type: integer - Number of days
 * Since: 2014.03
 
@@ -486,9 +562,10 @@ See also:
 Class name of the used order email payment scheduler controller implementation
 
 ```
-controller/jobs/order/email/payment/name = 
+controller/jobs/order/email/payment/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -533,7 +610,7 @@ Enables attaching the order confirmation PDF to the payment e-mail
 controller/jobs/order/email/payment/pdf = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: bool - TRUE to enable attaching the PDF, FALSE to skip the PDF
 * Since: 2022.04
 
@@ -549,7 +626,7 @@ Location of the address partial template for the text e-mails
 controller/jobs/order/email/payment/pdf-partial = order/email/summary-pdf
 ```
 
-* Default: order/email/summary-pdf
+* Default: `order/email/summary-pdf`
 * Type: string - Relative path to the address partial
 * Since: 2020.07
 
@@ -573,14 +650,14 @@ controller/jobs/order/email/payment/status = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => 3
     [1] => 4
     [2] => 5
     [3] => 6
 )
-
+`
 * Type: integer - Payment status constant
 * Since: 2014.03
 
@@ -612,7 +689,7 @@ Relative path to the template for the HTML part of the payment emails.
 controller/jobs/order/email/payment/template-html = order/email/payment/html
 ```
 
-* Default: order/email/payment/html
+* Default: `order/email/payment/html`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -635,7 +712,7 @@ Relative path to the template for the PDF part of the payment emails.
 controller/jobs/order/email/payment/template-pdf = order/email/payment/pdf
 ```
 
-* Default: order/email/payment/pdf
+* Default: `order/email/payment/pdf`
 * Type: string - Relative path to the template
 * Since: 2022.10
 
@@ -659,7 +736,7 @@ Relative path to the template for the text part of the payment emails.
 controller/jobs/order/email/payment/template-text = order/email/payment/text
 ```
 
-* Default: order/email/payment/text
+* Default: `order/email/payment/text`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -683,7 +760,7 @@ Relative path to the template for the HTML part of the subscription emails.
 controller/jobs/order/email/subscription/template-html = order/email/subscription/html
 ```
 
-* Default: order/email/subscription/html
+* Default: `order/email/subscription/html`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -706,7 +783,7 @@ Relative path to the template for the text part of the subscription emails.
 controller/jobs/order/email/subscription/template-text = order/email/subscription/text
 ```
 
-* Default: order/email/subscription/text
+* Default: `order/email/subscription/text`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -727,9 +804,15 @@ See also:
 Excludes decorators added by the "common" option from the order email voucher controllers
 
 ```
-controller/jobs/order/email/voucher/decorators/excludes = 
+controller/jobs/order/email/voucher/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -761,9 +844,15 @@ See also:
 Adds a list of globally available decorators only to the order email voucher controllers
 
 ```
-controller/jobs/order/email/voucher/decorators/global = 
+controller/jobs/order/email/voucher/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -793,9 +882,15 @@ See also:
 Adds a list of local decorators only to the order email voucher controllers
 
 ```
-controller/jobs/order/email/voucher/decorators/local = 
+controller/jobs/order/email/voucher/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -829,27 +924,29 @@ Only send voucher e-mails of orders that were created in the past within the con
 controller/jobs/order/email/voucher/limit-days = 30
 ```
 
-* Default: 30
+* Default: `30`
 * Type: integer - Number of days
-* Since: 2018.07
+* Since: 2014.03
 
 The voucher e-mails are normally send immediately after the voucher
-has been ordered. This option prevents e-mails for old orders from
+status has changed. This option prevents e-mails for old order from
 being send in case anything went wrong or an update failed to avoid
 confusion of customers.
 
 See also:
 
-* controller/jobs/order/email/voucher/status
+* controller/jobs/order/email/delivery/limit-days
+* controller/jobs/service/delivery/process/limit-days
 
 ## name
 
 Class name of the used order email voucher scheduler controller implementation
 
 ```
-controller/jobs/order/email/voucher/name = 
+controller/jobs/order/email/voucher/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -894,7 +991,7 @@ Enables attaching a PDF to the voucher e-mail
 controller/jobs/order/email/voucher/pdf = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: bool - TRUE to enable attaching the PDF, FALSE to skip the PDF
 * Since: 2022.10
 
@@ -909,7 +1006,7 @@ Only send e-mails containing voucher for these payment status values
 controller/jobs/order/email/voucher/status = 6
 ```
 
-* Default: 6
+* Default: `6`
 * Type: integer - Payment status constant
 * Since: 2018.07
 
@@ -935,7 +1032,7 @@ Relative path to the template for the HTML part of the voucher emails.
 controller/jobs/order/email/voucher/template-html = order/email/voucher/html
 ```
 
-* Default: order/email/voucher/html
+* Default: `order/email/voucher/html`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -958,7 +1055,7 @@ Relative path to the template for the PDF part of the voucher emails.
 controller/jobs/order/email/voucher/template-pdf = order/email/voucher/pdf
 ```
 
-* Default: order/email/voucher/pdf
+* Default: `order/email/voucher/pdf`
 * Type: string - Relative path to the template
 * Since: 2022.10
 
@@ -982,7 +1079,7 @@ Relative path to the template for the text part of the voucher emails.
 controller/jobs/order/email/voucher/template-text = order/email/voucher/text
 ```
 
-* Default: order/email/voucher/text
+* Default: `order/email/voucher/text`
 * Type: string - Relative path to the template
 * Since: 2022.04
 

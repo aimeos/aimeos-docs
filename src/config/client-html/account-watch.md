@@ -109,14 +109,14 @@ client/html/account/watch/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => catalog
     [1] => text
     [2] => price
     [3] => media
 )
-
+`
 * Type: array - List of domain names
 * Since: 2014.09
 
@@ -140,7 +140,7 @@ Maximum number of products that can be watched in parallel
 client/html/account/watch/maxitems = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of products
 * Since: 2014.09
 
@@ -207,7 +207,7 @@ The number of products shown in a list page for watch products
 client/html/account/watch/size = 48
 ```
 
-* Default: 48
+* Default: `48`
 * Type: integer - Number of products
 * Since: 2014.09
 
@@ -233,7 +233,7 @@ Relative path to the HTML body template of the account watch client.
 client/html/account/watch/template-body = account/watch/body
 ```
 
-* Default: account/watch/body
+* Default: `account/watch/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2015.10
 
@@ -261,7 +261,7 @@ Relative path to the HTML header template of the account watch client.
 client/html/account/watch/template-header = account/watch/header
 ```
 
-* Default: account/watch/header
+* Default: `account/watch/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2015.10
 
@@ -291,7 +291,7 @@ Name of the action that should create the output
 client/html/account/watch/url/action = watch
 ```
 
-* Default: watch
+* Default: `watch`
 * Type: string - Name of the action
 * Since: 2014.09
 
@@ -316,10 +316,10 @@ client/html/account/watch/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -350,7 +350,7 @@ Name of the controller whose action should be called
 client/html/account/watch/url/controller = Account
 ```
 
-* Default: Account
+* Default: `Account`
 * Type: string - Name of the controller
 * Since: 2014.09
 
@@ -375,10 +375,10 @@ client/html/account/watch/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

@@ -7,7 +7,7 @@ Display the "add to basket" button for each product item in the catalog home com
 client/html/catalog/home/basket-add = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to display the button, false to hide it
 * Since: 2020.10
 
@@ -31,7 +31,7 @@ Enables or disables caching only for the catalog home component
 client/html/catalog/home/cache = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to enable caching, false to disable
 
 Disable caching for components can be useful if you would have too much
@@ -165,7 +165,7 @@ client/html/catalog/home/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => catalog
     [1] => media
@@ -179,7 +179,7 @@ client/html/catalog/home/domains = Array
         )
 
 )
-
+`
 * Type: array - List of domain names
 * Since: 2020.10
 
@@ -305,7 +305,7 @@ Enables or disables displaying product stock levels in product list views
 client/html/catalog/home/stock/enable = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Value of "1" to display stock levels, "0" to disable displaying them
 * Since: 2020.10
 
@@ -333,7 +333,7 @@ Relative path to the HTML body template of the catalog home client.
 client/html/catalog/home/template-body = catalog/home/body
 ```
 
-* Default: catalog/home/body
+* Default: `catalog/home/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2020.10
 
@@ -361,7 +361,7 @@ Relative path to the HTML header template of the catalog home client.
 client/html/catalog/home/template-header = catalog/home/header
 ```
 
-* Default: catalog/home/header
+* Default: `catalog/home/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2020.10
 
@@ -391,7 +391,7 @@ Name of the action that should create the output
 client/html/catalog/home/url/action = home
 ```
 
-* Default: home
+* Default: `home`
 * Type: string - Name of the action
 * Since: 2020.10
 
@@ -416,10 +416,10 @@ client/html/catalog/home/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2020.10
 
@@ -450,7 +450,7 @@ Name of the controller whose action should be called
 client/html/catalog/home/url/controller = Catalog
 ```
 
-* Default: Catalog
+* Default: `Catalog`
 * Type: string - Name of the controller
 * Since: 2020.10
 
@@ -475,10 +475,10 @@ client/html/catalog/home/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

@@ -106,11 +106,11 @@ client/html/catalog/suggest/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2016.08
 
@@ -180,7 +180,7 @@ Restricts suggestions to category and attribute facets
 client/html/catalog/suggest/restrict = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to use category and facets, false for all results
 * Since: 2019.07
 
@@ -201,7 +201,7 @@ The number of products shown in the list of suggestions
 client/html/catalog/suggest/size = 24
 ```
 
-* Default: 24
+* Default: `24`
 * Type: integer - Number of products
 * Since: 2018.10
 
@@ -221,7 +221,7 @@ Relative path to the HTML body template of the catalog suggest client.
 client/html/catalog/suggest/template-body = catalog/suggest/body
 ```
 
-* Default: catalog/suggest/body
+* Default: `catalog/suggest/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2015.02
 
@@ -250,7 +250,7 @@ Relative path to the HTML header template of the catalog suggest client.
 client/html/catalog/suggest/template-header = catalog/suggest/header
 ```
 
-* Default: catalog/suggest/header
+* Default: `catalog/suggest/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2015.02
 
@@ -281,7 +281,7 @@ Name of the action that should create the output
 client/html/catalog/suggest/url/action = suggest
 ```
 
-* Default: suggest
+* Default: `suggest`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -309,10 +309,10 @@ client/html/catalog/suggest/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -346,7 +346,7 @@ Name of the controller whose action should be called
 client/html/catalog/suggest/url/controller = Catalog
 ```
 
-* Default: Catalog
+* Default: `Catalog`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -374,10 +374,10 @@ client/html/catalog/suggest/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

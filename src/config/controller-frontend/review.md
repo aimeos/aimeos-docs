@@ -151,7 +151,7 @@ Default status for new reviews
 controller/frontend/review/status = -1
 ```
 
-* Default: -1
+* Default: `-1`
 * Type: integer - Review status value
 * Since: 2020.10
 

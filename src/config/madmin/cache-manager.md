@@ -80,10 +80,10 @@ madmin/cache/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -120,10 +120,10 @@ madmin/cache/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -158,10 +158,10 @@ madmin/cache/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -224,7 +224,7 @@ Class name of the used cache manager implementation
 madmin/cache/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -269,7 +269,7 @@ Name of the database connection resource to use
 madmin/cache/manager/resource = db-cache
 ```
 
-* Default: db-cache
+* Default: `db-cache`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -339,13 +339,13 @@ madmin/cache/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT "id", "value", "expire"
  FROM "madmin_cache"
  WHERE :cond
  ORDER BY "id"
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -487,10 +487,10 @@ madmin/cache/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

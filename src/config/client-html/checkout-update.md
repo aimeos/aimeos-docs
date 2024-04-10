@@ -146,7 +146,7 @@ Relative path to the HTML body template of the checkout update client.
 client/html/checkout/update/template-body = checkout/update/body
 ```
 
-* Default: checkout/update/body
+* Default: `checkout/update/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 
 The template file contains the HTML code and processing instructions
@@ -173,7 +173,7 @@ Relative path to the HTML header template of the checkout update client.
 client/html/checkout/update/template-header = checkout/update/header
 ```
 
-* Default: checkout/update/header
+* Default: `checkout/update/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 
 The template file contains the HTML code and processing instructions

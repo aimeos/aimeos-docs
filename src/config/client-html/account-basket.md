@@ -175,7 +175,7 @@ Relative path to the HTML template of the account basket details partial.
 client/html/account/basket/summary/detail = common/summary/detail
 ```
 
-* Default: common/summary/detail
+* Default: `common/summary/detail`
 * Type: string - Relative path to the template creating the HTML fragment
 * Since: 2022.10
 
@@ -224,7 +224,7 @@ Relative path to the HTML body template of the account basket client.
 client/html/account/basket/template-body = account/basket/body
 ```
 
-* Default: account/basket/body
+* Default: `account/basket/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2022.10
 
@@ -252,7 +252,7 @@ Relative path to the HTML header template of the account basket client.
 client/html/account/basket/template-header = account/basket/header
 ```
 
-* Default: account/basket/header
+* Default: `account/basket/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2022.10
 
@@ -282,7 +282,7 @@ Name of the action that should create the output
 client/html/account/basket/url/action = basket
 ```
 
-* Default: basket
+* Default: `basket`
 * Type: string - Name of the action
 * Since: 2022.10
 
@@ -307,10 +307,10 @@ client/html/account/basket/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2022.10
 
@@ -341,7 +341,7 @@ Name of the controller whose action should be called
 client/html/account/basket/url/controller = Account
 ```
 
-* Default: Account
+* Default: `Account`
 * Type: string - Name of the controller
 * Since: 2022.10
 
@@ -366,10 +366,10 @@ client/html/account/basket/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

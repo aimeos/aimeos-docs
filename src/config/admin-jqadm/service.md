@@ -113,10 +113,10 @@ admin/jqadm/service/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of domain names
 * Since: 2017.10
 
@@ -139,14 +139,14 @@ admin/jqadm/service/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => service.status
     [1] => service.type
     [2] => service.label
     [3] => service.provider
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -169,10 +169,10 @@ admin/jqadm/service/item/media/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -190,10 +190,10 @@ admin/jqadm/service/item/price/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -211,10 +211,10 @@ admin/jqadm/service/item/text/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -267,10 +267,10 @@ admin/jqadm/service/media/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -305,10 +305,10 @@ admin/jqadm/service/media/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -341,7 +341,7 @@ Name of the media subpart used by the JQAdm service implementation
 admin/jqadm/service/media/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -393,10 +393,10 @@ admin/jqadm/service/media/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -431,10 +431,10 @@ admin/jqadm/service/media/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -467,7 +467,7 @@ Name of the property subpart used by the JQAdm service media implementation
 admin/jqadm/service/media/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.04
 
@@ -485,10 +485,10 @@ admin/jqadm/service/media/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -533,7 +533,7 @@ Relative path to the HTML body template of the media subpart for services.
 admin/jqadm/service/media/property/template-item = service/item-media-property
 ```
 
-* Default: service/item-media-property
+* Default: `service/item-media-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -561,10 +561,10 @@ admin/jqadm/service/media/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -609,7 +609,7 @@ Relative path to the HTML body template of the media subpart for services.
 admin/jqadm/service/media/template-item = service/item-media
 ```
 
-* Default: service/item-media
+* Default: `service/item-media`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.07
 
@@ -715,10 +715,10 @@ admin/jqadm/service/price/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -753,10 +753,10 @@ admin/jqadm/service/price/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -789,7 +789,7 @@ Name of the price subpart used by the JQAdm service implementation
 admin/jqadm/service/price/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -841,10 +841,10 @@ admin/jqadm/service/price/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -879,10 +879,10 @@ admin/jqadm/service/price/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -915,7 +915,7 @@ Name of the property subpart used by the JQAdm service price implementation
 admin/jqadm/service/price/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.04
 
@@ -933,10 +933,10 @@ admin/jqadm/service/price/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -981,7 +981,7 @@ Relative path to the HTML body template of the price subpart for services.
 admin/jqadm/service/price/property/template-item = service/item-price-property
 ```
 
-* Default: service/item-price-property
+* Default: `service/item-price-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1009,10 +1009,10 @@ admin/jqadm/service/price/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -1057,7 +1057,7 @@ Relative path to the HTML body template of the price subpart for services.
 admin/jqadm/service/price/template-item = service/item-price
 ```
 
-* Default: service/item-price
+* Default: `service/item-price`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1087,10 +1087,10 @@ admin/jqadm/service/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1135,7 +1135,7 @@ Relative path to the HTML body template for the service item.
 admin/jqadm/service/template-item = service/item
 ```
 
-* Default: service/item
+* Default: `service/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1160,7 +1160,7 @@ Relative path to the HTML body template for the service list.
 admin/jqadm/service/template-list = service/list
 ```
 
-* Default: service/list
+* Default: `service/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1222,10 +1222,10 @@ admin/jqadm/service/text/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1260,10 +1260,10 @@ admin/jqadm/service/text/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1296,7 +1296,7 @@ Name of the text subpart used by the JQAdm service implementation
 admin/jqadm/service/text/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.10
 
@@ -1314,10 +1314,10 @@ admin/jqadm/service/text/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1362,7 +1362,7 @@ Relative path to the HTML body template of the text subpart for services.
 admin/jqadm/service/text/template-item = service/item-text
 ```
 
-* Default: service/item-text
+* Default: `service/item-text`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

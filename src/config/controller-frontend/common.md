@@ -10,10 +10,10 @@ controller/frontend/common/decorators/default = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -43,7 +43,7 @@ Maximum number of items that can be fetched at once
 controller/frontend/common/max-size = 500
 ```
 
-* Default: 500
+* Default: `500`
 * Type: int - Number of items
 
 This setting limits the number of items that is returned to the frontend.

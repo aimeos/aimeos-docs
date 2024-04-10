@@ -82,7 +82,7 @@ mshop/product/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpro."id"
@@ -93,7 +93,7 @@ mshop/product/manager/count/mysql =
  	ORDER BY mpro."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -110,10 +110,10 @@ mshop/product/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -151,10 +151,10 @@ mshop/product/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -190,10 +190,10 @@ mshop/product/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -265,10 +265,10 @@ mshop/product/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_product"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -333,14 +333,14 @@ mshop/product/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_product" ( :names
  	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
  	"start", "end", "config", "target", "boost", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -489,7 +489,7 @@ mshop/product/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mproli."id"
@@ -499,7 +499,7 @@ mshop/product/manager/lists/count/mysql =
  	ORDER BY mproli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -515,10 +515,10 @@ mshop/product/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -555,10 +555,10 @@ mshop/product/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -595,10 +595,10 @@ mshop/product/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -669,10 +669,10 @@ mshop/product/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_product_list"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -735,14 +735,14 @@ mshop/product/manager/lists/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_product_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -756,7 +756,7 @@ Class name of the used product list manager implementation
 mshop/product/manager/lists/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -853,13 +853,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/lists/search/ansi = 
  SELECT :columns
- 	mproli."id" AS "product.lists.id", mproli."parentid" AS "product.lists.parentid",
- 	mproli."siteid" AS "product.lists.siteid", mproli."type" AS "product.lists.type",
- 	mproli."domain" AS "product.lists.domain", mproli."refid" AS "product.lists.refid",
- 	mproli."start" AS "product.lists.datestart", mproli."end" AS "product.lists.dateend",
- 	mproli."config" AS "product.lists.config", mproli."pos" AS "product.lists.position",
- 	mproli."status" AS "product.lists.status", mproli."mtime" AS "product.lists.mtime",
- 	mproli."editor" AS "product.lists.editor", mproli."ctime" AS "product.lists.ctime"
  FROM "mshop_product_list" mproli
  :joins
  WHERE :cond
@@ -925,13 +918,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/lists/search/mysql = 
  SELECT :columns
- 	mproli."id" AS "product.lists.id", mproli."parentid" AS "product.lists.parentid",
- 	mproli."siteid" AS "product.lists.siteid", mproli."type" AS "product.lists.type",
- 	mproli."domain" AS "product.lists.domain", mproli."refid" AS "product.lists.refid",
- 	mproli."start" AS "product.lists.datestart", mproli."end" AS "product.lists.dateend",
- 	mproli."config" AS "product.lists.config", mproli."pos" AS "product.lists.position",
- 	mproli."status" AS "product.lists.status", mproli."mtime" AS "product.lists.mtime",
- 	mproli."editor" AS "product.lists.editor", mproli."ctime" AS "product.lists.ctime"
  FROM "mshop_product_list" mproli
  :joins
  WHERE :cond
@@ -939,21 +925,14 @@ mshop/product/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mproli."id" AS "product.lists.id", mproli."parentid" AS "product.lists.parentid",
- 	mproli."siteid" AS "product.lists.siteid", mproli."type" AS "product.lists.type",
- 	mproli."domain" AS "product.lists.domain", mproli."refid" AS "product.lists.refid",
- 	mproli."start" AS "product.lists.datestart", mproli."end" AS "product.lists.dateend",
- 	mproli."config" AS "product.lists.config", mproli."pos" AS "product.lists.position",
- 	mproli."status" AS "product.lists.status", mproli."mtime" AS "product.lists.mtime",
- 	mproli."editor" AS "product.lists.editor", mproli."ctime" AS "product.lists.ctime"
  FROM "mshop_product_list" mproli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -969,10 +948,10 @@ mshop/product/manager/lists/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1065,7 +1044,7 @@ mshop/product/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprolity."id"
@@ -1075,7 +1054,7 @@ mshop/product/manager/lists/type/count/mysql =
  	ORDER BY mprolity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1091,10 +1070,10 @@ mshop/product/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1131,10 +1110,10 @@ mshop/product/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1171,10 +1150,10 @@ mshop/product/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1244,10 +1223,10 @@ mshop/product/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_product_list_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1309,14 +1288,14 @@ mshop/product/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_product_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1330,7 +1309,7 @@ Class name of the used product list type manager implementation
 mshop/product/manager/lists/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1426,12 +1405,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/lists/type/search/ansi = 
  SELECT :columns
- 	mprolity."id" AS "product.lists.type.id", mprolity."siteid" AS "product.lists.type.siteid",
- 	mprolity."code" AS "product.lists.type.code", mprolity."domain" AS "product.lists.type.domain",
- 	mprolity."label" AS "product.lists.type.label", mprolity."status" AS "product.lists.type.status",
- 	mprolity."mtime" AS "product.lists.type.mtime", mprolity."editor" AS "product.lists.type.editor",
- 	mprolity."ctime" AS "product.lists.type.ctime", mprolity."pos" AS "product.lists.type.position",
- 	mprolity."i18n" AS "product.lists.type.i18n"
  FROM "mshop_product_list_type" mprolity
  :joins
  WHERE :cond
@@ -1496,12 +1469,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/lists/type/search/mysql = 
  SELECT :columns
- 	mprolity."id" AS "product.lists.type.id", mprolity."siteid" AS "product.lists.type.siteid",
- 	mprolity."code" AS "product.lists.type.code", mprolity."domain" AS "product.lists.type.domain",
- 	mprolity."label" AS "product.lists.type.label", mprolity."status" AS "product.lists.type.status",
- 	mprolity."mtime" AS "product.lists.type.mtime", mprolity."editor" AS "product.lists.type.editor",
- 	mprolity."ctime" AS "product.lists.type.ctime", mprolity."pos" AS "product.lists.type.position",
- 	mprolity."i18n" AS "product.lists.type.i18n"
  FROM "mshop_product_list_type" mprolity
  :joins
  WHERE :cond
@@ -1509,20 +1476,14 @@ mshop/product/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mprolity."id" AS "product.lists.type.id", mprolity."siteid" AS "product.lists.type.siteid",
- 	mprolity."code" AS "product.lists.type.code", mprolity."domain" AS "product.lists.type.domain",
- 	mprolity."label" AS "product.lists.type.label", mprolity."status" AS "product.lists.type.status",
- 	mprolity."mtime" AS "product.lists.type.mtime", mprolity."editor" AS "product.lists.type.editor",
- 	mprolity."ctime" AS "product.lists.type.ctime", mprolity."pos" AS "product.lists.type.position",
- 	mprolity."i18n" AS "product.lists.type.i18n"
  FROM "mshop_product_list_type" mprolity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1538,10 +1499,10 @@ mshop/product/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1607,13 +1568,13 @@ mshop/product/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1671,13 +1632,13 @@ mshop/product/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product_list"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1691,7 +1652,7 @@ Class name of the used product manager implementation
 mshop/product/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1862,7 +1823,7 @@ mshop/product/manager/property/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpropr."id"
@@ -1872,7 +1833,7 @@ mshop/product/manager/property/count/mysql =
  	ORDER BY mpropr."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1888,10 +1849,10 @@ mshop/product/manager/property/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -1928,10 +1889,10 @@ mshop/product/manager/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -1968,10 +1929,10 @@ mshop/product/manager/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2041,10 +2002,10 @@ mshop/product/manager/property/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_product_property"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2106,14 +2067,14 @@ mshop/product/manager/property/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_product_property" ( :names
  	"parentid", "key", "type", "langid", "value",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2127,7 +2088,7 @@ Class name of the used product property manager implementation
 mshop/product/manager/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -2223,11 +2184,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/property/search/ansi = 
  SELECT :columns
- 	mpropr."id" AS "product.property.id", mpropr."parentid" AS "product.property.parentid",
- 	mpropr."siteid" AS "product.property.siteid", mpropr."type" AS "product.property.type",
- 	mpropr."langid" AS "product.property.languageid", mpropr."value" AS "product.property.value",
- 	mpropr."mtime" AS "product.property.mtime", mpropr."editor" AS "product.property.editor",
- 	mpropr."ctime" AS "product.property.ctime"
  FROM "mshop_product_property" mpropr
  :joins
  WHERE :cond
@@ -2292,11 +2248,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/property/search/mysql = 
  SELECT :columns
- 	mpropr."id" AS "product.property.id", mpropr."parentid" AS "product.property.parentid",
- 	mpropr."siteid" AS "product.property.siteid", mpropr."type" AS "product.property.type",
- 	mpropr."langid" AS "product.property.languageid", mpropr."value" AS "product.property.value",
- 	mpropr."mtime" AS "product.property.mtime", mpropr."editor" AS "product.property.editor",
- 	mpropr."ctime" AS "product.property.ctime"
  FROM "mshop_product_property" mpropr
  :joins
  WHERE :cond
@@ -2304,19 +2255,14 @@ mshop/product/manager/property/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mpropr."id" AS "product.property.id", mpropr."parentid" AS "product.property.parentid",
- 	mpropr."siteid" AS "product.property.siteid", mpropr."type" AS "product.property.type",
- 	mpropr."langid" AS "product.property.languageid", mpropr."value" AS "product.property.value",
- 	mpropr."mtime" AS "product.property.mtime", mpropr."editor" AS "product.property.editor",
- 	mpropr."ctime" AS "product.property.ctime"
  FROM "mshop_product_property" mpropr
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2332,10 +2278,10 @@ mshop/product/manager/property/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2015.01
 
@@ -2428,7 +2374,7 @@ mshop/product/manager/property/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mproprty."id"
@@ -2438,7 +2384,7 @@ mshop/product/manager/property/type/count/mysql =
  	ORDER BY mproprty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -2454,10 +2400,10 @@ mshop/product/manager/property/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2494,10 +2440,10 @@ mshop/product/manager/property/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2534,10 +2480,10 @@ mshop/product/manager/property/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2607,10 +2553,10 @@ mshop/product/manager/property/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_product_property_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2672,14 +2618,14 @@ mshop/product/manager/property/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_product_property_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2693,7 +2639,7 @@ Class name of the used product property type manager implementation
 mshop/product/manager/property/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -2789,12 +2735,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/property/type/search/ansi = 
  SELECT :columns
- 	mproprty."id" AS "product.property.type.id", mproprty."siteid" AS "product.property.type.siteid",
- 	mproprty."code" AS "product.property.type.code", mproprty."domain" AS "product.property.type.domain",
- 	mproprty."label" AS "product.property.type.label", mproprty."status" AS "product.property.type.status",
- 	mproprty."mtime" AS "product.property.type.mtime", mproprty."editor" AS "product.property.type.editor",
- 	mproprty."ctime" AS "product.property.type.ctime", mproprty."pos" AS "product.property.type.position",
- 	mproprty."i18n" AS "product.property.type.i18n"
  FROM "mshop_product_property_type" mproprty
  :joins
  WHERE :cond
@@ -2859,12 +2799,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/property/type/search/mysql = 
  SELECT :columns
- 	mproprty."id" AS "product.property.type.id", mproprty."siteid" AS "product.property.type.siteid",
- 	mproprty."code" AS "product.property.type.code", mproprty."domain" AS "product.property.type.domain",
- 	mproprty."label" AS "product.property.type.label", mproprty."status" AS "product.property.type.status",
- 	mproprty."mtime" AS "product.property.type.mtime", mproprty."editor" AS "product.property.type.editor",
- 	mproprty."ctime" AS "product.property.type.ctime", mproprty."pos" AS "product.property.type.position",
- 	mproprty."i18n" AS "product.property.type.i18n"
  FROM "mshop_product_property_type" mproprty
  :joins
  WHERE :cond
@@ -2872,20 +2806,14 @@ mshop/product/manager/property/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mproprty."id" AS "product.property.type.id", mproprty."siteid" AS "product.property.type.siteid",
- 	mproprty."code" AS "product.property.type.code", mproprty."domain" AS "product.property.type.domain",
- 	mproprty."label" AS "product.property.type.label", mproprty."status" AS "product.property.type.status",
- 	mproprty."mtime" AS "product.property.type.mtime", mproprty."editor" AS "product.property.type.editor",
- 	mproprty."ctime" AS "product.property.type.ctime", mproprty."pos" AS "product.property.type.position",
- 	mproprty."i18n" AS "product.property.type.i18n"
  FROM "mshop_product_property_type" mproprty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2901,10 +2829,10 @@ mshop/product/manager/property/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2015.01
 
@@ -2970,13 +2898,13 @@ mshop/product/manager/property/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product_property_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3033,13 +2961,13 @@ mshop/product/manager/property/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product_property"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3092,11 +3020,11 @@ mshop/product/manager/rate/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product"
  SET "rating" = ?, "ratings" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3110,7 +3038,7 @@ Name of the database connection resource to use
 mshop/product/manager/resource = db-product
 ```
 
-* Default: db-product
+* Default: `db-product`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -3133,24 +3061,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/search/ansi = 
  SELECT :columns
- 	mpro."id" AS "product.id", mpro."siteid" AS "product.siteid",
- 	mpro."type" AS "product.type", mpro."code" AS "product.code",
- 	mpro."label" AS "product.label", mpro."url" AS "product.url",
- 	mpro."start" AS "product.datestart", mpro."end" AS "product.dateend",
- 	mpro."status" AS "product.status", mpro."ctime" AS "product.ctime",
- 	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
- 	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
- 	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
- 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
- 	mpro."instock" AS "product.instock", mpro."boost" AS "product.boost"
  FROM "mshop_product" mpro
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
- 	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
- 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings",
- 	mpro."instock", mpro."boost"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3214,47 +3128,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/search/mysql = 
  SELECT :columns
- 	mpro."id" AS "product.id", mpro."siteid" AS "product.siteid",
- 	mpro."type" AS "product.type", mpro."code" AS "product.code",
- 	mpro."label" AS "product.label", mpro."url" AS "product.url",
- 	mpro."start" AS "product.datestart", mpro."end" AS "product.dateend",
- 	mpro."status" AS "product.status", mpro."ctime" AS "product.ctime",
- 	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
- 	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
- 	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
- 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
- 	mpro."instock" AS "product.instock", mpro."boost" AS "product.boost"
  FROM "mshop_product" mpro
  :joins
  WHERE :cond
- GROUP BY :group mpro."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mpro."id" AS "product.id", mpro."siteid" AS "product.siteid",
- 	mpro."type" AS "product.type", mpro."code" AS "product.code",
- 	mpro."label" AS "product.label", mpro."url" AS "product.url",
- 	mpro."start" AS "product.datestart", mpro."end" AS "product.dateend",
- 	mpro."status" AS "product.status", mpro."ctime" AS "product.ctime",
- 	mpro."mtime" AS "product.mtime", mpro."editor" AS "product.editor",
- 	mpro."target" AS "product.target", mpro."dataset" AS "product.dataset",
- 	mpro."scale" AS "product.scale", mpro."config" AS "product.config",
- 	mpro."rating" AS "product.rating", mpro."ratings" AS "product.ratings",
- 	mpro."instock" AS "product.instock", mpro."boost" AS "product.boost"
  FROM "mshop_product" mpro
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mpro."id", mpro."siteid", mpro."type", mpro."code", mpro."label", mpro."url",
- 	mpro."target", mpro."dataset", mpro."scale", mpro."config", mpro."start", mpro."end",
- 	mpro."status", mpro."ctime", mpro."mtime", mpro."editor", mpro."rating", mpro."ratings",
- 	mpro."instock", mpro."boost"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3268,7 +3158,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/product/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -3344,11 +3234,11 @@ mshop/product/manager/stock/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product"
  SET "instock" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3362,7 +3252,7 @@ Hide events automatically if they are over
 mshop/product/manager/strict-events = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: bool - TRUE to hide events after they are over (default), FALSE to continue to show them
 * Since: 2019.10
 
@@ -3385,10 +3275,10 @@ mshop/product/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3482,7 +3372,7 @@ mshop/product/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mproty."id"
@@ -3492,7 +3382,7 @@ mshop/product/manager/type/count/mysql =
  	ORDER BY mproty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -3508,10 +3398,10 @@ mshop/product/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3548,10 +3438,10 @@ mshop/product/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3588,10 +3478,10 @@ mshop/product/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3661,10 +3551,10 @@ mshop/product/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_product_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -3726,14 +3616,14 @@ mshop/product/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_product_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -3747,7 +3637,7 @@ Class name of the used product type manager implementation
 mshop/product/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -3843,12 +3733,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/type/search/ansi = 
  SELECT :columns
- 	mproty."id" AS "product.type.id", mproty."siteid" AS "product.type.siteid",
- 	mproty."code" AS "product.type.code", mproty."domain" AS "product.type.domain",
- 	mproty."label" AS "product.type.label", mproty."status" AS "product.type.status",
- 	mproty."mtime" AS "product.type.mtime", mproty."editor" AS "product.type.editor",
- 	mproty."ctime" AS "product.type.ctime", mproty."pos" AS "product.type.position",
- 	mproty."i18n" AS "product.type.i18n"
  FROM "mshop_product_type" mproty
  :joins
  WHERE :cond
@@ -3913,12 +3797,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/product/manager/type/search/mysql = 
  SELECT :columns
- 	mproty."id" AS "product.type.id", mproty."siteid" AS "product.type.siteid",
- 	mproty."code" AS "product.type.code", mproty."domain" AS "product.type.domain",
- 	mproty."label" AS "product.type.label", mproty."status" AS "product.type.status",
- 	mproty."mtime" AS "product.type.mtime", mproty."editor" AS "product.type.editor",
- 	mproty."ctime" AS "product.type.ctime", mproty."pos" AS "product.type.position",
- 	mproty."i18n" AS "product.type.i18n"
  FROM "mshop_product_type" mproty
  :joins
  WHERE :cond
@@ -3926,20 +3804,14 @@ mshop/product/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mproty."id" AS "product.type.id", mproty."siteid" AS "product.type.siteid",
- 	mproty."code" AS "product.type.code", mproty."domain" AS "product.type.domain",
- 	mproty."label" AS "product.type.label", mproty."status" AS "product.type.status",
- 	mproty."mtime" AS "product.type.mtime", mproty."editor" AS "product.type.editor",
- 	mproty."ctime" AS "product.type.ctime", mproty."pos" AS "product.type.position",
- 	mproty."i18n" AS "product.type.i18n"
  FROM "mshop_product_type" mproty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3955,10 +3827,10 @@ mshop/product/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -4024,13 +3896,13 @@ mshop/product/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -4092,14 +3964,14 @@ mshop/product/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_product"
  SET :names
  	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
  	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
  	"boost" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

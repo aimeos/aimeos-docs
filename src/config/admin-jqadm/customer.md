@@ -5,7 +5,7 @@
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/address/decorators/excludes =
+admin/jqadm/customer/address/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
@@ -44,10 +44,10 @@ admin/jqadm/customer/address/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -82,10 +82,10 @@ admin/jqadm/customer/address/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -118,7 +118,7 @@ Name of the address subpart used by the JQAdm customer implementation
 admin/jqadm/customer/address/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.06
 
@@ -136,10 +136,10 @@ admin/jqadm/customer/address/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -184,7 +184,7 @@ Relative path to the HTML body template of the address subpart for customers.
 admin/jqadm/customer/address/template-item = customer/item-address
 ```
 
-* Default: customer/item-address
+* Default: `customer/item-address`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -207,7 +207,7 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/decorators/excludes =
+admin/jqadm/customer/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
@@ -241,7 +241,7 @@ See also:
 Adds a list of globally available decorators only to the customer JQAdm client
 
 ```
-admin/jqadm/customer/decorators/global =
+admin/jqadm/customer/decorators/global = 
 ```
 
 * Type: array - List of decorator names
@@ -273,7 +273,7 @@ See also:
 Adds a list of local decorators only to the customer JQAdm client
 
 ```
-admin/jqadm/customer/decorators/local =
+admin/jqadm/customer/decorators/local = 
 ```
 
 * Type: array - List of decorator names
@@ -313,10 +313,10 @@ admin/jqadm/customer/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of domain names
 * Since: 2017.07
 
@@ -339,14 +339,14 @@ admin/jqadm/customer/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => customer.code
     [1] => customer.lastname
     [2] => customer.postal
     [3] => customer.city
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -363,7 +363,7 @@ e.g. "customer.id" for the customer ID.
 Class name of the used account favorite client implementation
 
 ```
-admin/jqadm/customer/name =
+admin/jqadm/customer/name = 
 ```
 
 * Type: string - Last part of the class name
@@ -408,7 +408,7 @@ or numbers. Avoid chamel case names like "MyFavorite"!
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/order/decorators/excludes =
+admin/jqadm/customer/order/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
@@ -447,10 +447,10 @@ admin/jqadm/customer/order/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -485,10 +485,10 @@ admin/jqadm/customer/order/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -528,7 +528,7 @@ admin/jqadm/customer/order/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => order.id
     [1] => order.datepayment
@@ -536,7 +536,7 @@ admin/jqadm/customer/order/fields = Array
     [3] => order.currencyid
     [4] => order.price
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -556,7 +556,7 @@ Name of the order subpart used by the JQAdm customer implementation
 admin/jqadm/customer/order/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.06
 
@@ -574,10 +574,10 @@ admin/jqadm/customer/order/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -622,7 +622,7 @@ Relative path to the HTML body template of the order subpart for customers.
 admin/jqadm/customer/order/template-item = customer/item-order
 ```
 
-* Default: customer/item-order
+* Default: `customer/item-order`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -645,7 +645,7 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/product/decorators/excludes =
+admin/jqadm/customer/product/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
@@ -685,10 +685,10 @@ admin/jqadm/customer/product/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -723,10 +723,10 @@ admin/jqadm/customer/product/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -765,14 +765,14 @@ admin/jqadm/customer/product/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => customer.lists.status
     [1] => customer.lists.type
     [2] => customer.lists.position
     [3] => customer.lists.refid
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -792,7 +792,7 @@ Name of the product subpart used by the JQAdm customer implementation
 admin/jqadm/customer/product/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.06
 
@@ -810,10 +810,10 @@ admin/jqadm/customer/product/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -858,7 +858,7 @@ Relative path to the HTML body template of the product subpart for customers.
 admin/jqadm/customer/product/template-item = customer/item-product
 ```
 
-* Default: customer/item-product
+* Default: `customer/item-product`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -881,7 +881,7 @@ should be replaced by the name of the new class.
 Excludes decorators added by the "common" option from the customer JQAdm client
 
 ```
-admin/jqadm/customer/property/decorators/excludes =
+admin/jqadm/customer/property/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
@@ -920,10 +920,10 @@ admin/jqadm/customer/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -958,10 +958,10 @@ admin/jqadm/customer/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -994,7 +994,7 @@ Name of the property subpart used by the JQAdm customer implementation
 admin/jqadm/customer/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -1012,10 +1012,10 @@ admin/jqadm/customer/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.07
 
@@ -1060,7 +1060,7 @@ Relative path to the HTML body template of the property subpart for customers.
 admin/jqadm/customer/property/template-item = customer/item-property
 ```
 
-* Default: customer/item-property
+* Default: `customer/item-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2018.07
 
@@ -1091,10 +1091,10 @@ admin/jqadm/customer/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1139,7 +1139,7 @@ Relative path to the HTML body template for the customer item.
 admin/jqadm/customer/template-item = customer/item
 ```
 
-* Default: customer/item
+* Default: `customer/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1164,7 +1164,7 @@ Relative path to the HTML body template for the customer list.
 admin/jqadm/customer/template-list = customer/list
 ```
 
-* Default: customer/list
+* Default: `customer/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

@@ -1,4 +1,52 @@
 
+# allowedtypes
+
+A list of mime types that are allowed for uploaded files
+
+```
+mshop/media/manager/allowedtypes = Array
+(
+    [0] => image/webp
+    [1] => image/jpeg
+    [2] => image/png
+    [3] => image/gif
+    [4] => image/svg+xml
+    [5] => application/epub+zip
+    [6] => application/pdf
+    [7] => application/zip
+    [8] => video/mp4
+    [9] => video/webm
+    [10] => audio/mpeg
+    [11] => audio/ogg
+    [12] => audio/weba
+)
+```
+
+* Default: `Array
+(
+    [0] => image/webp
+    [1] => image/jpeg
+    [2] => image/png
+    [3] => image/gif
+    [4] => image/svg+xml
+    [5] => application/epub+zip
+    [6] => application/pdf
+    [7] => application/zip
+    [8] => video/mp4
+    [9] => video/webm
+    [10] => audio/mpeg
+    [11] => audio/ogg
+    [12] => audio/weba
+)
+`
+* Type: array - List of image mime types
+* Since: 2024.01
+
+The list of allowed mime types must be explicitly configured for the
+uploaded files. Trying to upload and store a file not available in
+the list of allowed mime types will result in an exception.
+
+
 # count
 ## ansi
 
@@ -80,7 +128,7 @@ mshop/media/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmed."id"
@@ -91,7 +139,7 @@ mshop/media/manager/count/mysql =
  	ORDER BY mmed."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -108,10 +156,10 @@ mshop/media/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -148,10 +196,10 @@ mshop/media/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -187,10 +235,10 @@ mshop/media/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -260,14 +308,68 @@ mshop/media/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_media"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
 * mshop/media/manager/delete/ansi
+
+# extensions
+
+Available files extensions for mime types of uploaded files
+
+```
+mshop/media/manager/extensions = Array
+(
+    [application/pdf] => pdf
+    [application/postscript] => ps
+    [application/vnd.ms-excel] => xls
+    [application/vnd.ms-powerpoint] => ppt
+    [application/vnd.ms-word] => doc
+    [application/vnd.oasis.opendocument.graphics] => odg
+    [application/vnd.oasis.opendocument.presentation] => odp
+    [application/vnd.oasis.opendocument.spreadsheet] => ods
+    [application/vnd.oasis.opendocument.text] => odt
+    [application/epub+zip] => epub
+    [application/x-gzip] => gz
+    [application/zip] => zip
+    [image/bmp] => bmp
+    [image/gif] => gif
+    [image/jpeg] => jpg
+    [image/png] => png
+    [image/svg+xml] => svg
+    [image/tiff] => tif
+    [image/webp] => webp
+    [text/csv] => csv
+    [video/mp4] => mp4
+    [video/webm] => webm
+    [audio/mpeg] => mpeg
+    [audio/ogg] => ogg
+    [audio/webm] => weba
+)
+```
+
+* Default: `Array
+(
+    [image/gif] => gif
+    [image/jpeg] => jpg
+    [image/png] => png
+    [image/webp] => webp
+)
+`
+* Type: array - Associative list of mime types as keys and file extensions as values
+* Since: 2018.04
+
+Uploaded files should have the right file extension (e.g. ".jpg" for
+JPEG images) so files are recognized correctly if downloaded by users.
+The extension of the uploaded file can't be trusted and only its mime
+type can be determined automatically. This configuration setting
+provides the file extensions for the configured mime types. You can
+add more mime type / file extension combinations if required.
+
 
 # insert
 ## ansi
@@ -326,14 +428,14 @@ mshop/media/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_media" ( :names
  	"langid", "type", "label", "mimetype", "link", "status", "fsname",
  	"domain", "preview", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -482,7 +584,7 @@ mshop/media/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedli."id"
@@ -492,7 +594,7 @@ mshop/media/manager/lists/count/mysql =
  	ORDER BY mmedli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -508,10 +610,10 @@ mshop/media/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -548,10 +650,10 @@ mshop/media/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -588,10 +690,10 @@ mshop/media/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -662,10 +764,10 @@ mshop/media/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_media_list"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -728,14 +830,14 @@ mshop/media/manager/lists/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_media_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -749,7 +851,7 @@ Class name of the used media list manager implementation
 mshop/media/manager/lists/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -846,13 +948,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/lists/search/ansi = 
  SELECT :columns
- 	mmedli."id" AS "media.lists.id", mmedli."parentid" AS "media.lists.parentid",
- 	mmedli."siteid" AS "media.lists.siteid", mmedli."type" AS "media.lists.type",
- 	mmedli."domain" AS "media.lists.domain", mmedli."refid" AS "media.lists.refid",
- 	mmedli."start" AS "media.lists.datestart", mmedli."end" AS "media.lists.dateend",
- 	mmedli."config" AS "media.lists.config", mmedli."pos" AS "media.lists.position",
- 	mmedli."status" AS "media.lists.status", mmedli."mtime" AS "media.lists.mtime",
- 	mmedli."editor" AS "media.lists.editor", mmedli."ctime" AS "media.lists.ctime"
  FROM "mshop_media_list" mmedli
  :joins
  WHERE :cond
@@ -918,13 +1013,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/lists/search/mysql = 
  SELECT :columns
- 	mmedli."id" AS "media.lists.id", mmedli."parentid" AS "media.lists.parentid",
- 	mmedli."siteid" AS "media.lists.siteid", mmedli."type" AS "media.lists.type",
- 	mmedli."domain" AS "media.lists.domain", mmedli."refid" AS "media.lists.refid",
- 	mmedli."start" AS "media.lists.datestart", mmedli."end" AS "media.lists.dateend",
- 	mmedli."config" AS "media.lists.config", mmedli."pos" AS "media.lists.position",
- 	mmedli."status" AS "media.lists.status", mmedli."mtime" AS "media.lists.mtime",
- 	mmedli."editor" AS "media.lists.editor", mmedli."ctime" AS "media.lists.ctime"
  FROM "mshop_media_list" mmedli
  :joins
  WHERE :cond
@@ -932,21 +1020,14 @@ mshop/media/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mmedli."id" AS "media.lists.id", mmedli."parentid" AS "media.lists.parentid",
- 	mmedli."siteid" AS "media.lists.siteid", mmedli."type" AS "media.lists.type",
- 	mmedli."domain" AS "media.lists.domain", mmedli."refid" AS "media.lists.refid",
- 	mmedli."start" AS "media.lists.datestart", mmedli."end" AS "media.lists.dateend",
- 	mmedli."config" AS "media.lists.config", mmedli."pos" AS "media.lists.position",
- 	mmedli."status" AS "media.lists.status", mmedli."mtime" AS "media.lists.mtime",
- 	mmedli."editor" AS "media.lists.editor", mmedli."ctime" AS "media.lists.ctime"
  FROM "mshop_media_list" mmedli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -962,10 +1043,10 @@ mshop/media/manager/lists/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1058,7 +1139,7 @@ mshop/media/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedlity."id"
@@ -1068,7 +1149,7 @@ mshop/media/manager/lists/type/count/mysql =
  	ORDER BY mmedlity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1084,10 +1165,10 @@ mshop/media/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1124,10 +1205,10 @@ mshop/media/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1164,10 +1245,10 @@ mshop/media/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1237,10 +1318,10 @@ mshop/media/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_media_list_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1302,14 +1383,14 @@ mshop/media/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_media_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1323,7 +1404,7 @@ Class name of the used media list type manager implementation
 mshop/media/manager/lists/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1419,12 +1500,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/lists/type/search/ansi = 
  SELECT :columns
- 	mmedlity."id" AS "media.lists.type.id", mmedlity."siteid" AS "media.lists.type.siteid",
- 	mmedlity."code" AS "media.lists.type.code", mmedlity."domain" AS "media.lists.type.domain",
- 	mmedlity."label" AS "media.lists.type.label", mmedlity."status" AS "media.lists.type.status",
- 	mmedlity."mtime" AS "media.lists.type.mtime", mmedlity."editor" AS "media.lists.type.editor",
- 	mmedlity."ctime" AS "media.lists.type.ctime", mmedlity."pos" AS "media.lists.type.position",
- 	mmedlity."i18n" AS "media.lists.type.i18n"
  FROM "mshop_media_list_type" mmedlity
  :joins
  WHERE :cond
@@ -1489,12 +1564,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/lists/type/search/mysql = 
  SELECT :columns
- 	mmedlity."id" AS "media.lists.type.id", mmedlity."siteid" AS "media.lists.type.siteid",
- 	mmedlity."code" AS "media.lists.type.code", mmedlity."domain" AS "media.lists.type.domain",
- 	mmedlity."label" AS "media.lists.type.label", mmedlity."status" AS "media.lists.type.status",
- 	mmedlity."mtime" AS "media.lists.type.mtime", mmedlity."editor" AS "media.lists.type.editor",
- 	mmedlity."ctime" AS "media.lists.type.ctime", mmedlity."pos" AS "media.lists.type.position",
- 	mmedlity."i18n" AS "media.lists.type.i18n"
  FROM "mshop_media_list_type" mmedlity
  :joins
  WHERE :cond
@@ -1502,20 +1571,14 @@ mshop/media/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mmedlity."id" AS "media.lists.type.id", mmedlity."siteid" AS "media.lists.type.siteid",
- 	mmedlity."code" AS "media.lists.type.code", mmedlity."domain" AS "media.lists.type.domain",
- 	mmedlity."label" AS "media.lists.type.label", mmedlity."status" AS "media.lists.type.status",
- 	mmedlity."mtime" AS "media.lists.type.mtime", mmedlity."editor" AS "media.lists.type.editor",
- 	mmedlity."ctime" AS "media.lists.type.ctime", mmedlity."pos" AS "media.lists.type.position",
- 	mmedlity."i18n" AS "media.lists.type.i18n"
  FROM "mshop_media_list_type" mmedlity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1531,10 +1594,10 @@ mshop/media/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1600,13 +1663,13 @@ mshop/media/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_media_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1664,13 +1727,13 @@ mshop/media/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_media_list"
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1684,7 +1747,7 @@ Class name of the used media manager implementation
 mshop/media/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1774,6 +1837,269 @@ See also:
 
 * mshop/media/manager/newid/ansi
 
+# previews
+## -
+
+```
+mshop/media/manager/previews/- = Array
+(
+    [0] => Array
+        (
+            [force-size] => 0
+        )
+
+)
+```
+
+* Default: `Array
+(
+    [0] => Array
+        (
+            [force-size] => 0
+        )
+
+)
+`
+
+
+## -/default
+
+```
+mshop/media/manager/previews/-/default = Array
+(
+    [0] => Array
+        (
+            [force-size] => 0
+        )
+
+)
+```
+
+* Default: `Array
+(
+    [0] => Array
+        (
+            [force-size] => 0
+        )
+
+)
+`
+
+
+## common
+
+Scaling options for preview images
+
+```
+mshop/media/manager/previews/common = Array
+(
+    [0] => Array
+        (
+            [force-size] => 0
+        )
+
+)
+```
+
+* Default: `Array
+(
+)
+`
+* Type: array - List of image size definitions
+* Since: 2019.07
+
+For responsive images, several preview images of different sizes are
+generated. This setting controls how many preview images are generated,
+what's their maximum width and height and if the given width/height is
+enforced by cropping images that doesn't fit.
+
+The setting must consist of a list image size definitions like:
+
+```
+ [
+   ['maxwidth' => 240, 'maxheight' => 320, 'force-size' => 2],
+   ['maxwidth' => 720, 'maxheight' => 960, 'force-size' => 1],
+   ['maxwidth' => 2160, 'maxheight' => 2880, 'force-size' => 0],
+ ]
+```
+
+"maxwidth" sets the maximum allowed width of the image whereas
+"maxheight" does the same for the maximum allowed height. If both
+values are given, the image is scaled proportionally so it fits into
+the box defined by both values.
+
+In case the image has different proportions than the specified ones
+and "force-size" is "0", the image is resized to fit entirely into
+the specified box. One side of the image will be shorter than it
+would be possible by the specified box.
+
+If "force-size" is "1", scaled images that doesn't fit into the
+given maximum width/height are centered and then filled with the
+background color.
+
+The value of "2" will center the image while the given maxwidth and
+maxheight are fully covered and crop the parts of the image which
+are outside the box created by maxwidth and maxheight.
+
+By default, images aren't padded or cropped, only scaled.
+
+The values for "maxwidth" and "maxheight" can also be null or not
+used. In that case, the width or height or both is unbound. If none
+of the values are given, the image won't be scaled at all. If only
+one value is set, the image will be scaled exactly to the given width
+or height and the other side is scaled proportionally.
+
+You can also define different preview sizes for different domains (e.g.
+for catalog images) and for different types (e.g. catalog stage images).
+Use configuration settings like
+
+```
+ mshop/media/manager/previews/previews/<domain>/
+ mshop/media/manager/previews/previews/<domain>/<type>/
+```
+
+for example:
+
+```
+ mshop/media/manager/previews/catalog/previews => [
+   ['maxwidth' => 240, 'maxheight' => 320, 'force-size' => true],
+ ]
+ mshop/media/manager/previews/catalog/previews => [
+   ['maxwidth' => 400, 'maxheight' => 300, 'force-size' => false]
+ ]
+ mshop/media/manager/previews/catalog/stage/previews => [
+   ['maxwidth' => 360, 'maxheight' => 320, 'force-size' => true],
+   ['maxwidth' => 720, 'maxheight' => 480, 'force-size' => true]
+ ]
+```
+
+These settings will create two preview images for catalog stage images,
+one with a different size for all other catalog images and all images
+from other domains will be sized to 240x320px. The available domains
+which can have images are:
+
+* attribute
+* catalog
+* product
+* service
+* supplier
+
+There are a few image types included per domain ("default" is always
+available). You can also add your own types in the admin backend and
+extend the frontend to display them where you need them.
+
+
+## product
+
+```
+mshop/media/manager/previews/product = Array
+(
+    [0] => Array
+        (
+            [maxwidth] => 240
+            [maxheight] => 320
+            [force-size] => 1
+        )
+
+    [1] => Array
+        (
+            [maxwidth] => 480
+            [maxheight] => 640
+            [force-size] => 1
+        )
+
+    [2] => Array
+        (
+            [maxwidth] => 960
+            [maxheight] => 1280
+            [force-size] => 1
+        )
+
+    [3] => Array
+        (
+            [maxwidth] => 1920
+        )
+
+)
+```
+
+* Default: `Array
+(
+    [0] => Array
+        (
+            [force-size] => 0
+        )
+
+)
+`
+
+
+## product/default
+
+```
+mshop/media/manager/previews/product/default = Array
+(
+    [0] => Array
+        (
+            [maxwidth] => 240
+            [maxheight] => 320
+            [force-size] => 1
+        )
+
+    [1] => Array
+        (
+            [maxwidth] => 480
+            [maxheight] => 640
+            [force-size] => 1
+        )
+
+    [2] => Array
+        (
+            [maxwidth] => 960
+            [maxheight] => 1280
+            [force-size] => 1
+        )
+
+    [3] => Array
+        (
+            [maxwidth] => 1920
+        )
+
+)
+```
+
+* Default: `Array
+(
+    [0] => Array
+        (
+            [maxwidth] => 240
+            [maxheight] => 320
+            [force-size] => 1
+        )
+
+    [1] => Array
+        (
+            [maxwidth] => 480
+            [maxheight] => 640
+            [force-size] => 1
+        )
+
+    [2] => Array
+        (
+            [maxwidth] => 960
+            [maxheight] => 1280
+            [force-size] => 1
+        )
+
+    [3] => Array
+        (
+            [maxwidth] => 1920
+        )
+
+)
+`
+
+
 # property
 ## count/ansi
 
@@ -1853,7 +2179,7 @@ mshop/media/manager/property/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmedpr."id"
@@ -1863,7 +2189,7 @@ mshop/media/manager/property/count/mysql =
  	ORDER BY mmedpr."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1879,10 +2205,10 @@ mshop/media/manager/property/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1919,10 +2245,10 @@ mshop/media/manager/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1959,10 +2285,10 @@ mshop/media/manager/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2032,10 +2358,10 @@ mshop/media/manager/property/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_media_property"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2097,14 +2423,14 @@ mshop/media/manager/property/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_media_property" ( :names
  	"parentid", "key", "type", "langid", "value",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2118,7 +2444,7 @@ Class name of the used media property manager implementation
 mshop/media/manager/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2214,11 +2540,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/property/search/ansi = 
  SELECT :columns
- 	mmedpr."id" AS "media.property.id", mmedpr."parentid" AS "media.property.parentid",
- 	mmedpr."siteid" AS "media.property.siteid", mmedpr."type" AS "media.property.type",
- 	mmedpr."langid" AS "media.property.languageid", mmedpr."value" AS "media.property.value",
- 	mmedpr."mtime" AS "media.property.mtime", mmedpr."editor" AS "media.property.editor",
- 	mmedpr."ctime" AS "media.property.ctime"
  FROM "mshop_media_property" mmedpr
  :joins
  WHERE :cond
@@ -2283,11 +2604,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/property/search/mysql = 
  SELECT :columns
- 	mmedpr."id" AS "media.property.id", mmedpr."parentid" AS "media.property.parentid",
- 	mmedpr."siteid" AS "media.property.siteid", mmedpr."type" AS "media.property.type",
- 	mmedpr."langid" AS "media.property.languageid", mmedpr."value" AS "media.property.value",
- 	mmedpr."mtime" AS "media.property.mtime", mmedpr."editor" AS "media.property.editor",
- 	mmedpr."ctime" AS "media.property.ctime"
  FROM "mshop_media_property" mmedpr
  :joins
  WHERE :cond
@@ -2295,19 +2611,14 @@ mshop/media/manager/property/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mmedpr."id" AS "media.property.id", mmedpr."parentid" AS "media.property.parentid",
- 	mmedpr."siteid" AS "media.property.siteid", mmedpr."type" AS "media.property.type",
- 	mmedpr."langid" AS "media.property.languageid", mmedpr."value" AS "media.property.value",
- 	mmedpr."mtime" AS "media.property.mtime", mmedpr."editor" AS "media.property.editor",
- 	mmedpr."ctime" AS "media.property.ctime"
  FROM "mshop_media_property" mmedpr
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2323,10 +2634,10 @@ mshop/media/manager/property/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2419,7 +2730,7 @@ mshop/media/manager/property/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mmedprty."id"
@@ -2429,7 +2740,7 @@ mshop/media/manager/property/type/count/mysql =
  	ORDER BY mmedprty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -2445,10 +2756,10 @@ mshop/media/manager/property/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2485,10 +2796,10 @@ mshop/media/manager/property/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2525,10 +2836,10 @@ mshop/media/manager/property/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2598,10 +2909,10 @@ mshop/media/manager/property/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_media_property_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2663,14 +2974,14 @@ mshop/media/manager/property/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_media_property_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2684,7 +2995,7 @@ Class name of the used media property type manager implementation
 mshop/media/manager/property/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2780,12 +3091,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/property/type/search/ansi = 
  SELECT :columns
- 	mmedprty."id" AS "media.property.type.id", mmedprty."siteid" AS "media.property.type.siteid",
- 	mmedprty."code" AS "media.property.type.code", mmedprty."domain" AS "media.property.type.domain",
- 	mmedprty."label" AS "media.property.type.label", mmedprty."status" AS "media.property.type.status",
- 	mmedprty."mtime" AS "media.property.type.mtime", mmedprty."editor" AS "media.property.type.editor",
- 	mmedprty."ctime" AS "media.property.type.ctime", mmedprty."pos" AS "media.property.type.position",
- 	mmedprty."i18n" AS "media.property.type.i18n"
  FROM "mshop_media_property_type" mmedprty
  :joins
  WHERE :cond
@@ -2850,12 +3155,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/property/type/search/mysql = 
  SELECT :columns
- 	mmedprty."id" AS "media.property.type.id", mmedprty."siteid" AS "media.property.type.siteid",
- 	mmedprty."code" AS "media.property.type.code", mmedprty."domain" AS "media.property.type.domain",
- 	mmedprty."label" AS "media.property.type.label", mmedprty."status" AS "media.property.type.status",
- 	mmedprty."mtime" AS "media.property.type.mtime", mmedprty."editor" AS "media.property.type.editor",
- 	mmedprty."ctime" AS "media.property.type.ctime", mmedprty."pos" AS "media.property.type.position",
- 	mmedprty."i18n" AS "media.property.type.i18n"
  FROM "mshop_media_property_type" mmedprty
  :joins
  WHERE :cond
@@ -2863,20 +3162,14 @@ mshop/media/manager/property/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mmedprty."id" AS "media.property.type.id", mmedprty."siteid" AS "media.property.type.siteid",
- 	mmedprty."code" AS "media.property.type.code", mmedprty."domain" AS "media.property.type.domain",
- 	mmedprty."label" AS "media.property.type.label", mmedprty."status" AS "media.property.type.status",
- 	mmedprty."mtime" AS "media.property.type.mtime", mmedprty."editor" AS "media.property.type.editor",
- 	mmedprty."ctime" AS "media.property.type.ctime", mmedprty."pos" AS "media.property.type.position",
- 	mmedprty."i18n" AS "media.property.type.i18n"
  FROM "mshop_media_property_type" mmedprty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2892,10 +3185,10 @@ mshop/media/manager/property/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2961,13 +3254,13 @@ mshop/media/manager/property/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_media_property_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3024,17 +3317,33 @@ mshop/media/manager/property/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_media_property"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
 * mshop/media/manager/property/update/ansi
+
+# quality
+
+Quality level of saved images
+
+```
+mshop/media/manager/quality = 75
+```
+
+* Default: `75`
+* Type: int - Quality level from 0 to 100
+* Since: 2024.01
+
+Qualitity level must be an integer from 0 (worst) to 100 (best).
+The higher the quality, the bigger the file size.
+
 
 # resource
 
@@ -3044,7 +3353,7 @@ Name of the database connection resource to use
 mshop/media/manager/resource = db-media
 ```
 
-* Default: db-media
+* Default: `db-media`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -3067,20 +3376,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/search/ansi = 
  SELECT :columns
- 	mmed."id" AS "media.id", mmed."siteid" AS "media.siteid",
- 	mmed."langid" AS "media.languageid", mmed."type" AS "media.type",
- 	mmed."link" AS "media.url", mmed."label" AS "media.label",
- 	mmed."status" AS "media.status", mmed."mimetype" AS "media.mimetype",
- 	mmed."domain" AS "media.domain", mmed."preview" AS "media.previews",
- 	mmed."fsname" AS "media.filesystem", mmed."mtime" AS "media.mtime",
- 	mmed."ctime" AS "media.ctime", mmed."editor" AS "media.editor"
  FROM "mshop_media" mmed
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mmed."id", mmed."siteid", mmed."langid", mmed."type", mmed."link",
- 	mmed."label", mmed."status", mmed."mimetype", mmed."domain", mmed."preview",
- 	mmed."fsname", mmed."mtime", mmed."editor", mmed."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3142,40 +3441,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/search/mysql = 
  SELECT :columns
- 	mmed."id" AS "media.id", mmed."siteid" AS "media.siteid",
- 	mmed."langid" AS "media.languageid", mmed."type" AS "media.type",
- 	mmed."link" AS "media.url", mmed."label" AS "media.label",
- 	mmed."status" AS "media.status", mmed."mimetype" AS "media.mimetype",
- 	mmed."domain" AS "media.domain", mmed."preview" AS "media.previews",
- 	mmed."fsname" AS "media.filesystem", mmed."mtime" AS "media.mtime",
- 	mmed."ctime" AS "media.ctime", mmed."editor" AS "media.editor"
  FROM "mshop_media" mmed
  :joins
  WHERE :cond
- GROUP BY :group mmed."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mmed."id" AS "media.id", mmed."siteid" AS "media.siteid",
- 	mmed."langid" AS "media.languageid", mmed."type" AS "media.type",
- 	mmed."link" AS "media.url", mmed."label" AS "media.label",
- 	mmed."status" AS "media.status", mmed."mimetype" AS "media.mimetype",
- 	mmed."domain" AS "media.domain", mmed."preview" AS "media.previews",
- 	mmed."fsname" AS "media.filesystem", mmed."mtime" AS "media.mtime",
- 	mmed."ctime" AS "media.ctime", mmed."editor" AS "media.editor"
  FROM "mshop_media" mmed
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mmed."id", mmed."siteid", mmed."langid", mmed."type", mmed."link",
- 	mmed."label", mmed."status", mmed."mimetype", mmed."domain", mmed."preview",
- 	mmed."fsname", mmed."mtime", mmed."editor", mmed."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3189,7 +3471,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/media/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -3228,10 +3510,10 @@ mshop/media/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3325,7 +3607,7 @@ mshop/media/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT mmedty."id"
@@ -3335,7 +3617,7 @@ mshop/media/manager/type/count/mysql =
  	ORDER BY mmedty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -3351,10 +3633,10 @@ mshop/media/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3391,10 +3673,10 @@ mshop/media/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3431,10 +3713,10 @@ mshop/media/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3504,10 +3786,10 @@ mshop/media/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_media_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -3569,14 +3851,14 @@ mshop/media/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_media_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -3590,7 +3872,7 @@ Class name of the used media type manager implementation
 mshop/media/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -3686,12 +3968,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/type/search/ansi = 
  SELECT :columns
- 	mmedty."id" AS "media.type.id", mmedty."siteid" AS "media.type.siteid",
- 	mmedty."code" AS "media.type.code", mmedty."domain" AS "media.type.domain",
- 	mmedty."label" AS "media.type.label", mmedty."status" AS "media.type.status",
- 	mmedty."mtime" AS "media.type.mtime", mmedty."editor" AS "media.type.editor",
- 	mmedty."ctime" AS "media.type.ctime", mmedty."pos" AS "media.type.position",
- 	mmedty."i18n" AS "media.type.i18n"
  FROM "mshop_media_type" mmedty
  :joins
  WHERE :cond
@@ -3756,33 +4032,21 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/media/manager/type/search/mysql = 
  SELECT :columns
- 	mmedty."id" AS "media.type.id", mmedty."siteid" AS "media.type.siteid",
- 	mmedty."code" AS "media.type.code", mmedty."domain" AS "media.type.domain",
- 	mmedty."label" AS "media.type.label", mmedty."status" AS "media.type.status",
- 	mmedty."mtime" AS "media.type.mtime", mmedty."editor" AS "media.type.editor",
- 	mmedty."ctime" AS "media.type.ctime", mmedty."pos" AS "media.type.position",
- 	mmedty."i18n" AS "media.type.i18n"
- 	FROM "mshop_media_type" mmedty
+ FROM "mshop_media_type" mmedty
  :joins
  WHERE :cond
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mmedty."id" AS "media.type.id", mmedty."siteid" AS "media.type.siteid",
- 	mmedty."code" AS "media.type.code", mmedty."domain" AS "media.type.domain",
- 	mmedty."label" AS "media.type.label", mmedty."status" AS "media.type.status",
- 	mmedty."mtime" AS "media.type.mtime", mmedty."editor" AS "media.type.editor",
- 	mmedty."ctime" AS "media.type.ctime", mmedty."pos" AS "media.type.position",
- 	mmedty."i18n" AS "media.type.i18n"
  FROM "mshop_media_type" mmedty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3798,10 +4062,10 @@ mshop/media/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3867,13 +4131,13 @@ mshop/media/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_media_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3931,13 +4195,13 @@ mshop/media/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_media"
  SET :names
  	"langid" = ?, "type" = ?, "label" = ?, "mimetype" = ?, "link" = ?, "status" = ?,
  	"fsname" = ?, "domain" = ?, "preview" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

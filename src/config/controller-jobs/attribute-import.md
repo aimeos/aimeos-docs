@@ -42,10 +42,10 @@ controller/jobs/attribute/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -82,10 +82,10 @@ controller/jobs/attribute/import/xml/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -120,10 +120,10 @@ controller/jobs/attribute/import/xml/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -164,14 +164,14 @@ controller/jobs/attribute/import/xml/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => attribute/property
     [1] => media
     [2] => price
     [3] => text
 )
-
+`
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -195,7 +195,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/attribute/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: attribute
+* Default: `attribute`
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
@@ -219,7 +219,7 @@ Maximum number of XML nodes processed at once
 controller/jobs/attribute/import/xml/max-query = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 
@@ -243,7 +243,7 @@ Class name of the used attribute XML importer implementation
 controller/jobs/attribute/import/xml/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 

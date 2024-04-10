@@ -78,7 +78,7 @@ mshop/rule/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mrul."id"
@@ -88,7 +88,7 @@ mshop/rule/manager/count/mysql =
  	ORDER BY mrul."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -105,10 +105,10 @@ mshop/rule/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -145,10 +145,10 @@ mshop/rule/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -184,10 +184,10 @@ mshop/rule/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -257,10 +257,10 @@ mshop/rule/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_rule"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -323,14 +323,14 @@ mshop/rule/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_rule" ( :names
  	"type", "label", "provider", "config", "start", "end", "pos",
  	"status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -344,7 +344,7 @@ Class name of the used rule manager implementation
 mshop/rule/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -442,7 +442,7 @@ Name of the database connection resource to use
 mshop/rule/manager/resource = db-rule
 ```
 
-* Default: db-rule
+* Default: `db-rule`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -461,13 +461,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/rule/manager/search/ansi = 
  SELECT :columns
- 	mrul."id" AS "rule.id", mrul."siteid" AS "rule.siteid",
- 	mrul."type" AS "rule.type", mrul."label" AS "rule.label",
- 	mrul."provider" AS "rule.provider", mrul."config" AS "rule.config",
- 	mrul."start" AS "rule.datestart", mrul."end" AS "rule.dateend",
- 	mrul."pos" AS "rule.position", mrul."status" AS "rule.status",
- 	mrul."mtime" AS "rule.mtime", mrul."editor" AS "rule.editor",
- 	mrul."ctime" AS "rule.ctime"
  FROM "mshop_rule" mrul
  :joins
  WHERE :cond
@@ -532,13 +525,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/rule/manager/search/mysql = 
  SELECT :columns
- 	mrul."id" AS "rule.id", mrul."siteid" AS "rule.siteid",
- 	mrul."type" AS "rule.type", mrul."label" AS "rule.label",
- 	mrul."provider" AS "rule.provider", mrul."config" AS "rule.config",
- 	mrul."start" AS "rule.datestart", mrul."end" AS "rule.dateend",
- 	mrul."pos" AS "rule.position", mrul."status" AS "rule.status",
- 	mrul."mtime" AS "rule.mtime", mrul."editor" AS "rule.editor",
- 	mrul."ctime" AS "rule.ctime"
  FROM "mshop_rule" mrul
  :joins
  WHERE :cond
@@ -546,21 +532,14 @@ mshop/rule/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mrul."id" AS "rule.id", mrul."siteid" AS "rule.siteid",
- 	mrul."type" AS "rule.type", mrul."label" AS "rule.label",
- 	mrul."provider" AS "rule.provider", mrul."config" AS "rule.config",
- 	mrul."start" AS "rule.datestart", mrul."end" AS "rule.dateend",
- 	mrul."pos" AS "rule.position", mrul."status" AS "rule.status",
- 	mrul."mtime" AS "rule.mtime", mrul."editor" AS "rule.editor",
- 	mrul."ctime" AS "rule.ctime"
  FROM "mshop_rule" mrul
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -574,7 +553,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/rule/manager/sitemode = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -613,10 +592,10 @@ mshop/rule/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -710,7 +689,7 @@ mshop/rule/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mrulty."id"
@@ -720,7 +699,7 @@ mshop/rule/manager/type/count/mysql =
  	ORDER BY mrulty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -736,10 +715,10 @@ mshop/rule/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -776,10 +755,10 @@ mshop/rule/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -816,10 +795,10 @@ mshop/rule/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -889,10 +868,10 @@ mshop/rule/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_rule_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -954,14 +933,14 @@ mshop/rule/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_rule_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -975,7 +954,7 @@ Class name of the used rule type manager implementation
 mshop/rule/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1071,13 +1050,7 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/rule/manager/type/search/ansi = 
  SELECT :columns
- 	mrulty."id" AS "rule.type.id", mrulty."siteid" AS "rule.type.siteid",
- 	mrulty."code" AS "rule.type.code", mrulty."domain" AS "rule.type.domain",
- 	mrulty."label" AS "rule.type.label", mrulty."status" AS "rule.type.status",
- 	mrulty."mtime" AS "rule.type.mtime", mrulty."editor" AS "rule.type.editor",
- 	mrulty."ctime" AS "rule.type.ctime", mrulty."pos" AS "rule.type.position",
- 	mrulty."i18n" AS "rule.type.i18n"
- 	FROM "mshop_rule_type" mrulty
+ FROM "mshop_rule_type" mrulty
  :joins
  WHERE :cond
  ORDER BY :order
@@ -1141,12 +1114,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/rule/manager/type/search/mysql = 
  SELECT :columns
- 	mrulty."id" AS "rule.type.id", mrulty."siteid" AS "rule.type.siteid",
- 	mrulty."code" AS "rule.type.code", mrulty."domain" AS "rule.type.domain",
- 	mrulty."label" AS "rule.type.label", mrulty."status" AS "rule.type.status",
- 	mrulty."mtime" AS "rule.type.mtime", mrulty."editor" AS "rule.type.editor",
- 	mrulty."ctime" AS "rule.type.ctime", mrulty."pos" AS "rule.type.position",
- 	mrulty."i18n" AS "rule.type.i18n"
  FROM "mshop_rule_type" mrulty
  :joins
  WHERE :cond
@@ -1154,20 +1121,14 @@ mshop/rule/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mrulty."id" AS "rule.type.id", mrulty."siteid" AS "rule.type.siteid",
- 	mrulty."code" AS "rule.type.code", mrulty."domain" AS "rule.type.domain",
- 	mrulty."label" AS "rule.type.label", mrulty."status" AS "rule.type.status",
- 	mrulty."mtime" AS "rule.type.mtime", mrulty."editor" AS "rule.type.editor",
- 	mrulty."ctime" AS "rule.type.ctime", mrulty."pos" AS "rule.type.position",
- 	mrulty."i18n" AS "rule.type.i18n"
- 	FROM "mshop_rule_type" mrulty
+ FROM "mshop_rule_type" mrulty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1183,10 +1144,10 @@ mshop/rule/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1252,13 +1213,13 @@ mshop/rule/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_rule_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1316,13 +1277,13 @@ mshop/rule/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_rule"
  SET :names
  	"type" = ?, "label" = ?, "provider" = ?, "config" = ?, "start" = ?, "end" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

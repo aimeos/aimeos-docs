@@ -111,10 +111,10 @@ admin/jqadm/catalog/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of domain names
 * Since: 2016.01
 
@@ -135,11 +135,11 @@ admin/jqadm/catalog/item/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => css-class
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -160,10 +160,10 @@ admin/jqadm/catalog/item/media/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -181,10 +181,10 @@ admin/jqadm/catalog/item/text/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -237,10 +237,10 @@ admin/jqadm/catalog/media/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -275,10 +275,10 @@ admin/jqadm/catalog/media/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -311,7 +311,7 @@ Name of the media subpart used by the JQAdm catalog implementation
 admin/jqadm/catalog/media/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -363,10 +363,10 @@ admin/jqadm/catalog/media/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -401,10 +401,10 @@ admin/jqadm/catalog/media/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -437,7 +437,7 @@ Name of the property subpart used by the JQAdm catalog media implementation
 admin/jqadm/catalog/media/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.04
 
@@ -455,10 +455,10 @@ admin/jqadm/catalog/media/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -503,7 +503,7 @@ Relative path to the HTML body template of the media subpart for catalogs.
 admin/jqadm/catalog/media/property/template-item = catalog/item-media-property
 ```
 
-* Default: catalog/item-media-property
+* Default: `catalog/item-media-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -531,10 +531,10 @@ admin/jqadm/catalog/media/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -579,7 +579,7 @@ Relative path to the HTML body template of the media subpart for catalogs.
 admin/jqadm/catalog/media/template-item = catalog/item-media
 ```
 
-* Default: catalog/item-media
+* Default: `catalog/item-media`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.07
 
@@ -685,10 +685,10 @@ admin/jqadm/catalog/product/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -723,10 +723,10 @@ admin/jqadm/catalog/product/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -765,14 +765,14 @@ admin/jqadm/catalog/product/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => product.lists.status
     [1] => product.lists.type
     [2] => product.lists.position
     [3] => product.lists.parentid
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -792,7 +792,7 @@ Name of the product subpart used by the JQAdm catalog implementation
 admin/jqadm/catalog/product/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -810,10 +810,10 @@ admin/jqadm/catalog/product/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -858,7 +858,7 @@ Relative path to the HTML body template of the product subpart for catalogs.
 admin/jqadm/catalog/product/template-item = catalog/item-product
 ```
 
-* Default: catalog/item-product
+* Default: `catalog/item-product`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -888,10 +888,10 @@ admin/jqadm/catalog/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -936,7 +936,7 @@ Relative path to the HTML body template for the catalog item.
 admin/jqadm/catalog/template-item = catalog/item
 ```
 
-* Default: catalog/item
+* Default: `catalog/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -998,10 +998,10 @@ admin/jqadm/catalog/text/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1036,10 +1036,10 @@ admin/jqadm/catalog/text/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1072,7 +1072,7 @@ Name of the text subpart used by the JQAdm catalog implementation
 admin/jqadm/catalog/text/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -1090,10 +1090,10 @@ admin/jqadm/catalog/text/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1138,7 +1138,7 @@ Relative path to the HTML body template of the text subpart for catalogs.
 admin/jqadm/catalog/text/template-item = catalog/item-text
 ```
 
-* Default: catalog/item-text
+* Default: `catalog/item-text`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

@@ -10,10 +10,10 @@ client/html/account/favorite/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 
 Decorators extend the functionality of a class by adding new aspects
@@ -49,10 +49,10 @@ client/html/account/favorite/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 
 Decorators extend the functionality of a class by adding new aspects
@@ -86,10 +86,10 @@ client/html/account/favorite/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 
 Decorators extend the functionality of a class by adding new aspects
@@ -127,14 +127,14 @@ client/html/account/favorite/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => catalog
     [1] => text
     [2] => price
     [3] => media
 )
-
+`
 * Type: array - List of domain names
 * Since: 2014.09
 
@@ -158,7 +158,7 @@ Maximum number of products that can be favorites
 client/html/account/favorite/maxitems = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of products
 * Since: 2019.04
 
@@ -174,7 +174,7 @@ Class name of the used account favorite client implementation
 client/html/account/favorite/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -219,7 +219,7 @@ The number of products shown in a list page for favorite products
 client/html/account/favorite/size = 48
 ```
 
-* Default: 48
+* Default: `48`
 * Type: integer - Number of products
 * Since: 2014.09
 
@@ -245,7 +245,7 @@ Relative path to the HTML body template of the account favorite client.
 client/html/account/favorite/template-body = account/favorite/body
 ```
 
-* Default: account/favorite/body
+* Default: `account/favorite/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2015.10
 
@@ -273,7 +273,7 @@ Relative path to the HTML header template of the account favorite client.
 client/html/account/favorite/template-header = account/favorite/header
 ```
 
-* Default: account/favorite/header
+* Default: `account/favorite/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2015.10
 
@@ -303,7 +303,7 @@ Name of the action that should create the output
 client/html/account/favorite/url/action = favorite
 ```
 
-* Default: favorite
+* Default: `favorite`
 * Type: string - Name of the action
 * Since: 2014.09
 
@@ -328,10 +328,10 @@ client/html/account/favorite/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -362,7 +362,7 @@ Name of the controller whose action should be called
 client/html/account/favorite/url/controller = Account
 ```
 
-* Default: Account
+* Default: `Account`
 * Type: string - Name of the controller
 * Since: 2014.09
 
@@ -387,10 +387,10 @@ client/html/account/favorite/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

@@ -7,7 +7,7 @@ Enforces content caching regardless of user logins
 client/html/common/cache/force = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to cache output regardless of login, false for no caching
 * Since: 2015.08
 
@@ -32,7 +32,7 @@ Adds tags for all items used in a cache entry
 client/html/common/cache/tag-all = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to add tags for all items, false to use only a domain tag
 * Since: 2014.07
 

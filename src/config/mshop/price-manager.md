@@ -80,7 +80,7 @@ mshop/price/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpri."id"
@@ -91,7 +91,7 @@ mshop/price/manager/count/mysql =
  	ORDER BY mpri."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -108,10 +108,10 @@ mshop/price/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -148,10 +148,10 @@ mshop/price/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -187,10 +187,10 @@ mshop/price/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -260,10 +260,10 @@ mshop/price/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_price"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -328,7 +328,7 @@ mshop/price/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_price" ( :names
  	"type", "currencyid", "domain", "label",
  	"quantity", "value", "costs", "rebate", "taxrate",
@@ -336,7 +336,7 @@ mshop/price/manager/insert/mysql =
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -485,7 +485,7 @@ mshop/price/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprili."id"
@@ -495,7 +495,7 @@ mshop/price/manager/lists/count/mysql =
  	ORDER BY mprili."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -511,10 +511,10 @@ mshop/price/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -551,10 +551,10 @@ mshop/price/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -591,10 +591,10 @@ mshop/price/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -665,10 +665,10 @@ mshop/price/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_price_list"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -731,14 +731,14 @@ mshop/price/manager/lists/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_price_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -752,7 +752,7 @@ Class name of the used price list manager implementation
 mshop/price/manager/lists/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -849,13 +849,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/lists/search/ansi = 
  SELECT :columns
- 	mprili."id" AS "price.lists.id", mprili."parentid" AS "price.lists.parentid",
- 	mprili."siteid" AS "price.lists.siteid", mprili."type" AS "price.lists.type",
- 	mprili."domain" AS "price.lists.domain", mprili."refid" AS "price.lists.refid",
- 	mprili."start" AS "price.lists.datestart", mprili."end" AS "price.lists.dateend",
- 	mprili."config" AS "price.lists.config", mprili."pos" AS "price.lists.position",
- 	mprili."status" AS "price.lists.status", mprili."mtime" AS "price.lists.mtime",
- 	mprili."editor" AS "price.lists.editor", mprili."ctime" AS "price.lists.ctime"
  FROM "mshop_price_list" mprili
  :joins
  WHERE :cond
@@ -921,13 +914,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/lists/search/mysql = 
  SELECT :columns
- 	mprili."id" AS "price.lists.id", mprili."parentid" AS "price.lists.parentid",
- 	mprili."siteid" AS "price.lists.siteid", mprili."type" AS "price.lists.type",
- 	mprili."domain" AS "price.lists.domain", mprili."refid" AS "price.lists.refid",
- 	mprili."start" AS "price.lists.datestart", mprili."end" AS "price.lists.dateend",
- 	mprili."config" AS "price.lists.config", mprili."pos" AS "price.lists.position",
- 	mprili."status" AS "price.lists.status", mprili."mtime" AS "price.lists.mtime",
- 	mprili."editor" AS "price.lists.editor", mprili."ctime" AS "price.lists.ctime"
  FROM "mshop_price_list" mprili
  :joins
  WHERE :cond
@@ -935,21 +921,14 @@ mshop/price/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mprili."id" AS "price.lists.id", mprili."parentid" AS "price.lists.parentid",
- 	mprili."siteid" AS "price.lists.siteid", mprili."type" AS "price.lists.type",
- 	mprili."domain" AS "price.lists.domain", mprili."refid" AS "price.lists.refid",
- 	mprili."start" AS "price.lists.datestart", mprili."end" AS "price.lists.dateend",
- 	mprili."config" AS "price.lists.config", mprili."pos" AS "price.lists.position",
- 	mprili."status" AS "price.lists.status", mprili."mtime" AS "price.lists.mtime",
- 	mprili."editor" AS "price.lists.editor", mprili."ctime" AS "price.lists.ctime"
  FROM "mshop_price_list" mprili
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -965,10 +944,10 @@ mshop/price/manager/lists/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1061,7 +1040,7 @@ mshop/price/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprility."id"
@@ -1071,7 +1050,7 @@ mshop/price/manager/lists/type/count/mysql =
  	ORDER BY mprility."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1087,10 +1066,10 @@ mshop/price/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1127,10 +1106,10 @@ mshop/price/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1167,10 +1146,10 @@ mshop/price/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1240,10 +1219,10 @@ mshop/price/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_price_list_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1305,14 +1284,14 @@ mshop/price/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_price_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1326,7 +1305,7 @@ Class name of the used price list type manager implementation
 mshop/price/manager/lists/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1422,12 +1401,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/lists/type/search/ansi = 
  SELECT :columns
- 	mprility."id" AS "price.lists.type.id", mprility."siteid" AS "price.lists.type.siteid",
- 	mprility."code" AS "price.lists.type.code", mprility."domain" AS "price.lists.type.domain",
- 	mprility."label" AS "price.lists.type.label", mprility."status" AS "price.lists.type.status",
- 	mprility."mtime" AS "price.lists.type.mtime", mprility."editor" AS "price.lists.type.editor",
- 	mprility."ctime" AS "price.lists.type.ctime", mprility."pos" AS "price.lists.type.position",
- 	mprility."i18n" AS "price.lists.type.i18n"
  	FROM "mshop_price_list_type" mprility
  :joins
  WHERE :cond
@@ -1492,12 +1465,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/lists/type/search/mysql = 
  SELECT :columns
- 	mprility."id" AS "price.lists.type.id", mprility."siteid" AS "price.lists.type.siteid",
- 	mprility."code" AS "price.lists.type.code", mprility."domain" AS "price.lists.type.domain",
- 	mprility."label" AS "price.lists.type.label", mprility."status" AS "price.lists.type.status",
- 	mprility."mtime" AS "price.lists.type.mtime", mprility."editor" AS "price.lists.type.editor",
- 	mprility."ctime" AS "price.lists.type.ctime", mprility."pos" AS "price.lists.type.position",
- 	mprility."i18n" AS "price.lists.type.i18n"
  FROM "mshop_price_list_type" mprility
  :joins
  WHERE :cond
@@ -1505,20 +1472,14 @@ mshop/price/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mprility."id" AS "price.lists.type.id", mprility."siteid" AS "price.lists.type.siteid",
- 	mprility."code" AS "price.lists.type.code", mprility."domain" AS "price.lists.type.domain",
- 	mprility."label" AS "price.lists.type.label", mprility."status" AS "price.lists.type.status",
- 	mprility."mtime" AS "price.lists.type.mtime", mprility."editor" AS "price.lists.type.editor",
- 	mprility."ctime" AS "price.lists.type.ctime", mprility."pos" AS "price.lists.type.position",
- 	mprility."i18n" AS "price.lists.type.i18n"
  	FROM "mshop_price_list_type" mprility
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1534,10 +1495,10 @@ mshop/price/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1603,13 +1564,13 @@ mshop/price/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_price_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1667,13 +1628,13 @@ mshop/price/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_price_list"
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1687,7 +1648,7 @@ Class name of the used price manager implementation
 mshop/price/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1856,7 +1817,7 @@ mshop/price/manager/property/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpripr."id"
@@ -1866,7 +1827,7 @@ mshop/price/manager/property/count/mysql =
  	ORDER BY mpripr."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1882,10 +1843,10 @@ mshop/price/manager/property/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1922,10 +1883,10 @@ mshop/price/manager/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1962,10 +1923,10 @@ mshop/price/manager/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2035,10 +1996,10 @@ mshop/price/manager/property/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_price_property"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2100,14 +2061,14 @@ mshop/price/manager/property/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_price_property" ( :names
  	"parentid", "key", "type", "langid", "value",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2121,7 +2082,7 @@ Class name of the used price property manager implementation
 mshop/price/manager/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2217,11 +2178,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/property/search/ansi = 
  SELECT :columns
- 	mpripr."id" AS "price.property.id", mpripr."parentid" AS "price.property.parentid",
- 	mpripr."siteid" AS "price.property.siteid", mpripr."type" AS "price.property.type",
- 	mpripr."langid" AS "price.property.languageid", mpripr."value" AS "price.property.value",
- 	mpripr."mtime" AS "price.property.mtime", mpripr."editor" AS "price.property.editor",
- 	mpripr."ctime" AS "price.property.ctime"
  FROM "mshop_price_property" mpripr
  :joins
  WHERE :cond
@@ -2286,11 +2242,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/property/search/mysql = 
  SELECT :columns
- 	mpripr."id" AS "price.property.id", mpripr."parentid" AS "price.property.parentid",
- 	mpripr."siteid" AS "price.property.siteid", mpripr."type" AS "price.property.type",
- 	mpripr."langid" AS "price.property.languageid", mpripr."value" AS "price.property.value",
- 	mpripr."mtime" AS "price.property.mtime", mpripr."editor" AS "price.property.editor",
- 	mpripr."ctime" AS "price.property.ctime"
  FROM "mshop_price_property" mpripr
  :joins
  WHERE :cond
@@ -2298,19 +2249,14 @@ mshop/price/manager/property/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mpripr."id" AS "price.property.id", mpripr."parentid" AS "price.property.parentid",
- 	mpripr."siteid" AS "price.property.siteid", mpripr."type" AS "price.property.type",
- 	mpripr."langid" AS "price.property.languageid", mpripr."value" AS "price.property.value",
- 	mpripr."mtime" AS "price.property.mtime", mpripr."editor" AS "price.property.editor",
- 	mpripr."ctime" AS "price.property.ctime"
  FROM "mshop_price_property" mpripr
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2326,10 +2272,10 @@ mshop/price/manager/property/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2422,7 +2368,7 @@ mshop/price/manager/property/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpriprty."id"
@@ -2432,7 +2378,7 @@ mshop/price/manager/property/type/count/mysql =
  	ORDER BY mpriprty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -2448,10 +2394,10 @@ mshop/price/manager/property/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2488,10 +2434,10 @@ mshop/price/manager/property/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2528,10 +2474,10 @@ mshop/price/manager/property/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2601,10 +2547,10 @@ mshop/price/manager/property/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_price_property_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2666,14 +2612,14 @@ mshop/price/manager/property/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_price_property_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2687,7 +2633,7 @@ Class name of the used price property type manager implementation
 mshop/price/manager/property/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2783,12 +2729,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/property/type/search/ansi = 
  SELECT :columns
- 	mpriprty."id" AS "price.property.type.id", mpriprty."siteid" AS "price.property.type.siteid",
- 	mpriprty."code" AS "price.property.type.code", mpriprty."domain" AS "price.property.type.domain",
- 	mpriprty."label" AS "price.property.type.label", mpriprty."status" AS "price.property.type.status",
- 	mpriprty."mtime" AS "price.property.type.mtime", mpriprty."editor" AS "price.property.type.editor",
- 	mpriprty."ctime" AS "price.property.type.ctime", mpriprty."pos" AS "price.property.type.position",
- 	mpriprty."i18n" AS "price.property.type.i18n"
  FROM "mshop_price_property_type" mpriprty
  :joins
  WHERE :cond
@@ -2853,12 +2793,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/property/type/search/mysql = 
  SELECT :columns
- 	mpriprty."id" AS "price.property.type.id", mpriprty."siteid" AS "price.property.type.siteid",
- 	mpriprty."code" AS "price.property.type.code", mpriprty."domain" AS "price.property.type.domain",
- 	mpriprty."label" AS "price.property.type.label", mpriprty."status" AS "price.property.type.status",
- 	mpriprty."mtime" AS "price.property.type.mtime", mpriprty."editor" AS "price.property.type.editor",
- 	mpriprty."ctime" AS "price.property.type.ctime", mpriprty."pos" AS "price.property.type.position",
- 	mpriprty."i18n" AS "price.property.type.i18n"
  FROM "mshop_price_property_type" mpriprty
  :joins
  WHERE :cond
@@ -2866,20 +2800,14 @@ mshop/price/manager/property/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mpriprty."id" AS "price.property.type.id", mpriprty."siteid" AS "price.property.type.siteid",
- 	mpriprty."code" AS "price.property.type.code", mpriprty."domain" AS "price.property.type.domain",
- 	mpriprty."label" AS "price.property.type.label", mpriprty."status" AS "price.property.type.status",
- 	mpriprty."mtime" AS "price.property.type.mtime", mpriprty."editor" AS "price.property.type.editor",
- 	mpriprty."ctime" AS "price.property.type.ctime", mpriprty."pos" AS "price.property.type.position",
- 	mpriprty."i18n" AS "price.property.type.i18n"
  FROM "mshop_price_property_type" mpriprty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2895,10 +2823,10 @@ mshop/price/manager/property/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2964,13 +2892,13 @@ mshop/price/manager/property/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_price_property_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3027,13 +2955,13 @@ mshop/price/manager/property/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_price_property"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3047,7 +2975,7 @@ Name of the database connection resource to use
 mshop/price/manager/resource = db-price
 ```
 
-* Default: db-price
+* Default: `db-price`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -3070,21 +2998,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/search/ansi = 
  SELECT :columns
- 	mpri."id" AS "price.id", mpri."siteid" AS "price.siteid",
- 	mpri."type" AS "price.type", mpri."currencyid" AS "price.currencyid",
- 	mpri."domain" AS "price.domain", mpri."label" AS "price.label",
- 	mpri."quantity" AS "price.quantity", mpri."value" AS "price.value",
- 	mpri."costs" AS "price.costs", mpri."rebate" AS "price.rebate",
- 	mpri."taxrate" AS "price.taxrates", mpri."status" AS "price.status",
- 	mpri."mtime" AS "price.mtime", mpri."editor" AS "price.editor",
- 	mpri."ctime" AS "price.ctime"
  FROM "mshop_price" mpri
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mpri."id", mpri."siteid", mpri."type", mpri."currencyid", mpri."domain", mpri."label",
- 	mpri."quantity", mpri."value", mpri."costs", mpri."rebate", mpri."taxrate", mpri."status",
- 	mpri."mtime", mpri."editor", mpri."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3146,42 +3063,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/search/mysql = 
  SELECT :columns
- 	mpri."id" AS "price.id", mpri."siteid" AS "price.siteid",
- 	mpri."type" AS "price.type", mpri."currencyid" AS "price.currencyid",
- 	mpri."domain" AS "price.domain", mpri."label" AS "price.label",
- 	mpri."quantity" AS "price.quantity", mpri."value" AS "price.value",
- 	mpri."costs" AS "price.costs", mpri."rebate" AS "price.rebate",
- 	mpri."taxrate" AS "price.taxrates", mpri."status" AS "price.status",
- 	mpri."mtime" AS "price.mtime", mpri."editor" AS "price.editor",
- 	mpri."ctime" AS "price.ctime"
  FROM "mshop_price" mpri
  :joins
  WHERE :cond
- GROUP BY :group mpri."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mpri."id" AS "price.id", mpri."siteid" AS "price.siteid",
- 	mpri."type" AS "price.type", mpri."currencyid" AS "price.currencyid",
- 	mpri."domain" AS "price.domain", mpri."label" AS "price.label",
- 	mpri."quantity" AS "price.quantity", mpri."value" AS "price.value",
- 	mpri."costs" AS "price.costs", mpri."rebate" AS "price.rebate",
- 	mpri."taxrate" AS "price.taxrates", mpri."status" AS "price.status",
- 	mpri."mtime" AS "price.mtime", mpri."editor" AS "price.editor",
- 	mpri."ctime" AS "price.ctime"
  FROM "mshop_price" mpri
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mpri."id", mpri."siteid", mpri."type", mpri."currencyid", mpri."domain", mpri."label",
- 	mpri."quantity", mpri."value", mpri."costs", mpri."rebate", mpri."taxrate", mpri."status",
- 	mpri."mtime", mpri."editor", mpri."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3195,7 +3093,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/price/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -3234,10 +3132,10 @@ mshop/price/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3331,7 +3229,7 @@ mshop/price/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprity."id"
@@ -3341,7 +3239,7 @@ mshop/price/manager/type/count/mysql =
  	ORDER BY mprity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -3357,10 +3255,10 @@ mshop/price/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3397,10 +3295,10 @@ mshop/price/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3437,10 +3335,10 @@ mshop/price/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3510,10 +3408,10 @@ mshop/price/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_price_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -3575,14 +3473,14 @@ mshop/price/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_price_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -3596,7 +3494,7 @@ Class name of the used price type manager implementation
 mshop/price/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -3692,12 +3590,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/type/search/ansi = 
  SELECT :columns
- 	mprity."id" AS "price.type.id", mprity."siteid" AS "price.type.siteid",
- 	mprity."code" AS "price.type.code", mprity."domain" AS "price.type.domain",
- 	mprity."label" AS "price.type.label", mprity."status" AS "price.type.status",
- 	mprity."mtime" AS "price.type.mtime", mprity."editor" AS "price.type.editor",
- 	mprity."ctime" AS "price.type.ctime", mprity."pos" AS "price.type.position",
- 	mprity."i18n" AS "price.type.i18n"
  FROM "mshop_price_type" mprity
  :joins
  WHERE :cond
@@ -3762,12 +3654,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/price/manager/type/search/mysql = 
  SELECT :columns
- 	mprity."id" AS "price.type.id", mprity."siteid" AS "price.type.siteid",
- 	mprity."code" AS "price.type.code", mprity."domain" AS "price.type.domain",
- 	mprity."label" AS "price.type.label", mprity."status" AS "price.type.status",
- 	mprity."mtime" AS "price.type.mtime", mprity."editor" AS "price.type.editor",
- 	mprity."ctime" AS "price.type.ctime", mprity."pos" AS "price.type.position",
- 	mprity."i18n" AS "price.type.i18n"
  FROM "mshop_price_type" mprity
  :joins
  WHERE :cond
@@ -3775,20 +3661,14 @@ mshop/price/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mprity."id" AS "price.type.id", mprity."siteid" AS "price.type.siteid",
- 	mprity."code" AS "price.type.code", mprity."domain" AS "price.type.domain",
- 	mprity."label" AS "price.type.label", mprity."status" AS "price.type.status",
- 	mprity."mtime" AS "price.type.mtime", mprity."editor" AS "price.type.editor",
- 	mprity."ctime" AS "price.type.ctime", mprity."pos" AS "price.type.position",
- 	mprity."i18n" AS "price.type.i18n"
  FROM "mshop_price_type" mprity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3804,10 +3684,10 @@ mshop/price/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3873,13 +3753,13 @@ mshop/price/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_price_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3939,14 +3819,14 @@ mshop/price/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_price"
  SET :names
  	"type" = ?, "currencyid" = ?, "domain" = ?, "label" = ?,
  	"quantity" = ?, "value" = ?, "costs" = ?, "rebate" = ?,
  	"taxrate" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

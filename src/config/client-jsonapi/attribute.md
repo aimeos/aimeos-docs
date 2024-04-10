@@ -154,7 +154,7 @@ Relative path to the attribute lists JSON API template
 client/jsonapi/attribute/template = attribute/standard
 ```
 
-* Default: attribute/standard
+* Default: `attribute/standard`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2017.03
 
@@ -181,10 +181,10 @@ client/jsonapi/attribute/types = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of attribute type codes
 * Since: 2017.03
 

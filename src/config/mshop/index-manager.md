@@ -77,7 +77,7 @@ mshop/index/manager/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: 
+* Default: `
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val" :mincols
@@ -89,7 +89,7 @@ mshop/index/manager/aggregate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-
+`
 
 See also:
 
@@ -139,10 +139,10 @@ mshop/index/manager/attribute/cleanup/mysql =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_attribute"
  WHERE "mtime" < ? AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -221,10 +221,10 @@ mshop/index/manager/attribute/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -261,10 +261,10 @@ mshop/index/manager/attribute/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -301,10 +301,10 @@ mshop/index/manager/attribute/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -373,10 +373,10 @@ mshop/index/manager/attribute/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_attribute"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -437,14 +437,14 @@ mshop/index/manager/attribute/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_index_attribute" (
  	"prodid", "artid", "attrid", "listtype", "type", "code",
  	"mtime", "siteid"
  ) VALUES (
  	?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -458,7 +458,7 @@ Class name of the used index attribute manager implementation
 mshop/index/manager/attribute/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -615,7 +615,7 @@ mshop/index/manager/attribute/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT mpro."id" :mincols
  FROM "mshop_product" mpro
  :joins
@@ -623,7 +623,7 @@ mshop/index/manager/attribute/search/mysql =
  GROUP BY mpro."id"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -639,10 +639,10 @@ mshop/index/manager/attribute/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -704,10 +704,10 @@ mshop/index/manager/catalog/cleanup/mysql =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_catalog"
  WHERE "mtime" < ? AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -786,10 +786,10 @@ mshop/index/manager/catalog/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -826,10 +826,10 @@ mshop/index/manager/catalog/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -866,10 +866,10 @@ mshop/index/manager/catalog/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -938,10 +938,10 @@ mshop/index/manager/catalog/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_catalog"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1002,14 +1002,14 @@ mshop/index/manager/catalog/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_index_catalog" (
  	"prodid", "catid", "listtype", "pos",
  	"mtime", "siteid"
  ) VALUES (
  	?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1023,7 +1023,7 @@ Class name of the used index catalog manager implementation
 mshop/index/manager/catalog/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1180,7 +1180,7 @@ mshop/index/manager/catalog/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT mpro."id" :mincols
  FROM "mshop_product" mpro
  :joins
@@ -1188,7 +1188,7 @@ mshop/index/manager/catalog/search/mysql =
  GROUP BY mpro."id"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1204,10 +1204,10 @@ mshop/index/manager/catalog/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -1233,7 +1233,7 @@ Number of products that should be indexed at once
 mshop/index/manager/chunksize = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: int - Number of products
 * Since: 2014.09
 
@@ -1332,7 +1332,7 @@ mshop/index/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpro."id"
@@ -1343,7 +1343,7 @@ mshop/index/manager/count/mysql =
  	ORDER BY mpro."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1360,10 +1360,10 @@ mshop/index/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1400,10 +1400,10 @@ mshop/index/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1438,10 +1438,10 @@ mshop/index/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1492,10 +1492,10 @@ mshop/index/manager/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of MShop domain names
 * Since: 2014.09
 
@@ -1524,7 +1524,7 @@ Class name of the used index manager implementation
 mshop/index/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.11
 
@@ -1649,10 +1649,10 @@ mshop/index/manager/price/cleanup/mysql =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_price"
  WHERE "mtime" < ? AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1731,10 +1731,10 @@ mshop/index/manager/price/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1771,10 +1771,10 @@ mshop/index/manager/price/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1811,10 +1811,10 @@ mshop/index/manager/price/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1883,10 +1883,10 @@ mshop/index/manager/price/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_price"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1945,13 +1945,13 @@ mshop/index/manager/price/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_index_price" (
  	"prodid", "currencyid", "value", "mtime", "siteid"
  ) VALUES (
  	?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1965,7 +1965,7 @@ Class name of the used index price manager implementation
 mshop/index/manager/price/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -2122,7 +2122,7 @@ mshop/index/manager/price/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT mpro."id" :mincols
  FROM "mshop_product" mpro
  :joins
@@ -2130,7 +2130,7 @@ mshop/index/manager/price/search/mysql =
  GROUP BY mpro."id"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2146,10 +2146,10 @@ mshop/index/manager/price/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -2178,11 +2178,11 @@ mshop/index/manager/price/types = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => default
 )
-
+`
 * Type: array - List of price types codes
 * Since: 2019.04
 
@@ -2201,7 +2201,7 @@ Name of the database connection resource to use
 mshop/index/manager/resource = db-product
 ```
 
-* Default: db-product
+* Default: `db-product`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -2290,7 +2290,7 @@ mshop/index/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT mpro."id" :mincols
  FROM "mshop_product" mpro
  :joins
@@ -2298,7 +2298,7 @@ mshop/index/manager/search/mysql =
  GROUP BY mpro."id"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2312,7 +2312,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/index/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -2356,10 +2356,10 @@ mshop/index/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of index sub-manager names
 * Since: 2016.02
 
@@ -2427,10 +2427,10 @@ mshop/index/manager/supplier/cleanup/mysql =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_supplier"
  WHERE "mtime" < ? AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2509,10 +2509,10 @@ mshop/index/manager/supplier/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2549,10 +2549,10 @@ mshop/index/manager/supplier/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2589,10 +2589,10 @@ mshop/index/manager/supplier/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2661,10 +2661,10 @@ mshop/index/manager/supplier/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_supplier"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2725,14 +2725,14 @@ mshop/index/manager/supplier/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_index_supplier" (
  	"prodid", "supid", "listtype", "pos",
  	"latitude", "longitude", "mtime", "siteid"
  ) VALUES (
  	?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2746,7 +2746,7 @@ Class name of the used index supplier manager implementation
 mshop/index/manager/supplier/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.07
 
@@ -2903,7 +2903,7 @@ mshop/index/manager/supplier/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT mpro."id" :mincols
  FROM "mshop_product" mpro
  :joins
@@ -2911,7 +2911,7 @@ mshop/index/manager/supplier/search/mysql =
  GROUP BY mpro."id"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2927,10 +2927,10 @@ mshop/index/manager/supplier/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of index sub-manager names
 * Since: 2018.07
 * Since: 2018.07
@@ -2961,12 +2961,12 @@ mshop/index/manager/text/attribute-types = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => variant
     [1] => default
 )
-
+`
 * Type: array|string|null - Type name or list of type names, null for all
 * Since: 2020.10
 
@@ -3020,10 +3020,10 @@ mshop/index/manager/text/cleanup/mysql =
  WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_text"
  WHERE "mtime" < ? AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -3105,10 +3105,10 @@ mshop/index/manager/text/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3145,10 +3145,10 @@ mshop/index/manager/text/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3185,10 +3185,10 @@ mshop/index/manager/text/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3258,10 +3258,10 @@ mshop/index/manager/text/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_index_text"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -3322,13 +3322,13 @@ mshop/index/manager/text/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_index_text" (
  	"prodid", "langid", "url", "name", "content", "mtime", "siteid"
  ) VALUES (
  	?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -3342,7 +3342,7 @@ Class name of the used index text manager implementation
 mshop/index/manager/text/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -3505,7 +3505,7 @@ mshop/index/manager/text/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT mpro."id" :mincols
  FROM "mshop_product" mpro
  :joins
@@ -3513,7 +3513,7 @@ mshop/index/manager/text/search/mysql =
  GROUP BY mpro."id"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3525,7 +3525,7 @@ See also:
 mshop/index/manager/text/sqlsrv/fulltext = 
 ```
 
-* Default: 
+* Default: ``
 
 
 ## submanagers
@@ -3538,10 +3538,10 @@ mshop/index/manager/text/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09

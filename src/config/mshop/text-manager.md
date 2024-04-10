@@ -80,7 +80,7 @@ mshop/text/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtex."id"
@@ -91,7 +91,7 @@ mshop/text/manager/count/mysql =
  	ORDER BY mtex."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -108,10 +108,10 @@ mshop/text/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -148,10 +148,10 @@ mshop/text/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -187,10 +187,10 @@ mshop/text/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -260,10 +260,10 @@ mshop/text/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_text"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -326,14 +326,14 @@ mshop/text/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_text" ( :names
  	"langid", "type", "domain", "label", "content",
  	"status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -482,7 +482,7 @@ mshop/text/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexli."id"
@@ -492,7 +492,7 @@ mshop/text/manager/lists/count/mysql =
  	ORDER BY mtexli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -508,10 +508,10 @@ mshop/text/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -548,10 +548,10 @@ mshop/text/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -587,10 +587,10 @@ mshop/text/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -661,10 +661,10 @@ mshop/text/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_text_list"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -727,14 +727,14 @@ mshop/text/manager/lists/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_text_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -748,7 +748,7 @@ Class name of the used text list manager implementation
 mshop/text/manager/lists/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -845,13 +845,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/lists/search/ansi = 
  SELECT :columns
- 	mtexli."id" AS "text.lists.id", mtexli."parentid" AS "text.lists.parentid",
- 	mtexli."siteid" AS "text.lists.siteid", mtexli."type" AS "text.lists.type",
- 	mtexli."domain" AS "text.lists.domain", mtexli."refid" AS "text.lists.refid",
- 	mtexli."start" AS "text.lists.datestart", mtexli."end" AS "text.lists.dateend",
- 	mtexli."config" AS "text.lists.config", mtexli."pos" AS "text.lists.position",
- 	mtexli."status" AS "text.lists.status", mtexli."mtime" AS "text.lists.mtime",
- 	mtexli."editor" AS "text.lists.editor", mtexli."ctime" AS "text.lists.ctime"
  FROM "mshop_text_list" mtexli
  :joins
  WHERE :cond
@@ -917,13 +910,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/lists/search/mysql = 
  SELECT :columns
- 	mtexli."id" AS "text.lists.id", mtexli."parentid" AS "text.lists.parentid",
- 	mtexli."siteid" AS "text.lists.siteid", mtexli."type" AS "text.lists.type",
- 	mtexli."domain" AS "text.lists.domain", mtexli."refid" AS "text.lists.refid",
- 	mtexli."start" AS "text.lists.datestart", mtexli."end" AS "text.lists.dateend",
- 	mtexli."config" AS "text.lists.config", mtexli."pos" AS "text.lists.position",
- 	mtexli."status" AS "text.lists.status", mtexli."mtime" AS "text.lists.mtime",
- 	mtexli."editor" AS "text.lists.editor", mtexli."ctime" AS "text.lists.ctime"
  FROM "mshop_text_list" mtexli
  :joins
  WHERE :cond
@@ -931,21 +917,14 @@ mshop/text/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mtexli."id" AS "text.lists.id", mtexli."parentid" AS "text.lists.parentid",
- 	mtexli."siteid" AS "text.lists.siteid", mtexli."type" AS "text.lists.type",
- 	mtexli."domain" AS "text.lists.domain", mtexli."refid" AS "text.lists.refid",
- 	mtexli."start" AS "text.lists.datestart", mtexli."end" AS "text.lists.dateend",
- 	mtexli."config" AS "text.lists.config", mtexli."pos" AS "text.lists.position",
- 	mtexli."status" AS "text.lists.status", mtexli."mtime" AS "text.lists.mtime",
- 	mtexli."editor" AS "text.lists.editor", mtexli."ctime" AS "text.lists.ctime"
  FROM "mshop_text_list" mtexli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -961,10 +940,10 @@ mshop/text/manager/lists/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1057,7 +1036,7 @@ mshop/text/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexlity."id"
@@ -1067,7 +1046,7 @@ mshop/text/manager/lists/type/count/mysql =
  	ORDER BY mtexlity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1083,10 +1062,10 @@ mshop/text/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1123,10 +1102,10 @@ mshop/text/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1163,10 +1142,10 @@ mshop/text/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1236,10 +1215,10 @@ mshop/text/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_text_list_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1301,14 +1280,14 @@ mshop/text/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_text_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1322,7 +1301,7 @@ Class name of the used text list type manager implementation
 mshop/text/manager/lists/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1418,12 +1397,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/lists/type/search/ansi = 
  SELECT :columns
- 	mtexlity."id" AS "text.lists.type.id", mtexlity."siteid" AS "text.lists.type.siteid",
- 	mtexlity."code" AS "text.lists.type.code", mtexlity."domain" AS "text.lists.type.domain",
- 	mtexlity."label" AS "text.lists.type.label", mtexlity."status" AS "text.lists.type.status",
- 	mtexlity."mtime" AS "text.lists.type.mtime", mtexlity."editor" AS "text.lists.type.editor",
- 	mtexlity."ctime" AS "text.lists.type.ctime", mtexlity."pos" AS "text.lists.type.position",
- 	mtexlity."i18n" AS "text.lists.type.i18n"
  FROM "mshop_text_list_type" mtexlity
  :joins
  WHERE :cond
@@ -1488,12 +1461,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/lists/type/search/mysql = 
  SELECT :columns
- 	mtexlity."id" AS "text.lists.type.id", mtexlity."siteid" AS "text.lists.type.siteid",
- 	mtexlity."code" AS "text.lists.type.code", mtexlity."domain" AS "text.lists.type.domain",
- 	mtexlity."label" AS "text.lists.type.label", mtexlity."status" AS "text.lists.type.status",
- 	mtexlity."mtime" AS "text.lists.type.mtime", mtexlity."editor" AS "text.lists.type.editor",
- 	mtexlity."ctime" AS "text.lists.type.ctime", mtexlity."pos" AS "text.lists.type.position",
- 	mtexlity."i18n" AS "text.lists.type.i18n"
  FROM "mshop_text_list_type" mtexlity
  :joins
  WHERE :cond
@@ -1501,20 +1468,14 @@ mshop/text/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mtexlity."id" AS "text.lists.type.id", mtexlity."siteid" AS "text.lists.type.siteid",
- 	mtexlity."code" AS "text.lists.type.code", mtexlity."domain" AS "text.lists.type.domain",
- 	mtexlity."label" AS "text.lists.type.label", mtexlity."status" AS "text.lists.type.status",
- 	mtexlity."mtime" AS "text.lists.type.mtime", mtexlity."editor" AS "text.lists.type.editor",
- 	mtexlity."ctime" AS "text.lists.type.ctime", mtexlity."pos" AS "text.lists.type.position",
- 	mtexlity."i18n" AS "text.lists.type.i18n"
  FROM "mshop_text_list_type" mtexlity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1530,10 +1491,10 @@ mshop/text/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1599,13 +1560,13 @@ mshop/text/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_text_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1663,13 +1624,13 @@ mshop/text/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_text_list"
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1683,7 +1644,7 @@ Class name of the used text manager implementation
 mshop/text/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1781,7 +1742,7 @@ Name of the database connection resource to use
 mshop/text/manager/resource = db-text
 ```
 
-* Default: db-text
+* Default: `db-text`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -1802,18 +1763,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/search/ansi = 
  SELECT :columns
- 	mtex."id" AS "text.id", mtex."siteid" AS "text.siteid",
- 	mtex."langid" AS "text.languageid",	mtex."type" AS "text.type",
- 	mtex."domain" AS "text.domain", mtex."label" AS "text.label",
- 	mtex."content" AS "text.content", mtex."status" AS "text.status",
- 	mtex."mtime" AS "text.mtime", mtex."editor" AS "text.editor",
- 	mtex."ctime" AS "text.ctime"
  FROM "mshop_text" mtex
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mtex."id", mtex."siteid", mtex."langid",	mtex."type", mtex."domain", mtex."label",
- 	mtex."content", mtex."status", mtex."mtime", mtex."editor", mtex."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -1875,37 +1828,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/search/mysql = 
  SELECT :columns
- 	mtex."id" AS "text.id", mtex."siteid" AS "text.siteid",
- 	mtex."langid" AS "text.languageid",	mtex."type" AS "text.type",
- 	mtex."domain" AS "text.domain", mtex."label" AS "text.label",
- 	mtex."content" AS "text.content", mtex."status" AS "text.status",
- 	mtex."mtime" AS "text.mtime", mtex."editor" AS "text.editor",
- 	mtex."ctime" AS "text.ctime"
  FROM "mshop_text" mtex
  :joins
  WHERE :cond
- GROUP BY :group mtex."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mtex."id" AS "text.id", mtex."siteid" AS "text.siteid",
- 	mtex."langid" AS "text.languageid",	mtex."type" AS "text.type",
- 	mtex."domain" AS "text.domain", mtex."label" AS "text.label",
- 	mtex."content" AS "text.content", mtex."status" AS "text.status",
- 	mtex."mtime" AS "text.mtime", mtex."editor" AS "text.editor",
- 	mtex."ctime" AS "text.ctime"
  FROM "mshop_text" mtex
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mtex."id", mtex."siteid", mtex."langid",	mtex."type", mtex."domain", mtex."label",
- 	mtex."content", mtex."status", mtex."mtime", mtex."editor", mtex."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1919,7 +1858,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/text/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -1958,10 +1897,10 @@ mshop/text/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2055,7 +1994,7 @@ mshop/text/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexty."id"
@@ -2065,7 +2004,7 @@ mshop/text/manager/type/count/mysql =
  	ORDER BY mtexty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -2081,10 +2020,10 @@ mshop/text/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2121,10 +2060,10 @@ mshop/text/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2160,10 +2099,10 @@ mshop/text/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2233,10 +2172,10 @@ mshop/text/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_text_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2298,14 +2237,14 @@ mshop/text/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_text_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2319,7 +2258,7 @@ Class name of the used text type manager implementation
 mshop/text/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -2415,12 +2354,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/type/search/ansi = 
  SELECT :columns
- 	mtexty."id" AS "text.type.id", mtexty."siteid" AS "text.type.siteid",
- 	mtexty."code" AS "text.type.code", mtexty."domain" AS "text.type.domain",
- 	mtexty."label" AS "text.type.label", mtexty."status" AS "text.type.status",
- 	mtexty."mtime" AS "text.type.mtime", mtexty."editor" AS "text.type.editor",
- 	mtexty."ctime" AS "text.type.ctime", mtexty."pos" AS "text.type.position",
- 	mtexty."i18n" AS "text.type.i18n"
  FROM "mshop_text_type" mtexty
  :joins
  WHERE :cond
@@ -2485,12 +2418,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/text/manager/type/search/mysql = 
  SELECT :columns
- 	mtexty."id" AS "text.type.id", mtexty."siteid" AS "text.type.siteid",
- 	mtexty."code" AS "text.type.code", mtexty."domain" AS "text.type.domain",
- 	mtexty."label" AS "text.type.label", mtexty."status" AS "text.type.status",
- 	mtexty."mtime" AS "text.type.mtime", mtexty."editor" AS "text.type.editor",
- 	mtexty."ctime" AS "text.type.ctime", mtexty."pos" AS "text.type.position",
- 	mtexty."i18n" AS "text.type.i18n"
  FROM "mshop_text_type" mtexty
  :joins
  WHERE :cond
@@ -2498,20 +2425,14 @@ mshop/text/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mtexty."id" AS "text.type.id", mtexty."siteid" AS "text.type.siteid",
- 	mtexty."code" AS "text.type.code", mtexty."domain" AS "text.type.domain",
- 	mtexty."label" AS "text.type.label", mtexty."status" AS "text.type.status",
- 	mtexty."mtime" AS "text.type.mtime", mtexty."editor" AS "text.type.editor",
- 	mtexty."ctime" AS "text.type.ctime", mtexty."pos" AS "text.type.position",
- 	mtexty."i18n" AS "text.type.i18n"
  FROM "mshop_text_type" mtexty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2527,10 +2448,10 @@ mshop/text/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2596,13 +2517,13 @@ mshop/text/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_text_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -2660,13 +2581,13 @@ mshop/text/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_text"
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
  	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

@@ -7,7 +7,7 @@ Display the "add to basket" button for each suggested/bought-together product it
 client/html/catalog/detail/basket-add = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to display the button, false to hide it
 * Since: 2021.04
 
@@ -36,7 +36,7 @@ Enables or disables caching only for the catalog detail component
 client/html/catalog/detail/cache = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to enable caching, false to disable
 
 Disable caching for components can be useful if you would have too much
@@ -167,7 +167,7 @@ client/html/catalog/detail/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => attribute
     [1] => attribute/property
@@ -182,7 +182,7 @@ client/html/catalog/detail/domains = Array
     [10] => text
     [11] => stock
 )
-
+`
 * Type: array - List of domain names
 * Since: 2014.03
 
@@ -211,7 +211,7 @@ Adds the title, meta and link tags to the HTML header
 client/html/catalog/detail/metatags = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to display the meta tags, false to hide it
 * Since: 2017.01
 
@@ -299,7 +299,7 @@ Relative path to the detail image partial template file
 client/html/catalog/detail/partials/image = catalog/detail/image
 ```
 
-* Default: catalog/detail/image
+* Default: `catalog/detail/image`
 * Type: string - Relative path to the template file
 * Since: 2017.01
 
@@ -316,7 +316,7 @@ Relative path to the HTML template of the catalog detail seen partial.
 client/html/catalog/detail/partials/seen = catalog/detail/seen
 ```
 
-* Default: catalog/detail/seen
+* Default: `catalog/detail/seen`
 * Type: string - Relative path to the template creating the HTML fragment
 * Since: 2014.03
 
@@ -384,7 +384,7 @@ Enables or disables displaying product stock levels in product detail view
 client/html/catalog/detail/stock/enable = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Value of "1" to display stock levels, "0" to disable displaying them
 * Since: 2014.03
 
@@ -412,7 +412,7 @@ Relative path to the HTML body template of the catalog detail client.
 client/html/catalog/detail/template-body = catalog/detail/body
 ```
 
-* Default: catalog/detail/body
+* Default: `catalog/detail/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -441,7 +441,7 @@ Relative path to the HTML header template of the catalog detail client.
 client/html/catalog/detail/template-header = catalog/detail/header
 ```
 
-* Default: catalog/detail/header
+* Default: `catalog/detail/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -471,7 +471,7 @@ Relative path to the HTML template of the catalog detail navigator partial.
 client/html/catalog/detail/template-navigator = catalog/detail/navigator
 ```
 
-* Default: catalog/detail/navigator
+* Default: `catalog/detail/navigator`
 * Type: string - Relative path to the template creating the HTML fragment
 * Since: 2022.10
 
@@ -497,7 +497,7 @@ Name of the action that should create the output
 client/html/catalog/detail/url/action = detail
 ```
 
-* Default: detail
+* Default: `detail`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -523,11 +523,11 @@ client/html/catalog/detail/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [absoluteUri] => 1
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -559,7 +559,7 @@ Name of the controller whose action should be called
 client/html/catalog/detail/url/controller = catalog
 ```
 
-* Default: catalog
+* Default: `catalog`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -581,14 +581,16 @@ Removes parameters for the detail page before generating the URL
 ```
 client/html/catalog/detail/url/filter = Array
 (
-    [0] => d_prodid
+    [0] => path
+    [1] => d_prodid
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
+    [0] => d_prodid
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2019.04
 

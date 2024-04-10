@@ -111,13 +111,13 @@ admin/jqadm/locale/currency/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => locale.currency.status
     [1] => locale.currency.code
     [2] => locale.currency.label
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -183,10 +183,10 @@ admin/jqadm/locale/currency/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -231,7 +231,7 @@ Relative path to the HTML body template for the locale item.
 admin/jqadm/locale/currency/template-item = locale/currency/item
 ```
 
-* Default: locale/currency/item
+* Default: `locale/currency/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -256,7 +256,7 @@ Relative path to the HTML body template for the locale list.
 admin/jqadm/locale/currency/template-list = locale/currency/list
 ```
 
-* Default: locale/currency/list
+* Default: `locale/currency/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -386,14 +386,14 @@ admin/jqadm/locale/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => locale.status
     [1] => locale.languageid
     [2] => locale.currencyid
     [3] => locale.position
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -517,13 +517,13 @@ admin/jqadm/locale/language/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => locale.language.status
     [1] => locale.language.code
     [2] => locale.language.label
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -589,10 +589,10 @@ admin/jqadm/locale/language/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -637,7 +637,7 @@ Relative path to the HTML body template for the locale item.
 admin/jqadm/locale/language/template-item = locale/language/item
 ```
 
-* Default: locale/language/item
+* Default: `locale/language/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -662,7 +662,7 @@ Relative path to the HTML body template for the locale list.
 admin/jqadm/locale/language/template-list = locale/language/list
 ```
 
-* Default: locale/language/list
+* Default: `locale/language/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -836,14 +836,14 @@ admin/jqadm/locale/site/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => locale.site.status
     [1] => locale.site.code
     [2] => locale.site.label
     [3] => locale.site.config
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -865,10 +865,10 @@ admin/jqadm/locale/site/item/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -930,10 +930,10 @@ admin/jqadm/locale/site/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -978,7 +978,7 @@ Relative path to the HTML body template for the locale item.
 admin/jqadm/locale/site/template-item = locale/site/item
 ```
 
-* Default: locale/site/item
+* Default: `locale/site/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -1003,7 +1003,7 @@ Relative path to the HTML body template for the locale list.
 admin/jqadm/locale/site/template-list = locale/site/list
 ```
 
-* Default: locale/site/list
+* Default: `locale/site/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1030,10 +1030,10 @@ admin/jqadm/locale/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1078,7 +1078,7 @@ Relative path to the HTML body template for the locale item.
 admin/jqadm/locale/template-item = locale/item
 ```
 
-* Default: locale/item
+* Default: `locale/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -1103,7 +1103,7 @@ Relative path to the HTML body template for the locale list.
 admin/jqadm/locale/template-list = locale/list
 ```
 
-* Default: locale/list
+* Default: `locale/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 

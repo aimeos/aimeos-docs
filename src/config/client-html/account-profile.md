@@ -1,4 +1,21 @@
 
+# address
+
+Relative path to the address partial template file
+
+```
+client/html/account/profile/address = common/partials/address
+```
+
+* Default: `common/partials/address`
+* Type: string - Relative path to the template file
+* Since: 2024.04
+
+Partials are templates which are reused in other templates and generate
+reoccuring blocks filled with data from the assigned values. The address
+partial creates an HTML block with input fields for address forms.
+
+
 # decorators
 ## excludes
 
@@ -106,11 +123,11 @@ client/html/account/profile/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => customer/address
 )
-
+`
 * Type: array - List of domain names
 * Since: 2016.10
 
@@ -172,7 +189,7 @@ Relative path to the HTML body template of the account profile client.
 client/html/account/profile/template-body = account/profile/body
 ```
 
-* Default: account/profile/body
+* Default: `account/profile/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2016.10
 
@@ -200,7 +217,7 @@ Relative path to the HTML header template of the account profile client.
 client/html/account/profile/template-header = account/profile/header
 ```
 
-* Default: account/profile/header
+* Default: `account/profile/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2016.10
 
@@ -230,7 +247,7 @@ Name of the action that should create the output
 client/html/account/profile/url/action = profile
 ```
 
-* Default: profile
+* Default: `profile`
 * Type: string - Name of the action
 * Since: 2019.10
 
@@ -254,10 +271,10 @@ client/html/account/profile/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2019.10
 
@@ -288,7 +305,7 @@ Name of the controller whose action should be called
 client/html/account/profile/url/controller = Account
 ```
 
-* Default: Account
+* Default: `Account`
 * Type: string - Name of the controller
 * Since: 2019.10
 
@@ -312,10 +329,10 @@ client/html/account/profile/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2019.10
 

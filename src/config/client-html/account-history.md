@@ -110,7 +110,7 @@ client/html/account/history/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => order
     [order/address] => order/address
@@ -118,7 +118,7 @@ client/html/account/history/domains = Array
     [order/product] => order/product
     [order/service] => order/service
 )
-
+`
 * Type: array - List of domain names
 * Since: 2022.10
 
@@ -182,7 +182,7 @@ Location of the address partial template for the account history component
 client/html/account/history/summary/address = common/summary/address
 ```
 
-* Default: common/summary/address
+* Default: `common/summary/address`
 * Type: string - Relative path to the address partial
 * Since: 2017.01
 
@@ -204,7 +204,7 @@ Location of the detail partial template for the account history component
 client/html/account/history/summary/detail = common/summary/detail
 ```
 
-* Default: common/summary/detail
+* Default: `common/summary/detail`
 * Type: string - Relative path to the detail partial
 * Since: 2017.01
 
@@ -226,7 +226,7 @@ Location of the service partial template for the account history component
 client/html/account/history/summary/service = common/summary/service
 ```
 
-* Default: common/summary/service
+* Default: `common/summary/service`
 * Type: string - Relative path to the service partial
 * Since: 2017.01
 
@@ -248,7 +248,7 @@ Relative path to the HTML body template of the account history client.
 client/html/account/history/template-body = account/history/body
 ```
 
-* Default: account/history/body
+* Default: `account/history/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -276,7 +276,7 @@ Relative path to the HTML header template of the account history client.
 client/html/account/history/template-header = account/history/header
 ```
 
-* Default: account/history/header
+* Default: `account/history/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -306,7 +306,7 @@ Name of the action that should create the output
 client/html/account/history/url/action = history
 ```
 
-* Default: history
+* Default: `history`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -331,10 +331,10 @@ client/html/account/history/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -365,7 +365,7 @@ Name of the controller whose action should be called
 client/html/account/history/url/controller = Account
 ```
 
-* Default: Account
+* Default: `Account`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -390,10 +390,10 @@ client/html/account/history/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

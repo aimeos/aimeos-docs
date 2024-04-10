@@ -110,7 +110,7 @@ Load the site tree instead of the nodes of the first level only
 client/jsonapi/site/deep = 1
 ```
 
-* Default: 
+* Default: ``
 * Type: bool - True for site tree, false for first level only
 * Since: 2021.04
 
@@ -176,7 +176,7 @@ Relative path to the site lists JSON API template
 client/jsonapi/site/template = site/standard
 ```
 
-* Default: site/standard
+* Default: `site/standard`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2021.04
 

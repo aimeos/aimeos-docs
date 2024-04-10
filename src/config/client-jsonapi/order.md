@@ -154,7 +154,7 @@ Relative path to the order JSON API template
 client/jsonapi/order/template = order/standard
 ```
 
-* Default: order/standard
+* Default: `order/standard`
 * Type: string - Relative path to the template creating the body of the JSON API
 * Since: 2017.03
 

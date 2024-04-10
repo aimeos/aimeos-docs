@@ -154,7 +154,7 @@ Relative path to the catalog lists JSON API template
 client/jsonapi/stock/template = stock/standard
 ```
 
-* Default: stock/standard
+* Default: `stock/standard`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2017.03
 

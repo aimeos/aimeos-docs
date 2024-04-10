@@ -80,7 +80,7 @@ mshop/attribute/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT matt."id"
@@ -91,7 +91,7 @@ mshop/attribute/manager/count/mysql =
  	ORDER BY matt."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -108,10 +108,10 @@ mshop/attribute/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -148,10 +148,10 @@ mshop/attribute/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -186,10 +186,10 @@ mshop/attribute/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -259,10 +259,10 @@ mshop/attribute/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_attribute"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -325,14 +325,14 @@ mshop/attribute/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_attribute" ( :names
  	"key", "type", "domain", "code", "status", "pos",
  	"label", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -481,7 +481,7 @@ mshop/attribute/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattli."id"
@@ -491,7 +491,7 @@ mshop/attribute/manager/lists/count/mysql =
  	ORDER BY mattli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -507,10 +507,10 @@ mshop/attribute/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -547,10 +547,10 @@ mshop/attribute/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -587,10 +587,10 @@ mshop/attribute/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -661,10 +661,10 @@ mshop/attribute/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_attribute_list"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -727,14 +727,14 @@ mshop/attribute/manager/lists/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_attribute_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -748,7 +748,7 @@ Class name of the used attribute list manager implementation
 mshop/attribute/manager/lists/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -845,13 +845,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/lists/search/ansi = 
  SELECT :columns
- 	mattli."id" AS "attribute.lists.id", mattli."siteid" AS "attribute.lists.siteid",
- 	mattli."parentid" AS "attribute.lists.parentid", mattli."type" AS "attribute.lists.type",
- 	mattli."domain" AS "attribute.lists.domain", mattli."refid" AS "attribute.lists.refid",
- 	mattli."start" AS "attribute.lists.datestart", mattli."end" AS "attribute.lists.dateend",
- 	mattli."config" AS "attribute.lists.config", mattli."pos" AS "attribute.lists.position",
- 	mattli."status" AS "attribute.lists.status", mattli."mtime" AS "attribute.lists.mtime",
- 	mattli."ctime" AS "attribute.lists.ctime", mattli."editor" AS "attribute.lists.editor"
  FROM "mshop_attribute_list" mattli
  :joins
  WHERE :cond
@@ -917,13 +910,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/lists/search/mysql = 
  SELECT :columns
- 	mattli."id" AS "attribute.lists.id", mattli."siteid" AS "attribute.lists.siteid",
- 	mattli."parentid" AS "attribute.lists.parentid", mattli."type" AS "attribute.lists.type",
- 	mattli."domain" AS "attribute.lists.domain", mattli."refid" AS "attribute.lists.refid",
- 	mattli."start" AS "attribute.lists.datestart", mattli."end" AS "attribute.lists.dateend",
- 	mattli."config" AS "attribute.lists.config", mattli."pos" AS "attribute.lists.position",
- 	mattli."status" AS "attribute.lists.status", mattli."mtime" AS "attribute.lists.mtime",
- 	mattli."ctime" AS "attribute.lists.ctime", mattli."editor" AS "attribute.lists.editor"
  FROM "mshop_attribute_list" mattli
  :joins
  WHERE :cond
@@ -931,21 +917,14 @@ mshop/attribute/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mattli."id" AS "attribute.lists.id", mattli."siteid" AS "attribute.lists.siteid",
- 	mattli."parentid" AS "attribute.lists.parentid", mattli."type" AS "attribute.lists.type",
- 	mattli."domain" AS "attribute.lists.domain", mattli."refid" AS "attribute.lists.refid",
- 	mattli."start" AS "attribute.lists.datestart", mattli."end" AS "attribute.lists.dateend",
- 	mattli."config" AS "attribute.lists.config", mattli."pos" AS "attribute.lists.position",
- 	mattli."status" AS "attribute.lists.status", mattli."mtime" AS "attribute.lists.mtime",
- 	mattli."ctime" AS "attribute.lists.ctime", mattli."editor" AS "attribute.lists.editor"
  FROM "mshop_attribute_list" mattli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -961,10 +940,10 @@ mshop/attribute/manager/lists/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1057,7 +1036,7 @@ mshop/attribute/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattlity."id"
@@ -1067,7 +1046,7 @@ mshop/attribute/manager/lists/type/count/mysql =
  	ORDER BY mattlity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1083,10 +1062,10 @@ mshop/attribute/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1123,10 +1102,10 @@ mshop/attribute/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1163,10 +1142,10 @@ mshop/attribute/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1236,10 +1215,10 @@ mshop/attribute/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_attribute_list_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1301,14 +1280,14 @@ mshop/attribute/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_attribute_list_type"( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1322,7 +1301,7 @@ Class name of the used attribute list type manager implementation
 mshop/attribute/manager/lists/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1418,12 +1397,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/lists/type/search/ansi = 
  SELECT :columns
- 	mattlity."id" AS "attribute.lists.type.id", mattlity."siteid" AS "attribute.lists.type.siteid",
- 	mattlity."code" AS "attribute.lists.type.code", mattlity."domain" AS "attribute.lists.type.domain",
- 	mattlity."label" AS "attribute.lists.type.label", mattlity."status" AS "attribute.lists.type.status",
- 	mattlity."mtime" AS "attribute.lists.type.mtime", mattlity."ctime" AS "attribute.lists.type.ctime",
- 	mattlity."editor" AS "attribute.lists.type.editor", mattlity."pos" AS "attribute.lists.type.position",
- 	mattlity."i18n" AS "attribute.lists.type.i18n"
  FROM "mshop_attribute_list_type" mattlity
  :joins
  WHERE :cond
@@ -1488,12 +1461,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/lists/type/search/mysql = 
  SELECT :columns
- 	mattlity."id" AS "attribute.lists.type.id", mattlity."siteid" AS "attribute.lists.type.siteid",
- 	mattlity."code" AS "attribute.lists.type.code", mattlity."domain" AS "attribute.lists.type.domain",
- 	mattlity."label" AS "attribute.lists.type.label", mattlity."status" AS "attribute.lists.type.status",
- 	mattlity."mtime" AS "attribute.lists.type.mtime", mattlity."ctime" AS "attribute.lists.type.ctime",
- 	mattlity."editor" AS "attribute.lists.type.editor", mattlity."pos" AS "attribute.lists.type.position",
- 	mattlity."i18n" AS "attribute.lists.type.i18n"
  FROM "mshop_attribute_list_type" mattlity
  :joins
  WHERE :cond
@@ -1501,20 +1468,14 @@ mshop/attribute/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mattlity."id" AS "attribute.lists.type.id", mattlity."siteid" AS "attribute.lists.type.siteid",
- 	mattlity."code" AS "attribute.lists.type.code", mattlity."domain" AS "attribute.lists.type.domain",
- 	mattlity."label" AS "attribute.lists.type.label", mattlity."status" AS "attribute.lists.type.status",
- 	mattlity."mtime" AS "attribute.lists.type.mtime", mattlity."ctime" AS "attribute.lists.type.ctime",
- 	mattlity."editor" AS "attribute.lists.type.editor", mattlity."pos" AS "attribute.lists.type.position",
- 	mattlity."i18n" AS "attribute.lists.type.i18n"
  FROM "mshop_attribute_list_type" mattlity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1530,10 +1491,10 @@ mshop/attribute/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1599,13 +1560,13 @@ mshop/attribute/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_attribute_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1663,13 +1624,13 @@ mshop/attribute/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_attribute_list"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1683,7 +1644,7 @@ Class name of the used attribute manager implementation
 mshop/attribute/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1852,7 +1813,7 @@ mshop/attribute/manager/property/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattpr."id"
@@ -1862,7 +1823,7 @@ mshop/attribute/manager/property/count/mysql =
  	ORDER BY mattpr."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1878,10 +1839,10 @@ mshop/attribute/manager/property/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1918,10 +1879,10 @@ mshop/attribute/manager/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1958,10 +1919,10 @@ mshop/attribute/manager/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2031,10 +1992,10 @@ mshop/attribute/manager/property/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_attribute_property"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2096,14 +2057,14 @@ mshop/attribute/manager/property/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_attribute_property" ( :names
  	"parentid", "key", "type", "langid", "value",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2117,7 +2078,7 @@ Class name of the used attribute property manager implementation
 mshop/attribute/manager/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2213,11 +2174,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/property/search/ansi = 
  SELECT :columns
- 	mattpr."id" AS "attribute.property.id", mattpr."parentid" AS "attribute.property.parentid",
- 	mattpr."siteid" AS "attribute.property.siteid", mattpr."type" AS "attribute.property.type",
- 	mattpr."langid" AS "attribute.property.languageid", mattpr."value" AS "attribute.property.value",
- 	mattpr."mtime" AS "attribute.property.mtime", mattpr."editor" AS "attribute.property.editor",
- 	mattpr."ctime" AS "attribute.property.ctime"
  FROM "mshop_attribute_property" mattpr
  :joins
  WHERE :cond
@@ -2282,11 +2238,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/property/search/mysql = 
  SELECT :columns
- 	mattpr."id" AS "attribute.property.id", mattpr."parentid" AS "attribute.property.parentid",
- 	mattpr."siteid" AS "attribute.property.siteid", mattpr."type" AS "attribute.property.type",
- 	mattpr."langid" AS "attribute.property.languageid", mattpr."value" AS "attribute.property.value",
- 	mattpr."mtime" AS "attribute.property.mtime", mattpr."editor" AS "attribute.property.editor",
- 	mattpr."ctime" AS "attribute.property.ctime"
  FROM "mshop_attribute_property" mattpr
  :joins
  WHERE :cond
@@ -2294,19 +2245,14 @@ mshop/attribute/manager/property/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mattpr."id" AS "attribute.property.id", mattpr."parentid" AS "attribute.property.parentid",
- 	mattpr."siteid" AS "attribute.property.siteid", mattpr."type" AS "attribute.property.type",
- 	mattpr."langid" AS "attribute.property.languageid", mattpr."value" AS "attribute.property.value",
- 	mattpr."mtime" AS "attribute.property.mtime", mattpr."editor" AS "attribute.property.editor",
- 	mattpr."ctime" AS "attribute.property.ctime"
  FROM "mshop_attribute_property" mattpr
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2323,11 +2269,11 @@ mshop/attribute/manager/property/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => type
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2420,7 +2366,7 @@ mshop/attribute/manager/property/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattprty."id"
@@ -2430,7 +2376,7 @@ mshop/attribute/manager/property/type/count/mysql =
  	ORDER BY mattprty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -2446,10 +2392,10 @@ mshop/attribute/manager/property/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2486,10 +2432,10 @@ mshop/attribute/manager/property/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2526,10 +2472,10 @@ mshop/attribute/manager/property/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2599,10 +2545,10 @@ mshop/attribute/manager/property/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_attribute_property_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2664,14 +2610,14 @@ mshop/attribute/manager/property/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_attribute_property_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -2685,7 +2631,7 @@ Class name of the used attribute property type manager implementation
 mshop/attribute/manager/property/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2781,12 +2727,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/property/type/search/ansi = 
  SELECT :columns
- 	mattprty."id" AS "attribute.property.type.id", mattprty."siteid" AS "attribute.property.type.siteid",
- 	mattprty."code" AS "attribute.property.type.code", mattprty."domain" AS "attribute.property.type.domain",
- 	mattprty."label" AS "attribute.property.type.label", mattprty."status" AS "attribute.property.type.status",
- 	mattprty."mtime" AS "attribute.property.type.mtime", mattprty."editor" AS "attribute.property.type.editor",
- 	mattprty."ctime" AS "attribute.property.type.ctime", mattprty."pos" AS "attribute.property.type.position",
- 	mattprty."i18n" AS "attribute.property.type.i18n"
  FROM "mshop_attribute_property_type" mattprty
  :joins
  WHERE :cond
@@ -2851,12 +2791,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/property/type/search/mysql = 
  SELECT :columns
- 	mattprty."id" AS "attribute.property.type.id", mattprty."siteid" AS "attribute.property.type.siteid",
- 	mattprty."code" AS "attribute.property.type.code", mattprty."domain" AS "attribute.property.type.domain",
- 	mattprty."label" AS "attribute.property.type.label", mattprty."status" AS "attribute.property.type.status",
- 	mattprty."mtime" AS "attribute.property.type.mtime", mattprty."editor" AS "attribute.property.type.editor",
- 	mattprty."ctime" AS "attribute.property.type.ctime", mattprty."pos" AS "attribute.property.type.position",
- 	mattprty."i18n" AS "attribute.property.type.i18n"
  FROM "mshop_attribute_property_type" mattprty
  :joins
  WHERE :cond
@@ -2864,20 +2798,14 @@ mshop/attribute/manager/property/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mattprty."id" AS "attribute.property.type.id", mattprty."siteid" AS "attribute.property.type.siteid",
- 	mattprty."code" AS "attribute.property.type.code", mattprty."domain" AS "attribute.property.type.domain",
- 	mattprty."label" AS "attribute.property.type.label", mattprty."status" AS "attribute.property.type.status",
- 	mattprty."mtime" AS "attribute.property.type.mtime", mattprty."editor" AS "attribute.property.type.editor",
- 	mattprty."ctime" AS "attribute.property.type.ctime", mattprty."pos" AS "attribute.property.type.position",
- 	mattprty."i18n" AS "attribute.property.type.i18n"
  FROM "mshop_attribute_property_type" mattprty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2893,10 +2821,10 @@ mshop/attribute/manager/property/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2962,13 +2890,13 @@ mshop/attribute/manager/property/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_attribute_property_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3025,13 +2953,13 @@ mshop/attribute/manager/property/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_attribute_property"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3045,7 +2973,7 @@ Name of the database connection resource to use
 mshop/attribute/manager/resource = db-attribute
 ```
 
-* Default: db-attribute
+* Default: `db-attribute`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -3068,18 +2996,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/search/ansi = 
  SELECT :columns
- 	matt."id" AS "attribute.id", matt."siteid" AS "attribute.siteid",
- 	matt."type" AS "attribute.type", matt."domain" AS "attribute.domain",
- 	matt."code" AS "attribute.code", matt."status" AS "attribute.status",
- 	matt."pos" AS "attribute.position", matt."label" AS "attribute.label",
- 	matt."mtime" AS "attribute.mtime", matt."ctime" AS "attribute.ctime",
- 	matt."editor" AS "attribute.editor"
  FROM "mshop_attribute" matt
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	matt."id", matt."siteid", matt."type", matt."domain", matt."code", matt."status",
- 	matt."pos", matt."label", matt."mtime", matt."ctime", matt."editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -3141,37 +3061,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/search/mysql = 
  SELECT :columns
- 	matt."id" AS "attribute.id", matt."siteid" AS "attribute.siteid",
- 	matt."type" AS "attribute.type", matt."domain" AS "attribute.domain",
- 	matt."code" AS "attribute.code", matt."status" AS "attribute.status",
- 	matt."pos" AS "attribute.position", matt."label" AS "attribute.label",
- 	matt."mtime" AS "attribute.mtime", matt."ctime" AS "attribute.ctime",
- 	matt."editor" AS "attribute.editor"
  FROM "mshop_attribute" matt
  :joins
  WHERE :cond
- GROUP BY :group matt."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	matt."id" AS "attribute.id", matt."siteid" AS "attribute.siteid",
- 	matt."type" AS "attribute.type", matt."domain" AS "attribute.domain",
- 	matt."code" AS "attribute.code", matt."status" AS "attribute.status",
- 	matt."pos" AS "attribute.position", matt."label" AS "attribute.label",
- 	matt."mtime" AS "attribute.mtime", matt."ctime" AS "attribute.ctime",
- 	matt."editor" AS "attribute.editor"
  FROM "mshop_attribute" matt
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	matt."id", matt."siteid", matt."type", matt."domain", matt."code", matt."status",
- 	matt."pos", matt."label", matt."mtime", matt."ctime", matt."editor"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3185,7 +3091,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/attribute/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -3224,10 +3130,10 @@ mshop/attribute/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3321,7 +3227,7 @@ mshop/attribute/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mattty."id"
@@ -3331,7 +3237,7 @@ mshop/attribute/manager/type/count/mysql =
  	ORDER BY mattty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -3347,10 +3253,10 @@ mshop/attribute/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3387,10 +3293,10 @@ mshop/attribute/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3427,10 +3333,10 @@ mshop/attribute/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3500,10 +3406,10 @@ mshop/attribute/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_attribute_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -3565,14 +3471,14 @@ mshop/attribute/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_attribute_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -3586,7 +3492,7 @@ Class name of the used attribute type manager implementation
 mshop/attribute/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -3682,12 +3588,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/type/search/ansi = 
  SELECT :columns
- 	mattty."id" AS "attribute.type.id", mattty."siteid" AS "attribute.type.siteid",
- 	mattty."code" AS "attribute.type.code", mattty."domain" AS "attribute.type.domain",
- 	mattty."label" AS "attribute.type.label", mattty."status" AS "attribute.type.status",
- 	mattty."mtime" AS "attribute.type.mtime", mattty."ctime" AS "attribute.type.ctime",
- 	mattty."editor" AS "attribute.type.editor", mattty."pos" AS "attribute.type.position",
- 	mattty."i18n" AS "attribute.type.i18n"
  FROM "mshop_attribute_type" mattty
  :joins
  WHERE :cond
@@ -3752,12 +3652,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/attribute/manager/type/search/mysql = 
  SELECT :columns
- 	mattty."id" AS "attribute.type.id", mattty."siteid" AS "attribute.type.siteid",
- 	mattty."code" AS "attribute.type.code", mattty."domain" AS "attribute.type.domain",
- 	mattty."label" AS "attribute.type.label", mattty."status" AS "attribute.type.status",
- 	mattty."mtime" AS "attribute.type.mtime", mattty."ctime" AS "attribute.type.ctime",
- 	mattty."editor" AS "attribute.type.editor", mattty."pos" AS "attribute.type.position",
- 	mattty."i18n" AS "attribute.type.i18n"
  FROM "mshop_attribute_type" mattty
  :joins
  WHERE :cond
@@ -3765,20 +3659,14 @@ mshop/attribute/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mattty."id" AS "attribute.type.id", mattty."siteid" AS "attribute.type.siteid",
- 	mattty."code" AS "attribute.type.code", mattty."domain" AS "attribute.type.domain",
- 	mattty."label" AS "attribute.type.label", mattty."status" AS "attribute.type.status",
- 	mattty."mtime" AS "attribute.type.mtime", mattty."ctime" AS "attribute.type.ctime",
- 	mattty."editor" AS "attribute.type.editor", mattty."pos" AS "attribute.type.position",
- 	mattty."i18n" AS "attribute.type.i18n"
  FROM "mshop_attribute_type" mattty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -3794,10 +3682,10 @@ mshop/attribute/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3863,13 +3751,13 @@ mshop/attribute/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_attribute_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -3927,13 +3815,13 @@ mshop/attribute/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_attribute"
  SET :names
  	"key" = ?, "type" = ?, "domain" = ?, "code" = ?, "status" = ?,
  	"pos" = ?, "label" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the product bought job controller
 
 ```
-controller/jobs/product/bought/decorators/excludes = 
+controller/jobs/product/bought/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the product bought job controller
 
 ```
-controller/jobs/product/bought/decorators/global = 
+controller/jobs/product/bought/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the product bought job controller
 
 ```
-controller/jobs/product/bought/decorators/local = 
+controller/jobs/product/bought/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -108,7 +126,7 @@ Only use orders placed in the past within the configured number of days for calc
 controller/jobs/product/bought/limit-days = 360
 ```
 
-* Default: 360
+* Default: `360`
 * Type: integer - Number of days
 * Since: 2014.09
 
@@ -138,7 +156,7 @@ Maximum number of suggested items per product
 controller/jobs/product/bought/max-items = 5
 ```
 
-* Default: 5
+* Default: `5`
 * Type: integer - Number of suggested products
 * Since: 2014.09
 
@@ -163,7 +181,7 @@ Minimum confidence value for high quality suggestions
 controller/jobs/product/bought/min-confidence = 0.66
 ```
 
-* Default: 0.66
+* Default: `0.66`
 * Type: float - Minimum confidence value from 0 to 1
 * Since: 2014.09
 
@@ -194,7 +212,7 @@ Minimum support value to sort out all irrelevant combinations
 controller/jobs/product/bought/min-support = 0.02
 ```
 
-* Default: 0.02
+* Default: `0.02`
 * Type: float - Minimum support value from 0 to 1
 * Since: 2014.09
 
@@ -226,9 +244,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/bought/name = 
+controller/jobs/product/bought/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -273,7 +292,7 @@ Number of items processed at once
 controller/jobs/product/bought/size = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of items processed at once
 * Since: 2023.01
 

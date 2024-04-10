@@ -78,7 +78,7 @@ madmin/log/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM(
  	SELECT malog."id"
@@ -88,7 +88,7 @@ madmin/log/manager/count/mysql =
  	ORDER BY "id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -105,10 +105,10 @@ madmin/log/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -145,10 +145,10 @@ madmin/log/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -183,10 +183,10 @@ madmin/log/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -256,10 +256,10 @@ madmin/log/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "madmin_log"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -320,13 +320,13 @@ madmin/log/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "madmin_log" ( :names
  	"facility", "timestamp", "priority", "message", "request", "siteid"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -340,7 +340,7 @@ Sets the severity level for messages to be written to the log
 madmin/log/manager/loglevel = 5
 ```
 
-* Default: 5
+* Default: `5`
 * Type: int - Log level number
 * Since: 2014.03
 
@@ -380,7 +380,7 @@ Class name of the used log manager implementation
 madmin/log/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -478,7 +478,7 @@ Name of the database connection resource to use
 madmin/log/manager/resource = db-log
 ```
 
-* Default: db-log
+* Default: `db-log`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -496,10 +496,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 madmin/log/manager/search/ansi = 
  SELECT :columns
- 	malog."id" AS "log.id", malog."siteid" AS "log.siteid",
- 	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
- 	malog."priority" AS "log.priority", malog."message" AS "log.message",
- 	malog."request" AS "log.request"
  FROM "madmin_log" malog
  :joins
  WHERE :cond
@@ -564,10 +560,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 madmin/log/manager/search/mysql = 
  SELECT :columns
- 	malog."id" AS "log.id", malog."siteid" AS "log.siteid",
- 	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
- 	malog."priority" AS "log.priority", malog."message" AS "log.message",
- 	malog."request" AS "log.request"
  FROM "madmin_log" malog
  :joins
  WHERE :cond
@@ -575,18 +567,14 @@ madmin/log/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	malog."id" AS "log.id", malog."siteid" AS "log.siteid",
- 	malog."facility" AS "log.facility", malog."timestamp" AS "log.timestamp",
- 	malog."priority" AS "log.priority", malog."message" AS "log.message",
- 	malog."request" AS "log.request"
  FROM "madmin_log" malog
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -602,10 +590,10 @@ madmin/log/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -670,12 +658,12 @@ madmin/log/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "madmin_log"
  SET :names
  	"facility" = ?, "timestamp" = ?, "priority" = ?, "message" = ?, "request" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

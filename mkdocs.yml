@@ -189,7 +189,7 @@ nav:
     - Attribute XML import: cronjobs/attribute-xml-import.md
     - Category XML import: cronjobs/catalog-xml-import.md
     - Customer XML import: cronjobs/customer-xml-import.md
-    - Customer group XML import: cronjobs/customergroup-xml-import.md
+    - Group XML import: cronjobs/group-xml-import.md
     - Product XML import: cronjobs/product-xml-import.md
     - Supplier XML import: cronjobs/supplier-xml-import.md
     - Create job controller: cronjobs/create-job-controller.md
@@ -350,11 +350,12 @@ nav:
       - Basket cleanup: config/controller-jobs/basket-cleanup.md
       - Catalog export: config/controller-jobs/catalog-export.md
       - Catalog import: config/controller-jobs/catalog-import.md
+      - Common import: config/controller-jobs/common-import.md
       - Coupon import: config/controller-jobs/coupon-import.md
       - Customer email: config/controller-jobs/customer-email.md
-      - Customer group: config/controller-jobs/customer-group.md
       - Customer import: config/controller-jobs/customer-import.md
       - Decorators: config/controller-jobs/common-decorators.md
+      - Group import: config/controller-jobs/group-import.md
       - Index optimize: config/controller-jobs/index-optimize.md
       - Index rebuild: config/controller-jobs/index-rebuild.md
       - Media scale: config/controller-jobs/media-scale.md
@@ -378,6 +379,7 @@ nav:
       - Common: config/mshop/common-manager.md
       - Coupon: config/mshop/coupon-manager.md
       - Customer: config/mshop/customer-manager.md
+      - Group: config/mshop/group-manager.md
       - Index: config/mshop/index-manager.md
       - Locale: config/mshop/locale-manager.md
       - Media: config/mshop/media-manager.md
@@ -396,6 +398,7 @@ nav:
       - Coupon provider: config/mshop/coupon-provider.md
       - Plugin provider: config/mshop/plugin-provider.md
       - Service provider: config/mshop/service-provider.md
+      - TYPO3: config/mshop/manager-typo3.md
     - MAdmin:
       - Cache: config/madmin/cache-manager.md
       - Common: config/madmin/common-manager.md

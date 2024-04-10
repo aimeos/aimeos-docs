@@ -10,10 +10,10 @@ admin/jsonadm/order/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -50,10 +50,10 @@ admin/jsonadm/order/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -90,10 +90,10 @@ admin/jsonadm/order/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -126,4 +126,4 @@ See also:
 admin/jsonadm/order/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`

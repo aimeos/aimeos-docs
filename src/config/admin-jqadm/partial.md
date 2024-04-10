@@ -7,7 +7,7 @@ Relative path to the partial template for displaying the column selector in the 
 admin/jqadm/partial/columns = columns
 ```
 
-* Default: columns
+* Default: `columns`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.07
 
@@ -36,7 +36,7 @@ Relative path to the partial template for displaying the confirmation dialog
 admin/jqadm/partial/confirm = confirm
 ```
 
-* Default: confirm
+* Default: `confirm`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2016.04
 
@@ -66,7 +66,7 @@ Relative path to the partial template for displaying notices
 admin/jqadm/partial/info = info
 ```
 
-* Default: info
+* Default: `info`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.10
 
@@ -96,7 +96,7 @@ Relative path to the partial template for displaying the available actions for t
 admin/jqadm/partial/itemactions = itemactions
 ```
 
-* Default: itemactions
+* Default: `itemactions`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.10
 
@@ -121,7 +121,7 @@ Relative path to the partial template for displaying the table header in the lis
 admin/jqadm/partial/listhead = listhead
 ```
 
-* Default: listhead
+* Default: `listhead`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.07
 
@@ -150,7 +150,7 @@ Relative path to the partial template for displaying the table search row in the
 admin/jqadm/partial/listsearch = listsearch
 ```
 
-* Default: listsearch
+* Default: `listsearch`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2017.07
 
@@ -179,7 +179,7 @@ Relative path to the partial template for displaying the search filter in the na
 admin/jqadm/partial/navsearch = navsearch
 ```
 
-* Default: navsearch
+* Default: `navsearch`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2016.04
 
@@ -208,7 +208,7 @@ Relative path to the partial template for displaying the pagination
 admin/jqadm/partial/pagination = pagination
 ```
 
-* Default: pagination
+* Default: `pagination`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2016.04
 
@@ -238,7 +238,7 @@ Relative path to the partial template for displaying problems
 admin/jqadm/partial/problem = problem
 ```
 
-* Default: problem
+* Default: `problem`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2019.04
 
@@ -268,7 +268,7 @@ Relative path to the partial template for displaying the list of related product
 admin/jqadm/partial/productlist = productlist
 ```
 
-* Default: productlist
+* Default: `productlist`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2023.04
 
@@ -279,7 +279,30 @@ to the templates directory (usually in templates/admin/jqadm).
 
 You can overwrite the template file configuration in extensions and
 provide alternative templates. These alternative templates should be
-named like the default one but with the string "default" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "default"
-should be replaced by the name of the new class.
+named like the default one but with an unique name. You may use the
+name of your project for this. If you've implemented an alternative
+client class as well, use the name of the new class.
+
+
+# productref
+
+Relative path to the partial template for displaying the list of associated products
+
+```
+admin/jqadm/partial/productref = productref
+```
+
+* Default: `productref`
+* Type: string - Relative path to the partial creating the HTML code
+* Since: 2023.04
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the administration interface. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/admin/jqadm).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with an unique name. You may use the
+name of your project for this. If you've implemented an alternative
+client class as well, use the name of the new class.

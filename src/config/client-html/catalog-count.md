@@ -8,7 +8,7 @@ Enables or disables generating product counts for the attribute catalog filter
 client/html/catalog/count/attribute/aggregate = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Disabled if "0", enabled if "1"
 * Since: 2014.03
 
@@ -24,10 +24,10 @@ client/html/catalog/count/attribute/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -38,10 +38,10 @@ client/html/catalog/count/attribute/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## name
@@ -52,7 +52,7 @@ Name of the attribute part used by the catalog count client implementation
 client/html/catalog/count/attribute/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -68,7 +68,7 @@ Relative path to the HTML body template of the catalog count attribute client.
 client/html/catalog/count/attribute/template-body = catalog/count/attribute-body
 ```
 
-* Default: catalog/count/attribute-body
+* Default: `catalog/count/attribute-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -195,7 +195,7 @@ Enables or disables displaying product counts in the catalog filter
 client/html/catalog/count/enable = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Value of "1" to display product counts, "0" to disable them
 * Since: 2014.03
 
@@ -273,13 +273,13 @@ client/html/catalog/count/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => tree
     [1] => supplier
     [2] => attribute
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -325,7 +325,7 @@ Enables or disables generating product counts for the supplier catalog filter
 client/html/catalog/count/supplier/aggregate = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Disabled if "0", enabled if "1"
 * Since: 2018.07
 
@@ -341,10 +341,10 @@ client/html/catalog/count/supplier/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -355,10 +355,10 @@ client/html/catalog/count/supplier/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## name
@@ -369,7 +369,7 @@ Name of the supplier part used by the catalog count client implementation
 client/html/catalog/count/supplier/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2018.07
 
@@ -385,7 +385,7 @@ Relative path to the HTML body template of the catalog count supplier client.
 client/html/catalog/count/supplier/template-body = catalog/count/supplier-body
 ```
 
-* Default: catalog/count/supplier-body
+* Default: `catalog/count/supplier-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.07
 
@@ -413,7 +413,7 @@ Relative path to the HTML body template of the catalog count client.
 client/html/catalog/count/template-body = catalog/count/body
 ```
 
-* Default: catalog/count/body
+* Default: `catalog/count/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -441,7 +441,7 @@ Relative path to the HTML header template of the catalog count client.
 client/html/catalog/count/template-header = catalog/count/header
 ```
 
-* Default: catalog/count/header
+* Default: `catalog/count/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -471,7 +471,7 @@ Enables or disables generating product counts for the category catalog filter
 client/html/catalog/count/tree/aggregate = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Disabled if "0", enabled if "1"
 * Since: 2014.03
 
@@ -487,10 +487,10 @@ client/html/catalog/count/tree/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -501,10 +501,10 @@ client/html/catalog/count/tree/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## name
@@ -515,7 +515,7 @@ Name of the tree part used by the catalog count client implementation
 client/html/catalog/count/tree/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
@@ -531,7 +531,7 @@ Relative path to the HTML body template of the catalog count tree client.
 client/html/catalog/count/tree/template-body = catalog/count/tree-body
 ```
 
-* Default: catalog/count/tree-body
+* Default: `catalog/count/tree-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -560,7 +560,7 @@ Name of the action that should create the output
 client/html/catalog/count/url/action = count
 ```
 
-* Default: count
+* Default: `count`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -585,10 +585,10 @@ client/html/catalog/count/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -619,7 +619,7 @@ Name of the controller whose action should be called
 client/html/catalog/count/url/controller = Catalog
 ```
 
-* Default: Catalog
+* Default: `Catalog`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -644,10 +644,10 @@ client/html/catalog/count/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

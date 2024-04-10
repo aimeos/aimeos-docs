@@ -109,11 +109,11 @@ admin/jqadm/review/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => product
 )
-
+`
 * Type: array - List of domains names
 * Since: 2020.10
 
@@ -136,7 +136,7 @@ admin/jqadm/review/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => review.status
     [1] => review.rating
@@ -144,7 +144,7 @@ admin/jqadm/review/fields = Array
     [3] => review.response
     [4] => review.ctime
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2020.10
 
@@ -210,10 +210,10 @@ admin/jqadm/review/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2020.10
 
@@ -258,7 +258,7 @@ Relative path to the HTML body template for the review item.
 admin/jqadm/review/template-item = review/item
 ```
 
-* Default: review/item
+* Default: `review/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -283,7 +283,7 @@ Relative path to the HTML body template for the review list.
 admin/jqadm/review/template-list = review/list
 ```
 
-* Default: review/list
+* Default: `review/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

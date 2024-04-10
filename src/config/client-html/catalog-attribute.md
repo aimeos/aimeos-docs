@@ -179,7 +179,7 @@ leaving the rest untouched:
 client/html/catalog/attribute/preselect/color = 
 ```
 
-* Default: 
+* Default: ``
 
 
 ## interval
@@ -188,7 +188,7 @@ client/html/catalog/attribute/preselect/color =
 client/html/catalog/attribute/preselect/interval = 
 ```
 
-* Default: 
+* Default: ``
 
 
 ## size
@@ -197,7 +197,7 @@ client/html/catalog/attribute/preselect/interval =
 client/html/catalog/attribute/preselect/size = 
 ```
 
-* Default: 
+* Default: ``
 
 
 # type
@@ -249,7 +249,7 @@ Layout types for the color attribute
 client/html/catalog/attribute/type/color = select
 ```
 
-* Default: select
+* Default: `select`
 
 See also:
 
@@ -261,7 +261,7 @@ See also:
 client/html/catalog/attribute/type/interval = select
 ```
 
-* Default: select
+* Default: `select`
 
 
 ## size
@@ -272,7 +272,7 @@ Layout types for the size attribute
 client/html/catalog/attribute/type/size = select
 ```
 
-* Default: select
+* Default: `select`
 
 See also:
 

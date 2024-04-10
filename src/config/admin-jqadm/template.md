@@ -7,7 +7,7 @@ Relative path to the template for the base page template
 admin/jqadm/template/page = page
 ```
 
-* Default: page
+* Default: `page`
 * Type: string - Relative path to the partial creating the HTML code
 * Since: 2016.04
 

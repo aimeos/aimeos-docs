@@ -112,14 +112,14 @@ client/html/checkout/confirm/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [order/address] => order/address
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
 )
-
+`
 * Type: array - List of domain names
 * Since: 2023.07
 
@@ -185,7 +185,7 @@ Location of the address partial template for the confirmation component
 client/html/checkout/confirm/summary/address = common/summary/address
 ```
 
-* Default: common/summary/address
+* Default: `common/summary/address`
 * Type: string - Relative path to the address partial
 * Since: 2017.01
 
@@ -208,7 +208,7 @@ Location of the detail partial template for the confirmation component
 client/html/checkout/confirm/summary/detail = common/summary/detail
 ```
 
-* Default: common/summary/detail
+* Default: `common/summary/detail`
 * Type: string - Relative path to the detail partial
 * Since: 2017.01
 
@@ -230,7 +230,7 @@ Location of the service partial template for the confirmation component
 client/html/checkout/confirm/summary/service = common/summary/service
 ```
 
-* Default: common/summary/service
+* Default: `common/summary/service`
 * Type: string - Relative path to the service partial
 * Since: 2017.01
 
@@ -253,7 +253,7 @@ Relative path to the HTML body template of the checkout confirm client.
 client/html/checkout/confirm/template-body = checkout/confirm/body
 ```
 
-* Default: checkout/confirm/body
+* Default: `checkout/confirm/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -281,7 +281,7 @@ Relative path to the HTML header template of the checkout confirm client.
 client/html/checkout/confirm/template-header = checkout/confirm/header
 ```
 
-* Default: checkout/confirm/header
+* Default: `checkout/confirm/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -311,7 +311,7 @@ Name of the action that should create the output
 client/html/checkout/confirm/url/action = confirm
 ```
 
-* Default: confirm
+* Default: `confirm`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -336,11 +336,11 @@ client/html/checkout/confirm/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [absoluteUri] => 1
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -371,7 +371,7 @@ Name of the controller whose action should be called
 client/html/checkout/confirm/url/controller = checkout
 ```
 
-* Default: checkout
+* Default: `checkout`
 * Type: string - Name of the controller
 * Since: 2014.03
 

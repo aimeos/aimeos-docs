@@ -7,7 +7,7 @@ Name of the action that should create the output
 admin/jsonadm/url/action = get
 ```
 
-* Default: get
+* Default: `get`
 * Type: string - Name of the action
 * Since: 2016.01
 
@@ -31,10 +31,10 @@ admin/jsonadm/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2016.01
 
@@ -64,7 +64,7 @@ Name of the client whose action should be called
 admin/jsonadm/url/controller = jsonadm
 ```
 
-* Default: jsonadm
+* Default: `jsonadm`
 * Type: string - Name of the client
 * Since: 2016.01
 

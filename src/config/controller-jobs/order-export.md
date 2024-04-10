@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the order export CSV job controller
 
 ```
-controller/jobs/order/export/csv/decorators/excludes = 
+controller/jobs/order/export/csv/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the order export CSV job controller
 
 ```
-controller/jobs/order/export/csv/decorators/global = 
+controller/jobs/order/export/csv/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the order export CSV job controller
 
 ```
-controller/jobs/order/export/csv/decorators/local = 
+controller/jobs/order/export/csv/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -108,7 +126,7 @@ Maximum number of CSV rows to export at once
 controller/jobs/order/export/csv/max-size = 1000
 ```
 
-* Default: 1000
+* Default: `1000`
 * Type: integer - Number of rows
 * Since: 2023.04
 
@@ -125,9 +143,10 @@ export speed.
 Class name of the used order suggestions scheduler controller implementation
 
 ```
-controller/jobs/order/export/csv/name = 
+controller/jobs/order/export/csv/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -172,7 +191,7 @@ Relativ path to the export file
 controller/jobs/order/export/csv/path = order-export_%Y-%m-%d_%H-%i-%s
 ```
 
-* Default: order-export_%Y-%m-%d_%H-%i-%s
+* Default: `order-export_%Y-%m-%d_%H-%i-%s`
 * Type: string - Relativ path with placeholders
 * Since: 2023.04
 
@@ -192,7 +211,7 @@ Relative path to the template for generating the CSV order export.
 controller/jobs/order/export/csv/template = order/export/csv/body
 ```
 
-* Default: order/export/csv/body
+* Default: `order/export/csv/body`
 * Type: string - Relative path to the template
 * Since: 2023.04
 

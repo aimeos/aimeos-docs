@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the basket cleanup controllers
 
 ```
-controller/jobs/basket/cleanup/decorators/excludes = 
+controller/jobs/basket/cleanup/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2023.10
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the basket cleanup controllers
 
 ```
-controller/jobs/basket/cleanup/decorators/global = 
+controller/jobs/basket/cleanup/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2023.10
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the basket cleanup controllers
 
 ```
-controller/jobs/basket/cleanup/decorators/local = 
+controller/jobs/basket/cleanup/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2023.10
 
@@ -107,7 +125,7 @@ Only remove log entries that were created berore the configured number of days
 controller/jobs/basket/cleanup/limit-days = 30
 ```
 
-* Default: 30
+* Default: `30`
 * Type: integer - Number of days
 * Since: 2023.10
 
@@ -123,9 +141,10 @@ See also:
 Class name of the used basket cleanup scheduler controller implementation
 
 ```
-controller/jobs/basket/cleanup/name = 
+controller/jobs/basket/cleanup/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2023.10
 

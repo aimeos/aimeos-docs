@@ -7,7 +7,7 @@ Maximum number of subscriptions processed at once by the subscription process jo
 controller/jobs/subscription/process/batch-max = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of subscriptions
 * Since: 2023.04
 * Since: 2023.04
@@ -38,9 +38,15 @@ See also:
 Excludes decorators added by the "common" option from the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/begin/decorators/excludes = 
+controller/jobs/subscription/process/begin/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -72,9 +78,15 @@ See also:
 Adds a list of globally available decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/begin/decorators/global = 
+controller/jobs/subscription/process/begin/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -104,9 +116,15 @@ See also:
 Adds a list of local decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/begin/decorators/local = 
+controller/jobs/subscription/process/begin/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -138,9 +156,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/process/begin/name = 
+controller/jobs/subscription/process/begin/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -192,7 +211,7 @@ controller/jobs/subscription/process/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => order
     [1] => order/address
@@ -200,7 +219,7 @@ controller/jobs/subscription/process/domains = Array
     [3] => order/product
     [4] => order/service
 )
-
+`
 * Type: array - Referenced domain names
 * Since: 2022.04
 * Since: 2022.04
@@ -219,14 +238,14 @@ Available domains for those items are:
 See also:
 
 * controller/jobs/subscription/process/processors
-* controller/common/subscription/process/payment-days
-* controller/common/subscription/process/payment-status
+* controller/jobs/subscription/process/payment-days
+* controller/jobs/subscription/process/payment-status
 * controller/jobs/subscription/process/processors
-* controller/common/subscription/process/payment-days
-* controller/common/subscription/process/payment-status
+* controller/jobs/subscription/process/payment-days
+* controller/jobs/subscription/process/payment-status
 * controller/jobs/subscription/process/processors
-* controller/common/subscription/process/payment-days
-* controller/common/subscription/process/payment-status
+* controller/jobs/subscription/process/payment-days
+* controller/jobs/subscription/process/payment-status
 
 # end
 ## decorators/excludes
@@ -234,9 +253,15 @@ See also:
 Excludes decorators added by the "common" option from the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/end/decorators/excludes = 
+controller/jobs/subscription/process/end/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -268,9 +293,15 @@ See also:
 Adds a list of globally available decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/end/decorators/global = 
+controller/jobs/subscription/process/end/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -300,9 +331,15 @@ See also:
 Adds a list of local decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/end/decorators/local = 
+controller/jobs/subscription/process/end/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -334,9 +371,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/process/end/name = 
+controller/jobs/subscription/process/end/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -395,6 +433,28 @@ See also:
 * controller/jobs/subscription/process/processors
 * controller/jobs/subscription/process/payment-status
 
+# payment-ends
+
+Subscriptions ends if payment couldn't be captured
+
+```
+controller/jobs/subscription/process/payment-ends = 
+```
+
+* Type: bool - TRUE if payment failures ends the subscriptions, FALSE if not
+* Since: 2019.10
+
+By default, a subscription ends automatically if the next payment couldn't
+be captured. When setting this configuration to FALSE, the subscription job
+controller will try to capture the payment at the next run again until the
+subscription is deactivated manually.
+
+See also:
+
+* controller/jobs/subscription/process/processors
+* controller/jobs/subscription/process/payment-days
+* controller/jobs/subscription/process/payment-status
+
 # payment-status
 
 Minimum payment status that will activate the subscription
@@ -403,7 +463,7 @@ Minimum payment status that will activate the subscription
 controller/jobs/subscription/process/payment-status = 5
 ```
 
-* Default: 5
+* Default: `5`
 * Type: integer - Payment status constant
 * Since: 2018.07
 
@@ -420,6 +480,45 @@ See also:
 * controller/jobs/subscription/process/begin/names
 * controller/jobs/subscription/process/payment-days
 
+# processor
+## cgroup/groupids
+
+List of group IDs that should be added to the customer account
+
+```
+controller/jobs/subscription/process/processor/cgroup/groupids = Array
+(
+)
+```
+
+* Default: `Array
+(
+)
+`
+* Type: array - List of customer group IDs
+* Since: 2018.04
+
+After customers bought a subscription, the list of group IDs will be
+added to their accounts. When the subscription period ends, they will
+be removed from the customer accounts again.
+
+
+## cgroup/name
+
+Name of the customer group processor implementation
+
+```
+controller/jobs/subscription/process/processor/cgroup/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2018.04
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Subscription\Process\Processor\Cgroup\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
 # processors
 
 List of processor names that should be executed for subscriptions
@@ -427,14 +526,14 @@ List of processor names that should be executed for subscriptions
 ```
 controller/jobs/subscription/process/processors = Array
 (
-    [Email] => Email
+    [0] => cgroup
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of processor names
 * Since: 2018.04
 * Since: 2018.04
@@ -465,9 +564,15 @@ See also:
 Excludes decorators added by the "common" option from the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/renew/decorators/excludes = 
+controller/jobs/subscription/process/renew/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -499,9 +604,15 @@ See also:
 Adds a list of globally available decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/renew/decorators/global = 
+controller/jobs/subscription/process/renew/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -531,9 +642,15 @@ See also:
 Adds a list of local decorators only to the subscription process CSV job controller
 
 ```
-controller/jobs/subscription/process/renew/decorators/local = 
+controller/jobs/subscription/process/renew/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -565,9 +682,10 @@ See also:
 Class name of the used subscription suggestions scheduler controller implementation
 
 ```
-controller/jobs/subscription/process/renew/name = 
+controller/jobs/subscription/process/renew/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -612,7 +730,7 @@ Applies the coupons of the previous order also to the new one
 controller/jobs/subscription/process/renew/use-coupons = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to reuse coupon codes, false to remove coupons
 * Since: 2018.10
 

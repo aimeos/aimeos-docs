@@ -10,10 +10,10 @@ admin/jsonadm/coupon/config/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -50,10 +50,10 @@ admin/jsonadm/coupon/config/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -90,10 +90,10 @@ admin/jsonadm/coupon/config/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -126,7 +126,7 @@ See also:
 admin/jsonadm/coupon/config/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 
 
 ## template-get
@@ -137,7 +137,7 @@ Relative path to the JSON API template for GET requests
 admin/jsonadm/coupon/config/template-get = config
 ```
 
-* Default: config
+* Default: `config`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2017.07
 

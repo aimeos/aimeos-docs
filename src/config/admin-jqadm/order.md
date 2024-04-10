@@ -10,11 +10,11 @@ admin/jqadm/order/actions = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => order-export
 )
-
+`
 * Type: array - List of action queue names
 * Since: 2020.10
 
@@ -144,14 +144,14 @@ admin/jqadm/order/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => order.id
     [1] => order.ctime
     [2] => order.statuspayment
     [3] => order.address.lastname
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -219,11 +219,11 @@ admin/jqadm/order/service/delivery/attribute/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => trackingid
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -245,10 +245,10 @@ admin/jqadm/order/service/payment/attribute/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -271,10 +271,10 @@ admin/jqadm/order/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -319,7 +319,7 @@ Relative path to the HTML body template for the order item.
 admin/jqadm/order/template-item = order/item
 ```
 
-* Default: order/item
+* Default: `order/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -344,7 +344,7 @@ Relative path to the HTML body template for the order list.
 admin/jqadm/order/template-list = order/list
 ```
 
-* Default: order/list
+* Default: `order/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -406,10 +406,10 @@ admin/jqadm/order/transaction/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2023.01
 
@@ -444,10 +444,10 @@ admin/jqadm/order/transaction/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2023.01
 
@@ -480,7 +480,7 @@ Name of the transaction subpart used by the JQAdm order implementation
 admin/jqadm/order/transaction/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2023.01
 
@@ -498,10 +498,10 @@ admin/jqadm/order/transaction/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2023.01
 
@@ -546,7 +546,7 @@ Relative path to the HTML body template of the transaction subpart for orders.
 admin/jqadm/order/transaction/template-item = order/item-transaction
 ```
 
-* Default: order/item-transaction
+* Default: `order/item-transaction`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

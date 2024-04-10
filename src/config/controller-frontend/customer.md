@@ -5,7 +5,7 @@
 Excludes decorators added by the "common" option from the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/excludes =
+controller/frontend/customer/decorators/excludes = 
 ```
 
 * Type: array - List of decorator names
@@ -39,7 +39,7 @@ See also:
 Adds a list of globally available decorators only to the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/global =
+controller/frontend/customer/decorators/global = 
 ```
 
 * Type: array - List of decorator names
@@ -71,7 +71,7 @@ See also:
 Adds a list of local decorators only to the customer frontend controllers
 
 ```
-controller/frontend/customer/decorators/local =
+controller/frontend/customer/decorators/local = 
 ```
 
 * Type: array - List of decorator names
@@ -104,15 +104,15 @@ See also:
 List of groups new customers should be assigned to
 
 ```
-controller/frontend/groupids = Array
+controller/frontend/customer/groupids = Array
 (
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of group IDs
 * Since: 2017.07
 
@@ -129,7 +129,7 @@ Maximum number of customers within the time frame
 controller/frontend/customer/limit-count = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: integer - Number of customer accounts allowed within the time frame
 * Since: 2017.07
 
@@ -152,7 +152,7 @@ Customer account limitation time frame in seconds
 controller/frontend/customer/limit-seconds = 14400
 ```
 
-* Default: 14400
+* Default: `14400`
 * Type: integer - Number of seconds to check customer accounts within
 * Since: 2017.07
 
@@ -173,7 +173,7 @@ See also:
 Class name of the used customer frontend controller implementation
 
 ```
-controller/frontend/customer/name =
+controller/frontend/customer/name = 
 ```
 
 * Type: string - Last part of the class name

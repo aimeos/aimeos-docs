@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the customer email account controllers
 
 ```
-controller/jobs/customer/email/account/decorators/excludes = 
+controller/jobs/customer/email/account/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the customer email account controllers
 
 ```
-controller/jobs/customer/email/account/decorators/global = 
+controller/jobs/customer/email/account/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the customer email account controllers
 
 ```
-controller/jobs/customer/email/account/decorators/local = 
+controller/jobs/customer/email/account/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -104,9 +122,10 @@ See also:
 Class name of the used product notification e-mail scheduler controller implementation
 
 ```
-controller/jobs/customer/email/account/name = 
+controller/jobs/customer/email/account/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2016.04
 
@@ -151,7 +170,7 @@ Relative path to the template for the HTML part of the account emails.
 controller/jobs/customer/email/account/template-html = customer/email/account/html
 ```
 
-* Default: customer/email/account/html
+* Default: `customer/email/account/html`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -174,7 +193,7 @@ Relative path to the template for the text part of the account emails.
 controller/jobs/customer/email/account/template-text = customer/email/account/text
 ```
 
-* Default: customer/email/account/text
+* Default: `customer/email/account/text`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -195,9 +214,15 @@ See also:
 Excludes decorators added by the "common" option from the customer email watch controllers
 
 ```
-controller/jobs/customer/email/watch/decorators/excludes = 
+controller/jobs/customer/email/watch/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -229,9 +254,15 @@ See also:
 Adds a list of globally available decorators only to the customer email watch controllers
 
 ```
-controller/jobs/customer/email/watch/decorators/global = 
+controller/jobs/customer/email/watch/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -261,9 +292,15 @@ See also:
 Adds a list of local decorators only to the customer email watch controllers
 
 ```
-controller/jobs/customer/email/watch/decorators/local = 
+controller/jobs/customer/email/watch/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -294,9 +331,10 @@ See also:
 Class name of the used product notification e-mail scheduler controller implementation
 
 ```
-controller/jobs/customer/email/watch/name = 
+controller/jobs/customer/email/watch/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -341,7 +379,7 @@ Relative path to the template for the HTML part of the watch emails.
 controller/jobs/customer/email/watch/template-html = customer/email/watch/html
 ```
 
-* Default: customer/email/watch/html
+* Default: `customer/email/watch/html`
 * Type: string - Relative path to the template
 * Since: 2022.04
 
@@ -364,7 +402,7 @@ Relative path to the template for the text part of the watch emails.
 controller/jobs/customer/email/watch/template-text = customer/email/watch/text
 ```
 
-* Default: customer/email/watch/text
+* Default: `customer/email/watch/text`
 * Type: string - Relative path to the template
 * Since: 2022.04
 

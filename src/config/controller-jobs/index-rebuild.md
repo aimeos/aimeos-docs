@@ -10,10 +10,10 @@ controller/jobs/index/rebuild/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -50,10 +50,10 @@ controller/jobs/index/rebuild/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -88,10 +88,10 @@ controller/jobs/index/rebuild/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -125,7 +125,7 @@ Class name of the used catalog index rebuild scheduler controller implementation
 controller/jobs/index/rebuild/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 

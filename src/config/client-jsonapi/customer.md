@@ -154,7 +154,7 @@ Relative path to the customer address JSON API template
 client/jsonapi/customer/address/template = customer/address/standard
 ```
 
-* Default: customer/address/standard
+* Default: `customer/address/standard`
 * Type: string - Relative path to the template creating the body for the JSON API
 * Since: 2017.07
 
@@ -473,7 +473,7 @@ Relative path to the customer property JSON API template
 client/jsonapi/customer/property/template = customer/property/standard
 ```
 
-* Default: customer/property/standard
+* Default: `customer/property/standard`
 * Type: string - Relative path to the template creating the body for the JSON API
 * Since: 2017.07
 
@@ -645,7 +645,7 @@ Relative path to the customer relationships JSON API template
 client/jsonapi/customer/relationships/template = customer/relationships/standard
 ```
 
-* Default: customer/relationships/standard
+* Default: `customer/relationships/standard`
 * Type: string - Relative path to the template creating the body for the JSON API
 * Since: 2017.07
 
@@ -817,7 +817,7 @@ Relative path to the customer review JSON API template
 client/jsonapi/customer/review/template = customer/review/standard
 ```
 
-* Default: customer/review/standard
+* Default: `customer/review/standard`
 * Type: string - Relative path to the template creating the body for the JSON API
 * Since: 2017.07
 
@@ -842,7 +842,7 @@ Relative path to the customer JSON API template
 client/jsonapi/customer/template = customer/standard
 ```
 
-* Default: customer/standard
+* Default: `customer/standard`
 * Type: string - Relative path to the template creating the body for the JSON API
 * Since: 2017.04
 

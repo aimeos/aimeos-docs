@@ -1,11 +1,11 @@
 
-# import
-## xml/backup
+# xml
+## backup
 
 Name of the backup for sucessfully imported files
 
 ```
-controller/jobs/group/import/xml/backup =
+controller/jobs/group/import/xml/backup = 
 ```
 
 * Type: integer - Name of the backup file, optionally with date/time placeholders
@@ -32,9 +32,9 @@ See also:
 * controller/jobs/group/import/xml/location
 * controller/jobs/group/import/xml/max-query
 
-## xml/decorators/excludes
+## decorators/excludes
 
-Excludes decorators added by the "common" option from the customer import CSV job controller
+Excludes decorators added by the "common" option from the group import CSV job controller
 
 ```
 controller/jobs/group/import/xml/decorators/excludes = Array
@@ -42,10 +42,10 @@ controller/jobs/group/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -59,7 +59,7 @@ This option allows you to remove a decorator added via
 around the job controller.
 
 ```
- controller/jobs/customer/import/xml/decorators/excludes = array( 'decorator1' )
+ controller/jobs/group/import/xml/decorators/excludes = array( 'decorator1' )
 ```
 
 This would remove the decorator named "decorator1" from the list of
@@ -69,12 +69,12 @@ common decorators ("\Aimeos\Controller\Jobs\Common\Decorator\*") added via
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/customer/import/xml/decorators/global
-* controller/jobs/customer/import/xml/decorators/local
+* controller/jobs/group/import/xml/decorators/global
+* controller/jobs/group/import/xml/decorators/local
 
-## xml/decorators/global
+## decorators/global
 
-Adds a list of globally available decorators only to the customer import CSV job controller
+Adds a list of globally available decorators only to the group import CSV job controller
 
 ```
 controller/jobs/group/import/xml/decorators/global = Array
@@ -82,10 +82,10 @@ controller/jobs/group/import/xml/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -98,7 +98,7 @@ This option allows you to wrap global decorators
 ("\Aimeos\Controller\Jobs\Common\Decorator\*") around the job controller.
 
 ```
- controller/jobs/customer/import/xml/decorators/global = array( 'decorator1' )
+ controller/jobs/group/import/xml/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
@@ -107,12 +107,12 @@ This would add the decorator named "decorator1" defined by
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/customer/import/xml/decorators/excludes
-* controller/jobs/customer/import/xml/decorators/local
+* controller/jobs/group/import/xml/decorators/excludes
+* controller/jobs/group/import/xml/decorators/local
 
-## xml/decorators/local
+## decorators/local
 
-Adds a list of local decorators only to the customer import CSV job controller
+Adds a list of local decorators only to the group import CSV job controller
 
 ```
 controller/jobs/group/import/xml/decorators/local = Array
@@ -120,10 +120,10 @@ controller/jobs/group/import/xml/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -133,24 +133,24 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Decorator\*") around the job
+("\Aimeos\Controller\Jobs\Group\Import\Xml\Decorator\*") around the job
 controller.
 
 ```
- controller/jobs/customer/import/xml/decorators/local = array( 'decorator2' )
+ controller/jobs/group/import/xml/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Decorator\Decorator2"
+"\Aimeos\Controller\Jobs\Group\Import\Xml\Decorator\Decorator2"
 only to the job controller.
 
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/customer/import/xml/decorators/excludes
-* controller/jobs/customer/import/xml/decorators/global
+* controller/jobs/group/import/xml/decorators/excludes
+* controller/jobs/group/import/xml/decorators/global
 
-## xml/location
+## location
 
 Directory where the CSV files are stored which should be imported
 
@@ -158,7 +158,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/group/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: group
+* Default: `group`
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
@@ -174,7 +174,7 @@ See also:
 * controller/jobs/group/import/xml/domains
 * controller/jobs/group/import/xml/max-query
 
-## xml/max-query
+## max-query
 
 Maximum number of XML nodes processed at once
 
@@ -182,7 +182,7 @@ Maximum number of XML nodes processed at once
 controller/jobs/group/import/xml/max-query = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 
@@ -198,15 +198,15 @@ See also:
 * controller/jobs/group/import/xml/location
 * controller/jobs/group/import/xml/backup
 
-## xml/name
+## name
 
-Class name of the used customer suggestions scheduler controller implementation
+Class name of the used group suggestions scheduler controller implementation
 
 ```
 controller/jobs/group/import/xml/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 
@@ -218,19 +218,19 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Standard
+ \Aimeos\Controller\Jobs\Group\Import\Xml\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\Controller\Jobs\Customer\Group\Import\Xml\Myxml
+ \Aimeos\Controller\Jobs\Group\Import\Xml\Myxml
 ```
 
 then you have to set the this configuration option:
 
 ```
- controller/jobs/customer/import/xml/name = Myxml
+ controller/jobs/group/import/xml/name = Myxml
 ```
 
 The value is the last part of your own class name and it's case sensitive,

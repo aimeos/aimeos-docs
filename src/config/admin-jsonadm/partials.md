@@ -8,7 +8,7 @@ Relative path to the data partial template file for the catalog client
 admin/jsonadm/partials/catalog/template-data = partials/catalog/data
 ```
 
-* Default: partials/data
+* Default: `partials/data`
 * Type: string - Relative path to the template file
 * Since: 2016.07
 
@@ -50,7 +50,7 @@ Relative path to the included partial template file for the locale site  client
 admin/jsonadm/partials/locale/site/template-included = partials/included
 ```
 
-* Default: partials/included
+* Default: `partials/included`
 * Type: string - Relative path to the template file
 * Since: 2021.04
 
@@ -72,7 +72,7 @@ Relative path to the data partial template file for the order client
 admin/jsonadm/partials/order/template-data = partials/order/data
 ```
 
-* Default: partials/data
+* Default: `partials/data`
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -91,7 +91,7 @@ be relative to the templates/ folder, e.g. "partials/data".
 admin/jsonadm/partials/order/template-included = partials/order/included
 ```
 
-* Default: partials/included
+* Default: `partials/included`
 
 
 # template-data
@@ -102,7 +102,7 @@ Relative path to the data partial template file
 admin/jsonadm/partials/template-data = partials/data
 ```
 
-* Default: partials/data
+* Default: `partials/data`
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -123,7 +123,7 @@ Relative path to the error partial template file
 admin/jsonadm/partials/template-errors = partials/errors
 ```
 
-* Default: partials/errors
+* Default: `partials/errors`
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -144,7 +144,7 @@ Relative path to the "included" partial template file
 admin/jsonadm/partials/template-included = partials/included
 ```
 
-* Default: partials/included
+* Default: `partials/included`
 * Type: string - Relative path to the template file
 * Since: 2016.01
 

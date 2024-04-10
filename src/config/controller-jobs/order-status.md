@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the order status CSV job controller
 
 ```
-controller/jobs/order/status/csv/decorators/excludes = 
+controller/jobs/order/status/csv/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the order status CSV job controller
 
 ```
-controller/jobs/order/status/csv/decorators/global = 
+controller/jobs/order/status/csv/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the order status CSV job controller
 
 ```
-controller/jobs/order/status/csv/decorators/local = 
+controller/jobs/order/status/csv/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -108,7 +126,7 @@ Path to the CSV files relative to the order status file system
 controller/jobs/order/status/csv/directory = orderstatus
 ```
 
-* Default: orderstatus
+* Default: `orderstatus`
 * Type: string - Relative sub-directory name, path or empty string
 * Since: 2021.10
 
@@ -128,7 +146,7 @@ Maximum number of CSV rows to import at once
 controller/jobs/order/status/csv/max-size = 1000
 ```
 
-* Default: 1000
+* Default: `1000`
 * Type: int - Number of rows
 * Since: 2021.10
 
@@ -145,9 +163,10 @@ status speed.
 Class name of the used order suggestions scheduler controller implementation
 
 ```
-controller/jobs/order/status/csv/name = 
+controller/jobs/order/status/csv/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2021.10
 
@@ -192,7 +211,7 @@ Character separating the values in the CSV file
 controller/jobs/order/status/csv/separator = ;
 ```
 
-* Default: ,
+* Default: `,`
 * Type: string - Single byte separator character
 * Since: 2021.10
 
@@ -208,7 +227,7 @@ Number of rows that should be skipped
 controller/jobs/order/status/csv/skip = 1
 ```
 
-* Default: 0
+* Default: `0`
 * Type: int - Number of header rows to skip
 * Since: 2021.10
 

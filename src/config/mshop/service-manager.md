@@ -80,7 +80,7 @@ mshop/service/manager/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT count(*) as "count"
  FROM (
  	SELECT mser."id"
@@ -91,7 +91,7 @@ mshop/service/manager/count/mysql =
  	ORDER BY mser."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -108,10 +108,10 @@ mshop/service/manager/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -148,10 +148,10 @@ mshop/service/manager/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -187,10 +187,10 @@ mshop/service/manager/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -260,10 +260,10 @@ mshop/service/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_service"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -326,14 +326,14 @@ mshop/service/manager/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_service" ( :names
  	"pos", "type", "code", "label", "provider", "start", "end",
  	"config", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -482,7 +482,7 @@ mshop/service/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserli."id"
@@ -492,7 +492,7 @@ mshop/service/manager/lists/count/mysql =
  	ORDER BY mserli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -508,10 +508,10 @@ mshop/service/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -548,10 +548,10 @@ mshop/service/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -588,10 +588,10 @@ mshop/service/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -662,10 +662,10 @@ mshop/service/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_service_list"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -728,14 +728,14 @@ mshop/service/manager/lists/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_service_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -749,7 +749,7 @@ Class name of the used service list manager implementation
 mshop/service/manager/lists/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -846,13 +846,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/lists/search/ansi = 
  SELECT :columns
- 	mserli."id" AS "service.lists.id", mserli."parentid" AS "service.lists.parentid",
- 	mserli."siteid" AS "service.lists.siteid", mserli."type" AS "service.lists.type",
- 	mserli."domain" AS "service.lists.domain", mserli."refid" AS "service.lists.refid",
- 	mserli."start" AS "service.lists.datestart", mserli."end" AS "service.lists.dateend",
- 	mserli."config" AS "service.lists.config", mserli."pos" AS "service.lists.position",
- 	mserli."status" AS "service.lists.status", mserli."mtime" AS "service.lists.mtime",
- 	mserli."editor" AS "service.lists.editor", mserli."ctime" AS "service.lists.ctime"
  FROM "mshop_service_list" mserli
  :joins
  WHERE :cond
@@ -918,13 +911,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/lists/search/mysql = 
  SELECT :columns
- 	mserli."id" AS "service.lists.id", mserli."parentid" AS "service.lists.parentid",
- 	mserli."siteid" AS "service.lists.siteid", mserli."type" AS "service.lists.type",
- 	mserli."domain" AS "service.lists.domain", mserli."refid" AS "service.lists.refid",
- 	mserli."start" AS "service.lists.datestart", mserli."end" AS "service.lists.dateend",
- 	mserli."config" AS "service.lists.config", mserli."pos" AS "service.lists.position",
- 	mserli."status" AS "service.lists.status", mserli."mtime" AS "service.lists.mtime",
- 	mserli."editor" AS "service.lists.editor", mserli."ctime" AS "service.lists.ctime"
  FROM "mshop_service_list" mserli
  :joins
  WHERE :cond
@@ -932,21 +918,14 @@ mshop/service/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mserli."id" AS "service.lists.id", mserli."parentid" AS "service.lists.parentid",
- 	mserli."siteid" AS "service.lists.siteid", mserli."type" AS "service.lists.type",
- 	mserli."domain" AS "service.lists.domain", mserli."refid" AS "service.lists.refid",
- 	mserli."start" AS "service.lists.datestart", mserli."end" AS "service.lists.dateend",
- 	mserli."config" AS "service.lists.config", mserli."pos" AS "service.lists.position",
- 	mserli."status" AS "service.lists.status", mserli."mtime" AS "service.lists.mtime",
- 	mserli."editor" AS "service.lists.editor", mserli."ctime" AS "service.lists.ctime"
  FROM "mshop_service_list" mserli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -962,10 +941,10 @@ mshop/service/manager/lists/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1058,7 +1037,7 @@ mshop/service/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserlity."id"
@@ -1068,7 +1047,7 @@ mshop/service/manager/lists/type/count/mysql =
  	ORDER BY mserlity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -1084,10 +1063,10 @@ mshop/service/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1124,10 +1103,10 @@ mshop/service/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1164,10 +1143,10 @@ mshop/service/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1237,10 +1216,10 @@ mshop/service/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_service_list_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -1302,14 +1281,14 @@ mshop/service/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_service_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-
+`
 
 See also:
 
@@ -1323,7 +1302,7 @@ Class name of the used service list type manager implementation
 mshop/service/manager/lists/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1419,12 +1398,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/lists/type/search/ansi = 
  SELECT :columns
- 	mserlity."id" AS "service.lists.type.id", mserlity."siteid" AS "service.lists.type.siteid",
- 	mserlity."code" AS "service.lists.type.code", mserlity."domain" AS "service.lists.type.domain",
- 	mserlity."label" AS "service.lists.type.label", mserlity."status" AS "service.lists.type.status",
- 	mserlity."mtime" AS "service.lists.type.mtime", mserlity."editor" AS "service.lists.type.editor",
- 	mserlity."ctime" AS "service.lists.type.ctime", mserlity."pos" AS "service.lists.type.position",
- 	mserlity."i18n" AS "service.lists.type.i18n"
  FROM "mshop_service_list_type" mserlity
  :joins
  WHERE :cond
@@ -1489,12 +1462,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/lists/type/search/mysql = 
  SELECT :columns
- 	mserlity."id" AS "service.lists.type.id", mserlity."siteid" AS "service.lists.type.siteid",
- 	mserlity."code" AS "service.lists.type.code", mserlity."domain" AS "service.lists.type.domain",
- 	mserlity."label" AS "service.lists.type.label", mserlity."status" AS "service.lists.type.status",
- 	mserlity."mtime" AS "service.lists.type.mtime", mserlity."editor" AS "service.lists.type.editor",
- 	mserlity."ctime" AS "service.lists.type.ctime", mserlity."pos" AS "service.lists.type.position",
- 	mserlity."i18n" AS "service.lists.type.i18n"
  FROM "mshop_service_list_type" mserlity
  :joins
  WHERE :cond
@@ -1502,20 +1469,14 @@ mshop/service/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mserlity."id" AS "service.lists.type.id", mserlity."siteid" AS "service.lists.type.siteid",
- 	mserlity."code" AS "service.lists.type.code", mserlity."domain" AS "service.lists.type.domain",
- 	mserlity."label" AS "service.lists.type.label", mserlity."status" AS "service.lists.type.status",
- 	mserlity."mtime" AS "service.lists.type.mtime", mserlity."editor" AS "service.lists.type.editor",
- 	mserlity."ctime" AS "service.lists.type.ctime", mserlity."pos" AS "service.lists.type.position",
- 	mserlity."i18n" AS "service.lists.type.i18n"
  FROM "mshop_service_list_type" mserlity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1531,10 +1492,10 @@ mshop/service/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1600,13 +1561,13 @@ mshop/service/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_service_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1664,13 +1625,13 @@ mshop/service/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_service_list"
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -1684,7 +1645,7 @@ Class name of the used service manager implementation
 mshop/service/manager/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1782,7 +1743,7 @@ Name of the database connection resource to use
 mshop/service/manager/resource = db-service
 ```
 
-* Default: db-service
+* Default: `db-service`
 * Type: string - Database connection name
 * Since: 2023.04
 * Since: 2023.04
@@ -1803,20 +1764,10 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/search/ansi = 
  SELECT :columns
- 	mser."id" AS "service.id", mser."siteid" AS "service.siteid",
- 	mser."pos" AS "service.position", mser."type" AS "service.type",
- 	mser."code" AS "service.code", mser."label" AS "service.label",
- 	mser."provider" AS "service.provider", mser."config" AS "service.config",
- 	mser."start" AS "service.datestart", mser."end" AS "service.dateend",
- 	mser."status" AS "service.status", mser."mtime" AS "service.mtime",
- 	mser."editor" AS "service.editor",	mser."ctime" AS "service.ctime"
  FROM "mshop_service" mser
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mser."id", mser."siteid", mser."pos", mser."type", mser."code", mser."label",
- 	mser."provider", mser."config", mser."start", mser."end", mser."status", mser."mtime",
- 	mser."editor",	mser."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
@@ -1878,40 +1829,23 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/search/mysql = 
  SELECT :columns
- 	mser."id" AS "service.id", mser."siteid" AS "service.siteid",
- 	mser."pos" AS "service.position", mser."type" AS "service.type",
- 	mser."code" AS "service.code", mser."label" AS "service.label",
- 	mser."provider" AS "service.provider", mser."config" AS "service.config",
- 	mser."start" AS "service.datestart", mser."end" AS "service.dateend",
- 	mser."status" AS "service.status", mser."mtime" AS "service.mtime",
- 	mser."editor" AS "service.editor",	mser."ctime" AS "service.ctime"
  FROM "mshop_service" mser
  :joins
  WHERE :cond
- GROUP BY :group mser."id"
+ GROUP BY :group
  ORDER BY :order
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mser."id" AS "service.id", mser."siteid" AS "service.siteid",
- 	mser."pos" AS "service.position", mser."type" AS "service.type",
- 	mser."code" AS "service.code", mser."label" AS "service.label",
- 	mser."provider" AS "service.provider", mser."config" AS "service.config",
- 	mser."start" AS "service.datestart", mser."end" AS "service.dateend",
- 	mser."status" AS "service.status", mser."mtime" AS "service.mtime",
- 	mser."editor" AS "service.editor",	mser."ctime" AS "service.ctime"
  FROM "mshop_service" mser
  :joins
  WHERE :cond
- GROUP BY :columns :group
- 	mser."id", mser."siteid", mser."pos", mser."type", mser."code", mser."label",
- 	mser."provider", mser."config", mser."start", mser."end", mser."status", mser."mtime",
- 	mser."editor",	mser."ctime"
+ GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -1925,7 +1859,7 @@ Mode how items from levels below or above in the site tree are handled
 mshop/service/manager/sitemode = 3
 ```
 
-* Default: 3
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -1964,10 +1898,10 @@ mshop/service/manager/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2061,7 +1995,7 @@ mshop/service/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: 
+* Default: `
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mserty."id"
@@ -2071,7 +2005,7 @@ mshop/service/manager/type/count/mysql =
  	ORDER BY mserty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-
+`
 
 See also:
 
@@ -2087,10 +2021,10 @@ mshop/service/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2127,10 +2061,10 @@ mshop/service/manager/type/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2167,10 +2101,10 @@ mshop/service/manager/type/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2240,10 +2174,10 @@ mshop/service/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
+* Default: `
  DELETE FROM "mshop_service_type"
  WHERE :cond AND "siteid" LIKE ?
-
+`
 
 See also:
 
@@ -2305,14 +2239,14 @@ mshop/service/manager/type/insert/mysql =
  )
 ```
 
-* Default: 
+* Default: `
  INSERT INTO "mshop_service_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
- 
+ `
 
 See also:
 
@@ -2326,7 +2260,7 @@ Class name of the used service type manager implementation
 mshop/service/manager/type/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -2422,12 +2356,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/type/search/ansi = 
  SELECT :columns
- 	mserty."id" AS "service.type.id", mserty."siteid" AS "service.type.siteid",
- 	mserty."domain" AS "service.type.domain", mserty."code" AS "service.type.code",
- 	mserty."label" AS "service.type.label", mserty."status" AS "service.type.status",
- 	mserty."mtime" AS "service.type.mtime", mserty."editor" AS "service.type.editor",
- 	mserty."ctime" AS "service.type.ctime", mserty."pos" AS "service.type.position",
- 	mserty."i18n" AS "service.type.i18n"
  FROM "mshop_service_type" mserty
  :joins
  WHERE :cond
@@ -2492,12 +2420,6 @@ Retrieves the records matched by the given criteria in the database
 ```
 mshop/service/manager/type/search/mysql = 
  SELECT :columns
- 	mserty."id" AS "service.type.id", mserty."siteid" AS "service.type.siteid",
- 	mserty."domain" AS "service.type.domain", mserty."code" AS "service.type.code",
- 	mserty."label" AS "service.type.label", mserty."status" AS "service.type.status",
- 	mserty."mtime" AS "service.type.mtime", mserty."editor" AS "service.type.editor",
- 	mserty."ctime" AS "service.type.ctime", mserty."pos" AS "service.type.position",
- 	mserty."i18n" AS "service.type.i18n"
  FROM "mshop_service_type" mserty
  :joins
  WHERE :cond
@@ -2505,20 +2427,14 @@ mshop/service/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: 
+* Default: `
  SELECT :columns
- 	mserty."id" AS "service.type.id", mserty."siteid" AS "service.type.siteid",
- 	mserty."domain" AS "service.type.domain", mserty."code" AS "service.type.code",
- 	mserty."label" AS "service.type.label", mserty."status" AS "service.type.status",
- 	mserty."mtime" AS "service.type.mtime", mserty."editor" AS "service.type.editor",
- 	mserty."ctime" AS "service.type.ctime", mserty."pos" AS "service.type.position",
- 	mserty."i18n" AS "service.type.i18n"
  FROM "mshop_service_type" mserty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-
+`
 
 See also:
 
@@ -2534,10 +2450,10 @@ mshop/service/manager/type/submanagers = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2603,13 +2519,13 @@ mshop/service/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_service_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 
@@ -2667,13 +2583,13 @@ mshop/service/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
+* Default: `
  UPDATE "mshop_service"
  SET :names
  	"pos" = ?, "type" = ?, "code" = ?, "label" = ?, "provider" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-
+`
 
 See also:
 

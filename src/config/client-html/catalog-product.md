@@ -7,7 +7,7 @@ Display the "add to basket" button for each product item
 client/html/catalog/product/basket-add = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - True to display the button, false to hide it
 * Since: 2019.10
 
@@ -38,7 +38,7 @@ Enables or disables caching only for the catalog product component
 client/html/catalog/product/cache = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True to enable caching, false to disable
 
 Disable caching for components can be useful if you would have too much
@@ -164,7 +164,7 @@ client/html/catalog/product/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => catalog
     [1] => media
@@ -173,7 +173,7 @@ client/html/catalog/product/domains = Array
     [4] => supplier
     [5] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2019.06
 
@@ -255,10 +255,10 @@ client/html/catalog/product/product-codes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of codes of products to load for the current list
 * Since: 2019.06
 
@@ -272,7 +272,7 @@ Enables or disables displaying product stock levels in product list views
 client/html/catalog/product/stock/enable = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - Value of "1" to display stock levels, "0" to disable displaying them
 * Since: 2019.06
 
@@ -300,7 +300,7 @@ Relative path to the HTML body template of the catalog product client.
 client/html/catalog/product/template-body = catalog/product/body
 ```
 
-* Default: catalog/product/body
+* Default: `catalog/product/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2019.06
 
@@ -328,7 +328,7 @@ Relative path to the HTML header template of the catalog product client.
 client/html/catalog/product/template-header = catalog/product/header
 ```
 
-* Default: catalog/product/header
+* Default: `catalog/product/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2019.06
 

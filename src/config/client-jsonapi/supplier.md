@@ -154,7 +154,7 @@ Relative path to the supplier lists JSON API template
 client/jsonapi/supplier/template = supplier/standard
 ```
 
-* Default: supplier/standard
+* Default: `supplier/standard`
 * Type: string - Relative path to the template creating the body for the GET method of the JSON API
 * Since: 2017.03
 

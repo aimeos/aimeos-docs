@@ -104,7 +104,7 @@ The number of products in stock below it's considered a low stock level
 client/html/catalog/stock/level/low = 5
 ```
 
-* Default: 5
+* Default: `5`
 * Type: integer - Number of products in stock
 * Since: 2014.03
 
@@ -183,7 +183,7 @@ Sortation key if stock levels for different types exist
 client/html/catalog/stock/sort = stock.type
 ```
 
-* Default: stock.type
+* Default: `stock.type`
 * Type: array - List of key/value pairs for sorting
 * Since: 2017.01
 
@@ -211,7 +211,7 @@ Relative path to the HTML body template of the catalog stock client.
 client/html/catalog/stock/template-body = catalog/stock/body
 ```
 
-* Default: catalog/stock/body
+* Default: `catalog/stock/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -239,7 +239,7 @@ Relative path to the HTML header template of the catalog stock client.
 client/html/catalog/stock/template-header = catalog/stock/header
 ```
 
-* Default: catalog/stock/header
+* Default: `catalog/stock/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 
@@ -269,7 +269,7 @@ Name of the action that should create the output
 client/html/catalog/stock/url/action = stock
 ```
 
-* Default: stock
+* Default: `stock`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -295,10 +295,10 @@ client/html/catalog/stock/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -330,7 +330,7 @@ Name of the controller whose action should be called
 client/html/catalog/stock/url/controller = Catalog
 ```
 
-* Default: Catalog
+* Default: `Catalog`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -356,10 +356,10 @@ client/html/catalog/stock/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -382,7 +382,7 @@ Maximum number of product stock levels per request
 client/html/catalog/stock/url/max-items = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Maximum number of product codes per request
 * Since: 2018.10
 

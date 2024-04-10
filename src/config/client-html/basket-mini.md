@@ -152,10 +152,10 @@ client/html/basket/mini/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -200,7 +200,7 @@ Relative path to the HTML body template of the basket mini client.
 client/html/basket/mini/template-body = basket/mini/body
 ```
 
-* Default: basket/mini/body
+* Default: `basket/mini/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -228,7 +228,7 @@ Relative path to the HTML header template of the basket mini client.
 client/html/basket/mini/template-header = basket/mini/header
 ```
 
-* Default: basket/mini/header
+* Default: `basket/mini/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2014.03
 

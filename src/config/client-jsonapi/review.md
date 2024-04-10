@@ -154,7 +154,7 @@ Relative path to the review JSON API template
 client/jsonapi/review/template = review/standard
 ```
 
-* Default: review/standard
+* Default: `review/standard`
 * Type: string - Relative path to the template creating the body of the JSON API
 * Since: 2017.03
 

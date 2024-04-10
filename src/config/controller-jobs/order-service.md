@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the order service async controllers
 
 ```
-controller/jobs/order/service/async/decorators/excludes = 
+controller/jobs/order/service/async/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the order service async controllers
 
 ```
-controller/jobs/order/service/async/decorators/global = 
+controller/jobs/order/service/async/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the order service async controllers
 
 ```
-controller/jobs/order/service/async/decorators/local = 
+controller/jobs/order/service/async/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -104,9 +122,10 @@ See also:
 Class name of the used order service async scheduler controller implementation
 
 ```
-controller/jobs/order/service/async/name = 
+controller/jobs/order/service/async/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.07
 
@@ -152,7 +171,7 @@ Maximum number of orders processed at once by the delivery service provider
 controller/jobs/order/service/delivery/batch-max = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of orders
 * Since: 2018.07
 * Since: 2018.07
@@ -174,9 +193,15 @@ See also:
 Excludes decorators added by the "common" option from the order service delivery controllers
 
 ```
-controller/jobs/order/service/delivery/decorators/excludes = 
+controller/jobs/order/service/delivery/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -208,9 +233,15 @@ See also:
 Adds a list of globally available decorators only to the order service delivery controllers
 
 ```
-controller/jobs/order/service/delivery/decorators/global = 
+controller/jobs/order/service/delivery/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -240,9 +271,15 @@ See also:
 Adds a list of local decorators only to the order service delivery controllers
 
 ```
-controller/jobs/order/service/delivery/decorators/local = 
+controller/jobs/order/service/delivery/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -282,14 +319,14 @@ controller/jobs/order/service/delivery/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [order/address] => order/address
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
 )
-
+`
 * Type: array - Referenced domain names
 * Since: 2022.04
 
@@ -315,7 +352,7 @@ Only start the delivery process of orders that were created in the past within t
 controller/jobs/order/service/delivery/limit-days = 90
 ```
 
-* Default: 90
+* Default: `90`
 * Type: integer - Number of days
 * Since: 2014.03
 
@@ -334,9 +371,10 @@ See also:
 Class name of the used order service delivery scheduler controller implementation
 
 ```
-controller/jobs/order/service/delivery/name = 
+controller/jobs/order/service/delivery/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -396,9 +434,15 @@ by the aquirers after some time (usually seven days).
 Excludes decorators added by the "common" option from the order service payment controllers
 
 ```
-controller/jobs/order/service/payment/decorators/excludes = 
+controller/jobs/order/service/payment/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -430,9 +474,15 @@ See also:
 Adds a list of globally available decorators only to the order service payment controllers
 
 ```
-controller/jobs/order/service/payment/decorators/global = 
+controller/jobs/order/service/payment/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -462,9 +512,15 @@ See also:
 Adds a list of local decorators only to the order service payment controllers
 
 ```
-controller/jobs/order/service/payment/decorators/local = 
+controller/jobs/order/service/payment/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -523,7 +579,7 @@ Only start capturing payments of orders that were created in the past within the
 controller/jobs/order/service/payment/limit-days = 90
 ```
 
-* Default: 90
+* Default: `90`
 * Type: integer - Number of days
 * Since: 2014.07
 
@@ -538,9 +594,10 @@ of old orders would be captured now.
 Class name of the used order service payment scheduler controller implementation
 
 ```
-controller/jobs/order/service/payment/name = 
+controller/jobs/order/service/payment/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.07
 
@@ -586,7 +643,7 @@ Maximum number of orders processed at once by the payment service provider
 controller/jobs/order/service/transfer/batch-max = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of orders
 * Since: 2023.04
 
@@ -605,9 +662,15 @@ See also:
 Excludes decorators added by the "common" option from the order service transfer controllers
 
 ```
-controller/jobs/order/service/transfer/decorators/excludes = 
+controller/jobs/order/service/transfer/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -639,9 +702,15 @@ See also:
 Adds a list of globally available decorators only to the order service transfer controllers
 
 ```
-controller/jobs/order/service/transfer/decorators/global = 
+controller/jobs/order/service/transfer/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -671,9 +740,15 @@ See also:
 Adds a list of local decorators only to the order service transfer controllers
 
 ```
-controller/jobs/order/service/transfer/decorators/local = 
+controller/jobs/order/service/transfer/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -713,14 +788,14 @@ controller/jobs/order/service/transfer/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [order/address] => order/address
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
 )
-
+`
 * Type: array - Referenced domain names
 * Since: 2022.04
 
@@ -739,9 +814,10 @@ providers. Available domains for those items are:
 Class name of the used order service transfer scheduler controller implementation
 
 ```
-controller/jobs/order/service/transfer/name = 
+controller/jobs/order/service/transfer/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2021.10
 
@@ -786,7 +862,7 @@ Automatically transfers payments after the configured amount of days
 controller/jobs/order/service/transfer/transfer-days = 0
 ```
 
-* Default: 0
+* Default: `0`
 * Type: integer - Number of days
 * Since: 2010.10
 

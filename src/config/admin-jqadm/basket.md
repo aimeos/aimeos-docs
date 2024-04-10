@@ -112,14 +112,14 @@ admin/jqadm/basket/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => order.basket.id
     [1] => order.basket.customerid
     [2] => order.basket.name
     [3] => order.basket.ctime
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2023.10
 
@@ -185,10 +185,10 @@ admin/jqadm/basket/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2023.10
 
@@ -233,7 +233,7 @@ Relative path to the HTML body template for the basket item.
 admin/jqadm/basket/template-item = basket/item
 ```
 
-* Default: basket/item
+* Default: `basket/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2023.10
 
@@ -258,7 +258,7 @@ Relative path to the HTML body template for the basket list.
 admin/jqadm/basket/template-list = basket/list
 ```
 
-* Default: basket/list
+* Default: `basket/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2023.10
 

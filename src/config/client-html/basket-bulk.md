@@ -147,7 +147,7 @@ Number or rows shown in the product bulk order form by default
 client/html/basket/bulk/rows = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: int - Number of lines shown
 * Since: 2020.07
 
@@ -164,7 +164,7 @@ Relative path to the HTML body template of the bulk order client.
 client/html/basket/bulk/template-body = basket/bulk/body
 ```
 
-* Default: basket/bulk/body
+* Default: `basket/bulk/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2019.10
 
@@ -192,7 +192,7 @@ Relative path to the HTML header template of the bulk order client.
 client/html/basket/bulk/template-header = basket/bulk/header
 ```
 
-* Default: basket/bulk/header
+* Default: `basket/bulk/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2019.10
 

@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the media scale controllers
 
 ```
-controller/jobs/media/scale/decorators/excludes = 
+controller/jobs/media/scale/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the media scale controllers
 
 ```
-controller/jobs/media/scale/decorators/global = 
+controller/jobs/media/scale/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the media scale controllers
 
 ```
-controller/jobs/media/scale/decorators/local = 
+controller/jobs/media/scale/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -107,7 +125,7 @@ Enforce rescaling all images
 controller/jobs/media/scale/force = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: bool - True to rescale all images, false for new ones only
 * Since: 2019.10
 
@@ -122,9 +140,10 @@ to false or 0
 Class name of the used media scale job controller implementation
 
 ```
-controller/jobs/media/scale/name = 
+controller/jobs/media/scale/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2017.01
 

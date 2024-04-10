@@ -1,332 +1,5 @@
 
 # address
-## billing/decorators/global
-
-```
-client/html/checkout/standard/address/billing/decorators/global = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## billing/decorators/local
-
-```
-client/html/checkout/standard/address/billing/decorators/local = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-
-
-## billing/disable-new
-
-Disables the option to enter a new billing address for an order
-
-```
-client/html/checkout/standard/address/billing/disable-new = 
-```
-
-* Default: 
-* Type: boolean - A value of "1" to disable, "0" enables the billing address form
-* Since: 2015.02
-
-Besides the main billing address, customers can usually enter a new
-billing address as well. To suppress displaying the form fields for
-a billing address, you can set this configuration option to "1".
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/billing/disable-new" starting from 2014-03.
-
-See also:
-
-* client/html/checkout/standard/address/billing/salutations
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/optional
-* client/html/checkout/standard/address/billing/hidden
-
-## billing/hidden
-
-List of billing address input fields that are optional and should be hidden
-
-```
-client/html/checkout/standard/address/billing/hidden = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of field keys
-* Since: 2015.02
-
-You can configure the list of billing address fields that
-are hidden when a customer enters his new billing address.
-Available field keys are:
-
-* order.address.company
-* order.address.vatid
-* order.address.salutation
-* order.address.firstname
-* order.address.lastname
-* order.address.address1
-* order.address.address2
-* order.address.address3
-* order.address.postal
-* order.address.city
-* order.address.state
-* order.address.languageid
-* order.address.countryid
-* order.address.telephone
-* order.address.telefax
-* order.address.mobile
-* order.address.email
-* order.address.website
-
-Caution: Only hide fields that don't require any input
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/billing/hidden" starting from 2014-03.
-
-See also:
-
-* client/html/checkout/standard/address/billing/disable-new
-* client/html/checkout/standard/address/billing/salutations
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/optional
-* common/countries
-* common/states
-
-## billing/mandatory
-
-List of billing address input fields that are required
-
-```
-client/html/checkout/standard/address/billing/mandatory = Array
-(
-    [0] => order.address.firstname
-    [1] => order.address.lastname
-    [2] => order.address.address1
-    [3] => order.address.postal
-    [4] => order.address.city
-    [5] => order.address.languageid
-    [6] => order.address.email
-)
-```
-
-* Default: Array
-(
-    [0] => order.address.firstname
-    [1] => order.address.lastname
-    [2] => order.address.address1
-    [3] => order.address.postal
-    [4] => order.address.city
-    [5] => order.address.languageid
-    [6] => order.address.email
-)
-
-* Type: array - List of field keys
-* Since: 2015.02
-
-You can configure the list of billing address fields that are
-necessary and must be filled by the customer before he can
-continue the checkout process. Available field keys are:
-
-* order.address.company
-* order.address.vatid
-* order.address.salutation
-* order.address.firstname
-* order.address.lastname
-* order.address.address1
-* order.address.address2
-* order.address.address3
-* order.address.postal
-* order.address.city
-* order.address.state
-* order.address.languageid
-* order.address.countryid
-* order.address.telephone
-* order.address.telefax
-* order.address.mobile
-* order.address.email
-* order.address.website
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/billing/mandatory" starting from 2014-03.
-
-See also:
-
-* client/html/checkout/standard/address/billing/disable-new
-* client/html/checkout/standard/address/billing/salutations
-* client/html/checkout/standard/address/billing/optional
-* client/html/checkout/standard/address/billing/hidden
-* client/html/checkout/standard/address/validate
-* common/countries
-* common/states
-
-## billing/name
-
-Name of the billing part used by the checkout standard address client implementation
-
-```
-client/html/checkout/standard/address/billing/name = Standard
-```
-
-* Default: Standard
-* Type: string - Last part of the client class name
-* Since: 2014.03
-
-Use "Myname" if your class is named "\Aimeos\Client\Checkout\Standard\Address\Billing\Myname".
-The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## billing/optional
-
-List of billing address input fields that are optional
-
-```
-client/html/checkout/standard/address/billing/optional = Array
-(
-    [0] => order.address.salutation
-    [1] => order.address.company
-    [2] => order.address.vatid
-    [3] => order.address.address2
-    [4] => order.address.countryid
-    [5] => order.address.state
-)
-```
-
-* Default: Array
-(
-    [0] => order.address.salutation
-    [1] => order.address.company
-    [2] => order.address.vatid
-    [3] => order.address.address2
-    [4] => order.address.countryid
-    [5] => order.address.state
-)
-
-* Type: array - List of field keys
-* Since: 2015.02
-
-You can configure the list of billing address fields that
-customers can fill but don't have to before they can
-continue the checkout process. Available field keys are:
-
-* order.address.company
-* order.address.vatid
-* order.address.salutation
-* order.address.firstname
-* order.address.lastname
-* order.address.address1
-* order.address.address2
-* order.address.address3
-* order.address.postal
-* order.address.city
-* order.address.state
-* order.address.languageid
-* order.address.countryid
-* order.address.telephone
-* order.address.telefax
-* order.address.mobile
-* order.address.email
-* order.address.website
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/billing/optional" starting from 2014-03.
-
-See also:
-
-* client/html/checkout/standard/address/billing/disable-new
-* client/html/checkout/standard/address/billing/salutations
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/hidden
-* client/html/checkout/standard/address/validate
-* common/countries
-* common/states
-
-## billing/salutations
-
-List of salutions the customer can select from for the billing address
-
-```
-client/html/checkout/standard/address/billing/salutations = Array
-(
-    [0] => 
-    [1] => mr
-    [2] => ms
-)
-```
-
-* Default: Array
-(
-    [0] => 
-    [1] => mr
-    [2] => ms
-)
-
-* Type: array - List of available salutation codes
-* Since: 2015.02
-
-The following salutations are available:
-
-* empty string for "unknown"
-* company
-* mr
-* ms
-
-You can modify the list of salutation codes and remove the ones
-which shouldn't be used or add new ones.
-
-See also:
-
-* client/html/checkout/standard/address/billing/disable-new
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/optional
-* client/html/checkout/standard/address/billing/hidden
-* client/html/common/address/salutations
-* common/countries
-* common/states
-
-## billing/template-body
-
-Relative path to the HTML body template of the checkout standard address billing client.
-
-```
-client/html/checkout/standard/address/billing/template-body = checkout/standard/address-billing-body
-```
-
-* Default: checkout/standard/address-billing-body
-* Type: string - Relative path to the template creating code for the HTML page body
-* Since: 2014.03
-
-The template file contains the HTML code and processing instructions
-to generate the result shown in the body of the frontend. The
-configuration string is the path to the template file relative
-to the templates directory (usually in templates/client/html).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but suffixed by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, it
-should be suffixed by the name of the new class.
-
-See also:
-
-* client/html/checkout/standard/address/billing/template-header
-
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the checkout standard address html client
@@ -371,10 +44,10 @@ client/html/checkout/standard/address/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -409,10 +82,10 @@ client/html/checkout/standard/address/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -445,10 +118,10 @@ client/html/checkout/standard/address/delivery/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## delivery/decorators/local
@@ -459,10 +132,10 @@ client/html/checkout/standard/address/delivery/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## delivery/disable-new
@@ -473,7 +146,7 @@ Disables the option to enter a different delivery address for an order
 client/html/checkout/standard/address/delivery/disable-new = 
 ```
 
-* Default: 
+* Default: ``
 * Type: boolean - A value of "1" to disable, "0" enables the delivery address form
 * Since: 2015.02
 
@@ -483,121 +156,10 @@ a delivery address, you can set this configuration option to "1".
 
 See also:
 
-* client/html/checkout/standard/address/delivery/salutations
-* client/html/checkout/standard/address/delivery/mandatory
-* client/html/checkout/standard/address/delivery/optional
-* client/html/checkout/standard/address/delivery/hidden
-
-## delivery/hidden
-
-List of delivery address input fields that are optional
-
-```
-client/html/checkout/standard/address/delivery/hidden = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - List of field keys
-* Since: 2015.02
-
-You can configure the list of delivery address fields that
-are hidden when a customer enters his delivery address.
-Available field keys are:
-
-* order.address.company
-* order.address.vatid
-* order.address.salutation
-* order.address.firstname
-* order.address.lastname
-* order.address.address1
-* order.address.address2
-* order.address.address3
-* order.address.postal
-* order.address.city
-* order.address.state
-* order.address.languageid
-* order.address.countryid
-* order.address.telephone
-* order.address.telefax
-* order.address.email
-* order.address.website
-
-Caution: Only hide fields that don't require any input
-
-See also:
-
-* client/html/checkout/standard/address/delivery/disable-new
-* client/html/checkout/standard/address/delivery/salutations
-* client/html/checkout/standard/address/delivery/mandatory
-* client/html/checkout/standard/address/delivery/optional
-* common/countries
-* common/states
-
-## delivery/mandatory
-
-List of delivery address input fields that are required
-
-```
-client/html/checkout/standard/address/delivery/mandatory = Array
-(
-    [0] => order.address.firstname
-    [1] => order.address.lastname
-    [2] => order.address.address1
-    [3] => order.address.postal
-    [4] => order.address.city
-    [5] => order.address.languageid
-)
-```
-
-* Default: Array
-(
-    [0] => order.address.firstname
-    [1] => order.address.lastname
-    [2] => order.address.address1
-    [3] => order.address.postal
-    [4] => order.address.city
-    [5] => order.address.languageid
-)
-
-* Type: array - List of field keys
-* Since: 2015.02
-
-You can configure the list of delivery address fields that are
-necessary and must be filled by the customer before he can
-continue the checkout process. Available field keys are:
-
-* order.address.company
-* order.address.vatid
-* order.address.salutation
-* order.address.firstname
-* order.address.lastname
-* order.address.address1
-* order.address.address2
-* order.address.address3
-* order.address.postal
-* order.address.city
-* order.address.state
-* order.address.languageid
-* order.address.countryid
-* order.address.telephone
-* order.address.telefax
-* order.address.email
-* order.address.website
-
-See also:
-
-* client/html/checkout/standard/address/delivery/disable-new
-* client/html/checkout/standard/address/delivery/salutations
-* client/html/checkout/standard/address/delivery/optional
-* client/html/checkout/standard/address/delivery/hidden
-* client/html/checkout/standard/address/validate
-* common/countries
-* common/states
+* client/html/common/address/salutations
+* client/html/common/address/delivery/mandatory
+* client/html/common/address/delivery/optional
+* client/html/common/address/delivery/hidden
 
 ## delivery/name
 
@@ -607,121 +169,13 @@ Name of the delivery part used by the checkout standard address client implement
 client/html/checkout/standard/address/delivery/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2014.03
 
 Use "Myname" if your class is named "\Aimeos\Client\Checkout\Standard\Address\Delivery\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
-
-## delivery/optional
-
-List of delivery address input fields that are optional
-
-```
-client/html/checkout/standard/address/delivery/optional = Array
-(
-    [0] => order.address.salutation
-    [1] => order.address.company
-    [2] => order.address.vatid
-    [3] => order.address.address2
-    [4] => order.address.countryid
-    [5] => order.address.state
-)
-```
-
-* Default: Array
-(
-    [0] => order.address.salutation
-    [1] => order.address.company
-    [2] => order.address.vatid
-    [3] => order.address.address2
-    [4] => order.address.countryid
-    [5] => order.address.state
-)
-
-* Type: array - List of field keys
-* Since: 2015.02
-
-You can configure the list of delivery address fields that
-customers can fill but don't have to before they can
-continue the checkout process. Available field keys are:
-
-* order.address.company
-* order.address.vatid
-* order.address.salutation
-* order.address.firstname
-* order.address.lastname
-* order.address.address1
-* order.address.address2
-* order.address.address3
-* order.address.postal
-* order.address.city
-* order.address.state
-* order.address.languageid
-* order.address.countryid
-* order.address.telephone
-* order.address.telefax
-* order.address.email
-* order.address.website
-* nostore
-
-Using the "nostore" field displays the option to avoid storing the
-delivery address permanently in the customer account.
-
-See also:
-
-* client/html/checkout/standard/address/delivery/disable-new
-* client/html/checkout/standard/address/delivery/salutations
-* client/html/checkout/standard/address/delivery/mandatory
-* client/html/checkout/standard/address/delivery/hidden
-* client/html/checkout/standard/address/validate
-* common/countries
-* common/states
-
-## delivery/salutations
-
-List of salutions the customer can select from for the delivery address
-
-```
-client/html/checkout/standard/address/delivery/salutations = Array
-(
-    [0] => 
-    [1] => mr
-    [2] => ms
-)
-```
-
-* Default: Array
-(
-    [0] => 
-    [1] => mr
-    [2] => ms
-)
-
-* Type: array - List of available salutation codes
-* Since: 2015.02
-
-The following salutations are available:
-
-* empty string for "unknown"
-* company
-* mr
-* ms
-
-You can modify the list of salutation codes and remove the ones
-which shouldn't be used or add new ones.
-
-See also:
-
-* client/html/checkout/standard/address/delivery/disable-new
-* client/html/checkout/standard/address/delivery/mandatory
-* client/html/checkout/standard/address/delivery/optional
-* client/html/checkout/standard/address/delivery/hidden
-* client/html/common/address/salutations
-* common/countries
-* common/states
 
 ## delivery/template-body
 
@@ -731,7 +185,7 @@ Relative path to the HTML body template of the checkout standard address deliver
 client/html/checkout/standard/address/delivery/template-body = checkout/standard/address-delivery-body
 ```
 
-* Default: checkout/standard/address-delivery-body
+* Default: `checkout/standard/address-delivery-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -759,12 +213,110 @@ Name of the address part used by the checkout standard client implementation
 client/html/checkout/standard/address/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Address\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
+
+## payment/decorators/global
+
+```
+client/html/checkout/standard/address/payment/decorators/global = Array
+(
+)
+```
+
+* Default: `Array
+(
+)
+`
+
+
+## payment/decorators/local
+
+```
+client/html/checkout/standard/address/payment/decorators/local = Array
+(
+)
+```
+
+* Default: `Array
+(
+)
+`
+
+
+## payment/disable-new
+
+Disables the option to enter a new payment address for an order
+
+```
+client/html/checkout/standard/address/payment/disable-new = 
+```
+
+* Default: ``
+* Type: boolean - A value of "1" to disable, "0" enables the payment address form
+* Since: 2015.02
+
+Besides the main payment address, customers can usually enter a new
+payment address as well. To suppress displaying the form fields for
+a payment address, you can set this configuration option to "1".
+
+Until 2015-02, the configuration option was available as
+"client/html/common/address/payment/disable-new" starting from 2014-03.
+
+See also:
+
+* client/html/common/address/payment/mandatory
+* client/html/common/address/payment/optional
+* client/html/common/address/payment/hidden
+* client/html/common/address/salutations
+
+## payment/name
+
+Name of the payment part used by the checkout standard address client implementation
+
+```
+client/html/checkout/standard/address/payment/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the client class name
+* Since: 2014.03
+
+Use "Myname" if your class is named "\Aimeos\Client\Checkout\Standard\Address\Billing\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## payment/template-body
+
+Relative path to the HTML body template of the checkout standard address payment client.
+
+```
+client/html/checkout/standard/address/payment/template-body = checkout/standard/address-payment-body
+```
+
+* Default: `checkout/standard/address-payment-body`
+* Type: string - Relative path to the template creating code for the HTML page body
+* Since: 2014.03
+
+The template file contains the HTML code and processing instructions
+to generate the result shown in the body of the frontend. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/client/html).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but suffixed by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, it
+should be suffixed by the name of the new class.
+
+See also:
+
+* client/html/checkout/standard/address/payment/template-header
 
 ## subparts
 
@@ -773,17 +325,17 @@ List of HTML sub-clients rendered within the checkout standard address section
 ```
 client/html/checkout/standard/address/subparts = Array
 (
-    [0] => billing
+    [0] => payment
     [1] => delivery
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
-    [0] => billing
+    [0] => payment
     [1] => delivery
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -828,7 +380,7 @@ Relative path to the HTML body template of the checkout standard address client.
 client/html/checkout/standard/address/template-body = checkout/standard/address-body
 ```
 
-* Default: checkout/standard/address-body
+* Default: `checkout/standard/address-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -847,331 +399,6 @@ should be suffixed by the name of the new class.
 See also:
 
 * client/html/checkout/standard/address/template-header
-
-## validate
-
-List of regular expressions to validate the data of the address fields
-
-```
-client/html/checkout/standard/address/validate = 
-```
-
-* Type: array - Associative list of field names and regular expressions
-* Since: 2014.09
-
-To validate the address input data of the customer, an individual
-[Perl compatible regular expression](http://php.net/manual/en/pcre.pattern.php)
-can be applied to each field. Available fields are:
-
-* order.address.company
-* order.address.vatid
-* order.address.salutation
-* order.address.firstname
-* order.address.lastname
-* order.address.address1
-* order.address.address2
-* order.address.address3
-* order.address.postal
-* order.address.city
-* order.address.state
-* order.address.languageid
-* order.address.countryid
-* order.address.telephone
-* order.address.telefax
-* order.address.mobile
-* order.address.email
-* order.address.website
-
-Some fields are validated automatically because they are not
-dependent on a country specific rule. These fields are:
-
-* order.address.salutation
-* order.address.email
-* order.address.website
-
-To validate e.g the postal/zip code, you can define a regular
-expression like this if you want to allow only digits:
-
-```
- client/html/checkout/standard/address/validate/order.address.postal = '^[0-9]+$'
-```
-
-Several regular expressions can be defined line this:
-
-```
- client/html/checkout/standard/address/validate = array(
-     'order.address.postal' = '^[0-9]+$',
-     'order.address.vatid' = '^[A-Z]{2}[0-9]{8}$',
- )
-```
-
-Don't add any delimiting characters like slashes (/) to the beginning
-or the end of the regular expression. They will be added automatically.
-Any slashes inside the expression must be escaped by backlashes,
-i.e. "/".
-
-Until 2015-02, the configuration option was available as
-"client/html/common/address/billing/validate" starting from 2014-09.
-
-See also:
-
-* client/html/checkout/standard/address/delivery/mandatory
-* client/html/checkout/standard/address/delivery/optional
-* client/html/checkout/standard/address/billing/mandatory
-* client/html/checkout/standard/address/billing/optional
-
-## validate/address1
-
-Regular expression to check the "address1" address value
-
-```
-client/html/checkout/standard/address/validate/address1 = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/address2
-
-Regular expression to check the "address2" address value
-
-```
-client/html/checkout/standard/address/validate/address2 = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/address3
-
-Regular expression to check the "address3" address value
-
-```
-client/html/checkout/standard/address/validate/address3 = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/city
-
-Regular expression to check the "city" address value
-
-```
-client/html/checkout/standard/address/validate/city = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/company
-
-Regular expression to check the "company" address value
-
-```
-client/html/checkout/standard/address/validate/company = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/countryid
-
-Regular expression to check the "countryid" address value
-
-```
-client/html/checkout/standard/address/validate/countryid = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/email
-
-Regular expression to check the "email" address value
-
-```
-client/html/checkout/standard/address/validate/email = ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
-```
-
-* Default: ^.+@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)*$
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/firstname
-
-Regular expression to check the "firstname" address value
-
-```
-client/html/checkout/standard/address/validate/firstname = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/languageid
-
-Regular expression to check the "languageid" address value
-
-```
-client/html/checkout/standard/address/validate/languageid = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/lastname
-
-Regular expression to check the "lastname" address value
-
-```
-client/html/checkout/standard/address/validate/lastname = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/mobile
-
-Regular expression to check the "mobile" address value
-
-```
-client/html/checkout/standard/address/validate/mobile = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-
-## validate/postal
-
-Regular expression to check the "postal" address value
-
-```
-client/html/checkout/standard/address/validate/postal = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/salutation
-
-Regular expression to check the "salutation" address value
-
-```
-client/html/checkout/standard/address/validate/salutation = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/state
-
-Regular expression to check the "state" address value
-
-```
-client/html/checkout/standard/address/validate/state = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/telefax
-
-Regular expression to check the "telefax" address value
-
-```
-client/html/checkout/standard/address/validate/telefax = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/telephone
-
-Regular expression to check the "telephone" address value
-
-```
-client/html/checkout/standard/address/validate/telephone = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/vatid
-
-Regular expression to check the "vatid" address value
-
-```
-client/html/checkout/standard/address/validate/vatid = 
-```
-
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
-
-## validate/website
-
-Regular expression to check the "website" address value
-
-```
-client/html/checkout/standard/address/validate/website = ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
-```
-
-* Default: ^([a-z]+://)?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)+(:[0-9]+)?(/.*)?$
-
-See also:
-
-* client/html/checkout/standard/address/validate
-* client/html/checkout/standard/address/validate
 
 # decorators
 ## excludes
@@ -1278,10 +505,10 @@ client/html/checkout/standard/delivery/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -1292,10 +519,10 @@ client/html/checkout/standard/delivery/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## domains
@@ -1311,13 +538,13 @@ client/html/checkout/standard/delivery/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => media
     [1] => price
     [2] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2019.04
 
@@ -1339,7 +566,7 @@ Name of the delivery part used by the checkout standard client implementation
 client/html/checkout/standard/delivery/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Delivery\Myname".
@@ -1354,7 +581,7 @@ Relative path to the HTML body template of the checkout standard delivery client
 client/html/checkout/standard/delivery/template-body = checkout/standard/delivery-body
 ```
 
-* Default: checkout/standard/delivery-body
+* Default: `checkout/standard/delivery-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1427,10 +654,10 @@ client/html/checkout/standard/onepage = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of checkout subparts name
 
 Normally, the checkout process is divided into several steps for entering
@@ -1464,10 +691,10 @@ a one page checkout are:
 Relative path to the address partial template file
 
 ```
-client/html/checkout/standard/partials/address = checkout/standard/address-partial
+client/html/checkout/standard/partials/address = common/partials/address
 ```
 
-* Default: checkout/standard/address-partial
+* Default: `common/partials/address`
 * Type: string - Relative path to the template file
 * Since: 2017.01
 
@@ -1484,7 +711,7 @@ Relative path to the checkout service attribute partial template file
 client/html/checkout/standard/partials/serviceattr = checkout/standard/serviceattr-partial
 ```
 
-* Default: checkout/standard/serviceattr-partial
+* Default: `checkout/standard/serviceattr-partial`
 * Type: string - Relative path to the template file
 * Since: 2017.07
 * Since: 2017.07
@@ -1526,10 +753,10 @@ client/html/checkout/standard/payment/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -1540,10 +767,10 @@ client/html/checkout/standard/payment/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## domains
@@ -1559,13 +786,13 @@ client/html/checkout/standard/payment/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => media
     [1] => price
     [2] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2019.04
 
@@ -1587,7 +814,7 @@ Name of the payment part used by the checkout standard client implementation
 client/html/checkout/standard/payment/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Payment\Myname".
@@ -1602,7 +829,7 @@ Relative path to the HTML body template of the checkout standard payment client.
 client/html/checkout/standard/payment/template-body = checkout/standard/payment-body
 ```
 
-* Default: checkout/standard/payment-body
+* Default: `checkout/standard/payment-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1631,10 +858,10 @@ client/html/checkout/standard/process/account/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## account/decorators/local
@@ -1645,10 +872,10 @@ client/html/checkout/standard/process/account/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## account/name
@@ -1659,7 +886,7 @@ Name of the account part used by the checkout standard process client implementa
 client/html/checkout/standard/process/account/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2017.04
 
@@ -1675,10 +902,10 @@ client/html/checkout/standard/process/address/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## address/decorators/local
@@ -1689,10 +916,10 @@ client/html/checkout/standard/process/address/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## address/name
@@ -1703,7 +930,7 @@ Name of the address part used by the checkout standard process client implementa
 client/html/checkout/standard/process/address/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 * Since: 2017.04
 
@@ -1755,10 +982,10 @@ client/html/checkout/standard/process/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1793,10 +1020,10 @@ client/html/checkout/standard/process/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1829,7 +1056,7 @@ Name of the process part used by the checkout standard client implementation
 client/html/checkout/standard/process/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Process\Myname".
@@ -1848,12 +1075,12 @@ client/html/checkout/standard/process/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => account
     [1] => address
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -1898,7 +1125,7 @@ Relative path to the HTML body template of the checkout standard process client.
 client/html/checkout/standard/process/template-body = checkout/standard/process-body
 ```
 
-* Default: checkout/standard/process-body
+* Default: `checkout/standard/process-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -1930,12 +1157,12 @@ client/html/checkout/standard/process/validate = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [payment.cardno] => ^[0-9]{16,19}$
     [payment.cvv] => ^[0-9]{3}$
 )
-
+`
 * Type: array - Associative list of field names and regular expressions
 * Since: 2015.07
 
@@ -1969,7 +1196,7 @@ inside the expression must be escaped by backlashes, i.e. "/".
 
 See also:
 
-* client/html/checkout/standard/address/validate
+* client/html/common/address/validate
 
 # subparts
 
@@ -1986,7 +1213,7 @@ client/html/checkout/standard/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => address
     [1] => delivery
@@ -1994,7 +1221,7 @@ client/html/checkout/standard/subparts = Array
     [3] => summary
     [4] => process
 )
-
+`
 * Type: array - List of sub-client names
 
 The output of the frontend is composed of the code generated by the HTML
@@ -2039,7 +1266,7 @@ Location of the address partial template for the checkout summary
 client/html/checkout/standard/summary/address = common/summary/address
 ```
 
-* Default: common/summary/address
+* Default: `common/summary/address`
 * Type: string - Relative path to the address partial
 * Since: 2017.01
 
@@ -2063,10 +1290,10 @@ client/html/checkout/standard/summary/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## decorators/local
@@ -2077,10 +1304,10 @@ client/html/checkout/standard/summary/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 
 
 ## detail
@@ -2091,7 +1318,7 @@ Location of the detail partial template for the checkout summary
 client/html/checkout/standard/summary/detail = common/summary/detail
 ```
 
-* Default: common/summary/detail
+* Default: `common/summary/detail`
 * Type: string - Relative path to the detail partial
 * Since: 2017.01
 
@@ -2114,7 +1341,7 @@ Name of the summary part used by the checkout standard client implementation
 client/html/checkout/standard/summary/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the client class name
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Summary\Myname".
@@ -2129,7 +1356,7 @@ Name of the action that should create the output
 client/html/checkout/standard/summary/option/terms/cancel/url/action = standard
 ```
 
-* Default: standard
+* Default: `standard`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -2154,10 +1381,10 @@ client/html/checkout/standard/summary/option/terms/cancel/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -2188,7 +1415,7 @@ Name of the controller whose action should be called
 client/html/checkout/standard/summary/option/terms/cancel/url/controller = Checkout
 ```
 
-* Default: Checkout
+* Default: `Checkout`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -2213,10 +1440,10 @@ client/html/checkout/standard/summary/option/terms/cancel/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -2260,7 +1487,7 @@ Name of the action that should create the output
 client/html/checkout/standard/summary/option/terms/privacy/url/action = standard
 ```
 
-* Default: standard
+* Default: `standard`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -2285,10 +1512,10 @@ client/html/checkout/standard/summary/option/terms/privacy/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -2319,7 +1546,7 @@ Name of the controller whose action should be called
 client/html/checkout/standard/summary/option/terms/privacy/url/controller = Checkout
 ```
 
-* Default: Checkout
+* Default: `Checkout`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -2344,10 +1571,10 @@ client/html/checkout/standard/summary/option/terms/privacy/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -2391,7 +1618,7 @@ Name of the action that should create the output
 client/html/checkout/standard/summary/option/terms/url/action = standard
 ```
 
-* Default: standard
+* Default: `standard`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -2416,10 +1643,10 @@ client/html/checkout/standard/summary/option/terms/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -2450,7 +1677,7 @@ Name of the controller whose action should be called
 client/html/checkout/standard/summary/option/terms/url/controller = Checkout
 ```
 
-* Default: Checkout
+* Default: `Checkout`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -2475,10 +1702,10 @@ client/html/checkout/standard/summary/option/terms/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -2522,7 +1749,7 @@ Location of the options partial template for the checkout summary
 client/html/checkout/standard/summary/options = checkout/standard/option-partial
 ```
 
-* Default: checkout/standard/option-partial
+* Default: `checkout/standard/option-partial`
 * Type: string - Relative path to the options partial
 * Since: 2017.01
 
@@ -2545,7 +1772,7 @@ Location of the service partial template for the checkout summary
 client/html/checkout/standard/summary/service = common/summary/service
 ```
 
-* Default: common/summary/service
+* Default: `common/summary/service`
 * Type: string - Relative path to the service partial
 * Since: 2017.01
 
@@ -2569,7 +1796,7 @@ Relative path to the HTML body template of the checkout standard summary client.
 client/html/checkout/standard/summary/template-body = checkout/standard/summary-body
 ```
 
-* Default: checkout/standard/summary-body
+* Default: `checkout/standard/summary-body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2014.03
 
@@ -2597,7 +1824,7 @@ Relative path to the HTML body template of the checkout standard client.
 client/html/checkout/standard/template-body = checkout/standard/body
 ```
 
-* Default: checkout/standard/body
+* Default: `checkout/standard/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 
 The template file contains the HTML code and processing instructions
@@ -2624,7 +1851,7 @@ Relative path to the HTML header template of the checkout standard client.
 client/html/checkout/standard/template-header = checkout/standard/header
 ```
 
-* Default: checkout/standard/header
+* Default: `checkout/standard/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 
 The template file contains the HTML code and processing instructions
@@ -2653,7 +1880,7 @@ Name of the action that should create the output
 client/html/checkout/standard/url/action = standard
 ```
 
-* Default: standard
+* Default: `standard`
 * Type: string - Name of the action
 * Since: 2014.03
 
@@ -2681,10 +1908,10 @@ client/html/checkout/standard/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -2719,7 +1946,7 @@ Name of the controller whose action should be called
 client/html/checkout/standard/url/controller = Checkout
 ```
 
-* Default: Checkout
+* Default: `Checkout`
 * Type: string - Name of the controller
 * Since: 2014.03
 
@@ -2747,10 +1974,10 @@ client/html/checkout/standard/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -2772,7 +1999,7 @@ Name of the checkout process step to jump to if no previous step requires attent
 client/html/checkout/standard/url/step-active = summary
 ```
 
-* Default: summary
+* Default: `summary`
 * Type: string - Name of the confirm standard HTML client
 
 The checkout process consists of several steps which are usually

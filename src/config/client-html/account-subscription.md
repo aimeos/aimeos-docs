@@ -151,7 +151,7 @@ Location of the address partial template for the account subscription component
 client/html/account/subscription/summary/address = common/summary/address
 ```
 
-* Default: common/summary/address
+* Default: `common/summary/address`
 * Type: string - Relative path to the address partial
 * Since: 2018.04
 
@@ -173,7 +173,7 @@ Location of the detail partial template for the account subscription component
 client/html/account/subscription/summary/detail = common/summary/detail
 ```
 
-* Default: common/summary/detail
+* Default: `common/summary/detail`
 * Type: string - Relative path to the detail partial
 * Since: 2018.04
 
@@ -195,7 +195,7 @@ Relative path to the HTML body template of the account subscription client.
 client/html/account/subscription/template-body = account/subscription/body
 ```
 
-* Default: account/subscription/body
+* Default: `account/subscription/body`
 * Type: string - Relative path to the template creating code for the HTML page body
 * Since: 2018.04
 
@@ -223,7 +223,7 @@ Relative path to the HTML header template of the account subscription client.
 client/html/account/subscription/template-header = account/subscription/header
 ```
 
-* Default: account/subscription/header
+* Default: `account/subscription/header`
 * Type: string - Relative path to the template creating code for the HTML page head
 * Since: 2018.04
 
@@ -253,7 +253,7 @@ Name of the action that should create the output
 client/html/account/subscription/url/action = subscription
 ```
 
-* Default: subscription
+* Default: `subscription`
 * Type: string - Name of the action
 * Since: 2018.04
 
@@ -278,10 +278,10 @@ client/html/account/subscription/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2018.04
 
@@ -312,7 +312,7 @@ Name of the controller whose action should be called
 client/html/account/subscription/url/controller = Account
 ```
 
-* Default: Account
+* Default: `Account`
 * Type: string - Name of the controller
 * Since: 2018.04
 
@@ -337,10 +337,10 @@ client/html/account/subscription/url/filter = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

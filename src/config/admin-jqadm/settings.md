@@ -98,6 +98,33 @@ See also:
 * admin/jqadm/settings/decorators/excludes
 * admin/jqadm/settings/decorators/global
 
+# logo-size
+
+Maximum width and height of the logo images
+
+```
+admin/jqadm/settings/logo-size = Array
+(
+    [maxwidth] => 
+    [maxheight] => 
+)
+```
+
+* Default: `Array
+(
+    [maxwidth] => 
+    [maxheight] => 
+)
+`
+* Type: array - Associative list with maxwidth/maxheight keys and the maximum width/height in pixels (or NULL)
+* Since: 2024.04
+
+This configuration setting allows to define the maximum width and height
+of the logo images. The images will be scaled down to the given size if
+they are larger than the configured values. If the width or height is
+set to null, the image will be scaled proportionally to the other value.
+
+
 # name
 
 Class name of the used account favorite client implementation
@@ -153,10 +180,10 @@ admin/jqadm/settings/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2021.07
 
@@ -201,7 +228,7 @@ Relative path to the HTML body template for the settings item.
 admin/jqadm/settings/template-item = settings/item
 ```
 
-* Default: settings/item
+* Default: `settings/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.07
 
@@ -263,10 +290,10 @@ admin/jqadm/settings/theme/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2022.10
 
@@ -301,10 +328,10 @@ admin/jqadm/settings/theme/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2022.10
 
@@ -337,7 +364,7 @@ Name of the theme subpart used by the JQAdm settings implementation
 admin/jqadm/settings/theme/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2022.10
 
@@ -353,7 +380,7 @@ Relative path to the HTML body template of the theme subpart for settings.
 admin/jqadm/settings/theme/template-item = settings/item-theme
 ```
 
-* Default: settings/item-theme
+* Default: `settings/item-theme`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

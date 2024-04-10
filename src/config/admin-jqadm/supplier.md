@@ -44,10 +44,10 @@ admin/jqadm/supplier/address/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -82,10 +82,10 @@ admin/jqadm/supplier/address/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -118,7 +118,7 @@ Name of the address subpart used by the JQAdm supplier implementation
 admin/jqadm/supplier/address/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.10
 
@@ -136,10 +136,10 @@ admin/jqadm/supplier/address/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -184,7 +184,7 @@ Relative path to the HTML body template of the address subpart for suppliers.
 admin/jqadm/supplier/address/template-item = supplier/item-address
 ```
 
-* Default: supplier/item-address
+* Default: `supplier/item-address`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.10
 
@@ -313,10 +313,10 @@ admin/jqadm/supplier/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of domain names
 * Since: 2017.10
 
@@ -339,14 +339,14 @@ admin/jqadm/supplier/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => image
     [1] => supplier.status
     [2] => supplier.code
     [3] => supplier.label
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -369,10 +369,10 @@ admin/jqadm/supplier/item/media/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -390,10 +390,10 @@ admin/jqadm/supplier/item/text/config/suggest = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -446,10 +446,10 @@ admin/jqadm/supplier/media/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -484,10 +484,10 @@ admin/jqadm/supplier/media/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -520,7 +520,7 @@ Name of the media subpart used by the JQAdm supplier implementation
 admin/jqadm/supplier/media/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -572,10 +572,10 @@ admin/jqadm/supplier/media/property/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -610,10 +610,10 @@ admin/jqadm/supplier/media/property/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -646,7 +646,7 @@ Name of the property subpart used by the JQAdm supplier media implementation
 admin/jqadm/supplier/media/property/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.04
 
@@ -664,10 +664,10 @@ admin/jqadm/supplier/media/property/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -712,7 +712,7 @@ Relative path to the HTML body template of the media subpart for suppliers.
 admin/jqadm/supplier/media/property/template-item = supplier/item-media-property
 ```
 
-* Default: supplier/item-media-property
+* Default: `supplier/item-media-property`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -740,10 +740,10 @@ admin/jqadm/supplier/media/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -788,7 +788,7 @@ Relative path to the HTML body template of the media subpart for suppliers.
 admin/jqadm/supplier/media/template-item = supplier/item-media
 ```
 
-* Default: supplier/item-media
+* Default: `supplier/item-media`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2017.07
 
@@ -894,10 +894,10 @@ admin/jqadm/supplier/product/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -932,10 +932,10 @@ admin/jqadm/supplier/product/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -974,14 +974,14 @@ admin/jqadm/supplier/product/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => product.lists.status
     [1] => product.lists.type
     [2] => product.lists.position
     [3] => product.lists.parentid
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1001,7 +1001,7 @@ Name of the product subpart used by the JQAdm supplier implementation
 admin/jqadm/supplier/product/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2017.07
 
@@ -1019,10 +1019,10 @@ admin/jqadm/supplier/product/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1067,7 +1067,7 @@ Relative path to the HTML body template of the product subpart for suppliers.
 admin/jqadm/supplier/product/template-item = supplier/item-product
 ```
 
-* Default: supplier/item-product
+* Default: `supplier/item-product`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1098,10 +1098,10 @@ admin/jqadm/supplier/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1146,7 +1146,7 @@ Relative path to the HTML body template for the supplier item.
 admin/jqadm/supplier/template-item = supplier/item
 ```
 
-* Default: supplier/item
+* Default: `supplier/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1171,7 +1171,7 @@ Relative path to the HTML body template for the supplier list.
 admin/jqadm/supplier/template-list = supplier/list
 ```
 
-* Default: supplier/list
+* Default: `supplier/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 
@@ -1233,10 +1233,10 @@ admin/jqadm/supplier/text/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -1271,10 +1271,10 @@ admin/jqadm/supplier/text/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -1307,7 +1307,7 @@ Name of the text subpart used by the JQAdm supplier implementation
 admin/jqadm/supplier/text/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the JQAdm class name
 * Since: 2018.07
 
@@ -1325,10 +1325,10 @@ admin/jqadm/supplier/text/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2018.07
 
@@ -1373,7 +1373,7 @@ Relative path to the HTML body template of the text subpart for suppliers.
 admin/jqadm/supplier/text/template-item = supplier/item-text
 ```
 
-* Default: supplier/item-text
+* Default: `supplier/item-text`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2016.04
 

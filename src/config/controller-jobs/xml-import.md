@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the product import CSV job controller
 
 ```
-controller/jobs/xml/import/decorators/excludes = 
+controller/jobs/xml/import/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the product import CSV job controller
 
 ```
-controller/jobs/xml/import/decorators/global = 
+controller/jobs/xml/import/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the product import CSV job controller
 
 ```
-controller/jobs/xml/import/decorators/local = 
+controller/jobs/xml/import/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -105,9 +123,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/xml/import/name = 
+controller/jobs/xml/import/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 

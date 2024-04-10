@@ -148,7 +148,7 @@ Name of the action that should create the output
 client/html/catalog/tree/url/action = list
 ```
 
-* Default: list
+* Default: `list`
 * Type: string - Name of the action
 * Since: 2019.01
 
@@ -173,10 +173,10 @@ client/html/catalog/tree/url/config = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: string - Associative list of configuration options
 * Since: 2019.01
 
@@ -207,7 +207,7 @@ Name of the controller whose action should be called
 client/html/catalog/tree/url/controller = catalog
 ```
 
-* Default: catalog
+* Default: `catalog`
 * Type: string - Name of the controller
 * Since: 2019.01
 
@@ -229,13 +229,14 @@ Removes parameters for the detail page before generating the URL
 ```
 client/html/catalog/tree/url/filter = Array
 (
+    [0] => path
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

@@ -55,11 +55,76 @@ please have a look  into the PHP documentation of the
 
 See also:
 
+* controller/jobs/product/import/csv/cleanup
 * controller/jobs/product/import/csv/domains
 * controller/jobs/product/import/csv/location
 * controller/jobs/product/import/csv/mapping
 * controller/jobs/product/import/csv/max-size
 * controller/jobs/product/import/csv/skip-lines
+
+## cache/attribute/name
+
+Name of the attribute cache implementation
+
+```
+controller/jobs/product/import/csv/cache/attribute/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the cache class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Cache\Attribute\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## cache/catalog/name
+
+Name of the catalog cache implementation
+
+```
+controller/jobs/product/import/csv/cache/catalog/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the cache class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Cache\Catalog\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## cache/product/name
+
+Name of the product cache implementation
+
+```
+controller/jobs/product/import/csv/cache/product/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the cache class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Cache\Product\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## cache/supplier/name
+
+Name of the supplier cache implementation
+
+```
+controller/jobs/product/import/csv/cache/supplier/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the cache class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Cache\Supplier\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
 
 ## catalog/listtypes
 
@@ -73,12 +138,12 @@ controller/jobs/product/import/csv/catalog/listtypes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => default
     [1] => promotion
 )
-
+`
 * Type: array|null - List of catalog list type names or null for all
 * Since: 2015.05
 
@@ -104,14 +169,48 @@ See also:
 * controller/jobs/product/import/csv/supplier/listtypes
 * controller/jobs/product/import/csv/text/listtypes
 
+## cleanup
+
+Deletes all products with categories which havn't been updated
+
+```
+controller/jobs/product/import/csv/cleanup = 
+```
+
+* Default: ``
+* Type: bool - TRUE to delete all untouched products, FALSE to keep them
+* Since: 2023.10
+
+By default, the product importer only adds new and updates existing
+products but doesn't delete any products. If you want to remove all
+products which haven't been updated during the import, then set this
+configuration option to "true". This will remove all products which
+are not assigned to any category but keep the ones without categories,
+e.g. rebate products.
+
+See also:
+
+* controller/jobs/product/import/csv/backup
+* controller/jobs/product/import/csv/domains
+* controller/jobs/product/import/csv/location
+* controller/jobs/product/import/csv/mapping
+* controller/jobs/product/import/csv/max-size
+* controller/jobs/product/import/csv/skip-lines
+
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the product import CSV job controller
 
 ```
-controller/jobs/product/import/csv/decorators/excludes = 
+controller/jobs/product/import/csv/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -143,9 +242,15 @@ See also:
 Adds a list of globally available decorators only to the product import CSV job controller
 
 ```
-controller/jobs/product/import/csv/decorators/global = 
+controller/jobs/product/import/csv/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -175,9 +280,15 @@ See also:
 Adds a list of local decorators only to the product import CSV job controller
 
 ```
-controller/jobs/product/import/csv/decorators/local = 
+controller/jobs/product/import/csv/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -222,10 +333,10 @@ controller/jobs/product/import/csv/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - Associative list of MShop item domain names
 * Since: 2018.04
 
@@ -238,6 +349,7 @@ the import.
 See also:
 
 * controller/jobs/product/import/csv/backup
+* controller/jobs/product/import/csv/cleanup
 * controller/jobs/product/import/csv/location
 * controller/jobs/product/import/csv/mapping
 * controller/jobs/product/import/csv/max-size
@@ -251,7 +363,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/product/import/csv/location = product
 ```
 
-* Default: product
+* Default: `product`
 * Type: string - Relative path to the CSV files
 * Since: 2015.08
 
@@ -264,6 +376,7 @@ configuration. The default location of the "fs-import" file system is:
 See also:
 
 * controller/jobs/product/import/csv/backup
+* controller/jobs/product/import/csv/cleanup
 * controller/jobs/product/import/csv/domains
 * controller/jobs/product/import/csv/location
 * controller/jobs/product/import/csv/mapping
@@ -308,32 +421,33 @@ controller/jobs/product/import/csv/mapping = Array
 
     [attribute] => Array
         (
-            [13] => attribute.code
-            [14] => attribute.type
+            [13] => product.lists.type
+            [14] => attribute.code
+            [15] => attribute.type
         )
 
     [product] => Array
         (
-            [15] => product.code
-            [16] => product.lists.type
+            [16] => product.code
+            [17] => product.lists.type
         )
 
     [property] => Array
         (
-            [17] => product.property.value
-            [18] => product.property.type
+            [18] => product.property.value
+            [19] => product.property.type
         )
 
     [catalog] => Array
         (
-            [19] => catalog.code
-            [20] => catalog.lists.type
+            [20] => catalog.code
+            [21] => catalog.lists.type
         )
 
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [item] => Array
         (
@@ -366,30 +480,31 @@ controller/jobs/product/import/csv/mapping = Array
 
     [attribute] => Array
         (
-            [13] => attribute.code
-            [14] => attribute.type
+            [13] => product.lists.type
+            [14] => attribute.code
+            [15] => attribute.type
         )
 
     [product] => Array
         (
-            [15] => product.code
-            [16] => product.lists.type
+            [16] => product.code
+            [17] => product.lists.type
         )
 
     [property] => Array
         (
-            [17] => product.property.value
-            [18] => product.property.type
+            [18] => product.property.value
+            [19] => product.property.type
         )
 
     [catalog] => Array
         (
-            [19] => catalog.code
-            [20] => catalog.lists.type
+            [20] => catalog.code
+            [21] => catalog.lists.type
         )
 
 )
-
+`
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2018.04
 
@@ -408,6 +523,7 @@ will be processed by the base product importer while the mappings in
 See also:
 
 * controller/jobs/product/import/csv/backup
+* controller/jobs/product/import/csv/cleanup
 * controller/jobs/product/import/csv/domains
 * controller/jobs/product/import/csv/location
 * controller/jobs/product/import/csv/max-size
@@ -421,7 +537,7 @@ Maximum number of CSV rows to import at once
 controller/jobs/product/import/csv/max-size = 1000
 ```
 
-* Default: 1000
+* Default: `1000`
 * Type: integer - Number of rows
 * Since: 2018.04
 
@@ -435,6 +551,7 @@ import speed.
 See also:
 
 * controller/jobs/product/import/csv/backup
+* controller/jobs/product/import/csv/cleanup
 * controller/jobs/product/import/csv/domains
 * controller/jobs/product/import/csv/location
 * controller/jobs/product/import/csv/mapping
@@ -472,9 +589,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/import/csv/name = 
+controller/jobs/product/import/csv/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -538,6 +656,233 @@ See also:
 * controller/jobs/product/import/csv/supplier/listtypes
 * controller/jobs/product/import/csv/text/listtypes
 
+## processor/attribute/listtypes
+
+```
+controller/jobs/product/import/csv/processor/attribute/listtypes = 
+```
+
+
+
+## processor/attribute/name
+
+Name of the attribute processor implementation
+
+```
+controller/jobs/product/import/csv/processor/attribute/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Attribute\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/catalog/listtypes
+
+```
+controller/jobs/product/import/csv/processor/catalog/listtypes = Array
+(
+    [0] => default
+    [1] => promotion
+)
+```
+
+* Default: `Array
+(
+    [0] => default
+    [1] => promotion
+)
+`
+
+
+## processor/catalog/name
+
+Name of the catalog processor implementation
+
+```
+controller/jobs/product/import/csv/processor/catalog/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Catalog\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/media/listtypes
+
+```
+controller/jobs/product/import/csv/processor/media/listtypes = 
+```
+
+
+
+## processor/media/name
+
+Name of the media processor implementation
+
+```
+controller/jobs/product/import/csv/processor/media/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Media\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/price/listtypes
+
+```
+controller/jobs/product/import/csv/processor/price/listtypes = 
+```
+
+
+
+## processor/price/name
+
+Name of the price processor implementation
+
+```
+controller/jobs/product/import/csv/processor/price/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Price\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/product/listtypes
+
+```
+controller/jobs/product/import/csv/processor/product/listtypes = Array
+(
+    [0] => default
+    [1] => suggestion
+)
+```
+
+* Default: `Array
+(
+    [0] => default
+    [1] => suggestion
+)
+`
+
+
+## processor/product/name
+
+Name of the product processor implementation
+
+```
+controller/jobs/product/import/csv/processor/product/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Product\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/property/name
+
+Name of the property processor implementation
+
+```
+controller/jobs/product/import/csv/processor/property/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Property\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/stock/name
+
+Name of the stock processor implementation
+
+```
+controller/jobs/product/import/csv/processor/stock/name = 
+```
+
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Stock\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/supplier/listtypes
+
+```
+controller/jobs/product/import/csv/processor/supplier/listtypes = Array
+(
+    [0] => default
+)
+```
+
+* Default: `Array
+(
+    [0] => default
+    [1] => promotion
+)
+`
+
+
+## processor/supplier/name
+
+Name of the supplier processor implementation
+
+```
+controller/jobs/product/import/csv/processor/supplier/name = 
+```
+
+* Type: string - Last part of the processor class name
+* Since: 2020.07
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Supplier\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
+## processor/text/listtypes
+
+```
+controller/jobs/product/import/csv/processor/text/listtypes = 
+```
+
+
+
+## processor/text/name
+
+Name of the text processor implementation
+
+```
+controller/jobs/product/import/csv/processor/text/name = Standard
+```
+
+* Default: `Standard`
+* Type: string - Last part of the processor class name
+* Since: 2015.10
+
+Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Text\Myname".
+The name is case-sensitive and you should avoid camel case names like "MyName".
+
+
 ## product/listtypes
 
 Names of the product list types that are updated or removed
@@ -550,12 +895,12 @@ controller/jobs/product/import/csv/product/listtypes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => default
     [1] => suggestion
 )
-
+`
 * Type: array|null - List of product list type names or null for all
 * Since: 2015.05
 
@@ -589,8 +934,8 @@ Separator between multiple values in one CSV field
 controller/jobs/product/import/csv/separator = 
 ```
 
-* Default: 
-
+* Default: `
+`
 * Type: string - Unique character or characters in field values
 * Since: 2015.05
 
@@ -617,7 +962,7 @@ Number of rows skipped in front of each CSV files
 controller/jobs/product/import/csv/skip-lines = 1
 ```
 
-* Default: 0
+* Default: `0`
 * Type: integer - Number of rows
 * Since: 2015.08
 
@@ -630,6 +975,7 @@ begins.
 See also:
 
 * controller/jobs/product/import/csv/backup
+* controller/jobs/product/import/csv/cleanup
 * controller/jobs/product/import/csv/domains
 * controller/jobs/product/import/csv/location
 * controller/jobs/product/import/csv/mapping
@@ -646,11 +992,11 @@ controller/jobs/product/import/csv/supplier/listtypes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => default
 )
-
+`
 * Type: array|null - List of supplier list type names or null for all
 * Since: 2020.07
 
@@ -746,10 +1092,10 @@ controller/jobs/product/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -786,10 +1132,10 @@ controller/jobs/product/import/xml/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -824,10 +1170,10 @@ controller/jobs/product/import/xml/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -872,7 +1218,7 @@ controller/jobs/product/import/xml/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => attribute
     [1] => catalog
@@ -883,7 +1229,7 @@ controller/jobs/product/import/xml/domains = Array
     [6] => supplier
     [7] => text
 )
-
+`
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -907,7 +1253,7 @@ Directory where the CSV files are stored which should be imported
 controller/jobs/product/import/xml/location = /var/www/aimeos/ext/ai-controller-jobs/tests/Controller/Jobs/Xml/Import/_testfiles
 ```
 
-* Default: product
+* Default: `product`
 * Type: string - Relative path to the XML files
 * Since: 2019.04
 
@@ -931,7 +1277,7 @@ Maximum number of XML nodes processed at once
 controller/jobs/product/import/xml/max-query = 100
 ```
 
-* Default: 100
+* Default: `100`
 * Type: integer - Number of XML nodes
 * Since: 2019.04
 
@@ -955,7 +1301,7 @@ Class name of the used product suggestions scheduler controller implementation
 controller/jobs/product/import/xml/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2019.04
 

@@ -7,7 +7,7 @@ Relative path to the product attribute partial template file
 client/html/common/partials/attribute = common/partials/attribute
 ```
 
-* Default: common/partials/attribute
+* Default: `common/partials/attribute`
 * Type: string - Relative path to the template file
 * Since: 2016.01
 
@@ -32,7 +32,7 @@ Relative path to the badges partial template file
 client/html/common/partials/badges = common/partials/badges
 ```
 
-* Default: common/partials/badges
+* Default: `common/partials/badges`
 * Type: string - Relative path to the template file
 * Since: 2022.04
 
@@ -50,10 +50,9 @@ be relative to the templates/ folder, e.g. "common/partials/badges.php".
 Relative path to the media partial template file
 
 ```
-client/html/common/partials/media = common/partials/media
+client/html/common/partials/media = 
 ```
 
-* Default: common/partials/media
 * Type: string - Relative path to the template file
 * Since: 2015.08
 
@@ -74,7 +73,7 @@ Relative path to the price partial template file
 client/html/common/partials/price = common/partials/price
 ```
 
-* Default: common/partials/price
+* Default: `common/partials/price`
 * Type: string - Relative path to the template file
 * Since: 2015.04
 
@@ -95,7 +94,7 @@ Relative path to the products partial template file
 client/html/common/partials/products = common/partials/products
 ```
 
-* Default: common/partials/products
+* Default: `common/partials/products`
 * Type: string - Relative path to the template file
 * Since: 2017.01
 
@@ -112,7 +111,7 @@ Relative path to the variant attribute partial template file
 client/html/common/partials/selection = common/partials/selection
 ```
 
-* Default: common/partials/selection
+* Default: `common/partials/selection`
 * Type: string - Relative path to the template file
 * Since: 2015.04
 

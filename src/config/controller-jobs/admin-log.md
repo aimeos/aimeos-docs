@@ -5,9 +5,15 @@
 Excludes decorators added by the "common" option from the admin log controllers
 
 ```
-controller/jobs/admin/log/decorators/excludes = 
+controller/jobs/admin/log/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -39,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the admin log controllers
 
 ```
-controller/jobs/admin/log/decorators/global = 
+controller/jobs/admin/log/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -71,9 +83,15 @@ See also:
 Adds a list of local decorators only to the admin log controllers
 
 ```
-controller/jobs/admin/log/decorators/local = 
+controller/jobs/admin/log/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -107,7 +125,7 @@ Only remove log entries that were created berore the configured number of days
 controller/jobs/admin/log/limit-days = 0
 ```
 
-* Default: 30
+* Default: `30`
 * Type: integer - Number of days
 * Since: 2014.09
 
@@ -123,9 +141,10 @@ See also:
 Class name of the used admin log scheduler controller implementation
 
 ```
-controller/jobs/admin/log/name = 
+controller/jobs/admin/log/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.09
 
@@ -170,7 +189,7 @@ Path to a writable directory where the log archive files should be stored
 controller/jobs/admin/log/path = logs
 ```
 
-* Default: logs
+* Default: `logs`
 * Type: string - Relative file system path in the fs-admin filesystem
 * Since: 2014.09
 

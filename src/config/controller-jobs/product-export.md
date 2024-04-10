@@ -1,88 +1,19 @@
 
-# container
-## content
-
-List of file container options for the export files
-
-```
-controller/jobs/product/export/container/content = Binary
-```
-
-* Default: Binary
-* Type: array - Associative list of option name/value pairs
-* Since: 2015.01
-
-The generated files are stored using container/content objects from
-the core.
-
-See also:
-
-* controller/jobs/product/export/container/type
-* controller/jobs/product/export/container/options
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
-
-## options
-
-List of file container options for the export files
-
-```
-controller/jobs/product/export/container/options = Array
-(
-)
-```
-
-* Default: Array
-(
-)
-
-* Type: array - Associative list of option name/value pairs
-* Since: 2015.01
-
-The generated files are stored using container/content objects from
-the core.
-
-See also:
-
-* controller/jobs/product/export/container/type
-* controller/jobs/product/export/container/content
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
-
-## type
-
-List of file container options for the export files
-
-```
-controller/jobs/product/export/container/type = Directory
-```
-
-* Default: Directory
-* Type: string - Container name
-* Since: 2015.01
-
-The generated files are stored using container/content objects from
-the core.
-
-See also:
-
-* controller/jobs/product/export/container/content
-* controller/jobs/product/export/container/options
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
-
 # decorators
 ## excludes
 
 Excludes decorators added by the "common" option from the product export job controller
 
 ```
-controller/jobs/product/export/decorators/excludes = 
+controller/jobs/product/export/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -114,9 +45,15 @@ See also:
 Adds a list of globally available decorators only to the product export job controller
 
 ```
-controller/jobs/product/export/decorators/global = 
+controller/jobs/product/export/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -146,9 +83,15 @@ See also:
 Adds a list of local decorators only to the product export job controller
 
 ```
-controller/jobs/product/export/decorators/local = 
+controller/jobs/product/export/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -180,9 +123,25 @@ See also:
 List of associated items from other domains that should be exported too
 
 ```
-controller/jobs/product/export/domains = 
+controller/jobs/product/export/domains = Array
+(
+    [0] => attribute
+    [1] => media
+    [2] => price
+    [3] => product
+    [4] => text
+)
 ```
 
+* Default: `Array
+(
+    [0] => attribute
+    [1] => media
+    [2] => price
+    [3] => product
+    [4] => text
+)
+`
 * Type: array - List of domain names
 * Since: 2015.01
 
@@ -193,13 +152,8 @@ you can make more or less associated items available in the template.
 
 See also:
 
-* controller/jobs/product/export/container/type
-* controller/jobs/product/export/container/content
-* controller/jobs/product/export/container/options
 * controller/jobs/product/export/filename
-* controller/jobs/product/export/location
 * controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
 
 # filename
 
@@ -209,7 +163,7 @@ Template for the generated file names
 controller/jobs/product/export/filename = aimeos-products-%1$d.xml
 ```
 
-* Default: aimeos-products-%1$d_%2$s.xml
+* Default: `aimeos-products-%1$d_%2$s.xml`
 * Type: string - File name template
 * Since: 2018.04
 
@@ -219,33 +173,8 @@ exported product and the ISO date/time when the file was created.
 
 See also:
 
-* controller/jobs/product/export/container/type
-* controller/jobs/product/export/container/content
-* controller/jobs/product/export/container/options
-* controller/jobs/product/export/location
 * controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
 * controller/jobs/product/export/domains
-
-# location
-
-Directory where the generated site maps should be placed into
-
-```
-controller/jobs/product/export/location = /var/www/aimeos/ext/ai-controller-jobs/tests/tmp
-```
-
-* Type: string - Absolute directory to store the exported files into
-* Since: 2015.01
-
-You have to configure a directory for the generated files on your
-server that is writeable by the process generating the files, e.g.
-
-See also:
-
-* controller/jobs/product/export/container/options
-* controller/jobs/product/export/max-items
-* controller/jobs/product/export/max-query
 
 # max-items
 
@@ -255,7 +184,7 @@ Maximum number of exported products per file
 controller/jobs/product/export/max-items = 15
 ```
 
-* Default: 10000
+* Default: `10000`
 * Type: integer - Number of products entries per file
 * Since: 2015.01
 
@@ -266,40 +195,7 @@ parallel is able to speed up importing the files again.
 
 See also:
 
-* controller/jobs/product/export/container/type
-* controller/jobs/product/export/container/content
-* controller/jobs/product/export/container/options
 * controller/jobs/product/export/filename
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-query
-* controller/jobs/product/export/domains
-
-# max-query
-
-Maximum number of products per query
-
-```
-controller/jobs/product/export/max-query = 5
-```
-
-* Default: 1000
-* Type: integer - Number of products per query
-* Since: 2015.01
-
-The products are fetched from the database in bunches for efficient
-retrieval. The higher the value, the lower the total time the database
-is busy finding the records. Higher values also means that record
-updates in the tables need to wait longer and the memory consumption
-of the PHP process is higher.
-
-See also:
-
-* controller/jobs/product/export/container/type
-* controller/jobs/product/export/container/content
-* controller/jobs/product/export/container/options
-* controller/jobs/product/export/filename
-* controller/jobs/product/export/location
-* controller/jobs/product/export/max-items
 * controller/jobs/product/export/domains
 
 # name
@@ -307,9 +203,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/export/name = 
+controller/jobs/product/export/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -433,46 +330,20 @@ the XML tags for these items that will be inserted into the product XML.
 
 
 # sitemap
-## baseurl
-
-URL to the folder where the site maps can be accessed, without the filenames.
-
-```
-controller/jobs/product/export/sitemap/baseurl = 
-```
-
-* Type: string - Absolute URL
-* Since: 2019.06
-
-The site maps must be publically available for download by the search
-engines. Individual site map files need a fully qualified URL in the index file.
-
-https://www.yourshop.com/your/sitemap/path/
-
-The location of the site map index file should then be
-added to the robots.txt in the document root of your domain:
-
-Sitemap: https://www.yourshop.com/your/sitemap/path/aimeos-sitemap-index.xml
-
-More details about site maps can be found at
-[sitemaps.org](http://www.sitemaps.org/protocol.html)
-
-See also:
-
-* controller/jobs/product/export/sitemap/container/options
-* controller/jobs/product/export/sitemap/max-items
-* controller/jobs/product/export/sitemap/max-query
-* controller/jobs/product/export/sitemap/changefreq
-* controller/jobs/product/export/sitemap/location
-
 ## decorators/excludes
 
 Excludes decorators added by the "common" option from the product export sitemap job controller
 
 ```
-controller/jobs/product/export/sitemap/decorators/excludes = 
+controller/jobs/product/export/sitemap/decorators/excludes = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -504,9 +375,15 @@ See also:
 Adds a list of globally available decorators only to the product export sitemap job controller
 
 ```
-controller/jobs/product/export/sitemap/decorators/global = 
+controller/jobs/product/export/sitemap/decorators/global = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -536,9 +413,15 @@ See also:
 Adds a list of local decorators only to the product export sitemap job controller
 
 ```
-controller/jobs/product/export/sitemap/decorators/local = 
+controller/jobs/product/export/sitemap/decorators/local = Array
+(
+)
 ```
 
+* Default: `Array
+(
+)
+`
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -576,11 +459,11 @@ controller/jobs/product/export/sitemap/domains = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => text
 )
-
+`
 * Type: array - List of domain names
 * Since: 2019.02
 
@@ -601,7 +484,7 @@ Export hidden products in site map
 controller/jobs/product/export/sitemap/hidden = 
 ```
 
-* Default: 
+* Default: ``
 * Type: bool - TRUE to export hidden products, FALSE if not
 * Since: 2022.01
 
@@ -621,10 +504,10 @@ See also:
 Maximum number of categories per site map
 
 ```
-controller/jobs/product/export/sitemap/max-items = 5
+controller/jobs/product/export/sitemap/max-items = 15
 ```
 
-* Default: 10000
+* Default: `10000`
 * Type: integer - Number of categories per file
 * Since: 2019.02
 
@@ -646,9 +529,10 @@ See also:
 Class name of the used product suggestions scheduler controller implementation
 
 ```
-controller/jobs/product/export/sitemap/name = 
+controller/jobs/product/export/sitemap/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.01
 
@@ -693,7 +577,7 @@ Relative path to the XML template of the product site map job controller.
 controller/jobs/product/export/sitemap/template = product/export/sitemap-items
 ```
 
-* Default: product/export/sitemap-items
+* Default: `product/export/sitemap-items`
 * Type: string - Relative path to the template creating XML code for the site map
 * Since: 2022.10
 
@@ -718,7 +602,7 @@ Relative path to the XML site map index template of the product site map job con
 controller/jobs/product/export/sitemap/template-index = product/export/sitemap-index
 ```
 
-* Default: product/export/sitemap-index
+* Default: `product/export/sitemap-index`
 * Type: string - Relative path to the template creating XML code for the site map index
 * Since: 2015.01
 
@@ -736,69 +620,7 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/sitemap/template-header
 * controller/jobs/product/export/sitemap/template-items
-* controller/jobs/product/export/sitemap/template-footer
-
-# template-footer
-
-Relative path to the XML site map footer template of the product site map job controller.
-
-```
-controller/jobs/product/export/template-footer = product/export/items-footer-standard
-```
-
-* Default: product/export/items-footer-standard
-* Type: string - Relative path to the template creating XML code for the site map footer
-* Since: 2015.01
-
-The template file contains the XML code and processing instructions
-to generate the site map footer. The configuration string is the path
-to the template file relative to the templates directory (usually in
-templates/controller/jobs).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* controller/jobs/product/export/template-header
-* controller/jobs/product/export/template-items
-* controller/jobs/product/export/template-index
-
-# template-header
-
-Relative path to the XML site map header template of the product site map job controller.
-
-```
-controller/jobs/product/export/template-header = product/export/items-header-standard
-```
-
-* Default: product/export/items-header-standard
-* Type: string - Relative path to the template creating XML code for the site map header
-* Since: 2015.01
-
-The template file contains the XML code and processing instructions
-to generate the site map header. The configuration string is the path
-to the template file relative to the templates directory (usually in
-templates/controller/jobs).
-
-You can overwrite the template file configuration in extensions and
-provide alternative templates. These alternative templates should be
-named like the default one but with the string "standard" replaced by
-an unique name. You may use the name of your project for this. If
-you've implemented an alternative client class as well, "standard"
-should be replaced by the name of the new class.
-
-See also:
-
-* controller/jobs/product/export/template-items
-* controller/jobs/product/export/template-footer
-* controller/jobs/product/export/template-index
 
 # template-items
 
@@ -808,7 +630,7 @@ Relative path to the XML items template of the product site map job controller.
 controller/jobs/product/export/template-items = product/export/items-body-standard
 ```
 
-* Default: product/export/items-body-standard
+* Default: `product/export/items-body-standard`
 * Type: string - Relative path to the template creating XML code for the site map items
 * Since: 2015.01
 
@@ -826,5 +648,6 @@ should be replaced by the name of the new class.
 
 See also:
 
-* controller/jobs/product/export/template-footer
-* controller/jobs/product/export/template-index
+* controller/jobs/product/export/domains
+* controller/jobs/product/export/filename
+* controller/jobs/product/export/max-items

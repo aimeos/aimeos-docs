@@ -8,7 +8,7 @@ Number of coupon codes a customer is allowed to enter
 controller/frontend/basket/coupon/allowed = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: integer - Positive number of coupon codes including zero
 * Since: 2017.08
 
@@ -32,10 +32,10 @@ controller/frontend/basket/decorators/excludes = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -72,10 +72,10 @@ controller/frontend/basket/decorators/global = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -113,10 +113,10 @@ controller/frontend/basket/decorators/local = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -150,7 +150,7 @@ Maximum number of orders within the time frame
 controller/frontend/basket/limit-count = 0
 ```
 
-* Default: 5
+* Default: `5`
 * Type: integer - Number of orders allowed within the time frame
 * Since: 2017.05
 
@@ -174,7 +174,7 @@ Order limitation time frame in seconds
 controller/frontend/basket/limit-seconds = 31536000
 ```
 
-* Default: 900
+* Default: `900`
 * Type: integer - Number of seconds to check orders within
 * Since: 2017.05
 
@@ -198,7 +198,7 @@ Class name of the used basket frontend controller implementation
 controller/frontend/basket/name = Standard
 ```
 
-* Default: Standard
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -243,7 +243,7 @@ A variant of a selection product must be chosen
 controller/frontend/basket/require-variant = 1
 ```
 
-* Default: 1
+* Default: `1`
 * Type: boolean - True if a variant must be chosen, false if also the selection product with attributes can be added
 * Since: 2018.01
 

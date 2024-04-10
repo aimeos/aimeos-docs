@@ -112,14 +112,14 @@ admin/jqadm/rule/fields = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
     [0] => rule.status
     [1] => rule.label
     [2] => rule.provider
     [3] => rule.position
 )
-
+`
 * Type: array - List of field names, i.e. search keys
 * Since: 2021.04
 
@@ -185,10 +185,10 @@ admin/jqadm/rule/subparts = Array
 )
 ```
 
-* Default: Array
+* Default: `Array
 (
 )
-
+`
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -233,7 +233,7 @@ Relative path to the HTML body template for the rule item.
 admin/jqadm/rule/template-item = rule/item
 ```
 
-* Default: rule/item
+* Default: `rule/item`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 
@@ -258,7 +258,7 @@ Relative path to the HTML body template for the rule list.
 admin/jqadm/rule/template-list = rule/list
 ```
 
-* Default: rule/list
+* Default: `rule/list`
 * Type: string - Relative path to the template creating the HTML code
 * Since: 2021.04
 

@@ -151,7 +151,7 @@ Require products to be assigned to categories
 controller/frontend/product/show-all = 
 ```
 
-* Default: 
+* Default: ``
 * Type: bool - FALSE if products must be assigned to categories, TRUE if not
 * Since: 2010.10
 
