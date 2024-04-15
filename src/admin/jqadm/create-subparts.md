@@ -265,9 +265,9 @@ A subpart template is almost the same as the [panel item template](panel-templat
                 data-data="<?= $enc->attr( $this->get( 'mysubpanelData', new stdClass() ) ) ?>">
 
                 <!-- input/select fields -->
-            <div>
-        <div>
-    <div>
+            </div>
+        </div>
+    </div>
 
     <?= $this->get( 'mysubpanelBody' ); ?>
 </div>
