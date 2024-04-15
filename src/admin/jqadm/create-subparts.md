@@ -13,6 +13,12 @@ class Standard
     extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
     implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
 {
+	public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
+	{
+		// $view->subpartData = ...
+		return $view;
+	}
+
     public function copy() : ?string
     {
         return parent::copy();
@@ -64,6 +70,24 @@ All methods beside the last two are optional and default implementations exist i
 
 
 # Class methods
+
+## data()
+
+If you want to assign data to the template that should be available for all methods, then the `data()` method is the right place to minimize code:
+
+```php
+public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
+{
+    $typeManager = \Aimeos\MShop::create( $this->context(), 'attribute/type' );
+    $search = $typeManager->filter( true )->order( 'attribute.type.code' )->slice( 0, 10000 );
+
+    $view->itemTypes = $typeManager->search( $search );
+
+    return $view;
+}
+```
+
+The assigned variables are then available in the template by calling `$this->get( 'itemTypes', [] )` for example.
 
 ## copy()
 

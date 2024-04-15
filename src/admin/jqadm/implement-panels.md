@@ -13,6 +13,12 @@ class Standard
     extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
     implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
 {
+    public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
+    {
+        $view->itemSubparts = $this->getSubClientNames();
+        return $view;
+    }
+
     public function copy() : ?string
     {
         return parent::copy();
@@ -100,6 +106,20 @@ $fs->writes( '/path/to/file', $file->getStream()->detach() );
 ```
 
 # Class methods
+
+## data()
+
+If you want to assign data to the template that should be available for all methods, then the `data()` method is the right place to minimize code:
+
+```php
+public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
+{
+    $view->itemSubparts = $this->getSubClientNames();
+    return $view;
+}
+```
+
+The assigned variables are then available in the template by calling `$this->get( 'itemSubparts', [] )` for example.
 
 ## copy()
 
