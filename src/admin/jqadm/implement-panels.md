@@ -13,6 +13,12 @@ class Standard
     extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
     implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
 {
+    public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
+    {
+        $view->itemSubparts = $this->getSubClientNames();
+        return $view;
+    }
+
     public function copy() : ?string
     {
         return parent::copy();
@@ -36,6 +42,11 @@ class Standard
     public function get() : ?string
     {
         return parent::get();
+    }
+
+    public function import() : ?string
+    {
+        return parent::import();
     }
 
     public function save() : ?string
@@ -100,6 +111,20 @@ $fs->writes( '/path/to/file', $file->getStream()->detach() );
 ```
 
 # Class methods
+
+## data()
+
+If you want to assign data to the template that should be available for all methods, then the `data()` method is the right place to minimize code:
+
+```php
+public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
+{
+    $view->itemSubparts = $this->getSubClientNames();
+    return $view;
+}
+```
+
+The assigned variables are then available in the template by calling `$this->get( 'itemSubparts', [] )` for example.
 
 ## copy()
 
@@ -330,6 +355,50 @@ Retrieve the required ID, then fetch the item from the storage and use `toArray(
 If an exception occurs, use `$this->report($e, 'get')` to log the exception and show an appropriate error message in the backend.
 
 At the end, render the view with `$view->render()` to create the HTML output for the detail view. Use `$view->config()` to make the used template configurable. The first parameter is the configuration key, the second parameter is the default value if no alternative template path is configured.
+
+## import()
+
+If you want to allow importing files, the `import()` method can store the uploaded files. Due to time and memory constraints on HTTP request in PHP, you need to import the files by a job controller afterwards.
+
+```php
+public function import() : ?string
+{
+    $context = $this->context();
+    $fs = $context->fs( 'fs-import' );
+    $site = $context->locale()->getSiteItem()->getCode();
+    $dir = $context->config()->get( 'controller/jobs/product/import/csv/location', 'product' );
+
+    if( $fs instanceof \Aimeos\Base\Filesystem\DirIface && $fs->isDir( $dir . '/' . $site ) === false ) {
+        $fs->mkdir( $dir . '/' . $site );
+    }
+
+    $uploads = (array) $this->view()->request()->getUploadedFiles();
+    $files = $this->val( $uploads, 'import' );
+
+    foreach( is_array( $files ) ? $files : [$files] as $idx => $file )
+    {
+        $num = str_pad( $idx, 3, '0', STR_PAD_LEFT );
+        $unique = substr( md5( microtime( true ) ), 0, 4 );
+        $filename = date( 'YmdHis' ) . '_' . $num . '_' . $unique . '.csv';
+        $fs->writes( $dir . '/' . $site . '/' . $filename, $file->getStream()->detach() );
+    }
+
+    return $this->redirect( 'product', 'search', null, 'upload' );
+}
+```
+
+Uploaded files should be stored in a sub-directory of the `fs-import` file system for later processing by the job controller. To support multi-site setups, you need to store the files in one sub-directory per site and use the site code as directory name.
+
+The uploaded files are available using:
+
+```php
+$uploads = (array) $this->view()->request()->getUploadedFiles();
+$files = $this->val( $uploads, 'import' );
+```
+
+This can return either a single uploaded file or a list of files.
+
+At the end, return a redirect so the file isn't uploaded again if the page is reloaded.
 
 ## save()
 
