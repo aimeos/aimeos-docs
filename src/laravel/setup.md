@@ -218,7 +218,7 @@ Sometimes, several subdomains are used e.g. by Stripe and then you should add `h
 default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://cdn.jsdelivr.net https://*.stripe.com; style-src 'unsafe-inline' 'self' https://cdn.jsdelivr.net; img-src 'self' data: https://cdn.jsdelivr.net https://aimeos.org
 ```
 
-# Backend
+## Backend
 
 The backend uses it's own content security policy, which is located in the [index.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/views/jqadm/index.blade.php) template.
 
