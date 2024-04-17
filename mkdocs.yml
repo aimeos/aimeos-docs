@@ -216,7 +216,6 @@ nav:
     - Filesystems: infrastructure/filesystem.md
     - Mails: infrastructure/mail.md
     - Migrations: infrastructure/schema-migrations.md
-    - Read/write files: infrastructure/read-write-files.md
     - View and helpers: infrastructure/view.md
   - Configuration:
     - HTML clients:
