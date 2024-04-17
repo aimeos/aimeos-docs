@@ -135,7 +135,7 @@ If you pass the data to the template, the view will render the form for the deta
 ```php
 public function copy() : ?string
 {
-    $view = $this->view();
+    $view = $this->object()->data( $this->view() );
 
     try
     {
@@ -183,7 +183,7 @@ When the editor has filled in the required data into the input fields and click 
 ```php
 public function create() : ?string
 {
-    $view = $this->view();
+    $view = $this->object()->data( $this->view() );
 
     try
     {
@@ -328,7 +328,7 @@ This method is used to retrive the data for the detail view of the panel. It's p
 ```php
 public function get() : ?string
 {
-    $view = $this->view();
+    $view = $this->object()->data( $this->view() );
 
     try
     {
@@ -465,7 +465,7 @@ The `search()` method creates the list view and is also used for every default v
 ```php
 public function search() : ?string
 {
-    $view = $this->view();
+    $view = $this->object()->data( $this->view() );
 
     try
     {
