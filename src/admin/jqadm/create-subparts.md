@@ -99,7 +99,7 @@ If you pass the data to the template, the view will render the form fields for t
 public function copy() : ?string
 {
     $data = [];
-    $view = $this->view();
+    $view = $this->object()->data( $this->view() );
     $siteid = $this->context()->getLocale()->getSiteId();
     $manager = \Aimeos\MShop::create( $this->context(), 'somedomain' );
 
@@ -132,8 +132,8 @@ The `create()` method must not add a new record in the storage. Instead, it's te
 ```php
 public function create() : ?string
 {
-    $view = $this->view();
     $data = $view->param( 'mysubpanel', [] );
+    $view = $this->object()->data( $this->view() );
     $siteid = $this->context()->getLocale()->getSiteId();
 
     foreach( $view->value( $data, 'somedomain.id', [] ) as $idx => $value ) {
@@ -191,9 +191,9 @@ This method is used to retrive the data shown in the subpart of the detail view 
 public function get() : ?string
 {
     $data = [];
-    $view = $this->view();
     $context = $this->context();
     $siteId = $context->getLocale()->getSiteId();
+    $view = $this->object()->data( $this->view() );
 
     $manager = \Aimeos\MShop::create( $context, 'somedomain' );
     $filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
