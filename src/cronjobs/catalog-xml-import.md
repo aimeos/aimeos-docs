@@ -12,7 +12,7 @@ Most of the time, you already have an ERP system which manages all your products
 : List of domain names that should be retrieved along with the catalog items
 
 [controller/jobs/catalog/import/xml/location](../config/controller-jobs/catalog-import.md#location)
-: Path to the directory with the XML files
+: Path to the directory with the XML files. By default, the location is "catalog" with the site code added automatically at the end, i.e. the expected sub-directory for the files is "catalog/default/" which imports the XML files for the "default" site
 
 # Structure
 

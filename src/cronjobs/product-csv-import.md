@@ -11,10 +11,10 @@ Most of the time, you already have an ERP system which manages all your products
 
 When you export your products from your ERP system, you need to store the files in a location where they are accessible by the importer. The default location where the importer expects them is:
 
-* Laravel: ./storage/import/product/
-* TYPO3: /uploads/tx_aimeos/.secure/import/product/
+* Laravel: ./storage/import/product/<sitecode>/
+* TYPO3: /uploads/tx_aimeos/.secure/import/product/<sitecode>/
 
-The relative directory inside the "fs-import" file system ("product") can be configured by the [controller/jobs/product/import/csv/location](../config/controller-jobs/product-import.md#location) setting.
+If you only have one site, the site code is "default" after installation. The relative directory inside the "fs-import" file system ("product") can be configured by the [controller/jobs/product/import/csv/location](../config/controller-jobs/product-import.md#location) setting.
 
 # File format
 
