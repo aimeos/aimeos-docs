@@ -9,7 +9,7 @@ Most of the time, you already have an CRM system which manages all your customer
 : Directory for storing imported files
 
 [controller/jobs/group/import/xml/location](../config/controller-jobs/group-import.md#xmllocation)
-: Path to the directory with the XML files
+: Path to the directory with the XML files. By default, the location is "group" with the site code added automatically at the end, i.e. the expected sub-directory for the files is "group/default/" which imports the XML files for the "default" site
 
 [controller/jobs/group/import/xml/max-query](../config/controller-jobs/group-import.md#xmlmax-query)
 : Maximum number of XML nodes processed at once

@@ -12,7 +12,7 @@ Most of the time, you already have an ERP system which manages all your products
 : List of domain names that should be retrieved along with the product items
 
 [controller/jobs/product/import/xml/location](../config/controller-jobs/product-import.md#location)
-: Path to the directory with the XML files
+: Path to the directory with the XML files. By default, the location is "product" with the site code added automatically at the end, i.e. the expected sub-directory for the files is "product/default/" which imports the XML files for the "default" site
 
 [controller/jobs/product/import/xml/max-query](../config/controller-jobs/product-import.md#max-query)
 : Maximum number of XML nodes processed at once

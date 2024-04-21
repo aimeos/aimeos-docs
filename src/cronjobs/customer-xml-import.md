@@ -12,7 +12,7 @@ Most of the time, you already have an CRM system which manages all your customer
 : List of domain names that should be retrieved along with the customer items
 
 [controller/jobs/customer/import/xml/location](../config/controller-jobs/customer-import.md#location)
-: Path to the directory with the XML files
+: Path to the directory with the XML files. By default, the location is "customer" with the site code added automatically at the end, i.e. the expected sub-directory for the files is "customer/default/" which imports the XML files for the "default" site
 
 [controller/jobs/customer/import/xml/max-query](../config/controller-jobs/customer-import.md#max-query)
 : Maximum number of XML nodes processed at once
