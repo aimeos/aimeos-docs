@@ -11,8 +11,8 @@ If you already manage your categories in an ERP system you want to bulk import t
 
 When you export your categories from your ERP system, you need to store the files in a location where they are accessible by the importer. The default location where the importer expects them is:
 
-* Laravel: ./storage/import/catalog/<sitecode>/
-* TYPO3: /uploads/tx_aimeos/.secure/import/catalog/<sitecode>/
+* Laravel: `./storage/import/catalog/<sitecode>/`
+* TYPO3: `/uploads/tx_aimeos/.secure/import/catalog/<sitecode>/`
 
 If you only have one site, the site code is "default" after installation. The relative directory inside the "fs-import" file system ("catalog") can be configured by the [controller/jobs/catalog/import/csv/location](../config/controller-jobs/catalog-import.md#location) setting.
 

@@ -11,8 +11,8 @@ If you already manage your products in an ERP system you want to update their pr
 
 When you export your stock levels from your ERP system, you need to store the files in a location where they are accessible by the importer. The default location where the importer expects them is:
 
-* Laravel: ./storage/import/stock/<sitecode>/
-* TYPO3: /uploads/tx_aimeos/.secure/import/stock/<sitecode>/
+* Laravel: `./storage/import/stock/<sitecode>/`
+* TYPO3: `/uploads/tx_aimeos/.secure/import/stock/<sitecode>/`
 
 If you only have one site, the site code is "default" after installation. The relative directory inside the "fs-import" file system ("stock") can be configured by the [controller/jobs/stock/import/csv/location](../config/controller-jobs/stock-import.md#location) setting.
 
