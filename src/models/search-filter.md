@@ -173,23 +173,7 @@ This will print all (nested) conditions of the filter that will be used by the m
 
 # Fetch records efficiently
 
-Retrieving records in the database is always done in bunches (default: 100 records/search, can be changed using `slice()`) and if you need to process more or all items, you have to repeatedly call `search()` of the manager. The most efficient code for this is:
-
-```php
-$manager = \Aimeos\MShop::create( $this->context(), 'product' );
-$filter = $manager->filter()->order( 'product.id' );
-
-while( !( $items = $manager->search( ( clone $filter )->add( 'product.id', '>', $lastId ?? 0 ), ['text'] ) )->isEmpty() )
-{
-    foreach ( $items as $item ) {
-        // process items
-    }
-
-    $lastId = $items->last()->getId();
-}
-```
-
-Since 2022.10, all managers are implementing the `cursor()` and `iterate()` methods which should be used if you need to fetch all records subsequently:
+Retrieving records in the database is always done in bunches (default: 100 records/search, can be changed using `slice()`) and if you need to process more or all items, you should use the `cursor()` and `iterate()` methods of the manager. The most efficient code for retrieving all items is e.g.:
 
 ```php
 $manager = \Aimeos\MShop::create( $this->context(), 'product' );
@@ -199,3 +183,5 @@ while( $items = $manager->iterate( $cursor, ['text'] ) ) {
     // process items
 }
 ```
+
+You can add more filter conditions before calling `cursor()` to select the items you really need.
