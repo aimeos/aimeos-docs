@@ -82,7 +82,7 @@ Most of the time, you already have an ERP system which manages all your products
           <!-- Optional, items associated to the price -->
           <lists>
 
-            <!-- Optional, list of customer items -->
+            <!-- Optional, list of customer items (requires ai-customergroups extension) -->
             <customer>
 
               <!-- ref: Required, unique code or user name of the customer -->
@@ -100,10 +100,10 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
+              <!-- more customer items -->
             </customer>
-            <!-- more customer items -->
 
-            <!-- Optional, list of customer group items -->
+            <!-- Optional, list of customer group items (requires ai-customergroups extension) -->
             <group>
 
               <!-- ref: Required, unique code of the customer group -->
@@ -121,8 +121,8 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
+              <!-- more group items -->
             </group>
-            <!-- more group items -->
 
           </lists>
         </textitem>
@@ -170,7 +170,7 @@ Most of the time, you already have an ERP system which manages all your products
           <!-- Optional, items associated to the price -->
           <lists>
 
-            <!-- Optional, list of customer items -->
+            <!-- Optional, list of customer items (requires ai-customergroups extension) -->
             <customer>
 
               <!-- ref: Required, unique code or user name of the customer -->
@@ -188,10 +188,10 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
+              <!-- more customer items -->
             </customer>
-            <!-- more customer items -->
 
-            <!-- Optional, list of customer group items -->
+            <!-- Optional, list of customer group items (requires ai-customergroups extension) -->
             <group>
 
               <!-- ref: Required, unique code of the customer group -->
@@ -209,8 +209,8 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
+              <!-- more group items -->
             </group>
-            <!-- more group items -->
 
           </lists>
 
@@ -284,7 +284,7 @@ Most of the time, you already have an ERP system which manages all your products
           <!-- Optional, items associated to the price -->
           <lists>
 
-            <!-- Optional, list of customer items -->
+            <!-- Optional, list of customer items (requires ai-customergroups extension) -->
             <customer>
 
               <!-- ref: Required, unique code or user name of the customer -->
@@ -302,10 +302,10 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
+              <!-- more customer items -->
             </customer>
-            <!-- more customer items -->
 
-            <!-- Optional, list of customer group items -->
+            <!-- Optional, list of customer group items (requires ai-customergroups extension) -->
             <group>
 
               <!-- ref: Required, unique code of the customer group -->
@@ -323,8 +323,8 @@ Most of the time, you already have an ERP system which manages all your products
                 lists.datestart="2000-01-01T00:00:00"
                 lists.dateend="2000-01-01T23:59:59" />
 
+              <!-- more group items -->
             </group>
-            <!-- more group items -->
 
           </lists>
         </priceitem>
@@ -332,7 +332,7 @@ Most of the time, you already have an ERP system which manages all your products
 
       </price>
 
-      <!-- Optional, list of customer items -->
+      <!-- Optional, list of customer items (requires ai-customergroups extension) -->
       <customer>
 
         <!-- ref: Required, unique code or user name of the customer -->
@@ -350,10 +350,10 @@ Most of the time, you already have an ERP system which manages all your products
           lists.datestart="2000-01-01T00:00:00"
           lists.dateend="2000-01-01T23:59:59" />
 
+        <!-- more customer items -->
       </customer>
-      <!-- more customer items -->
 
-      <!-- Optional, list of customer group items -->
+      <!-- Optional, list of customer group items (requires ai-customergroups extension) -->
       <group>
 
         <!-- ref: Required, unique code of the customer group -->
@@ -371,8 +371,8 @@ Most of the time, you already have an ERP system which manages all your products
           lists.datestart="2000-01-01T00:00:00"
           lists.dateend="2000-01-01T23:59:59" />
 
+        <!-- more group items -->
       </group>
-      <!-- more group items -->
 
     </lists>
 
