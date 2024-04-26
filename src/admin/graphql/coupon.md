@@ -83,17 +83,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchCoupons(filter: "{\"~=\": {\"coupon.label\":\"demo\"}}") {
-        id
-        siteid
-        label
-        provider
-        config
-        datestart
-        dateend
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          label
+          provider
+          config
+          datestart
+          dateend
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -106,17 +109,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchCoupons(filter: ` + fstr + `) {
-        id
-        siteid
-        label
-        provider
-        config
-        datestart
-        dateend
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          label
+          provider
+          config
+          datestart
+          dateend
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -139,34 +145,37 @@ Response:
 ```json
 {
   "data": {
-    "searchCoupons": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "label": "demo-voucher",
-        "provider": "Voucher",
-        "config": "{\"voucher.productcode\":\"demo-rebate\"}",
-        "datestart": null,
-        "dateend": null,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:03",
-        "ctime": "2022-12-01 11:59:03",
-        "editor": "core"
-      },
-      {
-        "id": "2",
-        "siteid": "1.",
-        "label": "demo-percent",
-        "provider": "PercentRebate",
-        "config": "{\"percentrebate.productcode\":\"demo-rebate\",\"percentrebate.rebate\":\"10\"}",
-        "datestart": null,
-        "dateend": null,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:03",
-        "ctime": "2022-12-01 11:59:03",
-        "editor": "core"
-      }
-    ]
+    "searchCoupons": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "label": "demo-voucher",
+          "provider": "Voucher",
+          "config": "{\"voucher.productcode\":\"demo-rebate\"}",
+          "datestart": null,
+          "dateend": null,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:03",
+          "ctime": "2022-12-01 11:59:03",
+          "editor": "core"
+        },
+        {
+          "id": "2",
+          "siteid": "1.",
+          "label": "demo-percent",
+          "provider": "PercentRebate",
+          "config": "{\"percentrebate.productcode\":\"demo-rebate\",\"percentrebate.rebate\":\"10\"}",
+          "datestart": null,
+          "dateend": null,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:03",
+          "ctime": "2022-12-01 11:59:03",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

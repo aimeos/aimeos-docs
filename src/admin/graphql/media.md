@@ -95,20 +95,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchMedias(filter: "{\"=~\": {\"media.code\":\"demo-\"}}") {
-        id
-        siteid
-        type
-        label
-        domain
-        languageid
-        mimetype
-        url
-        previews
-        filesystem
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          label
+          domain
+          languageid
+          mimetype
+          url
+          previews
+          filesystem
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -121,20 +124,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchMedias(filter: ` + fstr + `) {
-        id
-        siteid
-        type
-        label
-        domain
-        languageid
-        mimetype
-        url
-        previews
-        filesystem
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          label
+          domain
+          languageid
+          mimetype
+          url
+          previews
+          filesystem
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -157,40 +163,43 @@ Response:
 ```json
 {
   "data": {
-    "searchMedias": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "type": "default",
-        "label": "Demo: Article 1.jpg",
-        "domain": "supplier",
-        "languageid": null,
-        "mimetype": "image/jpeg",
-        "url": "https://aimeos.org/media/default/logo-1.png",
-        "previews": "{\"240\":\"https:\\/\\/aimeos.org\\/media\\/default\\/logo-1.png\"}",
-        "filesystem": "fs-media",
-        "status": 1,
-        "mtime": "2022-05-28 06:26:38",
-        "ctime": "2022-05-28 06:26:38",
-        "editor": "core:setup"
-      },
-      {
-        "id": "20",
-        "siteid": "1.",
-        "type": "stage",
-        "label": "Demo: Best seller stage",
-        "domain": "catalog",
-        "languageid": "de",
-        "mimetype": "image/webp",
-        "url": "https://aimeos.org/media/default/main-banner-1-big.webp",
-        "previews": "{\"480\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-low.webp\",\"960\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-med.webp\",\"1920\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-big.webp\"}",
-        "filesystem": "fs-media",
-        "status": 1,
-        "mtime": "2022-12-01 11:59:02",
-        "ctime": "2022-12-01 11:59:02",
-        "editor": "core"
-      }
-    ]
+    "searchMedias": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "type": "default",
+          "label": "Demo: Article 1.jpg",
+          "domain": "supplier",
+          "languageid": null,
+          "mimetype": "image/jpeg",
+          "url": "https://aimeos.org/media/default/logo-1.png",
+          "previews": "{\"240\":\"https:\\/\\/aimeos.org\\/media\\/default\\/logo-1.png\"}",
+          "filesystem": "fs-media",
+          "status": 1,
+          "mtime": "2022-05-28 06:26:38",
+          "ctime": "2022-05-28 06:26:38",
+          "editor": "core:setup"
+        },
+        {
+          "id": "20",
+          "siteid": "1.",
+          "type": "stage",
+          "label": "Demo: Best seller stage",
+          "domain": "catalog",
+          "languageid": "de",
+          "mimetype": "image/webp",
+          "url": "https://aimeos.org/media/default/main-banner-1-big.webp",
+          "previews": "{\"480\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-low.webp\",\"960\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-med.webp\",\"1920\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-big.webp\"}",
+          "filesystem": "fs-media",
+          "status": 1,
+          "mtime": "2022-12-01 11:59:02",
+          "ctime": "2022-12-01 11:59:02",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

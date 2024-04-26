@@ -179,20 +179,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchServices(filter: "{\"=~\": {\"service.code\":\"demo-\"}}") {
-        id
-        siteid
-        type
-        code
-        label
-        provider
-        datestart
-        dateend
-        config
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          code
+          label
+          provider
+          datestart
+          dateend
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -205,20 +208,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchServices(filter: ` + fstr + `) {
-        id
-        siteid
-        type
-        code
-        label
-        provider
-        datestart
-        dateend
-        config
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          code
+          label
+          provider
+          datestart
+          dateend
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -241,40 +247,43 @@ Response:
 ```json
 {
   "data": {
-    "searchServices": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "type": "delivery",
-        "code": "demo-pickup",
-        "label": "Click & Collect",
-        "provider": "Standard,Time,Supplier",
-        "datestart": null,
-        "dateend": null,
-        "config": "{}",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:07",
-        "ctime": "2022-12-01 11:59:07",
-        "editor": "core"
-      },
-      {
-        "id": "2",
-        "siteid": "1.",
-        "type": "delivery",
-        "code": "demo-dhl",
-        "label": "DHL",
-        "provider": "Standard",
-        "datestart": null,
-        "dateend": null,
-        "config": "{}",
-        "position": 1,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:07",
-        "ctime": "2022-12-01 11:59:07",
-        "editor": "core"
-      }
-    ]
+    "searchServices": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "type": "delivery",
+          "code": "demo-pickup",
+          "label": "Click & Collect",
+          "provider": "Standard,Time,Supplier",
+          "datestart": null,
+          "dateend": null,
+          "config": "{}",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:07",
+          "ctime": "2022-12-01 11:59:07",
+          "editor": "core"
+        },
+        {
+          "id": "2",
+          "siteid": "1.",
+          "type": "delivery",
+          "code": "demo-dhl",
+          "label": "DHL",
+          "provider": "Standard",
+          "datestart": null,
+          "dateend": null,
+          "config": "{}",
+          "position": 1,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:07",
+          "ctime": "2022-12-01 11:59:07",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

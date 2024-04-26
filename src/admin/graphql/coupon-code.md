@@ -83,17 +83,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchCouponCodes(filter: "{\"==\": {\"coupon.code.count\":1000}}") {
-        id
-        siteid
-        parentid
-        code
-        count
-        dateend
-        datestart
-        ref
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          parentid
+          code
+          count
+          dateend
+          datestart
+          ref
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -106,17 +109,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchCouponCodes(filter: ` + fstr + `) {
-        id
-        siteid
-        parentid
-        code
-        count
-        dateend
-        datestart
-        ref
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          parentid
+          code
+          count
+          dateend
+          datestart
+          ref
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -139,34 +145,37 @@ Response:
 ```json
 {
   "data": {
-    "searchCouponCodes": [
-      {
-        "id": "32",
-        "siteid": "1.",
-        "parentid": 38,
-        "code": "fixed",
-        "count": "1000",
-        "dateend": null,
-        "datestart": null,
-        "ref": "",
-        "mtime": "2022-12-01 11:59:03",
-        "ctime": "2022-12-01 11:59:03",
-        "editor": "core"
-      },
-      {
-        "id": "33",
-        "siteid": "1.",
-        "parentid": 39,
-        "code": "percent",
-        "count": "1000",
-        "dateend": null,
-        "datestart": null,
-        "ref": "",
-        "mtime": "2022-12-01 11:59:03",
-        "ctime": "2022-12-01 11:59:03",
-        "editor": "core"
-      }
-    ]
+    "searchCouponCodes": {
+      "items": [
+        {
+          "id": "32",
+          "siteid": "1.",
+          "parentid": 38,
+          "code": "fixed",
+          "count": "1000",
+          "dateend": null,
+          "datestart": null,
+          "ref": "",
+          "mtime": "2022-12-01 11:59:03",
+          "ctime": "2022-12-01 11:59:03",
+          "editor": "core"
+        },
+        {
+          "id": "33",
+          "siteid": "1.",
+          "parentid": 39,
+          "code": "percent",
+          "count": "1000",
+          "dateend": null,
+          "datestart": null,
+          "ref": "",
+          "mtime": "2022-12-01 11:59:03",
+          "ctime": "2022-12-01 11:59:03",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

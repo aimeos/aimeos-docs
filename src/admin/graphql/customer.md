@@ -285,38 +285,41 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchCustomers(filter: "{\"=~\": {\"customer.code\":\"demo-\"}}") {
-        id
-        siteid
-        code
-        label
-        salutation
-        company
-        vatid
-        title
-        firstname
-        lastname
-        address1
-        address2
-        address3
-        postal
-        city
-        state
-        languageid
-        countryid
-        telephone
-        email
-        telefax
-        website
-        longitude
-        status
-        latitude
-        birthday
-        status
-        dateverified
-        password
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          code
+          label
+          salutation
+          company
+          vatid
+          title
+          firstname
+          lastname
+          address1
+          address2
+          address3
+          postal
+          city
+          state
+          languageid
+          countryid
+          telephone
+          email
+          telefax
+          website
+          longitude
+          status
+          latitude
+          birthday
+          status
+          dateverified
+          password
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -329,38 +332,41 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchCustomers(filter: ` + fstr + `) {
-        id
-        siteid
-        code
-        label
-        salutation
-        company
-        vatid
-        title
-        firstname
-        lastname
-        address1
-        address2
-        address3
-        postal
-        city
-        state
-        languageid
-        countryid
-        telephone
-        email
-        telefax
-        website
-        longitude
-        status
-        latitude
-        birthday
-        status
-        dateverified
-        password
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          code
+          label
+          salutation
+          company
+          vatid
+          title
+          firstname
+          lastname
+          address1
+          address2
+          address3
+          postal
+          city
+          state
+          languageid
+          countryid
+          telephone
+          email
+          telefax
+          website
+          longitude
+          status
+          latitude
+          birthday
+          status
+          dateverified
+          password
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -383,41 +389,44 @@ Response:
 ```json
 {
   "data": {
-    "searchCustomers": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "code": "demo@example.com",
-        "label": "Test user",
-        "salutation": "mr",
-        "company": "Test company",
-        "vatid": "DE999999999",
-        "title": null,
-        "firstname": "Test",
-        "lastname": "User",
-        "address1": "Test street",
-        "address2": "1",
-        "address3": null,
-        "postal": "10000",
-        "city": "Test city",
-        "state": "CA",
-        "languageid": "en",
-        "countryid": "US",
-        "telephone": null,
-        "email": "demo@example.com",
-        "telefax": null,
-        "website": null,
-        "longitude": null,
-        "status": 1,
-        "latitude": null,
-        "birthday": "2000-01-01",
-        "dateverified": null,
-        "password": "$2y$10$cdjdim/ITpPnf8H06i5wMOvlo6l3Slsz6E39sX6gZSpOIfIBD6W66",
-        "mtime": "2022-12-01 11:59:04",
-        "ctime": "2022-12-01 11:59:04",
-        "editor": "core"
-      }
-    ]
+    "searchCustomers": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "code": "demo@example.com",
+          "label": "Test user",
+          "salutation": "mr",
+          "company": "Test company",
+          "vatid": "DE999999999",
+          "title": null,
+          "firstname": "Test",
+          "lastname": "User",
+          "address1": "Test street",
+          "address2": "1",
+          "address3": null,
+          "postal": "10000",
+          "city": "Test city",
+          "state": "CA",
+          "languageid": "en",
+          "countryid": "US",
+          "telephone": null,
+          "email": "demo@example.com",
+          "telefax": null,
+          "website": null,
+          "longitude": null,
+          "status": 1,
+          "latitude": null,
+          "birthday": "2000-01-01",
+          "dateverified": null,
+          "password": "$2y$10$cdjdim/ITpPnf8H06i5wMOvlo6l3Slsz6E39sX6gZSpOIfIBD6W66",
+          "mtime": "2022-12-01 11:59:04",
+          "ctime": "2022-12-01 11:59:04",
+          "editor": "core"
+        }
+      ],
+      "total": 1
+    }
   }
 }
 ```

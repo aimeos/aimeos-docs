@@ -77,15 +77,18 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchLocales(filter: "{\"==\": {\"locale.currencyid\":\"EUR\"}}") {
-        id
-        siteid
-        languageid
-        currencyid
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          languageid
+          currencyid
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -98,15 +101,18 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchLocales(filter: ` + fstr + `) {
-        id
-        siteid
-        languageid
-        currencyid
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          languageid
+          currencyid
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -129,30 +135,33 @@ Response:
 ```json
 {
   "data": {
-    "searchLocales": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "languageid": "en",
-        "currencyid": "EUR",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-06-20 15:18:08",
-        "ctime": "2022-05-28 06:26:35",
-        "editor": "aimeos@aimeos.org"
-      },
-      {
-        "id": "3",
-        "siteid": "1.",
-        "languageid": "de",
-        "currencyid": "EUR",
-        "position": 2,
-        "status": 1,
-        "mtime": "2022-06-20 15:15:14",
-        "ctime": "2022-05-28 06:26:35",
-        "editor": "aimeos@aimeos.org"
-      }
-    ]
+    "searchLocales": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "languageid": "en",
+          "currencyid": "EUR",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-06-20 15:18:08",
+          "ctime": "2022-05-28 06:26:35",
+          "editor": "aimeos@aimeos.org"
+        },
+        {
+          "id": "3",
+          "siteid": "1.",
+          "languageid": "de",
+          "currencyid": "EUR",
+          "position": 2,
+          "status": 1,
+          "mtime": "2022-06-20 15:15:14",
+          "ctime": "2022-05-28 06:26:35",
+          "editor": "aimeos@aimeos.org"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

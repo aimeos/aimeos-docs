@@ -21,7 +21,9 @@ To authenticate, you have to send the cookies with each request and (for Laravel
 const body = JSON.stringify({'query':
 `query {
   searchProducts(filter: "{}") {
-    id
+    items {
+      id
+    }
   }
 }`});
 

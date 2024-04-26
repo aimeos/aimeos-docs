@@ -68,12 +68,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchLocaleCurrencys(filter: "{\"==\": {\"locale.currency.status\":1}}") {
-        id
-        label
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          label
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -86,12 +89,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchLocaleCurrencys(filter: ` + fstr + `) {
-        id
-        label
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          label
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -114,24 +120,27 @@ Response:
 ```json
 {
   "data": {
-    "searchLocaleCurrencys": [
-      {
-        "id": "EUR",
-        "label": "Euro",
-        "status": 1,
-        "mtime": "2022-05-28 06:26:34",
-        "ctime": "2022-05-28 06:26:34",
-        "editor": "setup"
-      },
-      {
-        "id": "USD",
-        "label": "US dollar",
-        "status": 1,
-        "mtime": "2022-05-28 06:26:35",
-        "ctime": "2022-05-28 06:26:35",
-        "editor": "setup"
-      }
-    ]
+    "searchLocaleCurrencys": {
+      "items": [
+        {
+          "id": "EUR",
+          "label": "Euro",
+          "status": 1,
+          "mtime": "2022-05-28 06:26:34",
+          "ctime": "2022-05-28 06:26:34",
+          "editor": "setup"
+        },
+        {
+          "id": "USD",
+          "label": "US dollar",
+          "status": 1,
+          "mtime": "2022-05-28 06:26:35",
+          "ctime": "2022-05-28 06:26:35",
+          "editor": "setup"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

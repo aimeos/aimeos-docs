@@ -85,17 +85,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchPlugins(filter: "{\"~=\": {\"plugin.label\":\"Product\"}}") {
-        id
-        siteid
-        type
-        label
-        provider
-        config
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          label
+          provider
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -108,17 +111,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchPlugins(filter: ` + fstr + `) {
-        id
-        siteid
-        type
-        label
-        provider
-        config
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          label
+          provider
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -141,23 +147,26 @@ Response:
 ```json
 {
   "data": {
-    "searchPlugins": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "type": "catalog",
-        "label": "+10% Test",
-        "provider": "Percent",
-        "datestart": null,
-        "dateend": null,
-        "config": "{\"last-plugin\":0,\"percent\":10}",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-12-22 09:51:38",
-        "ctime": "2022-06-21 13:36:28",
-        "editor": "aimeos@aimeos.org"
-      }
-    ]
+    "searchPlugins": {
+      "items" : [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "type": "catalog",
+          "label": "+10% Test",
+          "provider": "Percent",
+          "datestart": null,
+          "dateend": null,
+          "config": "{\"last-plugin\":0,\"percent\":10}",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-12-22 09:51:38",
+          "ctime": "2022-06-21 13:36:28",
+          "editor": "aimeos@aimeos.org"
+        }
+      ],
+      "total": 1
+    }
   }
 }
 ```
