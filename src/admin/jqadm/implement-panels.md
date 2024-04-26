@@ -19,6 +19,11 @@ class Standard
         return $view;
     }
 
+    public function batch() : ?string
+    {
+        return parent::batch();
+    }
+
     public function copy() : ?string
     {
         return parent::copy();
@@ -63,6 +68,34 @@ class Standard
     {
         return $this->context()->config()->get( 'admin/jqadm/mypanel/subparts', [] );
     }
+
+	protected function fromArray( array $data ) : \Aimeos\MShop\Mydomain\Item\Iface
+	{
+		$manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
+
+		if( isset( $data['mydomain.id'] ) && $data['mydomain.id'] != '' ) {
+			$item = $manager->get( $data['mydomain.id'], ['text', /* ... */] );
+		} else {
+			$item = $manager->create();
+		}
+
+		return $item;
+	}
+
+	protected function toArray( \Aimeos\MShop\Mydomain\Item\Iface $item, bool $copy = false ) : array
+	{
+		$data = $item->toArray( true );
+
+		if( $copy === true )
+		{
+			$data['mydomain.id'] = '';
+			$data['mydomain.code'] = $data['mydomain.code'] . '_copy';
+			$data['mydomain.label'] = $data['mydomain.label'] . '_copy';
+			$data['mydomain.siteid'] = $this->context()->locale()->getSiteId();
+		}
+
+		return $data;
+	}
 }
 ```
 
@@ -121,6 +154,42 @@ public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
 
 The assigned variables are then available in the template by calling `$this->get( 'itemSubparts', [] )` for example.
 
+## batch()
+
+To support updates of several items at once, you need to implement the `batch()` method. It needs to apply all changes that have been made by the editor in the batch view to all the items whose IDs have been passed.
+
+```php
+public function batch() : ?string
+{
+		$view = $this->view();
+
+		if( !empty( $ids = $view->param( 'id' ) ) )
+		{
+			$manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
+			$filter = $manager->filter()->add( ['mydomain.id' => $ids] )->slice( 0, count( $ids ) );
+			$items = $manager->search( $filter, ['text', /* ... */] );
+
+			$data = $view->param( 'item', [] );
+
+			foreach( $items as $item ) {
+				$temp = $data; $item->fromArray( $temp, true );
+			}
+
+			$view->items = $items;
+
+			foreach( $this->getSubClients() as $client ) {
+				$client->batch();
+			}
+
+			$manager->save( $items );
+		}
+
+		return $this->redirect( 'mydomain', 'search', null, 'save' );
+}
+```
+
+First, fetch all items by their IDs, then apply the data to the items using `fromArray()` (make a copy first because `fromArray()` removes the added properties from the passed data). Finally, save the modfied items and redirect to the list view again.
+
 ## copy()
 
 When the editor wants to copy an item, the ID of the item will be available as parameter. Instead of storing a copy of the item instantly, the `copy()` method should load the item data included all related data displayed in the panel.
@@ -134,15 +203,16 @@ public function copy() : ?string
 
     try
     {
+        if( ( $id = $view->param( 'id' ) ) === null )
+        {
+            $msg = $this->context()->translate( 'admin', 'Required parameter "%1$s" is missing' );
+            throw new \Aimeos\Admin\JQAdm\Exception( sprintf( $msg, 'id' ) );
+        }
+
         $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
-        $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
+        $view->item = $manager->get( $id, ['text', /* ... */] );
 
-        $data = $view->item->toArray( true );
-        $data['mydomain.siteid'] = $this->context()->locale()->getSiteId();
-        $data['mydomain.code'] = $data['mydomain.code'] . '_copy';
-        $data['mydomain.id'] = '';
-
-        $view->itemData = $data;
+        $view->itemData = $this->toArray( $view->item, true );
         $view->itemBody = parent::copy();
     }
     catch( \Exception $e )
@@ -182,14 +252,15 @@ public function create() : ?string
 
     try
     {
+        $data = $view->param( 'item', [] );
+
         if( !isset( $view->item ) ) {
             $view->item = \Aimeos\MShop::create( $this->context(), 'mydomain' )->create();
         }
 
-        $data = $view->param( 'item', [] );
         $data['mydomain.siteid'] = $view->item->getSiteId();
 
-        $view->itemData = array_replace_recursive( $this->toArray( $view->item, true ), $data );
+        $view->itemData = array_replace_recursive( $this->toArray( $view->item ), $data );
         $view->itemBody = parent::create();
     }
     catch( \Exception $e )
@@ -327,9 +398,15 @@ public function get() : ?string
 
     try
     {
+        if( ( $id = $view->param( 'id' ) ) === null )
+        {
+            $msg = $this->context()->translate( 'admin', 'Required parameter "%1$s" is missing' );
+            throw new \Aimeos\Admin\JQAdm\Exception( sprintf( $msg, 'id' ) );
+        }
+
         $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
 
-        $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
+        $view->item = $manager->get( $id, $this->getDomains() );
         $view->itemData = $this->toArray( $view->item );
         $view->itemBody = parent::get();
     }
@@ -350,6 +427,50 @@ Retrieve the required ID, then fetch the item from the storage and use `toArray(
 If an exception occurs, use `$this->report($e, 'get')` to log the exception and show an appropriate error message in the backend.
 
 At the end, render the view with `$view->render()` to create the HTML output for the detail view. Use `$view->config()` to make the used template configurable. The first parameter is the configuration key, the second parameter is the default value if no alternative template path is configured.
+
+## import()
+
+If you want to allow importing files, the `import()` method can store the uploaded files. Due to time and memory constraints on HTTP request in PHP, you need to import the files by a job controller afterwards.
+
+```php
+public function import() : ?string
+{
+    $context = $this->context();
+    $fs = $context->fs( 'fs-import' );
+    $site = $context->locale()->getSiteItem()->getCode();
+    $dir = $context->config()->get( 'controller/jobs/mydomain/import/csv/location', 'mydomain' );
+
+    if( $fs instanceof \Aimeos\Base\Filesystem\DirIface && $fs->isDir( $dir . '/' . $site ) === false ) {
+        $fs->mkdir( $dir . '/' . $site );
+    }
+
+    $uploads = (array) $this->view()->request()->getUploadedFiles();
+    $files = $this->val( $uploads, 'import' );
+
+    foreach( is_array( $files ) ? $files : [$files] as $idx => $file )
+    {
+        $num = str_pad( $idx, 3, '0', STR_PAD_LEFT );
+        $unique = substr( md5( microtime( true ) ), 0, 4 );
+        $filename = date( 'YmdHis' ) . '_' . $num . '_' . $unique . '.csv';
+        $fs->writes( $dir . '/' . $site . '/' . $filename, $file->getStream()->detach() );
+    }
+
+    return $this->redirect( 'mypanel', 'search', null, 'upload' );
+}
+```
+
+Uploaded files should be stored in a sub-directory of the `fs-import` file system for later processing by the job controller. To support multi-site setups, you need to store the files in one sub-directory per site and use the site code as directory name.
+
+The uploaded files are available using:
+
+```php
+$uploads = (array) $this->view()->request()->getUploadedFiles();
+$files = $this->val( $uploads, 'import' );
+```
+
+This can return either a single uploaded file or a list of files.
+
+At the end, return a redirect so the file isn't uploaded again if the page is reloaded.
 
 ## save()
 
