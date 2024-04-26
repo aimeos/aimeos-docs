@@ -19,22 +19,28 @@ SKU (required)
 Label (required)
 : An internal label which helps you to identify the product and which can be used for searching in the adminstration interface. Usually, this is not used outside of the administration interface but if you don't add a translated name to that product, the label will be shown in the frontend
 
+Rating (read-only)
+: Average rating and number of ratings for that product
+
 URL segment (optional)
 : Name of the product in the URL for SEO. The value is automatically inserted after saving if the field is left empty. For URL segments in different languages, texts of type "URL segment" can be added in the text sub-panel
 
 Quantity scale (optional)
 : Allows ordering products with fractional quantities. The value is the steps allowed for quantities in the basket, e.g. "0.1" for fractional quantities of 1/10th or "5" for multiple of five articles
 
-Available from (optional)
+Start date (optional)
 : The point in time when the product will be shown in the shop can be configured via this field. The date/time has to be in ISO format (YYYY-MM-DD HH:mm:ss) and the hours must be in the range of 0-23. Even if it's possible to enter or choose not only a date but also hours, minutes or even seconds, it may not be the exact time when the product will first show up in the frontend due to caching
+
+End date (optional)
+: The point in time when the product won't be shown in the shop any more. For this field the same things apply as for "Available from"
 
 Created (optional)
 : Custom date when the article has been created. It will be used when sorting the product lists by "Latest" and is handy for publishing dates like for books
 
-Available until (optional)
-: The point in time when the product won't be shown in the shop any more. For this field the same things apply as for "Available from"
+Boost factor (optional)
+: Factor the product relevance will be multiplied with in (full text) search results, e.g. a factor of 1.1 increases the relevance by 10% compared to other products with a factor of 1. The boost factor can also be smaller and 1 to decrease the relevance of the product, e.g. 0.9 will decrease its relevance by 10% compared to other products
 
-Target (optional)
+URL target (optional)
 : Route name or page ID the product list view should link to for the detail page. This allows to you use different detail pages for some of your products. Use only if you know what your are doing because otherwise, this will cause an error in the frontend!
 
 Option/Value (optional)
