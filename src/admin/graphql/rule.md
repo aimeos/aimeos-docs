@@ -70,7 +70,7 @@ Response:
       "provider": "Percent",
       "datestart": null,
       "dateend": null,
-      "config": "{\"last-rule\":0,\"percent\":10}",
+      "config": "{\\"last-rule\\":0,\\"percent\\":10}",
       "position": 0,
       "status": 1,
       "mtime": "2022-12-22 09:51:38",
@@ -88,7 +88,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchRules(filter: "{\"~=\": {\"rule.label\":\"Test\"}}") {
+      searchRules(filter: "{\\"~=\\": {\\"rule.label\\":\\"Test\\"}}") {
         items {
           id
           siteid
@@ -165,7 +165,7 @@ Response:
           "provider": "Percent",
           "datestart": null,
           "dateend": null,
-          "config": "{\"last-rule\":0,\"percent\":10}",
+          "config": "{\\"last-rule\\":0,\\"percent\\":10}",
           "position": 0,
           "status": 1,
           "mtime": "2022-12-22 09:51:38",
@@ -251,7 +251,7 @@ Response:
         type: "catalog"
         label: "Test rule"
         provider: "Percent"
-        config: "{\"percent\": 10}"
+        config: "{\\"percent\\": 10}"
       }) {
         id
       }
@@ -265,7 +265,7 @@ Response:
         type: "catalog"
         label: "Test rule"
         provider: "Percent"
-        config: "{\"percent\": 10}"
+        config: "{\\"percent\\": 10}"
       }) {
         id
       }
@@ -306,12 +306,12 @@ Response:
         type: "catalog"
         label: "Test rule 2"
         provider: "Percent"
-        config: "{\"percent\": 10}"
+        config: "{\\"percent\\": 10}"
       },{
         type: "catalog"
         label: "Test rule 3"
         provider: "Percent,Category"
-        config: "{\"percent\":20,\"category.code\":\"demo-best\"}"
+        config: "{\\"percent\\":20,\\"category.code\\":\\"demo-best\\"}"
       }]) {
         id
       }
@@ -325,12 +325,12 @@ Response:
         type: "catalog"
         label: "Test rule 2"
         provider: "Percent"
-        config: "{\"percent\": 10}"
+        config: "{\\"percent\\": 10}"
       },{
         type: "catalog"
         label: "Test rule 3"
         provider: "Percent,Category"
-        config: "{\"percent\":20,\"category.code\":\"demo-best\"}"
+        config: "{\\"percent\\":20,\\"category.code\\":\\"demo-best\\"}"
       }]) {
         id
       }

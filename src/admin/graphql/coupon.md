@@ -63,7 +63,7 @@ Response:
       "siteid": "1.",
       "label": "demo-voucher",
       "provider": "Voucher",
-      "config": "{\"voucher.productcode\":\"demo-rebate\"}",
+      "config": "{\\"voucher.productcode\\":\\"demo-rebate\\"}",
       "datestart": null,
       "dateend": null,
       "status": 1,
@@ -82,7 +82,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchCoupons(filter: "{\"~=\": {\"coupon.label\":\"demo\"}}") {
+      searchCoupons(filter: "{\\"~=\\": {\\"coupon.label\\":\\"demo\\"}}") {
         items {
           id
           siteid
@@ -152,7 +152,7 @@ Response:
           "siteid": "1.",
           "label": "demo-voucher",
           "provider": "Voucher",
-          "config": "{\"voucher.productcode\":\"demo-rebate\"}",
+          "config": "{\\"voucher.productcode\\":\\"demo-rebate\\"}",
           "datestart": null,
           "dateend": null,
           "status": 1,
@@ -165,7 +165,7 @@ Response:
           "siteid": "1.",
           "label": "demo-percent",
           "provider": "PercentRebate",
-          "config": "{\"percentrebate.productcode\":\"demo-rebate\",\"percentrebate.rebate\":\"10\"}",
+          "config": "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"10\\"}",
           "datestart": null,
           "dateend": null,
           "status": 1,
@@ -251,7 +251,7 @@ Response:
       saveCoupon(input: {
         label: "Test coupon"
         provider: "PercentRebate"
-        config: "{\"percentrebate.productcode\":\"demo-rebate\",\"percentrebate.rebate\":\"25\"}",
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"25\\"}",
       }) {
         id
       }
@@ -264,7 +264,7 @@ Response:
       saveCoupon(input: {
         label: "Test coupon"
         provider: "PercentRebate"
-        config: "{\"percentrebate.productcode\":\"demo-rebate\",\"percentrebate.rebate\":\"25\"}",
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"25\\"}",
       }) {
         id
       }
@@ -304,11 +304,11 @@ Response:
       saveCoupons(input: [{
         label: "Test coupon 2"
         provider: "PercentRebate"
-        config: "{\"percentrebate.productcode\":\"demo-rebate\",\"percentrebate.rebate\":\"7.5\"}",
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"7.5\\"}",
       },{
         label: "Test coupon 3"
         provider: "FixedRebate,BasketValues"
-        config: "{\"fixedrebate.productcode\":\"demo-rebate\",\"fixedrebate.rebate\":{\"EUR\":"10.00"},\"basket.total-value-min\":{\"EUR\":100}}",,
+        config: "{\\"fixedrebate.productcode\\":\\"demo-rebate\\",\\"fixedrebate.rebate\\":{\\"EUR\\":"10.00"},\\"basket.total-value-min\\":{\\"EUR\\":100}}",,
       }]) {
         id
       }
@@ -321,11 +321,11 @@ Response:
       saveCoupons(input: [{
         label: "Test coupon 2"
         provider: "PercentRebate"
-        config: "{\"percentrebate.productcode\":\"demo-rebate\",\"percentrebate.rebate\":\"7.5\"}",
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"7.5\\"}",
       },{
         label: "Test coupon 3"
         provider: "FixedRebate,BasketValues"
-        config: "{\"fixedrebate.productcode\":\"demo-rebate\",\"fixedrebate.rebate\":{\"EUR\":"10.00"},\"basket.total-value-min\":{\"EUR\":100}}",
+        config: "{\\"fixedrebate.productcode\\":\\"demo-rebate\\",\\"fixedrebate.rebate\\":{\\"EUR\\":"10.00"},\\"basket.total-value-min\\":{\\"EUR\\":100}}",
       }]) {
         id
       }

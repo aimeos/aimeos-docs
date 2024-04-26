@@ -230,7 +230,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchProductTypes(filter: "{\"==\": {\"product.type.domain\":\"product\"}}") {
+      searchProductTypes(filter: "{\\"==\\": {\\"product.type.domain\\":\\"product\\"}}") {
         items {
           id
           siteid

@@ -76,7 +76,7 @@ Response:
       "languageid": null,
       "mimetype": "image/webp",
       "url": "https://aimeos.org/media/default/product_01_A-big.webp",
-      "previews": "{\"240\":\"https:\\/\\/aimeos.org\\/media\\/default\\/product_01_A-low.webp\",\"720\":\"https:\\/\\/aimeos.org\\/media\\/default\\/product_01_A-med.webp\",\"1350\":\"https:\\/\\/aimeos.org\\/media\\/default\\/product_01_A-big.webp\"}",
+      "previews": "{\\"240\\":\\"https:\\/\\/aimeos.org\\/media\\/default\\/product_01_A-low.webp\\",\\"720\\":\\"https:\\/\\/aimeos.org\\/media\\/default\\/product_01_A-med.webp\\",\\"1350\\":\\"https:\\/\\/aimeos.org\\/media\\/default\\/product_01_A-big.webp\\"}",
       "filesystem": "fs-media",
       "status": 1,
       "mtime": "2022-12-01 11:59:05",
@@ -94,7 +94,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchMedias(filter: "{\"=~\": {\"media.code\":\"demo-\"}}") {
+      searchMedias(filter: "{\\"=~\\": {\\"media.code\\":\\"demo-\\"}}") {
         items {
           id
           siteid
@@ -174,7 +174,7 @@ Response:
           "languageid": null,
           "mimetype": "image/jpeg",
           "url": "https://aimeos.org/media/default/logo-1.png",
-          "previews": "{\"240\":\"https:\\/\\/aimeos.org\\/media\\/default\\/logo-1.png\"}",
+          "previews": "{\\"240\\":\\"https:\\/\\/aimeos.org\\/media\\/default\\/logo-1.png\\"}",
           "filesystem": "fs-media",
           "status": 1,
           "mtime": "2022-05-28 06:26:38",
@@ -190,7 +190,7 @@ Response:
           "languageid": "de",
           "mimetype": "image/webp",
           "url": "https://aimeos.org/media/default/main-banner-1-big.webp",
-          "previews": "{\"480\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-low.webp\",\"960\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-med.webp\",\"1920\":\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-big.webp\"}",
+          "previews": "{\\"480\\":\\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-low.webp\\",\\"960\\":\\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-med.webp\\",\\"1920\\":\\"https:\\/\\/aimeos.org\\/media\\/default\\/main-banner-1-big.webp\\"}",
           "filesystem": "fs-media",
           "status": 1,
           "mtime": "2022-12-01 11:59:02",

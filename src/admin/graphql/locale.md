@@ -76,7 +76,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchLocales(filter: "{\"==\": {\"locale.currencyid\":\"EUR\"}}") {
+      searchLocales(filter: "{\\"==\\": {\\"locale.currencyid\\":\\"EUR\\"}}") {
         items {
           id
           siteid

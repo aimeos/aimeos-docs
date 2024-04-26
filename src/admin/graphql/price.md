@@ -82,7 +82,7 @@ Response:
       "value": "15.00",
       "costs": "0.00",
       "rebate": "0.00",
-      "taxrates": "{\"tax\":\"20.00\"}",
+      "taxrates": "{\\"tax\\":\\"20.00\\"}",
       "taxflag": true,
       "status": 1,
       "mtime": "2022-05-28 06:26:38",
@@ -100,7 +100,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchPrices(filter: "{\"=~\": {\"price.label\":\"Demo\"}}") {
+      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}") {
         items {
           id
           siteid
@@ -186,7 +186,7 @@ Response:
           "value": "15.00",
           "costs": "0.00",
           "rebate": "0.00",
-          "taxrates": "{\"tax\":\"20.00\"}",
+          "taxrates": "{\\"tax\\":\\"20.00\\"}",
           "taxflag": true,
           "status": 1,
           "mtime": "2022-05-28 06:26:38",
@@ -204,7 +204,7 @@ Response:
           "value": "20.00",
           "costs": "0.00",
           "rebate": "0.00",
-          "taxrates": "{\"tax\":\"10.00\"}",
+          "taxrates": "{\\"tax\\":\\"10.00\\"}",
           "taxflag": true,
           "status": 1,
           "mtime": "2022-05-28 06:26:38",

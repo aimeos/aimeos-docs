@@ -284,7 +284,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchCustomers(filter: "{\"=~\": {\"customer.code\":\"demo-\"}}") {
+      searchCustomers(filter: "{\\"=~\\": {\\"customer.code\\":\\"demo-\\"}}") {
         items {
           id
           siteid

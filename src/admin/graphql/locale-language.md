@@ -67,7 +67,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchLocaleLanguages(filter: "{\"==\": {\"locale.language.status\":1}}") {
+      searchLocaleLanguages(filter: "{\\"==\\": {\\"locale.language.status\\":1}}") {
         items {
           id
           label
