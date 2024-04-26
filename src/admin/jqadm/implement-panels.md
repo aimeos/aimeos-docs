@@ -19,6 +19,11 @@ class Standard
         return $view;
     }
 
+    public function batch() : ?string
+    {
+        return parent::batch();
+    }
+
     public function copy() : ?string
     {
         return parent::copy();
@@ -68,6 +73,34 @@ class Standard
     {
         return $this->context()->config()->get( 'admin/jqadm/mypanel/subparts', [] );
     }
+
+	protected function fromArray( array $data ) : \Aimeos\MShop\Mydomain\Item\Iface
+	{
+		$manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
+
+		if( isset( $data['mydomain.id'] ) && $data['mydomain.id'] != '' ) {
+			$item = $manager->get( $data['mydomain.id'], ['text', /* ... */] );
+		} else {
+			$item = $manager->create();
+		}
+
+		return $item;
+	}
+
+	protected function toArray( \Aimeos\MShop\Mydomain\Item\Iface $item, bool $copy = false ) : array
+	{
+		$data = $item->toArray( true );
+
+		if( $copy === true )
+		{
+			$data['mydomain.id'] = '';
+			$data['mydomain.code'] = $data['mydomain.code'] . '_copy';
+			$data['mydomain.label'] = $data['mydomain.label'] . '_copy';
+			$data['mydomain.siteid'] = $this->context()->locale()->getSiteId();
+		}
+
+		return $data;
+	}
 }
 ```
 
@@ -126,6 +159,42 @@ public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
 
 The assigned variables are then available in the template by calling `$this->get( 'itemSubparts', [] )` for example.
 
+## batch()
+
+To support updates of several items at once, you need to implement the `batch()` method. It needs to apply all changes that have been made by the editor in the batch view to all the items whose IDs have been passed.
+
+```php
+public function batch() : ?string
+{
+		$view = $this->view();
+
+		if( !empty( $ids = $view->param( 'id' ) ) )
+		{
+			$manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
+			$filter = $manager->filter()->add( ['mydomain.id' => $ids] )->slice( 0, count( $ids ) );
+			$items = $manager->search( $filter, ['text', /* ... */] );
+
+			$data = $view->param( 'item', [] );
+
+			foreach( $items as $item ) {
+				$temp = $data; $item->fromArray( $temp, true );
+			}
+
+			$view->items = $items;
+
+			foreach( $this->getSubClients() as $client ) {
+				$client->batch();
+			}
+
+			$manager->save( $items );
+		}
+
+		return $this->redirect( 'mydomain', 'search', null, 'save' );
+}
+```
+
+First, fetch all items by their IDs, then apply the data to the items using `fromArray()` (make a copy first because `fromArray()` removes the added properties from the passed data). Finally, save the modfied items and redirect to the list view again.
+
 ## copy()
 
 When the editor wants to copy an item, the ID of the item will be available as parameter. Instead of storing a copy of the item instantly, the `copy()` method should load the item data included all related data displayed in the panel.
@@ -139,15 +208,16 @@ public function copy() : ?string
 
     try
     {
+        if( ( $id = $view->param( 'id' ) ) === null )
+        {
+            $msg = $this->context()->translate( 'admin', 'Required parameter "%1$s" is missing' );
+            throw new \Aimeos\Admin\JQAdm\Exception( sprintf( $msg, 'id' ) );
+        }
+
         $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
-        $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
+        $view->item = $manager->get( $id, ['text', /* ... */] );
 
-        $data = $view->item->toArray( true );
-        $data['mydomain.siteid'] = $this->context()->locale()->getSiteId();
-        $data['mydomain.code'] = $data['mydomain.code'] . '_copy';
-        $data['mydomain.id'] = '';
-
-        $view->itemData = $data;
+        $view->itemData = $this->toArray( $view->item, true );
         $view->itemBody = parent::copy();
     }
     catch( \Exception $e )
@@ -187,14 +257,15 @@ public function create() : ?string
 
     try
     {
+        $data = $view->param( 'item', [] );
+
         if( !isset( $view->item ) ) {
             $view->item = \Aimeos\MShop::create( $this->context(), 'mydomain' )->create();
         }
 
-        $data = $view->param( 'item', [] );
         $data['mydomain.siteid'] = $view->item->getSiteId();
 
-        $view->itemData = array_replace_recursive( $this->toArray( $view->item, true ), $data );
+        $view->itemData = array_replace_recursive( $this->toArray( $view->item ), $data );
         $view->itemBody = parent::create();
     }
     catch( \Exception $e )
@@ -332,9 +403,15 @@ public function get() : ?string
 
     try
     {
+        if( ( $id = $view->param( 'id' ) ) === null )
+        {
+            $msg = $this->context()->translate( 'admin', 'Required parameter "%1$s" is missing' );
+            throw new \Aimeos\Admin\JQAdm\Exception( sprintf( $msg, 'id' ) );
+        }
+
         $manager = \Aimeos\MShop::create( $this->context(), 'mydomain' );
 
-        $view->item = $manager->get( $this->require( 'id' ), ['text', /* ... */] );
+        $view->item = $manager->get( $id, $this->getDomains() );
         $view->itemData = $this->toArray( $view->item );
         $view->itemBody = parent::get();
     }
@@ -366,7 +443,7 @@ public function import() : ?string
     $context = $this->context();
     $fs = $context->fs( 'fs-import' );
     $site = $context->locale()->getSiteItem()->getCode();
-    $dir = $context->config()->get( 'controller/jobs/product/import/csv/location', 'product' );
+    $dir = $context->config()->get( 'controller/jobs/mydomain/import/csv/location', 'mydomain' );
 
     if( $fs instanceof \Aimeos\Base\Filesystem\DirIface && $fs->isDir( $dir . '/' . $site ) === false ) {
         $fs->mkdir( $dir . '/' . $site );
@@ -383,7 +460,7 @@ public function import() : ?string
         $fs->writes( $dir . '/' . $site . '/' . $filename, $file->getStream()->detach() );
     }
 
-    return $this->redirect( 'product', 'search', null, 'upload' );
+    return $this->redirect( 'mypanel', 'search', null, 'upload' );
 }
 ```
 
