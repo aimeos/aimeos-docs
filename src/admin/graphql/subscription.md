@@ -91,7 +91,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchSubscriptions(filter: "{\"==\": {\"subscription.period\":1}}") {
+      searchSubscriptions(filter: "{\\"==\\": {\\"subscription.period\\":1}}") {
         items {
           id
           siteid

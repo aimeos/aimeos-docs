@@ -158,7 +158,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchAttributes(filter: "{\"=~\": {\"attribute.code\":\"demo-\"}}") {
+      searchAttributes(filter: "{\\"=~\\": {\\"attribute.code\\":\\"demo-\\"}}") {
         items {
           id
           type

@@ -79,7 +79,7 @@ Response:
       "config": "{}",
       "status": 1,
       "icon": "logo.png",
-      "logo": "{200: \"logo.svg\"}",
+      "logo": "{200: \\"logo.svg\\"}",
       "theme": "default",
       "refid": "",
       "rating": "5.0",
@@ -100,7 +100,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchLocaleSites(filter: "{\"==\": {\"locale.site.status\":1}}") {
+      searchLocaleSites(filter: "{\\"==\\": {\\"locale.site.status\\":1}}") {
         items {
           id
           parentid
@@ -185,7 +185,7 @@ Response:
           "config": "{}",
           "status": 1,
           "icon": "logo.png",
-          "logo": "{200: \"logo.svg\"}",
+          "logo": "{200: \\"logo.svg\\"}",
           "theme": "default",
           "refid": "",
           "rating": "5.0",
@@ -204,7 +204,7 @@ Response:
           "config": "{}",
           "status": 1,
           "icon": "logo.png",
-          "logo": "{200: \"logo.svg\"}",
+          "logo": "{200: \\"logo.svg\\"}",
           "theme": "default",
           "refid": "",
           "rating": "0.0",

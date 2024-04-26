@@ -148,7 +148,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchSuppliers(filter: "{\"=~\": {\"supplier.code\":\"demo-\"}}") {
+      searchSuppliers(filter: "{\\"=~\\": {\\"supplier.code\\":\\"demo-\\"}}") {
         items {
           id
           siteid

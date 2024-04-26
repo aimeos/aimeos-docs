@@ -79,7 +79,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchStocks(filter: "{\"~=\": {\"stock.type\":\"default\"}}") {
+      searchStocks(filter: "{\\"~=\\": {\\"stock.type\\":\\"default\\"}}") {
         items {
           id
           siteid

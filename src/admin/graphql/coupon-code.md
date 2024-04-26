@@ -82,7 +82,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchCouponCodes(filter: "{\"==\": {\"coupon.code.count\":1000}}") {
+      searchCouponCodes(filter: "{\\"==\\": {\\"coupon.code.count\\":1000}}") {
         items {
           id
           siteid

@@ -202,7 +202,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchProducts(filter: "{\"=~\": {\"product.code\":\"demo-\"}}") {
+      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}") {
         items {
           id
           siteid

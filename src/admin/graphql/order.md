@@ -118,7 +118,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchOrders(filter: "{\"==\": {\"order.channel\":\"web\"}}") {
+      searchOrders(filter: "{\\"==\\": {\\"order.channel\\":\\"web\\"}}") {
         items {
           id
           siteid

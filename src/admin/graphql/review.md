@@ -91,7 +91,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchReviews(filter: "{\"=~\": {\"review.code\":\"demo-\"}}") {
+      searchReviews(filter: "{\\"=~\\": {\\"review.code\\":\\"demo-\\"}}") {
         items {
           id
           siteid

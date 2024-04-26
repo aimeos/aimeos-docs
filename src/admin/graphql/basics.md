@@ -300,7 +300,7 @@ To get all product items which are selections for example, you can use this quer
 === "GraphQL"
     ```graphql
     query {
-      searchProducts(filter: "{\"==\":{\"product.type\":\"select\"}}") {
+      searchProducts(filter: "{\\"==\\":{\\"product.type\\":\\"select\\"}}") {
         items {
           id
           type
@@ -374,7 +374,7 @@ To combine several conditions, you can combine two or more "compare" expressions
 === "GraphQL"
     ```graphql
     query {
-      searchProducts(filter: "{\"&&\":[{\"==\":{\"product.type\":\"select\"}},{\"=~\":{\"product.label\":\"demo\"}}]}") {
+      searchProducts(filter: "{\\"&&\\":[{\\"==\\":{\\"product.type\\":\\"select\\"}},{\\"=~\\":{\\"product.label\\":\\"demo\\"}}]}") {
         items {
           id
           type
@@ -436,7 +436,7 @@ The negation is a special case because it only accepts one "compare" condition w
 === "GraphQL"
     ```graphql
     query {
-      searchProducts(filter: "{\"!\":[{\"=~\":{\"product.code\":\"demo-s\"}}]}") {
+      searchProducts(filter: "{\\"!\\":[{\\"=~\\":{\\"product.code\\":\\"demo-s\\"}}]}") {
         items {
           id
           type
@@ -490,7 +490,7 @@ You can also create more complicated statements by nesting them like:
       # [&&][1][||][][==][product.datestart]=
       # [&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
 
-      searchProducts(filter: "{\"&&\":[{\"!\":[{\"=~\":{\"product.code\":\"demo-s\"}}]},{\"||\": [{\"==\": {\"product.datestart\": null}},{\">\": {\"product.datestart\": \"2000-01-01 00:00:00\"}}]}]}") {
+      searchProducts(filter: "{\\"&&\\":[{\\"!\\":[{\\"=~\\":{\\"product.code\\":\\"demo-s\\"}}]},{\\"||\\": [{\\"==\\": {\\"product.datestart\\": null}},{\\">\\": {\\"product.datestart\\": \\"2000-01-01 00:00:00\\"}}]}]}") {
         items {
           id
           type

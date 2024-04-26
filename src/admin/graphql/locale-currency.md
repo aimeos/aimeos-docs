@@ -67,7 +67,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchLocaleCurrencys(filter: "{\"==\": {\"locale.currency.status\":1}}") {
+      searchLocaleCurrencys(filter: "{\\"==\\": {\\"locale.currency.status\\":1}}") {
         items {
           id
           label

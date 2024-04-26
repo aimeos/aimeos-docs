@@ -85,7 +85,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchTexts(filter: "{\"=~\": {\"text.label\":\"Demo\"}}") {
+      searchTexts(filter: "{\\"=~\\": {\\"text.label\\":\\"Demo\\"}}") {
         items {
           id
           siteid

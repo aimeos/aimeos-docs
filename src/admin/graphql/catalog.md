@@ -70,7 +70,7 @@ Response:
       "code": "home",
       "label": "Home",
       "url": "Home",
-      "config": "{\"css-class\":\"megamenu\"}",
+      "config": "{\\"css-class\\":\\"megamenu\\"}",
       "status": 1,
       "target": "",
       "mtime": "2022-06-16 10:03:47",
@@ -308,7 +308,7 @@ Response:
       "code": "home",
       "label": "Home",
       "url": "Home",
-      "config": "{\"css-class\":\"megamenu\"}",
+      "config": "{\\"css-class\\":\\"megamenu\\"}",
       "status": 1,
       "target": "",
       "mtime": "2022-06-16 10:03:47",
@@ -326,7 +326,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchCatalogs(filter: "{\"=~\": {\"catalog.code\":\"demo-\"}}") {
+      searchCatalogs(filter: "{\\"=~\\": {\\"catalog.code\\":\\"demo-\\"}}") {
         items {
           id
           siteid

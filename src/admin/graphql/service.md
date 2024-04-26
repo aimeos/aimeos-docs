@@ -76,7 +76,7 @@ Response:
       "provider": "PaypalPlus",
       "datestart": null,
       "dateend": null,
-      "config": "{\"authorize\":0,\"clientid\":0,\"secret\":0,\"testmode\":0}",
+      "config": "{\\"authorize\\":0,\\"clientid\\":0,\\"secret\\":0,\\"testmode\\":0}",
       "position": "0",
       "status": 1,
       "mtime": "2022-06-08 16:11:10",
@@ -160,7 +160,7 @@ Response:
       "provider": "PaypalPlus",
       "datestart": null,
       "dateend": null,
-      "config": "{\"authorize\":0,\"clientid\":0,\"secret\":0,\"testmode\":0}",
+      "config": "{\\"authorize\\":0,\\"clientid\\":0,\\"secret\\":0,\\"testmode\\":0}",
       "position": "0",
       "status": 1,
       "mtime": "2022-06-08 16:11:10",
@@ -178,7 +178,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchServices(filter: "{\"=~\": {\"service.code\":\"demo-\"}}") {
+      searchServices(filter: "{\\"=~\\": {\\"service.code\\":\\"demo-\\"}}") {
         items {
           id
           siteid

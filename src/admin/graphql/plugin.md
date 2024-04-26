@@ -66,7 +66,7 @@ Response:
       "provider": "Percent",
       "datestart": null,
       "dateend": null,
-      "config": "{\"last-plugin\":0,\"percent\":10}",
+      "config": "{\\"last-plugin\\":0,\\"percent\\":10}",
       "position": 0,
       "status": 1,
       "mtime": "2022-12-22 09:51:38",
@@ -84,7 +84,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchPlugins(filter: "{\"~=\": {\"plugin.label\":\"Product\"}}") {
+      searchPlugins(filter: "{\\"~=\\": {\\"plugin.label\\":\\"Product\\"}}") {
         items {
           id
           siteid
@@ -157,7 +157,7 @@ Response:
           "provider": "Percent",
           "datestart": null,
           "dateend": null,
-          "config": "{\"last-plugin\":0,\"percent\":10}",
+          "config": "{\\"last-plugin\\":0,\\"percent\\":10}",
           "position": 0,
           "status": 1,
           "mtime": "2022-12-22 09:51:38",
@@ -263,7 +263,7 @@ Response:
         type: "order"
         label: "Test plugin"
         provider: "Shipping"
-        config: "{\"threshold\": "50.00"}"
+        config: "{\\"threshold\\": "50.00"}"
         status: 0
       }) {
         id
@@ -278,7 +278,7 @@ Response:
         type: "order"
         label: "Test plugin"
         provider: "Shipping"
-        config: "{\"threshold\": "50.00"}"
+        config: "{\\"threshold\\": "50.00"}"
         status: 0
       }) {
         id
@@ -320,7 +320,7 @@ Response:
         type: "order"
         label: "Test plugin 2"
         provider: "Shipping"
-        config: "{\"threshold\": "25.00"}"
+        config: "{\\"threshold\\": "25.00"}"
         status: 0
       },{
         type: "order"
@@ -341,7 +341,7 @@ Response:
         type: "order"
         label: "Test plugin 2"
         provider: "Shipping"
-        config: "{\"threshold\": "25.00"}"
+        config: "{\\"threshold\\": "25.00"}"
         status: 0
       },{
         type: "order"
