@@ -149,15 +149,18 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchSuppliers(filter: "{\"=~\": {\"supplier.code\":\"demo-\"}}") {
-        id
-        siteid
-        code
-        label
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          code
+          label
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -170,15 +173,18 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchSuppliers(filter: ` + fstr + `) {
-        id
-        siteid
-        code
-        label
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          code
+          label
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -201,30 +207,33 @@ Response:
 ```json
 {
   "data": {
-    "searchSuppliers": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "code": "demo-test1",
-        "label": "Test supplier 1",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:04",
-        "ctime": "2022-12-01 11:59:04",
-        "editor": "core"
-      },
-      {
-        "id": "2",
-        "siteid": "1.",
-        "code": "demo-test2",
-        "label": "Test supplier 2",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:04",
-        "ctime": "2022-12-01 11:59:04",
-        "editor": "core"
-      }
-    ]
+    "searchSuppliers": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "code": "demo-test1",
+          "label": "Test supplier 1",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:04",
+          "ctime": "2022-12-01 11:59:04",
+          "editor": "core"
+        },
+        {
+          "id": "2",
+          "siteid": "1.",
+          "code": "demo-test2",
+          "label": "Test supplier 2",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:04",
+          "ctime": "2022-12-01 11:59:04",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

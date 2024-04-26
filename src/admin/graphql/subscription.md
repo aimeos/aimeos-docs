@@ -92,20 +92,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchSubscriptions(filter: "{\"==\": {\"subscription.period\":1}}") {
-        id
-        siteid
-        orderid
-        ordprodid
-        productid
-        datenext
-        dateend
-        interval
-        reason
-        period
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          orderid
+          ordprodid
+          productid
+          datenext
+          dateend
+          interval
+          reason
+          period
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -118,20 +121,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchSubscriptions(filter: ` + fstr + `) {
-        id
-        siteid
-        orderid
-        ordprodid
-        productid
-        datenext
-        dateend
-        interval
-        reason
-        period
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          orderid
+          ordprodid
+          productid
+          datenext
+          dateend
+          interval
+          reason
+          period
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -154,40 +160,42 @@ Response:
 ```json
 {
   "data": {
-    "searchSubscriptions": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "orderid": 1,
-        "ordprodid": 1,
-        "productid": "1",
-        "datenext": "2022-06-12",
-        "dateend": "2022-06-13",
-        "interval": "P1M",
-        "reason": -1,
-        "period": 1,
-        "status": 0,
-        "mtime": "2022-06-15 08:27:50",
-        "ctime": "2022-06-13 08:37:19",
-        "editor": "aimeos@aimeos.org"
-      },
-      {
-        "id": "2",
-        "siteid": "1.",
-        "orderid": 2,
-        "ordprodid": 3,
-        "productid": "2",
-        "datenext": null,
-        "dateend": null,
-        "interval": "P0Y1M0W0D",
-        "reason": null,
-        "period": 1,
-        "status": 1,
-        "mtime": "2022-08-03 11:58:34",
-        "ctime": "2022-08-03 11:58:34",
-        "editor": "aimeos@aimeos.org"
-      }
-    ]
+    "searchSubscriptions": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "orderid": 1,
+          "ordprodid": 1,
+          "productid": "1",
+          "datenext": "2022-06-12",
+          "dateend": "2022-06-13",
+          "interval": "P1M",
+          "reason": -1,
+          "period": 1,
+          "status": 0,
+          "mtime": "2022-06-15 08:27:50",
+          "ctime": "2022-06-13 08:37:19",
+          "editor": "aimeos@aimeos.org"
+        },
+        {
+          "id": "2",
+          "siteid": "1.",
+          "orderid": 2,
+          "ordprodid": 3,
+          "productid": "2",
+          "datenext": null,
+          "dateend": null,
+          "interval": "P0Y1M0W0D",
+          "reason": null,
+          "period": 1,
+          "status": 1,
+          "mtime": "2022-08-03 11:58:34",
+          "ctime": "2022-08-03 11:58:34",
+          "editor": "aimeos@aimeos.org"
+        }
+      ],
+      "total": 2
   }
 }
 ```

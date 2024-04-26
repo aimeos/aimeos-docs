@@ -68,12 +68,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchLocaleLanguages(filter: "{\"==\": {\"locale.language.status\":1}}") {
-        id
-        label
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          label
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -86,12 +89,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchLocaleLanguages(filter: ` + fstr + `) {
-        id
-        label
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          label
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -114,24 +120,27 @@ Response:
 ```json
 {
   "data": {
-    "searchLocaleLanguages": [
-      {
-        "id": "de",
-        "label": "German",
-        "status": 1,
-        "mtime": "2022-05-28 06:26:33",
-        "ctime": "2022-05-28 06:26:33",
-        "editor": "setup"
-      },
-      {
-        "id": "en",
-        "label": "English",
-        "status": 1,
-        "mtime": "2022-05-28 06:26:33",
-        "ctime": "2022-05-28 06:26:33",
-        "editor": "setup"
-      }
-    ]
+    "searchLocaleLanguages": {
+      "items" : [
+        {
+          "id": "de",
+          "label": "German",
+          "status": 1,
+          "mtime": "2022-05-28 06:26:33",
+          "ctime": "2022-05-28 06:26:33",
+          "editor": "setup"
+        },
+        {
+          "id": "en",
+          "label": "English",
+          "status": 1,
+          "mtime": "2022-05-28 06:26:33",
+          "ctime": "2022-05-28 06:26:33",
+          "editor": "setup"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

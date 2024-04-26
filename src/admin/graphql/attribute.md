@@ -159,17 +159,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchAttributes(filter: "{\"=~\": {\"attribute.code\":\"demo-\"}}") {
-        id
-        type
-        siteid
-        domain
-        code
-        label
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          type
+          siteid
+          domain
+          code
+          label
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -182,17 +185,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchAttributes(filter: ` + fstr + `) {
-        id
-        type
-        siteid
-        domain
-        code
-        label
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          type
+          siteid
+          domain
+          code
+          label
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -215,32 +221,35 @@ Response:
 ```json
 {
   "data": {
-    "searchAttributes": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "domain": "product",
-        "code": "demo-black",
-        "label": "Demo: Black",
-        "position": 1,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:05",
-        "ctime": "2022-12-01 11:59:05",
-        "editor": "core"
-      },
-      {
-        "id": "2",
-        "siteid": "1.",
-        "domain": "product",
-        "code": "demo-blue",
-        "label": "Demo: Blue",
-        "position": 2,
-        "status": 1,
-        "mtime": "2022-12-01 11:59:05",
-        "ctime": "2022-12-01 11:59:05",
-        "editor": "core"
-      }
-    ]
+    "searchAttributes": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "domain": "product",
+          "code": "demo-black",
+          "label": "Demo: Black",
+          "position": 1,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:05",
+          "ctime": "2022-12-01 11:59:05",
+          "editor": "core"
+        },
+        {
+          "id": "2",
+          "siteid": "1.",
+          "domain": "product",
+          "code": "demo-blue",
+          "label": "Demo: Blue",
+          "position": 2,
+          "status": 1,
+          "mtime": "2022-12-01 11:59:05",
+          "ctime": "2022-12-01 11:59:05",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

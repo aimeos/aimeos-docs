@@ -8,14 +8,24 @@ This article contains all actions for retrieving and managing orders.
       getOrder(id: "1") {
         id
         siteid
-        baseid
+        sitecode
+        channel
         invoiceno
         relatedid
-        channel
+        languageid
+        currencyid
+        price
+        costs
+        rebate
+        taxflag
+        taxvalue
         datepayment
         datedelivery
         statusdelivery
         statuspayment
+        customerid
+        customerref
+        comment
         mtime
         ctime
         editor
@@ -29,14 +39,24 @@ This article contains all actions for retrieving and managing orders.
       getOrder(id: "1") {
         id
         siteid
-        baseid
+        sitecode
+        channel
         invoiceno
         relatedid
-        channel
+        languageid
+        currencyid
+        price
+        costs
+        rebate
+        taxflag
+        taxvalue
         datepayment
         datedelivery
         statusdelivery
         statuspayment
+        customerid
+        customerref
+        comment
         mtime
         ctime
         editor
@@ -65,14 +85,24 @@ Response:
     "getOrder": {
       "id": "1",
       "siteid": "1.",
-      "baseid": 1,
-      "invoiceno": "",
-      "relatedid": "123",
+      "sitecode": "default",
       "channel": "web",
+      "invoiceno": "INV-123",
+      "relatedid": "123",
+      "languageid": "de",
+      "currencyid": "EUR",
+      "price": "100.00",
+      "costs": "5.00",
+      "rebate": "5.00",
+      "taxflag": false,
+      "taxvalue": "10.00",
       "datepayment": "2022-06-12 00:00:00",
       "datedelivery": "2022-06-13 00:00:00",
       "statusdelivery": 0,
       "statuspayment": 1,
+      "customerid": "456",
+      "customerref": "REF-987",
+      "comment": "Test comment",
       "mtime": "2022-06-13 09:03:50",
       "ctime": "2022-06-01 08:55:25",
       "editor": "aimeos@aimeos.org"
@@ -89,19 +119,32 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchOrders(filter: "{\"==\": {\"order.channel\":\"web\"}}") {
-        id
-        siteid
-        baseid
-        invoiceno
-        relatedid
-        channel
-        datepayment
-        datedelivery
-        statusdelivery
-        statuspayment
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          sitecode
+          channel
+          invoiceno
+          relatedid
+          languageid
+          currencyid
+          price
+          costs
+          rebate
+          taxflag
+          taxvalue
+          datepayment
+          datedelivery
+          statusdelivery
+          statuspayment
+          customerid
+          customerref
+          comment
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -114,19 +157,32 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchOrders(filter: ` + fstr + `) {
-        id
-        siteid
-        baseid
-        invoiceno
-        relatedid
-        channel
-        datepayment
-        datedelivery
-        statusdelivery
-        statuspayment
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          sitecode
+          channel
+          invoiceno
+          relatedid
+          languageid
+          currencyid
+          price
+          costs
+          rebate
+          taxflag
+          taxvalue
+          datepayment
+          datedelivery
+          statusdelivery
+          statuspayment
+          customerid
+          customerref
+          comment
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -149,41 +205,61 @@ Response:
 ```json
 {
   "data": {
-    "searchOrders": [
-{
-  "data": {
-    "searchOrders": [
-      {
-        "id": "2",
-        "siteid": "1.",
-        "baseid": 2,
-        "invoiceno": "INV-1002",
-        "relatedid": "",
-        "channel": "web",
-        "datepayment": null,
-        "datedelivery": null,
-        "statusdelivery": -1,
-        "statuspayment": -1,
-        "mtime": "2022-12-05 15:21:21",
-        "ctime": "2022-12-05 15:21:21",
-        "editor": "aimeos@aimeos.org"
-      },
-      {
-        "id": "3",
-        "siteid": "1.",
-        "baseid": 3,
-        "invoiceno": "INV-1003",
-        "relatedid": "",
-        "channel": "web",
-        "datepayment": "2022-12-05 18:25:28",
-        "datedelivery": null,
-        "statusdelivery": -1,
-        "statuspayment": 5,
-        "mtime": "2022-12-05 18:25:28",
-        "ctime": "2022-12-05 18:25:28",
-        "editor": "aimeos@aimeos.org"
-      }
-    ]
+    "searchOrders": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "sitecode": "default",
+          "channel": "web",
+          "invoiceno": "INV-123",
+          "relatedid": "123",
+          "languageid": "de",
+          "currencyid": "EUR",
+          "price": "100.00",
+          "costs": "5.00",
+          "rebate": "5.00",
+          "taxflag": false,
+          "taxvalue": "10.00",
+          "datepayment": "2022-06-12 00:00:00",
+          "datedelivery": "2022-06-13 00:00:00",
+          "statusdelivery": 0,
+          "statuspayment": 1,
+          "customerid": "456",
+          "customerref": "REF-987",
+          "comment": "Test comment",
+          "mtime": "2022-06-13 09:03:50",
+          "ctime": "2022-06-01 08:55:25",
+          "editor": "aimeos@aimeos.org"
+        },
+        {
+          "id": "3",
+          "siteid": "1.",
+          "sitecode": "default",
+          "channel": "web",
+          "invoiceno": "",
+          "relatedid": "",
+          "languageid": "de",
+          "currencyid": "EUR",
+          "price": "50.00",
+          "costs": "0.00",
+          "rebate": "0.00",
+          "taxflag": false,
+          "taxvalue": "5.00",
+          "datepayment": "2022-06-15 00:00:00",
+          "datedelivery": "2022-06-17 00:00:00",
+          "statusdelivery": 0,
+          "statuspayment": 1,
+          "customerid": "345",
+          "customerref": "",
+          "comment": "Test",
+          "mtime": "2022-06-13 09:03:50",
+          "ctime": "2022-06-01 08:55:25",
+          "editor": "aimeos@aimeos.org"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```
@@ -194,7 +270,6 @@ Response:
     ```graphql
     mutation {
       saveOrder(input: {
-        baseid: 4
         channel: "web"
         statuspayment: 6
       }) {
@@ -207,7 +282,6 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveOrder(input: {
-        baseid: 4
         channel: "web"
         statuspayment: 6
       }
@@ -245,11 +319,9 @@ Response:
     ```graphql
     mutation {
       saveOrders(input: [{
-        baseid: 5
         channel: "web"
         statuspayment: -1
       },{
-        baseid: 6
         channel: "web"
         statuspayment: 5
       }]) {
@@ -262,11 +334,9 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveOrders(input: [{
-        baseid: 5
         channel: "web"
         statuspayment: -1
       },{
-        baseid: 6
         channel: "web"
         statuspayment: 5
       }]) {

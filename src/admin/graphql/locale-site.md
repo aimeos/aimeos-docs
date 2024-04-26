@@ -101,24 +101,26 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchLocaleSites(filter: "{\"==\": {\"locale.site.status\":1}}") {
-        id
-        parentid
-        code
-        level
-        label
-        config
-        status
-        icon
-        logo
-        theme
-        refid
-        rating
-        ratings
-        hasChildren
-        mtime
-        ctime
-        editor
-      }
+        items {
+          id
+          parentid
+          code
+          level
+          label
+          config
+          status
+          icon
+          logo
+          theme
+          refid
+          rating
+          ratings
+          hasChildren
+          mtime
+          ctime
+          editor
+        }
+        total
     }
     ```
 === "Javascript"
@@ -130,23 +132,26 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchLocaleSites(filter: ` + fstr + `) {
-        id
-        parentid
-        code
-        level
-        label
-        config
-        status
-        icon
-        logo
-        theme
-        refid
-        rating
-        ratings
-        hasChildren
-        mtime
-        ctime
-        editor
+        items {
+          id
+          parentid
+          code
+          level
+          label
+          config
+          status
+          icon
+          logo
+          theme
+          refid
+          rating
+          ratings
+          hasChildren
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -169,46 +174,49 @@ Response:
 ```json
 {
   "data": {
-    "searchLocaleSites": [
-      {
-        "id": "1",
-        "parentid": "0",
-        "code": "default",
-        "level": 0,
-        "label": "Aimeos",
-        "config": "{}",
-        "status": 1,
-        "icon": "logo.png",
-        "logo": "{200: \"logo.svg\"}",
-        "theme": "default",
-        "refid": "",
-        "rating": "5.0",
-        "ratings": 1,
-        "hasChildren": false,
-        "mtime": "2022-05-28 06:26:33",
-        "ctime": "2022-05-28 06:26:33",
-        "editor": "setup"
-      },
-      {
-        "id": "1",
-        "parentid": "0",
-        "code": "asite",
-        "level": 0,
-        "label": "Another site",
-        "config": "{}",
-        "status": 1,
-        "icon": "logo.png",
-        "logo": "{200: \"logo.svg\"}",
-        "theme": "default",
-        "refid": "",
-        "rating": "0.0",
-        "ratings": 0,
-        "hasChildren": false,
-        "mtime": "2022-05-28 06:26:33",
-        "ctime": "2022-05-28 06:26:33",
-        "editor": "setup"
-      }
-    ]
+    "searchLocaleSites": {
+      "items": [
+        {
+          "id": "1",
+          "parentid": "0",
+          "code": "default",
+          "level": 0,
+          "label": "Aimeos",
+          "config": "{}",
+          "status": 1,
+          "icon": "logo.png",
+          "logo": "{200: \"logo.svg\"}",
+          "theme": "default",
+          "refid": "",
+          "rating": "5.0",
+          "ratings": 1,
+          "hasChildren": false,
+          "mtime": "2022-05-28 06:26:33",
+          "ctime": "2022-05-28 06:26:33",
+          "editor": "setup"
+        },
+        {
+          "id": "1",
+          "parentid": "0",
+          "code": "asite",
+          "level": 0,
+          "label": "Another site",
+          "config": "{}",
+          "status": 1,
+          "icon": "logo.png",
+          "logo": "{200: \"logo.svg\"}",
+          "theme": "default",
+          "refid": "",
+          "rating": "0.0",
+          "ratings": 0,
+          "hasChildren": false,
+          "mtime": "2022-05-28 06:26:33",
+          "ctime": "2022-05-28 06:26:33",
+          "editor": "setup"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

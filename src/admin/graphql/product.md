@@ -203,24 +203,27 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchProducts(filter: "{\"=~\": {\"product.code\":\"demo-\"}}") {
-        id
-        siteid
-        type
-        code
-        label
-        url
-        dataset
-        datestart
-        dateend
-        config
-        instock
-        scale
-        status
-        target
-        boost
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          code
+          label
+          url
+          dataset
+          datestart
+          dateend
+          config
+          instock
+          scale
+          status
+          target
+          boost
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -233,24 +236,27 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: ` + fstr + `) {
-        id
-        siteid
-        type
-        code
-        label
-        url
-        dataset
-        datestart
-        dateend
-        config
-        instock
-        scale
-        status
-        target
-        boost
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          code
+          label
+          url
+          dataset
+          datestart
+          dateend
+          config
+          instock
+          scale
+          status
+          target
+          boost
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -273,48 +279,51 @@ Response:
 ```json
 {
   "data": {
-    "searchProducts": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "type": "default",
-        "code": "demo-article",
-        "label": "Demo article",
-        "url": "demo-article",
-        "dataset": null,
-        "datestart": null,
-        "dateend": null,
-        "config": "{}",
-        "instock": null,
-        "scale": 1,
-        "status": 1,
-        "target": null,
-        "boost": 1,
-        "mtime": "2023-01-13 11:25:51",
-        "ctime": "2022-12-01 11:59:00",
-        "editor": "aimeos@aimeos.org"
-      },
-      {
-        "id": "2",
-        "siteid": "1.",
-        "type": "default",
-        "code": "demo-selection-article-1",
-        "label": "Demo variant article 1",
-        "url": "demo-variant-article-1",
-        "dataset": null,
-        "datestart": null,
-        "dateend": null,
-        "config": "{}",
-        "instock": null,
-        "scale": 1,
-        "status": 1,
-        "target": null,
-        "boost": 1,
-        "mtime": "2022-12-01 11:59:05",
-        "ctime": "2022-12-01 11:59:05",
-        "editor": "core"
-      }
-    ]
+    "searchProducts": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "type": "default",
+          "code": "demo-article",
+          "label": "Demo article",
+          "url": "demo-article",
+          "dataset": null,
+          "datestart": null,
+          "dateend": null,
+          "config": "{}",
+          "instock": null,
+          "scale": 1,
+          "status": 1,
+          "target": null,
+          "boost": 1,
+          "mtime": "2023-01-13 11:25:51",
+          "ctime": "2022-12-01 11:59:00",
+          "editor": "aimeos@aimeos.org"
+        },
+        {
+          "id": "2",
+          "siteid": "1.",
+          "type": "default",
+          "code": "demo-selection-article-1",
+          "label": "Demo variant article 1",
+          "url": "demo-variant-article-1",
+          "dataset": null,
+          "datestart": null,
+          "dateend": null,
+          "config": "{}",
+          "instock": null,
+          "scale": 1,
+          "status": 1,
+          "target": null,
+          "boost": 1,
+          "mtime": "2022-12-01 11:59:05",
+          "ctime": "2022-12-01 11:59:05",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

@@ -39,10 +39,13 @@ Each of these methods requires different parameters:
     ```graphql
     query {
       searchProducts(filter: "{}") {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -58,10 +61,13 @@ To retrieve a list of products using code like this:
 const body = JSON.stringify({'query':
 `query {
   searchProducts(filter: "{}") {
-    id
-    type
-    code
-    label
+    items {
+      id
+      type
+      code
+      label
+    }
+    total
   }
 }`});
 
@@ -84,20 +90,23 @@ The response is a JSON data structure with the requested data:
 ```json
 {
   "data": {
-    "searchProducts": [
-      {
-        "id": "1",
-        "type": "default",
-        "code": "demo-article",
-        "label": "Demo article",
-      },
-      {
-        "id": "2",
-        "type": "default",
-        "code": "demo-selection-article-1",
-        "label": "Demo variant article 1",
-      }
-    ]
+    "searchProducts": {
+      "items": [
+        {
+          "id": "1",
+          "type": "default",
+          "code": "demo-article",
+          "label": "Demo article",
+        },
+        {
+          "id": "2",
+          "type": "default",
+          "code": "demo-selection-article-1",
+          "label": "Demo variant article 1",
+        }
+      ]
+    },
+    "total": 2
   }
 }
 ```
@@ -117,10 +126,13 @@ query {
     label
   }
   searchProducts(filter: "{}") {
-    id
-    type
-    code
-    label
+    items {
+      id
+      type
+      code
+      label
+    }
+    total
   }
 }
 ```
@@ -135,20 +147,23 @@ The result is a batched query with a response like this one:
       "code": "demo@example.com",
       "label": "Test User (Test company)"
     },
-    "searchProducts": [
-      {
-        "id": "1",
-        "type": "default",
-        "code": "demo-article",
-        "label": "Demo article"
-      },
-      {
-        "id": "2",
-        "type": "default",
-        "code": "demo-selection-article-1",
-        "label": "Demo variant article 1"
-      }
-    ]
+    "searchProducts": {
+      "items": [
+        {
+          "id": "1",
+          "type": "default",
+          "code": "demo-article",
+          "label": "Demo article"
+        },
+        {
+          "id": "2",
+          "type": "default",
+          "code": "demo-selection-article-1",
+          "label": "Demo variant article 1"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```
@@ -286,10 +301,13 @@ To get all product items which are selections for example, you can use this quer
     ```graphql
     query {
       searchProducts(filter: "{\"==\":{\"product.type\":\"select\"}}") {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -301,10 +319,13 @@ To get all product items which are selections for example, you can use this quer
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -354,10 +375,13 @@ To combine several conditions, you can combine two or more "compare" expressions
     ```graphql
     query {
       searchProducts(filter: "{\"&&\":[{\"==\":{\"product.type\":\"select\"}},{\"=~\":{\"product.label\":\"demo\"}}]}") {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -372,10 +396,13 @@ To combine several conditions, you can combine two or more "compare" expressions
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -410,10 +437,13 @@ The negation is a special case because it only accepts one "compare" condition w
     ```graphql
     query {
       searchProducts(filter: "{\"!\":[{\"=~\":{\"product.code\":\"demo-s\"}}]}") {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -427,10 +457,13 @@ The negation is a special case because it only accepts one "compare" condition w
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -458,10 +491,13 @@ You can also create more complicated statements by nesting them like:
       # [&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
 
       searchProducts(filter: "{\"&&\":[{\"!\":[{\"=~\":{\"product.code\":\"demo-s\"}}]},{\"||\": [{\"==\": {\"product.datestart\": null}},{\">\": {\"product.datestart\": \"2000-01-01 00:00:00\"}}]}]}") {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -485,10 +521,13 @@ You can also create more complicated statements by nesting them like:
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -516,10 +555,13 @@ You can use the **sort** parameter for all **search*()** query requests to pass 
     ```graphql
     query {
       searchProducts(filter: "{}", sort: ["product.label"]) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -528,10 +570,13 @@ You can use the **sort** parameter for all **search*()** query requests to pass 
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: "{}", sort: ["product.label"]) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -555,10 +600,13 @@ This will return the results ordered by the product label. You can also tell the
     ```graphql
     query {
       searchProducts(filter: "{}", sort: ["-product.label"]) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -567,10 +615,13 @@ This will return the results ordered by the product label. You can also tell the
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: "{}", sort: ["-product.label"]) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -594,10 +645,13 @@ Sorting by several keys is also possible if they are separated by a comma:
     ```graphql
     query {
       searchProducts(filter: "{}", sort: ["-product.status", "product.id"]) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -606,10 +660,13 @@ Sorting by several keys is also possible if they are separated by a comma:
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: "{}", sort: ["-product.status", "product.id"]) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -637,10 +694,13 @@ By default, only the first 100 items are returned if nothing else is specified. 
     ```graphql
     query {
       searchProducts(filter: "{}", offset: 10, limit: 5) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }
     ```
@@ -649,10 +709,13 @@ By default, only the first 100 items are returned if nothing else is specified. 
     const body = JSON.stringify({'query':
     `query {
       searchProducts(filter: "{}", offset: 10, limit: 5) {
-        id
-        type
-        code
-        label
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
       }
     }`});
 
@@ -695,32 +758,35 @@ The GraphQL API uses the parameter "include" to specify the related resources:
     ```graphql
     query {
       searchProducts(filter: "{}", include: ["product/text"]) {
-        id
-        type
-        code
-        label
-        lists {
-          text(listtype: "default", type: "name") {
-            id
-            siteid
-            parentid
-            refid
-            domain
-            type
-            config
-            datestart
-            dateend
-            status
-            ctime
-            mtime
-            editor
-            item {
-              type
+        items {
+          id
+          type
+          code
+          label
+          lists {
+            text(listtype: "default", type: "name") {
+              id
+              siteid
+              parentid
+              refid
               domain
-              label
+              type
+              config
+              datestart
+              dateend
+              status
+              ctime
+              mtime
+              editor
+              item {
+                type
+                domain
+                label
+              }
             }
           }
         }
+        total
       }
     }
     ```
@@ -730,32 +796,35 @@ The GraphQL API uses the parameter "include" to specify the related resources:
     `query {
     query {
       searchProducts(filter: "{}", include: ["product/text"]) {
-        id
-        type
-        code
-        label
-        lists {
-          text(listtype: "default", type: "name") {
-            id
-            siteid
-            parentid
-            refid
-            domain
-            type
-            config
-            datestart
-            dateend
-            status
-            ctime
-            mtime
-            editor
-            item {
-              type
+        items {
+          id
+          type
+          code
+          label
+          lists {
+            text(listtype: "default", type: "name") {
+              id
+              siteid
+              parentid
+              refid
               domain
-              label
+              type
+              config
+              datestart
+              dateend
+              status
+              ctime
+              mtime
+              editor
+              item {
+                type
+                domain
+                label
+              }
             }
           }
         }
+        total
       }
     }`});
 
@@ -778,58 +847,62 @@ This returns the product or products as well as the attributes associated with t
 ```json
 {
   "data": {
-    "searchProducts": [
-      {
-        "id": "118",
-        "type": "select",
-        "code": "demo-selection-article",
-        "label": "Demo selection article",
-        "lists": {
-          "text": [
-            {
-              "id": "1442",
-              "siteid": "1.",
-              "parentid": 118,
-              "refid": "1689",
-              "domain": "text",
-              "type": "default",
-              "config": "{}",
-              "datestart": null,
-              "dateend": null,
-              "status": 1,
-              "ctime": "2022-12-01 11:59:05",
-              "mtime": "2022-12-01 11:59:05",
-              "editor": "core",
-              "item": {
-                "type": "name",
-                "domain": "product",
-                "label": "Demo name/de: Demoartikel mit Auswahl"
+    "searchProducts": {
+      "items": [
+        {
+          "id": "118",
+          "type": "select",
+          "code": "demo-selection-article",
+          "label": "Demo selection article",
+          "lists": {
+            "text": [
+              {
+                "id": "1442",
+                "siteid": "1.",
+                "parentid": 118,
+                "refid": "1689",
+                "domain": "text",
+                "type": "default",
+                "config": "{}",
+                "datestart": null,
+                "dateend": null,
+                "status": 1,
+                "ctime": "2022-12-01 11:59:05",
+                "mtime": "2022-12-01 11:59:05",
+                "editor": "core",
+                "item": {
+                  "type": "name",
+                  "domain": "product",
+                  "label": "Demo name/de: Demoartikel mit Auswahl"
+                }
+              },
+              {
+                "id": "1446",
+                "siteid": "1.",
+                "parentid": 118,
+                "refid": "1693",
+                "domain": "text",
+                "type": "default",
+                "config": "{}",
+                "datestart": null,
+                "dateend": null,
+                "status": 1,
+                "ctime": "2022-12-01 11:59:05",
+                "mtime": "2022-12-01 11:59:05",
+                "editor": "core",
+                "item": {
+                  "type": "name",
+                  "domain": "product",
+                  "label": "Demo name/en: Demo selection article"
+                }
               }
-            },
-            {
-              "id": "1446",
-              "siteid": "1.",
-              "parentid": 118,
-              "refid": "1693",
-              "domain": "text",
-              "type": "default",
-              "config": "{}",
-              "datestart": null,
-              "dateend": null,
-              "status": 1,
-              "ctime": "2022-12-01 11:59:05",
-              "mtime": "2022-12-01 11:59:05",
-              "editor": "core",
-              "item": {
-                "type": "name",
-                "domain": "product",
-                "label": "Demo name/en: Demo selection article"
-              }
-            }
-          ]
+            ]
+          }
         }
-      }
-    ]
+      ],
+      "total": 1
+    }
+  }
 }
 ```
 
@@ -881,19 +954,22 @@ Fetching related items does also work for items from the same domain that have a
     ```graphql
     query {
       searchProducts(filter: "{}", include: ["product/property"]) {
-        id
-        label
-        property(type: "package-weight") {
-            id
-            siteid
-            parentid
-            type
-            languageid
-            value
-            ctime
-            mtime
-            editor
+        items {
+          id
+          label
+          property(type: "package-weight") {
+              id
+              siteid
+              parentid
+              type
+              languageid
+              value
+              ctime
+              mtime
+              editor
+          }
         }
+        total
       }
     }
     ```
@@ -903,19 +979,22 @@ Fetching related items does also work for items from the same domain that have a
     `query {
     query {
       searchProducts(filter: "{}", include: ["product/property"]) {
-        id
-        label
-        property(type: "package-weight") {
-            id
-            siteid
-            parentid
-            type
-            languageid
-            value
-            ctime
-            mtime
-            editor
+        items {
+          id
+          label
+          property(type: "package-weight") {
+              id
+              siteid
+              parentid
+              type
+              languageid
+              value
+              ctime
+              mtime
+              editor
+          }
         }
+        total
       }
     }`});
 
@@ -938,25 +1017,28 @@ Then, the properties directly attached to the products will be returned:
 ```json
 {
   "data": {
-    "searchProducts": [
-      {
-        "id": "113",
-        "label": "Demo article",
-        "property": [
-          {
-            "id": "40",
-            "siteid": "1.",
-            "parentid": 113,
-            "type": "package-weight",
-            "languageid": null,
-            "value": "2.5",
-            "ctime": "2022-12-01 11:59:05",
-            "mtime": "2022-12-01 11:59:05",
-            "editor": "core"
-          }
-        ]
-      }
-    ]
+    "searchProducts": {
+      "items": [
+        {
+          "id": "113",
+          "label": "Demo article",
+          "property": [
+            {
+              "id": "40",
+              "siteid": "1.",
+              "parentid": 113,
+              "type": "package-weight",
+              "languageid": null,
+              "value": "2.5",
+              "ctime": "2022-12-01 11:59:05",
+              "mtime": "2022-12-01 11:59:05",
+              "editor": "core"
+            }
+          ]
+        }
+      ],
+      "total": 1
+    }
   }
 }
 ```

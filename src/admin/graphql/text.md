@@ -86,17 +86,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchTexts(filter: "{\"=~\": {\"text.label\":\"Demo\"}}") {
-        id
-        siteid
-        type
-        domain
-        languageid
-        label
-        content
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          domain
+          languageid
+          label
+          content
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -109,17 +112,20 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchTexts(filter: ` + fstr + `) {
-        id
-        siteid
-        type
-        domain
-        languageid
-        label
-        content
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          domain
+          languageid
+          label
+          content
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -142,34 +148,37 @@ Response:
 ```json
 {
   "data": {
-    "searchTexts": [
-      {
-        "id": "21",
-        "siteid": "1.",
-        "type": "name",
-        "domain": "supplier",
-        "languageid": "en",
-        "label": "Demo name/en: Demo supplier",
-        "content": "Demo supplier",
-        "status": 1,
-        "mtime": "2022-05-28 06:26:38",
-        "ctime": "2022-05-28 06:26:38",
-        "editor": "core:setup"
-      },
-      {
-        "id": "22",
-        "siteid": "1.",
-        "type": "short",
-        "domain": "supplier",
-        "languageid": "en",
-        "label": "Demo short/en: This is the short description",
-        "content": "This is the short description of the demo supplier.",
-        "status": 1,
-        "mtime": "2022-05-28 06:26:38",
-        "ctime": "2022-05-28 06:26:38",
-        "editor": "core:setup"
-      }
-    ]
+    "searchTexts": {
+      "items" : [
+        {
+          "id": "21",
+          "siteid": "1.",
+          "type": "name",
+          "domain": "supplier",
+          "languageid": "en",
+          "label": "Demo name/en: Demo supplier",
+          "content": "Demo supplier",
+          "status": 1,
+          "mtime": "2022-05-28 06:26:38",
+          "ctime": "2022-05-28 06:26:38",
+          "editor": "core:setup"
+        },
+        {
+          "id": "22",
+          "siteid": "1.",
+          "type": "short",
+          "domain": "supplier",
+          "languageid": "en",
+          "label": "Demo short/en: This is the short description",
+          "content": "This is the short description of the demo supplier.",
+          "status": 1,
+          "mtime": "2022-05-28 06:26:38",
+          "ctime": "2022-05-28 06:26:38",
+          "editor": "core:setup"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

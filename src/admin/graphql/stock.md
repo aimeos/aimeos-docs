@@ -80,16 +80,19 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchStocks(filter: "{\"~=\": {\"stock.type\":\"default\"}}") {
-        id
-        siteid
-        type
-        productid
-        stocklevel
-        timeframe
-        dateback
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          productid
+          stocklevel
+          timeframe
+          dateback
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -102,16 +105,19 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchStocks(filter: ` + fstr + `) {
-        id
-        siteid
-        type
-        productid
-        stocklevel
-        timeframe
-        dateback
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          productid
+          stocklevel
+          timeframe
+          dateback
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -134,32 +140,35 @@ Response:
 ```json
 {
   "data": {
-    "searchStocks": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "type": "default",
-        "productid": "114",
-        "stocklevel": 5,
-        "timeframe": "",
-        "dateback": null,
-        "mtime": "2022-12-01 11:59:05",
-        "ctime": "2022-12-01 11:59:05",
-        "editor": "core"
-      },
-      {
-        "id": "12",
-        "siteid": "1.",
-        "type": "default",
-        "productid": "115",
-        "stocklevel": 0,
-        "timeframe": "",
-        "dateback": "2015-01-01 12:00:00",
-        "mtime": "2022-12-01 11:59:05",
-        "ctime": "2022-12-01 11:59:05",
-        "editor": "core"
-      }
-    ]
+    "searchStocks": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "type": "default",
+          "productid": "114",
+          "stocklevel": 5,
+          "timeframe": "",
+          "dateback": null,
+          "mtime": "2022-12-01 11:59:05",
+          "ctime": "2022-12-01 11:59:05",
+          "editor": "core"
+        },
+        {
+          "id": "12",
+          "siteid": "1.",
+          "type": "default",
+          "productid": "115",
+          "stocklevel": 0,
+          "timeframe": "",
+          "dateback": "2015-01-01 12:00:00",
+          "mtime": "2022-12-01 11:59:05",
+          "ctime": "2022-12-01 11:59:05",
+          "editor": "core"
+        }
+      ],
+      "total": 2
+    }
   }
 }
 ```

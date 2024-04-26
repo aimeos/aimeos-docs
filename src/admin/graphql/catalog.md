@@ -327,18 +327,21 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchCatalogs(filter: "{\"=~\": {\"catalog.code\":\"demo-\"}}") {
-        id
-        siteid
-        parentid
-        code
-        label
-        url
-        config
-        status
-        target
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          parentid
+          code
+          label
+          url
+          config
+          status
+          target
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -351,18 +354,21 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchCatalogs(filter: ` + fstr + `) {
-        id
-        siteid
-        parentid
-        code
-        label
-        url
-        config
-        status
-        target
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          parentid
+          code
+          label
+          url
+          config
+          status
+          target
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -385,36 +391,39 @@ Response:
 ```json
 {
   "data": {
-    "searchCatalogs": [
-      {
-        "id": "2",
-        "siteid": "1.",
-        "parentid": 1,
-        "code": "demo-best",
-        "label": "Best sellers",
-        "url": "best-sellers",
-        "config": "{}",
-        "status": 1,
-        "target": "",
-        "mtime": "2022-12-01 11:59:02",
-        "ctime": "2022-12-01 11:59:02",
-        "editor": "core"
-      },
-      {
-        "id": "3",
-        "siteid": "1.",
-        "parentid": 1,
-        "code": "demo-best-women",
-        "label": "Women",
-        "url": "women",
-        "config": "{}",
-        "status": 1,
-        "target": "",
-        "mtime": "2022-12-01 11:59:02",
-        "ctime": "2022-12-01 11:59:02",
-        "editor": "core"
-      },
-    ]
+    "searchCatalogs": {
+      "items": [
+        {
+          "id": "2",
+          "siteid": "1.",
+          "parentid": 1,
+          "code": "demo-best",
+          "label": "Best sellers",
+          "url": "best-sellers",
+          "config": "{}",
+          "status": 1,
+          "target": "",
+          "mtime": "2022-12-01 11:59:02",
+          "ctime": "2022-12-01 11:59:02",
+          "editor": "core"
+        },
+        {
+          "id": "3",
+          "siteid": "1.",
+          "parentid": 1,
+          "code": "demo-best-women",
+          "label": "Women",
+          "url": "women",
+          "config": "{}",
+          "status": 1,
+          "target": "",
+          "mtime": "2022-12-01 11:59:02",
+          "ctime": "2022-12-01 11:59:02",
+          "editor": "core"
+        },
+      ],
+      "total": 2
+    }
   }
 }
 ```

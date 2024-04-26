@@ -92,20 +92,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchReviews(filter: "{\"=~\": {\"review.code\":\"demo-\"}}") {
-        id
-        siteid
-        customerid
-        orderproductid
-        domain
-        refid
-        name
-        comment
-        response
-        rating
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          customerid
+          orderproductid
+          domain
+          refid
+          name
+          comment
+          response
+          rating
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -118,20 +121,23 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchReviews(filter: ` + fstr + `) {
-        id
-        siteid
-        customerid
-        orderproductid
-        domain
-        refid
-        name
-        comment
-        response
-        rating
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          customerid
+          orderproductid
+          domain
+          refid
+          name
+          comment
+          response
+          rating
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -154,24 +160,27 @@ Response:
 ```json
 {
   "data": {
-    "searchReviews": [
-      {
-        "id": "13",
-        "siteid": "1.",
-        "customerid": "6",
-        "orderproductid": "7",
-        "domain": "product",
-        "refid": "52",
-        "name": "test",
-        "comment": "",
-        "response": "",
-        "rating": 1,
-        "status": -1,
-        "mtime": "2022-08-22 11:42:22",
-        "ctime": "2022-08-22 11:42:22",
-        "editor": "aimeos@aimeos.org"
-      }
-    ]
+    "searchReviews": {
+      "items": [
+        {
+          "id": "13",
+          "siteid": "1.",
+          "customerid": "6",
+          "orderproductid": "7",
+          "domain": "product",
+          "refid": "52",
+          "name": "test",
+          "comment": "",
+          "response": "",
+          "rating": 1,
+          "status": -1,
+          "mtime": "2022-08-22 11:42:22",
+          "ctime": "2022-08-22 11:42:22",
+          "editor": "aimeos@aimeos.org"
+        }
+      ],
+      "total": 1
+    }
   }
 }
 ```

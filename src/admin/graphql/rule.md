@@ -89,19 +89,22 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchRules(filter: "{\"~=\": {\"rule.label\":\"Test\"}}") {
-        id
-        siteid
-        type
-        label
-        provider
-        datestart
-        dateend
-        config
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          label
+          provider
+          datestart
+          dateend
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -114,19 +117,22 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchRules(filter: ` + fstr + `) {
-        id
-        siteid
-        type
-        label
-        provider
-        datestart
-        dateend
-        config
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          type
+          label
+          provider
+          datestart
+          dateend
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -149,23 +155,26 @@ Response:
 ```json
 {
   "data": {
-    "searchRules": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "type": "catalog",
-        "label": "+10% Test",
-        "provider": "Percent",
-        "datestart": null,
-        "dateend": null,
-        "config": "{\"last-rule\":0,\"percent\":10}",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-12-22 09:51:38",
-        "ctime": "2022-06-21 13:36:28",
-        "editor": "aimeos@aimeos.org"
-      }
-    ]
+    "searchRules": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "type": "catalog",
+          "label": "+10% Test",
+          "provider": "Percent",
+          "datestart": null,
+          "dateend": null,
+          "config": "{\"last-rule\":0,\"percent\":10}",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-12-22 09:51:38",
+          "ctime": "2022-06-21 13:36:28",
+          "editor": "aimeos@aimeos.org"
+        }
+      ],
+      "total": 1
+    }
   }
 }
 ```

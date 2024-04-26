@@ -231,16 +231,19 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```graphql
     query {
       searchProductTypes(filter: "{\"==\": {\"product.type.domain\":\"product\"}}") {
-        id
-        siteid
-        domain
-        code
-        label
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          domain
+          code
+          label
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }
     ```
@@ -253,16 +256,19 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const body = JSON.stringify({'query':
     `query {
       searchProductTypes(filter: ` + fstr + `) {
-        id
-        siteid
-        domain
-        code
-        label
-        position
-        status
-        mtime
-        ctime
-        editor
+        items {
+          id
+          siteid
+          domain
+          code
+          label
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
       }
     }`});
 
@@ -285,32 +291,35 @@ Response:
 ```json
 {
   "data": {
-    "searchProductTypes": [
-      {
-        "id": "1",
-        "siteid": "1.",
-        "domain": "product",
-        "code": "default",
-        "label": "Article",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-05-28 06:26:37",
-        "ctime": "2022-05-28 06:26:37",
-        "editor": "core:setup"
-      },
-      {
-        "id": "2",
-        "siteid": "1.",
-        "domain": "product",
-        "code": "bundle",
-        "label": "Bundle",
-        "position": 0,
-        "status": 1,
-        "mtime": "2022-05-28 06:26:37",
-        "ctime": "2022-05-28 06:26:37",
-        "editor": "core:setup"
-      }
-    ]
+    "searchProductTypes": {
+      "items": [
+        {
+          "id": "1",
+          "siteid": "1.",
+          "domain": "product",
+          "code": "default",
+          "label": "Article",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-05-28 06:26:37",
+          "ctime": "2022-05-28 06:26:37",
+          "editor": "core:setup"
+        },
+        {
+          "id": "2",
+          "siteid": "1.",
+          "domain": "product",
+          "code": "bundle",
+          "label": "Bundle",
+          "position": 0,
+          "status": 1,
+          "mtime": "2022-05-28 06:26:37",
+          "ctime": "2022-05-28 06:26:37",
+          "editor": "core:setup"
+        }
+      ],
+    }
+    "total": 2
   }
 }
 ```
