@@ -79,7 +79,9 @@ mshop/coupon/manager/code/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcouco."id"
@@ -89,7 +91,7 @@ mshop/coupon/manager/code/count/mysql =
  	ORDER BY mcouco."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -145,11 +147,13 @@ mshop/coupon/manager/code/counter/mysql =
  WHERE :cond AND "code" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_coupon_code"
  SET	"count" = "count" + ?, "mtime" = ?, "editor" = ?
  WHERE :cond AND "code" = ?
-`
+```
 
 See also:
 
@@ -165,10 +169,12 @@ mshop/coupon/manager/code/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -205,10 +211,12 @@ mshop/coupon/manager/code/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -244,10 +252,12 @@ mshop/coupon/manager/code/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -318,10 +328,12 @@ mshop/coupon/manager/code/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_coupon_code"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -384,14 +396,16 @@ mshop/coupon/manager/code/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_coupon_code" ( :names
  	"parentid", "code", "start", "end", "count", "ref",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -535,9 +549,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -574,14 +586,16 @@ mshop/coupon/manager/code/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_coupon_code" mcouco
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -597,10 +611,12 @@ mshop/coupon/manager/code/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -667,13 +683,15 @@ mshop/coupon/manager/code/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_coupon_code"
  SET :names
  	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
  	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -760,7 +778,9 @@ mshop/coupon/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcou."id"
@@ -771,7 +791,7 @@ mshop/coupon/manager/count/mysql =
  	ORDER BY mcou."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -788,10 +808,12 @@ mshop/coupon/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -828,10 +850,12 @@ mshop/coupon/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -867,10 +891,12 @@ mshop/coupon/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -940,10 +966,12 @@ mshop/coupon/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_coupon"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -1006,14 +1034,16 @@ mshop/coupon/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_coupon" ( :names
  	"label", "provider", "config", "start", "end",
  	"status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -1178,9 +1208,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1217,7 +1245,9 @@ mshop/coupon/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_coupon" mcou
  :joins
@@ -1225,7 +1255,7 @@ mshop/coupon/manager/search/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1279,11 +1309,13 @@ mshop/coupon/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => code
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1350,13 +1382,15 @@ mshop/coupon/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_coupon"
  SET :names
  	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
  	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 

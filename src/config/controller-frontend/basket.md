@@ -32,10 +32,12 @@ controller/frontend/basket/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -72,10 +74,12 @@ controller/frontend/basket/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -113,10 +117,12 @@ controller/frontend/basket/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 

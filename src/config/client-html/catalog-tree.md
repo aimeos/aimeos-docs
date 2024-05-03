@@ -173,10 +173,12 @@ client/html/catalog/tree/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2019.01
 
@@ -233,10 +235,12 @@ client/html/catalog/tree/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

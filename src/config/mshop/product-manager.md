@@ -82,7 +82,9 @@ mshop/product/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpro."id"
@@ -93,7 +95,7 @@ mshop/product/manager/count/mysql =
  	ORDER BY mpro."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -110,10 +112,12 @@ mshop/product/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -151,10 +155,12 @@ mshop/product/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -190,10 +196,12 @@ mshop/product/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -265,10 +273,12 @@ mshop/product/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_product"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -333,14 +343,16 @@ mshop/product/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_product" ( :names
  	"type", "code", "dataset", "label", "url", "instock", "status", "scale",
  	"start", "end", "config", "target", "boost", "editor", "mtime", "ctime", "siteid"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -489,7 +501,9 @@ mshop/product/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mproli."id"
@@ -499,7 +513,7 @@ mshop/product/manager/lists/count/mysql =
  	ORDER BY mproli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -515,10 +529,12 @@ mshop/product/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -555,10 +571,12 @@ mshop/product/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -595,10 +613,12 @@ mshop/product/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -669,10 +689,12 @@ mshop/product/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_product_list"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -735,14 +757,16 @@ mshop/product/manager/lists/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_product_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -886,9 +910,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -925,14 +947,16 @@ mshop/product/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_product_list" mproli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -948,10 +972,12 @@ mshop/product/manager/lists/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1044,7 +1070,9 @@ mshop/product/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mprolity."id"
@@ -1054,7 +1082,7 @@ mshop/product/manager/lists/type/count/mysql =
  	ORDER BY mprolity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -1070,10 +1098,12 @@ mshop/product/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1110,10 +1140,12 @@ mshop/product/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1150,10 +1182,12 @@ mshop/product/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1223,10 +1257,12 @@ mshop/product/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_product_list_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -1288,14 +1324,16 @@ mshop/product/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_product_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -1438,9 +1476,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1476,14 +1512,16 @@ mshop/product/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_product_list_type" mprolity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1499,10 +1537,12 @@ mshop/product/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1568,13 +1608,15 @@ mshop/product/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -1632,13 +1674,15 @@ mshop/product/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product_list"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -1823,7 +1867,9 @@ mshop/product/manager/property/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mpropr."id"
@@ -1833,7 +1879,7 @@ mshop/product/manager/property/count/mysql =
  	ORDER BY mpropr."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -1849,10 +1895,12 @@ mshop/product/manager/property/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -1889,10 +1937,12 @@ mshop/product/manager/property/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -1929,10 +1979,12 @@ mshop/product/manager/property/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2002,10 +2054,12 @@ mshop/product/manager/property/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_product_property"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -2067,14 +2121,16 @@ mshop/product/manager/property/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_product_property" ( :names
  	"parentid", "key", "type", "langid", "value",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -2217,9 +2273,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -2255,14 +2309,16 @@ mshop/product/manager/property/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_product_property" mpropr
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -2278,10 +2334,12 @@ mshop/product/manager/property/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2015.01
 
@@ -2374,7 +2432,9 @@ mshop/product/manager/property/type/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mproprty."id"
@@ -2384,7 +2444,7 @@ mshop/product/manager/property/type/count/mysql =
  	ORDER BY mproprty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -2400,10 +2460,12 @@ mshop/product/manager/property/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2440,10 +2502,12 @@ mshop/product/manager/property/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2480,10 +2544,12 @@ mshop/product/manager/property/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -2553,10 +2619,12 @@ mshop/product/manager/property/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_product_property_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -2618,14 +2686,16 @@ mshop/product/manager/property/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_product_property_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -2768,9 +2838,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -2806,14 +2874,16 @@ mshop/product/manager/property/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_product_property_type" mproprty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -2829,10 +2899,12 @@ mshop/product/manager/property/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2015.01
 
@@ -2898,13 +2970,15 @@ mshop/product/manager/property/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product_property_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -2961,13 +3035,15 @@ mshop/product/manager/property/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product_property"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -3020,11 +3096,13 @@ mshop/product/manager/rate/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product"
  SET "rating" = ?, "ratings" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -3095,9 +3173,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -3136,7 +3212,9 @@ mshop/product/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_product" mpro
  :joins
@@ -3144,7 +3222,7 @@ mshop/product/manager/search/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -3234,11 +3312,13 @@ mshop/product/manager/stock/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product"
  SET "instock" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -3275,10 +3355,12 @@ mshop/product/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3372,7 +3454,9 @@ mshop/product/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mproty."id"
@@ -3382,7 +3466,7 @@ mshop/product/manager/type/count/mysql =
  	ORDER BY mproty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -3398,10 +3482,12 @@ mshop/product/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3438,10 +3524,12 @@ mshop/product/manager/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3478,10 +3566,12 @@ mshop/product/manager/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3551,10 +3641,12 @@ mshop/product/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_product_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -3616,14 +3708,16 @@ mshop/product/manager/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_product_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -3766,9 +3860,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -3804,14 +3896,16 @@ mshop/product/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_product_type" mproty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -3827,10 +3921,12 @@ mshop/product/manager/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -3896,13 +3992,15 @@ mshop/product/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -3964,14 +4062,16 @@ mshop/product/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_product"
  SET :names
  	"type" = ?, "code" = ?, "dataset" = ?, "label" = ?, "url" = ?, "instock" = ?,
  	"status" = ?, "scale" = ?, "start" = ?, "end" = ?, "config" = ?, "target" = ?,
  	"boost" = ?, "editor" = ?, "mtime" = ?, "ctime" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 

@@ -123,11 +123,13 @@ client/html/account/profile/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => customer/address
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2016.10
 
@@ -271,10 +273,12 @@ client/html/account/profile/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2019.10
 
@@ -329,10 +333,12 @@ client/html/account/profile/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2019.10
 

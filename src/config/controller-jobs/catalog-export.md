@@ -10,10 +10,12 @@ controller/jobs/catalog/export/sitemap/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -50,10 +52,12 @@ controller/jobs/catalog/export/sitemap/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -88,10 +92,12 @@ controller/jobs/catalog/export/sitemap/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.02
 
@@ -129,11 +135,13 @@ controller/jobs/catalog/export/sitemap/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2019.02
 

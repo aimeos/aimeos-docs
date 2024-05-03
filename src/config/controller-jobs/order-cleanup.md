@@ -10,10 +10,12 @@ controller/jobs/order/cleanup/unfinished/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -50,10 +52,12 @@ controller/jobs/order/cleanup/unfinished/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -88,10 +92,12 @@ controller/jobs/order/cleanup/unfinished/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -197,10 +203,12 @@ controller/jobs/order/cleanup/unpaid/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -237,10 +245,12 @@ controller/jobs/order/cleanup/unpaid/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -275,10 +285,12 @@ controller/jobs/order/cleanup/unpaid/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 

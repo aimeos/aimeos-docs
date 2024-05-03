@@ -164,7 +164,9 @@ client/html/catalog/product/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog
     [1] => media
@@ -173,7 +175,7 @@ client/html/catalog/product/domains = Array
     [4] => supplier
     [5] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2019.06
 
@@ -255,10 +257,12 @@ client/html/catalog/product/product-codes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of codes of products to load for the current list
 * Since: 2019.06
 

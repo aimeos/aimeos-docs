@@ -10,10 +10,12 @@ admin/jqadm/type/attribute/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -50,10 +52,12 @@ admin/jqadm/type/attribute/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -88,10 +92,12 @@ admin/jqadm/type/attribute/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -130,14 +136,16 @@ admin/jqadm/type/attribute/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => attribute.type.domain
     [1] => attribute.type.status
     [2] => attribute.type.code
     [3] => attribute.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -261,14 +269,16 @@ admin/jqadm/type/attribute/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => attribute.lists.type.domain
     [1] => attribute.lists.type.status
     [2] => attribute.lists.type.code
     [3] => attribute.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -290,10 +300,12 @@ admin/jqadm/type/attribute/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -537,14 +549,16 @@ admin/jqadm/type/attribute/property/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => attribute.property.type.domain
     [1] => attribute.property.type.status
     [2] => attribute.property.type.code
     [3] => attribute.property.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -566,10 +580,12 @@ admin/jqadm/type/attribute/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -666,10 +682,12 @@ admin/jqadm/type/attribute/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -869,14 +887,16 @@ admin/jqadm/type/catalog/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog.lists.type.domain
     [1] => catalog.lists.type.status
     [2] => catalog.lists.type.code
     [3] => catalog.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -942,10 +962,12 @@ admin/jqadm/type/catalog/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1145,14 +1167,16 @@ admin/jqadm/type/customer/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => customer.lists.type.domain
     [1] => customer.lists.type.status
     [2] => customer.lists.type.code
     [3] => customer.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1218,10 +1242,12 @@ admin/jqadm/type/customer/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1420,14 +1446,16 @@ admin/jqadm/type/customer/property/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => customer.property.type.domain
     [1] => customer.property.type.status
     [2] => customer.property.type.code
     [3] => customer.property.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1493,10 +1521,12 @@ admin/jqadm/type/customer/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -1696,14 +1726,16 @@ admin/jqadm/type/media/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => media.type.domain
     [1] => media.type.status
     [2] => media.type.code
     [3] => media.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1827,14 +1859,16 @@ admin/jqadm/type/media/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => media.lists.type.domain
     [1] => media.lists.type.status
     [2] => media.lists.type.code
     [3] => media.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1901,10 +1935,12 @@ admin/jqadm/type/media/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2147,14 +2183,16 @@ admin/jqadm/type/media/property/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => media.property.type.domain
     [1] => media.property.type.status
     [2] => media.property.type.code
     [3] => media.property.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -2220,10 +2258,12 @@ admin/jqadm/type/media/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2320,10 +2360,12 @@ admin/jqadm/type/media/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2523,14 +2565,16 @@ admin/jqadm/type/plugin/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => plugin.type.domain
     [1] => plugin.type.status
     [2] => plugin.type.code
     [3] => plugin.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -2596,10 +2640,12 @@ admin/jqadm/type/plugin/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -2799,14 +2845,16 @@ admin/jqadm/type/price/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => price.type.domain
     [1] => price.type.status
     [2] => price.type.code
     [3] => price.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -2930,14 +2978,16 @@ admin/jqadm/type/price/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => price.lists.type.domain
     [1] => price.lists.type.status
     [2] => price.lists.type.code
     [3] => price.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3003,10 +3053,12 @@ admin/jqadm/type/price/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -3249,14 +3301,16 @@ admin/jqadm/type/price/property/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => price.property.type.domain
     [1] => price.property.type.status
     [2] => price.property.type.code
     [3] => price.property.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3322,10 +3376,12 @@ admin/jqadm/type/price/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -3422,10 +3478,12 @@ admin/jqadm/type/price/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -3625,14 +3683,16 @@ admin/jqadm/type/product/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => product.type.domain
     [1] => product.type.status
     [2] => product.type.code
     [3] => product.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3756,14 +3816,16 @@ admin/jqadm/type/product/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => product.lists.type.domain
     [1] => product.lists.type.status
     [2] => product.lists.type.code
     [3] => product.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -3830,10 +3892,12 @@ admin/jqadm/type/product/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -4076,14 +4140,16 @@ admin/jqadm/type/product/property/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => product.property.type.domain
     [1] => product.property.type.status
     [2] => product.property.type.code
     [3] => product.property.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4149,10 +4215,12 @@ admin/jqadm/type/product/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -4249,10 +4317,12 @@ admin/jqadm/type/product/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -4452,14 +4522,16 @@ admin/jqadm/type/rule/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => rule.type.domain
     [1] => rule.type.status
     [2] => rule.type.code
     [3] => rule.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4525,10 +4597,12 @@ admin/jqadm/type/rule/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2021.04
 
@@ -4728,14 +4802,16 @@ admin/jqadm/type/service/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => service.type.domain
     [1] => service.type.status
     [2] => service.type.code
     [3] => service.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4859,14 +4935,16 @@ admin/jqadm/type/service/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => service.lists.type.domain
     [1] => service.lists.type.status
     [2] => service.lists.type.code
     [3] => service.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -4888,10 +4966,12 @@ admin/jqadm/type/service/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -5032,10 +5112,12 @@ admin/jqadm/type/service/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -5235,14 +5317,16 @@ admin/jqadm/type/stock/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => stock.type.domain
     [1] => stock.type.status
     [2] => stock.type.code
     [3] => stock.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -5308,10 +5392,12 @@ admin/jqadm/type/stock/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -5511,14 +5597,16 @@ admin/jqadm/type/tag/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => tag.type.domain
     [1] => tag.type.status
     [2] => tag.type.code
     [3] => tag.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -5584,10 +5672,12 @@ admin/jqadm/type/tag/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -5787,14 +5877,16 @@ admin/jqadm/type/text/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text.type.domain
     [1] => text.type.status
     [2] => text.type.code
     [3] => text.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -5918,14 +6010,16 @@ admin/jqadm/type/text/lists/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text.lists.type.domain
     [1] => text.lists.type.status
     [2] => text.lists.type.code
     [3] => text.lists.type.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -5947,10 +6041,12 @@ admin/jqadm/type/text/lists/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -6091,10 +6187,12 @@ admin/jqadm/type/text/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 

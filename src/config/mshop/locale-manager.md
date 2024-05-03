@@ -76,7 +76,9 @@ mshop/locale/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloc."id"
@@ -89,7 +91,7 @@ mshop/locale/manager/count/mysql =
  	ORDER BY mloc."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -171,7 +173,9 @@ mshop/locale/manager/currency/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mloccu."id"
@@ -180,7 +184,7 @@ mshop/locale/manager/currency/count/mysql =
  	ORDER BY mloccu."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -196,10 +200,12 @@ mshop/locale/manager/currency/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -236,10 +242,12 @@ mshop/locale/manager/currency/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -276,10 +284,12 @@ mshop/locale/manager/currency/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -346,9 +356,11 @@ mshop/locale/manager/currency/delete/mysql =
  DELETE FROM "mshop_locale_currency" WHERE :cond
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_locale_currency" WHERE :cond
-`
+```
 
 See also:
 
@@ -403,13 +415,15 @@ mshop/locale/manager/currency/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_locale_currency" ( :names
  	"label", "status", "mtime", "editor", "id", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -499,9 +513,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -535,13 +547,15 @@ mshop/locale/manager/currency/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_locale_currency" mloccu
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -557,10 +571,12 @@ mshop/locale/manager/currency/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -620,12 +636,14 @@ mshop/locale/manager/currency/update/mysql =
  WHERE "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_locale_currency"
  SET :names
  	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "id" = ?
-`
+```
 
 See also:
 
@@ -642,10 +660,12 @@ mshop/locale/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -682,10 +702,12 @@ mshop/locale/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -721,10 +743,12 @@ mshop/locale/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -794,10 +818,12 @@ mshop/locale/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_locale"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -860,14 +886,16 @@ mshop/locale/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_locale" ( :names
  	"langid", "currencyid", "pos", "status",
  	"mtime", "editor", "site_id", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -949,7 +977,9 @@ mshop/locale/manager/language/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocla."id"
@@ -958,7 +988,7 @@ mshop/locale/manager/language/count/mysql =
  	ORDER BY mlocla."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -974,10 +1004,12 @@ mshop/locale/manager/language/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1014,10 +1046,12 @@ mshop/locale/manager/language/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1054,10 +1088,12 @@ mshop/locale/manager/language/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1124,9 +1160,11 @@ mshop/locale/manager/language/delete/mysql =
  DELETE FROM "mshop_locale_language" WHERE :cond
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_locale_language" WHERE :cond
-`
+```
 
 See also:
 
@@ -1181,13 +1219,15 @@ mshop/locale/manager/language/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_locale_language" ( :names
  	"label", "status", "mtime", "editor", "id", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -1277,9 +1317,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1313,13 +1351,15 @@ mshop/locale/manager/language/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_locale_language" mlocla
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1335,10 +1375,12 @@ mshop/locale/manager/language/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1398,12 +1440,14 @@ mshop/locale/manager/language/update/mysql =
  WHERE "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_locale_language"
  SET :names
  	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "id" = ?
-`
+```
 
 See also:
 
@@ -1564,9 +1608,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1605,7 +1647,9 @@ mshop/locale/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns, mlocsi."code" AS "locale.sitecode"
  FROM "mshop_locale" mloc
  LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
@@ -1615,7 +1659,7 @@ mshop/locale/manager/search/mysql =
  GROUP BY :group, mlocsi."code"
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1635,10 +1679,12 @@ mshop/locale/manager/site/cleanup/admin/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of domain names in lower case
 * Since: 2014.03
 
@@ -1688,10 +1734,12 @@ mshop/locale/manager/site/cleanup/shop/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of domain names in lower case
 * Since: 2014.03
 
@@ -1786,7 +1834,9 @@ mshop/locale/manager/site/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mlocsi."id"
@@ -1795,7 +1845,7 @@ mshop/locale/manager/site/count/mysql =
  	ORDER BY mlocsi."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -1811,10 +1861,12 @@ mshop/locale/manager/site/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1851,10 +1903,12 @@ mshop/locale/manager/site/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1891,10 +1945,12 @@ mshop/locale/manager/site/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1965,10 +2021,12 @@ mshop/locale/manager/site/delete/mysql =
  WHERE :cond
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_locale_site"
  WHERE :cond
-`
+```
 
 See also:
 
@@ -2035,7 +2093,9 @@ mshop/locale/manager/site/insert/mysql =
  FROM "mshop_locale_site"
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_locale_site" ( :names
  	"siteid", "code", "label", "config", "status", "icon", "logo",
  	"refid", "theme", "editor", "mtime", "ctime", "parentid", "level",
@@ -2046,7 +2106,7 @@ mshop/locale/manager/site/insert/mysql =
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0,
  	COALESCE( MAX("nright"), 0 ) + 1, COALESCE( MAX("nright"), 0 ) + 2
  FROM "mshop_locale_site"
-`
+```
 
 See also:
 
@@ -2194,11 +2254,13 @@ mshop/locale/manager/site/rate/mysql =
  WHERE "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_locale_site"
  SET "rating" = ?, "ratings" = ?
  WHERE "id" = ?
-`
+```
 
 See also:
 
@@ -2243,9 +2305,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -2281,13 +2341,15 @@ mshop/locale/manager/site/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_locale_site" mlocsi
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -2303,10 +2365,12 @@ mshop/locale/manager/site/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2369,13 +2433,15 @@ mshop/locale/manager/site/update/mysql =
  WHERE id = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_locale_site"
  SET :names
  	"siteid" = ?, "code" = ?, "label" = ?, "config" = ?, "status" = ?,
  	"icon" = ?, "logo" = ?, "refid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
  WHERE id = ?
-`
+```
 
 See also:
 
@@ -2394,13 +2460,15 @@ mshop/locale/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => language
     [1] => currency
     [2] => site
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2467,13 +2535,15 @@ mshop/locale/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_locale"
  SET :names
  	"langid" = ?, "currencyid" = ?, "pos" = ?,
  	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 

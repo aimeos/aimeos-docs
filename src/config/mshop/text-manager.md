@@ -80,7 +80,9 @@ mshop/text/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtex."id"
@@ -91,7 +93,7 @@ mshop/text/manager/count/mysql =
  	ORDER BY mtex."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -108,10 +110,12 @@ mshop/text/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -148,10 +152,12 @@ mshop/text/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -187,10 +193,12 @@ mshop/text/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -260,10 +268,12 @@ mshop/text/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_text"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -326,14 +336,16 @@ mshop/text/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_text" ( :names
  	"langid", "type", "domain", "label", "content",
  	"status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -482,7 +494,9 @@ mshop/text/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexli."id"
@@ -492,7 +506,7 @@ mshop/text/manager/lists/count/mysql =
  	ORDER BY mtexli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -508,10 +522,12 @@ mshop/text/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -548,10 +564,12 @@ mshop/text/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -587,10 +605,12 @@ mshop/text/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -661,10 +681,12 @@ mshop/text/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_text_list"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -727,14 +749,16 @@ mshop/text/manager/lists/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_text_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -878,9 +902,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -917,14 +939,16 @@ mshop/text/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_text_list" mtexli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -940,10 +964,12 @@ mshop/text/manager/lists/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1036,7 +1062,9 @@ mshop/text/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexlity."id"
@@ -1046,7 +1074,7 @@ mshop/text/manager/lists/type/count/mysql =
  	ORDER BY mtexlity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -1062,10 +1090,12 @@ mshop/text/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1102,10 +1132,12 @@ mshop/text/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1142,10 +1174,12 @@ mshop/text/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1215,10 +1249,12 @@ mshop/text/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_text_list_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -1280,14 +1316,16 @@ mshop/text/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_text_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -1430,9 +1468,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1468,14 +1504,16 @@ mshop/text/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_text_list_type" mtexlity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1491,10 +1529,12 @@ mshop/text/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1560,13 +1600,15 @@ mshop/text/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_text_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -1624,13 +1666,15 @@ mshop/text/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_text_list"
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -1797,9 +1841,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1836,7 +1878,9 @@ mshop/text/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_text" mtex
  :joins
@@ -1844,7 +1888,7 @@ mshop/text/manager/search/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1897,10 +1941,12 @@ mshop/text/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1994,7 +2040,9 @@ mshop/text/manager/type/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mtexty."id"
@@ -2004,7 +2052,7 @@ mshop/text/manager/type/count/mysql =
  	ORDER BY mtexty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -2020,10 +2068,12 @@ mshop/text/manager/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2060,10 +2110,12 @@ mshop/text/manager/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2099,10 +2151,12 @@ mshop/text/manager/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2172,10 +2226,12 @@ mshop/text/manager/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_text_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -2237,14 +2293,16 @@ mshop/text/manager/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_text_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -2387,9 +2445,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -2425,14 +2481,16 @@ mshop/text/manager/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_text_type" mtexty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -2448,10 +2506,12 @@ mshop/text/manager/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2517,13 +2577,15 @@ mshop/text/manager/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_text_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -2581,13 +2643,15 @@ mshop/text/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_text"
  SET :names
  	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
  	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 

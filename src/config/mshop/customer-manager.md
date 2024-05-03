@@ -18,10 +18,12 @@ mshop/customer/manager/address/clear/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer_address"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 
 ## count/ansi
@@ -102,7 +104,9 @@ mshop/customer/manager/address/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusad."id"
@@ -112,7 +116,7 @@ mshop/customer/manager/address/count/mysql =
  	ORDER BY mcusad."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -128,10 +132,12 @@ mshop/customer/manager/address/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -168,10 +174,12 @@ mshop/customer/manager/address/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -207,10 +215,12 @@ mshop/customer/manager/address/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Address of decorator names
 * Since: 2014.03
 
@@ -280,10 +290,12 @@ mshop/customer/manager/address/delete/mysql =
  WHERE :cond AND ( "siteid" LIKE ? OR "siteid" = ? )
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer_address"
  WHERE :cond AND ( "siteid" LIKE ? OR "siteid" = ? )
-`
+```
 
 See also:
 
@@ -351,7 +363,9 @@ mshop/customer/manager/address/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_customer_address" ( :names
  	"parentid", "company", "vatid", "salutation", "title",
  	"firstname", "lastname", "address1", "address2", "address3",
@@ -361,7 +375,7 @@ mshop/customer/manager/address/insert/mysql =
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -504,9 +518,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -542,14 +554,16 @@ mshop/customer/manager/address/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_customer_address" mcusad
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -565,10 +579,12 @@ mshop/customer/manager/address/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -644,7 +660,9 @@ mshop/customer/manager/address/update/mysql =
  WHERE ( "siteid" LIKE ? OR "siteid" = ? ) AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_customer_address"
  SET :names
  	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
@@ -655,7 +673,7 @@ mshop/customer/manager/address/update/mysql =
  	"longitude" = ?, "latitude" = ?, "pos" = ?, "birthday" = ?,
  	"mtime" = ?, "editor" = ?
  WHERE ( "siteid" LIKE ? OR "siteid" = ? ) AND "id" = ?
-`
+```
 
 See also:
 
@@ -742,7 +760,9 @@ mshop/customer/manager/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
@@ -754,7 +774,7 @@ mshop/customer/manager/aggregate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-`
+```
 
 See also:
 
@@ -779,10 +799,12 @@ mshop/customer/manager/clear/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 
 # count
@@ -866,7 +888,9 @@ mshop/customer/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcus."id"
@@ -877,7 +901,7 @@ mshop/customer/manager/count/mysql =
  	ORDER BY mcus."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -894,10 +918,12 @@ mshop/customer/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -934,10 +960,12 @@ mshop/customer/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -973,10 +1001,12 @@ mshop/customer/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1046,10 +1076,12 @@ mshop/customer/manager/delete/mysql =
  WHERE :cond AND ( "siteid" LIKE ? OR "siteid" = ? )
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer"
  WHERE :cond AND ( "siteid" LIKE ? OR "siteid" = ? )
-`
+```
 
 See also:
 
@@ -1118,7 +1150,9 @@ mshop/customer/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_customer" ( :names
  	"label", "code", "company", "vatid", "salutation", "title",
  	"firstname", "lastname", "address1", "address2", "address3",
@@ -1128,7 +1162,7 @@ mshop/customer/manager/insert/mysql =
  ) VALUES ( :values
  	?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
  )
-`
+```
 
 See also:
 
@@ -1449,7 +1483,9 @@ mshop/customer/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusli."id"
@@ -1459,7 +1495,7 @@ mshop/customer/manager/lists/count/mysql =
  	ORDER BY mcusli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -1475,10 +1511,12 @@ mshop/customer/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1515,10 +1553,12 @@ mshop/customer/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1555,10 +1595,12 @@ mshop/customer/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1629,10 +1671,12 @@ mshop/customer/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer_list"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -1695,14 +1739,16 @@ mshop/customer/manager/lists/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_customer_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -1846,9 +1892,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1885,14 +1929,16 @@ mshop/customer/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_customer_list" mcusli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1908,10 +1954,12 @@ mshop/customer/manager/lists/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2004,7 +2052,9 @@ mshop/customer/manager/lists/type/count/mysql =
  ) AS LIST
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcuslity."id"
@@ -2014,7 +2064,7 @@ mshop/customer/manager/lists/type/count/mysql =
  	ORDER BY mcuslity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS LIST
-`
+```
 
 See also:
 
@@ -2030,10 +2080,12 @@ mshop/customer/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2070,10 +2122,12 @@ mshop/customer/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2110,10 +2164,12 @@ mshop/customer/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -2183,10 +2239,12 @@ mshop/customer/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer_list_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -2248,14 +2306,16 @@ mshop/customer/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_customer_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -2398,9 +2458,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -2436,14 +2494,16 @@ mshop/customer/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_customer_list_type" mcuslity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -2459,10 +2519,12 @@ mshop/customer/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2528,13 +2590,15 @@ mshop/customer/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_customer_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -2592,13 +2656,15 @@ mshop/customer/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_customer_list"
  SET :names
  	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -2735,10 +2801,12 @@ mshop/customer/manager/password/options = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of key/value pairs
 * Since: 2015.01
 
@@ -2831,7 +2899,9 @@ mshop/customer/manager/property/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcuspr."id"
@@ -2841,7 +2911,7 @@ mshop/customer/manager/property/count/mysql =
  	ORDER BY mcuspr."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -2857,10 +2927,12 @@ mshop/customer/manager/property/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2897,10 +2969,12 @@ mshop/customer/manager/property/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2937,10 +3011,12 @@ mshop/customer/manager/property/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -3010,10 +3086,12 @@ mshop/customer/manager/property/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer_property"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -3075,14 +3153,16 @@ mshop/customer/manager/property/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_customer_property" ( :names
  	"parentid", "key", "type", "langid", "value",
  	"mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -3225,9 +3305,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -3263,14 +3341,16 @@ mshop/customer/manager/property/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_customer_property" mcuspr
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -3287,11 +3367,13 @@ mshop/customer/manager/property/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => type
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2018.07
 
@@ -3384,7 +3466,9 @@ mshop/customer/manager/property/type/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcusprty."id"
@@ -3394,7 +3478,7 @@ mshop/customer/manager/property/type/count/mysql =
  	ORDER BY mcusprty."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -3410,10 +3494,12 @@ mshop/customer/manager/property/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -3450,10 +3536,12 @@ mshop/customer/manager/property/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -3490,10 +3578,12 @@ mshop/customer/manager/property/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -3563,10 +3653,12 @@ mshop/customer/manager/property/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_customer_property_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -3628,14 +3720,16 @@ mshop/customer/manager/property/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_customer_property_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -3778,9 +3872,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -3816,14 +3908,16 @@ mshop/customer/manager/property/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_customer_property_type" mcusprty
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -3839,10 +3933,12 @@ mshop/customer/manager/property/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2018.07
 
@@ -3908,13 +4004,15 @@ mshop/customer/manager/property/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_customer_property_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -3971,13 +4069,15 @@ mshop/customer/manager/property/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_customer_property"
  SET :names
  	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
  	"value" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -4071,9 +4171,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -4110,7 +4208,9 @@ mshop/customer/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_customer" mcus
  :joins
@@ -4118,7 +4218,7 @@ mshop/customer/manager/search/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -4172,11 +4272,13 @@ mshop/customer/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => address
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -4446,7 +4548,9 @@ mshop/customer/manager/update/mysql =
  WHERE ( "siteid" LIKE ? OR "siteid" = ? ) AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_customer"
  SET :names
  	"label" = ?, "code" = ?, "company" = ?, "vatid" = ?,
@@ -4457,7 +4561,7 @@ mshop/customer/manager/update/mysql =
  	"longitude" = ?, "latitude" = ?, "birthday" = ?, "status" = ?,
  	"vdate" = ?, "password" = ?, "mtime" = ?, "editor" = ?
  WHERE ( "siteid" LIKE ? OR "siteid" = ? ) AND "id" = ?
-`
+```
 
 See also:
 

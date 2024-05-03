@@ -10,10 +10,12 @@ admin/jsonadm/common/decorators/default = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.12
 * Since: 2015.12

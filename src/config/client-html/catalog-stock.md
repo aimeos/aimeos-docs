@@ -295,10 +295,12 @@ client/html/catalog/stock/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -356,10 +358,12 @@ client/html/catalog/stock/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

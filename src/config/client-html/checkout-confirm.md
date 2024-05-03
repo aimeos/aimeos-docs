@@ -112,14 +112,16 @@ client/html/checkout/confirm/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [order/address] => order/address
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2023.07
 
@@ -336,11 +338,13 @@ client/html/checkout/confirm/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [absoluteUri] => 1
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 

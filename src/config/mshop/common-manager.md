@@ -101,10 +101,12 @@ mshop/common/manager/decorators/default = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -146,10 +148,12 @@ mshop/common/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM ":table"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 
 # insert
@@ -212,7 +216,9 @@ mshop/common/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO ":table" (
  	:names
  	"mtime", "editor", "siteid", "ctime"
@@ -220,7 +226,7 @@ mshop/common/manager/insert/mysql =
  	:values
  	?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -343,9 +349,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -382,7 +386,9 @@ mshop/common/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM ":table"
  :joins
@@ -390,7 +396,7 @@ mshop/common/manager/search/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 

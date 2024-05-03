@@ -167,7 +167,9 @@ client/html/catalog/detail/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => attribute
     [1] => attribute/property
@@ -182,7 +184,7 @@ client/html/catalog/detail/domains = Array
     [10] => text
     [11] => stock
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2014.03
 
@@ -523,11 +525,13 @@ client/html/catalog/detail/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [absoluteUri] => 1
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -586,11 +590,13 @@ client/html/catalog/detail/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => d_prodid
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2019.04
 

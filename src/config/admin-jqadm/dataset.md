@@ -9,10 +9,12 @@ admin/jqadm/dataset/product = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Associative list of name/configuration pairs
 * Since: 2019.10
 

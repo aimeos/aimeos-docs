@@ -10,10 +10,12 @@ controller/jobs/basket/cleanup/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2023.10
 
@@ -50,10 +52,12 @@ controller/jobs/basket/cleanup/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2023.10
 
@@ -88,10 +92,12 @@ controller/jobs/basket/cleanup/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2023.10
 

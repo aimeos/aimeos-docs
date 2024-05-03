@@ -109,11 +109,13 @@ admin/jqadm/review/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => product
 )
-`
+```
 * Type: array - List of domains names
 * Since: 2020.10
 
@@ -136,7 +138,9 @@ admin/jqadm/review/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => review.status
     [1] => review.rating
@@ -144,7 +148,7 @@ admin/jqadm/review/fields = Array
     [3] => review.response
     [4] => review.ctime
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2020.10
 
@@ -210,10 +214,12 @@ admin/jqadm/review/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2020.10
 

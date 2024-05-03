@@ -45,10 +45,12 @@ admin/jqadm/coupon/code/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -83,10 +85,12 @@ admin/jqadm/coupon/code/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -123,12 +127,14 @@ admin/jqadm/coupon/code/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => coupon.code.code
     [1] => coupon.code.count
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -166,10 +172,12 @@ admin/jqadm/coupon/code/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -343,13 +351,15 @@ admin/jqadm/coupon/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => coupon.status
     [1] => coupon.label
     [2] => coupon.provider
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -416,10 +426,12 @@ admin/jqadm/coupon/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.07
 

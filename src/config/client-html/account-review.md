@@ -272,10 +272,12 @@ client/html/account/review/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2020.10
 
@@ -330,10 +332,12 @@ client/html/account/review/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2020.10
 

@@ -13,13 +13,15 @@ client/html/common/summary/detail/product/attribute/types = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => variant
     [1] => config
     [2] => custom
 )
-`
+```
 * Type: array - List of attribute type codes
 * Since: 2014.09
 

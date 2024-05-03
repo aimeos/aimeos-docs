@@ -109,10 +109,12 @@ controller/frontend/customer/groupids = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of group IDs
 * Since: 2017.07
 

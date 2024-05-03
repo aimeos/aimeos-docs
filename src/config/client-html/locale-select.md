@@ -8,10 +8,12 @@ client/html/locale/select/currency/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -22,10 +24,12 @@ client/html/locale/select/currency/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## name
@@ -103,10 +107,12 @@ client/html/locale/select/currency/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -228,10 +234,12 @@ client/html/locale/select/language/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -242,10 +250,12 @@ client/html/locale/select/language/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## name
@@ -323,10 +333,12 @@ client/html/locale/select/language/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -399,12 +411,14 @@ client/html/locale/select/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => language
     [1] => currency
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2014.09
 

@@ -10,10 +10,12 @@ controller/jobs/order/status/csv/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -50,10 +52,12 @@ controller/jobs/order/status/csv/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -88,10 +92,12 @@ controller/jobs/order/status/csv/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2021.10
 

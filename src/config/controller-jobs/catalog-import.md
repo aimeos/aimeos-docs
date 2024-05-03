@@ -45,10 +45,12 @@ controller/jobs/catalog/import/csv/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -85,10 +87,12 @@ controller/jobs/catalog/import/csv/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -123,10 +127,12 @@ controller/jobs/catalog/import/csv/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -165,12 +171,14 @@ controller/jobs/catalog/import/csv/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => media
     [1] => text
 )
-`
+```
 * Type: array - Associative list of MShop item domain names
 * Since: 2018.04
 
@@ -246,7 +254,9 @@ controller/jobs/catalog/import/csv/mapping = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [item] => Array
         (
@@ -268,7 +278,7 @@ controller/jobs/catalog/import/csv/mapping = Array
         )
 
 )
-`
+```
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2018.04
 
@@ -462,8 +472,10 @@ Single separator character for multiple entries in one field of the import file
 controller/jobs/catalog/import/csv/separator = 
 ```
 
-* Default: `
-`
+* Default: 
+```
+
+```
 * Type: string - Single separator character
 * Since: 2018.04
 
@@ -551,10 +563,12 @@ controller/jobs/catalog/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -591,10 +605,12 @@ controller/jobs/catalog/import/xml/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -629,10 +645,12 @@ controller/jobs/catalog/import/xml/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -667,17 +685,20 @@ List of item domain names that should be retrieved along with the catalog items
 controller/jobs/catalog/import/xml/domains = Array
 (
     [media] => media
+    [media/property] => media/property
     [product] => product
     [text] => text
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => media
     [1] => text
 )
-`
+```
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 

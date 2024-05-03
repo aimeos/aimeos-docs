@@ -24,10 +24,12 @@ client/html/catalog/count/attribute/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -38,10 +40,12 @@ client/html/catalog/count/attribute/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## name
@@ -273,13 +277,15 @@ client/html/catalog/count/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => tree
     [1] => supplier
     [2] => attribute
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -341,10 +347,12 @@ client/html/catalog/count/supplier/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -355,10 +363,12 @@ client/html/catalog/count/supplier/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## name
@@ -487,10 +497,12 @@ client/html/catalog/count/tree/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -501,10 +513,12 @@ client/html/catalog/count/tree/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## name
@@ -585,10 +599,12 @@ client/html/catalog/count/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -644,10 +660,12 @@ client/html/catalog/count/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

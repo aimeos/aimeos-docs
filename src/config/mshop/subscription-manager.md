@@ -80,7 +80,9 @@ mshop/subscription/manager/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
@@ -92,7 +94,7 @@ mshop/subscription/manager/aggregate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-`
+```
 
 See also:
 
@@ -181,7 +183,9 @@ mshop/subscription/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT msub."id"
@@ -193,7 +197,7 @@ mshop/subscription/manager/count/mysql =
  	ORDER BY msub."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -210,10 +214,12 @@ mshop/subscription/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -250,10 +256,12 @@ mshop/subscription/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -290,10 +298,12 @@ mshop/subscription/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -364,10 +374,12 @@ mshop/subscription/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_subscription"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -430,14 +442,16 @@ mshop/subscription/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_subscription" ( :names
  	"orderid", "ordprodid", "next", "end", "interval", "productid", "period",
  	"reason", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -642,7 +656,9 @@ mshop/subscription/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_subscription" msub
  JOIN "mshop_order" mord ON msub."orderid" = mord."id"
@@ -651,7 +667,7 @@ mshop/subscription/manager/search/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -704,10 +720,12 @@ mshop/subscription/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2018.04
 
@@ -774,13 +792,15 @@ mshop/subscription/manager/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_subscription"
  SET :names
  	"orderid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
  	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 

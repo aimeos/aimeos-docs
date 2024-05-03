@@ -111,13 +111,15 @@ admin/jqadm/locale/currency/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => locale.currency.status
     [1] => locale.currency.code
     [2] => locale.currency.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -183,10 +185,12 @@ admin/jqadm/locale/currency/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -386,14 +390,16 @@ admin/jqadm/locale/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => locale.status
     [1] => locale.languageid
     [2] => locale.currencyid
     [3] => locale.position
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -517,13 +523,15 @@ admin/jqadm/locale/language/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => locale.language.status
     [1] => locale.language.code
     [2] => locale.language.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -589,10 +597,12 @@ admin/jqadm/locale/language/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -836,14 +846,16 @@ admin/jqadm/locale/site/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => locale.site.status
     [1] => locale.site.code
     [2] => locale.site.label
     [3] => locale.site.config
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -865,10 +877,12 @@ admin/jqadm/locale/site/item/config/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -930,10 +944,12 @@ admin/jqadm/locale/site/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1030,10 +1046,12 @@ admin/jqadm/locale/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 

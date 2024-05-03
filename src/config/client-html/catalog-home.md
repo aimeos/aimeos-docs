@@ -165,7 +165,9 @@ client/html/catalog/home/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog
     [1] => media
@@ -179,7 +181,7 @@ client/html/catalog/home/domains = Array
         )
 
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2020.10
 
@@ -416,10 +418,12 @@ client/html/catalog/home/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2020.10
 
@@ -475,10 +479,12 @@ client/html/catalog/home/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

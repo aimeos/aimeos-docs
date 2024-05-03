@@ -112,14 +112,16 @@ admin/jqadm/basket/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => order.basket.id
     [1] => order.basket.customerid
     [2] => order.basket.name
     [3] => order.basket.ctime
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2023.10
 
@@ -185,10 +187,12 @@ admin/jqadm/basket/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2023.10
 

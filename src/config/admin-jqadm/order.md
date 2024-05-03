@@ -10,11 +10,13 @@ admin/jqadm/order/actions = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => order-export
 )
-`
+```
 * Type: array - List of action queue names
 * Since: 2020.10
 
@@ -144,14 +146,16 @@ admin/jqadm/order/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => order.id
     [1] => order.ctime
     [2] => order.statuspayment
     [3] => order.address.lastname
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -219,11 +223,13 @@ admin/jqadm/order/service/delivery/attribute/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => trackingid
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -245,10 +251,12 @@ admin/jqadm/order/service/payment/attribute/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2017.10
 
@@ -271,10 +279,12 @@ admin/jqadm/order/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -406,10 +416,12 @@ admin/jqadm/order/transaction/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2023.01
 
@@ -444,10 +456,12 @@ admin/jqadm/order/transaction/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2023.01
 
@@ -498,10 +512,12 @@ admin/jqadm/order/transaction/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2023.01
 

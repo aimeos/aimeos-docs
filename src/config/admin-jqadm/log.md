@@ -112,14 +112,16 @@ admin/jqadm/log/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => log.timestamp
     [1] => log.facility
     [2] => log.priority
     [3] => log.message
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2018.04
 
@@ -185,10 +187,12 @@ admin/jqadm/log/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.04
 

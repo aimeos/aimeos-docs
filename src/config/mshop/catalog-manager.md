@@ -42,10 +42,12 @@ mshop/catalog/manager/cleanup/mysql =
  WHERE :siteid AND "nleft" >= ? AND "nright" <= ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_catalog"
  WHERE :siteid AND "nleft" >= ? AND "nright" <= ?
-`
+```
 
 See also:
 
@@ -137,7 +139,9 @@ mshop/catalog/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcat."id"
@@ -148,7 +152,7 @@ mshop/catalog/manager/count/mysql =
  	ORDER BY mcat."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -165,10 +169,12 @@ mshop/catalog/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -205,10 +211,12 @@ mshop/catalog/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -245,10 +253,12 @@ mshop/catalog/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -325,10 +335,12 @@ mshop/catalog/manager/delete/mysql =
  WHERE "siteid" = :siteid AND "nleft" >= ? AND "nright" <= ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_catalog"
  WHERE "siteid" = :siteid AND "nleft" >= ? AND "nright" <= ?
-`
+```
 
 See also:
 
@@ -426,7 +438,9 @@ mshop/catalog/manager/get/mysql =
  ORDER BY mcat."nleft"
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
  	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
@@ -446,7 +460,7 @@ mshop/catalog/manager/get/mysql =
  	mcat."nleft", mcat."nright", mcat."target",
  	mcat."mtime", mcat."editor", mcat."ctime"
  ORDER BY mcat."nleft"
-`
+```
 
 See also:
 
@@ -509,11 +523,13 @@ mshop/catalog/manager/insert-usage/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?, "ctime" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -583,14 +599,16 @@ mshop/catalog/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_catalog" (
  	"siteid", "label", "code", "status", "parentid", "level",
  	"nleft", "nright", "config", "mtime", "ctime", "editor", "target"
  ) VALUES (
  	:siteid, ?, ?, ?, ?, ?, ?, ?, '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '', ''
  )
-`
+```
 
 See also:
 
@@ -739,7 +757,9 @@ mshop/catalog/manager/lists/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcatli."id"
@@ -749,7 +769,7 @@ mshop/catalog/manager/lists/count/mysql =
  	ORDER BY mcatli."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -765,10 +785,12 @@ mshop/catalog/manager/lists/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -805,10 +827,12 @@ mshop/catalog/manager/lists/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -844,10 +868,12 @@ mshop/catalog/manager/lists/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -918,10 +944,12 @@ mshop/catalog/manager/lists/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_catalog_list"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -984,14 +1012,16 @@ mshop/catalog/manager/lists/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_catalog_list" ( :names
  	"parentid", "key", "type", "domain", "refid", "start", "end",
  	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -1135,9 +1165,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1174,14 +1202,16 @@ mshop/catalog/manager/lists/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_catalog_list" mcatli
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1197,10 +1227,12 @@ mshop/catalog/manager/lists/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1293,7 +1325,9 @@ mshop/catalog/manager/lists/type/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mcatlity."id"
@@ -1303,7 +1337,7 @@ mshop/catalog/manager/lists/type/count/mysql =
  	ORDER BY mcatlity."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -1319,10 +1353,12 @@ mshop/catalog/manager/lists/type/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1359,10 +1395,12 @@ mshop/catalog/manager/lists/type/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1398,10 +1436,12 @@ mshop/catalog/manager/lists/type/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1471,10 +1511,12 @@ mshop/catalog/manager/lists/type/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_catalog_list_type"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -1536,14 +1578,16 @@ mshop/catalog/manager/lists/type/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_catalog_list_type" ( :names
  	"code", "domain", "label", "i18n", "pos", "status",
  	"mtime","editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -1686,9 +1730,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -1724,14 +1766,16 @@ mshop/catalog/manager/lists/type/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_catalog_list_type" mcatlity
  :joins
  WHERE :cond
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -1747,10 +1791,12 @@ mshop/catalog/manager/lists/type/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1816,13 +1862,15 @@ mshop/catalog/manager/lists/type/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog_list_type"
  SET :names
  	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
  	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -1880,13 +1928,15 @@ mshop/catalog/manager/lists/update/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog_list"
  SET :names
  		"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
  		"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -1978,11 +2028,13 @@ mshop/catalog/manager/move-left/mysql =
  WHERE "siteid" = :siteid AND "nleft" >= ? AND "nleft" <= ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog"
  SET "nleft" = "nleft" + ?, "level" = "level" + ?
  WHERE "siteid" = :siteid AND "nleft" >= ? AND "nleft" <= ?
-`
+```
 
 See also:
 
@@ -2044,11 +2096,13 @@ mshop/catalog/manager/move-right/mysql =
  WHERE "siteid" = :siteid AND "nright" >= ? AND "nright" <= ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog"
  SET "nright" = "nright" + ?
  WHERE "siteid" = :siteid AND "nright" >= ? AND "nright" <= ?
-`
+```
 
 See also:
 
@@ -2225,9 +2279,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. In case no ordering is required,
-the complete ORDER BY part including the "/*-orderby*/.../*orderby-*/"
-markers is removed to speed up retrieving the records. Columns of
+replaces the ":order" placeholder. Columns of
 sub-managers can also be used for ordering the result set but then
 no index can be used.
 
@@ -2273,7 +2325,9 @@ mshop/catalog/manager/search-item/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns,
  	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
  	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
@@ -2285,7 +2339,7 @@ mshop/catalog/manager/search-item/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -2365,7 +2419,9 @@ mshop/catalog/manager/search/mysql =
  ORDER BY :order
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
  	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
@@ -2375,7 +2431,7 @@ mshop/catalog/manager/search/mysql =
  WHERE mcat."siteid" = :siteid AND mcat."nleft" >= ?
  	AND mcat."nright" <= ? AND :cond
  ORDER BY :order
-`
+```
 
 See also:
 
@@ -2428,10 +2484,12 @@ mshop/catalog/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2532,11 +2590,13 @@ mshop/catalog/manager/update-parentid/mysql =
  WHERE "siteid" = :siteid AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog"
  SET "parentid" = ?
  WHERE "siteid" = :siteid AND "id" = ?
-`
+```
 
 See also:
 
@@ -2599,11 +2659,13 @@ mshop/catalog/manager/update-usage/mysql =
  WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog"
  SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?
  WHERE "siteid" LIKE ? AND "id" = ?
-`
+```
 
 See also:
 
@@ -2664,11 +2726,13 @@ mshop/catalog/manager/update/mysql =
  WHERE "siteid" = :siteid AND "id" = ?
 ```
 
-* Default: `
+* Default: 
+```
+
  UPDATE "mshop_catalog"
  SET "label" = ?, "code" = ?, "status" = ?
  WHERE "siteid" = :siteid AND "id" = ?
-`
+```
 
 See also:
 

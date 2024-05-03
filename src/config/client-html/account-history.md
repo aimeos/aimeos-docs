@@ -110,7 +110,9 @@ client/html/account/history/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => order
     [order/address] => order/address
@@ -118,7 +120,7 @@ client/html/account/history/domains = Array
     [order/product] => order/product
     [order/service] => order/service
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2022.10
 
@@ -331,10 +333,12 @@ client/html/account/history/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -390,10 +394,12 @@ client/html/account/history/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

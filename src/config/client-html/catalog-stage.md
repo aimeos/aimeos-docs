@@ -130,14 +130,16 @@ client/html/catalog/stage/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => attribute
     [1] => media
     [2] => media/property
     [3] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2014.03
 

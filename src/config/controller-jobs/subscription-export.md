@@ -10,10 +10,12 @@ controller/jobs/subscription/export/csv/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -50,10 +52,12 @@ controller/jobs/subscription/export/csv/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -88,10 +92,12 @@ controller/jobs/subscription/export/csv/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
