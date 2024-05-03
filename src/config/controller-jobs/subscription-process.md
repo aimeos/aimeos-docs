@@ -43,10 +43,12 @@ controller/jobs/subscription/process/begin/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -83,10 +85,12 @@ controller/jobs/subscription/process/begin/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -121,10 +125,12 @@ controller/jobs/subscription/process/begin/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -211,7 +217,9 @@ controller/jobs/subscription/process/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => order
     [1] => order/address
@@ -219,7 +227,7 @@ controller/jobs/subscription/process/domains = Array
     [3] => order/product
     [4] => order/service
 )
-`
+```
 * Type: array - Referenced domain names
 * Since: 2022.04
 * Since: 2022.04
@@ -258,10 +266,12 @@ controller/jobs/subscription/process/end/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -298,10 +308,12 @@ controller/jobs/subscription/process/end/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -336,10 +348,12 @@ controller/jobs/subscription/process/end/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -491,10 +505,12 @@ controller/jobs/subscription/process/processor/cgroup/groupids = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of customer group IDs
 * Since: 2018.04
 
@@ -530,10 +546,12 @@ controller/jobs/subscription/process/processors = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of processor names
 * Since: 2018.04
 * Since: 2018.04
@@ -569,10 +587,12 @@ controller/jobs/subscription/process/renew/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -609,10 +629,12 @@ controller/jobs/subscription/process/renew/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -647,10 +669,12 @@ controller/jobs/subscription/process/renew/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.04
 

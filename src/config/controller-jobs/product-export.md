@@ -10,10 +10,12 @@ controller/jobs/product/export/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -50,10 +52,12 @@ controller/jobs/product/export/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -88,10 +92,12 @@ controller/jobs/product/export/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -133,7 +139,9 @@ controller/jobs/product/export/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => attribute
     [1] => media
@@ -141,7 +149,7 @@ controller/jobs/product/export/domains = Array
     [3] => product
     [4] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2015.01
 
@@ -340,10 +348,12 @@ controller/jobs/product/export/sitemap/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -380,10 +390,12 @@ controller/jobs/product/export/sitemap/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -418,10 +430,12 @@ controller/jobs/product/export/sitemap/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -459,11 +473,13 @@ controller/jobs/product/export/sitemap/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2019.02
 

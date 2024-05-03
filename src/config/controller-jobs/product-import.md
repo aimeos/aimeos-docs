@@ -138,12 +138,14 @@ controller/jobs/product/import/csv/catalog/listtypes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => default
     [1] => promotion
 )
-`
+```
 * Type: array|null - List of catalog list type names or null for all
 * Since: 2015.05
 
@@ -207,10 +209,12 @@ controller/jobs/product/import/csv/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -247,10 +251,12 @@ controller/jobs/product/import/csv/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -285,10 +291,12 @@ controller/jobs/product/import/csv/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.01
 
@@ -333,10 +341,12 @@ controller/jobs/product/import/csv/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Associative list of MShop item domain names
 * Since: 2018.04
 
@@ -447,7 +457,9 @@ controller/jobs/product/import/csv/mapping = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [item] => Array
         (
@@ -504,7 +516,7 @@ controller/jobs/product/import/csv/mapping = Array
         )
 
 )
-`
+```
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2018.04
 
@@ -690,12 +702,14 @@ controller/jobs/product/import/csv/processor/catalog/listtypes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => default
     [1] => promotion
 )
-`
+```
 
 
 ## processor/catalog/name
@@ -772,12 +786,14 @@ controller/jobs/product/import/csv/processor/product/listtypes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => default
     [1] => suggestion
 )
-`
+```
 
 
 ## processor/product/name
@@ -836,12 +852,14 @@ controller/jobs/product/import/csv/processor/supplier/listtypes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => default
     [1] => promotion
 )
-`
+```
 
 
 ## processor/supplier/name
@@ -895,12 +913,14 @@ controller/jobs/product/import/csv/product/listtypes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => default
     [1] => suggestion
 )
-`
+```
 * Type: array|null - List of product list type names or null for all
 * Since: 2015.05
 
@@ -934,8 +954,10 @@ Separator between multiple values in one CSV field
 controller/jobs/product/import/csv/separator = 
 ```
 
-* Default: `
-`
+* Default: 
+```
+
+```
 * Type: string - Unique character or characters in field values
 * Since: 2015.05
 
@@ -992,11 +1014,13 @@ controller/jobs/product/import/csv/supplier/listtypes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => default
 )
-`
+```
 * Type: array|null - List of supplier list type names or null for all
 * Since: 2020.07
 
@@ -1092,10 +1116,12 @@ controller/jobs/product/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -1132,10 +1158,12 @@ controller/jobs/product/import/xml/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -1170,10 +1198,12 @@ controller/jobs/product/import/xml/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -1208,9 +1238,12 @@ List of item domain names that should be retrieved along with the attribute item
 controller/jobs/product/import/xml/domains = Array
 (
     [attribute] => attribute
+    [attribute/property] => attribute/property
     [catalog] => catalog
     [media] => media
+    [media/property] => media/property
     [price] => price
+    [price/property] => price/property
     [product] => product
     [product/property] => product/property
     [supplier] => supplier
@@ -1218,18 +1251,12 @@ controller/jobs/product/import/xml/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
-    [0] => attribute
-    [1] => catalog
-    [2] => media
-    [3] => price
-    [4] => product
-    [5] => product/property
-    [6] => supplier
-    [7] => text
 )
-`
+```
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 
@@ -1336,3 +1363,27 @@ The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyXml"!
+
+
+## replace
+
+Replace products with the same reference code
+
+```
+controller/jobs/product/import/xml/replace = 
+```
+
+* Default: ``
+* Type: boolean - TRUE to replace products, FALSE to update products
+* Since: 2024.07
+
+If set to TRUE, products with the same code in the "ref" attribute will
+be replaced completely without fetching the existing product items first.
+This only works with document oriented storages like ElasticSearch!
+
+See also:
+
+* controller/jobs/product/import/xml/backup
+* controller/jobs/product/import/xml/domains
+* controller/jobs/product/import/xml/location
+* controller/jobs/product/import/xml/max-query

@@ -106,11 +106,13 @@ client/html/catalog/suggest/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2016.08
 
@@ -309,10 +311,12 @@ client/html/catalog/suggest/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -374,10 +378,12 @@ client/html/catalog/suggest/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

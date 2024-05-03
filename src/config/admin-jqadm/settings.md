@@ -110,12 +110,14 @@ admin/jqadm/settings/logo-size = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [maxwidth] => 
     [maxheight] => 
 )
-`
+```
 * Type: array - Associative list with maxwidth/maxheight keys and the maximum width/height in pixels (or NULL)
 * Since: 2024.04
 
@@ -180,10 +182,12 @@ admin/jqadm/settings/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2021.07
 
@@ -290,10 +294,12 @@ admin/jqadm/settings/theme/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2022.10
 
@@ -328,10 +334,12 @@ admin/jqadm/settings/theme/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2022.10
 

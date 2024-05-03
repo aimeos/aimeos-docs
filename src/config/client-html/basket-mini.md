@@ -152,10 +152,12 @@ client/html/basket/mini/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2014.03
 

@@ -114,10 +114,12 @@ admin/jqadm/attribute/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2017.07
 
@@ -140,14 +142,16 @@ admin/jqadm/attribute/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => attribute.status
     [1] => attribute.type
     [2] => attribute.code
     [3] => attribute.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -170,10 +174,12 @@ admin/jqadm/attribute/item/media/config/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -191,10 +197,12 @@ admin/jqadm/attribute/item/price/config/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -212,10 +220,12 @@ admin/jqadm/attribute/item/text/config/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -268,10 +278,12 @@ admin/jqadm/attribute/media/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -306,10 +318,12 @@ admin/jqadm/attribute/media/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -394,10 +408,12 @@ admin/jqadm/attribute/media/property/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -432,10 +448,12 @@ admin/jqadm/attribute/media/property/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -486,10 +504,12 @@ admin/jqadm/attribute/media/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -562,10 +582,12 @@ admin/jqadm/attribute/media/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -716,10 +738,12 @@ admin/jqadm/attribute/price/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -754,10 +778,12 @@ admin/jqadm/attribute/price/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2016.01
 
@@ -842,10 +868,12 @@ admin/jqadm/attribute/price/property/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -880,10 +908,12 @@ admin/jqadm/attribute/price/property/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.07
 
@@ -934,10 +964,12 @@ admin/jqadm/attribute/price/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2019.07
 
@@ -1010,10 +1042,12 @@ admin/jqadm/attribute/price/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2016.01
 
@@ -1120,10 +1154,12 @@ admin/jqadm/attribute/property/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1158,10 +1194,12 @@ admin/jqadm/attribute/property/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1212,10 +1250,12 @@ admin/jqadm/attribute/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -1291,10 +1331,12 @@ admin/jqadm/attribute/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1426,10 +1468,12 @@ admin/jqadm/attribute/text/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1464,10 +1508,12 @@ admin/jqadm/attribute/text/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -1518,10 +1564,12 @@ admin/jqadm/attribute/text/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.07
 

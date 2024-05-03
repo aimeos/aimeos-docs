@@ -111,13 +111,15 @@ admin/jqadm/group/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => group.status
     [1] => group.label
     [2] => group.code
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2018.07
 
@@ -183,10 +185,12 @@ admin/jqadm/group/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.07
 

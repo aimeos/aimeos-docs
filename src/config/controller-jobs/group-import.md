@@ -42,10 +42,12 @@ controller/jobs/group/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -82,10 +84,12 @@ controller/jobs/group/import/xml/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -120,10 +124,12 @@ controller/jobs/group/import/xml/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 

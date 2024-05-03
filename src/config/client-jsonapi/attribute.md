@@ -181,10 +181,12 @@ client/jsonapi/attribute/types = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of attribute type codes
 * Since: 2017.03
 

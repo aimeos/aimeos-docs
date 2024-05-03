@@ -220,7 +220,9 @@ client/html/catalog/lists/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog
     [1] => media
@@ -229,7 +231,7 @@ client/html/catalog/lists/domains = Array
     [4] => supplier
     [5] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2014.03
 
@@ -668,10 +670,12 @@ client/html/catalog/lists/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -727,10 +731,12 @@ client/html/catalog/lists/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

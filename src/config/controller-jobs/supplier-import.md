@@ -45,10 +45,12 @@ controller/jobs/supplier/import/csv/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -85,10 +87,12 @@ controller/jobs/supplier/import/csv/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -123,10 +127,12 @@ controller/jobs/supplier/import/csv/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2020.07
 
@@ -243,7 +249,9 @@ controller/jobs/supplier/import/csv/mapping = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [item] => Array
         (
@@ -273,7 +281,7 @@ controller/jobs/supplier/import/csv/mapping = Array
         )
 
 )
-`
+```
 * Type: array - Associative list of processor names and lists of key/position pairs
 * Since: 2020.07
 
@@ -476,8 +484,10 @@ Single separator character for multiple entries in one field of the import file
 controller/jobs/supplier/import/csv/separator = 
 ```
 
-* Default: `
-`
+* Default: 
+```
+
+```
 * Type: string - Single separator character
 * Since: 2015.07
 
@@ -565,10 +575,12 @@ controller/jobs/supplier/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -605,10 +617,12 @@ controller/jobs/supplier/import/xml/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -643,10 +657,12 @@ controller/jobs/supplier/import/xml/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -682,18 +698,21 @@ controller/jobs/supplier/import/xml/domains = Array
 (
     [supplier/address] => supplier/address
     [media] => media
+    [media/property] => media/property
     [product] => product
     [text] => text
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => supplier/address
     [1] => media
     [2] => text
 )
-`
+```
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 

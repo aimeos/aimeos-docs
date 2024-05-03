@@ -10,10 +10,12 @@ client/html/account/favorite/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 
 Decorators extend the functionality of a class by adding new aspects
@@ -49,10 +51,12 @@ client/html/account/favorite/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 
 Decorators extend the functionality of a class by adding new aspects
@@ -86,10 +90,12 @@ client/html/account/favorite/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 
 Decorators extend the functionality of a class by adding new aspects
@@ -127,14 +133,16 @@ client/html/account/favorite/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog
     [1] => text
     [2] => price
     [3] => media
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2014.09
 
@@ -328,10 +336,12 @@ client/html/account/favorite/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -387,10 +397,12 @@ client/html/account/favorite/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

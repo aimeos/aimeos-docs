@@ -10,10 +10,12 @@ admin/jsonadm/coupon/config/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -50,10 +52,12 @@ admin/jsonadm/coupon/config/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -90,10 +94,12 @@ admin/jsonadm/coupon/config/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 

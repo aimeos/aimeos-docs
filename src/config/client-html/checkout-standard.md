@@ -44,10 +44,12 @@ client/html/checkout/standard/address/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -82,10 +84,12 @@ client/html/checkout/standard/address/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -118,10 +122,12 @@ client/html/checkout/standard/address/delivery/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## delivery/decorators/local
@@ -132,10 +138,12 @@ client/html/checkout/standard/address/delivery/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## delivery/disable-new
@@ -228,10 +236,12 @@ client/html/checkout/standard/address/payment/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## payment/decorators/local
@@ -242,10 +252,12 @@ client/html/checkout/standard/address/payment/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## payment/disable-new
@@ -330,12 +342,14 @@ client/html/checkout/standard/address/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => payment
     [1] => delivery
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -505,10 +519,12 @@ client/html/checkout/standard/delivery/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -519,10 +535,12 @@ client/html/checkout/standard/delivery/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## domains
@@ -538,13 +556,15 @@ client/html/checkout/standard/delivery/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => media
     [1] => price
     [2] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2019.04
 
@@ -654,10 +674,12 @@ client/html/checkout/standard/onepage = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of checkout subparts name
 
 Normally, the checkout process is divided into several steps for entering
@@ -753,10 +775,12 @@ client/html/checkout/standard/payment/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -767,10 +791,12 @@ client/html/checkout/standard/payment/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## domains
@@ -786,13 +812,15 @@ client/html/checkout/standard/payment/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => media
     [1] => price
     [2] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2019.04
 
@@ -858,10 +886,12 @@ client/html/checkout/standard/process/account/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## account/decorators/local
@@ -872,10 +902,12 @@ client/html/checkout/standard/process/account/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## account/name
@@ -902,10 +934,12 @@ client/html/checkout/standard/process/address/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## address/decorators/local
@@ -916,10 +950,12 @@ client/html/checkout/standard/process/address/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## address/name
@@ -982,10 +1018,12 @@ client/html/checkout/standard/process/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1020,10 +1058,12 @@ client/html/checkout/standard/process/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.08
 
@@ -1075,12 +1115,14 @@ client/html/checkout/standard/process/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => account
     [1] => address
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -1157,12 +1199,14 @@ client/html/checkout/standard/process/validate = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [payment.cardno] => ^[0-9]{16,19}$
     [payment.cvv] => ^[0-9]{3}$
 )
-`
+```
 * Type: array - Associative list of field names and regular expressions
 * Since: 2015.07
 
@@ -1213,7 +1257,9 @@ client/html/checkout/standard/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => address
     [1] => delivery
@@ -1221,7 +1267,7 @@ client/html/checkout/standard/subparts = Array
     [3] => summary
     [4] => process
 )
-`
+```
 * Type: array - List of sub-client names
 
 The output of the frontend is composed of the code generated by the HTML
@@ -1290,10 +1336,12 @@ client/html/checkout/standard/summary/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -1304,10 +1352,12 @@ client/html/checkout/standard/summary/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## detail
@@ -1381,10 +1431,12 @@ client/html/checkout/standard/summary/option/terms/cancel/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -1440,10 +1492,12 @@ client/html/checkout/standard/summary/option/terms/cancel/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -1512,10 +1566,12 @@ client/html/checkout/standard/summary/option/terms/privacy/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -1571,10 +1627,12 @@ client/html/checkout/standard/summary/option/terms/privacy/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -1643,10 +1701,12 @@ client/html/checkout/standard/summary/option/terms/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -1702,10 +1762,12 @@ client/html/checkout/standard/summary/option/terms/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -1908,10 +1970,12 @@ client/html/checkout/standard/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.03
 
@@ -1974,10 +2038,12 @@ client/html/checkout/standard/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

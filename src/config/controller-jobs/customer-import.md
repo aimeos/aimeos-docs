@@ -42,10 +42,12 @@ controller/jobs/customer/import/xml/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -82,10 +84,12 @@ controller/jobs/customer/import/xml/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -120,10 +124,12 @@ controller/jobs/customer/import/xml/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2019.04
 
@@ -166,7 +172,9 @@ controller/jobs/customer/import/xml/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => customer/address
     [1] => group
@@ -175,7 +183,7 @@ controller/jobs/customer/import/xml/domains = Array
     [4] => product
     [5] => text
 )
-`
+```
 * Type: array - Associative list of MShop item domain names
 * Since: 2019.04
 

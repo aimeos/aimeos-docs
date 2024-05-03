@@ -44,10 +44,12 @@ admin/jqadm/supplier/address/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -82,10 +84,12 @@ admin/jqadm/supplier/address/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.10
 
@@ -136,10 +140,12 @@ admin/jqadm/supplier/address/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -313,10 +319,12 @@ admin/jqadm/supplier/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2017.10
 
@@ -339,14 +347,16 @@ admin/jqadm/supplier/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => image
     [1] => supplier.status
     [2] => supplier.code
     [3] => supplier.label
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -369,10 +379,12 @@ admin/jqadm/supplier/item/media/config/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -390,10 +402,12 @@ admin/jqadm/supplier/item/text/config/suggest = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - List of suggested config keys
 * Since: 2020.01
 
@@ -446,10 +460,12 @@ admin/jqadm/supplier/media/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -484,10 +500,12 @@ admin/jqadm/supplier/media/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -572,10 +590,12 @@ admin/jqadm/supplier/media/property/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -610,10 +630,12 @@ admin/jqadm/supplier/media/property/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -664,10 +686,12 @@ admin/jqadm/supplier/media/property/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.01
 
@@ -740,10 +764,12 @@ admin/jqadm/supplier/media/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -894,10 +920,12 @@ admin/jqadm/supplier/product/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -932,10 +960,12 @@ admin/jqadm/supplier/product/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2017.07
 
@@ -974,14 +1004,16 @@ admin/jqadm/supplier/product/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => product.lists.status
     [1] => product.lists.type
     [2] => product.lists.position
     [3] => product.lists.parentid
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.10
 
@@ -1019,10 +1051,12 @@ admin/jqadm/supplier/product/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.07
 
@@ -1098,10 +1132,12 @@ admin/jqadm/supplier/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 
@@ -1233,10 +1269,12 @@ admin/jqadm/supplier/text/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -1271,10 +1309,12 @@ admin/jqadm/supplier/text/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -1325,10 +1365,12 @@ admin/jqadm/supplier/text/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2018.07
 

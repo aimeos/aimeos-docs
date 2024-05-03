@@ -40,7 +40,9 @@ client/html/basket/related/bought/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog
     [1] => media
@@ -49,7 +51,7 @@ client/html/basket/related/bought/domains = Array
     [4] => supplier
     [5] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2014.09
 

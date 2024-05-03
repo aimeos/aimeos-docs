@@ -32,10 +32,12 @@ admin/jqadm/url/batch/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2022.10
 
@@ -90,10 +92,12 @@ admin/jqadm/url/batch/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -162,10 +166,12 @@ admin/jqadm/url/copy/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -220,10 +226,12 @@ admin/jqadm/url/copy/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -292,10 +300,12 @@ admin/jqadm/url/create/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -350,10 +360,12 @@ admin/jqadm/url/create/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -422,10 +434,12 @@ admin/jqadm/url/delete/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -480,10 +494,12 @@ admin/jqadm/url/delete/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -551,10 +567,12 @@ admin/jqadm/url/export/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -607,10 +625,12 @@ admin/jqadm/url/export/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -678,10 +698,12 @@ admin/jqadm/url/get/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -736,10 +758,12 @@ admin/jqadm/url/get/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 
@@ -808,10 +832,12 @@ admin/jqadm/url/import/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2023.10
 
@@ -866,10 +892,12 @@ admin/jqadm/url/import/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2023.10
 
@@ -937,10 +965,12 @@ admin/jqadm/url/save/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -993,10 +1023,12 @@ admin/jqadm/url/save/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -1064,10 +1096,12 @@ admin/jqadm/url/search/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2016.04
 
@@ -1122,10 +1156,12 @@ admin/jqadm/url/search/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2016.04
 

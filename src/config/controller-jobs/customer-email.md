@@ -10,10 +10,12 @@ controller/jobs/customer/email/account/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -50,10 +52,12 @@ controller/jobs/customer/email/account/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -88,10 +92,12 @@ controller/jobs/customer/email/account/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2016.04
 
@@ -219,10 +225,12 @@ controller/jobs/customer/email/watch/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -259,10 +267,12 @@ controller/jobs/customer/email/watch/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -297,10 +307,12 @@ controller/jobs/customer/email/watch/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 

@@ -112,14 +112,16 @@ admin/jqadm/plugin/fields = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => plugin.status
     [1] => plugin.label
     [2] => plugin.provider
     [3] => plugin.position
 )
-`
+```
 * Type: array - List of field names, i.e. search keys
 * Since: 2017.07
 
@@ -185,10 +187,12 @@ admin/jqadm/plugin/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2017.10
 

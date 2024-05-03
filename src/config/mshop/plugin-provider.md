@@ -33,10 +33,12 @@ mshop/plugin/provider/order/decorators = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 

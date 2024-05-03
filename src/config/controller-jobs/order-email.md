@@ -10,10 +10,12 @@ controller/jobs/order/email/delivery/attachments = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of absolute file paths
 * Since: 2016.10
 
@@ -35,10 +37,12 @@ controller/jobs/order/email/delivery/bcc-email = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string|array - E-mail address or list of e-mail addresses
 * Since: 2014.03
 
@@ -81,10 +85,12 @@ controller/jobs/order/email/delivery/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -121,10 +127,12 @@ controller/jobs/order/email/delivery/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -159,10 +167,12 @@ controller/jobs/order/email/delivery/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -269,14 +279,16 @@ controller/jobs/order/email/delivery/status = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => 2
     [1] => 3
     [2] => 6
     [3] => 7
 )
-`
+```
 * Type: integer - Delivery status constant
 * Since: 2014.03
 
@@ -357,10 +369,12 @@ controller/jobs/order/email/payment/attachments = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of absolute file paths
 * Since: 2016.10
 
@@ -382,10 +396,12 @@ controller/jobs/order/email/payment/bcc-email = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string|array - E-mail address or list of e-mail addresses
 * Since: 2014.03
 
@@ -428,10 +444,12 @@ controller/jobs/order/email/payment/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -468,10 +486,12 @@ controller/jobs/order/email/payment/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -506,10 +526,12 @@ controller/jobs/order/email/payment/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -650,14 +672,16 @@ controller/jobs/order/email/payment/status = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => 3
     [1] => 4
     [2] => 5
     [3] => 6
 )
-`
+```
 * Type: integer - Payment status constant
 * Since: 2014.03
 
@@ -809,10 +833,12 @@ controller/jobs/order/email/voucher/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -849,10 +875,12 @@ controller/jobs/order/email/voucher/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -887,10 +915,12 @@ controller/jobs/order/email/voucher/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 

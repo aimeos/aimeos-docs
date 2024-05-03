@@ -10,10 +10,12 @@ controller/jobs/order/service/async/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -50,10 +52,12 @@ controller/jobs/order/service/async/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -88,10 +92,12 @@ controller/jobs/order/service/async/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -198,10 +204,12 @@ controller/jobs/order/service/delivery/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -238,10 +246,12 @@ controller/jobs/order/service/delivery/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -276,10 +286,12 @@ controller/jobs/order/service/delivery/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -319,14 +331,16 @@ controller/jobs/order/service/delivery/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [order/address] => order/address
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
 )
-`
+```
 * Type: array - Referenced domain names
 * Since: 2022.04
 
@@ -439,10 +453,12 @@ controller/jobs/order/service/payment/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -479,10 +495,12 @@ controller/jobs/order/service/payment/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -517,10 +535,12 @@ controller/jobs/order/service/payment/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2015.09
 
@@ -667,10 +687,12 @@ controller/jobs/order/service/transfer/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -707,10 +729,12 @@ controller/jobs/order/service/transfer/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -745,10 +769,12 @@ controller/jobs/order/service/transfer/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2021.10
 
@@ -788,14 +814,16 @@ controller/jobs/order/service/transfer/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [order/address] => order/address
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
 )
-`
+```
 * Type: array - Referenced domain names
 * Since: 2022.04
 

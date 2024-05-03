@@ -78,7 +78,9 @@ mshop/review/manager/aggregate/mysql =
  GROUP BY :keys
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :keys, :type("val") AS "value"
  FROM (
  	SELECT :acols, :val AS "val"
@@ -89,7 +91,7 @@ mshop/review/manager/aggregate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-`
+```
 
 See also:
 
@@ -130,7 +132,9 @@ mshop/review/manager/aggregaterate/mysql =
  GROUP BY :keys
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
  FROM (
  	SELECT :acols, mrev.rating AS "val"
@@ -141,7 +145,7 @@ mshop/review/manager/aggregaterate/mysql =
  	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
  ) AS list
  GROUP BY :keys
-`
+```
 
 
 # count
@@ -225,7 +229,9 @@ mshop/review/manager/count/mysql =
  ) AS list
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT COUNT(*) AS "count"
  FROM (
  	SELECT mrev."id"
@@ -236,7 +242,7 @@ mshop/review/manager/count/mysql =
  	ORDER BY mrev."id"
  	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
  ) AS list
-`
+```
 
 See also:
 
@@ -253,10 +259,12 @@ mshop/review/manager/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -293,10 +301,12 @@ mshop/review/manager/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -333,10 +343,12 @@ mshop/review/manager/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -407,10 +419,12 @@ mshop/review/manager/delete/mysql =
  WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: `
+* Default: 
+```
+
  DELETE FROM "mshop_review"
  WHERE :cond AND "siteid" LIKE ?
-`
+```
 
 See also:
 
@@ -473,14 +487,16 @@ mshop/review/manager/insert/mysql =
  )
 ```
 
-* Default: `
+* Default: 
+```
+
  INSERT INTO "mshop_review" ( :names
  	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
  	"rating", "status", "mtime", "editor", "siteid", "ctime"
  ) VALUES ( :values
  	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
  )
-`
+```
 
 See also:
 
@@ -683,7 +699,9 @@ mshop/review/manager/search/mysql =
  LIMIT :size OFFSET :start
 ```
 
-* Default: `
+* Default: 
+```
+
  SELECT :columns
  FROM "mshop_review" mrev
  :joins
@@ -691,7 +709,7 @@ mshop/review/manager/search/mysql =
  GROUP BY :group
  ORDER BY :order
  OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-`
+```
 
 See also:
 
@@ -744,10 +762,12 @@ mshop/review/manager/submanagers = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of sub-manager names
 * Since: 2020.10
 

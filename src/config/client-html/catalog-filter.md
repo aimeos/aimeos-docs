@@ -8,10 +8,12 @@ client/html/catalog/filter/attribute/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -22,10 +24,12 @@ client/html/catalog/filter/attribute/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## domains
@@ -41,13 +45,15 @@ client/html/catalog/filter/attribute/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text
     [1] => media
     [2] => media/property
 )
-`
+```
 * Type: array - List of domain item names
 * Since: 2015.05
 
@@ -117,10 +123,12 @@ client/html/catalog/filter/attribute/types = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of attribute type codes
 * Since: 2015.05
 
@@ -151,10 +159,12 @@ client/html/catalog/filter/attribute/types-oneof = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of attribute type codes
 * Since: 2016.10
 
@@ -181,10 +191,12 @@ client/html/catalog/filter/attribute/types-option = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of attribute type codes
 * Since: 2016.10
 
@@ -254,10 +266,12 @@ client/html/catalog/filter/decorators/excludes = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -294,10 +308,12 @@ client/html/catalog/filter/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -332,10 +348,12 @@ client/html/catalog/filter/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of decorator names
 * Since: 2014.05
 
@@ -414,10 +432,12 @@ client/html/catalog/filter/price/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -428,10 +448,12 @@ client/html/catalog/filter/price/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## name
@@ -489,11 +511,13 @@ client/html/catalog/filter/remove-params = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => f_sort
 )
-`
+```
 * Type: array - List of parameter names
 * Since: 2020.04
 
@@ -514,10 +538,12 @@ client/html/catalog/filter/search/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -528,10 +554,12 @@ client/html/catalog/filter/search/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## force-search
@@ -612,7 +640,9 @@ client/html/catalog/filter/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => tree
     [1] => search
@@ -620,7 +650,7 @@ client/html/catalog/filter/subparts = Array
     [3] => supplier
     [4] => attribute
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2014.03
 
@@ -666,10 +696,12 @@ client/html/catalog/filter/supplier/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -680,10 +712,12 @@ client/html/catalog/filter/supplier/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## domains
@@ -699,13 +733,15 @@ client/html/catalog/filter/supplier/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text
     [1] => media
     [2] => media/property
 )
-`
+```
 * Type: array - List of domain item names
 * Since: 2018.07
 
@@ -831,10 +867,12 @@ client/html/catalog/filter/tree/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -845,10 +883,12 @@ client/html/catalog/filter/tree/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## domains
@@ -864,13 +904,15 @@ client/html/catalog/filter/tree/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => text
     [1] => media
     [2] => media/property
 )
-`
+```
 * Type: array - List of domain item names
 * Since: 2014.03
 

@@ -152,10 +152,12 @@ client/html/catalog/session/pinned = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - Associative list of name/value settings
 
 This returns all settings related to the catalog session pinned subpart.
@@ -194,10 +196,12 @@ client/html/catalog/session/pinned/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -208,10 +212,12 @@ client/html/catalog/session/pinned/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## domains
@@ -228,14 +234,16 @@ client/html/catalog/session/pinned/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog
     [1] => media
     [2] => price
     [3] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2015.04
 
@@ -352,10 +360,12 @@ client/html/catalog/session/pinned/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -411,10 +421,12 @@ client/html/catalog/session/pinned/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
@@ -480,10 +492,12 @@ client/html/catalog/session/seen/decorators/global = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## decorators/local
@@ -494,10 +508,12 @@ client/html/catalog/session/seen/decorators/local = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## maxitems
@@ -573,12 +589,14 @@ client/html/catalog/session/subparts = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => pinned
     [1] => seen
 )
-`
+```
 * Type: array - List of sub-client names
 * Since: 2014.03
 

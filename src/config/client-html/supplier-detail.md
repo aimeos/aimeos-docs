@@ -133,13 +133,15 @@ client/html/supplier/detail/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => supplier/address
     [1] => media
     [2] => text
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2020.10
 
@@ -223,7 +225,7 @@ or numbers. Avoid chamel case names like "MyDetail"!
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/supplier/detail/supid-default = 253
+client/html/supplier/detail/supid-default = 293
 ```
 
 * Type: string - Supplier ID
@@ -327,10 +329,12 @@ client/html/supplier/detail/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2020.10
 
@@ -386,10 +390,12 @@ client/html/supplier/detail/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 

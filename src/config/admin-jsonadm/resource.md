@@ -13,10 +13,12 @@ admin/jsonadm/resource/attribute/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -34,10 +36,12 @@ admin/jsonadm/resource/attribute/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -55,10 +59,12 @@ admin/jsonadm/resource/attribute/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -76,10 +82,12 @@ admin/jsonadm/resource/attribute/property/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2018.07
 
@@ -97,10 +105,12 @@ admin/jsonadm/resource/attribute/property/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2018.07
 
@@ -118,10 +128,12 @@ admin/jsonadm/resource/attribute/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -140,10 +152,12 @@ admin/jsonadm/resource/catalog/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -161,10 +175,12 @@ admin/jsonadm/resource/catalog/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -182,10 +198,12 @@ admin/jsonadm/resource/catalog/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -204,10 +222,12 @@ admin/jsonadm/resource/coupon/code/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -225,10 +245,12 @@ admin/jsonadm/resource/coupon/config/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -246,10 +268,12 @@ admin/jsonadm/resource/coupon/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -268,10 +292,12 @@ admin/jsonadm/resource/customer/address/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -284,10 +310,12 @@ admin/jsonadm/resource/customer/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 
 
 ## lists/groups
@@ -303,10 +331,12 @@ admin/jsonadm/resource/customer/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -324,10 +354,12 @@ admin/jsonadm/resource/customer/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -345,10 +377,12 @@ admin/jsonadm/resource/customer/property/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2018.07
 
@@ -366,10 +400,12 @@ admin/jsonadm/resource/customer/property/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2018.07
 
@@ -387,10 +423,12 @@ admin/jsonadm/resource/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -409,10 +447,12 @@ admin/jsonadm/resource/index/attribute/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2020.10
 * Since: 2020.10
@@ -431,10 +471,12 @@ admin/jsonadm/resource/index/catalog/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2020.10
 
@@ -452,10 +494,12 @@ admin/jsonadm/resource/index/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2020.10
 
@@ -473,10 +517,12 @@ admin/jsonadm/resource/index/price/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2020.10
 
@@ -494,10 +540,12 @@ admin/jsonadm/resource/index/supplier/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2020.10
 
@@ -515,10 +563,12 @@ admin/jsonadm/resource/index/text/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2020.10
 
@@ -536,10 +586,12 @@ admin/jsonadm/resource/locale/currency/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -556,10 +608,12 @@ admin/jsonadm/resource/locale/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -576,10 +630,12 @@ admin/jsonadm/resource/locale/language/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -596,10 +652,12 @@ admin/jsonadm/resource/locale/site/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -618,10 +676,12 @@ admin/jsonadm/resource/media/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -639,10 +699,12 @@ admin/jsonadm/resource/media/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -660,10 +722,12 @@ admin/jsonadm/resource/media/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -681,10 +745,12 @@ admin/jsonadm/resource/media/property/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2018.07
 
@@ -702,10 +768,12 @@ admin/jsonadm/resource/media/property/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2018.07
 
@@ -723,10 +791,12 @@ admin/jsonadm/resource/media/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -745,10 +815,12 @@ admin/jsonadm/resource/order/address/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -766,10 +838,12 @@ admin/jsonadm/resource/order/coupon/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -787,10 +861,12 @@ admin/jsonadm/resource/order/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -808,10 +884,12 @@ admin/jsonadm/resource/order/product/attribute/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -829,10 +907,12 @@ admin/jsonadm/resource/order/product/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -850,10 +930,12 @@ admin/jsonadm/resource/order/service/attribute/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -871,10 +953,12 @@ admin/jsonadm/resource/order/service/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -892,10 +976,12 @@ admin/jsonadm/resource/order/status/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -913,10 +999,12 @@ admin/jsonadm/resource/plugin/config/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -933,10 +1021,12 @@ admin/jsonadm/resource/plugin/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -953,10 +1043,12 @@ admin/jsonadm/resource/plugin/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -975,10 +1067,12 @@ admin/jsonadm/resource/price/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -996,10 +1090,12 @@ admin/jsonadm/resource/price/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1017,10 +1113,12 @@ admin/jsonadm/resource/price/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1038,10 +1136,12 @@ admin/jsonadm/resource/price/property/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2019.10
 
@@ -1059,10 +1159,12 @@ admin/jsonadm/resource/price/property/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2019.10
 
@@ -1080,10 +1182,12 @@ admin/jsonadm/resource/price/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1102,10 +1206,12 @@ admin/jsonadm/resource/product/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1123,10 +1229,12 @@ admin/jsonadm/resource/product/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1144,10 +1252,12 @@ admin/jsonadm/resource/product/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1165,10 +1275,12 @@ admin/jsonadm/resource/product/property/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1186,10 +1298,12 @@ admin/jsonadm/resource/product/property/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1207,10 +1321,12 @@ admin/jsonadm/resource/product/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1229,10 +1345,12 @@ admin/jsonadm/resource/rule/config/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -1250,10 +1368,12 @@ admin/jsonadm/resource/rule/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -1271,10 +1391,12 @@ admin/jsonadm/resource/rule/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2021.04
 
@@ -1292,10 +1414,12 @@ admin/jsonadm/resource/service/config/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1312,10 +1436,12 @@ admin/jsonadm/resource/service/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1332,10 +1458,12 @@ admin/jsonadm/resource/service/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1352,10 +1480,12 @@ admin/jsonadm/resource/service/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1372,10 +1502,12 @@ admin/jsonadm/resource/service/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1394,10 +1526,12 @@ admin/jsonadm/resource/stock/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1415,10 +1549,12 @@ admin/jsonadm/resource/stock/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1437,10 +1573,12 @@ admin/jsonadm/resource/supplier/address/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1458,10 +1596,12 @@ admin/jsonadm/resource/supplier/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1479,10 +1619,12 @@ admin/jsonadm/resource/supplier/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1500,10 +1642,12 @@ admin/jsonadm/resource/supplier/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1534,10 +1678,12 @@ admin/jsonadm/resource/tag/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1568,10 +1714,12 @@ admin/jsonadm/resource/text/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1589,10 +1737,12 @@ admin/jsonadm/resource/text/lists/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1610,10 +1760,12 @@ admin/jsonadm/resource/text/lists/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10
 
@@ -1631,9 +1783,11 @@ admin/jsonadm/resource/text/type/groups = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of user group names
 * Since: 2017.10

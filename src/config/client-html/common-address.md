@@ -10,10 +10,12 @@ client/html/common/address/delivery/hidden = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of field keys
 * Since: 2015.02
 
@@ -66,10 +68,12 @@ client/html/common/address/delivery/mandatory = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of field keys
 * Since: 2015.02
 
@@ -121,10 +125,12 @@ client/html/common/address/delivery/optional = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of field keys
 * Since: 2015.02
 
@@ -175,10 +181,12 @@ client/html/common/address/payment/hidden = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of field keys
 * Since: 2015.02
 
@@ -233,10 +241,12 @@ client/html/common/address/payment/mandatory = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of field keys
 * Since: 2015.02
 
@@ -292,10 +302,12 @@ client/html/common/address/payment/optional = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of field keys
 * Since: 2015.02
 
@@ -348,10 +360,12 @@ client/html/common/address/salutations = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of available salutation codes
 * Since: 2024.04
 * Since: 2021.04

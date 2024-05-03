@@ -109,14 +109,16 @@ client/html/account/watch/domains = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
     [0] => catalog
     [1] => text
     [2] => price
     [3] => media
 )
-`
+```
 * Type: array - List of domain names
 * Since: 2014.09
 
@@ -316,10 +318,12 @@ client/html/account/watch/url/config = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: string - Associative list of configuration options
 * Since: 2014.09
 
@@ -375,10 +379,12 @@ client/html/account/watch/url/filter = Array
 )
 ```
 
-* Default: `Array
+* Default: 
+```
+Array
 (
 )
-`
+```
 * Type: array - List of parameter names to remove
 * Since: 2022.10
 
