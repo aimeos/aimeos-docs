@@ -21,6 +21,8 @@ This article contains all actions for retrieving and managing categories.
         mtime
         ctime
         editor
+        lists: {
+        }
       }
     }
     ```
@@ -41,6 +43,8 @@ This article contains all actions for retrieving and managing categories.
         mtime
         ctime
         editor
+        lists: {
+        }
       }
     }`});
 
@@ -75,7 +79,9 @@ Response:
       "target": "",
       "mtime": "2022-06-16 10:03:47",
       "ctime": "2022-06-16 10:03:47",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+      }
     }
   }
 }
@@ -99,6 +105,8 @@ Response:
       getCatalogPath(id: "4", include: []) {
         id
         label
+        lists: {
+        }
       }
     }`});
 
@@ -124,19 +132,27 @@ Response:
     "getCatalogPath": [
       {
         "id": "1",
-        "label": "Home"
+        "label": "Home",
+        "lists": {
+        }
       },
       {
         "id": "2",
-        "label": "Best sellers"
+        "label": "Best sellers",
+        "lists": {
+        }
       },
       {
         "id": "3",
-        "label": "Women"
+        "label": "Women",
+        "lists": {
+        }
       },
       {
         "id": "4",
-        "label": "Dresses"
+        "label": "Dresses",
+        "lists": {
+        }
       }
     ]
   }
@@ -151,9 +167,13 @@ Response:
       getCatalogTree(id: "1", level: 3, include: []) {
         id
         label
+        lists: {
+        }
         children {
           id
           label
+          lists: {
+          }
           children {
             id
             label
@@ -169,9 +189,13 @@ Response:
       getCatalogTree(id: "1", level: 3, include: []) {
         id
         label
+        lists: {
+        }
         children {
           id
           label
+          lists: {
+          }
           children {
             id
             label
@@ -202,10 +226,14 @@ Response:
     "getCatalogTree": {
       "id": "1",
       "label": "Home",
+      "lists": {
+      },
       "children": [
         {
           "id": "2",
           "label": "Best sellers",
+          "lists": {
+          },
           "children": [
             {
               "id": "3",
@@ -228,11 +256,15 @@ Response:
         {
           "id": "16",
           "label": "New arrivals",
+          "lists": {
+          },
           "children": []
         },
         {
           "id": "17",
           "label": "Hot deals",
+          "lists": {
+          },
           "children": []
         }
       ]
@@ -259,6 +291,8 @@ Response:
         mtime
         ctime
         editor
+        lists: {
+        }
       }
     }
     ```
@@ -279,6 +313,8 @@ Response:
         mtime
         ctime
         editor
+        lists: {
+        }
       }
     }`});
 
@@ -313,7 +349,9 @@ Response:
       "target": "",
       "mtime": "2022-06-16 10:03:47",
       "ctime": "2022-06-16 10:03:47",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+      }
     }
   }
 }
@@ -340,6 +378,8 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists: {
+          }
         }
         total
       }
@@ -367,6 +407,8 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+          }
         }
         total
       }
@@ -405,7 +447,9 @@ Response:
           "target": "",
           "mtime": "2022-12-01 11:59:02",
           "ctime": "2022-12-01 11:59:02",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+          }
         },
         {
           "id": "3",
@@ -419,7 +463,9 @@ Response:
           "target": "",
           "mtime": "2022-12-01 11:59:02",
           "ctime": "2022-12-01 11:59:02",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+          }
         },
       ],
       "total": 2
@@ -430,14 +476,20 @@ Response:
 
 # Insert new category
 
+The `insertCatalog` mutation accepts three parameters:
+- input: Object with catalog item properties
+- parentid: ID of the parent category (default: `null` creates a new root category)
+- refid: ID of the category the new item should be inserted before (default: append at the end)
+
 === "Mutation"
     ```graphql
     mutation {
-      saveCatalog(input: {
-        parentid: "1"
+      insertCatalog(input: {
         code: "test"
         label: "Test category"
-      }) {
+        lists: {
+        }
+      }, parentid: "1", refid: "3") {
         id
       }
     }
@@ -446,11 +498,12 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `mutation {
-      saveCatalog(input: {
-        parentid: "1"
+      insertCatalog(input: {
         code: "test"
         label: "Test category"
-      }) {
+        lists: {
+        }
+      }, parentid: "1", refid: "3") {
         id
       }
     }`});
@@ -489,6 +542,8 @@ Response:
       saveCatalog(input: {
         id: "15"
         label: "Test category label"
+        lists: {
+        }
       }) {
         label
       }
@@ -501,6 +556,8 @@ Response:
       saveCatalog(input: {
         id: "15"
         label: "Test category label"
+        lists: {
+        }
       }) {
         label
       }
@@ -582,6 +639,8 @@ Response:
       },{
         id: "15"
         label: "Test category label"
+        lists: {
+        }
       }]) {
         label
       }
@@ -597,6 +656,8 @@ Response:
       },{
         id: "15"
         label: "Test category label"
+        lists: {
+        }
       }]) {
         label
       }
