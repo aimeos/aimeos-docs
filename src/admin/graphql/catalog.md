@@ -21,7 +21,14 @@ This article contains all actions for retrieving and managing categories.
         mtime
         ctime
         editor
-        lists: {
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
         }
       }
     }
@@ -43,7 +50,14 @@ This article contains all actions for retrieving and managing categories.
         mtime
         ctime
         editor
-        lists: {
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
         }
       }
     }`});
@@ -81,6 +95,13 @@ Response:
       "ctime": "2022-06-16 10:03:47",
       "editor": "core",
       "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
       }
     }
   }
@@ -95,6 +116,15 @@ Response:
       getCatalogPath(id: "4", include: []) {
         id
         label
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -105,7 +135,14 @@ Response:
       getCatalogPath(id: "4", include: []) {
         id
         label
-        lists: {
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
         }
       }
     }`});
@@ -134,24 +171,34 @@ Response:
         "id": "1",
         "label": "Home",
         "lists": {
+          "text": [{
+            "id": "1",
+            "item": {
+              "id": "10",
+              "content": "Test content"
+            }
+          }]
         }
       },
       {
         "id": "2",
         "label": "Best sellers",
         "lists": {
+          "text": []
         }
       },
       {
         "id": "3",
         "label": "Women",
         "lists": {
+          "text": []
         }
       },
       {
         "id": "4",
         "label": "Dresses",
         "lists": {
+          "text": []
         }
       }
     ]
@@ -167,12 +214,26 @@ Response:
       getCatalogTree(id: "1", level: 3, include: []) {
         id
         label
-        lists: {
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
         }
         children {
           id
           label
-          lists: {
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
           }
           children {
             id
@@ -189,12 +250,26 @@ Response:
       getCatalogTree(id: "1", level: 3, include: []) {
         id
         label
-        lists: {
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
         }
         children {
           id
           label
-          lists: {
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
           }
           children {
             id
@@ -227,13 +302,21 @@ Response:
       "id": "1",
       "label": "Home",
       "lists": {
-      },
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
       "children": [
         {
           "id": "2",
           "label": "Best sellers",
           "lists": {
-          },
+            "text": []
+          }
           "children": [
             {
               "id": "3",
@@ -257,14 +340,16 @@ Response:
           "id": "16",
           "label": "New arrivals",
           "lists": {
-          },
+            "text": []
+          }
           "children": []
         },
         {
           "id": "17",
           "label": "Hot deals",
           "lists": {
-          },
+            "text": []
+          }
           "children": []
         }
       ]
@@ -291,7 +376,14 @@ Response:
         mtime
         ctime
         editor
-        lists: {
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
         }
       }
     }
@@ -313,7 +405,14 @@ Response:
         mtime
         ctime
         editor
-        lists: {
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
         }
       }
     }`});
@@ -351,6 +450,13 @@ Response:
       "ctime": "2022-06-16 10:03:47",
       "editor": "core",
       "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
       }
     }
   }
@@ -378,7 +484,14 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
-          lists: {
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
           }
         }
         total
@@ -408,6 +521,13 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           ctime
           editor
           lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
           }
         }
         total
@@ -449,6 +569,13 @@ Response:
           "ctime": "2022-12-01 11:59:02",
           "editor": "core",
           "lists": {
+            "text": [{
+              "id": "1",
+              "item": {
+                "id": "10",
+                "content": "Test content"
+              }
+            }]
           }
         },
         {
@@ -465,6 +592,7 @@ Response:
           "ctime": "2022-12-01 11:59:02",
           "editor": "core",
           "lists": {
+            "text": []
           }
         },
       ],
@@ -488,6 +616,11 @@ The `insertCatalog` mutation accepts three parameters:
         code: "test"
         label: "Test category"
         lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
         }
       }, parentid: "1", refid: "3") {
         id
@@ -502,6 +635,11 @@ The `insertCatalog` mutation accepts three parameters:
         code: "test"
         label: "Test category"
         lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
         }
       }, parentid: "1", refid: "3") {
         id
@@ -543,6 +681,11 @@ Response:
         id: "15"
         label: "Test category label"
         lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
         }
       }) {
         label
@@ -557,6 +700,11 @@ Response:
         id: "15"
         label: "Test category label"
         lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
         }
       }) {
         label
@@ -585,6 +733,82 @@ Response:
     "saveCatalog": {
       "label": "Test category label"
     }
+  }
+}
+```
+
+# Save multiple existing categories
+
+=== "Mutation"
+    ```graphql
+    mutation {
+      saveCatalogs(input: [{
+        id: "1"
+        label: "Root"
+      },{
+        id: "15"
+        label: "Test category label"
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
+      }]) {
+        label
+      }
+    }
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `mutation {
+      saveCatalogs(input: [{
+        id: "1"
+        label: "Root"
+      },{
+        id: "15"
+        label: "Test category label"
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
+      }]) {
+        label
+      }
+    }`});
+
+    fetch($('.aimeos').data('graphql'), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: body
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
+    ```
+
+Response:
+
+```json
+{
+  "data": {
+    "saveCatalogs": [
+      {
+        "label": "Root"
+      },
+      {
+        "label": "Test category label"
+      }
+    ]
   }
 }
 ```
@@ -624,72 +848,6 @@ Response:
 {
   "data": {
     "moveCatalog": "15"
-  }
-}
-```
-
-# Save multiple existing categories
-
-=== "Mutation"
-    ```graphql
-    mutation {
-      saveCatalogs(input: [{
-        id: "1"
-        label: "Root"
-      },{
-        id: "15"
-        label: "Test category label"
-        lists: {
-        }
-      }]) {
-        label
-      }
-    }
-    ```
-=== "Javascript"
-    ```javascript
-    const body = JSON.stringify({'query':
-    `mutation {
-      saveCatalogs(input: [{
-        id: "1"
-        label: "Root"
-      },{
-        id: "15"
-        label: "Test category label"
-        lists: {
-        }
-      }]) {
-        label
-      }
-    }`});
-
-    fetch($('.aimeos').data('graphql'), {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        body: body
-    }).then(response => {
-        return response.json();
-    }).then(data => {
-        console.log(data);
-    });
-    ```
-
-Response:
-
-```json
-{
-  "data": {
-    "saveCatalogs": [
-      {
-        "label": "Root"
-      },
-      {
-        "label": "Test category label"
-      }
-    ]
   }
 }
 ```
