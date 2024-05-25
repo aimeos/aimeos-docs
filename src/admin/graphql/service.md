@@ -23,6 +23,15 @@ This article contains all actions for retrieving and managing services.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -45,6 +54,15 @@ This article contains all actions for retrieving and managing services.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -81,7 +99,16 @@ Response:
       "status": 1,
       "mtime": "2022-06-08 16:11:10",
       "ctime": "2022-06-08 16:11:10",
-      "editor": "aimeos@aimeos.org"
+      "editor": "aimeos@aimeos.org",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -107,6 +134,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -129,6 +165,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -165,7 +210,16 @@ Response:
       "status": 1,
       "mtime": "2022-06-08 16:11:10",
       "ctime": "2022-06-08 16:11:10",
-      "editor": "aimeos@aimeos.org"
+      "editor": "aimeos@aimeos.org",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -194,6 +248,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -223,6 +286,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -263,7 +335,16 @@ Response:
           "status": 1,
           "mtime": "2022-12-01 11:59:07",
           "ctime": "2022-12-01 11:59:07",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "text": [{
+              "id": "1",
+              "item": {
+                "id": "10",
+                "content": "Test content"
+              }
+            }]
+          }
         },
         {
           "id": "2",
@@ -279,7 +360,10 @@ Response:
           "status": 1,
           "mtime": "2022-12-01 11:59:07",
           "ctime": "2022-12-01 11:59:07",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "text": []
+          }
         }
       ],
       "total": 2
@@ -372,7 +456,14 @@ Response:
         type: "delivery"
         code: "test"
         label: "Test service"
-        provider: "Standard"
+        provider: "Standard",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -386,7 +477,14 @@ Response:
         type: "delivery"
         code: "test"
         label: "Test service"
-        provider: "Standard"
+        provider: "Standard",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -427,7 +525,14 @@ Response:
         type: "delivery"
         code: "test-2"
         label: "Test 2 service"
-        provider: "Xml"
+        provider: "Xml",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         type: "payment"
         code: "test-3"
@@ -446,7 +551,14 @@ Response:
         type: "delivery"
         code: "test-2"
         label: "Test 2 service"
-        provider: "Xml"
+        provider: "Xml",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         type: "payment"
         code: "test-3"
