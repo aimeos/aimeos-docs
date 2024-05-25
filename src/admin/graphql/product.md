@@ -27,6 +27,15 @@ This article contains all actions for retrieving and managing products.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -53,6 +62,15 @@ This article contains all actions for retrieving and managing products.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -93,7 +111,16 @@ Response:
       "boost": 1,
       "mtime": "2023-01-13 11:25:51",
       "ctime": "2022-12-01 11:59:00",
-      "editor": "aimeos@aimeos.org"
+      "editor": "aimeos@aimeos.org",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -123,6 +150,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -149,6 +185,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -189,7 +234,16 @@ Response:
       "boost": 1,
       "mtime": "2023-01-13 11:25:51",
       "ctime": "2022-12-01 11:59:00",
-      "editor": "aimeos@aimeos.org"
+      "editor": "aimeos@aimeos.org",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -222,6 +276,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -255,6 +318,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -299,7 +371,16 @@ Response:
           "boost": 1,
           "mtime": "2023-01-13 11:25:51",
           "ctime": "2022-12-01 11:59:00",
-          "editor": "aimeos@aimeos.org"
+          "editor": "aimeos@aimeos.org",
+          "lists": {
+            "text": [{
+              "id": "1",
+              "item": {
+                "id": "10",
+                "content": "Test content"
+              }
+            }]
+          }
         },
         {
           "id": "2",
@@ -319,7 +400,10 @@ Response:
           "boost": 1,
           "mtime": "2022-12-01 11:59:05",
           "ctime": "2022-12-01 11:59:05",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "text": []
+          }
         }
       ],
       "total": 2
@@ -335,7 +419,14 @@ Response:
     mutation {
       saveProduct(input: {
         code: "test"
-        label: "Test product"
+        label: "Test product",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -347,7 +438,14 @@ Response:
     `mutation {
       saveProduct(input: {
         code: "test"
-        label: "Test product"
+        label: "Test product",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -386,7 +484,14 @@ Response:
     mutation {
       saveProducts(input: [{
         code: "test-2"
-        label: "Test 2 product"
+        label: "Test 2 product",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         code: "test-3"
         label: "Test 3 product"
@@ -401,7 +506,14 @@ Response:
     `mutation {
       saveProducts(input: [{
         code: "test-2"
-        label: "Test 2 product"
+        label: "Test 2 product",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         code: "test-3"
         label: "Test 3 product"
