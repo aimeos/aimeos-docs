@@ -20,6 +20,15 @@ This article contains all actions for retrieving and managing attributes.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -39,6 +48,15 @@ This article contains all actions for retrieving and managing attributes.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -71,7 +89,16 @@ Response:
       "status": 1,
       "mtime": "2022-12-01 11:59:05",
       "ctime": "2022-12-01 11:59:05",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -94,6 +121,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -113,6 +149,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -145,7 +190,16 @@ Response:
       "status": 1,
       "mtime": "2022-12-01 11:59:05",
       "ctime": "2022-12-01 11:59:05",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -171,6 +225,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -197,6 +260,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -233,7 +305,16 @@ Response:
           "status": 1,
           "mtime": "2022-12-01 11:59:05",
           "ctime": "2022-12-01 11:59:05",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "text": [{
+              "id": "1",
+              "item": {
+                "id": "10",
+                "content": "Test content"
+              }
+            }]
+          }
         },
         {
           "id": "2",
@@ -245,7 +326,10 @@ Response:
           "status": 1,
           "mtime": "2022-12-01 11:59:05",
           "ctime": "2022-12-01 11:59:05",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "text": []
+          }
         }
       ],
       "total": 2
@@ -263,7 +347,14 @@ Response:
         code: "test"
         type: "color"
         domain: "product"
-        label: "Test attribute"
+        label: "Test attribute",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -277,7 +368,14 @@ Response:
         code: "test"
         type: "color"
         domain: "product"
-        label: "Test attribute"
+        label: "Test attribute",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -318,7 +416,14 @@ Response:
         code: "test-2"
         type: "color"
         domain: "product"
-        label: "Test 2 attribute"
+        label: "Test 2 attribute",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         code: "test-3"
         type: "color"
@@ -337,7 +442,14 @@ Response:
         code: "test-2"
         type: "color"
         domain: "product"
-        label: "Test 2 attribute"
+        label: "Test 2 attribute",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         code: "test-3"
         type: "color"
