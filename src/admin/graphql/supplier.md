@@ -18,6 +18,15 @@ This article contains all actions for retrieving and managing suppliers.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -35,6 +44,15 @@ This article contains all actions for retrieving and managing suppliers.
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -66,7 +84,16 @@ Response:
       "status": 1,
       "mtime": "2022-12-01 11:59:04",
       "ctime": "2022-12-01 11:59:04",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -87,6 +114,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }
     ```
@@ -104,6 +140,15 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
       }
     }`});
 
@@ -135,7 +180,16 @@ Response:
       "status": 1,
       "mtime": "2022-12-01 11:59:04",
       "ctime": "2022-12-01 11:59:04",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+        "text": [{
+          "id": "1",
+          "item": {
+            "id": "10",
+            "content": "Test content"
+          }
+        }]
+      }
     }
   }
 }
@@ -159,6 +213,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -183,6 +246,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
         }
         total
       }
@@ -218,7 +290,16 @@ Response:
           "status": 1,
           "mtime": "2022-12-01 11:59:04",
           "ctime": "2022-12-01 11:59:04",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "text": [{
+              "id": "1",
+              "item": {
+                "id": "10",
+                "content": "Test content"
+              }
+            }]
+          }
         },
         {
           "id": "2",
@@ -229,7 +310,10 @@ Response:
           "status": 1,
           "mtime": "2022-12-01 11:59:04",
           "ctime": "2022-12-01 11:59:04",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "text": []
+          }
         }
       ],
       "total": 2
@@ -245,7 +329,14 @@ Response:
     mutation {
       saveSupplier(input: {
         code: "test"
-        label: "Test supplier"
+        label: "Test supplier",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -257,7 +348,14 @@ Response:
     `mutation {
       saveSupplier(input: {
         code: "test"
-        label: "Test supplier"
+        label: "Test supplier",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       }) {
         id
       }
@@ -296,7 +394,14 @@ Response:
     mutation {
       saveSuppliers(input: [{
         code: "test-2"
-        label: "Test 2 supplier"
+        label: "Test 2 supplier",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         code: "test-3"
         label: "Test 3 supplier"
@@ -311,7 +416,14 @@ Response:
     `mutation {
       saveSuppliers(input: [{
         code: "test-2"
-        label: "Test 2 supplier"
+        label: "Test 2 supplier",
+        lists: {
+          text: {
+            item: {
+              content: "Test content"
+            }
+          }
+        }
       },{
         code: "test-3"
         label: "Test 3 supplier"
