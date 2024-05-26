@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing suppliers.
 === "Query"
     ```graphql
     query {
-      getSupplier(id: "1") {
+      getSupplier(id: "1", include: ["text"]) {
         id
         siteid
         code
@@ -34,7 +34,7 @@ This article contains all actions for retrieving and managing suppliers.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getSupplier(id: "1") {
+      getSupplier(id: "1", include: ["text"]) {
         id
         siteid
         code
@@ -104,7 +104,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findSupplier(code: "demo-test1") {
+      findSupplier(code: "demo-test1", include: ["text"]) {
         id
         siteid
         code
@@ -130,7 +130,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findSupplier(code: "demo-test1") {
+      findSupplier(code: "demo-test1", include: ["text"]) {
         id
         siteid
         code
@@ -202,7 +202,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchSuppliers(filter: "{\\"=~\\": {\\"supplier.code\\":\\"demo-\\"}}") {
+      searchSuppliers(filter: "{\\"=~\\": {\\"supplier.code\\":\\"demo-\\"}}", include: ["text"]) {
         items {
           id
           siteid
@@ -235,7 +235,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchSuppliers(filter: ` + fstr + `) {
+      searchSuppliers(filter: ` + fstr + `, include: ["text"]) {
         items {
           id
           siteid

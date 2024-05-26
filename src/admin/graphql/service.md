@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing services.
 === "Query"
     ```graphql
     query {
-      getService(id: "1") {
+      getService(id: "1", include: ["text"]) {
         id
         siteid
         type
@@ -39,7 +39,7 @@ This article contains all actions for retrieving and managing services.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getService(id: "1") {
+      getService(id: "1", include: ["text"]) {
         id
         siteid
         type
@@ -119,7 +119,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findService(code: "paypalplus") {
+      findService(code: "paypalplus", include: ["text"]) {
         id
         siteid
         type
@@ -150,7 +150,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findService(code: "paypalplus") {
+      findService(code: "paypalplus", include: ["text"]) {
         id
         siteid
         type
@@ -232,7 +232,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchServices(filter: "{\\"=~\\": {\\"service.code\\":\\"demo-\\"}}") {
+      searchServices(filter: "{\\"=~\\": {\\"service.code\\":\\"demo-\\"}}", include: ["text"]) {
         items {
           id
           siteid
@@ -270,7 +270,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchServices(filter: ` + fstr + `) {
+      searchServices(filter: ` + fstr + `, include: ["text"]) {
         items {
           id
           siteid

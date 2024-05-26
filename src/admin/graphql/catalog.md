@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing categories.
 === "Query"
     ```graphql
     query {
-      getCatalog(id: "1") {
+      getCatalog(id: "1", include: ["text"]) {
         id
         siteid
         parentid
@@ -37,7 +37,7 @@ This article contains all actions for retrieving and managing categories.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getCatalog(id: "1") {
+      getCatalog(id: "1", include: ["text"]) {
         id
         siteid
         parentid
@@ -113,7 +113,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      getCatalogPath(id: "4", include: []) {
+      getCatalogPath(id: "4", include: ["text"]) {
         id
         label
         lists {
@@ -132,7 +132,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getCatalogPath(id: "4", include: []) {
+      getCatalogPath(id: "4", include: ["text"]) {
         id
         label
         lists {
@@ -211,7 +211,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      getCatalogTree(id: "1", level: 3, include: []) {
+      getCatalogTree(id: "1", level: 3, include: ["text"]) {
         id
         label
         lists {
@@ -247,7 +247,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getCatalogTree(id: "1", level: 3, include: []) {
+      getCatalogTree(id: "1", level: 3, include: ["text"]) {
         id
         label
         lists {
@@ -363,7 +363,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findCatalog(code: "home") {
+      findCatalog(code: "home", include: ["text"]) {
         id
         siteid
         parentid
@@ -392,7 +392,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findCatalog(code: "home") {
+      findCatalog(code: "home", include: ["text"]) {
         id
         siteid
         parentid
@@ -470,7 +470,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchCatalogs(filter: "{\\"=~\\": {\\"catalog.code\\":\\"demo-\\"}}") {
+      searchCatalogs(filter: "{\\"=~\\": {\\"catalog.code\\":\\"demo-\\"}}", include: ["text"]) {
         items {
           id
           siteid
@@ -506,7 +506,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchCatalogs(filter: ` + fstr + `) {
+      searchCatalogs(filter: ` + fstr + `, include: ["text"]) {
         items {
           id
           siteid

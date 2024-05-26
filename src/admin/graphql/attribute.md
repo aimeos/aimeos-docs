@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing attributes.
 === "Query"
     ```graphql
     query {
-      getAttribute(id: "1") {
+      getAttribute(id: "1", include: ["text"]) {
         id
         type
         siteid
@@ -36,7 +36,7 @@ This article contains all actions for retrieving and managing attributes.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getAttribute(id: "1") {
+      getAttribute(id: "1", include: ["text"]) {
         id
         type
         siteid
@@ -109,7 +109,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findAttribute(code: "demo-black", domain: "product", type: "color") {
+      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text"]) {
         id
         type
         siteid
@@ -137,7 +137,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findAttribute(code: "demo-black", domain: "product", type: "color") {
+      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text"]) {
         id
         type
         siteid
@@ -212,7 +212,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchAttributes(filter: "{\\"=~\\": {\\"attribute.code\\":\\"demo-\\"}}") {
+      searchAttributes(filter: "{\\"=~\\": {\\"attribute.code\\":\\"demo-\\"}}", include: ["text"]) {
         items {
           id
           type
@@ -247,7 +247,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchAttributes(filter: ` + fstr + `) {
+      searchAttributes(filter: ` + fstr + `, include: ["text"]) {
         items {
           id
           type
