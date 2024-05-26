@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing customers.
 === "Query"
     ```graphql
     query {
-      getCustomer(id: "1") {
+      getCustomer(id: "1", ["product"]) {
         id
         siteid
         code
@@ -41,6 +41,16 @@ This article contains all actions for retrieving and managing customers.
         mtime
         ctime
         editor
+        lists {
+          product {
+            id {
+              item {
+                id
+                label
+              }
+            }
+          }
+        }
       }
     }
     ```
@@ -48,7 +58,7 @@ This article contains all actions for retrieving and managing customers.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getCustomer(id: "1") {
+      getCustomer(id: "1", ["product"]) {
         id
         siteid
         code
@@ -81,6 +91,16 @@ This article contains all actions for retrieving and managing customers.
         mtime
         ctime
         editor
+        lists {
+          product {
+            id {
+              item {
+                id
+                label
+              }
+            }
+          }
+        }
       }
     }`});
 
@@ -134,7 +154,16 @@ Response:
       "password": "$2y$10$cdjdim/ITpPnf8H06i5wMOvlo6l3Slsz6E39sX6gZSpOIfIBD6W66",
       "mtime": "2022-12-01 11:59:04",
       "ctime": "2022-12-01 11:59:04",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+        "product": [{
+          "id": "10",
+          "item": {
+            "id": "1",
+            "label": "Test article"
+          }
+        }]
+      }
     }
   }
 }
@@ -145,7 +174,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findCustomer(code: "test@example.com") {
+      findCustomer(code: "test@example.com", ["product"]) {
         id
         siteid
         code
@@ -178,6 +207,16 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          product {
+            id {
+              item {
+                id
+                label
+              }
+            }
+          }
+        }
       }
     }
     ```
@@ -185,7 +224,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findCustomer(code: "test@example.com") {
+      findCustomer(code: "test@example.com", ["product"]) {
         id
         siteid
         code
@@ -218,6 +257,16 @@ Response:
         mtime
         ctime
         editor
+        lists {
+          product {
+            id {
+              item {
+                id
+                label
+              }
+            }
+          }
+        }
       }
     }`});
 
@@ -271,7 +320,16 @@ Response:
       "password": "$2y$10$cdjdim/ITpPnf8H06i5wMOvlo6l3Slsz6E39sX6gZSpOIfIBD6W66",
       "mtime": "2022-12-01 11:59:04",
       "ctime": "2022-12-01 11:59:04",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+        "product": [{
+          "id": "10",
+          "item": {
+            "id": "1",
+            "label": "Test article"
+          }
+        }]
+      }
     }
   }
 }
@@ -284,7 +342,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchCustomers(filter: "{\\"=~\\": {\\"customer.code\\":\\"demo-\\"}}") {
+      searchCustomers(filter: "{\\"=~\\": {\\"customer.code\\":\\"demo-\\"}}", ["product"]) {
         items {
           id
           siteid
@@ -318,6 +376,16 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            product {
+              id {
+                item {
+                  id
+                  label
+                }
+              }
+            }
+          }
         }
         total
       }
@@ -331,7 +399,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchCustomers(filter: ` + fstr + `) {
+      searchCustomers(filter: ` + fstr + `, ["product"]) {
         items {
           id
           siteid
@@ -365,6 +433,16 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            product {
+              id {
+                item {
+                  id
+                  label
+                }
+              }
+            }
+          }
         }
         total
       }
@@ -422,7 +500,16 @@ Response:
           "password": "$2y$10$cdjdim/ITpPnf8H06i5wMOvlo6l3Slsz6E39sX6gZSpOIfIBD6W66",
           "mtime": "2022-12-01 11:59:04",
           "ctime": "2022-12-01 11:59:04",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "product": [{
+              "id": "10",
+              "item": {
+                "id": "1",
+                "label": "Test article"
+              }
+            }]
+          }
         }
       ],
       "total": 1
@@ -439,8 +526,14 @@ Response:
       saveCustomer(input: {
         code: "test-2@example.com"
         label: "Test 2 customer"
-        city: "Test city"
-        languageid: "en"
+        city: "Test city",
+        languageid: "en",
+        lists: {
+          product: {
+            type: "suggest",
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -454,7 +547,13 @@ Response:
         code: "test-3@example.com"
         label: "Test customer"
         city: "Test city"
-        languageid: "en"
+        languageid: "en",
+        lists: {
+          product: {
+            type: "suggest",
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -495,7 +594,13 @@ Response:
         code: "test-3@example.com"
         label: "Test 3 customer"
         city: "Test city"
-        languageid: "en"
+        languageid: "en",
+        lists: {
+          product: {
+            type: "suggest",
+            refid: "2"
+          }
+        }
       },{
         code: "test-4@example.com"
         label: "Test 4 customer"
@@ -514,7 +619,13 @@ Response:
         code: "test-3@example.com"
         label: "Test 3 customer"
         city: "Test city"
-        languageid: "en"
+        languageid: "en",
+        lists: {
+          product: {
+            type: "suggest",
+            refid: "2"
+          }
+        }
       },{
         code: "test-4@example.com"
         label: "Test 4 customer"
