@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing prices.
 === "Query"
     ```graphql
     query {
-      getPrice(id: "1") {
+      getPrice(id: "1", include: ["group"]) {
         id
         siteid
         type
@@ -25,6 +25,15 @@ This article contains all actions for retrieving and managing prices.
         mtime
         ctime
         editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
       }
     }
     ```
@@ -32,7 +41,7 @@ This article contains all actions for retrieving and managing prices.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getPrice(id: "1") {
+      getPrice(id: "1", include: ["group"]) {
         id
         siteid
         type
@@ -49,6 +58,15 @@ This article contains all actions for retrieving and managing prices.
         mtime
         ctime
         editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
       }
     }`});
 
@@ -87,7 +105,16 @@ Response:
       "status": 1,
       "mtime": "2022-05-28 06:26:38",
       "ctime": "2022-05-28 06:26:38",
-      "editor": "core:setup"
+      "editor": "core:setup",
+      "lists": {
+        "group": [{
+          "id": "10",
+          "item": {
+            "id": "2",
+            "code": "wholesale"
+          }
+        }]
+      }
     }
   }
 }
@@ -100,7 +127,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}") {
+      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}", include: ["group"]) {
         items {
           id
           siteid
@@ -118,6 +145,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
         }
         total
       }
@@ -131,7 +167,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchPrices(filter: ` + fstr + `) {
+      searchPrices(filter: ` + fstr + `, include: ["group"]) {
         items {
           id
           siteid
@@ -149,6 +185,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
         }
         total
       }
@@ -191,7 +236,16 @@ Response:
           "status": 1,
           "mtime": "2022-05-28 06:26:38",
           "ctime": "2022-05-28 06:26:38",
-          "editor": "core:setup"
+          "editor": "core:setup",
+          "lists": {
+            "group": [{
+              "id": "10",
+              "item": {
+                "id": "2",
+                "code": "wholesale"
+              }
+            }]
+          }
         },
         {
           "id": "4",
@@ -209,7 +263,10 @@ Response:
           "status": 1,
           "mtime": "2022-05-28 06:26:38",
           "ctime": "2022-05-28 06:26:38",
-          "editor": "core:setup"
+          "editor": "core:setup",
+          "lists": {
+            "group": []
+          }
         }
       ],
       "total": 2
@@ -224,10 +281,15 @@ Response:
     ```graphql
     mutation {
       savePrice(input: {
-        domain: "product"
-        label: "Test price"
-        currencyid: "EUR"
-        value: "100.00"
+        domain: "product",
+        label: "Test price",
+        currencyid: "EUR",
+        value: "100.00",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -238,10 +300,15 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       savePrice(input: {
-        domain: "product"
-        label: "Test price"
-        currencyid: "EUR"
-        value: "100.00"
+        domain: "product",
+        label: "Test price",
+        currencyid: "EUR",
+        value: "100.00",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -279,14 +346,19 @@ Response:
     ```graphql
     mutation {
       savePrices(input: [{
-        domain: "product"
-        label: "Test 2 price"
-        currencyid: "EUR"
-        value: "200.00"
+        domain: "product",
+        label: "Test 2 price",
+        currencyid: "EUR",
+        value: "200.00",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       },{
-        domain: "product"
-        label: "Test 3 price"
-        currencyid: "USD"
+        domain: "product",
+        label: "Test 3 price",
+        currencyid: "USD",
         value: "220.00"
       }]) {
         id
@@ -298,14 +370,19 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       savePrices(input: [{
-        domain: "product"
-        label: "Test 2 price"
-        currencyid: "EUR"
-        value: "200.00"
+        domain: "product",
+        label: "Test 2 price",
+        currencyid: "EUR",
+        value: "200.00",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       },{
-        domain: "product"
-        label: "Test 3 price"
-        currencyid: "USD"
+        domain: "product",
+        label: "Test 3 price",
+        currencyid: "USD",
         value: "220.00"
       }]) {
         id
