@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing texts.
 === "Query"
     ```graphql
     query {
-      getText(id: "1") {
+      getText(id: "1", include: ["group"]) {
         id
         siteid
         type
@@ -20,6 +20,15 @@ This article contains all actions for retrieving and managing texts.
         mtime
         ctime
         editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
       }
     }
     ```
@@ -27,7 +36,7 @@ This article contains all actions for retrieving and managing texts.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getText(id: "1") {
+      getText(id: "1", include: ["group"]) {
         id
         siteid
         type
@@ -39,6 +48,15 @@ This article contains all actions for retrieving and managing texts.
         mtime
         ctime
         editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
       }
     }`});
 
@@ -72,7 +90,16 @@ Response:
       "status": 1,
       "mtime": "2022-05-28 06:26:35",
       "ctime": "2022-05-28 06:26:35",
-      "editor": "core:setup"
+      "editor": "core:setup",
+      "lists": {
+        "group": [{
+          "id": "10",
+          "item": {
+            "id": "2",
+            "code": "wholesale"
+          }
+        }]
+      }
     }
   }
 }
@@ -85,7 +112,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchTexts(filter: "{\\"=~\\": {\\"text.label\\":\\"Demo\\"}}") {
+      searchTexts(filter: "{\\"=~\\": {\\"text.label\\":\\"Demo\\"}}", include: ["group"]) {
         items {
           id
           siteid
@@ -98,6 +125,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
         }
         total
       }
@@ -111,7 +147,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchTexts(filter: ` + fstr + `) {
+      searchTexts(filter: ` + fstr + `, include: ["group"]) {
         items {
           id
           siteid
@@ -124,6 +160,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
         }
         total
       }
@@ -161,7 +206,16 @@ Response:
           "status": 1,
           "mtime": "2022-05-28 06:26:38",
           "ctime": "2022-05-28 06:26:38",
-          "editor": "core:setup"
+          "editor": "core:setup",
+          "lists": {
+            "group": [{
+              "id": "10",
+              "item": {
+                "id": "2",
+                "code": "wholesale"
+              }
+            }]
+          }
         },
         {
           "id": "22",
@@ -174,7 +228,10 @@ Response:
           "status": 1,
           "mtime": "2022-05-28 06:26:38",
           "ctime": "2022-05-28 06:26:38",
-          "editor": "core:setup"
+          "editor": "core:setup",
+          "lists": {
+            "group": []
+          }
         }
       ],
       "total": 2
@@ -193,7 +250,12 @@ Response:
         domain: "product"
         label: "Test text"
         languageid: "en"
-        content: "This is a long product description."
+        content: "This is a long product description.",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -208,7 +270,12 @@ Response:
         domain: "product"
         label: "Test text"
         languageid: "en"
-        content: "This is a long product description."
+        content: "This is a long product description.",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -246,16 +313,21 @@ Response:
     ```graphql
     mutation {
       saveTexts(input: [{
-        type: "short"
-        domain: "catalog"
-        label: "Test catalog text"
-        languageid: "en"
-        content: "This is a short category text."
+        type: "short",
+        domain: "catalog",
+        label: "Test catalog text",
+        languageid: "en",
+        content: "This is a short category text.",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       },{
-        type: "name"
-        domain: "product"
-        label: "Test product name"
-        languageid: "en"
+        type: "name",
+        domain: "product",
+        label: "Test product name",
+        languageid: "en",
         content: "This is a product name"
       }]) {
         id
@@ -267,11 +339,16 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveTexts(input: [{
-        type: "short"
-        domain: "catalog"
-        label: "Test catalog text"
-        languageid: "en"
-        content: "This is a short category text."
+        type: "short",
+        domain: "catalog",
+        label: "Test catalog text",
+        languageid: "en",
+        content: "This is a short category text.",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       },{
         type: "name"
         domain: "product"
