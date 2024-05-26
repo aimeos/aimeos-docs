@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing media.
 === "Query"
     ```graphql
     query {
-      getMedia(id: "1") {
+      getMedia(id: "1", include: ["group"]) {
         id
         siteid
         type
@@ -23,6 +23,15 @@ This article contains all actions for retrieving and managing media.
         mtime
         ctime
         editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
       }
     }
     ```
@@ -30,7 +39,7 @@ This article contains all actions for retrieving and managing media.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getMedia(id: "1") {
+      getMedia(id: "1", include: ["group"]) {
         id
         siteid
         type
@@ -45,6 +54,15 @@ This article contains all actions for retrieving and managing media.
         mtime
         ctime
         editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
       }
     }`});
 
@@ -81,7 +99,16 @@ Response:
       "status": 1,
       "mtime": "2022-12-01 11:59:05",
       "ctime": "2022-12-01 11:59:05",
-      "editor": "core"
+      "editor": "core",
+      "lists": {
+        "group": [{
+          "id": "10",
+          "item": {
+            "id": "2",
+            "code": "wholesale"
+          }
+        }]
+      }
     }
   }
 }
@@ -94,7 +121,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchMedias(filter: "{\\"=~\\": {\\"media.code\\":\\"demo-\\"}}") {
+      searchMedias(filter: "{\\"=~\\": {\\"media.code\\":\\"demo-\\"}}", include: ["group"]) {
         items {
           id
           siteid
@@ -110,6 +137,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
         }
         total
       }
@@ -123,7 +159,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchMedias(filter: ` + fstr + `) {
+      searchMedias(filter: ` + fstr + `, include: ["group"]) {
         items {
           id
           siteid
@@ -139,6 +175,15 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
         }
         total
       }
@@ -179,7 +224,16 @@ Response:
           "status": 1,
           "mtime": "2022-05-28 06:26:38",
           "ctime": "2022-05-28 06:26:38",
-          "editor": "core:setup"
+          "editor": "core:setup",
+          "lists": {
+            "group": [{
+              "id": "10",
+              "item": {
+                "id": "2",
+                "code": "wholesale"
+              }
+            }]
+          }
         },
         {
           "id": "20",
@@ -195,7 +249,10 @@ Response:
           "status": 1,
           "mtime": "2022-12-01 11:59:02",
           "ctime": "2022-12-01 11:59:02",
-          "editor": "core"
+          "editor": "core",
+          "lists": {
+            "group": []
+          }
         }
       ],
       "total": 2
@@ -210,10 +267,15 @@ Response:
     ```graphql
     mutation {
       saveMedia(input: {
-        domain: "product"
-        type: "default"
-        label: "Test image"
-        url: "https://myshop.com/images/test.jpg"
+        domain: "product",
+        type: "default",
+        label: "Test image",
+        url: "https://myshop.com/images/test.jpg",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -224,10 +286,15 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveMedia(input: {
-        domain: "product"
-        type: "default"
-        label: "Test image"
-        url: "https://myshop.com/images/test.jpg"
+        domain: "product",
+        type: "default",
+        label: "Test image",
+        url: "https://myshop.com/images/test.jpg",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       }) {
         id
       }
@@ -265,15 +332,20 @@ Response:
     ```graphql
     mutation {
       saveMedias(input: [{
-        domain: "product"
-        type: "default"
-        label: "Test 2 image"
-        url: "https://myshop.com/images/test2.jpg"
+        domain: "product",
+        type: "default",
+        label: "Test 2 image",
+        url: "https://myshop.com/images/test2.jpg",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       },{
-        domain: "catalog"
-        type: "stage"
-        label: "Test 3 image"
-        url: "https://myshop.com/images/test3.jpg"
+        domain: "catalog",
+        type: "stage",
+        label: "Test 3 image",
+        url: "https://myshop.com/images/test3.jpg",
       }]) {
         id
       }
@@ -284,14 +356,19 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveMedias(input: [{
-        domain: "product"
-        type: "default"
-        label: "Test 2 image"
-        url: "https://myshop.com/images/test2.jpg"
+        domain: "product",
+        type: "default",
+        label: "Test 2 image",
+        url: "https://myshop.com/images/test2.jpg",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        }
       },{
-        domain: "catalog"
-        type: "stage"
-        label: "Test 3 image"
+        domain: "catalog",
+        type: "stage",
+        label: "Test 3 image",
         url: "https://myshop.com/images/test3.jpg"
       }]) {
         id
