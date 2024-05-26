@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing products.
 === "Query"
     ```graphql
     query {
-      getProduct(id: "1") {
+      getProduct(id: "1", include: ["text"]) {
         id
         siteid
         type
@@ -43,7 +43,7 @@ This article contains all actions for retrieving and managing products.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getProduct(id: "1") {
+      getProduct(id: "1", include: ["text"]) {
         id
         siteid
         type
@@ -131,7 +131,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findProduct(code: "demo-article") {
+      findProduct(code: "demo-article", include: ["text"]) {
         id
         siteid
         type
@@ -166,7 +166,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findProduct(code: "demo-article") {
+      findProduct(code: "demo-article", include: ["text"]) {
         id
         siteid
         type
@@ -256,7 +256,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}") {
+      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text"]) {
         items {
           id
           siteid
@@ -298,7 +298,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: ` + fstr + `) {
+      searchProducts(filter: ` + fstr + `, include: ["text"]) {
         items {
           id
           siteid
