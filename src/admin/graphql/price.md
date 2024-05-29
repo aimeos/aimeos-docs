@@ -34,6 +34,12 @@ This article contains all actions for retrieving and managing prices.
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -66,6 +72,12 @@ This article contains all actions for retrieving and managing prices.
               code
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -114,7 +126,13 @@ Response:
             "code": "wholesale"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "country",
+        "languageid": null,
+        "value": "DE"
+      }]
     }
   }
 }
@@ -153,6 +171,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -193,6 +217,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -245,7 +275,13 @@ Response:
                 "code": "wholesale"
               }
             }]
-          }
+          },
+          "property": [{
+            "id": "1",
+            "type": "country",
+            "languageid": null,
+            "value": "DE"
+          }]
         },
         {
           "id": "4",
@@ -266,7 +302,9 @@ Response:
           "editor": "core:setup",
           "lists": {
             "group": []
-          }
+          },
+          "property": [{
+          }]
         }
       ],
       "total": 2
@@ -289,7 +327,12 @@ Response:
           group: {
             refid: "2"
           }
-        }
+        },
+        property: [{
+          type: "country",
+          languageid: null,
+          value: "DE"
+        }]
       }) {
         id
       }
@@ -308,7 +351,12 @@ Response:
           group: {
             refid: "2"
           }
-        }
+        },
+        property: [{
+          type: "country",
+          languageid: null,
+          value: "DE"
+        }]
       }) {
         id
       }
@@ -351,10 +399,15 @@ Response:
         currencyid: "EUR",
         value: "200.00",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "country",
+          languageid: null,
+          value: "DE"
+        }]
       },{
         domain: "product",
         label: "Test 3 price",
@@ -375,10 +428,15 @@ Response:
         currencyid: "EUR",
         value: "200.00",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "country",
+          languageid: null,
+          value: "DE"
+        }]
       },{
         domain: "product",
         label: "Test 3 price",
