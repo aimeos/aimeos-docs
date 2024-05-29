@@ -36,6 +36,12 @@ This article contains all actions for retrieving and managing products.
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -70,6 +76,12 @@ This article contains all actions for retrieving and managing products.
               content
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -120,7 +132,13 @@ Response:
             "content": "Test content"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "isbn",
+        "languageid": null,
+        "value": "12345678"
+      }]
     }
   }
 }
@@ -159,6 +177,12 @@ Response:
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -193,6 +217,12 @@ Response:
               content
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -243,7 +273,13 @@ Response:
             "content": "Test content"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "isbn",
+        "languageid": null,
+        "value": "12345678"
+      }]
     }
   }
 }
@@ -284,6 +320,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 content
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -326,6 +368,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 content
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -380,7 +428,13 @@ Response:
                 "content": "Test content"
               }
             }]
-          }
+          },
+          "property": [{
+            "id": "1",
+            "type": "isbn",
+            "languageid": null,
+            "value": "12345678"
+          }]
         },
         {
           "id": "2",
@@ -403,7 +457,8 @@ Response:
           "editor": "core",
           "lists": {
             "text": []
-          }
+          },
+          "property": []
         }
       ],
       "total": 2
@@ -421,12 +476,17 @@ Response:
         code: "test"
         label: "Test product",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "isbn",
+          languageid: null,
+          value: "12345678"
+        }]
       }) {
         id
       }
@@ -440,12 +500,17 @@ Response:
         code: "test"
         label: "Test product",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "isbn",
+          languageid: null,
+          value: "12345678"
+        }]
       }) {
         id
       }
@@ -486,12 +551,17 @@ Response:
         code: "test-2"
         label: "Test 2 product",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "isbn",
+          languageid: null,
+          value: "12345678"
+        }]
       },{
         code: "test-3"
         label: "Test 3 product"
@@ -508,12 +578,17 @@ Response:
         code: "test-2"
         label: "Test 2 product",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "isbn",
+          languageid: null,
+          value: "12345678"
+        }]
       },{
         code: "test-3"
         label: "Test 3 product"
