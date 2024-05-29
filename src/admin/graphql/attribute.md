@@ -29,6 +29,12 @@ This article contains all actions for retrieving and managing attributes.
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -56,6 +62,12 @@ This article contains all actions for retrieving and managing attributes.
               content
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -98,7 +110,13 @@ Response:
             "content": "Test content"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "title",
+        "languageid": "en",
+        "value": "Black color"
+      }]
     }
   }
 }
@@ -130,6 +148,12 @@ Response:
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -157,6 +181,12 @@ Response:
               content
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -199,7 +229,13 @@ Response:
             "content": "Test content"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "title",
+        "languageid": "en",
+        "value": "Black color"
+      }]
     }
   }
 }
@@ -233,6 +269,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 content
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -268,6 +310,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 content
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -314,7 +362,13 @@ Response:
                 "content": "Test content"
               }
             }]
-          }
+          },
+          "property": [{
+            "id": "1",
+            "type": "title",
+            "languageid": "en",
+            "value": "Black color"
+          }]
         },
         {
           "id": "2",
@@ -329,7 +383,8 @@ Response:
           "editor": "core",
           "lists": {
             "text": []
-          }
+          },
+          "property": []
         }
       ],
       "total": 2
@@ -349,12 +404,17 @@ Response:
         domain: "product"
         label: "Test attribute",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Black color"
+        }]
       }) {
         id
       }
@@ -370,12 +430,17 @@ Response:
         domain: "product"
         label: "Test attribute",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Black color"
+        }]
       }) {
         id
       }
@@ -418,12 +483,18 @@ Response:
         domain: "product"
         label: "Test 2 attribute",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          id: "1",
+          type: "title",
+          languageid: "en",
+          value: "Black color"
+        }]
       },{
         code: "test-3"
         type: "color"
@@ -444,12 +515,18 @@ Response:
         domain: "product"
         label: "Test 2 attribute",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
-        }
+          }]
+        },
+        property: [{
+          id: "1",
+          type: "title",
+          languageid: "en",
+          value: "Black color"
+        }]
       },{
         code: "test-3"
         type: "color"
