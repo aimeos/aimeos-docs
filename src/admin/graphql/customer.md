@@ -51,6 +51,12 @@ This article contains all actions for retrieving and managing customers.
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -100,6 +106,12 @@ This article contains all actions for retrieving and managing customers.
               }
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -163,7 +175,13 @@ Response:
             "label": "Test article"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "test",
+        "languageid": null,
+        "value": "Test property"
+      }]
     }
   }
 }
@@ -217,6 +235,12 @@ Response:
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -266,6 +290,12 @@ Response:
               }
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -329,7 +359,13 @@ Response:
             "label": "Test article"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "test",
+        "languageid": null,
+        "value": "Test property"
+      }]
     }
   }
 }
@@ -385,6 +421,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 }
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -442,6 +484,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 }
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -509,7 +557,13 @@ Response:
                 "label": "Test article"
               }
             }]
-          }
+          },
+          "property": [{
+            "id": "1",
+            "type": "test",
+            "languageid": null,
+            "value": "Test property"
+          }]
         }
       ],
       "total": 1
@@ -529,11 +583,16 @@ Response:
         city: "Test city",
         languageid: "en",
         lists: {
-          product: {
+          product: [{
             type: "suggest",
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "test",
+          languageid: null,
+          value: "Test property"
+        }]
       }) {
         id
       }
@@ -549,11 +608,16 @@ Response:
         city: "Test city"
         languageid: "en",
         lists: {
-          product: {
+          product: [{
             type: "suggest",
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "test",
+          languageid: null,
+          value: "Test property"
+        }]
       }) {
         id
       }
@@ -596,11 +660,16 @@ Response:
         city: "Test city"
         languageid: "en",
         lists: {
-          product: {
+          product: [{
             type: "suggest",
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "test",
+          languageid: null,
+          value: "Test property"
+        }]
       },{
         code: "test-4@example.com"
         label: "Test 4 customer"
@@ -621,11 +690,16 @@ Response:
         city: "Test city"
         languageid: "en",
         lists: {
-          product: {
+          product: [{
             type: "suggest",
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "test",
+          languageid: null,
+          value: "Test property"
+        }]
       },{
         code: "test-4@example.com"
         label: "Test 4 customer"
