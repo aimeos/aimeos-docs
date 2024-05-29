@@ -29,6 +29,12 @@ This article contains all actions for retrieving and managing texts.
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -56,6 +62,12 @@ This article contains all actions for retrieving and managing texts.
               code
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -99,7 +111,13 @@ Response:
             "code": "wholesale"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "from",
+        "languageid": null,
+        "value": "manual"
+      }]
     }
   }
 }
@@ -133,6 +151,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -168,6 +192,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -215,7 +245,13 @@ Response:
                 "code": "wholesale"
               }
             }]
-          }
+          },
+          "property": [{
+            "id": "1",
+            "type": "from",
+            "languageid": null,
+            "value": "manual"
+          }]
         },
         {
           "id": "22",
@@ -231,7 +267,8 @@ Response:
           "editor": "core:setup",
           "lists": {
             "group": []
-          }
+          },
+          "property": []
         }
       ],
       "total": 2
@@ -252,10 +289,15 @@ Response:
         languageid: "en"
         content: "This is a long product description.",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "from",
+          languageid: null,
+          value: "ERP"
+        }]
       }) {
         id
       }
@@ -272,10 +314,15 @@ Response:
         languageid: "en"
         content: "This is a long product description.",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "from",
+          languageid: null,
+          value: "ERP"
+        }]
       }) {
         id
       }
@@ -319,10 +366,15 @@ Response:
         languageid: "en",
         content: "This is a short category text.",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "from",
+          languageid: null,
+          value: "ERP"
+        }]
       },{
         type: "name",
         domain: "product",
@@ -345,10 +397,15 @@ Response:
         languageid: "en",
         content: "This is a short category text.",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "from",
+          languageid: null,
+          value: "ERP"
+        }]
       },{
         type: "name"
         domain: "product"
