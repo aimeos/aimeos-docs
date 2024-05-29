@@ -49,6 +49,11 @@ class Standard
         return parent::get();
     }
 
+    public function import() : ?string
+    {
+        return parent::import();
+    }
+
     public function save() : ?string
     {
         return parent::save();

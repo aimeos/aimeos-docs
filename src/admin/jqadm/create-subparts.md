@@ -44,6 +44,11 @@ class Standard
         return parent::get();
     }
 
+    public function import() : ?string
+    {
+        return parent::import();
+    }
+
     public function save() : ?string
     {
         return parent::save();
@@ -215,6 +220,10 @@ public function get() : ?string
 You have access to the item from the main panel and can use its properties to fetch the related items from the storage. Use `toArray(true)` to get a simple array of key/value pairs you assign to the view. Call `parent::get()` and assign the return value too. This will contain the forms of the subparts if there are any (in the future).
 
 At the end, render the view with `$view->render()` to create the HTML output for the detail view. Use `$view->config()` to make the used template configurable. The first parameter is the configuration key, the second parameter is the default value if no alternative template path is configured.
+
+## import()
+
+Usually, passing the filter parameters to the job controller via the message queue is only done by the main panel. Thus, you don't have to implement anything in the subpart. Nevertheless, the `import()` method of the subpart will be called if an import is requested if you have special needs and the same parameters are available as in the [import() method of the main panel](implement-panels.md#import).
 
 ## save()
 
