@@ -331,11 +331,11 @@ Response:
         code: "test"
         label: "Test supplier",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }) {
         id
@@ -350,11 +350,11 @@ Response:
         code: "test"
         label: "Test supplier",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }) {
         id
@@ -396,11 +396,11 @@ Response:
         code: "test-2"
         label: "Test 2 supplier",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       },{
         code: "test-3"
@@ -418,11 +418,11 @@ Response:
         code: "test-2"
         label: "Test 2 supplier",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       },{
         code: "test-3"

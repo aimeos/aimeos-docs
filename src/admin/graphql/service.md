@@ -458,11 +458,11 @@ Response:
         label: "Test service"
         provider: "Standard",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }) {
         id
@@ -479,11 +479,11 @@ Response:
         label: "Test service"
         provider: "Standard",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }) {
         id
@@ -527,11 +527,11 @@ Response:
         label: "Test 2 service"
         provider: "Xml",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       },{
         type: "payment"
@@ -553,11 +553,11 @@ Response:
         label: "Test 2 service"
         provider: "Xml",
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       },{
         type: "payment"

@@ -616,11 +616,11 @@ The `insertCatalog` mutation accepts three parameters:
         code: "test"
         label: "Test category"
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }, parentid: "1", refid: "3") {
         id
@@ -635,11 +635,11 @@ The `insertCatalog` mutation accepts three parameters:
         code: "test"
         label: "Test category"
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }, parentid: "1", refid: "3") {
         id
@@ -681,11 +681,11 @@ Response:
         id: "15"
         label: "Test category label"
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }) {
         label
@@ -700,11 +700,11 @@ Response:
         id: "15"
         label: "Test category label"
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }) {
         label
@@ -749,11 +749,11 @@ Response:
         id: "15"
         label: "Test category label"
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }]) {
         label
@@ -771,11 +771,11 @@ Response:
         id: "15"
         label: "Test category label"
         lists: {
-          text: {
+          text: [{
             item: {
               content: "Test content"
             }
-          }
+          }]
         }
       }]) {
         label
