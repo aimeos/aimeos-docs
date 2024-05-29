@@ -32,6 +32,12 @@ This article contains all actions for retrieving and managing media.
             }
           }
         }
+        property {
+          id
+          type
+          languageid
+          value
+        }
       }
     }
     ```
@@ -62,6 +68,12 @@ This article contains all actions for retrieving and managing media.
               code
             }
           }
+        }
+        property {
+          id
+          type
+          languageid
+          value
         }
       }
     }`});
@@ -108,7 +120,13 @@ Response:
             "code": "wholesale"
           }
         }]
-      }
+      },
+      "property": [{
+        "id": "1",
+        "type": "title",
+        "languageid": "en",
+        "value": "Demo article"
+      }]
     }
   }
 }
@@ -145,6 +163,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -183,6 +207,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
+          }
+          property {
+            id
+            type
+            languageid
+            value
           }
         }
         total
@@ -233,7 +263,13 @@ Response:
                 "code": "wholesale"
               }
             }]
-          }
+          },
+          "property": [{
+            "id": "1",
+            "type": "title",
+            "languageid": "en",
+            "value": "Demo article"
+          }]
         },
         {
           "id": "20",
@@ -252,7 +288,8 @@ Response:
           "editor": "core",
           "lists": {
             "group": []
-          }
+          },
+          "property": []
         }
       ],
       "total": 2
@@ -272,10 +309,15 @@ Response:
         label: "Test image",
         url: "https://myshop.com/images/test.jpg",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
       }) {
         id
       }
@@ -291,10 +333,15 @@ Response:
         label: "Test image",
         url: "https://myshop.com/images/test.jpg",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
       }) {
         id
       }
@@ -337,10 +384,15 @@ Response:
         label: "Test 2 image",
         url: "https://myshop.com/images/test2.jpg",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
       },{
         domain: "catalog",
         type: "stage",
@@ -361,10 +413,15 @@ Response:
         label: "Test 2 image",
         url: "https://myshop.com/images/test2.jpg",
         lists: {
-          group: {
+          group: [{
             refid: "2"
-          }
-        }
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
       },{
         domain: "catalog",
         type: "stage",
