@@ -910,10 +910,12 @@ You can use the "include" parameter for all domain items that are associated, vi
 
 * attribute
 * catalog (categories)
+* customer
 * media (images and files)
 * price
 * product
 * service (delivery/payment)
+* supplier
 * text
 * cms (only if ai-cms-grapesjs is installed)
 
