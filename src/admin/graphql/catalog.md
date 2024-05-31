@@ -605,6 +605,7 @@ Response:
 # Insert new category
 
 The `insertCatalog` mutation accepts three parameters:
+
 * input: Object with catalog item properties
 * parentid: ID of the parent category (optional, default: `null` creates a new root category)
 * refid: ID of the category the new item should be inserted before (optional, default: append at the end)
@@ -816,6 +817,7 @@ Response:
 # Move existing category
 
 The `moveCatalog` mutation accepts four parameters:
+
 * id: ID of the category that should be moved
 * parentid: Parent category ID of the category that should be moved
 * targetid: New parent category ID the category should be moved to (optional, default: `null` creates a new root category)
