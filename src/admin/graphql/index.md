@@ -9,7 +9,7 @@ There's no common entry point to access the GraphQL API. This depends on the hos
 You can retrieve the URL easily using:
 
 ```javascript
-$('.aimeos').data('graphql')
+'<GraphQL URL>'
 ```
 
 !!! note
@@ -27,11 +27,11 @@ const body = JSON.stringify({'query':
   }
 }`});
 
-fetch($('.aimeos').data('graphql'), {
+fetch('<GraphQL URL>', {
 	method: 'POST',
 	credentials: 'same-origin',
 	headers: { // Laravel only
-		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		'X-CSRF-TOKEN': '<CSRF token>'
 	},
 	body: body
 }).then(response => {

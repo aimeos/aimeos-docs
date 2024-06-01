@@ -71,11 +71,11 @@ const body = JSON.stringify({'query':
   }
 }`});
 
-fetch($('.aimeos').data('graphql'), {
+fetch('<GraphQL URL>', {
 	method: 'POST',
 	credentials: 'same-origin',
 	headers: { // Laravel only
-		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		'X-CSRF-TOKEN': '<CSRF token>'
 	},
 	body: body
 }).then(response => {
@@ -232,11 +232,11 @@ const body = JSON.stringify({'query':
   }
 }`});
 
-fetch($('.aimeos').data('graphql'), {
+fetch('<GraphQL URL>', {
 	method: 'POST',
 	credentials: 'same-origin',
 	headers: { // Laravel only
-		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		'X-CSRF-TOKEN': '<CSRF token>'
 	},
 	body: body
 }).then(response => {
@@ -329,11 +329,11 @@ To get all product items which are selections for example, you can use this quer
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -406,11 +406,11 @@ To combine several conditions, you can combine two or more "compare" expressions
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -467,11 +467,11 @@ The negation is a special case because it only accepts one "compare" condition w
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -531,11 +531,11 @@ You can also create more complicated statements by nesting them like:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -580,11 +580,11 @@ You can use the **sort** parameter for all **search*()** query requests to pass 
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -625,11 +625,11 @@ This will return the results ordered by the product label. You can also tell the
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -670,11 +670,11 @@ Sorting by several keys is also possible if they are separated by a comma:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -719,11 +719,11 @@ By default, only the first 100 items are returned if nothing else is specified. 
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -828,11 +828,11 @@ The GraphQL API uses the parameter "include" to specify the related resources:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -1000,11 +1000,11 @@ Fetching related items does also work for items from the same domain that have a
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
