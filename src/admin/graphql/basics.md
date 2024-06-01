@@ -72,16 +72,16 @@ const body = JSON.stringify({'query':
 }`});
 
 fetch('<GraphQL URL>', {
-	method: 'POST',
-	credentials: 'same-origin',
-	headers: { // Laravel only
-		'X-CSRF-TOKEN': '<CSRF token>'
-	},
-	body: body
+  method: 'POST',
+  credentials: 'same-origin',
+  headers: { // Laravel only
+    'X-CSRF-TOKEN': '<CSRF token>'
+  },
+  body: body
 }).then(response => {
-	return response.json();
+  return response.json();
 }).then(data => {
-	console.log(data);
+  console.log(data);
 });
 ```
 
@@ -233,16 +233,16 @@ const body = JSON.stringify({'query':
 }`});
 
 fetch('<GraphQL URL>', {
-	method: 'POST',
-	credentials: 'same-origin',
-	headers: { // Laravel only
-		'X-CSRF-TOKEN': '<CSRF token>'
-	},
-	body: body
+  method: 'POST',
+  credentials: 'same-origin',
+  headers: { // Laravel only
+    'X-CSRF-TOKEN': '<CSRF token>'
+  },
+  body: body
 }).then(response => {
-	return response.json();
+  return response.json();
 }).then(data => {
-	console.log(data);
+  console.log(data);
 });
 ```
 

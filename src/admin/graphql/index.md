@@ -28,17 +28,17 @@ const body = JSON.stringify({'query':
 }`});
 
 fetch('<GraphQL URL>', {
-	method: 'POST',
-	credentials: 'same-origin',
-	headers: { // Laravel only
-		'X-CSRF-TOKEN': '<CSRF token>'
-	},
-	body: body
+  method: 'POST',
+  credentials: 'same-origin',
+  headers: { // Laravel only
+    'X-CSRF-TOKEN': '<CSRF token>'
+  },
+  body: body
 }).then(response => {
     if(!response.ok) {
         throw new Error(response.statusText)
     }
-	return response.json();
+  return response.json();
 }).then(result => {
     if(result.errors) {
         throw result.errors
