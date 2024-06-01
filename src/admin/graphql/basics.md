@@ -3,21 +3,6 @@ This article describes how to retrieve and modify data using the Aimeos GraphQL 
 !!! note
     You must be logged into the admin backend to use the GraphQL API!
 
-The URL of the GraphQL endpoint depends on the host application and for Laravel its:
-
-```
-/admin/<sitecode>/graphql
-```
-
-For the default site it's e.g.:
-
-```
-/admin/default/graphql
-```
-
-!!! note
-    After authentication, you also get a CSRF token in the returned cookies named `X-CSRF-TOKEN` in Laravel based environments which you need sent in each request!
-
 # Retrieve data
 
 GraphQL uses **query** POST requests to retrieve data from the server. There are several query methods offered by Aimeos to fetch data from different domains, e.g. for the "product" domain:

@@ -1,5 +1,23 @@
 Since 2022.10, Aimeos contains a GraphQL API for administration. It allows full access to all shop data and is especially useful to manage the content.
 
+# JQAdm method
+
+The easiest way to interact with the GraphQL API within the JQAdm admin backend is by using the `Aimeos.query()` function:
+
+```javascript
+Aimeos.query(`query {
+  searchProducts(filter: "{}") {
+    items {
+      id
+    }
+  }
+}`).then(data => {
+  console.log(data)
+})
+```
+
+# Custom way
+
 There's no common entry point to access the GraphQL API. This depends on the host application and you have to retrieve the GraphQL URL from the admin HTML pages. The URL of the GraphQL API is stored in the `data` attribute of the HTML node with class àimeos`:
 
 ```html
@@ -9,7 +27,7 @@ There's no common entry point to access the GraphQL API. This depends on the hos
 You can retrieve the URL easily using:
 
 ```javascript
-'<GraphQL URL>'
+$('.aimeos').data('graphql')
 ```
 
 !!! note
@@ -27,25 +45,25 @@ const body = JSON.stringify({'query':
   }
 }`});
 
-fetch('<GraphQL URL>', {
+fetch($('.aimeos').data('graphql'), {
   method: 'POST',
   credentials: 'same-origin',
   headers: { // Laravel only
-    'X-CSRF-TOKEN': '<CSRF token>'
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   },
   body: body
 }).then(response => {
-    if(!response.ok) {
-        throw new Error(response.statusText)
-    }
+  if(!response.ok) {
+      throw new Error(response.statusText)
+  }
   return response.json();
 }).then(result => {
-    if(result.errors) {
-        throw result.errors
-    }
-    return result
+  if(result.errors) {
+      throw result.errors
+  }
+  return result
 }).catch(err => {
-    console.error(err)
+  console.error(err)
 });
 ```
 
