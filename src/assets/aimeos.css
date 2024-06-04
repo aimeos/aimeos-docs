@@ -211,8 +211,6 @@ select.md-header-nav__button:focus {
 
 @media screen and (max-width: 59.9375em) {
   .md-nav__source {
-    background-color: var(--md-primary-bg-color);
-    color: var(--md-primary-fg-color--dark);
     display: block;
     padding: 0 0.2rem;
     text-align: center;
@@ -236,8 +234,10 @@ select.md-header-nav__button:focus {
 }
 
 .md-sidebar--primary {
-  background-color: var(--md-default-fg-color, #103050);
-  color: #c0d0e0;
+  --md-default-bg-color: #103050;
+  --md-default-fg-color: #c0d0e0;
+  background-color: var(--md-default-bg-color, #103050);
+  color: var(--md-default-fg-color, #c0d0e0);
 }
 
 .md-sidebar__scrollwrap {
@@ -276,6 +276,10 @@ select.md-header-nav__button:focus {
   margin-top: 0;
 }
 
+.md-nav--primary .md-nav__title {
+  --md-default-fg-color--light: #c0d0e0;
+}
+
 .md-nav--primary .md-nav__title~.md-nav__list {
   box-shadow: none !important;
 }
@@ -302,7 +306,7 @@ select.md-header-nav__button:focus {
 }
 
 .md-nav--primary > .md-nav__list .md-nav__list .md-nav__item {
-  color: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color, #fff);
   padding-bottom: 0;
 }
 
