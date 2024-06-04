@@ -57,33 +57,50 @@ Each of these methods requires different parameters:
 
 To retrieve a list of products using code like this:
 
-```javascript
-const body = JSON.stringify({'query':
-`query {
-  searchProducts(filter: "{}") {
-    items {
-      id
-      type
-      code
-      label
-    }
-    total
-  }
-}`});
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{}") {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `query {
+      searchProducts(filter: "{}") {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`});
 
-fetch('<GraphQL URL>', {
-  method: 'POST',
-  credentials: 'same-origin',
-  headers: { // Laravel only
-    'X-CSRF-TOKEN': '<CSRF token>'
-  },
-  body: body
-}).then(response => {
-  return response.json();
-}).then(data => {
-  console.log(data);
-});
-```
+    fetch('<GraphQL URL>', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { // Laravel only
+        'X-CSRF-TOKEN': '<CSRF token>'
+      },
+      body: body
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      console.log(data);
+    });
+    ```
 
 The response is a JSON data structure with the requested data:
 
@@ -221,30 +238,44 @@ Each of these methods requires different parameter types (single vs. multiple en
 
 To add a new product you can use code like this:
 
-```javascript
-const body = JSON.stringify({'query':
-`mutation {
-  saveProduct(input: {
-    code: "test"
-    label: "Test product"
-  }) {
-    id
-  }
-}`});
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveProduct(input: {
+        code: "test"
+        label: "Test product"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
+=== "Javascript"
+    ```javascript
+    const body = JSON.stringify({'query':
+    `mutation {
+      saveProduct(input: {
+        code: "test"
+        label: "Test product"
+      }) {
+        id
+      }
+    }`});
 
-fetch('<GraphQL URL>', {
-  method: 'POST',
-  credentials: 'same-origin',
-  headers: { // Laravel only
-    'X-CSRF-TOKEN': '<CSRF token>'
-  },
-  body: body
-}).then(response => {
-  return response.json();
-}).then(data => {
-  console.log(data);
-});
-```
+    fetch('<GraphQL URL>', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { // Laravel only
+        'X-CSRF-TOKEN': '<CSRF token>'
+      },
+      body: body
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      console.log(data);
+    });
+    ```
 
 The response is a JSON data structure with the requested data:
 
@@ -310,6 +341,25 @@ To get all product items which are selections for example, you can use this quer
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    const filter = {
+        '==': {'product.type': 'select'}
+    };
+    Aimeos.query(`query {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -385,6 +435,28 @@ To combine several conditions, you can combine two or more "compare" expressions
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    const filter = {
+        '&&': [
+            {'==': {'product.type': 'select'}},
+            {'=~': {'product.label': 'demo'}}
+        ]
+    };
+    Aimeos.query(`query {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const filter = {
@@ -447,6 +519,27 @@ The negation is a special case because it only accepts one "compare" condition w
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    const filter = {
+        '!': [
+            {'=~': {'product.code': 'demo-s'}}
+        ]
+    };
+    Aimeos.query(`query {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const filter = {
@@ -500,6 +593,37 @@ You can also create more complicated statements by nesting them like:
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    const filter = {
+        '&&': [
+            {
+                '!': [
+                    {'=~': {'product.label': 'demo'}}
+                ]
+            },
+            {
+                '||': [
+                    {'==': {'product.datestart': null}},
+                    {'>': {'product.datestart': '2000-01-01 00:00:00'}},
+                ]
+            }
+        ]
+    };
+    Aimeos.query(`query {
+      searchProducts(filter: ` + JSON.stringify(JSON.stringify(filter)) + `) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -565,6 +689,22 @@ You can use the **sort** parameter for all **search*()** query requests to pass 
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{}", sort: ["product.label"]) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -610,6 +750,22 @@ This will return the results ordered by the product label. You can also tell the
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{}", sort: ["-product.label"]) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -654,6 +810,22 @@ Sorting by several keys is also possible if they are separated by a comma:
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{}", sort: ["-product.status", "product.id"]) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -703,6 +875,22 @@ By default, only the first 100 items are returned if nothing else is specified. 
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{}", offset: 10, limit: 5) {
+        items {
+          id
+          type
+          code
+          label
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -790,11 +978,48 @@ The GraphQL API uses the parameter "include" to specify the related resources:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{}", include: ["product/text"]) {
+        items {
+          id
+          type
+          code
+          label
+          lists {
+            text(listtype: "default", type: "name") {
+              id
+              siteid
+              parentid
+              refid
+              domain
+              type
+              config
+              datestart
+              dateend
+              status
+              ctime
+              mtime
+              editor
+              item {
+                type
+                domain
+                label
+              }
+            }
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-    query {
       searchProducts(filter: "{}", include: ["product/text"]) {
         items {
           id
@@ -974,6 +1199,31 @@ Fetching related items does also work for items from the same domain that have a
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{}", include: ["product/property"]) {
+        items {
+          id
+          label
+          property(type: "package-weight") {
+              id
+              siteid
+              parentid
+              type
+              languageid
+              value
+              ctime
+              mtime
+              editor
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
