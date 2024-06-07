@@ -20,15 +20,13 @@ This file contains a *pkgs* section for the CSS and the JS files:
 ```
 {
 	"pkgs": [{
-		"name": "yourext CSS",
-		"file": "yourext.css",
+		"file": "index-css",
 		"fileIncludes": [{
 			"text": "additonal-styles.css",
 			"path": "themes/"
 		}]
 	}, {
-		"name": "yourext JS",
-		"file": "yourext.js",
+		"file": "index-js",
 		"fileIncludes": [{
 			"text": "additional-javascript.js",
 			"path": "js/"
