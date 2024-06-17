@@ -20,6 +20,26 @@ This article contains all actions for retrieving and managing coupon codes.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getCouponCode(id: "1") {
+        id
+        siteid
+        parentid
+        code
+        count
+        dateend
+        datestart
+        ref
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -99,6 +119,32 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    let filter = {
+        "==": {"coupon.code.count":1000}
+    };
+    const fstr = JSON.stringify(JSON.stringify(filter));
+    Aimeos.query(`query {
+      searchCouponCodes(filter: ` + fstr + `) {
+        items {
+          id
+          siteid
+          parentid
+          code
+          count
+          dateend
+          datestart
+          ref
+          mtime
+          ctime
+          editor
+        }
+        total
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -194,6 +240,20 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveCouponCode(input: {
+        parentid: 1
+        code: "TEST"
+        count: 1
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -251,6 +311,24 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveCouponCodes(input: [{
+        parentid: 2
+        code: "TEST2"
+        count: 10
+      },{
+        parentid: 12
+        code: "TEST3"
+        count: null
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -307,6 +385,14 @@ Response:
       deleteCouponCode(id: "3")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteCouponCode(id: "3")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -345,6 +431,14 @@ Response:
     mutation {
       deleteCouponCodes(id: ["4", "5"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteCouponCodes(id: ["4", "5"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
