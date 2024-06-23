@@ -15,6 +15,21 @@ This article contains all actions for retrieving and managing currencies.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getLocaleCurrency(id: "EUR") {
+        id
+        label
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -79,6 +94,24 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchLocaleCurrencys(filter: "{\\"==\\": {\\"locale.currency.status\\":1}}") {
+        items {
+          id
+          label
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -158,6 +191,19 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocaleCurrency(input: {
+        code: "XH1"
+        label: "Test currency"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -211,6 +257,22 @@ Response:
         id
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocaleCurrencys(input: [{
+        code: "XH2"
+        label: "Test currency 2"
+      },{
+        code: "XH3"
+        label: "Test currency 3"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -266,6 +328,14 @@ Response:
       deleteLocaleCurrency(id: "XH1")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocaleCurrency(id: "XH1")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -304,6 +374,14 @@ Response:
     mutation {
       deleteLocaleCurrencys(id: ["XH2", "XH3"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocaleCurrencys(id: ["XH2", "XH3"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
