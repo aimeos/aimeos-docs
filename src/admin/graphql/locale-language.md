@@ -15,6 +15,21 @@ This article contains all actions for retrieving and managing languages.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getLocaleLanguage(id: "de") {
+        id
+        label
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -79,6 +94,24 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchLocaleLanguages(filter: "{\\"==\\": {\\"locale.language.status\\":1}}") {
+        items {
+          id
+          label
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -158,6 +191,19 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocaleLanguage(input: {
+        code: "xa"
+        label: "Test language"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -211,6 +257,22 @@ Response:
         id
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocaleLanguages(input: [{
+        code: "xb"
+        label: "Test language 2"
+      },{
+        code: "xc_US"
+        label: "Test language 3"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -266,6 +328,14 @@ Response:
       deleteLocaleLanguage(id: "xa")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocaleLanguage(id: "xa")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -304,6 +374,14 @@ Response:
     mutation {
       deleteLocaleLanguages(id: ["xb", "xc_US"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocaleLanguages(id: ["xb", "xc_US"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
