@@ -18,6 +18,24 @@ This article contains all actions for retrieving and managing locales.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getLocale(id: "1") {
+        id
+        siteid
+        languageid
+        currencyid
+        position
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -91,6 +109,27 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchLocales(filter: "{\\"==\\": {\\"locale.currencyid\\":\\"EUR\\"}}") {
+        items {
+          id
+          siteid
+          languageid
+          currencyid
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -181,6 +220,21 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocale(input: {
+        siteid: "1."
+        languageid: "fr"
+        currencyid: "EUR"
+        position: 2
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -241,6 +295,26 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocales(input: [{
+        siteid: "1."
+        languageid: "it"
+        currencyid: "EUR"
+        position: 3
+      },{
+        siteid: "1."
+        languageid: "es"
+        currencyid: "EUR"
+        position: 4
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -299,6 +373,14 @@ Response:
       deleteLocale(id: "3")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocale(id: "3")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -337,6 +419,14 @@ Response:
     mutation {
       deleteLocales(id: ["4", "5"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocales(id: ["4", "5"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
