@@ -597,6 +597,109 @@ Response:
 }
 ```
 
+# Save media with file upload
+
+Uploading files in GraphQL requires a `multipart/form-data` request. When using the `Aimeos.query()` function, it cares about the correct format for you.
+
+=== "Mutation"
+    ```
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="operations"
+
+    {"query":"mutation Upload($file: Upload!, $preview: Upload) {
+      saveMedia(input: {
+        domain: \"product\",
+        filepreview: $preview,
+        file: $file
+      }) {
+        id
+        label
+        url
+        preview
+      }}","variables":{"file":null,"preview":null}}
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="map"
+
+    {"1":["variables.file"], "2":["variables.preview"]}
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="1"; filename="file.jpg"
+    Content-Type: image/jpeg
+
+
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="2"; filename="preview.jpg"
+    Content-Type: image/jpeg
+
+
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA--
+    ```
+=== "JQAdm"
+    ```javascript
+    const vars = {
+      file: document.querySelector('input#gqlfile').files[0],
+      preview: document.querySelector('input#gqlpreview').files[0] || null
+    }
+
+    Aimeos.query(`mutation Upload($file: Upload!, $preview: Upload) {
+        saveMedia(input: {
+          domain: "product",
+          file: $file,
+          filepreview: $preview
+        }) {
+          id
+        }
+      }`, vars).then(data => {
+      console.log(data)
+    })
+    ```
+=== "Javascript"
+    ```javascript
+    // https://github.com/lynxtaa/awesome-graphql-client
+    const client = new AwesomeGraphQLClient({
+      endpoint: '/admin/default/graphql',
+      fetchOptions: {
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': '<CSRF token>'
+        },
+      }
+    })
+
+    const gql = `
+      mutation Upload($file: Upload!, $preview: Upload) {
+        saveMedia(input: {
+          domain: "product",
+          file: $file,
+          filepreview: $preview
+        }) {
+          id
+        }
+      }
+    `
+    const vars = {
+      file: document.querySelector('input#gqlfile').files[0],
+      preview: document.querySelector('input#gqlpreview').files[0]
+    }
+
+    client.request(gql, vars).then(result => {
+      console.log(result)
+    }).catch(error => {
+      throw new Error('GraphQL query failed')
+    })
+    ```
+
+Response:
+
+```json
+{
+  "data": {
+    "saveMedia": {
+      "id": "21"
+    }
+  }
+}
+```
+
 # Delete single media
 
 === "Mutation"
