@@ -41,6 +41,44 @@ This article contains all actions for retrieving and managing media.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getMedia(id: "1", include: ["group"]) {
+        id
+        siteid
+        type
+        label
+        domain
+        languageid
+        mimetype
+        url
+        previews
+        filesystem
+        status
+        mtime
+        ctime
+        editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
+        property {
+          id
+          type
+          languageid
+          value
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -174,6 +212,47 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchMedias(filter: "{\\"=~\\": {\\"media.code\\":\\"demo-\\"}}", include: ["group"]) {
+        items {
+          id
+          siteid
+          type
+          label
+          domain
+          languageid
+          mimetype
+          url
+          previews
+          filesystem
+          status
+          mtime
+          ctime
+          editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
+          property {
+            id
+            type
+            languageid
+            value
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -323,6 +402,31 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveMedia(input: {
+        domain: "product",
+        type: "default",
+        label: "Test image",
+        url: "https://myshop.com/images/test.jpg",
+        lists: {
+          group: [{
+            refid: "2"
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -403,6 +507,36 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveMedias(input: [{
+        domain: "product",
+        type: "default",
+        label: "Test 2 image",
+        url: "https://myshop.com/images/test2.jpg",
+        lists: {
+          group: [{
+            refid: "2"
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
+      },{
+        domain: "catalog",
+        type: "stage",
+        label: "Test 3 image",
+        url: "https://myshop.com/images/test3.jpg",
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -471,6 +605,14 @@ Response:
       deleteMedia(id: "20")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteMedia(id: "20")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -509,6 +651,14 @@ Response:
     mutation {
       deleteMedias(id: ["21", "22"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteMedias(id: ["21", "22"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
