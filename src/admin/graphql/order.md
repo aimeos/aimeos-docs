@@ -32,6 +32,38 @@ This article contains all actions for retrieving and managing orders.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getOrder(id: "1") {
+        id
+        siteid
+        sitecode
+        channel
+        invoiceno
+        relatedid
+        languageid
+        currencyid
+        price
+        costs
+        rebate
+        taxflag
+        taxvalue
+        datepayment
+        datedelivery
+        statusdelivery
+        statuspayment
+        customerid
+        customerref
+        comment
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -147,6 +179,41 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchOrders(filter: "{\\"==\\": {\\"order.channel\\":\\"web\\"}}") {
+        items {
+          id
+          siteid
+          sitecode
+          channel
+          invoiceno
+          relatedid
+          languageid
+          currencyid
+          price
+          costs
+          rebate
+          taxflag
+          taxvalue
+          datepayment
+          datedelivery
+          statusdelivery
+          statuspayment
+          customerid
+          customerref
+          comment
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -277,6 +344,19 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveOrder(input: {
+        channel: "web"
+        statuspayment: 6
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -328,6 +408,22 @@ Response:
         id
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveOrders(input: [{
+        channel: "web"
+        statuspayment: -1
+      },{
+        channel: "web"
+        statuspayment: 5
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -383,6 +479,14 @@ Response:
       deleteOrder(id: "4")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteOrder(id: "4")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -421,6 +525,14 @@ Response:
     mutation {
       deleteOrders(id: ["5", "6"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteOrders(id: ["5", "6"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
