@@ -43,6 +43,46 @@ This article contains all actions for retrieving and managing prices.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getPrice(id: "1", include: ["group"]) {
+        id
+        siteid
+        type
+        domain
+        label
+        currencyid
+        quantity
+        value
+        costs
+        rebate
+        taxrates
+        taxflag
+        status
+        mtime
+        ctime
+        editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
+        property {
+          id
+          type
+          languageid
+          value
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -182,6 +222,49 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}", include: ["group"]) {
+        items {
+          id
+          siteid
+          type
+          domain
+          label
+          currencyid
+          quantity
+          value
+          costs
+          rebate
+          taxrates
+          taxflag
+          status
+          mtime
+          ctime
+          editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
+          property {
+            id
+            type
+            languageid
+            value
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -338,6 +421,31 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      savePrice(input: {
+        domain: "product",
+        label: "Test price",
+        currencyid: "EUR",
+        value: "100.00",
+        lists: {
+          group: {
+            refid: "2"
+          }
+        },
+        property: [{
+          type: "country",
+          languageid: null,
+          value: "DE"
+        }]
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -418,6 +526,36 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      savePrices(input: [{
+        domain: "product",
+        label: "Test 2 price",
+        currencyid: "EUR",
+        value: "200.00",
+        lists: {
+          group: [{
+            refid: "2"
+          }]
+        },
+        property: [{
+          type: "country",
+          languageid: null,
+          value: "DE"
+        }]
+      },{
+        domain: "product",
+        label: "Test 3 price",
+        currencyid: "USD",
+        value: "220.00"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -486,6 +624,14 @@ Response:
       deletePrice(id: "30")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deletePrice(id: "30")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -524,6 +670,14 @@ Response:
     mutation {
       deletePrices(id: ["31", "32"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deletePrices(id: ["31", "32"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
