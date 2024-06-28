@@ -45,6 +45,48 @@ This article contains all actions for retrieving and managing products.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getProduct(id: "1", include: ["text"]) {
+        id
+        siteid
+        type
+        code
+        label
+        url
+        dataset
+        datestart
+        dateend
+        config
+        instock
+        scale
+        status
+        target
+        boost
+        mtime
+        ctime
+        editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
+        property {
+          id
+          type
+          languageid
+          value
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -185,6 +227,48 @@ Response:
         }
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      findProduct(code: "demo-article", include: ["text"]) {
+        id
+        siteid
+        type
+        code
+        label
+        url
+        dataset
+        datestart
+        dateend
+        config
+        instock
+        scale
+        status
+        target
+        boost
+        mtime
+        ctime
+        editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
+        property {
+          id
+          type
+          languageid
+          value
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -331,6 +415,51 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text"]) {
+        items {
+          id
+          siteid
+          type
+          code
+          label
+          url
+          dataset
+          datestart
+          dateend
+          config
+          instock
+          scale
+          status
+          target
+          boost
+          mtime
+          ctime
+          editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
+          property {
+            id
+            type
+            languageid
+            value
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -492,6 +621,31 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveProduct(input: {
+        code: "test"
+        label: "Test product",
+        lists: {
+          text: [{
+            item: {
+              content: "Test content"
+            }
+          }]
+        },
+        property: [{
+          type: "isbn",
+          languageid: null,
+          value: "12345678"
+        }]
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -570,6 +724,34 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveProducts(input: [{
+        code: "test-2"
+        label: "Test 2 product",
+        lists: {
+          text: [{
+            item: {
+              content: "Test content"
+            }
+          }]
+        },
+        property: [{
+          type: "isbn",
+          languageid: null,
+          value: "12345678"
+        }]
+      },{
+        code: "test-3"
+        label: "Test 3 product"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -636,6 +818,14 @@ Response:
       deleteProduct(id: "18")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteProduct(id: "18")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -674,6 +864,14 @@ Response:
     mutation {
       deleteProducts(id: ["19", "20"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteProducts(id: ["19", "20"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
