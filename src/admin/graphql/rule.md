@@ -22,6 +22,28 @@ This article contains all actions for retrieving and managing rules.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getRule(id: "1") {
+        id
+        siteid
+        type
+        label
+        provider
+        datestart
+        dateend
+        config
+        position
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -108,6 +130,31 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchRules(filter: "{\\"~=\\": {\\"rule.label\\":\\"Test\\"}}") {
+        items {
+          id
+          siteid
+          type
+          label
+          provider
+          datestart
+          dateend
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     let filter = {
@@ -193,6 +240,18 @@ To retrieve the backend configuration for a rule provider and the added decorato
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getRuleConfig(provider: "Percent,Category", type: "catalog") {
+        code
+        type
+        label
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -257,6 +316,21 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      saveRule(input: {
+        type: "catalog"
+        label: "Test rule"
+        provider: "Percent"
+        config: "{\\"percent\\": 10}"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -317,6 +391,26 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveRules(input: [{
+        type: "catalog"
+        label: "Test rule 2"
+        provider: "Percent"
+        config: "{\\"percent\\": 10}"
+      },{
+        type: "catalog"
+        label: "Test rule 3"
+        provider: "Percent,Category"
+        config: "{\\"percent\\":20,\\"category.code\\":\\"demo-best\\"}"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -375,6 +469,14 @@ Response:
       deleteRule(id: "2")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteRule(id: "2")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -413,6 +515,14 @@ Response:
     mutation {
       deleteRules(id: ["3", "4"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteRules(id: ["3", "4"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
