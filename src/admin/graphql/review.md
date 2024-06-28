@@ -23,6 +23,29 @@ This article contains all actions for retrieving and managing reviews.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getReview(id: "1") {
+        id
+        siteid
+        customerid
+        orderproductid
+        domain
+        refid
+        name
+        comment
+        response
+        rating
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -112,6 +135,32 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchReviews(filter: "{\\"=~\\": {\\"review.code\\":\\"demo-\\"}}") {
+        items {
+          id
+          siteid
+          customerid
+          orderproductid
+          domain
+          refid
+          name
+          comment
+          response
+          rating
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     let filter = {
@@ -199,6 +248,20 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveReview(input: {
+        id: "1"
+        status: 1
+        response: "Thanks a lot!"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -255,6 +318,23 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveReviews(input: [{
+        id: "1"
+        status: 1
+        response: "Thanks a lot too!"
+      },{
+        id: "2"
+        status: 0
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -310,6 +390,14 @@ Response:
       deleteReview(id: "2")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteReview(id: "2")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -348,6 +436,14 @@ Response:
     mutation {
       deleteReviews(id: ["1", "2"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteReviews(id: ["1", "2"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
