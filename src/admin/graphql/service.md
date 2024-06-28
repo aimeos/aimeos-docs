@@ -35,6 +35,38 @@ This article contains all actions for retrieving and managing services.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getService(id: "1", include: ["text"]) {
+        id
+        siteid
+        type
+        code
+        label
+        provider
+        datestart
+        dateend
+        config
+        position
+        status
+        mtime
+        ctime
+        editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -145,6 +177,38 @@ Response:
         }
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      findService(code: "paypalplus", include: ["text"]) {
+        id
+        siteid
+        type
+        code
+        label
+        provider
+        datestart
+        dateend
+        config
+        position
+        status
+        mtime
+        ctime
+        editor
+        lists {
+          text {
+            id
+            item {
+              id
+              content
+            }
+          }
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -261,6 +325,41 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchServices(filter: "{\\"=~\\": {\\"service.code\\":\\"demo-\\"}}", include: ["text"]) {
+        items {
+          id
+          siteid
+          type
+          code
+          label
+          provider
+          datestart
+          dateend
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+          lists {
+            text {
+              id
+              item {
+                id
+                content
+              }
+            }
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -386,6 +485,18 @@ To retrieve the backend configuration for a service provider and the added decor
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getServiceConfig(provider: "Xml,BasketValues", type: "delivery") {
+        code
+        type
+        label
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -469,6 +580,28 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveService(input: {
+        type: "delivery"
+        code: "test"
+        label: "Test service"
+        provider: "Standard",
+        lists: {
+          text: [{
+            item: {
+              content: "Test content"
+            }
+          }]
+        }
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -543,6 +676,33 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveServices(input: [{
+        type: "delivery"
+        code: "test-2"
+        label: "Test 2 service"
+        provider: "Xml",
+        lists: {
+          text: [{
+            item: {
+              content: "Test content"
+            }
+          }]
+        }
+      },{
+        type: "payment"
+        code: "test-3"
+        label: "Test 3 service"
+        provider: "PostPay"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -608,6 +768,14 @@ Response:
       deleteService(id: "13")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteService(id: "13")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -646,6 +814,14 @@ Response:
     mutation {
       deleteServices(id: ["14", "15"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteServices(id: ["14", "15"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
