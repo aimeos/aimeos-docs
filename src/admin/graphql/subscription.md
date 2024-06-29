@@ -23,6 +23,29 @@ This article contains all actions for retrieving and managing subscriptions.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getSubscription(id: "1") {
+        id
+        siteid
+        orderid
+        ordprodid
+        productid
+        datenext
+        dateend
+        interval
+        reason
+        period
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -111,6 +134,32 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchSubscriptions(filter: "{\\"==\\": {\\"subscription.period\\":1}}") {
+        items {
+          id
+          siteid
+          orderid
+          ordprodid
+          productid
+          datenext
+          dateend
+          interval
+          reason
+          period
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -215,6 +264,21 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveSubscription(input: {
+        orderid: 1
+        ordprodid: 1
+        productid: "1"
+        interval: "P1Y"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -272,6 +336,26 @@ Response:
         id
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveSubscriptions(input: [{
+        orderid: 2
+        ordprodid: 3
+        productid: "2"
+        interval: "P30D"
+      },{
+        orderid: 3
+        ordprodid: 5
+        productid: "3"
+        interval: "P1M"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -331,6 +415,14 @@ Response:
       deleteSubscription(id: "3")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteSubscription(id: "3")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -369,6 +461,14 @@ Response:
     mutation {
       deleteSubscriptions(id: ["4", "5"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteSubscriptions(id: ["4", "5"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
