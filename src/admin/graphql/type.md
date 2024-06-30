@@ -46,6 +46,25 @@ Available queries:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getProductType(id: "1") {
+        id
+        siteid
+        domain
+        code
+        label
+        position
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -143,6 +162,25 @@ Available queries:
         editor
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      findProductType(code: "default", domain: "product") {
+        id
+        siteid
+        domain
+        code
+        label
+        position
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -246,6 +284,28 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchProductTypes(filter: "{\\"==\\": {\\"product.type.domain\\":\\"product\\"}}") {
+        items {
+          id
+          siteid
+          domain
+          code
+          label
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -364,6 +424,20 @@ Available mutations:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      saveProductType(input: {
+        code: "test"
+        domain: "product"
+        label: "Test type"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -447,6 +521,24 @@ Available mutations:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      saveProductTypes(input: [{
+        code: "test"
+        domain: "product"
+        label: "Test type 2"
+      },{
+        code: "test"
+        domain: "product"
+        label: "Test type 3"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -529,6 +621,14 @@ Available mutations:
       deleteProductType(id: "7")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      deleteProductType(id: "7")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -593,6 +693,14 @@ Available mutations:
     mutation {
       deleteProductTypes(id: ["8", "9"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      deleteProductTypes(id: ["8", "9"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
