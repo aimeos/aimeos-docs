@@ -97,6 +97,35 @@ Additionally, you can use custom filters for each resource. The JSON API standar
     # filter[>][product.type]=select
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[%3E][product.type]=select'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            '>': {'product.type': 'select'}
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -159,6 +188,38 @@ To combine several conditions into one request, you can combine two or more "com
     # &filter[&&][][=~][product.label]=demo
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][product.type]=select&filter[%26%26][][%3D%7E][product.label]=demo'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            '&&': [
+                {'>': {'product.type': 'select'}},
+                {'=~': {'product.label': 'demo'}}
+            ]
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -205,6 +266,37 @@ The negation is a special case because it only accepts one "compare" condition w
     # filter[!][][=~][product.code]=demo-s
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[%21][][%3D%7E][product.code]=demo-s'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            '!': [
+                {'=~': {'product.code': 'demo-s'}}
+            ]
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -240,6 +332,43 @@ You can also create more complicated statements by nesting them like:
     # &filter[&&][1][||][][==][product.datestart]=
     # &filter[&&][1][||][][>][product.datestart]=2000-01-01 00:00:00
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][0][%21][][%3D%7E][product.label]=demo&filter[%26%26][1][%7C%7C][][%3D%3D][product.datestart]=&filter[%26%26][1][%7C%7C][][%3E][product.datestart]=2000-01-01%2000:00:00'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            '&&': [
+                {'!': [
+                    {'=~': {'product.label': 'demo'}}
+                ]},
+                {'||': [
+                    {'==': {'product.datestart': null}},
+                    {'>': {'product.datestart': '2000-01-01 00:00:00'}}
+                }
+            ]
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -289,6 +418,33 @@ Additionally, you can use the sort parameter and the items keys for generic sort
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?sort=product.label'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'sort': 'product.label'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -318,6 +474,33 @@ This will return the results ordered by the product label. You can also tell the
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?sort=-product.label'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'sort': '-product.label'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -346,6 +529,33 @@ Sorting by several keys is also possible if they are separated by a comma:
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?sort=-product.status,product.id'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'sort': '-product.status,product.id'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -382,6 +592,36 @@ By default, only the first 25 items are returned if nothing else is specified. T
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=0&page[limit]=2'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'page': {
+            'offset': 0,
+            'limit': 2
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -428,6 +668,18 @@ To get the next 2 items starting from the 3rd one use the *next* link from the a
     # URL from "links" -> "next" of the response above
     curl -X GET 'http://localhost:8000/jsonapi/product?page[offset]=2&page[limit]=2'
     ```
+=== "Javascript"
+    ```javascript
+    // returned from previous request
+    fetch(response.links.next).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     $.ajax({
@@ -456,6 +708,37 @@ If you only need the values of a few fields and want to reduce the amount of dat
     # product.property => product.property.type,product.property.value
     # stock => stock.stocklevel
     curl -X GET 'http://localhost:8000/jsonapi/product?fields[product]=product.id,product.label&fields[product.property]=product.property.type,product.property.value&fields[stock]=stock.stocklevel&include=stock,product.property'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'fields': {
+            'product': 'product.id,product.label'
+            'product.property': 'product.property.type,product.property.value'
+            'stock': 'stock.stocklevel'
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -498,6 +781,33 @@ To minimize the number of requests, the Aimeos JSON API can add related resource
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?include=product.text'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'include': 'product.text'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -650,6 +960,33 @@ This does also work for items from the same domain that have a parent/child rela
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?include=product.property'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'include': 'product.property'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    // returned from OPTIONS call
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
