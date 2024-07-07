@@ -11,6 +11,32 @@ Coupon (or voucher) codes can be added to the basket by using the "basket.coupon
         "id": "fixed"
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {"data": [{
+        "id": "fixed", // coupon code entered by the customer
+    }]}
+
+    let url = response['links']['basket.coupon']['href'] // from basket response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf)
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {"data": [{
@@ -113,6 +139,28 @@ Deleting the coupon again would be:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=coupon&relatedid=fixed&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    // basket coupon URL returned from basket response
+    let url = response['included'][0]['links']['self']['href'];
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(csrf)
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
