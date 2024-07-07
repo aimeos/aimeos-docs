@@ -277,7 +277,7 @@ To update the payment address in the current basket you should use:
         'id': 'payment', // or 'delivery'
         'attributes': {
             'order.address.addressid': '...', // customer address ID (optional)
-            'order.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
+            'order.address.salutation': 'mr', // 'mr', 'ms', 'miss', 'company' or empty (optional)
             'order.address.company': 'Example company', // (optional)
             'order.address.vatid': 'DE123456789', // (optional)
             'order.address.title': 'Dr.', // (optional)

@@ -171,7 +171,7 @@ The request for creating a new delivery address could look like this:
     ```javascript
     var params = {'data': [{
         'attributes': {
-            'customer.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
+            'customer.address.salutation': 'mr', // 'mr', 'ms', 'miss', 'company' or empty (optional)
             'customer.address.company': 'Example company', // (optional)
             'customer.address.vatid': 'DE123456789', // (optional)
             'customer.address.title': 'Dr.', // (optional)
