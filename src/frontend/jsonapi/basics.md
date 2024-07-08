@@ -974,11 +974,11 @@ This does also work for items from the same domain that have a parent/child rela
         params = args
     }
 
+    // returned from OPTIONS call
     const url = options.meta.resources['product']
         + (options.meta.resources['product'].includes('?') ? '&' : '?')
         + window.param(params) // from https://github.com/knowledgecode/jquery-param
 
-    // returned from OPTIONS call
     fetch(url).then(result => {
         if(!result.ok) {
             throw new Error(`Response error: ${response.status}`)
