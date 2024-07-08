@@ -63,6 +63,36 @@ To add a simple product to the basket may look like this:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'attributes': {
+            'product.id': '1', // from product response
+            'quantity': 1, // optional
+            'stocktype': 'default', // warehouse code (optional)
+        }
+    }]};
+
+    let url = response['data'][0]['links']['basket.product']['href']; // from product response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var data = {'data': [{
@@ -324,6 +354,35 @@ is **variant** in the included articles. Pass the ID of the variant attribute th
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        "attributes": {
+            "product.id": '4', // from product response
+            "variant": ['5'], // one variant attribute ID for each variant dimension
+        }
+    }]};
+
+    let url = response['data'][0]['links']['basket.product']['href']; // from product response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var data = {"data": [{
@@ -447,6 +506,37 @@ is **config**. Now add all of those configurable attribute IDs and their quantit
             }
         }
     }]}'
+    ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'attributes': {
+            'product.id': '1', // from product response
+            'config': {
+                '6': 2 // config attribute IDs/quantity pairs
+            },
+        }
+    }]};
+
+    let url = response['data'][0]['links']['basket.product']['href']; // from product response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -599,6 +689,39 @@ is **custom**. To add all of those configurable attribute IDs and their values (
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'attributes': {
+            'product.id': '6', // from product response
+            'custom': { // custom attribute ID/value pairs
+                '3': '2020-01-01',
+                '4': '100.00',
+                '7': 'Happy birthday'
+            }
+        }
+    }]};
+
+    let url = response['data'][0]['links']['basket.product']['href']; // from product response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var data = {'data': [{
@@ -655,6 +778,35 @@ Editing products in the basket should be similar to this:
             "quantity": "2"
         }
     }}'
+    ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'attributes': {
+            'quantity': 2
+        }
+    }]};
+
+    // basket product URL returned from basket response
+    let url = response['included'][0]['links']['self']['href'],
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -775,6 +927,28 @@ The code for the DELETE request itself is fairly simple:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=product&relatedid=0&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    // basket product URL returned from basket response
+    let url = response['included'][0]['links']['self']['href'];
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
