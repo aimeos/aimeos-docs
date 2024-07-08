@@ -9,6 +9,36 @@ At first you need to get the available delivery and payment options from the ser
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/service?filter[cs_type]=payment&include=text,price,media'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'cs_type': 'payment' // or "delivery" (optional)
+        },
+        'include': 'text,price,media'
+    }
+    let params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['service']
+        + (options.meta.resources['service'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -245,6 +275,37 @@ To add this service as delivery option to the current basket you should use:
             "supplier.code": "demo-test2"
         }
     }]}'
+    ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'id': 'payment',
+        'attributes': {
+            'service.id': '1', // from service response
+            'time.hourminute': '15:00', // key/value pairs of data entered by the customer
+            'supplier.code': 'demo-test2'
+        }
+    }]};
+
+    let url = response['data'][0]['links']['basket.service']['href']; // from service response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -503,6 +564,37 @@ To update the delivery service in the current basket you should use:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'id': 'payment',
+        'attributes': {
+            'service.id': '1', // from service response
+            'time.hourminute': '17:00', // key/value pairs of data entered by the customer
+            'supplier.code': 'demo-test1'
+        }
+    }]};
+
+    let url = response['data'][0]['links']['basket.service']['href']; // from service response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -660,6 +752,28 @@ Executing a DELETE request using this URL will remove the service option from th
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    // basket service URL returned from basket response
+    let url = response['included'][0]['links']['self']['href'];
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
