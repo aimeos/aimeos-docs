@@ -35,6 +35,18 @@ To retrieve the delivery addresses of the customer, you have to send a GET reque
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/customer?related=address'
     ```
+=== "Javascript"
+    ```javascript
+    // from customer response
+    fetch(response['links']['customer/address']['href']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     $.ajax({
@@ -167,6 +179,53 @@ The request for creating a new delivery address could look like this:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        'attributes': {
+            'customer.address.salutation': 'mr', // 'mr', 'ms', 'miss', 'company' or empty (optional)
+            'customer.address.company': 'Example company', // (optional)
+            'customer.address.vatid': 'DE123456789', // (optional)
+            'customer.address.title': 'Dr.', // (optional)
+            'customer.address.firstname': 'Test', // (optional)
+            'customer.address.lastname': 'User', // (required)
+            'customer.address.address1': 'Test street', // (required)
+            'customer.address.address2': '1', // (optional)
+            'customer.address.address3': '', // (optional)
+            'customer.address.postal': '12345', // (optional)
+            'customer.address.city': 'Test city', // (required)
+            'customer.address.state': 'HH', // (optional)
+            'customer.address.countryid': 'DE', // (optional)
+            'customer.address.languageid': 'de', // (required by many payment gateways)
+            'customer.address.telephone': '+4912345678', // (optional)
+            'customer.address.telefax': '+49123456789', // (optional)
+            'customer.address.email': 'test@example.com', // (required)
+            'customer.address.website': 'https://example.com', // (optional)
+            'customer.address.longitude': 10.0, // (optional, float value)
+            'customer.address.latitude': 50.0 // (optional, float value)
+        }
+    }]}
+
+    let url = response['links']['customer/address']['href']; // from customer response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -228,6 +287,35 @@ In the same way you can add an address, you can change one or more address field
         }
     }}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': {
+        'attributes': {
+            'customer.address.address2': '2',
+            'customer.address.address3': '2. floor'
+        }
+    }}
+
+    let url = response['data'][0]['links']['self']['href']; // from customer address response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': {
@@ -269,6 +357,27 @@ Use code like this one to construct a DELETE request:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/customer?id=2&related=address&relatedid=2&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    let url = response['data'][0]['links']['self']['href']; // from customer address response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
