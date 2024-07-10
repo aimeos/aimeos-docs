@@ -35,6 +35,18 @@ To get the customer entry, you have to send a GET request to the customer endpoi
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/customer'
     ```
+=== "Javascript"
+    ```javascript
+    // returned from OPTIONS request
+    fetch(response.meta.resources['customer']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     $.ajax({
@@ -272,6 +284,57 @@ If the user isn't logged in, it's possible to create a new customer by sending t
         }
     }}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        attributes: {
+            "customer.code": "testuser@example.com", // (optional, customer.email is used if empty)
+            "customer.label": "Test user", // (optional, will be generated if empty)
+            "customer.salutation": "mr", // "mr", "mrs", "miss", "company" or empty (optional)
+            "customer.company": "Example company", // (optional)
+            "customer.vatid": "DE123456789", // (optional)
+            "customer.title": "Dr.", // (optional)
+            "customer.firstname": "Test", // (optional)
+            "customer.lastname": "User", // (required)
+            "customer.address1": "Test street", // (required)
+            "customer.address2": "1", // (optional)
+            "customer.address3": "", // (optional)
+            "customer.postal": "12345", // (optional)
+            "customer.city": "Test city", // (required)
+            "customer.state": "HH", // (optional)
+            "customer.countryid": "DE", // (optional)
+            "customer.languageid": "de", // (required by many payment gateways)
+            "customer.telephone": "+4912345678", // (optional)
+            "customer.telefax": "+49123456789", // (optional)
+            "customer.email": "testuser@example.com", // (required)
+            "customer.website": "https://example.com", // (optional)
+            "customer.longitude": 10.0, // (optional, float value)
+            "customer.latitude": 50.0, // (optional, float value)
+            "customer.birthday": "2000-01-01", // (optional)
+            "customer.password": "secret123" // (optional, generated if empty)
+        }
+    }]}
+
+    let url = response['links']['customer']['href'] // from OPTIONS response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {data: {
@@ -403,6 +466,57 @@ The request for changing data is very similar to creating a new user but it requ
             "customer.password": "very+secret"
         }
     }}'
+    ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        attributes: {
+            "customer.code": "testuser@example.com", // (optional, customer.email is used if empty)
+            "customer.label": "Test user", // (optional, will be generated if empty)
+            "customer.salutation": "mr", // "mr", "mrs", "miss", "company" or empty (optional)
+            "customer.company": "Example company", // (optional)
+            "customer.vatid": "DE123456789", // (optional)
+            "customer.title": "Dr.", // (optional)
+            "customer.firstname": "Test", // (optional)
+            "customer.lastname": "User", // (required)
+            "customer.address1": "Test street", // (required)
+            "customer.address2": "2", // (optional)
+            "customer.address3": "", // (optional)
+            "customer.postal": "12345", // (optional)
+            "customer.city": "Test city", // (required)
+            "customer.state": "HH", // (optional)
+            "customer.countryid": "DE", // (optional)
+            "customer.languageid": "de", // (required by many payment gateways)
+            "customer.telephone": "+4912345678", // (optional)
+            "customer.telefax": "+49123456789", // (optional)
+            "customer.email": "testuser@example.com", // (required)
+            "customer.website": "https://example.com", // (optional)
+            "customer.longitude": 10.0, // (optional, float value)
+            "customer.latitude": 50.0, // (optional, float value)
+            "customer.birthday": "2000-01-01", // (optional)
+            "customer.password": "very+secret" // (optional, generated if empty)
+        }
+    }]}
+
+    let url = response['links']['customer']['href'] // from OPTIONS response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -564,6 +678,27 @@ For deleting the account use e.g.:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/customer?id=...&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    let url = response.links.self.href // from customer response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

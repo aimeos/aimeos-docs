@@ -89,6 +89,31 @@ To get the relations only, use a GET request to the *customer/relationships* end
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/customer?related=relationships&include=product'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {include: "product"};
+    let params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args;
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = response['links']['customer/relationships']['href']
+        + (response['links']['customer/relationships']['href'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var url = response['links']['customer/relationships']['href']; // from customer response
@@ -228,6 +253,43 @@ The request for creating a new relation looks similar to this one:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        "attributes": {
+            "customer.lists.domain": "service",
+            "customer.lists.type": "default",
+            "customer.lists.refid": "1234",
+            "customer.lists.datestart": null,
+            "customer.lists.dateend": "2022-01-01 00:00:00",
+            "customer.lists.config": {
+                "token": "..."
+            },
+            "customer.lists.position": 0,
+            "customer.lists.status": 1
+        }
+    }]}
+
+    let url = response['links']['customer/relationships']['href'] // from customer response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -287,6 +349,41 @@ To add a product as favorite to the customer account, use:
             "customer.lists.status": 1
         }
     }]}'
+    ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        'attributes': {
+            "customer.lists.domain": "product",
+            "customer.lists.type": "favorite",
+            "customer.lists.refid": "123",
+            "customer.lists.datestart": null,
+            "customer.lists.dateend": null,
+            "customer.lists.config": {},
+            "customer.lists.position": 0,
+            "customer.lists.status": 1
+        }
+    }]}
+
+    let url = response['links']['customer/relationships']['href'] // from customer response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -364,6 +461,47 @@ pricevalue
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        'attributes': {
+            "customer.lists.domain": "product",
+            "customer.lists.type": "watch",
+            "customer.lists.refid": "123",
+            "customer.lists.datestart": null,
+            "customer.lists.dateend": null,
+            "customer.lists.config": {
+                "timeframe": "7",
+                "stock": "1",
+                "price": "1",
+                "currency": "EUR",
+                "pricevalue": "100.00"
+            },
+            "customer.lists.position": 0,
+            "customer.lists.status": 1
+        }
+    }]}
+
+    let url = response['links']['customer/relationships']['href'] // from customer response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -424,6 +562,40 @@ To change a relation of the authenticated customer, perform a PATCH request. The
         }
     }}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': {
+        'attributes': {
+            "customer.lists.config": {
+                "timeframe": "28",
+                "stock": "1",
+                "price": "1",
+                "currency": "EUR",
+                "pricevalue": "100.00"
+            }
+        }
+    }}
+
+    let url = response['data'][0]['links']['self']['href'] // from customer relationships response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': {
@@ -473,6 +645,27 @@ A DELETE request is performed by:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/customer?related=relationships&relatedid=...&include=product&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    let url = response['data'][0]['links']['self']['href'] // from customer relationships response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

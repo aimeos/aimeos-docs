@@ -35,6 +35,18 @@ Retrieving the reviews of the customer requires a GET request to the *customer/r
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/customer?related=review'
     ```
+=== "Javascript"
+    ```javascript
+    // from customer response
+    fetch(response['links']['customer/review']['href']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     $.ajax({
@@ -128,6 +140,39 @@ The request for creating a new review looks similar to this one:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        'attributes': {
+            "review.domain": "product",
+            "review.orderproductid": "123",
+            "review.refid": "1",
+            "review.name": "Test User",
+            "review.rating": 5,
+            "review.comment": "Exactly fits my needs"
+        }
+    }]}
+
+    let url = response['links']['customer/review']['href'] // from customer response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -178,6 +223,35 @@ Changing one review of the authenticated customer is possible by performing a PA
         }
     }}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        'attributes': {
+            "review.rating": 0,
+            "review.comment": "Got broken after two weeks"
+        }
+    }]}
+
+    let url = response['data'][0]['links']['self']['href'] // from customer review response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': {
@@ -219,6 +293,27 @@ You can build a DELETE request like this:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/customer?related=review&relatedid=8&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    let url = response['data'][0]['links']['self']['href'] // from customer review response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

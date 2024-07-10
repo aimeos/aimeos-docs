@@ -20,6 +20,26 @@ This article contains all actions for retrieving and managing plugins.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getPlugin(id: "1") {
+        id
+        siteid
+        type
+        label
+        provider
+        config
+        position
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -39,11 +59,11 @@ This article contains all actions for retrieving and managing plugins.
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -102,6 +122,29 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchPlugins(filter: "{\\"~=\\": {\\"plugin.label\\":\\"Product\\"}}") {
+        items {
+          id
+          siteid
+          type
+          label
+          provider
+          config
+          position
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     let filter = {
@@ -128,11 +171,11 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -185,6 +228,18 @@ To retrieve the backend configuration for a plugin provider and the added decora
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getPluginConfig(provider: "Autofill", type: "order") {
+        code
+        type
+        label
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -196,11 +251,11 @@ To retrieve the backend configuration for a plugin provider and the added decora
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -270,6 +325,22 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      savePlugin(input: {
+        type: "order"
+        label: "Test plugin"
+        provider: "Shipping"
+        config: "{\\"threshold\\": "50.00"}"
+        status: 0
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -285,11 +356,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -333,6 +404,28 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      savePlugins(input: [{
+        type: "order"
+        label: "Test plugin 2"
+        provider: "Shipping"
+        config: "{\\"threshold\\": "25.00"}"
+        status: 0
+      },{
+        type: "order"
+        label: "Test plugin 3"
+        provider: "Example"
+        config: "{}"
+        status: 0
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -354,11 +447,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -393,6 +486,14 @@ Response:
       deletePlugin(id: "13")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deletePlugin(id: "13")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -400,11 +501,11 @@ Response:
       deletePlugin(id: "13")
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -432,6 +533,14 @@ Response:
       deletePlugins(id: ["14", "15"])
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deletePlugins(id: ["14", "15"])
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -439,11 +548,11 @@ Response:
       deletePlugins(id: ["14", "15"])
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {

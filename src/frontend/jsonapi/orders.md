@@ -9,6 +9,30 @@ The first step to create an order is to persist the basket of the customer. This
     curl -b cookies.txt -c cookies.txt \
     -X POST 'http://localhost:8000/jsonapi/basket?_token=...'
     ```
+=== "Javascript"
+    ```javascript
+    // basket URL returned from OPTIONS response
+    let url = response['meta']['resources']['basket']
+    // or basket URL returned from basket response
+    url = response['links']['self']['href']
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     // basket URL returned from OPTIONS response
@@ -98,6 +122,35 @@ After saving the basket, you may need to redirect the customer to an external pa
             "order.id": "..."
         }
     }}'
+    ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': {
+        'attributes': {
+            "order.id": response["data"]["id"], // generated ID returned in the basket POST response
+        }
+    }}
+
+    // basket URL returned from basket response
+    let url = response['links']['order']['href'];
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -217,6 +270,35 @@ The "code" contains the form parameter name and the "default" property value tha
 
 === "jQuery"
     ```javascript
+    const form = document.createElement('form')
+
+    // process URL returned in order POST response
+    form.setAttribute('action', response['links']['process']['href'])
+    // from the order POST response
+    form.setAttribute('method', response['links']['process']['allow'][0])
+
+    for(entry in response["data"]["links"]["process"]["meta"]) {
+        // todo: translate code to readable string
+        const label = document.createElement('label')
+        label.nodeValue = entry['code']
+        form.appendChild(label)
+
+        const input = document.createElement('input')
+        if(entry['public'] == false) {
+            input.setAttribute('type', 'hidden')
+        }
+        input.setAttribute('name', entry['code'])
+        input.setAttribute('value', entry['default'])
+        form.appendChild(input)
+    }
+
+    const btn = document.createElement('button')
+    btn.setAttribute('type', 'submit')
+    btn.nodeValue = 'Submit'
+    form.appendChild(btn)
+    ```
+=== "jQuery"
+    ```javascript
     var form = $('<form/>');
 
     // process URL returned in order POST response
@@ -254,6 +336,18 @@ Then, you can retrieve the list of orders using the "order" endpoint:
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/order'
     ```
+=== "Javascript"
+    ```javascript
+    // returned from OPTIONS call
+    fetch(options.meta.resources['order']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     $.ajax({
@@ -276,6 +370,29 @@ as *include* parameter:
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/order?id=...&include=order/address,order/coupon,order/product,order/service'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        include: "order/address,order/coupon,order/product,order/service"
+    };
+    let params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
+    }
+
+    // returned from OPTIONS call
+    fetch(options.meta.resources['order']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

@@ -41,6 +41,44 @@ This article contains all actions for retrieving and managing media.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getMedia(id: "1", include: ["group"]) {
+        id
+        siteid
+        type
+        label
+        domain
+        languageid
+        mimetype
+        url
+        previews
+        filesystem
+        status
+        mtime
+        ctime
+        editor
+        lists {
+          group {
+            id
+            item {
+              id
+              code
+            }
+          }
+        }
+        property {
+          id
+          type
+          languageid
+          value
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -78,11 +116,11 @@ This article contains all actions for retrieving and managing media.
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -175,6 +213,47 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchMedias(filter: "{\\"=~\\": {\\"media.code\\":\\"demo-\\"}}", include: ["group"]) {
+        items {
+          id
+          siteid
+          type
+          label
+          domain
+          languageid
+          mimetype
+          url
+          previews
+          filesystem
+          status
+          mtime
+          ctime
+          editor
+          lists {
+            group {
+              id
+              item {
+                id
+                code
+              }
+            }
+          }
+          property {
+            id
+            type
+            languageid
+            value
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     let filter = {
@@ -219,11 +298,11 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -323,6 +402,31 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveMedia(input: {
+        domain: "product",
+        type: "default",
+        label: "Test image",
+        url: "https://myshop.com/images/test.jpg",
+        lists: {
+          group: [{
+            refid: "2"
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -347,11 +451,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -403,6 +507,36 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveMedias(input: [{
+        domain: "product",
+        type: "default",
+        label: "Test 2 image",
+        url: "https://myshop.com/images/test2.jpg",
+        lists: {
+          group: [{
+            refid: "2"
+          }]
+        },
+        property: [{
+          type: "title",
+          languageid: "en",
+          value: "Demo article"
+        }]
+      },{
+        domain: "catalog",
+        type: "stage",
+        label: "Test 3 image",
+        url: "https://myshop.com/images/test3.jpg",
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -432,11 +566,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -463,6 +597,109 @@ Response:
 }
 ```
 
+# Save media with file upload
+
+Uploading files in GraphQL requires a `multipart/form-data` request. When using the `Aimeos.query()` function, it cares about the correct format for you.
+
+=== "Mutation"
+    ```
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="operations"
+
+    {"query":"mutation Upload($file: Upload!, $preview: Upload) {
+      saveMedia(input: {
+        domain: \"product\",
+        filepreview: $preview,
+        file: $file
+      }) {
+        id
+        label
+        url
+        preview
+      }}","variables":{"file":null,"preview":null}}
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="map"
+
+    {"1":["variables.file"], "2":["variables.preview"]}
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="1"; filename="file.jpg"
+    Content-Type: image/jpeg
+
+
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA
+    Content-Disposition: form-data; name="2"; filename="preview.jpg"
+    Content-Type: image/jpeg
+
+
+    ------WebKitFormBoundaryABZt4UX90dqEFnCA--
+    ```
+=== "JQAdm"
+    ```javascript
+    const vars = {
+      file: document.querySelector('input#gqlfile').files[0],
+      preview: document.querySelector('input#gqlpreview').files[0] || null
+    }
+
+    Aimeos.query(`mutation Upload($file: Upload!, $preview: Upload) {
+        saveMedia(input: {
+          domain: "product",
+          file: $file,
+          filepreview: $preview
+        }) {
+          id
+        }
+      }`, vars).then(data => {
+      console.log(data)
+    })
+    ```
+=== "Javascript"
+    ```javascript
+    // https://github.com/lynxtaa/awesome-graphql-client
+    const client = new AwesomeGraphQLClient({
+      endpoint: '/admin/default/graphql',
+      fetchOptions: {
+        credentials: 'same-origin',
+        headers: { // Laravel only
+            'X-CSRF-TOKEN': '<CSRF token>'
+        },
+      }
+    })
+
+    const gql = `
+      mutation Upload($file: Upload!, $preview: Upload) {
+        saveMedia(input: {
+          domain: "product",
+          file: $file,
+          filepreview: $preview
+        }) {
+          id
+        }
+      }
+    `
+    const vars = {
+      file: document.querySelector('input#gqlfile').files[0],
+      preview: document.querySelector('input#gqlpreview').files[0]
+    }
+
+    client.request(gql, vars).then(result => {
+      console.log(result)
+    }).catch(error => {
+      throw new Error('GraphQL query failed')
+    })
+    ```
+
+Response:
+
+```json
+{
+  "data": {
+    "saveMedia": {
+      "id": "21"
+    }
+  }
+}
+```
+
 # Delete single media
 
 === "Mutation"
@@ -471,6 +708,14 @@ Response:
       deleteMedia(id: "20")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteMedia(id: "20")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -478,11 +723,11 @@ Response:
       deleteMedia(id: "20")
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -510,6 +755,14 @@ Response:
       deleteMedias(id: ["21", "22"])
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteMedias(id: ["21", "22"])
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -517,11 +770,11 @@ Response:
       deleteMedias(id: ["21", "22"])
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {

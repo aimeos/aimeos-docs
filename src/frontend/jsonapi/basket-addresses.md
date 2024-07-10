@@ -46,6 +46,55 @@ The request for creating a new address in the basket could look like this:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'id': 'payment', // or 'delivery'
+        'attributes': {
+            'order.address.addressid': '...', // customer address ID (optional)
+            'order.address.salutation': 'mr', // 'mr', 'mrs', 'miss', 'company' or empty (optional)
+            'order.address.company': 'Example company', // (optional)
+            'order.address.vatid': 'DE123456789', // (optional)
+            'order.address.title': 'Dr.', // (optional)
+            'order.address.firstname': 'Test', // (optional)
+            'order.address.lastname': 'User', // (required)
+            'order.address.address1': 'Test street', // (required)
+            'order.address.address2': '1', // (optional)
+            'order.address.address3': '', // (optional)
+            'order.address.postal': '12345', // (optional)
+            'order.address.city': 'Test city', // (required)
+            'order.address.state': 'HH', // (optional)
+            'order.address.countryid': 'DE', // (optional)
+            'order.address.languageid': 'de', // (required by many payment gateways)
+            'order.address.telephone': '+4912345678', // (optional)
+            'order.address.telefax': '+49123456789', // (optional)
+            'order.address.email': 'test@example.com', // (required)
+            'order.address.website': 'https://example.com', // (optional)
+            'order.address.longitude': 10.0, // (optional, float value)
+            'order.address.latitude': 50.0 // (optional, float value)
+        }
+    }]};
+
+    let url = response['links']['basket.address']['href']; // from basket response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -222,6 +271,55 @@ To update the payment address in the current basket you should use:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'id': 'payment', // or 'delivery'
+        'attributes': {
+            'order.address.addressid': '...', // customer address ID (optional)
+            'order.address.salutation': 'mr', // 'mr', 'ms', 'miss', 'company' or empty (optional)
+            'order.address.company': 'Example company', // (optional)
+            'order.address.vatid': 'DE123456789', // (optional)
+            'order.address.title': 'Dr.', // (optional)
+            'order.address.firstname': 'Test', // (optional)
+            'order.address.lastname': 'User', // (required)
+            'order.address.address1': 'Test street', // (required)
+            'order.address.address2': '1', // (optional)
+            'order.address.address3': '', // (optional)
+            'order.address.postal': '12345', // (optional)
+            'order.address.city': 'Test city', // (required)
+            'order.address.state': 'HH', // (optional)
+            'order.address.countryid': 'DE', // (optional)
+            'order.address.languageid': 'de', // (required by many payment gateways)
+            'order.address.telephone': '+4912345678', // (optional)
+            'order.address.telefax': '+49123456789', // (optional)
+            'order.address.email': 'test@example.com', // (required)
+            'order.address.website': 'https://example.com', // (optional)
+            'order.address.longitude': 10.0, // (optional, float value)
+            'order.address.latitude': 50.0 // (optional, float value)
+        }
+    }]};
+
+    let url = response['included'][0]['links']['self']['href']; // from basket response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -370,6 +468,28 @@ The DELETE request can be constructed in that way:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&related=address&relatedid=payment&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    // basket address URL returned from basket response
+    let url = response['included'][0]['links']['self']['href'];
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE",
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

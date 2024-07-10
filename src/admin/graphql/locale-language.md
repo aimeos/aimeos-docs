@@ -15,6 +15,21 @@ This article contains all actions for retrieving and managing languages.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getLocaleLanguage(id: "de") {
+        id
+        label
+        status
+        mtime
+        ctime
+        editor
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -29,11 +44,11 @@ This article contains all actions for retrieving and managing languages.
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -80,6 +95,24 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchLocaleLanguages(filter: "{\\"==\\": {\\"locale.language.status\\":1}}") {
+        items {
+          id
+          label
+          status
+          mtime
+          ctime
+          editor
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     let filter = {
@@ -101,11 +134,11 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -158,6 +191,19 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocaleLanguage(input: {
+        code: "xa"
+        label: "Test language"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -170,11 +216,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -212,6 +258,22 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveLocaleLanguages(input: [{
+        code: "xb"
+        label: "Test language 2"
+      },{
+        code: "xc_US"
+        label: "Test language 3"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -227,11 +289,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -266,6 +328,14 @@ Response:
       deleteLocaleLanguage(id: "xa")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocaleLanguage(id: "xa")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -273,11 +343,11 @@ Response:
       deleteLocaleLanguage(id: "xa")
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -305,6 +375,14 @@ Response:
       deleteLocaleLanguages(id: ["xb", "xc_US"])
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteLocaleLanguages(id: ["xb", "xc_US"])
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -312,11 +390,11 @@ Response:
       deleteLocaleLanguages(id: ["xb", "xc_US"])
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {

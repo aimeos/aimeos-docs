@@ -5,6 +5,17 @@ To be able to retrieve the basket, you need the basket resource endpoint from th
     curl -b cookies.txt -c cookies.txt \
     -X OPTIONS 'http://localhost:8000/jsonapi'
     ```
+=== "Javascript"
+    ```javascript
+    fetch('http://localhost:8000/jsonapi').then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     $.ajax({
@@ -48,6 +59,17 @@ To retrieve the current basket content you need to send a GET request to the bas
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/basket'
+    ```
+=== "Javascript"
+    ```javascript
+    fetch(response.meta.resources['basket']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -138,6 +160,36 @@ To update the basket you have to use the "self" link from a previous GET request
         }
     }}'
     ```
+=== "Javascript"
+    ```javascript
+    const params = {'data': [{
+        'attributes': {
+            'order.customerid': '...', // from customer response (optional)
+            'order.comment': 'test comment', // (optional)
+            'order.customerref': 'ABCD-1234' // (optional)
+        }
+    }]};
+
+    let url = response.links.self.href; // from basket response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': {
@@ -157,7 +209,7 @@ To update the basket you have to use the "self" link from a previous GET request
     }
 
     $.ajax({
-        url: url, // returned from OPTIONS request
+        url: url,
         method: "PATCH",
         dataType: "json",
         data: params
@@ -176,6 +228,27 @@ Removing all items and properties from the basket (effectively wiping out the ba
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/basket?id=default&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    let url = response.links.self.href; // from basket response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

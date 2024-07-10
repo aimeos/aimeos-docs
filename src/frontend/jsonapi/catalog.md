@@ -268,6 +268,33 @@ In addition to the generic filter possibilities, the product lists can be sorted
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?sort=-ctime'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'sort': '-ctime'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {'sort': '-ctime'};
@@ -298,6 +325,35 @@ If you offer users a search field for products, you have to add the entered text
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_search]=demo'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'f_search': 'demo'
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -332,6 +388,35 @@ To enable users to filter products by price, you need to use the *index.price:va
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[<][index.price:value("EUR")]=99.50'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            '<': {'index.price:value("EUR")': 99.50}
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -364,6 +449,38 @@ Usually, you want to filter for a price range, so you need to pass an upper and 
     # filter[&&][][>][index.price:value("EUR")]=100
     # &filter[&&][][<][index.price:value("EUR")]=200
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[%26%26][][%3E][index.price:value("EUR")]=100&filter[%26%26][][%3C][index.price:value("EUR")]=200'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            '&&': [
+                {'>': {'index.price:value("EUR")': 100}},
+                {'<': {'index.price:value("EUR")': 200}}
+            ]
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -400,6 +517,33 @@ To display the category tree, you have to use the "catalog" resource returned by
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/catalog?include=catalog,media,text'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'include': 'catalog,media,text'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -510,6 +654,35 @@ To get the products for a category, use the *f_catid* filter parameter:
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'f_catid': '1'
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -540,6 +713,36 @@ By default, all the found products use "default" as the category list type. You 
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_catid]=1&filter[f_listtype]=promotion'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'f_catid': '1',
+            'f_listtype': 'promotion'
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -574,6 +777,33 @@ The product attributes for building the faceted search can be retrieved using th
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/attribute?include=media,text'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'include': 'media,text'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['attribute']
+        + (options.meta.resources['attribute'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -679,6 +909,35 @@ If the user selects one or more of the attributes, you can get the corresponding
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_attrid][]=1&filter[f_attrid][]=3'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'f_attrid': ['1','3']
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -710,6 +969,35 @@ Instead of *f_attrid* which combines all attributes with an **AND** condition, y
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_optid][]=1&filter[f_optid][]=3'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'f_optid': ['1','3']
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -740,6 +1028,38 @@ Or you can use *f_oneid* with pairs of attribute types and list of attribute IDs
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_oneid][color][]=1&filter[f_oneid][length][]=3'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'f_oneid': {
+                'color': ['1'],
+                'size': ['3']
+            }
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -776,6 +1096,33 @@ To fetch the suppliers for building the supplier facet, use the "supplier" resou
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/supplier?include=media,text'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'include': 'media,text'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['supplier']
+        + (options.meta.resources['supplier'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -875,6 +1222,35 @@ If the user selects a supplier, you can get the corresponding products by adding
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?filter[f_supid]=1'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            'f_supid': '1'
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -911,6 +1287,33 @@ You can get the attribute counts by using the **aggregate** key and the correspo
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.attribute.id'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'aggregate': 'index.attribute.id'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -956,6 +1359,33 @@ In the same way you can get the product counts for the categories by using the *
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.catalog.id'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'aggregate': 'index.catalog.id'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {'aggregate': 'index.catalog.id'};
@@ -998,6 +1428,33 @@ To get the product counts for the suppliers, use the **aggregate** key and the c
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/product?aggregate=index.supplier.id'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'aggregate': 'index.supplier.id'
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['product']
+        + (options.meta.resources['product'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {'aggregate': 'index.supplier.id'};
@@ -1039,6 +1496,35 @@ If you don't fetch the stock levels together with the products using *&include=s
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid][]=1234'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            's_prodid': ['1234']
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['stock']
+        + (options.meta.resources['stock'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript
@@ -1095,6 +1581,36 @@ If the shop has different warehouses or local stores where customers can pick up
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid][]=1234&filter[s_stocktype]=berlin'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'filter': {
+            's_prodid': ['1234'],
+            's_stocktype': 'berlin'
+        }
+    }
+    let params = {}
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args
+    } else {
+        params = args
+    }
+
+    // returned from OPTIONS call
+    const url = options.meta.resources['stock']
+        + (options.meta.resources['stock'].includes('?') ? '&' : '?')
+        + window.param(params) // from https://github.com/knowledgecode/jquery-param
+
+    fetch(url).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

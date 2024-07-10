@@ -69,6 +69,31 @@ Now you can retrieve reviews via the "review" resource you've just received from
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/review?filter[f_refid]=1'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        filter: {
+            'f_refid': '1'
+        }
+    };
+    let params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
+    }
+
+    // returned from OPTIONS call
+    fetch(options.meta.resources['review']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {
@@ -149,6 +174,29 @@ In addition to the generic filter possibilities, you can sort reviews by these k
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/review?sort=-rating'
     ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'sort': '-rating'
+    };
+    let params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
+    }
+
+    // returned from OPTIONS call
+    fetch(options.meta.resources['review']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var args = {'sort': '-rating'};
@@ -180,6 +228,29 @@ You can get the rating counts for the reviews by using the **aggregate** key and
 === "CURL"
     ```bash
     curl -X GET 'http://localhost:8000/jsonapi/review?aggregate=review.rating'
+    ```
+=== "Javascript"
+    ```javascript
+    const args = {
+        'aggregate': 'review.rating'
+    };
+    let params = {};
+
+    if(options.meta.prefix) { // returned from OPTIONS call
+        params[options.meta.prefix] = args;
+    } else {
+        params = args;
+    }
+
+    // returned from OPTIONS call
+    fetch(options.meta.resources['review']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

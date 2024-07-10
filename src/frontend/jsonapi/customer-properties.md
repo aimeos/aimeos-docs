@@ -35,6 +35,18 @@ Retrieving the properties of a customer requires a GET request to the *customer/
     curl -b cookies.txt -c cookies.txt \
     -X GET 'http://localhost:8000/jsonapi/customer?related=property'
     ```
+=== "Javascript"
+    ```javascript
+    // from customer response
+    fetch(response['links']['customer/property']['href']).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     $.ajax({
@@ -127,6 +139,36 @@ The request for creating a new property looks similar to this one:
         }
     }]}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        'attributes': {
+            "customer.property.type": "crm-id", // arbitrary type
+            "customer.property.languageid": null, // optional
+            "customer.property.value": "1234" // string up to 255 bytes
+        }
+    }]}
+
+    let url = response['links']['customer/property']['href']; // from customer response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': [{
@@ -170,6 +212,34 @@ Changing one property of an authenticated customer is possible by executing a PA
         }
     }}'
     ```
+=== "Javascript"
+    ```javascript
+    let params = {'data': [{
+        'attributes': {
+            "customer.property.value": "4321"
+        }
+    }]}
+
+    let url = response['data'][0]['links']['self']['href'] // from customer property response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify(params)
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
+    ```
 === "jQuery"
     ```javascript
     var params = {'data': {
@@ -210,6 +280,27 @@ The DELETE request can be constructed like this:
     ```bash
     curl -b cookies.txt -c cookies.txt \
     -X DELETE 'http://localhost:8000/jsonapi/customer?related=property&relatedid=...&_token=...'
+    ```
+=== "Javascript"
+    ```javascript
+    let url = response['data'][0]['links']['self']['href'] // from customer property response
+
+    if(response['meta']['csrf']) { // add CSRF token if available and therefore required
+        const csrf = {}
+        csrf[response['meta']['csrf']['name']] = response['meta']['csrf']['value']
+        url += (url.indexOf('?') === -1 ? '?' : '&') + window.param(csrf) // from https://github.com/knowledgecode/jquery-param
+    }
+
+    fetch(url, {
+        method: "DELETE"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(result => {
+        console.log(result.data)
+    })
     ```
 === "jQuery"
     ```javascript

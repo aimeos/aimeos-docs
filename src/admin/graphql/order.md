@@ -29,8 +29,326 @@ This article contains all actions for retrieving and managing orders.
         mtime
         ctime
         editor
+        address {
+          id
+          siteid
+          type
+          parentid
+          addressid
+          salutation
+          company
+          vatid
+          title
+          firstname
+          lastname
+          address1
+          address2
+          address3
+          postal
+          city
+          state
+          languageid
+          countryid
+          telephone
+          email
+          telefax
+          website
+          status
+          longitude
+          latitude
+          birthday
+          position
+          mtime
+          ctime
+          editor
+        }
+        coupon {
+          id
+          siteid
+          parentid
+          code
+          productid
+          mtime
+          ctime
+          editor
+        }
+        product {
+          id
+          siteid
+          parentid
+          orderproductid
+          orderaddressid
+          type
+          stocktype
+          prodcode
+          productid
+          parentproductid
+          vendor
+          scale
+          quantity
+          qtyopen
+          currencyid
+          price
+          costs
+          rebate
+          taxrates
+          taxvalue
+          taxflag
+          name
+          description
+          mediaurl
+          timeframe
+          position
+          notes
+          statuspayment
+          statusdelivery
+          target
+          flags
+          mtime
+          ctime
+          editor
+          attribute {
+            id
+            siteid
+            parentid
+            attributeid
+            type
+            code
+            name
+            value
+            price
+            quantity
+            mtime
+            ctime
+            editor
+          }
+        }
+        service {
+          id
+          siteid
+          serviceid
+          type
+          code
+          name
+          currencyid
+          price
+          costs
+          rebate
+          taxrates
+          taxvalue
+          taxflag
+          position
+          mediaurl
+          attribute {
+            id
+            siteid
+            parentid
+            attributeid
+            type
+            code
+            name
+            value
+            price
+            quantity
+            mtime
+            ctime
+            editor
+          }
+          transaction {
+            id
+            siteid
+            parentid
+            config
+            status
+            currencyid
+            type
+            price
+            costs
+            rebate
+            taxvalue
+            taxflag
+            mtime
+            ctime
+            editor
+          }
+        }
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getOrder(id: "1") {
+        id
+        siteid
+        sitecode
+        channel
+        invoiceno
+        relatedid
+        languageid
+        currencyid
+        price
+        costs
+        rebate
+        taxflag
+        taxvalue
+        datepayment
+        datedelivery
+        statusdelivery
+        statuspayment
+        customerid
+        customerref
+        comment
+        mtime
+        ctime
+        editor
+        address {
+          id
+          siteid
+          type
+          parentid
+          addressid
+          salutation
+          company
+          vatid
+          title
+          firstname
+          lastname
+          address1
+          address2
+          address3
+          postal
+          city
+          state
+          languageid
+          countryid
+          telephone
+          email
+          telefax
+          website
+          status
+          longitude
+          latitude
+          birthday
+          position
+          mtime
+          ctime
+          editor
+        }
+        coupon {
+          id
+          siteid
+          parentid
+          code
+          productid
+          mtime
+          ctime
+          editor
+        }
+        product {
+          id
+          siteid
+          parentid
+          orderproductid
+          orderaddressid
+          type
+          stocktype
+          prodcode
+          productid
+          parentproductid
+          vendor
+          scale
+          quantity
+          qtyopen
+          currencyid
+          price
+          costs
+          rebate
+          taxrates
+          taxvalue
+          taxflag
+          name
+          description
+          mediaurl
+          timeframe
+          position
+          notes
+          statuspayment
+          statusdelivery
+          target
+          flags
+          mtime
+          ctime
+          editor
+          attribute {
+            id
+            siteid
+            parentid
+            attributeid
+            type
+            code
+            name
+            value
+            price
+            quantity
+            mtime
+            ctime
+            editor
+          }
+        }
+        service {
+          id
+          siteid
+          serviceid
+          type
+          code
+          name
+          currencyid
+          price
+          costs
+          rebate
+          taxrates
+          taxvalue
+          taxflag
+          position
+          mediaurl
+          attribute {
+            id
+            siteid
+            parentid
+            attributeid
+            type
+            code
+            name
+            value
+            price
+            quantity
+            mtime
+            ctime
+            editor
+          }
+          transaction {
+            id
+            siteid
+            parentid
+            config
+            status
+            currencyid
+            type
+            price
+            costs
+            rebate
+            taxvalue
+            taxflag
+            mtime
+            ctime
+            editor
+          }
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -60,14 +378,160 @@ This article contains all actions for retrieving and managing orders.
         mtime
         ctime
         editor
+        address {
+          id
+          siteid
+          type
+          parentid
+          addressid
+          salutation
+          company
+          vatid
+          title
+          firstname
+          lastname
+          address1
+          address2
+          address3
+          postal
+          city
+          state
+          languageid
+          countryid
+          telephone
+          email
+          telefax
+          website
+          status
+          longitude
+          latitude
+          birthday
+          position
+          mtime
+          ctime
+          editor
+        }
+        coupon {
+          id
+          siteid
+          parentid
+          code
+          productid
+          mtime
+          ctime
+          editor
+        }
+        product {
+          id
+          siteid
+          parentid
+          orderproductid
+          orderaddressid
+          type
+          stocktype
+          prodcode
+          productid
+          parentproductid
+          vendor
+          scale
+          quantity
+          qtyopen
+          currencyid
+          price
+          costs
+          rebate
+          taxrates
+          taxvalue
+          taxflag
+          name
+          description
+          mediaurl
+          timeframe
+          position
+          notes
+          statuspayment
+          statusdelivery
+          target
+          flags
+          mtime
+          ctime
+          editor
+          attribute {
+            id
+            siteid
+            parentid
+            attributeid
+            type
+            code
+            name
+            value
+            price
+            quantity
+            mtime
+            ctime
+            editor
+          }
+        }
+        service {
+          id
+          siteid
+          serviceid
+          type
+          code
+          name
+          currencyid
+          price
+          costs
+          rebate
+          taxrates
+          taxvalue
+          taxflag
+          position
+          mediaurl
+          mtime
+          ctime
+          editor
+          attribute {
+            id
+            siteid
+            parentid
+            attributeid
+            type
+            code
+            name
+            value
+            price
+            quantity
+            mtime
+            ctime
+            editor
+          }
+          transaction {
+            id
+            siteid
+            parentid
+            config
+            status
+            currencyid
+            type
+            price
+            costs
+            rebate
+            taxvalue
+            taxflag
+            mtime
+            ctime
+            editor
+          }
+        }
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -105,7 +569,158 @@ Response:
       "comment": "Test comment",
       "mtime": "2022-06-13 09:03:50",
       "ctime": "2022-06-01 08:55:25",
-      "editor": "aimeos@aimeos.org"
+      "editor": "aimeos@aimeos.org",
+      "address": [{
+        "id": "2",
+        "siteid": "1.",
+        "type": "payment",
+        "parentid": "1",
+        "addressid": "1",
+        "salutation": "mr",
+        "company": "Test company",
+        "vatid": "DE999999999",
+        "title": null,
+        "firstname": "Test",
+        "lastname": "User",
+        "address1": "Test street",
+        "address2": "1",
+        "address3": null,
+        "postal": "10000",
+        "city": "Test city",
+        "state": "CA",
+        "languageid": "en",
+        "countryid": "US",
+        "telephone": null,
+        "email": "demo@example.com",
+        "telefax": null,
+        "website": null,
+        "longitude": null,
+        "status": 1,
+        "latitude": null,
+        "birthday": "2000-01-01",
+        "position": 0,
+        "mtime": "2022-06-01 08:55:25",
+        "ctime": "2022-06-01 08:55:25",
+        "editor": "aimeos@aimeos.org"
+      }],
+      "coupon": [{
+        "id": "1",
+        "siteid": "1.",
+        "parentid": "1",
+        "code": "discount-10",
+        "productid": "4",
+        "mtime": "2022-06-01 08:55:25",
+        "ctime": "2022-06-01 08:55:25",
+        "editor": "aimeos@aimeos.org"
+      }],
+      "product": [{
+        "id": "4",
+        "siteid": "1.",
+        "parentid": "1",
+        "orderproductid",
+        "orderaddressid": "",
+        "type": "default",
+        "stocktype": "default",
+        "prodcode": "demo-article",
+        "productid": "1",
+        "parentproductid": "",
+        "vendor": "Aimeos",
+        "scale": "1.0",
+        "quantity": 1,
+        "qtyopen": 1,
+        "currencyid": "EUR",
+        "price": "100.00",
+        "costs": "5.00",
+        "rebate": "0.00",
+        "taxrates": "{\"tax\":\"20.00\"}",
+        "taxvalue": "17.5000",
+        "taxflag": 1,
+        "name": "Dark grey dress",
+        "description": "",
+        "mediaurl": "https://aimeos.org/media/default/product_01_A-low.webp",
+        "timeframe": "",
+        "position": 1,
+        "notes": "",
+        "statuspayment": -1,
+        "statusdelivery": -1,
+        "target": "",
+        "flags": 0,
+        "mtime": "2022-06-01 08:55:25",
+        "ctime": "2022-06-01 08:55:25",
+        "editor": "aimeos@aimeos.org",
+        "attribute" [{
+          "id": "2",
+          "siteid": "1.",
+          "parentid": "4",
+          "attributeid": "42",
+          "type": "custom",
+          "code": "text",
+          "name": "Custom text",
+          "value": "Me, myself and I",
+          "price": "0.00",
+          "quantity": 1,
+          "mtime": "2022-06-01 08:55:25",
+          "ctime": "2022-06-01 08:55:25",
+          "editor": "aimeos@aimeos.org",
+        }]
+      }],
+      "service": [{
+        "id": "3",
+        "siteid": "1.",
+        "parentid": "1",
+        "orderserviceid": "1",
+        "type": "delivery",
+        "code": "demo-pickup",
+        "name": "Click & Collect",
+        "currencyid": "EUR",
+        "price": "0.00",
+        "costs": "0.00",
+        "rebate": "0.00",
+        "taxrates": "{\"tax\":\"0.00\"}",
+        "taxvalue": "0.0000",
+        "taxflag": 1,
+        "position": 0,
+        "mediaurl": "",
+        "mtime": "2022-06-01 08:55:25",
+        "ctime": "2022-06-01 08:55:25",
+        "editor": "aimeos@aimeos.org",
+        "attribute" []
+      }, {
+        "id": "4",
+        "siteid": "1.",
+        "parentid": "1",
+        "orderserviceid": "6",
+        "type": "payment",
+        "code": "demo-sepa",
+        "name": "Direct debit",
+        "currencyid": "EUR",
+        "price": "0.00",
+        "costs": "0.00",
+        "rebate": "0.00",
+        "taxrates": "{\"tax\":\"0.00\"}",
+        "taxvalue": "0.0000",
+        "taxflag": 1,
+        "position": 0,
+        "mediaurl": "",
+        "mtime": "2022-06-01 08:55:25",
+        "ctime": "2022-06-01 08:55:25",
+        "editor": "aimeos@aimeos.org",
+        "attribute" [{
+          "id": "8",
+          "siteid": "1.",
+          "parentid": "4",
+          "attributeid": "",
+          "type": "hidden",
+          "code": "txid",
+          "name": "Transaction ID",
+          "value": "abcd1234",
+          "price": "0.00",
+          "quantity": 1,
+          "mtime": "2022-06-01 08:55:30",
+          "ctime": "2022-06-01 08:55:30",
+          "editor": "aimeos@aimeos.org",
+        }]
+      }]
     }
   }
 }
@@ -143,10 +758,71 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          address {
+            company
+          }
+          coupon {
+            productid
+          }
+          product {
+            id
+            prodcode
+          }
+          service {
+            code
+          }
         }
         total
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchOrders(filter: "{\\"==\\": {\\"order.channel\\":\\"web\\"}}") {
+        items {
+          id
+          siteid
+          sitecode
+          channel
+          invoiceno
+          relatedid
+          languageid
+          currencyid
+          price
+          costs
+          rebate
+          taxflag
+          taxvalue
+          datepayment
+          datedelivery
+          statusdelivery
+          statuspayment
+          customerid
+          customerref
+          comment
+          mtime
+          ctime
+          editor
+          address {
+            company
+          }
+          coupon {
+            productid
+          }
+          product {
+            id
+            prodcode
+          }
+          service {
+            code
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -181,16 +857,29 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
           mtime
           ctime
           editor
+          address {
+            company
+          }
+          coupon {
+            productid
+          }
+          product {
+            id
+            prodcode
+          }
+          service {
+            code
+          }
         }
         total
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -230,7 +919,22 @@ Response:
           "comment": "Test comment",
           "mtime": "2022-06-13 09:03:50",
           "ctime": "2022-06-01 08:55:25",
-          "editor": "aimeos@aimeos.org"
+          "editor": "aimeos@aimeos.org",
+          "address": [{
+            "company": "Test company"
+          }],
+          "coupon": [{
+            "productid": "4"
+          }],
+          "product": [{
+            "id": "4",
+            "prodcode": "demo-article"
+          }],
+          "service": [{
+            "code": "demo-pickup"
+          }, {
+            "code": "demo-sepa"
+          }]
         },
         {
           "id": "3",
@@ -255,7 +959,20 @@ Response:
           "comment": "Test",
           "mtime": "2022-06-13 09:03:50",
           "ctime": "2022-06-01 08:55:25",
-          "editor": "aimeos@aimeos.org"
+          "editor": "aimeos@aimeos.org",
+          "address": [{
+            "company": "Example company"
+          }],
+          "coupon": [],
+          "product": [{
+            "id": "5",
+            "prodcode": "demo-article-2"
+          }],
+          "service": [{
+            "code": "demo-dhl"
+          }, {
+            "code": "demo-invoice"
+          }]
         }
       ],
       "total": 2
@@ -277,6 +994,19 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveOrder(input: {
+        channel: "web"
+        statuspayment: 6
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -287,11 +1017,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -329,6 +1059,22 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveOrders(input: [{
+        channel: "web"
+        statuspayment: -1
+      },{
+        channel: "web"
+        statuspayment: 5
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -344,11 +1090,11 @@ Response:
       }
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -383,6 +1129,14 @@ Response:
       deleteOrder(id: "4")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteOrder(id: "4")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -390,11 +1144,11 @@ Response:
       deleteOrder(id: "4")
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
@@ -422,6 +1176,14 @@ Response:
       deleteOrders(id: ["5", "6"])
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteOrders(id: ["5", "6"])
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -429,11 +1191,11 @@ Response:
       deleteOrders(id: ["5", "6"])
     }`});
 
-    fetch($('.aimeos').data('graphql'), {
+    fetch('<GraphQL URL>', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { // Laravel only
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': '<CSRF token>'
         },
         body: body
     }).then(response => {
