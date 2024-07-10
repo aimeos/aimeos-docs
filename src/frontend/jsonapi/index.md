@@ -16,16 +16,45 @@ The offered URLs to the resources depend on the application that hosts the Aimeo
     ```bash
     curl -X OPTIONS 'http://localhost:8000/jsonapi'
     ```
+=== "Javascript"
+    ```javascript
+    let url = 'http://localhost:8000/jsonapi'; // Base URL from config
+
+    fetch(url, {
+        method: "OPTIONS"
+    }).then(result => {
+        if(!result.ok) {
+            throw new Error(`Response error: ${response.status}`)
+        }
+        return result.json()
+    }).then(options => {
+        const args = {};
+        let params = {};
+
+        if(options.meta.prefix) { // returned from OPTIONS call
+            params[options.meta.prefix] = args;
+        } else {
+            params = args;
+        }
+
+        fetch(options.meta.resources['product']).then(result => {
+            if(!result.ok) {
+                throw new Error(`Response error: ${response.status}`)
+            }
+            return result.json()
+        }).then(result => {
+            console.log(result.data)
+        })
+    })
+    ```
 === "jQuery"
     ```javascript
     var url = 'http://localhost:8000/jsonapi'; // Base URL from config
 
-    var promise = $.ajax( url, {
+    $.ajax( url, {
         method: "OPTIONS",
         dataType: "json"
-    });
-
-    promise.done( function( options ) {
+    }).done( function( options ) {
         var args = {};
         var params = {};
 
@@ -35,14 +64,12 @@ The offered URLs to the resources depend on the application that hosts the Aimeo
             params = args;
         }
 
-        var result = $.ajax({
+        $.ajax({
             method: "GET",
             dataType: "json",
             url: options.meta.resources['product'],
             data: params
-        });
-
-        result.done( function( result ) {
+        }).done( function( result ) {
             console.log( result.data );
         });
     });
@@ -82,8 +109,8 @@ To handle this case correctly, you must embed the GET parameters into another ob
 
 === "Javascript"
     ```javascript
-    var args = {'resource': 'product', 'id': '1'};
-    var params = {};
+    const args = {'resource': 'product', 'id': '1'};
+    let params = {};
 
     if( options.meta.prefix ) {
         params[options.meta.prefix] = args;
