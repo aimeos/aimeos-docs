@@ -184,6 +184,27 @@ If one of your column names is a reserved word in the database, you **must** put
 ],
 ```
 
+To use a property prefix, you must implement the `getPrefix()` method in your manager:
+
+```php
+protected function getPrefix() : string
+{
+    return 'test.';
+}
+```
+
+!!! note
+    Mind the trailing dot (".") at the end of the prefix name!
+
+The table alias (`mtes`) is automatically generated from the domain name of the manager, i.e. it consists of the first three characters of the domain name (`test`) prefixed by the character `m`. You can overwrite the table alias by implementing the `getAlias()` method in your manager:
+
+```php
+protected function getAlias() : string
+{
+    return 'mytest';
+}
+```
+
 ## Different table name
 
 If you need a different table name, implement the *getTable()* method to return your custom table name:
@@ -192,6 +213,33 @@ If you need a different table name, implement the *getTable()* method to return 
 protected function getTable() : string
 {
     return 'myapp_test';
+}
+```
+
+## Create custom items
+
+By default, all items of your domain will be instances of the generic class `\Aimeos\MShop\Common\Item\Base`. Thus, you can get and set the item properties using:
+
+```php
+$label = $item->label;
+// or using get() with default value
+$label = $item->get( 'label', 'default value' );
+
+$item->label = $label;
+// or using set() method
+$label = $item->set( 'label', $label );
+```
+
+If you want to return default values or check/transform the values when setting them, you have to implement your [own item class](../extend-managers#items) (`\Aimeos\MShop\Test\Item\Standard` for the `test` domain in this example) and add the `create()` method in your manager:
+
+```php
+public function create( array $values = [] ) : \Aimeos\MShop\Test\Item\Iface
+{
+    if( !isset( $values['test.siteid'] ) ) {
+        $values['test.siteid'] = $this->context()->locale()->getSiteId();
+    }
+
+    return new \Aimeos\MShop\Test\Item\Standard( $this->getPrefix(), $values );
 }
 ```
 
@@ -229,6 +277,19 @@ public function find( string $code, array $ref = [], string $domain = null, stri
 ```
 
 The keys of the array passed as first arguement are the same as the keys you've defined in *getSaveAttributes()*.
+
+## Use status values
+
+To use status values automatically in filters, add the `filter()` method to your manager:
+
+```php
+public function filter( ?bool $default = false, bool $site = false ) : \Aimeos\Base\Criteria\Iface
+{
+    return $this->filterBase( $this->getDomain(), $default );
+}
+```
+
+Then, a `status > 0` condition is added automatically if the calling code uses `$manager->filter( true )`.
 
 ## Using the manager
 
