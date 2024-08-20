@@ -90,7 +90,6 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
         },
         "attributes": {
             "product.id": "13",
-            "product.typename": "Article",
             "product.type": "default",
             "product.code": "demo-article",
             "product.label": "Demo article",
@@ -151,7 +150,6 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
         "type": "product.property",
         "attributes": {
             "product.property.id": "12",
-            "product.property.typename": "Package length",
             "product.property.languageid": null,
             "product.property.value": "20.00",
             "product.property.type": "package-length"
@@ -165,7 +163,6 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "attribute.code": "demo-black",
             "attribute.status": 1,
             "attribute.type": "color",
-            "attribute.typename": "Color",
             "attribute.position": 1,
             "attribute.label": "Demo: Black"
         }
@@ -179,7 +176,6 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "media.languageid": null,
             "media.mimetype": "image\/jpeg",
             "media.type": "default",
-            "media.typename": "Standard",
             "media.preview": "http:\/\/demo.aimeos.org\/media\/1.jpg",
             "media.url": "http:\/\/demo.aimeos.org\/media\/1-big.jpg",
             "media.status": 1
@@ -190,7 +186,6 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
         "attributes": {
             "price.id": "93",
             "price.type": "default",
-            "price.typename": "Standard",
             "price.currencyid": "EUR",
             "price.domain": "product",
             "price.quantity": 1,
@@ -209,7 +204,6 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
         "attributes": {
             "text.id": "228",
             "text.languageid": "en",
-            "text.typename": "Short description",
             "text.type": "short",
             "text.label": "Demo short\/en: This is the short description",
             "text.domain": "product",
@@ -846,7 +840,6 @@ This will return the first slice of attribute items as well as their related tex
             "attribute.code": "demo-beige",
             "attribute.status": 1,
             "attribute.type": "color",
-            "attribute.typename": "Color",
             "attribute.position": 0,
             "attribute.label": "Demo: Beige"
         },
@@ -1569,7 +1562,6 @@ It returns the list of stock items for the given product IDs:
             "stock.productid": "1234",
             "stock.stocklevel": null,
             "stock.dateback": null,
-            "stock.typename": "Standard",
             "stock.type": "default"
         }
     }
