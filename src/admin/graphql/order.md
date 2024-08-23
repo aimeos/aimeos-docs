@@ -1222,6 +1222,9 @@ Response:
 
 # Save single order
 
+!!! note
+    You can only update basic order data and update or add order addresses, products, services, product attributes, servive attributes/transactions or statuses (not coupons) but not remove existing entries!
+
 === "Mutation"
     ```graphql
     mutation {
@@ -1283,6 +1286,9 @@ Response:
 ```
 
 # Save multiple orders
+
+!!! note
+    You can only update basic order data and update or add order addresses, products, services, product attributes, servive attributes/transactions or statuses (not coupons) but not remove existing entries!
 
 === "Mutation"
     ```graphql
