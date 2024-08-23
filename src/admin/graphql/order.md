@@ -1,5 +1,8 @@
 This article contains all actions for retrieving and managing orders.
 
+!!! note
+    It's not possible to delete orders via the GraphQL API for accounting reasons. You should set the payment status of the order you want to delete to `0` instead.
+
 # Get order by ID
 
 === "Query"
@@ -63,14 +66,7 @@ This article contains all actions for retrieving and managing orders.
           editor
         }
         coupon {
-          id
-          siteid
-          parentid
           code
-          productid
-          mtime
-          ctime
-          editor
         }
         product {
           id
@@ -122,6 +118,57 @@ This article contains all actions for retrieving and managing orders.
             ctime
             editor
           }
+          product {
+            id
+            siteid
+            parentid
+            orderproductid
+            orderaddressid
+            type
+            stocktype
+            prodcode
+            productid
+            parentproductid
+            vendor
+            scale
+            quantity
+            qtyopen
+            currencyid
+            price
+            costs
+            rebate
+            taxrates
+            taxvalue
+            taxflag
+            name
+            description
+            mediaurl
+            timeframe
+            position
+            notes
+            statuspayment
+            statusdelivery
+            target
+            flags
+            mtime
+            ctime
+            editor
+            attribute {
+              id
+              siteid
+              parentid
+              attributeid
+              type
+              code
+              name
+              value
+              price
+              quantity
+              mtime
+              ctime
+              editor
+            }
+          }
         }
         service {
           id
@@ -171,6 +218,16 @@ This article contains all actions for retrieving and managing orders.
             ctime
             editor
           }
+        }
+        status {
+            id
+            siteid
+            parentid
+            type
+            value
+            mtime
+            ctime
+            editor
         }
       }
     }
@@ -236,14 +293,7 @@ This article contains all actions for retrieving and managing orders.
           editor
         }
         coupon {
-          id
-          siteid
-          parentid
           code
-          productid
-          mtime
-          ctime
-          editor
         }
         product {
           id
@@ -295,6 +345,57 @@ This article contains all actions for retrieving and managing orders.
             ctime
             editor
           }
+          product {
+            id
+            siteid
+            parentid
+            orderproductid
+            orderaddressid
+            type
+            stocktype
+            prodcode
+            productid
+            parentproductid
+            vendor
+            scale
+            quantity
+            qtyopen
+            currencyid
+            price
+            costs
+            rebate
+            taxrates
+            taxvalue
+            taxflag
+            name
+            description
+            mediaurl
+            timeframe
+            position
+            notes
+            statuspayment
+            statusdelivery
+            target
+            flags
+            mtime
+            ctime
+            editor
+            attribute {
+              id
+              siteid
+              parentid
+              attributeid
+              type
+              code
+              name
+              value
+              price
+              quantity
+              mtime
+              ctime
+              editor
+            }
+          }
         }
         service {
           id
@@ -344,6 +445,16 @@ This article contains all actions for retrieving and managing orders.
             ctime
             editor
           }
+        }
+        status {
+            id
+            siteid
+            parentid
+            type
+            value
+            mtime
+            ctime
+            editor
         }
       }
     }`).then(data => {
@@ -412,14 +523,7 @@ This article contains all actions for retrieving and managing orders.
           editor
         }
         coupon {
-          id
-          siteid
-          parentid
           code
-          productid
-          mtime
-          ctime
-          editor
         }
         product {
           id
@@ -470,6 +574,57 @@ This article contains all actions for retrieving and managing orders.
             mtime
             ctime
             editor
+          }
+          product {
+            id
+            siteid
+            parentid
+            orderproductid
+            orderaddressid
+            type
+            stocktype
+            prodcode
+            productid
+            parentproductid
+            vendor
+            scale
+            quantity
+            qtyopen
+            currencyid
+            price
+            costs
+            rebate
+            taxrates
+            taxvalue
+            taxflag
+            name
+            description
+            mediaurl
+            timeframe
+            position
+            notes
+            statuspayment
+            statusdelivery
+            target
+            flags
+            mtime
+            ctime
+            editor
+            attribute {
+              id
+              siteid
+              parentid
+              attributeid
+              type
+              code
+              name
+              value
+              price
+              quantity
+              mtime
+              ctime
+              editor
+            }
           }
         }
         service {
@@ -523,6 +678,16 @@ This article contains all actions for retrieving and managing orders.
             ctime
             editor
           }
+        }
+        status {
+            id
+            siteid
+            parentid
+            type
+            value
+            mtime
+            ctime
+            editor
         }
       }
     }`});
@@ -604,24 +769,16 @@ Response:
         "editor": "aimeos@aimeos.org"
       }],
       "coupon": [{
-        "id": "1",
-        "siteid": "1.",
-        "parentid": "1",
         "code": "discount-10",
-        "productid": "4",
-        "mtime": "2022-06-01 08:55:25",
-        "ctime": "2022-06-01 08:55:25",
-        "editor": "aimeos@aimeos.org"
       }],
       "product": [{
         "id": "4",
         "siteid": "1.",
         "parentid": "1",
-        "orderproductid",
         "orderaddressid": "",
         "type": "default",
         "stocktype": "default",
-        "prodcode": "demo-article",
+        "prodcode": "demo-bundle",
         "productid": "1",
         "parentproductid": "",
         "vendor": "Aimeos",
@@ -635,7 +792,7 @@ Response:
         "taxrates": "{\"tax\":\"20.00\"}",
         "taxvalue": "17.5000",
         "taxflag": 1,
-        "name": "Dark grey dress",
+        "name": "Dress bundle",
         "description": "",
         "mediaurl": "https://aimeos.org/media/default/product_01_A-low.webp",
         "timeframe": "",
@@ -662,7 +819,44 @@ Response:
           "mtime": "2022-06-01 08:55:25",
           "ctime": "2022-06-01 08:55:25",
           "editor": "aimeos@aimeos.org",
-        }]
+        }],
+        "product": [{
+          "id": "5",
+          "siteid": "1.",
+          "parentid": "1",
+          "orderproductid": "4",
+          "orderaddressid": "",
+          "type": "default",
+          "stocktype": "default",
+          "prodcode": "demo-article",
+          "productid": "1",
+          "parentproductid": "",
+          "vendor": "Aimeos",
+          "scale": "1.0",
+          "quantity": 1,
+          "qtyopen": 1,
+          "currencyid": "EUR",
+          "price": "100.00",
+          "costs": "5.00",
+          "rebate": "0.00",
+          "taxrates": "{\"tax\":\"20.00\"}",
+          "taxvalue": "17.5000",
+          "taxflag": 1,
+          "name": "Dark grey dress",
+          "description": "",
+          "mediaurl": "https://aimeos.org/media/default/product_01_A-low.webp",
+          "timeframe": "",
+          "position": 1,
+          "notes": "",
+          "statuspayment": -1,
+          "statusdelivery": -1,
+          "target": "",
+          "flags": 0,
+          "mtime": "2022-06-01 08:55:25",
+          "ctime": "2022-06-01 08:55:25",
+          "editor": "aimeos@aimeos.org",
+          "attribute" []
+        }],
       }],
       "service": [{
         "id": "3",
@@ -720,6 +914,16 @@ Response:
           "ctime": "2022-06-01 08:55:30",
           "editor": "aimeos@aimeos.org",
         }]
+      }],
+      "status": [{
+        "id": "3",
+        "siteid": "1.",
+        "parentid": "1",
+        "type": "email-payment",
+        "value": "5",
+        "mtime": "2022-06-01 08:55:30",
+        "ctime": "2022-06-01 08:55:30",
+        "editor": "aimeos@aimeos.org",
       }]
     }
   }
@@ -762,14 +966,21 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
             company
           }
           coupon {
-            productid
+            code
           }
           product {
             id
             prodcode
+            product {
+              id
+              prodcode
+            }
           }
           service {
             code
+          }
+          status {
+            type
           }
         }
         total
@@ -808,14 +1019,21 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
             company
           }
           coupon {
-            productid
+            code
           }
           product {
             id
             prodcode
+            product {
+              id
+              prodcode
+            }
           }
           service {
             code
+          }
+          status {
+            type
           }
         }
         total
@@ -861,14 +1079,21 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
             company
           }
           coupon {
-            productid
+            code
           }
           product {
             id
             prodcode
+            product {
+              id
+              prodcode
+            }
           }
           service {
             code
+          }
+          status {
+            type
           }
         }
         total
@@ -924,16 +1149,25 @@ Response:
             "company": "Test company"
           }],
           "coupon": [{
-            "productid": "4"
+            "code": "fixed"
           }],
           "product": [{
             "id": "4",
-            "prodcode": "demo-article"
+            "prodcode": "demo-selection",
+            "product": [{
+              "id": "5",
+              "prodcode": "demo-article"
+            }],
           }],
           "service": [{
             "code": "demo-pickup"
           }, {
             "code": "demo-sepa"
+          }],
+          "status": [{
+            "type": "email-payment"
+          }, {
+            "type": "email-payment"
           }]
         },
         {
@@ -972,6 +1206,11 @@ Response:
             "code": "demo-dhl"
           }, {
             "code": "demo-invoice"
+          }],
+          "status": [{
+            "type": "email-payment"
+          }, {
+            "type": "email-payment"
           }]
         }
       ],
@@ -1116,103 +1355,6 @@ Response:
       {
         "id": "6"
       }
-    ]
-  }
-}
-```
-
-# Delete single order
-
-=== "Mutation"
-    ```graphql
-    mutation {
-      deleteOrder(id: "4")
-    }
-    ```
-=== "JQAdm"
-    ```javascript
-    Aimeos.query(`mutation {
-      deleteOrder(id: "4")
-    }`).then(data => {
-      console.log(data)
-    })
-    ```
-=== "Javascript"
-    ```javascript
-    const body = JSON.stringify({'query':
-    `mutation {
-      deleteOrder(id: "4")
-    }`});
-
-    fetch('<GraphQL URL>', {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: { // Laravel only
-            'X-CSRF-TOKEN': '<CSRF token>'
-        },
-        body: body
-    }).then(response => {
-        return response.json();
-    }).then(data => {
-        console.log(data);
-    });
-    ```
-
-Response:
-
-```json
-{
-  "data": {
-    "deleteOrder": "4"
-  }
-}
-```
-
-# Delete multiple orders
-
-=== "Mutation"
-    ```graphql
-    mutation {
-      deleteOrders(id: ["5", "6"])
-    }
-    ```
-=== "JQAdm"
-    ```javascript
-    Aimeos.query(`mutation {
-      deleteOrders(id: ["5", "6"])
-    }`).then(data => {
-      console.log(data)
-    })
-    ```
-=== "Javascript"
-    ```javascript
-    const body = JSON.stringify({'query':
-    `mutation {
-      deleteOrders(id: ["5", "6"])
-    }`});
-
-    fetch('<GraphQL URL>', {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: { // Laravel only
-            'X-CSRF-TOKEN': '<CSRF token>'
-        },
-        body: body
-    }).then(response => {
-        return response.json();
-    }).then(data => {
-        console.log(data);
-    });
-    ```
-
-Response:
-
-```json
-{
-  "data": {
-    "deleteOrders": [
-      "5",
-      "6"
     ]
   }
 }
