@@ -137,10 +137,13 @@ Check the articles about how to set configuration for your environemnt:
 Tax rate in % (required)
 : Tax rate in percent which is included in the price (gross prices) or added to the price (net prices). All prices have to be either gross or net prices depending on the tax flag configuration. If several tax rates are configured e.g. "GST" and "PST", then multiple tax rates can be entered
 
-Actual current price (optional)
+Actual price (optional)
 : Price like shown in the frontend and used when purchasing the product. If no price is added, "on request" will be shown in the frontend and the product won't contribute to the basket total.
 
-Shipping costs per item (optional)
+Granted rebate (optional)
+: The current discount given for the product. The actual price and the granted rebate add up to the original price. To show the original price in the frontend, the actual price and the granted rebate are summed up and the discount in percent is calculated by `grantend rebate * 100 / ( actual price + granted rebate )`.
+
+Shipping/item (optional)
 : If items are very heavy or have to be sent in a special way, you can add these costs as additional shipping costs. If a customer adds products with additional shipping costs two times to the basket, the additional shipping costs will be also added twice.
 
 Status (required)
