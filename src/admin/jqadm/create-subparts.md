@@ -13,42 +13,50 @@ class Standard
     extends \Aimeos\Admin\JQAdm\Common\Admin\Factory\Base
     implements \Aimeos\Admin\JQAdm\Common\Admin\Factory\Iface
 {
+    // optional
 	public function data( \Aimeos\Base\View\Iface $view ) : \Aimeos\Base\View\Iface
 	{
 		// $view->subpartData = ...
 		return $view;
 	}
 
+    // optional
     public function copy() : ?string
     {
         return parent::copy();
     }
 
+    // optional
     public function create() : ?string
     {
         return parent::create();
     }
 
+    // optional
     public function delete() : ?string
     {
         return parent::delete();
     }
 
+    // optional
     public function export() : ?string
     {
         return parent::export();
     }
 
+    // only for parent panels with list view
     public function get() : ?string
     {
         return parent::get();
     }
 
+    // optional
     public function save() : ?string
     {
         return parent::save();
     }
 
+    // only for parent panels without list view
     public function search() : ?string
     {
         return parent::search();
@@ -66,7 +74,7 @@ class Standard
 }
 ```
 
-All methods beside the last two are optional and default implementations exist in the base class, so you only have to implement the methods you really need. The `getSubClient()` and `getSubClientNames()` will care about creating the configured subparts, so your subpart can be extended dynamically.
+All methods beside the last three are optional and default implementations exist in the base class, so you only have to implement the methods you really need. The `getSubClient()` and `getSubClientNames()` will care about creating the configured subparts, so your subpart can be extended dynamically.
 
 
 # Class methods
@@ -185,7 +193,7 @@ Usually, passing the filter parameters to the job controller via the message que
 
 ## get()
 
-This method is used to retrive the data shown in the subpart of the detail view for the panel:
+This method is used to retrive the data shown in the subpart of the detail view for the panel. It's required if the parent panel has a list view that hands over the ID of the item to show in the detail view:
 
 ```php
 public function get() : ?string
@@ -223,41 +231,41 @@ Here, the newly entered or updated data from the form in the detail view is actu
 ```php
 public function save() : ?string
 {
-        $view = $this->view();
+    $view = $this->view();
 
-        $manager = \Aimeos\MShop::create( $this->context(), 'somedomain' );
-        $manager->begin();
+    $manager = \Aimeos\MShop::create( $this->context(), 'somedomain' );
+    $manager->begin();
 
-        try
+    try
+    {
+        $filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
+        $items = $manager->search( $filter );
+        $list = [];
+
+        foreach( $view->param( 'mysubpanel', [] ) as $entry )
         {
-            $filter = $manager->filter()->add( ['somedomain.foreinid' => $view->item->getId()] );
-            $items = $manager->search( $filter );
-            $list = [];
+            $id = $this->val( $entry, 'somedomain.id' );
 
-            foreach( $view->param( 'mysubpanel', [] ) as $entry )
-            {
-                $id = $this->val( $entry, 'somedomain.id' );
+            $list[] = $items->get( $id, $manager->create() )
+                ->fromArray( $entry )
+                ->setParentId( $view->item->getId() );
 
-                $list[] = $items->get( $id, $manager->create() )
-                    ->fromArray( $entry )
-                    ->setParentId( $view->item->getId() );
-
-                $items->remove( $id );
-            }
-
-            $manager->delete( $items );
-            $manager->save( $list, false );
-            $manager->commit();
-
-            parent::save();
-        }
-        catch( \Exception $e )
-        {
-            $manager->rollback();
-            throw $e;
+            $items->remove( $id );
         }
 
-        return null;
+        $manager->delete( $items );
+        $manager->save( $list, false );
+        $manager->commit();
+
+        parent::save();
+    }
+    catch( \Exception $e )
+    {
+        $manager->rollback();
+        throw $e;
+    }
+
+    return null;
 }
 ```
 
@@ -271,7 +279,33 @@ When everything is fine, commit the transation and call `parent::save()` to exec
 
 ## search()
 
-Usually, Implementing the `search()` method isn't necessary because subparts don't add data to the list view.
+This method is mandatory if the parent panel has no list view but displays data directly, e.g. the `Settings` panel. Then, the `search()` method will be called instead of the `get()` method.
+
+```php
+public function search() : ?string
+{
+    $view = $this->object()->data( $this->view() );
+
+    try
+    {
+        $view->mysubpanelData = $view->item->toArray(); // data from parent item
+        $view->mysubpanelBody = parent::search();
+    }
+    catch( \Exception $e )
+    {
+        $this->report( $e, 'search' );
+    }
+
+    $tplconf = 'admin/jqadm/mypanel/mysubpanel/template-item';
+    $default = 'mypanel/item-mysubpanel';
+
+    return $view->render( $view->config( $tplconf, $default ) );
+}
+```
+
+Get and transform the necessary data from the from parent item or fetch additional data from the storage. Don't forget to call `parent::search()` to assign the output of subparts if your panel will have your own subparts later.
+
+At the end, render the view with `$view->render()` to create the HTML output for the detail view. Use `$view->config()` to make the used template configurable. The first parameter is the configuration key, the second parameter is the default value if no alternative template path is configured.
 
 # Template
 
