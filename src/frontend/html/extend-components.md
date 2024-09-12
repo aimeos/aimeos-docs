@@ -56,13 +56,13 @@ The `modify()` method is only used by **components that implement content cachin
 
 # Supporting methods
 
-Decorators inherit all methods available in the components and subparts via the [\Aimeos\Client\Html\Base](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Base.php) class. There's one additional method exclusive to decorators named `getClient()`. It returns the HTML client or decorator representing the next layer in the onion down to the core object:
+Decorators inherit all methods available in the components and subparts via the [\Aimeos\Client\Html\Base](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Base.php) class. There's one additional method exclusive to decorators named `client()`. It returns the HTML client or decorator representing the next layer in the onion down to the core object:
 
 ```php
 public function init()
 {
     // do something before
-    $this->getClient()->init();
+    $this->client()->init();
     // do something afterwards
 }
 ```
