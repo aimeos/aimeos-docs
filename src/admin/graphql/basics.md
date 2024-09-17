@@ -3,6 +3,9 @@ This article describes how to retrieve and modify data using the Aimeos GraphQL 
 !!! note
     You must be logged into the admin backend to use the GraphQL API!
 
+!!! tip
+    Configure `admin/graphql/debug = true` to get detailed error messages and stack traces in each failed GraphQL response during development. Remove the setting before deploying to production for security reasons!
+
 # Retrieve data
 
 GraphQL uses **query** POST requests to retrieve data from the server. There are several query methods offered by Aimeos to fetch data from different domains, e.g. for the "product" domain:
