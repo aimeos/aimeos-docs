@@ -177,7 +177,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchMedias(filter: "{\\"=~\\": {\\"media.code\\":\\"demo-\\"}}", include: ["group"]) {
+      searchMedias(filter: "{\\"=~\\": {\\"media.label\\":\\"Demo\\"}}", include: ["group", "media/property"]) {
         items {
           id
           siteid
@@ -216,7 +216,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      searchMedias(filter: "{\\"=~\\": {\\"media.code\\":\\"demo-\\"}}", include: ["group"]) {
+      searchMedias(filter: "{\\"=~\\": {\\"media.label\\":\\"Demo\\"}}", include: ["group", "media/property"]) {
         items {
           id
           siteid
@@ -257,12 +257,12 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Javascript"
     ```javascript
     let filter = {
-        "=~": {"media.code":"demo-"}
+        "=~": {"media.label":"Demo"}
     };
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchMedias(filter: ` + fstr + `, include: ["group"]) {
+      searchMedias(filter: ` + fstr + `, include: ["group", "media/property"]) {
         items {
           id
           siteid
