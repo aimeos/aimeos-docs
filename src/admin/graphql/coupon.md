@@ -251,11 +251,25 @@ Response:
       saveCoupon(input: {
         label: "Test coupon"
         provider: "PercentRebate"
-        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"25\\"}",
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"25\\"}"
       }) {
         id
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveCoupon(input: {
+        label: "Test coupon"
+        provider: "PercentRebate"
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"25\\"}"
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -264,7 +278,7 @@ Response:
       saveCoupon(input: {
         label: "Test coupon"
         provider: "PercentRebate"
-        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"25\\"}",
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"25\\"}"
       }) {
         id
       }
@@ -304,15 +318,35 @@ Response:
       saveCoupons(input: [{
         label: "Test coupon 2"
         provider: "PercentRebate"
-        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"7.5\\"}",
-      },{
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"7.5\\"}"
+      }
+      {
         label: "Test coupon 3"
         provider: "FixedRebate,BasketValues"
-        config: "{\\"fixedrebate.productcode\\":\\"demo-rebate\\",\\"fixedrebate.rebate\\":{\\"EUR\\":"10.00"},\\"basket.total-value-min\\":{\\"EUR\\":100}}",,
+        config: "{\\"fixedrebate.productcode\\":\\"demo-rebate\\",\\"fixedrebate.rebate\\":{\\"EUR\\":"10.00"},\\"basket.total-value-min\\":{\\"EUR\\":100}}"
       }]) {
         id
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveCoupons(input: [{
+        label: "Test coupon 2"
+        provider: "PercentRebate"
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"7.5\\"}"
+      }
+      {
+        label: "Test coupon 3"
+        provider: "FixedRebate,BasketValues"
+        config: "{\\"fixedrebate.productcode\\":\\"demo-rebate\\",\\"fixedrebate.rebate\\":{\\"EUR\\":"10.00"},\\"basket.total-value-min\\":{\\"EUR\\":100}}"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -321,11 +355,12 @@ Response:
       saveCoupons(input: [{
         label: "Test coupon 2"
         provider: "PercentRebate"
-        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"7.5\\"}",
-      },{
+        config: "{\\"percentrebate.productcode\\":\\"demo-rebate\\",\\"percentrebate.rebate\\":\\"7.5\\"}"
+      }
+      {
         label: "Test coupon 3"
         provider: "FixedRebate,BasketValues"
-        config: "{\\"fixedrebate.productcode\\":\\"demo-rebate\\",\\"fixedrebate.rebate\\":{\\"EUR\\":"10.00"},\\"basket.total-value-min\\":{\\"EUR\\":100}}",
+        config: "{\\"fixedrebate.productcode\\":\\"demo-rebate\\",\\"fixedrebate.rebate\\":{\\"EUR\\":"10.00"},\\"basket.total-value-min\\":{\\"EUR\\":100}}"
       }]) {
         id
       }

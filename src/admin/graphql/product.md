@@ -603,17 +603,29 @@ Response:
     mutation {
       saveProduct(input: {
         code: "test"
-        label: "Test product",
+        label: "Test product"
         lists: {
+          media: [{
+            refid: "<ID from saveMedia or saveMedias mutation>"
+          }]
+          price: [{
+            item: {
+              currencyid: "EUR"
+              value: "100.00"
+              taxrates: "{\"tax\": \"19.00\"}"
+            }
+          }]
           text: [{
             item: {
+              type: "name"
+              languageid: "en"
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "isbn",
-          languageid: null,
+          type: "isbn"
+          languageid: null
           value: "12345678"
         }]
       }) {
@@ -626,17 +638,29 @@ Response:
     Aimeos.query(`mutation {
       saveProduct(input: {
         code: "test"
-        label: "Test product",
+        label: "Test product"
         lists: {
+          media: [{
+            refid: "<ID from saveMedia or saveMedias mutation>"
+          }]
+          price: [{
+            item: {
+              currencyid: "EUR"
+              value: "100.00"
+              taxrates: "{\"tax\": \"19.00\"}"
+            }
+          }]
           text: [{
             item: {
+              type: "name"
+              languageid: "en"
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "isbn",
-          languageid: null,
+          type: "isbn"
+          languageid: null
           value: "12345678"
         }]
       }) {
@@ -652,17 +676,29 @@ Response:
     `mutation {
       saveProduct(input: {
         code: "test"
-        label: "Test product",
+        label: "Test product"
         lists: {
+          media: [{
+            refid: "<ID from saveMedia or saveMedias mutation>"
+          }]
+          price: [{
+            item: {
+              currencyid: "EUR"
+              value: "100.00"
+              taxrates: "{\"tax\": \"19.00\"}"
+            }
+          }]
           text: [{
             item: {
+              type: "name"
+              languageid: "en"
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "isbn",
-          languageid: null,
+          type: "isbn"
+          languageid: null
           value: "12345678"
         }]
       }) {
@@ -703,20 +739,23 @@ Response:
     mutation {
       saveProducts(input: [{
         code: "test-2"
-        label: "Test 2 product",
+        label: "Test 2 product"
         lists: {
           text: [{
             item: {
+              type: "name"
+              languageid: "en"
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "isbn",
-          languageid: null,
+          type: "isbn"
+          languageid: null
           value: "12345678"
         }]
-      },{
+      }
+      {
         code: "test-3"
         label: "Test 3 product"
       }]) {
@@ -729,25 +768,29 @@ Response:
     Aimeos.query(`mutation {
       saveProducts(input: [{
         code: "test-2"
-        label: "Test 2 product",
+        label: "Test 2 product"
         lists: {
           text: [{
             item: {
+              type: "name"
+              languageid: "en"
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "isbn",
-          languageid: null,
+          type: "isbn"
+          languageid: null
           value: "12345678"
         }]
-      },{
+      }
+      {
         code: "test-3"
         label: "Test 3 product"
       }]) {
         id
       }
+    }
     }`).then(data => {
       console.log(data)
     })
@@ -758,25 +801,29 @@ Response:
     `mutation {
       saveProducts(input: [{
         code: "test-2"
-        label: "Test 2 product",
+        label: "Test 2 product"
         lists: {
           text: [{
             item: {
+              type: "name"
+              languageid: "en"
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "isbn",
-          languageid: null,
+          type: "isbn"
+          languageid: null
           value: "12345678"
         }]
-      },{
+      }
+      {
         code: "test-3"
         label: "Test 3 product"
       }]) {
         id
       }
+    }
     }`});
 
     fetch('<GraphQL URL>', {

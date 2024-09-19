@@ -511,17 +511,17 @@ Response:
         code: "test"
         type: "color"
         domain: "product"
-        label: "Test attribute",
+        label: "Test attribute"
         lists: {
           text: [{
             item: {
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Black color"
         }]
       }) {
@@ -536,17 +536,17 @@ Response:
         code: "test"
         type: "color"
         domain: "product"
-        label: "Test attribute",
+        label: "Test attribute"
         lists: {
           text: [{
             item: {
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Black color"
         }]
       }) {
@@ -564,17 +564,17 @@ Response:
         code: "test"
         type: "color"
         domain: "product"
-        label: "Test attribute",
+        label: "Test attribute"
         lists: {
           text: [{
             item: {
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Black color"
         }]
       }) {
@@ -617,18 +617,18 @@ Response:
         code: "test-2"
         type: "color"
         domain: "product"
-        label: "Test 2 attribute",
+        label: "Test 2 attribute"
         lists: {
           text: [{
             item: {
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          id: "1",
-          type: "title",
-          languageid: "en",
+          id: "1"
+          type: "title"
+          languageid: "en"
           value: "Black color"
         }]
       },{
@@ -648,18 +648,18 @@ Response:
         code: "test-2"
         type: "color"
         domain: "product"
-        label: "Test 2 attribute",
+        label: "Test 2 attribute"
         lists: {
           text: [{
             item: {
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          id: "1",
-          type: "title",
-          languageid: "en",
+          id: "1"
+          type: "title"
+          languageid: "en"
           value: "Black color"
         }]
       },{
@@ -682,18 +682,18 @@ Response:
         code: "test-2"
         type: "color"
         domain: "product"
-        label: "Test 2 attribute",
+        label: "Test 2 attribute"
         lists: {
           text: [{
             item: {
               content: "Test content"
             }
           }]
-        },
+        }
         property: [{
-          id: "1",
-          type: "title",
-          languageid: "en",
+          id: "1"
+          type: "title"
+          languageid: "en"
           value: "Black color"
         }]
       },{

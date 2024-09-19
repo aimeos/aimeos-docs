@@ -290,7 +290,8 @@ Response:
         type: "warehouse-fr"
         productid: "1"
         stocklevel: 50
-      },{
+      }
+      {
         type: "warehouse-it"
         productid: "1"
         stocklevel: 500
@@ -306,7 +307,8 @@ Response:
         type: "warehouse-fr"
         productid: "1"
         stocklevel: 50
-      },{
+      }
+      {
         type: "warehouse-it"
         productid: "1"
         stocklevel: 500
@@ -325,7 +327,8 @@ Response:
         type: "warehouse-fr"
         productid: "1"
         stocklevel: 50
-      },{
+      }
+      {
         type: "warehouse-it"
         productid: "1"
         stocklevel: 500

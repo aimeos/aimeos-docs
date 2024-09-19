@@ -250,7 +250,8 @@ Response:
       saveLocaleLanguages(input: [{
         code: "xb"
         label: "Test language 2"
-      },{
+      }
+      {
         code: "xc_US"
         label: "Test language 3"
       }]) {
@@ -264,7 +265,8 @@ Response:
       saveLocaleLanguages(input: [{
         code: "xb"
         label: "Test language 2"
-      },{
+      }
+      {
         code: "xc_US"
         label: "Test language 3"
       }]) {
@@ -281,7 +283,8 @@ Response:
       saveLocaleLanguages(input: [{
         code: "xb"
         label: "Test language 2"
-      },{
+      }
+      {
         code: "xc_US"
         label: "Test language 3"
       }]) {

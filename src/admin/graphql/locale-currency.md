@@ -250,7 +250,8 @@ Response:
       saveLocaleCurrencys(input: [{
         code: "XH2"
         label: "Test currency 2"
-      },{
+      }
+      {
         code: "XH3"
         label: "Test currency 3"
       }]) {
@@ -264,7 +265,8 @@ Response:
       saveLocaleCurrencys(input: [{
         code: "XH2"
         label: "Test currency 2"
-      },{
+      }
+      {
         code: "XH3"
         label: "Test currency 3"
       }]) {
@@ -281,7 +283,8 @@ Response:
       saveLocaleCurrencys(input: [{
         code: "XH2"
         label: "Test currency 2"
-      },{
+      }
+      {
         code: "XH3"
         label: "Test currency 3"
       }]) {

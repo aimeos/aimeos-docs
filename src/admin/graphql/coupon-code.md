@@ -302,7 +302,8 @@ Response:
         parentid: 2
         code: "TEST2"
         count: 10
-      },{
+      }
+      {
         parentid: 12
         code: "TEST3"
         count: null
@@ -318,7 +319,8 @@ Response:
         parentid: 2
         code: "TEST2"
         count: 10
-      },{
+      }
+      {
         parentid: 12
         code: "TEST3"
         count: null
@@ -337,7 +339,8 @@ Response:
         parentid: 2
         code: "TEST2"
         count: 10
-      },{
+      }
+      {
         parentid: 12
         code: "TEST3"
         count: null

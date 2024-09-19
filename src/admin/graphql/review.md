@@ -310,7 +310,8 @@ Response:
         id: "1"
         status: 1
         response: "Thanks a lot too!"
-      },{
+      }
+      {
         id: "2"
         status: 0
       }]) {
@@ -325,7 +326,8 @@ Response:
         id: "1"
         status: 1
         response: "Thanks a lot too!"
-      },{
+      }
+      {
         id: "2"
         status: 0
       }]) {
@@ -343,7 +345,8 @@ Response:
         id: "1"
         status: 1
         response: "Thanks a lot too!"
-      },{
+      }
+      {
         id: "2"
         status: 0
       }]) {

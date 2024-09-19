@@ -940,7 +940,8 @@ Response:
       saveCatalogs(input: [{
         id: "1"
         label: "Root"
-      },{
+      }
+      {
         id: "15"
         label: "Test category label"
         lists: {
@@ -961,7 +962,8 @@ Response:
       saveCatalogs(input: [{
         id: "1"
         label: "Root"
-      },{
+      }
+      {
         id: "15"
         label: "Test category label"
         lists: {
@@ -985,7 +987,8 @@ Response:
       saveCatalogs(input: [{
         id: "1"
         label: "Root"
-      },{
+      }
+      {
         id: "15"
         label: "Test category label"
         lists: {

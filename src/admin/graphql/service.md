@@ -567,7 +567,7 @@ Response:
         type: "delivery"
         code: "test"
         label: "Test service"
-        provider: "Standard",
+        provider: "Standard"
         lists: {
           text: [{
             item: {
@@ -587,7 +587,7 @@ Response:
         type: "delivery"
         code: "test"
         label: "Test service"
-        provider: "Standard",
+        provider: "Standard"
         lists: {
           text: [{
             item: {
@@ -610,7 +610,7 @@ Response:
         type: "delivery"
         code: "test"
         label: "Test service"
-        provider: "Standard",
+        provider: "Standard"
         lists: {
           text: [{
             item: {
@@ -658,7 +658,7 @@ Response:
         type: "delivery"
         code: "test-2"
         label: "Test 2 service"
-        provider: "Xml",
+        provider: "Xml"
         lists: {
           text: [{
             item: {
@@ -666,7 +666,8 @@ Response:
             }
           }]
         }
-      },{
+      }
+      {
         type: "payment"
         code: "test-3"
         label: "Test 3 service"
@@ -683,7 +684,7 @@ Response:
         type: "delivery"
         code: "test-2"
         label: "Test 2 service"
-        provider: "Xml",
+        provider: "Xml"
         lists: {
           text: [{
             item: {
@@ -691,7 +692,8 @@ Response:
             }
           }]
         }
-      },{
+      }
+      {
         type: "payment"
         code: "test-3"
         label: "Test 3 service"
@@ -711,7 +713,7 @@ Response:
         type: "delivery"
         code: "test-2"
         label: "Test 2 service"
-        provider: "Xml",
+        provider: "Xml"
         lists: {
           text: [{
             item: {
@@ -719,7 +721,8 @@ Response:
             }
           }]
         }
-      },{
+      }
+      {
         type: "payment"
         code: "test-3"
         label: "Test 3 service"
