@@ -23,7 +23,7 @@ Contrary to other list views, you can't add a subscription directly because they
 
 ![Subscription details](Admin-subscription-detail.png)
 
-The first four fields define the subscription and can be changed manually but keep care! Otherwise, it may have unexpected results!
+The first five fields define the subscription and can be changed manually but keep care! Otherwise, it may have unexpected results!
 
 Status
 : Status of the subscription. Only enabled subscriptions are renewed.
@@ -39,6 +39,8 @@ End date
 
 Reason
 : The reason why the subscription will end or has ended. Possible values are "payment" if a payment error occured or "cancelled" if the customer cancelled his subscription.
+
+![Subscription details](Admin-subscription-detail2.png)
 
 The next fields are only informational and can't be changed:
 
@@ -57,7 +59,7 @@ Currency (read-only)
 Language (read-only)
 : The language that is used within the order. For e-mails sent to the customers, the language field in their addresses has priority if available
 
-![Subscription details](Admin-subscription-detail.png)
+![Subscription details](Admin-subscription-order.png)
 
 The "Product" section contains the product that were bought by the customer as subscription.
 
