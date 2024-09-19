@@ -381,7 +381,8 @@ Response:
         label: "Test rule 2"
         provider: "Percent"
         config: "{\\"percent\\": 10}"
-      },{
+      }
+      {
         type: "catalog"
         label: "Test rule 3"
         provider: "Percent,Category"
@@ -399,7 +400,8 @@ Response:
         label: "Test rule 2"
         provider: "Percent"
         config: "{\\"percent\\": 10}"
-      },{
+      }
+      {
         type: "catalog"
         label: "Test rule 3"
         provider: "Percent,Category"
@@ -420,7 +422,8 @@ Response:
         label: "Test rule 2"
         provider: "Percent"
         config: "{\\"percent\\": 10}"
-      },{
+      }
+      {
         type: "catalog"
         label: "Test rule 3"
         provider: "Percent,Category"

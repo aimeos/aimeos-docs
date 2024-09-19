@@ -285,7 +285,8 @@ Response:
         languageid: "it"
         currencyid: "EUR"
         position: 3
-      },{
+      }
+      {
         siteid: "1."
         languageid: "es"
         currencyid: "EUR"
@@ -303,7 +304,8 @@ Response:
         languageid: "it"
         currencyid: "EUR"
         position: 3
-      },{
+      }
+      {
         siteid: "1."
         languageid: "es"
         currencyid: "EUR"
@@ -324,7 +326,8 @@ Response:
         languageid: "it"
         currencyid: "EUR"
         position: 3
-      },{
+      }
+      {
         siteid: "1."
         languageid: "es"
         currencyid: "EUR"

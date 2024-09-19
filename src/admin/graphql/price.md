@@ -402,18 +402,18 @@ Response:
     ```graphql
     mutation {
       savePrice(input: {
-        domain: "product",
-        label: "Test price",
-        currencyid: "EUR",
-        value: "100.00",
+        domain: "product"
+        label: "Test price"
+        currencyid: "EUR"
+        value: "100.00"
         lists: {
           group: {
             refid: "2"
           }
-        },
+        }
         property: [{
-          type: "country",
-          languageid: null,
+          type: "country"
+          languageid: null
           value: "DE"
         }]
       }) {
@@ -425,18 +425,18 @@ Response:
     ```javascript
     Aimeos.query(`mutation {
       savePrice(input: {
-        domain: "product",
-        label: "Test price",
-        currencyid: "EUR",
-        value: "100.00",
+        domain: "product"
+        label: "Test price"
+        currencyid: "EUR"
+        value: "100.00"
         lists: {
           group: {
             refid: "2"
           }
-        },
+        }
         property: [{
-          type: "country",
-          languageid: null,
+          type: "country"
+          languageid: null
           value: "DE"
         }]
       }) {
@@ -451,18 +451,18 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       savePrice(input: {
-        domain: "product",
-        label: "Test price",
-        currencyid: "EUR",
-        value: "100.00",
+        domain: "product"
+        label: "Test price"
+        currencyid: "EUR"
+        value: "100.00"
         lists: {
           group: {
             refid: "2"
           }
-        },
+        }
         property: [{
-          type: "country",
-          languageid: null,
+          type: "country"
+          languageid: null
           value: "DE"
         }]
       }) {
@@ -502,24 +502,25 @@ Response:
     ```graphql
     mutation {
       savePrices(input: [{
-        domain: "product",
-        label: "Test 2 price",
-        currencyid: "EUR",
-        value: "200.00",
+        domain: "product"
+        label: "Test 2 price"
+        currencyid: "EUR"
+        value: "200.00"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "country",
-          languageid: null,
+          type: "country"
+          languageid: null
           value: "DE"
         }]
-      },{
-        domain: "product",
-        label: "Test 3 price",
-        currencyid: "USD",
+      }
+      {
+        domain: "product"
+        label: "Test 3 price"
+        currencyid: "USD"
         value: "220.00"
       }]) {
         id
@@ -530,24 +531,25 @@ Response:
     ```javascript
     Aimeos.query(`mutation {
       savePrices(input: [{
-        domain: "product",
-        label: "Test 2 price",
-        currencyid: "EUR",
-        value: "200.00",
+        domain: "product"
+        label: "Test 2 price"
+        currencyid: "EUR"
+        value: "200.00"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "country",
-          languageid: null,
+          type: "country"
+          languageid: null
           value: "DE"
         }]
-      },{
-        domain: "product",
-        label: "Test 3 price",
-        currencyid: "USD",
+      }
+      {
+        domain: "product"
+        label: "Test 3 price"
+        currencyid: "USD"
         value: "220.00"
       }]) {
         id
@@ -561,24 +563,25 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       savePrices(input: [{
-        domain: "product",
-        label: "Test 2 price",
-        currencyid: "EUR",
-        value: "200.00",
+        domain: "product"
+        label: "Test 2 price"
+        currencyid: "EUR"
+        value: "200.00"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "country",
-          languageid: null,
+          type: "country"
+          languageid: null
           value: "DE"
         }]
-      },{
-        domain: "product",
-        label: "Test 3 price",
-        currencyid: "USD",
+      }
+      {
+        domain: "product"
+        label: "Test 3 price"
+        currencyid: "USD"
         value: "220.00"
       }]) {
         id

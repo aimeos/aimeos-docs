@@ -349,7 +349,8 @@ Response:
       saveLocaleSites(input: [{
         id: "1"
         label: "My site"
-      },{
+      }
+      {
         id: "2"
         label: "Your site"
       }]) {
@@ -363,7 +364,8 @@ Response:
       saveLocaleSites(input: [{
         id: "1"
         label: "My site"
-      },{
+      }
+      {
         id: "2"
         label: "Your site"
       }]) {
@@ -380,7 +382,8 @@ Response:
       saveLocaleSites(input: [{
         id: 1
         label: "My site"
-      },{
+      }
+      {
         id: 2
         label: "Your site"
       }]) {

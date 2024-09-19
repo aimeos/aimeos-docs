@@ -413,7 +413,7 @@ Response:
     mutation {
       saveSupplier(input: {
         code: "test"
-        label: "Test supplier",
+        label: "Test supplier"
         lists: {
           text: [{
             item: {
@@ -431,7 +431,7 @@ Response:
     Aimeos.query(`mutation {
       saveSupplier(input: {
         code: "test"
-        label: "Test supplier",
+        label: "Test supplier"
         lists: {
           text: [{
             item: {
@@ -452,7 +452,7 @@ Response:
     `mutation {
       saveSupplier(input: {
         code: "test"
-        label: "Test supplier",
+        label: "Test supplier"
         lists: {
           text: [{
             item: {
@@ -498,7 +498,7 @@ Response:
     mutation {
       saveSuppliers(input: [{
         code: "test-2"
-        label: "Test 2 supplier",
+        label: "Test 2 supplier"
         lists: {
           text: [{
             item: {
@@ -506,7 +506,8 @@ Response:
             }
           }]
         }
-      },{
+      }
+      {
         code: "test-3"
         label: "Test 3 supplier"
       }]) {
@@ -519,7 +520,7 @@ Response:
     Aimeos.query(`mutation {
       saveSuppliers(input: [{
         code: "test-2"
-        label: "Test 2 supplier",
+        label: "Test 2 supplier"
         lists: {
           text: [{
             item: {
@@ -527,7 +528,8 @@ Response:
             }
           }]
         }
-      },{
+      }
+      {
         code: "test-3"
         label: "Test 3 supplier"
       }]) {
@@ -543,7 +545,7 @@ Response:
     `mutation {
       saveSuppliers(input: [{
         code: "test-2"
-        label: "Test 2 supplier",
+        label: "Test 2 supplier"
         lists: {
           text: [{
             item: {
@@ -551,7 +553,8 @@ Response:
             }
           }]
         }
-      },{
+      }
+      {
         code: "test-3"
         label: "Test 3 supplier"
       }]) {

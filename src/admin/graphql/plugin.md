@@ -393,7 +393,8 @@ Response:
         provider: "Shipping"
         config: "{\\"threshold\\": "25.00"}"
         status: 0
-      },{
+      }
+      {
         type: "order"
         label: "Test plugin 3"
         provider: "Example"
@@ -413,7 +414,8 @@ Response:
         provider: "Shipping"
         config: "{\\"threshold\\": "25.00"}"
         status: 0
-      },{
+      }
+      {
         type: "order"
         label: "Test plugin 3"
         provider: "Example"
@@ -436,7 +438,8 @@ Response:
         provider: "Shipping"
         config: "{\\"threshold\\": "25.00"}"
         status: 0
-      },{
+      }
+      {
         type: "order"
         label: "Test plugin 3"
         provider: "Example"

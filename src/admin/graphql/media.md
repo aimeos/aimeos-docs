@@ -383,18 +383,18 @@ Response:
     ```graphql
     mutation {
       saveMedia(input: {
-        domain: "product",
-        type: "default",
-        label: "Test image",
-        url: "https://myshop.com/images/test.jpg",
+        domain: "product"
+        type: "default"
+        label: "Test image"
+        url: "https://myshop.com/images/test.jpg"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Demo article"
         }]
       }) {
@@ -406,18 +406,18 @@ Response:
     ```javascript
     Aimeos.query(`mutation {
       saveMedia(input: {
-        domain: "product",
-        type: "default",
-        label: "Test image",
-        url: "https://myshop.com/images/test.jpg",
+        domain: "product"
+        type: "default"
+        label: "Test image"
+        url: "https://myshop.com/images/test.jpg"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Demo article"
         }]
       }) {
@@ -432,18 +432,18 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveMedia(input: {
-        domain: "product",
-        type: "default",
-        label: "Test image",
-        url: "https://myshop.com/images/test.jpg",
+        domain: "product"
+        type: "default"
+        label: "Test image"
+        url: "https://myshop.com/images/test.jpg"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Demo article"
         }]
       }) {
@@ -483,25 +483,25 @@ Response:
     ```graphql
     mutation {
       saveMedias(input: [{
-        domain: "product",
-        type: "default",
-        label: "Test 2 image",
-        url: "https://myshop.com/images/test2.jpg",
+        domain: "product"
+        type: "default"
+        label: "Test 2 image"
+        url: "https://myshop.com/images/test2.jpg"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Demo article"
         }]
       },{
-        domain: "catalog",
-        type: "stage",
-        label: "Test 3 image",
-        url: "https://myshop.com/images/test3.jpg",
+        domain: "catalog"
+        type: "stage"
+        label: "Test 3 image"
+        url: "https://myshop.com/images/test3.jpg"
       }]) {
         id
       }
@@ -511,25 +511,25 @@ Response:
     ```javascript
     Aimeos.query(`mutation {
       saveMedias(input: [{
-        domain: "product",
-        type: "default",
-        label: "Test 2 image",
-        url: "https://myshop.com/images/test2.jpg",
+        domain: "product"
+        type: "default"
+        label: "Test 2 image"
+        url: "https://myshop.com/images/test2.jpg"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Demo article"
         }]
       },{
-        domain: "catalog",
-        type: "stage",
-        label: "Test 3 image",
-        url: "https://myshop.com/images/test3.jpg",
+        domain: "catalog"
+        type: "stage"
+        label: "Test 3 image"
+        url: "https://myshop.com/images/test3.jpg"
       }]) {
         id
       }
@@ -542,24 +542,24 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveMedias(input: [{
-        domain: "product",
-        type: "default",
-        label: "Test 2 image",
-        url: "https://myshop.com/images/test2.jpg",
+        domain: "product"
+        type: "default"
+        label: "Test 2 image"
+        url: "https://myshop.com/images/test2.jpg"
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "title",
-          languageid: "en",
+          type: "title"
+          languageid: "en"
           value: "Demo article"
         }]
       },{
-        domain: "catalog",
-        type: "stage",
-        label: "Test 3 image",
+        domain: "catalog"
+        type: "stage"
+        label: "Test 3 image"
         url: "https://myshop.com/images/test3.jpg"
       }]) {
         id

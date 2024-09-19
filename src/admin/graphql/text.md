@@ -360,15 +360,15 @@ Response:
         domain: "product"
         label: "Test text"
         languageid: "en"
-        content: "This is a long product description.",
+        content: "This is a long product description."
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "from",
-          languageid: null,
+          type: "from"
+          languageid: null
           value: "ERP"
         }]
       }) {
@@ -384,15 +384,15 @@ Response:
         domain: "product"
         label: "Test text"
         languageid: "en"
-        content: "This is a long product description.",
+        content: "This is a long product description."
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "from",
-          languageid: null,
+          type: "from"
+          languageid: null
           value: "ERP"
         }]
       }) {
@@ -411,15 +411,15 @@ Response:
         domain: "product"
         label: "Test text"
         languageid: "en"
-        content: "This is a long product description.",
+        content: "This is a long product description."
         lists: {
           group: [{
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "from",
-          languageid: null,
+          type: "from"
+          languageid: null
           value: "ERP"
         }]
       }) {
@@ -459,26 +459,27 @@ Response:
     ```graphql
     mutation {
       saveTexts(input: [{
-        type: "short",
-        domain: "catalog",
-        label: "Test catalog text",
-        languageid: "en",
-        content: "This is a short category text.",
+        type: "short"
+        domain: "catalog"
+        label: "Test catalog text"
+        languageid: "en"
+        content: "This is a short category text."
         lists: {
           group: [{
             refid: "2"
           }]
         },
         property: [{
-          type: "from",
-          languageid: null,
+          type: "from"
+          languageid: null
           value: "ERP"
         }]
-      },{
-        type: "name",
-        domain: "product",
-        label: "Test product name",
-        languageid: "en",
+      }
+      {
+        type: "name"
+        domain: "product"
+        label: "Test product name"
+        languageid: "en"
         content: "This is a product name"
       }]) {
         id
@@ -489,26 +490,27 @@ Response:
     ```javascript
     Aimeos.query(`mutation {
       saveTexts(input: [{
-        type: "short",
-        domain: "catalog",
-        label: "Test catalog text",
-        languageid: "en",
-        content: "This is a short category text.",
+        type: "short"
+        domain: "catalog"
+        label: "Test catalog text"
+        languageid: "en"
+        content: "This is a short category text."
         lists: {
           group: [{
             refid: "2"
           }]
         },
         property: [{
-          type: "from",
-          languageid: null,
+          type: "from"
+          languageid: null
           value: "ERP"
         }]
-      },{
-        type: "name",
-        domain: "product",
-        label: "Test product name",
-        languageid: "en",
+      }
+      {
+        type: "name"
+        domain: "product"
+        label: "Test product name"
+        languageid: "en"
         content: "This is a product name"
       }]) {
         id
@@ -522,22 +524,23 @@ Response:
     const body = JSON.stringify({'query':
     `mutation {
       saveTexts(input: [{
-        type: "short",
-        domain: "catalog",
-        label: "Test catalog text",
-        languageid: "en",
-        content: "This is a short category text.",
+        type: "short"
+        domain: "catalog"
+        label: "Test catalog text"
+        languageid: "en"
+        content: "This is a short category text."
         lists: {
           group: [{
             refid: "2"
           }]
         },
         property: [{
-          type: "from",
-          languageid: null,
+          type: "from"
+          languageid: null
           value: "ERP"
         }]
-      },{
+      }
+      {
         type: "name"
         domain: "product"
         label: "Test product name"

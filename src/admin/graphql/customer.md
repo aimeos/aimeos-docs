@@ -580,23 +580,49 @@ Response:
       saveCustomer(input: {
         code: "test-2@example.com"
         label: "Test 2 customer"
-        city: "Test city",
-        languageid: "en",
+        city: "Test city"
+        languageid: "en"
         lists: {
           product: [{
-            type: "suggest",
+            type: "suggest"
             refid: "2"
           }]
         },
         property: [{
-          type: "test",
-          languageid: null,
+          type: "test"
+          languageid: null
           value: "Test property"
         }]
       }) {
         id
       }
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveCustomer(input: {
+        code: "test-3@example.com"
+        label: "Test customer"
+        city: "Test city"
+        languageid: "en"
+        lists: {
+          product: [{
+            type: "suggest"
+            refid: "2"
+          }]
+        },
+        property: [{
+          type: "test"
+          languageid: null
+          value: "Test property"
+        }]
+      }) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript
@@ -606,16 +632,16 @@ Response:
         code: "test-3@example.com"
         label: "Test customer"
         city: "Test city"
-        languageid: "en",
+        languageid: "en"
         lists: {
           product: [{
-            type: "suggest",
+            type: "suggest"
             refid: "2"
           }]
         },
         property: [{
-          type: "test",
-          languageid: null,
+          type: "test"
+          languageid: null
           value: "Test property"
         }]
       }) {
@@ -658,16 +684,16 @@ Response:
         code: "test-3@example.com"
         label: "Test 3 customer"
         city: "Test city"
-        languageid: "en",
+        languageid: "en"
         lists: {
           product: [{
-            type: "suggest",
+            type: "suggest"
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "test",
-          languageid: null,
+          type: "test"
+          languageid: null
           value: "Test property"
         }]
       },{
@@ -680,6 +706,37 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      saveCustomers(input: [{
+        code: "test-3@example.com"
+        label: "Test 3 customer"
+        city: "Test city"
+        languageid: "en"
+        lists: {
+          product: [{
+            type: "suggest"
+            refid: "2"
+          }]
+        }
+        property: [{
+          type: "test"
+          languageid: null
+          value: "Test property"
+        }]
+      },{
+        code: "test-4@example.com"
+        label: "Test 4 customer"
+        city: "Test city"
+        languageid: "en"
+      }]) {
+        id
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -688,16 +745,16 @@ Response:
         code: "test-3@example.com"
         label: "Test 3 customer"
         city: "Test city"
-        languageid: "en",
+        languageid: "en"
         lists: {
           product: [{
-            type: "suggest",
+            type: "suggest"
             refid: "2"
           }]
-        },
+        }
         property: [{
-          type: "test",
-          languageid: null,
+          type: "test"
+          languageid: null
           value: "Test property"
         }]
       },{

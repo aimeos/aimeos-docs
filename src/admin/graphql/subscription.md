@@ -327,7 +327,8 @@ Response:
         ordprodid: 3
         productid: "2"
         interval: "P30D"
-      },{
+      }
+      {
         orderid: 3
         ordprodid: 5
         productid: "3"
@@ -345,7 +346,8 @@ Response:
         ordprodid: 3
         productid: "2"
         interval: "P30D"
-      },{
+      }
+      {
         orderid: 3
         ordprodid: 5
         productid: "3"
@@ -366,7 +368,8 @@ Response:
         ordprodid: 3
         productid: "2"
         interval: "P30D"
-      },{
+      }
+      {
         orderid: 3
         ordprodid: 5
         productid: "3"
