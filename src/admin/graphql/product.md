@@ -790,7 +790,6 @@ Response:
       }]) {
         id
       }
-    }
     }`).then(data => {
       console.log(data)
     })
@@ -823,7 +822,6 @@ Response:
       }]) {
         id
       }
-    }
     }`});
 
     fetch('<GraphQL URL>', {
