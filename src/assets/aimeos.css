@@ -503,3 +503,18 @@ html .md-footer-meta.md-typeset a:is(:focus,:hover) {
   margin: 1.2rem;
   margin-top: 3rem;
 }
+
+.star-btn {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  background-color: #d02020;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  margin: 0.5rem;
+}
+
+.star-btn img {
+  height: 0.8rem;
+  margin-right: 0.25rem;
+}
