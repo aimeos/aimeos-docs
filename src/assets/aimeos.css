@@ -514,6 +514,10 @@ html .md-footer-meta.md-typeset a:is(:focus,:hover) {
   margin: 0.5rem;
 }
 
+.star-btn:hover {
+  color: #103050;
+}
+
 .star-btn img {
   height: 0.8rem;
   margin-right: 0.25rem;
