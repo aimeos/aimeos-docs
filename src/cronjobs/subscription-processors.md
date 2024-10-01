@@ -4,22 +4,22 @@ When a customer has bought a product including a subscription interval, you can 
 
 These processors are included in the Aimeos core:
 
-[Cgroup](https://github.com/aimeos/ai-controller-jobs/blob/master/src/Controller/Jobs/Common/Subscription/Process/Processor/Cgroup/Standard.php)
+[cgroup](https://github.com/aimeos/ai-controller-jobs/blob/master/src/Controller/Jobs/Common/Subscription/Process/Processor/Cgroup/Standard.php)
 : Add/remove user groups from customer account
 
-[Email](https://github.com/aimeos/ai-client-html/blob/master/src/Controller/Jobs/Common/Subscription/Process/Processor/Email/Standard.php)
+[email](https://github.com/aimeos/ai-client-html/blob/master/src/Controller/Jobs/Common/Subscription/Process/Processor/Email/Standard.php)
 : Send e-mails to customers if subscription renewal fails
 
-By default, no processor is used by the subscription job controllers. To add the *Cgroup* processor for example, you have to use this configuration option:
+By default, no processor is used by the subscription job controllers. To add the *cgroup* processor for example, you have to use this configuration option:
 
 ```
-controller/common/subscription/process/processors = ['Cgroup']
+controller/common/subscription/process/processors = ['cgroup']
 ```
 
 This setting requires an array of processor names that should be executed. Please refer to the articles about how to use configuration settings for your framework or application.
 
 !!! warning
-    The setting must be available when the job controller is executed. Thus, for TYPO3 it must be added to the TS-Config field of the scheduler task.
+    The setting must be in lower case and available when the job controller is executed. Thus, for TYPO3 it must be added to the TypoScript configuration field of the scheduler task.
 
 # Adapt existing processors
 
@@ -32,12 +32,12 @@ If you want to modify an existing processor implementation, e.g the *Cgroup* imp
 That class must extend from the existing class and only contain the methods you want to modifiy. For the *Cgroup* example and a file named *Mygroup.php* this can look like:
 
 ```php
-namespace Aimeos\Controller\Common\Subscription\Process\Processor\Cgroup;
+namespace Aimeos\Controller\Jobs\Common\Subscription\Process\Processor\Cgroup;
 
 class Mygroup extends Standard
-    implements \Aimeos\Controller\Common\Subscription\Process\Processor\Iface
+    implements \Aimeos\Controller\Jobs\Common\Subscription\Process\Processor\Iface
 {
-    public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription )
+    public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
     {
         // Your modifed code from the original method
     }
@@ -72,17 +72,17 @@ Please replace the "<type>" placeholder with the name of the task your processor
 Your new processor class should be used by the subscription job controllers and the appropriate method should be executed depending on the stage of the subscription. For that, you have to make your class known to the job controllers by adding this configuration option:
 
 ```
-controller/common/subscription/process/processors = ['Myproc']
+controller/common/subscription/process/processors = ['myproc']
 ```
 
 The code below contains a skeleton for the new class of type *Myproc*:
 
 ```php
-namespace Aimeos\Controller\Common\Subscription\Process\Processor\Myproc;
+namespace Aimeos\Controller\Jobs\Common\Subscription\Process\Processor\Myproc;
 
 class Standard
-    extends \Aimeos\Controller\Common\Subscription\Process\Processor\Base
-    implements \Aimeos\Controller\Common\Subscription\Process\Processor\Iface
+    extends \Aimeos\Controller\Jobs\Common\Subscription\Process\Processor\Base
+    implements \Aimeos\Controller\Jobs\Common\Subscription\Process\Processor\Iface
 {
     public function __construct( \Aimeos\MShop\Context\Item\Iface $context )
     {
@@ -90,7 +90,7 @@ class Standard
         // more initialization code
     }
 
-    public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription )
+    public function begin( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
     {
         $context = $this->context();
         // Code that is executed at the beginning of the subscription
@@ -108,7 +108,7 @@ class Standard
         // Code that is executed each time after the subscription is renewed
     }
 
-    public function end( \Aimeos\MShop\Subscription\Item\Iface $subscription )
+    public function end( \Aimeos\MShop\Subscription\Item\Iface $subscription, \Aimeos\MShop\Order\Item\Iface $order )
     {
         $context = $this->context();
         // Code that is executed at the end of the subscription
@@ -131,7 +131,7 @@ The `renew()` method also receives the new [order item](https://github.com/aimeo
 Testing processors is an important part of the implementation to ensure that they are working correctly. The implementation of the unit tests cases doesn't differ much from other unit tests and you can use this skeleton for your own tests:
 
 ```php
-namespace Aimeos\Controller\Common\Subscription\Process\Processor\Cgroup;
+namespace Aimeos\Controller\Jobs\Common\Subscription\Process\Processor\Myproc;
 
 class StandardTest extends \PHPUnit\Framework\TestCase
 {
@@ -148,9 +148,10 @@ class StandardTest extends \PHPUnit\Framework\TestCase
     public function testBegin()
     {
         $context = \TestHelperCntl::context();
-        $manager = \Aimeos\MShop::create( $context, 'subscription' );
+        $order = \Aimeos\MShop::create( $context, 'order' )->create();
+        $subscription = \Aimeos\MShop::create( $context, 'subscription' )->create();
         $object = new \Aimeos\Controller\Common\Subscription\Process\Processor\Myproc\Standard( $context );
-        $object->begin( $manager->create() );
+        $object->begin( $subscription, $order );
     }
  }
 ```
