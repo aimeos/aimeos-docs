@@ -72,7 +72,7 @@ Please replace the "<type>" placeholder with the name of the task your processor
 Your new processor class should be used by the subscription job controllers and the appropriate method should be executed depending on the stage of the subscription. For that, you have to make your class known to the job controllers by adding this configuration option:
 
 ```
-controller/common/subscription/process/processors = ['myproc']
+controller/jobs/subscription/process/processors = ['myproc']
 ```
 
 The code below contains a skeleton for the new class of type *Myproc*:
