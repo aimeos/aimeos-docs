@@ -13,7 +13,7 @@ These processors are included in the Aimeos core:
 By default, no processor is used by the subscription job controllers. To add the *cgroup* processor for example, you have to use this configuration option:
 
 ```
-controller/common/subscription/process/processors = ['cgroup']
+controller/jobs/subscription/process/processors = ['cgroup']
 ```
 
 This setting requires an array of processor names that should be executed. Please refer to the articles about how to use configuration settings for your framework or application.
@@ -47,7 +47,7 @@ class Mygroup extends Standard
 Afterwards, you have to configure your new *Mygroup* class so it's used instead of the *Standard* implementation. Use this configuration for the *Cgroup* example:
 
 ```
-controller/common/subscription/process/processor/cgroup/name = Mygroup
+controller/jobs/subscription/process/processor/cgroup/name = Mygroup
 ```
 
 The directory name *Cgroup* corresponds to the *cgroup* part of the configuration setting, i.e. the part in the configuration setting must be the lower case name of the directory part.
