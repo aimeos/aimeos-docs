@@ -48,7 +48,7 @@ Before you start, add these settings to your configuration:
 Store the file in the ./product/ directory of the `fs-import` [virtual file system](#file-location) and run the "product/csv/import job controller".
 
 !!! warning
-    If you are using TYPO3, the configuration must be added to the TS-Config field of the scheduler task.
+    If you are using TYPO3, the configuration must be added to the TypoScript configuration field of the scheduler task.
 
 # Column mapping
 

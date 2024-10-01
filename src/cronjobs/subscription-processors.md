@@ -53,7 +53,7 @@ controller/common/subscription/process/processor/cgroup/name = Mygroup
 The directory name *Cgroup* corresponds to the *cgroup* part of the configuration setting, i.e. the part in the configuration setting must be the lower case name of the directory part.
 
 !!! warning
-    The setting must be available when the job controller is executed. Thus, for TYPO3 it must be added to the TS-Config field of the scheduler task.
+    The setting must be available when the job controller is executed. Thus, for TYPO3 it must be added to the TypoScript configuration field of the scheduler task.
 
 # Create new processors
 
