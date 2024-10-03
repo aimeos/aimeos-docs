@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing attributes.
 === "Query"
     ```graphql
     query {
-      getAttribute(id: "1", include: ["text"]) {
+      getAttribute(id: "1", include: ["text", "attribute/property"]) {
         id
         type
         siteid
@@ -41,7 +41,7 @@ This article contains all actions for retrieving and managing attributes.
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      getAttribute(id: "1", include: ["text"]) {
+      getAttribute(id: "1", include: ["text", "attribute/property"]) {
         id
         type
         siteid
@@ -77,7 +77,7 @@ This article contains all actions for retrieving and managing attributes.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getAttribute(id: "1", include: ["text"]) {
+      getAttribute(id: "1", include: ["text", "attribute/property"]) {
         id
         type
         siteid
@@ -162,7 +162,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text"]) {
+      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text", "attribute/property"]) {
         id
         type
         siteid
@@ -195,7 +195,7 @@ Response:
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text"]) {
+      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text", "attribute/property"]) {
         id
         type
         siteid
@@ -231,7 +231,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text"]) {
+      findAttribute(code: "demo-black", domain: "product", type: "color", include: ["text", "attribute/property"]) {
         id
         type
         siteid
@@ -318,7 +318,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchAttributes(filter: "{\\"=~\\": {\\"attribute.code\\":\\"demo-\\"}}", include: ["text"]) {
+      searchAttributes(filter: "{\\"=~\\": {\\"attribute.code\\":\\"demo-\\"}}", include: ["text", "attribute/property"]) {
         items {
           id
           type
@@ -355,7 +355,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     ```javascript
     const fstr = JSON.stringify(JSON.stringify(filter));
     Aimeos.query(`query {
-      searchAttributes(filter: ` + fstr + `, include: ["text"]) {
+      searchAttributes(filter: ` + fstr + `, include: ["text", "attribute/property"]) {
         items {
           id
           type
@@ -398,7 +398,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchAttributes(filter: ` + fstr + `, include: ["text"]) {
+      searchAttributes(filter: ` + fstr + `, include: ["text", "attribute/property"]) {
         items {
           id
           type

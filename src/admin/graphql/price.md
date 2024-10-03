@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing prices.
 === "Query"
     ```graphql
     query {
-      getPrice(id: "1", include: ["group"]) {
+      getPrice(id: "1", include: ["group", "price/property"]) {
         id
         siteid
         type
@@ -46,7 +46,7 @@ This article contains all actions for retrieving and managing prices.
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      getPrice(id: "1", include: ["group"]) {
+      getPrice(id: "1", include: ["group", "price/property"]) {
         id
         siteid
         type
@@ -87,7 +87,7 @@ This article contains all actions for retrieving and managing prices.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getPrice(id: "1", include: ["group"]) {
+      getPrice(id: "1", include: ["group", "price/property"]) {
         id
         siteid
         type
@@ -185,7 +185,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}", include: ["group"]) {
+      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}", include: ["group", "price/property"]) {
         items {
           id
           siteid
@@ -226,7 +226,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}", include: ["group"]) {
+      searchPrices(filter: "{\\"=~\\": {\\"price.label\\":\\"Demo\\"}}", include: ["group", "price/property"]) {
         items {
           id
           siteid
@@ -274,7 +274,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchPrices(filter: ` + fstr + `, include: ["group"]) {
+      searchPrices(filter: ` + fstr + `, include: ["group", "price/property"]) {
         items {
           id
           siteid

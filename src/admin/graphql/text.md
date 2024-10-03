@@ -29,12 +29,6 @@ This article contains all actions for retrieving and managing texts.
             }
           }
         }
-        property {
-          id
-          type
-          languageid
-          value
-        }
       }
     }
     ```
@@ -61,12 +55,6 @@ This article contains all actions for retrieving and managing texts.
               code
             }
           }
-        }
-        property {
-          id
-          type
-          languageid
-          value
         }
       }
     }`).then(data => {
@@ -97,12 +85,6 @@ This article contains all actions for retrieving and managing texts.
               code
             }
           }
-        }
-        property {
-          id
-          type
-          languageid
-          value
         }
       }
     }`});
@@ -146,12 +128,6 @@ Response:
             "code": "wholesale"
           }
         }]
-      },
-      "property": [{
-        "id": "1",
-        "type": "from",
-        "languageid": null,
-        "value": "manual"
       }]
     }
   }
@@ -187,12 +163,6 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
               }
             }
           }
-          property {
-            id
-            type
-            languageid
-            value
-          }
         }
         total
       }
@@ -222,12 +192,6 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
-          }
-          property {
-            id
-            type
-            languageid
-            value
           }
         }
         total
@@ -265,12 +229,6 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
                 code
               }
             }
-          }
-          property {
-            id
-            type
-            languageid
-            value
           }
         }
         total
@@ -318,12 +276,6 @@ Response:
                 "code": "wholesale"
               }
             }]
-          },
-          "property": [{
-            "id": "1",
-            "type": "from",
-            "languageid": null,
-            "value": "manual"
           }]
         },
         {
@@ -340,8 +292,7 @@ Response:
           "editor": "core:setup",
           "lists": {
             "group": []
-          },
-          "property": []
+          }
         }
       ],
       "total": 2
@@ -365,11 +316,6 @@ Response:
           group: [{
             refid: "2"
           }]
-        }
-        property: [{
-          type: "from"
-          languageid: null
-          value: "ERP"
         }]
       }) {
         id
@@ -389,11 +335,6 @@ Response:
           group: [{
             refid: "2"
           }]
-        }
-        property: [{
-          type: "from"
-          languageid: null
-          value: "ERP"
         }]
       }) {
         id
@@ -416,11 +357,6 @@ Response:
           group: [{
             refid: "2"
           }]
-        }
-        property: [{
-          type: "from"
-          languageid: null
-          value: "ERP"
         }]
       }) {
         id
@@ -468,11 +404,6 @@ Response:
           group: [{
             refid: "2"
           }]
-        },
-        property: [{
-          type: "from"
-          languageid: null
-          value: "ERP"
         }]
       }
       {
@@ -499,11 +430,6 @@ Response:
           group: [{
             refid: "2"
           }]
-        },
-        property: [{
-          type: "from"
-          languageid: null
-          value: "ERP"
         }]
       }
       {
@@ -533,11 +459,6 @@ Response:
           group: [{
             refid: "2"
           }]
-        },
-        property: [{
-          type: "from"
-          languageid: null
-          value: "ERP"
         }]
       }
       {
