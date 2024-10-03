@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing products.
 === "Query"
     ```graphql
     query {
-      getProduct(id: "1", include: ["text"]) {
+      getProduct(id: "1", include: ["text", "product/property"]) {
         id
         siteid
         type
@@ -48,7 +48,7 @@ This article contains all actions for retrieving and managing products.
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      getProduct(id: "1", include: ["text"]) {
+      getProduct(id: "1", include: ["text", "product/property"]) {
         id
         siteid
         type
@@ -91,7 +91,7 @@ This article contains all actions for retrieving and managing products.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getProduct(id: "1", include: ["text"]) {
+      getProduct(id: "1", include: ["text", "product/property"]) {
         id
         siteid
         type
@@ -191,7 +191,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findProduct(code: "demo-article", include: ["text"]) {
+      findProduct(code: "demo-article", include: ["text", "product/property"]) {
         id
         siteid
         type
@@ -231,7 +231,7 @@ Response:
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      findProduct(code: "demo-article", include: ["text"]) {
+      findProduct(code: "demo-article", include: ["text", "product/property"]) {
         id
         siteid
         type
@@ -274,7 +274,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findProduct(code: "demo-article", include: ["text"]) {
+      findProduct(code: "demo-article", include: ["text", "product/property"]) {
         id
         siteid
         type
@@ -376,7 +376,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text"]) {
+      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text", "product/property"]) {
         items {
           id
           siteid
@@ -419,7 +419,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text"]) {
+      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text", "product/property"]) {
         items {
           id
           siteid
@@ -469,7 +469,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: ` + fstr + `, include: ["text"]) {
+      searchProducts(filter: ` + fstr + `, include: ["text", "product/property"]) {
         items {
           id
           siteid

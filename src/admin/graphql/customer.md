@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing customers.
 === "Query"
     ```graphql
     query {
-      getCustomer(id: "1", ["product"]) {
+      getCustomer(id: "1", ["product", "customer/property"]) {
         id
         siteid
         code
@@ -60,11 +60,68 @@ This article contains all actions for retrieving and managing customers.
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      getCustomer(id: "1", ["product", "customer/property"]) {
+        id
+        siteid
+        code
+        label
+        salutation
+        company
+        vatid
+        title
+        firstname
+        lastname
+        address1
+        address2
+        address3
+        postal
+        city
+        state
+        languageid
+        countryid
+        telephone
+        email
+        telefax
+        website
+        longitude
+        status
+        latitude
+        birthday
+        status
+        dateverified
+        password
+        mtime
+        ctime
+        editor
+        lists {
+          product {
+            id {
+              item {
+                id
+                label
+              }
+            }
+          }
+        }
+        property {
+          id
+          type
+          languageid
+          value
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getCustomer(id: "1", ["product"]) {
+      getCustomer(id: "1", ["product", "customer/property"]) {
         id
         siteid
         code
@@ -192,7 +249,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findCustomer(code: "test@example.com", ["product"]) {
+      findCustomer(code: "test@example.com", ["product", "customer/property"]) {
         id
         siteid
         code
@@ -244,11 +301,68 @@ Response:
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      findCustomer(code: "test@example.com", ["product", "customer/property"]) {
+        id
+        siteid
+        code
+        label
+        salutation
+        company
+        vatid
+        title
+        firstname
+        lastname
+        address1
+        address2
+        address3
+        postal
+        city
+        state
+        languageid
+        countryid
+        telephone
+        email
+        telefax
+        website
+        longitude
+        status
+        latitude
+        birthday
+        status
+        dateverified
+        password
+        mtime
+        ctime
+        editor
+        lists {
+          product {
+            id {
+              item {
+                id
+                label
+              }
+            }
+          }
+        }
+        property {
+          id
+          type
+          languageid
+          value
+        }
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findCustomer(code: "test@example.com", ["product"]) {
+      findCustomer(code: "test@example.com", ["product", "customer/property"]) {
         id
         siteid
         code
@@ -378,7 +492,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchCustomers(filter: "{\\"=~\\": {\\"customer.code\\":\\"demo-\\"}}", ["product"]) {
+      searchCustomers(filter: "{\\"=~\\": {\\"customer.code\\":\\"demo-\\"}}", ["product", "customer/property"]) {
         items {
           id
           siteid
@@ -433,6 +547,66 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
       }
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`query {
+      searchCustomers(filter: "{\\"=~\\": {\\"customer.code\\":\\"demo-\\"}}", ["product", "customer/property"]) {
+        items {
+          id
+          siteid
+          code
+          label
+          salutation
+          company
+          vatid
+          title
+          firstname
+          lastname
+          address1
+          address2
+          address3
+          postal
+          city
+          state
+          languageid
+          countryid
+          telephone
+          email
+          telefax
+          website
+          longitude
+          status
+          latitude
+          birthday
+          status
+          dateverified
+          password
+          mtime
+          ctime
+          editor
+          lists {
+            product {
+              id {
+                item {
+                  id
+                  label
+                }
+              }
+            }
+          }
+          property {
+            id
+            type
+            languageid
+            value
+          }
+        }
+        total
+      }
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     let filter = {
@@ -441,7 +615,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchCustomers(filter: ` + fstr + `, ["product"]) {
+      searchCustomers(filter: ` + fstr + `, ["product", "customer/property"]) {
         items {
           id
           siteid
@@ -806,6 +980,14 @@ Response:
       deleteCustomer(id: "3")
     }
     ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteCustomer(id: "3")
+    }`).then(data => {
+      console.log(data)
+    })
+    ```
 === "Javascript"
     ```javascript
     const body = JSON.stringify({'query':
@@ -844,6 +1026,14 @@ Response:
     mutation {
       deleteCustomers(id: ["4", "5"])
     }
+    ```
+=== "JQAdm"
+    ```javascript
+    Aimeos.query(`mutation {
+      deleteCustomers(id: ["4", "5"])
+    }`).then(data => {
+      console.log(data)
+    })
     ```
 === "Javascript"
     ```javascript

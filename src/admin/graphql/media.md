@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing media.
 === "Query"
     ```graphql
     query {
-      getMedia(id: "1", include: ["group"]) {
+      getMedia(id: "1", include: ["group", "media/property"]) {
         id
         siteid
         type
@@ -44,7 +44,7 @@ This article contains all actions for retrieving and managing media.
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      getMedia(id: "1", include: ["group"]) {
+      getMedia(id: "1", include: ["group", "media/property"]) {
         id
         siteid
         type
@@ -83,7 +83,7 @@ This article contains all actions for retrieving and managing media.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getMedia(id: "1", include: ["group"]) {
+      getMedia(id: "1", include: ["group", "media/property"]) {
         id
         siteid
         type
