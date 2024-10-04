@@ -95,7 +95,7 @@ public function body( string $uid = '' ) : string
 
 There's one thing to note when caching content: Sometimes, a subpart can't be cached because it depends on the sessions or cookies of the customers. In this case the whole content wouldn't be cachable at all. Fortunately, there's a solution for this problem: The `modify()` method allows any subclient to replace a section in the cached content.
 
-The details for this are described in the article about [creating new subparts](create-subparts#modify). The important thing here is to call the `modify()` method provided by the parent class after successfully retrieving the cached content.
+The details for this are described in the article about [creating new subparts](create-subparts.md#modify). The important thing here is to call the `modify()` method provided by the parent class after successfully retrieving the cached content.
 
 In doubt, have a look into a full example of a working [body() component method](https://github.com/aimeos/ai-client-html/blob/master/src/Client/Html/Catalog/Detail/Standard.php) which implements caching.
 

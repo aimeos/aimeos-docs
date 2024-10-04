@@ -1,7 +1,7 @@
 To display prices in the frontend, translations are used to get them into the right format. This offers a great flexibility, not only for how values and currencies are displayed but it's also used for generating the strings for different price types like those for subscriptions.
 
 !!! tip
-    For a better understanding of the examples, please have a look into the documentation for changing translations. There are articles for [Laravel](../../start/laravel/overwrite-translations), [Symfony](../../start/symfony/overwrite-translations) and [TYPO3](../../start/typo3/overwrite-translations) available.
+    For a better understanding of the examples, please have a look into the documentation for changing translations. There are articles for [Laravel](../../laravel/customize.md#overwrite-translations) and [TYPO3](../../typo3/customize.md#overwrite-translations) available.
 
 Each price must have a type to distinguish between different prices for one product, e.g. a subscription price per month or per year. The price of type "default" is used in the basket, the checkout process and the order but in the catalog, you are able to display different price types depending on your products.
 

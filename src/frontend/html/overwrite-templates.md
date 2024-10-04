@@ -24,7 +24,7 @@ catalog/detail/service-body-mine.php
 Own extensions that contain template files in the `templates/client/html/` directory which are named the same as the existing ones are used first. If no template files are found in own extensions, then the default ones from the ai-client-html extension are used.
 
 !!! note
-    The output of the **basket/mini** component is cached in the session of the user for performance reasons. If you change the templates, you will see changes only after the component is updated e.g. by adding a product. To ease development, you can [disable the basket cache](../../config/client-html/basket-cache#enable) in your Aimeos installation via configuration.
+    The output of the **basket/mini** component is cached in the session of the user for performance reasons. If you change the templates, you will see changes only after the component is updated e.g. by adding a product. To ease development, you can [disable the basket cache](../../config/client-html/basket-cache.md#enable) in your Aimeos installation via configuration.
 
 !!! warning
     Changing the templates of the **catalog/detail/session** component requires some more attention. For example, the output for the last seen items is rendered if you visit a detail view and the HTML snippet is added to the session of the user.

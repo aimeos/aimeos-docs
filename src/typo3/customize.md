@@ -575,8 +575,8 @@ If you want to ship your products to several countries or you need to know from 
 
 By default, the country list is hidden for the billing and delivery address in the checkout process. To display them as mandatory fields you need to add "order.address.countryid" to the list of values defined in
 
-* [client/html/checkout/address/billing/mandatory](../../config/client-html/checkout-standard/#billingmandatory)
-* [client/html/checkout/address/delivery/mandatory](../../config/client-html/checkout-standard/#deliverymandatory)
+* [client/html/checkout/address/billing/mandatory](../config/client-html/checkout-standard.md#billingmandatory)
+* [client/html/checkout/address/delivery/mandatory](../config/client-html/checkout-standard.md#deliverymandatory)
 
 In TYPO3 this is configured for billing and delivery addresses via TypoScript:
 
@@ -599,8 +599,8 @@ plugin.tx_aimeos.settings.client.html.checkout.standard.address {
 
 If no selection should be enforced, use these settings instead:
 
-* [client/html/checkout/address/billing/optional](../../config/client-html/checkout-standard/#billingoptional)
-* [client/html/checkout/address/delivery/optional](../../config/client-html/checkout-standard/#deliveryoptional)
+* [client/html/checkout/address/billing/optional](../config/client-html/checkout-standard.md#billingoptional)
+* [client/html/checkout/address/delivery/optional](../config/client-html/checkout-standard.md#deliveryoptional)
 
 To define the country for billing and delivery addresses as optional, use this TypoScript configuration:
 
@@ -621,7 +621,7 @@ plugin.tx_aimeos.settings.client.html.checkout.standard.address {
 }
 ```
 
-The list of countries is defined by the values added to the configuration key [client/html/checkout/address/countries](../../config/client-html/checkout-standard/#countries). The TypoScript below will add all countries worldwide to the select boxes for the billing and delivery address:
+The list of countries is defined by the values added to the configuration key `common/countries`. The TypoScript below will add all countries worldwide to the select boxes for the billing and delivery address (this is also the default value):
 
 ```typoscript
 plugin.tx_aimeos.settings.common.countries {
