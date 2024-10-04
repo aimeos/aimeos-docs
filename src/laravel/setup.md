@@ -182,7 +182,7 @@ because it violates the following Content Security Policy directive:
 
 ## Frontend
 
-The default CSP is part of the [base.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/views/base.blade.php#L7) template and consists of:
+The default CSP is part of the [base.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/views/base.blade.php) template and consists of:
 
 ```
 default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://cdn.jsdelivr.net;
@@ -220,6 +220,6 @@ default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https:/
 
 ## Backend
 
-The backend uses it's own content security policy, which is located in the [index.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/views/jqadm/index.blade.php) template.
+The backend uses it's own content security policy, which is located in the [index.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/views/jqadm/index.blade.php) template.
 
 To modify the CSP rules, copy the `index.blade.php` template from `./vendor/aimeos/aimeos-laravel/src/views/jqadm/index.blade.php` to `./resources/views/vendor/shop/jqadm/index.blade.php`. Then, you can add new CSP rules there, just like for the frontend.

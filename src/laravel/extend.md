@@ -312,7 +312,7 @@ Each route creates links to one page of your application. The route names are im
 
 ## Route names
 
-The names of the standard routes are predefined in the [routes.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/routes.php) file. Besides the "admin" routes, which are not listed, their names are:
+The names of the standard routes are predefined in the [Aimeos routes](https://github.com/aimeos/aimeos-laravel/blob/master/routes/aimeos.php) file. Besides the "admin" routes, which are not listed, their names are:
 
 * **aimeos_shop_account** ("my account" page for each user)
 * **aimeos_shop_account_download** (file downloads for virtual products)
