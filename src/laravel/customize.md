@@ -334,7 +334,7 @@ These two lines require that the language ("locale") and currency ID must be par
 
 ## Adapt selector
 
-The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/subparts](../config/client-html/locale-select#subparts) configuration.
+The locale selector is a normal component with subparts, that can be adapted like any other component. If you e.g. only need a language or currency menu, you can remove the subpart you don't need via the [client/html/locale/select/subparts](../config/client-html/locale-select.md#subparts) configuration.
 
 Adapting the layout of the locale selector is possible via CSS.
 
@@ -538,7 +538,7 @@ To make the country for billing and delivery addresses optional, use this config
 ],
 ```
 
-The list of countries is defined by the values added to the configuration key [client/html/checkout/address/countries](../config/client-html/checkout-standard.md#countries). The configuration below will add all countries worldwide to the select boxes for the billing and delivery address:
+The list of countries is defined by the values added to the configuration key `common/countries`. The configuration below will add all countries worldwide to the select boxes for the billing and delivery address (which is also the default value):
 
 ```php
 'common' => [

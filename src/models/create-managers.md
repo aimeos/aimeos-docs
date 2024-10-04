@@ -5,7 +5,7 @@ Sometimes you need to store data that can't be stored in existing tables or exis
 If you want to add a table for your manager to an existing data domain, then read the article about [adding new tables](../infrastructure/schema-migrations.md#add-new-tables).
 
 !!! tip
-    For more information about the available database schema methods, have a look into the documentation of the [Upscheme](https:://upscheme.org) project.
+    For more information about the available database schema methods, have a look into the documentation of the [Upscheme](https://upscheme.org) project.
 
 To create the new table in the database afterwards, you have to execute the setup tasks:
 
@@ -230,15 +230,12 @@ $item->label = $label;
 $label = $item->set( 'label', $label );
 ```
 
-If you want to return default values or check/transform the values when setting them, you have to implement your [own item class](../extend-managers#items) (`\Aimeos\MShop\Test\Item\Standard` for the `test` domain in this example) and add the `create()` method in your manager:
+If you want to return default values or check/transform the values when setting them, you have to implement your [own item class](extend-managers.md#items) (`\Aimeos\MShop\Test\Item\Standard` for the `test` domain in this example) and add the `create()` method in your manager:
 
 ```php
 public function create( array $values = [] ) : \Aimeos\MShop\Test\Item\Iface
 {
-    if( !isset( $values['test.siteid'] ) ) {
-        $values['test.siteid'] = $this->context()->locale()->getSiteId();
-    }
-
+    $values['test.siteid'] = $values['test.siteid'] ?? $this->context()->locale()->getSiteId();
     return new \Aimeos\MShop\Test\Item\Standard( $this->getPrefix(), $values );
 }
 ```

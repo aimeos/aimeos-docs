@@ -361,5 +361,3 @@ The easiest way is using [Phing](https://phing.info) for executing the unit test
 * Execute `composer update` to install the dependent packages and development tools
 * Run `vendor/bin/phing setup` to populate the database with unit test data from the cloned directory
 * Execute `vendor/bin/phing -Ddir=ext/<extname> testext` to run the tests also from the cloned directory
-
-That are the same steps as done by the integration tests of every extension running on the Travis-ci platform. You can have a look at the [.travis.yml example](https://github.com/aimeos/ai-controller-frontend/blob/master/.travis.yml#L17-L25) from the ai-controller-frontend extension.

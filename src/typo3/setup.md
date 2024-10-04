@@ -168,7 +168,7 @@ routeEnhancers:
 ```
 
 !!! warn
-    Only use the latest TYPO3 10 and 11 releases as older releases have several route enhancer related bugs and the TYPO3 route enhancer implementation is still not bug free! Please watch for unexpected behavior and report them to the [TYPO3 project](https://forge.typo3.org/projects/typo3cms-core/issues)
+    Only use the latest TYPO3 10, 11 or newer releases as older releases have several route enhancer related bugs and the TYPO3 route enhancer implementation is still not bug free! Please watch for unexpected behavior and report them to the [TYPO3 project](https://forge.typo3.org/projects/typo3cms-core/issues)
 
 # Backend access
 

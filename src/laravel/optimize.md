@@ -94,7 +94,7 @@ To disable the content caching completely, add this to your `./config/shop.php` 
 The basket is also updated automatically if you add products to or delete products from the basket resp. modifying the basket content in another way.
 
 !!! tip
-    You can also disable caching the basket content in the sessions for development using the [client/html/basket/cache/enable](../config/client-html/basket-cache#enable) configuration option.
+    You can also disable caching the basket content in the sessions for development using the [client/html/basket/cache/enable](../config/client-html/basket-cache.md#enable) configuration option.
 
 # Cache distribution
 

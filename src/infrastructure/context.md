@@ -242,7 +242,7 @@ $content = $view->render( 'path/to/template.blade.php' ); // Laravel
 $content = $view->render( 'path/to/template.html' ); // TYPO3/Flow
 ```
 
-The path of the templates is relative to the [configured directory in the manifest.php of your extension](extensions#custom). Within the templates, you have access to all assigned data (e.g. "myvalue") and all view helpers. The view helpers are different if you use Blade, Twig or Fluid.
+The path of the templates is relative to the [configured directory in the manifest.php of your extension](../developer/extensions.md#custom). Within the templates, you have access to all assigned data (e.g. "myvalue") and all view helpers. The view helpers are different if you use Blade, Twig or Fluid.
 
 ```php
 <?= $this->get( 'myvalue', 'default value' ) ?>

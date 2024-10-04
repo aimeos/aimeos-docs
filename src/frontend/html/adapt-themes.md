@@ -34,7 +34,7 @@ Modern browsers are able to support you by their web development tools that can 
 
 # Javascript
 
-As you can see in the article about [theme fundamentals](theme-basics#Javascript), each component has its own Javascript object with methods that are applied automatically to the HTML nodes if they are present.
+As you can see in the article about [theme fundamentals](theme-basics.md#javascript), each component has its own Javascript object with methods that are applied automatically to the HTML nodes if they are present.
 
 Sometimes you don't want that one of the default actions is executed. In this case you can replace the existing method with an empty function, e.g.
 
