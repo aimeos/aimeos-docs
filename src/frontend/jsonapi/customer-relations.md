@@ -11,6 +11,11 @@ In addition to the URLs for managing relations, the customer response can also i
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -147,6 +152,11 @@ The response will look similar to this one if at least one relationship is avail
         "total": 2,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "pKauLfPXgUoMbsxtrRwRi43BsfVHYgjzBtQqPQXI"
@@ -190,6 +200,11 @@ To add one or more relations to an authenticated customer, use a POST request in
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."

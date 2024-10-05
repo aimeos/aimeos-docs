@@ -36,6 +36,11 @@ It also returns the [prefix](index.md#nested-parameters) you have to use, if the
 "meta": {
     "prefix": null,
     "content-baseurl": "http://localhost:8000/",
+    "content-baseurls": {
+        "fs-media": "http://localhost:8000/aimeos",
+        "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+        "fs-theme": "http://localhost:8000/vendor/shop/themes"
+    },
     "filter": {
         "f_search": {
             "label": "Return products whose text matches the user input",

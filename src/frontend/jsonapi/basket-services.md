@@ -73,6 +73,11 @@ This returns the list of payment or delivery options (or both if the "filter" pa
         "total": 5,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -346,6 +351,11 @@ The response to this request would be similar to this:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -634,6 +644,11 @@ The response to this request would be similar to this:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."

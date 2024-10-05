@@ -128,7 +128,12 @@ Then the response will contain an additional "relationships" entry in the basket
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {
@@ -842,7 +847,12 @@ The PATCH requests will change primarily the product data in the basket. Dependi
     "meta": {
         "total": 1,
         "prefix": "null",
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {

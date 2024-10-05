@@ -11,6 +11,11 @@ The customer response returns the URLs for managing addresses:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -66,6 +71,11 @@ If there's at least one delivery address available, the response looks like this
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -125,6 +135,11 @@ You can add one or more addresses to the account of the currently authenticated 
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."

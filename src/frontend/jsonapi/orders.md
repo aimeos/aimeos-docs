@@ -62,7 +62,12 @@ The response will then contain a basket ID value which is equivalent to the "ord
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {
@@ -186,7 +191,12 @@ The response will contain the data with a link to the next step. This can either
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
     },
     "links": {
         "self": { "href": "http://localhost:8000/jsonapi/order" }
