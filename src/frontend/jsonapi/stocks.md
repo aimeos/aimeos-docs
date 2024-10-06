@@ -1,5 +1,5 @@
 !!! tip
-    You can also fetch the stock levels together with the products in a single request by using *&include=stock*. For initial requests, this should be preferred to speed up rendering. As stock levels are very volatile, they shouldn't be cached like other product data and should be retrieved each time the product is re-rendered using the requests described in this article.
+    You can fetch the stock levels together with the products in a single request too by using *&include=stock*. For initial requests, this should be preferred to speed up rendering. As stock levels are very volatile, they shouldn't be cached like other product data and should be retrieved each time the product is re-rendered using the requests described in this article.
 
 Before you can retrieve the available product stock entries, you must get the resource endpoint via the OPTIONS request. Depending on the used routes it might be something like this:
 

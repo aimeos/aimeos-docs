@@ -127,7 +127,6 @@ nav:
       - Getting started: frontend/jsonapi/index.md
       - Search basics: frontend/jsonapi/basics.md
       - Catalog handling: frontend/jsonapi/catalog.md
-      - Get stocks: frontend/jsonapi/stocks.md
       - Basket management: frontend/jsonapi/baskets.md
       - Basket products: frontend/jsonapi/basket-products.md
       - Basket addresses: frontend/jsonapi/basket-addresses.md
@@ -141,8 +140,10 @@ nav:
       - Customer reviews: frontend/jsonapi/customer-reviews.md
       - Get reviews: frontend/jsonapi/reviews.md
       - Get services: frontend/jsonapi/services.md
-      - Get locales: frontend/jsonapi/locales.md
+      - Get stocks: frontend/jsonapi/stocks.md
+      - Get suppliers: frontend/jsonapi/suppliers.md
       - Get site data: frontend/jsonapi/sites.md
+      - Get locales: frontend/jsonapi/locales.md
   - Admin:
     - JQAdm backend:
       - Overwrite templates: admin/jqadm/overwrite-templates.md
