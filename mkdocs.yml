@@ -139,6 +139,7 @@ nav:
       - Customer relations: frontend/jsonapi/customer-relations.md
       - Customer reviews: frontend/jsonapi/customer-reviews.md
       - Get reviews: frontend/jsonapi/reviews.md
+      - Get locales: frontend/jsonapi/locales.md
       - Get site: frontend/jsonapi/sites.md
   - Admin:
     - JQAdm backend:
