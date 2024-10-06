@@ -11,7 +11,7 @@ The response will contain the required endpoints you have to use:
     "meta": {
         "prefix": null,
         "resources": {
-            "site": "http://localhost:8000/jsonapi/locale"
+            "locale": "http://localhost:8000/jsonapi/locale"
         }
     }
 }
@@ -19,7 +19,7 @@ The response will contain the required endpoints you have to use:
 
 # Fetch locales
 
-Now you can retrieve site via the "locale" resource you've just received from the OPTIONS response. The response of the "locale" endpoint contains the list of the available locale combinations, e.g.:
+Now you can retrieve all available language/currency combinations via the "locale" resource you've just received from the OPTIONS response. The response of the "locale" endpoint contains the list of the available locales, e.g.:
 
 === "CURL"
     ```bash

@@ -141,7 +141,7 @@ nav:
       - Get reviews: frontend/jsonapi/reviews.md
       - Get services: frontend/jsonapi/services.md
       - Get locales: frontend/jsonapi/locales.md
-      - Get site: frontend/jsonapi/sites.md
+      - Get site data: frontend/jsonapi/sites.md
   - Admin:
     - JQAdm backend:
       - Overwrite templates: admin/jqadm/overwrite-templates.md
