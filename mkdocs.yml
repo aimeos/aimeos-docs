@@ -127,6 +127,7 @@ nav:
       - Getting started: frontend/jsonapi/index.md
       - Search basics: frontend/jsonapi/basics.md
       - Catalog handling: frontend/jsonapi/catalog.md
+      - Get stocks: frontend/jsonapi/stocks.md
       - Basket management: frontend/jsonapi/baskets.md
       - Basket products: frontend/jsonapi/basket-products.md
       - Basket addresses: frontend/jsonapi/basket-addresses.md
