@@ -114,6 +114,13 @@ Meta keywords
 Meta description
 : Product description that is shown by search engines in their result list
 
+In the header of each text panel, there are two icons at the upper right side offering AI features:
+
+AI translation
+: By clicking on the translation icon, you can translate the current text within the text editor field to other languages using DeepL, a AI-based translation service. After selecting the destination language, Aimeos will add the translated text in a new text box below. A DeepL API key needs to be configured to use this service.
+
+AI text generation
+: The icon with the chat bubble asks ChatGPT to generate text based on the prompt you've entered in the editor field. The generated result will replace the prompt in the text editor field. A ChatGPT API key is required to use this service.
 
 # Prices
 
