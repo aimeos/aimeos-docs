@@ -332,6 +332,9 @@ The "code" contains the form parameter name and the "default" property value tha
     $('<button type="submit">Submit</button>').appendTo(form);
     ```
 
+!!! note
+    It's not possible to update the order status using the Aimeos JSON:API for security reasons. Order status updates can only be performed by the payment gateway sending a payment status update to the "update" route.
+
 # Retrieve orders
 
 To get orders for a customer, the customer must be logged in.
