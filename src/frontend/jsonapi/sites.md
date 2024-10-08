@@ -81,8 +81,8 @@ This response contains all available site data for the current site:
         "attributes":{
             "locale.site.id":"1",
             "locale.site.code":"default",
-            "locale.site.icon":"1.d\/icon.png",
-            "locale.site.logo":{"200":"1.d\/logo200.webp"},
+            "locale.site.icon":"1.d/icon.png",
+            "locale.site.logo":{"200":"1.d/logo200.webp"},
             "locale.site.theme":null,
             "locale.site.label":"Aimeos",
             "locale.site.status":1,

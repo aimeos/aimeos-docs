@@ -147,7 +147,7 @@ This response contains all reviews for the product with the ID "1":
         "type": "review",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/default\/jsonapi\/review?id=1",
+                "href": "http://localhost:8000/default/jsonapi/review?id=1",
                 "allow": ["GET"]
             }
         },

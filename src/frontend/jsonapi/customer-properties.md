@@ -89,7 +89,7 @@ When at least one property is available, the response will be similar to this on
         "type": "customer.property",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=property&relatedid=1",
+                "href": "http://localhost:8000/jsonapi/customer?id=2&related=property&relatedid=1",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },

@@ -96,7 +96,7 @@ If the customer didn't authenticate herself/himself yet, an empty customer item 
         "type": "customer",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8080\/jsonapi\/customer",
+                "href": "http://localhost:8080/jsonapi/customer",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -175,7 +175,7 @@ The response of an authenticated user contains the account data and the groups a
         "type": "customer",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
+                "href": "http://localhost:8000/jsonapi/customer?id=2",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -212,7 +212,7 @@ The response of an authenticated user contains the account data and the groups a
                     "type": "group",
                     "attributes": {
                         "customer.lists.id": "1",
-                        "customer.lists.domain": "customer\/group",
+                        "customer.lists.domain": "customer/group",
                         "customer.lists.refid": "1",
                         "customer.lists.datestart": null,
                         "customer.lists.dateend": null,
@@ -223,7 +223,7 @@ The response of an authenticated user contains the account data and the groups a
                     },
                     "links": {
                         "self": {
-                            "href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
+                            "href": "http://localhost:8000/jsonapi/customer/group?id=2&related=relationships&relatedid=1",
                             "allow": []
                         }
                     }
@@ -422,7 +422,7 @@ In case the new account has been successfully created, the response will be simi
         "type":"customer",
         "links":{
             "self":{
-                "href":"http:\/\/localhost:8000\/jsonapi\/customer?id=6",
+                "href":"http://localhost:8000/jsonapi/customer?id=6",
                 "allow":["DELETE","GET","PATCH"]
             }
         },
@@ -608,7 +608,7 @@ The response will include the basic customer data including groups like in this 
         "type": "customer",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
+                "href": "http://localhost:8000/jsonapi/customer?id=2",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -647,7 +647,7 @@ The response will include the basic customer data including groups like in this 
                     "type": "group",
                     "attributes": {
                         "customer.lists.id": "1",
-                        "customer.lists.domain": "customer\/group",
+                        "customer.lists.domain": "customer/group",
                         "customer.lists.refid": "1",
                         "customer.lists.datestart": null,
                         "customer.lists.dateend": null,
@@ -658,7 +658,7 @@ The response will include the basic customer data including groups like in this 
                     },
                     "links": {
                         "self": {
-                            "href": "http:\/\/localhost:8000\/jsonapi\/customer\/group?id=2&related=relationships&relatedid=1",
+                            "href": "http://localhost:8000/jsonapi/customer/group?id=2&related=relationships&relatedid=1",
                             "allow": ["DELETE","PATCH"]
                         }
                     }

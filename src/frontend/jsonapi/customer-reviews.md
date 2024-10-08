@@ -90,7 +90,7 @@ When at least one review is available, the response will be similar to this one:
         "type": "customer.review",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=review&relatedid=1",
+                "href": "http://localhost:8000/jsonapi/customer?id=2&related=review&relatedid=1",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },

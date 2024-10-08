@@ -89,11 +89,11 @@ If there's at least one delivery address available, the response looks like this
         "type": "customer.address",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=address&relatedid=2",
+                "href": "http://localhost:8000/jsonapi/customer?id=2&related=address&relatedid=2",
                 "allow": ["DELETE","GET","PATCH"]
             },
-            "basket\/address": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=address&relatedid=delivery",
+            "basket/address": {
+                "href": "http://localhost:8000/jsonapi/basket?id=default&related=address&relatedid=delivery",
                 "allow": ["POST"]
             }
         },

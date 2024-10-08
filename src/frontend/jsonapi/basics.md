@@ -907,7 +907,7 @@ This returns the product or products as well as the texts associated with the pr
             "text.id": "22",
             "text.languageid": "en",
             "text.type": "name",
-            "text.label": "Demo name\/en: Demo article",
+            "text.label": "Demo name/en: Demo article",
             "text.domain": "product",
             "text.content": "Demo article",
             "text.status": 1
@@ -919,7 +919,7 @@ This returns the product or products as well as the texts associated with the pr
             "text.id": "23",
             "text.languageid": "en",
             "text.type": "short",
-            "text.label": "Demo short\/en: This is the short description",
+            "text.label": "Demo short/en: This is the short description",
             "text.domain": "product",
             "text.content": "This is the short description of the demo article.",
             "text.status": 1
@@ -931,7 +931,7 @@ This returns the product or products as well as the texts associated with the pr
             "text.id": "24",
             "text.languageid": "en",
             "text.type": "long",
-            "text.label": "Demo long\/en: Add a detailed description",
+            "text.label": "Demo long/en: Add a detailed description",
             "text.domain": "product",
             "text.content": "Add a detailed description of the demo article that may be a little bit longer.",
             "text.status": 1

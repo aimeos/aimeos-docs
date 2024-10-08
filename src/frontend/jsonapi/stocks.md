@@ -50,7 +50,7 @@ It also returns the [prefix](index.md#nested-parameters) you have to use if the 
                 "required": false
             },
             "s_typecode": {
-                "label": "List of warehouse\/location codes (stock type)",
+                "label": "List of warehouse/location codes (stock type)",
                 "type": "array",
                 "default": "[]",
                 "required": false

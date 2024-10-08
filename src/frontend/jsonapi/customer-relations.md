@@ -33,7 +33,7 @@ In addition to the URLs for managing relations, the customer response can also i
         "type": "customer",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
+                "href": "http://localhost:8000/jsonapi/customer?id=2",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -57,7 +57,7 @@ In addition to the URLs for managing relations, the customer response can also i
                     },
                     "links": {
                         "self": {
-                            "href": "http:\/\/localhost:8000\/jsonapi\/product?id=2&related=relationships&relatedid=1",
+                            "href": "http://localhost:8000/jsonapi/product?id=2&related=relationships&relatedid=1",
                             "allow": ["DELETE","PATCH"]
                         }
                     }
@@ -171,7 +171,7 @@ The response will look similar to this one if at least one relationship is avail
         "type": "customer.lists",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=relationships&relatedid=1&include=product",
+                "href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships&relatedid=1&include=product",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },

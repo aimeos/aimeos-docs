@@ -78,18 +78,18 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
         "total": 3
     },
     "links": {
-        "self": "http:\/\/localhost:8000\/jsonapi\/product?include=attribute%2Cmedia%2Cprice%2Cproduct%2Cproduct%2Fproperty%2Ctext&page%5Boffset%5D=0"
+        "self": "http://localhost:8000/jsonapi/product?include=attribute%2Cmedia%2Cprice%2Cproduct%2Cproduct%2Fproperty%2Ctext&page%5Boffset%5D=0"
     },
     "data": [{
         "id": "13",
         "type": "product",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/product\/13",
+                "href": "http://localhost:8000/jsonapi/product/13",
                 "allow": ["GET"]
             },
-            "basket\/product": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket\/default\/product",
+            "basket/product": {
+                "href": "http://localhost:8000/jsonapi/basket/default/product",
                 "allow": ["POST"]
             }
         },
@@ -179,10 +179,10 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "media.domain": "product",
             "media.label": "Demo: Article 1.jpg",
             "media.languageid": null,
-            "media.mimetype": "image\/jpeg",
+            "media.mimetype": "image/jpeg",
             "media.type": "default",
-            "media.preview": "http:\/\/demo.aimeos.org\/media\/1.jpg",
-            "media.url": "http:\/\/demo.aimeos.org\/media\/1-big.jpg",
+            "media.preview": "http://demo.aimeos.org/media/1.jpg",
+            "media.url": "http://demo.aimeos.org/media/1-big.jpg",
             "media.status": 1
         }
     }, {
@@ -210,7 +210,7 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "text.id": "228",
             "text.languageid": "en",
             "text.type": "short",
-            "text.label": "Demo short\/en: This is the short description",
+            "text.label": "Demo short/en: This is the short description",
             "text.domain": "product",
             "text.content": "This is the short description of the demo article.",
             "text.status": 1
@@ -575,11 +575,11 @@ This will return the root catalog node and its direct children as well as their 
         "type": "catalog",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=201",
+                "href": "http://localhost:8000/jsonapi/catalog?id=201",
                 "allow": ["GET"]
             },
             "product": {"
-                href": "http:\/\/localhost:8000\/jsonapi\/product?filter%5Bf_catid%5D=201",
+                href": "http://localhost:8000/jsonapi/product?filter%5Bf_catid%5D=201",
                 "allow": ["GET"]
             }
         },
@@ -605,7 +605,7 @@ This will return the root catalog node and its direct children as well as their 
         "type": "catalog",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=203",
+                "href": "http://localhost:8000/jsonapi/catalog?id=203",
                 "allow": ["GET"]}
         },
         "attributes": {
@@ -633,7 +633,7 @@ This will return the root catalog node and its direct children as well as their 
         "attributes": {
             "media.id": "360",
             "media.preview": "example4.jpg",
-            "media.url": "path\/to\/folder\/example4.jpg",
+            "media.url": "path/to/folder/example4.jpg",
             ...
         }
     }
@@ -835,7 +835,7 @@ This will return the first slice of attribute items as well as their related tex
         "type": "attribute",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/attribute?id=32",
+                "href": "http://localhost:8000/jsonapi/attribute?id=32",
                 "allow": ["GET"]
             }
         },
@@ -871,14 +871,14 @@ This will return the first slice of attribute items as well as their related tex
             "media.domain": "attribute",
             "media.label": "Demo: beige.gif",
             "media.languageid": null,
-            "media.mimetype": "image\/gif",
+            "media.mimetype": "image/gif",
             "media.type": "default",
             "media.previews": {
-                "1": "relative\/path\/to\/preview.jpg",
-                "250": "relative\/path\/to\/250-preview.jpg"
+                "1": "relative/path/to/preview.jpg",
+                "250": "relative/path/to/250-preview.jpg"
             },
-            "media.preview": "relative\/path\/to\/preview.jpg",
-            "media.url": "relative\/path\/to\/original.jpg",
+            "media.preview": "relative/path/to/preview.jpg",
+            "media.url": "relative/path/to/original.jpg",
             "media.status": 1
         }
     }, {
@@ -888,7 +888,7 @@ This will return the first slice of attribute items as well as their related tex
             "text.id": "241",
             "text.languageid": "en",
             "text.type": "name",
-            "text.label": "Demo name\/en: Beige",
+            "text.label": "Demo name/en: Beige",
             "text.domain": "attribute",
             "text.content": "Beige",
             "text.status": 1
@@ -1153,7 +1153,7 @@ This will return the first slice of supplier items as well as their associated t
         "type": "supplier",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/supplier?id=32",
+                "href": "http://localhost:8000/jsonapi/supplier?id=32",
                 "allow": ["GET"]
             }
         },
@@ -1186,14 +1186,14 @@ This will return the first slice of supplier items as well as their associated t
             "media.domain": "supplier",
             "media.label": "Supplier logo",
             "media.languageid": null,
-            "media.mimetype": "image\/jpg",
+            "media.mimetype": "image/jpg",
             "media.type": "default",
             "media.previews": {
-                "1": "relative\/path\/to\/preview.jpg",
-                "250": "relative\/path\/to\/250-preview.jpg"
+                "1": "relative/path/to/preview.jpg",
+                "250": "relative/path/to/250-preview.jpg"
             },
-            "media.preview": "relative\/path\/to\/preview.jpg",
-            "media.url": "relative\/path\/to\/original.jpg",
+            "media.preview": "relative/path/to/preview.jpg",
+            "media.url": "relative/path/to/original.jpg",
             "media.status": 1
         }
     }, {
