@@ -20,6 +20,46 @@ The response will contain the required endpoints you have to use:
 }
 ```
 
+Have a look at [retrieving an OPTIONS request](index.md#retrieve-meta-data) for more details. An OPTIONS request to the stock endpoint also reveals the supported filters:
+
+```bash
+curl -X OPTIONS 'http://localhost:8000/jsonapi/stock'
+```
+
+It also returns the [prefix](index.md#nested-parameters) you have to use if the value is not `null`:
+
+```json
+{
+    "meta": {
+        "prefix": null,
+        "content-baseurl": "http://localhost:8000",
+		"content-baseurls": {
+			"fs-media": "http://localhost:8000/aimeos",
+			"fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+			"fs-theme": "http://localhost:8000/vendor/shop/themes"
+		},
+        "csrf": {
+            "name": "_token",
+            "value": "..."
+        },
+        "filter": {
+            "s_prodid": {
+                "label": "List of product IDs for which the stock level should be returned",
+                "type": "array",
+                "default": "[]",
+                "required": false
+            },
+            "s_typecode": {
+                "label": "List of warehouse\/location codes (stock type)",
+                "type": "array",
+                "default": "[]",
+                "required": false
+            }
+        }
+    }
+}
+```
+
 # Fetch stocks
 
 Now you can retrieve stock levels via the "stock" resource you've just received from the OPTIONS response. The response of the "stock" endpoint contains the list of stock entries for the requested product IDs, e.g.:
@@ -150,13 +190,13 @@ Additionally, you can filter stocks by stock type using the *s_typecode* paramet
 
 === "CURL"
     ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid]=35&filter[s_typecode]=default'
+    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid][]=35&filter[s_prodid][]=36&filter[s_typecode]=default'
     ```
 === "Javascript"
     ```javascript
     const args = {
         'filter': {
-            's_prodid': 35,
+            's_prodid': [35, 36],
             's_typecode': 'default'
         }
     }
@@ -186,7 +226,7 @@ Additionally, you can filter stocks by stock type using the *s_typecode* paramet
     ```javascript
     var args = {
         'filter': {
-            's_prodid': 35,
+            's_prodid': [35, 36],
             's_typecode': 'default'
         }
     };
