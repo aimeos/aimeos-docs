@@ -137,13 +137,14 @@ nav:
       - Customer addresses: frontend/jsonapi/customer-addresses.md
       - Customer properties: frontend/jsonapi/customer-properties.md
       - Customer relations: frontend/jsonapi/customer-relations.md
+      - Customer subscriptions: frontend/jsonapi/subscriptions.md
       - Customer reviews: frontend/jsonapi/customer-reviews.md
-      - Get reviews: frontend/jsonapi/reviews.md
-      - Get services: frontend/jsonapi/services.md
-      - Get stocks: frontend/jsonapi/stocks.md
-      - Get suppliers: frontend/jsonapi/suppliers.md
-      - Get site data: frontend/jsonapi/sites.md
-      - Get locales: frontend/jsonapi/locales.md
+      - Reviews: frontend/jsonapi/reviews.md
+      - Services: frontend/jsonapi/services.md
+      - Stocks: frontend/jsonapi/stocks.md
+      - Suppliers: frontend/jsonapi/suppliers.md
+      - Site data: frontend/jsonapi/sites.md
+      - Locales: frontend/jsonapi/locales.md
   - Admin:
     - JQAdm backend:
       - Overwrite templates: admin/jqadm/overwrite-templates.md
