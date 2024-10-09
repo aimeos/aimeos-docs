@@ -181,13 +181,8 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "media.languageid": null,
             "media.mimetype": "image/jpeg",
             "media.type": "default",
-<<<<<<< HEAD
-            "media.preview": "http:\/\/demo.aimeos.org\/media\/1.jpg",
-            "media.url": "http:\/\/demo.aimeos.org\/media\/1-big.jpg",
-=======
             "media.preview": "http://demo.aimeos.org/media/1.jpg",
             "media.url": "http://demo.aimeos.org/media/1-big.jpg",
->>>>>>> master
             "media.status": 1
         }
     }, {
