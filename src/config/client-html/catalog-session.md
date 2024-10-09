@@ -163,9 +163,6 @@ Array
 This returns all settings related to the catalog session pinned subpart.
 Please refer to the single settings for details.
 
-See also:
-
-* client/html/catalog/session#pinned
 
 ## count/enable
 

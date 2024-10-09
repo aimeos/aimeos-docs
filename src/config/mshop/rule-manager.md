@@ -6,19 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrul."id"
- 	FROM "mshop_rule" mrul
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrul."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2021.04
 
 Counts all records matched by the given criteria from the rule
 database. The records must be from one of the sites that are
@@ -67,30 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrul."id"
- 	FROM "mshop_rule" mrul
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrul."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrul."id"
- 	FROM "mshop_rule" mrul
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrul."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -102,19 +71,11 @@ See also:
 Excludes decorators added by the "common" option from the rule manager
 
 ```
-mshop/rule/manager/decorators/excludes = Array
-(
-)
+mshop/rule/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -144,19 +105,11 @@ See also:
 Adds a list of globally available decorators only to the rule manager
 
 ```
-mshop/rule/manager/decorators/global = Array
-(
-)
+mshop/rule/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -185,19 +138,11 @@ See also:
 Adds a list of local decorators only to the rule manager
 
 ```
-mshop/rule/manager/decorators/local = Array
-(
-)
+mshop/rule/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2021.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -228,12 +173,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/rule/manager/delete/ansi = 
- DELETE FROM "mshop_rule"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2021.04
 
 Removes the records specified by the given IDs from the rule database.
 The records must be from the site that is configured via the
@@ -261,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/rule/manager/delete/mysql = 
- DELETE FROM "mshop_rule"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_rule"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -283,16 +218,10 @@ Inserts a new rule record into the database table
 
 ```
 mshop/rule/manager/insert/ansi = 
- INSERT INTO "mshop_rule" ( :names
- 	"type", "label", "provider", "config", "start", "end", "pos",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2021.04
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -303,8 +232,8 @@ prepared statement. It must include question marks for binding
 the values from the rule item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
-statement. The catalog of the columns must correspond to the
-catalog in the save() method, so the correct values are
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
 bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -325,24 +254,8 @@ Inserts a new rule record into the database table
 
 ```
 mshop/rule/manager/insert/mysql = 
- INSERT INTO "mshop_rule" ( :names
- 	"type", "label", "provider", "config", "start", "end", "pos",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_rule" ( :names
- 	"type", "label", "provider", "config", "start", "end", "pos",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -353,12 +266,11 @@ See also:
 Class name of the used rule manager implementation
 
 ```
-mshop/rule/manager/name = Standard
+mshop/rule/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2021.04
 
 Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -403,7 +315,7 @@ mshop/rule/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2021.04
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -438,7 +350,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/rule/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/rule/manager/newid/mysql = 
 ```
 
 
@@ -451,12 +363,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/rule/manager/resource = db-rule
+mshop/rule/manager/resource = 
 ```
 
-* Default: `db-rule`
 * Type: string - Database connection name
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -472,16 +382,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_rule" mrul
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2021.04
 
 Fetches the records matched by the given criteria from the rule
 database. The records must be from one of the sites that are
@@ -504,13 +408,9 @@ operators. The resulting string of SQL conditions replaces the
 ":cond" placeholder before the statement is sent to the database
 server.
 
-If the records that are retrieved should be cataloged by one or more
+If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":catalog" placeholder. In case no cataloging is required,
-the complete ORDER BY part including the "/*-catalogby*/.../*catalogby-*/"
-markers is removed to speed up retrieving the records. Columns of
-sub-managers can also be used for cataloging the result set but then
-no index can be used.
+replaces the ":order" placeholder.
 
 The number of returned records can be limited and can start at any
 number between the begining and the end of the result set. For that
@@ -536,24 +436,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_rule" mrul
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_rule" mrul
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -564,10 +448,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/rule/manager/sitemode = 1
+mshop/rule/manager/sitemode = 
 ```
 
-* Default: `1`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -601,19 +484,11 @@ See also:
 List of manager names that can be instantiated by the rule manager
 
 ```
-mshop/rule/manager/submanagers = Array
-(
-)
+mshop/rule/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2021.04
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -633,19 +508,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrulty."id"
- 	FROM "mshop_rule_type" mrulty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrulty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the rule
 database. The records must be from one of the sites that are
@@ -694,30 +560,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrulty."id"
- 	FROM "mshop_rule_type" mrulty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrulty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrulty."id"
- 	FROM "mshop_rule_type" mrulty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrulty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -728,19 +572,11 @@ See also:
 Excludes decorators added by the "common" option from the rule type manager
 
 ```
-mshop/rule/manager/type/decorators/excludes = Array
-(
-)
+mshop/rule/manager/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -770,19 +606,11 @@ See also:
 Adds a list of globally available decorators only to the rule type manager
 
 ```
-mshop/rule/manager/type/decorators/global = Array
-(
-)
+mshop/rule/manager/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -812,19 +640,11 @@ See also:
 Adds a list of local decorators only to the rule type manager
 
 ```
-mshop/rule/manager/type/decorators/local = Array
-(
-)
+mshop/rule/manager/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -855,12 +675,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/rule/manager/type/delete/ansi = 
- DELETE FROM "mshop_rule_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the rule database.
 The records must be from the site that is configured via the
@@ -888,16 +706,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/rule/manager/type/delete/mysql = 
- DELETE FROM "mshop_rule_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_rule_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -909,16 +719,10 @@ Inserts a new rule type record into the database table
 
 ```
 mshop/rule/manager/type/insert/ansi = 
- INSERT INTO "mshop_rule_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -929,8 +733,8 @@ prepared statement. It must include question marks for binding
 the values from the rule type item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
-statement. The catalog of the columns must correspond to the
-catalog in the save() method, so the correct values are
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
 bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -951,24 +755,8 @@ Inserts a new rule type record into the database table
 
 ```
 mshop/rule/manager/type/insert/mysql = 
- INSERT INTO "mshop_rule_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_rule_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -979,12 +767,11 @@ See also:
 Class name of the used rule type manager implementation
 
 ```
-mshop/rule/manager/type/name = Standard
+mshop/rule/manager/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default rule type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1028,7 +815,7 @@ mshop/rule/manager/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1063,7 +850,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/rule/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/rule/manager/type/newid/mysql = 
 ```
 
 
@@ -1077,16 +864,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/type/search/ansi = 
- SELECT :columns
- FROM "mshop_rule_type" mrulty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the rule
 database. The records must be from one of the sites that are
@@ -1109,12 +890,10 @@ operators. The resulting string of SQL conditions replaces the
 ":cond" placeholder before the statement is sent to the database
 server.
 
-If the records that are retrieved should be cataloged by one or more
+If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":catalog" placeholder. In case no cataloging is required,
-the complete ORDER BY part including the "/*-catalogby*/.../*catalogby-*/"
-markers is removed to speed up retrieving the records. Columns of
-sub-managers can also be used for cataloging the result set but then
+replaces the ":order" placeholder. Columns of
+sub-managers can also be used for ordering the result set but then
 no index can be used.
 
 The number of returned records can be limited and can start at any
@@ -1141,24 +920,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/rule/manager/type/search/mysql = 
- SELECT :columns
- FROM "mshop_rule_type" mrulty
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_rule_type" mrulty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1169,19 +932,11 @@ See also:
 List of manager names that can be instantiated by the rule type manager
 
 ```
-mshop/rule/manager/type/submanagers = Array
-(
-)
+mshop/rule/manager/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1200,15 +955,10 @@ Updates an existing rule type record in the database
 
 ```
 mshop/rule/manager/type/update/ansi = 
- UPDATE "mshop_rule_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1216,8 +966,8 @@ be updated in the database.
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
 the values from the rule type item to the statement before they are
-sent to the database server. The catalog of the columns must
-correspond to the catalog in the save() method, so the
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
 correct values are bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -1238,22 +988,8 @@ Updates an existing rule type record in the database
 
 ```
 mshop/rule/manager/type/update/mysql = 
- UPDATE "mshop_rule_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_rule_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1266,15 +1002,10 @@ Updates an existing rule record in the database
 
 ```
 mshop/rule/manager/update/ansi = 
- UPDATE "mshop_rule"
- SET :names
- 	"type" = ?, "label" = ?, "provider" = ?, "config" = ?, "start" = ?, "end" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2021.04
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1282,8 +1013,8 @@ be updated in the database.
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
 the values from the rule item to the statement before they are
-sent to the database server. The catalog of the columns must
-correspond to the catalog in the save() method, so the
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
 correct values are bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -1304,22 +1035,8 @@ Updates an existing rule record in the database
 
 ```
 mshop/rule/manager/update/mysql = 
- UPDATE "mshop_rule"
- SET :names
- 	"type" = ?, "label" = ?, "provider" = ?, "config" = ?, "start" = ?, "end" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_rule"
- SET :names
- 	"type" = ?, "label" = ?, "provider" = ?, "config" = ?, "start" = ?, "end" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

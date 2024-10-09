@@ -107,6 +107,7 @@ client/html/account/history/domains = Array
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
+    [order/status] => order/status
 )
 ```
 
@@ -119,6 +120,7 @@ Array
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
+    [order/status] => order/status
 )
 ```
 * Type: array - List of domain names

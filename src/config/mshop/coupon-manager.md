@@ -6,19 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/code/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcouco."id"
- 	FROM "mshop_coupon_code" mcouco
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcouco."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the coupon
 database. The records must be from one of the sites that are
@@ -68,30 +59,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/code/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcouco."id"
- 	FROM "mshop_coupon_code" mcouco
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcouco."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcouco."id"
- 	FROM "mshop_coupon_code" mcouco
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcouco."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -103,13 +72,10 @@ Increases or decreases the counter of the coupon code record matched by the give
 
 ```
 mshop/coupon/manager/code/counter/ansi = 
- UPDATE "mshop_coupon_code"
- SET	"count" = "count" + ?, "mtime" = ?, "editor" = ?
- WHERE :cond AND "code" = ?
 ```
 
 * Type: string - SQL statement for increasing/decreasing the coupon code count
-* Since: 2014.03
+* Since: 2015.10
 
 A counter is associated to each coupon code and it's decreased
 each time by one if a code used in an paid order was redeemed
@@ -142,18 +108,8 @@ Increases or decreases the counter of the coupon code record matched by the give
 
 ```
 mshop/coupon/manager/code/counter/mysql = 
- UPDATE "mshop_coupon_code"
- SET	"count" = "count" + ?, "mtime" = ?, "editor" = ?
- WHERE :cond AND "code" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_coupon_code"
- SET	"count" = "count" + ?, "mtime" = ?, "editor" = ?
- WHERE :cond AND "code" = ?
-```
 
 See also:
 
@@ -164,19 +120,11 @@ See also:
 Excludes decorators added by the "common" option from the coupon code manager
 
 ```
-mshop/coupon/manager/code/decorators/excludes = Array
-(
-)
+mshop/coupon/manager/code/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - Address of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -206,19 +154,11 @@ See also:
 Adds a list of globally available decorators only to the coupon code manager
 
 ```
-mshop/coupon/manager/code/decorators/global = Array
-(
-)
+mshop/coupon/manager/code/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - Address of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -247,19 +187,11 @@ See also:
 Adds a list of local decorators only to the coupon code manager
 
 ```
-mshop/coupon/manager/code/decorators/local = Array
-(
-)
+mshop/coupon/manager/code/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - Address of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -290,12 +222,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/coupon/manager/code/delete/ansi = 
- DELETE FROM "mshop_coupon_code"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the coupon database.
 The records must be from the site that is configured via the
@@ -324,16 +254,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/coupon/manager/code/delete/mysql = 
- DELETE FROM "mshop_coupon_code"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_coupon_code"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -345,16 +267,10 @@ Inserts a new coupon code record into the database table
 
 ```
 mshop/coupon/manager/code/insert/ansi = 
- INSERT INTO "mshop_coupon_code" ( :names
- 	"parentid", "code", "start", "end", "count", "ref",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -388,24 +304,8 @@ Inserts a new coupon code record into the database table
 
 ```
 mshop/coupon/manager/code/insert/mysql = 
- INSERT INTO "mshop_coupon_code" ( :names
- 	"parentid", "code", "start", "end", "count", "ref",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_coupon_code" ( :names
- 	"parentid", "code", "start", "end", "count", "ref",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -416,12 +316,11 @@ See also:
 Class name of the used coupon code manager implementation
 
 ```
-mshop/coupon/manager/code/name = Standard
+mshop/coupon/manager/code/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default coupon code manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -465,7 +364,7 @@ mshop/coupon/manager/code/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -501,7 +400,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/coupon/manager/code/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/coupon/manager/code/newid/mysql = 
 ```
 
 
@@ -515,16 +414,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/code/search/ansi = 
- SELECT :columns
- FROM "mshop_coupon_code" mcouco
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the coupon
 database. The records must be from one of the sites that are
@@ -578,24 +471,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/code/search/mysql = 
- SELECT :columns
- FROM "mshop_coupon_code" mcouco
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_coupon_code" mcouco
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -606,19 +483,11 @@ See also:
 List of manager names that can be instantiated by the coupon code manager
 
 ```
-mshop/coupon/manager/code/submanagers = Array
-(
-)
+mshop/coupon/manager/code/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -637,15 +506,10 @@ Updates an existing coupon code record in the database
 
 ```
 mshop/coupon/manager/code/update/ansi = 
- UPDATE "mshop_coupon_code"
- SET :names
- 	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
- 	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -676,22 +540,8 @@ Updates an existing coupon code record in the database
 
 ```
 mshop/coupon/manager/code/update/mysql = 
- UPDATE "mshop_coupon_code"
- SET :names
- 	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
- 	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_coupon_code"
- SET :names
- 	"parentid" = ?, "code" = ?, "start" = ?, "end" = ?,
- 	"count" = ?, "ref" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -704,20 +554,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcou."id"
- 	FROM "mshop_coupon" mcou
- 	:joins
- 	WHERE :cond
- 	GROUP BY mcou."id"
- 	ORDER BY mcou."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the coupon
 database. The records must be from one of the sites that are
@@ -766,32 +606,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcou."id"
- 	FROM "mshop_coupon" mcou
- 	:joins
- 	WHERE :cond
- 	GROUP BY mcou."id"
- 	ORDER BY mcou."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcou."id"
- 	FROM "mshop_coupon" mcou
- 	:joins
- 	WHERE :cond
- 	GROUP BY mcou."id"
- 	ORDER BY mcou."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -803,19 +619,11 @@ See also:
 Excludes decorators added by the "common" option from the coupon manager
 
 ```
-mshop/coupon/manager/decorators/excludes = Array
-(
-)
+mshop/coupon/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -845,19 +653,11 @@ See also:
 Adds a list of globally available decorators only to the coupon manager
 
 ```
-mshop/coupon/manager/decorators/global = Array
-(
-)
+mshop/coupon/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -865,7 +665,7 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the coupon code manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the coupon manager.
 
 ```
  mshop/coupon/manager/decorators/global = array( 'decorator1' )
@@ -873,7 +673,7 @@ This option allows you to wrap global decorators
 
 This would add the decorator named "decorator1" defined by
 "\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the coupon
-code manager.
+manager.
 
 See also:
 
@@ -886,19 +686,11 @@ See also:
 Adds a list of local decorators only to the coupon manager
 
 ```
-mshop/coupon/manager/decorators/local = Array
-(
-)
+mshop/coupon/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -914,7 +706,7 @@ This option allows you to wrap local decorators
 
 This would add the decorator named "decorator2" defined by
 "\Aimeos\MShop\Coupon\Manager\Decorator\Decorator2" only to the coupon
-code manager.
+manager.
 
 See also:
 
@@ -929,12 +721,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/coupon/manager/delete/ansi = 
- DELETE FROM "mshop_coupon"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the coupon database.
 The records must be from the site that is configured via the
@@ -962,16 +752,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/coupon/manager/delete/mysql = 
- DELETE FROM "mshop_coupon"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_coupon"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -984,16 +766,10 @@ Inserts a new coupon record into the database table
 
 ```
 mshop/coupon/manager/insert/ansi = 
- INSERT INTO "mshop_coupon" ( :names
- 	"label", "provider", "config", "start", "end",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1026,24 +802,8 @@ Inserts a new coupon record into the database table
 
 ```
 mshop/coupon/manager/insert/mysql = 
- INSERT INTO "mshop_coupon" ( :names
- 	"label", "provider", "config", "start", "end",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_coupon" ( :names
- 	"label", "provider", "config", "start", "end",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1054,12 +814,11 @@ See also:
 Class name of the used coupon manager implementation
 
 ```
-mshop/coupon/manager/name = Standard
+mshop/coupon/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1104,7 +863,7 @@ mshop/coupon/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1115,11 +874,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_mcou_id')
+ SELECT currval('seq_mrul_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_mcou_id".CURRVAL FROM DUAL
+ SELECT "seq_mrul_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -1139,7 +898,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/coupon/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/coupon/manager/newid/mysql = 
 ```
 
 
@@ -1152,12 +911,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/coupon/manager/resource = db-coupon
+mshop/coupon/manager/resource = 
 ```
 
-* Default: `db-coupon`
 * Type: string - Database connection name
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -1173,17 +930,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_coupon" mcou
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the coupon
 database. The records must be from one of the sites that are
@@ -1208,9 +958,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. Columns of
-sub-managers can also be used for ordering the result set but then
-no index can be used.
+replaces the ":order" placeholder.
 
 The number of returned records can be limited and can start at any
 number between the begining and the end of the result set. For that
@@ -1236,26 +984,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/coupon/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_coupon" mcou
- :joins
- WHERE :cond
- GROUP BY mcou."id"
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_coupon" mcou
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1266,10 +996,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/coupon/manager/sitemode = 1
+mshop/coupon/manager/sitemode = 
 ```
 
-* Default: `1`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -1303,21 +1032,11 @@ See also:
 List of manager names that can be instantiated by the coupon manager
 
 ```
-mshop/coupon/manager/submanagers = Array
-(
-    [0] => code
-)
+mshop/coupon/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-    [0] => code
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1337,15 +1056,10 @@ Updates an existing coupon record in the database
 
 ```
 mshop/coupon/manager/update/ansi = 
- UPDATE "mshop_coupon"
- SET :names
- 	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
- 	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1375,22 +1089,8 @@ Updates an existing coupon record in the database
 
 ```
 mshop/coupon/manager/update/mysql = 
- UPDATE "mshop_coupon"
- SET :names
- 	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
- 	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_coupon"
- SET :names
- 	"label" = ?, "provider" = ?, "config" = ?, "start" = ?,
- 	"end" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

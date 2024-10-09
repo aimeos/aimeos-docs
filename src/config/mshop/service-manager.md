@@ -6,16 +6,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/count/ansi = 
- SELECT count(*) as "count"
- FROM (
- 	SELECT mser."id"
- 	FROM "mshop_service" mser
- 	:joins
- 	WHERE :cond
- 	GROUP BY mser."id"
- 	ORDER BY mser."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -68,32 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/count/mysql = 
- SELECT count(*) as "count"
- FROM (
- 	SELECT mser."id"
- 	FROM "mshop_service" mser
- 	:joins
- 	WHERE :cond
- 	GROUP BY mser."id"
- 	ORDER BY mser."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT count(*) as "count"
- FROM (
- 	SELECT mser."id"
- 	FROM "mshop_service" mser
- 	:joins
- 	WHERE :cond
- 	GROUP BY mser."id"
- 	ORDER BY mser."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -105,17 +71,9 @@ See also:
 Excludes decorators added by the "common" option from the service manager
 
 ```
-mshop/service/manager/decorators/excludes = Array
-(
-)
+mshop/service/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -147,17 +105,9 @@ See also:
 Adds a list of globally available decorators only to the service manager
 
 ```
-mshop/service/manager/decorators/global = Array
-(
-)
+mshop/service/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -188,17 +138,9 @@ See also:
 Adds a list of local decorators only to the service manager
 
 ```
-mshop/service/manager/decorators/local = Array
-(
-)
+mshop/service/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -231,8 +173,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/delete/ansi = 
- DELETE FROM "mshop_service"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
@@ -264,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/delete/mysql = 
- DELETE FROM "mshop_service"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_service"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -286,12 +218,6 @@ Inserts a new service record into the database table
 
 ```
 mshop/service/manager/insert/ansi = 
- INSERT INTO "mshop_service" ( :names
- 	"pos", "type", "code", "label", "provider", "start", "end",
- 	"config", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -328,112 +254,24 @@ Inserts a new service record into the database table
 
 ```
 mshop/service/manager/insert/mysql = 
- INSERT INTO "mshop_service" ( :names
- 	"pos", "type", "code", "label", "provider", "start", "end",
- 	"config", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_service" ( :names
- 	"pos", "type", "code", "label", "provider", "start", "end",
- 	"config", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
 * mshop/service/manager/insert/ansi
 
 # lists
-## aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/service/manager/lists/aggregate/ansi = 
-```
-
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/service/manager/lists/insert/ansi
-* mshop/service/manager/lists/update/ansi
-* mshop/service/manager/lists/newid/ansi
-* mshop/service/manager/lists/delete/ansi
-* mshop/service/manager/lists/search/ansi
-* mshop/service/manager/lists/count/ansi
-
-## aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/service/manager/lists/aggregate/mysql = 
-```
-
-
-See also:
-
-* mshop/service/manager/lists/aggregate/ansi
-
 ## count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserli."id"
- 	FROM "mshop_service_list" mserli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the service
 database. The records must be from one of the sites that are
@@ -475,7 +313,6 @@ See also:
 * mshop/service/manager/lists/newid/ansi
 * mshop/service/manager/lists/delete/ansi
 * mshop/service/manager/lists/search/ansi
-* mshop/service/manager/lists/aggregate/ansi
 
 ## count/mysql
 
@@ -483,30 +320,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserli."id"
- 	FROM "mshop_service_list" mserli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserli."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserli."id"
- 	FROM "mshop_service_list" mserli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -517,19 +332,11 @@ See also:
 Excludes decorators added by the "common" option from the service list manager
 
 ```
-mshop/service/manager/lists/decorators/excludes = Array
-(
-)
+mshop/service/manager/lists/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -559,19 +366,11 @@ See also:
 Adds a list of globally available decorators only to the service list manager
 
 ```
-mshop/service/manager/lists/decorators/global = Array
-(
-)
+mshop/service/manager/lists/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -601,19 +400,11 @@ See also:
 Adds a list of local decorators only to the service list manager
 
 ```
-mshop/service/manager/lists/decorators/local = Array
-(
-)
+mshop/service/manager/lists/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -644,12 +435,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/lists/delete/ansi = 
- DELETE FROM "mshop_service_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the service database.
 The records must be from the site that is configured via the
@@ -670,7 +459,6 @@ See also:
 * mshop/service/manager/lists/newid/ansi
 * mshop/service/manager/lists/search/ansi
 * mshop/service/manager/lists/count/ansi
-* mshop/service/manager/lists/aggregate/ansi
 
 ## delete/mysql
 
@@ -678,16 +466,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/lists/delete/mysql = 
- DELETE FROM "mshop_service_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_service_list"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -699,16 +479,10 @@ Inserts a new service list record into the database table
 
 ```
 mshop/service/manager/lists/insert/ansi = 
- INSERT INTO "mshop_service_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -734,7 +508,6 @@ See also:
 * mshop/service/manager/lists/delete/ansi
 * mshop/service/manager/lists/search/ansi
 * mshop/service/manager/lists/count/ansi
-* mshop/service/manager/lists/aggregate/ansi
 
 ## insert/mysql
 
@@ -742,24 +515,8 @@ Inserts a new service list record into the database table
 
 ```
 mshop/service/manager/lists/insert/mysql = 
- INSERT INTO "mshop_service_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_service_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -770,12 +527,11 @@ See also:
 Class name of the used service list manager implementation
 
 ```
-mshop/service/manager/lists/name = Standard
+mshop/service/manager/lists/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default service list manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -819,7 +575,7 @@ mshop/service/manager/lists/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -848,14 +604,13 @@ See also:
 * mshop/service/manager/lists/delete/ansi
 * mshop/service/manager/lists/search/ansi
 * mshop/service/manager/lists/count/ansi
-* mshop/service/manager/lists/aggregate/ansi
 
 ## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/service/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/service/manager/lists/newid/mysql = 
 ```
 
 
@@ -869,16 +624,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/search/ansi = 
- SELECT :columns
- FROM "mshop_service_list" mserli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the service
 database. The records must be from one of the sites that are
@@ -924,7 +673,6 @@ See also:
 * mshop/service/manager/lists/newid/ansi
 * mshop/service/manager/lists/delete/ansi
 * mshop/service/manager/lists/count/ansi
-* mshop/service/manager/lists/aggregate/ansi
 
 ## search/mysql
 
@@ -932,24 +680,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/search/mysql = 
- SELECT :columns
- FROM "mshop_service_list" mserli
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_service_list" mserli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -960,19 +692,11 @@ See also:
 List of manager names that can be instantiated by the service list manager
 
 ```
-mshop/service/manager/lists/submanagers = Array
-(
-)
+mshop/service/manager/lists/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -991,19 +715,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserlity."id"
- 	FROM "mshop_service_list_type" as mserlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the service
 database. The records must be from one of the sites that are
@@ -1052,30 +767,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserlity."id"
- 	FROM "mshop_service_list_type" as mserlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserlity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserlity."id"
- 	FROM "mshop_service_list_type" as mserlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1086,19 +779,11 @@ See also:
 Excludes decorators added by the "common" option from the service list type manager
 
 ```
-mshop/service/manager/lists/type/decorators/excludes = Array
-(
-)
+mshop/service/manager/lists/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1128,19 +813,11 @@ See also:
 Adds a list of globally available decorators only to the service list type manager
 
 ```
-mshop/service/manager/lists/type/decorators/global = Array
-(
-)
+mshop/service/manager/lists/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1170,19 +847,11 @@ See also:
 Adds a list of local decorators only to the service list type manager
 
 ```
-mshop/service/manager/lists/type/decorators/local = Array
-(
-)
+mshop/service/manager/lists/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1213,12 +882,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/lists/type/delete/ansi = 
- DELETE FROM "mshop_service_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the service database.
 The records must be from the site that is configured via the
@@ -1246,16 +913,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/lists/type/delete/mysql = 
- DELETE FROM "mshop_service_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_service_list_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1267,16 +926,10 @@ Inserts a new service list type record into the database table
 
 ```
 mshop/service/manager/lists/type/insert/ansi = 
- INSERT INTO "mshop_service_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1309,24 +962,8 @@ Inserts a new service list type record into the database table
 
 ```
 mshop/service/manager/lists/type/insert/mysql = 
- INSERT INTO "mshop_service_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_service_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1337,12 +974,11 @@ See also:
 Class name of the used service list type manager implementation
 
 ```
-mshop/service/manager/lists/type/name = Standard
+mshop/service/manager/lists/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default service list type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1386,7 +1022,7 @@ mshop/service/manager/lists/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1421,7 +1057,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/service/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/service/manager/lists/type/newid/mysql = 
 ```
 
 
@@ -1435,16 +1071,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/type/search/ansi = 
- SELECT :columns
- FROM "mshop_service_list_type" mserlity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the service
 database. The records must be from one of the sites that are
@@ -1497,24 +1127,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/lists/type/search/mysql = 
- SELECT :columns
- FROM "mshop_service_list_type" mserlity
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_service_list_type" mserlity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1525,19 +1139,11 @@ See also:
 List of manager names that can be instantiated by the service list type manager
 
 ```
-mshop/service/manager/lists/type/submanagers = Array
-(
-)
+mshop/service/manager/lists/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1556,15 +1162,10 @@ Updates an existing service list type record in the database
 
 ```
 mshop/service/manager/lists/type/update/ansi = 
- UPDATE "mshop_service_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1594,22 +1195,8 @@ Updates an existing service list type record in the database
 
 ```
 mshop/service/manager/lists/type/update/mysql = 
- UPDATE "mshop_service_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_service_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1621,15 +1208,10 @@ Updates an existing service list record in the database
 
 ```
 mshop/service/manager/lists/update/ansi = 
- UPDATE "mshop_service_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1652,7 +1234,6 @@ See also:
 * mshop/service/manager/lists/delete/ansi
 * mshop/service/manager/lists/search/ansi
 * mshop/service/manager/lists/count/ansi
-* mshop/service/manager/lists/aggregate/ansi
 
 ## update/mysql
 
@@ -1660,22 +1241,8 @@ Updates an existing service list record in the database
 
 ```
 mshop/service/manager/lists/update/mysql = 
- UPDATE "mshop_service_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_service_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1686,10 +1253,9 @@ See also:
 Class name of the used service manager implementation
 
 ```
-mshop/service/manager/name = Standard
+mshop/service/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1771,7 +1337,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/service/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/service/manager/newid/mysql = 
 ```
 
 
@@ -1784,14 +1350,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/service/manager/resource = db-service
+mshop/service/manager/resource = 
 ```
 
-* Default: `db-service`
 * Type: string - Database connection name
-* Since: 2023.04
-* Since: 2023.04
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -1807,13 +1369,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_service" mser
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -1870,26 +1425,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_service" mser
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_service" mser
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1900,10 +1437,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/service/manager/sitemode = 3
+mshop/service/manager/sitemode = 
 ```
 
-* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -1937,17 +1473,9 @@ See also:
 List of manager names that can be instantiated by the service manager
 
 ```
-mshop/service/manager/submanagers = Array
-(
-)
+mshop/service/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -1969,19 +1497,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserty."id"
- 	FROM "mshop_service_type" mserty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the service
 database. The records must be from one of the sites that are
@@ -2030,30 +1549,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/service/manager/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserty."id"
- 	FROM "mshop_service_type" mserty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mserty."id"
- 	FROM "mshop_service_type" mserty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mserty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -2064,19 +1561,11 @@ See also:
 Excludes decorators added by the "common" option from the service type manager
 
 ```
-mshop/service/manager/type/decorators/excludes = Array
-(
-)
+mshop/service/manager/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -2106,19 +1595,11 @@ See also:
 Adds a list of globally available decorators only to the service type manager
 
 ```
-mshop/service/manager/type/decorators/global = Array
-(
-)
+mshop/service/manager/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -2148,19 +1629,11 @@ See also:
 Adds a list of local decorators only to the service type manager
 
 ```
-mshop/service/manager/type/decorators/local = Array
-(
-)
+mshop/service/manager/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -2191,12 +1664,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/type/delete/ansi = 
- DELETE FROM "mshop_service_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the service database.
 The records must be from the site that is configured via the
@@ -2224,16 +1695,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/service/manager/type/delete/mysql = 
- DELETE FROM "mshop_service_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_service_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -2245,16 +1708,10 @@ Inserts a new service type record into the database table
 
 ```
 mshop/service/manager/type/insert/ansi = 
- INSERT INTO "mshop_service_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -2287,24 +1744,8 @@ Inserts a new service type record into the database table
 
 ```
 mshop/service/manager/type/insert/mysql = 
- INSERT INTO "mshop_service_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_service_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
- ```
 
 See also:
 
@@ -2315,12 +1756,11 @@ See also:
 Class name of the used service type manager implementation
 
 ```
-mshop/service/manager/type/name = Standard
+mshop/service/manager/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default service type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -2364,7 +1804,7 @@ mshop/service/manager/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -2399,7 +1839,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/service/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/service/manager/type/newid/mysql = 
 ```
 
 
@@ -2413,16 +1853,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/type/search/ansi = 
- SELECT :columns
- FROM "mshop_service_type" mserty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the service
 database. The records must be from one of the sites that are
@@ -2475,24 +1909,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/service/manager/type/search/mysql = 
- SELECT :columns
- FROM "mshop_service_type" mserty
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_service_type" mserty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2503,19 +1921,11 @@ See also:
 List of manager names that can be instantiated by the service type manager
 
 ```
-mshop/service/manager/type/submanagers = Array
-(
-)
+mshop/service/manager/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -2534,15 +1944,10 @@ Updates an existing service type record in the database
 
 ```
 mshop/service/manager/type/update/ansi = 
- UPDATE "mshop_service_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -2572,22 +1977,8 @@ Updates an existing service type record in the database
 
 ```
 mshop/service/manager/type/update/mysql = 
- UPDATE "mshop_service_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_service_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -2600,11 +1991,6 @@ Updates an existing service record in the database
 
 ```
 mshop/service/manager/update/ansi = 
- UPDATE "mshop_service"
- SET :names
- 	"pos" = ?, "type" = ?, "code" = ?, "label" = ?, "provider" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2638,22 +2024,8 @@ Updates an existing service record in the database
 
 ```
 mshop/service/manager/update/mysql = 
- UPDATE "mshop_service"
- SET :names
- 	"pos" = ?, "type" = ?, "code" = ?, "label" = ?, "provider" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_service"
- SET :names
- 	"pos" = ?, "type" = ?, "code" = ?, "label" = ?, "provider" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

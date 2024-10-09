@@ -6,17 +6,6 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/index/manager/aggregate/ansi = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val" :mincols
- 	FROM "mshop_product" mpro
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, :val, mpro."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
 ```
 
 * Type: string - SQL statement for aggregating order items
@@ -64,34 +53,8 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/index/manager/aggregate/mysql = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val" :mincols
- 	FROM "mshop_product" mpro
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, :val, mpro."id"
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY :keys
 ```
 
-* Default: 
-```
-
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val" :mincols
- 	FROM "mshop_product" mpro
- 	:joins
- 	WHERE :cond
- 	GROUP BY :cols, :val, mpro."id"
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
-```
 
 See also:
 
@@ -104,8 +67,6 @@ Deletes the index attribute records that haven't been touched
 
 ```
 mshop/index/manager/attribute/cleanup/ansi = 
- DELETE FROM "mshop_index_attribute"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting the outdated attribute index records
@@ -137,16 +98,8 @@ Deletes the index attribute records that haven't been touched
 
 ```
 mshop/index/manager/attribute/cleanup/mysql = 
- DELETE FROM "mshop_index_attribute"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_attribute"
- WHERE "mtime" < ? AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -220,17 +173,9 @@ See also:
 Excludes decorators added by the "common" option from the index attribute manager
 
 ```
-mshop/index/manager/attribute/decorators/excludes = Array
-(
-)
+mshop/index/manager/attribute/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -262,17 +207,9 @@ See also:
 Adds a list of globally available decorators only to the index attribute manager
 
 ```
-mshop/index/manager/attribute/decorators/global = Array
-(
-)
+mshop/index/manager/attribute/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -304,17 +241,9 @@ See also:
 Adds a list of local decorators only to the index attribute manager
 
 ```
-mshop/index/manager/attribute/decorators/local = Array
-(
-)
+mshop/index/manager/attribute/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -347,8 +276,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/attribute/delete/ansi = 
- DELETE FROM "mshop_index_attribute"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting index attribute records
@@ -379,16 +306,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/attribute/delete/mysql = 
- DELETE FROM "mshop_index_attribute"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_attribute"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -400,12 +319,6 @@ Inserts a new attribute record into the product index database
 
 ```
 mshop/index/manager/attribute/insert/ansi = 
- INSERT INTO "mshop_index_attribute" (
- 	"prodid", "artid", "attrid", "listtype", "type", "code",
- 	"mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -441,24 +354,8 @@ Inserts a new attribute record into the product index database
 
 ```
 mshop/index/manager/attribute/insert/mysql = 
- INSERT INTO "mshop_index_attribute" (
- 	"prodid", "artid", "attrid", "listtype", "type", "code",
- 	"mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_index_attribute" (
- 	"prodid", "artid", "attrid", "listtype", "type", "code",
- 	"mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -469,10 +366,9 @@ See also:
 Class name of the used index attribute manager implementation
 
 ```
-mshop/index/manager/attribute/name = Standard
+mshop/index/manager/attribute/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -540,10 +436,7 @@ See also:
 Optimizes the stored attribute data for retrieving the records faster
 
 ```
-mshop/index/manager/attribute/optimize/mysql = Array
-(
-    [0] => OPTIMIZE TABLE "mshop_index_attribute"
-)
+mshop/index/manager/attribute/optimize/mysql = 
 ```
 
 
@@ -557,13 +450,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/attribute/search/ansi = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -618,26 +504,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/attribute/search/mysql = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -648,17 +516,9 @@ See also:
 A list of sub-manager names used for indexing associated items to attributes
 
 ```
-mshop/index/manager/attribute/submanagers = Array
-(
-)
+mshop/index/manager/attribute/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -683,8 +543,6 @@ Deletes the index catalog records that haven't been touched
 
 ```
 mshop/index/manager/catalog/cleanup/ansi = 
- DELETE FROM "mshop_index_catalog"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting the outdated index records
@@ -716,16 +574,8 @@ Deletes the index catalog records that haven't been touched
 
 ```
 mshop/index/manager/catalog/cleanup/mysql = 
- DELETE FROM "mshop_index_catalog"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_catalog"
- WHERE "mtime" < ? AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -799,17 +649,9 @@ See also:
 Excludes decorators added by the "common" option from the index catalog manager
 
 ```
-mshop/index/manager/catalog/decorators/excludes = Array
-(
-)
+mshop/index/manager/catalog/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -841,17 +683,9 @@ See also:
 Adds a list of globally available decorators only to the index catalog manager
 
 ```
-mshop/index/manager/catalog/decorators/global = Array
-(
-)
+mshop/index/manager/catalog/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -883,17 +717,9 @@ See also:
 Adds a list of local decorators only to the index catalog manager
 
 ```
-mshop/index/manager/catalog/decorators/local = Array
-(
-)
+mshop/index/manager/catalog/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -926,8 +752,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/catalog/delete/ansi = 
- DELETE FROM "mshop_index_catalog"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting index catalog records
@@ -958,16 +782,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/catalog/delete/mysql = 
- DELETE FROM "mshop_index_catalog"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_catalog"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -979,12 +795,6 @@ Inserts a new catalog record into the product index database
 
 ```
 mshop/index/manager/catalog/insert/ansi = 
- INSERT INTO "mshop_index_catalog" (
- 	"prodid", "catid", "listtype", "pos",
- 	"mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -1020,24 +830,8 @@ Inserts a new catalog record into the product index database
 
 ```
 mshop/index/manager/catalog/insert/mysql = 
- INSERT INTO "mshop_index_catalog" (
- 	"prodid", "catid", "listtype", "pos",
- 	"mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_index_catalog" (
- 	"prodid", "catid", "listtype", "pos",
- 	"mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1048,10 +842,9 @@ See also:
 Class name of the used index catalog manager implementation
 
 ```
-mshop/index/manager/catalog/name = Standard
+mshop/index/manager/catalog/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1119,10 +912,7 @@ See also:
 Optimizes the stored catalog data for retrieving the records faster
 
 ```
-mshop/index/manager/catalog/optimize/mysql = Array
-(
-    [0] => OPTIMIZE TABLE "mshop_index_catalog"
-)
+mshop/index/manager/catalog/optimize/mysql = 
 ```
 
 
@@ -1136,13 +926,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/catalog/search/ansi = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -1197,26 +980,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/catalog/search/mysql = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1227,17 +992,9 @@ See also:
 A list of sub-manager names used for indexing associated items to categories
 
 ```
-mshop/index/manager/catalog/submanagers = Array
-(
-)
+mshop/index/manager/catalog/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -1260,10 +1017,9 @@ See also:
 Number of products that should be indexed at once
 
 ```
-mshop/index/manager/chunksize = 100
+mshop/index/manager/chunksize = 
 ```
 
-* Default: `100`
 * Type: int - Number of products
 * Since: 2014.09
 
@@ -1290,16 +1046,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/index/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpro."id"
- 	FROM "mshop_product" mpro
- 	:joins
- 	WHERE :cond
- 	GROUP BY mpro."id"
- 	ORDER BY mpro."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -1350,32 +1096,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/index/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpro."id"
- 	FROM "mshop_product" mpro
- 	:joins
- 	WHERE :cond
- 	GROUP BY mpro."id"
- 	ORDER BY mpro."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpro."id"
- 	FROM "mshop_product" mpro
- 	:joins
- 	WHERE :cond
- 	GROUP BY mpro."id"
- 	ORDER BY mpro."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1387,17 +1109,9 @@ See also:
 Excludes decorators added by the "common" option from the index manager
 
 ```
-mshop/index/manager/decorators/excludes = Array
-(
-)
+mshop/index/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1429,17 +1143,9 @@ See also:
 Adds a list of globally available decorators only to the index manager
 
 ```
-mshop/index/manager/decorators/global = Array
-(
-)
+mshop/index/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1469,17 +1175,9 @@ See also:
 Adds a list of local decorators only to the index manager
 
 ```
-mshop/index/manager/decorators/local = Array
-(
-)
+mshop/index/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2015.11
 
@@ -1510,32 +1208,9 @@ See also:
 A list of domain names whose items should be retrieved together with the product
 
 ```
-mshop/index/manager/domains = Array
-(
-    [attribute] => attribute
-    [catalog] => catalog
-    [price] => Array
-        (
-            [0] => default
-        )
-
-    [product] => Array
-        (
-            [0] => default
-        )
-
-    [supplier] => supplier
-    [supplier/address] => supplier/address
-    [text] => text
-)
+mshop/index/manager/domains = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: string - List of MShop domain names
 * Since: 2014.09
 
@@ -1561,10 +1236,9 @@ See also:
 Class name of the used index manager implementation
 
 ```
-mshop/index/manager/name = Standard
+mshop/index/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.11
 
@@ -1633,11 +1307,7 @@ See also:
 Optimizes the stored product data for retrieving the records faster
 
 ```
-mshop/index/manager/optimize/mysql = Array
-(
-    [0] => ANALYZE TABLE "mshop_product"
-    [1] => ANALYZE TABLE "mshop_product_list"
-)
+mshop/index/manager/optimize/mysql = 
 ```
 
 
@@ -1652,8 +1322,6 @@ Deletes the index price records that haven't been touched
 
 ```
 mshop/index/manager/price/cleanup/ansi = 
- DELETE FROM "mshop_index_price"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting the outdated price index records
@@ -1685,16 +1353,8 @@ Deletes the index price records that haven't been touched
 
 ```
 mshop/index/manager/price/cleanup/mysql = 
- DELETE FROM "mshop_index_price"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_price"
- WHERE "mtime" < ? AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1768,17 +1428,9 @@ See also:
 Excludes decorators added by the "common" option from the index price manager
 
 ```
-mshop/index/manager/price/decorators/excludes = Array
-(
-)
+mshop/index/manager/price/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1810,17 +1462,9 @@ See also:
 Adds a list of globally available decorators only to the index price manager
 
 ```
-mshop/index/manager/price/decorators/global = Array
-(
-)
+mshop/index/manager/price/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1852,17 +1496,9 @@ See also:
 Adds a list of local decorators only to the index price manager
 
 ```
-mshop/index/manager/price/decorators/local = Array
-(
-)
+mshop/index/manager/price/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -1895,8 +1531,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/price/delete/ansi = 
- DELETE FROM "mshop_index_price"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting index price records
@@ -1927,16 +1561,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/price/delete/mysql = 
- DELETE FROM "mshop_index_price"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_price"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1948,11 +1574,6 @@ Inserts a new price record into the product index database
 
 ```
 mshop/index/manager/price/insert/ansi = 
- INSERT INTO "mshop_index_price" (
- 	"prodid", "currencyid", "value", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -1988,22 +1609,8 @@ Inserts a new price record into the product index database
 
 ```
 mshop/index/manager/price/insert/mysql = 
- INSERT INTO "mshop_index_price" (
- 	"prodid", "currencyid", "value", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_index_price" (
- 	"prodid", "currencyid", "value", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -2014,10 +1621,9 @@ See also:
 Class name of the used index price manager implementation
 
 ```
-mshop/index/manager/price/name = Standard
+mshop/index/manager/price/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -2085,10 +1691,7 @@ See also:
 Optimizes the stored price data for retrieving the records faster
 
 ```
-mshop/index/manager/price/optimize/mysql = Array
-(
-    [0] => OPTIMIZE TABLE "mshop_index_price"
-)
+mshop/index/manager/price/optimize/mysql = 
 ```
 
 
@@ -2102,13 +1705,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/price/search/ansi = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -2163,26 +1759,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/price/search/mysql = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2193,17 +1771,9 @@ See also:
 A list of sub-manager names used for indexing associated items to prices
 
 ```
-mshop/index/manager/price/submanagers = Array
-(
-)
+mshop/index/manager/price/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09
@@ -2226,19 +1796,9 @@ See also:
 Use different product prices types for indexing
 
 ```
-mshop/index/manager/price/types = Array
-(
-    [0] => default
-)
+mshop/index/manager/price/types = 
 ```
 
-* Default: 
-```
-Array
-(
-    [0] => default
-)
-```
 * Type: array - List of price types codes
 * Since: 2019.04
 
@@ -2254,10 +1814,9 @@ highly recommended to add the price type 'default' with the highest index.
 Name of the database connection resource to use
 
 ```
-mshop/index/manager/resource = db-product
+mshop/index/manager/resource = 
 ```
 
-* Default: `db-product`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -2274,13 +1833,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/search/ansi = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -2335,26 +1887,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/search/mysql = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2365,10 +1899,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/index/manager/sitemode = 3
+mshop/index/manager/sitemode = 
 ```
 
-* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -2402,22 +1935,9 @@ See also:
 A list of sub-manager names used for indexing associated items
 
 ```
-mshop/index/manager/submanagers = Array
-(
-    [attribute] => attribute
-    [supplier] => supplier
-    [catalog] => catalog
-    [price] => price
-    [text] => text
-)
+mshop/index/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: string - List of index sub-manager names
 * Since: 2016.02
 
@@ -2448,8 +1968,6 @@ Deletes the index supplier records that haven't been touched
 
 ```
 mshop/index/manager/supplier/cleanup/ansi = 
- DELETE FROM "mshop_index_supplier"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting the outdated index records
@@ -2481,16 +1999,8 @@ Deletes the index supplier records that haven't been touched
 
 ```
 mshop/index/manager/supplier/cleanup/mysql = 
- DELETE FROM "mshop_index_supplier"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_supplier"
- WHERE "mtime" < ? AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -2564,17 +2074,9 @@ See also:
 Excludes decorators added by the "common" option from the index supplier manager
 
 ```
-mshop/index/manager/supplier/decorators/excludes = Array
-(
-)
+mshop/index/manager/supplier/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2606,17 +2108,9 @@ See also:
 Adds a list of globally available decorators only to the index supplier manager
 
 ```
-mshop/index/manager/supplier/decorators/global = Array
-(
-)
+mshop/index/manager/supplier/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2648,17 +2142,9 @@ See also:
 Adds a list of local decorators only to the index supplier manager
 
 ```
-mshop/index/manager/supplier/decorators/local = Array
-(
-)
+mshop/index/manager/supplier/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2691,8 +2177,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/supplier/delete/ansi = 
- DELETE FROM "mshop_index_supplier"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting index supplier records
@@ -2723,16 +2207,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/supplier/delete/mysql = 
- DELETE FROM "mshop_index_supplier"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_supplier"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -2744,12 +2220,6 @@ Inserts a new supplier record into the product index database
 
 ```
 mshop/index/manager/supplier/insert/ansi = 
- INSERT INTO "mshop_index_supplier" (
- 	"prodid", "supid", "listtype", "pos",
- 	"latitude", "longitude", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -2785,24 +2255,8 @@ Inserts a new supplier record into the product index database
 
 ```
 mshop/index/manager/supplier/insert/mysql = 
- INSERT INTO "mshop_index_supplier" (
- 	"prodid", "supid", "listtype", "pos",
- 	"latitude", "longitude", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_index_supplier" (
- 	"prodid", "supid", "listtype", "pos",
- 	"latitude", "longitude", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -2813,10 +2267,9 @@ See also:
 Class name of the used index supplier manager implementation
 
 ```
-mshop/index/manager/supplier/name = Standard
+mshop/index/manager/supplier/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.07
 
@@ -2884,10 +2337,7 @@ See also:
 Optimizes the stored supplier data for retrieving the records faster
 
 ```
-mshop/index/manager/supplier/optimize/mysql = Array
-(
-    [0] => OPTIMIZE TABLE "mshop_index_supplier"
-)
+mshop/index/manager/supplier/optimize/mysql = 
 ```
 
 
@@ -2901,13 +2351,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/supplier/search/ansi = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -2962,26 +2405,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/supplier/search/mysql = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2992,17 +2417,9 @@ See also:
 A list of sub-manager names used for indexing associated items to categories
 
 ```
-mshop/index/manager/supplier/submanagers = Array
-(
-)
+mshop/index/manager/supplier/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: string - List of index sub-manager names
 * Since: 2018.07
 * Since: 2018.07
@@ -3026,21 +2443,9 @@ See also:
 List of attribute types that should be added to the product index
 
 ```
-mshop/index/manager/text/attribute-types = Array
-(
-    [0] => variant
-    [1] => default
-)
+mshop/index/manager/text/attribute-types = 
 ```
 
-* Default: 
-```
-Array
-(
-    [0] => variant
-    [1] => default
-)
-```
 * Type: array|string|null - Type name or list of type names, null for all
 * Since: 2020.10
 
@@ -3056,8 +2461,6 @@ Deletes the index text records that haven't been touched
 
 ```
 mshop/index/manager/text/cleanup/ansi = 
- DELETE FROM "mshop_index_text"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting the outdated text index records
@@ -3090,16 +2493,8 @@ Deletes the index text records that haven't been touched
 
 ```
 mshop/index/manager/text/cleanup/mysql = 
- DELETE FROM "mshop_index_text"
- WHERE "mtime" < ? AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_text"
- WHERE "mtime" < ? AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -3176,17 +2571,9 @@ See also:
 Excludes decorators added by the "common" option from the index text manager
 
 ```
-mshop/index/manager/text/decorators/excludes = Array
-(
-)
+mshop/index/manager/text/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3218,17 +2605,9 @@ See also:
 Adds a list of globally available decorators only to the index text manager
 
 ```
-mshop/index/manager/text/decorators/global = Array
-(
-)
+mshop/index/manager/text/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3260,17 +2639,9 @@ See also:
 Adds a list of local decorators only to the index text manager
 
 ```
-mshop/index/manager/text/decorators/local = Array
-(
-)
+mshop/index/manager/text/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -3303,8 +2674,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/text/delete/ansi = 
- DELETE FROM "mshop_index_text"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting index text records
@@ -3336,16 +2705,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/index/manager/text/delete/mysql = 
- DELETE FROM "mshop_index_text"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_index_text"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -3357,11 +2718,6 @@ Inserts a new text record into the product index database
 
 ```
 mshop/index/manager/text/insert/ansi = 
- INSERT INTO "mshop_index_text" (
- 	"prodid", "langid", "url", "name", "content", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -3399,22 +2755,8 @@ Inserts a new text record into the product index database
 
 ```
 mshop/index/manager/text/insert/mysql = 
- INSERT INTO "mshop_index_text" (
- 	"prodid", "langid", "url", "name", "content", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_index_text" (
- 	"prodid", "langid", "url", "name", "content", "mtime", "siteid"
- ) VALUES (
- 	?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -3425,10 +2767,9 @@ See also:
 Class name of the used index text manager implementation
 
 ```
-mshop/index/manager/text/name = Standard
+mshop/index/manager/text/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -3499,10 +2840,7 @@ See also:
 Optimizes the stored text data for retrieving the records faster
 
 ```
-mshop/index/manager/text/optimize/mysql = Array
-(
-    [0] => OPTIMIZE TABLE "mshop_index_text"
-)
+mshop/index/manager/text/optimize/mysql = 
 ```
 
 
@@ -3516,13 +2854,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/text/search/ansi = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -3580,56 +2911,21 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/index/manager/text/search/mysql = 
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT mpro."id" :mincols
- FROM "mshop_product" mpro
- :joins
- WHERE :cond
- GROUP BY mpro."id"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
 * mshop/index/manager/text/search/ansi
-
-## sqlsrv/fulltext
-
-```
-mshop/index/manager/text/sqlsrv/fulltext = 
-```
-
-* Default: ``
-
 
 ## submanagers
 
 A list of sub-manager names used for indexing associated items to texts
 
 ```
-mshop/index/manager/text/submanagers = Array
-(
-)
+mshop/index/manager/text/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: string - List of index sub-manager names
 * Since: 2014.03
 * Since: 2014.09

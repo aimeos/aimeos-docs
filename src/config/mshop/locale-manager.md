@@ -6,18 +6,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mloc."id"
- 	FROM "mshop_locale" mloc
- 	LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
- 	LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
- 	LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
- 	WHERE :cond
- 	GROUP BY mloc."id"
- 	ORDER BY mloc."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -62,36 +50,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mloc."id"
- 	FROM "mshop_locale" mloc
- 	LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
- 	LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
- 	LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
- 	WHERE :cond
- 	GROUP BY mloc."id"
- 	ORDER BY mloc."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mloc."id"
- 	FROM "mshop_locale" mloc
- 	LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
- 	LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
- 	LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
- 	WHERE :cond
- 	GROUP BY mloc."id"
- 	ORDER BY mloc."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -104,18 +64,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/currency/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mloccu."id"
- 	FROM "mshop_locale_currency" mloccu
- 	WHERE :cond
- 	ORDER BY mloccu."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the attribute
 database. The records must be from one of the sites that are
@@ -163,28 +115,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/currency/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mloccu."id"
- 	FROM "mshop_locale_currency" mloccu
- 	WHERE :cond
- 	ORDER BY mloccu."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mloccu."id"
- 	FROM "mshop_locale_currency" mloccu
- 	WHERE :cond
- 	ORDER BY mloccu."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -195,19 +127,11 @@ See also:
 Excludes decorators added by the "common" option from the locale currency manager
 
 ```
-mshop/locale/manager/currency/decorators/excludes = Array
-(
-)
+mshop/locale/manager/currency/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -237,19 +161,11 @@ See also:
 Adds a list of globally available decorators only to the locale currency manager
 
 ```
-mshop/locale/manager/currency/decorators/global = Array
-(
-)
+mshop/locale/manager/currency/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -279,19 +195,11 @@ See also:
 Adds a list of local decorators only to the locale currency manager
 
 ```
-mshop/locale/manager/currency/decorators/local = Array
-(
-)
+mshop/locale/manager/currency/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -322,11 +230,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/currency/delete/ansi = 
- DELETE FROM "mshop_locale_currency" WHERE :cond
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the language records specified by the given IDs from the
 locale database. The records must be from the site that is configured
@@ -353,14 +260,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/currency/delete/mysql = 
- DELETE FROM "mshop_locale_currency" WHERE :cond
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_locale_currency" WHERE :cond
-```
 
 See also:
 
@@ -372,15 +273,10 @@ Inserts a new currency record into the database table
 
 ```
 mshop/locale/manager/currency/insert/ansi = 
- INSERT INTO "mshop_locale_currency" ( :names
- 	"label", "status", "mtime", "editor", "id", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
@@ -408,22 +304,8 @@ Inserts a new currency record into the database table
 
 ```
 mshop/locale/manager/currency/insert/mysql = 
- INSERT INTO "mshop_locale_currency" ( :names
- 	"label", "status", "mtime", "editor", "id", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_locale_currency" ( :names
- 	"label", "status", "mtime", "editor", "id", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -434,12 +316,11 @@ See also:
 Class name of the used locale currency manager implementation
 
 ```
-mshop/locale/manager/currency/name = Standard
+mshop/locale/manager/currency/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default locale currency manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -480,15 +361,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/currency/search/ansi = 
- SELECT :columns
- FROM "mshop_locale_currency" mloccu
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the attribute
 database. The records must be from one of the sites that are
@@ -540,22 +416,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/currency/search/mysql = 
- SELECT :columns
- FROM "mshop_locale_currency" mloccu
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_locale_currency" mloccu
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -566,19 +428,11 @@ See also:
 List of manager names that can be instantiated by the locale currency manager
 
 ```
-mshop/locale/manager/currency/submanagers = Array
-(
-)
+mshop/locale/manager/currency/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -597,14 +451,10 @@ Updates an existing currency record in the database
 
 ```
 mshop/locale/manager/currency/update/ansi = 
- UPDATE "mshop_locale_currency"
- SET :names
- 	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
@@ -630,20 +480,8 @@ Updates an existing currency record in the database
 
 ```
 mshop/locale/manager/currency/update/mysql = 
- UPDATE "mshop_locale_currency"
- SET :names
- 	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_locale_currency"
- SET :names
- 	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "id" = ?
-```
 
 See also:
 
@@ -655,17 +493,9 @@ See also:
 Excludes decorators added by the "common" option from the locale manager
 
 ```
-mshop/locale/manager/decorators/excludes = Array
-(
-)
+mshop/locale/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -697,17 +527,9 @@ See also:
 Adds a list of globally available decorators only to the locale manager
 
 ```
-mshop/locale/manager/decorators/global = Array
-(
-)
+mshop/locale/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -738,17 +560,9 @@ See also:
 Adds a list of local decorators only to the locale manager
 
 ```
-mshop/locale/manager/decorators/local = Array
-(
-)
+mshop/locale/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -781,8 +595,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/delete/ansi = 
- DELETE FROM "mshop_locale"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
@@ -814,16 +626,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/delete/mysql = 
- DELETE FROM "mshop_locale"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_locale"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -836,12 +640,6 @@ Inserts a new locale record into the database table
 
 ```
 mshop/locale/manager/insert/ansi = 
- INSERT INTO "mshop_locale" ( :names
- 	"langid", "currencyid", "pos", "status",
- 	"mtime", "editor", "site_id", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -878,24 +676,8 @@ Inserts a new locale record into the database table
 
 ```
 mshop/locale/manager/insert/mysql = 
- INSERT INTO "mshop_locale" ( :names
- 	"langid", "currencyid", "pos", "status",
- 	"mtime", "editor", "site_id", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_locale" ( :names
- 	"langid", "currencyid", "pos", "status",
- 	"mtime", "editor", "site_id", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -908,18 +690,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/language/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mlocla."id"
- 	FROM "mshop_locale_language" mlocla
- 	WHERE :cond
- 	ORDER BY mlocla."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the attribute
 database. The records must be from one of the sites that are
@@ -967,28 +741,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/language/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mlocla."id"
- 	FROM "mshop_locale_language" mlocla
- 	WHERE :cond
- 	ORDER BY mlocla."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mlocla."id"
- 	FROM "mshop_locale_language" mlocla
- 	WHERE :cond
- 	ORDER BY mlocla."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -999,19 +753,11 @@ See also:
 Excludes decorators added by the "common" option from the locale language manager
 
 ```
-mshop/locale/manager/language/decorators/excludes = Array
-(
-)
+mshop/locale/manager/language/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1041,19 +787,11 @@ See also:
 Adds a list of globally available decorators only to the locale language manager
 
 ```
-mshop/locale/manager/language/decorators/global = Array
-(
-)
+mshop/locale/manager/language/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1083,19 +821,11 @@ See also:
 Adds a list of local decorators only to the locale language manager
 
 ```
-mshop/locale/manager/language/decorators/local = Array
-(
-)
+mshop/locale/manager/language/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1126,11 +856,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/language/delete/ansi = 
- DELETE FROM "mshop_locale_language" WHERE :cond
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the language records specified by the given IDs from the
 locale database. The records must be from the site that is configured
@@ -1157,14 +886,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/language/delete/mysql = 
- DELETE FROM "mshop_locale_language" WHERE :cond
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_locale_language" WHERE :cond
-```
 
 See also:
 
@@ -1176,15 +899,10 @@ Inserts a new language record into the database table
 
 ```
 mshop/locale/manager/language/insert/ansi = 
- INSERT INTO "mshop_locale_language" ( :names
- 	"label", "status", "mtime", "editor", "id", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
@@ -1212,22 +930,8 @@ Inserts a new language record into the database table
 
 ```
 mshop/locale/manager/language/insert/mysql = 
- INSERT INTO "mshop_locale_language" ( :names
- 	"label", "status", "mtime", "editor", "id", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_locale_language" ( :names
- 	"label", "status", "mtime", "editor", "id", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1238,12 +942,11 @@ See also:
 Class name of the used locale language manager implementation
 
 ```
-mshop/locale/manager/language/name = Standard
+mshop/locale/manager/language/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default locale language manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1284,15 +987,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/language/search/ansi = 
- SELECT :columns
- FROM "mshop_locale_language" mlocla
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the attribute
 database. The records must be from one of the sites that are
@@ -1344,22 +1042,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/language/search/mysql = 
- SELECT :columns
- FROM "mshop_locale_language" mlocla
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_locale_language" mlocla
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1370,19 +1054,11 @@ See also:
 List of manager names that can be instantiated by the locale language manager
 
 ```
-mshop/locale/manager/language/submanagers = Array
-(
-)
+mshop/locale/manager/language/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1401,14 +1077,10 @@ Updates an existing language record in the database
 
 ```
 mshop/locale/manager/language/update/ansi = 
- UPDATE "mshop_locale_language"
- SET :names
- 	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
@@ -1434,20 +1106,8 @@ Updates an existing language record in the database
 
 ```
 mshop/locale/manager/language/update/mysql = 
- UPDATE "mshop_locale_language"
- SET :names
- 	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_locale_language"
- SET :names
- 	"label" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "id" = ?
-```
 
 See also:
 
@@ -1458,10 +1118,9 @@ See also:
 Class name of the used locale manager implementation
 
 ```
-mshop/locale/manager/name = Standard
+mshop/locale/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1543,7 +1202,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/locale/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/locale/manager/newid/mysql = 
 ```
 
 
@@ -1556,14 +1215,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/locale/manager/resource = db-locale
+mshop/locale/manager/resource = 
 ```
 
-* Default: `db-locale`
 * Type: string - Database connection name
-* Since: 2023.04
-* Since: 2023.04
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -1579,15 +1234,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/search/ansi = 
- SELECT :columns, mlocsi."code" AS "locale.sitecode"
- FROM "mshop_locale" mloc
- LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
- LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
- LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
- WHERE :cond
- GROUP BY :group, mlocsi."code"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -1636,30 +1282,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/search/mysql = 
- SELECT :columns, mlocsi."code" AS "locale.sitecode"
- FROM "mshop_locale" mloc
- LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
- LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
- LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns, mlocsi."code" AS "locale.sitecode"
- FROM "mshop_locale" mloc
- LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
- LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
- LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
- WHERE :cond
- GROUP BY :group, mlocsi."code"
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1671,22 +1295,11 @@ See also:
 List of mshop domains names whose items referring to the same site should be deleted as well
 
 ```
-mshop/locale/manager/site/cleanup/admin/domains = Array
-(
-    [job] => job
-    [log] => log
-    [cache] => cache
-)
+mshop/locale/manager/site/cleanup/admin/domains = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of domain names in lower case
-* Since: 2014.03
+* Since: 2015.10
 
 As items for each domain can be stored in a separate database, the
 site manager needs a list of domain names used to connect to the
@@ -1708,40 +1321,11 @@ See also:
 List of madmin domains names whose items referring to the same site should be deleted as well
 
 ```
-mshop/locale/manager/site/cleanup/shop/domains = Array
-(
-    [attribute] => attribute
-    [catalog] => catalog
-    [coupon] => coupon
-    [customer] => customer
-    [group] => group
-    [index] => index
-    [media] => media
-    [order] => order
-    [order/basket] => order/basket
-    [plugin] => plugin
-    [price] => price
-    [product] => product
-    [review] => review
-    [rule] => rule
-    [tag] => tag
-    [service] => service
-    [stock] => stock
-    [subscription] => subscription
-    [supplier] => supplier
-    [text] => text
-    [cms] => cms
-)
+mshop/locale/manager/site/cleanup/shop/domains = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of domain names in lower case
-* Since: 2014.03
+* Since: 2015.10
 
 As items for each domain can be stored in a separate database, the
 site manager needs a list of domain names used to connect to the
@@ -1764,18 +1348,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/site/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mlocsi."id"
- 	FROM "mshop_locale_site" mlocsi
- 	WHERE :cond
- 	ORDER BY mlocsi."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the attribute
 database. The records must be from one of the sites that are
@@ -1824,28 +1400,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/site/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mlocsi."id"
- 	FROM "mshop_locale_site" mlocsi
- 	WHERE :cond
- 	ORDER BY mlocsi."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mlocsi."id"
- 	FROM "mshop_locale_site" mlocsi
- 	WHERE :cond
- 	ORDER BY mlocsi."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1856,19 +1412,11 @@ See also:
 Excludes decorators added by the "common" option from the locale site manager
 
 ```
-mshop/locale/manager/site/decorators/excludes = Array
-(
-)
+mshop/locale/manager/site/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1898,19 +1446,11 @@ See also:
 Adds a list of globally available decorators only to the locale site manager
 
 ```
-mshop/locale/manager/site/decorators/global = Array
-(
-)
+mshop/locale/manager/site/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1940,19 +1480,11 @@ See also:
 Adds a list of local decorators only to the locale site manager
 
 ```
-mshop/locale/manager/site/decorators/local = Array
-(
-)
+mshop/locale/manager/site/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1983,12 +1515,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/site/delete/ansi = 
- DELETE FROM "mshop_locale_site"
- WHERE :cond
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the site records specified by the given IDs from the
 locale database. The records must be from the site that is configured
@@ -2017,16 +1547,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/locale/manager/site/delete/mysql = 
- DELETE FROM "mshop_locale_site"
- WHERE :cond
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_locale_site"
- WHERE :cond
-```
 
 See also:
 
@@ -2038,20 +1560,10 @@ Inserts a new currency record into the database table
 
 ```
 mshop/locale/manager/site/insert/ansi = 
- INSERT INTO "mshop_locale_site" ( :names
- 	"siteid", "code", "label", "config", "status", "icon", "logo",
- 	"refid", "theme", "editor", "mtime", "ctime", "parentid", "level",
- 	"nleft", "nright"
-
- )
- SELECT :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0,
- 	COALESCE( MAX("nright"), 0 ) + 1, COALESCE( MAX("nright"), 0 ) + 2
- FROM "mshop_locale_site"
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
@@ -2081,32 +1593,8 @@ Inserts a new currency record into the database table
 
 ```
 mshop/locale/manager/site/insert/mysql = 
- INSERT INTO "mshop_locale_site" ( :names
- 	"siteid", "code", "label", "config", "status", "icon", "logo",
- 	"refid", "theme", "editor", "mtime", "ctime", "parentid", "level",
- 	"nleft", "nright"
-
- )
- SELECT :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0,
- 	COALESCE( MAX("nright"), 0 ) + 1, COALESCE( MAX("nright"), 0 ) + 2
- FROM "mshop_locale_site"
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_locale_site" ( :names
- 	"siteid", "code", "label", "config", "status", "icon", "logo",
- 	"refid", "theme", "editor", "mtime", "ctime", "parentid", "level",
- 	"nleft", "nright"
-
- )
- SELECT :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0,
- 	COALESCE( MAX("nright"), 0 ) + 1, COALESCE( MAX("nright"), 0 ) + 2
- FROM "mshop_locale_site"
-```
 
 See also:
 
@@ -2117,12 +1605,11 @@ See also:
 Class name of the used locale site manager implementation
 
 ```
-mshop/locale/manager/site/name = Standard
+mshop/locale/manager/site/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default locale site manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -2166,7 +1653,7 @@ mshop/locale/manager/site/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -2177,11 +1664,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_matt_id')
+ SELECT currval('seq_mlocsi_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_matt_id".CURRVAL FROM DUAL
+ SELECT "seq_mlocsi_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -2216,9 +1703,6 @@ Updates the rating of the product in the database
 
 ```
 mshop/locale/manager/site/rate/ansi = 
- UPDATE "mshop_locale_site"
- SET "rating" = ?, "ratings" = ?
- WHERE "id" = ?
 ```
 
 * Type: string - SQL statement for update ratings
@@ -2249,18 +1733,8 @@ Updates the rating of the product in the database
 
 ```
 mshop/locale/manager/site/rate/mysql = 
- UPDATE "mshop_locale_site"
- SET "rating" = ?, "ratings" = ?
- WHERE "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_locale_site"
- SET "rating" = ?, "ratings" = ?
- WHERE "id" = ?
-```
 
 See also:
 
@@ -2272,15 +1746,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/site/search/ansi = 
- SELECT :columns
- FROM "mshop_locale_site" mlocsi
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the attribute
 database. The records must be from one of the sites that are
@@ -2334,22 +1803,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/site/search/mysql = 
- SELECT :columns
- FROM "mshop_locale_site" mlocsi
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_locale_site" mlocsi
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2360,19 +1815,11 @@ See also:
 List of manager names that can be instantiated by the locale site manager
 
 ```
-mshop/locale/manager/site/submanagers = Array
-(
-)
+mshop/locale/manager/site/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -2391,15 +1838,10 @@ Updates an existing site record in the database
 
 ```
 mshop/locale/manager/site/update/ansi = 
- UPDATE "mshop_locale_site"
- SET :names
- 	"siteid" = ?, "code" = ?, "label" = ?, "config" = ?, "status" = ?,
- 	"icon" = ?, "logo" = ?, "refid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
- WHERE id = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
@@ -2426,22 +1868,8 @@ Updates an existing site record in the database
 
 ```
 mshop/locale/manager/site/update/mysql = 
- UPDATE "mshop_locale_site"
- SET :names
- 	"siteid" = ?, "code" = ?, "label" = ?, "config" = ?, "status" = ?,
- 	"icon" = ?, "logo" = ?, "refid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
- WHERE id = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_locale_site"
- SET :names
- 	"siteid" = ?, "code" = ?, "label" = ?, "config" = ?, "status" = ?,
- 	"icon" = ?, "logo" = ?, "refid" = ?, "theme" = ?, "editor" = ?, "mtime" = ?
- WHERE id = ?
-```
 
 See also:
 
@@ -2452,23 +1880,9 @@ See also:
 List of manager names that can be instantiated by the locale manager
 
 ```
-mshop/locale/manager/submanagers = Array
-(
-    [0] => language
-    [1] => currency
-    [2] => site
-)
+mshop/locale/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-    [0] => language
-    [1] => currency
-    [2] => site
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2490,11 +1904,6 @@ Updates an existing locale record in the database
 
 ```
 mshop/locale/manager/update/ansi = 
- UPDATE "mshop_locale"
- SET :names
- 	"langid" = ?, "currencyid" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2528,22 +1937,8 @@ Updates an existing locale record in the database
 
 ```
 mshop/locale/manager/update/mysql = 
- UPDATE "mshop_locale"
- SET :names
- 	"langid" = ?, "currencyid" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_locale"
- SET :names
- 	"langid" = ?, "currencyid" = ?, "pos" = ?,
- 	"status" = ?, "mtime" = ?, "editor" = ?, "site_id" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

@@ -314,8 +314,9 @@ List of domain items that should be fetched along with the customer
 admin/jqadm/customer/domains = Array
 (
     [customer/address] => customer/address
-    [group] => group
     [customer/property] => customer/property
+    [group] => group
+    [product] => product
 )
 ```
 

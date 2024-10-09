@@ -311,22 +311,6 @@ admin/jqadm/resource/group/key = G
 * Since: 2018.07
 
 
-# groups
-
-```
-admin/jqadm/resource/groups = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 # language
 ## groups
 
@@ -375,10 +359,14 @@ Array
 
 ## currency/key
 
+Shortcut key to switch to the locale currency panel by using the keyboard
+
 ```
 admin/jqadm/resource/locale/currency/key = 
 ```
 
+* Type: string - Single character in upper case
+* Since: 2017.10
 
 
 ## groups
@@ -405,10 +393,14 @@ Array
 
 ## key
 
+Shortcut key to switch to the locale panel by using the keyboard
+
 ```
 admin/jqadm/resource/locale/key = 
 ```
 
+* Type: string - Single character in upper case
+* Since: 2017.10
 
 
 ## language/groups
@@ -434,10 +426,14 @@ Array
 
 ## language/key
 
+Shortcut key to switch to the locale language panel by using the keyboard
+
 ```
 admin/jqadm/resource/locale/language/key = 
 ```
 
+* Type: string - Single character in upper case
+* Since: 2017.10
 
 
 ## site/groups
@@ -463,10 +459,14 @@ Array
 
 ## site/key
 
+Shortcut key to switch to the locale site panel by using the keyboard
+
 ```
 admin/jqadm/resource/locale/site/key = 
 ```
 
+* Type: string - Single character in upper case
+* Since: 2017.10
 
 
 # log
@@ -928,8 +928,7 @@ List of user groups that are allowed to access the attribute type panel
 admin/jqadm/resource/type/attribute/groups = Array
 (
     [0] => admin
-    [1] => editor
-    [2] => super
+    [1] => super
 )
 ```
 
@@ -1133,8 +1132,7 @@ List of user groups that are allowed to access the type panels
 admin/jqadm/resource/type/groups = Array
 (
     [0] => admin
-    [1] => editor
-    [2] => super
+    [1] => super
 )
 ```
 
@@ -1426,8 +1424,7 @@ List of user groups that are allowed to access the product property type panel
 admin/jqadm/resource/type/product/property/groups = Array
 (
     [0] => admin
-    [1] => editor
-    [2] => super
+    [1] => super
 )
 ```
 

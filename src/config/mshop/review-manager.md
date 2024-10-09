@@ -6,16 +6,6 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/review/manager/aggregate/ansi = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrev.id DESC
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
 ```
 
 * Type: string - SQL statement for aggregating review items
@@ -66,87 +56,12 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/review/manager/aggregate/mysql = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY :keys
 ```
 
-* Default: 
-```
-
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY mrev.id DESC
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
-```
 
 See also:
 
 * mshop/review/manager/aggregate/ansi
-
-# aggregaterate
-## ansi
-
-```
-mshop/review/manager/aggregaterate/ansi = 
- SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
- FROM (
- 	SELECT :acols, mrev.rating AS "val"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
-```
-
-
-
-## mysql
-
-```
-mshop/review/manager/aggregaterate/mysql = 
- SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
- FROM (
- 	SELECT :acols, mrev.rating AS "val"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY :keys
-```
-
-* Default: 
-```
-
- SELECT :keys, SUM("val") AS "sum", COUNT(*) AS "count"
- FROM (
- 	SELECT :acols, mrev.rating AS "val"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	ORDER BY :order
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
-```
-
 
 # count
 ## ansi
@@ -155,16 +70,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/review/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrev."id"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	GROUP BY mrev."id"
- 	ORDER BY mrev."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -217,32 +122,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/review/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrev."id"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	GROUP BY mrev."id"
- 	ORDER BY mrev."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mrev."id"
- 	FROM "mshop_review" mrev
- 	:joins
- 	WHERE :cond
- 	GROUP BY mrev."id"
- 	ORDER BY mrev."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -254,17 +135,9 @@ See also:
 Excludes decorators added by the "common" option from the review manager
 
 ```
-mshop/review/manager/decorators/excludes = Array
-(
-)
+mshop/review/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -296,17 +169,9 @@ See also:
 Adds a list of globally available decorators only to the review manager
 
 ```
-mshop/review/manager/decorators/global = Array
-(
-)
+mshop/review/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -316,16 +181,15 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the review
-manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the review manager.
 
 ```
  mshop/review/manager/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the
-review manager.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the review
+manager.
 
 See also:
 
@@ -338,17 +202,9 @@ See also:
 Adds a list of local decorators only to the review manager
 
 ```
-mshop/review/manager/decorators/local = Array
-(
-)
+mshop/review/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2020.10
 
@@ -358,16 +214,15 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Review\Manager\Decorator\*") around the review
-manager.
+("\Aimeos\MShop\Review\Manager\Decorator\*") around the review manager.
 
 ```
  mshop/review/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Review\Manager\Decorator\Decorator2" only to the
-review manager.
+"\Aimeos\MShop\Review\Manager\Decorator\Decorator2" only to the review
+manager.
 
 See also:
 
@@ -382,8 +237,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/review/manager/delete/ansi = 
- DELETE FROM "mshop_review"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
@@ -415,16 +268,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/review/manager/delete/mysql = 
- DELETE FROM "mshop_review"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_review"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -437,12 +282,6 @@ Inserts a new review record into the database table
 
 ```
 mshop/review/manager/insert/ansi = 
- INSERT INTO "mshop_review" ( :names
- 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
- 	"rating", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -457,8 +296,8 @@ prepared statement. It must include question marks for binding
 the values from the review item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
-statement. The review of the columns must correspond to the
-review in the save() method, so the correct values are
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
 bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -479,24 +318,8 @@ Inserts a new review record into the database table
 
 ```
 mshop/review/manager/insert/mysql = 
- INSERT INTO "mshop_review" ( :names
- 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
- 	"rating", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_review" ( :names
- 	"domain", "refid", "customerid", "ordprodid", "name", "comment", "response",
- 	"rating", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -507,10 +330,9 @@ See also:
 Class name of the used review manager implementation
 
 ```
-mshop/review/manager/name = Standard
+mshop/review/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2020.10
 
@@ -568,11 +390,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_msub_id')
+ SELECT currval('seq_mrul_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_msub_id".CURRVAL FROM DUAL
+ SELECT "seq_mrul_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -592,7 +414,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/review/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/review/manager/newid/mysql = 
 ```
 
 
@@ -605,10 +427,9 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/review/manager/resource = db-review
+mshop/review/manager/resource = 
 ```
 
-* Default: `db-review`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -625,13 +446,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/review/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_review" mrev
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -658,13 +472,9 @@ operators. The resulting string of SQL conditions replaces the
 ":cond" placeholder before the statement is sent to the database
 server.
 
-If the records that are retrieved should be reviewed by one or more
+If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":review" placeholder. In case no reviewing is required,
-the complete ORDER BY part including the "/*-reviewby*/.../*reviewby-*/"
-markers is removed to speed up retrieving the records. Columns of
-sub-managers can also be used for reviewing the result set but then
-no index can be used.
+replaces the ":order" placeholder.
 
 The number of returned records can be limited and can start at any
 number between the begining and the end of the result set. For that
@@ -690,26 +500,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/review/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_review" mrev
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_review" mrev
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -720,12 +512,11 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/review/manager/sitemode = 2
+mshop/review/manager/sitemode = 
 ```
 
-* Default: `2`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
-* Since: 2020.10
+* Since: 2018.01
 
 By default, only items from the current site are fetched from the
 storage. If the ai-sites extension is installed, you can create a
@@ -757,17 +548,9 @@ See also:
 List of manager names that can be instantiated by the review manager
 
 ```
-mshop/review/manager/submanagers = Array
-(
-)
+mshop/review/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2020.10
 
@@ -800,8 +583,8 @@ be updated in the database.
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
 the values from the review item to the statement before they are
-sent to the database server. The review of the columns must
-correspond to the review in the save() method, so the
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
 correct values are bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
