@@ -11,6 +11,11 @@ The customer response returns the URLs for managing properties:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -66,6 +71,11 @@ When at least one property is available, the response will be similar to this on
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -79,7 +89,7 @@ When at least one property is available, the response will be similar to this on
         "type": "customer.property",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=property&relatedid=1",
+                "href": "http://localhost:8000/jsonapi/customer?id=2&related=property&relatedid=1",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -103,6 +113,11 @@ To add one or more properties to an authenticated customer, use a POST request i
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."

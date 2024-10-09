@@ -6,19 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtag."id"
- 	FROM "mshop_tag" mtag
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtag."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2015.12
+* Since: 2025.12
 
 Counts all records matched by the given criteria from the tag
 database. The records must be from one of the sites that are
@@ -67,30 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtag."id"
- 	FROM "mshop_tag" mtag
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtag."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtag."id"
- 	FROM "mshop_tag" mtag
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtag."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -99,23 +68,14 @@ See also:
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the tag tag manager
+Excludes decorators added by the "common" option from the tag manager
 
 ```
-mshop/tag/manager/decorators/excludes = Array
-(
-)
+mshop/tag/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.12
-* Since: 2015.12
+* Since: 2025.12
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -124,7 +84,7 @@ modify what is returned to the caller.
 
 This option allows you to remove a decorator added via
 "mshop/common/manager/decorators/default" before they are wrapped
-around the tag tag manager.
+around the tag manager.
 
 ```
  mshop/tag/manager/decorators/excludes = array( 'decorator1' )
@@ -132,36 +92,24 @@ around the tag tag manager.
 
 This would remove the decorator named "decorator1" from the list of
 common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
-"mshop/common/manager/decorators/default" for the tag tag manager.
+"mshop/common/manager/decorators/default" for the tag manager.
 
 See also:
 
 * mshop/common/manager/decorators/default
 * mshop/tag/manager/decorators/global
 * mshop/tag/manager/decorators/local
-* mshop/common/manager/decorators/default
-* mshop/tag/manager/decorators/global
-* mshop/tag/manager/decorators/local
 
 ## global
 
-Adds a list of globally available decorators only to the tag tag manager
+Adds a list of globally available decorators only to the tag manager
 
 ```
-mshop/tag/manager/decorators/global = Array
-(
-)
+mshop/tag/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.12
-* Since: 2015.12
+* Since: 2025.12
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -169,43 +117,32 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag tag manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag manager.
 
 ```
  mshop/tag/manager/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the tag controller.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the tag
+manager.
 
 See also:
 
 * mshop/common/manager/decorators/default
 * mshop/tag/manager/decorators/excludes
 * mshop/tag/manager/decorators/local
-* mshop/common/manager/decorators/default
-* mshop/tag/manager/decorators/excludes
-* mshop/tag/manager/decorators/local
 
 ## local
 
-Adds a list of local decorators only to the tag tag manager
+Adds a list of local decorators only to the tag manager
 
 ```
-mshop/tag/manager/decorators/local = Array
-(
-)
+mshop/tag/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.12
-* Since: 2015.12
+* Since: 2025.12
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -213,21 +150,18 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag tag manager.
+("\Aimeos\MShop\Tag\Manager\Decorator\*") around the tag manager.
 
 ```
  mshop/tag/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator2" only to the tag
-controller.
+"\Aimeos\MShop\Tag\Manager\Decorator\Decorator2" only to the tag
+manager.
 
 See also:
 
-* mshop/common/manager/decorators/default
-* mshop/tag/manager/decorators/excludes
-* mshop/tag/manager/decorators/global
 * mshop/common/manager/decorators/default
 * mshop/tag/manager/decorators/excludes
 * mshop/tag/manager/decorators/global
@@ -239,12 +173,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/tag/manager/delete/ansi = 
- DELETE FROM "mshop_tag"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2015.12
+* Since: 2025.12
 
 Removes the records specified by the given IDs from the tag database.
 The records must be from the site that is configured via the
@@ -272,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/tag/manager/delete/mysql = 
- DELETE FROM "mshop_tag"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_tag"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -290,20 +214,14 @@ See also:
 # insert
 ## ansi
 
-Inserts a new tag tag record into the database table
+Inserts a new tag record into the database table
 
 ```
 mshop/tag/manager/insert/ansi = 
- INSERT INTO "mshop_tag" ( :names
- 	"langid", "type", "domain", "label",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2015.12
+* Since: 2025.12
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -311,7 +229,7 @@ using the "newid" SQL statement.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the tag tag item to the statement before they are
+the values from the tag item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
 statement. The order of the columns must correspond to the
@@ -332,28 +250,12 @@ See also:
 
 ## mysql
 
-Inserts a new tag tag record into the database table
+Inserts a new tag record into the database table
 
 ```
 mshop/tag/manager/insert/mysql = 
- INSERT INTO "mshop_tag" ( :names
- 	"langid", "type", "domain", "label",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_tag" ( :names
- 	"langid", "type", "domain", "label",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -361,18 +263,16 @@ See also:
 
 # name
 
-Class name of the used tag tag manager implementation
+Class name of the used tag manager implementation
 
 ```
-mshop/tag/manager/name = Standard
+mshop/tag/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2015.12
-* Since: 2015.12
+* Since: 2025.12
 
-Each default tag tag manager can be replaced by an alternative imlementation.
+Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
 name as configuration value so the manager factory knows which class it
 has to instantiate.
@@ -386,13 +286,13 @@ For example, if the name of the default class is
 and you want to replace it with your own version named
 
 ```
- \Aimeos\MShop\Tag\Manager\Mytag
+ \Aimeos\MShop\Tag\Manager\Mymanager
 ```
 
 then you have to set the this configuration option:
 
 ```
- mshop/tag/manager/name = Mytag
+ mshop/tag/manager/name = Mymanager
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -402,7 +302,7 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MyTag"!
+or numbers. Avoid chamel case names like "MyManager"!
 
 
 # newid
@@ -415,7 +315,7 @@ mshop/tag/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2015.12
+* Since: 2025.12
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -426,11 +326,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_mtag_id')
+ SELECT currval('seq_mrul_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_mtag_id".CURRVAL FROM DUAL
+ SELECT "seq_mrul_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -450,7 +350,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/tag/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/tag/manager/newid/mysql = 
 ```
 
 
@@ -463,12 +363,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/tag/manager/resource = db-tag
+mshop/tag/manager/resource = 
 ```
 
-* Default: `db-tag`
 * Type: string - Database connection name
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -484,16 +382,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_tag" mtag
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2015.12
+* Since: 2025.12
 
 Fetches the records matched by the given criteria from the tag
 database. The records must be from one of the sites that are
@@ -518,9 +410,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. Columns of
-sub-managers can also be used for ordering the result set but then
-no index can be used.
+replaces the ":order" placeholder.
 
 The number of returned records can be limited and can start at any
 number between the begining and the end of the result set. For that
@@ -546,24 +436,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_tag" mtag
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_tag" mtag
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -574,10 +448,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/tag/manager/sitemode = 3
+mshop/tag/manager/sitemode = 
 ```
 
-* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -608,22 +481,14 @@ See also:
 
 # submanagers
 
-List of manager names that can be instantiated by the tag tag manager
+List of manager names that can be instantiated by the tag manager
 
 ```
-mshop/tag/manager/submanagers = Array
-(
-)
+mshop/tag/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2015.12
+* Since: 2025.12
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -643,21 +508,12 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtagty."id"
- 	FROM "mshop_tag_type" mtagty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtagty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2015.12
+* Since: 2015.10
 
-Counts all records matched by the given criteria from the product
+Counts all records matched by the given criteria from the tag
 database. The records must be from one of the sites that are
 configured via the context item. If the current site is part of
 a tree of sites, the statement can count all records from the
@@ -704,30 +560,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtagty."id"
- 	FROM "mshop_tag_type" mtagty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtagty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtagty."id"
- 	FROM "mshop_tag_type" mtagty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtagty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -738,19 +572,11 @@ See also:
 Excludes decorators added by the "common" option from the tag type manager
 
 ```
-mshop/tag/manager/type/decorators/excludes = Array
-(
-)
+mshop/tag/manager/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.12
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -780,19 +606,11 @@ See also:
 Adds a list of globally available decorators only to the tag type manager
 
 ```
-mshop/tag/manager/type/decorators/global = Array
-(
-)
+mshop/tag/manager/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.12
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -800,7 +618,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag type manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the tag type
+manager.
 
 ```
  mshop/tag/manager/type/decorators/global = array( 'decorator1' )
@@ -821,19 +640,11 @@ See also:
 Adds a list of local decorators only to the tag type manager
 
 ```
-mshop/tag/manager/type/decorators/local = Array
-(
-)
+mshop/tag/manager/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.12
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -841,16 +652,16 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Tag\Manager\Type\Decorator\*") around the tag type
-manager.
+("\Aimeos\MShop\Tag\Manager\Type\Decorator\*") around the tag
+type manager.
 
 ```
  mshop/tag/manager/type/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Tag\Manager\Type\Decorator\Decorator2" only to the tag
-type manager.
+"\Aimeos\MShop\Tag\Manager\Type\Decorator\Decorator2" only to the
+tag type manager.
 
 See also:
 
@@ -864,14 +675,12 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/tag/manager/type/delete/ansi = 
- DELETE FROM "mshop_tag_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2015.12
+* Since: 2015.10
 
-Removes the records specified by the given IDs from the product database.
+Removes the records specified by the given IDs from the tag database.
 The records must be from the site that is configured via the
 context item.
 
@@ -897,16 +706,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/tag/manager/type/delete/mysql = 
- DELETE FROM "mshop_tag_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_tag_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -918,16 +719,10 @@ Inserts a new tag type record into the database table
 
 ```
 mshop/tag/manager/type/insert/ansi = 
- INSERT INTO "mshop_tag_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2015.12
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -935,7 +730,7 @@ using the "newid" SQL statement.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the product type item to the statement before they are
+the values from the tag type item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
 statement. The order of the columns must correspond to the
@@ -960,24 +755,8 @@ Inserts a new tag type record into the database table
 
 ```
 mshop/tag/manager/type/insert/mysql = 
- INSERT INTO "mshop_tag_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_tag_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -988,12 +767,11 @@ See also:
 Class name of the used tag type manager implementation
 
 ```
-mshop/tag/manager/type/name = Standard
+mshop/tag/manager/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2015.12
+* Since: 2015.10
 
 Each default tag type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1037,7 +815,7 @@ mshop/tag/manager/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2015.12
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1072,7 +850,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/tag/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/tag/manager/type/newid/mysql = 
 ```
 
 
@@ -1086,18 +864,12 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/type/search/ansi = 
- SELECT :columns
- FROM "mshop_tag_type" mtagty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2015.12
+* Since: 2015.10
 
-Fetches the records matched by the given criteria from the product
+Fetches the records matched by the given criteria from the tag
 database. The records must be from one of the sites that are
 configured via the context item. If the current site is part of
 a tree of sites, the SELECT statement can retrieve all records
@@ -1148,24 +920,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/tag/manager/type/search/mysql = 
- SELECT :columns
- FROM "mshop_tag_type" mtagty
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_tag_type" mtagty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1176,19 +932,11 @@ See also:
 List of manager names that can be instantiated by the tag type manager
 
 ```
-mshop/tag/manager/type/submanagers = Array
-(
-)
+mshop/tag/manager/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2015.12
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1207,22 +955,17 @@ Updates an existing tag type record in the database
 
 ```
 mshop/tag/manager/type/update/ansi = 
- UPDATE "mshop_tag_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2015.12
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the product type item to the statement before they are
+the values from the tag type item to the statement before they are
 sent to the database server. The order of the columns must
 correspond to the order in the save() method, so the
 correct values are bound to the columns.
@@ -1245,22 +988,8 @@ Updates an existing tag type record in the database
 
 ```
 mshop/tag/manager/type/update/mysql = 
- UPDATE "mshop_tag_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_tag_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1269,25 +998,21 @@ See also:
 # update
 ## ansi
 
-Updates an existing tag tag record in the database
+Updates an existing tag record in the database
 
 ```
 mshop/tag/manager/update/ansi = 
- UPDATE "mshop_tag"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2015.12
+* Since: 2025.12
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the tag tag item to the statement before they are
+the values from the tag item to the statement before they are
 sent to the database server. The order of the columns must
 correspond to the order in the save() method, so the
 correct values are bound to the columns.
@@ -1306,24 +1031,12 @@ See also:
 
 ## mysql
 
-Updates an existing tag tag record in the database
+Updates an existing tag record in the database
 
 ```
 mshop/tag/manager/update/mysql = 
- UPDATE "mshop_tag"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_tag"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

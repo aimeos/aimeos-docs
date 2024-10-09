@@ -6,19 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mplu."id"
- 	FROM "mshop_plugin" mplu
- 	:joins
- 	WHERE :cond
- 	ORDER BY mplu."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the plugin
 database. The records must be from one of the sites that are
@@ -67,30 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mplu."id"
- 	FROM "mshop_plugin" mplu
- 	:joins
- 	WHERE :cond
- 	ORDER BY mplu."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mplu."id"
- 	FROM "mshop_plugin" mplu
- 	:joins
- 	WHERE :cond
- 	ORDER BY mplu."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -102,19 +71,11 @@ See also:
 Excludes decorators added by the "common" option from the plugin manager
 
 ```
-mshop/plugin/manager/decorators/excludes = Array
-(
-)
+mshop/plugin/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -144,19 +105,11 @@ See also:
 Adds a list of globally available decorators only to the plugin manager
 
 ```
-mshop/plugin/manager/decorators/global = Array
-(
-)
+mshop/plugin/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -185,19 +138,11 @@ See also:
 Adds a list of local decorators only to the plugin manager
 
 ```
-mshop/plugin/manager/decorators/local = Array
-(
-)
+mshop/plugin/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -228,12 +173,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/plugin/manager/delete/ansi = 
- DELETE FROM "mshop_plugin"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the plugin database.
 The records must be from the site that is configured via the
@@ -261,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/plugin/manager/delete/mysql = 
- DELETE FROM "mshop_plugin"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_plugin"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -283,16 +218,10 @@ Inserts a new plugin record into the database table
 
 ```
 mshop/plugin/manager/insert/ansi = 
- INSERT INTO "mshop_plugin" ( :names
- 	"type", "label", "provider", "config", "pos",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -325,24 +254,8 @@ Inserts a new plugin record into the database table
 
 ```
 mshop/plugin/manager/insert/mysql = 
- INSERT INTO "mshop_plugin" ( :names
- 	"type", "label", "provider", "config", "pos",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_plugin" ( :names
- 	"type", "label", "provider", "config", "pos",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -353,12 +266,11 @@ See also:
 Class name of the used plugin manager implementation
 
 ```
-mshop/plugin/manager/name = Standard
+mshop/plugin/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -403,7 +315,7 @@ mshop/plugin/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -414,11 +326,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_mplu_id')
+ SELECT currval('seq_mrul_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_mplu_id".CURRVAL FROM DUAL
+ SELECT "seq_mrul_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -438,7 +350,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/plugin/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/plugin/manager/newid/mysql = 
 ```
 
 
@@ -451,12 +363,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/plugin/manager/resource = db-plugin
+mshop/plugin/manager/resource = 
 ```
 
-* Default: `db-plugin`
 * Type: string - Database connection name
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -472,16 +382,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_plugin" mplu
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the plugin
 database. The records must be from one of the sites that are
@@ -506,9 +410,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. Columns of
-sub-managers can also be used for ordering the result set but then
-no index can be used.
+replaces the ":order" placeholder.
 
 The number of returned records can be limited and can start at any
 number between the begining and the end of the result set. For that
@@ -534,24 +436,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_plugin" mplu
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_plugin" mplu
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -562,10 +448,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/plugin/manager/sitemode = 1
+mshop/plugin/manager/sitemode = 
 ```
 
-* Default: `1`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -599,19 +484,11 @@ See also:
 List of manager names that can be instantiated by the plugin manager
 
 ```
-mshop/plugin/manager/submanagers = Array
-(
-)
+mshop/plugin/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -631,19 +508,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpluty."id"
- 	FROM "mshop_plugin_type" mpluty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpluty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the plugin
 database. The records must be from one of the sites that are
@@ -692,30 +560,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpluty."id"
- 	FROM "mshop_plugin_type" mpluty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpluty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpluty."id"
- 	FROM "mshop_plugin_type" mpluty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpluty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -726,19 +572,11 @@ See also:
 Excludes decorators added by the "common" option from the plugin type manager
 
 ```
-mshop/plugin/manager/type/decorators/excludes = Array
-(
-)
+mshop/plugin/manager/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -768,19 +606,11 @@ See also:
 Adds a list of globally available decorators only to the plugin type manager
 
 ```
-mshop/plugin/manager/type/decorators/global = Array
-(
-)
+mshop/plugin/manager/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -810,19 +640,11 @@ See also:
 Adds a list of local decorators only to the plugin type manager
 
 ```
-mshop/plugin/manager/type/decorators/local = Array
-(
-)
+mshop/plugin/manager/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -853,12 +675,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/plugin/manager/type/delete/ansi = 
- DELETE FROM "mshop_plugin_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the plugin database.
 The records must be from the site that is configured via the
@@ -886,16 +706,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/plugin/manager/type/delete/mysql = 
- DELETE FROM "mshop_plugin_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_plugin_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -907,16 +719,10 @@ Inserts a new plugin type record into the database table
 
 ```
 mshop/plugin/manager/type/insert/ansi = 
- INSERT INTO "mshop_plugin_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -949,24 +755,8 @@ Inserts a new plugin type record into the database table
 
 ```
 mshop/plugin/manager/type/insert/mysql = 
- INSERT INTO "mshop_plugin_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_plugin_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -977,12 +767,11 @@ See also:
 Class name of the used plugin type manager implementation
 
 ```
-mshop/plugin/manager/type/name = Standard
+mshop/plugin/manager/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default plugin type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1026,7 +815,7 @@ mshop/plugin/manager/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1061,7 +850,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/plugin/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/plugin/manager/type/newid/mysql = 
 ```
 
 
@@ -1075,16 +864,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/type/search/ansi = 
- SELECT :columns
- FROM "mshop_plugin_type" mpluty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the plugin
 database. The records must be from one of the sites that are
@@ -1137,24 +920,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/plugin/manager/type/search/mysql = 
- SELECT :columns
- FROM "mshop_plugin_type" mpluty
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_plugin_type" mpluty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1165,19 +932,11 @@ See also:
 List of manager names that can be instantiated by the plugin type manager
 
 ```
-mshop/plugin/manager/type/submanagers = Array
-(
-)
+mshop/plugin/manager/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1196,15 +955,10 @@ Updates an existing plugin type record in the database
 
 ```
 mshop/plugin/manager/type/update/ansi = 
- UPDATE "mshop_plugin_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1234,22 +988,8 @@ Updates an existing plugin type record in the database
 
 ```
 mshop/plugin/manager/type/update/mysql = 
- UPDATE "mshop_plugin_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_plugin_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1262,15 +1002,10 @@ Updates an existing plugin record in the database
 
 ```
 mshop/plugin/manager/update/ansi = 
- UPDATE "mshop_plugin"
- SET :names
- 	"type" = ?, "label" = ?, "provider" = ?, "config" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1300,22 +1035,8 @@ Updates an existing plugin record in the database
 
 ```
 mshop/plugin/manager/update/mysql = 
- UPDATE "mshop_plugin"
- SET :names
- 	"type" = ?, "label" = ?, "provider" = ?, "config" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_plugin"
- SET :names
- 	"type" = ?, "label" = ?, "provider" = ?, "config" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

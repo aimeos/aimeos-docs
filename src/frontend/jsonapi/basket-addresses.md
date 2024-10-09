@@ -149,7 +149,12 @@ The response will then contain an additional "relationships" section in the bask
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {
@@ -376,7 +381,12 @@ The response to this request would be similar to this:
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {

@@ -1,20 +1,4 @@
 
-# cleanup
-
-```
-madmin/cache/manager/cleanup = DELETE FROM "madmin_cache" WHERE "expire" < ?
-```
-
-
-
-# clear
-
-```
-madmin/cache/manager/clear = DELETE FROM "madmin_cache"
-```
-
-
-
 # count
 ## ansi
 
@@ -75,17 +59,9 @@ See also:
 Excludes decorators added by the "common" option from the cache manager
 
 ```
-madmin/cache/manager/decorators/excludes = Array
-(
-)
+madmin/cache/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -117,17 +93,9 @@ See also:
 Adds a list of globally available decorators only to the cache manager
 
 ```
-madmin/cache/manager/decorators/global = Array
-(
-)
+madmin/cache/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -157,17 +125,9 @@ See also:
 Adds a list of local decorators only to the cache manager
 
 ```
-madmin/cache/manager/decorators/local = Array
-(
-)
+madmin/cache/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -193,44 +153,14 @@ See also:
 * madmin/cache/manager/decorators/excludes
 * madmin/cache/manager/decorators/global
 
-# delete
-
-```
-madmin/cache/manager/delete = DELETE FROM "madmin_cache" WHERE "id" IN (?)
-```
-
-
-
-# deletebytag
-
-```
-madmin/cache/manager/deletebytag = 
- DELETE FROM "madmin_cache" WHERE "id" IN (
- 	SELECT "tid" FROM "madmin_cache_tag" WHERE "tname" IN (?)
- )
-```
-
-
-
-# get
-
-```
-madmin/cache/manager/get = 
- SELECT "id", "value", "expire" FROM "madmin_cache"
- WHERE ( "expire" >= ? OR "expire" IS NULL ) AND "id" IN (?)
-```
-
-
-
 # name
 
 Class name of the used cache manager implementation
 
 ```
-madmin/cache/manager/name = Standard
+madmin/cache/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -272,10 +202,9 @@ or numbers. Avoid chamel case names like "MyManager"!
 Name of the database connection resource to use
 
 ```
-madmin/cache/manager/resource = db-cache
+madmin/cache/manager/resource = 
 ```
 
-* Default: `db-cache`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -292,11 +221,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 madmin/cache/manager/search/ansi = 
- SELECT "id", "value", "expire"
- FROM "madmin_cache"
- WHERE :cond
- ORDER BY "id"
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -338,40 +262,14 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 madmin/cache/manager/search/mysql = 
- SELECT "id", "value", "expire"
- FROM "madmin_cache"
- WHERE :cond
- ORDER BY "id"
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT "id", "value", "expire"
- FROM "madmin_cache"
- WHERE :cond
- ORDER BY "id"
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
 * madmin/cache/manager/search/ansi
 
 # set
-
-```
-madmin/cache/manager/set = 
- INSERT INTO "madmin_cache" (
- 	"id", "expire", "value"
- ) VALUES (
- 	?, ?, ?
- )
-```
-
-
-
 ## ansi
 
 Inserts the cache entry into the database
@@ -423,18 +321,6 @@ See also:
 * madmin/cache/manager/set/ansi
 
 # settag
-
-```
-madmin/cache/manager/settag = 
- INSERT INTO "madmin_cache_tag" (
- 	"tid", "tname"
- ) VALUES (
- 	?, ?
- )
-```
-
-
-
 ## ansi
 
 Inserts a new tag to an existing cache entry
@@ -490,17 +376,9 @@ See also:
 List of manager names that can be instantiated by the cache manager
 
 ```
-madmin/cache/manager/submanagers = Array
-(
-)
+madmin/cache/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

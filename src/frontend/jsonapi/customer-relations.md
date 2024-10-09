@@ -11,6 +11,11 @@ In addition to the URLs for managing relations, the customer response can also i
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -28,7 +33,7 @@ In addition to the URLs for managing relations, the customer response can also i
         "type": "customer",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2",
+                "href": "http://localhost:8000/jsonapi/customer?id=2",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -52,7 +57,7 @@ In addition to the URLs for managing relations, the customer response can also i
                     },
                     "links": {
                         "self": {
-                            "href": "http:\/\/localhost:8000\/jsonapi\/product?id=2&related=relationships&relatedid=1",
+                            "href": "http://localhost:8000/jsonapi/product?id=2&related=relationships&relatedid=1",
                             "allow": ["DELETE","PATCH"]
                         }
                     }
@@ -147,6 +152,11 @@ The response will look similar to this one if at least one relationship is avail
         "total": 2,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "pKauLfPXgUoMbsxtrRwRi43BsfVHYgjzBtQqPQXI"
@@ -161,7 +171,7 @@ The response will look similar to this one if at least one relationship is avail
         "type": "customer.lists",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=relationships&relatedid=1&include=product",
+                "href": "http://localhost:8000/jsonapi/customer?id=2&related=relationships&relatedid=1&include=product",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },
@@ -190,6 +200,11 @@ To add one or more relations to an authenticated customer, use a POST request in
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."

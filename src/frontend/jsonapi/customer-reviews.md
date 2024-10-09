@@ -11,6 +11,11 @@ The customer response returns the URLs for managing reviews:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -66,6 +71,11 @@ When at least one review is available, the response will be similar to this one:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -80,7 +90,7 @@ When at least one review is available, the response will be similar to this one:
         "type": "customer.review",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/customer?id=2&related=review&relatedid=1",
+                "href": "http://localhost:8000/jsonapi/customer?id=2&related=review&relatedid=1",
                 "allow": ["DELETE","GET","PATCH"]
             }
         },

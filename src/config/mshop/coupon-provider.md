@@ -4,17 +4,9 @@
 Adds a list of decorators to all coupon provider objects automatcally
 
 ```
-mshop/coupon/provider/decorators = Array
-(
-)
+mshop/coupon/provider/decorators = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.05
 

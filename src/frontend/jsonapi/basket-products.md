@@ -128,7 +128,12 @@ Then the response will contain an additional "relationships" entry in the basket
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {
@@ -177,7 +182,7 @@ Then the response will contain an additional "relationships" entry in the basket
             "order.product.productid": "7",
             "order.product.prodcode": "demo-article",
             "order.product.name": "Demo article",
-            "order.product.mediaurl": "http:\/\/demo.aimeos.org\/media\/1.jpg",
+            "order.product.mediaurl": "http://demo.aimeos.org/media/1.jpg",
             "order.product.position": null,
             "order.product.price": "100.00",
             "order.product.costs": "5.00",
@@ -842,7 +847,12 @@ The PATCH requests will change primarily the product data in the basket. Dependi
     "meta": {
         "total": 1,
         "prefix": "null",
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {
@@ -891,7 +901,7 @@ The PATCH requests will change primarily the product data in the basket. Dependi
             "order.product.productid": "7",
             "order.product.prodcode": "demo-article",
             "order.product.name": "Demo article",
-            "order.product.mediaurl": "http:\/\/demo.aimeos.org\/media\/1.jpg",
+            "order.product.mediaurl": "http://demo.aimeos.org/media/1.jpg",
             "order.product.position": null,
             "order.product.price": "100.00",
             "order.product.costs": "5.00",

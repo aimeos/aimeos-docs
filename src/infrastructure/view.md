@@ -161,7 +161,7 @@ Provides access to an e-mail message that can be filled with a message body.
 <?php $message = $this->mail(); ?>
 ```
 
-The available methods in the message object are available in the [Aimeos\Base\Mail\Message\Iface](https://github.com/aimeos/aimeos-core/blob/master/src/Mail/Message/Iface.php).
+The available methods in the message object are available in the [Aimeos\Base\Mail\Message\Iface](https://github.com/aimeos/aimeos-base/blob/master/src/Mail/Message/Iface.php).
 
 # number
 

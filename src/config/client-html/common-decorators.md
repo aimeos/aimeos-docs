@@ -6,8 +6,8 @@ Configures the list of decorators applied to all html clients
 ```
 client/html/common/decorators/default = Array
 (
-    [0] => Exceptions
-    [1] => Context
+    [Exceptions] => Exceptions
+    [Context] => Context
 )
 ```
 

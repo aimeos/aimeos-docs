@@ -328,6 +328,7 @@ controller/jobs/order/service/delivery/domains = Array
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
+    [order/status] => order/status
 )
 ```
 
@@ -339,6 +340,7 @@ Array
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
+    [order/status] => order/status
 )
 ```
 * Type: array - Referenced domain names
@@ -811,6 +813,7 @@ controller/jobs/order/service/transfer/domains = Array
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
+    [order/status] => order/status
 )
 ```
 
@@ -822,6 +825,7 @@ Array
     [order/coupon] => order/coupon
     [order/product] => order/product
     [order/service] => order/service
+    [order/status] => order/status
 )
 ```
 * Type: array - Referenced domain names

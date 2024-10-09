@@ -136,7 +136,7 @@ $currencyid = $locale->getCurrencyId();
 $site = $locale->getSite();
 ```
 
-More information about the methods is available in the [locale interface](https://github.com/aimeos/aimeos-base/blob/master/src/Locale/Item/Iface.php).
+More information about the methods is available in the [locale interface](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Locale/Item/Iface.php).
 
 # Logger
 
@@ -148,7 +148,7 @@ $logger = $this->context()->logger()
     ->log( 'some message' );
 ```
 
-More information about the methods is available in the [logger interface](https://github.com/aimeos/aimeos-base/blob/master/src/Logger/Iface.php). The constants for the second parameter are listed in the [logger base class](https://github.com/aimeos/aimeos-base/blob/master/src/Logger/Base.php).
+More information about the methods is available in the [logger interface](https://github.com/aimeos/aimeos-base/blob/master/src/Logger/Iface.php).
 
 # Mail
 

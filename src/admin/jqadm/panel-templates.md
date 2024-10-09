@@ -572,7 +572,7 @@ vue block
 : In the second `<div>`, the Vue applcation is initialized because it contains the `vue-block` class. The Aimeos JS creates a Vue instance for each HTML node that contains the class. You can add arbitrary data to the Vue instance in the `data-data="..."` attribute, which must contain a valid Javascript object (`{}`).
 
 !!! warning
-    There can be more than one `vue-block` class for different columns or sub-parts but it's not allowed to have nested Vue instances. Use [Vue components](https://vuejs.org/v2/guide/components.html) instead and pass required data as props.
+    There can be more than one `vue-block` class for different columns or sub-parts but it's not allowed to have nested Vue instances. Use [Vue components](https://vuejs.org/guide/essentials/component-basics.html) instead and pass required data as props.
 
 The example for the basic tab also contains the most often used input types:
 
@@ -588,10 +588,8 @@ select (Vue component)
 date picker
 : In case of input fields with type `datetime-local`, you can also use the *flatpickr* Vue component because e.g. Safari doesn't support date/time fields at all and doesn't offer a calendar widget
 
-There are also [Vue.js components](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/themes/vue-components.js) available for:
+There are also [Vue.js components](https://github.com/aimeos/ai-admin-jqadm/blob/master/js/components/) available for e.g.:
 
-* auto completes
-* combo boxes
 * config tables
 * HTML editors
 * property tables
@@ -604,4 +602,4 @@ Furthermore, the JQAdm code contains complete components for manging:
 * [prices](https://github.com/aimeos/ai-admin-jqadm/blob/master/templates/admin/jqadm/product/item-price.php)
 * [texts](https://github.com/aimeos/ai-admin-jqadm/blob/master/templates/admin/jqadm/product/item-text.php)
 
-They consist of [Vue.js code](https://github.com/aimeos/ai-admin-jqadm/blob/master/admin/jqadm/themes/admin-aux.js) and HTML inline templates.
+They consist of [Vue.js code](https://github.com/aimeos/ai-admin-jqadm/tree/master/js/apps) and HTML templates.

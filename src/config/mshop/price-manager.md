@@ -6,20 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpri."id"
- 	FROM "mshop_price" mpri
- 	:joins
- 	WHERE :cond
- 	GROUP BY mpri."id"
- 	ORDER BY mpri."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -68,32 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpri."id"
- 	FROM "mshop_price" mpri
- 	:joins
- 	WHERE :cond
- 	GROUP BY mpri."id"
- 	ORDER BY mpri."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpri."id"
- 	FROM "mshop_price" mpri
- 	:joins
- 	WHERE :cond
- 	GROUP BY mpri."id"
- 	ORDER BY mpri."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -105,19 +71,11 @@ See also:
 Excludes decorators added by the "common" option from the price manager
 
 ```
-mshop/price/manager/decorators/excludes = Array
-(
-)
+mshop/price/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -147,19 +105,11 @@ See also:
 Adds a list of globally available decorators only to the price manager
 
 ```
-mshop/price/manager/decorators/global = Array
-(
-)
+mshop/price/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -188,19 +138,11 @@ See also:
 Adds a list of local decorators only to the price manager
 
 ```
-mshop/price/manager/decorators/local = Array
-(
-)
+mshop/price/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -231,12 +173,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/delete/ansi = 
- DELETE FROM "mshop_price"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the price database.
 The records must be from the site that is configured via the
@@ -264,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/delete/mysql = 
- DELETE FROM "mshop_price"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_price"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -286,17 +218,10 @@ Inserts a new price record into the database table
 
 ```
 mshop/price/manager/insert/ansi = 
- INSERT INTO "mshop_price" ( :names
- 	"type", "currencyid", "domain", "label",
- 	"quantity", "value", "costs", "rebate", "taxrate",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -329,114 +254,24 @@ Inserts a new price record into the database table
 
 ```
 mshop/price/manager/insert/mysql = 
- INSERT INTO "mshop_price" ( :names
- 	"type", "currencyid", "domain", "label",
- 	"quantity", "value", "costs", "rebate", "taxrate",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_price" ( :names
- 	"type", "currencyid", "domain", "label",
- 	"quantity", "value", "costs", "rebate", "taxrate",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
 * mshop/price/manager/insert/ansi
 
 # lists
-## aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/price/manager/lists/aggregate/ansi = 
-```
-
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/price/manager/lists/insert/ansi
-* mshop/price/manager/lists/update/ansi
-* mshop/price/manager/lists/newid/ansi
-* mshop/price/manager/lists/delete/ansi
-* mshop/price/manager/lists/search/ansi
-* mshop/price/manager/lists/count/ansi
-
-## aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/price/manager/lists/aggregate/mysql = 
-```
-
-
-See also:
-
-* mshop/price/manager/lists/aggregate/ansi
-
 ## count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprili."id"
- 	FROM "mshop_price_list" mprili
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprili."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -478,7 +313,6 @@ See also:
 * mshop/price/manager/lists/newid/ansi
 * mshop/price/manager/lists/delete/ansi
 * mshop/price/manager/lists/search/ansi
-* mshop/price/manager/lists/aggregate/ansi
 
 ## count/mysql
 
@@ -486,30 +320,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprili."id"
- 	FROM "mshop_price_list" mprili
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprili."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprili."id"
- 	FROM "mshop_price_list" mprili
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprili."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -520,19 +332,11 @@ See also:
 Excludes decorators added by the "common" option from the price list manager
 
 ```
-mshop/price/manager/lists/decorators/excludes = Array
-(
-)
+mshop/price/manager/lists/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -562,19 +366,11 @@ See also:
 Adds a list of globally available decorators only to the price list manager
 
 ```
-mshop/price/manager/lists/decorators/global = Array
-(
-)
+mshop/price/manager/lists/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -604,19 +400,11 @@ See also:
 Adds a list of local decorators only to the price list manager
 
 ```
-mshop/price/manager/lists/decorators/local = Array
-(
-)
+mshop/price/manager/lists/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -647,12 +435,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/lists/delete/ansi = 
- DELETE FROM "mshop_price_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the price database.
 The records must be from the site that is configured via the
@@ -673,7 +459,6 @@ See also:
 * mshop/price/manager/lists/newid/ansi
 * mshop/price/manager/lists/search/ansi
 * mshop/price/manager/lists/count/ansi
-* mshop/price/manager/lists/aggregate/ansi
 
 ## delete/mysql
 
@@ -681,16 +466,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/lists/delete/mysql = 
- DELETE FROM "mshop_price_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_price_list"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -702,16 +479,10 @@ Inserts a new price list record into the database table
 
 ```
 mshop/price/manager/lists/insert/ansi = 
- INSERT INTO "mshop_price_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -737,7 +508,6 @@ See also:
 * mshop/price/manager/lists/delete/ansi
 * mshop/price/manager/lists/search/ansi
 * mshop/price/manager/lists/count/ansi
-* mshop/price/manager/lists/aggregate/ansi
 
 ## insert/mysql
 
@@ -745,24 +515,8 @@ Inserts a new price list record into the database table
 
 ```
 mshop/price/manager/lists/insert/mysql = 
- INSERT INTO "mshop_price_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_price_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -773,12 +527,11 @@ See also:
 Class name of the used price list manager implementation
 
 ```
-mshop/price/manager/lists/name = Standard
+mshop/price/manager/lists/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default price list manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -822,7 +575,7 @@ mshop/price/manager/lists/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -851,14 +604,13 @@ See also:
 * mshop/price/manager/lists/delete/ansi
 * mshop/price/manager/lists/search/ansi
 * mshop/price/manager/lists/count/ansi
-* mshop/price/manager/lists/aggregate/ansi
 
 ## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/price/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/price/manager/lists/newid/mysql = 
 ```
 
 
@@ -872,16 +624,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/search/ansi = 
- SELECT :columns
- FROM "mshop_price_list" mprili
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -927,7 +673,6 @@ See also:
 * mshop/price/manager/lists/newid/ansi
 * mshop/price/manager/lists/delete/ansi
 * mshop/price/manager/lists/count/ansi
-* mshop/price/manager/lists/aggregate/ansi
 
 ## search/mysql
 
@@ -935,24 +680,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/search/mysql = 
- SELECT :columns
- FROM "mshop_price_list" mprili
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_price_list" mprili
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -963,19 +692,11 @@ See also:
 List of manager names that can be instantiated by the price list manager
 
 ```
-mshop/price/manager/lists/submanagers = Array
-(
-)
+mshop/price/manager/lists/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -994,19 +715,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprility."id"
- 	FROM "mshop_price_list_type" mprility
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprility."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -1055,30 +767,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprility."id"
- 	FROM "mshop_price_list_type" mprility
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprility."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprility."id"
- 	FROM "mshop_price_list_type" mprility
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprility."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1089,19 +779,11 @@ See also:
 Excludes decorators added by the "common" option from the price list type manager
 
 ```
-mshop/price/manager/lists/type/decorators/excludes = Array
-(
-)
+mshop/price/manager/lists/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1131,19 +813,11 @@ See also:
 Adds a list of globally available decorators only to the price list type manager
 
 ```
-mshop/price/manager/lists/type/decorators/global = Array
-(
-)
+mshop/price/manager/lists/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1151,8 +825,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the price list type
-manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the price list
+type manager.
 
 ```
  mshop/price/manager/lists/type/decorators/global = array( 'decorator1' )
@@ -1173,19 +847,11 @@ See also:
 Adds a list of local decorators only to the price list type manager
 
 ```
-mshop/price/manager/lists/type/decorators/local = Array
-(
-)
+mshop/price/manager/lists/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1201,8 +867,8 @@ price list type manager.
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Price\Manager\Lists\Type\Decorator\Decorator2" only to
-the price list type manager.
+"\Aimeos\MShop\Price\Manager\Lists\Type\Decorator\Decorator2" only
+to the price list type manager.
 
 See also:
 
@@ -1216,12 +882,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/lists/type/delete/ansi = 
- DELETE FROM "mshop_price_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the price database.
 The records must be from the site that is configured via the
@@ -1249,16 +913,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/lists/type/delete/mysql = 
- DELETE FROM "mshop_price_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_price_list_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1270,16 +926,10 @@ Inserts a new price list type record into the database table
 
 ```
 mshop/price/manager/lists/type/insert/ansi = 
- INSERT INTO "mshop_price_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1312,24 +962,8 @@ Inserts a new price list type record into the database table
 
 ```
 mshop/price/manager/lists/type/insert/mysql = 
- INSERT INTO "mshop_price_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_price_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1340,12 +974,11 @@ See also:
 Class name of the used price list type manager implementation
 
 ```
-mshop/price/manager/lists/type/name = Standard
+mshop/price/manager/lists/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default price list type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1389,7 +1022,7 @@ mshop/price/manager/lists/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1424,7 +1057,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/price/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/price/manager/lists/type/newid/mysql = 
 ```
 
 
@@ -1438,16 +1071,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/type/search/ansi = 
- SELECT :columns
- 	FROM "mshop_price_list_type" mprility
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -1500,24 +1127,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/lists/type/search/mysql = 
- SELECT :columns
- FROM "mshop_price_list_type" mprility
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- 	FROM "mshop_price_list_type" mprility
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1528,19 +1139,11 @@ See also:
 List of manager names that can be instantiated by the price list type manager
 
 ```
-mshop/price/manager/lists/type/submanagers = Array
-(
-)
+mshop/price/manager/lists/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1559,15 +1162,10 @@ Updates an existing price list type record in the database
 
 ```
 mshop/price/manager/lists/type/update/ansi = 
- UPDATE "mshop_price_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1597,22 +1195,8 @@ Updates an existing price list type record in the database
 
 ```
 mshop/price/manager/lists/type/update/mysql = 
- UPDATE "mshop_price_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_price_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1624,15 +1208,10 @@ Updates an existing price list record in the database
 
 ```
 mshop/price/manager/lists/update/ansi = 
- UPDATE "mshop_price_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1655,7 +1234,6 @@ See also:
 * mshop/price/manager/lists/delete/ansi
 * mshop/price/manager/lists/search/ansi
 * mshop/price/manager/lists/count/ansi
-* mshop/price/manager/lists/aggregate/ansi
 
 ## update/mysql
 
@@ -1663,22 +1241,8 @@ Updates an existing price list record in the database
 
 ```
 mshop/price/manager/lists/update/mysql = 
- UPDATE "mshop_price_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_price_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1689,12 +1253,11 @@ See also:
 Class name of the used price manager implementation
 
 ```
-mshop/price/manager/name = Standard
+mshop/price/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1739,7 +1302,7 @@ mshop/price/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1774,7 +1337,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/price/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/price/manager/newid/mysql = 
 ```
 
 
@@ -1789,15 +1352,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpripr."id"
- 	FROM "mshop_price_property" mpripr
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpripr."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -1850,30 +1404,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpripr."id"
- 	FROM "mshop_price_property" mpripr
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpripr."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpripr."id"
- 	FROM "mshop_price_property" mpripr
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpripr."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1884,17 +1416,9 @@ See also:
 Excludes decorators added by the "common" option from the price property manager
 
 ```
-mshop/price/manager/property/decorators/excludes = Array
-(
-)
+mshop/price/manager/property/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1926,17 +1450,9 @@ See also:
 Adds a list of globally available decorators only to the price property manager
 
 ```
-mshop/price/manager/property/decorators/global = Array
-(
-)
+mshop/price/manager/property/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1968,17 +1484,9 @@ See also:
 Adds a list of local decorators only to the price property manager
 
 ```
-mshop/price/manager/property/decorators/local = Array
-(
-)
+mshop/price/manager/property/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -1996,8 +1504,8 @@ property manager.
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Price\Manager\Property\Decorator\Decorator2" only to the
-price property manager.
+"\Aimeos\MShop\Price\Manager\Property\Decorator\Decorator2" only to
+the price property manager.
 
 See also:
 
@@ -2011,8 +1519,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/property/delete/ansi = 
- DELETE FROM "mshop_price_property"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
@@ -2044,16 +1550,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/property/delete/mysql = 
- DELETE FROM "mshop_price_property"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_price_property"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -2065,12 +1563,6 @@ Inserts a new price property record into the database table
 
 ```
 mshop/price/manager/property/insert/ansi = 
- INSERT INTO "mshop_price_property" ( :names
- 	"parentid", "key", "type", "langid", "value",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -2107,24 +1599,8 @@ Inserts a new price property record into the database table
 
 ```
 mshop/price/manager/property/insert/mysql = 
- INSERT INTO "mshop_price_property" ( :names
- 	"parentid", "key", "type", "langid", "value",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_price_property" ( :names
- 	"parentid", "key", "type", "langid", "value",
- 	"mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -2135,10 +1611,9 @@ See also:
 Class name of the used price property manager implementation
 
 ```
-mshop/price/manager/property/name = Standard
+mshop/price/manager/property/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2195,11 +1670,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_mpripr_id')
+ SELECT currval('seq_pripr_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_mpripr_id".CURRVAL FROM DUAL
+ SELECT "seq_pripr_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -2219,7 +1694,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/price/manager/property/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/price/manager/property/newid/mysql = 
 ```
 
 
@@ -2233,12 +1708,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/search/ansi = 
- SELECT :columns
- FROM "mshop_price_property" mpripr
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -2295,24 +1764,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/search/mysql = 
- SELECT :columns
- FROM "mshop_price_property" mpripr
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_price_property" mpripr
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2323,17 +1776,9 @@ See also:
 List of manager names that can be instantiated by the price property manager
 
 ```
-mshop/price/manager/property/submanagers = Array
-(
-)
+mshop/price/manager/property/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2354,15 +1799,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpriprty."id"
- 	FROM "mshop_price_property_type" mpriprty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpriprty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -2415,30 +1851,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpriprty."id"
- 	FROM "mshop_price_property_type" mpriprty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpriprty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mpriprty."id"
- 	FROM "mshop_price_property_type" mpriprty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mpriprty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -2449,17 +1863,9 @@ See also:
 Excludes decorators added by the "common" option from the price property type manager
 
 ```
-mshop/price/manager/property/type/decorators/excludes = Array
-(
-)
+mshop/price/manager/property/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2491,17 +1897,9 @@ See also:
 Adds a list of globally available decorators only to the price property type manager
 
 ```
-mshop/price/manager/property/type/decorators/global = Array
-(
-)
+mshop/price/manager/property/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2511,8 +1909,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the price property
-type manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the price
+property type manager.
 
 ```
  mshop/price/manager/property/type/decorators/global = array( 'decorator1' )
@@ -2533,17 +1931,9 @@ See also:
 Adds a list of local decorators only to the price property type manager
 
 ```
-mshop/price/manager/property/type/decorators/local = Array
-(
-)
+mshop/price/manager/property/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2561,8 +1951,8 @@ price property type manager.
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Price\Manager\Property\Type\Decorator\Decorator2" only
-to the price property type manager.
+"\Aimeos\MShop\Price\Manager\Property\Type\Decorator\Decorator2" only to
+the price property type manager.
 
 See also:
 
@@ -2576,8 +1966,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/property/type/delete/ansi = 
- DELETE FROM "mshop_price_property_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
@@ -2609,16 +1997,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/property/type/delete/mysql = 
- DELETE FROM "mshop_price_property_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_price_property_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -2630,12 +2010,6 @@ Inserts a new price property type record into the database table
 
 ```
 mshop/price/manager/property/type/insert/ansi = 
- INSERT INTO "mshop_price_property_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -2672,24 +2046,8 @@ Inserts a new price property type record into the database table
 
 ```
 mshop/price/manager/property/type/insert/mysql = 
- INSERT INTO "mshop_price_property_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_price_property_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -2700,10 +2058,9 @@ See also:
 Class name of the used price property type manager implementation
 
 ```
-mshop/price/manager/property/type/name = Standard
+mshop/price/manager/property/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.01
 
@@ -2784,7 +2141,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/price/manager/property/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/price/manager/property/type/newid/mysql = 
 ```
 
 
@@ -2798,12 +2155,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/type/search/ansi = 
- SELECT :columns
- FROM "mshop_price_property_type" mpriprty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -2860,24 +2211,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/property/type/search/mysql = 
- SELECT :columns
- FROM "mshop_price_property_type" mpriprty
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_price_property_type" mpriprty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2888,17 +2223,9 @@ See also:
 List of manager names that can be instantiated by the price property type manager
 
 ```
-mshop/price/manager/property/type/submanagers = Array
-(
-)
+mshop/price/manager/property/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2919,11 +2246,6 @@ Updates an existing price property type record in the database
 
 ```
 mshop/price/manager/property/type/update/ansi = 
- UPDATE "mshop_price_property_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2957,22 +2279,8 @@ Updates an existing price property type record in the database
 
 ```
 mshop/price/manager/property/type/update/mysql = 
- UPDATE "mshop_price_property_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_price_property_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -2984,11 +2292,6 @@ Updates an existing price property record in the database
 
 ```
 mshop/price/manager/property/update/ansi = 
- UPDATE "mshop_price_property"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
- 	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -3022,22 +2325,8 @@ Updates an existing price property record in the database
 
 ```
 mshop/price/manager/property/update/mysql = 
- UPDATE "mshop_price_property"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
- 	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_price_property"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "langid" = ?,
- 	"value" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -3048,16 +2337,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/price/manager/resource = db-price
+mshop/price/manager/resource = 
 ```
 
-* Default: `db-price`
 * Type: string - Database connection name
-* Since: 2023.04
-* Since: 2023.04
-* Since: 2023.04
-* Since: 2023.04
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -3073,17 +2356,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_price" mpri
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -3136,26 +2412,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_price" mpri
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_price" mpri
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -3166,10 +2424,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/price/manager/sitemode = 3
+mshop/price/manager/sitemode = 
 ```
 
-* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -3203,19 +2460,11 @@ See also:
 List of manager names that can be instantiated by the price manager
 
 ```
-mshop/price/manager/submanagers = Array
-(
-)
+mshop/price/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -3235,19 +2484,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprity."id"
- 	FROM "mshop_price_type" mprity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -3296,30 +2536,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/price/manager/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprity."id"
- 	FROM "mshop_price_type" mprity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mprity."id"
- 	FROM "mshop_price_type" mprity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mprity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -3330,19 +2548,11 @@ See also:
 Excludes decorators added by the "common" option from the price type manager
 
 ```
-mshop/price/manager/type/decorators/excludes = Array
-(
-)
+mshop/price/manager/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -3372,19 +2582,11 @@ See also:
 Adds a list of globally available decorators only to the price type manager
 
 ```
-mshop/price/manager/type/decorators/global = Array
-(
-)
+mshop/price/manager/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -3414,19 +2616,11 @@ See also:
 Adds a list of local decorators only to the price type manager
 
 ```
-mshop/price/manager/type/decorators/local = Array
-(
-)
+mshop/price/manager/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -3434,8 +2628,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Price\Manager\Type\Decorator\*") around the price type
-manager.
+("\Aimeos\MShop\Price\Manager\Type\Decorator\*") around the price
+type manager.
 
 ```
  mshop/price/manager/type/decorators/local = array( 'decorator2' )
@@ -3457,12 +2651,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/type/delete/ansi = 
- DELETE FROM "mshop_price_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the price database.
 The records must be from the site that is configured via the
@@ -3490,16 +2682,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/price/manager/type/delete/mysql = 
- DELETE FROM "mshop_price_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_price_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -3511,16 +2695,10 @@ Inserts a new price type record into the database table
 
 ```
 mshop/price/manager/type/insert/ansi = 
- INSERT INTO "mshop_price_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -3553,24 +2731,8 @@ Inserts a new price type record into the database table
 
 ```
 mshop/price/manager/type/insert/mysql = 
- INSERT INTO "mshop_price_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_price_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -3581,12 +2743,11 @@ See also:
 Class name of the used price type manager implementation
 
 ```
-mshop/price/manager/type/name = Standard
+mshop/price/manager/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default price type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -3630,7 +2791,7 @@ mshop/price/manager/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -3665,7 +2826,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/price/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/price/manager/type/newid/mysql = 
 ```
 
 
@@ -3679,16 +2840,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/type/search/ansi = 
- SELECT :columns
- FROM "mshop_price_type" mprity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the price
 database. The records must be from one of the sites that are
@@ -3741,24 +2896,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/price/manager/type/search/mysql = 
- SELECT :columns
- FROM "mshop_price_type" mprity
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_price_type" mprity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -3769,19 +2908,11 @@ See also:
 List of manager names that can be instantiated by the price type manager
 
 ```
-mshop/price/manager/type/submanagers = Array
-(
-)
+mshop/price/manager/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -3800,15 +2931,10 @@ Updates an existing price type record in the database
 
 ```
 mshop/price/manager/type/update/ansi = 
- UPDATE "mshop_price_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -3838,22 +2964,8 @@ Updates an existing price type record in the database
 
 ```
 mshop/price/manager/type/update/mysql = 
- UPDATE "mshop_price_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_price_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -3866,16 +2978,10 @@ Updates an existing price record in the database
 
 ```
 mshop/price/manager/update/ansi = 
- UPDATE "mshop_price"
- SET :names
- 	"type" = ?, "currencyid" = ?, "domain" = ?, "label" = ?,
- 	"quantity" = ?, "value" = ?, "costs" = ?, "rebate" = ?,
- 	"taxrate" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -3905,24 +3011,8 @@ Updates an existing price record in the database
 
 ```
 mshop/price/manager/update/mysql = 
- UPDATE "mshop_price"
- SET :names
- 	"type" = ?, "currencyid" = ?, "domain" = ?, "label" = ?,
- 	"quantity" = ?, "value" = ?, "costs" = ?, "rebate" = ?,
- 	"taxrate" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_price"
- SET :names
- 	"type" = ?, "currencyid" = ?, "domain" = ?, "label" = ?,
- 	"quantity" = ?, "value" = ?, "costs" = ?, "rebate" = ?,
- 	"taxrate" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

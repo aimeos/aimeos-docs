@@ -6,19 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/group/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mgro."id"
- 	FROM "mshop_group" mgro
- 	:joins
- 	WHERE :cond
- 	ORDER BY mgro."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2015.08
+* Since: 2024.04
 
 Counts all records matched by the given criteria from the group
 database. The records must be from one of the sites that are
@@ -67,30 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/group/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mgro."id"
- 	FROM "mshop_group" mgro
- 	:joins
- 	WHERE :cond
- 	ORDER BY mgro."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mgro."id"
- 	FROM "mshop_group" mgro
- 	:joins
- 	WHERE :cond
- 	ORDER BY mgro."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -102,19 +71,11 @@ See also:
 Excludes decorators added by the "common" option from the group manager
 
 ```
-mshop/group/manager/decorators/excludes = Array
-(
-)
+mshop/group/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.08
+* Since: 2024.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -144,19 +105,11 @@ See also:
 Adds a list of globally available decorators only to the group manager
 
 ```
-mshop/group/manager/decorators/global = Array
-(
-)
+mshop/group/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.08
+* Since: 2024.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -172,7 +125,7 @@ This option allows you to wrap global decorators
 
 This would add the decorator named "decorator1" defined by
 "\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the group
-group manager.
+manager.
 
 See also:
 
@@ -185,19 +138,11 @@ See also:
 Adds a list of local decorators only to the group manager
 
 ```
-mshop/group/manager/decorators/local = Array
-(
-)
+mshop/group/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2015.08
+* Since: 2024.04
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -205,16 +150,15 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Group\Manager\Decorator\*") around the group
-group manager.
+("\Aimeos\MShop\Group\Manager\Decorator\*") around the group manager.
 
 ```
  mshop/group/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Group\Manager\Decorator\Decorator2" only to the
-group manager.
+"\Aimeos\MShop\Group\Manager\Decorator\Decorator2" only to the group
+manager.
 
 See also:
 
@@ -229,15 +173,13 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/group/manager/delete/ansi = 
- DELETE FROM "mshop_group"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2015.08
+* Since: 2024.04
 
-Removes the records specified by the given IDs from the group
-database. The records must be from the site that is configured via the
+Removes the records specified by the given IDs from the group database.
+The records must be from the site that is configured via the
 context item.
 
 The ":cond" placeholder is replaced by the name of the ID column and
@@ -262,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/group/manager/delete/mysql = 
- DELETE FROM "mshop_group"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_group"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -284,15 +218,10 @@ Inserts a new group record into the database table
 
 ```
 mshop/group/manager/insert/ansi = 
- INSERT INTO "mshop_group" ( :names
- 	"code", "label", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2015.08
+* Since: 2024.04
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -300,11 +229,11 @@ using the "newid" SQL statement.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the group item to the statement before
-they are sent to the database server. The number of question
-marks must be the same as the number of columns listed in the
-INSERT statement. The order of the columns must correspond to
-the order in the save() method, so the correct values are
+the values from the group item to the statement before they are
+sent to the database server. The number of question marks must
+be the same as the number of columns listed in the INSERT
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
 bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -325,22 +254,8 @@ Inserts a new group record into the database table
 
 ```
 mshop/group/manager/insert/mysql = 
- INSERT INTO "mshop_group" ( :names
- 	"code", "label", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_group" ( :names
- 	"code", "label", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -351,17 +266,16 @@ See also:
 Class name of the used group manager implementation
 
 ```
-mshop/group/manager/name = Standard
+mshop/group/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2015.08
+* Since: 2024.04
 
-Each default group manager can be replaced by an alternative
-imlementation. To use this implementation, you have to set the last
-part of the class name as configuration value so the manager factory
-knows which class it has to instantiate.
+Each default manager can be replace by an alternative imlementation.
+To use this implementation, you have to set the last part of the class
+name as configuration value so the manager factory knows which class it
+has to instantiate.
 
 For example, if the name of the default class is
 
@@ -372,13 +286,13 @@ For example, if the name of the default class is
 and you want to replace it with your own version named
 
 ```
- \Aimeos\MShop\Group\Manager\Mygroup
+ \Aimeos\MShop\Group\Manager\Mymanager
 ```
 
 then you have to set the this configuration option:
 
 ```
- mshop/group/manager/name = Mygroup
+ mshop/group/manager/name = Mymanager
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -388,7 +302,7 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MyGroup"!
+or numbers. Avoid chamel case names like "MyManager"!
 
 
 # newid
@@ -401,7 +315,7 @@ mshop/group/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2015.08
+* Since: 2024.04
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -412,11 +326,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_mcus_id')
+ SELECT currval('seq_mrul_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_mcus_id".CURRVAL FROM DUAL
+ SELECT "seq_mrul_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -436,7 +350,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/group/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/group/manager/newid/mysql = 
 ```
 
 
@@ -449,10 +363,9 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/group/manager/resource = db-group
+mshop/group/manager/resource = 
 ```
 
-* Default: `db-group`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -469,16 +382,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/group/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_group" mgro
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2015.08
+* Since: 2024.04
 
 Fetches the records matched by the given criteria from the group
 database. The records must be from one of the sites that are
@@ -503,9 +410,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. Columns of
-sub-managers can also be used for ordering the result set but then
-no index can be used.
+replaces the ":order" placeholder.
 
 The number of returned records can be limited and can start at any
 number between the begining and the end of the result set. For that
@@ -531,47 +436,59 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/group/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_group" mgro
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_group" mgro
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
 * mshop/group/manager/search/ansi
+
+# sitemode
+
+Mode how items from levels below or above in the site tree are handled
+
+```
+mshop/group/manager/sitemode = 
+```
+
+* Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
+* Since: 2018.01
+
+By default, only items from the current site are fetched from the
+storage. If the ai-sites extension is installed, you can create a
+tree of sites. Then, this setting allows you to define for the
+whole group domain if items from parent sites are inherited,
+sites from child sites are aggregated or both.
+
+Available constants for the site mode are:
+* 0 = only items from the current site
+* 1 = inherit items from parent sites
+* 2 = aggregate items from child sites
+* 3 = inherit and aggregate items at the same time
+
+You also need to set the mode in the locale manager
+(mshop/locale/manager/sitelevel) to one of the constants.
+If you set it to the same value, it will work as described but you
+can also use different modes. For example, if inheritance and
+aggregation is configured the locale manager but only inheritance
+in the domain manager because aggregating items makes no sense in
+this domain, then items wil be only inherited. Thus, you have full
+control over inheritance and aggregation in each domain.
+
+See also:
+
+* mshop/locale/manager/sitelevel
 
 # submanagers
 
 List of manager names that can be instantiated by the group manager
 
 ```
-mshop/group/manager/submanagers = Array
-(
-)
+mshop/group/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2015.08
+* Since: 2024.04
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -885,23 +802,19 @@ Updates an existing group record in the database
 
 ```
 mshop/group/manager/update/ansi = 
- UPDATE "mshop_group"
- SET :names
- 	"code" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2015.08
+* Since: 2024.04
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the group item to the statement before
-they are sent to the database server. The order of the columns
-must correspond to the order in the save() method, so the
+the values from the group item to the statement before they are
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
 correct values are bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -922,20 +835,8 @@ Updates an existing group record in the database
 
 ```
 mshop/group/manager/update/mysql = 
- UPDATE "mshop_group"
- SET :names
- 	"code" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_group"
- SET :names
- 	"code" = ?, "label" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

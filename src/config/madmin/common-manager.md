@@ -5,17 +5,9 @@
 Configures the list of decorators applied to all admin managers
 
 ```
-madmin/common/manager/decorators/default = Array
-(
-)
+madmin/common/manager/decorators/default = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 * Since: 2014.03

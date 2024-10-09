@@ -1,6 +1,6 @@
 # What is a "site"
 
-Aimeos is capable of handling multiple shops by one installation and each shop is called a "site" in Aimeos' terminology. The basic version of Aimeos provides a single site called "Default" after installation which acts as the base for your first shop. This shop instance will contain all products with all associated data you are going to set up, the configuration of the delivery and payment as well as the orders that will be created by your customers.
+Aimeos is capable of handling multiple shops for different sellers/vendors in one installation and each shop is called a "site" in Aimeos' terminology. The basic version of Aimeos provides a single site ("default") after installation which acts as the base for your first shop. This site will contain all products with all associated data you are going to set up, the configuration of the delivery and payment as well as the orders that will be created by your customers.
 
 # Adding more sites
 

@@ -5,17 +5,9 @@
 Adds a list of decorators to all delivery provider objects automatcally
 
 ```
-mshop/service/provider/delivery/decorators = Array
-(
-)
+mshop/service/provider/delivery/decorators = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -45,17 +37,9 @@ See also:
 Adds a list of decorators to all payment provider objects automatcally
 
 ```
-mshop/service/provider/payment/decorators = Array
-(
-)
+mshop/service/provider/payment/decorators = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 

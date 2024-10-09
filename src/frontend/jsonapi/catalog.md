@@ -36,6 +36,11 @@ It also returns the [prefix](index.md#nested-parameters) you have to use, if the
 "meta": {
     "prefix": null,
     "content-baseurl": "http://localhost:8000/",
+    "content-baseurls": {
+        "fs-media": "http://localhost:8000/aimeos",
+        "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+        "fs-theme": "http://localhost:8000/vendor/shop/themes"
+    },
     "filter": {
         "f_search": {
             "label": "Return products whose text matches the user input",
@@ -73,18 +78,18 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
         "total": 3
     },
     "links": {
-        "self": "http:\/\/localhost:8000\/jsonapi\/product?include=attribute%2Cmedia%2Cprice%2Cproduct%2Cproduct%2Fproperty%2Ctext&page%5Boffset%5D=0"
+        "self": "http://localhost:8000/jsonapi/product?include=attribute%2Cmedia%2Cprice%2Cproduct%2Cproduct%2Fproperty%2Ctext&page%5Boffset%5D=0"
     },
     "data": [{
         "id": "13",
         "type": "product",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/product\/13",
+                "href": "http://localhost:8000/jsonapi/product/13",
                 "allow": ["GET"]
             },
-            "basket\/product": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket\/default\/product",
+            "basket/product": {
+                "href": "http://localhost:8000/jsonapi/basket/default/product",
                 "allow": ["POST"]
             }
         },
@@ -174,10 +179,15 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "media.domain": "product",
             "media.label": "Demo: Article 1.jpg",
             "media.languageid": null,
-            "media.mimetype": "image\/jpeg",
+            "media.mimetype": "image/jpeg",
             "media.type": "default",
+<<<<<<< HEAD
             "media.preview": "http:\/\/demo.aimeos.org\/media\/1.jpg",
             "media.url": "http:\/\/demo.aimeos.org\/media\/1-big.jpg",
+=======
+            "media.preview": "http://demo.aimeos.org/media/1.jpg",
+            "media.url": "http://demo.aimeos.org/media/1-big.jpg",
+>>>>>>> master
             "media.status": 1
         }
     }, {
@@ -205,7 +215,7 @@ curl -X GET 'http://localhost:8000/jsonapi/product?include=attribute,media,price
             "text.id": "228",
             "text.languageid": "en",
             "text.type": "short",
-            "text.label": "Demo short\/en: This is the short description",
+            "text.label": "Demo short/en: This is the short description",
             "text.domain": "product",
             "text.content": "This is the short description of the demo article.",
             "text.status": 1
@@ -570,11 +580,11 @@ This will return the root catalog node and its direct children as well as their 
         "type": "catalog",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=201",
+                "href": "http://localhost:8000/jsonapi/catalog?id=201",
                 "allow": ["GET"]
             },
             "product": {"
-                href": "http:\/\/localhost:8000\/jsonapi\/product?filter%5Bf_catid%5D=201",
+                href": "http://localhost:8000/jsonapi/product?filter%5Bf_catid%5D=201",
                 "allow": ["GET"]
             }
         },
@@ -600,7 +610,7 @@ This will return the root catalog node and its direct children as well as their 
         "type": "catalog",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/catalog?id=203",
+                "href": "http://localhost:8000/jsonapi/catalog?id=203",
                 "allow": ["GET"]}
         },
         "attributes": {
@@ -628,7 +638,7 @@ This will return the root catalog node and its direct children as well as their 
         "attributes": {
             "media.id": "360",
             "media.preview": "example4.jpg",
-            "media.url": "path\/to\/folder\/example4.jpg",
+            "media.url": "path/to/folder/example4.jpg",
             ...
         }
     }
@@ -830,7 +840,7 @@ This will return the first slice of attribute items as well as their related tex
         "type": "attribute",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/attribute?id=32",
+                "href": "http://localhost:8000/jsonapi/attribute?id=32",
                 "allow": ["GET"]
             }
         },
@@ -866,14 +876,14 @@ This will return the first slice of attribute items as well as their related tex
             "media.domain": "attribute",
             "media.label": "Demo: beige.gif",
             "media.languageid": null,
-            "media.mimetype": "image\/gif",
+            "media.mimetype": "image/gif",
             "media.type": "default",
             "media.previews": {
-                "1": "relative\/path\/to\/preview.jpg",
-                "250": "relative\/path\/to\/250-preview.jpg"
+                "1": "relative/path/to/preview.jpg",
+                "250": "relative/path/to/250-preview.jpg"
             },
-            "media.preview": "relative\/path\/to\/preview.jpg",
-            "media.url": "relative\/path\/to\/original.jpg",
+            "media.preview": "relative/path/to/preview.jpg",
+            "media.url": "relative/path/to/original.jpg",
             "media.status": 1
         }
     }, {
@@ -883,7 +893,7 @@ This will return the first slice of attribute items as well as their related tex
             "text.id": "241",
             "text.languageid": "en",
             "text.type": "name",
-            "text.label": "Demo name\/en: Beige",
+            "text.label": "Demo name/en: Beige",
             "text.domain": "attribute",
             "text.content": "Beige",
             "text.status": 1
@@ -1148,7 +1158,7 @@ This will return the first slice of supplier items as well as their associated t
         "type": "supplier",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/supplier?id=32",
+                "href": "http://localhost:8000/jsonapi/supplier?id=32",
                 "allow": ["GET"]
             }
         },
@@ -1181,14 +1191,14 @@ This will return the first slice of supplier items as well as their associated t
             "media.domain": "supplier",
             "media.label": "Supplier logo",
             "media.languageid": null,
-            "media.mimetype": "image\/jpg",
+            "media.mimetype": "image/jpg",
             "media.type": "default",
             "media.previews": {
-                "1": "relative\/path\/to\/preview.jpg",
-                "250": "relative\/path\/to\/250-preview.jpg"
+                "1": "relative/path/to/preview.jpg",
+                "250": "relative/path/to/250-preview.jpg"
             },
-            "media.preview": "relative\/path\/to\/preview.jpg",
-            "media.url": "relative\/path\/to\/original.jpg",
+            "media.preview": "relative/path/to/preview.jpg",
+            "media.url": "relative/path/to/original.jpg",
             "media.status": 1
         }
     }, {
@@ -1481,151 +1491,3 @@ This will return a list of "id" and "attributes" pairs where the value of "id" i
     ]
 }
 ```
-
-# Stock levels for products
-
-If you don't fetch the stock levels together with the products using *&include=stock*, you can retrieve the stock levels separately by using the value of the "product.id" attribute:
-
-=== "CURL"
-    ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid][]=1234'
-    ```
-=== "Javascript"
-    ```javascript
-    const args = {
-        'filter': {
-            's_prodid': ['1234']
-        }
-    }
-    let params = {}
-
-    if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = args
-    } else {
-        params = args
-    }
-
-    // returned from OPTIONS call
-    const url = options.meta.resources['stock']
-        + (options.meta.resources['stock'].includes('?') ? '&' : '?')
-        + window.param(params) // from https://github.com/knowledgecode/jquery-param
-
-    fetch(url).then(result => {
-        if(!result.ok) {
-            throw new Error(`Response error: ${response.status}`)
-        }
-        return result.json()
-    }).then(result => {
-        console.log(result.data)
-    })
-    ```
-=== "jQuery"
-    ```javascript
-    var args = {
-        'filter': {
-            's_prodid': ['1234']
-        }
-    };
-    var params = {};
-
-    if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = args;
-    } else {
-        params = args;
-    }
-
-    $.ajax({
-        method: 'GET',
-        dataType: 'json',
-        url: options.meta.resources['stock'], // returned from OPTIONS call
-        data: params
-    }).done( function( result ) {
-        console.log( result );
-    });
-    ```
-
-It returns the list of stock items for the given product IDs:
-
-```json
-{
-    "data": [{
-        "id": "12",
-        "type": "stock",
-        "links": {
-            "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/stock\/12",
-                "allow": ["GET"]
-            }
-        },
-        "attributes": {
-            "stock.id": "12",
-            "stock.productid": "1234",
-            "stock.stocklevel": null,
-            "stock.dateback": null,
-            "stock.type": "default"
-        }
-    }
-]}
-```
-
-If the shop has different warehouses or local stores where customers can pick up their ordered products, you can use the *s_stocktype* parameter to fetch stock levels for different locations than the "default" one:
-
-=== "CURL"
-    ```bash
-    curl -X GET 'http://localhost:8000/jsonapi/stock?filter[s_prodid][]=1234&filter[s_stocktype]=berlin'
-    ```
-=== "Javascript"
-    ```javascript
-    const args = {
-        'filter': {
-            's_prodid': ['1234'],
-            's_stocktype': 'berlin'
-        }
-    }
-    let params = {}
-
-    if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = args
-    } else {
-        params = args
-    }
-
-    // returned from OPTIONS call
-    const url = options.meta.resources['stock']
-        + (options.meta.resources['stock'].includes('?') ? '&' : '?')
-        + window.param(params) // from https://github.com/knowledgecode/jquery-param
-
-    fetch(url).then(result => {
-        if(!result.ok) {
-            throw new Error(`Response error: ${response.status}`)
-        }
-        return result.json()
-    }).then(result => {
-        console.log(result.data)
-    })
-    ```
-=== "jQuery"
-    ```javascript
-    var args = {
-        'filter': {
-            's_prodid': ['1234'],
-            's_stocktype': 'berlin'
-        }
-    };
-    var params = {};
-
-    if(options.meta.prefix) { // returned from OPTIONS call
-        params[options.meta.prefix] = args;
-    } else {
-        params = args;
-    }
-
-    $.ajax({
-        method: 'GET',
-        dataType: 'json',
-        url: options.meta.resources['stock'], // returned from OPTIONS call
-        data: params
-    }).done( function( result ) {
-        console.log( result );
-    });
-    ```

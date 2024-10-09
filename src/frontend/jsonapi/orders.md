@@ -62,7 +62,12 @@ The response will then contain a basket ID value which is equivalent to the "ord
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        }
     },
     "links": {
         "self": {
@@ -186,7 +191,12 @@ The response will contain the data with a link to the next step. This can either
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/"
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
     },
     "links": {
         "self": { "href": "http://localhost:8000/jsonapi/order" }
@@ -321,6 +331,9 @@ The "code" contains the form parameter name and the "default" property value tha
 
     $('<button type="submit">Submit</button>').appendTo(form);
     ```
+
+!!! note
+    It's not possible to update the order status using the Aimeos JSON:API for security reasons. Order status updates can only be performed by the payment gateway sending a payment status update to the "update" route.
 
 # Retrieve orders
 

@@ -6,19 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/address/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupad."id"
- 	FROM "mshop_supplier_address" msupad
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupad."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -67,30 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/address/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupad."id"
- 	FROM "mshop_supplier_address" msupad
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupad."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupad."id"
- 	FROM "mshop_supplier_address" msupad
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupad."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -101,19 +70,11 @@ See also:
 Excludes decorators added by the "common" option from the supplier address manager
 
 ```
-mshop/supplier/manager/address/decorators/excludes = Array
-(
-)
+mshop/supplier/manager/address/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - Address of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -128,7 +89,7 @@ around the supplier address manager.
  mshop/supplier/manager/address/decorators/excludes = array( 'decorator1' )
 ```
 
-This would remove the decorator named "decorator1" from the address of
+This would remove the decorator named "decorator1" from the list of
 common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
 "mshop/common/manager/decorators/default" for the supplier address manager.
 
@@ -143,19 +104,11 @@ See also:
 Adds a list of globally available decorators only to the supplier address manager
 
 ```
-mshop/supplier/manager/address/decorators/global = Array
-(
-)
+mshop/supplier/manager/address/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - Address of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -163,8 +116,7 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the supplier address
-manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the supplier address manager.
 
 ```
  mshop/supplier/manager/address/decorators/global = array( 'decorator1' )
@@ -185,19 +137,11 @@ See also:
 Adds a list of local decorators only to the supplier address manager
 
 ```
-mshop/supplier/manager/address/decorators/local = Array
-(
-)
+mshop/supplier/manager/address/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - Address of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -213,8 +157,8 @@ address manager.
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Supplier\Manager\Address\Decorator\Decorator2" only to
-the supplier address manager.
+"\Aimeos\MShop\Supplier\Manager\Address\Decorator\Decorator2" only to the
+supplier address manager.
 
 See also:
 
@@ -228,12 +172,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/address/delete/ansi = 
- DELETE FROM "mshop_supplier_address"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the supplier database.
 The records must be from the site that is configured via the
@@ -261,16 +203,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/address/delete/mysql = 
- DELETE FROM "mshop_supplier_address"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_supplier_address"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -282,19 +216,10 @@ Inserts a new supplier address record into the database table
 
 ```
 mshop/supplier/manager/address/insert/ansi = 
- INSERT INTO "mshop_supplier_address" ( :names
- 	"parentid", "company", "vatid", "salutation", "title",
- 	"firstname", "lastname", "address1", "address2", "address3",
- 	"postal", "city", "state", "countryid", "langid", "telephone",
- 	"mobile", "email", "telefax", "website", "longitude", "latitude",
- 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -327,30 +252,8 @@ Inserts a new supplier address record into the database table
 
 ```
 mshop/supplier/manager/address/insert/mysql = 
- INSERT INTO "mshop_supplier_address" ( :names
- 	"parentid", "company", "vatid", "salutation", "title",
- 	"firstname", "lastname", "address1", "address2", "address3",
- 	"postal", "city", "state", "countryid", "langid", "telephone",
- 	"mobile", "email", "telefax", "website", "longitude", "latitude",
- 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_supplier_address" ( :names
- 	"parentid", "company", "vatid", "salutation", "title",
- 	"firstname", "lastname", "address1", "address2", "address3",
- 	"postal", "city", "state", "countryid", "langid", "telephone",
- 	"mobile", "email", "telefax", "website", "longitude", "latitude",
- 	"pos", "birthday", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -361,12 +264,11 @@ See also:
 Class name of the used supplier address manager implementation
 
 ```
-mshop/supplier/manager/address/name = Standard
+mshop/supplier/manager/address/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default supplier address manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -410,7 +312,7 @@ mshop/supplier/manager/address/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -421,11 +323,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_msupad_id')
+ SELECT currval('seq_mcusad_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_msupad_id".CURRVAL FROM DUAL
+ SELECT "seq_mcusad_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -445,7 +347,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/address/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/address/newid/mysql = 
 ```
 
 
@@ -459,16 +361,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/address/search/ansi = 
- SELECT :columns
- FROM "mshop_supplier_address" msupad
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -521,24 +417,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/address/search/mysql = 
- SELECT :columns
- FROM "mshop_supplier_address" msupad
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_supplier_address" msupad
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -549,19 +429,11 @@ See also:
 List of manager names that can be instantiated by the supplier address manager
 
 ```
-mshop/supplier/manager/address/submanagers = Array
-(
-)
+mshop/supplier/manager/address/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -580,19 +452,10 @@ Updates an existing supplier address record in the database
 
 ```
 mshop/supplier/manager/address/update/ansi = 
- UPDATE "mshop_supplier_address"
- SET :names
- 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
- 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
- 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
- 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?, "mobile" = ?,
- 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -622,30 +485,8 @@ Updates an existing supplier address record in the database
 
 ```
 mshop/supplier/manager/address/update/mysql = 
- UPDATE "mshop_supplier_address"
- SET :names
- 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
- 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
- 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
- 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?, "mobile" = ?,
- 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_supplier_address"
- SET :names
- 	"parentid" = ?, "company" = ?, "vatid" = ?, "salutation" = ?,
- 	"title" = ?, "firstname" = ?, "lastname" = ?, "address1" = ?,
- 	"address2" = ?, "address3" = ?, "postal" = ?, "city" = ?,
- 	"state" = ?, "countryid" = ?, "langid" = ?, "telephone" = ?, "mobile" = ?,
- 	"email" = ?, "telefax" = ?, "website" = ?, "longitude" = ?, "latitude" = ?,
- 	"pos" = ?, "birthday" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -658,20 +499,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msup."id"
- 	FROM "mshop_supplier" msup
- 	:joins
- 	WHERE :cond
- 	GROUP BY msup."id"
- 	ORDER BY msup."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -720,32 +551,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msup."id"
- 	FROM "mshop_supplier" msup
- 	:joins
- 	WHERE :cond
- 	GROUP BY msup."id"
- 	ORDER BY msup."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msup."id"
- 	FROM "mshop_supplier" msup
- 	:joins
- 	WHERE :cond
- 	GROUP BY msup."id"
- 	ORDER BY msup."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -757,19 +564,11 @@ See also:
 Excludes decorators added by the "common" option from the supplier manager
 
 ```
-mshop/supplier/manager/decorators/excludes = Array
-(
-)
+mshop/supplier/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -799,19 +598,11 @@ See also:
 Adds a list of globally available decorators only to the supplier manager
 
 ```
-mshop/supplier/manager/decorators/global = Array
-(
-)
+mshop/supplier/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -840,20 +631,11 @@ See also:
 Adds a list of local decorators only to the supplier manager
 
 ```
-mshop/supplier/manager/decorators/local = Array
-(
-    [Search] => Search
-)
+mshop/supplier/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -884,12 +666,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/delete/ansi = 
- DELETE FROM "mshop_supplier"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the supplier database.
 The records must be from the site that is configured via the
@@ -917,16 +697,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/delete/mysql = 
- DELETE FROM "mshop_supplier"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_supplier"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -939,15 +711,10 @@ Inserts a new supplier record into the database table
 
 ```
 mshop/supplier/manager/insert/ansi = 
- INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -980,110 +747,24 @@ Inserts a new supplier record into the database table
 
 ```
 mshop/supplier/manager/insert/mysql = 
- INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_supplier" ( :names
- 	"code", "label", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
 * mshop/supplier/manager/insert/ansi
 
 # lists
-## aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/supplier/manager/lists/aggregate/ansi = 
-```
-
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/supplier/manager/lists/insert/ansi
-* mshop/supplier/manager/lists/update/ansi
-* mshop/supplier/manager/lists/newid/ansi
-* mshop/supplier/manager/lists/delete/ansi
-* mshop/supplier/manager/lists/search/ansi
-* mshop/supplier/manager/lists/count/ansi
-
-## aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/supplier/manager/lists/aggregate/mysql = 
-```
-
-
-See also:
-
-* mshop/supplier/manager/lists/aggregate/ansi
-
 ## count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupli."id"
- 	FROM "mshop_supplier_list" msupli
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -1133,30 +814,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupli."id"
- 	FROM "mshop_supplier_list" msupli
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupli."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msupli."id"
- 	FROM "mshop_supplier_list" msupli
- 	:joins
- 	WHERE :cond
- 	ORDER BY msupli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1167,19 +826,11 @@ See also:
 Excludes decorators added by the "common" option from the supplier list manager
 
 ```
-mshop/supplier/manager/lists/decorators/excludes = Array
-(
-)
+mshop/supplier/manager/lists/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1209,19 +860,11 @@ See also:
 Adds a list of globally available decorators only to the supplier list manager
 
 ```
-mshop/supplier/manager/lists/decorators/global = Array
-(
-)
+mshop/supplier/manager/lists/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1251,19 +894,11 @@ See also:
 Adds a list of local decorators only to the supplier list manager
 
 ```
-mshop/supplier/manager/lists/decorators/local = Array
-(
-)
+mshop/supplier/manager/lists/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1294,12 +929,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/lists/delete/ansi = 
- DELETE FROM "mshop_supplier_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the supplier database.
 The records must be from the site that is configured via the
@@ -1328,16 +961,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/lists/delete/mysql = 
- DELETE FROM "mshop_supplier_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_supplier_list"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1349,16 +974,10 @@ Inserts a new supplier list record into the database table
 
 ```
 mshop/supplier/manager/lists/insert/ansi = 
- INSERT INTO "mshop_supplier_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1392,24 +1011,8 @@ Inserts a new supplier list record into the database table
 
 ```
 mshop/supplier/manager/lists/insert/mysql = 
- INSERT INTO "mshop_supplier_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_supplier_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1420,12 +1023,11 @@ See also:
 Class name of the used supplier list manager implementation
 
 ```
-mshop/supplier/manager/lists/name = Standard
+mshop/supplier/manager/lists/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default supplier list manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1469,7 +1071,7 @@ mshop/supplier/manager/lists/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1505,7 +1107,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/lists/newid/mysql = 
 ```
 
 
@@ -1519,16 +1121,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/search/ansi = 
- SELECT :columns
- FROM "mshop_supplier_list" msupli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -1582,24 +1178,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/search/mysql = 
- SELECT :columns
- FROM "mshop_supplier_list" msupli
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_supplier_list" msupli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1610,19 +1190,11 @@ See also:
 List of manager names that can be instantiated by the supplier list manager
 
 ```
-mshop/supplier/manager/lists/submanagers = Array
-(
-)
+mshop/supplier/manager/lists/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1641,19 +1213,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" msuplity
- 	:joins
- 	WHERE :cond
- 	ORDER BY msuplity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -1702,30 +1265,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" msuplity
- 	:joins
- 	WHERE :cond
- 	ORDER BY msuplity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msuplity."id"
- 	FROM "mshop_supplier_list_type" msuplity
- 	:joins
- 	WHERE :cond
- 	ORDER BY msuplity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1736,19 +1277,11 @@ See also:
 Excludes decorators added by the "common" option from the supplier list type manager
 
 ```
-mshop/supplier/manager/lists/type/decorators/excludes = Array
-(
-)
+mshop/supplier/manager/lists/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1778,19 +1311,11 @@ See also:
 Adds a list of globally available decorators only to the supplier list type manager
 
 ```
-mshop/supplier/manager/lists/type/decorators/global = Array
-(
-)
+mshop/supplier/manager/lists/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1820,19 +1345,11 @@ See also:
 Adds a list of local decorators only to the supplier list type manager
 
 ```
-mshop/supplier/manager/lists/type/decorators/local = Array
-(
-)
+mshop/supplier/manager/lists/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1863,12 +1380,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/lists/type/delete/ansi = 
- DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the supplier database.
 The records must be from the site that is configured via the
@@ -1896,16 +1411,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/supplier/manager/lists/type/delete/mysql = 
- DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_supplier_list_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1917,16 +1424,10 @@ Inserts a new supplier list type record into the database table
 
 ```
 mshop/supplier/manager/lists/type/insert/ansi = 
- INSERT INTO "mshop_supplier_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1959,24 +1460,8 @@ Inserts a new supplier list type record into the database table
 
 ```
 mshop/supplier/manager/lists/type/insert/mysql = 
- INSERT INTO "mshop_supplier_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_supplier_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1987,12 +1472,11 @@ See also:
 Class name of the used supplier list type manager implementation
 
 ```
-mshop/supplier/manager/lists/type/name = Standard
+mshop/supplier/manager/lists/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default supplier list type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -2036,7 +1520,7 @@ mshop/supplier/manager/lists/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -2047,11 +1531,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_mserlity_id')
+ SELECT currval('seq_msuplity_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_mserlity_id".CURRVAL FROM DUAL
+ SELECT "seq_msuplity_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -2071,7 +1555,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/lists/type/newid/mysql = 
 ```
 
 
@@ -2085,16 +1569,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/type/search/ansi = 
- SELECT :columns
- FROM "mshop_supplier_list_type" msuplity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -2147,24 +1625,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/lists/type/search/mysql = 
- SELECT :columns
- FROM "mshop_supplier_list_type" msuplity
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_supplier_list_type" msuplity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2175,19 +1637,11 @@ See also:
 List of manager names that can be instantiated by the supplier list type manager
 
 ```
-mshop/supplier/manager/lists/type/submanagers = Array
-(
-)
+mshop/supplier/manager/lists/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -2206,15 +1660,10 @@ Updates an existing supplier list type record in the database
 
 ```
 mshop/supplier/manager/lists/type/update/ansi = 
- UPDATE "mshop_supplier_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -2244,22 +1693,8 @@ Updates an existing supplier list type record in the database
 
 ```
 mshop/supplier/manager/lists/type/update/mysql = 
- UPDATE "mshop_supplier_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_supplier_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -2271,15 +1706,10 @@ Updates an existing supplier list record in the database
 
 ```
 mshop/supplier/manager/lists/update/ansi = 
- UPDATE "mshop_supplier_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -2310,22 +1740,8 @@ Updates an existing supplier list record in the database
 
 ```
 mshop/supplier/manager/lists/update/mysql = 
- UPDATE "mshop_supplier_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_supplier_list"
- SET :names
- 	"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -2336,12 +1752,11 @@ See also:
 Class name of the used supplier manager implementation
 
 ```
-mshop/supplier/manager/name = Standard
+mshop/supplier/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -2386,7 +1801,7 @@ mshop/supplier/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -2421,7 +1836,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/supplier/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/supplier/manager/newid/mysql = 
 ```
 
 
@@ -2434,14 +1849,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/supplier/manager/resource = db-supplier
+mshop/supplier/manager/resource = 
 ```
 
-* Default: `db-supplier`
 * Type: string - Database connection name
-* Since: 2023.04
-* Since: 2023.04
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -2457,17 +1868,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_supplier" msup
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the supplier
 database. The records must be from one of the sites that are
@@ -2520,26 +1924,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/supplier/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_supplier" msup
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_supplier" msup
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2550,10 +1936,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/supplier/manager/sitemode = 3
+mshop/supplier/manager/sitemode = 
 ```
 
-* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -2587,21 +1972,11 @@ See also:
 List of manager names that can be instantiated by the supplier manager
 
 ```
-mshop/supplier/manager/submanagers = Array
-(
-    [0] => address
-)
+mshop/supplier/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-    [0] => address
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -2621,14 +1996,10 @@ Updates an existing supplier record in the database
 
 ```
 mshop/supplier/manager/update/ansi = 
- UPDATE "mshop_supplier"
- SET :names
- 	"code" = ?, "label" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -2658,20 +2029,8 @@ Updates an existing supplier record in the database
 
 ```
 mshop/supplier/manager/update/mysql = 
- UPDATE "mshop_supplier"
- SET :names
- 	"code" = ?, "label" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_supplier"
- SET :names
- 	"code" = ?, "label" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

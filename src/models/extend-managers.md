@@ -151,35 +151,18 @@ namespace Aimeos\MShop\Product\Item;
 
 class Myproject extends Standard
 {
-    private $myvalues;
-
-    public function __construct( array $values, ... )
-    {
-        parent::__construct( $values, ... )
-        $this->myvalues = $values;
-    }
-
     public function getMyId() : string
     {
-        if( isset( $this->myvalues['myid'] ) ) {
-            return (string) $this->myvalues['myid'];
-        }
-        return '';
+        return $this->get( 'myid', '' );
     }
 
-    public function setMyId( ?string $val ) : \Aimeos\MShop\Common\Item\Iface
+    public function setMyId( ?string $val ) : \Aimeos\MShop\Product\Item\Iface
     {
-        if( (string) $val !== $this->getMyId() )
-        {
-            $this->values['myid'] = (string) $myid;
-            $this->setModified();
-        }
-        return $this;
+        return $this->set( 'myid', $val );
     }
 
-    public function fromArray( array &$list, bool $private = false ) : \Aimeos\MShop\Common\Item\Iface
+    public function fromArray( array &$list, bool $private = false ) : \Aimeos\MShop\Product\Item\Iface
     {
-        $unknown = [];
 		$item = parent::fromArray( $list, $private );
 
 		foreach( $list as $key => $value )

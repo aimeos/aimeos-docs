@@ -194,10 +194,10 @@ or numbers. Avoid chamel case names like "MyCsv"!
 Relativ path to the export file
 
 ```
-controller/jobs/order/export/csv/path = order-export_%Y-%m-%d_%H-%i-%s
+controller/jobs/order/export/csv/path = order-export_%Y-%m-%d_%H-%i-%s.csv
 ```
 
-* Default: `order-export_%Y-%m-%d_%H-%i-%s`
+* Default: `order-export_%Y-%m-%d_%H-%i-%s.csv`
 * Type: string - Relativ path with placeholders
 * Since: 2023.04
 

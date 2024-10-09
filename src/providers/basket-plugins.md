@@ -196,7 +196,7 @@ The file *ExampleDecorator.php* holding this code would be located at e.g.
 ```
 
 !!! tip
-    Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Plugin/Provider/Order/Decorator/Example.php)
+    Please also have a look at the *Aimeos Core* which provides a simple [example decorator](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Plugin/Provider/Decorator/Example.php)
 
 The advantage of this approach is that multiple decorators can be used for one plugin and that one decorator can be used by multiple plugins. This way the common rules are available for all plugins and you can add or remove those rules dynamically without touching the code of your plugins.
 
@@ -247,7 +247,7 @@ class ExamplePluginTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
-You should implement more tests for the `update()` method until every line inside is executed at least once. For more information regarding unit tests have a look into the [PHPUnit documentation](https://phpunit.readthedocs.io/en/latest/writing-tests-for-phpunit.html). The chapter about [stubs and mocks](https://phpunit.readthedocs.io/en/latest/test-doubles.html) is especially useful if you want to replace the manager objects used in your plugin during the tests by injecting a mock object into the Aimeos manager factories via the [*inject()*](https://github.com/aimeos/aimeos-core/blob/master/src/MShop.php) method.
+You should implement more tests for the `update()` method until every line inside is executed at least once. For more information regarding unit tests have a look into the [PHPUnit documentation](https://docs.phpunit.de/). The chapter about stubs and mocks is especially useful if you want to replace the manager objects used in your plugin during the tests by injecting a mock object into the Aimeos manager factories via the [*inject()*](https://github.com/aimeos/aimeos-core/blob/master/src/MShop.php) method.
 
 # Configuration
 

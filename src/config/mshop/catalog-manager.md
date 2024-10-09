@@ -6,8 +6,6 @@ Deletes the categories for the given site from the database
 
 ```
 mshop/catalog/manager/cleanup/ansi = 
- DELETE FROM "mshop_catalog"
- WHERE :siteid AND "nleft" >= ? AND "nright" <= ?
 ```
 
 * Type: string - SQL statement for removing the records
@@ -38,16 +36,8 @@ Deletes the categories for the given site from the database
 
 ```
 mshop/catalog/manager/cleanup/mysql = 
- DELETE FROM "mshop_catalog"
- WHERE :siteid AND "nleft" >= ? AND "nright" <= ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_catalog"
- WHERE :siteid AND "nleft" >= ? AND "nright" <= ?
-```
 
 See also:
 
@@ -60,16 +50,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcat."id"
- 	FROM "mshop_catalog" mcat
- 	:joins
- 	WHERE :cond
- 	GROUP BY mcat."id"
- 	ORDER BY mcat."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -127,32 +107,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcat."id"
- 	FROM "mshop_catalog" mcat
- 	:joins
- 	WHERE :cond
- 	GROUP BY mcat."id"
- 	ORDER BY mcat."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcat."id"
- 	FROM "mshop_catalog" mcat
- 	:joins
- 	WHERE :cond
- 	GROUP BY mcat."id"
- 	ORDER BY mcat."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -164,17 +120,9 @@ See also:
 Excludes decorators added by the "common" option from the catalog manager
 
 ```
-mshop/catalog/manager/decorators/excludes = Array
-(
-)
+mshop/catalog/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -206,17 +154,9 @@ See also:
 Adds a list of globally available decorators only to the catalog manager
 
 ```
-mshop/catalog/manager/decorators/global = Array
-(
-)
+mshop/catalog/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -247,18 +187,9 @@ See also:
 Adds a list of local decorators only to the catalog manager
 
 ```
-mshop/catalog/manager/decorators/local = Array
-(
-    [Search] => Search
-)
+mshop/catalog/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -291,8 +222,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/catalog/manager/delete/ansi = 
- DELETE FROM "mshop_catalog"
- WHERE "siteid" = :siteid AND "nleft" >= ? AND "nright" <= ?
 ```
 
 * Type: string - SQL statement for deleting items
@@ -331,16 +260,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/catalog/manager/delete/mysql = 
- DELETE FROM "mshop_catalog"
- WHERE "siteid" = :siteid AND "nleft" >= ? AND "nright" <= ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_catalog"
- WHERE "siteid" = :siteid AND "nleft" >= ? AND "nright" <= ?
-```
 
 See also:
 
@@ -353,25 +274,6 @@ Returns a node record and its complete subtree optionally limited by the level
 
 ```
 mshop/catalog/manager/get/ansi = 
- SELECT :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat, "mshop_catalog" AS parent
- WHERE parent."id" = ?
- 	AND mcat."siteid" = :siteid
- 	AND parent."siteid" = :siteid
- 	AND mcat."nleft" >= parent."nleft"
- 	AND mcat."nleft" <= parent."nright"
- 	AND mcat."level" <= parent."level" + ?
- 	AND :cond
- GROUP BY :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft", mcat."nright", mcat."target",
- 	mcat."mtime", mcat."editor", mcat."ctime"
- ORDER BY mcat."nleft"
 ```
 
 * Type: string - SQL statement for searching items
@@ -417,50 +319,8 @@ Returns a node record and its complete subtree optionally limited by the level
 
 ```
 mshop/catalog/manager/get/mysql = 
- SELECT :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat, "mshop_catalog" AS parent
- WHERE parent."id" = ?
- 	AND mcat."siteid" = :siteid
- 	AND parent."siteid" = :siteid
- 	AND mcat."nleft" >= parent."nleft"
- 	AND mcat."nleft" <= parent."nright"
- 	AND mcat."level" <= parent."level" + ?
- 	AND :cond
- GROUP BY :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft", mcat."nright", mcat."target",
- 	mcat."mtime", mcat."editor", mcat."ctime"
- ORDER BY mcat."nleft"
 ```
 
-* Default: 
-```
-
- SELECT :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat, "mshop_catalog" AS parent
- WHERE parent."id" = ?
- 	AND mcat."siteid" = :siteid
- 	AND parent."siteid" = :siteid
- 	AND mcat."nleft" >= parent."nleft"
- 	AND mcat."nleft" <= parent."nright"
- 	AND mcat."level" <= parent."level" + ?
- 	AND :cond
- GROUP BY :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft", mcat."nright", mcat."target",
- 	mcat."mtime", mcat."editor", mcat."ctime"
- ORDER BY mcat."nleft"
-```
 
 See also:
 
@@ -473,9 +333,6 @@ Updates the config, editor, ctime and mtime value of an inserted record
 
 ```
 mshop/catalog/manager/insert-usage/ansi = 
- UPDATE "mshop_catalog"
- SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?, "ctime" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -518,18 +375,8 @@ Updates the config, editor, ctime and mtime value of an inserted record
 
 ```
 mshop/catalog/manager/insert-usage/mysql = 
- UPDATE "mshop_catalog"
- SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?, "ctime" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog"
- SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?, "ctime" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -542,12 +389,6 @@ Inserts a new catalog node into the database table
 
 ```
 mshop/catalog/manager/insert/ansi = 
- INSERT INTO "mshop_catalog" (
- 	"siteid", "label", "code", "status", "parentid", "level",
- 	"nleft", "nright", "config", "mtime", "ctime", "editor", "target"
- ) VALUES (
- 	:siteid, ?, ?, ?, ?, ?, ?, ?, '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '', ''
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -591,112 +432,24 @@ Inserts a new catalog node into the database table
 
 ```
 mshop/catalog/manager/insert/mysql = 
- INSERT INTO "mshop_catalog" (
- 	"siteid", "label", "code", "status", "parentid", "level",
- 	"nleft", "nright", "config", "mtime", "ctime", "editor", "target"
- ) VALUES (
- 	:siteid, ?, ?, ?, ?, ?, ?, ?, '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '', ''
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_catalog" (
- 	"siteid", "label", "code", "status", "parentid", "level",
- 	"nleft", "nright", "config", "mtime", "ctime", "editor", "target"
- ) VALUES (
- 	:siteid, ?, ?, ?, ?, ?, ?, ?, '', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '', ''
- )
-```
 
 See also:
 
 * mshop/catalog/manager/insert/ansi
 
 # lists
-## aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/catalog/manager/lists/aggregate/ansi = 
-```
-
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/catalog/manager/lists/insert/ansi
-* mshop/catalog/manager/lists/update/ansi
-* mshop/catalog/manager/lists/newid/ansi
-* mshop/catalog/manager/lists/delete/ansi
-* mshop/catalog/manager/lists/search/ansi
-* mshop/catalog/manager/lists/count/ansi
-
-## aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/catalog/manager/lists/aggregate/mysql = 
-```
-
-
-See also:
-
-* mshop/catalog/manager/lists/aggregate/ansi
-
 ## count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcatli."id"
- 	FROM "mshop_catalog_list" mcatli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcatli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the catalog
 database. The records must be from one of the sites that are
@@ -738,7 +491,6 @@ See also:
 * mshop/catalog/manager/lists/newid/ansi
 * mshop/catalog/manager/lists/delete/ansi
 * mshop/catalog/manager/lists/search/ansi
-* mshop/catalog/manager/lists/aggregate/ansi
 
 ## count/mysql
 
@@ -746,30 +498,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcatli."id"
- 	FROM "mshop_catalog_list" mcatli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcatli."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcatli."id"
- 	FROM "mshop_catalog_list" mcatli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcatli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -780,19 +510,11 @@ See also:
 Excludes decorators added by the "common" option from the catalog list manager
 
 ```
-mshop/catalog/manager/lists/decorators/excludes = Array
-(
-)
+mshop/catalog/manager/lists/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -822,19 +544,11 @@ See also:
 Adds a list of globally available decorators only to the catalog list manager
 
 ```
-mshop/catalog/manager/lists/decorators/global = Array
-(
-)
+mshop/catalog/manager/lists/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -863,19 +577,11 @@ See also:
 Adds a list of local decorators only to the catalog list manager
 
 ```
-mshop/catalog/manager/lists/decorators/local = Array
-(
-)
+mshop/catalog/manager/lists/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -906,12 +612,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/catalog/manager/lists/delete/ansi = 
- DELETE FROM "mshop_catalog_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the catalog database.
 The records must be from the site that is configured via the
@@ -932,7 +636,6 @@ See also:
 * mshop/catalog/manager/lists/newid/ansi
 * mshop/catalog/manager/lists/search/ansi
 * mshop/catalog/manager/lists/count/ansi
-* mshop/catalog/manager/lists/aggregate/ansi
 
 ## delete/mysql
 
@@ -940,16 +643,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/catalog/manager/lists/delete/mysql = 
- DELETE FROM "mshop_catalog_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_catalog_list"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -961,16 +656,10 @@ Inserts a new catalog list record into the database table
 
 ```
 mshop/catalog/manager/lists/insert/ansi = 
- INSERT INTO "mshop_catalog_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -996,7 +685,6 @@ See also:
 * mshop/catalog/manager/lists/delete/ansi
 * mshop/catalog/manager/lists/search/ansi
 * mshop/catalog/manager/lists/count/ansi
-* mshop/catalog/manager/lists/aggregate/ansi
 
 ## insert/mysql
 
@@ -1004,24 +692,8 @@ Inserts a new catalog list record into the database table
 
 ```
 mshop/catalog/manager/lists/insert/mysql = 
- INSERT INTO "mshop_catalog_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_catalog_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1032,12 +704,11 @@ See also:
 Class name of the used catalog list manager implementation
 
 ```
-mshop/catalog/manager/lists/name = Standard
+mshop/catalog/manager/lists/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default catalog list manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1081,7 +752,7 @@ mshop/catalog/manager/lists/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1110,14 +781,13 @@ See also:
 * mshop/catalog/manager/lists/delete/ansi
 * mshop/catalog/manager/lists/search/ansi
 * mshop/catalog/manager/lists/count/ansi
-* mshop/catalog/manager/lists/aggregate/ansi
 
 ## newid/mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/catalog/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/catalog/manager/lists/newid/mysql = 
 ```
 
 
@@ -1131,16 +801,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/search/ansi = 
- SELECT :columns
- FROM "mshop_catalog_list" mcatli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the catalog
 database. The records must be from one of the sites that are
@@ -1186,7 +850,6 @@ See also:
 * mshop/catalog/manager/lists/newid/ansi
 * mshop/catalog/manager/lists/delete/ansi
 * mshop/catalog/manager/lists/count/ansi
-* mshop/catalog/manager/lists/aggregate/ansi
 
 ## search/mysql
 
@@ -1194,24 +857,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/search/mysql = 
- SELECT :columns
- FROM "mshop_catalog_list" mcatli
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_catalog_list" mcatli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1222,19 +869,11 @@ See also:
 List of manager names that can be instantiated by the catalog list manager
 
 ```
-mshop/catalog/manager/lists/submanagers = Array
-(
-)
+mshop/catalog/manager/lists/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1253,19 +892,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcatlity."id"
- 	FROM "mshop_catalog_list_type" mcatlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcatlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the catalog
 database. The records must be from one of the sites that are
@@ -1314,30 +944,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcatlity."id"
- 	FROM "mshop_catalog_list_type" mcatlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcatlity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mcatlity."id"
- 	FROM "mshop_catalog_list_type" mcatlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mcatlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1348,19 +956,11 @@ See also:
 Excludes decorators added by the "common" option from the catalog list type manager
 
 ```
-mshop/catalog/manager/lists/type/decorators/excludes = Array
-(
-)
+mshop/catalog/manager/lists/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1390,19 +990,11 @@ See also:
 Adds a list of globally available decorators only to the catalog list type manager
 
 ```
-mshop/catalog/manager/lists/type/decorators/global = Array
-(
-)
+mshop/catalog/manager/lists/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1410,7 +1002,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the catalog list type manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the catalog list
+type manager.
 
 ```
  mshop/catalog/manager/lists/type/decorators/global = array( 'decorator1' )
@@ -1418,7 +1011,7 @@ This option allows you to wrap global decorators
 
 This would add the decorator named "decorator1" defined by
 "\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the catalog
-list type manager..
+list type manager.
 
 See also:
 
@@ -1431,19 +1024,11 @@ See also:
 Adds a list of local decorators only to the catalog list type manager
 
 ```
-mshop/catalog/manager/lists/type/decorators/local = Array
-(
-)
+mshop/catalog/manager/lists/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1451,16 +1036,16 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Catalog\Manager\Lists\Type\Decorator\*") around the catalog
-list type manager.
+("\Aimeos\MShop\Catalog\Manager\Lists\Type\Decorator\*") around the
+catalog list type manager.
 
 ```
  mshop/catalog/manager/lists/type/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Catalog\Manager\Lists\Type\Decorator\Decorator2" only to the
-catalog list type manager.
+"\Aimeos\MShop\Catalog\Manager\Lists\Type\Decorator\Decorator2" only
+to the catalog list type manager.
 
 See also:
 
@@ -1474,12 +1059,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/catalog/manager/lists/type/delete/ansi = 
- DELETE FROM "mshop_catalog_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the catalog database.
 The records must be from the site that is configured via the
@@ -1507,16 +1090,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/catalog/manager/lists/type/delete/mysql = 
- DELETE FROM "mshop_catalog_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_catalog_list_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1528,16 +1103,10 @@ Inserts a new catalog list type record into the database table
 
 ```
 mshop/catalog/manager/lists/type/insert/ansi = 
- INSERT INTO "mshop_catalog_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1570,24 +1139,8 @@ Inserts a new catalog list type record into the database table
 
 ```
 mshop/catalog/manager/lists/type/insert/mysql = 
- INSERT INTO "mshop_catalog_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_catalog_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1598,12 +1151,11 @@ See also:
 Class name of the used catalog list type manager implementation
 
 ```
-mshop/catalog/manager/lists/type/name = Standard
+mshop/catalog/manager/lists/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default catalog list type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1647,7 +1199,7 @@ mshop/catalog/manager/lists/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1682,7 +1234,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/catalog/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/catalog/manager/lists/type/newid/mysql = 
 ```
 
 
@@ -1696,16 +1248,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/type/search/ansi = 
- SELECT :columns
- FROM "mshop_catalog_list_type" mcatlity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the catalog
 database. The records must be from one of the sites that are
@@ -1758,24 +1304,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/lists/type/search/mysql = 
- SELECT :columns
- FROM "mshop_catalog_list_type" mcatlity
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_catalog_list_type" mcatlity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1786,19 +1316,11 @@ See also:
 List of manager names that can be instantiated by the catalog list type manager
 
 ```
-mshop/catalog/manager/lists/type/submanagers = Array
-(
-)
+mshop/catalog/manager/lists/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1817,15 +1339,10 @@ Updates an existing catalog list type record in the database
 
 ```
 mshop/catalog/manager/lists/type/update/ansi = 
- UPDATE "mshop_catalog_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1855,22 +1372,8 @@ Updates an existing catalog list type record in the database
 
 ```
 mshop/catalog/manager/lists/type/update/mysql = 
- UPDATE "mshop_catalog_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1882,15 +1385,10 @@ Updates an existing catalog list record in the database
 
 ```
 mshop/catalog/manager/lists/update/ansi = 
- UPDATE "mshop_catalog_list"
- SET :names
- 		"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 		"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1913,7 +1411,6 @@ See also:
 * mshop/catalog/manager/lists/delete/ansi
 * mshop/catalog/manager/lists/search/ansi
 * mshop/catalog/manager/lists/count/ansi
-* mshop/catalog/manager/lists/aggregate/ansi
 
 ## update/mysql
 
@@ -1921,22 +1418,8 @@ Updates an existing catalog list record in the database
 
 ```
 mshop/catalog/manager/lists/update/mysql = 
- UPDATE "mshop_catalog_list"
- SET :names
- 		"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 		"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog_list"
- SET :names
- 		"parentid" = ?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 		"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1964,7 +1447,7 @@ insert or update statements and closed by an unlock statement.
 SQL statement for locking the catalog table
 
 ```
-mshop/catalog/manager/lock/mysql = DO GET_LOCK('aimeos.catalog', -1)
+mshop/catalog/manager/lock/mysql = 
 ```
 
 
@@ -1979,9 +1462,6 @@ Updates the left values of the nodes that are moved within the catalog tree
 
 ```
 mshop/catalog/manager/move-left/ansi = 
- UPDATE "mshop_catalog"
- SET "nleft" = "nleft" + ?, "level" = "level" + ?
- WHERE "siteid" = :siteid AND "nleft" >= ? AND "nleft" <= ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2023,18 +1503,8 @@ Updates the left values of the nodes that are moved within the catalog tree
 
 ```
 mshop/catalog/manager/move-left/mysql = 
- UPDATE "mshop_catalog"
- SET "nleft" = "nleft" + ?, "level" = "level" + ?
- WHERE "siteid" = :siteid AND "nleft" >= ? AND "nleft" <= ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog"
- SET "nleft" = "nleft" + ?, "level" = "level" + ?
- WHERE "siteid" = :siteid AND "nleft" >= ? AND "nleft" <= ?
-```
 
 See also:
 
@@ -2047,9 +1517,6 @@ Updates the left values of the nodes that are moved within the catalog tree
 
 ```
 mshop/catalog/manager/move-right/ansi = 
- UPDATE "mshop_catalog"
- SET "nright" = "nright" + ?
- WHERE "siteid" = :siteid AND "nright" >= ? AND "nright" <= ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2091,18 +1558,8 @@ Updates the left values of the nodes that are moved within the catalog tree
 
 ```
 mshop/catalog/manager/move-right/mysql = 
- UPDATE "mshop_catalog"
- SET "nright" = "nright" + ?
- WHERE "siteid" = :siteid AND "nright" >= ? AND "nright" <= ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog"
- SET "nright" = "nright" + ?
- WHERE "siteid" = :siteid AND "nright" >= ? AND "nright" <= ?
-```
 
 See also:
 
@@ -2113,10 +1570,9 @@ See also:
 Class name of the used catalog manager implementation
 
 ```
-mshop/catalog/manager/name = Standard
+mshop/catalog/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -2205,7 +1661,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/catalog/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/catalog/manager/newid/mysql = 
 ```
 
 
@@ -2218,13 +1674,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/catalog/manager/resource = db-catalog
+mshop/catalog/manager/resource = 
 ```
 
-* Default: `db-catalog`
 * Type: string - Database connection name
-* Since: 2023.04
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -2240,17 +1693,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/search-item/ansi = 
- SELECT :columns,
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -2312,34 +1754,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/search-item/mysql = 
- SELECT :columns,
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns,
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2352,15 +1768,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/search/ansi = 
- SELECT :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat
- WHERE mcat."siteid" = :siteid AND mcat."nleft" >= ?
- 	AND mcat."nright" <= ? AND :cond
- ORDER BY :order
 ```
 
 * Type: string - SQL statement for searching items
@@ -2408,30 +1815,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/catalog/manager/search/mysql = 
- SELECT :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat
- WHERE mcat."siteid" = :siteid AND mcat."nleft" >= ?
- 	AND mcat."nright" <= ? AND :cond
- ORDER BY :order
 ```
 
-* Default: 
-```
-
- SELECT :columns
- 	mcat."id", mcat."code", mcat."url", mcat."label", mcat."config",
- 	mcat."status", mcat."level", mcat."parentid", mcat."siteid",
- 	mcat."nleft" AS "left", mcat."nright" AS "right",
- 	mcat."mtime", mcat."editor", mcat."ctime", mcat."target"
- FROM "mshop_catalog" mcat
- WHERE mcat."siteid" = :siteid AND mcat."nleft" >= ?
- 	AND mcat."nright" <= ? AND :cond
- ORDER BY :order
-```
 
 See also:
 
@@ -2442,10 +1827,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/catalog/manager/sitemode = 1
+mshop/catalog/manager/sitemode = 
 ```
 
-* Default: `1`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -2479,17 +1863,9 @@ See also:
 List of manager names that can be instantiated by the catalog manager
 
 ```
-mshop/catalog/manager/submanagers = Array
-(
-)
+mshop/catalog/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 
@@ -2527,7 +1903,7 @@ the database.
 SQL statement for unlocking the catalog table
 
 ```
-mshop/catalog/manager/unlock/mysql = DO RELEASE_LOCK('aimeos.catalog')
+mshop/catalog/manager/unlock/mysql = 
 ```
 
 
@@ -2542,9 +1918,6 @@ Updates the parent ID after moving a node record
 
 ```
 mshop/catalog/manager/update-parentid/ansi = 
- UPDATE "mshop_catalog"
- SET "parentid" = ?
- WHERE "siteid" = :siteid AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2585,18 +1958,8 @@ Updates the parent ID after moving a node record
 
 ```
 mshop/catalog/manager/update-parentid/mysql = 
- UPDATE "mshop_catalog"
- SET "parentid" = ?
- WHERE "siteid" = :siteid AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog"
- SET "parentid" = ?
- WHERE "siteid" = :siteid AND "id" = ?
-```
 
 See also:
 
@@ -2609,9 +1972,6 @@ Updates the config, editor and mtime value of an updated record
 
 ```
 mshop/catalog/manager/update-usage/ansi = 
- UPDATE "mshop_catalog"
- SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2654,18 +2014,8 @@ Updates the config, editor and mtime value of an updated record
 
 ```
 mshop/catalog/manager/update-usage/mysql = 
- UPDATE "mshop_catalog"
- SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog"
- SET :names "url" = ?, "config" = ?, "mtime" = ?, "editor" = ?, "target" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -2678,9 +2028,6 @@ Updates an existing catalog node in the database
 
 ```
 mshop/catalog/manager/update/ansi = 
- UPDATE "mshop_catalog"
- SET "label" = ?, "code" = ?, "status" = ?
- WHERE "siteid" = :siteid AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -2721,18 +2068,8 @@ Updates an existing catalog node in the database
 
 ```
 mshop/catalog/manager/update/mysql = 
- UPDATE "mshop_catalog"
- SET "label" = ?, "code" = ?, "status" = ?
- WHERE "siteid" = :siteid AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_catalog"
- SET "label" = ?, "code" = ?, "status" = ?
- WHERE "siteid" = :siteid AND "id" = ?
-```
 
 See also:
 

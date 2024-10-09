@@ -127,6 +127,11 @@ This response contains all reviews for the product with the ID "1":
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -142,7 +147,7 @@ This response contains all reviews for the product with the ID "1":
         "type": "review",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/default\/jsonapi\/review?id=1",
+                "href": "http://localhost:8000/default/jsonapi/review?id=1",
                 "allow": ["GET"]
             }
         },

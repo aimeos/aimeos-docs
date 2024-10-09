@@ -6,17 +6,6 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/subscription/manager/aggregate/ansi = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_subscription" msub
- 	:joins
- 	WHERE :cond
- 	GROUP BY msub.id, :cols, :val
- 	ORDER BY msub.id DESC
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
 ```
 
 * Type: string - SQL statement for aggregating subscription items
@@ -67,34 +56,8 @@ Counts the number of records grouped by the values in the key column and matched
 
 ```
 mshop/subscription/manager/aggregate/mysql = 
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_subscription" msub
- 	:joins
- 	WHERE :cond
- 	GROUP BY msub.id, :cols, :val
- 	ORDER BY msub.id DESC
- 	LIMIT :size OFFSET :start
- ) AS list
- GROUP BY :keys
 ```
 
-* Default: 
-```
-
- SELECT :keys, :type("val") AS "value"
- FROM (
- 	SELECT :acols, :val AS "val"
- 	FROM "mshop_subscription" msub
- 	:joins
- 	WHERE :cond
- 	GROUP BY msub.id, :cols, :val
- 	ORDER BY msub.id DESC
- 	OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
- ) AS list
- GROUP BY :keys
-```
 
 See also:
 
@@ -107,17 +70,6 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/subscription/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msub."id"
- 	FROM "mshop_subscription" msub
- 	JOIN "mshop_order" mord ON msub."orderid" = mord."id"
- 	:joins
- 	WHERE :cond
- 	GROUP BY msub."id"
- 	ORDER BY msub."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
@@ -170,34 +122,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/subscription/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msub."id"
- 	FROM "mshop_subscription" msub
- 	JOIN "mshop_order" mord ON msub."orderid" = mord."id"
- 	:joins
- 	WHERE :cond
- 	GROUP BY msub."id"
- 	ORDER BY msub."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msub."id"
- 	FROM "mshop_subscription" msub
- 	JOIN "mshop_order" mord ON msub."orderid" = mord."id"
- 	:joins
- 	WHERE :cond
- 	GROUP BY msub."id"
- 	ORDER BY msub."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -209,17 +135,9 @@ See also:
 Excludes decorators added by the "common" option from the subscription manager
 
 ```
-mshop/subscription/manager/decorators/excludes = Array
-(
-)
+mshop/subscription/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -251,17 +169,9 @@ See also:
 Adds a list of globally available decorators only to the subscription manager
 
 ```
-mshop/subscription/manager/decorators/global = Array
-(
-)
+mshop/subscription/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -271,16 +181,15 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the subscription
-manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the subscription manager.
 
 ```
  mshop/subscription/manager/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the
-subscription manager.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the subscription
+manager.
 
 See also:
 
@@ -293,17 +202,9 @@ See also:
 Adds a list of local decorators only to the subscription manager
 
 ```
-mshop/subscription/manager/decorators/local = Array
-(
-)
+mshop/subscription/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
 * Since: 2018.04
 
@@ -313,16 +214,15 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Subscription\Manager\Decorator\*") around the subscription
-manager.
+("\Aimeos\MShop\Subscription\Manager\Decorator\*") around the subscription manager.
 
 ```
  mshop/subscription/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Subscription\Manager\Decorator\Decorator2" only to the
-subscription manager.
+"\Aimeos\MShop\Subscription\Manager\Decorator\Decorator2" only to the subscription
+manager.
 
 See also:
 
@@ -337,8 +237,6 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/subscription/manager/delete/ansi = 
- DELETE FROM "mshop_subscription"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
@@ -370,16 +268,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/subscription/manager/delete/mysql = 
- DELETE FROM "mshop_subscription"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_subscription"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -392,12 +282,6 @@ Inserts a new subscription record into the database table
 
 ```
 mshop/subscription/manager/insert/ansi = 
- INSERT INTO "mshop_subscription" ( :names
- 	"orderid", "ordprodid", "next", "end", "interval", "productid", "period",
- 	"reason", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -412,8 +296,8 @@ prepared statement. It must include question marks for binding
 the values from the subscription item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
-statement. The subscription of the columns must correspond to the
-subscription in the save() method, so the correct values are
+statement. The order of the columns must correspond to the
+order in the save() method, so the correct values are
 bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -434,24 +318,8 @@ Inserts a new subscription record into the database table
 
 ```
 mshop/subscription/manager/insert/mysql = 
- INSERT INTO "mshop_subscription" ( :names
- 	"orderid", "ordprodid", "next", "end", "interval", "productid", "period",
- 	"reason", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_subscription" ( :names
- 	"orderid", "ordprodid", "next", "end", "interval", "productid", "period",
- 	"reason", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -462,10 +330,9 @@ See also:
 Class name of the used subscription manager implementation
 
 ```
-mshop/subscription/manager/name = Standard
+mshop/subscription/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2018.04
 
@@ -523,11 +390,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_msub_id')
+ SELECT currval('seq_mrul_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_msub_id".CURRVAL FROM DUAL
+ SELECT "seq_mrul_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -547,7 +414,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/subscription/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/subscription/manager/newid/mysql = 
 ```
 
 
@@ -560,10 +427,9 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/subscription/manager/resource = db-order
+mshop/subscription/manager/resource = 
 ```
 
-* Default: `db-order`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -580,14 +446,6 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/subscription/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_subscription" msub
- JOIN "mshop_order" mord ON msub."orderid" = mord."id"
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -646,28 +504,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/subscription/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_subscription" msub
- JOIN "mshop_order" mord ON msub."orderid" = mord."id"
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_subscription" msub
- JOIN "mshop_order" mord ON msub."orderid" = mord."id"
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -678,10 +516,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/subscription/manager/sitemode = 2
+mshop/subscription/manager/sitemode = 
 ```
 
-* Default: `2`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.04
 
@@ -715,17 +552,9 @@ See also:
 List of manager names that can be instantiated by the subscription manager
 
 ```
-mshop/subscription/manager/submanagers = Array
-(
-)
+mshop/subscription/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
 * Since: 2018.04
 
@@ -747,11 +576,6 @@ Updates an existing subscription record in the database
 
 ```
 mshop/subscription/manager/update/ansi = 
- UPDATE "mshop_subscription"
- SET :names
- 	"orderid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
- 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -763,8 +587,8 @@ be updated in the database.
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
 the values from the subscription item to the statement before they are
-sent to the database server. The subscription of the columns must
-correspond to the subscription in the save() method, so the
+sent to the database server. The order of the columns must
+correspond to the order in the save() method, so the
 correct values are bound to the columns.
 
 The SQL statement should conform to the ANSI standard to be
@@ -785,22 +609,8 @@ Updates an existing subscription record in the database
 
 ```
 mshop/subscription/manager/update/mysql = 
- UPDATE "mshop_subscription"
- SET :names
- 	"orderid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
- 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_subscription"
- SET :names
- 	"orderid" = ?, "ordprodid" = ?, "next" = ?, "end" = ?, "interval" = ?,
- 	"productid" = ?, "period" = ?, "reason" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

@@ -6,21 +6,12 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msto."id"
- 	FROM "mshop_stock" msto
- 	:joins
- 	WHERE :cond
- 	ORDER BY msto."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2017.01
+* Since: 2020.10
 
-Counts all records matched by the given criteria from the product
+Counts all records matched by the given criteria from the stock
 database. The records must be from one of the sites that are
 configured via the context item. If the current site is part of
 a tree of sites, the statement can count all records from the
@@ -60,7 +51,6 @@ See also:
 * mshop/stock/manager/newid/ansi
 * mshop/stock/manager/delete/ansi
 * mshop/stock/manager/search/ansi
-* mshop/stock/manager/stocklevel
 
 ## mysql
 
@@ -68,30 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msto."id"
- 	FROM "mshop_stock" msto
- 	:joins
- 	WHERE :cond
- 	ORDER BY msto."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT msto."id"
- 	FROM "mshop_stock" msto
- 	:joins
- 	WHERE :cond
- 	ORDER BY msto."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -100,23 +68,14 @@ See also:
 # decorators
 ## excludes
 
-Excludes decorators added by the "common" option from the product stock manager
+Excludes decorators added by the "common" option from the stock manager
 
 ```
-mshop/stock/manager/decorators/excludes = Array
-(
-)
+mshop/stock/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2017.01
-* Since: 2017.01
+* Since: 2020.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -125,7 +84,7 @@ modify what is returned to the caller.
 
 This option allows you to remove a decorator added via
 "mshop/common/manager/decorators/default" before they are wrapped
-around the product stock manager.
+around the stock manager.
 
 ```
  mshop/stock/manager/decorators/excludes = array( 'decorator1' )
@@ -133,36 +92,24 @@ around the product stock manager.
 
 This would remove the decorator named "decorator1" from the list of
 common decorators ("\Aimeos\MShop\Common\Manager\Decorator\*") added via
-"mshop/common/manager/decorators/default" for the product stock manager.
+"mshop/common/manager/decorators/default" for the stock manager.
 
 See also:
 
 * mshop/common/manager/decorators/default
 * mshop/stock/manager/decorators/global
 * mshop/stock/manager/decorators/local
-* mshop/common/manager/decorators/default
-* mshop/stock/manager/decorators/global
-* mshop/stock/manager/decorators/local
 
 ## global
 
-Adds a list of globally available decorators only to the product stock manager
+Adds a list of globally available decorators only to the stock manager
 
 ```
-mshop/stock/manager/decorators/global = Array
-(
-)
+mshop/stock/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2017.01
-* Since: 2017.01
+* Since: 2020.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -170,43 +117,32 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the product stock manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the stock manager.
 
 ```
  mshop/stock/manager/decorators/global = array( 'decorator1' )
 ```
 
 This would add the decorator named "decorator1" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the product controller.
+"\Aimeos\MShop\Common\Manager\Decorator\Decorator1" only to the stock
+manager.
 
 See also:
 
 * mshop/common/manager/decorators/default
 * mshop/stock/manager/decorators/excludes
 * mshop/stock/manager/decorators/local
-* mshop/common/manager/decorators/default
-* mshop/stock/manager/decorators/excludes
-* mshop/stock/manager/decorators/local
 
 ## local
 
-Adds a list of local decorators only to the product stock manager
+Adds a list of local decorators only to the stock manager
 
 ```
-mshop/stock/manager/decorators/local = Array
-(
-)
+mshop/stock/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2017.01
-* Since: 2017.01
+* Since: 2020.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -214,21 +150,18 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the product stock manager.
+("\Aimeos\MShop\Stock\Manager\Decorator\*") around the stock manager.
 
 ```
  mshop/stock/manager/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Common\Manager\Decorator\Decorator2" only to the product
-controller.
+"\Aimeos\MShop\Stock\Manager\Decorator\Decorator2" only to the stock
+manager.
 
 See also:
 
-* mshop/common/manager/decorators/default
-* mshop/stock/manager/decorators/excludes
-* mshop/stock/manager/decorators/global
 * mshop/common/manager/decorators/default
 * mshop/stock/manager/decorators/excludes
 * mshop/stock/manager/decorators/global
@@ -240,14 +173,12 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/stock/manager/delete/ansi = 
- DELETE FROM "mshop_stock"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2017.01
+* Since: 2020.10
 
-Removes the records specified by the given IDs from the product database.
+Removes the records specified by the given IDs from the stock database.
 The records must be from the site that is configured via the
 context item.
 
@@ -266,7 +197,6 @@ See also:
 * mshop/stock/manager/newid/ansi
 * mshop/stock/manager/search/ansi
 * mshop/stock/manager/count/ansi
-* mshop/stock/manager/stocklevel
 
 ## mysql
 
@@ -274,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/stock/manager/delete/mysql = 
- DELETE FROM "mshop_stock"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_stock"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -292,20 +214,14 @@ See also:
 # insert
 ## ansi
 
-Inserts a new product stock record into the database table
+Inserts a new stock record into the database table
 
 ```
 mshop/stock/manager/insert/ansi = 
- INSERT INTO "mshop_stock" ( :names
- 	"prodid", "type", "stocklevel", "backdate",
- 	"timeframe", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2017.01
+* Since: 2020.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -313,7 +229,7 @@ using the "newid" SQL statement.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the product stock item to the statement before they are
+the values from the stock item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
 statement. The order of the columns must correspond to the
@@ -331,32 +247,15 @@ See also:
 * mshop/stock/manager/delete/ansi
 * mshop/stock/manager/search/ansi
 * mshop/stock/manager/count/ansi
-* mshop/stock/manager/stocklevel
 
 ## mysql
 
-Inserts a new product stock record into the database table
+Inserts a new stock record into the database table
 
 ```
 mshop/stock/manager/insert/mysql = 
- INSERT INTO "mshop_stock" ( :names
- 	"prodid", "type", "stocklevel", "backdate",
- 	"timeframe", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_stock" ( :names
- 	"prodid", "type", "stocklevel", "backdate",
- 	"timeframe", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -364,18 +263,16 @@ See also:
 
 # name
 
-Class name of the used product stock manager implementation
+Class name of the used stock manager implementation
 
 ```
-mshop/stock/manager/name = Standard
+mshop/stock/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2017.01
-* Since: 2017.01
+* Since: 2020.10
 
-Each default product stock manager can be replaced by an alternative imlementation.
+Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
 name as configuration value so the manager factory knows which class it
 has to instantiate.
@@ -383,19 +280,19 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\MShop\Stock\Manager\Stock\Standard
+ \Aimeos\MShop\Stock\Manager\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\MShop\Stock\Manager\Stock\Mystock
+ \Aimeos\MShop\Stock\Manager\Mymanager
 ```
 
 then you have to set the this configuration option:
 
 ```
- mshop/stock/manager/name = Mystock
+ mshop/stock/manager/name = Mymanager
 ```
 
 The value is the last part of your own class name and it's case sensitive,
@@ -405,7 +302,7 @@ part of the class name.
 The allowed characters of the class name are A-Z, a-z and 0-9. No other
 characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
-or numbers. Avoid chamel case names like "MyStock"!
+or numbers. Avoid chamel case names like "MyManager"!
 
 
 # newid
@@ -418,7 +315,7 @@ mshop/stock/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2017.01
+* Since: 2020.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -429,11 +326,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_msto_id')
+ SELECT currval('seq_mrul_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_msto_id".CURRVAL FROM DUAL
+ SELECT "seq_mrul_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -447,14 +344,13 @@ See also:
 * mshop/stock/manager/delete/ansi
 * mshop/stock/manager/search/ansi
 * mshop/stock/manager/count/ansi
-* mshop/stock/manager/stocklevel
 
 ## mysql
 
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/stock/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/stock/manager/newid/mysql = 
 ```
 
 
@@ -467,12 +363,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/stock/manager/resource = db-stock
+mshop/stock/manager/resource = 
 ```
 
-* Default: `db-stock`
 * Type: string - Database connection name
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -488,18 +382,12 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_stock" msto
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2017.01
+* Since: 2020.10
 
-Fetches the records matched by the given criteria from the product
+Fetches the records matched by the given criteria from the stock
 database. The records must be from one of the sites that are
 configured via the context item. If the current site is part of
 a tree of sites, the SELECT statement can retrieve all records
@@ -522,9 +410,7 @@ server.
 
 If the records that are retrieved should be ordered by one or more
 columns, the generated string of column / sort direction pairs
-replaces the ":order" placeholder. Columns of
-sub-managers can also be used for ordering the result set but then
-no index can be used.
+replaces the ":order" placeholder.
 
 The number of returned records can be limited and can start at any
 number between the begining and the end of the result set. For that
@@ -543,7 +429,6 @@ See also:
 * mshop/stock/manager/newid/ansi
 * mshop/stock/manager/delete/ansi
 * mshop/stock/manager/count/ansi
-* mshop/stock/manager/stocklevel
 
 ## mysql
 
@@ -551,24 +436,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_stock" msto
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_stock" msto
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -579,10 +448,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/stock/manager/sitemode = 3
+mshop/stock/manager/sitemode = 
 ```
 
-* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -618,9 +486,6 @@ Increases or decreases the stock level for the given product and type code
 
 ```
 mshop/stock/manager/stocklevel/ansi = 
- UPDATE "mshop_stock"
- SET "stocklevel" = "stocklevel" - ?, "mtime" = ?, "editor" = ?
- WHERE "prodid" = ? AND "type" = ? AND :cond
 ```
 
 * Type: string - SQL statement for increasing/decreasing the stock level
@@ -656,18 +521,8 @@ Increases or decreases the stock level for the given product and type code
 
 ```
 mshop/stock/manager/stocklevel/mysql = 
- UPDATE "mshop_stock"
- SET "stocklevel" = "stocklevel" - ?, "mtime" = ?, "editor" = ?
- WHERE "prodid" = ? AND "type" = ? AND :cond
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_stock"
- SET "stocklevel" = "stocklevel" - ?, "mtime" = ?, "editor" = ?
- WHERE "prodid" = ? AND "type" = ? AND :cond
-```
 
 See also:
 
@@ -675,22 +530,14 @@ See also:
 
 # submanagers
 
-List of manager names that can be instantiated by the product stock manager
+List of manager names that can be instantiated by the stock manager
 
 ```
-mshop/stock/manager/submanagers = Array
-(
-)
+mshop/stock/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2017.01
+* Since: 2020.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -710,21 +557,12 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mstoty."id"
- 	FROM "mshop_stock_type" mstoty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mstoty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2017.01
+* Since: 2015.10
 
-Counts all records matched by the given criteria from the product
+Counts all records matched by the given criteria from the stock
 database. The records must be from one of the sites that are
 configured via the context item. If the current site is part of
 a tree of sites, the statement can count all records from the
@@ -732,7 +570,7 @@ current site and the complete sub-tree of sites.
 
 As the records can normally be limited by criteria from sub-managers,
 their tables must be joined in the SQL context. This is done by
-using the "internaldeps" stock from the definition of the ID
+using the "internaldeps" property from the definition of the ID
 column of the sub-managers. These internal dependencies specify
 the JOIN between the tables and the used columns for joining. The
 ":joins" placeholder is then replaced by the JOIN strings from
@@ -771,30 +609,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mstoty."id"
- 	FROM "mshop_stock_type" mstoty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mstoty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mstoty."id"
- 	FROM "mshop_stock_type" mstoty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mstoty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -805,19 +621,11 @@ See also:
 Excludes decorators added by the "common" option from the stock type manager
 
 ```
-mshop/stock/manager/type/decorators/excludes = Array
-(
-)
+mshop/stock/manager/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2017.01
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -847,19 +655,11 @@ See also:
 Adds a list of globally available decorators only to the stock type manager
 
 ```
-mshop/stock/manager/type/decorators/global = Array
-(
-)
+mshop/stock/manager/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2017.01
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -889,19 +689,11 @@ See also:
 Adds a list of local decorators only to the stock type manager
 
 ```
-mshop/stock/manager/type/decorators/local = Array
-(
-)
+mshop/stock/manager/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2017.01
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -909,8 +701,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Stock\Manager\Type\Decorator\*") around the stock type
-manager.
+("\Aimeos\MShop\Stock\Manager\Type\Decorator\*") around the stock
+type manager.
 
 ```
  mshop/stock/manager/type/decorators/local = array( 'decorator2' )
@@ -932,14 +724,12 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/stock/manager/type/delete/ansi = 
- DELETE FROM "mshop_stock_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2017.01
+* Since: 2015.10
 
-Removes the records specified by the given IDs from the product database.
+Removes the records specified by the given IDs from the stock database.
 The records must be from the site that is configured via the
 context item.
 
@@ -965,16 +755,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/stock/manager/type/delete/mysql = 
- DELETE FROM "mshop_stock_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_stock_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -986,16 +768,10 @@ Inserts a new stock type record into the database table
 
 ```
 mshop/stock/manager/type/insert/ansi = 
- INSERT INTO "mshop_stock_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2017.01
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1003,7 +779,7 @@ using the "newid" SQL statement.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the product type item to the statement before they are
+the values from the stock type item to the statement before they are
 sent to the database server. The number of question marks must
 be the same as the number of columns listed in the INSERT
 statement. The order of the columns must correspond to the
@@ -1028,24 +804,8 @@ Inserts a new stock type record into the database table
 
 ```
 mshop/stock/manager/type/insert/mysql = 
- INSERT INTO "mshop_stock_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_stock_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1056,12 +816,11 @@ See also:
 Class name of the used stock type manager implementation
 
 ```
-mshop/stock/manager/type/name = Standard
+mshop/stock/manager/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2017.01
+* Since: 2015.10
 
 Each default stock type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1071,13 +830,13 @@ has to instantiate.
 For example, if the name of the default class is
 
 ```
- \Aimeos\MShop\Product\Manager\Stock\Type\Standard
+ \Aimeos\MShop\Stock\Manager\Type\Standard
 ```
 
 and you want to replace it with your own version named
 
 ```
- \Aimeos\MShop\Product\Manager\Stock\Type\Mytype
+ \Aimeos\MShop\Stock\Manager\Type\Mytype
 ```
 
 then you have to set the this configuration option:
@@ -1105,7 +864,7 @@ mshop/stock/manager/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2017.01
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1116,11 +875,11 @@ For MySQL:
 ```
  SELECT LAST_INSERT_ID()
 For PostgreSQL:
- SELECT currval('seq_mproprty_id')
+ SELECT currval('seq_mstoty_id')
 For SQL Server:
  SELECT SCOPE_IDENTITY()
 For Oracle:
- SELECT "seq_mproprty_id".CURRVAL FROM DUAL
+ SELECT "seq_mstoty_id".CURRVAL FROM DUAL
 ```
 
 There's no way to retrive the new ID by a SQL statements that
@@ -1140,7 +899,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/stock/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/stock/manager/type/newid/mysql = 
 ```
 
 
@@ -1154,18 +913,12 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/type/search/ansi = 
- SELECT :columns
- FROM "mshop_stock_type" mstoty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2017.01
+* Since: 2015.10
 
-Fetches the records matched by the given criteria from the product
+Fetches the records matched by the given criteria from the stock
 database. The records must be from one of the sites that are
 configured via the context item. If the current site is part of
 a tree of sites, the SELECT statement can retrieve all records
@@ -1173,7 +926,7 @@ from the current site and the complete sub-tree of sites.
 
 As the records can normally be limited by criteria from sub-managers,
 their tables must be joined in the SQL context. This is done by
-using the "internaldeps" stock from the definition of the ID
+using the "internaldeps" property from the definition of the ID
 column of the sub-managers. These internal dependencies specify
 the JOIN between the tables and the used columns for joining. The
 ":joins" placeholder is then replaced by the JOIN strings from
@@ -1216,24 +969,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/stock/manager/type/search/mysql = 
- SELECT :columns
- FROM "mshop_stock_type" mstoty
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_stock_type" mstoty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1244,19 +981,11 @@ See also:
 List of manager names that can be instantiated by the stock type manager
 
 ```
-mshop/stock/manager/type/submanagers = Array
-(
-)
+mshop/stock/manager/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2017.01
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1275,22 +1004,17 @@ Updates an existing stock type record in the database
 
 ```
 mshop/stock/manager/type/update/ansi = 
- UPDATE "mshop_stock_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2017.01
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the product type item to the statement before they are
+the values from the stock type item to the statement before they are
 sent to the database server. The order of the columns must
 correspond to the order in the save() method, so the
 correct values are bound to the columns.
@@ -1313,22 +1037,8 @@ Updates an existing stock type record in the database
 
 ```
 mshop/stock/manager/type/update/mysql = 
- UPDATE "mshop_stock_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_stock_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1337,26 +1047,21 @@ See also:
 # update
 ## ansi
 
-Updates an existing product stock record in the database
+Updates an existing stock record in the database
 
 ```
 mshop/stock/manager/update/ansi = 
- UPDATE "mshop_stock"
- SET :names
- 	"prodid" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
- 	"timeframe" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2017.01
+* Since: 2020.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
 
 The SQL statement must be a string suitable for being used as
 prepared statement. It must include question marks for binding
-the values from the product stock item to the statement before they are
+the values from the stock item to the statement before they are
 sent to the database server. The order of the columns must
 correspond to the order in the save() method, so the
 correct values are bound to the columns.
@@ -1372,30 +1077,15 @@ See also:
 * mshop/stock/manager/delete/ansi
 * mshop/stock/manager/search/ansi
 * mshop/stock/manager/count/ansi
-* mshop/stock/manager/stocklevel
 
 ## mysql
 
-Updates an existing product stock record in the database
+Updates an existing stock record in the database
 
 ```
 mshop/stock/manager/update/mysql = 
- UPDATE "mshop_stock"
- SET :names
- 	"prodid" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
- 	"timeframe" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_stock"
- SET :names
- 	"prodid" = ?, "type" = ?, "stocklevel" = ?, "backdate" = ?,
- 	"timeframe" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

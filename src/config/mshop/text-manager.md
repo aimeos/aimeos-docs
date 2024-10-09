@@ -6,20 +6,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtex."id"
- 	FROM "mshop_text" mtex
- 	:joins
- 	WHERE :cond
- 	GROUP BY mtex."id"
- 	ORDER BY mtex."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -68,32 +58,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtex."id"
- 	FROM "mshop_text" mtex
- 	:joins
- 	WHERE :cond
- 	GROUP BY mtex."id"
- 	ORDER BY mtex."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtex."id"
- 	FROM "mshop_text" mtex
- 	:joins
- 	WHERE :cond
- 	GROUP BY mtex."id"
- 	ORDER BY mtex."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -105,19 +71,11 @@ See also:
 Excludes decorators added by the "common" option from the text manager
 
 ```
-mshop/text/manager/decorators/excludes = Array
-(
-)
+mshop/text/manager/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -147,19 +105,11 @@ See also:
 Adds a list of globally available decorators only to the text manager
 
 ```
-mshop/text/manager/decorators/global = Array
-(
-)
+mshop/text/manager/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -188,19 +138,11 @@ See also:
 Adds a list of local decorators only to the text manager
 
 ```
-mshop/text/manager/decorators/local = Array
-(
-)
+mshop/text/manager/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -231,12 +173,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/delete/ansi = 
- DELETE FROM "mshop_text"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the text database.
 The records must be from the site that is configured via the
@@ -264,16 +204,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/delete/mysql = 
- DELETE FROM "mshop_text"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_text"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -286,16 +218,10 @@ Inserts a new text record into the database table
 
 ```
 mshop/text/manager/insert/ansi = 
- INSERT INTO "mshop_text" ( :names
- 	"langid", "type", "domain", "label", "content",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -328,112 +254,24 @@ Inserts a new text record into the database table
 
 ```
 mshop/text/manager/insert/mysql = 
- INSERT INTO "mshop_text" ( :names
- 	"langid", "type", "domain", "label", "content",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_text" ( :names
- 	"langid", "type", "domain", "label", "content",
- 	"status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
 * mshop/text/manager/insert/ansi
 
 # lists
-## aggregate/ansi
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/text/manager/lists/aggregate/ansi = 
-```
-
-* Type: string - SQL statement for aggregating order items
-* Since: 2014.07
-
-Groups all records by the values in the key column and counts their
-occurence. The matched records can be limited by the given criteria
-from the order database. The records must be from one of the sites
-that are configured via the context item. If the current site is part
-of a tree of sites, the statement can count all records from the
-current site and the complete sub-tree of sites.
-
-As the records can normally be limited by criteria from sub-managers,
-their tables must be joined in the SQL context. This is done by
-using the "internaldeps" property from the definition of the ID
-column of the sub-managers. These internal dependencies specify
-the JOIN between the tables and the used columns for joining. The
-":joins" placeholder is then replaced by the JOIN strings from
-the sub-managers.
-
-To limit the records matched, conditions can be added to the given
-criteria object. It can contain comparisons like column names that
-must match specific values which can be combined by AND, OR or NOT
-operators. The resulting string of SQL conditions replaces the
-":cond" placeholder before the statement is sent to the database
-server.
-
-This statement doesn't return any records. Instead, it returns pairs
-of the different values found in the key column together with the
-number of records that have been found for that key values.
-
-The SQL statement should conform to the ANSI standard to be
-compatible with most relational database systems. This also
-includes using double quotes for table and column names.
-
-See also:
-
-* mshop/text/manager/lists/insert/ansi
-* mshop/text/manager/lists/update/ansi
-* mshop/text/manager/lists/newid/ansi
-* mshop/text/manager/lists/delete/ansi
-* mshop/text/manager/lists/search/ansi
-* mshop/text/manager/lists/count/ansi
-
-## aggregate/mysql
-
-Counts the number of records grouped by the values in the key column and matched by the given criteria
-
-```
-mshop/text/manager/lists/aggregate/mysql = 
-```
-
-
-See also:
-
-* mshop/text/manager/lists/aggregate/ansi
-
 ## count/ansi
 
 Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexli."id"
- 	FROM "mshop_text_list" mtexli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -483,30 +321,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexli."id"
- 	FROM "mshop_text_list" mtexli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexli."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexli."id"
- 	FROM "mshop_text_list" mtexli
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexli."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -517,19 +333,11 @@ See also:
 Excludes decorators added by the "common" option from the text list manager
 
 ```
-mshop/text/manager/lists/decorators/excludes = Array
-(
-)
+mshop/text/manager/lists/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -559,19 +367,11 @@ See also:
 Adds a list of globally available decorators only to the text list manager
 
 ```
-mshop/text/manager/lists/decorators/global = Array
-(
-)
+mshop/text/manager/lists/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -600,19 +400,11 @@ See also:
 Adds a list of local decorators only to the text list manager
 
 ```
-mshop/text/manager/lists/decorators/local = Array
-(
-)
+mshop/text/manager/lists/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -643,12 +435,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/lists/delete/ansi = 
- DELETE FROM "mshop_text_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the text database.
 The records must be from the site that is configured via the
@@ -677,16 +467,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/lists/delete/mysql = 
- DELETE FROM "mshop_text_list"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_text_list"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -698,16 +480,10 @@ Inserts a new text list record into the database table
 
 ```
 mshop/text/manager/lists/insert/ansi = 
- INSERT INTO "mshop_text_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -741,24 +517,8 @@ Inserts a new text list record into the database table
 
 ```
 mshop/text/manager/lists/insert/mysql = 
- INSERT INTO "mshop_text_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_text_list" ( :names
- 	"parentid", "key", "type", "domain", "refid", "start", "end",
- 	"config", "pos", "status", "mtime", "editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -769,12 +529,11 @@ See also:
 Class name of the used text list manager implementation
 
 ```
-mshop/text/manager/lists/name = Standard
+mshop/text/manager/lists/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default text list manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -818,7 +577,7 @@ mshop/text/manager/lists/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -854,7 +613,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/lists/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/lists/newid/mysql = 
 ```
 
 
@@ -868,16 +627,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/search/ansi = 
- SELECT :columns
- FROM "mshop_text_list" mtexli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -931,24 +684,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/search/mysql = 
- SELECT :columns
- FROM "mshop_text_list" mtexli
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_text_list" mtexli
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -959,19 +696,11 @@ See also:
 List of manager names that can be instantiated by the text list manager
 
 ```
-mshop/text/manager/lists/submanagers = Array
-(
-)
+mshop/text/manager/lists/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -990,19 +719,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexlity."id"
- 	FROM "mshop_text_list_type" as mtexlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -1051,30 +771,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexlity."id"
- 	FROM "mshop_text_list_type" as mtexlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexlity."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexlity."id"
- 	FROM "mshop_text_list_type" as mtexlity
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexlity."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -1085,19 +783,11 @@ See also:
 Excludes decorators added by the "common" option from the text list type manager
 
 ```
-mshop/text/manager/lists/type/decorators/excludes = Array
-(
-)
+mshop/text/manager/lists/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1127,19 +817,11 @@ See also:
 Adds a list of globally available decorators only to the text list type manager
 
 ```
-mshop/text/manager/lists/type/decorators/global = Array
-(
-)
+mshop/text/manager/lists/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1147,8 +829,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the text list type
-manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the text list
+type manager.
 
 ```
  mshop/text/manager/lists/type/decorators/global = array( 'decorator1' )
@@ -1169,19 +851,11 @@ See also:
 Adds a list of local decorators only to the text list type manager
 
 ```
-mshop/text/manager/lists/type/decorators/local = Array
-(
-)
+mshop/text/manager/lists/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -1189,16 +863,16 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Text\Manager\Lists\Type\Decorator\*") around the text
-list type manager.
+("\Aimeos\MShop\Text\Manager\Lists\Type\Decorator\*") around the
+text list type manager.
 
 ```
  mshop/text/manager/lists/type/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Text\Manager\Lists\Type\Decorator\Decorator2" only to
-the text list type manager.
+"\Aimeos\MShop\Text\Manager\Lists\Type\Decorator\Decorator2" only
+to the text list type manager.
 
 See also:
 
@@ -1212,12 +886,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/lists/type/delete/ansi = 
- DELETE FROM "mshop_text_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the text database.
 The records must be from the site that is configured via the
@@ -1245,16 +917,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/lists/type/delete/mysql = 
- DELETE FROM "mshop_text_list_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_text_list_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -1266,16 +930,10 @@ Inserts a new text list type record into the database table
 
 ```
 mshop/text/manager/lists/type/insert/ansi = 
- INSERT INTO "mshop_text_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -1308,24 +966,8 @@ Inserts a new text list type record into the database table
 
 ```
 mshop/text/manager/lists/type/insert/mysql = 
- INSERT INTO "mshop_text_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_text_list_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -1336,12 +978,11 @@ See also:
 Class name of the used text list type manager implementation
 
 ```
-mshop/text/manager/lists/type/name = Standard
+mshop/text/manager/lists/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default text list type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1385,7 +1026,7 @@ mshop/text/manager/lists/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1420,7 +1061,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/lists/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/lists/type/newid/mysql = 
 ```
 
 
@@ -1434,16 +1075,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/type/search/ansi = 
- SELECT :columns
- FROM "mshop_text_list_type" mtexlity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -1496,24 +1131,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/lists/type/search/mysql = 
- SELECT :columns
- FROM "mshop_text_list_type" mtexlity
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_text_list_type" mtexlity
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1524,19 +1143,11 @@ See also:
 List of manager names that can be instantiated by the text list type manager
 
 ```
-mshop/text/manager/lists/type/submanagers = Array
-(
-)
+mshop/text/manager/lists/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1555,15 +1166,10 @@ Updates an existing text list type record in the database
 
 ```
 mshop/text/manager/lists/type/update/ansi = 
- UPDATE "mshop_text_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1593,22 +1199,8 @@ Updates an existing text list type record in the database
 
 ```
 mshop/text/manager/lists/type/update/mysql = 
- UPDATE "mshop_text_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_text_list_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1620,15 +1212,10 @@ Updates an existing text list record in the database
 
 ```
 mshop/text/manager/lists/update/ansi = 
- UPDATE "mshop_text_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -1659,22 +1246,8 @@ Updates an existing text list record in the database
 
 ```
 mshop/text/manager/lists/update/mysql = 
- UPDATE "mshop_text_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_text_list"
- SET :names
- 	"parentid"=?, "key" = ?, "type" = ?, "domain" = ?, "refid" = ?, "start" = ?,
- 	"end" = ?, "config" = ?, "pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -1685,12 +1258,11 @@ See also:
 Class name of the used text manager implementation
 
 ```
-mshop/text/manager/name = Standard
+mshop/text/manager/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -1735,7 +1307,7 @@ mshop/text/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -1770,7 +1342,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/newid/mysql = 
 ```
 
 
@@ -1783,14 +1355,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/text/manager/resource = db-text
+mshop/text/manager/resource = 
 ```
 
-* Default: `db-text`
 * Type: string - Database connection name
-* Since: 2023.04
-* Since: 2023.04
-* Since: 2023.04
 * Since: 2023.04
 
 You can configure a different database connection for each data domain
@@ -1806,17 +1374,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/search/ansi = 
- SELECT :columns
- FROM "mshop_text" mtex
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -1869,26 +1430,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/search/mysql = 
- SELECT :columns
- FROM "mshop_text" mtex
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_text" mtex
- :joins
- WHERE :cond
- GROUP BY :group
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -1899,10 +1442,9 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/text/manager/sitemode = 3
+mshop/text/manager/sitemode = 
 ```
 
-* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -1936,19 +1478,11 @@ See also:
 List of manager names that can be instantiated by the text manager
 
 ```
-mshop/text/manager/submanagers = Array
-(
-)
+mshop/text/manager/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1968,19 +1502,10 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/type/count/ansi = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexty."id"
- 	FROM "mshop_text_type" mtexty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2014.03
+* Since: 2015.10
 
 Counts all records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -2029,30 +1554,8 @@ Counts the number of records matched by the given criteria in the database
 
 ```
 mshop/text/manager/type/count/mysql = 
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexty."id"
- 	FROM "mshop_text_type" mtexty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexty."id"
- 	LIMIT 10000 OFFSET 0
- ) AS list
 ```
 
-* Default: 
-```
-
- SELECT COUNT(*) AS "count"
- FROM (
- 	SELECT mtexty."id"
- 	FROM "mshop_text_type" mtexty
- 	:joins
- 	WHERE :cond
- 	ORDER BY mtexty."id"
- 	OFFSET 0 ROWS FETCH NEXT 10000 ROWS ONLY
- ) AS list
-```
 
 See also:
 
@@ -2063,19 +1566,11 @@ See also:
 Excludes decorators added by the "common" option from the text type manager
 
 ```
-mshop/text/manager/type/decorators/excludes = Array
-(
-)
+mshop/text/manager/type/decorators/excludes = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -2105,19 +1600,11 @@ See also:
 Adds a list of globally available decorators only to the text type manager
 
 ```
-mshop/text/manager/type/decorators/global = Array
-(
-)
+mshop/text/manager/type/decorators/global = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -2125,7 +1612,8 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap global decorators
-("\Aimeos\MShop\Common\Manager\Decorator\*") around the text type manager.
+("\Aimeos\MShop\Common\Manager\Decorator\*") around the text type
+manager.
 
 ```
  mshop/text/manager/type/decorators/global = array( 'decorator1' )
@@ -2146,19 +1634,11 @@ See also:
 Adds a list of local decorators only to the text type manager
 
 ```
-mshop/text/manager/type/decorators/local = Array
-(
-)
+mshop/text/manager/type/decorators/local = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of decorator names
-* Since: 2014.03
+* Since: 2015.10
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -2166,16 +1646,16 @@ class only in certain conditions (e.g. only for logged in users) or
 modify what is returned to the caller.
 
 This option allows you to wrap local decorators
-("\Aimeos\MShop\Text\Manager\Type\Decorator\*") around the text type
-manager.
+("\Aimeos\MShop\Text\Manager\Type\Decorator\*") around the text
+type manager.
 
 ```
  mshop/text/manager/type/decorators/local = array( 'decorator2' )
 ```
 
 This would add the decorator named "decorator2" defined by
-"\Aimeos\MShop\Text\Manager\Type\Decorator\Decorator2" only to the text
-type manager.
+"\Aimeos\MShop\Text\Manager\Type\Decorator\Decorator2" only to the
+text type manager.
 
 See also:
 
@@ -2189,12 +1669,10 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/type/delete/ansi = 
- DELETE FROM "mshop_text_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2014.03
+* Since: 2015.10
 
 Removes the records specified by the given IDs from the text database.
 The records must be from the site that is configured via the
@@ -2222,16 +1700,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/text/manager/type/delete/mysql = 
- DELETE FROM "mshop_text_type"
- WHERE :cond AND "siteid" LIKE ?
 ```
 
-* Default: 
-```
-
- DELETE FROM "mshop_text_type"
- WHERE :cond AND "siteid" LIKE ?
-```
 
 See also:
 
@@ -2243,16 +1713,10 @@ Inserts a new text type record into the database table
 
 ```
 mshop/text/manager/type/insert/ansi = 
- INSERT INTO "mshop_text_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2014.03
+* Since: 2015.10
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -2285,24 +1749,8 @@ Inserts a new text type record into the database table
 
 ```
 mshop/text/manager/type/insert/mysql = 
- INSERT INTO "mshop_text_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
 ```
 
-* Default: 
-```
-
- INSERT INTO "mshop_text_type" ( :names
- 	"code", "domain", "label", "i18n", "pos", "status",
- 	"mtime","editor", "siteid", "ctime"
- ) VALUES ( :values
- 	?, ?, ?, ?, ?, ?, ?, ?, ?, ?
- )
-```
 
 See also:
 
@@ -2313,12 +1761,11 @@ See also:
 Class name of the used text type manager implementation
 
 ```
-mshop/text/manager/type/name = Standard
+mshop/text/manager/type/name = 
 ```
 
-* Default: `Standard`
 * Type: string - Last part of the class name
-* Since: 2014.03
+* Since: 2015.10
 
 Each default text type manager can be replaced by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -2362,7 +1809,7 @@ mshop/text/manager/type/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2014.03
+* Since: 2015.10
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -2397,7 +1844,7 @@ See also:
 Retrieves the ID generated by the database when inserting a new record
 
 ```
-mshop/text/manager/type/newid/mysql = SELECT LAST_INSERT_ID()
+mshop/text/manager/type/newid/mysql = 
 ```
 
 
@@ -2411,16 +1858,10 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/type/search/ansi = 
- SELECT :columns
- FROM "mshop_text_type" mtexty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2014.03
+* Since: 2015.10
 
 Fetches the records matched by the given criteria from the text
 database. The records must be from one of the sites that are
@@ -2473,24 +1914,8 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/text/manager/type/search/mysql = 
- SELECT :columns
- FROM "mshop_text_type" mtexty
- :joins
- WHERE :cond
- ORDER BY :order
- LIMIT :size OFFSET :start
 ```
 
-* Default: 
-```
-
- SELECT :columns
- FROM "mshop_text_type" mtexty
- :joins
- WHERE :cond
- ORDER BY :order
- OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
-```
 
 See also:
 
@@ -2501,19 +1926,11 @@ See also:
 List of manager names that can be instantiated by the text type manager
 
 ```
-mshop/text/manager/type/submanagers = Array
-(
-)
+mshop/text/manager/type/submanagers = 
 ```
 
-* Default: 
-```
-Array
-(
-)
-```
 * Type: array - List of sub-manager names
-* Since: 2014.03
+* Since: 2015.10
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -2532,15 +1949,10 @@ Updates an existing text type record in the database
 
 ```
 mshop/text/manager/type/update/ansi = 
- UPDATE "mshop_text_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -2570,22 +1982,8 @@ Updates an existing text type record in the database
 
 ```
 mshop/text/manager/type/update/mysql = 
- UPDATE "mshop_text_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_text_type"
- SET :names
- 	"code" = ?, "domain" = ?, "label" = ?, "i18n" = ?,
- 	"pos" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 
@@ -2598,15 +1996,10 @@ Updates an existing text record in the database
 
 ```
 mshop/text/manager/update/ansi = 
- UPDATE "mshop_text"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
- 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2014.03
+* Since: 2015.10
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.
@@ -2636,22 +2029,8 @@ Updates an existing text record in the database
 
 ```
 mshop/text/manager/update/mysql = 
- UPDATE "mshop_text"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
- 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
 ```
 
-* Default: 
-```
-
- UPDATE "mshop_text"
- SET :names
- 	"langid" = ?, "type" = ?, "domain" = ?, "label" = ?,
- 	"content" = ?, "status" = ?, "mtime" = ?, "editor" = ?
- WHERE "siteid" LIKE ? AND "id" = ?
-```
 
 See also:
 

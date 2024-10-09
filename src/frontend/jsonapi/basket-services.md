@@ -73,6 +73,11 @@ This returns the list of payment or delivery options (or both if the "filter" pa
         "total": 5,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -86,11 +91,11 @@ This returns the list of payment or delivery options (or both if the "filter" pa
         "type": "service",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/service?id=1",
+                "href": "http://localhost:8000/jsonapi/service?id=1",
                 "allow": ["GET"]
             },
             "basket.service": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
+                "href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
                 "allow": ["POST"],
                 "meta": {
                     "time.hourminute": {
@@ -206,13 +211,13 @@ This returns the list of payment or delivery options (or both if the "filter" pa
         "media.domain": "service",
         "media.label": "Demo: dhl.png",
         "media.languageid": null,
-        "media.mimetype": "image\/png",
+        "media.mimetype": "image/png",
         "media.type": "icon",
-        "media.preview": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png",
+        "media.preview": "http://demo.aimeos.org/media/service/pickup.png",
         "media.previews": {
-        "1": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png"
+        "1": "http://demo.aimeos.org/media/service/pickup.png"
         },
-        "media.url": "http:\/\/demo.aimeos.org\/media\/service\/pickup.png",
+        "media.url": "http://demo.aimeos.org/media/service/pickup.png",
         "media.status": 1
         }
     },{
@@ -243,7 +248,7 @@ This returns the list of payment or delivery options (or both if the "filter" pa
             "text.id": "86",
             "text.languageid": "en",
             "text.type": "short",
-            "text.label": "Demo short\/en: Local pick-up",
+            "text.label": "Demo short/en: Local pick-up",
             "text.domain": "service",
             "text.content": "Local pick-up",
             "text.status": 1
@@ -346,6 +351,11 @@ The response to this request would be similar to this:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -378,7 +388,7 @@ The response to this request would be similar to this:
         "type": "basket",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default",
+                "href": "http://localhost:8000/jsonapi/basket?id=default",
                 "allow": ["DELETE","GET","PATCH","POST"]
             }
         },
@@ -440,7 +450,7 @@ The response to this request would be similar to this:
         },
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
+                "href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
                 "allow": ["DELETE", "PATCH"]
             }
         }
@@ -634,6 +644,11 @@ The response to this request would be similar to this:
         "total": 1,
         "prefix": null,
         "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
@@ -666,7 +681,7 @@ The response to this request would be similar to this:
         "type": "basket",
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default",
+                "href": "http://localhost:8000/jsonapi/basket?id=default",
                 "allow": ["DELETE","GET","PATCH","POST"]
             }
         },
@@ -728,7 +743,7 @@ The response to this request would be similar to this:
         },
         "links": {
             "self": {
-                "href": "http:\/\/localhost:8000\/jsonapi\/basket?id=default&related=service&relatedid=delivery",
+                "href": "http://localhost:8000/jsonapi/basket?id=default&related=service&relatedid=delivery",
                 "allow": ["DELETE", "PATCH"]
             }
         }

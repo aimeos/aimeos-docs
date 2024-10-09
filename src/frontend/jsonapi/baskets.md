@@ -89,7 +89,12 @@ If the basket is empty, it will return only the basic basket properties but no p
     "meta": {
         "total": 1,
         "prefix": null,
-        "content-baseurl": "/",
+        "content-baseurl": "http://localhost:8000/",
+        "content-baseurls": {
+            "fs-media": "http://localhost:8000/aimeos",
+            "fs-mimeicon": "http://localhost:8000/vendor/shop/mimeicons",
+            "fs-theme": "http://localhost:8000/vendor/shop/themes"
+        },
         "csrf": {
             "name": "_token",
             "value": "..."
