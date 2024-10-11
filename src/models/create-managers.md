@@ -184,10 +184,10 @@ If one of your column names is a reserved word in the database, you **must** put
 ],
 ```
 
-To use a property prefix, you must implement the `getPrefix()` method in your manager:
+To use a property prefix, you must implement the `prefix()` method in your manager:
 
 ```php
-protected function getPrefix() : string
+protected function prefix() : string
 {
     return 'test.';
 }
@@ -196,10 +196,10 @@ protected function getPrefix() : string
 !!! note
     Mind the trailing dot (".") at the end of the prefix name!
 
-The table alias (`mtes`) is automatically generated from the domain name of the manager, i.e. it consists of the first three characters of the domain name (`test`) prefixed by the character `m`. You can overwrite the table alias by implementing the `getAlias()` method in your manager:
+The table alias (`mtes`) is automatically generated from the domain name of the manager, i.e. it consists of the first three characters of the domain name (`test`) prefixed by the character `m`. You can overwrite the table alias by implementing the `alias()` method in your manager:
 
 ```php
-protected function getAlias() : string
+protected function alias( string $code ) : string
 {
     return 'mytest';
 }
@@ -207,10 +207,10 @@ protected function getAlias() : string
 
 ## Different table name
 
-If you need a different table name, implement the *getTable()* method to return your custom table name:
+If you need a different table name, implement the *table()* method to return your custom table name:
 
 ```php
-protected function getTable() : string
+protected function table() : string
 {
     return 'myapp_test';
 }
