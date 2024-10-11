@@ -199,7 +199,7 @@ protected function prefix() : string
 The table alias (`mtes`) is automatically generated from the domain name of the manager, i.e. it consists of the first three characters of the domain name (`test`) prefixed by the character `m`. You can overwrite the table alias by implementing the `alias()` method in your manager:
 
 ```php
-protected function alias( string $code ) : string
+protected function alias( string $code = null ) : string
 {
     return 'mytest';
 }
