@@ -17,11 +17,9 @@ Decorators can be stacked infinitely to add the required functionality to an exi
 The skeleton for the most basic implementation of a service decorator would be:
 
 ```php
-namespace \Aimeos\MShop\Service\Provider\Decorator;
+namespace Aimeos\MShop\Service\Provider\Decorator;
 
-class Mydecorator
-    extends \Aimeos\MShop\Service\Provider\Decorator\Base
-    implements \Aimeos\MShop\Service\Provider\Decorator\Iface
+class Mydecorator extends Base implements Iface
 {
 }
 ```
@@ -33,13 +31,13 @@ It's only important to extend from the base decorator class and implement the de
 A decorator without methods is totally valid but useless. Thus, you should add one or more methods that intercept the calls to the "onion" object and implement some additional functionality. You can intercept any **public method** that is implemented in a delivery or payment service provider.
 
 ```php
-public function calcPrice( \Aimeos\MShop\Order\Item\Base\Iface $basket ) : \Aimeos\MShop\Price\Item\Iface
+public function calcPrice( \Aimeos\MShop\Order\Item\Iface $basket, array $options = [] ) : \Aimeos\MShop\Price\Item\Iface
 {
     // do something before
-    $price = $this->getProvider()->calcPrice( $basket );
+    $price = $this->getProvider()->calcPrice( $basket, options );
     // do something after
 
-    return $price
+    return $price;
 }
 ```
 
