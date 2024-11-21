@@ -11,15 +11,15 @@ To extend or overwrite existing classes, you have to:
 
 # Database setup
 
-If you need to store e.g. an arbitrary ID to another system in your product table, you can [extend the existing table](../infrastructure/schema-migrations.md) by adding a new field like described in the article about modifying existing tables.
+If you need to store e.g. an arbitrary value of another system in your product table, you can [extend the existing table](../infrastructure/schema-migrations.md) by adding a new field like described in the article about modifying existing tables.
 
-Let's name the new field "someid". Add a new `./<yourext>/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
+Let's name the new field "mycolumn". Add a new `./<yourext>/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
 
 ```php
 return array(
   'table' => array(
     'mshop_product' => function ( \Aimeos\Upscheme\Schema\Table $table ) {
-        $table->string( 'someid', 32 )->null( true );
+        $table->string( 'mycolumn', 32 )->null( true );
     },
   ),
 );
@@ -54,8 +54,8 @@ namespace Aimeos\MShop\Product\Manager\Decorator;
 class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
 {
     private $attr = [
-        'mycolumn' => [
-            'internalcode' => 'mpro."mycolumn"',
+        'product.mycolumn' => [
+            'internalcode' => 'mycolumn',
             'label' => 'My new column',
             'type' => 'string', // optional
         ],
@@ -113,27 +113,26 @@ return [
 Afterwards, you can access the values of your new columns in the item using:
 
 ```php
-$item->get( 'mycolumn', '<default value>' );
-$item->mycolumn;
+$item->get( 'product.mycolumn', '<default value>' );
 ```
 
 You can also register new methods in each item class which transforms the values to enforcing types for example:
 
 ```php
 \Aimeos\MShop\Product\Item\Standard::macro( 'getMycolumn', function() {
-    return (int) $this->get( 'mycolumn' );
+    return (int) $this->get( 'product.mycolumn' );
 } );
 
 \Aimeos\MShop\Product\Item\Standard::macro( 'setMycolumn', function( $value ) {
-    return $this->set( 'mycolumn', (int) $value );
+    return $this->set( 'product.mycolumn', (int) $value );
 } );
 ```
 
 It's also possible to add new methods that combine several values like:
 
 ```php
-\Aimeos\MShop\Customer\Item\Standard::macro( 'getFullName', function() {
-    return $this->get( 'customer.firstname' ) . ' ' . $this->get( 'customer.lastname' );
+\Aimeos\MShop\Customer\Item\Standard::macro( 'getCombined', function() {
+    return $this->get( 'product.code' ) . '-' . $this->get( 'product.mycolumn' );
 } );
 ```
 
@@ -151,14 +150,14 @@ namespace Aimeos\MShop\Product\Item;
 
 class Myproject extends Standard
 {
-    public function getMyId() : string
+    public function getMyColumn() : string
     {
-        return $this->get( 'myid', '' );
+        return $this->get( 'product.mycolumn', '' );
     }
 
-    public function setMyId( ?string $val ) : \Aimeos\MShop\Product\Item\Iface
+    public function setMyColumn( ?string $val ) : \Aimeos\MShop\Product\Item\Iface
     {
-        return $this->set( 'myid', $val );
+        return $this->set( 'product.mycolumn', $val );
     }
 
     public function fromArray( array &$list, bool $private = false ) : \Aimeos\MShop\Product\Item\Iface
@@ -169,7 +168,7 @@ class Myproject extends Standard
 		{
 			switch( $key )
 			{
-                case 'myid': $item = $item->setMyId( $value ); break;
+                case 'product.mycolumn': $item = $item->setMyId( $value ); break;
 				default: continue 2;
             }
 			unset( $list[$key] );
@@ -183,7 +182,7 @@ class Myproject extends Standard
         $list = parent::toArray( $private );
 
         if( $private === true ) {
-            $list['myid'] = $this->getMyId();
+            $list['product.mycolumn'] = $this->getMyId();
         }
 
         return $list;
@@ -203,9 +202,9 @@ namespace Aimeos\MShop\Product\Manager;
 class Myproject extends Standard
 {
     private $searchConfig = [
-        'product.myvalue' => [
-            'internalcode' => 'mpro."myval"',
-            'label' => 'Product MyValue',
+        'product.mycolumn' => [
+            'internalcode' => 'mycolumn',
+            'label' => 'Product additional column',
             'type' => 'string', // int, float, etc.
         ],
     ];
@@ -236,45 +235,17 @@ The `$searchConfig` and `getSearchAttributes()` method will allow you to use the
 
 You also need to add a new SQL SELECT statement to the configuration, so the values are fetched from the database.
 
-## Configuration
-
-Your new manager won't be used until you tell the corresponding factory that it should use the *Myproject* manager instead of the *Standard* one. Thus, create a new file `./<yourext>/config/mshop.php`:
-
-```php
-return [
-    'product' => [
-        'manager' => [
-            'name' => 'Myproject',
-            'insert' => [
-                'ansi' => 'INSERT ... (with new column)',
-            ],
-            'update' => [
-                'ansi' => 'UPDATE ... (with new column)',
-            ],
-            'search' => [
-                'ansi' => 'SELECT ... (with new column)',
-                'mysql' => 'SELECT ... (with new column)',
-            ],
-        ],
-    ],
-];
-```
-
-The configuration of the new manager class does also work for sub-managers like the product lists type and all other sub-managers by using `mshop/<domain>/manager/<submanager>/<submanager>/name` instead, e.g. `mshop/product/manager/lists/type/name`.
-
-By adding a new SQL SELECT statement for `mshop/product/manager/search/ansi` and `mshop/product/manager/search/mysql`, the manager will care about retrieving the new column values and push them into your new item class you create in *createItemBase()* of your manager class. You can see the standard SQL statements for the product manager in the [product manager configuration](https://github.com/aimeos/aimeos-core/blob/master/config/mshop/product.php#L489-L555) of the Aimeos core.
-
 ## Search functions
 
-It's not possible to e.g. use a column name as argument for conditions, only fixed values. This would be only possible in SQL but e.g. not in other storages like ElasticSearch. To support all type of storages, you have to add a "search function" like in the [product manager](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Product/Manager/Standard.php#L175-L183).
+It's not possible to e.g. use a column name as argument for conditions, only fixed values. This would be only possible in SQL but e.g. not in other storages like ElasticSearch. To support all type of storages, you have to add a "search function" like in the [product manager](https://github.com/aimeos/aimeos-core/blob/master/src/MShop/Product/Manager/Standard.php).
 
-It can contain storage (SQL) specific code and to compare two columns in the `mshop_stock` table for example you need to add this to your custom manager:
+It can contain storage (SQL) specific code and to compare two columns in the `mshop_product` table for example you need to add this to your custom manager:
 
 ```php
 'product:check' => [
 	'code' => 'product:check()',
-	'internalcode' => '(mpro."code" <> mpro."label)"',
-	'label' => 'Low stock levels',
+	'internalcode' => '(mpro."start" < mpro."end)"',
+	'label' => 'Checks valid start/end dates',
 	'type' => 'boolean',
 	'internaltype' => 'boolean',
 	'public' => false,
@@ -290,13 +261,13 @@ $filter->add( $filter->make( 'product:check', [] ), '==', true )
 This will create a MySQL query like:
 
 ```sql
-SELECT * FROM mshop_product WHERE (mpro."code" <> mpro."label") = 1
+SELECT * FROM mshop_product WHERE (mpro."start" < mpro."end") = 1
 ```
 
 And in PostgreSQL it will be:
 
 ```sql
-SELECT * FROM mshop_product WHERE (mpro."code" <> mpro."label") = true
+SELECT * FROM mshop_product WHERE (mpro."start" < mpro."end") = true
 ```
 
 Because the expression in `internalcode` is always compared to some value, it must return something that is comparable to a value or NULL. In this case it's a boolean true/false value but in other cases, you need to add a subquery in `internalcode` to match that need and compare against a (not) NULL value.
@@ -320,22 +291,22 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
         $this->object = new \Aimeos\MShop\Product\Item\Myproject( $values );
     }
 
-    public function testGetMyValue()
+    public function testGetMyColumn()
     {
-        $this->assertEquals( 'test', $this->object->getMyValue() );
+        $this->assertEquals( 'test', $this->object->getMyColumn() );
     }
 
-    public function testSetMyValue()
+    public function testSetMyolumn()
     {
-        $this->object->setMyValue( 'test2' );
-        $this->assertEquals( 'test2', $this->object->getMyValue() );
+        $this->object->setMyColumn( 'test2' );
+        $this->assertEquals( 'test2', $this->object->getMyColumn() );
         $this->assertTrue( $this->object->isModified() );
     }
 
     public function testFromArray()
     {
         $this->object->fromArray( ['product.myvalue' => '123'] );
-        $this->assertEquals( '123', $this->object->getMyValue() );
+        $this->assertEquals( '123', $this->object->getMyColumn() );
     }
 
     public function testToArray()
@@ -369,7 +340,7 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
     public function testGetSearchAttributes()
     {
         $list = $this->object->getSearchAttributes();
-        $this->assertArrayHasKey( 'product.myvalue', $list );
+        $this->assertArrayHasKey( 'product.mycolumn', $list );
     }
 }
 ```
@@ -379,6 +350,6 @@ To test your extension, you have to
 * checkout the [Aimeos core](https://github.com/aimeos/aimeos-core) in a separate directory
 * run **composer update** to install the required dependencies
 * configure your database in `./config/resources.php`
-* store your new extension in the `./ext/` sub-directory e.g. as `./ext/my-myproject/`
+* store your new extension in the `./ext/` sub-directory e.g. as `./ext/me-myproject/`
 * execute **./vendor/bin/phing setup** to create the tables and add the unittest data
 * execute **./vendor/bin/phing -Ddir=ext/me-myproject testext** to run your tests
