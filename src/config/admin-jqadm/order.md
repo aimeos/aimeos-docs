@@ -139,7 +139,7 @@ List of order columns that should be displayed in the list view
 ```
 admin/jqadm/order/fields = Array
 (
-    [0] => order.id
+    [0] => order.invoiceno
     [1] => order.ctime
     [2] => order.statuspayment
     [3] => order.address.lastname
@@ -150,7 +150,7 @@ admin/jqadm/order/fields = Array
 ```
 Array
 (
-    [0] => order.id
+    [0] => order.invoiceno
     [1] => order.ctime
     [2] => order.statuspayment
     [3] => order.address.lastname

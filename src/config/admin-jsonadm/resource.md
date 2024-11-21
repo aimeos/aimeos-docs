@@ -637,6 +637,7 @@ List of user groups that are allowed to manage locale site items
 admin/jsonadm/resource/locale/site/groups = Array
 (
     [0] => super
+    [1] => admin
 )
 ```
 

@@ -58,6 +58,27 @@ See also:
 * admin/jqadm/partial/info
 * admin/jqadm/partial/problem
 
+# imagegen
+
+Relative path to the partial template for image generation dialog
+
+```
+admin/jqadm/partial/imagegen = imagegen
+```
+
+* Default: `imagegen`
+* Type: string - Relative path to the partial creating the HTML code
+* Since: 2024.10
+
+The template file contains the HTML code and processing instructions
+to generate images in the administration interface. The
+configuration string is the path to the template file relative
+to the templates directory (usually in templates/admin/jqadm).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates.
+
+
 # info
 
 Relative path to the partial template for displaying notices

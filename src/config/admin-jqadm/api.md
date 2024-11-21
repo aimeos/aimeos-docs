@@ -23,6 +23,36 @@ least the API "key" created in your OpenAI account, all other settings are optio
 ```
 
 
+# removebg
+
+Configuration for image background removal service
+
+```
+admin/jqadm/api/removebg = stdClass Object
+(
+)
+```
+
+* Default: 
+```
+stdClass Object
+(
+)
+```
+* Type: array - Associative list of key/value pairs
+* Since: 2024.10
+
+Contains the settings for configuring the image background removal service.
+Currently, only RemoveBG is supported and a RemoveBG API account is required to
+use the service. You have to configure at least the API "key":
+
+```
+ [
+   'key' => '<your-RemoveBG-API-key>',
+ ]
+```
+
+
 # translate
 
 Configuration for realtime online translation service
