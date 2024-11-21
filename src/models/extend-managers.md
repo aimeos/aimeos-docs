@@ -66,9 +66,12 @@ class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
         return parent::getSaveAttributes() + $this->createAttributes( $this->attr );
     }
 
+    // optional, only required for adding search functions
     public function getSearchAttributes( bool $sub = true ) : array
     {
-        return parent::getSearchAttributes( $sub ) + $this->createAttributes( $this->attr );
+        return parent::getSearchAttributes( $sub ) + $this->createAttributes( [
+            // ...
+        ] );
     }
 }
 ```
