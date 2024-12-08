@@ -35,9 +35,9 @@ There are three types of releases:
 
 As a rule of thumb:
 
-1. Update to the latest minor release, e.g. from 2022.04.1 to 2022.04.2 to get all bugfixes
-2. Update to the latest stable release, e.g. from 2022.07 to 2022.10 to get long term support for your major version
-3. Upgrade to the new major version e.g. from 2021.10 to 2022.10 if long term support has ended
+1. Update to the latest minor release, e.g. from 2024.04.1 to 2024.04.2 to get all bugfixes
+2. Update to the latest stable release, e.g. from 2024.07 to 2024.10 to get long term support for your major version
+3. Upgrade to the new major version e.g. from 2023.10 to 2024.10 if long term support has ended
 
 Instead of upgrading to a new LTS version, you can also buy an [extended long term support](https://aimeos.com/support) from the Aimeos company. They guarantee up to **five years support** for your used version.
 
@@ -153,6 +153,7 @@ These jobs should be executed once a day (best at times of low traffic):
 * Catalog sitemap (generate sitemap with categories for search engines)
 * Catalog import (import categories from CSV files)
 * Log cleanup (remove old log entries)
+* Removes unfinished orders (delete orders with payment status equals -1)
 * Removes unpaid orders (delete orders without payment)
 * Transfers money to vendors (for marketplace setups)
 * Product import (import products from CSV files)
@@ -167,7 +168,7 @@ These jobs should be executed once a day (best at times of low traffic):
 The appropriate cronjob command is:
 
 ```
-0 1 * * * php /path/to/artisan aimeos:jobs "admin/cache admin/log catalog/export/sitemap catalog/import/csv order/cleanup/unpaid order/service/transfer product/import/csv product/bought index/rebuild index/optimize product/export/sitemap subscription/process/begin subscription/process/renew subscription/process/end"
+0 1 * * * php /path/to/artisan aimeos:jobs "admin/cache admin/log catalog/export/sitemap catalog/import/csv order/cleanup/unfinished order/cleanup/unpaid order/service/transfer product/import/csv product/bought index/rebuild index/optimize product/export/sitemap subscription/process/begin subscription/process/renew subscription/process/end"
 ```
 
 # Content Security Policy
@@ -182,19 +183,7 @@ because it violates the following Content Security Policy directive:
 
 ## Frontend
 
-The default CSP is part of the [base.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/src/views/base.blade.php#L7) template and consists of:
-
-```
-default-src 'self' 'nonce-{{ app( 'aimeos.context' )->get()->nonce() }}' https://cdn.jsdelivr.net;
-style-src 'unsafe-inline' 'self' https://cdn.jsdelivr.net;
-img-src 'self' data: https://cdn.jsdelivr.net https://aimeos.org
-```
-
-This allows:
-
-* CSS from own domain, Jsdelivr and as inline styles
-* Images from own domain, Jsdeliver, Aimeos and as "data" content
-* Everything else (incl. Javascript) from own domain and Jsdelivr
+The default CSP is part of the [base.blade.php](https://github.com/aimeos/aimeos-laravel/blob/master/views/base.blade.php) template.
 
 The random `nonce-...` value also allows inline Javascript when a *nonce* attribute is added to the script tag in the template, e.g.:
 

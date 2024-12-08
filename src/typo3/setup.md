@@ -35,9 +35,9 @@ There are three types of releases:
 
 As a rule of thumb:
 
-1. Update to the latest minor release, e.g. from 22.4.1 to 22.4.2 to get all bugfixes
-2. Update to the latest stable release, e.g. from 22.7 to 22.10 to get long term support for your major version
-3. Upgrade to the new major version e.g. from 21.10 to 22.10 if long term support has ended
+1. Update to the latest minor release, e.g. from 24.4.1 to 24.4.2 to get all bugfixes
+2. Update to the latest stable release, e.g. from 24.7 to 24.10 to get long term support for your major version
+3. Upgrade to the new major version e.g. from 23.10 to 24.10 if long term support has ended
 
 Instead of upgrading to a new LTS version, you can also buy an [extended long term support](https://aimeos.com/support) from the Aimeos company. They guarantee up to **five years support** for your used version.
 
@@ -121,6 +121,7 @@ These jobs should be executed once a day (best at times of low traffic):
 * Catalog import (import categories from CSV files)
 * Catalog sitemap (generate sitemap with categories for search engines)
 * Log cleanup (remove old log entries)
+* Removes unfinished orders (delete orders with payment status equals -1)
 * Removes unpaid orders (delete orders without payment)
 * Product import (import products from CSV files)
 * Products bought together (automatically generated product suggestions)
