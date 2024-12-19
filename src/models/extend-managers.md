@@ -212,29 +212,22 @@ class Myproject extends Standard
         ],
     ];
 
-    public function save( $items, bool $fetch = true )
-    {
-        foreach( map( $items ) as $item ) {
-            // a modified copy of the code from the parent class
-            // extended by an additional bind() call
-		}
-        return $items;
-    }
-
     public function getSearchAttributes( bool $withsub = true ) : array
     {
-        return parent::getSearchAttributes( $withsub ) + $this->createAttributes( $this->attr );
+        return parent::getSearchAttributes( $withsub )
+            + $this->createAttributes( $this->searchConfig );
     }
 
-	protected function createItemBase( array $values = [], array $listItems = [],
-		array $refItems = [], array $propertyItems = [] ) : \Aimeos\MShop\Common\Item\Iface
-    {
-        return new \Aimeos\MShop\Product\Item\Myproject( $values, $listItems, $refItems, $propertyItems );
+	public function create( array $values = [] ) : \Aimeos\MShop\Common\Item\Iface
+	{
+        // check in original method for more that needs to be set
+		$values['product.siteid'] = $values['product.siteid'] ?? $this->context()->locale()->getSiteId();
+        return new \Aimeos\MShop\Product\Item\Myproject( 'product.', $values );
     }
 }
 ```
 
-The `$searchConfig` and `getSearchAttributes()` method will allow you to use the defined code (`product.myvalue`) in search criteria expressions passed to `search()`.
+The `$searchConfig` and `getSearchAttributes()` method will allow you to use the defined code (`product.mycolumn`) in search criteria expressions passed to `search()`.
 
 You also need to add a new SQL SELECT statement to the configuration, so the values are fetched from the database.
 
@@ -335,10 +328,10 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
         $this->object = new \Aimeos\MShop\Product\Manager\Standard( $context );
     }
 
-    public function testSaveItem()
-    {
-        // modified test method of the "StandardTest" class with your new property
-    }
+	public function testCreate()
+	{
+		$this->assertInstanceOf( \Aimeos\MShop\Product\Item\Iface::class, $this->object->create() );
+	}
 
     public function testGetSearchAttributes()
     {
