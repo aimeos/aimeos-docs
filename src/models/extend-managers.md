@@ -165,22 +165,22 @@ class Myproject extends Standard
 
     public function fromArray( array &$list, bool $private = false ) : \Aimeos\MShop\Product\Item\Iface
     {
-		$item = parent::fromArray( $list, $private );
+        $item = parent::fromArray( $list, $private );
 
-		foreach( $list as $key => $value )
-		{
-			switch( $key )
-			{
+        foreach( $list as $key => $value )
+        {
+            switch( $key )
+            {
                 case 'product.mycolumn': $item = $item->setMyId( $value ); break;
-				default: continue 2;
+                default: continue 2;
             }
-			unset( $list[$key] );
+            unset( $list[$key] );
         }
 
         return $item;
     }
 
-	public function toArray( bool $private = false ) : array
+    public function toArray( bool $private = false ) : array
     {
         $list = parent::toArray( $private );
 
@@ -212,17 +212,17 @@ class Myproject extends Standard
         ],
     ];
 
+    public function create( array $values = [] ) : \Aimeos\MShop\Common\Item\Iface
+    {
+        // check in original method for more that needs to be set
+        $values['product.siteid'] = $values['product.siteid'] ?? $this->context()->locale()->getSiteId();
+        return new \Aimeos\MShop\Product\Item\Myproject( 'product.', $values );
+    }
+
     public function getSearchAttributes( bool $withsub = true ) : array
     {
         return parent::getSearchAttributes( $withsub )
             + $this->createAttributes( $this->searchConfig );
-    }
-
-	public function create( array $values = [] ) : \Aimeos\MShop\Common\Item\Iface
-	{
-        // check in original method for more that needs to be set
-		$values['product.siteid'] = $values['product.siteid'] ?? $this->context()->locale()->getSiteId();
-        return new \Aimeos\MShop\Product\Item\Myproject( 'product.', $values );
     }
 }
 ```
@@ -239,12 +239,12 @@ It can contain storage (SQL) specific code and to compare two columns in the `ms
 
 ```php
 'product:check' => [
-	'code' => 'product:check()',
-	'internalcode' => '(mpro."start" < mpro."end)"',
-	'label' => 'Checks valid start/end dates',
-	'type' => 'boolean',
-	'internaltype' => 'boolean',
-	'public' => false,
+    'code' => 'product:check()',
+    'internalcode' => '(mpro."start" < mpro."end)"',
+    'label' => 'Checks valid start/end dates',
+    'type' => 'boolean',
+    'internaltype' => 'boolean',
+    'public' => false,
 ],
 ```
 
@@ -328,10 +328,10 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
         $this->object = new \Aimeos\MShop\Product\Manager\Standard( $context );
     }
 
-	public function testCreate()
-	{
-		$this->assertInstanceOf( \Aimeos\MShop\Product\Item\Iface::class, $this->object->create() );
-	}
+    public function testCreate()
+    {
+        $this->assertInstanceOf( \Aimeos\MShop\Product\Item\Iface::class, $this->object->create() );
+    }
 
     public function testGetSearchAttributes()
     {
