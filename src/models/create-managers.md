@@ -150,11 +150,11 @@ By default, you only have to implement the *getSaveAttributes()* method which mu
 
 The array returned by *getSaveAttributes()* must contain the **database column name as key**, all properties in the array assigned to the key are optional and the **default type** of the column is assumed to be **string**. Available array properties for each key are:
 
-* *code* : String the database column name will be mapped to in the item, e.g. *test.label*
-* *internalcode* : String that will be used instead of the key name as column name, e.g. *mtes."label"*
-* *label* : Label used in the search box of the admin backend
-* *public* : Property is shown in the search box of the admin backend and assigned by the *fromArray()* method of the item when used in the frontend
-* *type* : Type of the database column which can be:
+* *code* (optional, default is the array key) : String the database column name will be mapped to in the item, e.g. *test.label*
+* *internalcode* (optional, default is the array key) : String that will be used instead of the key name as column name, e.g. *label*
+* *label* (optional, default is an empty string) : Label used in the search box of the admin backend
+* *public* (optional, default is TRUE) : Property is shown in the search box of the admin backend and assigned by the *fromArray()* method of the item when used in the frontend
+* *type* (optional, default is "string") : Type of the database column which can be:
     * bool
     * date
     * datetime
@@ -169,18 +169,10 @@ A full example would be:
 ```php
 'label' => [
     'code' => 'test.label',
-    'internalcode' => 'mtes."label"',
-    'label' => 'Label of the test records'
-    'type' => 'string,'
+    'internalcode' => 'label',
+    'label' => 'Label of the test records',
+    'type' => 'string',
     'public' => true
-],
-```
-
-If one of your column names is a reserved word in the database, you **must** put the column name into quotes, e.g.:
-
-```php
-'key' => [
-    'internalcode' => '"key"',
 ],
 ```
 
