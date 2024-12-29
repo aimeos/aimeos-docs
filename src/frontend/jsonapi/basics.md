@@ -86,6 +86,9 @@ By default, the first 48 items available will be returned if no further GET para
 !!! tip
     For debugging, you can get a more human-readable output if you add *&pretty=1* at the end of the URLs.
 
+!!! tip
+    To simplify handling and to map related items from the included section to the data automatically, use JS packages like https://www.npmjs.com/package/json-api-models
+
 # Filtering the result
 
 Each resource offers custom search parameters to retrieve data for common use cases. Please have a look into the articles about products, basket, etc. for details about these parameters.
