@@ -3,7 +3,7 @@
 ## Requirements
 
 * Linux/Unix, WAMP/XAMP or MacOS environment
-* PHP >= 7.1
+* PHP >= 8.1
 * MySQL >= 5.7.8, MariaDB >= 10.2.2
 * Web server (Apache, Nginx or integrated PHP web server for testing)
 

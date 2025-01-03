@@ -3,8 +3,8 @@
 ## Requirements
 
 * Linux/Unix, WAMP/XAMP or MacOS environment
-* PHP >= 7.2
-* MySQL >= 5.7.8, MariaDB >= 10.2.2
+* PHP >= 8.1
+* MySQL >= 5.7.8, MariaDB >= 10.2.2, PostgreSQL 9.6+, SQL Server 2019+
 * Web server (Apache, Nginx or integrated PHP web server for testing)
 
 ## Supported versions
