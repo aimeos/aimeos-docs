@@ -19,6 +19,8 @@ Most of the time, you already have an ERP system which manages all your products
 
 # Structure
 
+## Articles
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 
@@ -483,6 +485,200 @@ Most of the time, you already have an ERP system which manages all your products
       <!-- more property items -->
 
     </property>
+  </productitem>
+</products>
+```
+
+## Selections
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<products>
+  <!-- List of product items with unique code as "ref" -->
+  <productitem ref="TEST-SELECTION">
+
+    <!-- Required, possible values: "default" (article), "bundle", "select", "voucher" -->
+    <product.type><![CDATA[select]]></product.type>
+
+    <!-- Required, unique SKU of the product -->
+    <product.code><![CDATA[TEST-SELECTION]]></product.code>
+
+    <!-- Required, label of the product, used if no language specific name is avialable -->
+    <product.label><![CDATA[Test selection]]></product.label>
+
+    <!-- Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
+    <product.status><![CDATA[1]]></product.status>
+
+    <!-- Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
+    <product.config><![CDATA[{"key": "value"}]]></product.config>
+
+    <!-- Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the product is available from -->
+    <product.datestart><![CDATA[2000-01-01T00:00:00]]></product.datestart>
+
+    <!-- Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the product is available to -->
+    <product.dateend><![CDATA[2000-01-01T23:59:59]]></product.dateend>
+
+    <!-- Optional, items associated to the product -->
+    <lists>
+
+      <!-- Optional, list of text items -->
+      <text>
+     </text>
+
+      <!-- Optional, list of media items -->
+      <media>
+      </media>
+
+      <!-- Optional, list of price items -->
+      <price>
+      </price>
+
+      <!-- Optional, list of attribute items -->
+      <attribute>
+      </attribute>
+
+      <!-- Optional, list of catalog items -->
+      <catalog>
+
+        <!-- ref: Required, unique catalog code -->
+        <!-- lists.type: Optional, possible values: "default" and "promotion" (promotional products) -->
+        <!-- lists.config: Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
+        <!-- lists.position: Optional, position of the text if multiple items are available for the the same text type and list type -->
+        <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
+        <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
+        <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
+        <catalogitem ref="CATALOG-CODE"
+          lists.type="default"
+          lists.config="{&quot;key&quot;: &quot;value&quot;}"
+          lists.position="0"
+          lists.status="1"
+          lists.datestart="2000-01-01T00:00:00"
+          lists.dateend="2000-01-01T23:59:59" />
+        <!-- more catalog items -->
+
+      </catalog>
+
+      <!-- Optional, list of product items -->
+      <product>
+
+        <!-- ref: Required, unique product code (SKU) -->
+        <!-- lists.type: Optional, possible values: "default" (for articles of bundles and selections), "suggestion" (recommended products) and "bought-together" -->
+        <!-- lists.config: Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
+        <!-- lists.position: Optional, position of the text if multiple items are available for the the same text type and list type -->
+        <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
+        <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
+        <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
+        <productitem ref="TEST-VARIANT-1"
+          lists.type="default"
+          lists.config="{&quot;key&quot;: &quot;value&quot;}"
+          lists.position="0"
+          lists.status="1"
+          lists.datestart="2000-01-01T00:00:00"
+          lists.dateend="2000-01-01T23:59:59" >
+
+          <!-- Required, possible values: "default" (article), "bundle", "select", "voucher" -->
+          <product.type><![CDATA[article]]></product.type>
+
+          <!-- Required, unique SKU of the product -->
+          <product.code><![CDATA[TEST-VARIANT-1]]></product.code>
+
+          <!-- Required, label of the product, used if no language specific name is avialable -->
+          <product.label><![CDATA[Test article 1]]></product.label>
+
+          <!-- Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
+          <product.status><![CDATA[1]]></product.status>
+
+          <!-- Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
+          <product.config><![CDATA[{"key": "value"}]]></product.config>
+
+          <!-- Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the product is available from -->
+          <product.datestart><![CDATA[2000-01-01T00:00:00]]></product.datestart>
+
+          <!-- Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the product is available to -->
+          <product.dateend><![CDATA[2000-01-01T23:59:59]]></product.dateend>
+
+          <!-- Optional, items associated to the product -->
+          <lists>
+
+            <!-- Optional, list of attribute items -->
+            <attribute>
+
+              <!-- ref: Required, unique code of attribute domain, type and code separated by a pipe -->
+              <!-- lists.type: Optional, possible values: "default" (default), "variant" (variant building product attribute), "config" (configurable product attribute), "custom" (custom can enter value), "hidden" (not shown to customer but added in order) -->
+              <!-- lists.config: Optional, JSON encoded (multi-dimensional) key/value pairs with arbitrary settings -->
+              <!-- lists.position: Optional, position of the text if multiple items are available for the the same text type and list type -->
+              <!-- lists.status: Optional, possible values: 1 = enabled (default), 0 = disabled, -1 = review, -2 =archived -->
+              <!-- lists.datestart: Optional, start ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available from -->
+              <!-- lists.dateend: Optional, end ISO date/time value (YYYY-MM-DDTHH:mm:ss) the text is available to -->
+              <attributeitem ref="product|color|black"
+                lists.type="variant"
+                lists.config="{&quot;key&quot;: &quot;value&quot;}"
+                lists.position="0"
+                lists.status="1"
+                lists.datestart="2000-01-01T00:00:00"
+                lists.dateend="2000-01-01T23:59:59" />
+
+              <attributeitem ref="product|size|30"
+                lists.type="variant"
+                lists.config="{&quot;key&quot;: &quot;value&quot;}"
+                lists.position="0"
+                lists.status="1"
+                lists.datestart="2000-01-01T00:00:00"
+                lists.dateend="2000-01-01T23:59:59" />
+
+              <attributeitem ref="product|compound|single"
+                lists.type="variant"
+                lists.config="{&quot;key&quot;: &quot;value&quot;}"
+                lists.position="0"
+                lists.status="1"
+                lists.datestart="2000-01-01T00:00:00"
+                lists.dateend="2000-01-01T23:59:59" />
+              <!-- more attribute items -->
+
+            </attribute>
+
+            <!-- Optional, list of media items -->
+            <media>
+            </media>
+
+            <!-- Optional, list of price items -->
+            <price>
+            </price>
+
+            <!-- Optional, list of text items -->
+            <text>
+            </text>
+
+          </lists>
+
+          <!-- Optional, list of product property items -->
+          <property>
+          </property>
+
+        </productitem>
+        <!-- more product items -->
+
+      </product>
+
+      <!-- Optional, list of supplier items -->
+      <supplier>
+      </supplier>
+
+      <!-- Optional, list of customer items (requires ai-customergroups extension) -->
+      <customer>
+      </customer>
+
+      <!-- Optional, list of customer group items (requires ai-customergroups extension) -->
+      <group>
+      </group>
+
+    </lists>
+
+    <!-- Optional, list of product property items -->
+    <property>
+    </property>
+
   </productitem>
 </products>
 ```
