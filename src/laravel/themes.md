@@ -18,6 +18,8 @@ Installation must be done via composer as this ensures that everything works out
 composer req aimeos-themes/<mytheme>
 ```
 
+## Local installation
+
 For local installations only, you can add your theme package into the `./packages/` directory of your Laravel application.
 
 * Create the directory for your theme by executing e.g. `mkdir -p packages/mytheme`
@@ -36,10 +38,27 @@ Furthermore, you have to add a *repositories* section to the `composer.json` of 
     }],
 ```
 
+Also, make sure that your root composer.json contains this *post-update-cmd* section so the theme files are published automatically after installation:
+
+```json
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi",
+            "@php artisan vendor:publish --tag=public --ansi"
+        ]
+    }
+```
+
 Finally, install your theme using:
 
 ```
 composer req aimeos-themes/<mytheme>
+```
+
+Then, you can select your new theme in the *Settings* panel of the Aimeos backend. To clear the cached templates, delete the frontend cookie of your Laravel application and run this command:
+
+```
+php artisan aimeos:clear
 ```
 
 # Blade templates
