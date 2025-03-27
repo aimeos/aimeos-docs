@@ -149,6 +149,7 @@ The appropriate cronjob command is:
 
 These jobs should be executed once a day (best at times of low traffic):
 
+* Basket cleanup (remove old baskets)
 * Cache cleanup (remove old cache entries)
 * Catalog sitemap (generate sitemap with categories for search engines)
 * Catalog import (import categories from CSV files)
@@ -168,7 +169,7 @@ These jobs should be executed once a day (best at times of low traffic):
 The appropriate cronjob command is:
 
 ```
-0 1 * * * php /path/to/artisan aimeos:jobs "admin/cache admin/log catalog/export/sitemap catalog/import/csv order/cleanup/unfinished order/cleanup/unpaid order/service/transfer product/import/csv product/bought index/rebuild index/optimize product/export/sitemap subscription/process/begin subscription/process/renew subscription/process/end"
+0 1 * * * php /path/to/artisan aimeos:jobs "admin/cache admin/log basket/cleanup catalog/export/sitemap catalog/import/csv order/cleanup/unfinished order/cleanup/unpaid order/service/transfer product/import/csv product/bought index/rebuild index/optimize product/export/sitemap subscription/process/begin subscription/process/renew subscription/process/end"
 ```
 
 # Content Security Policy
