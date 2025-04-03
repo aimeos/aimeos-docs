@@ -379,6 +379,7 @@ nav:
       - XML import: config/controller-jobs/xml-import.md
     - MShop:
       - Attribute: config/mshop/attribute-manager.md
+      - Basket: config/mshop/basket-manager.md
       - Catalog: config/mshop/catalog-manager.md
       - CMS: config/mshop/cms-manager.md
       - Common: config/mshop/common-manager.md
@@ -400,6 +401,7 @@ nav:
       - Supplier: config/mshop/supplier-manager.md
       - Tag: config/mshop/tag-manager.md
       - Text: config/mshop/text-manager.md
+      - Type: config/mshop/type-manager.md
       - Coupon provider: config/mshop/coupon-provider.md
       - Plugin provider: config/mshop/plugin-provider.md
       - Service provider: config/mshop/service-provider.md
