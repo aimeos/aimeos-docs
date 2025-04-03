@@ -1,10 +1,10 @@
-site_dir: docs/master
-site_url: https://aimeos.org/docs/master/
+site_dir: docs/2025.x
+site_url: https://aimeos.org/docs/2025.x/
 
 
 site_name: Aimeos documentation
 repo_url: https://github.com/aimeos/aimeos-docs
-edit_uri: blob/master/src/
+edit_uri: blob/2025.x/src/
 markdown_extensions:
   - toc:
       baselevel: 2
