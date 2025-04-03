@@ -133,7 +133,7 @@ e.g. "group.id" for the group ID.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used group panel implementation
 
 ```
 admin/jqadm/group/name = 

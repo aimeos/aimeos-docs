@@ -135,7 +135,7 @@ e.g. "log.facility" for the log facility.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used log panel implementation
 
 ```
 admin/jqadm/log/name = 

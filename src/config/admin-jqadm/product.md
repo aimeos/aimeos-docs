@@ -415,6 +415,32 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
+## types
+
+List of category types shown in the JQAdm product category panel
+
+```
+admin/jqadm/product/category/types = Array
+(
+    [0] => default
+    [1] => promotion
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+* Type: array - List of category types
+* Since: 2025.04
+
+Limits the category types shown in the JQAdm product category panel
+to the ones listed here. The order of the types in the list defines
+the order of the category types in the JQAdm product category panel.
+
+
 # characteristic
 ## attribute/decorators/excludes
 
@@ -621,6 +647,35 @@ named like the default one but with the string "default" replaced by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
+
+
+## attribute/types
+
+List of attribute types shown in the JQAdm product characteristic panel
+
+```
+admin/jqadm/product/characteristic/attribute/types = Array
+(
+    [0] => default
+    [1] => variant
+    [2] => config
+    [3] => custom
+    [4] => hidden
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+* Type: array - List of attribute types
+* Since: 2025.04
+
+Limits the attribute types shown in the JQAdm product characteristic panel
+to the ones listed here. The order of the types in the list defines
+the order of the attribute types in the JQAdm product characteristic panel.
 
 
 ## decorators/excludes
@@ -1177,11 +1232,7 @@ admin/jqadm/product/domains = Array
     [price/property] => price/property
     [product] => product
     [product/property] => product/property
-    [stock] => Array
-        (
-            [0] => default
-        )
-
+    [stock] => stock
     [supplier] => supplier
     [text] => text
 )
@@ -2014,7 +2065,7 @@ should be replaced by the name of the new class.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used product panel implementation
 
 ```
 admin/jqadm/product/name = Standard
@@ -3180,6 +3231,32 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 
+## types
+
+List of product types shown in the JQAdm product related panel
+
+```
+admin/jqadm/product/related/types = Array
+(
+    [0] => bought-together
+    [1] => suggestion
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+* Type: array - List of product types
+* Since: 2025.04
+
+Limits the product types shown in the JQAdm product related panel
+to the ones listed here. The order of the types in the list defines
+the order of the product types in the JQAdm product related panel.
+
+
 # selection
 ## decorators/excludes
 
@@ -4088,6 +4165,32 @@ you've implemented an alternative client class as well, "default"
 should be replaced by the name of the new class.
 
 @supplier Developer
+
+
+## types
+
+List of product types shown in the JQAdm product supplier panel
+
+```
+admin/jqadm/product/supplier/types = Array
+(
+    [0] => default
+    [1] => promotion
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+* Type: array - List of product types
+* Since: 2025.04
+
+Limits the product types shown in the JQAdm product supplier panel
+to the ones listed here. The order of the types in the list defines
+the order of the product types in the JQAdm product supplier panel.
 
 
 # template-item

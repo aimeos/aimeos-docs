@@ -2074,49 +2074,6 @@ See also:
 
 * mshop/customer/manager/newid/ansi
 
-# password
-## name
-
-Last part of the name for building the password helper item
-
-```
-mshop/customer/manager/password/name = 
-```
-
-* Type: string - Name of the password helper implementation
-* Since: 2015.01
-
-The password helper encode given passwords and salts using the
-implemented hashing method in the required format. String format and
-hash algorithm needs to be the same when comparing the encoded
-password to the one provided by the user after login.
-
-See also:
-
-* mshop/customer/manager/salt
-* mshop/customer/manager/password/options
-
-## options
-
-List of options used by the password helper classes
-
-```
-mshop/customer/manager/password/options = 
-```
-
-* Type: string - Associative list of key/value pairs
-* Since: 2015.01
-
-Each hash method may need an arbitrary number of options specific
-for the hash method. This may include the number of iterations the
-method is applied or the separator between salt and password.
-
-@sse mshop/customer/manager/salt
-
-See also:
-
-* mshop/customer/manager/password/name
-
 # property
 ## count/ansi
 

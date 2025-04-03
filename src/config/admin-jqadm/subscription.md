@@ -137,7 +137,7 @@ e.g. "subscription.id" for the subscription ID.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used subscription panel implementation
 
 ```
 admin/jqadm/subscription/name = 

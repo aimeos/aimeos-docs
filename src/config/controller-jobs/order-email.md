@@ -665,10 +665,9 @@ Only send order payment notification e-mails for these payment status values
 ```
 controller/jobs/order/email/payment/status = Array
 (
-    [0] => 3
-    [1] => 4
-    [2] => 5
-    [3] => 6
+    [0] => 4
+    [1] => 5
+    [2] => 6
 )
 ```
 
@@ -676,10 +675,9 @@ controller/jobs/order/email/payment/status = Array
 ```
 Array
 (
-    [0] => 3
-    [1] => 4
-    [2] => 5
-    [3] => 6
+    [0] => 4
+    [1] => 5
+    [2] => 6
 )
 ```
 * Type: integer - Payment status constant

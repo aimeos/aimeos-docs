@@ -833,7 +833,7 @@ should be replaced by the name of the new class.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used supplier panel implementation
 
 ```
 admin/jqadm/supplier/name = 

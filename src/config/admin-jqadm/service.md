@@ -650,7 +650,7 @@ should be replaced by the name of the new class.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used service panel implementation
 
 ```
 admin/jqadm/service/name = 

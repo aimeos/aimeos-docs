@@ -349,7 +349,7 @@ See also:
 
 # salutations
 
-List of salutions the customers can select from in the HTML frontend
+List of salutions the customer can select from
 
 ```
 client/html/common/address/salutations = Array
@@ -367,8 +367,8 @@ Array
 )
 ```
 * Type: array - List of available salutation codes
-* Since: 2024.04
 * Since: 2021.04
+* Since: 2024.04
 
 The following salutations are available:
 
@@ -382,9 +382,9 @@ which shouldn't be used or add new ones.
 
 See also:
 
+* client/html/account/profile/address/salutations
 * common/countries
 * common/states
-* client/html/account/profile/address/salutations
 
 # validate
 
@@ -453,10 +453,10 @@ Until 2015-02, the configuration option was available as
 
 See also:
 
-* client/html/common/address/payment/mandatory
-* client/html/common/address/payment/optional
 * client/html/common/address/delivery/mandatory
 * client/html/common/address/delivery/optional
+* client/html/common/address/payment/mandatory
+* client/html/common/address/payment/optional
 
 ## address1
 

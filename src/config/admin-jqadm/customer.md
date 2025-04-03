@@ -371,7 +371,7 @@ e.g. "customer.id" for the customer ID.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used customer panel implementation
 
 ```
 admin/jqadm/customer/name = 

@@ -751,15 +751,15 @@ decorators wrapped around them.
 If you want to adapt the output to your own project and you know you only have a specific
 list of attributes, you can create the input and selections in a non-generic, straight
 forward way. The $serviceAttributes[$id] array contains an associative list of codes as
-keys (e.g. "time.hourminute") and items implementing \Aimeos\Base\Criteria\Attribute\Iface
+keys (e.g. "directdebit.bankcode") and items implementing \Aimeos\Base\Criteria\Attribute\Iface
 as values, e.g.
 ```
-  time.hourminute => \Aimeos\Base\Criteria\Attribute\Iface (
-   code => 'time.hourminute',
-   internalcode => 'hourminute',
-   label => 'Delivery time',
-   type => 'time',
-   internaltype => 'time',
+  directdebit.bankcode => \Aimeos\Base\Criteria\Attribute\Iface (
+   code => 'directdebit.bankcode',
+   internalcode => 'bankcode',
+   label => 'Bank code',
+   type => 'string',
+   internaltype => 'string',
    default => '',
    required => true
   )
@@ -1955,10 +1955,10 @@ See also:
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/config
-* client/html/checkout/standard/url/filter
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/config
+* client/html/checkout/standard/url/filter
 
 ## config
 
@@ -1996,11 +1996,11 @@ See also:
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/action
-* client/html/checkout/standard/url/filter
+* client/html/url/config
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/action
-* client/html/url/config
+* client/html/checkout/standard/url/filter
 
 ## controller
 
@@ -2023,10 +2023,10 @@ See also:
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/action
 * client/html/checkout/standard/url/config
-* client/html/checkout/standard/url/filter
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/action
 * client/html/checkout/standard/url/config
+* client/html/checkout/standard/url/filter
 
 ## filter
 
@@ -2106,7 +2106,7 @@ See also:
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/action
 * client/html/checkout/standard/url/config
-* client/html/checkout/standard/url/filter
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/action
 * client/html/checkout/standard/url/config
+* client/html/checkout/standard/url/filter

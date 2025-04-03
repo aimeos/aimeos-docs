@@ -133,7 +133,7 @@ e.g. "locale.currency.id" for the locale ID.
 
 ## name
 
-Class name of the used account favorite client implementation
+Class name of the used locale currency panel implementation
 
 ```
 admin/jqadm/locale/currency/name = 
@@ -545,7 +545,7 @@ e.g. "locale.language.id" for the locale ID.
 
 ## name
 
-Class name of the used account favorite client implementation
+Class name of the used locale language panel implementation
 
 ```
 admin/jqadm/locale/language/name = 
@@ -691,7 +691,7 @@ should be replaced by the name of the new class.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used locale panel implementation
 
 ```
 admin/jqadm/locale/name = 
@@ -892,7 +892,7 @@ a hint which config keys are available and are used in the templates.
 
 ## name
 
-Class name of the used account favorite client implementation
+Class name of the used locale site panel implementation
 
 ```
 admin/jqadm/locale/site/name = 

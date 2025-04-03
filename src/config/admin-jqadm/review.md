@@ -162,7 +162,7 @@ e.g. "review.id" for the customer ID.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used review panel implementation
 
 ```
 admin/jqadm/review/name = 

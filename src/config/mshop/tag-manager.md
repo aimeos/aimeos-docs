@@ -9,7 +9,7 @@ mshop/tag/manager/count/ansi =
 ```
 
 * Type: string - SQL statement for counting items
-* Since: 2025.12
+* Since: 2015.12
 
 Counts all records matched by the given criteria from the tag
 database. The records must be from one of the sites that are
@@ -75,7 +75,7 @@ mshop/tag/manager/decorators/excludes =
 ```
 
 * Type: array - List of decorator names
-* Since: 2025.12
+* Since: 2015.12
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -109,7 +109,7 @@ mshop/tag/manager/decorators/global =
 ```
 
 * Type: array - List of decorator names
-* Since: 2025.12
+* Since: 2015.12
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -142,7 +142,7 @@ mshop/tag/manager/decorators/local =
 ```
 
 * Type: array - List of decorator names
-* Since: 2025.12
+* Since: 2015.12
 
 Decorators extend the functionality of a class by adding new aspects
 (e.g. log what is currently done), executing the methods of the underlying
@@ -176,7 +176,7 @@ mshop/tag/manager/delete/ansi =
 ```
 
 * Type: string - SQL statement for deleting items
-* Since: 2025.12
+* Since: 2015.12
 
 Removes the records specified by the given IDs from the tag database.
 The records must be from the site that is configured via the
@@ -221,7 +221,7 @@ mshop/tag/manager/insert/ansi =
 ```
 
 * Type: string - SQL statement for inserting records
-* Since: 2025.12
+* Since: 2015.12
 
 Items with no ID yet (i.e. the ID is NULL) will be created in
 the database and the newly created ID retrieved afterwards
@@ -270,7 +270,7 @@ mshop/tag/manager/name =
 ```
 
 * Type: string - Last part of the class name
-* Since: 2025.12
+* Since: 2015.12
 
 Each default manager can be replace by an alternative imlementation.
 To use this implementation, you have to set the last part of the class
@@ -315,7 +315,7 @@ mshop/tag/manager/newid/ansi =
 ```
 
 * Type: string - SQL statement for retrieving the last inserted record ID
-* Since: 2025.12
+* Since: 2015.12
 
 As soon as a new record is inserted into the database table,
 the database server generates a new and unique identifier for
@@ -385,7 +385,7 @@ mshop/tag/manager/search/ansi =
 ```
 
 * Type: string - SQL statement for searching items
-* Since: 2025.12
+* Since: 2015.12
 
 Fetches the records matched by the given criteria from the tag
 database. The records must be from one of the sites that are
@@ -488,7 +488,7 @@ mshop/tag/manager/submanagers =
 ```
 
 * Type: array - List of sub-manager names
-* Since: 2025.12
+* Since: 2015.12
 
 Managers provide a generic interface to the underlying storage.
 Each manager has or can have sub-managers caring about particular
@@ -1005,7 +1005,7 @@ mshop/tag/manager/update/ansi =
 ```
 
 * Type: string - SQL statement for updating records
-* Since: 2025.12
+* Since: 2015.12
 
 Items which already have an ID (i.e. the ID is not NULL) will
 be updated in the database.

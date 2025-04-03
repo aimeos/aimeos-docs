@@ -23,7 +23,7 @@ Array
 List of actions, the editor can select from in the list header of the order
 panel. You can dynamically extend the available actions like exporting the
 selected orders in CSV format and translate the action names using the
-"admin/ext" translation domain.
+"admin/code" translation domain.
 
 The action names will be passed as "queue" parameter to the export method
 of the JQADM order class, which will create an entry for the message queue
@@ -169,7 +169,7 @@ e.g. "order.id" for the order ID.
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used order panel implementation
 
 ```
 admin/jqadm/order/name = 

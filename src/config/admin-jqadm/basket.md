@@ -105,10 +105,10 @@ List of basket columns that should be displayed in the list view
 ```
 admin/jqadm/basket/fields = Array
 (
-    [0] => order.basket.id
-    [1] => order.basket.customerid
-    [2] => order.basket.name
-    [3] => order.basket.ctime
+    [0] => basket.id
+    [1] => basket.customerid
+    [2] => basket.name
+    [3] => basket.ctime
 )
 ```
 
@@ -116,10 +116,10 @@ admin/jqadm/basket/fields = Array
 ```
 Array
 (
-    [0] => order.basket.id
-    [1] => order.basket.customerid
-    [2] => order.basket.name
-    [3] => order.basket.ctime
+    [0] => basket.id
+    [1] => basket.customerid
+    [2] => basket.name
+    [3] => basket.ctime
 )
 ```
 * Type: array - List of field names, i.e. search keys
@@ -130,12 +130,12 @@ The columns can be changed by the editor as required within the administraiton
 interface.
 
 The names of the colums are in fact the search keys defined by the managers,
-e.g. "order.basket.id" for the order basket ID.
+e.g. "basket.id" for the order basket ID.
 
 
 # name
 
-Class name of the used account favorite client implementation
+Class name of the used basket panel implementation
 
 ```
 admin/jqadm/basket/name = 
