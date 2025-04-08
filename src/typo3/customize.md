@@ -470,7 +470,7 @@ Most e-commerce sites show a small basket at the top right corner of each page. 
 The following TypoScript code must be placed in a **TypoScript setup template**. One such place could be a `*.typoscript` file in your `./fileadmin/` directory that is included in the setup section of your site. For example, create a `./fileadmin/setup.typoscript` file with the following content:
 
 ```typoscript
-lib.navigation.basket = COA
+lib.navigation.basket = COA_INT
 lib.navigation.basket.10 = USER
 lib.navigation.basket.10 {
     # userFunc = tx_extbase_core_bootstrap->run
