@@ -8,7 +8,7 @@ This article contains all actions for retrieving and managing products.
 === "Query"
     ```graphql
     query {
-      getProduct(id: "1", include: ["text", "product/property"]) {
+      getProduct(id: "1", include: ["text", "product/property", "stock"]) {
         id
         siteid
         type
@@ -41,6 +41,13 @@ This article contains all actions for retrieving and managing products.
           type
           languageid
           value
+        }
+        stock {
+          id
+          type
+          stocklevel
+          timeframe
+          dateback
         }
       }
     }
@@ -48,7 +55,7 @@ This article contains all actions for retrieving and managing products.
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      getProduct(id: "1", include: ["text", "product/property"]) {
+      getProduct(id: "1", include: ["text", "product/property", "stock"]) {
         id
         siteid
         type
@@ -81,6 +88,13 @@ This article contains all actions for retrieving and managing products.
           type
           languageid
           value
+        }
+        stock {
+          id
+          type
+          stocklevel
+          timeframe
+          dateback
         }
       }
     }`).then(data => {
@@ -91,7 +105,7 @@ This article contains all actions for retrieving and managing products.
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      getProduct(id: "1", include: ["text", "product/property"]) {
+      getProduct(id: "1", include: ["text", "product/property", "stock"]) {
         id
         siteid
         type
@@ -124,6 +138,13 @@ This article contains all actions for retrieving and managing products.
           type
           languageid
           value
+        }
+        stock {
+          id
+          type
+          stocklevel
+          timeframe
+          dateback
         }
       }
     }`});
@@ -180,7 +201,14 @@ Response:
         "type": "isbn",
         "languageid": null,
         "value": "12345678"
-      }]
+      }],
+      "stock": {[
+        "id": "23",
+        "type": "default",
+        "stocklevel": 42,
+        "timeframe": "2-3d",
+        "dateback": null
+      ]}
     }
   }
 }
@@ -191,7 +219,7 @@ Response:
 === "Query"
     ```graphql
     query {
-      findProduct(code: "demo-article", include: ["text", "product/property"]) {
+      findProduct(code: "demo-article", include: ["text", "product/property", "stock"]) {
         id
         siteid
         type
@@ -224,6 +252,13 @@ Response:
           type
           languageid
           value
+        }
+        stock {
+          id
+          type
+          stocklevel
+          timeframe
+          dateback
         }
       }
     }
@@ -231,7 +266,7 @@ Response:
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      findProduct(code: "demo-article", include: ["text", "product/property"]) {
+      findProduct(code: "demo-article", include: ["text", "product/property", "stock"]) {
         id
         siteid
         type
@@ -264,6 +299,13 @@ Response:
           type
           languageid
           value
+        }
+        stock {
+          id
+          type
+          stocklevel
+          timeframe
+          dateback
         }
       }
     }`).then(data => {
@@ -274,7 +316,7 @@ Response:
     ```javascript
     const body = JSON.stringify({'query':
     `query {
-      findProduct(code: "demo-article", include: ["text", "product/property"]) {
+      findProduct(code: "demo-article", include: ["text", "product/property", "stock"]) {
         id
         siteid
         type
@@ -307,6 +349,13 @@ Response:
           type
           languageid
           value
+        }
+        stock {
+          id
+          type
+          stocklevel
+          timeframe
+          dateback
         }
       }
     }`});
@@ -363,7 +412,14 @@ Response:
         "type": "isbn",
         "languageid": null,
         "value": "12345678"
-      }]
+      }],
+      "stock": {[
+        "id": "23",
+        "type": "default",
+        "stocklevel": 42,
+        "timeframe": "2-3d",
+        "dateback": null
+      ]}
     }
   }
 }
@@ -376,7 +432,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "Query"
     ```graphql
     query {
-      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text", "product/property"]) {
+      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text", "product/property", "stock"]) {
         items {
           id
           siteid
@@ -410,6 +466,13 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
             type
             languageid
             value
+          }
+          stock {
+            id
+            type
+            stocklevel
+            timeframe
+            dateback
           }
         }
         total
@@ -419,7 +482,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
 === "JQAdm"
     ```javascript
     Aimeos.query(`query {
-      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text", "product/property"]) {
+      searchProducts(filter: "{\\"=~\\": {\\"product.code\\":\\"demo-\\"}}", include: ["text", "product/property", "stock"]) {
         items {
           id
           siteid
@@ -453,6 +516,13 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
             type
             languageid
             value
+          }
+          stock {
+            id
+            type
+            stocklevel
+            timeframe
+            dateback
           }
         }
         total
@@ -469,7 +539,7 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
     const fstr = JSON.stringify(JSON.stringify(filter));
     const body = JSON.stringify({'query':
     `query {
-      searchProducts(filter: ` + fstr + `, include: ["text", "product/property"]) {
+      searchProducts(filter: ` + fstr + `, include: ["text", "product/property", "stock"]) {
         items {
           id
           siteid
@@ -503,6 +573,13 @@ The filter parameter is explained in the [filter section](basics.md#filtering-th
             type
             languageid
             value
+          }
+          stock {
+            id
+            type
+            stocklevel
+            timeframe
+            dateback
           }
         }
         total
@@ -563,7 +640,14 @@ Response:
             "type": "isbn",
             "languageid": null,
             "value": "12345678"
-          }]
+          }],
+          "stock": {[
+            "id": "23",
+            "type": "default",
+            "stocklevel": 42,
+            "timeframe": "2-3d",
+            "dateback": null
+          ]}
         },
         {
           "id": "2",
@@ -587,7 +671,8 @@ Response:
           "lists": {
             "text": []
           },
-          "property": []
+          "property": [],
+          "stock": []
         }
       ],
       "total": 2
@@ -628,6 +713,10 @@ Response:
           languageid: null
           value: "12345678"
         }]
+        stock: [{
+          type: "default"
+          stocklevel: 100
+        }]
       }) {
         id
       }
@@ -662,6 +751,10 @@ Response:
           type: "isbn"
           languageid: null
           value: "12345678"
+        }]
+        stock: [{
+          type: "default"
+          stocklevel: 100
         }]
       }) {
         id
@@ -700,6 +793,10 @@ Response:
           type: "isbn"
           languageid: null
           value: "12345678"
+        }]
+        stock: [{
+          type: "default"
+          stocklevel: 100
         }]
       }) {
         id
@@ -754,6 +851,10 @@ Response:
           languageid: null
           value: "12345678"
         }]
+        stock: [{
+          type: "default"
+          stocklevel: 100
+        }]
       }
       {
         code: "test-3"
@@ -782,6 +883,10 @@ Response:
           type: "isbn"
           languageid: null
           value: "12345678"
+        }]
+        stock: [{
+          type: "default"
+          stocklevel: 100
         }]
       }
       {
@@ -814,6 +919,10 @@ Response:
           type: "isbn"
           languageid: null
           value: "12345678"
+        }]
+        stock: [{
+          type: "default"
+          stocklevel: 100
         }]
       }
       {
