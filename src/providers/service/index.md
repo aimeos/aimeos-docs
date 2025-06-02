@@ -74,14 +74,14 @@ It adds the key/value pairs in the `$attributes` parameter with the specified ty
 
 ```php
 $attributes = ['transactionid' => 123];
-$orderServiceItem = $order->getService( 'payment' );
+$orderServiceItem = current( $order->getService( 'payment' ) ); // get the first one
 $orderServiceItem->addAttributeItems( $this->attributes( $attributes ), 'myprovider' );
 ```
 
 To fetch the attribute again, you can use the *getAttribute()* or *getAttributeItem()* method of the order service item object:
 
 ```php
-$orderServiceItem = $order->getService( 'payment' );
+$orderServiceItem = current( $order->getService( 'payment' ) ); // get the first one
 $value = $orderServiceItem->getAttribute( 'transactionid', 'myprovider' );
 $attrItem = $orderServiceItem->getAttributeItem( 'transactionid', 'myprovider' );
 ```
