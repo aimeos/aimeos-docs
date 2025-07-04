@@ -3,9 +3,11 @@
 Modern browsers can be told to prevent execution of injected Javascript by an attacker. The technique is called "Content Security Policy" and can be activated by sending appropriate HTTP headers. Within TYPO3 this can be configured with a single TypoScript statement:
 
 ```typoscript
-config.additionalHeaders = Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'
-  | X-Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'
-  | X-Webkit-CSP: default-src 'self'; style-src 'self' 'unsafe-inline'
+config.additionalHeaders {
+  110.header = Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'
+  120.header = X-Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline'
+  130.header =  X-Webkit-CSP: default-src 'self'; style-src 'self' 'unsafe-inline'
+}
 ```
 
 This must be a single line in the configuration template which should be part of the root page. It tells the browser to allow only content (Javascript, CSS, images, etc.) from your own server and also inline CSS declarations (necessary for displaying the product pictures as scalable background).
