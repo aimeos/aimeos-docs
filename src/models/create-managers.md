@@ -227,7 +227,7 @@ If you want to return default values or check/transform the values when setting 
 ```php
 public function create( array $values = [] ) : \Aimeos\MShop\Test\Item\Iface
 {
-    $values['test.siteid'] = $values['test.siteid'] ?? $this->context()->locale()->getSiteId();
+    $values['siteid'] = $values['siteid'] ?? $this->context()->locale()->getSiteId();
     return new \Aimeos\MShop\Test\Item\Standard( $this->getPrefix(), $values );
 }
 ```

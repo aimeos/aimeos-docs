@@ -13,7 +13,7 @@ To extend or overwrite existing classes, you have to:
 
 If you need to store e.g. an arbitrary value of another system in your product table, you can [extend the existing table](../infrastructure/schema-migrations.md) by adding a new field like described in the article about modifying existing tables.
 
-Let's name the new field "mycolumn". Add a new `./<yourext>/setup/default/schema/product.php` file to your extension that adds your new column to the *mshop_product* table:
+Let's name the new field "mycolumn". Add a new `./<yourext>/setup/default/schema/php` file to your extension that adds your new column to the *mshop_product* table:
 
 ```php
 return array(
@@ -54,7 +54,7 @@ namespace Aimeos\MShop\Product\Manager\Decorator;
 class Myproject extends \Aimeos\MShop\Common\Manager\Decorator\Base
 {
     private $attr = [
-        'product.mycolumn' => [
+        'mycolumn' => [
             'internalcode' => 'mycolumn',
             'label' => 'My new column',
             'type' => 'string', // optional
@@ -116,18 +116,18 @@ return [
 Afterwards, you can access the values of your new columns in the item using:
 
 ```php
-$item->get( 'product.mycolumn', '<default value>' );
+$item->get( 'mycolumn', '<default value>' );
 ```
 
 You can also register new methods in each item class which transforms the values to enforcing types for example:
 
 ```php
 \Aimeos\MShop\Product\Item\Standard::macro( 'getMycolumn', function() {
-    return (int) $this->get( 'product.mycolumn' );
+    return (int) $this->get( 'mycolumn' );
 } );
 
 \Aimeos\MShop\Product\Item\Standard::macro( 'setMycolumn', function( $value ) {
-    return $this->set( 'product.mycolumn', (int) $value );
+    return $this->set( 'mycolumn', (int) $value );
 } );
 ```
 
@@ -135,7 +135,7 @@ It's also possible to add new methods that combine several values like:
 
 ```php
 \Aimeos\MShop\Customer\Item\Standard::macro( 'getCombined', function() {
-    return $this->get( 'product.code' ) . '-' . $this->get( 'product.mycolumn' );
+    return $this->get( 'code' ) . '-' . $this->get( 'mycolumn' );
 } );
 ```
 
@@ -155,12 +155,12 @@ class Myproject extends Standard
 {
     public function getMyColumn() : string
     {
-        return $this->get( 'product.mycolumn', '' );
+        return $this->get( 'mycolumn', '' );
     }
 
     public function setMyColumn( ?string $val ) : \Aimeos\MShop\Product\Item\Iface
     {
-        return $this->set( 'product.mycolumn', $val );
+        return $this->set( 'mycolumn', $val );
     }
 
     public function fromArray( array &$list, bool $private = false ) : \Aimeos\MShop\Product\Item\Iface
@@ -171,7 +171,7 @@ class Myproject extends Standard
         {
             switch( $key )
             {
-                case 'product.mycolumn': $item = $item->setMyId( $value ); break;
+                case 'mycolumn': $item = $item->setMyId( $value ); break;
                 default: continue 2;
             }
             unset( $list[$key] );
@@ -185,7 +185,7 @@ class Myproject extends Standard
         $list = parent::toArray( $private );
 
         if( $private === true ) {
-            $list['product.mycolumn'] = $this->getMyId();
+            $list['mycolumn'] = $this->getMyId();
         }
 
         return $list;
@@ -205,7 +205,7 @@ namespace Aimeos\MShop\Product\Manager;
 class Myproject extends Standard
 {
     private $searchConfig = [
-        'product.mycolumn' => [
+        'mycolumn' => [
             'internalcode' => 'mycolumn',
             'label' => 'Product additional column',
             'type' => 'string', // int, float, etc.
@@ -215,8 +215,8 @@ class Myproject extends Standard
     public function create( array $values = [] ) : \Aimeos\MShop\Common\Item\Iface
     {
         // check in original method for more that needs to be set
-        $values['product.siteid'] = $values['product.siteid'] ?? $this->context()->locale()->getSiteId();
-        return new \Aimeos\MShop\Product\Item\Myproject( 'product.', $values );
+        $values['siteid'] = $values['siteid'] ?? $this->context()->locale()->getSiteId();
+        return new \Aimeos\MShop\Product\Item\Myproject( '', $values );
     }
 
     public function getSearchAttributes( bool $withsub = true ) : array
@@ -227,7 +227,7 @@ class Myproject extends Standard
 }
 ```
 
-The `$searchConfig` and `getSearchAttributes()` method will allow you to use the defined code (`product.mycolumn`) in search criteria expressions passed to `search()`.
+The `$searchConfig` and `getSearchAttributes()` method will allow you to use the defined code (`mycolumn`) in search criteria expressions passed to `search()`.
 
 You also need to add a new SQL SELECT statement to the configuration, so the values are fetched from the database.
 
@@ -301,14 +301,14 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
 
     public function testFromArray()
     {
-        $this->object->fromArray( ['product.myvalue' => '123'] );
+        $this->object->fromArray( ['myvalue' => '123'] );
         $this->assertEquals( '123', $this->object->getMyColumn() );
     }
 
     public function testToArray()
     {
         $list = $this->object->toArray();
-        $this->assertEquals( 'test', $list['product.myvalue'] );
+        $this->assertEquals( 'test', $list['myvalue'] );
     }
 }
 ```
@@ -336,7 +336,7 @@ class MyprojectTest extends \PHPUnit\Framework\TestCase
     public function testGetSearchAttributes()
     {
         $list = $this->object->getSearchAttributes();
-        $this->assertArrayHasKey( 'product.mycolumn', $list );
+        $this->assertArrayHasKey( 'mycolumn', $list );
     }
 }
 ```
