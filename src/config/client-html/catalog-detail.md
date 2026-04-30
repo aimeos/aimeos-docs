@@ -594,7 +594,6 @@ client/html/catalog/detail/url/filter = Array
 ```
 Array
 (
-    [0] => d_prodid
 )
 ```
 * Type: array - List of parameter names to remove

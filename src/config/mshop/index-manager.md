@@ -1616,6 +1616,24 @@ See also:
 
 * mshop/index/manager/price/insert/ansi
 
+## listtypes
+
+Use different product price list types for indexing
+
+```
+mshop/index/manager/price/listtypes = 
+```
+
+* Type: array - List of price list types
+* Since: 2026.04
+
+In some cases, prices are stored with different list types.
+This configuration option defines which list types are incorporated in which
+order. If a price of the defined type with the lowest index is available, it
+will be indexed, otherwise the next lowest index list type. It is highly
+recommended to add the list type 'default' with the highest index.
+
+
 ## name
 
 Class name of the used index price manager implementation
@@ -1802,7 +1820,7 @@ mshop/index/manager/price/types =
 * Type: array - List of price types codes
 * Since: 2019.04
 
-In some cases, prices are stored with different types, eg. price per kg.
+In some cases, prices are stored with different types, e.g. price per kg.
 This configuration option defines which types are incorporated in which
 order. If a price of the defined type with the lowest index is available,
 it will be indexed, otherwise the next lowest index price type. It is

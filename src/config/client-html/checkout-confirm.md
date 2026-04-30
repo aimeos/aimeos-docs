@@ -391,6 +391,22 @@ See also:
 * client/html/checkout/confirm/url/action
 * client/html/checkout/confirm/url/config
 
+## filter
+
+```
+client/html/checkout/confirm/url/filter = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
 ## target
 
 Destination of the URL where the controller specified in the URL is known

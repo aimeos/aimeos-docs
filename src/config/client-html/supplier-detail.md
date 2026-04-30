@@ -225,7 +225,7 @@ or numbers. Avoid chamel case names like "MyDetail"!
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/supplier/detail/supid-default = 422
+client/html/supplier/detail/supid-default = 17
 ```
 
 * Type: string - Supplier ID
@@ -237,6 +237,7 @@ URL using this configuration.
 See also:
 
 * client/html/catalog/lists/catid-default
+* client/html/catalog/detail/prodid-default
 
 # template-body
 

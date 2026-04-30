@@ -252,6 +252,33 @@ admin/jqadm/resource/dashboard/key = D
 * Since: 2017.10
 
 
+# feed
+## groups
+
+```
+admin/jqadm/resource/feed/groups = Array
+(
+    [0] => admin
+    [1] => super
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
+## key
+
+```
+admin/jqadm/resource/feed/key = F
+```
+
+
+
 # goods
 ## groups
 

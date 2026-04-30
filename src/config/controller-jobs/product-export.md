@@ -184,6 +184,122 @@ See also:
 * controller/jobs/product/export/max-items
 * controller/jobs/product/export/domains
 
+# google
+## decorators/excludes
+
+```
+controller/jobs/product/export/google/decorators/excludes = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
+## decorators/global
+
+```
+controller/jobs/product/export/google/decorators/global = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
+## decorators/local
+
+```
+controller/jobs/product/export/google/decorators/local = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
+## name
+
+```
+controller/jobs/product/export/google/name = Standard
+```
+
+* Default: `Standard`
+
+
+# idealo
+## decorators/excludes
+
+```
+controller/jobs/product/export/idealo/decorators/excludes = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
+## decorators/global
+
+```
+controller/jobs/product/export/idealo/decorators/global = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
+## decorators/local
+
+```
+controller/jobs/product/export/idealo/decorators/local = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+
+
+## name
+
+```
+controller/jobs/product/export/idealo/name = Standard
+```
+
+* Default: `Standard`
+
+
 # max-items
 
 Maximum number of exported products per file
@@ -640,18 +756,18 @@ See also:
 
 # template-items
 
-Relative path to the XML items template of the product site map job controller.
+Relative path to the XML items template of the product export job controller.
 
 ```
 controller/jobs/product/export/template-items = product/export/items-body-standard
 ```
 
 * Default: `product/export/items-body-standard`
-* Type: string - Relative path to the template creating XML code for the site map items
+* Type: string - Relative path to the template creating XML code for the export items
 * Since: 2015.01
 
 The template file contains the XML code and processing instructions
-to generate the site map files. The configuration string is the path
+to generate the export files. The configuration string is the path
 to the template file relative to the templates directory (usually in
 templates/controller/jobs).
 
