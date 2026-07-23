@@ -61,6 +61,7 @@ nav:
   - Laravel:
     - Getting started: laravel/index.md
     - Setup: laravel/setup.md
+    - MCP server: laravel/mcp.md
     - Customize: laravel/customize.md
     - Extend: laravel/extend.md
     - Optimize: laravel/optimize.md
