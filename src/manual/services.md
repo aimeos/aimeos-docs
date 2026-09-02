@@ -494,6 +494,44 @@ testmode (boolean, optional)
 : Use "1" for test payments without real money. Requires using the sandbox API credentials, too
 
 
+## Payzum
+
+[Payzum](https://payzum.com) is a non-custodial payment gateway for crypto and stablecoin payments (USDC, USDT and more, multi-chain) where funds settle directly to the merchant's own wallet. Customers are redirected to a hosted checkout page where they pick the asset and network, while the shop charges in fiat terms. It's available via the **OmniPay** payment service provider and the [Payzum Omnipay driver](https://github.com/payzum-dev/omnipay-payzum). If you use composer run:
+
+```
+composer req aimeos/ai-payments payzum/omnipay-payzum
+```
+
+!!! note
+    Use "OmniPay" as provider because it's directly supported by the generic Omnipay integration
+
+The available configuration options are:
+
+type (string, required)
+: Must be "Payzum"
+
+apiKey (string, required)
+: The API key from your Payzum merchant dashboard
+
+webhookSecret (string, required)
+: The webhook signing secret shown once at merchant creation, used to verify the signature of payment notifications. Crypto confirmation is asynchronous, so orders are completed by the signed payment notification, not by the redirect back to the shop
+
+address (boolean, optional)
+: Not supported by that payment provider
+
+authorize (boolean, optional)
+: Not supported by that payment provider
+
+createtoken (boolean, optional)
+: Not supported by that payment provider
+
+onsite (boolean, optional)
+: Not supported by that payment provider (customers are redirected to the hosted checkout page)
+
+testmode (boolean, optional)
+: Use "1" for test payments without real money. Requires using the sandbox API credentials, too
+
+
 ## Postfinance
 
 !!! hint
