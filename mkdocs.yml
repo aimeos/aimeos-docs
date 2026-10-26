@@ -35,7 +35,6 @@ extra_javascript:
   - assets/aimeos.js?v6
   - /docs/versions.js?v6
 extra:
-  disqus: aimeos
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/aimeos
