@@ -11,10 +11,10 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get -y update
-      - run: sudo apt-get -y install tnftp python3-pip
-      - run: pip install mkdocs mkdocs-material==8.3.9
-      - run: pip install plugins/
-      - run: mkdocs build
+      - run: sudo apt-get -y install tnftp python3-venv
+      - run: python3 -m venv ~/venv
+      - run: ~/venv/bin/pip install mkdocs==1.6.1 mkdocs-material==9.6.4
+      - run: ~/venv/bin/mkdocs build
       - run: tar czf $CIRCLE_BRANCH.tar.gz docs/$CIRCLE_BRANCH
       - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.tar.gz
       - run: ftp -u ftp://$CREDENTIALS@storage.aimeos.org/aimeos-docs/ $CIRCLE_BRANCH.json

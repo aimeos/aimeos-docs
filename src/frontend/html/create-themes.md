@@ -1,6 +1,6 @@
 Since 2020.10, there's a simple way to create new themes, install and configure them. Please read the article about [theme basics](theme-basics.md) first to understand how a theme is structured. Then, the steps are:
 
-* [Create an extension](#create-theme-extension)
+* [Create an extension](#create-extension)
 * [Use custom templates](#custom-templates)
 * [Use custom theme](#custom-themes)
 
@@ -164,4 +164,4 @@ url(assets/icon.png)
 
 ## Custom Javascript
 
-By default, there are seveeral JS files included in the theme directory and they contain the JS code for all dynamic features, which are described in the [theme basics article](theme-basics.md#javacript).
+By default, there are seveeral JS files included in the theme directory and they contain the JS code for all dynamic features, which are described in the [theme basics article](theme-basics.md#javascript).

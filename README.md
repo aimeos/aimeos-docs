@@ -113,7 +113,6 @@ markdown files. Install `mkdocs` and the dependencies required by *aimeos-docs* 
 
 ```bash
 pip install mkdocs mkdocs-material
-pip install plugins/
 ```
 
 #### Start the local server

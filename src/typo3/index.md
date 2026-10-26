@@ -35,7 +35,7 @@ The extension provides several plug-ins for certain functionalities (product fil
 ## Checkout
 
 * [Configure checkout behavior and templates](../frontend/html/checkout-components.md)
-* [Configure countries, regions and states](customize.md#countries-regions-and-states)
+* [Configure countries, regions and states](customize.md#countries-states-and-regions)
 * [Change delivery and payment options](../manual/services.md)
 * [Create own delivery and payment service providers](../providers/service/index.md)
 

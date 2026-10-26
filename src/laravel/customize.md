@@ -818,6 +818,4 @@ To define states or regions via the configuration use something like this:
 ],
 ```
 
-The key you have chosen for the state or region will be stored in the order address of the customer and can then be used during the rest of the checkout process. More details can be found in the documentation of the configuration option:
-
-* [client/html/checkout/address/states](../config/client-html/checkout-standard.md#states)
+The key you have chosen for the state or region will be stored in the order address of the customer and can then be used during the rest of the checkout process.

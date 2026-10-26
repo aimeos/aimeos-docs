@@ -85,11 +85,11 @@ Each selection article can have own prices and images like any other product. Th
 
 ## Vouchers
 
-Voucher products are virtual products that will generate a coupon code for the bought value which is sent to the customer afterwards. The generated coupon code can be used by the customers themselves or as gifts for other persons. A voucher product can be a single article with a fixed price, an article with a [user defined price](product-details.md#price) or it can be part of a selection product (assign a variant attribute in that case).
+Voucher products are virtual products that will generate a coupon code for the bought value which is sent to the customer afterwards. The generated coupon code can be used by the customers themselves or as gifts for other persons. A voucher product can be a single article with a fixed price, an article with a [user defined price](product-details.md#prices) or it can be part of a selection product (assign a variant attribute in that case).
 
 ![Voucher product](Admin-product-voucher.png)
 
 After the customer bought the voucher product and the payment is authorized or received, the **order/email/voucher** job controller will generate the coupon codes and sends an e-mail with the code to the delivery address (or billing address if no delivery address is given) of the order. Make sure you run that **job controller at least every five minutes**.
 
 !!! warning
-    You need to set up the [Voucher coupon provider](coupons.md#Voucher) for enabling the customer (or the person the voucher code is given to) to redeem voucher
+    You need to set up the [Voucher coupon provider](coupons.md#voucher) for enabling the customer (or the person the voucher code is given to) to redeem voucher

@@ -1145,4 +1145,4 @@ plugin.tx_aimeos.settings.common.states {
 }
 ```
 
-The key you have chosen for the state or region will be stored in the order address of the customer and can then be used during the rest of the checkout process. More details can be found in [client/html/checkout/address/states](../../config/client-html/checkout-standard/#states).
+The key you have chosen for the state or region will be stored in the order address of the customer and can then be used during the rest of the checkout process.

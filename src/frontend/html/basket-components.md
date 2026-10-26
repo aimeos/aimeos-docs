@@ -132,13 +132,13 @@ and to delete it from the basket again use:
 <input type="hidden" name="b_coupon" value="TESTCODE" />
 ```
 
-Depending on the [number of allowed coupon codes](../../config/controller-frontend/basket.md#couponallowed) in the basket, you can add more than one code but only one at a time.
+Depending on the [number of allowed coupon codes](../../config/controller-frontend/basket.md#allowed) in the basket, you can add more than one code but only one at a time.
 
 ## Coupon
 
 Coupons are personal or shared codes for granting goodies, giving a price reduction or any other possibility that offers customers an additional advantage. The actions behind coupons are implemented by coupon providers in the MShop library, and they can modify the basket content in any way.
 
-Normally, shop owners would like to grant customers only one advantage per order and thus, the number of coupons that can be entered is limited to one by default. But there may be situations where it's applicable to allow more than one coupon code and therefore, the maximum number of coupon codes can be configured via the [controller/frontend/basket/coupon/allowed](../../config/controller-frontend/basket.md#couponallowed) setting.
+Normally, shop owners would like to grant customers only one advantage per order and thus, the number of coupons that can be entered is limited to one by default. But there may be situations where it's applicable to allow more than one coupon code and therefore, the maximum number of coupon codes can be configured via the [controller/frontend/basket/coupon/allowed](../../config/controller-frontend/basket.md#allowed) setting.
 
 # Small
 
@@ -188,10 +188,10 @@ Some additional settings for the cross-selling subpart have been implemented to 
 [client/html/basket/related/basket-add](../../config/client-html/basket-related.md#basket-add)
 : Enable adding products to basket directly
 
-[client/html/basket/related/bought/domains](../../config/client-html/basket-related.md#boughtdomains)
+[client/html/basket/related/bought/domains](../../config/client-html/basket-related.md#domains)
 : List of content types fetched from the database
 
-[client/html/basket/related/bought/limit](../../config/client-html/basket-related.md#boughtlimit)
+[client/html/basket/related/bought/limit](../../config/client-html/basket-related.md#limit)
 : Maximum number of products displayed
 
 More configuration options are used while generating the list of products bought together. They are available in the documentation of the "product/bought" job controller.

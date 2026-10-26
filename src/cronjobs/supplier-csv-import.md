@@ -199,7 +199,7 @@ Additionally, you can import values for the supplier list relation as well:
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of supplier list types that will be inserted, updated or deleted via the [controller/jobs/supplier/import/csv/processor/text/listtypes](../config/controller-jobs/supplier-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of supplier list types that will be inserted, updated or deleted via the [controller/jobs/supplier/import/csv/processor/text/listtypes](../config/controller-jobs/supplier-import.md#processortextlisttypes) setting.
 
 ## Media
 
@@ -239,7 +239,7 @@ Additionally, you can import values for the supplier list relation as well:
 
 Here, the type is absolutely necessary. If no value for the position is available, the automatically calculated position is used. The status is set to "enabled" ("1") if not set explicitly.
 
-If one or more relations should stay untouched, you can explicitly configure the list of supplier list types that will be inserted, updated or deleted via the [controller/jobs/supplier/import/csv/processor/media/listtypes](../config/controller-jobs/supplier-import.md#listtypes) setting.
+If one or more relations should stay untouched, you can explicitly configure the list of supplier list types that will be inserted, updated or deleted via the [controller/jobs/supplier/import/csv/processor/media/listtypes](../config/controller-jobs/supplier-import.md#processormedialisttypes) setting.
 
 ## Address
 

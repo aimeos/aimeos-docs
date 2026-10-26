@@ -5,13 +5,13 @@ Most of the time, you already have an ERP system which manages all your products
 
 # Available configuration
 
-[controller/jobs/product/import/xml/backup](../config/controller-jobs/product-import.md#backup)
+[controller/jobs/product/import/xml/backup](../config/controller-jobs/product-import.md#backup_1)
 : Directory for storing imported files
 
-[controller/jobs/product/import/xml/domains](../config/controller-jobs/product-import.md#domains)
+[controller/jobs/product/import/xml/domains](../config/controller-jobs/product-import.md#domains_1)
 : List of domain names that should be retrieved along with the product items
 
-[controller/jobs/product/import/xml/location](../config/controller-jobs/product-import.md#location)
+[controller/jobs/product/import/xml/location](../config/controller-jobs/product-import.md#location_1)
 : Path to the directory with the XML files. By default, the location is "product" with the site code added automatically at the end, i.e. the expected sub-directory for the files is "product/default/" which imports the XML files for the "default" site
 
 [controller/jobs/product/import/xml/max-query](../config/controller-jobs/product-import.md#max-query)

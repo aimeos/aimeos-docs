@@ -57,9 +57,9 @@ class Standard
 }
 ```
 
-A component can implement the same optional methods as any subpart. For a detailed description of these methods, please refer to the article about [creating new subparts](create-subparts.md#optional-methods).
+A component can implement the same optional methods as any subpart. For a detailed description of these methods, please refer to the article about [creating new subparts](create-subparts.md#methods).
 
-The [data()](create-subparts.md#data), [getSubClient()](create-subparts.md#getSubClient), [getSubClientNames()](create-subparts.md#getSubClientNames) and [modify()](create-subparts.md#modify) methods are also exactly the same as in any other subpart and won't be described in this article again.
+The [data()](create-subparts.md#data), [getSubClient()](create-subparts.md#getsubclient), [getSubClientNames()](create-subparts.md#getsubclientnames) and [modify()](create-subparts.md#modify) methods are also exactly the same as in any other subpart and won't be described in this article again.
 
 Differences arise from the required code inside these methods as they have to care about caching (if you want to). Components that can cache its output are extremely fast. Once the content is generated and stored, it can be retrieved within milliseconds and directly pushed to the browser. The downside is that some additional code is needed.
 

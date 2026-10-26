@@ -30,7 +30,7 @@ Afterwards, the order is stored in the database and the product stock and coupon
 !!! tip
      There's a job controller ("Remove unpaid orders") available for unblock reserved stock and coupon codes of unpaid orders after a configurable amount of time. Also, unfinished orders can be deleted safely after some time using the "Remove unfinished orders" job controller.
 
-A new delivery address is also saved in the customer address table. To prevent this, you have to remove the "address" subpart from the [process subparts configuration](../../config/client-html/checkout-standard.md#standardsubparts_3). This applies also to creating a new customer account based on the e-mail address.
+A new delivery address is also saved in the customer address table. To prevent this, you have to remove the "address" subpart from the [process subparts configuration](../../config/client-html/checkout-standard.md#subparts_1). This applies also to creating a new customer account based on the e-mail address.
 
 If the customer has chosen a payment provider which requires no redirect to an external payment gateway (like pre-payments), the customer is directly forwarded to the order confirmation page which must contain the "checkout confirm" component.
 
@@ -44,7 +44,7 @@ The "checkout confirm" component displays the placed order and the current payme
 
 If possible, it updates the payment status depending on the parameters sent by the payment gateways or queries the payment provider for the current status. It asks each configured payment provider for the current shop site to update the payment status until one of them succeeds.
 
-Thus, and for usability reasons it's best to place the most commonly used [payment option](../../manual/services.md#built-in-payment-services) at the top of the list of payment options using a low number (or zero) for the [position value](../../manual/service-details.md#basic-details).
+Thus, and for usability reasons it's best to place the most commonly used [payment option](../../manual/services.md#built-in-payment-services) at the top of the list of payment options using a low number (or zero) for the [position value](../../manual/service-details.md).
 
 Sometimes, payments of customers are declined by the payment provider or the payment fails for other reasons. In this case, the buttons for retrying the payment are displayed. The customer can use the same payment option or choosing another one.
 

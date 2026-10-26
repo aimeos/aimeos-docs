@@ -20,8 +20,9 @@ markdown_extensions:
           options:
             startinline: true
   - pymdownx.superfences
-plugins:
-  - algolia
+plugins: []
+hooks:
+  - hooks/algolia.py
 docs_dir: src
 theme:
   name: material
@@ -52,9 +53,9 @@ extra:
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/c/aimeos
       title: Youtube
-analytics:
-  url: https://aimeos.org/stats
-  siteid: 1
+  analytics:
+    url: https://aimeos.org/stats
+    siteid: 1
 
 
 nav:
@@ -266,6 +267,7 @@ nav:
       - Common decorators: config/client-html/common-decorators.md
       - Common partials: config/client-html/common-partials.md
       - Common summary: config/client-html/common-summary.md
+      - Common title: config/client-html/common-title.md
       - Locale select: config/client-html/locale-select.md
       - Supplier detail: config/client-html/supplier-detail.md
     - JSON REST API:
