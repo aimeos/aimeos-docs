@@ -382,7 +382,6 @@ which shouldn't be used or add new ones.
 
 See also:
 
-* client/html/account/profile/address/salutations
 * common/countries
 * common/states
 

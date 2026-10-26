@@ -1,37 +1,5 @@
 
 # currency
-## decorators/global
-
-```
-client/html/locale/select/currency/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/locale/select/currency/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## name
 
 Name of the currency part used by the locale selector client implementation
@@ -93,9 +61,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/locale/select/currency/template-header
 
 ## url/config
 
@@ -226,38 +191,6 @@ See also:
 * client/html/locale/select/decorators/global
 
 # language
-## decorators/global
-
-```
-client/html/locale/select/language/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/locale/select/language/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## name
 
 Name of the language part used by the locale selector client implementation
@@ -319,9 +252,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/locale/select/language/template-header
 
 ## url/config
 

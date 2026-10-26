@@ -31,3 +31,26 @@ See also:
 * client/html/common/decorators/default
 * client/html/account/favorite/decorators/excludes
 * client/html/account/favorite/decorators/local
+
+# unfinished-hours
+
+Number of hours unfinished orders count as coupon code redemption
+
+```
+mshop/coupon/provider/unfinished-hours = 
+```
+
+* Type: int - Number of hours
+* Since: 2026.10
+
+Orders are stored with an "unfinished" payment status before the
+customer is redirected to the payment provider and the coupon code
+counts are only decreased after the payment has been confirmed. To
+prevent customers from redeeming the same code in several orders
+before confirming the first one, unfinished orders created within
+the configured time frame are counted too. The value should match
+the time unfinished orders are kept before they are removed.
+
+See also:
+
+* controller/jobs/order/cleanup/unfinished/keep-hours

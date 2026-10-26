@@ -299,7 +299,6 @@ See also:
 * client/html/account/profile/url/target
 * client/html/account/profile/url/controller
 * client/html/account/profile/url/action
-* client/html/url/config
 
 ## controller
 

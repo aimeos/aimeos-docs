@@ -185,38 +185,6 @@ See also:
 
 * client/html/catalog/session/seen/count/enable
 
-## decorators/global
-
-```
-client/html/catalog/session/pinned/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/session/pinned/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## domains
 
 A list of domain names whose items should be available in the pinned view template for the product
@@ -320,9 +288,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/session/pinned/template-header
 
 ## url/action
 
@@ -345,7 +310,7 @@ See also:
 * client/html/catalog/session/pinned/url/target
 * client/html/catalog/session/pinned/url/controller
 * client/html/catalog/session/pinned/url/config
-* client/html/catalog/session/url/filter
+* client/html/catalog/session/pinned/url/filter
 
 ## url/config
 
@@ -383,7 +348,7 @@ See also:
 * client/html/catalog/session/pinned/url/target
 * client/html/catalog/session/pinned/url/controller
 * client/html/catalog/session/pinned/url/action
-* client/html/catalog/session/url/filter
+* client/html/catalog/session/pinned/url/filter
 
 ## url/controller
 
@@ -406,7 +371,7 @@ See also:
 * client/html/catalog/session/pinned/url/target
 * client/html/catalog/session/pinned/url/action
 * client/html/catalog/session/pinned/url/config
-* client/html/catalog/session/url/filter
+* client/html/catalog/session/pinned/url/filter
 
 ## url/filter
 
@@ -457,7 +422,7 @@ See also:
 * client/html/catalog/session/pinned/url/controller
 * client/html/catalog/session/pinned/url/action
 * client/html/catalog/session/pinned/url/config
-* client/html/catalog/session/url/filter
+* client/html/catalog/session/pinned/url/filter
 
 # seen
 ## count/enable
@@ -480,38 +445,6 @@ the design of the site.
 See also:
 
 * client/html/catalog/session/pinned/count/enable
-
-## decorators/global
-
-```
-client/html/catalog/session/seen/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/session/seen/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
 
 ## maxitems
 
@@ -570,9 +503,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/session/seen/template-header
 
 # subparts
 

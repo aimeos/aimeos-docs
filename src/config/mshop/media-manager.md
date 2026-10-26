@@ -1473,6 +1473,24 @@ available). You can also add your own types in the admin backend and
 extend the frontend to display them where you need them.
 
 
+# private
+
+Allows fetching remote images from private and reserved IP addresses
+
+```
+mshop/media/manager/private = 
+```
+
+* Type: bool - TRUE to allow private and reserved IP addresses, FALSE to deny
+* Since: 2026.10
+
+Remote image URLs are fetched when creating the preview images. To
+prevent server-side request forgery, only hosts resolving to public IP
+addresses are allowed by default. Enable this setting only if you need
+to fetch images from hosts in your internal network and all users
+allowed to add media URLs are trusted.
+
+
 # property
 ## count/ansi
 

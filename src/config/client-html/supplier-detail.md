@@ -1,4 +1,19 @@
 
+# supplier/detail
+
+All parameters defined for the supplier detail component and its subparts
+
+```
+client/html/supplier/detail = 
+```
+
+* Type: array - Associative list of name/value settings
+* Since: 2020.10
+
+This returns all settings related to the detail component.
+Please refer to the single settings for details.
+
+
 # cache
 
 Enables or disables caching only for the supplier detail component
@@ -18,8 +33,6 @@ can't be replaced using the modify() method.
 See also:
 
 * client/html/supplier/detail/cache
-* client/html/supplier/filter/cache
-* client/html/supplier/lists/cache
 
 # decorators
 ## excludes
@@ -172,9 +185,6 @@ are placed on one page, this leads to adding several title and meta tags used
 by search engine. This setting enables you to suppress these tags in the page
 header and maybe add your own to the page manually.
 
-See also:
-
-* client/html/supplier/lists/metatags
 
 # name
 
@@ -225,7 +235,7 @@ or numbers. Avoid chamel case names like "MyDetail"!
 The default supplier ID used if none is given as parameter
 
 ```
-client/html/supplier/detail/supid-default = 17
+client/html/supplier/detail/supid-default = 128
 ```
 
 * Type: string - Supplier ID

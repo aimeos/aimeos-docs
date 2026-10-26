@@ -33,24 +33,6 @@ leaving the rest untouched:
 ```
 
 
-## length
-
-```
-client/html/catalog/selection/preselect/length = 
-```
-
-* Default: ``
-
-
-## width
-
-```
-client/html/catalog/selection/preselect/width = 
-```
-
-* Default: ``
-
-
 # type
 
 List of layout types for the variant attributes

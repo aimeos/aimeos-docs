@@ -1,16 +1,16 @@
-{% if config.analytics.url %}
-{% set siteid = config.analytics.siteid  or "1" %}
+{% if config.extra.analytics.url %}
+{% set siteid = config.extra.analytics.siteid  or "1" %}
 <script type="text/javascript" defer>
   var _paq = _paq || [];
   _paq.push(["disableCookies"]);
   _paq.push(["trackPageView"]);
   _paq.push(["enableLinkTracking"]);
-  _paq.push(["setTrackerUrl", "{{ config.analytics.url }}/piwik.php"]);
+  _paq.push(["setTrackerUrl", "{{ config.extra.analytics.url }}/piwik.php"]);
   _paq.push(["setSiteId", "{{ siteid }}"]);
 
   (function() {
     var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src="{{ config.analytics.url }}/piwik.js"; s.parentNode.insertBefore(g,s);
+    g.defer=true; g.async=true; g.src="{{ config.extra.analytics.url }}/piwik.js"; s.parentNode.insertBefore(g,s);
   })();
 </script>
 {% endif %}

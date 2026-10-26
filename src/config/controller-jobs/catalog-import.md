@@ -28,7 +28,6 @@ please have a look  into the PHP documentation of the
 
 See also:
 
-* controller/jobs/catalog/import/csv/converter
 * controller/jobs/catalog/import/csv/domains
 * controller/jobs/catalog/import/csv/location
 * controller/jobs/catalog/import/csv/mapping
@@ -191,7 +190,6 @@ the import.
 See also:
 
 * controller/jobs/catalog/import/csv/backup
-* controller/jobs/catalog/import/csv/converter
 * controller/jobs/catalog/import/csv/location
 * controller/jobs/catalog/import/csv/mapping
 * controller/jobs/catalog/import/csv/max-size
@@ -218,7 +216,6 @@ configuration. The default location of the "fs-import" file system is:
 See also:
 
 * controller/jobs/catalog/import/csv/backup
-* controller/jobs/catalog/import/csv/converter
 * controller/jobs/catalog/import/csv/domains
 * controller/jobs/catalog/import/csv/location
 * controller/jobs/catalog/import/csv/mapping
@@ -297,7 +294,6 @@ will be processed by the base catalog importer while the mappings in
 See also:
 
 * controller/jobs/catalog/import/csv/backup
-* controller/jobs/catalog/import/csv/converter
 * controller/jobs/catalog/import/csv/domains
 * controller/jobs/catalog/import/csv/location
 * controller/jobs/catalog/import/csv/max-size
@@ -325,7 +321,6 @@ import speed.
 See also:
 
 * controller/jobs/catalog/import/csv/backup
-* controller/jobs/catalog/import/csv/converter
 * controller/jobs/catalog/import/csv/domains
 * controller/jobs/catalog/import/csv/location
 * controller/jobs/catalog/import/csv/mapping
@@ -398,10 +393,6 @@ that shouldn't be updated or removed.
 See also:
 
 * controller/jobs/catalog/import/csv/domains
-* controller/jobs/catalog/import/csv/processor/attribute/listtypes
-* controller/jobs/catalog/import/csv/processor/catalog/listtypes
-* controller/jobs/catalog/import/csv/processor/catalog/listtypes
-* controller/jobs/catalog/import/csv/processor/price/listtypes
 * controller/jobs/catalog/import/csv/processor/text/listtypes
 
 ## processor/media/name
@@ -442,11 +433,7 @@ that shouldn't be updated or removed.
 See also:
 
 * controller/jobs/catalog/import/csv/domains
-* controller/jobs/catalog/import/csv/processor/attribute/listtypes
-* controller/jobs/catalog/import/csv/processor/catalog/listtypes
 * controller/jobs/catalog/import/csv/processor/media/listtypes
-* controller/jobs/catalog/import/csv/processor/price/listtypes
-* controller/jobs/catalog/import/csv/processor/catalog/listtypes
 
 ## processor/text/name
 
@@ -514,7 +501,6 @@ begins.
 See also:
 
 * controller/jobs/catalog/import/csv/backup
-* controller/jobs/catalog/import/csv/converter
 * controller/jobs/catalog/import/csv/domains
 * controller/jobs/catalog/import/csv/location
 * controller/jobs/catalog/import/csv/mapping
@@ -551,7 +537,6 @@ See also:
 
 * controller/jobs/catalog/import/xml/domains
 * controller/jobs/catalog/import/xml/location
-* controller/jobs/catalog/import/xml/max-query
 
 ## decorators/excludes
 
@@ -712,7 +697,6 @@ See also:
 
 * controller/jobs/catalog/import/xml/backup
 * controller/jobs/catalog/import/xml/location
-* controller/jobs/catalog/import/xml/max-query
 
 ## location
 
@@ -736,7 +720,6 @@ See also:
 
 * controller/jobs/catalog/import/xml/backup
 * controller/jobs/catalog/import/xml/domains
-* controller/jobs/catalog/import/xml/max-query
 
 ## name
 

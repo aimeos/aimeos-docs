@@ -121,8 +121,8 @@ only to the job controller.
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/catalog/export/sitemap/export/sitemap/decorators/excludes
-* controller/jobs/catalog/export/sitemap/export/sitemap/decorators/global
+* controller/jobs/catalog/export/sitemap/decorators/excludes
+* controller/jobs/catalog/export/sitemap/decorators/global
 
 ## domains
 
@@ -171,11 +171,7 @@ should be part of the export, set this configuration option to TRUE.
 
 See also:
 
-* controller/jobs/catalog/export/sitemap/container/options
-* controller/jobs/catalog/export/sitemap/location
 * controller/jobs/catalog/export/sitemap/max-items
-* controller/jobs/catalog/export/sitemap/max-query
-* controller/jobs/catalog/export/sitemap/changefreq
 
 ## max-items
 
@@ -295,7 +291,3 @@ named like the default one but with the string "standard" replaced by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "standard"
 should be replaced by the name of the new class.
-
-See also:
-
-* controller/jobs/catalog/export/sitemap/template-items

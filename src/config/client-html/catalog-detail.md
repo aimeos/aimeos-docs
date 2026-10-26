@@ -1,4 +1,18 @@
 
+# catalog/detail
+
+All parameters defined for the catalog detail component and its subparts
+
+```
+client/html/catalog/detail = 
+```
+
+* Type: array - Associative list of name/value settings
+
+This returns all settings related to the detail component.
+Please refer to the single settings for details.
+
+
 # basket-add
 
 Display the "add to basket" button for each suggested/bought-together product item
@@ -400,7 +414,7 @@ dynamic content like stock levels which changes with each order.
 
 See also:
 
-* client/html/catalog/lists/stock/enable
+* client/html/catalog/lists/stock
 * client/html/catalog/stock/url/target
 * client/html/catalog/stock/url/controller
 * client/html/catalog/stock/url/action
@@ -433,7 +447,6 @@ should be suffixed by the name of the new class.
 See also:
 
 * client/html/catalog/detail/template-header
-* client/html/catalog/detail/404
 
 # template-header
 
@@ -463,7 +476,6 @@ should be suffixed by the name of the new class.
 See also:
 
 * client/html/catalog/detail/template-body
-* client/html/catalog/detail/404
 
 # template-navigator
 
@@ -553,7 +565,6 @@ See also:
 * client/html/catalog/detail/url/controller
 * client/html/catalog/detail/url/action
 * client/html/catalog/detail/url/filter
-* client/html/url/config
 
 ## controller
 

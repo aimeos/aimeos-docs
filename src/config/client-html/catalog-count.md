@@ -16,38 +16,6 @@ This configuration option allows shop owners to enable or disable product counts
 for the attribute section of the catalog filter HTML client.
 
 
-## decorators/global
-
-```
-client/html/catalog/count/attribute/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/count/attribute/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## name
 
 Name of the attribute part used by the catalog count client implementation
@@ -88,9 +56,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/count/attribute/template-header
 
 # decorators
 ## excludes
@@ -339,38 +304,6 @@ This configuration option allows shop owners to enable or disable product counts
 for the supplier section of the catalog filter HTML client.
 
 
-## decorators/global
-
-```
-client/html/catalog/count/supplier/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/count/supplier/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## name
 
 Name of the supplier part used by the catalog count client implementation
@@ -411,9 +344,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/count/supplier/template-header
 
 # template-body
 
@@ -489,38 +419,6 @@ This configuration option allows shop owners to enable or disable product counts
 for the tree section of the catalog filter HTML client.
 
 
-## decorators/global
-
-```
-client/html/catalog/count/tree/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/count/tree/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## name
 
 Name of the tree part used by the catalog count client implementation
@@ -561,9 +459,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/count/tree/template-header
 
 # url
 ## action

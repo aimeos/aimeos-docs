@@ -1,4 +1,17 @@
 
+# catalog/product
+
+All parameters defined for the catalog product component and its subparts
+
+```
+client/html/catalog/product = 
+```
+
+* Type: array - Associative list of name/value settings
+
+Please refer to the single settings for details.
+
+
 # basket-add
 
 Display the "add to basket" button for each product item
@@ -50,7 +63,7 @@ See also:
 * client/html/catalog/detail/cache
 * client/html/catalog/filter/cache
 * client/html/catalog/stage/cache
-* client/html/catalog/list/cache
+* client/html/catalog/lists/cache
 
 # decorators
 ## excludes

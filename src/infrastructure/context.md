@@ -216,7 +216,7 @@ $this->context()->process()
 
 You can call *start()* as many times as you need. The process implementation cares about executing the passed anonymous function without overloading the server. The list of arguments in the second parameter are passed to your anonymous function in the same order. At last, you have to call *wait()* which will return when all running jobs are completed.
 
-Please have a look at the [article about parallel processing](../cronjobs/create-job-controller.md#Parallel-processing) too.
+Please have a look at the [article about parallel processing](../cronjobs/create-job-controller.md#parallel-processing) too.
 
 # Session
 

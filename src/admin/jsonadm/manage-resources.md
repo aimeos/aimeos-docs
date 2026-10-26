@@ -51,7 +51,7 @@ The token must be passed with each request as GET parameter to the server:
     ```
 
 !!! warning
-    Don't forget to [nest the parameters](metadata.md#nested-parameter) if a prefix is sent in the meta data!
+    Don't forget to [nest the parameters](metadata.md#nested-parameters) if a prefix is sent in the meta data!
 
 # Create items
 

@@ -1,4 +1,26 @@
 
+# basket/mini
+
+All parameters defined for the small basket component and its subparts
+
+```
+client/html/basket/mini = Array
+(
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+* Type: array - Associative list of name/value settings
+
+This returns all settings related to the small basket component.
+Please refer to the single settings for details.
+
+
 # decorators
 ## excludes
 

@@ -5,13 +5,13 @@ Most of the time, you already have an CRM system which manages all your customer
 
 # Available configuration
 
-[controller/jobs/customer/import/xml/backup](../config/controller-jobs/customer-import.md#backup)
+[controller/jobs/customer/import/xml/backup](../config/controller-jobs/customer-import.md#backup_1)
 : Directory for storing imported files
 
-[controller/jobs/customer/import/xml/domains](../config/controller-jobs/customer-import.md#domains)
+[controller/jobs/customer/import/xml/domains](../config/controller-jobs/customer-import.md#domains_1)
 : List of domain names that should be retrieved along with the customer items
 
-[controller/jobs/customer/import/xml/location](../config/controller-jobs/customer-import.md#location)
+[controller/jobs/customer/import/xml/location](../config/controller-jobs/customer-import.md#location_1)
 : Path to the directory with the XML files. By default, the location is "customer" with the site code added automatically at the end, i.e. the expected sub-directory for the files is "customer/default/" which imports the XML files for the "default" site
 
 [controller/jobs/customer/import/xml/max-query](../config/controller-jobs/customer-import.md#max-query)

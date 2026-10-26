@@ -13,7 +13,7 @@ config.additionalHeaders {
 This must be a single line in the configuration template which should be part of the root page. It tells the browser to allow only content (Javascript, CSS, images, etc.) from your own server and also inline CSS declarations (necessary for displaying the product pictures as scalable background).
 
 !!! note
-    If you are using a [different domain for serving static content](#different-domain-for-static-files), you have to add this domain to the `default-src` and `style-src` statement.
+    If you are using a [different domain for serving static content](#distribute-static-files), you have to add this domain to the `default-src` and `style-src` statement.
 
 # Databases
 

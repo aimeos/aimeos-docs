@@ -88,7 +88,7 @@ They are only useful for defining a maximum or minimum device width for media qu
 
 Dump all thoughts about pixel perfect layouts immediately to the trash bin! Layouts must be fluid and adapt to the content, not the other way round.
 
-# Javacript
+# Javascript
 
 The Javascript code of a theme should only be used to improve site usability (by doing client side checks), to display necessary content, and to create animations. It should NOT be essential to use the shop! This usually results in poor usability for your site's visitors who do not use a mouse.
 
@@ -117,7 +117,7 @@ The Aimeos JS theme files contains some objects that are named just like the HTM
 * AimeosLocaleSelect
 * AimeosPage
 
-These Javascript objects are globally available and their methods are responsible for executing the implemented actions if the required HTML DOM nodes are available. You can extend or overwrite each method to perform additional action, another action, or no action at all. The article about [adapting existing themes](adapt-themes.md#Javascript) has more information and examples of how to do this in detail.
+These Javascript objects are globally available and their methods are responsible for executing the implemented actions if the required HTML DOM nodes are available. You can extend or overwrite each method to perform additional action, another action, or no action at all. The article about [adapting existing themes](adapt-themes.md#javascript) has more information and examples of how to do this in detail.
 
 !!! note
     To initialize the objects and set up the available methods, the **init()** method of each object is called after the DOM is ready.

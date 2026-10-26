@@ -4,7 +4,7 @@ A shop needs to execute several tasks in an asynchronous manner, like sending ou
     Each application and framework offers means to execute them directly:
 
     * [Laravel](../laravel/setup.md#cronjobs)
-    * [TYPO3](../typo3/setup.md#scheduler)
+    * [TYPO3](../typo3/setup.md#cronjobs)
 
 The tasks included in Aimeos that can be referred to by these keys:
 

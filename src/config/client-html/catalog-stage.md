@@ -1,4 +1,18 @@
 
+# catalog/stage
+
+All parameters defined for the catalog stage component and its subparts
+
+```
+client/html/catalog/stage = 
+```
+
+* Type: array - Associative list of name/value settings
+
+This returns all settings related to the stage component.
+Please refer to the single settings for details.
+
+
 # cache
 
 Enables or disables caching only for the catalog stage component

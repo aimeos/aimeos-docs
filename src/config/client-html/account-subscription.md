@@ -163,7 +163,6 @@ payment or delivery address block in the account subscription component.
 See also:
 
 * client/html/account/subscription/summary/detail
-* client/html/account/subscription/summary/service
 
 ## detail
 
@@ -185,7 +184,6 @@ product detail block in the account subscription component.
 See also:
 
 * client/html/account/subscription/summary/address
-* client/html/account/subscription/summary/service
 
 # template-body
 

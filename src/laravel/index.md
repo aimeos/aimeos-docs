@@ -5,6 +5,7 @@ If you like Aimeos: [Give a star](https://github.com/aimeos/aimeos-laravel)
 The Aimeos package also includes adapter classes for basic components used by any Laravel application like logging, configuration or URL generation. Thus, it integrates into any application natively that is based on the Laravel framework and leverages the full power of Laravel.
 
 1. [Install Aimeos](setup.md)
+1. [Connect MCP clients](mcp.md)
 1. [Read the manual](../manual/index.md)
 1. [Create an extension](../developer/extensions.md)
 1. [Customize Aimeos](customize.md)

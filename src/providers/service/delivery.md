@@ -99,7 +99,7 @@ Most of the time, *STAT_PROGRESS* is the best option after the pushing the order
 
 It's desirable to keep the delivery status in the shop up to date to have one central, authoritative system, even if the handling is done by external systems. Therefore, those external systems must be able to update the delivery status of orders in the shop system and the *updatePush()* method of delivery providers accepts those status updates.
 
-To be more precise, status updates sent synchronously via HTTP(S) are accepted by the *updatePush()* method. For updates sent via [asynchronous batch file transfers](#batch-updates), use the *updateAsync()* method instead.
+To be more precise, status updates sent synchronously via HTTP(S) are accepted by the *updatePush()* method. For updates sent via [asynchronous batch file transfers](#batch-status-updates), use the *updateAsync()* method instead.
 
 The *updatePush()* method is called by the application as soon as a status update request via HTTP(S) arrives. The sent GET/POST parameters as well as the request body are available in the [PSR-7 request](https://www.php-fig.org/psr/psr-7/) object:
 
@@ -131,7 +131,7 @@ If the external system needs more or a different acknowledgement then a HTTP sta
 
 # Batch status updates
 
-Keeping the delivery status of each order up to date can not only be done via HTTP(S) by using the [*updatePush()* method](#update-status) but also asynchronously via batch file transfer or similar methods. In this case, you have to implement the *updateAsync()* method instead.
+Keeping the delivery status of each order up to date can not only be done via HTTP(S) by using the [*updatePush()* method](#notification-status-updates) but also asynchronously via batch file transfer or similar methods. In this case, you have to implement the *updateAsync()* method instead.
 
 The *updateAsync()* method is called regularly by a job controller. Thus, there are no parameters passed to this method and your service provider needs to know where to look after the batch files. The information could be available in the configuration added by the shop owner when setting up the service option/provider.
 

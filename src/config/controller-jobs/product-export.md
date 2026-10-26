@@ -187,6 +187,8 @@ See also:
 # google
 ## decorators/excludes
 
+Excludes decorators added by the "common" option from the product export job controller
+
 ```
 controller/jobs/product/export/google/decorators/excludes = Array
 (
@@ -199,9 +201,35 @@ Array
 (
 )
 ```
+* Type: array - List of decorator names
+* Since: 2026.01
 
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"controller/jobs/common/decorators/default" before they are wrapped
+around the job controller.
+
+```
+ controller/jobs/product/export/google/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Controller\Jobs\Common\Decorator\*") added via
+"controller/jobs/common/decorators/default" to the job controller.
+
+See also:
+
+* controller/jobs/common/decorators/default
+* controller/jobs/product/export/google/decorators/global
+* controller/jobs/product/export/google/decorators/local
 
 ## decorators/global
+
+Adds a list of globally available decorators only to the product export job controller
 
 ```
 controller/jobs/product/export/google/decorators/global = Array
@@ -215,9 +243,33 @@ Array
 (
 )
 ```
+* Type: array - List of decorator names
+* Since: 2026.01
 
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Controller\Jobs\Common\Decorator\*") around the job controller.
+
+```
+ controller/jobs/product/export/google/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Controller\Jobs\Common\Decorator\Decorator1" only to the job controller.
+
+See also:
+
+* controller/jobs/common/decorators/default
+* controller/jobs/product/export/google/decorators/excludes
+* controller/jobs/product/export/google/decorators/local
 
 ## decorators/local
+
+Adds a list of local decorators only to the product export job controller
 
 ```
 controller/jobs/product/export/google/decorators/local = Array
@@ -231,19 +283,201 @@ Array
 (
 )
 ```
+* Type: array - List of decorator names
+* Since: 2026.01
 
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Controller\Jobs\Product\Export\Decorator\*") around the job
+controller.
+
+```
+ controller/jobs/product/export/google/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Controller\Jobs\Product\Export\Decorator\Decorator2"
+only to the job controller.
+
+See also:
+
+* controller/jobs/common/decorators/default
+* controller/jobs/product/export/google/decorators/excludes
+* controller/jobs/product/export/google/decorators/global
+
+## domains
+
+List of associated items from other domains that should be exported too
+
+```
+controller/jobs/product/export/google/domains = 
+```
+
+* Type: array - List of domain names
+* Since: 2026.01
+
+Products consist not only of the base data but also of texts, media
+files, prices, attrbutes and other details. Those information is
+associated to the products via their lists. Using the "domains" option
+you can make more or less associated items available in the template.
+
+See also:
+
+* controller/jobs/product/export/google/filename
+* controller/jobs/product/export/google/max-items
+
+## filename
+
+Template for the generated file names
+
+```
+controller/jobs/product/export/google/filename = 
+```
+
+* Type: string - File name template
+* Since: 2026.01
+
+The generated export files will be named according to the given
+string which can contain two placeholders: The site ID and the
+feed label of the exported feed.
+
+See also:
+
+* controller/jobs/product/export/google/max-items
+* controller/jobs/product/export/google/domains
+
+## max-items
+
+Maximum number of fetched products at once
+
+```
+controller/jobs/product/export/google/max-items = 
+```
+
+* Type: integer - Number of products
+* Since: 2026.01
+
+Limits the number of fetched products at once as the memory
+consumption of fetching large result sets is rather high. Splitting
+the data into several files that can also be processed in
+parallel is able to speed up importing the files again.
+
+See also:
+
+* controller/jobs/product/export/google/filename
+* controller/jobs/product/export/google/domains
 
 ## name
+
+Class name of the used Google product export controller implementation
 
 ```
 controller/jobs/product/export/google/name = Standard
 ```
 
 * Default: `Standard`
+* Type: string - Last part of the class name
+* Since: 2026.01
 
+Each default job controller can be replace by an alternative imlementation.
+To use this implementation, you have to set the last part of the class
+name as configuration value so the controller factory knows which class it
+has to instantiate.
+
+For example, if the name of the default class is
+
+```
+ \Aimeos\Controller\Jobs\Product\Export\Google\Standard
+```
+
+and you want to replace it with your own version named
+
+```
+ \Aimeos\Controller\Jobs\Product\Export\Myalgorithm
+```
+
+then you have to set the this configuration option:
+
+```
+ controller/jobs/product/export/google/name = Myalgorithm
+```
+
+The value is the last part of your own class name and it's case sensitive,
+so take care that the configuration value is exactly named like the last
+part of the class name.
+
+The allowed characters of the class name are A-Z, a-z and 0-9. No other
+characters are possible! You should always start the last part of the class
+name with an upper case character and continue only with lower case characters
+or numbers. Avoid chamel case names like "MyOptimizer"!
+
+
+## template-header
+
+Relative path to the CSV header template of the product export job controller.
+
+```
+controller/jobs/product/export/google/template-header = 
+```
+
+* Type: string - Relative path to the template creating CSV code for the export items
+* Since: 2026.01
+
+The template file contains the CSV code and processing instructions
+to generate the export files. The configuration string is the path
+to the template file relative to the templates directory (usually in
+templates/controller/jobs).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* controller/jobs/product/export/google/domains
+* controller/jobs/product/export/google/filename
+* controller/jobs/product/export/google/max-items
+
+## template-items
+
+Relative path to the CSV items template of the product export job controller.
+
+```
+controller/jobs/product/export/google/template-items = 
+```
+
+* Type: string - Relative path to the template creating CSV code for the export items
+* Since: 2026.01
+
+The template file contains the CSV code and processing instructions
+to generate the export files. The configuration string is the path
+to the template file relative to the templates directory (usually in
+templates/controller/jobs).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* controller/jobs/product/export/google/domains
+* controller/jobs/product/export/google/filename
+* controller/jobs/product/export/google/max-items
 
 # idealo
 ## decorators/excludes
+
+Excludes decorators added by the "common" option from the product export job controller
 
 ```
 controller/jobs/product/export/idealo/decorators/excludes = Array
@@ -257,9 +491,35 @@ Array
 (
 )
 ```
+* Type: array - List of decorator names
+* Since: 2026.01
 
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to remove a decorator added via
+"controller/jobs/common/decorators/default" before they are wrapped
+around the job controller.
+
+```
+ controller/jobs/product/export/idealo/decorators/excludes = array( 'decorator1' )
+```
+
+This would remove the decorator named "decorator1" from the list of
+common decorators ("\Aimeos\Controller\Jobs\Common\Decorator\*") added via
+"controller/jobs/common/decorators/default" to the job controller.
+
+See also:
+
+* controller/jobs/common/decorators/default
+* controller/jobs/product/export/idealo/decorators/global
+* controller/jobs/product/export/idealo/decorators/local
 
 ## decorators/global
+
+Adds a list of globally available decorators only to the product export job controller
 
 ```
 controller/jobs/product/export/idealo/decorators/global = Array
@@ -273,9 +533,33 @@ Array
 (
 )
 ```
+* Type: array - List of decorator names
+* Since: 2026.01
 
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap global decorators
+("\Aimeos\Controller\Jobs\Common\Decorator\*") around the job controller.
+
+```
+ controller/jobs/product/export/idealo/decorators/global = array( 'decorator1' )
+```
+
+This would add the decorator named "decorator1" defined by
+"\Aimeos\Controller\Jobs\Common\Decorator\Decorator1" only to the job controller.
+
+See also:
+
+* controller/jobs/common/decorators/default
+* controller/jobs/product/export/idealo/decorators/excludes
+* controller/jobs/product/export/idealo/decorators/local
 
 ## decorators/local
+
+Adds a list of local decorators only to the product export job controller
 
 ```
 controller/jobs/product/export/idealo/decorators/local = Array
@@ -289,16 +573,196 @@ Array
 (
 )
 ```
+* Type: array - List of decorator names
+* Since: 2026.01
 
+Decorators extend the functionality of a class by adding new aspects
+(e.g. log what is currently done), executing the methods of the underlying
+class only in certain conditions (e.g. only for logged in users) or
+modify what is returned to the caller.
+
+This option allows you to wrap local decorators
+("\Aimeos\Controller\Jobs\Product\Export\Decorator\*") around the job
+controller.
+
+```
+ controller/jobs/product/export/idealo/decorators/local = array( 'decorator2' )
+```
+
+This would add the decorator named "decorator2" defined by
+"\Aimeos\Controller\Jobs\Product\Export\Decorator\Decorator2"
+only to the job controller.
+
+See also:
+
+* controller/jobs/common/decorators/default
+* controller/jobs/product/export/idealo/decorators/excludes
+* controller/jobs/product/export/idealo/decorators/global
+
+## domains
+
+List of associated items from other domains that should be exported too
+
+```
+controller/jobs/product/export/idealo/domains = 
+```
+
+* Type: array - List of domain names
+* Since: 2026.01
+
+Products consist not only of the base data but also of texts, media
+files, prices, attrbutes and other details. Those information is
+associated to the products via their lists. Using the "domains" option
+you can make more or less associated items available in the template.
+
+See also:
+
+* controller/jobs/product/export/idealo/filename
+* controller/jobs/product/export/idealo/max-items
+
+## filename
+
+Template for the generated file names
+
+```
+controller/jobs/product/export/idealo/filename = 
+```
+
+* Type: string - File name template
+* Since: 2026.01
+
+The generated export files will be named according to the given
+string which can contain two placeholders: The site ID and the
+feed label of the exported feed.
+
+See also:
+
+* controller/jobs/product/export/idealo/max-items
+* controller/jobs/product/export/idealo/domains
+
+## max-items
+
+Maximum number of fetched products at once
+
+```
+controller/jobs/product/export/idealo/max-items = 
+```
+
+* Type: integer - Number of products
+* Since: 2026.01
+
+Limits the number of fetched products at once as the memory
+consumption of fetching large result sets is rather high. Splitting
+the data into several files that can also be processed in
+parallel is able to speed up importing the files again.
+
+See also:
+
+* controller/jobs/product/export/idealo/filename
+* controller/jobs/product/export/idealo/domains
 
 ## name
+
+Class name of the used Idealo product export controller implementation
 
 ```
 controller/jobs/product/export/idealo/name = Standard
 ```
 
 * Default: `Standard`
+* Type: string - Last part of the class name
+* Since: 2026.01
 
+Each default job controller can be replace by an alternative imlementation.
+To use this implementation, you have to set the last part of the class
+name as configuration value so the controller factory knows which class it
+has to instantiate.
+
+For example, if the name of the default class is
+
+```
+ \Aimeos\Controller\Jobs\Product\Export\Idealo\Standard
+```
+
+and you want to replace it with your own version named
+
+```
+ \Aimeos\Controller\Jobs\Product\Export\Myalgorithm
+```
+
+then you have to set the this configuration option:
+
+```
+ controller/jobs/product/export/idealo/name = Myalgorithm
+```
+
+The value is the last part of your own class name and it's case sensitive,
+so take care that the configuration value is exactly named like the last
+part of the class name.
+
+The allowed characters of the class name are A-Z, a-z and 0-9. No other
+characters are possible! You should always start the last part of the class
+name with an upper case character and continue only with lower case characters
+or numbers. Avoid chamel case names like "MyOptimizer"!
+
+
+## template-header
+
+Relative path to the CSV header template of the product export job controller.
+
+```
+controller/jobs/product/export/idealo/template-header = 
+```
+
+* Type: string - Relative path to the template creating CSV code for the export items
+* Since: 2026.01
+
+The template file contains the CSV code and processing instructions
+to generate the export files. The configuration string is the path
+to the template file relative to the templates directory (usually in
+templates/controller/jobs).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* controller/jobs/product/export/idealo/domains
+* controller/jobs/product/export/idealo/filename
+* controller/jobs/product/export/idealo/max-items
+
+## template-items
+
+Relative path to the CSV items template of the product export job controller.
+
+```
+controller/jobs/product/export/idealo/template-items = 
+```
+
+* Type: string - Relative path to the template creating CSV code for the export items
+* Since: 2026.01
+
+The template file contains the CSV code and processing instructions
+to generate the export files. The configuration string is the path
+to the template file relative to the templates directory (usually in
+templates/controller/jobs).
+
+You can overwrite the template file configuration in extensions and
+provide alternative templates. These alternative templates should be
+named like the default one but with the string "standard" replaced by
+an unique name. You may use the name of your project for this. If
+you've implemented an alternative client class as well, "standard"
+should be replaced by the name of the new class.
+
+See also:
+
+* controller/jobs/product/export/idealo/domains
+* controller/jobs/product/export/idealo/filename
+* controller/jobs/product/export/idealo/max-items
 
 # max-items
 
@@ -575,8 +1039,8 @@ only to the job controller.
 See also:
 
 * controller/jobs/common/decorators/default
-* controller/jobs/product/export/sitemap/export/sitemap/decorators/excludes
-* controller/jobs/product/export/sitemap/export/sitemap/decorators/global
+* controller/jobs/product/export/sitemap/decorators/excludes
+* controller/jobs/product/export/sitemap/decorators/global
 
 ## domains
 
@@ -625,11 +1089,7 @@ should be part of the export, set this configuration option to TRUE.
 
 See also:
 
-* controller/jobs/product/export/sitemap/container/options
-* controller/jobs/product/export/sitemap/location
 * controller/jobs/product/export/sitemap/max-items
-* controller/jobs/product/export/sitemap/max-query
-* controller/jobs/product/export/sitemap/changefreq
 
 ## max-items
 
@@ -750,9 +1210,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, "standard"
 should be replaced by the name of the new class.
 
-See also:
-
-* controller/jobs/product/export/sitemap/template-items
 
 # template-items
 

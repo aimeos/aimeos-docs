@@ -367,7 +367,6 @@ See also:
 * client/html/checkout/confirm/url/target
 * client/html/checkout/confirm/url/controller
 * client/html/checkout/confirm/url/action
-* client/html/url/config
 
 ## controller
 
@@ -393,6 +392,8 @@ See also:
 
 ## filter
 
+Removes parameters for the confirm page before generating the URL
+
 ```
 client/html/checkout/confirm/url/filter = Array
 (
@@ -405,7 +406,18 @@ Array
 (
 )
 ```
+* Type: array - List of parameter names to remove
+* Since: 2022.10
 
+This setting removes the listed parameters from the URLs. Keep care to
+remove no required parameters!
+
+See also:
+
+* client/html/checkout/confirm/url/target
+* client/html/checkout/confirm/url/controller
+* client/html/checkout/confirm/url/action
+* client/html/checkout/confirm/url/config
 
 ## target
 

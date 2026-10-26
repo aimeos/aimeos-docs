@@ -13,7 +13,7 @@ They are also used to write the default and unit test data to the database durin
 
 # Schema updates
 
-Updating an existing schema or adding a new table to an existing data domain (product, catalog, attribute, etc.) by using [Upscheme](https://upscheme.org) is very simple and described here. If you need to migrate data, want to add a new data domain or rename a table, you need to create your own [setup task](#migration).
+Updating an existing schema or adding a new table to an existing data domain (product, catalog, attribute, etc.) by using [Upscheme](https://upscheme.org) is very simple and described here. If you need to migrate data, want to add a new data domain or rename a table, you need to create your own [setup task](#migrations).
 
 For already existing data domains, a schema file exists in the [./setup/default/schema/](https://github.com/aimeos/aimeos-core/tree/master/setup/default/schema) directory of the Aimeos core. It consists of the list of tables including their definitions. The *attribute.php* file contains these lines for example:
 

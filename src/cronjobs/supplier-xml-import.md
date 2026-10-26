@@ -5,13 +5,13 @@ Most of the time, you already have an ERP system which manages all your supplier
 
 # Available configuration
 
-[controller/jobs/supplier/import/xml/backup](../config/controller-jobs/supplier-import.md#backup)
+[controller/jobs/supplier/import/xml/backup](../config/controller-jobs/supplier-import.md#backup_1)
 : Directory for storing imported files
 
-[controller/jobs/supplier/import/xml/domains](../config/controller-jobs/supplier-import.md#domains)
+[controller/jobs/supplier/import/xml/domains](../config/controller-jobs/supplier-import.md#domains_1)
 : List of domain names that should be retrieved along with the supplier items
 
-[controller/jobs/supplier/import/xml/location](../config/controller-jobs/supplier-import.md#location)
+[controller/jobs/supplier/import/xml/location](../config/controller-jobs/supplier-import.md#location_1)
 : Path to the directory with the XML files. By default, the location is "supplier" with the site code added automatically at the end, i.e. the expected sub-directory for the files is "supplier/default/" which imports the XML files for the "default" site
 
 [controller/jobs/supplier/import/xml/max-query](../config/controller-jobs/supplier-import.md#max-query)

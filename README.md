@@ -6,7 +6,7 @@ Everyone is invited to improve the documentation! :-)
 
 Just fork the repository, edit and add files, commit your changes and create a pull request:
 
-![Fork Aimeos docs](https://aimeos.org/fileadmin/user_upload/aimeos-docs-repo.png)
+![Fork Aimeos docs](https://aimeos.org/images/aimeos-docs-repo.png)
 
 ## Local setup (optional)
 
@@ -113,7 +113,6 @@ markdown files. Install `mkdocs` and the dependencies required by *aimeos-docs* 
 
 ```bash
 pip install mkdocs mkdocs-material
-pip install plugins/
 ```
 
 #### Start the local server

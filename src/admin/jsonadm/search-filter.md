@@ -165,7 +165,7 @@ There are several operators available:
 : Not equal for boolean, date, date/time, integer, float and string values
 
 !!! warning
-    Don't forget to [nest the parameters](metadata.md#nested-parameter) if a prefix is sent in the meta data!
+    Don't forget to [nest the parameters](metadata.md#nested-parameters) if a prefix is sent in the meta data!
 
 To combine several conditions into one request, you can combine two or more "compare" expressions by using a "combine" expression:
 
@@ -252,7 +252,7 @@ var params = {
 It combines the three expression by using the AND operator. In the second expression we tell the server that we want to get all items that doesn't start with "demo". The third expression is in this case an OR expression that specifies that "product.datestart" can be either be a null value or the start date must be after the beginning of the year 2000.
 
 !!! warning
-    Don't forget to [nest the parameters](metadata.md#nested-parameter) if a prefix is sent in the meta data!
+    Don't forget to [nest the parameters](metadata.md#nested-parameters) if a prefix is sent in the meta data!
 
 # Sort the result set
 
@@ -328,7 +328,7 @@ Sorting by several keys is also possible if they are separated by a comma:
 It would sort the result set by the product status (descending) and the product ID.
 
 !!! warning
-    Don't forget to [nest the parameters](metadata.md#nested-parameter) if a prefix is sent in the meta data!
+    Don't forget to [nest the parameters](metadata.md#nested-parameters) if a prefix is sent in the meta data!
 
 # Retrieve slices of the result
 
@@ -387,7 +387,7 @@ Thus, you will get the first 100 items instead. To get 100 items starting from t
 When you use paging to retrieve the result set in slices, you should **always use a key for sorting too**! Otherwise, the order of the items returned may change between two requests. This can lead to item returned twice and items that are in the result set but won't be returned at all. The fastest sort key is always the ID of the item.
 
 !!! warning
-    Don't forget to [nest the parameters](metadata.md#nested-parameter) if a prefix is sent in the meta data!
+    Don't forget to [nest the parameters](metadata.md#nested-parameters) if a prefix is sent in the meta data!
 
 # Return specific fields only
 
@@ -419,7 +419,7 @@ If you only need the values of a few fields and want to reduce the amount of dat
 The response will then only return the ID and label of product items.
 
 !!! warning
-    Don't forget to [nest the parameters](metadata.md#nested-parameter) if a prefix is sent in the meta data!
+    Don't forget to [nest the parameters](metadata.md#nested-parameters) if a prefix is sent in the meta data!
 
 # Include related resources
 
@@ -472,4 +472,4 @@ You can use the "include" parameter for all items that are associated via the li
 Then, the text items associated via the list table would be returned as well as the properties directly attached to the products.
 
 !!! warning
-    Don't forget to [nest the parameters](metadata.md#nested-parameter) if a prefix is sent in the meta data!
+    Don't forget to [nest the parameters](metadata.md#nested-parameters) if a prefix is sent in the meta data!
