@@ -677,7 +677,7 @@ performance but requires more memory.
 See also:
 
 * controller/jobs/order/service/transfer/domains
-* controller/jobs/order/service/transfer/limit-days
+* controller/jobs/order/service/transfer/transfer-days
 
 ## decorators/excludes
 

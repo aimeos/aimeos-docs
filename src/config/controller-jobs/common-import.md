@@ -16,6 +16,54 @@ Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Import\Xml\P
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
+## processor/group/allowed
+
+List of group codes that are allowed to be assigned to customers by imports
+
+```
+controller/jobs/common/import/xml/processor/group/allowed = 
+```
+
+* Type: array - List of group codes
+* Since: 2025.10
+
+Assigning privileged groups like "admin" or "editor" via imports would allow
+escalating privileges. If set, only the listed group codes can be assigned.
+
+See also:
+
+* controller/jobs/common/import/xml/processor/group/denied
+
+## processor/group/denied
+
+List of group codes that must not be assigned to customers by imports
+
+```
+controller/jobs/common/import/xml/processor/group/denied = Array
+(
+    [0] => admin
+    [1] => editor
+)
+```
+
+* Default: 
+```
+Array
+(
+    [0] => admin
+    [1] => editor
+)
+```
+* Type: array - List of group codes
+* Since: 2025.10
+
+Prevents privilege escalation by disallowing privileged groups like "admin"
+and "editor" from being assigned to customers through XML imports.
+
+See also:
+
+* controller/jobs/common/import/xml/processor/group/allowed
+
 ## processor/group/name
 
 Name of the group processor implementation

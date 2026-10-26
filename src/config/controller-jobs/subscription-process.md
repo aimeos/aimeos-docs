@@ -20,15 +20,12 @@ performance but requires more memory.
 See also:
 
 * controller/jobs/subscription/process/domains
-* controller/jobs/subscription/process/names
 * controller/jobs/subscription/process/payment-days
 * controller/jobs/subscription/process/payment-status
 * controller/jobs/subscription/process/domains
-* controller/jobs/subscription/process/names
 * controller/jobs/subscription/process/payment-days
 * controller/jobs/subscription/process/payment-status
 * controller/jobs/subscription/process/domains
-* controller/jobs/subscription/process/names
 * controller/jobs/subscription/process/payment-days
 * controller/jobs/subscription/process/payment-status
 
@@ -489,9 +486,7 @@ payment status values, e.g. "pending" (4) won't activate the subscription.
 
 See also:
 
-* controller/jobs/subscription/process/begin/domains
-* controller/jobs/subscription/process/begin/max
-* controller/jobs/subscription/process/begin/names
+* controller/jobs/subscription/process/domains
 * controller/jobs/subscription/process/payment-days
 
 # processor
@@ -564,15 +559,12 @@ has an active subscribtion.
 See also:
 
 * controller/jobs/subscription/process/domains
-* controller/jobs/subscription/process/max
 * controller/jobs/subscription/process/payment-days
 * controller/jobs/subscription/process/payment-status
 * controller/jobs/subscription/process/domains
-* controller/jobs/subscription/process/max
 * controller/jobs/subscription/process/payment-days
 * controller/jobs/subscription/process/payment-status
 * controller/jobs/subscription/process/domains
-* controller/jobs/subscription/process/max
 * controller/jobs/subscription/process/payment-days
 * controller/jobs/subscription/process/payment-status
 

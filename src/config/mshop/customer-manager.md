@@ -70,9 +70,17 @@ See also:
 Excludes decorators added by the "common" option from the customer address manager
 
 ```
-mshop/customer/manager/address/decorators/excludes = 
+mshop/customer/manager/address/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - Address of decorator names
 * Since: 2015.10
 
@@ -104,9 +112,17 @@ See also:
 Adds a list of globally available decorators only to the customer address manager
 
 ```
-mshop/customer/manager/address/decorators/global = 
+mshop/customer/manager/address/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - Address of decorator names
 * Since: 2015.10
 
@@ -137,9 +153,17 @@ See also:
 Adds a list of local decorators only to the customer address manager
 
 ```
-mshop/customer/manager/address/decorators/local = 
+mshop/customer/manager/address/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - Address of decorator names
 * Since: 2015.10
 
@@ -172,6 +196,8 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/customer/manager/address/delete/ansi = 
+ DELETE FROM ":table"
+ WHERE :cond AND ( "siteid" LIKE ? OR "siteid" = ? )
 ```
 
 * Type: string - SQL statement for deleting items
@@ -203,8 +229,16 @@ Deletes the items matched by the given IDs from the database
 
 ```
 mshop/customer/manager/address/delete/mysql = 
+ DELETE FROM ":table"
+ WHERE :cond AND ( "siteid" LIKE ? OR "siteid" = ? )
 ```
 
+* Default: 
+```
+
+ DELETE FROM ":table"
+ WHERE :cond AND ( "siteid" LIKE ? OR "siteid" = ? )
+```
 
 See also:
 
@@ -216,6 +250,11 @@ Inserts a new customer address record into the database table
 
 ```
 mshop/customer/manager/address/insert/ansi = 
+ INSERT INTO ":table" ( :names
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?
+ )
 ```
 
 * Type: string - SQL statement for inserting records
@@ -252,8 +291,22 @@ Inserts a new customer address record into the database table
 
 ```
 mshop/customer/manager/address/insert/mysql = 
+ INSERT INTO ":table" ( :names
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?
+ )
 ```
 
+* Default: 
+```
+
+ INSERT INTO ":table" ( :names
+ 	"mtime", "editor", "siteid", "ctime"
+ ) VALUES ( :values
+ 	?, ?, ?, ?
+ )
+```
 
 See also:
 
@@ -452,6 +505,10 @@ Updates an existing customer address record in the database
 
 ```
 mshop/customer/manager/address/update/ansi = 
+ UPDATE ":table"
+ SET :names
+ 	"mtime" = ?, "editor" = ?
+ WHERE ( "siteid" LIKE ? OR "siteid" = ? ) AND "id" = ?
 ```
 
 * Type: string - SQL statement for updating records
@@ -485,8 +542,20 @@ Updates an existing customer address record in the database
 
 ```
 mshop/customer/manager/address/update/mysql = 
+ UPDATE ":table"
+ SET :names
+ 	"mtime" = ?, "editor" = ?
+ WHERE ( "siteid" LIKE ? OR "siteid" = ? ) AND "id" = ?
 ```
 
+* Default: 
+```
+
+ UPDATE ":table"
+ SET :names
+ 	"mtime" = ?, "editor" = ?
+ WHERE ( "siteid" LIKE ? OR "siteid" = ? ) AND "id" = ?
+```
 
 See also:
 
@@ -529,6 +598,11 @@ server.
 This statement doesn't return any records. Instead, it returns pairs
 of the different values found in the key column together with the
 number of records that have been found for that key values.
+
+The outer SELECT should also return the number of aggregated records
+in a column named "_total" ('COUNT(*) AS "_total"'). It's used to
+detect if the result is incomplete because the limit of aggregated
+records has been reached.
 
 The SQL statement should conform to the ANSI standard to be
 compatible with most relational database systems. This also
@@ -856,6 +930,11 @@ This statement doesn't return any records. Instead, it returns pairs
 of the different values found in the key column together with the
 number of records that have been found for that key values.
 
+The outer SELECT should also return the number of aggregated records
+in a column named "_total" ('COUNT(*) AS "_total"'). It's used to
+detect if the result is incomplete because the limit of aggregated
+records has been reached.
+
 The SQL statement should conform to the ANSI standard to be
 compatible with most relational database systems. This also
 includes using double quotes for table and column names.
@@ -1061,9 +1140,17 @@ See also:
 Excludes decorators added by the "common" option from the customer list manager
 
 ```
-mshop/customer/manager/lists/decorators/excludes = 
+mshop/customer/manager/lists/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1095,9 +1182,17 @@ See also:
 Adds a list of globally available decorators only to the customer list manager
 
 ```
-mshop/customer/manager/lists/decorators/global = 
+mshop/customer/manager/lists/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1129,9 +1224,17 @@ See also:
 Adds a list of local decorators only to the customer list manager
 
 ```
-mshop/customer/manager/lists/decorators/local = 
+mshop/customer/manager/lists/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1421,9 +1524,18 @@ See also:
 List of manager names that can be instantiated by the customer list manager
 
 ```
-mshop/customer/manager/lists/submanagers = 
+mshop/customer/manager/lists/submanagers = Array
+(
+    [type] => type
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2015.10
 
@@ -1508,9 +1620,17 @@ See also:
 Excludes decorators added by the "common" option from the customer list type manager
 
 ```
-mshop/customer/manager/lists/type/decorators/excludes = 
+mshop/customer/manager/lists/type/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1542,9 +1662,17 @@ See also:
 Adds a list of globally available decorators only to the customer list type manager
 
 ```
-mshop/customer/manager/lists/type/decorators/global = 
+mshop/customer/manager/lists/type/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1576,9 +1704,17 @@ See also:
 Adds a list of local decorators only to the customer list type manager
 
 ```
-mshop/customer/manager/lists/type/decorators/local = 
+mshop/customer/manager/lists/type/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -2074,6 +2210,26 @@ See also:
 
 * mshop/customer/manager/newid/ansi
 
+# password
+## ansi
+
+Retrieves the stored password hash of a customer for verification
+
+```
+mshop/customer/manager/password/ansi = 
+```
+
+* Type: string - SQL statement for retrieving the password hash
+* Since: 2027.04
+
+The hash is only used internally to verify a password and never
+returned. The statement must select the hash as "password" column
+and contain one placeholder for the customer ID.
+
+See also:
+
+* mshop/customer/manager/update/ansi
+
 # property
 ## count/ansi
 
@@ -2145,9 +2301,17 @@ See also:
 Excludes decorators added by the "common" option from the customer property manager
 
 ```
-mshop/customer/manager/property/decorators/excludes = 
+mshop/customer/manager/property/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2179,9 +2343,18 @@ See also:
 Adds a list of globally available decorators only to the customer property manager
 
 ```
-mshop/customer/manager/property/decorators/global = 
+mshop/customer/manager/property/decorators/global = Array
+(
+    [Type] => Type
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2213,9 +2386,17 @@ See also:
 Adds a list of local decorators only to the customer property manager
 
 ```
-mshop/customer/manager/property/decorators/local = 
+mshop/customer/manager/property/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2018.01
 
@@ -2505,9 +2686,18 @@ See also:
 List of manager names that can be instantiated by the customer property manager
 
 ```
-mshop/customer/manager/property/submanagers = 
+mshop/customer/manager/property/submanagers = Array
+(
+    [type] => type
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2018.01
 
@@ -2592,9 +2782,17 @@ See also:
 Excludes decorators added by the "common" option from the customer property type manager
 
 ```
-mshop/customer/manager/property/type/decorators/excludes = 
+mshop/customer/manager/property/type/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2626,9 +2824,17 @@ See also:
 Adds a list of globally available decorators only to the customer property type manager
 
 ```
-mshop/customer/manager/property/type/decorators/global = 
+mshop/customer/manager/property/type/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -2660,9 +2866,17 @@ See also:
 Adds a list of local decorators only to the customer property type manager
 
 ```
-mshop/customer/manager/property/type/decorators/local = 
+mshop/customer/manager/property/type/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2018.07
 
@@ -3066,9 +3280,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/customer/manager/resource = 
+mshop/customer/manager/resource = db-customer
 ```
 
+* Default: `db-customer`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -3153,9 +3368,10 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/customer/manager/sitemode = 
+mshop/customer/manager/sitemode = 3
 ```
 
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -3189,9 +3405,20 @@ See also:
 List of manager names that can be instantiated by the customer manager
 
 ```
-mshop/customer/manager/submanagers = 
+mshop/customer/manager/submanagers = Array
+(
+    [address] => address
+    [lists] => lists
+    [property] => property
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2015.10
 
@@ -3207,12 +3434,23 @@ retrieved list of items.
 
 
 # typo3
-## /aggregate/ansi
+## aggregate/ansi
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/customer/manager/typo3//aggregate/ansi = 
+mshop/customer/manager/typo3/aggregate/ansi = 
+ SELECT :keys, :type("val") AS "value", COUNT(*) AS "_total"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "fe_users" mcus
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mcus.uid, :cols, :val
+ 	ORDER BY mcus.uid DESC
+ OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
 ```
 
 * Type: string - SQL statement for aggregating customer items
@@ -3244,6 +3482,11 @@ This statement doesn't return any records. Instead, it returns pairs
 of the different values found in the key column together with the
 number of records that have been found for that key values.
 
+The outer SELECT should also return the number of aggregated records
+in a column named "_total" ('COUNT(*) AS "_total"'). It's used to
+detect if the result is incomplete because the limit of aggregated
+records has been reached.
+
 The SQL statement should conform to the ANSI standard to be
 compatible with most relational database systems. This also
 includes using double quotes for table and column names.
@@ -3257,18 +3500,44 @@ See also:
 * mshop/customer/manager/typo3//search/ansi
 * mshop/customer/manager/typo3//count/ansi
 
-## /aggregate/mysql
+## aggregate/mysql
 
 Counts the number of records grouped by the values in the key column and matched by the given criteria
 
 ```
-mshop/customer/manager/typo3//aggregate/mysql = 
+mshop/customer/manager/typo3/aggregate/mysql = 
+ SELECT :keys, :type("val") AS "value", COUNT(*) AS "_total"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "fe_users" mcus
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mcus.uid, :cols, :val
+ 	ORDER BY mcus.uid DESC
+ 	LIMIT :size OFFSET :start
+ ) AS list
+ GROUP BY :keys
 ```
 
+* Default: 
+```
+
+ SELECT :keys, :type("val") AS "value", COUNT(*) AS "_total"
+ FROM (
+ 	SELECT :acols, :val AS "val"
+ 	FROM "fe_users" mcus
+ 	:joins
+ 	WHERE :cond
+ 	GROUP BY mcus.uid, :cols, :val
+ 	ORDER BY mcus.uid DESC
+ OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+ ) AS list
+ GROUP BY :keys
+```
 
 See also:
 
-* mshop/customer/manager/typo3//aggregate/ansi
+* mshop/customer/manager/typo3/aggregate/ansi
 
 ## insert
 
@@ -3350,9 +3619,10 @@ See also:
 Page ID the customer records are assigned to
 
 ```
-mshop/customer/manager/typo3/pid-default = 
+mshop/customer/manager/typo3/pid-default = 0
 ```
 
+* Default: `0`
 * Type: int - TYPO3 page ID
 * Since: 2016.10
 

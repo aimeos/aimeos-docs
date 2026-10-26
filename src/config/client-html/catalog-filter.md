@@ -1,37 +1,19 @@
 
+# catalog/filter
+
+All parameters defined for the catalog filter component and its subparts
+
+```
+client/html/catalog/filter = 
+```
+
+* Type: array - Associative list of name/value settings
+
+This returns all settings related to the filter component.
+Please refer to the single settings for details.
+
+
 # attribute
-## decorators/global
-
-```
-client/html/catalog/filter/attribute/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/filter/attribute/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## domains
 
 List of domain names whose items should be fetched with the filter attributes
@@ -109,9 +91,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/filter/attribute/template-header
 
 ## types
 
@@ -424,38 +403,6 @@ or numbers. Avoid chamel case names like "MyFilter"!
 
 
 # price
-## decorators/global
-
-```
-client/html/catalog/filter/price/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/filter/price/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## name
 
 Name of the price part used by the catalog filter client implementation
@@ -496,9 +443,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/filter/price/template-header
 
 # remove-params
 
@@ -530,38 +474,6 @@ Downside: It will be impossible for customers to deselect the category!
 
 
 # search
-## decorators/global
-
-```
-client/html/catalog/filter/search/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/filter/search/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## force-search
 
 Always reuse the current input for full text searches
@@ -622,9 +534,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/filter/search/template-header
 
 # subparts
 
@@ -688,38 +597,6 @@ design.
 
 
 # supplier
-## decorators/global
-
-```
-client/html/catalog/filter/supplier/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/filter/supplier/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## domains
 
 List of domain names whose items should be fetched with the filter suppliers
@@ -753,9 +630,6 @@ whose items are fetched from the storage. Please keep in mind that
 the more domains you add to the configuration, the more time is
 required for fetching the content!
 
-See also:
-
-* client/html/catalog/filter/supplier/types
 
 ## name
 
@@ -797,9 +671,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/catalog/filter/supplier/template-header
 
 # template-body
 
@@ -859,38 +730,6 @@ See also:
 * client/html/catalog/filter/template-body
 
 # tree
-## decorators/global
-
-```
-client/html/catalog/filter/tree/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/catalog/filter/tree/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## domains
 
 List of domain names whose items should be fetched with the filter categories
@@ -1032,7 +871,3 @@ named like the default one but suffixed by
 an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
-
-See also:
-
-* client/html/catalog/filter/tree/template-header

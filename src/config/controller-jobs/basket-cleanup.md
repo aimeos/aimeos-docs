@@ -138,9 +138,6 @@ controller/jobs/basket/cleanup/limit-days = 30
 This option specifies the number of days log entries will be kept in
 the database. Afterwards, they will be removed and archived.
 
-See also:
-
-* controller/jobs/basket/cleanup/path
 
 # name
 

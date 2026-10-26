@@ -28,7 +28,6 @@ please have a look  into the PHP documentation of the
 
 See also:
 
-* controller/jobs/group/import/xml/domains
 * controller/jobs/group/import/xml/location
 * controller/jobs/group/import/xml/max-query
 
@@ -177,7 +176,6 @@ configuration. The default location of the "fs-import" file system is:
 See also:
 
 * controller/jobs/group/import/xml/backup
-* controller/jobs/group/import/xml/domains
 * controller/jobs/group/import/xml/max-query
 
 ## max-query
@@ -200,7 +198,6 @@ limit of the PHP process.
 
 See also:
 
-* controller/jobs/group/import/xml/domains
 * controller/jobs/group/import/xml/location
 * controller/jobs/group/import/xml/backup
 

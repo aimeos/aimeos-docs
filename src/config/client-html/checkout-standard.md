@@ -114,38 +114,6 @@ See also:
 * client/html/checkout/standard/address/decorators/excludes
 * client/html/checkout/standard/address/decorators/global
 
-## delivery/decorators/global
-
-```
-client/html/checkout/standard/address/delivery/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## delivery/decorators/local
-
-```
-client/html/checkout/standard/address/delivery/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## delivery/disable-new
 
 Disables the option to enter a different delivery address for an order
@@ -209,9 +177,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/checkout/standard/address/delivery/template-header
 
 ## name
 
@@ -226,38 +191,6 @@ client/html/checkout/standard/address/name = Standard
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Address\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## payment/decorators/global
-
-```
-client/html/checkout/standard/address/payment/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## payment/decorators/local
-
-```
-client/html/checkout/standard/address/payment/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
 
 
 ## payment/disable-new
@@ -326,9 +259,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/checkout/standard/address/payment/template-header
 
 ## subparts
 
@@ -410,9 +340,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/checkout/standard/address/template-header
 
 # decorators
 ## excludes
@@ -511,38 +438,6 @@ See also:
 * client/html/checkout/standard/decorators/global
 
 # delivery
-## decorators/global
-
-```
-client/html/checkout/standard/delivery/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/checkout/standard/delivery/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## domains
 
 List of domain names whose items should be available in the checkout payment templates
@@ -617,9 +512,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/checkout/standard/delivery/template-header
 
 # name
 
@@ -767,38 +659,6 @@ as values, e.g.
 
 
 # payment
-## decorators/global
-
-```
-client/html/checkout/standard/payment/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/checkout/standard/payment/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## domains
 
 List of domain names whose items should be available in the checkout payment templates
@@ -873,43 +733,8 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/checkout/standard/payment/template-header
 
 # process
-## account/decorators/global
-
-```
-client/html/checkout/standard/process/account/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## account/decorators/local
-
-```
-client/html/checkout/standard/process/account/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
 ## account/name
 
 Name of the account part used by the checkout standard process client implementation
@@ -924,38 +749,6 @@ client/html/checkout/standard/process/account/name = Standard
 
 Use "Myname" if your class is named "\Aimeos\Client\Html\Checkout\Standard\Process\Account\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## address/decorators/global
-
-```
-client/html/checkout/standard/process/address/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## address/decorators/local
-
-```
-client/html/checkout/standard/process/address/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
 
 
 ## address/name
@@ -1183,9 +976,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/checkout/standard/process/template-header
 
 ## validate
 
@@ -1327,38 +1117,6 @@ See also:
 * client/html/checkout/standard/summary/detail
 * client/html/checkout/standard/summary/options
 * client/html/checkout/standard/summary/service
-
-## decorators/global
-
-```
-client/html/checkout/standard/summary/decorators/global = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
-
-## decorators/local
-
-```
-client/html/checkout/standard/summary/decorators/local = Array
-(
-)
-```
-
-* Default: 
-```
-Array
-(
-)
-```
-
 
 ## detail
 
@@ -1874,9 +1632,6 @@ an unique name. You may use the name of your project for this. If
 you've implemented an alternative client class as well, it
 should be suffixed by the name of the new class.
 
-See also:
-
-* client/html/checkout/standard/summary/template-header
 
 # template-body
 
@@ -1903,7 +1658,7 @@ should be suffixed by the name of the new class.
 
 See also:
 
-* client/html/checkout/template-header
+* client/html/checkout/standard/template-header
 
 # template-header
 
@@ -1931,7 +1686,7 @@ should be suffixed by the name of the new class.
 
 See also:
 
-* client/html/checkout/template-body
+* client/html/checkout/standard/template-body
 
 # url
 ## action
@@ -1996,7 +1751,6 @@ See also:
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/action
-* client/html/url/config
 * client/html/checkout/standard/url/target
 * client/html/checkout/standard/url/controller
 * client/html/checkout/standard/url/action
@@ -2084,7 +1838,7 @@ that are configured for the checkout client.
 
 See also:
 
-* client/html/checkout/subparts
+* client/html/checkout/standard/subparts
 
 ## target
 

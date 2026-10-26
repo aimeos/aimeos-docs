@@ -298,7 +298,6 @@ See also:
 * client/html/account/review/url/target
 * client/html/account/review/url/controller
 * client/html/account/review/url/action
-* client/html/url/config
 
 ## controller
 

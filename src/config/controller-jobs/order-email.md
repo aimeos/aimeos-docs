@@ -218,7 +218,7 @@ confusion of customers.
 See also:
 
 * controller/jobs/order/email/delivery/limit-days
-* controller/jobs/service/delivery/process/limit-days
+* controller/jobs/order/service/delivery/limit-days
 
 ## name
 
@@ -577,7 +577,7 @@ confusion of customers.
 See also:
 
 * controller/jobs/order/email/delivery/limit-days
-* controller/jobs/service/delivery/process/limit-days
+* controller/jobs/order/service/delivery/limit-days
 
 ## name
 
@@ -964,7 +964,7 @@ confusion of customers.
 See also:
 
 * controller/jobs/order/email/delivery/limit-days
-* controller/jobs/service/delivery/process/limit-days
+* controller/jobs/order/service/delivery/limit-days
 
 ## name
 

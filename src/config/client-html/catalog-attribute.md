@@ -173,33 +173,6 @@ leaving the rest untouched:
 ```
 
 
-## color
-
-```
-client/html/catalog/attribute/preselect/color = 
-```
-
-* Default: ``
-
-
-## interval
-
-```
-client/html/catalog/attribute/preselect/interval = 
-```
-
-* Default: ``
-
-
-## size
-
-```
-client/html/catalog/attribute/preselect/size = 
-```
-
-* Default: ``
-
-
 # type
 
 List of layout types for the optional attributes
@@ -254,15 +227,6 @@ client/html/catalog/attribute/type/color = select
 See also:
 
 * client/html/catalog/attribute/type
-
-## interval
-
-```
-client/html/catalog/attribute/type/interval = select
-```
-
-* Default: `select`
-
 
 ## size
 

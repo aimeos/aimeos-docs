@@ -129,7 +129,6 @@ Array
 ```
 * Type: array - List of user group names
 * Since: 2021.04
-* Since: 2021.04
 
 
 ## key
@@ -255,6 +254,8 @@ admin/jqadm/resource/dashboard/key = D
 # feed
 ## groups
 
+List of user groups that are allowed to access the Feed panel
+
 ```
 admin/jqadm/resource/feed/groups = Array
 (
@@ -269,14 +270,20 @@ Array
 (
 )
 ```
+* Type: array - List of user group names
+* Since: 2026.01
 
 
 ## key
+
+Shortcut key to switch to the Feed panel by using the keyboard
 
 ```
 admin/jqadm/resource/feed/key = F
 ```
 
+* Type: string - Single character in upper case
+* Since: 2026.01
 
 
 # goods

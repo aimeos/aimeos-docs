@@ -575,8 +575,8 @@ If you want to ship your products to several countries or you need to know from 
 
 By default, the country list is hidden for the billing and delivery address in the checkout process. To display them as mandatory fields you need to add "order.address.countryid" to the list of values defined in
 
-* [client/html/checkout/address/billing/mandatory](../config/client-html/checkout-standard.md#billingmandatory)
-* [client/html/checkout/address/delivery/mandatory](../config/client-html/checkout-standard.md#deliverymandatory)
+* [client/html/common/address/payment/mandatory](../config/client-html/common-address.md#mandatory_1)
+* [client/html/common/address/delivery/mandatory](../config/client-html/common-address.md#mandatory)
 
 In TYPO3 this is configured for billing and delivery addresses via TypoScript:
 
@@ -599,8 +599,8 @@ plugin.tx_aimeos.settings.client.html.checkout.standard.address {
 
 If no selection should be enforced, use these settings instead:
 
-* [client/html/checkout/address/billing/optional](../config/client-html/checkout-standard.md#billingoptional)
-* [client/html/checkout/address/delivery/optional](../config/client-html/checkout-standard.md#deliveryoptional)
+* [client/html/common/address/payment/optional](../config/client-html/common-address.md#optional_1)
+* [client/html/common/address/delivery/optional](../config/client-html/common-address.md#optional)
 
 To define the country for billing and delivery addresses as optional, use this TypoScript configuration:
 

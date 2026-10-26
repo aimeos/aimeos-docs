@@ -668,14 +668,6 @@ See also:
 * controller/jobs/product/import/csv/supplier/listtypes
 * controller/jobs/product/import/csv/text/listtypes
 
-## processor/attribute/listtypes
-
-```
-controller/jobs/product/import/csv/processor/attribute/listtypes = 
-```
-
-
-
 ## processor/attribute/name
 
 Name of the attribute processor implementation
@@ -690,26 +682,6 @@ controller/jobs/product/import/csv/processor/attribute/name = Standard
 
 Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Attribute\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## processor/catalog/listtypes
-
-```
-controller/jobs/product/import/csv/processor/catalog/listtypes = Array
-(
-    [0] => default
-    [1] => promotion
-)
-```
-
-* Default: 
-```
-Array
-(
-    [0] => default
-    [1] => promotion
-)
-```
 
 
 ## processor/catalog/name
@@ -728,14 +700,6 @@ Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Impo
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## processor/media/listtypes
-
-```
-controller/jobs/product/import/csv/processor/media/listtypes = 
-```
-
-
-
 ## processor/media/name
 
 Name of the media processor implementation
@@ -752,14 +716,6 @@ Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Impo
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## processor/price/listtypes
-
-```
-controller/jobs/product/import/csv/processor/price/listtypes = 
-```
-
-
-
 ## processor/price/name
 
 Name of the price processor implementation
@@ -774,26 +730,6 @@ controller/jobs/product/import/csv/processor/price/name = Standard
 
 Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Price\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## processor/product/listtypes
-
-```
-controller/jobs/product/import/csv/processor/product/listtypes = Array
-(
-    [0] => default
-    [1] => suggestion
-)
-```
-
-* Default: 
-```
-Array
-(
-    [0] => default
-    [1] => suggestion
-)
-```
 
 
 ## processor/product/name
@@ -843,25 +779,6 @@ Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Impo
 The name is case-sensitive and you should avoid camel case names like "MyName".
 
 
-## processor/supplier/listtypes
-
-```
-controller/jobs/product/import/csv/processor/supplier/listtypes = Array
-(
-    [0] => default
-)
-```
-
-* Default: 
-```
-Array
-(
-    [0] => default
-    [1] => promotion
-)
-```
-
-
 ## processor/supplier/name
 
 Name of the supplier processor implementation
@@ -875,14 +792,6 @@ controller/jobs/product/import/csv/processor/supplier/name =
 
 Use "Myname" if your class is named "\Aimeos\Controller\Jobs\Common\Product\Import\Csv\Processor\Supplier\Myname".
 The name is case-sensitive and you should avoid camel case names like "MyName".
-
-
-## processor/text/listtypes
-
-```
-controller/jobs/product/import/csv/processor/text/listtypes = 
-```
-
 
 
 ## processor/text/name
@@ -1019,6 +928,7 @@ controller/jobs/product/import/csv/supplier/listtypes = Array
 Array
 (
     [0] => default
+    [1] => promotion
 )
 ```
 * Type: array|null - List of supplier list type names or null for all

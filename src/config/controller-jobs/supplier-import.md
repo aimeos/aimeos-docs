@@ -31,8 +31,6 @@ See also:
 * controller/jobs/supplier/import/csv/domains
 * controller/jobs/supplier/import/csv/mapping
 * controller/jobs/supplier/import/csv/skip-lines
-* controller/jobs/supplier/import/csv/converter
-* controller/jobs/supplier/import/csv/strict
 * controller/jobs/supplier/import/csv/max-size
 
 ## decorators/excludes
@@ -164,9 +162,23 @@ See also:
 List of item domain names that should be retrieved along with the supplier items
 
 ```
-controller/jobs/supplier/import/csv/domains = 
+controller/jobs/supplier/import/csv/domains = Array
+(
+    [0] => media
+    [1] => text
+    [2] => supplier/address
+)
 ```
 
+* Default: 
+```
+Array
+(
+    [0] => media
+    [1] => text
+    [2] => supplier/address
+)
+```
 * Type: array - Associative list of MShop item domain names
 * Since: 2020.07
 
@@ -180,8 +192,6 @@ See also:
 
 * controller/jobs/supplier/import/csv/mapping
 * controller/jobs/supplier/import/csv/skip-lines
-* controller/jobs/supplier/import/csv/converter
-* controller/jobs/supplier/import/csv/strict
 * controller/jobs/supplier/import/csv/backup
 * controller/jobs/supplier/import/csv/max-size
 
@@ -301,8 +311,6 @@ See also:
 
 * controller/jobs/supplier/import/csv/domains
 * controller/jobs/supplier/import/csv/skip-lines
-* controller/jobs/supplier/import/csv/converter
-* controller/jobs/supplier/import/csv/strict
 * controller/jobs/supplier/import/csv/backup
 * controller/jobs/supplier/import/csv/max-size
 
@@ -413,10 +421,6 @@ that shouldn't be updated or removed.
 See also:
 
 * controller/jobs/supplier/import/csv/domains
-* controller/jobs/supplier/import/csv/processor/attribute/listtypes
-* controller/jobs/supplier/import/csv/processor/supplier/listtypes
-* controller/jobs/supplier/import/csv/processor/supplier/listtypes
-* controller/jobs/supplier/import/csv/processor/price/listtypes
 * controller/jobs/supplier/import/csv/processor/text/listtypes
 
 ## processor/media/name
@@ -454,11 +458,7 @@ that shouldn't be updated or removed.
 See also:
 
 * controller/jobs/supplier/import/csv/domains
-* controller/jobs/supplier/import/csv/processor/attribute/listtypes
-* controller/jobs/supplier/import/csv/processor/supplier/listtypes
 * controller/jobs/supplier/import/csv/processor/media/listtypes
-* controller/jobs/supplier/import/csv/processor/price/listtypes
-* controller/jobs/supplier/import/csv/processor/supplier/listtypes
 
 ## processor/text/name
 
@@ -527,8 +527,6 @@ See also:
 
 * controller/jobs/supplier/import/csv/domains
 * controller/jobs/supplier/import/csv/mapping
-* controller/jobs/supplier/import/csv/converter
-* controller/jobs/supplier/import/csv/strict
 * controller/jobs/supplier/import/csv/backup
 * controller/jobs/supplier/import/csv/max-size
 

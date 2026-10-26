@@ -1,4 +1,18 @@
 
+# catalog/lists
+
+All parameters defined for the catalog list component and its subparts
+
+```
+client/html/catalog/lists = 
+```
+
+* Type: array - Associative list of name/value settings
+
+This returns all settings related to the filter component.
+Please refer to the single settings for details.
+
+
 # attrid-default
 
 Additional attribute IDs used to limit search results
@@ -591,7 +605,6 @@ contains the template for switching between list types.
 See also:
 
 * client/html/catalog/lists/template-header
-* client/html/catalog/lists/type/template-body
 
 # template-header
 
@@ -634,7 +647,6 @@ contains the template for switching between list types.
 See also:
 
 * client/html/catalog/lists/template-body
-* client/html/catalog/lists/type/template-body
 
 # url
 ## action

@@ -127,9 +127,17 @@ See also:
 Excludes decorators added by the "common" option from the locale currency manager
 
 ```
-mshop/locale/manager/currency/decorators/excludes = 
+mshop/locale/manager/currency/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -161,9 +169,17 @@ See also:
 Adds a list of globally available decorators only to the locale currency manager
 
 ```
-mshop/locale/manager/currency/decorators/global = 
+mshop/locale/manager/currency/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -195,9 +211,17 @@ See also:
 Adds a list of local decorators only to the locale currency manager
 
 ```
-mshop/locale/manager/currency/decorators/local = 
+mshop/locale/manager/currency/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -316,9 +340,10 @@ See also:
 Class name of the used locale currency manager implementation
 
 ```
-mshop/locale/manager/currency/name = 
+mshop/locale/manager/currency/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.10
 
@@ -428,9 +453,17 @@ See also:
 List of manager names that can be instantiated by the locale currency manager
 
 ```
-mshop/locale/manager/currency/submanagers = 
+mshop/locale/manager/currency/submanagers = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2015.10
 
@@ -493,9 +526,17 @@ See also:
 Excludes decorators added by the "common" option from the locale manager
 
 ```
-mshop/locale/manager/decorators/excludes = 
+mshop/locale/manager/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -527,9 +568,17 @@ See also:
 Adds a list of globally available decorators only to the locale manager
 
 ```
-mshop/locale/manager/decorators/global = 
+mshop/locale/manager/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -560,9 +609,17 @@ See also:
 Adds a list of local decorators only to the locale manager
 
 ```
-mshop/locale/manager/decorators/local = 
+mshop/locale/manager/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2014.03
 
@@ -753,9 +810,17 @@ See also:
 Excludes decorators added by the "common" option from the locale language manager
 
 ```
-mshop/locale/manager/language/decorators/excludes = 
+mshop/locale/manager/language/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -787,9 +852,17 @@ See also:
 Adds a list of globally available decorators only to the locale language manager
 
 ```
-mshop/locale/manager/language/decorators/global = 
+mshop/locale/manager/language/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -821,9 +894,17 @@ See also:
 Adds a list of local decorators only to the locale language manager
 
 ```
-mshop/locale/manager/language/decorators/local = 
+mshop/locale/manager/language/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -942,9 +1023,10 @@ See also:
 Class name of the used locale language manager implementation
 
 ```
-mshop/locale/manager/language/name = 
+mshop/locale/manager/language/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.10
 
@@ -1054,9 +1136,17 @@ See also:
 List of manager names that can be instantiated by the locale language manager
 
 ```
-mshop/locale/manager/language/submanagers = 
+mshop/locale/manager/language/submanagers = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2015.10
 
@@ -1118,9 +1208,10 @@ See also:
 Class name of the used locale manager implementation
 
 ```
-mshop/locale/manager/name = 
+mshop/locale/manager/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2014.03
 
@@ -1215,9 +1306,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/locale/manager/resource = 
+mshop/locale/manager/resource = db-locale
 ```
 
+* Default: `db-locale`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -1234,6 +1326,15 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/search/ansi = 
+ SELECT :columns, mlocsi."code" AS "locale.sitecode"
+ FROM "mshop_locale" mloc
+ LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
+ WHERE :cond
+ GROUP BY :group, mlocsi."code"
+ ORDER BY :order
+ OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
 ```
 
 * Type: string - SQL statement for searching items
@@ -1282,8 +1383,30 @@ Retrieves the records matched by the given criteria in the database
 
 ```
 mshop/locale/manager/search/mysql = 
+ SELECT :columns, mlocsi."code" AS "locale.sitecode"
+ FROM "mshop_locale" mloc
+ LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
+ WHERE :cond
+ GROUP BY :group
+ ORDER BY :order
+ LIMIT :size OFFSET :start
 ```
 
+* Default: 
+```
+
+ SELECT :columns, mlocsi."code" AS "locale.sitecode"
+ FROM "mshop_locale" mloc
+ LEFT JOIN "mshop_locale_site" mlocsi ON (mloc."site_id" = mlocsi."id")
+ LEFT JOIN "mshop_locale_language" mlocla ON (mloc."langid" = mlocla."id")
+ LEFT JOIN "mshop_locale_currency" mloccu ON (mloc."currencyid" = mloccu."id")
+ WHERE :cond
+ GROUP BY :group, mlocsi."code"
+ ORDER BY :order
+ OFFSET :start ROWS FETCH NEXT :size ROWS ONLY
+```
 
 See also:
 
@@ -1412,9 +1535,17 @@ See also:
 Excludes decorators added by the "common" option from the locale site manager
 
 ```
-mshop/locale/manager/site/decorators/excludes = 
+mshop/locale/manager/site/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1446,9 +1577,17 @@ See also:
 Adds a list of globally available decorators only to the locale site manager
 
 ```
-mshop/locale/manager/site/decorators/global = 
+mshop/locale/manager/site/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1480,9 +1619,17 @@ See also:
 Adds a list of local decorators only to the locale site manager
 
 ```
-mshop/locale/manager/site/decorators/local = 
+mshop/locale/manager/site/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1605,9 +1752,10 @@ See also:
 Class name of the used locale site manager implementation
 
 ```
-mshop/locale/manager/site/name = 
+mshop/locale/manager/site/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.10
 
@@ -1815,9 +1963,17 @@ See also:
 List of manager names that can be instantiated by the locale site manager
 
 ```
-mshop/locale/manager/site/submanagers = 
+mshop/locale/manager/site/submanagers = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2015.10
 
@@ -1880,9 +2036,23 @@ See also:
 List of manager names that can be instantiated by the locale manager
 
 ```
-mshop/locale/manager/submanagers = 
+mshop/locale/manager/submanagers = Array
+(
+    [currency] => currency
+    [language] => language
+    [site] => site
+)
 ```
 
+* Default: 
+```
+Array
+(
+    [0] => language
+    [1] => currency
+    [2] => site
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2014.03
 

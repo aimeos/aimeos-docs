@@ -21,6 +21,48 @@ Coupon codes are valid until a payed order is placed by the customer. The
 the codes can be reused in the next order until their "count" reaches zero.
 
 
+## attempts
+
+Number of invalid coupon codes a client is allowed to enter
+
+```
+controller/frontend/basket/coupon/attempts = 10
+```
+
+* Default: `10`
+* Type: integer - Positive number of attempts or zero to disable
+* Since: 2026.10
+
+To prevent guessing valid coupon codes by brute force, the number of
+invalid codes entered by a client (IP address for anonymous users or
+the account for logged in users) is limited. If the limit is reached,
+no further coupon codes are accepted until the lockout time has passed.
+Use zero to disable the limit.
+
+See also:
+
+* controller/frontend/basket/coupon/lockout
+
+## lockout
+
+Time in seconds until invalid coupon code attempts are reset
+
+```
+controller/frontend/basket/coupon/lockout = 3600
+```
+
+* Default: `3600`
+* Type: integer - Number of seconds
+* Since: 2026.10
+
+Invalid coupon codes are counted per client and the counter is reset
+after the configured number of seconds since the last invalid code
+has been entered.
+
+See also:
+
+* controller/frontend/basket/coupon/attempts
+
 # decorators
 ## excludes
 

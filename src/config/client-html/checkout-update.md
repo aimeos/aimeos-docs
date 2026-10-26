@@ -243,7 +243,6 @@ See also:
 * client/html/checkout/update/url/target
 * client/html/checkout/update/url/controller
 * client/html/checkout/update/url/action
-* client/html/url/config
 
 ## controller
 

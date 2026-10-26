@@ -262,6 +262,8 @@ nav:
       - Checkout confirm: config/client-html/checkout-confirm.md
       - Checkout standard: config/client-html/checkout-standard.md
       - Checkout update: config/client-html/checkout-update.md
+      - CMS page: config/client-html/cms-page.md
+      - Common: config/client-html/common.md
       - Common address: config/client-html/common-address.md
       - Common cache: config/client-html/common-cache.md
       - Common decorators: config/client-html/common-decorators.md
@@ -277,6 +279,7 @@ nav:
       - Attribute: config/client-jsonapi/attribute.md
       - Basket: config/client-jsonapi/basket.md
       - Catalog: config/client-jsonapi/catalog.md
+      - CMS: config/client-jsonapi/cms.md
       - Customer: config/client-jsonapi/customer.md
       - Locale: config/client-jsonapi/locale.md
       - Order: config/client-jsonapi/order.md
@@ -291,6 +294,7 @@ nav:
       - Attribute: config/controller-frontend/attribute.md
       - Basket: config/controller-frontend/basket.md
       - Catalog: config/controller-frontend/catalog.md
+      - CMS: config/controller-frontend/cms.md
       - Common: config/controller-frontend/common.md
       - Customer: config/controller-frontend/customer.md
       - Locale: config/controller-frontend/locale.md
@@ -313,9 +317,11 @@ nav:
       - Attribute: config/admin-jqadm/attribute.md
       - Basket: config/admin-jqadm/basket.md
       - Catalog: config/admin-jqadm/catalog.md
+      - CMS: config/admin-jqadm/cms.md
       - Coupon: config/admin-jqadm/coupon.md
       - Customer: config/admin-jqadm/customer.md
       - Dashboard: config/admin-jqadm/dashboard.md
+      - Feed: config/admin-jqadm/feed.md
       - Group: config/admin-jqadm/group.md
       - Locale: config/admin-jqadm/locale.md
       - Log: config/admin-jqadm/log.md
@@ -329,6 +335,13 @@ nav:
       - Subscription: config/admin-jqadm/subscription.md
       - Supplier: config/admin-jqadm/supplier.md
       - Type: config/admin-jqadm/type.md
+    - GraphQL API:
+      - Common: config/admin-graphql/common.md
+      - AI: config/admin-graphql/ai.md
+      - Permissions: config/admin-graphql/resource.md
+    - MCP server:
+      - MCP: config/admin/mcp.md
+      - AI providers: config/admin/ai.md
     - JsonAdm API:
       - Base: config/admin-jsonadm/index.md
       - Common: config/admin-jsonadm/common.md
@@ -358,6 +371,7 @@ nav:
       - Basket cleanup: config/controller-jobs/basket-cleanup.md
       - Catalog export: config/controller-jobs/catalog-export.md
       - Catalog import: config/controller-jobs/catalog-import.md
+      - Common: config/controller-jobs/common.md
       - Common import: config/controller-jobs/common-import.md
       - Coupon import: config/controller-jobs/coupon-import.md
       - Customer email: config/controller-jobs/customer-email.md
@@ -385,9 +399,11 @@ nav:
       - Basket: config/mshop/basket-manager.md
       - Catalog: config/mshop/catalog-manager.md
       - CMS: config/mshop/cms-manager.md
+      - Common settings: config/mshop/common.md
       - Common: config/mshop/common-manager.md
       - Coupon: config/mshop/coupon-manager.md
       - Customer: config/mshop/customer-manager.md
+      - Feed: config/mshop/feed-manager.md
       - Group: config/mshop/group-manager.md
       - Index: config/mshop/index-manager.md
       - Locale: config/mshop/locale-manager.md
@@ -408,9 +424,9 @@ nav:
       - Coupon provider: config/mshop/coupon-provider.md
       - Plugin provider: config/mshop/plugin-provider.md
       - Service provider: config/mshop/service-provider.md
-      - TYPO3: config/mshop/manager-typo3.md
     - MAdmin:
       - Cache: config/madmin/cache-manager.md
+      - CMS: config/madmin/cms-manager.md
       - Common: config/madmin/common-manager.md
       - Job: config/madmin/job-manager.md
       - Log: config/madmin/log-manager.md

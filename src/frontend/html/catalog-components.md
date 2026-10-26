@@ -58,10 +58,7 @@ Usually, the catalog stage component is placed over the product list and detail 
 
 ![Aimeos catalog stage](Aimeos-catalog-stage.png)
 
-In the [stage component implementation](../../config/client-html/catalog-stage.md#name), one additional section is available that can be controlled via the [stage subpart configuration](../../config/client-html/catalog-stage.md#subparts):
-
-[navigator client](../../config/client-html/catalog-stage.md#name_1)
-: back/next product links inluding the [navigator subpart](../../config/client-html/catalog-stage.md#standardsubparts)
+The [stage component implementation](../../config/client-html/catalog-stage.md#name) also displays the back/next product links using the [navigator template](../../config/client-html/catalog-detail.md#template-navigator).
 
 Furthermore, you can limit or extend the domain items that are fetched from the database and thus available in the templates via the [client/html/catalog/stage/domains](../../config/client-html/catalog-stage.md#domains) setting.
 
@@ -115,11 +112,11 @@ To those templates additional data like category information (texts, images), cu
 
 The body template also uses a partial for rendering the pagination which contains not only the links for the product list paging itself but also the possibilities for sorting the result set.
 
-Furthermore, the list component consists of two subparts that can be controlled by the [list subparts configuration](../../config/client-html/catalog-lists.md#subparts). These are described in more detail below.
+Furthermore, the list component consists of two subparts. These are described in more detail below.
 
 ## Main product list
 
-In the section implementing the [product item list](../../config/client-html/catalog-lists.md#name), the found products are displayed taking the given parameter and configuration settings into account. More subparts can be added via the [list subparts](../../config/client-html/catalog-lists.md#subparts) setting. The items section use the options named in the list component description to configure the output of the product list.
+In the section implementing the [product item list](../../config/client-html/catalog-lists.md#name), the found products are displayed taking the given parameter and configuration settings into account. The items section use the options named in the list component description to configure the output of the product list.
 
 Used template in the list items section is:
 
@@ -127,15 +124,15 @@ Used template in the list items section is:
 
 ## Promotional products
 
-Besides associating products as regular ones to categories, they can also be added as products that should be promoted. The difference is only the list type of the associated items. These products are then displayed in a special "top seller" section, which is provided by the [promo section implementation](../../config/client-html/catalog-lists.md#name_2).
+Besides associating products as regular ones to categories, they can also be added as products that should be promoted. The difference is only the list type of the associated items. These products are then displayed in a special "top seller" section, which is provided by the [list component implementation](../../config/client-html/catalog-lists.md#name).
 
-It's a short product list usually displayed on top of the list of regular products and if more features are necessary, they can be implemented by further subparts controlled by the [promo subparts](../../config/client-html/catalog-lists.md#standardsubparts_1) setting.
+It's a short product list usually displayed on top of the list of regular products.
 
 The promotional subpart itself can be additionally configured by the [client/html/catalog/lists/promo/size](../../config/client-html/catalog-lists.md#size) option, that limits the number of promotional products displayed.
 
 Used template in the promotional list section is:
 
-* [template body](../../config/client-html/catalog-lists.md#standardtemplate-body_1)
+* [template body](../../config/client-html/catalog-lists.md#template-body)
 
 # Detail
 
@@ -164,7 +161,7 @@ Used templates for the detail component are:
 * [template body](../../config/client-html/catalog-detail.md#template-body)
 * [template header](../../config/client-html/catalog-detail.md#template-header)
 
-Furthermore, the detail component consists of two subparts (service and last seen) that can be controlled via the [detail subpart configuration](../../config/client-html/catalog-detail.md#subparts). These are described in more detail below.
+Furthermore, the detail component consists of two subparts (service and last seen). These are described in more detail below.
 
 The image section displays the product's images and provides features such as a thumbnail list of all images and a light box, allowing the user to zoom-in and toggle the photo to full screen. This is implemented as a partial that is included in the body template.
 
@@ -193,11 +190,11 @@ client/html/catalog/attribute/preselect/... = 1
 
 ## Services
 
-The delivery option listing is implemented as subpart because it has to fetch additional, non-product related information from the database. More [service subparts](../../config/client-html/catalog-detail.md#standardsubparts_1) can be added to the [service implementation](../../config/client-html/catalog-detail.md#name_2) if necessary.
+The delivery option listing is implemented as subpart because it has to fetch additional, non-product related information from the database.
 
 Only the body template is used by the service section:
 
-* [template body](../../config/client-html/catalog-detail.md#standardtemplate-body_1)
+* [template body](../../config/client-html/catalog-detail.md#template-body)
 
 ## Bundled products
 
@@ -243,9 +240,9 @@ When the job controller for generating the list of products bought together with
 
 ## Last seen products
 
-This part is a bit special because it generates no visible output in the detail view. Instead, it creates the HTML for the last seen product that is added to the session of the visitor. It's all done by the [seen section implementation](../../config/client-html/catalog-detail.md#name_1) and even here, more data sections can be added by the [seen subparts](../../config/client-html/catalog-detail.md#standardsubparts) setting.
+This part is a bit special because it generates no visible output in the detail view. Instead, it creates the HTML for the last seen product that is added to the session of the visitor. It's all done by the [detail component implementation](../../config/client-html/catalog-detail.md#name).
 
-Like in the list or details component you also have the possibility to define which [domain items for the list of last seen products](../../config/client-html/catalog-detail.md#domains_1) (e.g. texts, media, prices, etc.) are fetched from the database.
+Like in the list or details component you also have the possibility to define which [domain items for the list of last seen products](../../config/client-html/catalog-detail.md#domains) (e.g. texts, media, prices, etc.) are fetched from the database.
 
 Only the body template is used by the "last seen" section:
 
@@ -314,13 +311,10 @@ The [catalog count component implementation](../../config/client-html/catalog-co
 [tree client](../../config/client-html/catalog-count.md#name_3)
 : category numbers including the [tree subpart](../../config/client-html/catalog-count.md#subparts)
 
-In the catalog count component itself you can configure if the numbers should be calculated at all and how many products should be considered for calculation:
+In the catalog count component itself you can configure if the numbers should be calculated at all:
 
 [client/html/catalog/count/enable](../../config/client-html/catalog-count.md#enable)
 : Enables or disables displaying product counts in the catalog filter
-
-[client/html/catalog/count/limit](../../config/client-html/catalog-count.md#limit)
-: Limits the number of records that are used for product counts in the catalog filter
 
 Additionally, the attribute and tree subparts can be configured separately to show the product counts or not:
 
@@ -360,7 +354,7 @@ When visitors use the catalog search filter to find products via a full text sea
 
 ![Aimeos catalog suggest](Aimeos-catalog-suggest.png)
 
-The [suggest component implementation](../../config/client-html/catalog-suggest.md#name) consists only of the component itself, but you can add additional section via the [suggest subpart configuration](../../config/client-html/catalog-suggest.md#subparts).
+The [suggest component implementation](../../config/client-html/catalog-suggest.md#name) consists only of the component itself.
 
 To display the list of suggestions, the URL for fetching the found product names must be available. The generated URL can be configured via these settings:
 
@@ -386,7 +380,7 @@ All product stock related information is fetched separately and added via Javasc
 
 ![Aimeos catalog stock](Aimeos-catalog-stock.png)
 
-The [stock component implementation](../../config/client-html/catalog-stock.md#name) consists only of the component itself, but you can add additional section via the [stock subpart configuration](../../config/client-html/catalog-stock.md#subparts).
+The [stock component implementation](../../config/client-html/catalog-stock.md#name) consists only of the component itself.
 
 Two additional settings allow control over details of the returned stock level information:
 

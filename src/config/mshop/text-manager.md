@@ -71,9 +71,17 @@ See also:
 Excludes decorators added by the "common" option from the text manager
 
 ```
-mshop/text/manager/decorators/excludes = 
+mshop/text/manager/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -105,9 +113,19 @@ See also:
 Adds a list of globally available decorators only to the text manager
 
 ```
-mshop/text/manager/decorators/global = 
+mshop/text/manager/decorators/global = Array
+(
+    [Lists] => Lists
+    [Type] => Type
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -138,9 +156,17 @@ See also:
 Adds a list of local decorators only to the text manager
 
 ```
-mshop/text/manager/decorators/local = 
+mshop/text/manager/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -333,9 +359,17 @@ See also:
 Excludes decorators added by the "common" option from the text list manager
 
 ```
-mshop/text/manager/lists/decorators/excludes = 
+mshop/text/manager/lists/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -367,9 +401,17 @@ See also:
 Adds a list of globally available decorators only to the text list manager
 
 ```
-mshop/text/manager/lists/decorators/global = 
+mshop/text/manager/lists/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -400,9 +442,17 @@ See also:
 Adds a list of local decorators only to the text list manager
 
 ```
-mshop/text/manager/lists/decorators/local = 
+mshop/text/manager/lists/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -529,9 +579,10 @@ See also:
 Class name of the used text list manager implementation
 
 ```
-mshop/text/manager/lists/name = 
+mshop/text/manager/lists/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.10
 
@@ -696,9 +747,18 @@ See also:
 List of manager names that can be instantiated by the text list manager
 
 ```
-mshop/text/manager/lists/submanagers = 
+mshop/text/manager/lists/submanagers = Array
+(
+    [type] => type
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2015.10
 
@@ -783,9 +843,17 @@ See also:
 Excludes decorators added by the "common" option from the text list type manager
 
 ```
-mshop/text/manager/lists/type/decorators/excludes = 
+mshop/text/manager/lists/type/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -817,9 +885,17 @@ See also:
 Adds a list of globally available decorators only to the text list type manager
 
 ```
-mshop/text/manager/lists/type/decorators/global = 
+mshop/text/manager/lists/type/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -851,9 +927,17 @@ See also:
 Adds a list of local decorators only to the text list type manager
 
 ```
-mshop/text/manager/lists/type/decorators/local = 
+mshop/text/manager/lists/type/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -978,9 +1062,10 @@ See also:
 Class name of the used text list type manager implementation
 
 ```
-mshop/text/manager/lists/type/name = 
+mshop/text/manager/lists/type/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.10
 
@@ -1258,9 +1343,10 @@ See also:
 Class name of the used text manager implementation
 
 ```
-mshop/text/manager/name = 
+mshop/text/manager/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.10
 
@@ -1355,9 +1441,10 @@ See also:
 Name of the database connection resource to use
 
 ```
-mshop/text/manager/resource = 
+mshop/text/manager/resource = db-text
 ```
 
+* Default: `db-text`
 * Type: string - Database connection name
 * Since: 2023.04
 
@@ -1365,6 +1452,28 @@ You can configure a different database connection for each data domain
 and if no such connection name exists, the "db" connection will be used.
 It's also possible to use the same database connection for different
 data domains by configuring the same connection name using this setting.
+
+
+# sanitize
+## excludes
+
+Additional text types whose content is validated by their owning extension.
+
+```
+mshop/text/manager/sanitize/excludes = Array
+(
+    [content] => content
+)
+```
+
+* Default: 
+```
+Array
+(
+)
+```
+* Type: array - List of text type codes
+* Since: 2026.10
 
 
 # search
@@ -1442,9 +1551,10 @@ See also:
 Mode how items from levels below or above in the site tree are handled
 
 ```
-mshop/text/manager/sitemode = 
+mshop/text/manager/sitemode = 3
 ```
 
+* Default: `3`
 * Type: int - Constant from Aimeos\MShop\Locale\Manager\Base class
 * Since: 2018.01
 
@@ -1478,9 +1588,19 @@ See also:
 List of manager names that can be instantiated by the text manager
 
 ```
-mshop/text/manager/submanagers = 
+mshop/text/manager/submanagers = Array
+(
+    [lists] => lists
+    [type] => type
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of sub-manager names
 * Since: 2015.10
 
@@ -1566,9 +1686,17 @@ See also:
 Excludes decorators added by the "common" option from the text type manager
 
 ```
-mshop/text/manager/type/decorators/excludes = 
+mshop/text/manager/type/decorators/excludes = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1600,9 +1728,17 @@ See also:
 Adds a list of globally available decorators only to the text type manager
 
 ```
-mshop/text/manager/type/decorators/global = 
+mshop/text/manager/type/decorators/global = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1634,9 +1770,17 @@ See also:
 Adds a list of local decorators only to the text type manager
 
 ```
-mshop/text/manager/type/decorators/local = 
+mshop/text/manager/type/decorators/local = Array
+(
+)
 ```
 
+* Default: 
+```
+Array
+(
+)
+```
 * Type: array - List of decorator names
 * Since: 2015.10
 
@@ -1761,9 +1905,10 @@ See also:
 Class name of the used text type manager implementation
 
 ```
-mshop/text/manager/type/name = 
+mshop/text/manager/type/name = Standard
 ```
 
+* Default: `Standard`
 * Type: string - Last part of the class name
 * Since: 2015.10
 

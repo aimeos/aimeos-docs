@@ -127,7 +127,6 @@ See also:
 
 * controller/frontend/catalog/levels-always
 * controller/frontend/catalog/levels-only
-* client/html/catalog/filter/tree/deep
 
 # name
 

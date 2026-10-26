@@ -460,8 +460,8 @@ If you want to ship your products to several countries or you need to know from 
 
 By default, the country list is hidden for the billing and delivery address in the checkout process. To make show them and make them mandatory you need to add "order.address.countryid" to the list of values defined in
 
-* [client/html/checkout/address/billing/mandatory](../config/client-html/checkout-standard.md#billingmandatory)
-* [client/html/checkout/address/delivery/mandatory](../config/client-html/checkout-standard.md#deliverymandatory)
+* [client/html/common/address/payment/mandatory](../config/client-html/common-address.md#mandatory_1)
+* [client/html/common/address/delivery/mandatory](../config/client-html/common-address.md#mandatory)
 
 In the Aimeos package this is configured for billing and delivery addresses in the `config/shop.php` configuration file:
 
@@ -506,8 +506,8 @@ In the Aimeos package this is configured for billing and delivery addresses in t
 
 If no selection should be enforced, you can use instead
 
-* [client/html/checkout/address/billing/optional](../config/client-html/checkout-standard.md#billingoptional)
-* [client/html/checkout/address/delivery/optional](../config/client-html/checkout-standard.md#deliveryoptional)
+* [client/html/common/address/payment/optional](../config/client-html/common-address.md#optional_1)
+* [client/html/common/address/delivery/optional](../config/client-html/common-address.md#optional)
 
 
 To make the country for billing and delivery addresses optional, use this configuration:

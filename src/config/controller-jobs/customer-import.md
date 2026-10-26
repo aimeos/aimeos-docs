@@ -37,6 +37,8 @@ See also:
 
 ## checks
 
+Regular expressions for validating the imported field values
+
 ```
 controller/jobs/customer/import/csv/checks = Array
 (
@@ -49,7 +51,27 @@ Array
 (
 )
 ```
+* Type: array - Associative list of field codes as keys and regular expressions as values
+* Since: 2026.01
 
+Each customer entry from the CSV file is checked against the configured
+regular expressions before it's imported. The keys are the field codes
+from the mapping and the values are the regular expressions the field
+values must match, e.g.
+
+```
+ controller/jobs/customer/import/csv/checks = [
+     'customer.email' => '/^.+@.+$/',
+     'customer.address.countryid' => '/^[A-Z]{2}$/',
+ ]
+```
+
+If a value doesn't match, the import of that entry fails.
+
+See also:
+
+* controller/jobs/customer/import/csv/html
+* controller/jobs/customer/import/csv/mapping
 
 ## cleanup
 
@@ -243,12 +265,24 @@ See also:
 
 ## html
 
+Allows HTML tags in the imported field values
+
 ```
 controller/jobs/customer/import/csv/html = 
 ```
 
 * Default: ``
+* Type: bool - True to allow HTML tags, false to reject entries containing them
+* Since: 2026.01
 
+By default, customer entries containing HTML tags in any field are
+rejected to prevent stored cross-site scripting attacks. Set this
+option to true if the CSV file contains values with HTML tags that
+should be imported.
+
+See also:
+
+* controller/jobs/customer/import/csv/checks
 
 ## location
 
@@ -543,13 +577,26 @@ The name is case-sensitive and you should avoid camel case names like "MyName".
 
 ## processor/group/allowed
 
+List of group codes that can be assigned to imported customers
+
 ```
 controller/jobs/customer/import/csv/processor/group/allowed = 
 ```
 
+* Type: array - List of group codes
+* Since: 2026.04
 
+Only groups whose codes are part of this list are assigned to the
+customers during the import. If the list is empty, all groups are
+allowed except the ones from the "denied" setting.
+
+See also:
+
+* controller/jobs/customer/import/csv/processor/group/denied
 
 ## processor/group/denied
+
+List of group codes that must not be assigned to imported customers
 
 ```
 controller/jobs/customer/import/csv/processor/group/denied = Array
@@ -567,7 +614,17 @@ Array
     [1] => editor
 )
 ```
+* Type: array - List of group codes
+* Since: 2026.04
 
+Groups whose codes are part of this list are never assigned to the
+customers during the import. By default, the "admin" and "editor"
+groups are denied to prevent granting backend access by importing
+customer data.
+
+See also:
+
+* controller/jobs/customer/import/csv/processor/group/allowed
 
 ## processor/group/name
 
@@ -920,6 +977,57 @@ characters are possible! You should always start the last part of the class
 name with an upper case character and continue only with lower case characters
 or numbers. Avoid chamel case names like "MyXml"!
 
+
+## processor/group/allowed
+
+List of group codes that can be assigned to imported customers
+
+```
+controller/jobs/customer/import/xml/processor/group/allowed = 
+```
+
+* Type: array - List of group codes
+* Since: 2026.04
+
+Only groups whose codes are part of this list are assigned to the
+customers during the import. If the list is empty, all groups are
+allowed except the ones from the "denied" setting.
+
+See also:
+
+* controller/jobs/customer/import/xml/processor/group/denied
+
+## processor/group/denied
+
+List of group codes that must not be assigned to imported customers
+
+```
+controller/jobs/customer/import/xml/processor/group/denied = Array
+(
+    [0] => admin
+    [1] => editor
+)
+```
+
+* Default: 
+```
+Array
+(
+    [0] => admin
+    [1] => editor
+)
+```
+* Type: array - List of group codes
+* Since: 2026.04
+
+Groups whose codes are part of this list are never assigned to the
+customers during the import. By default, the "admin" and "editor"
+groups are denied to prevent granting backend access by importing
+customer data.
+
+See also:
+
+* controller/jobs/customer/import/xml/processor/group/allowed
 
 ## processor/group/name
 

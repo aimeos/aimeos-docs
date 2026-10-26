@@ -19,8 +19,8 @@ Before starting, make sure that:
 
 * Aimeos is installed in a Laravel version supported by `laravel/mcp`
 * the Laravel application has a login page, for example from Laravel Breeze
-* the Aimeos `admin` gate is configured as described in the
-  [Laravel setup guide](setup.md#configure-authentication)
+* the Aimeos `admin` gate allows your account to access the server (see
+  [permissions](#permissions))
 * an Aimeos admin account exists
 * the application is reachable through an HTTPS URL by the MCP client
 
